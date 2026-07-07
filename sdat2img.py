@@ -6,14 +6,12 @@ from PIL import Image
 OUT_DIR = "assets/imagenes"
 os.makedirs(OUT_DIR, exist_ok=True)
 
-# Cache VRAMs so we don't reload 1MB constantly
 vram_cache = {}
 
 def get_vram(chunk_id):
     if chunk_id in vram_cache:
         return vram_cache[chunk_id]
         
-    print(f"Loading VRAM for chunk {chunk_id}...")
     global_path = 'assets/chunk_01/01_vrams/01.vram'
     with open(global_path, 'rb') as f:
         vram = bytearray(f.read())
@@ -23,10 +21,12 @@ def get_vram(chunk_id):
         if os.path.exists(chunk_path):
             with open(chunk_path, 'rb') as f:
                 cv = f.read()
-                # Composite
-                for i in range(len(vram)):
-                    if cv[i] != 0:
+                # Use WORD-BY-WORD composite to avoid color corruption!
+                for i in range(0, len(vram), 2):
+                    word = cv[i] | (cv[i+1] << 8)
+                    if word != 0:
                         vram[i] = cv[i]
+                        vram[i+1] = cv[i+1]
                         
     vram_cache[chunk_id] = vram
     return vram
@@ -51,7 +51,6 @@ def extract_spritesheet(vram, clut, tpage, out_path):
     tpage_y = ((tpage >> 4) & 1) * 256
     tp_mode = (tpage >> 7) & 3
     
-    # Read CLUT
     clut_colors = []
     clut_idx = (clut_y * 1024 + clut_x) * 2
     
@@ -108,7 +107,7 @@ sdat_files = glob.glob('assets/chunk_*/*_sdats/*.sdat')
 total_saved = 0
 
 for sdat_path in sdat_files:
-    chunk_id = sdat_path.split(os.sep)[1].split('_')[1] # chunk_10 -> 10
+    chunk_id = sdat_path.split(os.sep)[1].split('_')[1]
     
     with open(sdat_path, 'rb') as f:
         sdat = f.read()
@@ -125,7 +124,6 @@ for sdat_path in sdat_files:
     if not combos: continue
     
     vram = get_vram(chunk_id)
-    print(f"Processing {sdat_path} - Found {len(combos)} valid CLUT/TPage pairs...")
     
     saved_for_sdat = 0
     for clut, tpage in combos:
@@ -135,6 +133,4 @@ for sdat_path in sdat_files:
             saved_for_sdat += 1
             total_saved += 1
             
-    print(f"  -> Saved {saved_for_sdat} valid spritesheets.")
-
-print(f"\nDone! Extracted {total_saved} high-quality spritesheets to {OUT_DIR}/")
+print(f"\nDone! Extracted {total_saved} uncorrupted 16-bit spritesheets to {OUT_DIR}/")

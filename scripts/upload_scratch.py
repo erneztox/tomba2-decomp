@@ -52,15 +52,6 @@ def main():
     }
 
     headers = {'Content-Type': 'application/json'}
-    
-    # Try to load user session cookie to upload scratch under their account
-    cookie_file = os.path.join(os.path.dirname(__file__), "..", ".decompme_cookie")
-    if os.path.exists(cookie_file):
-        with open(cookie_file, "r") as f:
-            cookie = f.read().strip()
-            if cookie:
-                headers['Cookie'] = cookie
-
     req = urllib.request.Request(DECOMP_ME_API, data=data, headers=headers)
 
     print(f"Uploading {asm_file} to decomp.me...")
@@ -71,10 +62,11 @@ def main():
             claim_token = res_data.get('claim_token')
             
             scratch_url = f"https://decomp.me/scratch/{slug}"
+            claim_url = f"{scratch_url}/claim?token={claim_token}"
+            
             print("\nSuccess! Scratch created:")
             print(f"URL: {scratch_url}")
-            print(f"Claim Token: {claim_token}")
-            print("(Save the claim token if you want to claim ownership of the scratch later!)")
+            print(f"To claim ownership, click here: {claim_url}")
     except HTTPError as e:
         print(f"Failed to create scratch: {e.code} {e.reason}")
         print(e.read().decode('utf-8'))

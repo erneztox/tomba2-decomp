@@ -51,8 +51,17 @@ def main():
         "context": context
     }
 
-    data = json.dumps(payload).encode('utf-8')
-    req = urllib.request.Request(DECOMP_ME_API, data=data, headers={'Content-Type': 'application/json'})
+    headers = {'Content-Type': 'application/json'}
+    
+    # Try to load user session cookie to upload scratch under their account
+    cookie_file = os.path.join(os.path.dirname(__file__), "..", ".decompme_cookie")
+    if os.path.exists(cookie_file):
+        with open(cookie_file, "r") as f:
+            cookie = f.read().strip()
+            if cookie:
+                headers['Cookie'] = cookie
+
+    req = urllib.request.Request(DECOMP_ME_API, data=data, headers=headers)
 
     print(f"Uploading {asm_file} to decomp.me...")
     try:

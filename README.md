@@ -57,12 +57,22 @@ make
 ```
 
 What `make` does under the hood:
-1. Takes decompiled C code from `src/` (e.g., `src/FUN_8001dd04.c`).
+1. Takes decompiled C code from `src/` (e.g., `src/func_8001DD04.c`).
 2. Compiles it using the original PsyQ compiler (`tools/old-gcc/cc1`).
 3. Processes the legacy assembly through `tools/maspsx` to make it compatible with modern GNU assemblers.
 4. Assembles the final `.o` object file using `mips-linux-gnu-as` (with the `-EL` Little Endian flag).
 
 The resulting object files will reside in `build/src/` as `elf32-tradlittlemips` binaries.
+
+## Audio Extraction
+
+Since PS1 CD-ROM XA audio files use specialized 2352-byte sectors with interleaved channels, extracting them requires a specialized tool (`jpsxdec`). We have automated this process in Python:
+
+```bash
+python3 scripts/extract_music.py
+```
+
+This script will automatically download `jpsxdec`, parse the original `.bin` ROM track, and extract all background music, cinematics audio, and voice clips as pristine `.wav` files into the `extracted_music/` directory. Note: The `extracted_music/` directory is ignored by Git to avoid uploading hundreds of megabytes of audio to the repository.
 
 ## Local Matching with asm-differ
 

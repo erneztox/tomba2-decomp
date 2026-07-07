@@ -1,0 +1,214 @@
+jPSXdec: PSX media decoder (non-commercial) v2.1 (beta)
+Linux 7.0.14-arch1-1
+Java 26.0.1
+Jul 7, 2026, 1:02:32 PM
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:38|ID:CD/VOICE.XA[0]|Sectors:12771-57475|Type:XA|File:1|Channel:0|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[0].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:39|ID:CD/VOICE.XA[1]|Sectors:12772-55012|Type:XA|File:1|Channel:1|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[1].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:40|ID:CD/VOICE.XA[2]|Sectors:12773-54949|Type:XA|File:1|Channel:2|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[2].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:41|ID:CD/VOICE.XA[3]|Sectors:12774-55686|Type:XA|File:1|Channel:3|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[3].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:42|ID:CD/VOICE.XA[4]|Sectors:12775-55431|Type:XA|File:1|Channel:4|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[4].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:43|ID:CD/VOICE.XA[5]|Sectors:12776-55432|Type:XA|File:1|Channel:5|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[5].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:44|ID:CD/VOICE.XA[6]|Sectors:12777-55401|Type:XA|File:1|Channel:6|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[6].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:45|ID:CD/VOICE.XA[7]|Sectors:12778-55178|Type:XA|File:1|Channel:7|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[7].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:46|ID:CD/VOICE.XA[8]|Sectors:12779-54987|Type:XA|File:1|Channel:8|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[8].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:47|ID:CD/VOICE.XA[9]|Sectors:12780-55052|Type:XA|File:1|Channel:9|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[9].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:48|ID:CD/VOICE.XA[10]|Sectors:12781-54925|Type:XA|File:1|Channel:10|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[10].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:49|ID:CD/VOICE.XA[11]|Sectors:12782-55118|Type:XA|File:1|Channel:11|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[11].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:50|ID:CD/VOICE.XA[12]|Sectors:12783-54959|Type:XA|File:1|Channel:12|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[12].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:51|ID:CD/VOICE.XA[13]|Sectors:12784-55120|Type:XA|File:1|Channel:13|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[13].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:52|ID:CD/VOICE.XA[14]|Sectors:12785-55569|Type:XA|File:1|Channel:14|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[14].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:53|ID:CD/VOICE.XA[15]|Sectors:12786-55570|Type:XA|File:1|Channel:15|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[15].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:54|ID:CD/VOICE.XA[16]|Sectors:12787-55795|Type:XA|File:1|Channel:16|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[16].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:55|ID:CD/VOICE.XA[17]|Sectors:12788-55892|Type:XA|File:1|Channel:17|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[17].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:56|ID:CD/VOICE.XA[18]|Sectors:12789-55733|Type:XA|File:1|Channel:18|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[18].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:57|ID:CD/VOICE.XA[19]|Sectors:12790-54966|Type:XA|File:1|Channel:19|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[19].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:58|ID:CD/VOICE.XA[20]|Sectors:12791-55159|Type:XA|File:1|Channel:20|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[20].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:59|ID:CD/VOICE.XA[21]|Sectors:12792-54904|Type:XA|File:1|Channel:21|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[21].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:60|ID:CD/VOICE.XA[22]|Sectors:12793-55097|Type:XA|File:1|Channel:22|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[22].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:61|ID:CD/VOICE.XA[23]|Sectors:12794-55098|Type:XA|File:1|Channel:23|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[23].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:62|ID:CD/VOICE.XA[24]|Sectors:12795-55515|Type:XA|File:1|Channel:24|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[24].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:63|ID:CD/VOICE.XA[25]|Sectors:12796-55068|Type:XA|File:1|Channel:25|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[25].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:64|ID:CD/VOICE.XA[26]|Sectors:12797-55293|Type:XA|File:1|Channel:26|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[26].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:65|ID:CD/VOICE.XA[27]|Sectors:12798-55550|Type:XA|File:1|Channel:27|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[27].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:66|ID:CD/VOICE.XA[28]|Sectors:12799-54911|Type:XA|File:1|Channel:28|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[28].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:67|ID:CD/VOICE.XA[29]|Sectors:12800-55808|Type:XA|File:1|Channel:29|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[29].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:68|ID:CD/VOICE.XA[30]|Sectors:12801-55841|Type:XA|File:1|Channel:30|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[30].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:69|ID:CD/VOICE.XA[31]|Sectors:12802-55010|Type:XA|File:1|Channel:31|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/VOICE.XA[31].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:71|ID:CD/DEMO.XA[0]|Sectors:57507-80003|Type:XA|File:1|Channel:0|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/DEMO.XA[0].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:72|ID:CD/DEMO.XA[1]|Sectors:57508-80004|Type:XA|File:1|Channel:1|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/DEMO.XA[1].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:73|ID:CD/DEMO.XA[2]|Sectors:57509-80013|Type:XA|File:1|Channel:2|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/DEMO.XA[2].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:74|ID:CD/DEMO.XA[3]|Sectors:57510-75502|Type:XA|File:1|Channel:3|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/DEMO.XA[3].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:75|ID:CD/DEMO.XA[4]|Sectors:57511-84511|Type:XA|File:1|Channel:4|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/DEMO.XA[4].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:76|ID:CD/DEMO.XA[5]|Sectors:57512-80016|Type:XA|File:1|Channel:5|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/DEMO.XA[5].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:77|ID:CD/DEMO.XA[6]|Sectors:57513-75505|Type:XA|File:1|Channel:6|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/DEMO.XA[6].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:78|ID:CD/DEMO.XA[7]|Sectors:57514-75522|Type:XA|File:1|Channel:7|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/DEMO.XA[7].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:80|ID:CD/BGM.XA[0]|Sectors:84515-131651|Type:XA|File:1|Channel:0|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/BGM.XA[0].wav
+[INFO] Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+[INFO] #:81|ID:CD/BGM.XA[1]|Sectors:84516-131724|Type:XA|File:1|Channel:1|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+[INFO] Format: wav
+[INFO] Volume: 100%
+[INFO] Filename: CD/BGM.XA[1].wav

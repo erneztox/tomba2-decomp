@@ -1,0 +1,481 @@
+jPSXdec: PSX media decoder (non-commercial) v2.1 (beta)
+Linux 7.0.14-arch1-1
+Java 26.0.1
+2026-07-07 13:02:32
+13:02 jpsxdec.cdreaders.CdOpener INFO: rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin
+13:02 index WARNING: ZZZ.DAT is not completely in the bounds of the CD/file, extracting it will cause errors.
+13:02 jpsxdec.indexing.DiscIndex INFO: #:0|ID:MAIN.EXE|Sectors:23-372|Type:File|Size:716800|Path:MAIN.EXE|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:1|ID:BIN/A00.BIN|Sectors:374-513|Type:File|Size:285096|Path:BIN/A00.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:2|ID:BIN/A01.BIN|Sectors:514-612|Type:File|Size:202460|Path:BIN/A01.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:3|ID:BIN/A02.BIN|Sectors:613-711|Type:File|Size:201004|Path:BIN/A02.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:4|ID:BIN/A03.BIN|Sectors:712-750|Type:File|Size:78444|Path:BIN/A03.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:5|ID:BIN/A04.BIN|Sectors:751-873|Type:File|Size:250788|Path:BIN/A04.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:6|ID:BIN/A05.BIN|Sectors:874-988|Type:File|Size:234164|Path:BIN/A05.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:7|ID:BIN/A06.BIN|Sectors:989-1127|Type:File|Size:284348|Path:BIN/A06.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:8|ID:BIN/A07.BIN|Sectors:1128-1240|Type:File|Size:229720|Path:BIN/A07.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:9|ID:BIN/A08.BIN|Sectors:1241-1370|Type:File|Size:266124|Path:BIN/A08.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:10|ID:BIN/A09.BIN|Sectors:1371-1381|Type:File|Size:22125|Path:BIN/A09.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:11|ID:BIN/A0A.BIN|Sectors:1382-1443|Type:File|Size:126520|Path:BIN/A0A.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:12|ID:BIN/A0B.BIN|Sectors:1444-1500|Type:File|Size:115560|Path:BIN/A0B.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:13|ID:BIN/A0C.BIN|Sectors:1501-1561|Type:File|Size:123328|Path:BIN/A0C.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:14|ID:BIN/A0D.BIN|Sectors:1562-1620|Type:File|Size:119592|Path:BIN/A0D.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:15|ID:BIN/A0E.BIN|Sectors:1621-1681|Type:File|Size:124656|Path:BIN/A0E.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:16|ID:BIN/A0F.BIN|Sectors:1682-1748|Type:File|Size:135500|Path:BIN/A0F.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:17|ID:BIN/A0G.BIN|Sectors:1749-1757|Type:File|Size:17980|Path:BIN/A0G.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:18|ID:BIN/A0H.BIN|Sectors:1758-1764|Type:File|Size:14016|Path:BIN/A0H.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:19|ID:BIN/A0I.BIN|Sectors:1765-1772|Type:File|Size:15152|Path:BIN/A0I.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:20|ID:BIN/A0J.BIN|Sectors:1773-1782|Type:File|Size:19068|Path:BIN/A0J.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:21|ID:BIN/A0K.BIN|Sectors:1783-1828|Type:File|Size:93380|Path:BIN/A0K.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:22|ID:BIN/A0L.BIN|Sectors:1829-1865|Type:File|Size:74832|Path:BIN/A0L.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:23|ID:BIN/CRD.BIN|Sectors:1866-1878|Type:File|Size:25060|Path:BIN/CRD.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:24|ID:BIN/DEMO.BIN|Sectors:1879-1881|Type:File|Size:5372|Path:BIN/DEMO.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:25|ID:BIN/GAME.BIN|Sectors:1882-1887|Type:File|Size:11636|Path:BIN/GAME.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:26|ID:BIN/OPN.BIN|Sectors:1888-1894|Type:File|Size:13596|Path:BIN/OPN.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:27|ID:BIN/SOP.BIN|Sectors:1895-1903|Type:File|Size:17660|Path:BIN/SOP.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:28|ID:BIN/START.BIN|Sectors:1904-1904|Type:File|Size:1648|Path:BIN/START.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:29|ID:CD/SWDATA.BIN|Sectors:1906-1907|Type:File|Size:4096|Path:CD/SWDATA.BIN|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:30|ID:CD/TOMBA2.DAT|Sectors:1908-6564|Type:File|Size:9537536|Path:CD/TOMBA2.DAT|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:31|ID:CD/TOMBA2.IDX|Sectors:6565-6612|Type:File|Size:98304|Path:CD/TOMBA2.IDX|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:32|ID:CD/TOMBA2.IMG|Sectors:6613-9683|Type:File|Size:6289408|Path:CD/TOMBA2.IMG|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:33|ID:CD/TOMBA2.SND|Sectors:9684-11489|Type:File|Size:3698688|Path:CD/TOMBA2.SND|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:34|ID:MOVIE/LOGO.STR|Sectors:11491-12770|Type:File|Size:2621440|Path:MOVIE/LOGO.STR|Has mode 2 form 2:Yes|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:35|ID:MOVIE/LOGO.STR[0]|Sectors:11491-12765|Type:Video|Dimensions:320x240|Frame Count:255|Sector Frames:11491-12761|Sectors/Frame:5/1|1st frame end sector:4|Disc Speed:2|Header Frames:1-255
+13:02 jpsxdec.indexing.DiscIndex INFO: #:36|ID:MOVIE/LOGO.STR[0.0]|Sectors:11498-12770|Type:XA|File:1|Channel:1|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:37|ID:CD/VOICE.XA|Sectors:12771-57506|Type:File|Size:91619328|Path:CD/VOICE.XA|Has mode 2 form 2:Yes|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:38|ID:CD/VOICE.XA[0]|Sectors:12771-57475|Type:XA|File:1|Channel:0|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:39|ID:CD/VOICE.XA[1]|Sectors:12772-55012|Type:XA|File:1|Channel:1|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:40|ID:CD/VOICE.XA[2]|Sectors:12773-54949|Type:XA|File:1|Channel:2|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:41|ID:CD/VOICE.XA[3]|Sectors:12774-55686|Type:XA|File:1|Channel:3|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:42|ID:CD/VOICE.XA[4]|Sectors:12775-55431|Type:XA|File:1|Channel:4|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:43|ID:CD/VOICE.XA[5]|Sectors:12776-55432|Type:XA|File:1|Channel:5|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:44|ID:CD/VOICE.XA[6]|Sectors:12777-55401|Type:XA|File:1|Channel:6|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:45|ID:CD/VOICE.XA[7]|Sectors:12778-55178|Type:XA|File:1|Channel:7|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:46|ID:CD/VOICE.XA[8]|Sectors:12779-54987|Type:XA|File:1|Channel:8|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:47|ID:CD/VOICE.XA[9]|Sectors:12780-55052|Type:XA|File:1|Channel:9|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:48|ID:CD/VOICE.XA[10]|Sectors:12781-54925|Type:XA|File:1|Channel:10|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:49|ID:CD/VOICE.XA[11]|Sectors:12782-55118|Type:XA|File:1|Channel:11|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:50|ID:CD/VOICE.XA[12]|Sectors:12783-54959|Type:XA|File:1|Channel:12|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:51|ID:CD/VOICE.XA[13]|Sectors:12784-55120|Type:XA|File:1|Channel:13|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:52|ID:CD/VOICE.XA[14]|Sectors:12785-55569|Type:XA|File:1|Channel:14|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:53|ID:CD/VOICE.XA[15]|Sectors:12786-55570|Type:XA|File:1|Channel:15|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:54|ID:CD/VOICE.XA[16]|Sectors:12787-55795|Type:XA|File:1|Channel:16|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:55|ID:CD/VOICE.XA[17]|Sectors:12788-55892|Type:XA|File:1|Channel:17|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:56|ID:CD/VOICE.XA[18]|Sectors:12789-55733|Type:XA|File:1|Channel:18|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:57|ID:CD/VOICE.XA[19]|Sectors:12790-54966|Type:XA|File:1|Channel:19|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:58|ID:CD/VOICE.XA[20]|Sectors:12791-55159|Type:XA|File:1|Channel:20|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:59|ID:CD/VOICE.XA[21]|Sectors:12792-54904|Type:XA|File:1|Channel:21|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:60|ID:CD/VOICE.XA[22]|Sectors:12793-55097|Type:XA|File:1|Channel:22|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:61|ID:CD/VOICE.XA[23]|Sectors:12794-55098|Type:XA|File:1|Channel:23|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:62|ID:CD/VOICE.XA[24]|Sectors:12795-55515|Type:XA|File:1|Channel:24|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:63|ID:CD/VOICE.XA[25]|Sectors:12796-55068|Type:XA|File:1|Channel:25|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:64|ID:CD/VOICE.XA[26]|Sectors:12797-55293|Type:XA|File:1|Channel:26|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:65|ID:CD/VOICE.XA[27]|Sectors:12798-55550|Type:XA|File:1|Channel:27|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:66|ID:CD/VOICE.XA[28]|Sectors:12799-54911|Type:XA|File:1|Channel:28|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:67|ID:CD/VOICE.XA[29]|Sectors:12800-55808|Type:XA|File:1|Channel:29|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:68|ID:CD/VOICE.XA[30]|Sectors:12801-55841|Type:XA|File:1|Channel:30|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:69|ID:CD/VOICE.XA[31]|Sectors:12802-55010|Type:XA|File:1|Channel:31|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:70|ID:CD/DEMO.XA|Sectors:57507-84514|Type:File|Size:55312384|Path:CD/DEMO.XA|Has mode 2 form 2:Yes|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:71|ID:CD/DEMO.XA[0]|Sectors:57507-80003|Type:XA|File:1|Channel:0|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:72|ID:CD/DEMO.XA[1]|Sectors:57508-80004|Type:XA|File:1|Channel:1|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:73|ID:CD/DEMO.XA[2]|Sectors:57509-80013|Type:XA|File:1|Channel:2|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:74|ID:CD/DEMO.XA[3]|Sectors:57510-75502|Type:XA|File:1|Channel:3|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:75|ID:CD/DEMO.XA[4]|Sectors:57511-84511|Type:XA|File:1|Channel:4|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:76|ID:CD/DEMO.XA[5]|Sectors:57512-80016|Type:XA|File:1|Channel:5|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:77|ID:CD/DEMO.XA[6]|Sectors:57513-75505|Type:XA|File:1|Channel:6|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:78|ID:CD/DEMO.XA[7]|Sectors:57514-75522|Type:XA|File:1|Channel:7|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:79|ID:CD/BGM.XA|Sectors:84515-152154|Type:File|Size:138526720|Path:CD/BGM.XA|Has mode 2 form 2:Yes|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:80|ID:CD/BGM.XA[0]|Sectors:84515-131651|Type:XA|File:1|Channel:0|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:81|ID:CD/BGM.XA[1]|Sectors:84516-131724|Type:XA|File:1|Channel:1|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:82|ID:CD/BGM.XA[2]|Sectors:84517-152149|Type:XA|File:1|Channel:2|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:83|ID:CD/BGM.XA[3]|Sectors:84518-142046|Type:XA|File:1|Channel:3|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:84|ID:CD/BGM.XA[4]|Sectors:84519-131879|Type:XA|File:1|Channel:4|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:85|ID:CD/BGM.XA[5]|Sectors:84520-137184|Type:XA|File:1|Channel:5|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:86|ID:CD/BGM.XA[6]|Sectors:84521-124881|Type:XA|File:1|Channel:6|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:87|ID:CD/BGM.XA[7]|Sectors:84522-95338|Type:XA|File:1|Channel:7|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:88|ID:SCUS_944.54|Sectors:152155-152236|Type:File|Size:167936|Path:SCUS_944.54|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:89|ID:SCUS_944.54[0]|Sectors:152187-152198|Type:Tim|Start Offset:860|Dimensions:256x176|Palettes:1|Bpp:4
+13:02 jpsxdec.indexing.DiscIndex INFO: #:90|ID:SYSTEM.CNF|Sectors:152237-152237|Type:File|Size:68|Path:SYSTEM.CNF|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:91|ID:MOVIE/OP.STR|Sectors:152238-162373|Type:File|Size:20758528|Path:MOVIE/OP.STR|Has mode 2 form 2:Yes|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:92|ID:MOVIE/OP.STR[0]|Sectors:152238-162367|Type:Video|Dimensions:320x240|Frame Count:2026|Sector Frames:152238-162363|Sectors/Frame:5/1|1st frame end sector:4|Disc Speed:2|Header Frames:1-2026
+13:02 jpsxdec.indexing.DiscIndex INFO: #:93|ID:MOVIE/OP.STR[0.0]|Sectors:152245-162373|Type:XA|File:1|Channel:1|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:94|ID:MOVIE/END.STR|Sectors:162374-174373|Type:File|Size:24576000|Path:MOVIE/END.STR|Has mode 2 form 2:Yes|Has CD audio:No
+13:02 jpsxdec.indexing.DiscIndex INFO: #:95|ID:MOVIE/END.STR[0]|Sectors:162374-174372|Type:Video|Dimensions:320x240|Frame Count:1200|Sector Frames:162374-174364|Sectors/Frame:10/1|1st frame end sector:9|Disc Speed:2|Header Frames:1-1200
+13:02 jpsxdec.indexing.DiscIndex INFO: #:96|ID:MOVIE/END.STR[0.0]|Sectors:162381-174373|Type:XA|File:1|Channel:1|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 jpsxdec.indexing.DiscIndex INFO: #:97|ID:ZZZ.DAT|Sectors:174674-186429|Type:File|Size:24076288|Path:ZZZ.DAT|Has mode 2 form 2:No|Has CD audio:No
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[0].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:38|ID:CD/VOICE.XA[0]|Sectors:12771-57475|Type:XA|File:1|Channel:0|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[0].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=11,273,516 bytes received=11,273,472
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[1].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:39|ID:CD/VOICE.XA[1]|Sectors:12772-55012|Type:XA|File:1|Channel:1|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[1].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,652,588 bytes received=10,652,544
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[2].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:40|ID:CD/VOICE.XA[2]|Sectors:12773-54949|Type:XA|File:1|Channel:2|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[2].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,636,460 bytes received=10,636,416
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[3].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:41|ID:CD/VOICE.XA[3]|Sectors:12774-55686|Type:XA|File:1|Channel:3|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[3].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,821,932 bytes received=10,821,888
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[4].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:42|ID:CD/VOICE.XA[4]|Sectors:12775-55431|Type:XA|File:1|Channel:4|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[4].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,757,420 bytes received=10,757,376
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[5].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:43|ID:CD/VOICE.XA[5]|Sectors:12776-55432|Type:XA|File:1|Channel:5|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[5].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,757,420 bytes received=10,757,376
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[6].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:44|ID:CD/VOICE.XA[6]|Sectors:12777-55401|Type:XA|File:1|Channel:6|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[6].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,749,356 bytes received=10,749,312
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[7].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:45|ID:CD/VOICE.XA[7]|Sectors:12778-55178|Type:XA|File:1|Channel:7|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[7].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,692,908 bytes received=10,692,864
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[8].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:46|ID:CD/VOICE.XA[8]|Sectors:12779-54987|Type:XA|File:1|Channel:8|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[8].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,644,524 bytes received=10,644,480
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[9].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:47|ID:CD/VOICE.XA[9]|Sectors:12780-55052|Type:XA|File:1|Channel:9|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[9].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,660,652 bytes received=10,660,608
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[10].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:48|ID:CD/VOICE.XA[10]|Sectors:12781-54925|Type:XA|File:1|Channel:10|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[10].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,628,396 bytes received=10,628,352
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[11].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:49|ID:CD/VOICE.XA[11]|Sectors:12782-55118|Type:XA|File:1|Channel:11|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[11].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,676,780 bytes received=10,676,736
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[12].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:50|ID:CD/VOICE.XA[12]|Sectors:12783-54959|Type:XA|File:1|Channel:12|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[12].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,636,460 bytes received=10,636,416
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[13].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:51|ID:CD/VOICE.XA[13]|Sectors:12784-55120|Type:XA|File:1|Channel:13|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[13].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,676,780 bytes received=10,676,736
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[14].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:52|ID:CD/VOICE.XA[14]|Sectors:12785-55569|Type:XA|File:1|Channel:14|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[14].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,789,676 bytes received=10,789,632
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[15].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:53|ID:CD/VOICE.XA[15]|Sectors:12786-55570|Type:XA|File:1|Channel:15|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[15].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,789,676 bytes received=10,789,632
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[16].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:54|ID:CD/VOICE.XA[16]|Sectors:12787-55795|Type:XA|File:1|Channel:16|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[16].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,846,124 bytes received=10,846,080
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[17].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:55|ID:CD/VOICE.XA[17]|Sectors:12788-55892|Type:XA|File:1|Channel:17|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[17].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,870,316 bytes received=10,870,272
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[18].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:56|ID:CD/VOICE.XA[18]|Sectors:12789-55733|Type:XA|File:1|Channel:18|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[18].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,829,996 bytes received=10,829,952
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[19].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:57|ID:CD/VOICE.XA[19]|Sectors:12790-54966|Type:XA|File:1|Channel:19|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[19].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,636,460 bytes received=10,636,416
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[20].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:58|ID:CD/VOICE.XA[20]|Sectors:12791-55159|Type:XA|File:1|Channel:20|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[20].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,684,844 bytes received=10,684,800
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[21].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:59|ID:CD/VOICE.XA[21]|Sectors:12792-54904|Type:XA|File:1|Channel:21|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[21].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,620,332 bytes received=10,620,288
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[22].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:60|ID:CD/VOICE.XA[22]|Sectors:12793-55097|Type:XA|File:1|Channel:22|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[22].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,668,716 bytes received=10,668,672
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[23].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:61|ID:CD/VOICE.XA[23]|Sectors:12794-55098|Type:XA|File:1|Channel:23|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[23].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,668,716 bytes received=10,668,672
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[24].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:62|ID:CD/VOICE.XA[24]|Sectors:12795-55515|Type:XA|File:1|Channel:24|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[24].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,773,548 bytes received=10,773,504
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[25].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:63|ID:CD/VOICE.XA[25]|Sectors:12796-55068|Type:XA|File:1|Channel:25|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[25].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,660,652 bytes received=10,660,608
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[26].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:64|ID:CD/VOICE.XA[26]|Sectors:12797-55293|Type:XA|File:1|Channel:26|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[26].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,717,100 bytes received=10,717,056
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[27].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:65|ID:CD/VOICE.XA[27]|Sectors:12798-55550|Type:XA|File:1|Channel:27|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[27].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,781,612 bytes received=10,781,568
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[28].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:66|ID:CD/VOICE.XA[28]|Sectors:12799-54911|Type:XA|File:1|Channel:28|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[28].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,620,332 bytes received=10,620,288
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[29].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:67|ID:CD/VOICE.XA[29]|Sectors:12800-55808|Type:XA|File:1|Channel:29|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[29].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,846,124 bytes received=10,846,080
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[30].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:68|ID:CD/VOICE.XA[30]|Sectors:12801-55841|Type:XA|File:1|Channel:30|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[30].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,854,188 bytes received=10,854,144
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/VOICE.XA[31].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:69|ID:CD/VOICE.XA[31]|Sectors:12802-55010|Type:XA|File:1|Channel:31|Stereo?:No|Samples/Sec:18900|Bits/Sample:4|Sector stride:32|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/VOICE.XA[31].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=10,644,524 bytes received=10,644,480
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/DEMO.XA[0].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:71|ID:CD/DEMO.XA[0]|Sectors:57507-80003|Type:XA|File:1|Channel:0|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/DEMO.XA[0].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=22,684,076 bytes received=22,684,032
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/DEMO.XA[1].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:72|ID:CD/DEMO.XA[1]|Sectors:57508-80004|Type:XA|File:1|Channel:1|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/DEMO.XA[1].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=22,684,076 bytes received=22,684,032
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/DEMO.XA[2].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:73|ID:CD/DEMO.XA[2]|Sectors:57509-80013|Type:XA|File:1|Channel:2|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/DEMO.XA[2].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=22,692,140 bytes received=22,692,096
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/DEMO.XA[3].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:74|ID:CD/DEMO.XA[3]|Sectors:57510-75502|Type:XA|File:1|Channel:3|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/DEMO.XA[3].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=18,144,044 bytes received=18,144,000
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/DEMO.XA[4].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:75|ID:CD/DEMO.XA[4]|Sectors:57511-84511|Type:XA|File:1|Channel:4|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/DEMO.XA[4].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=27,224,108 bytes received=27,224,064
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/DEMO.XA[5].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:76|ID:CD/DEMO.XA[5]|Sectors:57512-80016|Type:XA|File:1|Channel:5|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/DEMO.XA[5].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=22,692,140 bytes received=22,692,096
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/DEMO.XA[6].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:77|ID:CD/DEMO.XA[6]|Sectors:57513-75505|Type:XA|File:1|Channel:6|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/DEMO.XA[6].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=18,144,044 bytes received=18,144,000
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/DEMO.XA[7].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:78|ID:CD/DEMO.XA[7]|Sectors:57514-75522|Type:XA|File:1|Channel:7|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/DEMO.XA[7].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=18,160,172 bytes received=18,160,128
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/BGM.XA[0].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:80|ID:CD/BGM.XA[0]|Sectors:84515-131651|Type:XA|File:1|Channel:0|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/BGM.XA[0].wav
+13:02 jpsxdec.util.AudioOutputFileWriter INFO: Bytes written=47,521,196 bytes received=47,521,152
+13:02 jpsxdec.i18n.FeedbackStream INFO: Format: wav
+13:02 jpsxdec.i18n.FeedbackStream INFO: Volume: 100%
+13:02 jpsxdec.i18n.FeedbackStream INFO: Filename: CD/BGM.XA[1].wav
+13:02 save INFO: Filename:rom/Tomba! 2 - The Evil Swine Return (USA) (Track 1).bin|Sector size:2352|Sector count:174524|First sector offset:0
+13:02 save INFO: #:81|ID:CD/BGM.XA[1]|Sectors:84516-131724|Type:XA|File:1|Channel:1|Stereo?:Yes|Samples/Sec:37800|Bits/Sample:4|Sector stride:8|Disc speed:2x
+13:02 save INFO: Format: wav
+13:02 save INFO: Volume: 100%
+13:02 save INFO: Filename: CD/BGM.XA[1].wav

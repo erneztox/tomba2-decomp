@@ -1,9 +1,11 @@
-# ROMs and ISOs
+# ROMs and assets
 rom/
-!rom/.keep
+iso/
+extracted_music/
+*.iso
 *.bin
 *.cue
-*.iso
+*.7z
 *.img
 
 # Extracted executables and original binaries

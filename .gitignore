@@ -1,0 +1,33 @@
+# ROMs and ISOs
+rom/
+!rom/.keep
+*.bin
+*.cue
+*.iso
+*.img
+
+# Extracted executables and original binaries
+*.exe
+SLUS_*
+SCES_*
+SLPS_*
+
+# Extracted Assets
+assets/
+!assets/.keep
+
+# Build artifacts
+build/
+*.o
+*.elf
+*.map
+
+# Python virtual environment and cache
+venv/
+__pycache__/
+*.pyc
+
+# Ghidra Project files
+ghidra/
+*.gpr
+*.rep/

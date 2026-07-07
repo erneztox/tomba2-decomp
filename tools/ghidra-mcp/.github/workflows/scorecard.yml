@@ -1,0 +1,71 @@
+# OpenSSF Scorecard runs ~18 automated security checks against the
+# repository (signed releases, dependency pinning, branch protection,
+# CI hardening, etc.) and publishes the results to both the Security
+# tab (via SARIF upload) and the public scorecards.dev database that
+# backs the README badge.
+#
+# Workflow template source:
+#   https://github.com/ossf/scorecard-action
+#
+# Why the schedule: scorecards.dev rate-limits per repo; weekly is the
+# recommended cadence. Push triggers run too so a security-relevant
+# config change (CODEOWNERS, branch protection, workflow hardening)
+# reflects in the badge within minutes instead of waiting a week.
+name: Scorecard supply-chain security
+
+on:
+  branch_protection_rule:
+  schedule:
+    - cron: '17 8 * * 1'   # Mondays 08:17 UTC
+  push:
+    branches: [main]
+  # Manual trigger so the score can be refreshed without forcing a
+  # dummy commit (useful after enabling repo Settings toggles like
+  # Dependabot security alerts or branch protection rulesets, which
+  # don't themselves push anything).
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+  analysis:
+    name: Scorecard analysis
+    runs-on: ubuntu-latest
+    permissions:
+      # Required to upload SARIF results to the Security tab.
+      security-events: write
+      # Required for publishing to scorecards.dev (the public dataset
+      # the README badge reads from).
+      id-token: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5  # v4
+        with:
+          persist-credentials: false
+
+      - name: Run analysis
+        uses: ossf/scorecard-action@4eaacf0543bb3f2c246792bd56e8cdeffafb205a  # v2.4.3
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          # publish_results=true is what feeds scorecards.dev so the
+          # README badge has data to read. Without this the badge
+          # will keep returning 404 even after the workflow runs.
+          publish_results: true
+
+      # Upload the artifact so we can inspect raw findings from the
+      # Actions run page (the SARIF upload to the Security tab below
+      # doesn't preserve the full payload).
+      - name: Upload artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+        with:
+          name: SARIF file
+          path: results.sarif
+          retention-days: 5
+
+      # Upload to GitHub's code-scanning so findings show up in the
+      # repository's Security tab alongside Dependabot / CodeQL.
+      - name: Upload to code-scanning
+        uses: github/codeql-action/upload-sarif@54f647b7e1bb85c95cddabcd46b0c578ec92bc1a  # v3
+        with:
+          sarif_file: results.sarif

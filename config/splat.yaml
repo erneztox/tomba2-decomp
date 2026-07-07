@@ -1,0 +1,26 @@
+name: Tomba 2 (SCES/SLUS)
+sha1: "9f68ffd6e4dfa9f9ff6ba6818760ee4c625be421"
+options:
+  platform: psx
+  basename: tomba2
+  target_path: rom/extracted/SCUS_944.54
+  base_path: ..
+  compiler: PsyQ
+  find_file_boundaries: yes
+  header_encoding: ascii
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+segments:
+  - name: header
+    type: header
+    start: 0x0
+
+  - name: main
+    type: code
+    start: 0x800 # Usually 0x800 for PSX executables
+    vram: 0x80010000 # Example VRAM start
+    subsegments:
+      - [0x800, asm]
+
+  - [0x29000]

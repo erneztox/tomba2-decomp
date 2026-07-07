@@ -1,5 +1,6 @@
 .include "macro.inc"
 glabel func_8001DD04
+    .set noreorder
     /* E504 8001DD04 F8FFBD27 */  addiu      $sp, $sp, -0x8
     /* E508 8001DD08 0D000224 */  addiu      $v0, $zero, 0xD
     /* E50C 8001DD0C 0400A2AF */  sw         $v0, 0x4($sp)

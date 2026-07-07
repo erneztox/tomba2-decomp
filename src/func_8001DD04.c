@@ -14,9 +14,10 @@ extern char s_LoadImage_80010a70[];
 extern void FUN_8001e5ec(char*, char*);
 
 void func_8001DD04(void) {
-    volatile int val = 0xD;
-    volatile int i = 0;
-    for (; i < 0x3C; i++) {
+    volatile int i;
+    volatile int val;
+    val = 0xD;
+    for (i = 0; i < 0x3C; i++) {
         val = val * 13;
     }
 }

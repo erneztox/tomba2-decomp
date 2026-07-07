@@ -15,18 +15,18 @@ build/src/%.s: src/%.c
 	$(CC1) $(CFLAGS) $< -o $@
 
 build/src/%.o: build/src/%.s
-	$(MASPSX) $(ASPSX_FLAGS) -o $@ $<
+	$(MASPSX) $(ASPSX_FLAGS) -O2 -o $@ $<
 
 expected/build/src/%.o: asm/%.s
 	@mkdir -p $(dir $@)
-	sed '1i .include "macro.inc"' $< > expected/build/src/temp_$<.s
-	$(AS) -EL -I include/ expected/build/src/temp_$<.s -o $@
-	rm expected/build/src/temp_$<.s
+	sed '1i .include "macro.inc"' $< > expected/build/src/temp_$(notdir $<)
+	$(AS) -EL -I include/ expected/build/src/temp_$(notdir $<) -o $@
+	rm expected/build/src/temp_$(notdir $<)
 
 clean:
 	rm -rf build/ expected/
 
 diff: expected/build/src/$(FUNC).o build/src/$(FUNC).o
-	python3 tools/asm-differ/diff.py -mwo -f build/src/$(FUNC).o $(FUNC)
+	python3 tools/asm-differ/diff.py --no-pager -mo -f build/src/$(FUNC).o $(FUNC)
 
 .PHONY: all clean diff

@@ -48,6 +48,39 @@ To start analyzing and extracting C code, we use Ghidra with a custom MCP bridge
 3. **Auto Analyze**: Let Ghidra perform its default analysis.
 4. **Start MCP Server**: If you installed the Ghidra-MCP bridge, start it via `Tools > GhidraMCP > Start MCP Server`. This allows external scripts to fetch decompiled code directly from your Ghidra instance.
 
+## Engine Architecture & CD Structure
+
+Tomba! 2 uses a custom file loading and indexing system, completely bypassing standard ISO9660 `CdSearchFile` lookups for its main assets.
+
+### Executables
+- **`SCUS_944.54`**: A lightweight bootloader/anti-piracy stub. It initializes the console and hands execution over to `MAIN.EXE`.
+- **`MAIN.EXE`**: The true game engine (~716 KB). Contains the physics, GTE graphics logic, file parsing, and the LZSS decompression routines.
+
+### Master Index & Assets
+- **`START.BIN`**: The master manifest. A small plaintext list linking CD file paths (e.g., `\CD\SWDATA.BIN;1`) to internal numeric IDs.
+- **`TOMBA2.IDX`**: The master pointer database. Sector 0 indexes 3D models/animations in `TOMBA2.DAT`. Sector 1 indexes raw VRAM texture uploads in `TOMBA2.IMG`.
+- **Custom Formats & Compression**: Tomba! 2 strips standard PlayStation headers (`.TMD`, `.TIM`) to save RAM. Both `TOMBA2.DAT` and `TOMBA2.IMG` contain highly compressed chunks (LZSS). We use `tools/extractor/extractor.py` to natively parse `.IDX`, decompress the VRAM images, and extract the 3D meshes to the `assets/` directory.
+
+### Level Overlays (.BIN files)
+Files like `A00.BIN` are **compiled executable overlays**, not just asset archives. They are loaded at a fixed RAM address (usually `0x80100000`) and contain a massive virtual table of absolute memory pointers at their header, allowing `MAIN.EXE` to execute level-specific logic and fetch localized models instantly.
+
+## Asset Extraction & VRAM Conversion
+
+To natively extract the LZSS compressed 3D models (`.sdat`) and raw texture dumps (`.vram`) from the game without using an emulator, run the included extractor script:
+
+```bash
+python3 tools/extractor/extractor.py
+```
+
+This will populate the `assets/` folder with multiple `chunk_XX` directories containing the raw game data.
+
+Because the extracted `.vram` files are raw 1MB memory dumps (1024x512 pixels at 16-bit color) containing CLUT-indexed textures, we have included a script to mass-convert them into standard `.png` images for easy viewing:
+
+```bash
+python3 vram2png.py
+```
+This will process all `.vram` chunks and output perfectly sized 16-bit PNG textures into the `assets/vram_pngs/` folder.
+
 ## Compilation Pipeline
 
 We have established a fully automated build pipeline that mirrors the original 1999 environment:

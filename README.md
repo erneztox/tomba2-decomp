@@ -99,7 +99,9 @@ This command will:
 ## Contributing
 
 We use local matching and [decomp.me](https://decomp.me/) to crowdsource functions.
+
 1. Pick an assembly function from `asm/`.
 2. Rewrite the MIPS assembly into C code inside `src/`.
-3. Use `asm-differ` to compare your `build/src/function.o` against the original extracted assembly.
-4. Once it's a 100% byte-perfect match, open a Pull Request!
+3. To collaborate online, create a Scratch using our official **decomp.me Preset**: [https://decomp.me/preset/244](https://decomp.me/preset/244) (This sets up the PS1 platform, PsyQ 4.0 compiler, and `-O2 -G0` flags automatically).
+4. Use `asm-differ` locally to compare your `build/src/function.o` against the original extracted assembly.
+5. Once it's a 100% byte-perfect match, open a Pull Request!

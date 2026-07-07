@@ -26,13 +26,14 @@ def main():
     # decomp.me does not have our local macro.inc, so we must remove it from the uploaded asm
     target_asm = target_asm.replace('.include "macro.inc"', '')
 
+    func_name = os.path.basename(asm_file).split('.')[0]
+    
     source_code = ""
     if c_file and os.path.exists(c_file):
         with open(c_file, "r") as f:
             source_code = f.read()
     else:
         # Default starting template
-        func_name = os.path.basename(asm_file).split('.')[0]
         source_code = f"void {func_name}(void) {{\n    // TODO: implement\n}}\n"
 
     # Minimal context, usually you'd include common headers here
@@ -43,6 +44,7 @@ def main():
             context = f.read()
 
     payload = {
+        "diff_label": func_name,
         "preset": PRESET_ID,
         "target_asm": target_asm,
         "source_code": source_code,

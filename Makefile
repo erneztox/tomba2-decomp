@@ -17,7 +17,16 @@ build/src/%.s: src/%.c
 build/src/%.o: build/src/%.s
 	$(MASPSX) $(ASPSX_FLAGS) -o $@ $<
 
-clean:
-	rm -rf build/
+expected/build/src/%.o: asm/%.s
+	@mkdir -p $(dir $@)
+	sed '1i .include "macro.inc"' $< > expected/build/src/temp_$<.s
+	$(AS) -EL -I include/ expected/build/src/temp_$<.s -o $@
+	rm expected/build/src/temp_$<.s
 
-.PHONY: all clean
+clean:
+	rm -rf build/ expected/
+
+diff: expected/build/src/$(FUNC).o build/src/$(FUNC).o
+	python3 tools/asm-differ/diff.py -mwo -f build/src/$(FUNC).o $(FUNC)
+
+.PHONY: all clean diff

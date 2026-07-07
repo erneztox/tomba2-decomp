@@ -64,11 +64,32 @@ What `make` does under the hood:
 
 The resulting object files will reside in `build/src/` as `elf32-tradlittlemips` binaries.
 
+## Local Matching with asm-differ
+
+To verify that your C code produces the exact same assembly as the original game, we use `asm-differ`.
+
+### 1. Install Dependencies
+If you are on Arch Linux, install the required python packages:
+```bash
+yay -S python-colorama python-watchdog python-levenshtein
+```
+
+### 2. Run the Diff
+We have automated the assembly and diffing process in the `Makefile`. To continuously monitor and diff a function (e.g. `func_8001DD04`):
+
+```bash
+make diff FUNC=func_8001DD04
+```
+
+This command will:
+1. Automatically read `asm/func_8001DD04.s`, inject the required `macro.inc`, and assemble it into the "expected" base object.
+2. Compile your `src/func_8001DD04.c` into the "build" object.
+3. Launch `asm-differ` in watch mode (`-w`), which will instantly recompilar and update the visual diff every time you save your C file.
+
 ## Contributing
 
-We use [decomp.me](https://decomp.me/) and local matching to crowdsource functions.
+We use local matching and [decomp.me](https://decomp.me/) to crowdsource functions.
 1. Pick an assembly function from `asm/`.
 2. Rewrite the MIPS assembly into C code inside `src/`.
-3. Run `make` to compile your C code.
-4. Use `asm-differ` (or similar object diff tools) to compare your `build/src/function.o` against the original extracted assembly.
-5. Once it's a 100% byte-perfect match, open a Pull Request!
+3. Use `asm-differ` to compare your `build/src/function.o` against the original extracted assembly.
+4. Once it's a 100% byte-perfect match, open a Pull Request!

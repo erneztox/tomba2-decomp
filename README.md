@@ -81,6 +81,18 @@ python3 vram2png.py
 ```
 This will process all `.vram` chunks and output perfectly sized 16-bit PNG textures into the `assets/vram_pngs/` folder.
 
+### 3D Models and Sprite Sheets (.SDAT to PNG)
+
+Because Tomba! 2 uses 2D sprites running in a 3D environment, the `.sdat` files contain complex structures grouping bounding boxes, UVs, and CLUTs (Color Lookup Tables) for each character animation frame.
+
+To mass-extract every single perfectly-colored spritesheet and texture page from the `.sdat` geometry files, run:
+
+```bash
+python3 sdat2img.py
+```
+
+This powerful script acts as a reverse-engineered VRAM compositor. It scans all `.sdat` models, extracts their exact `tpage` (Texture Page) and `clut` variables, reads the global game palette (`01.vram`), and dumps hundreds of perfectly clean 256x256 `.png` spritesheets into the `assets/imagenes/` directory.
+
 ## Compilation Pipeline
 
 We have established a fully automated build pipeline that mirrors the original 1999 environment:

@@ -40,7 +40,7 @@ segments:
       - [0x2C848, c, main/EntityLoop_Active]
       - [0x2CAD4, c, main/Entity_Actions]
       - [0x2D8BC, c, main/Engine_DispatchStateUpdate]
-      - [0x2DA3C, asm, main/func_8003D23C_asm]
+      - [0x2DA3C, c, main/func_8003D23C_asm]
       - [0x2E704, c, main/Engine_HandleState]
       - [0x2E830, asm, main/FUN_8003E030]
       - [0x2F6C0, c, main/EntityLoop_Background]

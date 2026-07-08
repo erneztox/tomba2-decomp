@@ -12,7 +12,9 @@ typedef struct Vector3 {
 
 // Define a generic Entity struct based on observed offsets
 typedef struct Entity {
-    u8 pad00[0x2C]; // Padding up to 0x2C
+    u8 pad00[0x28]; // Padding up to 0x28
+    u8 flags;       // 0x28
+    u8 pad29[3];    // Padding to 0x2c
     Vector3 pos;    // Position starts at 0x2C (0x2C, 0x2E, 0x30)
     s16 unknown_32; // Value at 0x32
 } Entity;

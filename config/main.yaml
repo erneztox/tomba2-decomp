@@ -22,7 +22,11 @@ segments:
     vram: 0x80010000
     subsegments:
       - [0x800, asm, asm_start]
+      - [0x218F4, asm, main/FUN_800310f4]
       - [0x2196C, asm, main/FUN_8003116c]
-      - [0x21AD4, asm, asm_end]
+      - [0x21AD4, asm, main/FUN_800312d4]
+      - [0x21BA0, asm, main/FUN_800313a0]
+      - [0x21C70, asm, main/FUN_80031470]
+      - [0x21D58, asm, asm_end]
       
   - [0xAF000]

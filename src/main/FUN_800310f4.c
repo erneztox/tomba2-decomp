@@ -1,16 +1,20 @@
+#include "tomba.h"
 
-int FUN_800310f4(undefined4 param_1,undefined2 param_2)
+extern u8 D_800E7E7C;
 
+/**
+ * @brief Spawns an entity without setting its position.
+ */
+Entity* func_800310F4(int param_1, s16 param_2)
 {
-  int iVar1;
-  
-  if ((DAT_800e7e7c < 7) || (iVar1 = FUN_8007a980(0,6,1), iVar1 == 0)) {
-    iVar1 = 0;
-  }
-  else {
-    *(undefined2 *)(iVar1 + 0x32) = param_2;
-    FUN_80028e10(iVar1,param_1);
-  }
-  return iVar1;
+    Entity* entity;
+
+    if ((D_800E7E7C < 7) || (entity = func_8007A980(0, 6, 1), entity == 0)) {
+        return 0;
+    }
+    
+    entity->unknown_32 = param_2;
+    func_80028E10(entity, param_1);
+    return entity;
 }
 

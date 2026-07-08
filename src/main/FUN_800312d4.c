@@ -1,28 +1,26 @@
+#include "tomba.h"
 
-int FUN_800312d4(undefined4 param_1,int param_2,undefined2 param_3)
+extern u8 D_800E7E7C;
 
+/**
+ * @brief Spawns an entity and sets flag 0x80 on offset 0x28.
+ */
+Entity* func_800312D4(int param_1, Spawner* spawner, s16 param_3)
 {
-  int iVar1;
-  int iVar2;
-  
-  iVar2 = 0;
-  if (6 < DAT_800e7e7c) {
-    iVar1 = FUN_8007a980(0,6,1);
-    iVar2 = 0;
-    if (iVar1 != 0) {
-      if (param_2 != 0) {
-        *(undefined2 *)(iVar1 + 0x2c) = *(undefined2 *)(param_2 + 2);
-        *(undefined2 *)(iVar1 + 0x2e) = *(undefined2 *)(param_2 + 6);
-        *(undefined2 *)(iVar1 + 0x30) = *(undefined2 *)(param_2 + 10);
-      }
-      *(undefined2 *)(iVar1 + 0x32) = param_3;
-      FUN_80028e10(iVar1,param_1);
-      iVar2 = iVar1;
+    Entity* entity;
+
+    if ((D_800E7E7C < 7) || (entity = func_8007A980(0, 6, 1), entity == 0)) {
+        return 0;
     }
-  }
-  if (iVar2 != 0) {
-    *(byte *)(iVar2 + 0x28) = *(byte *)(iVar2 + 0x28) | 0x80;
-  }
-  return iVar2;
+    
+    if (spawner != 0) {
+        entity->pos.x = spawner->x >> 16;
+        entity->pos.y = spawner->y >> 16;
+        entity->pos.z = spawner->z >> 16;
+    }
+    entity->unknown_32 = param_3;
+    func_80028E10(entity, param_1);
+    entity->flags |= 0x80;
+    return entity;
 }
 

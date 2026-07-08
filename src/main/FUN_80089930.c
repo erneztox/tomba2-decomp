@@ -1,0 +1,18 @@
+
+bool FUN_80089930(void)
+
+{
+  bool bVar1;
+  int iVar2;
+  
+  iVar2 = FUN_8008b2d8();
+  if (iVar2 == 0) {
+    iVar2 = FUN_8008b19c();
+    bVar1 = iVar2 == 0;
+  }
+  else {
+    bVar1 = false;
+  }
+  return bVar1;
+}
+

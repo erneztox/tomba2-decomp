@@ -1,0 +1,2337 @@
+d(((d
+This file is broken
+Quit
+Checking Tomba save data
+Continue?
+Tomba MEMORY CARD
+now loading!
+Clear/Generating 000/000
+Push 
+Check completed
+Error check
+Checking data
+OK to check max data?
+No saved data
+Quit Kujara
+Error
+MEMORY CARD
+format failed
+Formatting
+MEMORY CARD
+Load Completed
+Load Error!
+Loading game...
+Quit trolley
+Restart
+Try again?
+OK to load this file?
+Select file to be loaded
+No data for Tomba!2
+Save OK
+Save Error!
+Saving game...
+Overwrite file?
+OK to save?
+Select file to save
+Not enough space
+Select slot
+File Corrupted!
+Use another MEMORY CARD!
+Format completed
+OK to format?
+MEMORY CARD
+not formatted
+MEMORY CARD
+not found
+Checking MEMORY CARD...
+MEMORY CARD slot 2
+MEMORY CARD slot 1
+:Exit
+:Return
+:Select
+Special
+Jump
+Attack
+Menu
+Configuration
+Vibration
+Horizontal
+Vertical
+S.E.
+Monaural
+Stereo
+Speakers
+Voices
+Fast
+Slow
+Speed
+Controls
+Screen adjust
+Sound
+Messages
+Select Options
+OK to quit game?
+Continue
+Save?
+Quit game
+Load data
+Options
+The Mouse
+Village
+Evil Pig
+Battle
+Water Temple
+Circus
+Village
+Donglin
+Forest
+Kujara Ranch
+Large Mine
+Underground
+The Starting
+Beach
+Golden
+Tower Inside
+Tower of
+Wisdom Inside
+Tower of
+Strength Inside
+Tower of
+Courage Inside
+Last Evil Pig
+Evil Water Pig
+Evil Earth Pig
+Evil Ghost Pig
+Evil Ice Pig
+Evil Flame Pig
+The Deep
+Forest
+Laughing
+Crying Forest
+The Forest
+Entrance
+Kujara Shed
+Ranch Summit
+Ranch Area
+Coal-Mining
+Town
+...???
+Trolley
+Entrance
+Pipe Area
+Waterfall
+of the Heavens
+Town of the
+Fishermen
+Can fly straight to Donglin
+Forest any number of times.
+Donglin
+Bell
+Can fly straight to Coal Mining
+Town any number of times.
+Coal Mine
+Bell
+Mysterious amulet found
+in the Water Temple.
+100-Year
+Amulet
+Repaired harp
+made from four pieces.
+Mermaid's
+Harp
+Part of a broken harp,
+the part making the low sounds.
+Low-Pitch
+Pearl
+Part of a broken harp,
+the part making the high sounds.
+High-Pitch
+Pearl
+Part of a broken harp,
+the left side.
+Harp's
+Left Side
+Part of a broken harp,
+the right side.
+Harp's
+Right Side
+Translucent panel made
+from parts of an enemy.
+Crystal
+Panel
+A part of the
+Large-Pincered Long-Legged Turtle.
+Crystal
+A translucent clump
+found inside a Kokka egg.
+Mystery
+Reflector
+A golden ornament
+patterned after the stars.
+Golden
+Star
+A golden ornament
+patterned after the moon.
+Golden
+Moon
+Proof of friendship
+from 100-Year-Old Man.
+Old Man's
+Proof
+Proof of friendship
+from Yan.
+Yan's
+Proof
+Can fly through the Minitta
+Tunnel any number of times.
+Minitta
+Bell
+Proof of friendship
+from Mizuno.
+Mizuno's
+Proof
+Proof of friendship
+from the Dwarf.
+Dwarf's
+Proof
+A small flower with face
+grown from a large seed.
+Petit-Face
+Flower
+A large flower seed
+found at the ranch.
+Large Flower
+Seed
+A precious ring
+lost by a miner.
+Miner's
+Ring
+A small clump of mud.
+Small Mud
+Clump
+Vitality
+Fruit
+Magic
+Pot of
+Life 1/2
+Pot of
+Life
+Antidote
+Fruits
+Crying
+Fruit
+Laughing
+Fruit
+Potato X3
+Used to fly whereever
+you want to go.
+Magic
+Wings X2
+The sculptor's
+ultimate work of art.
+Ice Statue
+A badge that induces lying.
+Badge of
+Liars
+Cures itching.
+Itching
+Salve
+Fruit for a monkey.
+Banana
+Nearly pure
+hardonium.
+Hi-Purity
+Hardonium
+Nearly pure
+lightomite.
+Hi-Purity
+Lightomite
+Hardonium
+mixed with impurities.
+Low-Purity
+Hardonium
+Lightomite
+mixed with impurities.
+Low-Purity
+Lightomite
+Clump of mud
+with something inside.
+Mudball
+Surprise
+A large mound of solid mud.
+Mudball
+A boiled potato.
+Boiled
+Potato
+Potato boiled
+only half-way.
+1/2-Boiled
+Potato
+A raw potato.
+Potato
+A well-done steak.
+Big Steak
+Steak which is
+only cooked halfway.
+Underdone
+Meat
+Makes a good Steak Sandwich.
+Big Piece
+of Meat
+A yummy, dried fish.
+Dried Fish
+A fresh fish.
+Small Fish
+A carnival favorite.
+Ice Candy
+A mysterious,
+shining white firefly.
+Snow
+Firefly
+Half of the Spell of Wisdom.
+1/2-Spell
+of Wisdom
+The spell that opens the door to
+the Tower of Wisdom.
+Spell
+of Wisdom
+Half of the Spell of Strength.
+1/2-Spell
+of Strength
+The spell that opens the door to
+the Tower of Strength.
+Spell
+of Strength
+Half of the Spell of Courage.
+1/2-Spell
+of Courage
+The spell that opens the door to
+the Tower of Courage.
+Spell
+of Courage
+Releases or restores Taboo.
+Taboo
+Fruit
+Releases or restores Mini-sizing.
+Minitta
+Mushroom
+Use to become
+visible.
+Clear
+Fruit
+Helps Tomba avoid being
+over-emotional.
+Normal Fruit
+Controls Tomba's emotions.
+Mystery
+Mushroom
+Cures oily smear
+and never runs out.
+Toradako
+Oil Remover
+Cures laughing and crying.
+Hash Potato
+Sandwich
+Cures invisibility.
+Dried Fish
+Sandwich
+Cures oily smear.
+Steak
+Sandwich
+Used to carry
+holy water.
+Holy Water
+Bucket
+Used for hot water.
+Hot Water
+Bucket
+You can use the water in the
+bucket.
+Water
+Bucket
+Can be used for either
+hot or cold water.
+Mermaid
+Bucket
+Magic
+Wings
+Used to fly wherever
+Tomba has been before.
+Baron
+Restores half of Tomba's
+Magic power.
+Magic
+Water
+Restores all Magic power.
+Magic
+Juice
+Restores 4 Vitality points.
+Lunch Box
+Restores 8 Vitality points.
+Large
+Lunch Box
+Restores 15 Vitality points.
+Special
+Lunch
+Restores all Vitality and Magic.
+Healthy
+Lunch
+Protects Tomba
+from all damage.
+Golden
+Powder
+Chick Food X2
+A magic mirror that
+leaves no reflection.
+Invisible
+Mirror
+(not use)
+(not use1)
+Wings of a Nishiki Bird.
+Nishiki's
+Wings
+A metallic spoon.
+Spoon
+Rucksack carried
+by travelers.
+Rucksack
+A plant which can
+cure everything.
+Getwell
+Plant
+A box that can hold up
+to 20 Snow Fireflies.
+Snow
+Firefly Box
+A box used to cover up
+bright things.
+Light
+Cutting Box
+A fuse used at
+Kujara Ranch.
+Large Fuse
+Food that makes chicks
+grow large.
+Chick Food
+made by master potter.
+Master's
+A tool for making
+pots from clay.
+Clay
+Spatula
+Used to make fine pottery.
+Clay
+A banana which has been baked.
+Baked
+Banana
+A light alloy
+made from compounds.
+Light
+Alloy
+Coal that burns
+particularly well.
+Power Coal
+Used to ride the trolley.
+Trolley
+Ticket
+A Fishhook found
+when the water was drained.
+Gold
+Fishhook
+A tiny water pig that appears
+after bumping into a Pig ball.
+Tiny
+Water Pig
+A tiny ghost pig that appears
+after bumping into a Pig ball.
+Tiny
+Ghost Pig
+A tiny ice pig that appears
+after bumping into a Pig ball.
+Tiny
+Ice Pig
+A tiny flame pig that appears
+after bumping into a Pig ball.
+Tiny
+Flame Pig
+A tiny flying pig that appears
+after bumping into a Pig ball.
+Tiny
+Flying Pig
+What's left over after
+a sea anemone freezes.
+Anemone's
+Icy Dregs
+What's left over after
+a sea anemone burns.
+Anemone's
+Hot Dregs
+A shrimp that's hard to find.
+Rare
+Shrimp
+A crab that's hard to find.
+Rare
+Crab
+A squid that's hard to find.
+Rare Squid
+A fish that's hard to find.
+Rare Fish
+Blue chick hatched
+from an egg.
+Blue Chick
+Red chick hatched
+from an egg.
+Red Chick
+A statue made of gold, shaped like
+the sun.
+Golden
+Strange objects found
+while riding the trolley.
+Seeds of
+Strength
+A mysterious panel
+with images of pig noses.
+Pig Nose
+Panel
+Book with detailed descriptions
+of the Pig Tribe's secret arts.
+Carpenter
+Book
+Key to the Club Closet
+containing precious clothes.
+Closet
+The Flying Paon's favorite thing
+Can be carried on your back.
+Paon Grass
+A crab that looks like a rock.
+Rock Crab
+Deep blue fruit.
+Blue Fruit
+A green-colored
+traveler's diary.
+Traveler's
+Diary
+Delicious peach from Kujara.
+Mountain
+Peach
+A big bag filled with toys.
+Big Sack
+Needed to repair the town's
+trolley.
+Trolley
+Rail
+Used to blow things up.
+Bombs
+A crab belonging to Win.
+Golden
+Crab
+Used to catch crabs.
+Crab
+Basket
+Used to carry water.
+Bucket
+A rounded gear wheel.
+Round
+A gear wheel with three teeth.
+Triangle
+Gear
+A gear wheel with six teeth.
+Hexagon
+Gear
+A cog shaped like a star.
+Star-shaped
+Protects Tomba from
+drowning in water.
+Mermaid
+Scale
+Protects against
+flame damage.
+Powder
+Protects against
+ice damage.
+Cold
+Powder
+Used to unlock
+White Treasure Chests.
+White Key
+Used to unlock
+Blue Treasure Chests.
+Blue Key
+Used to unlock
+Green Treasure Chests.
+Green Key
+Used to unlock
+Red Treasure Chests.
+Red Key
+For capturing the Last Evil Pig.
+Last
+Pig Bag
+For capturing the Evil Water Pig
+when his gate appears.
+Water
+Pig Bag
+For capturing the Evil Earth Pig
+when his gate appears.
+Earth
+Pig Bag
+For capturing the Evil Ghost Pig
+when his gate appears.
+Ghost
+Pig Bag
+For capturing the Evil Ice Pig
+when his Gate appears.
+Pig Bag
+For capturing the Evil Flame Pig
+when his gate appears.
+Flame
+Pig Bag
+A robe that contains the magic of
+the Evil Water Pig.
+Evil Water
+Pig Robe
+A robe that contains the magic of
+the Evil Earth Pig.
+Evil Earth
+Pig Robe
+A robe that contains the magic of
+the Evil Ghost Pig.
+Evil Ghost
+Pig Robe
+A robe that contains the magic of
+the Evil Ice Pig.
+Evil Ice
+Pig Robe
+A robe that contains the magic of
+the Evil Flame Pig.
+Evil Flame
+Pig Robe
+A suit that allows Tomba to swim.
+Swimming
+Pig Suit
+A suit that allows Tomba to speak
+Pig Language.
+Suit
+Clothing that gives Tomba the
+abilities of a Flying Squirrel.
+Squirrel
+Clothes
+Light clothes that let Tomba
+glide through the air.
+Bird
+Clothes
+(empty)
+Wearing these make
+Tomba run very fast.
+Turbo
+Pants
+Wearing these increases
+Tomba's speed.
+Fast
+Pants
+Initial pair of pants.
+Green
+Pants
+A ball-shaped bullet that
+only affects pigs.
+Pig Ball
+A hammer that burns enemies with
+its large flames.
+Torch
+Hammer
+A hammer with burning flames.
+Fire
+Hammer
+Used to hit an enemy
+or an object.
+Hammer
+A weapon made of Glacier Ice that
+attacks and returns to Tomba.
+Glacier
+Boomerang
+A cold weapon made from ice
+used to freeze the enemy.
+Boomerang
+A weapon that attacks and returns
+to Tomba.
+Boomerang
+A Blackjack and Grapple combined
+as one.
+Doka Pin
+Used for sticking in places.
+Can hang from it.
+Grapple
+A spiked iron ball on a long rope.
+Blackjack
+Crystal Panel
+Blocks a Hole!
+Crystal Panel Blocks a Hole!
+100-Year-Old
+100-Year-Old Man
+Yan of the
+Hidden Village
+Yan of the Hidden Village
+Precious
+Ring
+Precious Ring
+Invisible
+Mirror
+Invisible Mirror
+A Large
+Flower Seed
+A Large Flower Seed
+Nishiki Bird
+Servants
+Nishiki Bird Servants
+Tiny Tomba
+Mini Tomba
+Tiny Tomba/Mini Tomba
+Ball
+to the Pigs
+Ball to the Pigs
+Collect
+Ice Candy
+Collect Ice Candy
+Unmoving
+Blessed Priest
+Unmoving Blessed Priest
+Secret of the
+Aquatic Plant
+Secret of the Aquatic Plant
+Switch
+with Donglin
+Switch with Donglin
+Baron Turned
+to Stone
+Baron Turned to Stone
+Ghost
+Sticker
+Ghost Sticker
+A Kujara
+Washing Expert
+A Kujara Washing Expert
+The Washing
+Machine Fuse
+The Washing Machine Fuse
+Wash
+the Kujara
+Wash the Kujara
+Kujara
+Washing Shed
+Kujara Washing Shed
+Escaped
+Kujara
+Escaped Kujara
+Who's
+the Liar?
+Who's the Liar?
+Ready Or Not!
+Here I Come!
+Ready Or Not! Here I Come!
+Holy
+Pedestal
+Holy Pedestal
+The Ultimate
+Sculpture
+The Ultimate Sculpture
+Taboo Fruit
+A Rare
+Collection
+A Rare Collection
+Fatigue-Curing
+Fatigue-Curing Spa
+Holy Tree
+Too Dark
+to See!
+Too Dark to See!
+Collect Snow
+Fireflies
+Collect Snow Fireflies
+Snow Firefly
+Nest
+Snow Firefly Nest
+Potato Bug
+Eats Leaves
+Potato Bug Eats Leaves
+Wormy
+Charles 
+Wormy Charles
+Itchy
+Charles 
+Itchy Charles
+Starving
+Charles 
+Starving Charles
+Witch's
+Concoction
+Witch's Concoction
+Sea Anemone's
+Sea Anemone's Ice
+Sea Anemone's
+Burning Dregs
+Sea Anemone's Burning Dregs
+Mythical Tower
+of Wisdom
+Mythical Tower of Wisdom
+Mythical Tower
+of Strength
+Mythical Tower of Strength
+Mythical Tower
+of Courage
+Mythical Tower of Courage
+Forgotten
+Rucksack
+Forgotten Rucksack
+Starving
+Traveler
+Starving Traveler
+Invisible
+Traveler
+Invisible Traveler
+Laughing
+Traveler
+Laughing Traveler
+Oil-Smeared
+Traveler
+Oil-Smeared Traveler
+I'm Thirsty!
+Getwell Plant
+Heals Wounds
+Getwell Plant Heals Wounds
+Where's
+My Son?
+Where's My Son?
+Normal
+Fruit
+Normal Fruit
+Strange
+Fruit
+Strange Fruit
+Crying Door
+The Crying Door 
+Laughing Door
+The Laughing Door
+Turbo
+Trolley
+Turbo Trolley
+Make a
+Light Alloy!
+Make a Light Alloy!
+Quick!
+The Trolley!
+Quick! The Trolley!
+Trolley Ticket
+The Cook's
+Special Menu
+The Cook's Special Menu
+The Best
+Hash Potatoes!
+The Best Hash Potatoes!
+Cooking
+with Tomba!
+Cooking with Tomba!
+Let's Make
+Dried Fish
+Let's Make Dried Fish
+The Fuel that
+Burns Well
+The Fuel that Burns Well
+What's Inside
+the Mud?
+What's Inside the Mud?
+Get Clay from
+the Mud
+Get Clay from the Mud
+Lost Clay
+Spatula!
+Lost Clay Spatula!
+Let's Make
+a Pot!
+Let's Make a Pot!
+Berry Nuts
+Harvest
+Berry Nuts Harvest
+Annoying
+Mushroom
+Annoying Mushroom
+Tiny Mouse's
+Berry Nuts
+Tiny Mouse's Berry Nuts
+The Tiny
+Mouse's House
+The Tiny Mouse's House
+Closed
+Clamshell
+Closed Clamshell
+Lost and
+Found
+Lost and Found
+The Stuck
+Fishhook Line
+The Stuck Fishhook Line
+Other Side of
+the Waterfall
+Other Side of the Waterfall
+With the
+Nishiki Bird
+With the Nishiki Bird
+(Open)
+Feed the
+Chicks
+Feed the Chicks
+Where is the
+Bird's Nest?
+Where is the Bird's Nest?
+Chick from
+an Egg
+Chick from an Egg
+Golden Tower
+Adventurer's
+Clue
+Adventurers' Clue
+Adventurer's
+Chest
+Adventurer's Chest
+A Red
+Treasure Chest
+A Red Treasure Chest
+Capture the
+Last Evil Pig!
+Capture the Last Evil Pig!
+The Evil Water
+Pig Plate!
+The Evil Water Pig Plate!
+The Evil Earth
+Pig Plate!
+The Evil Earth Pig Plate!
+The Evil Ghost
+Pig Plate!
+The Evil Ghost Pig Plate!
+The Evil Ice
+Pig Plate!
+The Evil Ice Pig Plate!
+The Evil Flame
+Pig Plate!
+The Evil Flame Pig Plate!
+Look for the
+Last Evil Pig!
+Look for the Last Evil Pig!
+Capture Evil
+Water Pig!
+Capture Evil Water Pig!
+Find Another
+Reflector!
+Find Another Reflector!
+Wake Up the
+Giant Fish!
+Wake Up the Giant Fish!
+Sink the White
+Platform!
+Sink the White Platform!
+The Broken-Up
+Mermaid Harp!
+The Broken-Up Mermaid Harp!
+Open the
+Water Gate
+Open the Water Gate
+A Mermaid in
+a Water Tank!
+A Mermaid in the Water Tank!
+Capture Evil
+Earth Pig!
+Capture Evil Earth Pig!
+A Pig Tribe
+Clown Statue!
+A Pig Tribe Clown Statue!
+Lift the Lid
+on the Well!
+Lift the Lid on the Well!
+Let's Help
+the Clown!
+Let's Help the Clown!
+Let's See the
+Clown Circus!
+Let's See the Clown Circus!
+Use the
+Seesaw!
+Use the Seesaw!
+Use Pig Suit
+to Talk!
+Use Pig Suit to Talk!
+Capture Evil
+Ghost Pig!
+Capture Evil Ghost Pig!
+Use Rock Crabs
+for Balance!
+Use Rock Crabs for Balance!
+Device Guards
+the Treasure!
+Device Guards the Treasure!
+More Blue for
+the Picture!
+More Blue for the Picture!
+Take the
+Grapple!
+Take the Grapple!
+Kill the
+Guards!
+Kill the Guards!
+Put in the
+Spirit's Eye!
+Put in the Spirit's Eye!
+Capture Evil
+Ice Pig!
+Capture Evil Ice Pig!
+Raise
+the Ladder!
+Raise the Ladder!
+Static
+Explosion! 
+Static Explosion!
+The Hidden
+Diary!
+The Hidden Diary!
+Kujara's
+Favorite!
+Kujara's Favorite!
+Let's Take
+the Lift!
+Let's Take the Lift!
+Melt the
+Giant Ice!
+Melt the Giant Ice!
+Bring the
+Big Sack!
+Bring the Big Sack!
+Capture Evil
+Flame Pig!
+Capture Evil Flame Pig!
+Deliver
+to Gran!
+Deliver to Gran!
+Get Bombs!
+Blast
+the Rock!
+Blast the Rock!
+Look for
+the Hammer!
+Look for the Hammer!
+Wash the
+Strange Lump!
+Wash the Strange Lump!
+Let's Go to
+Tabby's House!
+Let's Go to Tabby's House!
+Bury it
+in the Sand!
+Bury it in the Sand!
+Pull and Open!
+Remove all
+the Cappers!
+Remove all the Cappers!
+Cools Off and
+Disappears!
+Cools Off and Disappears!
+Win's
+Windmill!
+Win's Windmill!
+Collect the
+Golden Crabs!
+Collect the Golden Crabs!
+Crab Basket!
+The Crab Basket!
+Wind it Up!
+Save the Crab!
+Pour the
+Water In!
+Pour the Water In!
+Go to the
+Burning House!
+Go to the Burning House!
+Find Tabby!
+:  -  
+:Close
+:Menu
+:Note
+:Use
+:Equip
+<- Sort ->
+Pink items are used automatically
+at special places in the game.
+Blue items are used in the game.
+Push 
+ to use them.
+Green items are equippable items.
+Push 
+ to equip them.
+Pink items are used automatically.
+Blue items are used on command.
+Green items are equippable items.
+Clear
+Occur
+Event
+Gray events have been cleared.
+Pink events haven't been cleared.
+List of events that have occurred
+or have been cleared.
+Current status
+Using the:
+(not use)
+Mini
+Cry 
+Laugh
+Normal 
+Status 
+Pig bag
+...?
+Section
+Area
+In the village, at the signpost
+In the village, near people...
+In the village to check something
+In front of the hot spring...
+In village something you can grab
+When you are clutching something
+When hanging from a pole or crank
+How to move on the barrel seesaw
+When you want to check inside...
+When a signpost is in back
+When a person is in front
+When a person is in back
+When the arrow points to the front
+When the arrow points to the back
+Select the operation you want to
+see. It will be displayed below.
+cube moji over flow
+rstuvvwx
+\BIN\START.BIN;1
+Not found file name %s
+1            
+      2      
+            3
+Loading.....
+99/12/24
+11:43
+$Id: sys.c,v 1.140 1998/01/12 07:52:27 noda Exp yos $
+ResetGraph:jtb=%08x,env=%08x
+ResetGraph(%d)...
+SetGraphDebug:level:%d,type:%d reverse:%d
+SetGrapQue(%d)...
+DrawSyncCallback(%08x)...
+SetDispMask(%d)...
+DrawSync(%d)...
+%s:bad RECT
+(%d,%d)-(%d,%d)
+ClearImage
+ClearImage2
+LoadImage
+StoreImage
+MoveImage
+ClearOTag(%08x,%d)...
+ClearOTagR(%08x,%d)...
+DrawOTag(%08x)...
+PutDrawEnv(%08x)...
+DrawOTagEnv(%08x,&08x)...
+PutDispEnv(%08x)...
+GPU timeout:que=%d,stat=%08x,chcr=%08x,madr=%08x
+LoadImage2
+VSync: timeout
+$Id: intr.c,v 1.75 1997/02/07 09:00:36 makoto Exp $
+unexpected interrupt(%04x)
+intr timeout(%04x:%04x)
+DMA bus error: code=%08x
+MADR[%d]=%08x
+CdInit: Init failed
+none
+CdlReadS
+CdlSeekP
+CdlSeekL
+CdlGetTD
+CdlGetTN
+CdlGetlocP
+CdlGetlocL
+CdlSetmode
+CdlSetfilter
+CdlDemute
+CdlMute
+CdlReset
+CdlPause
+CdlStop
+CdlStandby
+CdlReadN
+CdlBackward
+CdlForward
+CdlPlay
+CdlSetloc
+CdlNop
+CdlSync
+DiskError
+DataEnd
+Acknowledge
+Complete
+DataReady
+NoIntr
+CD timeout: 
+%s:(%s) Sync=%s, Ready=%s
+DiskError: 
+com=%s,code=(%02x:%02x)
+CDROM: unknown intr
+(%d)
+CD_sync
+CD_ready
+%s...
+%s: no param
+CD_cw
+$Id: bios.c,v 1.86 1997/03/28 07:42:42 makoto Exp yos $
+CD_init:
+addr=%08x
+CD_datasync
+%s: path level (%d) error
+%s: dir was not found
+CdSearchFile: disc error
+CdSearchFile: searching %s...
+%s:  found
+%s: not found
+CD_newmedia: Read error in cd_read(PVD)
+CD001
+CD_newmedia: Disc format error in cd_read(PVD)
+CD_newmedia: Read error (PT:%08x)
+CD_newmedia: sarching dir..
+	%08x,%04x,%04x,%s
+CD_newmedia: %d dir entries found
+CD_cachefile: dir not found
+CD_cachefile: searching...
+	(%02x:%02x:%02x) %8d %s
+CD_cachefile: %d files found
+CdRead: sector error
+CdRead: Shell open...
+CdRead: retry...
+DMA STATUS ERROR %x
+Can't Open Sequence data any more
+This is not SEQ Data.
+This is an old SEQ Data Format.
+SPU:T/O [%s]
+wait (reset)
+wait (wrdy H -> L)
+wait (dmaf clear/W)
+0123456789abcdef
+(null)
+0123456789ABCDEF
+0123456789ABCDEF
+0123456789abcdef
+<NULL>
+card read error
+MDEC_rest:bad option(%d)
+MDEC_in_sync
+MDEC_out_sync
+%s timeout:
+$!  
+B$!8b
+%&!0
+%&!(
+0&!(
+0&!(
+'&!(
+0&!(
+0&!(
+%&!0
+$! @
+$! @
+i)B(!
+$!(@
+~C$(
+<8'Q
+<!  
+$!0@
+$!( 
+<$sT$
+c$! 
+B4! 
+B4! 
+B4! 
+B4! 
+B4! 
+<h~C
+<h~B
+e$! 
+<h~B
+'! @
+&! @
+<TEB
+<UEB
+<VEB
+<WEB
+<XEB
+~U$@
+<4sV$
+<4sW$!
+<4sc$
+e$! 
+<h~B
+<4sB$
+<4sB$
+$! @
+$!@ 
+H!  
+8QB$
+XB$!
+<\~B$
+\~B$
+<\~B$
+\~B$
+1&!  
+$!0@
+$!0`
+$!0`
+B$!(
+~D$F
+1&!( 
+q&!@
+`HJ\
+0 B$@
+ B$P
+<|~B
+<< B$
+<|~B
+<|~B
+<|~B
+<|~B
+<d b
+<d b
+B$d b
+c0d C
+$!@ 
+ B$@
+<|~B
+~B$!
+<|~B
+<|~B
+<|~B
+<|~B
+<|~B
+<|~B
+$! @
+<|~B
+$! @
+s6!@
+'!P 
+<|~B
+$! @
+~J%~
+<|~B
+<|~B
+<|~B
+<|~B
+<|~B
+<|~B
+<|~B
+<|~B
+1&!( 
+1&!( 
+1&!( 
+1&!( 
+1&!( 
+<|~B
+h c$
+T#U$
+4sT$8
+<|#U$
+<4sT$
+B&!(
+<4sT$
+<4sT$4
+#B$ 
+4sT$(
+#B$ 
+<4sB$
+<L:1&
+$!(@
+$!(@
+<L:1&
+$!(@
+<X:G
+<L:1&
+$!(@
+$!(@
+L:1&
+<`:G
+4sT$
+$Q$4
+<0$U$
+<4sT$
+<h:G
+<|:G
+<l:G
+<p:G
+<t:G
+@@b0
++c$@
++B$@
++B$@
++c$@
+~B$n
+$!  
+$!0@
+$!0@
+<h$B$
+<D$B$
+<(rB$
+$!  
+$!  
+$!  
+$!  
+$!  
+$!  
+$!  
++c$@
+$!  
+ C$@
+@B$<
++E$! 
++G$!
++G$!
+L$!@
++M$!H
++^$!
+$B$!
+<h~c
+@b0/
+<h~C
+$!  
+<h~C
+ b0-
+<h~C
+@b0K
+ b0-
++B$@
+'!(@
+<4sS$
+&Q$!
+<d+W$!
+&!(e
+%&!(e
+<4sT$
+&S$!
++^$@
+4sS$
+<D&B$\
+<4sS$
+D&P$
++B$@
+^$! 
+$!(`
+$B$!
+^$! 
+$! `
+$!(`
+$B$@
+<!@@
+<h~C
+<h~C
+<h~C
+4sR$
+'B$l
+<4sR$
+$!0 
+$l~c
+4sR$
+<xvE
+' tE
+'tvE
+$c$@
++c$@
+G$!0`
+<h~C
+ b0'
+4sV$
+(B$D
+<4sV$
+<4sU$f
+:U$!
+'! @
+3B$@
+$!  
+<$JB$
+<VUB4
+B$UU
+<VUB4
+<<JB$
+3P$@
+;c$@
+~B$F
+'!( 
+$B$<
+<pJS$
+&B$H
+8'B$T
+<8MR$
+H! `
+H! @
+H! `
+D&!(
+H! @
+<@NB$
+<HOB$
+~B$.
+~B$D
+<xQG$
+<hRB$
+B$#0
+$! @
+~c$,
+<(;U$
+;Q$!
+<8SB$
+3c$@
+<8;c$
+$!  
+<LSB$
+x;S$
+<h~B
+hSJ$
+B$z	
+$! @
+<pSB$
+~B$,
+~B$t
+~C$d
+~Q$V
+~c$*
+%2kS
+$!  
+~s$M
+<!  
+R&!  
+%&! 
+$!  
+B$#0b
+<!8`
+%!0`
+B1w 
+B1w 
+H$!X`
+XTP$,
+c$w'
+B$w'
+B$w'
+c0B(
+~B$n
+4!  
+Xc$<
+<<WB$
+B0s+
+B4! 
+<\WB$
+B$2,
+$!(@
+~B$t
+~B$n
+~B$t
+$! @
+<$XB$
+B$H2
+R&! 
++C$@
+c$#5
++C$@
+0! @
+0&!0
+<lXB$
+<!  
+$#0C
+$!  
+"&!0
+'! @
+b0! `
+'! @
+q&!( 
+$! @
+0&!  
+$&!(
+$&!(
+$&!(
+<,ZB$
+B$! 
+&! @
+<p~G
+B$, G
+ C$- H
+e$!(E
+d$! D
+<p~@
+<@ZB$
+$&! 
+d&!(
+&&!  
+$!  
+d&!(
+&&!  
+$!  
+&&!  
+$!  
+1&!( 
+d&!(
+F&! 
+R&!(@
+R&!(@
+&&!  
+&!( 
+%&fH
+~W$@
+B$?J
+s&!0`
+B$CK
+1&!  
+B$ES
+xDc$
+B$nM
+<L[B$
+<t[B$
+c$2N
+b0aP
+$! @
+$! @
+BB$!(
+DE$@
+DE$@
+DE$\R
+DE$!0
+DE$!0
+DE$J
+<DEB$
+<$Ec$@
+Dd$!
+DD$J
+LEc$B
+&!  
+@B03
+G0!  
+<TEc$!
+<h~B
+<h~B
+<h~B
+<h~B
+<h~B
+<h~C
+<h~B
+<h~D
+@b0	
+|EB$@
+tEF$m
+<\EB$
+M,!h
+B$eY
+tEG$m
+<\EB$
+j$HZ
+B$E[
+EB$@
+<h~B
+<h~B
+<h~B
+<h~B
+<T\B$
+0@P$
+`AP$
+<pBP$
+b$t~
+B4p_
+B0p_
+<h~R
+T$!(
+V&!(
+~P$(
+$!($
+Fc$@
+FR$@
+<$_B$
+B0@j
+$!( 
+<L_B$
+Fc$@
+<LbB$
+c$Ip
+b,! 
+FB$B
+Fc$@
+B$Gp
+B$ym
+$!  
+FB$B
+Fc$@
+$!  
+Fc$G
+$!  
+$!  
+B$Ut
+Fc$`
+B0qT
+B$Fu
+B4Fu
+B$ES
+B0wu
+<h~B
+B4wu
+$!  
+$!  
+B$ES
+%Ic4
+$!  
+B$SL
+%Ic4
+b$Zy
+B$!  
+B$ES
+B0,x
+B0fP
+B0Tx
+$!  
+$!  
+%Ic4
+<$cB$
+c4fP
+B$:z
+c04z
+<DcB$
+B0wz
+c4fP
+%&8N
+B$ES
+B0fP
+B0ES
+B$Q[
+'B(	
+<dcB$
+<TEB$!
+Fc$@
+$!  
+B$ES
+B$ES
+B$!  
+B$ES
+FB$!
+FB$!
+$! @
+$!  
+$!  
+$!  
+B0fP
+P0! 
+$!  
+<!  
+TEc$
+B$ES
+B$qT
+GB$!
+$! @
+$! @
+GB$!
+B$Q[
+GB$!
+<0dB$
+8GG$
+<pdB$
+Gc$h
+GE$h
+<h~B
+GB$!
+GB$!
+GB$!
+GB$!
+P$!  
+<h~B
+B$ES
+<h~B
+$!  
+B0fP
+<$eB$
+B$! 
+B$fP
+c$qT
+D$4P
+<LeB$
+B$ES
+u'B(
+<teB$
+HE$ 
+HP$ 
+<@HE$ 
+IP$ 
+HE$ 
+<@IP$ 
+'!( 
+'!(`
+'!(@
+$! @
+$! @
+$! @
+<|gB$
+~B$|
+XJc$
+<DJB$! 
+JB$!
+$!  
+<8'D
+~P$	
+~S$,
+JB$!(
+<@hB$
+<! @
+<`hB$
+<PKB$
+<thB$
+r&! @
+&!  
+~T$,
+~F$d
+~E$a
+<DiB$
+~E$d
+<|iB$
+~Q$a
+&!( 
+<DjB$
+B$! 
+D&!(
+&&!  
+$!  
+KQ$!
+~Q$)
+>c$$
+KS$! 
+KS$$
+>c$$
+KS$! 
+KR$ 
+$! @
+<VUB4
+<VUB4
+0kK$
+x.B$v
+< %B$
+<4sV$
+< %B$
+<&c$
+<4sT$!
+IB$p
+7B$	
+L0B$
+p4B$
+SB$p
+(Lc$
+0! @
+0!(@
+<8kB$
+Lc$@
+<PkB$
+<h~B
+ B0=
+<h~C
+@b0	
+ b0(
+Lc$@
+<hkB$
+Lc$@
+<h~B
+$! @
+Lc$@
+LB$@
+<h~B
+Mc$!HC
+MB$! 
+B$!@b
+$#(E
+B$!0b
+<DlB$
+$!(`
+c$! 
+hOB$
+<POB$!
+0&! 
+$#HD
+$#@D
+$#8D
+$# D
+$!0@
+<|lB$
+B4$e
+<~OE
+Q$!( 
+ b0k
+@b( 
+ b0L
+B0# 
+UB$!
+R&! @
+D&! 
+UB$! 
+UB$! 
+d+c$
+C0!(
+<$&@
+$|~b
+$}~b
+$B$<
+&B$H
+8'B$T
+<|~i
+"%|~b
+<$&D$
+<8'D$
+<}~b
+B$}~b
+<$&D$
+<8'D$
+<$&D$
+<8'D$
+<$&D$
+<8'D$
+<$&D$
+<8'D$
+8'H$
+B$|~b
+<$&D$
+#E$ 
+<4nB$
+B$|~
+<8'@
+<<'D
+<$&D
+<LnB$
+<dnB$!
+#E$$
+<! `
+C$! 
+b$t~
+<$&G$
+<8'G$
+<$&D
+<$&D
+@'Q$
+B$t~b
+C$t~
+<@'Q$!  
+B$t~b
+C$t~
+<h~B
+<xnB$
+<h~C
+<h~C
+<h~C
+<h~D
+c$r~
+B$r~
+$z@d
+c$r~
+c$r~
+B$r~
+$z@d
+c$r~
+c$p~
+B$p~
+$x@d
+c$p~
+c$p~
+B$p~
+$x@d
+c$p~
+<h~C
+B$}H
+D$!(@
+D$!(@
+0! @
+$!H@
+$! @
+I$!@
+&%!(
+"&!  
+<trB$
+<h~B
+<h~B
+$!(@
+$!(@
+d0!P
+<4sB$
+<4sB$8
+<T(C$T(B
+XB$@
+'!0 
+<T(B$\
+'!0 
+rB$ 
+<T(B$T
+<T(B$
+'!  
+<r~F
+$!8 
+<p~F
+$!8 
+<T(B$
+<T(B$
+T(B$
+2! @
+$!(@
+<@Zc$
+<LZc$$
+<LZc$$
+0&! 
+D&!( 
+Ys& 
+$!(@
+0&! 
+d&!( 
+$!(`
+$!(`
+$!( 
+b$W	
+c$g	
+<$0&
+?B0%
+c0% 
+c0% 
+$$PA
+	$"H*
+$"Xj
+<$H!
+<$H!
+<$H!
+<$H!
+<$H!
+<$H!
+0%H'
+H"PN
+<0$?
+B$!x@
+wwc4$
+<P$R&
+<D$B$
+<dgc$
+<P$B$
+5!8`
+$!  
+$!  
+c0! 
+<`$#
+<`$c
+	$!0
+B$! 
+J%=$
+B$>%
+b$v%
+<(bc$
+<('$
+$!( 
+2!( 
+$!( 
+d2!( 
+$!( 
+2!( 
+ff	<gf)5
+<0'c$I
+<0'c$	
+<0'c$
+<0'c$	
+<8'c$	
+<8'c$	
+<8'c$	
+<H'"
+<L' 
+<P'"
+<H'c
+<L'B
+<L'"
+Q0d(
+<H'"
+<L' 
+<P'"
+<H'c
+<L'B
+<L'"
+Q0d(
+<H'"
+<L' 
+<P'"
+<H'c
+<L'B
+<L'"
+Q0d(
+<H'"
+<L' 
+<P'"
+<H'c
+<L'B
+R0d(
+'! @
+<p'B$
+<t-R&
+<hKB$+
+$!(@
+<`'"
+<('c
+<lK"
+<`'B
+<lKB
+<xK1
+<|K2
+<,'B
+<('c
+<('c
+<('c
+<('c
+<('c
+<,'c
+< '$
+<('c
+<`'B
+< 'c
+< ' 
+<|Kc
+<,'B
+<|Kc
+<('B
+<('B
+<('c
+B$@!
+<$'#
+C	c4
+<(LB
+<(L"
+<0Lc$
+<0LB$
+<0LB$
+<0LB$
+<,L"
+<(L 
+<$L 
+<(Lc
+<(L#
+Kc$	
+B$p9
+b$X@
+B$X@
+B$X@
+0!0d
+<0Lc$
+R60B
+<$LB
+<$L#
+<(Lc
+<$L 
+<0Lc$
+<0LB$
+<0Lc$
+<0LB$
+B2!  
+B$X@
+B$X@
+<0LB$
+<0LB$
+<0LB$
+<(Lc
+<(L#
+	<0L)%
+<,L#
+<,L#
+F1LU
+F1LU
+<0Lc$
+b$lH
+<0LB$
+<$LB
+<$L#
+<$L 
+D2_J
+<$L 
+<$LB
+<$L#
+<$L 
+]B$!0@
+TR&!
+<(]B
+< ZB
+<(ZB$
+R&! 
+<(Zc$
+<p] 
+<(] 
+	$!8
+<	]c$
+$!@@
+<Q c4
+$!(@
+E$!(
+<Q c4
+%! "
+h$!P`
+$!0@
+R6!h`
+<Q c4
+"%!H@
+<p]B
+<p]c
+<p]#
+<p]B
+<p]B
+<p]"
+<! `
+BAc4
+<p]c
+<p]#
+c$! 
+$!( 
+$!( 
+b0w]
+<!(`
+4! @
+B4$P
+4!(@
+4!(`
+B4$(
+	$!0
+ "2+
+"%!H
+mNc4
+1&Gi
+B4Tl
+B4Tl
+B4Tl
+B4Tl
+B$! `
+R&! r
+<$_ 
+	<0_)
+	<4_)
+<(_?
+<0_#
+<4_#
+<8_?
+<H_?
+<H_?
+<X_?
+as&0
+P&!(
+R&tq
+&!  
+)% H%
+)1%H
+< bc$
+|@(6@_V_(P
+|@(6
+_V_(P
+|@(6@_V_(
+|@(6
+_V_(
+|@(6@_V_(
+5@?x x<<<
+|@(6@_V_(
+?x x<<<
+@VT|@(6@_V_(
+5@?x x
+@VT|@(6@_V_(
+?x x
+5@?x x
+ VT| (6@?V?(
+5@?x x
+ VT| (6
+?V?(
+5@?x x
+5@?x x
+	G**	G
+5@?x xP
+?x xP
+5@?x x
+?x x
+5@?x x
+5@?x x
+5@?x x
+5@?x x
+G!5@U
+G!5@U
+}G!U@U
+}G!U
+bF5@f"b"
+b"5@fFf"
+bF5@8"8F
+8F5@b"8"
+}8FU@b"8"
+}bFU@8"8F
+}bFU@f"b"
+}b"U@fFf"
+|?x5@!
+|?x5@!
+|?x5@!
+|?x5@!
+?x5@!
+?x5@!
+?x5@!
+?x5@!
+?x5@!
+?x5@!
+?x5@!
+?x5@!
+Bx5@g
+5@AxA
+5@AxA
+Bx5@g
+U@AxA
+U@AxA
+}BxU@g
+}BxU
+>x5@ 
+>x5@ 
+>x5@ 
+>x5@ 
+xgV|xX5
+Xddd
+6v5@
+6P5@
+6v5@
+/1/'
+/>/1
+?>?1
+?1?'
+1nbb
+>nbb
+&nbb
+>A::
+&A::
+1A::
+?1?&A::
+?>?1A::
+A@@A@@@A@@@A@A@@AA
+BCBBCBCCBB
+>=>=>==>===>>=>=>=
+_*00
+_+00
+345673(
+PQPQRSTUDEDEFGHIJKJKLMNO
+z{z{|}~
+tutuvwxy
+08@DHLPTX\`hpx
+^_`a^_`aaaaaa[[[[\]^__`aaaaa[[[[[\]^aaaaa`_^^^_``aaa
+!;*\.
+5QBrJ
+Z:k{o
+!;*\.
+5QBrJ
+Z:k{o
+!;*\.
+5QBrJ
+Z:k{o
+If=$1
+zB9'
+If=$1
+If=$1
+2)<>KY
+4\n`m
+(#1+
+(#1+
+*@04
+	"	'	,	1	7	<	A	F	K	P	U	Z	_	e	j	o	t	y	~	
+Library Programs (c) 1993-1997 Sony Computer Entertainment Inc., All Rights Reserved.
+         
+                  
+AAAAAA
+BBBBBB
+  ""%&%##"#&&(((00..88:EES
+  ""%&%##"#&&(((00..88:EES
+0Avmj

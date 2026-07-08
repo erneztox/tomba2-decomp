@@ -1,148 +1,150 @@
-# Proyecto de Decompilación de Tomba! 2
+# Tomba! 2 Decompilation Project
 
-Este es un proyecto de decompilación en curso para el juego de PlayStation 1 **Tomba! 2: The Evil Swine Return** (también conocido como Tombi! 2).
+This is an ongoing matching decompilation project for the PlayStation 1 game **Tomba! 2: The Evil Swine Return** (also known as Tombi! 2).
 
-El objetivo de este proyecto es recrear con precisión el código fuente original en C. Para garantizar que no se introduzcan errores, el código resultante se compila utilizando la cadena de herramientas del compilador original PsyQ (`cc1`) combinada con capas de traducción modernas (`maspsx`) para producir un ejecutable exactamente igual (byte-perfect).
+The goal of this project is to accurately recreate the original C source code. To ensure no bugs are introduced, the resulting code is compiled using the original PsyQ compiler toolchain (`cc1`) combined with modern translation layers (`maspsx`) to produce a byte-for-byte matching executable.
 
-## Aviso Legal
+## Legal
 
 > [!WARNING]
-> Este repositorio **NO** contiene activos originales del juego, ejecutables ni materiales con derechos de autor. Para construir el proyecto, debes adquirir legalmente una copia del juego y extraer los archivos necesarios por ti mismo.
+> This repository does **NOT** contain any original game assets, executables, or copyrighted materials. To build the project, you must legally acquire a copy of the game and extract the necessary files yourself.
 
-## Instrucciones de Instalación
+## Setup Instructions
 
-Utilizamos un script automatizado en Python para extraer la ISO, dividir el ejecutable principal en código ensamblador y preparar el proyecto. También utilizamos Ghidra para la ingeniería inversa y la decompilación.
+We use an automated Python script to extract the ISO, split the main executable into assembly, and set up the project. We also utilize Ghidra for reverse engineering and decompilation.
 
-### 1. Requisitos Previos
+### 1. Prerequisites
 
 - Python 3.8+
-- Paquetes de Arch Linux/Linux: `p7zip` y `bchunk`.
-- Arch Linux GNU Binutils para MIPS: `mips-linux-gnu-binutils` (requerido para ensamblar objetos de PS1 en Little Endian).
-  - Instalar vía AUR: `yay -S mips-linux-gnu-binutils`
-- Tu archivo comprimido `.7z` o tus archivos `.bin`/`.cue` obtenidos legalmente de tu disco de Tomba! 2.
-- Ghidra 11.x+ (para decompilación).
+- Arch Linux/Linux packages: `p7zip` and `bchunk`.
+- Arch Linux GNU Binutils for MIPS: `mips-linux-gnu-binutils` (required for assembling Little Endian PS1 objects).
+  - Install via AUR: `yay -S mips-linux-gnu-binutils`
+- Your compressed `.7z` archive or your `.bin`/`.cue` files legally obtained from your Tomba! 2 disc.
+- Ghidra 11.x+ (for decompilation).
 
-### 2. Preparar la ROM
+### 2. Prepare the ROM
 
-Coloca tus archivos `.bin` y `.cue` (o archivo `.7z`) dentro de la carpeta `rom/` en la raíz de este proyecto.
+Place your `.bin` and `.cue` files (or `.7z` archive) inside the `rom/` folder at the root of this project.
 
-### 3. Ejecutar Configuración y Extracción
+### 3. Run Setup & Extraction
 
-Ejecuta el script de configuración. Este script se encargará de:
-1. Extraer el ejecutable principal (por ejemplo, `SCUS_944.54`).
-2. Ejecutar `splat` para dividir el ejecutable en archivos puros de ensamblador (`asm/`).
-3. Extraer los archivos propietarios del juego en el directorio `assets/` (desempaquetando el sistema de archivos interno).
+Run the setup script. This script will:
+1. Extract the main executable (e.g., `SCUS_944.54`).
+2. Run `splat` to split the executable into pure assembly files (`asm/`).
+3. Extract the game's proprietary files into the `assets/` directory (unpacking the internal filesystem).
 
 ```bash
 python3 scripts/setup.py
 ```
 
-### 4. Configuración de Ghidra y MCP Bridge
+### 4. Ghidra Setup & MCP Bridge
 
-Para comenzar a analizar y extraer código C, utilizamos Ghidra con un puente (bridge) MCP personalizado.
+To start analyzing and extracting C code, we use Ghidra with a custom MCP bridge.
 
-1. **Importar el Ejecutable**: Abre Ghidra, crea un proyecto e importa `rom/extracted/SCUS_944.54`. 
-   - Formato: `Raw Binary`
-   - Lenguaje: `MIPS:LE:32:default`
-2. **CRÍTICO: Configurar Base de la Imagen**: La PS1 carga este ejecutable en `0x80010000`. En Ghidra, ve a **Window > Memory Map**, haz clic en el ícono de **Move Image Base** (la casa con una flecha azul) y cambia la dirección de `00000000` a `80010000`.
-3. **Auto Analyze**: Deja que Ghidra realice su análisis por defecto.
-4. **Iniciar Servidor MCP**: Si instalaste el puente Ghidra-MCP, inícialo desde `Tools > GhidraMCP > Start MCP Server`. Esto permite que scripts externos obtengan código decompilado directamente de tu instancia de Ghidra.
+1. **Import the Executable**: Open Ghidra, create a project, and import `rom/extracted/SCUS_944.54`. 
+   - Format: `Raw Binary`
+   - Language: `MIPS:LE:32:default`
+2. **CRITICAL: Set Image Base**: The PS1 loads this executable at `0x80010000`. In Ghidra, go to **Window > Memory Map**, click the **Move Image Base** icon (the house with a blue arrow), and change the address from `00000000` to `80010000`.
+3. **Auto Analyze**: Let Ghidra perform its default analysis.
+4. **Start MCP Server**: If you installed the Ghidra-MCP bridge, start it via `Tools > GhidraMCP > Start MCP Server`. This allows external scripts to fetch decompiled code directly from your Ghidra instance.
 
-## Arquitectura del Motor y Estructura del CD
+## Engine Architecture & CD Structure
 
-Tomba! 2 utiliza un sistema personalizado de carga e indexación de archivos, omitiendo por completo las búsquedas estándar `CdSearchFile` de ISO9660 para sus recursos principales.
+Tomba! 2 uses a custom file loading and indexing system, completely bypassing standard ISO9660 `CdSearchFile` lookups for its main assets.
 
-### Ejecutables
-- **`SCUS_944.54`**: Un cargador ligero / sistema antipiratería. Inicializa la consola y pasa el control a `MAIN.EXE`.
-- **`MAIN.EXE`**: El verdadero motor del juego (~716 KB). Contiene la física, lógica de gráficos GTE, análisis de archivos y las rutinas de descompresión LZSS.
+### Executables
+- **`SCUS_944.54`**: A lightweight bootloader/anti-piracy stub. It initializes the console and hands execution over to `MAIN.EXE`.
+- **`MAIN.EXE`**: The true game engine (~716 KB). Contains the physics, GTE graphics logic, file parsing, and the LZSS decompression routines.
 
-### Índice Maestro y Recursos
-- **`START.BIN`**: El manifiesto maestro. Una pequeña lista en texto plano que enlaza rutas de archivos del CD con IDs numéricos internos.
-- **`TOMBA2.IDX`**: La base de datos de punteros maestra. El sector 0 indexa modelos 3D y animaciones en `TOMBA2.DAT`. El sector 1 indexa cargas en crudo de texturas de VRAM en `TOMBA2.IMG`.
-- **Formatos Personalizados y Compresión**: Tomba! 2 elimina cabeceras estándar de PlayStation (`.TMD`, `.TIM`) para ahorrar memoria. Tanto `TOMBA2.DAT` como `TOMBA2.IMG` contienen fragmentos altamente comprimidos (LZSS). Usamos el script en `tools/extractor/extractor.py` para analizar `.IDX` de forma nativa, descomprimir las imágenes VRAM y extraer las mallas 3D al directorio `assets/`.
+### Master Index & Assets
+- **`START.BIN`**: The master manifest. A small plaintext list linking CD file paths (e.g., `\CD\SWDATA.BIN;1`) to internal numeric IDs.
+- **`TOMBA2.IDX`**: The master pointer database. Sector 0 indexes 3D models/animations in `TOMBA2.DAT`. Sector 1 indexes raw VRAM texture uploads in `TOMBA2.IMG`.
+- **Custom Formats & Compression**: Tomba! 2 strips standard PlayStation headers (`.TMD`, `.TIM`) to save RAM. Both `TOMBA2.DAT` and `TOMBA2.IMG` contain highly compressed chunks (LZSS). We use `tools/extractor/extractor.py` to natively parse `.IDX`, decompress the VRAM images, and extract the 3D meshes to the `assets/` directory.
 
-### Superposiciones de Niveles (Archivos .BIN)
-Archivos como `A00.BIN` son **ejecutables superpuestos compilados**, no solo archivos de recursos. Se cargan en una dirección fija de RAM y contienen una tabla virtual masiva de punteros absolutos en su cabecera, permitiendo a `MAIN.EXE` ejecutar lógica específica del nivel y obtener modelos localizados instantáneamente.
+### Level Overlays (.BIN files)
+Files like `A00.BIN` are **compiled executable overlays**, not just asset archives. They are loaded at a fixed RAM address (usually `0x80100000`) and contain a massive virtual table of absolute memory pointers at their header, allowing `MAIN.EXE` to execute level-specific logic and fetch localized models instantly.
 
-## Extracción de Recursos e Imágenes
+## Asset Extraction & VRAM Conversion
 
-Para extraer de forma nativa los modelos 3D comprimidos en LZSS (`.sdat`) y los volcados en crudo de texturas (`.vram`) directamente del juego sin usar un emulador, ejecuta el script extractor incluido:
+To natively extract the LZSS compressed 3D models (`.sdat`) and raw texture dumps (`.vram`) from the game without using an emulator, run the included extractor script:
 
 ```bash
 python3 tools/extractor/extractor.py
 ```
 
-Esto llenará la carpeta `assets/` con múltiples directorios `chunk_XX` que contienen los datos originales del juego.
+This will populate the `assets/` folder with multiple `chunk_XX` directories containing the raw game data.
 
-### Extracción de Hojas de Sprites (Spritesheets)
+### 3D Models and Sprite Sheets (.SDAT to PNG)
 
-En el proyecto hay dos scripts relacionados a las imágenes extraídas, cada uno con un propósito específico:
+Because Tomba! 2 uses 2D sprites running in a 3D environment, the `.sdat` files contain complex structures grouping bounding boxes, UVs, and CLUTs (Color Lookup Tables) for each character animation frame.
 
-1. **`vram2png.py`**: Este script convierte los volcados brutos de VRAM (archivos de 1MB) en imágenes PNG sin aplicar paletas de color. Útil únicamente si quieres inspeccionar la distribución de la memoria de video.
-2. **`sdat2img.py`** (Script Principal): Este script lee la geometría y los polígonos del motor (`.sdat`), busca la posición correcta de la memoria y la paleta de colores (CLUT) oficial que usa el juego, y genera hojas de sprites PNG perfectas a color de 256x256. 
+There are two scripts provided for image extraction depending on your needs:
 
-Para obtener los personajes y texturas a color como en el juego original, debes usar el script inteligente:
+1. **`vram2png.py`**: A low-level tool that dumps the raw 1MB VRAM memory pages (1024x512 pixels at 16-bit color) without applying palettes. Use this only if you need to inspect the raw layout of video memory.
+2. **`sdat2img.py`** (Main Script): This intelligent script reads the engine's 3D geometry (`.sdat`), parses the embedded polygons, locates the correct Color Lookup Tables (CLUTs), and outputs perfectly colored 256x256 `.png` spritesheets matching the game's actual rendering logic.
+
+To mass-extract every accurately colored spritesheet from all geometry files, run:
 
 ```bash
 python3 sdat2img.py
 ```
 
-Este script arrojará las hojas de sprites listas y coloreadas dentro del directorio `assets/imagenes_perfectas/`.
+This script parses every `.sdat` model across all chunks, composites the VRAM, applies the correct palettes, and dumps clean spritesheets into the `assets/imagenes_perfectas/` directory.
 
-## Proceso de Compilación
+## Compilation Pipeline
 
-Hemos establecido un flujo de compilación totalmente automatizado que refleja el entorno original de 1999:
+We have established a fully automated build pipeline that mirrors the original 1999 environment:
 
 ```bash
 make
 ```
 
-Lo que hace `make` internamente:
-1. Toma el código C decompilado desde `src/`.
-2. Lo compila utilizando el compilador original PsyQ (`tools/old-gcc/cc1`).
-3. Procesa el ensamblador resultante mediante `tools/maspsx` para hacerlo compatible con ensambladores GNU modernos.
-4. Ensambla el archivo objeto `.o` final usando `mips-linux-gnu-as` (con la bandera Little Endian `-EL`).
+What `make` does under the hood:
+1. Takes decompiled C code from `src/` (e.g., `src/func_8001DD04.c`).
+2. Compiles it using the original PsyQ compiler (`tools/old-gcc/cc1`).
+3. Processes the legacy assembly through `tools/maspsx` to make it compatible with modern GNU assemblers.
+4. Assembles the final `.o` object file using `mips-linux-gnu-as` (with the `-EL` Little Endian flag).
 
-Los archivos objeto resultantes se encontrarán en `build/src/` como binarios `elf32-tradlittlemips`.
+The resulting object files will reside in `build/src/` as `elf32-tradlittlemips` binaries.
 
-## Extracción de Audio
+## Audio Extraction
 
-Dado que los archivos de audio CD-ROM XA de PS1 utilizan sectores especializados de 2352 bytes con canales entrelazados, su extracción requiere una herramienta especializada (`jpsxdec`). Hemos automatizado este proceso en Python:
+Since PS1 CD-ROM XA audio files use specialized 2352-byte sectors with interleaved channels, extracting them requires a specialized tool (`jpsxdec`). We have automated this process in Python:
 
 ```bash
 python3 scripts/extract_music.py
 ```
 
-Este script descargará automáticamente `jpsxdec`, analizará el disco y extraerá toda la música de fondo, audio de cinemáticas y voces como archivos `.wav` prístinos en el directorio `extracted_music/`.
+This script will automatically download `jpsxdec`, parse the original `.bin` ROM track, and extract all background music, cinematics audio, and voice clips as pristine `.wav` files into the `extracted_music/` directory.
 
-## Comparación Local con asm-differ
+## Local Matching with asm-differ
 
-Para verificar que tu código C produce exactamente el mismo ensamblador que el juego original, usamos `asm-differ`.
+To verify that your C code produces the exact same assembly as the original game, we use `asm-differ`.
 
-### 1. Instalar Dependencias
-Si estás en Arch Linux, instala los paquetes de Python requeridos:
+### 1. Install Dependencies
+If you are on Arch Linux, install the required python packages:
 ```bash
 yay -S python-colorama python-watchdog python-levenshtein
 ```
 
-### 2. Ejecutar la Comparación
-Hemos automatizado el proceso de ensamblado y comparación en el `Makefile`. Para monitorizar y comparar una función de forma continua (ej. `func_8001DD04`):
+### 2. Run the Diff
+We have automated the assembly and diffing process in the `Makefile`. To continuously monitor and diff a function (e.g. `func_8001DD04`):
 
 ```bash
 make diff FUNC=func_8001DD04
 ```
 
-Este comando:
-1. Leerá automáticamente `asm/func_8001DD04.s`, inyectará el `macro.inc` necesario y lo ensamblará en el objeto base "esperado".
-2. Compilará tu `src/func_8001DD04.c` en el objeto "construido".
-3. Iniciará `asm-differ` en modo de vigilancia (`-w`), lo que recompilará y actualizará instantáneamente la comparación visual cada vez que guardes tu archivo C.
+This command will:
+1. Automatically read `asm/func_8001DD04.s`, inject the required `macro.inc`, and assemble it into the "expected" base object.
+2. Compile your `src/func_8001DD04.c` into the "build" object.
+3. Launch `asm-differ` in watch mode (`-w`), which will instantly recompile and update the visual diff every time you save your C file.
 
-## Contribuir
+## Contributing
 
-Usamos verificación local y [decomp.me](https://decomp.me/) para el desarrollo comunitario de funciones.
+We use local matching and [decomp.me](https://decomp.me/) to crowdsource functions.
 
-1. Toma una función en ensamblador de `asm/`.
-2. Reescribe el ensamblador MIPS a código C dentro de `src/`.
-3. Para colaborar en línea, crea un "Scratch" usando nuestro **Preset oficial de decomp.me**: [https://decomp.me/preset/244](https://decomp.me/preset/244)
-4. Usa `asm-differ` localmente para asegurar que sea exactamente igual.
-5. ¡Una vez que coincida byte por byte al 100%, abre un Pull Request!
+1. Pick an assembly function from `asm/`.
+2. Rewrite the MIPS assembly into C code inside `src/`.
+3. To collaborate online, create a Scratch using our official **decomp.me Preset**: [https://decomp.me/preset/244](https://decomp.me/preset/244) (This sets up the PS1 platform, PsyQ 4.0 compiler, and `-O2 -G0` flags automatically).
+4. Use `asm-differ` locally to compare your `build/src/function.o` against the original extracted assembly.
+5. Once it's a 100% byte-perfect match, open a Pull Request!

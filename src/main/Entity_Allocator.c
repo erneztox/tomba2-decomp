@@ -472,7 +472,22 @@ initialize:
     return entity;
 }
 
-INCLUDE_ASM("asm/nonmatchings/main/Entity_Allocator", func_8007A980);
+Entity* func_8007A980(u8 param_1, u8 param_2, int param_3)
+{
+    switch (param_1) {
+    case 0:
+        return func_80079C3C(0, param_2, 3, param_3);
+    case 1:
+        return func_80079DDC(0, param_2, 3, param_3);
+    case 2:
+        return func_80079F90(0, param_2, 3, param_3);
+    case 3:
+        return func_8007A12C(0, param_2, 3, param_3);
+    case 4:
+        return func_8007A2C8(0, param_2, 3, param_3);
+    }
+    return 0; // fallback in case switch doesn't cover all paths
+}
 
 INCLUDE_ASM("asm/nonmatchings/main/Entity_Allocator", func_8007A464);
 INCLUDE_ASM("asm/nonmatchings/main/Entity_Allocator", func_8007A5A8);

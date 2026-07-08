@@ -10,6 +10,13 @@ typedef struct Vector3 {
     s16 z;
 } Vector3;
 
+typedef struct SVECTOR {
+    s16 x;
+    s16 y;
+    s16 z;
+    s16 pad;
+} SVECTOR;
+
 // Forward declaration for function pointers
 struct Entity;
 
@@ -33,7 +40,10 @@ typedef struct Entity {
     u8 active_flag; // 0x01
     u8 pad02;       // 0x02
     u8 unknown_03;  // 0x03
-    u8 pad04[7];    // 0x04 - 0x0A
+    u8 pad04[4];    // 0x04 - 0x07
+    u8 count1;      // 0x08
+    u8 count2;      // 0x09
+    u8 pad0A;       // 0x0A
     u8 action_id;   // 0x0B
     u8 pad0C;       // 0x0C
     u8 move_mode;   // 0x0D  (low nibble = movement mode)
@@ -52,6 +62,8 @@ typedef struct Entity {
     s16 unknown_44; // 0x44 (set from BehaviorExtra)
     s16 unknown_46; // 0x46 (set from BehaviorExtra)
     Vector3 unknown_48; // Vector at 0x48 (0x48, 0x4A, 0x4C)
+    u8 pad4E[114];  // Padding up to 0xC0
+    void* ptr_array[1]; // 0xC0
 } Entity;
 
 // Spawner Data containing 32-bit fixed point coordinates

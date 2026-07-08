@@ -26,3 +26,4 @@ glabel func_8003F024
     /* 2F874 8003F074 0800E003 */  jr         $ra
     /* 2F878 8003F078 2000BD27 */   addiu     $sp, $sp, 0x20
 endlabel func_8003F024
+.include "asm/nonmatchings/main/EntityFX_Update/func_8003F07C.s"

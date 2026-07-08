@@ -82,24 +82,25 @@ void EntityLoop_Active(void) {
                             
                             // auStack_60 is at sp + 0x10, local_38 is at sp + 0x38
                             u8 auStack_60[40];
-                            s16 local_38[12];
-                            u8 pad[8];
+                            SVECTOR local_38[4];
                             
                             func_8003B054(auStack_60, p3c + val, 0);
                             
-                            // Manual unroll to force lhu/sh instead of lwl/lwr
-                            local_38[0] = *(s16*)((char*)entity + 0x60);
-                            local_38[1] = *(s16*)((char*)entity + 0x62);
-                            local_38[2] = *(s16*)((char*)entity + 0x64);
-                            local_38[3] = *(s16*)((char*)entity + 0x66);
-                            local_38[4] = *(s16*)((char*)entity + 0x68);
-                            local_38[5] = *(s16*)((char*)entity + 0x6A);
-                            local_38[6] = *(s16*)((char*)entity + 0x6C);
-                            local_38[7] = *(s16*)((char*)entity + 0x6E);
-                            local_38[8] = *(s16*)((char*)entity + 0x70);
-                            local_38[9] = *(s16*)((char*)entity + 0x72);
-                            local_38[10] = *(s16*)((char*)entity + 0x74);
-                            local_38[11] = *(s16*)((char*)entity + 0x76);
+                            local_38[0].x = *(s16*)((char*)entity + 0x60);
+                            local_38[0].y = *(s16*)((char*)entity + 0x62);
+                            local_38[0].z = *(s16*)((char*)entity + 0x64);
+                            
+                            local_38[1].x = *(s16*)((char*)entity + 0x66);
+                            local_38[1].y = *(s16*)((char*)entity + 0x68);
+                            local_38[1].z = *(s16*)((char*)entity + 0x6A);
+                            
+                            local_38[2].x = *(s16*)((char*)entity + 0x6C);
+                            local_38[2].y = *(s16*)((char*)entity + 0x6E);
+                            local_38[2].z = *(s16*)((char*)entity + 0x70);
+                            
+                            local_38[3].x = *(s16*)((char*)entity + 0x72);
+                            local_38[3].y = *(s16*)((char*)entity + 0x74);
+                            local_38[3].z = *(s16*)((char*)entity + 0x76);
                             
                             func_80084660(&DAT_1f8000f8);
                             func_80084690(&DAT_1f8000f8);

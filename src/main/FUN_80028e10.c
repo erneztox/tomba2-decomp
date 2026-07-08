@@ -1,113 +1,119 @@
+#include "tomba.h"
 
-void FUN_80028e10(int param_1,uint param_2)
+extern BehaviorLink D_800A20B4;
 
+void func_80028E10(Entity* entity, u32 id)
 {
-  undefined **ppuVar1;
-  byte bVar2;
-  
-  bVar2 = (byte)param_2;
-  switch((int)param_2 >> 8) {
-  case 1:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8014bd54;
-    break;
-  case 2:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8013882c;
-    break;
-  case 3:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x801389e4;
-    break;
-  case 4:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8011bc4c;
-    break;
-  case 5:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x80143c1c;
-    break;
-  case 6:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8014034c;
-    break;
-  case 7:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8014c868;
-    break;
-  case 8:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x80132de0;
-    break;
-  case 9:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x80145138;
-    break;
-  case 10:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8010e578;
-    break;
-  case 0xb:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8011eb94;
-    break;
-  case 0xc:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8011c09c;
-    break;
-  case 0xd:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8011dcb8;
-    break;
-  case 0xe:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8011cbd8;
-    break;
-  case 0xf:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8011cf0c;
-    break;
-  case 0x10:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x801208d4;
-    break;
-  case 0x11:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8010d5d8;
-    break;
-  case 0x12:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8010c65c;
-    break;
-  case 0x13:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8010cacc;
-    break;
-  case 0x14:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8010d8ac;
-    break;
-  case 0x15:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x8011fc0c;
-    break;
-  case 0x16:
-    *(byte *)(param_1 + 3) = bVar2 | 0x80;
-    ppuVar1 = (undefined **)0x801158a0;
-    break;
-  default:
-    *(byte *)(param_1 + 3) = bVar2;
-    ppuVar1 = &PTR_FUN_800a20b4;
-  }
-  ppuVar1 = ppuVar1 + (param_2 & 0xff) * 3;
-  *(undefined1 *)(param_1 + 0xb) = 0x20;
-  *(undefined **)(param_1 + 0x1c) = *ppuVar1;
-  *(undefined **)(param_1 + 0x18) = ppuVar1[1];
-  if ((undefined2 *)ppuVar1[2] != (undefined2 *)0x0) {
-    *(undefined2 *)(param_1 + 0x44) = *(undefined2 *)ppuVar1[2];
-    *(undefined2 *)(param_1 + 0x46) = *(undefined2 *)(ppuVar1[2] + 2);
-    *(undefined **)(param_1 + 0x38) = ppuVar1[2] + 4;
-  }
-  return;
+    BehaviorLink* link_array;
+    BehaviorLink* selected_link;
+    u8 type_id = (u8)id;
+    
+    switch (id >> 8) {
+    case 1:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8014bd54;
+        break;
+    case 2:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8013882c;
+        break;
+    case 3:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x801389e4;
+        break;
+    case 4:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8011bc4c;
+        break;
+    case 5:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x80143c1c;
+        break;
+    case 6:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8014034c;
+        break;
+    case 7:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8014c868;
+        break;
+    case 8:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x80132de0;
+        break;
+    case 9:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x80145138;
+        break;
+    case 10:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8010e578;
+        break;
+    case 11:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8011eb94;
+        break;
+    case 12:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8011c09c;
+        break;
+    case 13:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8011dcb8;
+        break;
+    case 14:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8011cbd8;
+        break;
+    case 15:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8011cf0c;
+        break;
+    case 16:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x801208d4;
+        break;
+    case 17:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8010d5d8;
+        break;
+    case 18:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8010c65c;
+        break;
+    case 19:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8010cacc;
+        break;
+    case 20:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8010d8ac;
+        break;
+    case 21:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x8011fc0c;
+        break;
+    case 22:
+        entity->unknown_03 = type_id | 0x80;
+        link_array = (BehaviorLink*)0x801158a0;
+        break;
+    default:
+        entity->unknown_03 = type_id;
+        link_array = &D_800A20B4;
+        break;
+    }
+    
+    selected_link = &link_array[id & 0xFF];
+    
+    entity->unknown_0B = 0x20;
+    
+    entity->update_func = selected_link->update_func;
+    entity->draw_func = selected_link->draw_func;
+    
+    if (selected_link->extra_data != 0) {
+        entity->unknown_44 = selected_link->extra_data->unknown_44;
+        entity->unknown_46 = selected_link->extra_data->unknown_46;
+        entity->unknown_38 = (void*)((u8*)selected_link->extra_data + 4);
+    }
 }
 

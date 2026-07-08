@@ -33,7 +33,7 @@ glabel func_8003FA44
     /* 30258 8003FA58 00000000 */   nop
     /* 3025C 8003FA5C C0EF000C */  jal        func_8003BF00
     /* 30260 8003FA60 00000000 */   nop
-    /* 30264 8003FA64 B0FB000C */  jal        func_8003EEC0
+    /* 30264 8003FA64 B0FB000C */  jal        EntityLoop_Background
     /* 30268 8003FA68 00000000 */   nop
     /* 3026C 8003FA6C 62ED000C */  jal        func_8003B588
     /* 30270 8003FA70 00000000 */   nop

@@ -1,6 +1,6 @@
-nonmatching func_8003DF04, 0x12C
+nonmatching Engine_HandleState, 0x12C
 
-glabel func_8003DF04
+glabel Engine_HandleState
     /* 2E704 8003DF04 E8FFBD27 */  addiu      $sp, $sp, -0x18
     /* 2E708 8003DF08 0C80043C */  lui        $a0, %hi(D_800BF870)
     /* 2E70C 8003DF0C 70F88524 */  addiu      $a1, $a0, %lo(D_800BF870)
@@ -78,4 +78,4 @@ glabel func_8003DF04
     /* 2E824 8003E024 00000000 */  nop
     /* 2E828 8003E028 0800E003 */  jr         $ra
     /* 2E82C 8003E02C 1800BD27 */   addiu     $sp, $sp, 0x18
-endlabel func_8003DF04
+endlabel Engine_HandleState

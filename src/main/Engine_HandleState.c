@@ -23,7 +23,7 @@ extern void func_80116778(int*);
  * 
  * @note Original address: 0x8003DF04
  */
-void func_8003DF04(void) {
+void Engine_HandleState(void) {
     if (D_800BF870[0] == 0x15) {
         func_8010BE30(&D_800ED018);
     } else if (D_800BF870[3] == 0) {

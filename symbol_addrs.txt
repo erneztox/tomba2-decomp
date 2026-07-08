@@ -3,3 +3,5 @@ g_InactiveEntitiesList = 0x800FB168;
 g_BackgroundEntitiesList = 0x800F2738;
 EntityLoop_Active = 0x8003C048;
 Engine_ExecuteGameLoop = 0x8003F9A8;
+Engine_HandleState = 0x8003DF04;
+EntityLoop_Background = 0x8003EEC0;

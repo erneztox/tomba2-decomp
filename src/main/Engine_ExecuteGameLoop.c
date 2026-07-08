@@ -11,7 +11,7 @@ extern void func_8003BB50(void);
 extern void func_8003BCF4(void);
 extern void func_8003D0BC(void*);
 extern void func_8003F024(void);
-extern void func_8003DF04(void);
+extern void Engine_HandleState(void);
 extern void EntityLoop_Active(void);
 
 void Engine_ExecuteGameLoop(void) {
@@ -24,6 +24,6 @@ void Engine_ExecuteGameLoop(void) {
     func_8003BCF4();
     func_8003D0BC(&D_800F2418);
     func_8003F024();
-    func_8003DF04();
+    Engine_HandleState();
     EntityLoop_Active();
 }

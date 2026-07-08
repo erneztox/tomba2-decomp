@@ -32,8 +32,10 @@ SECTIONS
         build/asm/main/FUN_80031558.s.o(.text);
         build/src/main/EntityLoop_Active.c.o(.text);
         build/asm/main/FUN_8003C2D4.s.o(.text);
-        build/src/main/func_8003DF04.c.o(.text);
+        build/src/main/Engine_HandleState.c.o(.text);
         build/asm/main/FUN_8003E030.s.o(.text);
+        build/src/main/EntityLoop_Background.c.o(.text);
+        build/asm/main/func_8003EF9C.s.o(.text);
         build/src/main/Engine_ExecuteGameLoop.c.o(.text);
         build/asm/main/FUN_8003FA1C.s.o(.text);
         build/asm/main/FUN_80079c3c.s.o(.text);
@@ -55,8 +57,10 @@ SECTIONS
         build/asm/main/FUN_80031558.s.o(.data);
         build/src/main/EntityLoop_Active.c.o(.data);
         build/asm/main/FUN_8003C2D4.s.o(.data);
-        build/src/main/func_8003DF04.c.o(.data);
+        build/src/main/Engine_HandleState.c.o(.data);
         build/asm/main/FUN_8003E030.s.o(.data);
+        build/src/main/EntityLoop_Background.c.o(.data);
+        build/asm/main/func_8003EF9C.s.o(.data);
         build/src/main/Engine_ExecuteGameLoop.c.o(.data);
         build/asm/main/FUN_8003FA1C.s.o(.data);
         build/asm/main/FUN_80079c3c.s.o(.data);
@@ -78,8 +82,10 @@ SECTIONS
         build/asm/main/FUN_80031558.s.o(.rodata);
         build/src/main/EntityLoop_Active.c.o(.rodata);
         build/asm/main/FUN_8003C2D4.s.o(.rodata);
-        build/src/main/func_8003DF04.c.o(.rodata);
+        build/src/main/Engine_HandleState.c.o(.rodata);
         build/asm/main/FUN_8003E030.s.o(.rodata);
+        build/src/main/EntityLoop_Background.c.o(.rodata);
+        build/asm/main/func_8003EF9C.s.o(.rodata);
         build/src/main/Engine_ExecuteGameLoop.c.o(.rodata);
         build/asm/main/FUN_8003FA1C.s.o(.rodata);
         build/asm/main/FUN_80079c3c.s.o(.rodata);
@@ -101,8 +107,10 @@ SECTIONS
         build/asm/main/FUN_80031558.s.o(.bss);
         build/src/main/EntityLoop_Active.c.o(.bss);
         build/asm/main/FUN_8003C2D4.s.o(.bss);
-        build/src/main/func_8003DF04.c.o(.bss);
+        build/src/main/Engine_HandleState.c.o(.bss);
         build/asm/main/FUN_8003E030.s.o(.bss);
+        build/src/main/EntityLoop_Background.c.o(.bss);
+        build/asm/main/func_8003EF9C.s.o(.bss);
         build/src/main/Engine_ExecuteGameLoop.c.o(.bss);
         build/asm/main/FUN_8003FA1C.s.o(.bss);
         build/asm/main/FUN_80079c3c.s.o(.bss);

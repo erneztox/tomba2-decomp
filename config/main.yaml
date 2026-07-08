@@ -22,6 +22,8 @@ segments:
     vram: 0x80010000
     subsegments:
       - [0x800, asm, asm_start]
+      - [0x16598, c, main/Engine_UpdateInputState]
+      - [0x16814, asm, asm_16814]
       - [0x19610, asm, main/FUN_80028e10]
       - [0x1998C, asm, asm_mid]
       - [0x218F4, asm, main/FUN_800310f4]
@@ -42,10 +44,12 @@ segments:
       - [0x2E704, c, main/Engine_HandleState]
       - [0x2E830, asm, main/FUN_8003E030]
       - [0x2F6C0, c, main/EntityLoop_Background]
-      - [0x2F79C, asm, main/func_8003EF9C]
+      - [0x2F79C, c, main/Entity_UpdateMovement]
       - [0x2F824, c, main/EntityFX_Update]
       - [0x301A8, c, main/Engine_ExecuteGameLoop]
       - [0x3021C, asm, main/FUN_8003FA1C]
+      - [0x40530, c, main/GPU_ProcessRenderQueue]
+      - [0x40684, asm, main/func_8004FE84_tail]
       - [0x6A43C, asm, main/FUN_80079c3c]
       - [0x6A5DC, asm, main/FUN_80079ddc]
       - [0x6B180, asm, main/FUN_8007a980]

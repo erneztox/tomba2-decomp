@@ -1,6 +1,6 @@
-nonmatching func_8003BF00, 0x148
+nonmatching EntityLoop_Background_Draw, 0x148
 
-glabel func_8003BF00
+glabel EntityLoop_Background_Draw
     /* 2C700 8003BF00 801F023C */  lui        $v0, (0x1F800136 >> 16)
     /* 2C704 8003BF04 36014290 */  lbu        $v0, (0x1F800136 & 0xFFFF)($v0)
     /* 2C708 8003BF08 E0FFBD27 */  addiu      $sp, $sp, -0x20
@@ -88,4 +88,4 @@ glabel func_8003BF00
     /* 2C83C 8003C03C 1000B08F */  lw         $s0, 0x10($sp)
     /* 2C840 8003C040 0800E003 */  jr         $ra
     /* 2C844 8003C044 2000BD27 */   addiu     $sp, $sp, 0x20
-endlabel func_8003BF00
+endlabel EntityLoop_Background_Draw

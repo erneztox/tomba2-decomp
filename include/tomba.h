@@ -35,7 +35,9 @@ typedef struct Entity {
     u8 unknown_03;  // 0x03
     u8 pad04[7];    // 0x04 - 0x0A
     u8 action_id;   // 0x0B
-    u8 pad0C[0x0C]; // Padding up to 0x18
+    u8 pad0C;       // 0x0C
+    u8 move_mode;   // 0x0D  (low nibble = movement mode)
+    u8 pad0E[10];  // 0x0E - 0x17
     EntityActionFunc draw_func;   // 0x18
     EntityActionFunc update_func; // 0x1C
     struct Entity* prev; // 0x20

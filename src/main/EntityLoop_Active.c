@@ -6,7 +6,7 @@ extern int DAT_1f8000f8;
 // External functions
 extern void func_8003CCA4(Entity*);
 extern void func_8003F174(Entity*, int);
-extern void func_8003EF9C(Entity*);
+extern void Entity_UpdateMovement(Entity*);
 extern void func_8012A43C(Entity*);
 extern void func_80039F4C(Entity*);
 extern void func_801295B4(Entity*);
@@ -39,7 +39,7 @@ void EntityLoop_Active(void) {
                     func_8003F174(entity, 0);
                     break;
                 case 0x02:
-                    func_8003EF9C(entity);
+                    Entity_UpdateMovement(entity);
                     break;
                 case 0x03:
                     func_8012A43C(entity);

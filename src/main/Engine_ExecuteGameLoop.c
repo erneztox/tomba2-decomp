@@ -2,8 +2,8 @@
 
 extern int D_800F2418;
 
-extern void func_8004FD30(void);
-extern void func_80025D98(void);
+extern void GPU_ProcessRenderQueue(void);
+extern void Engine_UpdateInputState(void);
 extern void EntityLoop_Player(void);
 extern void EntityLoop_Background_Draw(void);
 extern void EntityLoop_Object(void);
@@ -33,13 +33,13 @@ extern void EntityLoop_Background(void);
  * @note Original address: 0x8003F9A8
  */
 void Engine_ExecuteGameLoop(void) {
-    func_8004FD30();
-    func_80025D98();
-    EntityLoop_Player();
+    GPU_ProcessRenderQueue();
+    Engine_UpdateInputState();
+    EntityLoop_Background_Draw();
     EntityLoop_Background();
+    EntityLoop_Player();
     EntityLoop_Object();
     EntityLoop_NPC();
-    EntityLoop_Background_Draw();
     Engine_DispatchStateUpdate(&D_800F2418);
     EntityFX_Update();
     Engine_HandleState();

@@ -11,3 +11,5 @@ EntityLoop_NPC = 0x8003BCF4;
 EntityLoop_Background_Draw = 0x8003BF00;
 Engine_DispatchStateUpdate = 0x8003D0BC;
 EntityFX_Update = 0x8003F024;
+Entity_UpdateMovement = 0x8003EF9C;
+GPU_ProcessRenderQueue = 0x8004FD30;

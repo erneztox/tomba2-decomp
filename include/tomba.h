@@ -29,10 +29,12 @@ typedef struct BehaviorLink {
 
 // Define a generic Entity struct based on observed offsets
 typedef struct Entity {
-    u8 pad00[3];
+    u8 pad00;       // 0x00
+    u8 active_flag; // 0x01
+    u8 pad02;       // 0x02
     u8 unknown_03;  // 0x03
-    u8 pad04[7];
-    u8 unknown_0B;  // 0x0B
+    u8 pad04[7];    // 0x04 - 0x0A
+    u8 action_id;   // 0x0B
     u8 pad0C[0x0C]; // Padding up to 0x18
     EntityActionFunc draw_func;   // 0x18
     EntityActionFunc update_func; // 0x1C
@@ -58,6 +60,13 @@ typedef struct Spawner {
 } Spawner;
 
 // External function signatures required by the engine
+extern Entity* g_ActiveEntitiesList;       // 0x800F2624
+extern Entity* g_InactiveEntitiesList;     // 0x800FB168
+extern Entity* g_BackgroundEntitiesList;   // 0x800F2738
+
+void EntityLoop_Active(void);              // 0x8003C048
+void Engine_ExecuteGameLoop(void);         // 0x8003F9A8
+
 Entity* func_80079C3C(Entity* target, u8 param_2, int mode, int list_id);
 Entity* func_80079DDC(Entity* target, u8 param_2, int mode, int list_id);
 Entity* func_80079F90(Entity* target, u8 param_2, int mode, int list_id);

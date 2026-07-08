@@ -26,24 +26,24 @@ glabel func_80079C3C
     /* 6A470 80079C70 988083AC */   sw        $v1, %lo(D_800E8098)($a0)
     /* 6A474 80079C74 0200E228 */  slti       $v0, $a3, 0x2
     /* 6A478 80079C78 04004014 */  bnez       $v0, .L80079C8C
-    /* 6A47C 80079C7C 1080023C */   lui       $v0, %hi(D_800FB168)
+    /* 6A47C 80079C7C 1080023C */   lui       $v0, %hi(g_InactiveEntitiesList)
     /* 6A480 80079C80 02000224 */  addiu      $v0, $zero, 0x2
     /* 6A484 80079C84 0A00E210 */  beq        $a3, $v0, .L80079CB0
-    /* 6A488 80079C88 1080023C */   lui       $v0, %hi(D_800FB168)
+    /* 6A488 80079C88 1080023C */   lui       $v0, %hi(g_InactiveEntitiesList)
   .L80079C8C:
-    /* 6A48C 80079C8C 68B14424 */  addiu      $a0, $v0, %lo(D_800FB168)
+    /* 6A48C 80079C8C 68B14424 */  addiu      $a0, $v0, %lo(g_InactiveEntitiesList)
     /* 6A490 80079C90 0F80023C */  lui        $v0, %hi(D_800F23A8)
     /* 6A494 80079C94 30E70108 */  j          .L80079CC0
     /* 6A498 80079C98 A8234324 */   addiu     $v1, $v0, %lo(D_800F23A8)
   .L80079C9C:
-    /* 6A49C 80079C9C 0F80023C */  lui        $v0, %hi(D_800F2624)
-    /* 6A4A0 80079CA0 24264424 */  addiu      $a0, $v0, %lo(D_800F2624)
+    /* 6A49C 80079C9C 0F80023C */  lui        $v0, %hi(g_ActiveEntitiesList)
+    /* 6A4A0 80079CA0 24264424 */  addiu      $a0, $v0, %lo(g_ActiveEntitiesList)
     /* 6A4A4 80079CA4 0F80023C */  lui        $v0, %hi(D_800F239C)
     /* 6A4A8 80079CA8 30E70108 */  j          .L80079CC0
     /* 6A4AC 80079CAC 9C234324 */   addiu     $v1, $v0, %lo(D_800F239C)
   .L80079CB0:
-    /* 6A4B0 80079CB0 0F80023C */  lui        $v0, %hi(D_800F2738)
-    /* 6A4B4 80079CB4 38274424 */  addiu      $a0, $v0, %lo(D_800F2738)
+    /* 6A4B0 80079CB0 0F80023C */  lui        $v0, %hi(g_BackgroundEntitiesList)
+    /* 6A4B4 80079CB4 38274424 */  addiu      $a0, $v0, %lo(g_BackgroundEntitiesList)
     /* 6A4B8 80079CB8 0F80023C */  lui        $v0, %hi(D_800F23A0)
     /* 6A4BC 80079CBC A0234324 */  addiu      $v1, $v0, %lo(D_800F23A0)
   .L80079CC0:

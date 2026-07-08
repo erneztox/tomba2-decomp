@@ -16,8 +16,10 @@ extern void FUN_8001e5ec(char*, char*);
 void func_8001DD04(void) {
     volatile int i;
     volatile int val;
-    val = 0xD;
-    for (i = 0; i < 0x3C; i++) {
+    val = 13;
+    i = 0;
+    while (i < 60) {
         val = val * 13;
+        i++;
     }
 }

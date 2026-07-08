@@ -1,0 +1,933 @@
+cpp -nostdinc -undef -I include/ src/main/Entity_Allocator.c | tools/old-gcc/cc1 -quiet -O2 -G 0 -o build/src/main/Entity_Allocator.s
+python3 tools/maspsx/maspsx.py --aspsx-version=2.79 --run-assembler --gnu-as-path mips-linux-gnu-as -EL -I include/ -O2 -o build/src/main/Entity_Allocator.o build/src/main/Entity_Allocator.s
+python3 tools/asm-differ/diff.py --no-pager -mo -f build/src/main/Entity_Allocator.o func_80079DDC
+make[1]: Entering directory '/home/ernesto/Desktop/codes/revert-tomba2'
+make[1]: 'build/src/main/Entity_Allocator.o' is up to date.
+make[1]: Leaving directory '/home/ernesto/Desktop/codes/revert-tomba2'
+TARGET                                                   CURRENT (23118)                            
+[31m1d8:[39m    [31maddiu   sp,sp,-0x18[39m                       [31m<[39m                                                 
+[33m1dc:[39m    lui     [35mt2[39m,%hi(D_800E80A0)                [33mr[39m      [33m19c:[39m    lui     [35mv0[39m,%hi(D_800E80A0)         
+[33m1e0:[39m    lw      t0,%lo(D_800E80A0)([35mt2[39m)            [33mr[39m      [33m1a0:[39m    lw      t0,%lo(D_800E80A0)([35mv0[39m)     
+[94m1e4:[39m    [94mmove    t1,a0[39m                             [94m|[39m      [94m1a4:[39m    [94maddiu   sp,sp,-0x18[39m                
+[94m1e8:[39m    [94mbeqz    t0,3a4[39m [35m~>[39m                         [94m|[39m      [94m1a8:[39m    [94mbnez    t0,1c0[39m [35m~>[39m                  
+[31m1ec:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+1f0:    sw      ra,0x10(sp)                              1ac:    sw      ra,0x10(sp)                
+[94m1f4:[39m    [94mlui     v1,%hi(D_800E7E7D)[39m                [94m|[39m      [94m1b0:[39m    [94mjal     func_80079F90[39m              
+[94m1f8:[39m    [94mlbu     v0,%lo(D_800E7E7D)(v1)[39m            [94m|[39m      [94m1b4:[39m    [94mandi    a1,a1,0xff[39m                 
+[94m1fc:[39m    [94mlw      a0,0x24(t0)[39m                       [94m|[39m      [94m1b8:[39m    [94mj       344[39m [36m~>[39m                     
+[94m200:[39m    [94maddiu   v0,v0,-1[39m                          [94m|[39m      [94m1bc:[39m    [94mnop     [39m                           
+[94m204:[39m    [94msb      v0,%lo(D_800E7E7D)(v1)[39m            [94m|[39m      [94m1c0:[39m [35m~>[39m [94mlui     t1,%hi(D_800E7E7D)[39m         
+[94m208:[39m    [94mli      v0,1[39m                              [94m|[39m      [94m1c4:[39m    [94mlbu     v1,%lo(D_800E7E7D)(t1)[39m     
+[31m20c:[39m    [31mbeq     a3,v0,248[39m [36m~>[39m                      [31m<[39m                                                 
+210:    nop                                              1c8:    nop                                
+[94m214:[39m    [94msw      a0,%lo(D_800E80A0)(t2)[39m            [94m|[39m      [94m1cc:[39m    [94msltiu   v0,v1,3[39m                    
+[94m218:[39m    [94mslti    v0,a3,2[39m                           [94m|[39m      [94m1d0:[39m    [94mbnez    v0,344[39m [36m~>[39m                  
+[94m21c:[39m    [94mbnez    v0,238[39m [32m~>[39m                         [94m|[39m      [94m1d4:[39m    [94mmove    v0,zero[39m                    
+[94m220:[39m    [94mnop     [39m                                  [94m|[39m      [94m1d8:[39m    [94maddiu   v0,v1,-1[39m                   
+[94m224:[39m    [94mlui     v0,%hi(g_InactiveEntitiesList)[39m    [94m|[39m      [94m1dc:[39m    [94msb      v0,%lo(D_800E7E7D)(t1)[39m     
+228:    li      v0,[94m2[39m                              [94mi[39m      1e0:    li      v0,[94m1[39m                       
+                                                  [32m>[39m      [32m1e4:[39m    [32mlw      t2,0x24(t0)[39m                
+[94m22c:[39m    [94mbeq     a3,v0,25c[39m [31m~>[39m                      [94m|[39m      [94m1e8:[39m    [94mbne     a3,v0,204[39m [32m~>[39m               
+[94m230:[39m    [94mnop     [39m                                  [94m|[39m      [94m1ec:[39m    [94mli      v0,2[39m                       
+234:    lui     v0,[94m%hi(g_InactiveEntitiesList)[39m    [94mi[39m      1f0:    lui     v0,[94m%hi(g_ActiveEntitiesList)[39m
+[33m238:[39m [32m~>[39m addiu   [36ma0[39m,v0,[94m%lo(g_InactiveEntitiesList)[39m [33mr[39m      [33m1f4:[39m    addiu   [36mt1[39m,v0,[94m%lo(g_ActiveEntitiesList)[39m
+                                                  [32m>[39m      [32m1f8:[39m    [32mlui     v0,%hi(D_800F239C)[39m         
+23c:    j       26c [93m~>[39m                                   1fc:    j       22c [31m~>[39m                     
+                                                  [32m>[39m      [32m200:[39m    [32maddiu   v1,v0,%lo(D_800F239C)[39m      
+                                                  [32m>[39m      [32m204:[39m [32m~>[39m [32mbeq     a3,v0,21c[39m [93m~>[39m               
+240:    lui     v0,[94m%hi(D_800F23A8)[39m                [94mi[39m      208:    lui     v0,[94m%hi(g_InactiveEntitiesList)[39m
+[33m244:[39m    addiu   [32mv1[39m,v0,[94m%lo(D_800F23A8)[39m             [33mr[39m      [33m20c:[39m    addiu   [36mt1[39m,v0,[94m%lo(g_InactiveEntitiesList)[39m
+248: [36m~>[39m lui     v0,[94m%hi(g_ActiveEntitiesList)[39m      [94mi[39m      210:    lui     v0,[94m%hi(D_800F23A8)[39m         
+[31m24c:[39m    [31maddiu   a0,v0,%lo(g_ActiveEntitiesList)[39m   [31m<[39m                                                 
+250:    j       26c [93m~>[39m                                   214:    j       22c [31m~>[39m                     
+[31m254:[39m    [31mlui     v0,%hi(D_800F239C)[39m                [31m<[39m                                                 
+258:    addiu   v1,v0,[94m%lo(D_800F239C)[39m             [94mi[39m      218:    addiu   v1,v0,[94m%lo(D_800F23A8)[39m      
+25c: [31m~>[39m lui     v0,%hi(g_BackgroundEntitiesList)         21c: [93m~>[39m lui     v0,%hi(g_BackgroundEntitiesList)
+[33m260:[39m    addiu   [36ma0[39m,v0,%lo(g_BackgroundEntitiesList)[33mr[39m      [33m220:[39m    addiu   [36mt1[39m,v0,%lo(g_BackgroundEntitiesList)
+264:    lui     v0,%hi(D_800F23A0)                       224:    lui     v0,%hi(D_800F23A0)         
+268:    addiu   v1,v0,%lo(D_800F23A0)                    228:    addiu   v1,v0,%lo(D_800F23A0)      
+26c: [93m~>[39m li      v0,1                                     22c: [31m~>[39m li      v0,1                       
+270:    beq     a2,v0,[94m2e8[39m [95m~>[39m                      [94mi[39m      230:    beq     a2,v0,[94m2f0[39m [95m~>[39m               
+[31m274:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+278:    slti    v0,a2,2                                  234:    slti    v0,a2,2                    
+[94m27c:[39m    [94mbeqz    v0,298[39m [96m~>[39m                         [94m|[39m      [94m238:[39m    [94mbnez    v0,2b8[39m [96m~>[39m                  
+[31m280:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+[31m284:[39m    [31mbeqz    a2,2b8[39m [92m~>[39m                         [31m<[39m                                                 
+288:    li      v0,2                                     23c:    li      v0,2                       
+[94m28c:[39m    [94mj       394[39m [90m~>[39m                            [94m|[39m      [94m240:[39m    [94mbne     a2,v0,278[39m [92m~>[39m               
+[31m290:[39m    [31mmove    v0,t0[39m                             [31m<[39m                                                 
+[33m294:[39m    li      [32mv1[39m,[94m2[39m                              [33mr[39m      [33m244:[39m    li      [35mv0[39m,[94m3[39m                       
+[94m298:[39m [96m~>[39m [94mbeq     a2,v0,324[39m [35m~>[39m                      [94m|[39m      [94m248:[39m    [94mlw      v0,0x24(a0)[39m                
+29c:    nop                                              24c:    nop                                
+[94m2a0:[39m    [94mli      v0,3[39m                              [94m|[39m      [94m250:[39m    [94mbeqz    v0,328[39m [90m~>[39m                  
+[94m2a4:[39m    [94mbeq     a2,v0,35c[39m [36m~>[39m                      [94m|[39m      [94m254:[39m    [94mlui     v1,%hi(D_800E80A0)[39m         
+[94m2a8:[39m    [94mnop     [39m                                  [94m|[39m      [94m258:[39m    [94msw      t2,%lo(D_800E80A0)(v1)[39m     
+[94m2ac:[39m    [94mj       394[39m [90m~>[39m                            [94m|[39m      [94m25c:[39m    [94msw      v0,0x24(t0)[39m                
+[31m2b0:[39m    [31mmove    v0,t0[39m                             [31m<[39m                                                 
+[31m2b4:[39m    [31mli      v1,2[39m                              [31m<[39m                                                 
+[33m2b8:[39m [92m~>[39m lw      v0,[94m0x20[39m([31mt1[39m)                       [33mr[39m      [33m260:[39m    lw      v0,[94m0x24[39m([32ma0[39m)                
+2bc:    nop                                              264:    nop                                
+[31m2c0:[39m    [31mbeqz    v0,2e8[39m [95m~>[39m                         [31m<[39m                                                 
+[31m2c4:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+[31m2c8:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+[33m2cc:[39m    sw      [93mv0[39m,0x20([95mt0[39m)                       [33mr[39m      [33m268:[39m    sw      [31mt0[39m,0x20([35mv0[39m)                
+[33m2d0:[39m    sw      [31mt1[39m,0x24([95mt0[39m)                       [33mr[39m      [33m26c:[39m    sw      [31mt0[39m,0x24([32ma0[39m)                
+[31m2d4:[39m    [31mlw      v0,0x20(t1)[39m                       [31m<[39m                                                 
+[31m2d8:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+2dc:    j       38c [32m~>[39m                                   270:    j       328 [90m~>[39m                     
+[33m2e0:[39m    sw      [95mt0[39m,[94m0x24[39m([93mv0[39m)                       [33mr[39m      [33m274:[39m    sw      [32ma0[39m,[94m0x20[39m([31mt0[39m)                
+                                                  [32m>[39m      [32m278:[39m [92m~>[39m [32mbne     a2,v0,32c[39m [35m~>[39m               
+[94m2e4:[39m    [94msw      t0,0x20(t1)[39m                       [94m|[39m      [94m27c:[39m    [94mmove    v0,t0[39m                      
+2e8: [95m~>[39m sw      zero,[94m0x20[39m(t0)                     [94mi[39m      280:    sw      zero,[94m0x24[39m(t0)              
+[33m2ec:[39m    lw      v0,0([36ma0[39m)                          [33mr[39m      [33m284:[39m    lw      v0,0([93mv1[39m)                   
+2f0:    nop                                              288:    nop                                
+2f4:    sw      v0,[94m0x24[39m(t0)                       [94mi[39m      28c:    sw      v0,[94m0x20[39m(t0)                
+[33m2f8:[39m    lw      v0,0([36ma0[39m)                          [33mr[39m      [33m290:[39m    lw      v0,0([93mv1[39m)                   
+2fc:    nop                                              294:    nop                                
+300:    bnez    v0,[94m314[39m [31m~>[39m                         [94mi[39m      298:    bnez    v0,[94m2a8[39m [36m~>[39m                  
+304:    nop                                              29c:    nop                                
+308:    j       [94m318[39m [93m~>[39m                            [94mi[39m      2a0:    j       [94m2ac[39m [32m~>[39m                     
+[94m30c:[39m    [94mnop     [39m                                  [94m|[39m      [94m2a4:[39m    [94msw      t0,0(t1)[39m                   
+[33m310:[39m    sw      t0,[94m0[39m([32mv1[39m)                          [33mr[39m      [33m2a8:[39m [36m~>[39m sw      t0,[94m0x24[39m([35mv0[39m)                
+[94m314:[39m [31m~>[39m [94msw      t0,0x20(v0)[39m                       [94m|[39m      [94m2ac:[39m [32m~>[39m [94mlui     v0,%hi(D_800E80A0)[39m         
+318: [93m~>[39m j       [94m38c[39m [32m~>[39m                            [94mi[39m      2b0:    j       [94m324[39m [31m~>[39m                     
+                                                  [32m>[39m      [32m2b4:[39m    [32msw      t0,0(v1)[39m                   
+[94m31c:[39m    [94mnop     [39m                                  [94m|[39m      [94m2b8:[39m [96m~>[39m [94mbnez    a2,32c[39m [35m~>[39m                  
+[94m320:[39m    [94msw      t0,0(a0)[39m                          [94m|[39m      [94m2bc:[39m    [94mmove    v0,t0[39m                      
+[33m324:[39m [35m~>[39m lw      v0,[94m0x24[39m([31mt1[39m)                       [33mr[39m      [33m2c0:[39m    lw      v0,[94m0x20[39m([32ma0[39m)                
+328:    nop                                              2c4:    nop                                
+32c:    beqz    v0,[94m35c[39m [36m~>[39m                         [94mi[39m      2c8:    beqz    v0,[94m328[39m [90m~>[39m                  
+[94m330:[39m    [94mnop     [39m                                  [94m|[39m      [94m2cc:[39m    [94mlui     v1,%hi(D_800E80A0)[39m         
+[94m334:[39m    [94mnop     [39m                                  [94m|[39m      [94m2d0:[39m    [94msw      t2,%lo(D_800E80A0)(v1)[39m     
+[33m338:[39m    sw      [31mt1[39m,0x20(t0)                       [33mr[39m      [33m2d4:[39m    sw      [35mv0[39m,0x20(t0)                
+[33m33c:[39m    lw      v0,[94m0x24[39m([31mt1[39m)                       [33mr[39m      [33m2d8:[39m    lw      v0,[94m0x20[39m([32ma0[39m)                
+340:    nop                                              2dc:    nop                                
+[33m344:[39m    sw      [93mv0[39m,0x24([95mt0[39m)                       [33mr[39m      [33m2e0:[39m    sw      [31mt0[39m,0x24([35mv0[39m)                
+[94m348:[39m    [94mlw      v0,0x24(t1)[39m                       [94m|[39m      [94m2e4:[39m    [94msw      t0,0x20(a0)[39m                
+[31m34c:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+350:    j       38c [32m~>[39m                                   2e8:    j       328 [90m~>[39m                     
+[33m354:[39m    sw      [95mt0[39m,[94m0x20[39m([93mv0[39m)                       [33mr[39m      [33m2ec:[39m    sw      [32ma0[39m,[94m0x24[39m([31mt0[39m)                
+[33m358:[39m    sw      [95mt0[39m,[94m0x24[39m([31mt1[39m)                       [33mr[39m      [33m2f0:[39m [95m~>[39m sw      [95mzero[39m,[94m0x20[39m([31mt0[39m)              
+[33m35c:[39m [36m~>[39m lw      v0,0([32mv1[39m)                          [33mr[39m      [33m2f4:[39m    lw      v0,0([36mt1[39m)                   
+[94m360:[39m    [94msw      zero,0x24(t0)[39m                     [94m|[39m      [94m2f8:[39m    [94mnop     [39m                           
+364:    sw      v0,[94m0x20[39m(t0)                       [94mi[39m      2fc:    sw      v0,[94m0x24[39m(t0)                
+[33m368:[39m    lw      v0,0([32mv1[39m)                          [33mr[39m      [33m300:[39m    lw      v0,0([36mt1[39m)                   
+36c:    nop                                              304:    nop                                
+370:    bnez    v0,[94m384[39m [95m~>[39m                         [94mi[39m      308:    bnez    v0,[94m318[39m [93m~>[39m                  
+374:    nop                                              30c:    nop                                
+378:    j       [94m388[39m [96m~>[39m                            [94mi[39m      310:    j       [94m31c[39m [95m~>[39m                     
+[94m37c:[39m    [94mnop     [39m                                  [94m|[39m      [94m314:[39m    [94msw      t0,0(v1)[39m                   
+[33m380:[39m    sw      t0,[94m0[39m([36ma0[39m)                          [33mr[39m      [33m318:[39m [93m~>[39m sw      t0,[94m0x20[39m([35mv0[39m)                
+                                                  [32m>[39m      [32m31c:[39m [95m~>[39m [32mlui     v0,%hi(D_800E80A0)[39m         
+[33m384:[39m [95m~>[39m sw      t0,[94m0x24[39m([93mv0[39m)                       [33mr[39m      [33m320:[39m    sw      t0,[94m0[39m([36mt1[39m)                   
+[33m388:[39m [96m~>[39m sw      [95mt0[39m,[94m0[39m([32mv1[39m)                          [33mr[39m      [33m324:[39m [31m~>[39m sw      [96mt2[39m,[94m%lo(D_800E80A0)[39m([35mv0[39m)     
+38c: [32m~>[39m move    v0,t0                                    328: [90m~>[39m move    v0,t0                      
+                                                  [32m>[39m      [32m32c:[39m [35m~>[39m [32mlui     v1,%hi(D_800E80A0)[39m         
+                                                  [32m>[39m      [32m330:[39m    [32msw      t2,%lo(D_800E80A0)(v1)[39m     
+390:    li      v1,2                                     334:    li      v1,2                       
+394: [90m~>[39m sb      a3,0xa(v0)                               338:    sb      a3,0xa(v0)                 
+[31m398:[39m    [31mj       3b0[39m [92m~>[39m                            [31m<[39m                                                 
+39c:    sb      v1,0(v0)                                 33c:    sb      v1,0(v0)                   
+3a0:    sb      a1,0xc(v0)                               340:    sb      a1,0xc(v0)                 
+[31m3a4:[39m [35m~>[39m [31mjal     func_80079F90[39m                     [31m<[39m                                                 
+[31m3a8:[39m    [31mmove    a0,t1[39m                             [31m<[39m                                                 
+[31m3ac:[39m    [31mandi    a1,a1,0xff[39m                        [31m<[39m                                                 
+3b0: [92m~>[39m lw      ra,0x10(sp)                              344: [36m~>[39m lw      ra,0x10(sp)                
+3b4:    nop                                              348:    nop                                
+3b8:    jr      ra                                       34c:    jr      ra                         
+[31m3bc:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+3c0:    addiu   sp,sp,0x18                               350:    addiu   sp,sp,0x18                 
+3c4:    lui     t2,%hi(D_800F2398)                       354:    lui     t2,%hi(D_800F2398)         
+3c8:    lw      t0,%lo(D_800F2398)(t2)                   358:    lw      t0,%lo(D_800F2398)(t2)     
+3cc:    nop                                              35c:    nop                                
+3d0:    beqz    t0,58c [90m~>[39m                                360:    beqz    t0,4e8 [96m~>[39m                  
+[31m3d4:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+3d8:    move    t1,a0                                    364:    move    t1,a0                      
+3dc:    lui     v1,%hi(D_800ED8CC)                       368:    lui     v1,%hi(D_800ED8CC)         
+3e0:    lbu     v0,%lo(D_800ED8CC)(v1)                   36c:    lbu     v0,%lo(D_800ED8CC)(v1)     
+3e4:    lw      a0,0x24(t0)                              370:    lw      a0,0x24(t0)                
+3e8:    addiu   v0,v0,-1                                 374:    addiu   v0,v0,-1                   
+3ec:    sb      v0,%lo(D_800ED8CC)(v1)                   378:    sb      v0,%lo(D_800ED8CC)(v1)     
+3f0:    li      v0,1                                     37c:    li      v0,1                       
+3f4:    beq     a3,v0,[94m430[39m [35m~>[39m                      [94mi[39m      380:    beq     a3,v0,[94m3b0[39m [92m~>[39m               
+[31m3f8:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+3fc:    sw      a0,%lo(D_800F2398)(t2)                   384:    sw      a0,%lo(D_800F2398)(t2)     
+400:    slti    v0,a3,2                                  388:    slti    v0,a3,2                    
+404:    bnez    v0,420 [36m~>[39m                                38c:    bnez    v0,3a0 [90m~>[39m                  
+[31m408:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+40c:    lui     v0,%hi(g_InactiveEntitiesList)           390:    lui     v0,%hi(g_InactiveEntitiesList)
+410:    li      v0,2                                     394:    li      v0,2                       
+414:    beq     a3,v0,444 [32m~>[39m                             398:    beq     a3,v0,3c4 [35m~>[39m               
+[31m418:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+41c:    lui     v0,%hi(g_InactiveEntitiesList)           39c:    lui     v0,%hi(g_InactiveEntitiesList)
+420: [36m~>[39m addiu   a0,v0,%lo(g_InactiveEntitiesList)        3a0: [90m~>[39m addiu   a0,v0,%lo(g_InactiveEntitiesList)
+                                                  [32m>[39m      [32m3a4:[39m    [32mlui     v0,%hi(D_800F23A8)[39m         
+424:    j       454 [31m~>[39m                                   3a8:    j       3d4 [36m~>[39m                     
+                                                  [32m>[39m      [32m3ac:[39m    [32maddiu   v1,v0,%lo(D_800F23A8)[39m      
+428:    lui     v0,[94m%hi(D_800F23A8)[39m                [94mi[39m      3b0: [92m~>[39m lui     v0,[94m%hi(g_ActiveEntitiesList)[39m
+[33m42c:[39m    addiu   [32mv1[39m,v0,[94m%lo(D_800F23A8)[39m             [33mr[39m      [33m3b4:[39m    addiu   [32ma0[39m,v0,[94m%lo(g_ActiveEntitiesList)[39m
+430: [35m~>[39m lui     v0,[94m%hi(g_ActiveEntitiesList)[39m      [94mi[39m      3b8:    lui     v0,[94m%hi(D_800F239C)[39m         
+[31m434:[39m    [31maddiu   a0,v0,%lo(g_ActiveEntitiesList)[39m   [31m<[39m                                                 
+438:    j       454 [31m~>[39m                                   3bc:    j       3d4 [36m~>[39m                     
+[31m43c:[39m    [31mlui     v0,%hi(D_800F239C)[39m                [31m<[39m                                                 
+440:    addiu   v1,v0,%lo(D_800F239C)                    3c0:    addiu   v1,v0,%lo(D_800F239C)      
+444: [32m~>[39m lui     v0,%hi(g_BackgroundEntitiesList)         3c4: [35m~>[39m lui     v0,%hi(g_BackgroundEntitiesList)
+448:    addiu   a0,v0,%lo(g_BackgroundEntitiesList)       3c8:    addiu   a0,v0,%lo(g_BackgroundEntitiesList)
+44c:    lui     v0,%hi(D_800F23A0)                       3cc:    lui     v0,%hi(D_800F23A0)         
+450:    addiu   v1,v0,%lo(D_800F23A0)                    3d0:    addiu   v1,v0,%lo(D_800F23A0)      
+454: [31m~>[39m li      v0,1                                     3d4: [36m~>[39m li      v0,1                       
+458:    beq     a2,v0,[94m4d0[39m [93m~>[39m                      [94mi[39m      3d8:    beq     a2,v0,[94m43c[39m [32m~>[39m               
+[31m45c:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+460:    slti    v0,a2,2                                  3dc:    slti    v0,a2,2                    
+464:    beqz    v0,480 [95m~>[39m                                3e0:    beqz    v0,3f8 [31m~>[39m                  
+[94m468:[39m    [94mnop     [39m                                  [94m|[39m      [94m3e4:[39m    [94mli      v0,2[39m                       
+46c:    beqz    a2,4a0 [96m~>[39m                                3e8:    beqz    a2,410 [93m~>[39m                  
+[94m470:[39m    [94mli      v0,2[39m                              [94m|[39m      [94m3ec:[39m    [94mmove    v0,t0[39m                      
+474:    j       57c [92m~>[39m                                   3f0:    j       4d8 [95m~>[39m                     
+[31m478:[39m    [31mmove    v0,t0[39m                             [31m<[39m                                                 
+47c:    li      v1,2                                     3f4:    li      v1,2                       
+480: [95m~>[39m beq     a2,v0,50c [90m~>[39m                             3f8: [31m~>[39m beq     a2,v0,470 [96m~>[39m               
+[31m484:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+488:    li      v0,3                                     3fc:    li      v0,3                       
+48c:    beq     a2,v0,544 [35m~>[39m                             400:    beq     a2,v0,4a4 [92m~>[39m               
+[94m490:[39m    [94mnop     [39m                                  [94m|[39m      [94m404:[39m    [94mmove    v0,t0[39m                      
+494:    j       57c [92m~>[39m                                   408:    j       4d8 [95m~>[39m                     
+[31m498:[39m    [31mmove    v0,t0[39m                             [31m<[39m                                                 
+49c:    li      v1,2                                     40c:    li      v1,2                       
+4a0: [96m~>[39m lw      v0,0x20(t1)                              410: [93m~>[39m lw      v0,0x20(t1)                
+4a4:    nop                                              414:    nop                                
+4a8:    beqz    v0,[94m4d0[39m [93m~>[39m                         [94mi[39m      418:    beqz    v0,[94m43c[39m [32m~>[39m                  
+4ac:    nop                                              41c:    nop                                
+[31m4b0:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+4b4:    sw      v0,0x20(t0)                              420:    sw      v0,0x20(t0)                
+4b8:    sw      t1,0x24(t0)                              424:    sw      t1,0x24(t0)                
+4bc:    lw      v0,0x20(t1)                              428:    lw      v0,0x20(t1)                
+4c0:    nop                                              42c:    nop                                
+                                                  [32m>[39m      [32m430:[39m    [32msw      t0,0x24(v0)[39m                
+4c4:    j       574 [36m~>[39m                                   434:    j       4d0 [90m~>[39m                     
+[33m4c8:[39m    sw      t0,[94m0x24[39m([93mv0[39m)                       [33mr[39m      [33m438:[39m    sw      t0,[94m0x20[39m([36mt1[39m)                
+[33m4cc:[39m    sw      [95mt0[39m,0x20([31mt1[39m)                       [33mr[39m      [33m43c:[39m [32m~>[39m sw      [95mzero[39m,0x20([31mt0[39m)              
+[31m4d0:[39m [93m~>[39m [31msw      zero,0x20(t0)[39m                     [31m<[39m                                                 
+4d4:    lw      v0,0(a0)                                 440:    lw      v0,0(a0)                   
+4d8:    nop                                              444:    nop                                
+4dc:    sw      v0,0x24(t0)                              448:    sw      v0,0x24(t0)                
+4e0:    lw      v0,0(a0)                                 44c:    lw      v0,0(a0)                   
+4e4:    nop                                              450:    nop                                
+4e8:    bnez    v0,4fc [32m~>[39m                                454:    bnez    v0,464 [35m~>[39m                  
+4ec:    nop                                              458:    nop                                
+4f0:    j       500 [31m~>[39m                                   45c:    j       468 [36m~>[39m                     
+[31m4f4:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+4f8:    sw      t0,0(v1)                                 460:    sw      t0,0(v1)                   
+4fc: [32m~>[39m sw      t0,0x20(v0)                              464: [35m~>[39m sw      t0,0x20(v0)                
+500: [31m~>[39m j       574 [36m~>[39m                                   468: [36m~>[39m j       4d0 [90m~>[39m                     
+[31m504:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+508:    sw      t0,0(a0)                                 46c:    sw      t0,0(a0)                   
+50c: [90m~>[39m lw      v0,0x24(t1)                              470: [96m~>[39m lw      v0,0x24(t1)                
+510:    nop                                              474:    nop                                
+514:    beqz    v0,544 [35m~>[39m                                478:    beqz    v0,4a4 [92m~>[39m                  
+518:    nop                                              47c:    nop                                
+[31m51c:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+520:    sw      t1,0x20(t0)                              480:    sw      t1,0x20(t0)                
+524:    lw      v0,0x24(t1)                              484:    lw      v0,0x24(t1)                
+528:    nop                                              488:    nop                                
+52c:    sw      v0,0x24(t0)                              48c:    sw      v0,0x24(t0)                
+530:    lw      v0,0x24(t1)                              490:    lw      v0,0x24(t1)                
+534:    nop                                              494:    nop                                
+                                                  [32m>[39m      [32m498:[39m    [32msw      t0,0x20(v0)[39m                
+538:    j       574 [36m~>[39m                                   49c:    j       4d0 [90m~>[39m                     
+[33m53c:[39m    sw      t0,[94m0x20[39m([93mv0[39m)                       [33mr[39m      [33m4a0:[39m    sw      t0,[94m0x24[39m([36mt1[39m)                
+[31m540:[39m    [31msw      t0,0x24(t1)[39m                       [31m<[39m                                                 
+544: [35m~>[39m lw      v0,0(v1)                                 4a4: [92m~>[39m lw      v0,0(v1)                   
+548:    sw      zero,0x24(t0)                            4a8:    sw      zero,0x24(t0)              
+54c:    sw      v0,0x20(t0)                              4ac:    sw      v0,0x20(t0)                
+550:    lw      v0,0(v1)                                 4b0:    lw      v0,0(v1)                   
+554:    nop                                              4b4:    nop                                
+558:    bnez    v0,56c [93m~>[39m                                4b8:    bnez    v0,4c8 [32m~>[39m                  
+55c:    nop                                              4bc:    nop                                
+560:    j       570 [95m~>[39m                                   4c0:    j       4cc [31m~>[39m                     
+[31m564:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+568:    sw      t0,0(a0)                                 4c4:    sw      t0,0(a0)                   
+56c: [93m~>[39m sw      t0,0x24(v0)                              4c8: [32m~>[39m sw      t0,0x24(v0)                
+570: [95m~>[39m sw      t0,0(v1)                                 4cc: [31m~>[39m sw      t0,0(v1)                   
+574: [36m~>[39m move    v0,t0                                    4d0: [90m~>[39m move    v0,t0                      
+578:    li      v1,2                                     4d4:    li      v1,2                       
+57c: [92m~>[39m sb      a3,0xa(v0)                               4d8: [95m~>[39m sb      a3,0xa(v0)                 
+                                                  [32m>[39m      [32m4dc:[39m    [32msb      v1,0(v0)[39m                   
+580:    jr      ra                                       4e0:    jr      ra                         
+[33m584:[39m    sb      [32mv1[39m,[94m0[39m(v0)                          [33mr[39m      [33m4e4:[39m    sb      [92ma1[39m,[94m0xc[39m(v0)                 
+[31m588:[39m    [31msb      a1,0xc(v0)[39m                        [31m<[39m                                                 
+58c: [90m~>[39m jr      ra                                       4e8: [96m~>[39m jr      ra                         
+[31m590:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+594:    move    v0,zero                                  4ec:    move    v0,zero                    
+598:    lui     t2,%hi(D_800ED8D4)                       4f0:    lui     t2,%hi(D_800ED8D4)         
+59c:    lw      t0,%lo(D_800ED8D4)(t2)                   4f4:    lw      t0,%lo(D_800ED8D4)(t2)     
+5a0:    nop                                              4f8:    nop                                
+5a4:    beqz    t0,760 [96m~>[39m                                4fc:    beqz    t0,684 [93m~>[39m                  
+[31m5a8:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+5ac:    move    t1,a0                                    500:    move    t1,a0                      
+5b0:    lui     v1,%hi(D_800ED8C5)                       504:    lui     v1,%hi(D_800ED8C5)         
+5b4:    lbu     v0,%lo(D_800ED8C5)(v1)                   508:    lbu     v0,%lo(D_800ED8C5)(v1)     
+5b8:    lw      a0,0x24(t0)                              50c:    lw      a0,0x24(t0)                
+5bc:    addiu   v0,v0,-1                                 510:    addiu   v0,v0,-1                   
+5c0:    sb      v0,%lo(D_800ED8C5)(v1)                   514:    sb      v0,%lo(D_800ED8C5)(v1)     
+5c4:    li      v0,1                                     518:    li      v0,1                       
+5c8:    beq     a3,v0,[94m604[39m [92m~>[39m                      [94mi[39m      51c:    beq     a3,v0,[94m54c[39m [95m~>[39m               
+[31m5cc:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+5d0:    sw      a0,%lo(D_800ED8D4)(t2)                   520:    sw      a0,%lo(D_800ED8D4)(t2)     
+5d4:    slti    v0,a3,2                                  524:    slti    v0,a3,2                    
+5d8:    bnez    v0,5f4 [90m~>[39m                                528:    bnez    v0,53c [96m~>[39m                  
+[31m5dc:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+5e0:    lui     v0,%hi(g_InactiveEntitiesList)           52c:    lui     v0,%hi(g_InactiveEntitiesList)
+5e4:    li      v0,2                                     530:    li      v0,2                       
+5e8:    beq     a3,v0,618 [35m~>[39m                             534:    beq     a3,v0,560 [92m~>[39m               
+[31m5ec:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+5f0:    lui     v0,%hi(g_InactiveEntitiesList)           538:    lui     v0,%hi(g_InactiveEntitiesList)
+5f4: [90m~>[39m addiu   a0,v0,%lo(g_InactiveEntitiesList)        53c: [96m~>[39m addiu   a0,v0,%lo(g_InactiveEntitiesList)
+                                                  [32m>[39m      [32m540:[39m    [32mlui     v0,%hi(D_800F23A8)[39m         
+5f8:    j       628 [36m~>[39m                                   544:    j       570 [90m~>[39m                     
+                                                  [32m>[39m      [32m548:[39m    [32maddiu   v1,v0,%lo(D_800F23A8)[39m      
+5fc:    lui     v0,[94m%hi(D_800F23A8)[39m                [94mi[39m      54c: [95m~>[39m lui     v0,[94m%hi(g_ActiveEntitiesList)[39m
+[33m600:[39m    addiu   [32mv1[39m,v0,[94m%lo(D_800F23A8)[39m             [33mr[39m      [33m550:[39m    addiu   [32ma0[39m,v0,[94m%lo(g_ActiveEntitiesList)[39m
+604: [92m~>[39m lui     v0,[94m%hi(g_ActiveEntitiesList)[39m      [94mi[39m      554:    lui     v0,[94m%hi(D_800F239C)[39m         
+[31m608:[39m    [31maddiu   a0,v0,%lo(g_ActiveEntitiesList)[39m   [31m<[39m                                                 
+60c:    j       628 [36m~>[39m                                   558:    j       570 [90m~>[39m                     
+[31m610:[39m    [31mlui     v0,%hi(D_800F239C)[39m                [31m<[39m                                                 
+614:    addiu   v1,v0,%lo(D_800F239C)                    55c:    addiu   v1,v0,%lo(D_800F239C)      
+618: [35m~>[39m lui     v0,%hi(g_BackgroundEntitiesList)         560: [92m~>[39m lui     v0,%hi(g_BackgroundEntitiesList)
+61c:    addiu   a0,v0,%lo(g_BackgroundEntitiesList)       564:    addiu   a0,v0,%lo(g_BackgroundEntitiesList)
+620:    lui     v0,%hi(D_800F23A0)                       568:    lui     v0,%hi(D_800F23A0)         
+624:    addiu   v1,v0,%lo(D_800F23A0)                    56c:    addiu   v1,v0,%lo(D_800F23A0)      
+628: [36m~>[39m li      v0,1                                     570: [90m~>[39m li      v0,1                       
+62c:    beq     a2,v0,[94m6a4[39m [32m~>[39m                      [94mi[39m      574:    beq     a2,v0,[94m5d8[39m [35m~>[39m               
+[31m630:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+634:    slti    v0,a2,2                                  578:    slti    v0,a2,2                    
+638:    beqz    v0,654 [31m~>[39m                                57c:    beqz    v0,594 [36m~>[39m                  
+[94m63c:[39m    [94mnop     [39m                                  [94m|[39m      [94m580:[39m    [94mli      v0,2[39m                       
+640:    beqz    a2,674 [93m~>[39m                                584:    beqz    a2,5ac [32m~>[39m                  
+[94m644:[39m    [94mli      v0,2[39m                              [94m|[39m      [94m588:[39m    [94mmove    v0,t0[39m                      
+648:    j       750 [95m~>[39m                                   58c:    j       674 [31m~>[39m                     
+[31m64c:[39m    [31mmove    v0,t0[39m                             [31m<[39m                                                 
+650:    li      v1,2                                     590:    li      v1,2                       
+654: [31m~>[39m beq     a2,v0,6e0 [96m~>[39m                             594: [36m~>[39m beq     a2,v0,60c [93m~>[39m               
+[31m658:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+65c:    li      v0,3                                     598:    li      v0,3                       
+660:    beq     a2,v0,718 [92m~>[39m                             59c:    beq     a2,v0,640 [95m~>[39m               
+[94m664:[39m    [94mnop     [39m                                  [94m|[39m      [94m5a0:[39m    [94mmove    v0,t0[39m                      
+668:    j       750 [95m~>[39m                                   5a4:    j       674 [31m~>[39m                     
+[31m66c:[39m    [31mmove    v0,t0[39m                             [31m<[39m                                                 
+670:    li      v1,2                                     5a8:    li      v1,2                       
+674: [93m~>[39m lw      v0,0x20(t1)                              5ac: [32m~>[39m lw      v0,0x20(t1)                
+678:    nop                                              5b0:    nop                                
+67c:    beqz    v0,[94m6a4[39m [32m~>[39m                         [94mi[39m      5b4:    beqz    v0,[94m5d8[39m [35m~>[39m                  
+680:    nop                                              5b8:    nop                                
+[31m684:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+688:    sw      v0,0x20(t0)                              5bc:    sw      v0,0x20(t0)                
+68c:    sw      t1,0x24(t0)                              5c0:    sw      t1,0x24(t0)                
+690:    lw      v0,0x20(t1)                              5c4:    lw      v0,0x20(t1)                
+694:    nop                                              5c8:    nop                                
+                                                  [32m>[39m      [32m5cc:[39m    [32msw      t0,0x24(v0)[39m                
+698:    j       748 [90m~>[39m                                   5d0:    j       66c [96m~>[39m                     
+[33m69c:[39m    sw      t0,[94m0x24[39m([93mv0[39m)                       [33mr[39m      [33m5d4:[39m    sw      t0,[94m0x20[39m([36mt1[39m)                
+[33m6a0:[39m    sw      [95mt0[39m,0x20([31mt1[39m)                       [33mr[39m      [33m5d8:[39m [35m~>[39m sw      [95mzero[39m,0x20([31mt0[39m)              
+[31m6a4:[39m [32m~>[39m [31msw      zero,0x20(t0)[39m                     [31m<[39m                                                 
+6a8:    lw      v0,0(a0)                                 5dc:    lw      v0,0(a0)                   
+6ac:    nop                                              5e0:    nop                                
+6b0:    sw      v0,0x24(t0)                              5e4:    sw      v0,0x24(t0)                
+6b4:    lw      v0,0(a0)                                 5e8:    lw      v0,0(a0)                   
+6b8:    nop                                              5ec:    nop                                
+6bc:    bnez    v0,6d0 [35m~>[39m                                5f0:    bnez    v0,600 [92m~>[39m                  
+6c0:    nop                                              5f4:    nop                                
+6c4:    j       6d4 [36m~>[39m                                   5f8:    j       604 [90m~>[39m                     
+[31m6c8:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+6cc:    sw      t0,0(v1)                                 5fc:    sw      t0,0(v1)                   
+6d0: [35m~>[39m sw      t0,0x20(v0)                              600: [92m~>[39m sw      t0,0x20(v0)                
+6d4: [36m~>[39m j       748 [90m~>[39m                                   604: [90m~>[39m j       66c [96m~>[39m                     
+[31m6d8:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+6dc:    sw      t0,0(a0)                                 608:    sw      t0,0(a0)                   
+6e0: [96m~>[39m lw      v0,0x24(t1)                              60c: [93m~>[39m lw      v0,0x24(t1)                
+6e4:    nop                                              610:    nop                                
+6e8:    beqz    v0,718 [92m~>[39m                                614:    beqz    v0,640 [95m~>[39m                  
+6ec:    nop                                              618:    nop                                
+[31m6f0:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+6f4:    sw      t1,0x20(t0)                              61c:    sw      t1,0x20(t0)                
+6f8:    lw      v0,0x24(t1)                              620:    lw      v0,0x24(t1)                
+6fc:    nop                                              624:    nop                                
+700:    sw      v0,0x24(t0)                              628:    sw      v0,0x24(t0)                
+704:    lw      v0,0x24(t1)                              62c:    lw      v0,0x24(t1)                
+708:    nop                                              630:    nop                                
+                                                  [32m>[39m      [32m634:[39m    [32msw      t0,0x20(v0)[39m                
+70c:    j       748 [90m~>[39m                                   638:    j       66c [96m~>[39m                     
+[33m710:[39m    sw      t0,[94m0x20[39m([93mv0[39m)                       [33mr[39m      [33m63c:[39m    sw      t0,[94m0x24[39m([36mt1[39m)                
+[31m714:[39m    [31msw      t0,0x24(t1)[39m                       [31m<[39m                                                 
+718: [92m~>[39m lw      v0,0(v1)                                 640: [95m~>[39m lw      v0,0(v1)                   
+71c:    sw      zero,0x24(t0)                            644:    sw      zero,0x24(t0)              
+720:    sw      v0,0x20(t0)                              648:    sw      v0,0x20(t0)                
+724:    lw      v0,0(v1)                                 64c:    lw      v0,0(v1)                   
+728:    nop                                              650:    nop                                
+72c:    bnez    v0,740 [32m~>[39m                                654:    bnez    v0,664 [35m~>[39m                  
+730:    nop                                              658:    nop                                
+734:    j       744 [31m~>[39m                                   65c:    j       668 [36m~>[39m                     
+[31m738:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+73c:    sw      t0,0(a0)                                 660:    sw      t0,0(a0)                   
+740: [32m~>[39m sw      t0,0x24(v0)                              664: [35m~>[39m sw      t0,0x24(v0)                
+744: [31m~>[39m sw      t0,0(v1)                                 668: [36m~>[39m sw      t0,0(v1)                   
+748: [90m~>[39m move    v0,t0                                    66c: [96m~>[39m move    v0,t0                      
+74c:    li      v1,2                                     670:    li      v1,2                       
+750: [95m~>[39m sb      a3,0xa(v0)                               674: [31m~>[39m sb      a3,0xa(v0)                 
+                                                  [32m>[39m      [32m678:[39m    [32msb      v1,0(v0)[39m                   
+754:    jr      ra                                       67c:    jr      ra                         
+[33m758:[39m    sb      [32mv1[39m,[94m0[39m(v0)                          [33mr[39m      [33m680:[39m    sb      [92ma1[39m,[94m0xc[39m(v0)                 
+[31m75c:[39m    [31msb      a1,0xc(v0)[39m                        [31m<[39m                                                 
+760: [96m~>[39m jr      ra                                       684: [93m~>[39m jr      ra                         
+[31m764:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+768:    move    v0,zero                                  688:    move    v0,zero                    
+76c:    lui     t2,%hi(D_800ED8D0)                       68c:    lui     t2,%hi(D_800ED8D0)         
+770:    lw      t0,%lo(D_800ED8D0)(t2)                   690:    lw      t0,%lo(D_800ED8D0)(t2)     
+774:    nop                                              694:    nop                                
+778:    beqz    t0,934 [93m~>[39m                                698:    beqz    t0,820 [32m~>[39m                  
+[31m77c:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+780:    move    t1,a0                                    69c:    move    t1,a0                      
+784:    lui     v1,%hi(D_800ED8C4)                       6a0:    lui     v1,%hi(D_800ED8C4)         
+788:    lbu     v0,%lo(D_800ED8C4)(v1)                   6a4:    lbu     v0,%lo(D_800ED8C4)(v1)     
+78c:    lw      a0,0x24(t0)                              6a8:    lw      a0,0x24(t0)                
+790:    addiu   v0,v0,-1                                 6ac:    addiu   v0,v0,-1                   
+794:    sb      v0,%lo(D_800ED8C4)(v1)                   6b0:    sb      v0,%lo(D_800ED8C4)(v1)     
+798:    li      v0,1                                     6b4:    li      v0,1                       
+79c:    beq     a3,v0,[94m7d8[39m [95m~>[39m                      [94mi[39m      6b8:    beq     a3,v0,[94m6e8[39m [31m~>[39m               
+[31m7a0:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+7a4:    sw      a0,%lo(D_800ED8D0)(t2)                   6bc:    sw      a0,%lo(D_800ED8D0)(t2)     
+7a8:    slti    v0,a3,2                                  6c0:    slti    v0,a3,2                    
+7ac:    bnez    v0,7c8 [96m~>[39m                                6c4:    bnez    v0,6d8 [93m~>[39m                  
+[31m7b0:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+7b4:    lui     v0,%hi(g_InactiveEntitiesList)           6c8:    lui     v0,%hi(g_InactiveEntitiesList)
+7b8:    li      v0,2                                     6cc:    li      v0,2                       
+7bc:    beq     a3,v0,7ec [92m~>[39m                             6d0:    beq     a3,v0,6fc [95m~>[39m               
+[31m7c0:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+7c4:    lui     v0,%hi(g_InactiveEntitiesList)           6d4:    lui     v0,%hi(g_InactiveEntitiesList)
+7c8: [96m~>[39m addiu   a0,v0,%lo(g_InactiveEntitiesList)        6d8: [93m~>[39m addiu   a0,v0,%lo(g_InactiveEntitiesList)
+                                                  [32m>[39m      [32m6dc:[39m    [32mlui     v0,%hi(D_800F23A8)[39m         
+7cc:    j       7fc [90m~>[39m                                   6e0:    j       70c [96m~>[39m                     
+                                                  [32m>[39m      [32m6e4:[39m    [32maddiu   v1,v0,%lo(D_800F23A8)[39m      
+7d0:    lui     v0,[94m%hi(D_800F23A8)[39m                [94mi[39m      6e8: [31m~>[39m lui     v0,[94m%hi(g_ActiveEntitiesList)[39m
+[33m7d4:[39m    addiu   [32mv1[39m,v0,[94m%lo(D_800F23A8)[39m             [33mr[39m      [33m6ec:[39m    addiu   [32ma0[39m,v0,[94m%lo(g_ActiveEntitiesList)[39m
+7d8: [95m~>[39m lui     v0,[94m%hi(g_ActiveEntitiesList)[39m      [94mi[39m      6f0:    lui     v0,[94m%hi(D_800F239C)[39m         
+[31m7dc:[39m    [31maddiu   a0,v0,%lo(g_ActiveEntitiesList)[39m   [31m<[39m                                                 
+7e0:    j       7fc [90m~>[39m                                   6f4:    j       70c [96m~>[39m                     
+[31m7e4:[39m    [31mlui     v0,%hi(D_800F239C)[39m                [31m<[39m                                                 
+7e8:    addiu   v1,v0,%lo(D_800F239C)                    6f8:    addiu   v1,v0,%lo(D_800F239C)      
+7ec: [92m~>[39m lui     v0,%hi(g_BackgroundEntitiesList)         6fc: [95m~>[39m lui     v0,%hi(g_BackgroundEntitiesList)
+7f0:    addiu   a0,v0,%lo(g_BackgroundEntitiesList)       700:    addiu   a0,v0,%lo(g_BackgroundEntitiesList)
+7f4:    lui     v0,%hi(D_800F23A0)                       704:    lui     v0,%hi(D_800F23A0)         
+7f8:    addiu   v1,v0,%lo(D_800F23A0)                    708:    addiu   v1,v0,%lo(D_800F23A0)      
+7fc: [90m~>[39m li      v0,1                                     70c: [96m~>[39m li      v0,1                       
+800:    beq     a2,v0,[94m878[39m [35m~>[39m                      [94mi[39m      710:    beq     a2,v0,[94m774[39m [92m~>[39m               
+[31m804:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+808:    slti    v0,a2,2                                  714:    slti    v0,a2,2                    
+80c:    beqz    v0,828 [36m~>[39m                                718:    beqz    v0,730 [90m~>[39m                  
+[94m810:[39m    [94mnop     [39m                                  [94m|[39m      [94m71c:[39m    [94mli      v0,2[39m                       
+814:    beqz    a2,848 [32m~>[39m                                720:    beqz    a2,748 [35m~>[39m                  
+[94m818:[39m    [94mli      v0,2[39m                              [94m|[39m      [94m724:[39m    [94mmove    v0,t0[39m                      
+81c:    j       924 [31m~>[39m                                   728:    j       810 [36m~>[39m                     
+[31m820:[39m    [31mmove    v0,t0[39m                             [31m<[39m                                                 
+824:    li      v1,2                                     72c:    li      v1,2                       
+828: [36m~>[39m beq     a2,v0,8b4 [93m~>[39m                             730: [90m~>[39m beq     a2,v0,7a8 [32m~>[39m               
+[31m82c:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+830:    li      v0,3                                     734:    li      v0,3                       
+834:    beq     a2,v0,8ec [95m~>[39m                             738:    beq     a2,v0,7dc [31m~>[39m               
+[94m838:[39m    [94mnop     [39m                                  [94m|[39m      [94m73c:[39m    [94mmove    v0,t0[39m                      
+83c:    j       924 [31m~>[39m                                   740:    j       810 [36m~>[39m                     
+[31m840:[39m    [31mmove    v0,t0[39m                             [31m<[39m                                                 
+844:    li      v1,2                                     744:    li      v1,2                       
+848: [32m~>[39m lw      v0,0x20(t1)                              748: [35m~>[39m lw      v0,0x20(t1)                
+84c:    nop                                              74c:    nop                                
+850:    beqz    v0,[94m878[39m [35m~>[39m                         [94mi[39m      750:    beqz    v0,[94m774[39m [92m~>[39m                  
+854:    nop                                              754:    nop                                
+[31m858:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+85c:    sw      v0,0x20(t0)                              758:    sw      v0,0x20(t0)                
+860:    sw      t1,0x24(t0)                              75c:    sw      t1,0x24(t0)                
+864:    lw      v0,0x20(t1)                              760:    lw      v0,0x20(t1)                
+868:    nop                                              764:    nop                                
+                                                  [32m>[39m      [32m768:[39m    [32msw      t0,0x24(v0)[39m                
+86c:    j       91c [96m~>[39m                                   76c:    j       808 [93m~>[39m                     
+[33m870:[39m    sw      t0,[94m0x24[39m([93mv0[39m)                       [33mr[39m      [33m770:[39m    sw      t0,[94m0x20[39m([36mt1[39m)                
+[33m874:[39m    sw      [95mt0[39m,0x20([31mt1[39m)                       [33mr[39m      [33m774:[39m [92m~>[39m sw      [95mzero[39m,0x20([31mt0[39m)              
+[31m878:[39m [35m~>[39m [31msw      zero,0x20(t0)[39m                     [31m<[39m                                                 
+87c:    lw      v0,0(a0)                                 778:    lw      v0,0(a0)                   
+880:    nop                                              77c:    nop                                
+884:    sw      v0,0x24(t0)                              780:    sw      v0,0x24(t0)                
+888:    lw      v0,0(a0)                                 784:    lw      v0,0(a0)                   
+88c:    nop                                              788:    nop                                
+890:    bnez    v0,8a4 [92m~>[39m                                78c:    bnez    v0,79c [95m~>[39m                  
+894:    nop                                              790:    nop                                
+898:    j       8a8 [90m~>[39m                                   794:    j       7a0 [96m~>[39m                     
+[31m89c:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+8a0:    sw      t0,0(v1)                                 798:    sw      t0,0(v1)                   
+8a4: [92m~>[39m sw      t0,0x20(v0)                              79c: [95m~>[39m sw      t0,0x20(v0)                
+8a8: [90m~>[39m j       91c [96m~>[39m                                   7a0: [96m~>[39m j       808 [93m~>[39m                     
+[31m8ac:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+8b0:    sw      t0,0(a0)                                 7a4:    sw      t0,0(a0)                   
+8b4: [93m~>[39m lw      v0,0x24(t1)                              7a8: [32m~>[39m lw      v0,0x24(t1)                
+8b8:    nop                                              7ac:    nop                                
+8bc:    beqz    v0,8ec [95m~>[39m                                7b0:    beqz    v0,7dc [31m~>[39m                  
+8c0:    nop                                              7b4:    nop                                
+[31m8c4:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+8c8:    sw      t1,0x20(t0)                              7b8:    sw      t1,0x20(t0)                
+8cc:    lw      v0,0x24(t1)                              7bc:    lw      v0,0x24(t1)                
+8d0:    nop                                              7c0:    nop                                
+8d4:    sw      v0,0x24(t0)                              7c4:    sw      v0,0x24(t0)                
+8d8:    lw      v0,0x24(t1)                              7c8:    lw      v0,0x24(t1)                
+8dc:    nop                                              7cc:    nop                                
+                                                  [32m>[39m      [32m7d0:[39m    [32msw      t0,0x20(v0)[39m                
+8e0:    j       91c [96m~>[39m                                   7d4:    j       808 [93m~>[39m                     
+[33m8e4:[39m    sw      t0,[94m0x20[39m([93mv0[39m)                       [33mr[39m      [33m7d8:[39m    sw      t0,[94m0x24[39m([36mt1[39m)                
+[31m8e8:[39m    [31msw      t0,0x24(t1)[39m                       [31m<[39m                                                 
+8ec: [95m~>[39m lw      v0,0(v1)                                 7dc: [31m~>[39m lw      v0,0(v1)                   
+8f0:    sw      zero,0x24(t0)                            7e0:    sw      zero,0x24(t0)              
+8f4:    sw      v0,0x20(t0)                              7e4:    sw      v0,0x20(t0)                
+8f8:    lw      v0,0(v1)                                 7e8:    lw      v0,0(v1)                   
+8fc:    nop                                              7ec:    nop                                
+900:    bnez    v0,914 [35m~>[39m                                7f0:    bnez    v0,800 [92m~>[39m                  
+904:    nop                                              7f4:    nop                                
+908:    j       918 [36m~>[39m                                   7f8:    j       804 [90m~>[39m                     
+[31m90c:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+910:    sw      t0,0(a0)                                 7fc:    sw      t0,0(a0)                   
+914: [35m~>[39m sw      t0,0x24(v0)                              800: [92m~>[39m sw      t0,0x24(v0)                
+918: [36m~>[39m sw      t0,0(v1)                                 804: [90m~>[39m sw      t0,0(v1)                   
+91c: [96m~>[39m move    v0,t0                                    808: [93m~>[39m move    v0,t0                      
+920:    li      v1,2                                     80c:    li      v1,2                       
+924: [31m~>[39m sb      a3,0xa(v0)                               810: [36m~>[39m sb      a3,0xa(v0)                 
+                                                  [32m>[39m      [32m814:[39m    [32msb      v1,0(v0)[39m                   
+928:    jr      ra                                       818:    jr      ra                         
+[33m92c:[39m    sb      [32mv1[39m,[94m0[39m(v0)                          [33mr[39m      [33m81c:[39m    sb      [92ma1[39m,[94m0xc[39m(v0)                 
+[31m930:[39m    [31msb      a1,0xc(v0)[39m                        [31m<[39m                                                 
+934: [93m~>[39m jr      ra                                       820: [32m~>[39m jr      ra                         
+[31m938:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+93c:    move    v0,zero                                  824:    move    v0,zero                    
+940:    lui     t0,%hi(D_800F273C)                       828:    lui     t0,%hi(D_800F273C)         
+944:    lw      a2,%lo(D_800F273C)(t0)                   82c:    lw      a2,%lo(D_800F273C)(t0)     
+948:    nop                                              830:    nop                                
+94c:    beqz    a2,aa4 [32m~>[39m                                834:    beqz    a2,964 [35m~>[39m                  
+[31m950:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+954:    move    a3,a0                                    838:    move    a3,a0                      
+958:    lui     v1,%hi(D_800F2410)                       83c:    lui     v1,%hi(D_800F2410)         
+95c:    lbu     v0,%lo(D_800F2410)(v1)                   840:    lbu     v0,%lo(D_800F2410)(v1)     
+960:    lw      a0,0x24(a2)                              844:    lw      a0,0x24(a2)                
+964:    addiu   v0,v0,-1                                 848:    addiu   v0,v0,-1                   
+968:    sb      v0,%lo(D_800F2410)(v1)                   84c:    sb      v0,%lo(D_800F2410)(v1)     
+96c:    lui     v0,%hi(g_BackgroundEntitiesList)         850:    lui     v0,%hi(g_BackgroundEntitiesList)
+970:    sw      a0,%lo(D_800F273C)(t0)                   854:    sw      a0,%lo(D_800F273C)(t0)     
+974:    addiu   t0,v0,%lo(g_BackgroundEntitiesList)       858:    addiu   t0,v0,%lo(g_BackgroundEntitiesList)
+978:    lui     v0,%hi(D_800F23A0)                       85c:    lui     v0,%hi(D_800F23A0)         
+97c:    addiu   a0,v0,%lo(D_800F23A0)                    860:    addiu   a0,v0,%lo(D_800F23A0)      
+980:    li      v0,1                                     864:    li      v0,1                       
+984:    beq     a1,v0,9fc [31m~>[39m                             868:    beq     a1,v0,8cc [36m~>[39m               
+[31m988:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+98c:    slti    v0,a1,2                                  86c:    slti    v0,a1,2                    
+990:    beqz    v0,9ac [93m~>[39m                                870:    beqz    v0,888 [32m~>[39m                  
+[94m994:[39m    [94mnop     [39m                                  [94m|[39m      [94m874:[39m    [94mli      v0,2[39m                       
+998:    beqz    a1,9cc [95m~>[39m                                878:    beqz    a1,8a0 [31m~>[39m                  
+[94m99c:[39m    [94mli      v0,2[39m                              [94m|[39m      [94m87c:[39m    [94mmove    v0,a2[39m                      
+9a0:    j       a94 [96m~>[39m                                   880:    j       954 [93m~>[39m                     
+[31m9a4:[39m    [31mmove    v0,a2[39m                             [31m<[39m                                                 
+9a8:    li      v1,2                                     884:    li      v1,2                       
+9ac: [93m~>[39m beq     a1,v0,a2c [92m~>[39m                             888: [32m~>[39m beq     a1,v0,8f4 [95m~>[39m               
+[31m9b0:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+9b4:    li      v0,3                                     88c:    li      v0,3                       
+9b8:    beq     a1,v0,a64 [90m~>[39m                             890:    beq     a1,v0,928 [96m~>[39m               
+[94m9bc:[39m    [94mnop     [39m                                  [94m|[39m      [94m894:[39m    [94mmove    v0,a2[39m                      
+9c0:    j       a94 [96m~>[39m                                   898:    j       954 [93m~>[39m                     
+[31m9c4:[39m    [31mmove    v0,a2[39m                             [31m<[39m                                                 
+9c8:    li      v1,2                                     89c:    li      v1,2                       
+9cc: [95m~>[39m lw      v0,0x20(a3)                              8a0: [31m~>[39m lw      v0,0x20(a3)                
+9d0:    nop                                              8a4:    nop                                
+9d4:    beqz    v0,9fc [31m~>[39m                                8a8:    beqz    v0,8cc [36m~>[39m                  
+9d8:    nop                                              8ac:    nop                                
+[31m9dc:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+9e0:    sw      v0,0x20(a2)                              8b0:    sw      v0,0x20(a2)                
+9e4:    sw      a3,0x24(a2)                              8b4:    sw      a3,0x24(a2)                
+9e8:    lw      v0,0x20(a3)                              8b8:    lw      v0,0x20(a3)                
+9ec:    nop                                              8bc:    nop                                
+                                                  [32m>[39m      [32m8c0:[39m    [32msw      a2,0x24(v0)[39m                
+9f0:    j       a8c [35m~>[39m                                   8c4:    j       94c [92m~>[39m                     
+[33m9f4:[39m    sw      a2,[94m0x24[39m([93mv0[39m)                       [33mr[39m      [33m8c8:[39m    sw      a2,[94m0x20[39m([90ma3[39m)                
+[31m9f8:[39m    [31msw      a2,0x20(a3)[39m                       [31m<[39m                                                 
+9fc: [31m~>[39m lw      v0,0(t0)                                 8cc: [36m~>[39m lw      v0,0(t0)                   
+a00:    sw      zero,0x20(a2)                            8d0:    sw      zero,0x20(a2)              
+a04:    move    v1,v0                                    8d4:    move    v1,v0                      
+a08:    bnez    v1,[94ma1c[39m [36m~>[39m                         [94mi[39m      8d8:    bnez    v1,[94m8e8[39m [90m~>[39m                  
+[94ma0c:[39m    [94mnop     [39m                                  [94m|[39m      [94m8dc:[39m    [94msw      v0,0x24(a2)[39m                
+a10:    j       a20 [32m~>[39m                                   8e0:    j       8ec [35m~>[39m                     
+[33ma14:[39m    sw      [93mv0[39m,[94m0x24[39m([96ma2[39m)                       [33mr[39m      [33m8e4:[39m    sw      [35ma2[39m,[94m0[39m([32ma0[39m)                   
+[33ma18:[39m    sw      a2,[94m0[39m([36ma0[39m)                          [33mr[39m      [33m8e8:[39m [90m~>[39m sw      a2,[94m0x20[39m([93mv1[39m)                
+[31ma1c:[39m [36m~>[39m [31msw      a2,0x20(v1)[39m                       [31m<[39m                                                 
+a20: [32m~>[39m j       a8c [35m~>[39m                                   8ec: [35m~>[39m j       94c [92m~>[39m                     
+[31ma24:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+a28:    sw      a2,0(t0)                                 8f0:    sw      a2,0(t0)                   
+a2c: [92m~>[39m lw      v0,0x24(a3)                              8f4: [95m~>[39m lw      v0,0x24(a3)                
+a30:    nop                                              8f8:    nop                                
+a34:    beqz    v0,a64 [90m~>[39m                                8fc:    beqz    v0,928 [96m~>[39m                  
+a38:    nop                                              900:    nop                                
+[31ma3c:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+a40:    sw      a3,0x20(a2)                              904:    sw      a3,0x20(a2)                
+a44:    lw      v0,0x24(a3)                              908:    lw      v0,0x24(a3)                
+a48:    nop                                              90c:    nop                                
+a4c:    sw      v0,0x24(a2)                              910:    sw      v0,0x24(a2)                
+a50:    lw      v0,0x24(a3)                              914:    lw      v0,0x24(a3)                
+a54:    nop                                              918:    nop                                
+                                                  [32m>[39m      [32m91c:[39m    [32msw      a2,0x20(v0)[39m                
+a58:    j       a8c [35m~>[39m                                   920:    j       94c [92m~>[39m                     
+[33ma5c:[39m    sw      a2,[94m0x20[39m([93mv0[39m)                       [33mr[39m      [33m924:[39m    sw      a2,[94m0x24[39m([90ma3[39m)                
+[31ma60:[39m    [31msw      a2,0x24(a3)[39m                       [31m<[39m                                                 
+a64: [90m~>[39m lw      v0,0(a0)                                 928: [96m~>[39m lw      v0,0(a0)                   
+a68:    sw      zero,0x24(a2)                            92c:    sw      zero,0x24(a2)              
+a6c:    move    v1,v0                                    930:    move    v1,v0                      
+a70:    bnez    v1,[94ma84[39m [31m~>[39m                         [94mi[39m      934:    bnez    v1,[94m944[39m [36m~>[39m                  
+[94ma74:[39m    [94mnop     [39m                                  [94m|[39m      [94m938:[39m    [94msw      v0,0x20(a2)[39m                
+a78:    j       [94ma88[39m [93m~>[39m                            [94mi[39m      93c:    j       [94m948[39m [32m~>[39m                     
+[33ma7c:[39m    sw      [93mv0[39m,[94m0x20[39m([96ma2[39m)                       [33mr[39m      [33m940:[39m    sw      [35ma2[39m,[94m0[39m([31mt0[39m)                   
+[33ma80:[39m    sw      a2,[94m0[39m([95mt0[39m)                          [33mr[39m      [33m944:[39m [36m~>[39m sw      a2,[94m0x24[39m([93mv1[39m)                
+[33ma84:[39m [31m~>[39m sw      a2,[94m0x24[39m([32mv1[39m)                       [33mr[39m      [33m948:[39m [32m~>[39m sw      a2,[94m0[39m([32ma0[39m)                   
+[31ma88:[39m [93m~>[39m [31msw      a2,0(a0)[39m                          [31m<[39m                                                 
+a8c: [35m~>[39m move    v0,a2                                    94c: [92m~>[39m move    v0,a2                      
+a90:    li      v1,2                                     950:    li      v1,2                       
+a94: [96m~>[39m sb      v1,0(v0)                                 954: [93m~>[39m sb      v1,0(v0)                   
+                                                  [32m>[39m      [32m958:[39m    [32mli      v1,1[39m                       
+a98:    jr      ra                                       95c:    jr      ra                         
+[31ma9c:[39m    [31mli      v1,1[39m                              [31m<[39m                                                 
+aa0:    sb      v1,0xc(v0)                               960:    sb      v1,0xc(v0)                 
+aa4: [32m~>[39m jr      ra                                       964: [35m~>[39m jr      ra                         
+[31maa8:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+aac:    move    v0,zero                                  968:    move    v0,zero                    
+ab0:    lui     t0,%hi(D_800E8098)                       96c:    lui     t0,%hi(D_800E8098)         
+ab4:    lw      a2,%lo(D_800E8098)(t0)                   970:    lw      a2,%lo(D_800E8098)(t0)     
+ab8:    nop                                              974:    nop                                
+abc:    beqz    a2,b28 [95m~>[39m                                978:    beqz    a2,9e0 [31m~>[39m                  
+[31mac0:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+ac4:    move    t1,a0                                    97c:    move    t1,a0                      
+ac8:    lui     v1,%hi(D_800E7E7C)                       980:    lui     v1,%hi(D_800E7E7C)         
+acc:    lui     a0,%hi(D_800F239C)                       984:    lui     a0,%hi(D_800F239C)         
+ad0:    lw      a1,0x24(a2)                              988:    lw      a1,0x24(a2)                
+ad4:    lbu     v0,%lo(D_800E7E7C)(v1)                   98c:    lbu     v0,%lo(D_800E7E7C)(v1)     
+ad8:    lw      a3,%lo(D_800F239C)(a0)                   990:    lw      a3,%lo(D_800F239C)(a0)     
+adc:    addiu   a0,a0,%lo(D_800F239C)                    994:    addiu   a0,a0,%lo(D_800F239C)      
+ae0:    sw      zero,0x24(a2)                            998:    sw      zero,0x24(a2)              
+ae4:    addiu   v0,v0,-1                                 99c:    addiu   v0,v0,-1                   
+ae8:    sb      v0,%lo(D_800E7E7C)(v1)                   9a0:    sb      v0,%lo(D_800E7E7C)(v1)     
+                                                  [32m>[39m      [32m9a4:[39m    [32msw      a1,%lo(D_800E8098)(t0)[39m     
+aec:    bnez    a3,b04 [96m~>[39m                                9a8:    bnez    a3,9bc [93m~>[39m                  
+[33maf0:[39m    sw      [92ma1[39m,[94m%lo(D_800E8098)[39m([95mt0[39m)            [33mr[39m      [33m9ac:[39m    sw      [90ma3[39m,[94m0x20[39m([35ma2[39m)                
+[94maf4:[39m    [94msw      a3,0x20(a2)[39m                       [94m|[39m      [94m9b0:[39m    [94mlui     v0,%hi(g_ActiveEntitiesList)[39m
+af8:    j       b08 [92m~>[39m                                   9b4:    j       9c0 [95m~>[39m                     
+[31mafc:[39m    [31mlui     v0,%hi(g_ActiveEntitiesList)[39m      [31m<[39m                                                 
+b00:    sw      a2,%lo(g_ActiveEntitiesList)(v0)         9b8:    sw      a2,%lo(g_ActiveEntitiesList)(v0)
+b04: [96m~>[39m sw      a2,0x24(a3)                              9bc: [93m~>[39m sw      a2,0x24(a3)                
+b08: [92m~>[39m move    v0,a2                                    9c0: [95m~>[39m move    v0,a2                      
+b0c:    li      v1,1                                     9c4:    li      v1,1                       
+b10:    sw      v0,0(a0)                                 9c8:    sw      v0,0(a0)                   
+b14:    sb      v1,0xa(v0)                               9cc:    sb      v1,0xa(v0)                 
+b18:    li      v1,2                                     9d0:    li      v1,2                       
+                                                  [32m>[39m      [32m9d4:[39m    [32msb      v1,0(v0)[39m                   
+b1c:    jr      ra                                       9d8:    jr      ra                         
+[33mb20:[39m    sb      [32mv1[39m,[94m0[39m(v0)                          [33mr[39m      [33m9dc:[39m    sb      [36mt1[39m,[94m0xc[39m(v0)                 
+[31mb24:[39m    [31msb      t1,0xc(v0)[39m                        [31m<[39m                                                 
+b28: [95m~>[39m jr      ra                                       9e0: [31m~>[39m jr      ra                         
+[31mb2c:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+b30:    move    v0,zero                                  9e4:    move    v0,zero                    
+b34:    addiu   sp,sp,-0x18                              9e8:    addiu   sp,sp,-0x18                
+b38:    sw      s0,0x10(sp)                              9ec:    sw      s0,0x10(sp)                
+b3c:    move    s0,a0                                    9f0:    move    s0,a0                      
+b40:    sw      ra,0x14(sp)                              9f4:    sw      ra,0x14(sp)                
+b44:    lbu     v0,0xa(s0)                               9f8:    lbu     v0,0xa(s0)                 
+b48:    nop                                              9fc:    nop                                
+b4c:    beqz    v0,b68 [90m~>[39m                                a00:    beqz    v0,a18 [96m~>[39m                  
+[31mb50:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+b54:    lui     v0,%hi(g_ActiveEntitiesList)             a04:    lui     v0,%hi(g_ActiveEntitiesList)
+b58:    addiu   a0,v0,%lo(g_ActiveEntitiesList)          a08:    addiu   a0,v0,%lo(g_ActiveEntitiesList)
+                                                  [32m>[39m      [32ma0c:[39m    [32mlui     v0,%hi(D_800F239C)[39m         
+b5c:    j       b78 [35m~>[39m                                   a10:    j       a28 [92m~>[39m                     
+[31mb60:[39m    [31mlui     v0,%hi(D_800F239C)[39m                [31m<[39m                                                 
+b64:    addiu   a1,v0,%lo(D_800F239C)                    a14:    addiu   a1,v0,%lo(D_800F239C)      
+b68: [90m~>[39m lui     v0,%hi(g_InactiveEntitiesList)           a18: [96m~>[39m lui     v0,%hi(g_InactiveEntitiesList)
+b6c:    addiu   a0,v0,%lo(g_InactiveEntitiesList)        a1c:    addiu   a0,v0,%lo(g_InactiveEntitiesList)
+b70:    lui     v0,%hi(D_800F23A8)                       a20:    lui     v0,%hi(D_800F23A8)         
+b74:    addiu   a1,v0,%lo(D_800F23A8)                    a24:    addiu   a1,v0,%lo(D_800F23A8)      
+b78: [35m~>[39m lw      v1,0x20(s0)                              a28: [92m~>[39m lw      v1,0x20(s0)                
+b7c:    nop                                              a2c:    nop                                
+b80:    beqz    v1,b9c [36m~>[39m                                a30:    beqz    v1,a44 [90m~>[39m                  
+b84:    nop                                              a34:    nop                                
+[31mb88:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+b8c:    lw      v0,0x24(s0)                              a38:    lw      v0,0x24(s0)                
+b90:    j       bc0 [32m~>[39m                                   a3c:    j       a64 [35m~>[39m                     
+[31mb94:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+b98:    sw      v0,0x24(v1)                              a40:    sw      v0,0x24(v1)                
+b9c: [36m~>[39m lw      v0,0x24(s0)                              a44: [90m~>[39m lw      v0,0x24(s0)                
+ba0:    nop                                              a48:    nop                                
+ba4:    sw      v0,0(a0)                                 a4c:    sw      v0,0(a0)                   
+ba8:    lw      v0,0x24(s0)                              a50:    lw      v0,0x24(s0)                
+bac:    nop                                              a54:    nop                                
+bb0:    beqz    v0,be4 [31m~>[39m                                a58:    beqz    v0,a80 [36m~>[39m                  
+bb4:    nop                                              a5c:    nop                                
+[31mbb8:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+bbc:    sw      zero,0x20(v0)                            a60:    sw      zero,0x20(v0)              
+bc0: [32m~>[39m lw      v1,0x24(s0)                              a64: [35m~>[39m lw      v1,0x24(s0)                
+bc4:    nop                                              a68:    nop                                
+bc8:    beqz    v1,be4 [31m~>[39m                                a6c:    beqz    v1,a80 [36m~>[39m                  
+bcc:    nop                                              a70:    nop                                
+[31mbd0:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+bd4:    lw      v0,0x20(s0)                              a74:    lw      v0,0x20(s0)                
+bd8:    j       c08 [93m~>[39m                                   a78:    j       aa0 [32m~>[39m                     
+[31mbdc:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+be0:    sw      v0,0x20(v1)                              a7c:    sw      v0,0x20(v1)                
+be4: [31m~>[39m lw      v0,0x20(s0)                              a80: [36m~>[39m lw      v0,0x20(s0)                
+be8:    nop                                              a84:    nop                                
+bec:    sw      v0,0(a1)                                 a88:    sw      v0,0(a1)                   
+bf0:    lw      v0,0x20(s0)                              a8c:    lw      v0,0x20(s0)                
+bf4:    nop                                              a90:    nop                                
+bf8:    beqz    v0,c08 [93m~>[39m                                a94:    beqz    v0,aa0 [32m~>[39m                  
+bfc:    nop                                              a98:    nop                                
+[31mc00:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+c04:    sw      zero,0x24(v0)                            a9c:    sw      zero,0x24(v0)              
+c08: [93m~>[39m lbu     v0,0x28(s0)                              aa0: [32m~>[39m lbu     v0,0x28(s0)                
+c0c:    nop                                              aa4:    nop                                
+c10:    andi    v0,v0,0x7f                               aa8:    andi    v0,v0,0x7f                 
+c14:    sb      v0,0x28(s0)                              aac:    sb      v0,0x28(s0)                
+c18:    andi    v1,v0,0xff                               ab0:    andi    v1,v0,0xff                 
+c1c:    sltiu   v0,v1,5                                  ab4:    sltiu   v0,v1,5                    
+c20:    beqz    v0,d08 [95m~>[39m                                ab8:    beqz    v0,b94 [31m~>[39m                  
+[31mc24:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+c28:    lui     v0,%hi(jtbl_80016E34)                    abc:    lui     v0,%hi(jtbl_80016E34)      
+c2c:    addiu   v0,v0,%lo(jtbl_80016E34)                 ac0:    addiu   v0,v0,%lo(jtbl_80016E34)   
+c30:    sll     v1,v1,0x2                                ac4:    sll     v1,v1,0x2                  
+c34:    addu    v1,v1,v0                                 ac8:    addu    v1,v1,v0                   
+c38:    lw      v0,0(v1)                                 acc:    lw      v0,0(v1)                   
+c3c:    nop                                              ad0:    nop                                
+c40:    jr      v0                                       ad4:    jr      v0                         
+c44:    nop                                              ad8:    nop                                
+[31mc48:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+c4c:    lui     a0,%hi(D_800E7E7C)                       adc:    lui     a0,%hi(D_800E7E7C)         
+c50:    lui     v1,%hi(D_800E8098)                       ae0:    lui     v1,%hi(D_800E8098)         
+c54:    lbu     v0,%lo(D_800E7E7C)(a0)                   ae4:    lbu     v0,%lo(D_800E7E7C)(a0)     
+c58:    lw      a1,%lo(D_800E8098)(v1)                   ae8:    lw      a1,%lo(D_800E8098)(v1)     
+c5c:    sw      s0,%lo(D_800E8098)(v1)                   aec:    sw      s0,%lo(D_800E8098)(v1)     
+c60:    addiu   v0,v0,1                                  af0:    addiu   v0,v0,1                    
+                                                  [32m>[39m      [32maf4:[39m    [32msb      v0,%lo(D_800E7E7C)(a0)[39m     
+c64:    j       d08 [95m~>[39m                                   af8:    j       b94 [31m~>[39m                     
+[31mc68:[39m    [31msb      v0,%lo(D_800E7E7C)(a0)[39m            [31m<[39m                                                 
+c6c:    sw      a1,0x24(s0)                              afc:    sw      a1,0x24(s0)                
+c70:    lui     a1,%hi(D_800E7E7D)                       b00:    lui     a1,%hi(D_800E7E7D)         
+c74:    lui     v1,%hi(D_800E80A0)                       b04:    lui     v1,%hi(D_800E80A0)         
+c78:    lbu     v0,%lo(D_800E7E7D)(a1)                   b08:    lbu     v0,%lo(D_800E7E7D)(a1)     
+c7c:    lw      a2,%lo(D_800E80A0)(v1)                   b0c:    lw      a2,%lo(D_800E80A0)(v1)     
+c80:    move    a0,s0                                    b10:    move    a0,s0                      
+c84:    sw      s0,%lo(D_800E80A0)(v1)                   b14:    sw      s0,%lo(D_800E80A0)(v1)     
+                                                  [32m>[39m      [32mb18:[39m    [32maddiu   v0,v0,1[39m                    
+c88:    j       cfc [96m~>[39m                                   b1c:    j       b8c [93m~>[39m                     
+[31mc8c:[39m    [31maddiu   v0,v0,1[39m                           [31m<[39m                                                 
+c90:    sb      v0,%lo(D_800E7E7D)(a1)                   b20:    sb      v0,%lo(D_800E7E7D)(a1)     
+c94:    lui     a1,%hi(D_800ED8CC)                       b24:    lui     a1,%hi(D_800ED8CC)         
+c98:    lui     v1,%hi(D_800F2398)                       b28:    lui     v1,%hi(D_800F2398)         
+c9c:    lbu     v0,%lo(D_800ED8CC)(a1)                   b2c:    lbu     v0,%lo(D_800ED8CC)(a1)     
+ca0:    lw      a2,%lo(D_800F2398)(v1)                   b30:    lw      a2,%lo(D_800F2398)(v1)     
+ca4:    move    a0,s0                                    b34:    move    a0,s0                      
+ca8:    sw      s0,%lo(D_800F2398)(v1)                   b38:    sw      s0,%lo(D_800F2398)(v1)     
+                                                  [32m>[39m      [32mb3c:[39m    [32maddiu   v0,v0,1[39m                    
+cac:    j       cfc [96m~>[39m                                   b40:    j       b8c [93m~>[39m                     
+[31mcb0:[39m    [31maddiu   v0,v0,1[39m                           [31m<[39m                                                 
+cb4:    sb      v0,%lo(D_800ED8CC)(a1)                   b44:    sb      v0,%lo(D_800ED8CC)(a1)     
+cb8:    lui     a1,%hi(D_800ED8C5)                       b48:    lui     a1,%hi(D_800ED8C5)         
+cbc:    lui     v1,%hi(D_800ED8D4)                       b4c:    lui     v1,%hi(D_800ED8D4)         
+cc0:    lbu     v0,%lo(D_800ED8C5)(a1)                   b50:    lbu     v0,%lo(D_800ED8C5)(a1)     
+cc4:    lw      a2,%lo(D_800ED8D4)(v1)                   b54:    lw      a2,%lo(D_800ED8D4)(v1)     
+cc8:    move    a0,s0                                    b58:    move    a0,s0                      
+ccc:    sw      s0,%lo(D_800ED8D4)(v1)                   b5c:    sw      s0,%lo(D_800ED8D4)(v1)     
+                                                  [32m>[39m      [32mb60:[39m    [32maddiu   v0,v0,1[39m                    
+cd0:    j       cfc [96m~>[39m                                   b64:    j       b8c [93m~>[39m                     
+[31mcd4:[39m    [31maddiu   v0,v0,1[39m                           [31m<[39m                                                 
+cd8:    sb      v0,%lo(D_800ED8C5)(a1)                   b68:    sb      v0,%lo(D_800ED8C5)(a1)     
+cdc:    lui     a1,%hi(D_800ED8C4)                       b6c:    lui     a1,%hi(D_800ED8C4)         
+ce0:    lui     v1,%hi(D_800ED8D0)                       b70:    lui     v1,%hi(D_800ED8D0)         
+ce4:    lbu     v0,%lo(D_800ED8C4)(a1)                   b74:    lbu     v0,%lo(D_800ED8C4)(a1)     
+ce8:    lw      a2,%lo(D_800ED8D0)(v1)                   b78:    lw      a2,%lo(D_800ED8D0)(v1)     
+cec:    move    a0,s0                                    b7c:    move    a0,s0                      
+cf0:    sw      s0,%lo(D_800ED8D0)(v1)                   b80:    sw      s0,%lo(D_800ED8D0)(v1)     
+cf4:    addiu   v0,v0,1                                  b84:    addiu   v0,v0,1                    
+cf8:    sb      v0,%lo(D_800ED8C4)(a1)                   b88:    sb      v0,%lo(D_800ED8C4)(a1)     
+cfc: [96m~>[39m jal     func_8007ADDC                            b8c: [93m~>[39m jal     func_8007ADDC              
+[31md00:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+d04:    sw      a2,0x24(s0)                              b90:    sw      a2,0x24(s0)                
+d08: [95m~>[39m sw      zero,0(s0)                               b94: [31m~>[39m sw      zero,0(s0)                 
+d0c:    sw      zero,4(s0)                               b98:    sw      zero,4(s0)                 
+d10:    sw      zero,8(s0)                               b9c:    sw      zero,8(s0)                 
+d14:    sw      zero,0xc(s0)                             ba0:    sw      zero,0xc(s0)               
+d18:    sw      zero,0x10(s0)                            ba4:    sw      zero,0x10(s0)              
+d1c:    sw      zero,0x14(s0)                            ba8:    sw      zero,0x14(s0)              
+d20:    sw      zero,0x18(s0)                            bac:    sw      zero,0x18(s0)              
+d24:    sw      zero,0x38(s0)                            bb0:    sw      zero,0x38(s0)              
+d28:    sb      zero,0x2a(s0)                            bb4:    sb      zero,0x2a(s0)              
+d2c:    sb      zero,0x2b(s0)                            bb8:    sb      zero,0x2b(s0)              
+d30:    sb      zero,0x29(s0)                            bbc:    sb      zero,0x29(s0)              
+d34:    sb      zero,0x5e(s0)                            bc0:    sb      zero,0x5e(s0)              
+d38:    lw      ra,0x14(sp)                              bc4:    lw      ra,0x14(sp)                
+d3c:    lw      s0,0x10(sp)                              bc8:    lw      s0,0x10(sp)                
+d40:    jr      ra                                       bcc:    jr      ra                         
+[31md44:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+d48:    addiu   sp,sp,0x18                               bd0:    addiu   sp,sp,0x18                 
+d4c:    addiu   sp,sp,-0x28                              bd4:    addiu   sp,sp,-0x28                
+d50:    lui     a0,%hi(D_800E7E80)                       bd8:    lui     a0,%hi(D_800E7E80)         
+d54:    addiu   a0,a0,%lo(D_800E7E80)                    bdc:    addiu   a0,a0,%lo(D_800E7E80)      
+d58:    move    a1,zero                                  be0:    move    a1,zero                    
+d5c:    li      a2,0x184                                 be4:    li      a2,0x184                   
+d60:    sw      ra,0x20(sp)                              be8:    sw      ra,0x20(sp)                
+d64:    sw      s3,0x1c(sp)                              bec:    sw      s3,0x1c(sp)                
+d68:    sw      s2,0x18(sp)                              bf0:    sw      s2,0x18(sp)                
+                                                  [32m>[39m      [32mbf4:[39m    [32msw      s1,0x14(sp)[39m                
+d6c:    jal     func_8009A420                            bf8:    jal     func_8009A420              
+[33md70:[39m    sw      [90ms1[39m,[93m0x14(sp)[39m                       [33mr[39m      [33mbfc:[39m    sw      [36ms0[39m,[93m0x10(sp)[39m                
+[31md74:[39m    [31msw      s0,0x10(sp)[39m                       [31m<[39m                                                 
+d78:    move    s1,zero                                  c00:    move    s1,zero                    
+d7c:    li      s3,5                                     c04:    li      s3,5                       
+d80:    lui     v0,%hi(D_80100690)                       c08:    lui     v0,%hi(D_80100690)         
+d84:    addiu   v0,v0,%lo(D_80100690)                    c0c:    addiu   v0,v0,%lo(D_80100690)      
+d88:    addiu   s2,v0,0x108                              c10:    addiu   s2,v0,0x108                
+d8c:    move    s0,v0                                    c14:    move    s0,v0                      
+d90:    lui     v0,%hi(g_BackgroundEntitiesList)         c18:    lui     v0,%hi(g_BackgroundEntitiesList)
+d94:    sw      zero,%lo(g_BackgroundEntitiesList)(v0)       c1c:    sw      zero,%lo(g_BackgroundEntitiesList)(v0)
+d98:    lui     v0,%hi(D_800F23A0)                       c20:    lui     v0,%hi(D_800F23A0)         
+d9c:    sw      zero,%lo(D_800F23A0)(v0)                 c24:    sw      zero,%lo(D_800F23A0)(v0)   
+da0: [92m~>[39m move    a0,s0                                    c28: [95m~>[39m move    a0,s0                      
+                                                  [32m>[39m      [32mc2c:[39m    [32mmove    a1,zero[39m                    
+da4:    jal     func_8009A420                            c30:    jal     func_8009A420              
+[31mda8:[39m    [31mmove    a1,zero[39m                           [31m<[39m                                                 
+dac:    li      a2,0x108                                 c34:    li      a2,0x108                   
+db0:    sw      s2,0x24(s0)                              c38:    sw      s2,0x24(s0)                
+db4:    addiu   s2,s2,0x108                              c3c:    addiu   s2,s2,0x108                
+db8:    sb      s3,0x28(s0)                              c40:    sb      s3,0x28(s0)                
+dbc:    addiu   s1,s1,1                                  c44:    addiu   s1,s1,1                    
+dc0:    slti    v0,s1,4                                  c48:    slti    v0,s1,4                    
+dc4:    bnez    v0,da0 [92m~>[39m                                c4c:    bnez    v0,c28 [95m~>[39m                  
+[31mdc8:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+dcc:    addiu   s0,s0,0x108                              c50:    addiu   s0,s0,0x108                
+dd0:    lui     a0,%hi(D_80100690)                       c54:    lui     a0,%hi(D_80100690)         
+dd4:    addiu   a0,a0,%lo(D_80100690)                    c58:    addiu   a0,a0,%lo(D_80100690)      
+dd8:    addiu   v1,s1,-1                                 c5c:    addiu   v1,s1,-1                   
+ddc:    sll     v0,v1,0x5                                c60:    sll     v0,v1,0x5                  
+de0:    addu    v0,v0,v1                                 c64:    addu    v0,v0,v1                   
+de4:    sll     v0,v0,0x3                                c68:    sll     v0,v0,0x3                  
+de8:    addu    v0,v0,a0                                 c6c:    addu    v0,v0,a0                   
+dec:    sw      zero,0x24(v0)                            c70:    sw      zero,0x24(v0)              
+df0:    lui     v0,%hi(D_800F273C)                       c74:    lui     v0,%hi(D_800F273C)         
+df4:    lw      ra,0x20(sp)                              c78:    lw      ra,0x20(sp)                
+df8:    lw      s3,0x1c(sp)                              c7c:    lw      s3,0x1c(sp)                
+dfc:    lw      s2,0x18(sp)                              c80:    lw      s2,0x18(sp)                
+e00:    lw      s1,0x14(sp)                              c84:    lw      s1,0x14(sp)                
+e04:    lw      s0,0x10(sp)                              c88:    lw      s0,0x10(sp)                
+e08:    lui     v1,%hi(D_800F2410)                       c8c:    lui     v1,%hi(D_800F2410)         
+e0c:    sw      a0,%lo(D_800F273C)(v0)                   c90:    sw      a0,%lo(D_800F273C)(v0)     
+e10:    li      v0,4                                     c94:    li      v0,4                       
+                                                  [32m>[39m      [32mc98:[39m    [32msb      v0,%lo(D_800F2410)(v1)[39m     
+e14:    jr      ra                                       c9c:    jr      ra                         
+[31me18:[39m    [31msb      v0,%lo(D_800F2410)(v1)[39m            [31m<[39m                                                 
+e1c:    addiu   sp,sp,0x28                               ca0:    addiu   sp,sp,0x28                 
+e20:    addiu   sp,sp,-0x18                              ca4:    addiu   sp,sp,-0x18                
+e24:    sw      ra,0x10(sp)                              ca8:    sw      ra,0x10(sp)                
+e28:    jal     func_8007982C                            cac:    jal     func_8007982C              
+e2c:    nop                                              cb0:    nop                                
+[31me30:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+e34:    lw      ra,0x10(sp)                              cb4:    lw      ra,0x10(sp)                
+e38:    lui     v0,0x1f80                                cb8:    lui     v0,0x1f80                  
+                                                  [32m>[39m      [32mcbc:[39m    [32msh      zero,0x17c(v0)[39m             
+e3c:    jr      ra                                       cc0:    jr      ra                         
+[31me40:[39m    [31msh      zero,0x17c(v0)[39m                    [31m<[39m                                                 
+e44:    addiu   sp,sp,0x18                               cc4:    addiu   sp,sp,0x18                 
+e48:    lui     v0,%hi(g_InactiveEntitiesList)           cc8:    lui     v0,%hi(g_InactiveEntitiesList)
+e4c:    lw      a0,%lo(g_InactiveEntitiesList)(v0)       ccc:    lw      a0,%lo(g_InactiveEntitiesList)(v0)
+e50:    addiu   sp,sp,-0x18                              cd0:    addiu   sp,sp,-0x18                
+                                                  [32m>[39m      [32mcd4:[39m    [32msw      ra,0x14(sp)[39m                
+e54:    beqz    a0,e88 [90m~>[39m                                cd8:    beqz    a0,d00 [96m~>[39m                  
+[33me58:[39m    sw      [35mra[39m,[93m0x14(sp)[39m                       [33mr[39m      [33mcdc:[39m    sw      [36ms0[39m,[93m0x10(sp)[39m                
+[31me5c:[39m    [31msw      s0,0x10(sp)[39m                       [31m<[39m                                                 
+e60: [35m~>[39m lw      s0,0x24(a0)                              ce0: [92m~>[39m lw      s0,0x24(a0)                
+e64:    lw      v0,0x1c(a0)                              ce4:    lw      v0,0x1c(a0)                
+e68:    nop                                              ce8:    nop                                
+e6c:    jalr    v0                                       cec:    jalr    v0                         
+[31me70:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+e74:    sb      zero,1(a0)                               cf0:    sb      zero,1(a0)                 
+e78:    move    a0,s0                                    cf4:    move    a0,s0                      
+e7c:    bnez    a0,e60 [35m~>[39m                                cf8:    bnez    a0,ce0 [92m~>[39m                  
+e80:    nop                                              cfc:    nop                                
+[31me84:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+e88: [90m~>[39m lui     v0,%hi(g_ActiveEntitiesList)             d00: [96m~>[39m lui     v0,%hi(g_ActiveEntitiesList)
+e8c:    lw      a0,%lo(g_ActiveEntitiesList)(v0)         d04:    lw      a0,%lo(g_ActiveEntitiesList)(v0)
+e90:    nop                                              d08:    nop                                
+e94:    beqz    a0,ec8 [36m~>[39m                                d0c:    beqz    a0,d34 [90m~>[39m                  
+e98:    nop                                              d10:    nop                                
+[31me9c:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+ea0: [32m~>[39m lw      s0,0x24(a0)                              d14: [35m~>[39m lw      s0,0x24(a0)                
+ea4:    lw      v0,0x1c(a0)                              d18:    lw      v0,0x1c(a0)                
+ea8:    nop                                              d1c:    nop                                
+eac:    jalr    v0                                       d20:    jalr    v0                         
+[31meb0:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+eb4:    sb      zero,1(a0)                               d24:    sb      zero,1(a0)                 
+eb8:    move    a0,s0                                    d28:    move    a0,s0                      
+ebc:    bnez    a0,ea0 [32m~>[39m                                d2c:    bnez    a0,d14 [35m~>[39m                  
+ec0:    nop                                              d30:    nop                                
+[31mec4:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+ec8: [36m~>[39m lw      ra,0x14(sp)                              d34: [90m~>[39m lw      ra,0x14(sp)                
+ecc:    lw      s0,0x10(sp)                              d38:    lw      s0,0x10(sp)                
+ed0:    jr      ra                                       d3c:    jr      ra                         
+[31med4:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+ed8:    addiu   sp,sp,0x18                               d40:    addiu   sp,sp,0x18                 
+edc:    addiu   sp,sp,-0x18                              d44:    addiu   sp,sp,-0x18                
+ee0:    sw      ra,0x10(sp)                              d48:    sw      ra,0x10(sp)                
+ee4:    andi    v1,a0,0xff                               d4c:    andi    v1,a0,0xff                 
+ee8:    sltiu   v0,v1,5                                  d50:    sltiu   v0,v1,5                    
+eec:    beqz    v0,f8c [31m~>[39m                                d54:    beqz    v0,dec [36m~>[39m                  
+[31mef0:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+ef4:    move    a3,a2                                    d58:    move    a3,a2                      
+ef8:    lui     v0,%hi(jtbl_80016E4C)                    d5c:    lui     v0,%hi(jtbl_80016E4C)      
+efc:    addiu   v0,v0,%lo(jtbl_80016E4C)                 d60:    addiu   v0,v0,%lo(jtbl_80016E4C)   
+f00:    sll     v1,v1,0x2                                d64:    sll     v1,v1,0x2                  
+f04:    addu    v1,v1,v0                                 d68:    addu    v1,v1,v0                   
+f08:    lw      v0,0(v1)                                 d6c:    lw      v0,0(v1)                   
+f0c:    nop                                              d70:    nop                                
+f10:    jr      v0                                       d74:    jr      v0                         
+f14:    nop                                              d78:    nop                                
+[94mf18:[39m    [94mnop     [39m                                  [94m|[39m      [94md7c:[39m    [94mmove    a0,zero[39m                    
+[94mf1c:[39m    [94mmove    a0,zero[39m                           [94m|[39m      [94md80:[39m    [94mandi    a1,a1,0xff[39m                 
+f20:    jal     func_80079C3C                            d84:    jal     func_80079C3C              
+[94mf24:[39m    [94mandi    a1,a1,0xff[39m                        [94m|[39m      [94md88:[39m    [94mli      a2,3[39m                       
+f28:    j       f8c [31m~>[39m                                   d8c:    j       dec [36m~>[39m                     
+[31mf2c:[39m    [31mli      a2,3[39m                              [31m<[39m                                                 
+f30:    nop                                              d90:    nop                                
+f34:    move    a0,zero                                  d94:    move    a0,zero                    
+                                                  [32m>[39m      [32md98:[39m    [32mandi    a1,a1,0xff[39m                 
+f38:    jal     func_80079DDC                            d9c:    jal     func_80079DDC              
+[94mf3c:[39m    [94mandi    a1,a1,0xff[39m                        [94m|[39m      [94mda0:[39m    [94mli      a2,3[39m                       
+f40:    j       f8c [31m~>[39m                                   da4:    j       dec [36m~>[39m                     
+[31mf44:[39m    [31mli      a2,3[39m                              [31m<[39m                                                 
+f48:    nop                                              da8:    nop                                
+f4c:    move    a0,zero                                  dac:    move    a0,zero                    
+                                                  [32m>[39m      [32mdb0:[39m    [32mandi    a1,a1,0xff[39m                 
+f50:    jal     func_80079F90                            db4:    jal     func_80079F90              
+[94mf54:[39m    [94mandi    a1,a1,0xff[39m                        [94m|[39m      [94mdb8:[39m    [94mli      a2,3[39m                       
+f58:    j       f8c [31m~>[39m                                   dbc:    j       dec [36m~>[39m                     
+[31mf5c:[39m    [31mli      a2,3[39m                              [31m<[39m                                                 
+f60:    nop                                              dc0:    nop                                
+f64:    move    a0,zero                                  dc4:    move    a0,zero                    
+                                                  [32m>[39m      [32mdc8:[39m    [32mandi    a1,a1,0xff[39m                 
+f68:    jal     func_8007A12C                            dcc:    jal     func_8007A12C              
+[94mf6c:[39m    [94mandi    a1,a1,0xff[39m                        [94m|[39m      [94mdd0:[39m    [94mli      a2,3[39m                       
+f70:    j       f8c [31m~>[39m                                   dd4:    j       dec [36m~>[39m                     
+[31mf74:[39m    [31mli      a2,3[39m                              [31m<[39m                                                 
+f78:    nop                                              dd8:    nop                                
+f7c:    move    a0,zero                                  ddc:    move    a0,zero                    
+                                                  [32m>[39m      [32mde0:[39m    [32mandi    a1,a1,0xff[39m                 
+f80:    jal     func_8007A2C8                            de4:    jal     func_8007A2C8              
+[31mf84:[39m    [31mandi    a1,a1,0xff[39m                        [31m<[39m                                                 
+f88:    li      a2,3                                     de8:    li      a2,3                       
+f8c: [31m~>[39m lw      ra,0x10(sp)                              dec: [36m~>[39m lw      ra,0x10(sp)                
+f90:    nop                                              df0:    nop                                
+f94:    jr      ra                                       df4:    jr      ra                         
+[31mf98:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+f9c:    addiu   sp,sp,0x18                               df8:    addiu   sp,sp,0x18                 
+rm build/src/main/Entity_Allocator.s

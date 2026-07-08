@@ -50,9 +50,7 @@ segments:
       - [0x3021C, asm, main/FUN_8003FA1C]
       - [0x40530, c, main/GPU_ProcessRenderQueue]
       - [0x40684, asm, main/func_8004FE84_tail]
-      - [0x6A43C, asm, main/FUN_80079c3c]
-      - [0x6A5DC, asm, main/FUN_80079ddc]
-      - [0x6B180, asm, main/FUN_8007a980]
+      - [0x6A43C, c, main/Entity_Allocator]
       - [0x6B238, asm, asm_end]
       
   - [0xAF000]

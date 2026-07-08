@@ -1,0 +1,96 @@
+python3 tools/asm-differ/diff.py --no-pager -mo -f build/src/main/EntityLoop_Background_Draw.o EntityLoop_Background_Draw
+make[1]: Entering directory '/home/ernesto/Desktop/codes/revert-tomba2'
+make[1]: 'build/src/main/EntityLoop_Background_Draw.o' is up to date.
+make[1]: Leaving directory '/home/ernesto/Desktop/codes/revert-tomba2'
+TARGET                                                   CURRENT (0)                                
+0:    lui     v0,0x1f80                                  0:    lui     v0,0x1f80                    
+4:    lbu     v0,0x136(v0)                               4:    lbu     v0,0x136(v0)                 
+8:    addiu   sp,sp,-0x20                                8:    addiu   sp,sp,-0x20                  
+c:    sw      ra,0x1c(sp)                                c:    sw      ra,0x1c(sp)                  
+10:    sw      s2,0x18(sp)                               10:    sw      s2,0x18(sp)                 
+14:    sw      s1,0x14(sp)                               14:    sw      s1,0x14(sp)                 
+18:    bnez    v0,58 [35m~>[39m                                  18:    bnez    v0,58 [35m~>[39m                    
+1c:    sw      s0,0x10(sp)                               1c:    sw      s0,0x10(sp)                 
+20:    lui     v0,0x1f80                                 20:    lui     v0,0x1f80                   
+24:    ori     v0,v0,0x15c                               24:    ori     v0,v0,0x15c                 
+28:    lui     a0,0x1f80                                 28:    lui     a0,0x1f80                   
+2c:    lhu     a1,0(v0)                                  2c:    lhu     a1,0(v0)                    
+30:    ori     a0,a0,0x154                               30:    ori     a0,a0,0x154                 
+34:    sh      zero,0(v0)                                34:    sh      zero,0(v0)                  
+38:    lui     v0,%hi(D_800F2738)                        38:    lui     v0,%hi(D_800F2738)          
+3c:    lw      v1,0(a0)                                  3c:    lw      v1,0(a0)                    
+40:    addiu   v0,v0,%lo(D_800F2738)                     40:    addiu   v0,v0,%lo(D_800F2738)       
+44:    sw      v0,0(a0)                                  44:    sw      v0,0(a0)                    
+48:    lui     at,0x1f80                                 48:    lui     at,0x1f80                   
+4c:    sh      a1,0x15e(at)                              4c:    sh      a1,0x15e(at)                
+50:    lui     at,0x1f80                                 50:    lui     at,0x1f80                   
+54:    sw      v1,0x158(at)                              54:    sw      v1,0x158(at)                
+58: [35m~>[39m lui     s0,0x1f80                                 58: [35m~>[39m lui     s0,0x1f80                   
+5c:    lh      s0,0x15e(s0)                              5c:    lh      s0,0x15e(s0)                
+60:    lui     s1,0x1f80                                 60:    lui     s1,0x1f80                   
+64:    lw      s1,0x158(s1)                              64:    lw      s1,0x158(s1)                
+68:    beqz    s0,138 [36m~>[39m                                 68:    beqz    s0,138 [36m~>[39m                   
+6c:    lui     v0,%hi(.rodata)                           6c:    lui     v0,%hi(.rodata)             
+70:    addiu   s2,v0,%lo(.rodata)                        70:    addiu   s2,v0,%lo(.rodata)          
+74: [93m~>[39m lw      a0,0(s1)                                  74: [93m~>[39m lw      a0,0(s1)                    
+78:    addiu   s1,s1,4                                   78:    addiu   s1,s1,4                     
+7c:    lbu     v0,1(a0)                                  7c:    lbu     v0,1(a0)                    
+80:    nop                                               80:    nop                                 
+84:    beqz    v0,130 [32m~>[39m                                 84:    beqz    v0,130 [32m~>[39m                   
+88:    addiu   s0,s0,-1                                  88:    addiu   s0,s0,-1                    
+8c:    lbu     v1,0xb(a0)                                8c:    lbu     v1,0xb(a0)                  
+90:    nop                                               90:    nop                                 
+94:    sltiu   v0,v1,0x20                                94:    sltiu   v0,v1,0x20                  
+98:    beqz    v0,130 [32m~>[39m                                 98:    beqz    v0,130 [32m~>[39m                   
+9c:    sll     v0,v1,0x2                                 9c:    sll     v0,v1,0x2                   
+a0:    addu    v0,v0,s2                                  a0:    addu    v0,v0,s2                    
+a4:    lw      v0,0(v0)                                  a4:    lw      v0,0(v0)                    
+a8:    nop                                               a8:    nop                                 
+ac:    jr      v0                                        ac:    jr      v0                          
+b0:    nop                                               b0:    nop                                 
+[7m.rodata+0x0,0x3c                                  [0m[7m       .rodata+0x0,0x3c                           [0m
+b4:    jal     func_8003CCA4                             b4:    jal     func_8003CCA4               
+b8:    nop                                               b8:    nop                                 
+bc:    j       130 [32m~>[39m                                    bc:    j       130 [32m~>[39m                      
+c0:    nop                                               c0:    nop                                 
+[7m.rodata+0x40                                      [0m[7m       .rodata+0x40                               [0m
+c4:    jal     func_8003C2D4                             c4:    jal     func_8003C2D4               
+c8:    nop                                               c8:    nop                                 
+cc:    j       130 [32m~>[39m                                    cc:    j       130 [32m~>[39m                      
+d0:    nop                                               d0:    nop                                 
+[7m.rodata+0x44                                      [0m[7m       .rodata+0x44                               [0m
+d4:    jal     func_8003C464                             d4:    jal     func_8003C464               
+d8:    nop                                               d8:    nop                                 
+dc:    j       130 [32m~>[39m                                    dc:    j       130 [32m~>[39m                      
+e0:    nop                                               e0:    nop                                 
+[7m.rodata+0x48                                      [0m[7m       .rodata+0x48                               [0m
+e4:    jal     func_8003C5F8                             e4:    jal     func_8003C5F8               
+e8:    nop                                               e8:    nop                                 
+ec:    j       130 [32m~>[39m                                    ec:    j       130 [32m~>[39m                      
+f0:    nop                                               f0:    nop                                 
+[7m.rodata+0x4c                                      [0m[7m       .rodata+0x4c                               [0m
+f4:    jal     func_8003C788                             f4:    jal     func_8003C788               
+f8:    nop                                               f8:    nop                                 
+fc:    j       130 [32m~>[39m                                    fc:    j       130 [32m~>[39m                      
+100:    nop                                              100:    nop                                
+[7m.rodata+0x7c                                      [0m[7m       .rodata+0x7c                               [0m
+104:    lui     v0,%hi(D_800BF870)                       104:    lui     v0,%hi(D_800BF870)         
+108:    lbu     v1,%lo(D_800BF870)(v0)                   108:    lbu     v1,%lo(D_800BF870)(v0)     
+10c:    li      v0,0x14                                  10c:    li      v0,0x14                    
+110:    bne     v1,v0,128 [31m~>[39m                             110:    bne     v1,v0,128 [31m~>[39m               
+114:    nop                                              114:    nop                                
+118:    jal     func_8010FC70                            118:    jal     func_8010FC70              
+11c:    nop                                              11c:    nop                                
+120:    j       130 [32m~>[39m                                   120:    j       130 [32m~>[39m                     
+124:    nop                                              124:    nop                                
+128: [31m~>[39m jal     func_8004CC88                            128: [31m~>[39m jal     func_8004CC88              
+12c:    nop                                              12c:    nop                                
+[7m.rodata+0x4,0x8,0xc,0x10,0x14,0x18,0x1c,0x20,0x24,0x28,0x2c,0x30,0x34,0x38,0x50,0x54,0x58,0x5c,0x60,0x64,0x68,0x6c,0x70,0x74,0x78[0m[7m       .rodata+0x4,0x8,0xc,0x10,0x14,0x18,0x1c,0x20,0x24,0x28,0x2c,0x30,0x34,0x38,0x50,0x54,0x58,0x5c,0x60,0x64,0x68,0x6c,0x70,0x74,0x78[0m
+130: [32m~>[39m bnez    s0,74 [93m~>[39m                                 130: [32m~>[39m bnez    s0,74 [93m~>[39m                   
+134:    nop                                              134:    nop                                
+138: [36m~>[39m lw      ra,0x1c(sp)                              138: [36m~>[39m lw      ra,0x1c(sp)                
+13c:    lw      s2,0x18(sp)                              13c:    lw      s2,0x18(sp)                
+140:    lw      s1,0x14(sp)                              140:    lw      s1,0x14(sp)                
+144:    lw      s0,0x10(sp)                              144:    lw      s0,0x10(sp)                
+148:    jr      ra                                       148:    jr      ra                         
+14c:    addiu   sp,sp,0x20                               14c:    addiu   sp,sp,0x20                 

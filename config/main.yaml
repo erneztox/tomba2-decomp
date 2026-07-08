@@ -32,6 +32,8 @@ segments:
       - [0x21D58, asm, main/FUN_80031558]
       - [0x2C848, c, main/EntityLoop_Active]
       - [0x2CAD4, asm, main/FUN_8003C2D4]
+      - [0x2E704, c, main/func_8003DF04]
+      - [0x2E830, asm, main/FUN_8003E030]
       - [0x301A8, c, main/Engine_ExecuteGameLoop]
       - [0x3021C, asm, main/FUN_8003FA1C]
       - [0x6A43C, asm, main/FUN_80079c3c]

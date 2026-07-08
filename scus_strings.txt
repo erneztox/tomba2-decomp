@@ -1,0 +1,416 @@
+PS-X EXE
+Sony Computer Entertainment Inc. for North America area
+\MOVIE\LOGO.STR;1
+file not found
+time out in strNext()
+time out in strNext() 
+     SOFTWARE TERMINATED
+CONSOLE MAY HAVE BEEN MODIFIED
+     CALL 1-888-780-7690
+$Id: sys.c,v 1.140 1998/01/12 07:52:27 noda Exp yos $
+ResetGraph:jtb=%08x,env=%08x
+ResetGraph(%d)...
+SetGraphDebug:level:%d,type:%d reverse:%d
+SetGrapQue(%d)...
+DrawSyncCallback(%08x)...
+SetDispMask(%d)...
+DrawSync(%d)...
+%s:bad RECT
+(%d,%d)-(%d,%d)
+ClearImage
+ClearImage2
+LoadImage
+StoreImage
+MoveImage
+ClearOTag(%08x,%d)...
+ClearOTagR(%08x,%d)...
+DrawOTag(%08x)...
+PutDrawEnv(%08x)...
+DrawOTagEnv(%08x,&08x)...
+PutDispEnv(%08x)...
+GPU timeout:que=%d,stat=%08x,chcr=%08x,madr=%08x
+LoadImage2
+id  =%08x
+mode=%08x
+timaddr=%08x
+analizing TMD...
+	id=%08X, flags=%d, nobj=%d, objid=%d
+	vert=%08X, nvert=%d
+	norm=%08X, nnorm=%d
+	prim=%08X, nprim=%d
+F3L 
+G3L 
+FT3L 
+GT3L 
+FT3 
+GT3 
+F4L 
+G4L 
+FT4L 
+GT4L 
+FT4 
+GT4 
+unsupported type (%08x)
+VSync: timeout
+$Id: intr.c,v 1.75 1997/02/07 09:00:36 makoto Exp $
+unexpected interrupt(%04x)
+intr timeout(%04x:%04x)
+DMA bus error: code=%08x
+MADR[%d]=%08x
+CdInit: Init failed
+none
+CdlReadS
+CdlSeekP
+CdlSeekL
+CdlGetTD
+CdlGetTN
+CdlGetlocP
+CdlGetlocL
+CdlSetmode
+CdlSetfilter
+CdlDemute
+CdlMute
+CdlReset
+CdlPause
+CdlStop
+CdlStandby
+CdlReadN
+CdlBackward
+CdlForward
+CdlPlay
+CdlSetloc
+CdlNop
+CdlSync
+DiskError
+DataEnd
+Acknowledge
+Complete
+DataReady
+NoIntr
+CD timeout: 
+%s:(%s) Sync=%s, Ready=%s
+DiskError: 
+com=%s,code=(%02x:%02x)
+CDROM: unknown intr
+(%d)
+CD_sync
+CD_ready
+%s...
+%s: no param
+CD_cw
+$Id: bios.c,v 1.86 1997/03/28 07:42:42 makoto Exp yos $
+CD_init:
+addr=%08x
+CD_datasync
+%s: path level (%d) error
+%s: dir was not found
+CdSearchFile: disc error
+CdSearchFile: searching %s...
+%s:  found
+%s: not found
+CD_newmedia: Read error in cd_read(PVD)
+CD001
+CD_newmedia: Disc format error in cd_read(PVD)
+CD_newmedia: Read error (PT:%08x)
+CD_newmedia: sarching dir..
+	%08x,%04x,%04x,%s
+CD_newmedia: %d dir entries found
+CD_cachefile: dir not found
+CD_cachefile: searching...
+	(%02x:%02x:%02x) %8d %s
+CD_cachefile: %d files found
+CdRead: sector error
+CdRead: Shell open...
+CdRead: retry...
+DMA STATUS ERROR %x
+SPU:T/O [%s]
+wait (reset)
+wait (wrdy H -> L)
+wait (dmaf clear/W)
+0123456789abcdef
+(null)
+0123456789ABCDEF
+<NULL>
+MDEC_rest:bad option(%d)
+MDEC_in_sync
+MDEC_out_sync
+%s timeout:
+'!  
+&! @
+&! `
+&! `
+&! `
+<TT"
+<TT 
+<TT"
+<TTc
+<TT"
+<TT"
+<NTB
+<DT"
+<TT"
+c0! 
+<LTc$
+<DTB$
+<TT"
+<DTB$
+<TT"
+<DT0
+<TT"
+<TT"
+<TT"
+<TT"
+<TT"
+<DT"
+<TT"
+<TT"
+<DT"
+<TT"
+<MTB
+<TT"
+<TT0
+<TT"
+<TT 
+<TT"
+<!PB
+<4TB
+<@TB
+<XTB
+<4Tc
+<XT"
+<@Tc
+<XTB
+<XT 
+<8Tc
+<4Tc
+<<Tc
+<8TB
+<4Tc
+<<Tc
+<LTc
+<4Tc
+<@Tc
+<4Tc
+<<Tc
+<4TB
+<<TB
+<4TB
+<8Tc
+'!  
+B$FJ
+B$FJ
+B$UJ
+b0!8
+<tTs&
+Uc$$
+Uc$$
+0&! 
+D&!( 
+Us& 
+$!(@
+0&! 
+d&!( 
+$!(`
+$!(`
+$!( 
+b$|P
+<4VB
+<,Vc
+<0VB
+<4VB
+<4VB
+<4VB
+<$0&
+< VB
+<$Vc
+<(VB
+< VB
+<$Vc
+<(VB
+< VB
+<$VB
+<(VB
+<<VB
+<@Vc
+<DV"
+<<Vc
+<@VB
+<(VB
+<<Vc
+<<VB
+<<Vc
+<<Vc
+<<Vc
+<<Vc
+<<VB
+<<VB
+<@Vc
+<(VB
+<@Vc
+<(VB
+<@VB
+<<Vc
+< UB
+<@Vc
+<@VB
+<@V"
+<<Vc
+<@VB
+<(VB
+<<Vc
+<@VB
+<(VB
+<<VB
+<@Vc
+<@V 
+<@Vc
+<LV"
+<<V#
+<(Vc
+<8Vc
+<(Vc
+<8Vc
+<<Vc
+<@VB
+<(VB
+<<VB
+<@Vc
+<(VB
+<PV"
+<TV 
+<PVc
+<TVc$
+< VB
+<@Vc
+<(VB
+<@V 
+<@Vc
+<LV"
+<<V#
+<(Vc
+<8Vc
+?B0%
+<(Vc
+<PV"
+<TV 
+<(VB
+<(Vc
+<PV"
+<TV 
+<(VB
+<(Vc
+<PV"
+<TV 
+<(VB
+<(Vc
+<PV"
+<TV 
+<(VB
+B4PL
+c0% 
+<dVB
+<dV"
+<dV"
+<dV 
+<h|B$
+<hVB
+<lVc
+<|VB
+<|VB
+<|Vc
+<tgB
+<tgB
+<tgB
+<tgB
+<tgB
+<tgB
+<tgB
+<|gB
+<|gc
+<xgc
+<|gB
+<tgc
+V1&$
+<xgB
+<|gB
+<xgc
+<|gB
+<xgB
+<|gB
+P.g^
+<|gB
+<|gB
+wwc4$
+<8h#
+<Hhc$$
+$!( 
+2!( 
+<Hhc$ 
+$!( 
+d2!( 
+<Hhc$$
+$!( 
+2!( 
+ff	<gf)5
+<tis&!
+k1& 
+'! @
+<<hB
+<<hB
+B$"n
+<<hB
+<8hc
+<<hB
+<8hc
+<<hB
+$!(@
+<<hB
+<<hB
+<$l1&
+<<hB
+<<hc
+<8hB
+<<hB
+<HlB
+<TlB
+D$&e
+B$@!
+C	c4
+<rmB$
+B$et
+<,mB$
+< m 
+<$m%
+<@m 
+<<m 
+<tm 
+<xmB
+c$! 
+B4Aw
+c$Aw
+$!( 
+$!( 
+<xmc
+b2c{
+c2c{
+R&c{
+< tc
+< tc
+)% H%
+)1%H
+w{o9g
+VsN1F
+LDDDDDDD
+LDDDDDDD
+DDDDD
+ADDD
+cdrom:\MAIN.EXE;1
+("-&1)5,8/;1=3>4?5@6
+Library Programs (c) 1993-1997 Sony Computer Entertainment Inc., All Rights Reserved.
+         
+                  
+AAAAAA
+BBBBBB
+  ""%&%##"#&&(((00..88:EES
+  ""%&%##"#&&(((00..88:EES
+0Avmj

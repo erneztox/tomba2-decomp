@@ -27,6 +27,10 @@ segments:
       - [0x21AD4, asm, main/FUN_800312d4]
       - [0x21BA0, asm, main/FUN_800313a0]
       - [0x21C70, asm, main/FUN_80031470]
-      - [0x21D58, asm, asm_end]
+      - [0x21D58, asm, main/FUN_80031558]
+      - [0x6A43C, asm, main/FUN_80079c3c]
+      - [0x6A5DC, asm, main/FUN_80079ddc]
+      - [0x6B180, asm, main/FUN_8007a980]
+      - [0x6B238, asm, asm_end]
       
   - [0xAF000]

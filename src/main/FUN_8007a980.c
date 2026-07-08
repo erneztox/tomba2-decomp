@@ -1,23 +1,22 @@
+#include "tomba.h"
 
-void FUN_8007a980(undefined1 param_1,undefined1 param_2,undefined4 param_3)
-
+/**
+ * @brief Main Entity Allocator Router.
+ * Routes the allocation request to the correct internal memory pool based on param_1.
+ */
+Entity* func_8007A980(u8 param_1, u8 param_2, int param_3)
 {
-  switch(param_1) {
-  case 0:
-    FUN_80079c3c(0,param_2,3);
-    break;
-  case 1:
-    FUN_80079ddc(0,param_2,3);
-    break;
-  case 2:
-    FUN_80079f90(0,param_2,3);
-    break;
-  case 3:
-    FUN_8007a12c(0,param_2,3);
-    break;
-  case 4:
-    FUN_8007a2c8(0,param_2,3,param_3);
-  }
-  return;
+    switch (param_1) {
+    case 0:
+        return func_80079C3C(0, param_2, 3, param_3);
+    case 1:
+        return func_80079DDC(0, param_2, 3, param_3);
+    case 2:
+        return func_80079F90(0, param_2, 3, param_3);
+    case 3:
+        return func_8007A12C(0, param_2, 3, param_3);
+    case 4:
+        return func_8007A2C8(0, param_2, 3, param_3);
+    }
 }
 

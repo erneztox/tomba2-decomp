@@ -1,0 +1,28 @@
+name: MAIN.EXE
+sha1: "f41c4065788e8c838cbd8b22f0fff6d4bc7de49a"
+options:
+  platform: psx
+  basename: main
+  target_path: rom/extracted/MAIN.EXE
+  base_path: ..
+  compiler: PsyQ
+  find_file_boundaries: yes
+  header_encoding: ascii
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+
+segments:
+  - name: header
+    type: header
+    start: 0x0
+
+  - name: main
+    type: code
+    start: 0x800
+    vram: 0x80010000
+    subsegments:
+      - [0x800, asm, asm_start]
+      - [0x2196C, asm, main/FUN_8003116c]
+      - [0x21AD4, asm, asm_end]
+      
+  - [0xAF000]

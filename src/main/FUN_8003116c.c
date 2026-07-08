@@ -1,21 +1,35 @@
+#include "tomba.h"
 
-int FUN_8003116c(undefined4 param_1,int param_2,undefined2 param_3)
+// Define a placeholder variable used in the condition
+extern u8 D_800E7E7C;
 
+/**
+ * @brief Spawns a new entity and initializes its position.
+ * 
+ * Allocates a new entity. If successful, copies the upper 16 bits of the 
+ * Spawner's 32-bit X, Y, Z coordinates into the Entity's 16-bit position vector.
+ * 
+ * @param param_1 Unknown parameter passed to initialization.
+ * @param spawner Pointer to the Spawner data containing 32-bit fixed point coordinates.
+ * @param param_3 Unknown parameter assigned to entity offset 0x32.
+ * @return Entity* Pointer to the newly spawned entity, or NULL if it failed.
+ */
+Entity* func_8003116C(int param_1, Spawner* spawner, s16 param_3)
 {
-  int iVar1;
-  
-  if ((DAT_800e7e7c < 7) || (iVar1 = FUN_8007a980(0,6,1), iVar1 == 0)) {
-    iVar1 = 0;
-  }
-  else {
-    if (param_2 != 0) {
-      *(undefined2 *)(iVar1 + 0x2c) = *(undefined2 *)(param_2 + 2);
-      *(undefined2 *)(iVar1 + 0x2e) = *(undefined2 *)(param_2 + 6);
-      *(undefined2 *)(iVar1 + 0x30) = *(undefined2 *)(param_2 + 10);
-    }
-    *(undefined2 *)(iVar1 + 0x32) = param_3;
-    FUN_80028e10(iVar1,param_1);
-  }
-  return iVar1;
-}
+    Entity* entity;
 
+    if ((D_800E7E7C < 7) || (entity = func_8007A980(0, 6, 1), entity == 0)) {
+        entity = 0;
+    }
+    else {
+        if (spawner != 0) {
+            // PsyQ gcc optimizes x >> 16 to a 16-bit load from +2
+            entity->pos.x = spawner->x >> 16;
+            entity->pos.y = spawner->y >> 16;
+            entity->pos.z = spawner->z >> 16;
+        }
+        entity->unknown_32 = param_3;
+        func_80028E10(entity, param_1);
+    }
+    return entity;
+}

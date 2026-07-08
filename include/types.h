@@ -1,12 +1,11 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-typedef unsigned char undefined1;
-typedef unsigned short undefined2;
-typedef unsigned int undefined4;
-typedef unsigned int uint;
-typedef unsigned short ushort;
-typedef unsigned char uchar;
-typedef unsigned char byte;
+typedef signed char s8;
+typedef unsigned char u8;
+typedef signed short s16;
+typedef unsigned short u16;
+typedef signed int s32;
+typedef unsigned int u32;
 
-#endif
+#endif // TYPES_H

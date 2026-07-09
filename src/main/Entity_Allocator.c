@@ -595,30 +595,110 @@ Entity* func_8007A5A8(u8 param_1)
 
     return entity;
 }
-INCLUDE_ASM("asm/nonmatchings/main/Entity_Allocator", func_8007A624);
+void func_8007A624(Entity* entity)
+{
+    Entity** head_ptr;
+    Entity** tail_ptr;
+    u8 flags;
+    Entity* free_next;
+
+    if (((u8*)entity)[10] == 0) {
+        head_ptr = &g_InactiveEntitiesList;
+        tail_ptr = &D_800F23A8;
+    } else {
+        head_ptr = &g_ActiveEntitiesList;
+        tail_ptr = &D_800F239C;
+    }
+
+    if (entity->prev != 0) {
+        entity->prev->next = entity->next;
+    } else {
+        *head_ptr = entity->next;
+        if (entity->next != 0) {
+            entity->next->prev = 0;
+        }
+    }
+
+    if (entity->next != 0) {
+        entity->next->prev = entity->prev;
+    } else {
+        *tail_ptr = entity->prev;
+        if (entity->prev != 0) {
+            entity->prev->next = 0;
+        }
+    }
+
+    flags = entity->flags & 0x7F;
+    entity->flags = flags;
+
+    if (flags == 0) {
+        D_800E7E7C++;
+        entity->next = D_800E8098;
+        D_800E8098 = entity;
+    } else if (flags == 1) {
+        D_800E7E7D++;
+        free_next = D_800E80A0;
+        D_800E80A0 = entity;
+        entity->next = free_next;
+        func_8007ADDC(entity);
+    } else if (flags == 2) {
+        D_800ED8CC++;
+        free_next = D_800F2398;
+        D_800F2398 = entity;
+        entity->next = free_next;
+        func_8007ADDC(entity);
+    } else if (flags == 3) {
+        D_800ED8C5++;
+        free_next = D_800ED8D4;
+        D_800ED8D4 = entity;
+        entity->next = free_next;
+        func_8007ADDC(entity);
+    } else if (flags == 4) {
+        D_800ED8C4++;
+        free_next = D_800ED8D0;
+        D_800ED8D0 = entity;
+        entity->next = free_next;
+        func_8007ADDC(entity);
+    }
+
+    *(s32*)((u8*)entity + 0x00) = 0;
+    *(s32*)((u8*)entity + 0x04) = 0;
+    *(s32*)((u8*)entity + 0x08) = 0;
+    *(s32*)((u8*)entity + 0x0C) = 0;
+    *(s32*)((u8*)entity + 0x10) = 0;
+    *(s32*)((u8*)entity + 0x14) = 0;
+    *(s32*)((u8*)entity + 0x18) = 0;
+    *(s32*)((u8*)entity + 0x38) = 0;
+    ((u8*)entity)[0x2A] = 0;
+    ((u8*)entity)[0x2B] = 0;
+    ((u8*)entity)[0x29] = 0;
+    ((u8*)entity)[0x5E] = 0;
+}
 void func_8007A810(void)
 {
+    register s32 val_5 asm("s3");
+    register Entity* next asm("s2");
+    register s32 i asm("s1");
     register Entity* entity asm("s0");
-    register Entity* next_entity asm("s2");
-    register s32 val_5 asm("s3") = 5;
-    s32 i;
 
-    func_8009A420(&D_800E7E80, 0, 0x184);
+    func_8009A420(D_800E7E80, 0, 0x184);
     g_BackgroundEntitiesList = 0;
     D_800F23A0 = 0;
 
+    i = 0;
+    val_5 = 5;
+    next = D_80100690 + 1;
     entity = D_80100690;
-    next_entity = entity + 1;
-    for (i = 0; i < 4; i++) {
-        func_8009A420(entity, 0, sizeof(Entity));
-        entity->next = next_entity;
-        next_entity++;
+    while (i < 4) {
+        func_8009A420(entity, 0, 0x108);
+        entity->next = next;
+        next++;
         entity->flags = val_5;
         entity++;
+        i++;
     }
 
-    D_80100690[3].next = 0;
-
+    D_80100690[i - 1].next = 0;
     D_800F273C = D_80100690;
     D_800F2410 = 4;
 }
@@ -627,8 +707,7 @@ void func_8007A8E0(void)
     register u16* ptr asm("v0");
     func_8007982C();
     ptr = (u16*)0x1F800000;
-    ptr[0x17C / 2] = 0;
-    __asm__ volatile ("" : : "r"(ptr));
+    ptr[0xBE] = 0;
 }
 
 void func_8007A904(void)

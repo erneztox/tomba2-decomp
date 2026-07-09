@@ -981,8 +981,26 @@ class MaspsxProcessor:
                         ]
                     )
                 else:
-                    # e.g. lhu	$2,528482304
-                    res.append(line)
+                    # e.g. lhu	$2,528482304 - absolute address
+                    # Expand manually using $v0 to match PsyQ assembler behavior
+                    try:
+                        val = int(operand, 0)
+                    except (ValueError, TypeError):
+                        res.append(line)
+                    else:
+                        if val > 32767 or val < -32768:
+                            hi = (val >> 16) & 0xFFFF
+                            lo = val & 0xFFFF
+                            if lo & 0x8000:
+                                hi = (hi + 1) & 0xFFFF
+                            res.extend([
+                                ".set\tnoat",
+                                f"lui\t$v0,0x{hi:X}",
+                                f"{op}\t{r_dest},0x{lo:X}($v0)",
+                                ".set\tat",
+                            ])
+                        else:
+                            res.append(line)
 
                 # Naively handle scenario where *current* line is a macro
                 if actual_r_dest is not None:
@@ -1035,7 +1053,28 @@ class MaspsxProcessor:
                     )
                 else:
                     res.append(line)
-            elif r_source and (int(operand, 0) > 32767 or int(operand, 0) < -32768):
+            elif r_source is None and not is_addend:
+                # e.g. sh	$0,528482684 - absolute address store
+                # Expand manually using $v0 to match PsyQ assembler behavior
+                try:
+                    val = int(operand, 0)
+                except (ValueError, TypeError):
+                    res.append(line)
+                else:
+                    if val > 32767 or val < -32768:
+                        hi = (val >> 16) & 0xFFFF
+                        lo = val & 0xFFFF
+                        if lo & 0x8000:
+                            hi = (hi + 1) & 0xFFFF
+                        res.extend([
+                            ".set\tnoat",
+                            f"lui\t$v0,0x{hi:X}",
+                            f"{op}\t{r_dest},0x{lo:X}($v0)",
+                            ".set\tat",
+                        ])
+                    else:
+                        res.append(line)
+            elif r_dest and (int(operand, 0) > 32767 or int(operand, 0) < -32768):
                 # e.g. sw	$2,56200($4)
                 res.extend(
                     [
@@ -1049,6 +1088,7 @@ class MaspsxProcessor:
                     ]
                 )
             else:
+                # e.g. sw	$2,100($4) - small offset store, pass through
                 res.append(line)
 
         elif op in branch_mnemonics or op in jump_mnemonics:

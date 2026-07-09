@@ -12,6 +12,15 @@ extern Entity* D_800F23A0;                 // Background Tail
 extern u8 D_800E7E7C;
 extern Entity* D_800E8098;
 
+extern u8 D_800E7E80[388];
+extern Entity D_80100690[];
+extern Entity* D_800F273C;
+extern u8 D_800F2410;
+
+extern void func_8007982C(void);
+extern void func_8007ADDC(Entity* entity);
+extern void func_8009A420(void* dest, int val, int len);
+
 Entity* func_80079C3C(Entity* target, u8 param_2, int mode, int list_id)
 {
     Entity* entity = D_800E8098;
@@ -489,9 +498,158 @@ Entity* func_8007A980(u8 param_1, u8 param_2, int param_3)
     return 0; // fallback in case switch doesn't cover all paths
 }
 
-INCLUDE_ASM("asm/nonmatchings/main/Entity_Allocator", func_8007A464);
-INCLUDE_ASM("asm/nonmatchings/main/Entity_Allocator", func_8007A5A8);
+Entity* func_8007A464(Entity* target, int mode)
+{
+    Entity* entity = D_800F273C;
+
+    if (entity != 0) {
+        Entity* next_free = entity->next;
+        Entity** head_ptr = &g_BackgroundEntitiesList;
+        Entity** tail_ptr = &D_800F23A0;
+
+        D_800F2410--;
+        D_800F273C = next_free;
+
+        if (mode == 0) {
+            if (target->prev != 0) {
+                entity->prev = target->prev;
+                target->prev->next = entity;
+                target->prev = entity;
+                entity->next = target;
+                goto initialize;
+            }
+            goto insert_head;
+        }
+        if (mode == 1) {
+            goto insert_head;
+        }
+        if (mode == 2) {
+            if (target->next != 0) {
+                entity->next = target->next;
+                target->next->prev = entity;
+                target->next = entity;
+                entity->prev = target;
+                goto initialize;
+            }
+            goto insert_tail;
+        }
+        if (mode == 3) {
+            goto insert_tail;
+        }
+        goto insert_tail;
+
+    insert_head:
+        entity->prev = 0;
+        entity->next = *head_ptr;
+        if (*head_ptr == 0) {
+            *tail_ptr = entity;
+        } else {
+            (*head_ptr)->prev = entity;
+        }
+        *head_ptr = entity;
+        goto initialize;
+
+    insert_tail:
+        entity->next = 0;
+        entity->prev = *tail_ptr;
+        if (*tail_ptr == 0) {
+            *head_ptr = entity;
+        } else {
+            (*tail_ptr)->next = entity;
+        }
+        *tail_ptr = entity;
+
+    initialize:
+        ((u8*)entity)[10] = 1;
+        ((u8*)entity)[0] = 2;
+        ((u8*)entity)[0xC] = 1;
+    }
+
+    return entity;
+}
+Entity* func_8007A5A8(u8 param_1)
+{
+    Entity* entity = D_800E8098;
+
+    if (entity != 0) {
+        Entity* next_free = entity->next;
+        Entity* tail;
+
+        D_800E7E7C--;
+        entity->next = 0;
+        D_800E8098 = next_free;
+
+        tail = D_800F239C;
+        entity->prev = tail;
+        if (tail != 0) {
+            tail->next = entity;
+        } else {
+            g_ActiveEntitiesList = entity;
+        }
+        D_800F239C = entity;
+
+        ((u8*)entity)[10] = 1;
+        ((u8*)entity)[0] = 2;
+        ((u8*)entity)[0xC] = param_1;
+    }
+
+    return entity;
+}
 INCLUDE_ASM("asm/nonmatchings/main/Entity_Allocator", func_8007A624);
-INCLUDE_ASM("asm/nonmatchings/main/Entity_Allocator", func_8007A810);
-INCLUDE_ASM("asm/nonmatchings/main/Entity_Allocator", func_8007A8E0);
-INCLUDE_ASM("asm/nonmatchings/main/Entity_Allocator", func_8007A904);
+void func_8007A810(void)
+{
+    register Entity* entity asm("s0");
+    register Entity* next_entity asm("s2");
+    register s32 val_5 asm("s3") = 5;
+    s32 i;
+
+    func_8009A420(&D_800E7E80, 0, 0x184);
+    g_BackgroundEntitiesList = 0;
+    D_800F23A0 = 0;
+
+    entity = D_80100690;
+    next_entity = entity + 1;
+    for (i = 0; i < 4; i++) {
+        func_8009A420(entity, 0, sizeof(Entity));
+        entity->next = next_entity;
+        next_entity++;
+        entity->flags = val_5;
+        entity++;
+    }
+
+    D_80100690[3].next = 0;
+
+    D_800F273C = D_80100690;
+    D_800F2410 = 4;
+}
+void func_8007A8E0(void)
+{
+    register u16* ptr asm("v0");
+    func_8007982C();
+    ptr = (u16*)0x1F800000;
+    ptr[0x17C / 2] = 0;
+    __asm__ volatile ("" : : "r"(ptr));
+}
+
+void func_8007A904(void)
+{
+    register Entity* entity asm("a0");
+
+    entity = g_InactiveEntitiesList;
+    while (entity != 0) {
+        register Entity* next asm("s0") = entity->next;
+        __asm__ volatile ("" : : : "memory");
+        entity->active_flag = 0;
+        entity->update_func(entity);
+        entity = next;
+    }
+
+    entity = g_ActiveEntitiesList;
+    while (entity != 0) {
+        register Entity* next asm("s0") = entity->next;
+        __asm__ volatile ("" : : : "memory");
+        entity->active_flag = 0;
+        entity->update_func(entity);
+        entity = next;
+    }
+}

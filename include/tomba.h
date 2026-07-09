@@ -64,6 +64,7 @@ typedef struct Entity {
     Vector3 unknown_48; // Vector at 0x48 (0x48, 0x4A, 0x4C)
     u8 pad4E[114];  // Padding up to 0xC0
     void* ptr_array[1]; // 0xC0
+    u8 padC4[68];       // Pad to 0x108 (264) bytes
 } Entity;
 
 // Spawner Data containing 32-bit fixed point coordinates

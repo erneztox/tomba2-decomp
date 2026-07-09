@@ -1,3 +1,4 @@
+.set noreorder
 .include "asm/nonmatchings/main/Entity_Allocator/func_80079C3C.s"
 .include "asm/nonmatchings/main/Entity_Allocator/func_80079DDC.s"
 .include "asm/nonmatchings/main/Entity_Allocator/func_80079F90.s"

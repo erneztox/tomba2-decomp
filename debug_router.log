@@ -1,0 +1,387 @@
+python3 tools/asm-differ/diff.py --no-pager -mo -f build/src/main/Entity_Allocator.o func_8007A980
+make[1]: Entering directory '/home/ernesto/Desktop/codes/revert-tomba2'
+make[1]: 'build/src/main/Entity_Allocator.o' is up to date.
+make[1]: Leaving directory '/home/ernesto/Desktop/codes/revert-tomba2'
+TARGET                                                   CURRENT (33736)                            
+edc:    addiu   sp,sp,-0x18                              7e8:    addiu   sp,sp,-0x18                
+ee0:    sw      ra,0x10(sp)                              7ec:    sw      ra,0x10(sp)                
+ee4:    andi    v1,a0,0xff                               7f0:    andi    v1,a0,0xff                 
+ee8:    sltiu   v0,v1,5                                  7f4:    sltiu   v0,v1,5                    
+eec:    beqz    v0,[94mf8c[39m [35m~>[39m                         [94mi[39m      7f8:    beqz    v0,[94m898[39m [35m~>[39m                  
+[31mef0:[39m    [31mnop     [39m                                  [31m<[39m                                                 
+ef4:    move    a3,a2                                    7fc:    move    a3,a2                      
+ef8:    lui     v0,%hi(jtbl_80016E4C)                    800:    lui     v0,%hi(.rodata)            
+efc:    addiu   v0,v0,%lo(jtbl_80016E4C)                 804:    addiu   v0,v0,%lo(.rodata)         
+f00:    sll     v1,v1,0x2                                808:    sll     v1,v1,0x2                  
+f04:    addu    v1,v1,v0                                 80c:    addu    v1,v1,v0                   
+f08:    lw      v0,0(v1)                                 810:    lw      v0,0(v1)                   
+f0c:    nop                                              814:    nop                                
+f10:    jr      v0                                       818:    jr      v0                         
+f14:    nop                                              81c:    nop                                
+                                                  [32m>[39m      [32m.rodata+0x0[39m                                
+                                                  [32m>[39m      [32m820:[39m    [32mmove    a0,zero[39m                    
+                                                  [32m>[39m      [32m824:[39m    [32mandi    a1,a1,0xff[39m                 
+                                                  [32m>[39m      [32m828:[39m    [32mjal     func_80079C3C[39m              
+                                                  [32m>[39m      [32m82c:[39m    [32mli      a2,3[39m                       
+                                                  [32m>[39m      [32m830:[39m    [32mj       89c[39m [36m~>[39m                     
+f18:    nop                                              834:    nop                                
+                                                  [32m>[39m      [32m.rodata+0x4[39m                                
+f1c:    move    a0,zero                                  838:    move    a0,zero                    
+                                                  [32m>[39m      [32m83c:[39m    [32mandi    a1,a1,0xff[39m                 
+f20:    jal     [94mfunc_80079C3C[39m                     [94mi[39m      840:    jal     [94mfunc_80079DDC[39m              
+                                                  [32m>[39m      [32m844:[39m    [32mli      a2,3[39m                       
+                                                  [32m>[39m      [32m848:[39m    [32mj       89c[39m [36m~>[39m                     
+                                                  [32m>[39m      [32m84c:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32m.rodata+0x8[39m                                
+                                                  [32m>[39m      [32m850:[39m    [32mmove    a0,zero[39m                    
+f24:    andi    a1,a1,0xff                               854:    andi    a1,a1,0xff                 
+                                                  [32m>[39m      [32m858:[39m    [32mjal     func_80079F90[39m              
+                                                  [32m>[39m      [32m85c:[39m    [32mli      a2,3[39m                       
+f28:    j       [94mf8c[39m [35m~>[39m                            [94mi[39m      860:    j       [94m89c[39m [36m~>[39m                     
+                                                  [32m>[39m      [32m864:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32m.rodata+0xc[39m                                
+                                                  [32m>[39m      [32m868:[39m    [32mmove    a0,zero[39m                    
+                                                  [32m>[39m      [32m86c:[39m    [32mandi    a1,a1,0xff[39m                 
+                                                  [32m>[39m      [32m870:[39m    [32mjal     func_8007A12C[39m              
+f2c:    li      a2,3                                     874:    li      a2,3                       
+                                                  [32m>[39m      [32m878:[39m    [32mj       89c[39m [36m~>[39m                     
+f30:    nop                                              87c:    nop                                
+                                                  [32m>[39m      [32m.rodata+0x10[39m                               
+f34:    move    a0,zero                                  880:    move    a0,zero                    
+                                                  [32m>[39m      [32m884:[39m    [32mandi    a1,a1,0xff[39m                 
+f38:    jal     [94mfunc_80079DDC[39m                     [94mi[39m      888:    jal     [94mfunc_8007A2C8[39m              
+[94mf3c:[39m    [94mandi    a1,a1,0xff[39m                        [94m|[39m      [94m88c:[39m    [94mli      a2,3[39m                       
+f40:    j       [94mf8c[39m [35m~>[39m                            [94mi[39m      890:    j       [94m89c[39m [36m~>[39m                     
+                                                  [32m>[39m      [32m894:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32m898:[39m [35m~>[39m [32mmove    v0,zero[39m                    
+                                                  [32m>[39m      [32m89c:[39m [36m~>[39m [32mlw      ra,0x10(sp)[39m                
+                                                  [32m>[39m      [32m8a0:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32m8a4:[39m    [32mjr      ra[39m                         
+                                                  [32m>[39m      [32m8a8:[39m    [32maddiu   sp,sp,0x18[39m                 
+                                                  [32m>[39m      [32m8ac:[39m    [32mlui     t0,%hi(D_800F273C)[39m         
+                                                  [32m>[39m      [32m8b0:[39m    [32mlw      a2,%lo(D_800F273C)(t0)[39m     
+                                                  [32m>[39m      [32m8b4:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32m8b8:[39m    [32mbeqz    a2,9e8[39m [32m~>[39m                  
+                                                  [32m>[39m      [32m8bc:[39m    [32mmove    a3,a0[39m                      
+                                                  [32m>[39m      [32m8c0:[39m    [32mlui     v1,%hi(D_800F2410)[39m         
+                                                  [32m>[39m      [32m8c4:[39m    [32mlbu     v0,%lo(D_800F2410)(v1)[39m     
+                                                  [32m>[39m      [32m8c8:[39m    [32mlw      a0,0x24(a2)[39m                
+                                                  [32m>[39m      [32m8cc:[39m    [32maddiu   v0,v0,-1[39m                   
+                                                  [32m>[39m      [32m8d0:[39m    [32msb      v0,%lo(D_800F2410)(v1)[39m     
+                                                  [32m>[39m      [32m8d4:[39m    [32mlui     v0,%hi(g_BackgroundEntitiesList)[39m
+                                                  [32m>[39m      [32m8d8:[39m    [32msw      a0,%lo(D_800F273C)(t0)[39m     
+                                                  [32m>[39m      [32m8dc:[39m    [32maddiu   t0,v0,%lo(g_BackgroundEntitiesList)[39m
+                                                  [32m>[39m      [32m8e0:[39m    [32mlui     v0,%hi(D_800F23A0)[39m         
+                                                  [32m>[39m      [32m8e4:[39m    [32maddiu   a0,v0,%lo(D_800F23A0)[39m      
+[33mf44:[39m    li      [35ma2[39m,[94m3[39m                              [33mr[39m      [33m8e8:[39m    li      [35mv0[39m,[94m1[39m                       
+                                                  [32m>[39m      [32m8ec:[39m    [32mbeq     a1,v0,950[39m [31m~>[39m               
+                                                  [32m>[39m      [32m8f0:[39m    [32mslti    v0,a1,2[39m                    
+                                                  [32m>[39m      [32m8f4:[39m    [32mbeqz    v0,90c[39m [93m~>[39m                  
+                                                  [32m>[39m      [32m8f8:[39m    [32mli      v0,2[39m                       
+                                                  [32m>[39m      [32m8fc:[39m    [32mbeqz    a1,924[39m [95m~>[39m                  
+                                                  [32m>[39m      [32m900:[39m    [32mmove    v0,a2[39m                      
+                                                  [32m>[39m      [32m904:[39m    [32mj       9d8[39m [96m~>[39m                     
+                                                  [32m>[39m      [32m908:[39m    [32mli      v1,2[39m                       
+                                                  [32m>[39m      [32m90c:[39m [93m~>[39m [32mbeq     a1,v0,978[39m [92m~>[39m               
+                                                  [32m>[39m      [32m910:[39m    [32mli      v0,3[39m                       
+                                                  [32m>[39m      [32m914:[39m    [32mbeq     a1,v0,9ac[39m [90m~>[39m               
+                                                  [32m>[39m      [32m918:[39m    [32mmove    v0,a2[39m                      
+                                                  [32m>[39m      [32m91c:[39m    [32mj       9d8[39m [96m~>[39m                     
+                                                  [32m>[39m      [32m920:[39m    [32mli      v1,2[39m                       
+                                                  [32m>[39m      [32m924:[39m [95m~>[39m [32mlw      v0,0x20(a3)[39m                
+f48:    nop                                              928:    nop                                
+                                                  [32m>[39m      [32m92c:[39m    [32mbeqz    v0,950[39m [31m~>[39m                  
+                                                  [32m>[39m      [32m930:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32m934:[39m    [32msw      v0,0x20(a2)[39m                
+                                                  [32m>[39m      [32m938:[39m    [32msw      a3,0x24(a2)[39m                
+                                                  [32m>[39m      [32m93c:[39m    [32mlw      v0,0x20(a3)[39m                
+                                                  [32m>[39m      [32m940:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32m944:[39m    [32msw      a2,0x24(v0)[39m                
+                                                  [32m>[39m      [32m948:[39m    [32mj       9d0[39m [35m~>[39m                     
+                                                  [32m>[39m      [32m94c:[39m    [32msw      a2,0x20(a3)[39m                
+                                                  [32m>[39m      [32m950:[39m [31m~>[39m [32mlw      v0,0(t0)[39m                   
+                                                  [32m>[39m      [32m954:[39m    [32msw      zero,0x20(a2)[39m              
+[33mf4c:[39m    move    [36ma0[39m,[32mzero[39m                           [33mr[39m      [33m958:[39m    move    [36mv1[39m,[35mv0[39m                      
+[94mf50:[39m    [94mjal     func_80079F90[39m                     [94m|[39m      [94m95c:[39m    [94mbnez    v1,96c[39m [36m~>[39m                  
+[94mf54:[39m    [94mandi    a1,a1,0xff[39m                        [94m|[39m      [94m960:[39m    [94msw      v0,0x24(a2)[39m                
+f58:    j       [94mf8c[39m [35m~>[39m                            [94mi[39m      964:    j       [94m970[39m [32m~>[39m                     
+                                                  [32m>[39m      [32m968:[39m    [32msw      a2,0(a0)[39m                   
+                                                  [32m>[39m      [32m96c:[39m [36m~>[39m [32msw      a2,0x20(v1)[39m                
+                                                  [32m>[39m      [32m970:[39m [32m~>[39m [32mj       9d0[39m [35m~>[39m                     
+                                                  [32m>[39m      [32m974:[39m    [32msw      a2,0(t0)[39m                   
+                                                  [32m>[39m      [32m978:[39m [92m~>[39m [32mlw      v0,0x24(a3)[39m                
+                                                  [32m>[39m      [32m97c:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32m980:[39m    [32mbeqz    v0,9ac[39m [90m~>[39m                  
+                                                  [32m>[39m      [32m984:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32m988:[39m    [32msw      a3,0x20(a2)[39m                
+                                                  [32m>[39m      [32m98c:[39m    [32mlw      v0,0x24(a3)[39m                
+                                                  [32m>[39m      [32m990:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32m994:[39m    [32msw      v0,0x24(a2)[39m                
+                                                  [32m>[39m      [32m998:[39m    [32mlw      v0,0x24(a3)[39m                
+                                                  [32m>[39m      [32m99c:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32m9a0:[39m    [32msw      a2,0x20(v0)[39m                
+                                                  [32m>[39m      [32m9a4:[39m    [32mj       9d0[39m [35m~>[39m                     
+                                                  [32m>[39m      [32m9a8:[39m    [32msw      a2,0x24(a3)[39m                
+                                                  [32m>[39m      [32m9ac:[39m [90m~>[39m [32mlw      v0,0(a0)[39m                   
+                                                  [32m>[39m      [32m9b0:[39m    [32msw      zero,0x24(a2)[39m              
+                                                  [32m>[39m      [32m9b4:[39m    [32mmove    v1,v0[39m                      
+                                                  [32m>[39m      [32m9b8:[39m    [32mbnez    v1,9c8[39m [31m~>[39m                  
+                                                  [32m>[39m      [32m9bc:[39m    [32msw      v0,0x20(a2)[39m                
+                                                  [32m>[39m      [32m9c0:[39m    [32mj       9cc[39m [93m~>[39m                     
+                                                  [32m>[39m      [32m9c4:[39m    [32msw      a2,0(t0)[39m                   
+                                                  [32m>[39m      [32m9c8:[39m [31m~>[39m [32msw      a2,0x24(v1)[39m                
+                                                  [32m>[39m      [32m9cc:[39m [93m~>[39m [32msw      a2,0(a0)[39m                   
+                                                  [32m>[39m      [32m9d0:[39m [35m~>[39m [32mmove    v0,a2[39m                      
+[33mf5c:[39m    li      [35ma2[39m,[94m3[39m                              [33mr[39m      [33m9d4:[39m    li      [36mv1[39m,[94m2[39m                       
+                                                  [32m>[39m      [32m9d8:[39m [96m~>[39m [32msb      v1,0(v0)[39m                   
+                                                  [32m>[39m      [32m9dc:[39m    [32mli      v1,1[39m                       
+                                                  [32m>[39m      [32m9e0:[39m    [32mjr      ra[39m                         
+                                                  [32m>[39m      [32m9e4:[39m    [32msb      v1,0xc(v0)[39m                 
+                                                  [32m>[39m      [32m9e8:[39m [32m~>[39m [32mjr      ra[39m                         
+                                                  [32m>[39m      [32m9ec:[39m    [32mmove    v0,zero[39m                    
+                                                  [32m>[39m      [32m9f0:[39m    [32mlui     t0,%hi(D_800E8098)[39m         
+                                                  [32m>[39m      [32m9f4:[39m    [32mlw      a2,%lo(D_800E8098)(t0)[39m     
+f60:    nop                                              9f8:    nop                                
+                                                  [32m>[39m      [32m9fc:[39m    [32mbeqz    a2,a64[39m [95m~>[39m                  
+[33mf64:[39m    move    [36ma0[39m,[32mzero[39m                           [33mr[39m      [33ma00:[39m    move    [32mt1[39m,[31ma0[39m                      
+                                                  [32m>[39m      [32ma04:[39m    [32mlui     v1,%hi(D_800E7E7C)[39m         
+                                                  [32m>[39m      [32ma08:[39m    [32mlui     a0,%hi(D_800F239C)[39m         
+                                                  [32m>[39m      [32ma0c:[39m    [32mlw      a1,0x24(a2)[39m                
+                                                  [32m>[39m      [32ma10:[39m    [32mlbu     v0,%lo(D_800E7E7C)(v1)[39m     
+                                                  [32m>[39m      [32ma14:[39m    [32mlw      a3,%lo(D_800F239C)(a0)[39m     
+                                                  [32m>[39m      [32ma18:[39m    [32maddiu   a0,a0,%lo(D_800F239C)[39m      
+                                                  [32m>[39m      [32ma1c:[39m    [32msw      zero,0x24(a2)[39m              
+                                                  [32m>[39m      [32ma20:[39m    [32maddiu   v0,v0,-1[39m                   
+                                                  [32m>[39m      [32ma24:[39m    [32msb      v0,%lo(D_800E7E7C)(v1)[39m     
+                                                  [32m>[39m      [32ma28:[39m    [32msw      a1,%lo(D_800E8098)(t0)[39m     
+                                                  [32m>[39m      [32ma2c:[39m    [32mbnez    a3,a40[39m [96m~>[39m                  
+[94mf68:[39m    [94mjal     func_8007A12C[39m                     [94m|[39m      [94ma30:[39m    [94msw      a3,0x20(a2)[39m                
+[94mf6c:[39m    [94mandi    a1,a1,0xff[39m                        [94m|[39m      [94ma34:[39m    [94mlui     v0,%hi(g_ActiveEntitiesList)[39m
+f70:    j       [94mf8c[39m [35m~>[39m                            [94mi[39m      a38:    j       [94ma44[39m [92m~>[39m                     
+                                                  [32m>[39m      [32ma3c:[39m    [32msw      a2,%lo(g_ActiveEntitiesList)(v0)[39m
+                                                  [32m>[39m      [32ma40:[39m [96m~>[39m [32msw      a2,0x24(a3)[39m                
+                                                  [32m>[39m      [32ma44:[39m [92m~>[39m [32mmove    v0,a2[39m                      
+[33mf74:[39m    li      [35ma2[39m,[94m3[39m                              [33mr[39m      [33ma48:[39m    li      [36mv1[39m,[94m1[39m                       
+                                                  [32m>[39m      [32ma4c:[39m    [32msw      v0,0(a0)[39m                   
+                                                  [32m>[39m      [32ma50:[39m    [32msb      v1,0xa(v0)[39m                 
+                                                  [32m>[39m      [32ma54:[39m    [32mli      v1,2[39m                       
+                                                  [32m>[39m      [32ma58:[39m    [32msb      v1,0(v0)[39m                   
+                                                  [32m>[39m      [32ma5c:[39m    [32mjr      ra[39m                         
+                                                  [32m>[39m      [32ma60:[39m    [32msb      t1,0xc(v0)[39m                 
+                                                  [32m>[39m      [32ma64:[39m [95m~>[39m [32mjr      ra[39m                         
+                                                  [32m>[39m      [32ma68:[39m    [32mmove    v0,zero[39m                    
+                                                  [32m>[39m      [32ma6c:[39m    [32maddiu   sp,sp,-0x18[39m                
+                                                  [32m>[39m      [32ma70:[39m    [32msw      s0,0x10(sp)[39m                
+                                                  [32m>[39m      [32ma74:[39m    [32mmove    s0,a0[39m                      
+                                                  [32m>[39m      [32ma78:[39m    [32msw      ra,0x14(sp)[39m                
+                                                  [32m>[39m      [32ma7c:[39m    [32mlbu     v0,0xa(s0)[39m                 
+f78:    nop                                              a80:    nop                                
+                                                  [32m>[39m      [32ma84:[39m    [32mbeqz    v0,a9c[39m [90m~>[39m                  
+                                                  [32m>[39m      [32ma88:[39m    [32mlui     v0,%hi(g_ActiveEntitiesList)[39m
+                                                  [32m>[39m      [32ma8c:[39m    [32maddiu   a0,v0,%lo(g_ActiveEntitiesList)[39m
+                                                  [32m>[39m      [32ma90:[39m    [32mlui     v0,%hi(D_800F239C)[39m         
+                                                  [32m>[39m      [32ma94:[39m    [32mj       aac[39m [35m~>[39m                     
+                                                  [32m>[39m      [32ma98:[39m    [32maddiu   a1,v0,%lo(D_800F239C)[39m      
+                                                  [32m>[39m      [32ma9c:[39m [90m~>[39m [32mlui     v0,%hi(g_InactiveEntitiesList)[39m
+                                                  [32m>[39m      [32maa0:[39m    [32maddiu   a0,v0,%lo(g_InactiveEntitiesList)[39m
+                                                  [32m>[39m      [32maa4:[39m    [32mlui     v0,%hi(D_800F23A8)[39m         
+                                                  [32m>[39m      [32maa8:[39m    [32maddiu   a1,v0,%lo(D_800F23A8)[39m      
+                                                  [32m>[39m      [32maac:[39m [35m~>[39m [32mlw      v1,0x20(s0)[39m                
+                                                  [32m>[39m      [32mab0:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32mab4:[39m    [32mbeqz    v1,ac8[39m [36m~>[39m                  
+                                                  [32m>[39m      [32mab8:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32mabc:[39m    [32mlw      v0,0x24(s0)[39m                
+                                                  [32m>[39m      [32mac0:[39m    [32mj       ae8[39m [32m~>[39m                     
+                                                  [32m>[39m      [32mac4:[39m    [32msw      v0,0x24(v1)[39m                
+                                                  [32m>[39m      [32mac8:[39m [36m~>[39m [32mlw      v0,0x24(s0)[39m                
+                                                  [32m>[39m      [32macc:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32mad0:[39m    [32msw      v0,0(a0)[39m                   
+                                                  [32m>[39m      [32mad4:[39m    [32mlw      v0,0x24(s0)[39m                
+                                                  [32m>[39m      [32mad8:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32madc:[39m    [32mbeqz    v0,b04[39m [31m~>[39m                  
+                                                  [32m>[39m      [32mae0:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32mae4:[39m    [32msw      zero,0x20(v0)[39m              
+                                                  [32m>[39m      [32mae8:[39m [32m~>[39m [32mlw      v1,0x24(s0)[39m                
+                                                  [32m>[39m      [32maec:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32maf0:[39m    [32mbeqz    v1,b04[39m [31m~>[39m                  
+                                                  [32m>[39m      [32maf4:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32maf8:[39m    [32mlw      v0,0x20(s0)[39m                
+                                                  [32m>[39m      [32mafc:[39m    [32mj       b24[39m [93m~>[39m                     
+                                                  [32m>[39m      [32mb00:[39m    [32msw      v0,0x20(v1)[39m                
+                                                  [32m>[39m      [32mb04:[39m [31m~>[39m [32mlw      v0,0x20(s0)[39m                
+                                                  [32m>[39m      [32mb08:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32mb0c:[39m    [32msw      v0,0(a1)[39m                   
+                                                  [32m>[39m      [32mb10:[39m    [32mlw      v0,0x20(s0)[39m                
+                                                  [32m>[39m      [32mb14:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32mb18:[39m    [32mbeqz    v0,b24[39m [93m~>[39m                  
+                                                  [32m>[39m      [32mb1c:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32mb20:[39m    [32msw      zero,0x24(v0)[39m              
+                                                  [32m>[39m      [32mb24:[39m [93m~>[39m [32mlbu     v0,0x28(s0)[39m                
+                                                  [32m>[39m      [32mb28:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32mb2c:[39m    [32mandi    v0,v0,0x7f[39m                 
+                                                  [32m>[39m      [32mb30:[39m    [32msb      v0,0x28(s0)[39m                
+                                                  [32m>[39m      [32mb34:[39m    [32mandi    v1,v0,0xff[39m                 
+                                                  [32m>[39m      [32mb38:[39m    [32msltiu   v0,v1,5[39m                    
+                                                  [32m>[39m      [32mb3c:[39m    [32mbeqz    v0,c18[39m [95m~>[39m                  
+                                                  [32m>[39m      [32mb40:[39m    [32mlui     v0,%hi(jtbl_80016E34)[39m      
+                                                  [32m>[39m      [32mb44:[39m    [32maddiu   v0,v0,%lo(jtbl_80016E34)[39m   
+                                                  [32m>[39m      [32mb48:[39m    [32msll     v1,v1,0x2[39m                  
+                                                  [32m>[39m      [32mb4c:[39m    [32maddu    v1,v1,v0[39m                   
+                                                  [32m>[39m      [32mb50:[39m    [32mlw      v0,0(v1)[39m                   
+                                                  [32m>[39m      [32mb54:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32mb58:[39m    [32mjr      v0[39m                         
+                                                  [32m>[39m      [32mb5c:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32mb60:[39m    [32mlui     a0,%hi(D_800E7E7C)[39m         
+                                                  [32m>[39m      [32mb64:[39m    [32mlui     v1,%hi(D_800E8098)[39m         
+                                                  [32m>[39m      [32mb68:[39m    [32mlbu     v0,%lo(D_800E7E7C)(a0)[39m     
+                                                  [32m>[39m      [32mb6c:[39m    [32mlw      a1,%lo(D_800E8098)(v1)[39m     
+                                                  [32m>[39m      [32mb70:[39m    [32msw      s0,%lo(D_800E8098)(v1)[39m     
+                                                  [32m>[39m      [32mb74:[39m    [32maddiu   v0,v0,1[39m                    
+                                                  [32m>[39m      [32mb78:[39m    [32msb      v0,%lo(D_800E7E7C)(a0)[39m     
+                                                  [32m>[39m      [32mb7c:[39m    [32mj       c18[39m [95m~>[39m                     
+                                                  [32m>[39m      [32mb80:[39m    [32msw      a1,0x24(s0)[39m                
+                                                  [32m>[39m      [32mb84:[39m    [32mlui     a1,%hi(D_800E7E7D)[39m         
+                                                  [32m>[39m      [32mb88:[39m    [32mlui     v1,%hi(D_800E80A0)[39m         
+                                                  [32m>[39m      [32mb8c:[39m    [32mlbu     v0,%lo(D_800E7E7D)(a1)[39m     
+                                                  [32m>[39m      [32mb90:[39m    [32mlw      a2,%lo(D_800E80A0)(v1)[39m     
+[33mf7c:[39m    move    a0,[32mzero[39m                           [33mr[39m      [33mb94:[39m    move    a0,[93ms0[39m                      
+                                                  [32m>[39m      [32mb98:[39m    [32msw      s0,%lo(D_800E80A0)(v1)[39m     
+                                                  [32m>[39m      [32mb9c:[39m    [32maddiu   v0,v0,1[39m                    
+                                                  [32m>[39m      [32mba0:[39m    [32mj       c10[39m [96m~>[39m                     
+                                                  [32m>[39m      [32mba4:[39m    [32msb      v0,%lo(D_800E7E7D)(a1)[39m     
+                                                  [32m>[39m      [32mba8:[39m    [32mlui     a1,%hi(D_800ED8CC)[39m         
+                                                  [32m>[39m      [32mbac:[39m    [32mlui     v1,%hi(D_800F2398)[39m         
+                                                  [32m>[39m      [32mbb0:[39m    [32mlbu     v0,%lo(D_800ED8CC)(a1)[39m     
+                                                  [32m>[39m      [32mbb4:[39m    [32mlw      a2,%lo(D_800F2398)(v1)[39m     
+                                                  [32m>[39m      [32mbb8:[39m    [32mmove    a0,s0[39m                      
+                                                  [32m>[39m      [32mbbc:[39m    [32msw      s0,%lo(D_800F2398)(v1)[39m     
+                                                  [32m>[39m      [32mbc0:[39m    [32maddiu   v0,v0,1[39m                    
+                                                  [32m>[39m      [32mbc4:[39m    [32mj       c10[39m [96m~>[39m                     
+                                                  [32m>[39m      [32mbc8:[39m    [32msb      v0,%lo(D_800ED8CC)(a1)[39m     
+                                                  [32m>[39m      [32mbcc:[39m    [32mlui     a1,%hi(D_800ED8C5)[39m         
+                                                  [32m>[39m      [32mbd0:[39m    [32mlui     v1,%hi(D_800ED8D4)[39m         
+                                                  [32m>[39m      [32mbd4:[39m    [32mlbu     v0,%lo(D_800ED8C5)(a1)[39m     
+                                                  [32m>[39m      [32mbd8:[39m    [32mlw      a2,%lo(D_800ED8D4)(v1)[39m     
+                                                  [32m>[39m      [32mbdc:[39m    [32mmove    a0,s0[39m                      
+                                                  [32m>[39m      [32mbe0:[39m    [32msw      s0,%lo(D_800ED8D4)(v1)[39m     
+                                                  [32m>[39m      [32mbe4:[39m    [32maddiu   v0,v0,1[39m                    
+                                                  [32m>[39m      [32mbe8:[39m    [32mj       c10[39m [96m~>[39m                     
+                                                  [32m>[39m      [32mbec:[39m    [32msb      v0,%lo(D_800ED8C5)(a1)[39m     
+                                                  [32m>[39m      [32mbf0:[39m    [32mlui     a1,%hi(D_800ED8C4)[39m         
+                                                  [32m>[39m      [32mbf4:[39m    [32mlui     v1,%hi(D_800ED8D0)[39m         
+                                                  [32m>[39m      [32mbf8:[39m    [32mlbu     v0,%lo(D_800ED8C4)(a1)[39m     
+                                                  [32m>[39m      [32mbfc:[39m    [32mlw      a2,%lo(D_800ED8D0)(v1)[39m     
+                                                  [32m>[39m      [32mc00:[39m    [32mmove    a0,s0[39m                      
+                                                  [32m>[39m      [32mc04:[39m    [32msw      s0,%lo(D_800ED8D0)(v1)[39m     
+                                                  [32m>[39m      [32mc08:[39m    [32maddiu   v0,v0,1[39m                    
+                                                  [32m>[39m      [32mc0c:[39m    [32msb      v0,%lo(D_800ED8C4)(a1)[39m     
+f80:    jal     [94mfunc_8007A2C8[39m                     [94mi[39m      c10: [96m~>[39m jal     [94mfunc_8007ADDC[39m              
+                                                  [32m>[39m      [32mc14:[39m    [32msw      a2,0x24(s0)[39m                
+                                                  [32m>[39m      [32mc18:[39m [95m~>[39m [32msw      zero,0(s0)[39m                 
+                                                  [32m>[39m      [32mc1c:[39m    [32msw      zero,4(s0)[39m                 
+                                                  [32m>[39m      [32mc20:[39m    [32msw      zero,8(s0)[39m                 
+                                                  [32m>[39m      [32mc24:[39m    [32msw      zero,0xc(s0)[39m               
+                                                  [32m>[39m      [32mc28:[39m    [32msw      zero,0x10(s0)[39m              
+                                                  [32m>[39m      [32mc2c:[39m    [32msw      zero,0x14(s0)[39m              
+                                                  [32m>[39m      [32mc30:[39m    [32msw      zero,0x18(s0)[39m              
+                                                  [32m>[39m      [32mc34:[39m    [32msw      zero,0x38(s0)[39m              
+                                                  [32m>[39m      [32mc38:[39m    [32msb      zero,0x2a(s0)[39m              
+                                                  [32m>[39m      [32mc3c:[39m    [32msb      zero,0x2b(s0)[39m              
+                                                  [32m>[39m      [32mc40:[39m    [32msb      zero,0x29(s0)[39m              
+                                                  [32m>[39m      [32mc44:[39m    [32msb      zero,0x5e(s0)[39m              
+                                                  [32m>[39m      [32mc48:[39m    [32mlw      ra,0x14(sp)[39m                
+                                                  [32m>[39m      [32mc4c:[39m    [32mlw      s0,0x10(sp)[39m                
+                                                  [32m>[39m      [32mc50:[39m    [32mjr      ra[39m                         
+                                                  [32m>[39m      [32mc54:[39m    [32maddiu   sp,sp,0x18[39m                 
+                                                  [32m>[39m      [32mc58:[39m    [32maddiu   sp,sp,-0x28[39m                
+                                                  [32m>[39m      [32mc5c:[39m    [32mlui     a0,%hi(D_800E7E80)[39m         
+                                                  [32m>[39m      [32mc60:[39m    [32maddiu   a0,a0,%lo(D_800E7E80)[39m      
+[94mf84:[39m    [94mandi    a1,a1,0xff[39m                        [94m|[39m      [94mc64:[39m    [94mmove    a1,zero[39m                    
+f88:    li      a2,[94m3[39m                              [94mi[39m      c68:    li      a2,[94m0x184[39m                   
+                                                  [32m>[39m      [32mc6c:[39m    [32msw      ra,0x20(sp)[39m                
+                                                  [32m>[39m      [32mc70:[39m    [32msw      s3,0x1c(sp)[39m                
+                                                  [32m>[39m      [32mc74:[39m    [32msw      s2,0x18(sp)[39m                
+                                                  [32m>[39m      [32mc78:[39m    [32msw      s1,0x14(sp)[39m                
+                                                  [32m>[39m      [32mc7c:[39m    [32mjal     func_8009A420[39m              
+                                                  [32m>[39m      [32mc80:[39m    [32msw      s0,0x10(sp)[39m                
+                                                  [32m>[39m      [32mc84:[39m    [32mmove    s1,zero[39m                    
+                                                  [32m>[39m      [32mc88:[39m    [32mli      s3,5[39m                       
+                                                  [32m>[39m      [32mc8c:[39m    [32mlui     v0,%hi(D_80100690)[39m         
+                                                  [32m>[39m      [32mc90:[39m    [32maddiu   v0,v0,%lo(D_80100690)[39m      
+                                                  [32m>[39m      [32mc94:[39m    [32maddiu   s2,v0,0x108[39m                
+                                                  [32m>[39m      [32mc98:[39m    [32mmove    s0,v0[39m                      
+                                                  [32m>[39m      [32mc9c:[39m    [32mlui     v0,%hi(g_BackgroundEntitiesList)[39m
+                                                  [32m>[39m      [32mca0:[39m    [32msw      zero,%lo(g_BackgroundEntitiesList)(v0)[39m
+                                                  [32m>[39m      [32mca4:[39m    [32mlui     v0,%hi(D_800F23A0)[39m         
+                                                  [32m>[39m      [32mca8:[39m    [32msw      zero,%lo(D_800F23A0)(v0)[39m   
+                                                  [32m>[39m      [32mcac:[39m [92m~>[39m [32mmove    a0,s0[39m                      
+                                                  [32m>[39m      [32mcb0:[39m    [32mmove    a1,zero[39m                    
+                                                  [32m>[39m      [32mcb4:[39m    [32mjal     func_8009A420[39m              
+                                                  [32m>[39m      [32mcb8:[39m    [32mli      a2,0x108[39m                   
+                                                  [32m>[39m      [32mcbc:[39m    [32msw      s2,0x24(s0)[39m                
+                                                  [32m>[39m      [32mcc0:[39m    [32maddiu   s2,s2,0x108[39m                
+                                                  [32m>[39m      [32mcc4:[39m    [32msb      s3,0x28(s0)[39m                
+                                                  [32m>[39m      [32mcc8:[39m    [32maddiu   s1,s1,1[39m                    
+                                                  [32m>[39m      [32mccc:[39m    [32mslti    v0,s1,4[39m                    
+                                                  [32m>[39m      [32mcd0:[39m    [32mbnez    v0,cac[39m [92m~>[39m                  
+                                                  [32m>[39m      [32mcd4:[39m    [32maddiu   s0,s0,0x108[39m                
+                                                  [32m>[39m      [32mcd8:[39m    [32mlui     a0,%hi(D_80100690)[39m         
+                                                  [32m>[39m      [32mcdc:[39m    [32maddiu   a0,a0,%lo(D_80100690)[39m      
+                                                  [32m>[39m      [32mce0:[39m    [32maddiu   v1,s1,-1[39m                   
+                                                  [32m>[39m      [32mce4:[39m    [32msll     v0,v1,0x5[39m                  
+                                                  [32m>[39m      [32mce8:[39m    [32maddu    v0,v0,v1[39m                   
+                                                  [32m>[39m      [32mcec:[39m    [32msll     v0,v0,0x3[39m                  
+                                                  [32m>[39m      [32mcf0:[39m    [32maddu    v0,v0,a0[39m                   
+                                                  [32m>[39m      [32mcf4:[39m    [32msw      zero,0x24(v0)[39m              
+                                                  [32m>[39m      [32mcf8:[39m    [32mlui     v0,%hi(D_800F273C)[39m         
+f8c: [35m~>[39m lw      ra,[93m0x10(sp)[39m                       [33ms[39m      cfc:    lw      ra,[93m0x20(sp)[39m                
+                                                  [32m>[39m      [32md00:[39m    [32mlw      s3,0x1c(sp)[39m                
+                                                  [32m>[39m      [32md04:[39m    [32mlw      s2,0x18(sp)[39m                
+                                                  [32m>[39m      [32md08:[39m    [32mlw      s1,0x14(sp)[39m                
+                                                  [32m>[39m      [32md0c:[39m    [32mlw      s0,0x10(sp)[39m                
+                                                  [32m>[39m      [32md10:[39m    [32mlui     v1,%hi(D_800F2410)[39m         
+                                                  [32m>[39m      [32md14:[39m    [32msw      a0,%lo(D_800F273C)(v0)[39m     
+                                                  [32m>[39m      [32md18:[39m    [32mli      v0,4[39m                       
+                                                  [32m>[39m      [32md1c:[39m    [32msb      v0,%lo(D_800F2410)(v1)[39m     
+                                                  [32m>[39m      [32md20:[39m    [32mjr      ra[39m                         
+                                                  [32m>[39m      [32md24:[39m    [32maddiu   sp,sp,0x28[39m                 
+                                                  [32m>[39m      [32md28:[39m    [32maddiu   sp,sp,-0x18[39m                
+                                                  [32m>[39m      [32md2c:[39m    [32msw      ra,0x10(sp)[39m                
+                                                  [32m>[39m      [32md30:[39m    [32mjal     func_8007982C[39m              
+f90:    nop                                              d34:    nop                                
+                                                  [32m>[39m      [32md38:[39m    [32mlw      ra,0x10(sp)[39m                
+                                                  [32m>[39m      [32md3c:[39m    [32mlui     v0,0x1f80[39m                  
+                                                  [32m>[39m      [32md40:[39m    [32msh      zero,0x17c(v0)[39m             
+f94:    jr      ra                                       d44:    jr      ra                         
+                                                  [32m>[39m      [32md48:[39m    [32maddiu   sp,sp,0x18[39m                 
+                                                  [32m>[39m      [32md4c:[39m    [32mlui     v0,%hi(g_InactiveEntitiesList)[39m
+                                                  [32m>[39m      [32md50:[39m    [32mlw      a0,%lo(g_InactiveEntitiesList)(v0)[39m
+                                                  [32m>[39m      [32md54:[39m    [32maddiu   sp,sp,-0x18[39m                
+                                                  [32m>[39m      [32md58:[39m    [32msw      ra,0x14(sp)[39m                
+                                                  [32m>[39m      [32md5c:[39m    [32mbeqz    a0,d84[39m [90m~>[39m                  
+                                                  [32m>[39m      [32md60:[39m    [32msw      s0,0x10(sp)[39m                
+                                                  [32m>[39m      [32md64:[39m [35m~>[39m [32mlw      s0,0x24(a0)[39m                
+                                                  [32m>[39m      [32md68:[39m    [32mlw      v0,0x1c(a0)[39m                
+f98:    nop                                              d6c:    nop                                
+                                                  [32m>[39m      [32md70:[39m    [32mjalr    v0[39m                         
+                                                  [32m>[39m      [32md74:[39m    [32msb      zero,1(a0)[39m                 
+                                                  [32m>[39m      [32md78:[39m    [32mmove    a0,s0[39m                      
+                                                  [32m>[39m      [32md7c:[39m    [32mbnez    a0,d64[39m [35m~>[39m                  
+                                                  [32m>[39m      [32md80:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32md84:[39m [90m~>[39m [32mlui     v0,%hi(g_ActiveEntitiesList)[39m
+                                                  [32m>[39m      [32md88:[39m    [32mlw      a0,%lo(g_ActiveEntitiesList)(v0)[39m
+                                                  [32m>[39m      [32md8c:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32md90:[39m    [32mbeqz    a0,db8[39m [36m~>[39m                  
+                                                  [32m>[39m      [32md94:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32md98:[39m [32m~>[39m [32mlw      s0,0x24(a0)[39m                
+                                                  [32m>[39m      [32md9c:[39m    [32mlw      v0,0x1c(a0)[39m                
+                                                  [32m>[39m      [32mda0:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32mda4:[39m    [32mjalr    v0[39m                         
+                                                  [32m>[39m      [32mda8:[39m    [32msb      zero,1(a0)[39m                 
+                                                  [32m>[39m      [32mdac:[39m    [32mmove    a0,s0[39m                      
+                                                  [32m>[39m      [32mdb0:[39m    [32mbnez    a0,d98[39m [32m~>[39m                  
+                                                  [32m>[39m      [32mdb4:[39m    [32mnop     [39m                           
+                                                  [32m>[39m      [32mdb8:[39m [36m~>[39m [32mlw      ra,0x14(sp)[39m                
+                                                  [32m>[39m      [32mdbc:[39m    [32mlw      s0,0x10(sp)[39m                
+                                                  [32m>[39m      [32mdc0:[39m    [32mjr      ra[39m                         
+f9c:    addiu   sp,sp,0x18                               dc4:    addiu   sp,sp,0x18                 

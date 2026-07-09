@@ -1,2 +1,0 @@
-// ?
-Functions parameter is required

@@ -29,4 +29,12 @@ clean:
 diff: expected/build/src/$(DIR)/$(FUNC).o build/src/$(DIR)/$(FUNC).o
 	python3 tools/asm-differ/diff.py --no-pager -mo -f build/src/$(DIR)/$(FUNC).o $(SYM)
 
-.PHONY: all clean diff
+# Quick address lookup from symbol_addrs.txt
+symlookup:
+	python3 tools/symbol_addrs.py $(SYM)
+
+# Auto-score all decompiled functions
+score:
+	python3 tools/score.py
+
+.PHONY: all clean diff symlookup score

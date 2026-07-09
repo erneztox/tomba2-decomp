@@ -112,4 +112,156 @@ void func_8003D23C(Entity *entity) {
     ot_ptr[1] = ((u32*)&D_1F800000)[0x1C / 4];
 }
 
-INCLUDE_ASM("asm/nonmatchings/main/func_8003D23C_asm", func_8003D584);
+
+
+
+
+#define APPLY_COLOR_1(col, ent, color_off, off1) \
+    do { \
+        u32 _c = ((u8*)(ent))[(color_off)]; \
+        if (_c >= 0x81) { \
+            s32 _sum1 = (col)[(off1)] + _c; \
+            if (_sum1 >= 0x100) _sum1 = 0xFF; \
+            (col)[(off1)] = _sum1; \
+        } else { \
+            if ((s32)(_c << 24) >= 0) { \
+                s32 _v1 = (s32)(_c - 0x7F) + (col)[(off1)]; \
+                if (_v1 < 0) _v1 = 0; \
+                (col)[(off1)] = _v1; \
+            } \
+        } \
+    } while(0)
+
+#define APPLY_COLOR_3(col, ent, color_off, off1, off2, off3) \
+    do { \
+        u32 _c = ((u8*)(ent))[(color_off)]; \
+        if (_c >= 0x81) { \
+            s32 _sum1 = (col)[(off1)] + _c; \
+            s32 _sum2, _sum3; \
+            if (_sum1 >= 0x100) _sum1 = 0xFF; \
+            (col)[(off1)] = _sum1; \
+            _sum2 = (col)[(off2)] + ((u8*)(ent))[(color_off)]; \
+            if (_sum2 >= 0x100) _sum2 = 0xFF; \
+            (col)[(off2)] = _sum2; \
+            _sum3 = (col)[(off3)] + ((u8*)(ent))[(color_off)]; \
+            if (_sum3 >= 0x100) _sum3 = 0xFF; \
+            (col)[(off3)] = _sum3; \
+        } else { \
+            if ((s32)(_c << 24) >= 0) { \
+                s32 _base = (s32)(_c - 0x7F); \
+                s32 _v1 = _base + (col)[(off1)]; \
+                s32 _v2, _v3; \
+                if (_v1 < 0) _v1 = 0; \
+                (col)[(off1)] = _v1; \
+                _v2 = _base + (col)[(off2)]; \
+                if (_v2 < 0) _v2 = 0; \
+                (col)[(off2)] = _v2; \
+                _v3 = _base + (col)[(off3)]; \
+                if (_v3 < 0) _v3 = 0; \
+                (col)[(off3)] = _v3; \
+            } \
+        } \
+    } while(0)
+
+#define APPLY_COLOR_4(col, ent, color_off, off1, off2, off3, off4) \
+    do { \
+        u32 _c = ((u8*)(ent))[(color_off)]; \
+        if (_c >= 0x81) { \
+            s32 _sum1 = (col)[(off1)] + _c; \
+            s32 _sum2, _sum3, _sum4; \
+            if (_sum1 >= 0x100) _sum1 = 0xFF; \
+            (col)[(off1)] = _sum1; \
+            _sum2 = (col)[(off2)] + ((u8*)(ent))[(color_off)]; \
+            if (_sum2 >= 0x100) _sum2 = 0xFF; \
+            (col)[(off2)] = _sum2; \
+            _sum3 = (col)[(off3)] + ((u8*)(ent))[(color_off)]; \
+            if (_sum3 >= 0x100) _sum3 = 0xFF; \
+            (col)[(off3)] = _sum3; \
+            _sum4 = (col)[(off4)] + ((u8*)(ent))[(color_off)]; \
+            if (_sum4 >= 0x100) _sum4 = 0xFF; \
+            (col)[(off4)] = _sum4; \
+        } else { \
+            if ((s32)(_c << 24) >= 0) { \
+                s32 _base = (s32)(_c - 0x7F); \
+                s32 _v1 = _base + (col)[(off1)]; \
+                s32 _v2, _v3, _v4; \
+                if (_v1 < 0) _v1 = 0; \
+                (col)[(off1)] = _v1; \
+                _v2 = _base + (col)[(off2)]; \
+                if (_v2 < 0) _v2 = 0; \
+                (col)[(off2)] = _v2; \
+                _v3 = _base + (col)[(off3)]; \
+                if (_v3 < 0) _v3 = 0; \
+                (col)[(off3)] = _v3; \
+                _v4 = _base + (col)[(off4)]; \
+                if (_v4 < 0) _v4 = 0; \
+                (col)[(off4)] = _v4; \
+            } \
+        } \
+    } while(0)
+
+
+void func_8003D584(Entity *entity, u8 *ot_start, u8 *ot_end) {
+    register u8 *col asm("a3");
+
+    if (ot_start < ot_end) {
+        col = ot_start + 6;
+        do {
+            u8 type = col[1] & 0xFC;
+            
+            if ((u32)(type - 0x20) < 0x1D) {
+                switch (type) {
+                case 0x34:
+                    APPLY_COLOR_3(col, entity, 0x18, -2, 0xA, 0x16);
+                    APPLY_COLOR_3(col, entity, 0x19, -1, 0xB, 0x17);
+                    APPLY_COLOR_3(col, entity, 0x1A,  0, 0xC, 0x18);
+                    col += 0x20;
+                    ot_start += 0x20;
+                    break;
+                case 0x3C:
+                    APPLY_COLOR_4(col, entity, 0x18, -2, 0xA, 0x16, 0x22);
+                    APPLY_COLOR_4(col, entity, 0x19, -1, 0xB, 0x17, 0x23);
+                    APPLY_COLOR_4(col, entity, 0x1A,  0, 0xC, 0x18, 0x24);
+                    col += 0x34;
+                    ot_start += 0x34;
+                    break;
+                case 0x24:
+                    APPLY_COLOR_1(col, entity, 0x18, -2);
+                    APPLY_COLOR_1(col, entity, 0x19, -1);
+                    APPLY_COLOR_1(col, entity, 0x1A, 0);
+                    col += 0x18;
+                    ot_start += 0x18;
+                    break;
+                case 0x2C:
+                    APPLY_COLOR_1(col, entity, 0x18, -2);
+                    APPLY_COLOR_1(col, entity, 0x19, -1);
+                    APPLY_COLOR_1(col, entity, 0x1A, 0);
+                    col += 0x24;
+                    ot_start += 0x24;
+                    break;
+
+                case 0x20:
+                    col += 0x14;
+                    ot_start += 0x14;
+                    break;
+                case 0x28:
+                    col += 0x18;
+                    ot_start += 0x18;
+                    break;
+                case 0x30:
+                    col += 0x1C;
+                    ot_start += 0x1C;
+                    break;
+                case 0x38:
+                    col += 0x24;
+                    ot_start += 0x24;
+                    break;
+                default:
+                    col += 0x28;
+                    ot_start += 0x28;
+                    break;
+                }
+            }
+        } while (ot_start < ot_end);
+    }
+}

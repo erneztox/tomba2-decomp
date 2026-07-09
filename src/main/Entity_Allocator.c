@@ -729,8 +729,8 @@ void Entity_InitBackgroundPool(void)
 
     i = 0;
     val_5 = 5;
-    next = D_80100690 + 1;
     entity = D_80100690;
+    next = entity + 1;
     while (i < 4) {
         func_8009A420(entity, 0, 0x108);
         entity->next = next;
@@ -740,7 +740,7 @@ void Entity_InitBackgroundPool(void)
         i++;
     }
 
-    D_80100690[i - 1].next = 0;
+    D_80100690[3].next = 0;
     D_800F273C = D_80100690;
     D_800F2410 = 4;
 }

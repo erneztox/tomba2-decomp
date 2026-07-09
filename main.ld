@@ -40,7 +40,7 @@ SECTIONS
         build/src/main/EntityLoop_Active.c.o(.text);
         build/src/main/Entity_Actions.c.o(.text);
         build/src/main/Engine_DispatchStateUpdate.c.o(.text);
-        build/asm/main/func_8003D23C_asm.s.o(.text);
+        build/src/main/gpu_sprite.c.o(.text);
         build/src/main/Engine_HandleState.c.o(.text);
         build/asm/main/FUN_8003E030.s.o(.text);
         build/src/main/EntityLoop_Background.c.o(.text);
@@ -75,7 +75,7 @@ SECTIONS
         build/src/main/EntityLoop_Active.c.o(.data);
         build/src/main/Entity_Actions.c.o(.data);
         build/src/main/Engine_DispatchStateUpdate.c.o(.data);
-        build/asm/main/func_8003D23C_asm.s.o(.data);
+        build/src/main/gpu_sprite.c.o(.data);
         build/src/main/Engine_HandleState.c.o(.data);
         build/asm/main/FUN_8003E030.s.o(.data);
         build/src/main/EntityLoop_Background.c.o(.data);
@@ -110,7 +110,7 @@ SECTIONS
         build/src/main/EntityLoop_Active.c.o(.rodata);
         build/src/main/Entity_Actions.c.o(.rodata);
         build/src/main/Engine_DispatchStateUpdate.c.o(.rodata);
-        build/asm/main/func_8003D23C_asm.s.o(.rodata);
+        build/src/main/gpu_sprite.c.o(.rodata);
         build/src/main/Engine_HandleState.c.o(.rodata);
         build/asm/main/FUN_8003E030.s.o(.rodata);
         build/src/main/EntityLoop_Background.c.o(.rodata);
@@ -145,7 +145,7 @@ SECTIONS
         build/src/main/EntityLoop_Active.c.o(.bss);
         build/src/main/Entity_Actions.c.o(.bss);
         build/src/main/Engine_DispatchStateUpdate.c.o(.bss);
-        build/asm/main/func_8003D23C_asm.s.o(.bss);
+        build/src/main/gpu_sprite.c.o(.bss);
         build/src/main/Engine_HandleState.c.o(.bss);
         build/asm/main/FUN_8003E030.s.o(.bss);
         build/src/main/EntityLoop_Background.c.o(.bss);

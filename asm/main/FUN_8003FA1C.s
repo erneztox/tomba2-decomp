@@ -27,7 +27,7 @@ nonmatching func_8003FA44, 0x60
 glabel func_8003FA44
     /* 30244 8003FA44 E8FFBD27 */  addiu      $sp, $sp, -0x18
     /* 30248 8003FA48 1000BFAF */  sw         $ra, 0x10($sp)
-    /* 3024C 8003FA4C 4C3F010C */  jal        GPU_ProcessRenderQueue
+    /* 3024C 8003FA4C 4C3F010C */  jal        func_8004FD30
     /* 30250 8003FA50 00000000 */   nop
     /* 30254 8003FA54 6697000C */  jal        func_80025D98
     /* 30258 8003FA58 00000000 */   nop

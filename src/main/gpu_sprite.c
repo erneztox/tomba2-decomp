@@ -26,7 +26,7 @@ extern void func_80084110(void*, void*, void*);
  *
  * @note Original address: 0x8003D23C
  */
-void func_8003D23C(Entity *entity) {
+void GPU_Render3DSprite(Entity *entity) {
     u16 raw_sc;
     s16 scale;
     u32 vtx_idx;
@@ -201,7 +201,7 @@ void func_8003D23C(Entity *entity) {
     } while(0)
 
 
-void func_8003D584(Entity *entity, u8 *ot_start, u8 *ot_end) {
+void GPU_ModulateOTColors(Entity *entity, u8 *ot_start, u8 *ot_end) {
     register u8 *col asm("a3");
 
     if (ot_start < ot_end) {

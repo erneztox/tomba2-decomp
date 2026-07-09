@@ -2,14 +2,14 @@
 
 extern u8 *D_800BF544;
 extern void func_8003F07C(Entity*, int);
-extern void func_8003D584(Entity*, u8*, u8*);
+extern void GPU_ModulateOTColors(Entity*, u8*, u8*);
 
 /**
  * @brief Updates an entity's movement and animation.
  *
  * Reads the movement mode from the low nibble of entity offset 0xD.
  *  - 0: position update only (via func_8003F07C)
- *  - 2: position update + animation/OT snapshot (via func_8003D584)
+ *  - 2: position update + animation/OT snapshot (via GPU_ModulateOTColors)
  *  - other: skip
  *
  * @param entity The entity to update.
@@ -26,7 +26,7 @@ void Entity_UpdateMovement(Entity *entity) {
         case 2:
             ot_before = D_800BF544;
             func_8003F07C(entity, is_idle);
-            func_8003D584(entity, ot_before, D_800BF544);
+            GPU_ModulateOTColors(entity, ot_before, D_800BF544);
             break;
     }
 }

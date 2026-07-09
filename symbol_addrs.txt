@@ -12,4 +12,5 @@ EntityLoop_Background_Draw = 0x8003BF00;
 Engine_DispatchStateUpdate = 0x8003D0BC;
 EntityFX_Update = 0x8003F024;
 Entity_UpdateMovement = 0x8003EF9C;
-GPU_ProcessRenderQueue = 0x8004FD30;
+GPU_Render3DSprite = 0x8003D23C;
+GPU_ModulateOTColors = 0x8003D584;

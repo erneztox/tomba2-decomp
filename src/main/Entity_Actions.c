@@ -6,7 +6,7 @@ extern u32* D_800BF544;
 extern void func_8003CDD8(Entity* entity, s32 flag);
 extern void func_8003F4C4(Entity* entity, u32* ot, u32* prims);
 extern void func_8003F3F4(Entity* entity, u32* ot);
-extern void func_8003D584(Entity* entity, u32* ot, u32* prims);
+extern void GPU_ModulateOTColors(Entity* entity, u32* ot, u32* prims);
 extern void func_8003F594(Entity* entity, u32* ot, u32* prims);
 extern void func_8003F344(Entity* entity, u32* ot, u32* prims);
 
@@ -242,7 +242,7 @@ void func_8003CCA4(Entity* entity) {
             
         case 2:
             func_8003CDD8(entity, flag);
-            func_8003D584(entity, ot, D_800BF544);
+            GPU_ModulateOTColors(entity, ot, D_800BF544);
             break;
             
         case 3:

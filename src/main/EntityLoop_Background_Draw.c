@@ -13,6 +13,10 @@ extern void func_8003C788(Entity*);
 extern void func_8010FC70(Entity*);
 extern void func_8004CC88(Entity*);
 
+/**
+ * @brief Renders background entity sprites via the scratchpad ordering table.
+ * @note Original address: 0x8003BF00
+ */
 void EntityLoop_Background_Draw(void) {
     Entity* entity;
     s32 count;

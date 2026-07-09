@@ -23,6 +23,10 @@ extern void func_80084660(void*);
 extern void func_80084690(void*);
 extern void func_8003B320(u8*, void*, int);
 
+/**
+ * @brief Processes active entities each frame, dispatching by action_id.
+ * @note Original address: 0x8003C048
+ */
 void EntityLoop_Active(void) {
     Entity* entity;
     Entity* next;

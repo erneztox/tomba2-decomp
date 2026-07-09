@@ -6,14 +6,14 @@ funcs = {
     "EntityLoop_Active": "EntityLoop_Active",
     "EntityLoop_Background": "EntityLoop_Background",
     "Entity_UpdateMovement": "Entity_UpdateMovement",
-    "func_8003F024": "EntityFX_Update",
-    "func_8003F07C": "EntityFX_Update",
-    "func_8007A980": "Entity_Allocator",
-    "func_80079C3C": "Entity_Allocator",
-    "func_80079DDC": "Entity_Allocator",
-    "func_80079F90": "Entity_Allocator",
-    "func_8007A12C": "Entity_Allocator",
-    "func_8007A2C8": "Entity_Allocator",
+    "EntityFX_Update": "EntityFX_Update",
+    "Entity_UpdateAnimation": "EntityFX_Update",
+    "Entity_AllocByPoolId": "Entity_Allocator",
+    "Entity_AllocPool0": "Entity_Allocator",
+    "Entity_AllocPool1": "Entity_Allocator",
+    "Entity_AllocPool2": "Entity_Allocator",
+    "Entity_AllocPool3": "Entity_Allocator",
+    "Entity_AllocPool4": "Entity_Allocator",
 }
 
 output = "# Decompilation Progress\n\n"

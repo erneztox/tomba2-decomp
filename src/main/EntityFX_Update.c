@@ -3,14 +3,10 @@
 extern void GPU_Render3DSprite(Entity*);
 
 /**
- * @brief Updates all active particle/FX slots.
- *
- * Iterates over 40 slots in the effects array at D_800EC188, calling
- * GPU_Render3DSprite on each non-null entry.
- *
+ * @brief Updates all active particle/FX slots (40 slots at D_800EC188).
  * @note Original address: 0x8003F024
  */
-void func_8003F024(void) {
+void EntityFX_Update(void) {
     int i;
     char *slot;
 
@@ -61,7 +57,11 @@ extern u32 D_800ED8C8;
 		: "$12", "$13", "$14" \
 	)
 
-void func_8003F07C(Entity *entity, int param_2) {
+/**
+ * @brief Updates entity animation by transforming child matrices via GTE.
+ * @note Original address: 0x8003F07C
+ */
+void Entity_UpdateAnimation(Entity *entity, int param_2) {
     int i;
     void **ptr_array;
 

@@ -25,6 +25,10 @@ extern RenderQueue D_800BF548;
 /**
  * @brief Processes the global render queue.
  */
+/**
+ * @brief Processes the global GPU render queue each frame.
+ * @note Original address: 0x80040530
+ */
 void GPU_ProcessRenderQueue(void) {
     u32 *ot_ptr;
     u32 *p;

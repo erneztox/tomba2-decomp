@@ -21,9 +21,9 @@ Para comprobar si una función que descompilaste en C hace match exacto (byte-fo
 ```bash
 make diff DIR=main FUNC=NombreDelArchivo SYM=nombre_de_la_funcion
 ```
-Ejemplo para `func_8003CDD8` en `src/main/Entity_Actions.c`:
+Ejemplo para `Entity_DrawChildren` en `src/main/Entity_Actions.c`:
 ```bash
-make diff DIR=main FUNC=Entity_Actions SYM=func_8003CDD8
+make diff DIR=main FUNC=Entity_Actions SYM=Entity_DrawChildren
 ```
 - `CURRENT (0)` = **100% Match** (Éxito).
 - Cualquier otro número indica discrepancias.

@@ -22,6 +22,10 @@ extern void func_80025B78(u32);
 extern void func_801121AC(void);
 extern void func_8010F8CC(void);
 
+/**
+ * @brief Reads controller input and updates engine input state flags.
+ * @note Original address: 0x80016598
+ */
 void Engine_UpdateInputState(void) {
     u8 bVar1;
     

@@ -4,7 +4,7 @@
 
 extern u32* D_800BF544;
 extern u32* D_800ED8C8;
-extern void func_8003CDD8(Entity* entity, s32 flag);
+extern void Entity_DrawChildren(Entity* entity, s32 flag);
 extern void func_8003F4C4(Entity* entity, u32* ot, u32* prims);
 extern void func_8003F3F4(Entity* entity, u32* ot);
 extern void GPU_ModulateOTColors(Entity* entity, u32* ot, u32* prims);
@@ -14,14 +14,17 @@ extern void func_8003F344(Entity* entity, u32* ot, u32* prims);
 extern void func_80051794(void*);
 extern void func_80085050(s32, void*);
 extern void func_80084110(void*, void*, void*);
-extern void func_8003C8F4(Entity*, s32);
+extern void Entity_SubmitGTEVertices(Entity*, s32);
 
 extern u32 D_1F800000;
 extern u32 D_1F800020;
 extern u32 D_1F800040;
 
-// Original address: 0x8003C2D4
-void func_8003C2D4(Entity* entity) {
+/**
+ * @brief Renders a 3D sprite entity with GTE matrix transforms.
+ * @note Original address: 0x8003C2D4
+ */
+void Entity_Draw3DSprite(Entity* entity) {
     u8 bVar1;
     u32* scratchpad = (u32*)0x1F800000;
     
@@ -62,18 +65,21 @@ void func_8003C2D4(Entity* entity) {
         setCopControlWord(2, 6, scratchpad[0x58/4]);
         setCopControlWord(2, 7, scratchpad[0x5C/4]);
         
-        func_8003C8F4(entity, bVar1 & 1);
+        Entity_SubmitGTEVertices(entity, bVar1 & 1);
     }
 }
 
-// INCLUDE_ASM("asm/nonmatchings/main/Entity_Actions", func_8003C2D4);
+// INCLUDE_ASM("asm/nonmatchings/main/Entity_Actions", Entity_Draw3DSprite);
 
-// INCLUDE_ASM("asm/nonmatchings/main/Entity_Actions", func_8003C464);
+// INCLUDE_ASM("asm/nonmatchings/main/Entity_Actions", Entity_Draw3DSpriteScaled);
 
 extern void func_800517BC(void*, s32, s32, s32);
 
-// Original address: 0x8003C464
-void func_8003C464(Entity* entity) {
+/**
+ * @brief Renders a 3D sprite with scale matrix using entity's scale fields.
+ * @note Original address: 0x8003C464
+ */
+void Entity_Draw3DSpriteScaled(Entity* entity) {
     u8 bVar1;
     u32* scratchpad = (u32*)&D_1F800000;
     
@@ -115,16 +121,19 @@ void func_8003C464(Entity* entity) {
         setCopControlWord(2, 6, scratchpad[0x58/4]);
         setCopControlWord(2, 7, scratchpad[0x5C/4]);
         
-        func_8003C8F4(entity, bVar1 & 1);
+        Entity_SubmitGTEVertices(entity, bVar1 & 1);
     }
 }
 
-// INCLUDE_ASM("asm/nonmatchings/main/Entity_Actions", func_8003C5F8);
+// INCLUDE_ASM("asm/nonmatchings/main/Entity_Actions", Entity_Draw3DSpriteRotated);
 
 extern void func_800847F0(void*, void*);
 
-// Original address: 0x8003C5F8
-void func_8003C5F8(Entity* entity) {
+/**
+ * @brief Renders a 3D sprite with rotation data from entity offset 0x54.
+ * @note Original address: 0x8003C5F8
+ */
+void Entity_Draw3DSpriteRotated(Entity* entity) {
     u8 bVar1;
     u32* scratchpad = (u32*)0x1F800000;
     
@@ -165,14 +174,17 @@ void func_8003C5F8(Entity* entity) {
         setCopControlWord(2, 6, scratchpad[0x58/4]);
         setCopControlWord(2, 7, scratchpad[0x5C/4]);
         
-        func_8003C8F4(entity, bVar1 & 1);
+        Entity_SubmitGTEVertices(entity, bVar1 & 1);
     }
 }
 
-// INCLUDE_ASM("asm/nonmatchings/main/Entity_Actions", func_8003C788);
+// INCLUDE_ASM("asm/nonmatchings/main/Entity_Actions", Entity_Draw3DSpriteDirect);
 
-// Original address: 0x8003C788
-void func_8003C788(Entity* entity) {
+/**
+ * @brief Renders a 3D sprite using direct matrix data from entity offset 0x98.
+ * @note Original address: 0x8003C788
+ */
+void Entity_Draw3DSpriteDirect(Entity* entity) {
     u8 bVar1;
     u32* scratchpad = (u32*)0x1F800000;
     
@@ -217,7 +229,11 @@ void func_8003C788(Entity* entity) {
 extern void func_8003B220(s16* dest, s32 zero, int src);
 extern void func_8003B054(u8* dest, int src, s32 flag);
 
-void func_8003C8F4(Entity* entity, s32 flag) {
+/**
+ * @brief Submits transformed GTE vertices to the ordering table for rendering.
+ * @note Original address: 0x8003C8F4
+ */
+void Entity_SubmitGTEVertices(Entity* entity, s32 flag) {
     register Entity* entity_reg asm("s1") = entity;
     register s32 flag_reg asm("s6") = flag;
     s16* p38;
@@ -413,8 +429,11 @@ void func_8003C8F4(Entity* entity, s32 flag) {
 }
 
 
-// Original address: 0x8003CCA4
-void func_8003CCA4(Entity* entity) {
+/**
+ * @brief Dispatches entity drawing to the appropriate renderer based on move_mode.
+ * @note Original address: 0x8003CCA4
+ */
+void Entity_Draw(Entity* entity) {
     s32 flag;
     u32* ot;
 
@@ -426,12 +445,12 @@ void func_8003CCA4(Entity* entity) {
     switch (entity->move_mode & 0xB) {
         case 0:
         case 4:
-            func_8003CDD8(entity, flag);
+            Entity_DrawChildren(entity, flag);
             break;
             
         case 1:
-            func_8003CDD8(entity, flag);
-            if (((u8*)entity)[0x1B] == 0) { // pad1B
+            Entity_DrawChildren(entity, flag);
+            if (((u8*)entity)[0x1B] == 0) {
                 func_8003F4C4(entity, ot, D_800BF544);
             } else {
                 func_8003F3F4(entity, ot);
@@ -439,28 +458,31 @@ void func_8003CCA4(Entity* entity) {
             break;
             
         case 2:
-            func_8003CDD8(entity, flag);
+            Entity_DrawChildren(entity, flag);
             GPU_ModulateOTColors(entity, ot, D_800BF544);
             break;
             
         case 3:
-            func_8003CDD8(entity, flag);
+            Entity_DrawChildren(entity, flag);
             func_8003F594(entity, ot, D_800BF544);
             break;
             
         case 8:
-            func_8003CDD8(entity, flag);
+            Entity_DrawChildren(entity, flag);
             func_8003F344(entity, ot, D_800BF544);
             break;
     }
 }
 
-// INCLUDE_ASM("asm/nonmatchings/main/Entity_Actions", func_8003CDD8);
+// INCLUDE_ASM("asm/nonmatchings/main/Entity_Actions", Entity_DrawChildren);
 
 extern void func_8003F698(u32, u32, s32);
 
-// Original address: 0x8003CDD8
-void func_8003CDD8(Entity* entity, s32 flag) {
+/**
+ * @brief Transforms child entity matrices via GTE and submits them for rendering.
+ * @note Original address: 0x8003CDD8
+ */
+void Entity_DrawChildren(Entity* entity, s32 flag) {
     u32* scratchpad = (u32*)&D_1F800000;
     s32 i;
     Entity* target;

@@ -82,13 +82,13 @@ extern Entity* g_BackgroundEntitiesList;   // 0x800F2738
 void EntityLoop_Active(void);              // 0x8003C048
 void Engine_ExecuteGameLoop(void);         // 0x8003F9A8
 
-Entity* func_80079C3C(Entity* target, u8 param_2, int mode, int list_id);
-Entity* func_80079DDC(Entity* target, u8 param_2, int mode, int list_id);
-Entity* func_80079F90(Entity* target, u8 param_2, int mode, int list_id);
-Entity* func_8007A12C(Entity* target, u8 param_2, int mode, int list_id);
-Entity* func_8007A2C8(Entity* target, u8 param_2, int mode, int list_id);
+Entity* Entity_AllocPool0(Entity* target, u8 param_2, int mode, int list_id);
+Entity* Entity_AllocPool1(Entity* target, u8 param_2, int mode, int list_id);
+Entity* Entity_AllocPool2(Entity* target, u8 param_2, int mode, int list_id);
+Entity* Entity_AllocPool3(Entity* target, u8 param_2, int mode, int list_id);
+Entity* Entity_AllocPool4(Entity* target, u8 param_2, int mode, int list_id);
 
-Entity* func_8007A980(u8 param_1, u8 param_2, int param_3);
+Entity* Entity_AllocByPoolId(u8 pool_id, u8 param_2, int list_id);
 void func_80028E10(Entity* entity, u32 id);
 
 #endif // TOMBA_H

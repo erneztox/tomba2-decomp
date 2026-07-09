@@ -6,6 +6,10 @@ extern u32 func_80083E80(u32);
 extern void func_800597AC(Entity*);
 extern void func_8003CCA4(Entity*);
 
+/**
+ * @brief Updates the player entity each frame: input, movement, and actions.
+ * @note Original address: 0x8003B588
+ */
 void EntityLoop_Player(void) {
     u8 mode;
     u8 pad;

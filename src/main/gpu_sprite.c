@@ -201,6 +201,10 @@ void GPU_Render3DSprite(Entity *entity) {
     } while(0)
 
 
+/**
+ * @brief Applies entity color modulation to sprite primitives in the OT.
+ * @note Original address: 0x8003D584
+ */
 void GPU_ModulateOTColors(Entity *entity, u8 *ot_start, u8 *ot_end) {
     register u8 *col asm("a3");
 

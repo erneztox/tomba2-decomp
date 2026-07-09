@@ -21,7 +21,11 @@ extern void func_8007982C(void);
 extern void func_8007ADDC(Entity* entity);
 extern void func_8009A420(void* dest, int val, int len);
 
-Entity* func_80079C3C(Entity* target, u8 param_2, int mode, int list_id)
+/**
+ * @brief Allocates an entity from Pool 0 and inserts it into the target list.
+ * @note Original address: 0x80079C3C
+ */
+Entity* Entity_AllocPool0(Entity* target, u8 param_2, int mode, int list_id)
 {
     Entity* entity = D_800E8098;
     Entity* next_free;
@@ -113,7 +117,11 @@ initialize:
 extern u8 D_800E7E7D;
 extern Entity* D_800E80A0;
 
-Entity* func_80079DDC(Entity* target, u8 param_2, int mode, int list_id)
+/**
+ * @brief Allocates an entity from Pool 1, falling back to Pool 2 if empty.
+ * @note Original address: 0x80079DDC
+ */
+Entity* Entity_AllocPool1(Entity* target, u8 param_2, int mode, int list_id)
 {
     Entity* entity = D_800E80A0;
     Entity* next_free;
@@ -121,7 +129,7 @@ Entity* func_80079DDC(Entity* target, u8 param_2, int mode, int list_id)
     Entity** head_ptr;
 
     if (D_800E80A0 == 0) {
-        return func_80079F90(target, param_2, mode, list_id);
+        return Entity_AllocPool2(target, param_2, mode, list_id);
     }
 
 
@@ -208,7 +216,11 @@ initialize:
 extern u8 D_800ED8CC;
 extern Entity* D_800F2398;
 
-Entity* func_80079F90(Entity* target, u8 param_2, int mode, int list_id)
+/**
+ * @brief Allocates an entity from Pool 2.
+ * @note Original address: 0x80079F90
+ */
+Entity* Entity_AllocPool2(Entity* target, u8 param_2, int mode, int list_id)
 {
     Entity* entity = D_800F2398;
     Entity* next_free;
@@ -300,7 +312,11 @@ initialize:
 extern u8 D_800ED8C5;
 extern Entity* D_800ED8D4;
 
-Entity* func_8007A12C(Entity* target, u8 param_2, int mode, int list_id)
+/**
+ * @brief Allocates an entity from Pool 3.
+ * @note Original address: 0x8007A12C
+ */
+Entity* Entity_AllocPool3(Entity* target, u8 param_2, int mode, int list_id)
 {
     Entity* entity = D_800ED8D4;
     Entity* next_free;
@@ -392,7 +408,11 @@ initialize:
 extern u8 D_800ED8C4;
 extern Entity* D_800ED8D0;
 
-Entity* func_8007A2C8(Entity* target, u8 param_2, int mode, int list_id)
+/**
+ * @brief Allocates an entity from Pool 4.
+ * @note Original address: 0x8007A2C8
+ */
+Entity* Entity_AllocPool4(Entity* target, u8 param_2, int mode, int list_id)
 {
     Entity* entity = D_800ED8D0;
     Entity* next_free;
@@ -481,24 +501,33 @@ initialize:
     return entity;
 }
 
-Entity* func_8007A980(u8 param_1, u8 param_2, int param_3)
+/**
+ * @brief Dispatches entity allocation to the correct pool based on pool ID.
+ * @note Original address: 0x8007A980
+ */
+Entity* Entity_AllocByPoolId(u8 pool_id, u8 param_2, int list_id)
 {
-    switch (param_1) {
+    switch (pool_id) {
     case 0:
-        return func_80079C3C(0, param_2, 3, param_3);
+        return Entity_AllocPool0(0, param_2, 3, list_id);
     case 1:
-        return func_80079DDC(0, param_2, 3, param_3);
+        return Entity_AllocPool1(0, param_2, 3, list_id);
     case 2:
-        return func_80079F90(0, param_2, 3, param_3);
+        return Entity_AllocPool2(0, param_2, 3, list_id);
     case 3:
-        return func_8007A12C(0, param_2, 3, param_3);
+        return Entity_AllocPool3(0, param_2, 3, list_id);
     case 4:
-        return func_8007A2C8(0, param_2, 3, param_3);
+        return Entity_AllocPool4(0, param_2, 3, list_id);
     }
     return 0; // fallback in case switch doesn't cover all paths
 }
 
-Entity* func_8007A464(Entity* target, int mode)
+/**
+ * @brief Allocates an entity from the background free list and inserts it at the
+ * specified position (head, tail, before, after) in the background entity list.
+ * @note Original address: 0x8007A464
+ */
+Entity* Entity_AllocBackground(Entity* target, int mode)
 {
     Entity* entity = D_800F273C;
 
@@ -567,7 +596,11 @@ Entity* func_8007A464(Entity* target, int mode)
 
     return entity;
 }
-Entity* func_8007A5A8(u8 param_1)
+/**
+ * @brief Removes an entity from Pool 0's free list and appends it to the active list.
+ * @note Original address: 0x8007A5A8
+ */
+Entity* Entity_Activate(u8 param_1)
 {
     Entity* entity = D_800E8098;
 
@@ -595,7 +628,12 @@ Entity* func_8007A5A8(u8 param_1)
 
     return entity;
 }
-void func_8007A624(Entity* entity)
+/**
+ * @brief Unlinks an entity from its list, cleans its fields, and returns it to
+ * the appropriate free pool based on its flags.
+ * @note Original address: 0x8007A624
+ */
+void Entity_Dealloc(Entity* entity)
 {
     Entity** head_ptr;
     Entity** tail_ptr;
@@ -674,7 +712,11 @@ void func_8007A624(Entity* entity)
     ((u8*)entity)[0x29] = 0;
     ((u8*)entity)[0x5E] = 0;
 }
-void func_8007A810(void)
+/**
+ * @brief Initializes the background entity pool with 4 pre-linked entities.
+ * @note Original address: 0x8007A810
+ */
+void Entity_InitBackgroundPool(void)
 {
     register s32 val_5 asm("s3");
     register Entity* next asm("s2");
@@ -702,7 +744,11 @@ void func_8007A810(void)
     D_800F273C = D_80100690;
     D_800F2410 = 4;
 }
-void func_8007A8E0(void)
+/**
+ * @brief Clears input-related flags in the scratchpad after a subsystem reset.
+ * @note Original address: 0x8007A8E0
+ */
+void Entity_ClearInputFlags(void)
 {
     register u16* ptr asm("v0");
     func_8007982C();
@@ -710,7 +756,12 @@ void func_8007A8E0(void)
     ptr[0xBE] = 0;
 }
 
-void func_8007A904(void)
+/**
+ * @brief Iterates all active and inactive entities, clearing their active flag
+ * and calling their update function.
+ * @note Original address: 0x8007A904
+ */
+void Entity_UpdateAll(void)
 {
     register Entity* entity asm("a0");
 

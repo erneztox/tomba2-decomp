@@ -4,6 +4,10 @@ extern void func_8003CCA4(Entity*);
 extern void func_8003C2D4(Entity*);
 extern void func_8003B704(Entity*);
 
+/**
+ * @brief Processes background entities each frame.
+ * @note Original address: 0x8003EEC0
+ */
 void EntityLoop_Background(void) {
     Entity *entity;
     Entity *next;

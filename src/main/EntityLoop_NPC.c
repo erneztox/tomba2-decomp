@@ -16,6 +16,10 @@ extern void func_80136748(Entity*);
 extern void func_8003C2D4(Entity*);
 extern void func_8003C464(Entity*);
 
+/**
+ * @brief Processes NPC entities based on current game state.
+ * @note Original address: 0x8003BCF4
+ */
 void EntityLoop_NPC(void) {
     s16 count;
     Entity* entity;

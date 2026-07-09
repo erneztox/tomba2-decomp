@@ -11,6 +11,10 @@ extern void func_8003C464(Entity*);
 extern void func_8003C5F8(Entity*);
 extern void func_8003C788(Entity*);
 
+/**
+ * @brief Processes object entities from the scratchpad ordering table.
+ * @note Original address: 0x8003BB50
+ */
 void EntityLoop_Object(void) {
     s16 count;
     Entity* entity;

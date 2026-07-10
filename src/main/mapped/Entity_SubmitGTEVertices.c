@@ -1,132 +1,220 @@
+#include "tomba.h"
+#include "include_asm.h"
+#include "gte_inline.h"
+
+extern u32* D_800BF544;
+extern u32* D_800ED8C8;
+extern void Entity_DrawChildren(Entity* entity, s32 flag);
+extern void func_8003F4C4(Entity* entity, u32* ot, u32* prims);
+extern void func_8003F3F4(Entity* entity, u32* ot);
+extern void GPU_ModulateOTColors(Entity* entity, u32* ot, u32* prims);
+extern void func_8003F594(Entity* entity, u32* ot, u32* prims);
+extern void func_8003F344(Entity* entity, u32* ot, u32* prims);
+
+extern void func_80051794(void*);
+extern void func_80085050(s32, void*);
+extern void func_80084110(void*, void*, void*);
+extern void Entity_SubmitGTEVertices(Entity*, s32);
+
+extern u32 D_1F800000;
+extern u32 D_1F800020;
+extern u32 D_1F800040;
+
 /**
- * @brief Submits GTE-transformed vertices to OT as textured quad primitive
- * @note Original: func_8003C8F4 at 0x8003C8F4
+ * @brief Submits transformed GTE vertices to the ordering table for rendering.
+ * @note Original address: 0x8003C8F4
  */
-// Entity_SubmitGTEVertices
-
-
-// FUN_8003C8F4
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
-void FUN_8003c8f4(int param_1,undefined4 param_2)
-
-{
-  undefined4 in_zero;
-  undefined4 extraout_at;
-  undefined2 uVar1;
-  uint uVar2;
-  short *psVar3;
-  undefined4 extraout_v1;
-  undefined4 *puVar4;
-  undefined4 uVar5;
-  uint *puVar6;
-  int iVar7;
-  int iVar8;
-  undefined4 local_50;
-  undefined4 local_4c;
-  undefined4 local_48;
-  undefined4 local_44;
-  undefined4 local_40;
-  undefined4 local_3c;
-  undefined4 local_38;
-  undefined4 local_34;
-  int local_30;
-  int local_2c;
-  int local_28;
-  
-  if (*(short **)(param_1 + 0x38) != (short *)0x0) {
-    psVar3 = (short *)(*(int *)(param_1 + 0x3c) + **(short **)(param_1 + 0x38) * 4);
-    iVar8 = (int)*psVar3;
-    iVar7 = *(int *)(param_1 + 0x3c) + (int)psVar3[1];
-    do {
-      puVar4 = &local_50;
-      uVar5 = 0;
-      FUN_8003b220(puVar4,0,iVar7);
-      setCopReg(2,in_zero,local_50);
-      setCopReg(2,extraout_at,local_4c);
-      setCopReg(2,&local_50,local_48);
-      setCopReg(2,extraout_v1,local_44);
-      setCopReg(2,puVar4,local_40);
-      setCopReg(2,uVar5,local_3c);
-      copFunction(2,0x280030);
-      local_30 = getCopControlWord(2,0xf800);
-      if (local_30 < 0) {
-LAB_8003c9fc:
-        local_28 = -1;
-      }
-      else {
-        _DAT_1f800008 = getCopReg(2,0xc);
-        _DAT_1f800010 = getCopReg(2,0xd);
-        _DAT_1f800018 = getCopReg(2,0xe);
-        copFunction(2,0x1400006);
-        getCopReg(2,0x18);
-        setCopReg(2,in_zero,local_38);
-        setCopReg(2,extraout_at,local_34);
-        copFunction(2,0x180001);
-        local_30 = getCopControlWord(2,0xf800);
-        if (local_30 < 0) goto LAB_8003c9fc;
-        _DAT_1f800020 = getCopReg(2,0xe);
-        copFunction(2,0x168002e);
-        local_2c = getCopReg(2,7);
-        local_28 = local_2c;
-      }
-      if (((((_DAT_1f800008 < 0x140) || (_DAT_1f800010 < 0x140)) || (_DAT_1f800018 < 0x140)) ||
-          (_DAT_1f800020 < 0x140)) &&
-         (((_DAT_1f80000a < 0xf0 || (_DAT_1f800012 < 0xf0)) ||
-          ((_DAT_1f80001a < 0xf0 || (_DAT_1f800022 < 0xf0)))))) {
-        local_28 = local_28 + *(char *)(param_1 + 8);
-        uVar2 = local_28 >> 10;
-        local_28 = (local_28 >> (uVar2 & 0x1f)) + uVar2 * 0x200;
-        if (0x7fb < local_28 - 4U) {
-          local_28 = -1;
+void Entity_SubmitGTEVertices(Entity* entity, s32 flag) {
+    register Entity* entity_reg asm("s1") = entity;
+    register s32 flag_reg asm("s6") = flag;
+    s16* p38;
+    s16* p16;
+    register s32 count asm("s4");
+    register int vertex_ptr asm("s3");
+    register u32* sp_ptr asm("s0");
+    register s32 neg_1 asm("s5");
+    
+    __asm__ volatile ("" : : "r"(flag_reg));
+    
+    if (entity_reg->unknown_38 != 0) {
+        s16 local_50[24]; // Stack buffer to size stack to 0x60
+        volatile s32* local_30_ptr = (volatile s32*)((char*)local_50 + 0x20); // sp + 0x30
+        
+        p38 = (s16*)entity_reg->unknown_38;
+        p16 = (s16*)(*(int*)((char*)entity_reg + 0x3C) + (*p38) * 4);
+        count = (s32)*p16;
+        {
+            register s32 temp_vertex_offset asm("a0") = p16[1];
+            vertex_ptr = *(int*)((char*)entity_reg + 0x3C) + temp_vertex_offset;
         }
-        if (-1 < local_28) {
-          FUN_8003b054(0x1f800000,iVar7,param_2);
-          if (*(short *)(param_1 + 0x5c) != 0) {
-            _DAT_1f80000c = CONCAT22(*(short *)(param_1 + 0x5c),_DAT_1f80000c);
-          }
-          switch(*(undefined1 *)(param_1 + 0xd)) {
-          case 0:
-            _DAT_1f800004 = CONCAT13(0x2d,_DAT_1f800004);
-            break;
-          case 1:
-            _DAT_1f800004 = CONCAT13(0x2f,_DAT_1f800004);
-            break;
-          case 2:
-            _DAT_1f800004 = (undefined3)*(undefined4 *)(param_1 + 0x18);
-            _DAT_1f800004 = CONCAT13(0x2c,_DAT_1f800004);
-            break;
-          case 3:
-            _DAT_1f800004 = (undefined3)*(undefined4 *)(param_1 + 0x18);
-            _DAT_1f800004 = CONCAT13(0x2e,_DAT_1f800004);
-            break;
-          case 0x20:
-            _DAT_1f800004 = CONCAT13(0x2d,_DAT_1f800004);
-            uVar1 = 0x407b;
-            if (*(char *)(param_1 + 0x18) == '\0') {
-              uVar1 = 0x403b;
+        sp_ptr = (u32*)0x1F800000;
+        neg_1 = -1;
+        
+        do {
+            u32 shift;
+            
+            func_8003B220((s16*)local_50, 0, vertex_ptr);
+            
+            // Load 3 vertices (Vertex 0, Vertex 2, Vertex 1) into GTE
+            GTE_LoadV012((u32*)local_50);
+            
+            __asm__ volatile ("nop\n\tnop\n\tcop2 0x280030");
+            {
+                register u32 flag_val asm("t4");
+                __asm__ volatile ("cfc2\t%0, $31\n\tnop" : "=r"(flag_val));
+                local_30_ptr[0] = flag_val;
             }
-            _DAT_1f80000c = CONCAT22(uVar1,_DAT_1f80000c);
-          }
-          puVar6 = (uint *)(_DAT_800ed8c8 + local_28 * 4);
-          *_DAT_800bf544 = *puVar6 | 0x9000000;
-          *puVar6 = (uint)_DAT_800bf544;
-          _DAT_800bf544[1] = _DAT_1f800004;
-          _DAT_800bf544[2] = _DAT_1f800008;
-          _DAT_800bf544[3] = _DAT_1f80000c;
-          _DAT_800bf544[4] = _DAT_1f800010;
-          _DAT_800bf544[5] = _DAT_1f800014;
-          _DAT_800bf544[6] = _DAT_1f800018;
-          _DAT_800bf544[7] = _DAT_1f80001c;
-          _DAT_800bf544[8] = _DAT_1f800020;
-          _DAT_800bf544[9] = _DAT_1f800024;
-          _DAT_800bf544 = _DAT_800bf544 + 10;
-        }
-      }
-      iVar8 = iVar8 + -1;
-      iVar7 = iVar7 + 0x10;
-    } while (iVar8 != 0);
-  }
-  return;
+            
+            if ((s32)local_30_ptr[0] < 0) {
+                local_30_ptr[2] = neg_1; // sp + 0x38
+            } else {
+                // Save SXY0, SXY1, SXY2 to scratchpad
+                __asm__ volatile (
+                    "swc2\t$12, 8(%0)\n\t"
+                    "swc2\t$13, 16(%0)\n\t"
+                    "swc2\t$14, 24(%0)"
+                    : : "r"(sp_ptr)
+                );
+                
+                // Normal clipping
+                __asm__ volatile (
+                    "nop\n\tnop\n\t"
+                    "nclip\n\t"
+                    "swc2\t$24, 0(%0)"
+                    : : "r"(local_30_ptr)
+                );
+                
+                // Load Vertex 3 into GTE V0 and do RTPS
+                GTE_LoadV01((u32*)((char*)local_50 + 24));
+                __asm__ volatile ("nop\n\tnop\n\trtps");
+                
+                {
+                    register u32 flag_val asm("t4");
+                    __asm__ volatile ("cfc2\t%0, $31\n\tnop" : "=r"(flag_val));
+                    local_30_ptr[0] = flag_val;
+                }
+                
+                if ((s32)local_30_ptr[0] < 0) {
+                    local_30_ptr[2] = neg_1;
+                } else {
+                    // Save SXY2 (which has the projected Vertex 3) to 0x1F800020 (SXY3)
+                    __asm__ volatile (
+                        "swc2\t$14, 32(%0)"
+                        : : "r"(sp_ptr)
+                    );
+                    
+                    __asm__ volatile ("nop\n\tavsz4");
+                    __asm__ volatile ("swc2\t$7, 4(%0)" : : "r"(local_30_ptr)); // sp + 0x34
+                    local_30_ptr[2] = local_30_ptr[1];
+                }
+            }
+            
+            // Check boundary culling for projected coordinates
+            if ((s32)local_30_ptr[2] >= 0) {
+                if (((u16*)sp_ptr)[8/2] < 0x140 || 
+                    ((u16*)sp_ptr)[0x10/2] < 0x140 || 
+                    ((u16*)sp_ptr)[0x18/2] < 0x140 || 
+                    ((u16*)sp_ptr)[0x20/2] < 0x140) {
+                    
+                    if (((u16*)sp_ptr)[0xA/2] < 0xF0 ||
+                        ((u16*)sp_ptr)[0x12/2] < 0xF0 || 
+                        ((u16*)sp_ptr)[0x1A/2] < 0xF0 || 
+                        ((u16*)sp_ptr)[0x22/2] < 0xF0) {
+                        
+                        local_30_ptr[2] += (s32)entity_reg->count1;
+                        shift = local_30_ptr[2] >> 10;
+                        local_30_ptr[2] = (local_30_ptr[2] >> shift) + (shift << 9);
+                        
+                        if ((u32)(local_30_ptr[2] - 4) >= 0x7FC) {
+                            local_30_ptr[2] = neg_1;
+                        }
+                        
+                        if ((s32)local_30_ptr[2] >= 0) {
+                            static const void* jtbl[] = {
+                                &&case_0, &&case_1, &&case_2, &&case_3,
+                                &&case_default, &&case_default, &&case_default, &&case_default,
+                                &&case_default, &&case_default, &&case_default, &&case_default,
+                                &&case_default, &&case_default, &&case_default, &&case_default,
+                                &&case_default, &&case_default, &&case_default, &&case_default,
+                                &&case_default, &&case_default, &&case_default, &&case_default,
+                                &&case_default, &&case_default, &&case_default, &&case_default,
+                                &&case_default, &&case_default, &&case_default, &&case_default,
+                                &&case_20
+                            };
+                            const void** jtbl_ptr;
+                            register u32* ot_entry asm("a1");
+                            register u32* ot_ptr asm("a0");
+                            
+                            func_8003B054((u8*)sp_ptr, vertex_ptr, flag_reg);
+                            
+                            if (((s16*)entity_reg)[0x5C/2] != 0) {
+                                ((s16*)sp_ptr)[0x0E/2] = ((s16*)entity_reg)[0x5C/2];
+                            }
+                            
+                            if (entity_reg->move_mode <= 0x20) {
+                                __asm__ volatile (
+                                    "lui\t%0, %%hi(%1)\n\t"
+                                    "addiu\t%0, %0, %%lo(%1)"
+                                    : "=r"(jtbl_ptr) : "i"(jtbl)
+                                );
+                                goto *jtbl_ptr[entity_reg->move_mode];
+                            }
+                            goto case_default;
+                            
+                        case_0:
+                            ((u8*)sp_ptr)[7] = 0x2D;
+                            goto case_default;
+                        case_1:
+                            ((u8*)sp_ptr)[7] = 0x2F;
+                            goto case_default;
+                        case_2:
+                            sp_ptr[4/4] = *(u32*)((u8*)entity_reg + 0x18);
+                            ((u8*)sp_ptr)[7] = 0x2C;
+                            goto case_default;
+                        case_3:
+                            sp_ptr[4/4] = *(u32*)((u8*)entity_reg + 0x18);
+                            ((u8*)sp_ptr)[7] = 0x2E;
+                            goto case_default;
+                        case_20:
+                            ((u8*)sp_ptr)[7] = 0x2D;
+                            ((s16*)sp_ptr)[0x0E/2] = (((u8*)entity_reg)[0x18] == 0) ? 0x403B : 0x407B;
+                            goto case_default;
+                        case_default:
+                            ;
+                            
+                            ot_entry = D_800ED8C8 + local_30_ptr[2];
+                            ot_ptr = D_800BF544;
+                            ot_ptr[0] = *ot_entry | 0x09000000;
+                            *ot_entry = (u32)ot_ptr;
+                            
+                            ot_ptr++;
+                            *ot_ptr = sp_ptr[1];
+                            ot_ptr++;
+                            *ot_ptr = sp_ptr[2];
+                            ot_ptr++;
+                            *ot_ptr = sp_ptr[3];
+                            ot_ptr++;
+                            *ot_ptr = sp_ptr[4];
+                            ot_ptr++;
+                            *ot_ptr = sp_ptr[5];
+                            ot_ptr++;
+                            *ot_ptr = sp_ptr[6];
+                            ot_ptr++;
+                            *ot_ptr = sp_ptr[7];
+                            ot_ptr++;
+                            *ot_ptr = sp_ptr[8];
+                            ot_ptr++;
+                            *ot_ptr = sp_ptr[9];
+                            ot_ptr++;
+                            
+                            D_800BF544 = ot_ptr;
+                        }
+                    }
+                }
+            }
+            
+            count--;
+            vertex_ptr += 0x10;
+        } while (count != 0);
+    }
 }

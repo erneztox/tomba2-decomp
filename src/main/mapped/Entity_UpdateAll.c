@@ -1,31 +1,50 @@
+#include "tomba.h"
+#include "include_asm.h"
+
+extern Entity* g_ActiveEntitiesList;       // 0x800F2624
+extern Entity* D_800F239C;                 // Active Tail
+extern Entity* g_InactiveEntitiesList;     // 0x800FB168
+extern Entity* D_800F23A8;                 // Inactive Tail
+extern Entity* g_BackgroundEntitiesList;   // 0x800F2738
+extern Entity* D_800F23A0;                 // Background Tail
+
+
+extern u8 D_800E7E7C;
+extern Entity* D_800E8098;
+
+extern u8 D_800E7E80[388];
+extern Entity D_80100690[];
+extern Entity* D_800F273C;
+extern u8 D_800F2410;
+
+extern void func_8007982C(void);
+extern void func_8007ADDC(Entity* entity);
+extern void func_8009A420(void* dest, int val, int len);
+
 /**
- * @brief Iterates all active and inactive entities, calls their update functions
- * @note Original: func_8007A904 at 0x8007A904
+ * @brief Iterates all active and inactive entities, clearing their active flag
+ * and calling their update function.
+ * @note Original address: 0x8007A904
  */
-// Entity_UpdateAll
-
-
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
-void FUN_8007a904(void)
-
+void Entity_UpdateAll(void)
 {
-  int iVar1;
-  int iVar2;
-  
-  iVar2 = _DAT_800fb168;
-  while (iVar1 = _DAT_800f2624, iVar2 != 0) {
-    iVar1 = *(int *)(iVar2 + 0x24);
-    *(undefined1 *)(iVar2 + 1) = 0;
-    (**(code **)(iVar2 + 0x1c))();
-    iVar2 = iVar1;
-  }
-  while (iVar1 != 0) {
-    iVar2 = *(int *)(iVar1 + 0x24);
-    *(undefined1 *)(iVar1 + 1) = 0;
-    (**(code **)(iVar1 + 0x1c))();
-    iVar1 = iVar2;
-  }
-  return;
+    register Entity* entity asm("a0");
+
+    entity = g_InactiveEntitiesList;
+    while (entity != 0) {
+        register Entity* next asm("s0") = entity->next;
+        __asm__ volatile ("" : : : "memory");
+        entity->active_flag = 0;
+        entity->update_func(entity);
+        entity = next;
+    }
+
+    entity = g_ActiveEntitiesList;
+    while (entity != 0) {
+        register Entity* next asm("s0") = entity->next;
+        __asm__ volatile ("" : : : "memory");
+        entity->active_flag = 0;
+        entity->update_func(entity);
+        entity = next;
+    }
 }

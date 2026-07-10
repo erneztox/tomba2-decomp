@@ -1,100 +1,121 @@
+#include "tomba.h"
+#include "include_asm.h"
+
+extern Entity* g_ActiveEntitiesList;       // 0x800F2624
+extern Entity* D_800F239C;                 // Active Tail
+extern Entity* g_InactiveEntitiesList;     // 0x800FB168
+extern Entity* D_800F23A8;                 // Inactive Tail
+extern Entity* g_BackgroundEntitiesList;   // 0x800F2738
+extern Entity* D_800F23A0;                 // Background Tail
+
+
+extern u8 D_800E7E7C;
+extern Entity* D_800E8098;
+
+extern u8 D_800E7E80[388];
+extern Entity D_80100690[];
+extern Entity* D_800F273C;
+extern u8 D_800F2410;
+
+extern void func_8007982C(void);
+extern void func_8007ADDC(Entity* entity);
+extern void func_8009A420(void* dest, int val, int len);
+
 /**
- * @brief Allocates entity from pool 1 with list insertion modes
- * @note Original: func_80079DDC at 0x80079DDC
+ * @brief Allocates an entity from Pool 1, falling back to Pool 2 if empty.
+ * @note Original address: 0x80079DDC
  */
-// Entity_AllocPool1
-
-
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
-void FUN_80079ddc(int param_1,undefined1 param_2,int param_3,int param_4)
-
+Entity* Entity_AllocPool1(Entity* target, u8 param_2, int mode, int list_id)
 {
-  undefined4 *puVar1;
-  undefined1 *puVar2;
-  int iVar3;
-  int *piVar4;
-  undefined4 uVar5;
-  int *piVar6;
-  
-  puVar2 = _DAT_800e80a0;
-  if (_DAT_800e80a0 == (undefined1 *)0x0) {
-    FUN_80079f90(param_1,param_2);
-    return;
-  }
-  uVar5 = *(undefined4 *)(_DAT_800e80a0 + 0x24);
-  DAT_800e7e7d = DAT_800e7e7d + -1;
-  if (param_4 == 1) {
-    piVar6 = (int *)&DAT_800f2624;
-    piVar4 = (int *)&DAT_800f239c;
-  }
-  else if ((param_4 < 2) || (param_4 != 2)) {
-    piVar6 = (int *)&DAT_800fb168;
-    piVar4 = (int *)&DAT_800f23a8;
-  }
-  else {
-    piVar6 = (int *)&DAT_800f2738;
-    piVar4 = (int *)&DAT_800f23a0;
-  }
-  if (param_3 != 1) {
-    if (1 < param_3) {
-      if (param_3 == 2) {
-        if (*(int *)(param_1 + 0x24) != 0) {
-          piVar4 = (int *)(_DAT_800e80a0 + 0x20);
-          _DAT_800e80a0 = (undefined1 *)uVar5;
-          *piVar4 = param_1;
-          *(undefined4 *)(puVar2 + 0x24) = *(undefined4 *)(param_1 + 0x24);
-          *(undefined1 **)(*(int *)(param_1 + 0x24) + 0x20) = puVar2;
-          *(undefined1 **)(param_1 + 0x24) = puVar2;
-          uVar5 = _DAT_800e80a0;
-          goto LAB_80079f64;
+    Entity* entity = D_800E80A0;
+    Entity* next_free;
+    Entity** tail_ptr;
+    Entity** head_ptr;
+
+    if (D_800E80A0 == 0) {
+        return Entity_AllocPool2(target, param_2, mode, list_id);
+    }
+
+
+    if (D_800E80A0 == 0) {
+        return 0;
+    }
+
+    D_800E7E7D--;
+    next_free = entity->next;
+
+    if (list_id == 1) {
+        head_ptr = &g_ActiveEntitiesList;
+        tail_ptr = &D_800F239C;
+    } else if (list_id < 2 || list_id != 2) {
+        head_ptr = &g_InactiveEntitiesList;
+        tail_ptr = &D_800F23A8;
+    } else {
+        head_ptr = &g_BackgroundEntitiesList;
+        tail_ptr = &D_800F23A0;
+    }
+
+    if (mode != 1) {
+        if (mode > 1) {
+            if (mode == 2) {
+                if (target->next != 0) {
+                    tail_ptr = (Entity**)&entity->next;
+                    D_800E80A0 = next_free;
+                    *tail_ptr = target->next;
+                    target->next->prev = entity;
+                    target->next = entity;
+                    entity->prev = target;
+                    goto initialize;
+                }
+            } else if (mode == 3) {
+                entity->next = 0;
+                entity->prev = *tail_ptr;
+                
+                if (*tail_ptr == 0) {
+                    *head_ptr = entity;
+                } else {
+                    (*tail_ptr)->next = entity;
+                }
+                *tail_ptr = entity;
+                D_800E80A0 = next_free;
+                goto initialize;
+            }
+            goto initialize;
         }
-      }
-      else if (param_3 != 3) goto LAB_80079f64;
-      iVar3 = *piVar4;
-      puVar1 = (undefined4 *)(_DAT_800e80a0 + 0x24);
-      _DAT_800e80a0 = (undefined1 *)uVar5;
-      *puVar1 = 0;
-      *(int *)(puVar2 + 0x20) = iVar3;
-      if (*piVar4 == 0) {
-        *piVar6 = (int)puVar2;
-      }
-      else {
-        *(undefined1 **)(*piVar4 + 0x24) = puVar2;
-      }
-      *piVar4 = (int)puVar2;
-      uVar5 = _DAT_800e80a0;
-      goto LAB_80079f64;
+        
+        if (mode == 0) {
+            if (target->prev != 0) {
+                tail_ptr = (Entity**)&entity->prev;
+                D_800E80A0 = next_free;
+                *tail_ptr = target->prev;
+                target->prev->next = entity;
+                target->prev = entity;
+                entity->next = target;
+                goto initialize;
+            }
+        }
+        goto initialize;
     }
-    if (param_3 != 0) goto LAB_80079f64;
-    if (*(int *)(param_1 + 0x20) != 0) {
-      piVar4 = (int *)(_DAT_800e80a0 + 0x20);
-      _DAT_800e80a0 = (undefined1 *)uVar5;
-      *piVar4 = *(int *)(param_1 + 0x20);
-      *(int *)(puVar2 + 0x24) = param_1;
-      *(undefined1 **)(*(int *)(param_1 + 0x20) + 0x24) = puVar2;
-      *(undefined1 **)(param_1 + 0x20) = puVar2;
-      uVar5 = _DAT_800e80a0;
-      goto LAB_80079f64;
+
+    entity->prev = 0;
+    entity->next = *head_ptr;
+    
+    if (*head_ptr == 0) {
+        *tail_ptr = entity;
+    } else {
+        (*head_ptr)->prev = entity;
     }
-  }
-  puVar1 = (undefined4 *)(_DAT_800e80a0 + 0x20);
-  _DAT_800e80a0 = (undefined1 *)uVar5;
-  *puVar1 = 0;
-  *(int *)(puVar2 + 0x24) = *piVar6;
-  if (*piVar6 == 0) {
-    *piVar4 = (int)puVar2;
-  }
-  else {
-    *(undefined1 **)(*piVar6 + 0x20) = puVar2;
-  }
-  *piVar6 = (int)puVar2;
-  uVar5 = _DAT_800e80a0;
-LAB_80079f64:
-  _DAT_800e80a0 = (undefined1 *)uVar5;
-  puVar2[10] = (char)param_4;
-  *puVar2 = 2;
-  puVar2[0xc] = param_2;
-  return;
+    *head_ptr = entity;
+    D_800E80A0 = next_free;
+
+initialize:
+    D_800E80A0 = next_free;
+    ((u8*)entity)[10] = (u8)list_id;
+    ((u8*)entity)[0] = 2;
+    ((u8*)entity)[0xC] = param_2;
+
+    return entity;
 }
+
+extern u8 D_800ED8CC;
+extern Entity* D_800F2398;

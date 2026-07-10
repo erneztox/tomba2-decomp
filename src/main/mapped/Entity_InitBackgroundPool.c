@@ -1,38 +1,55 @@
+#include "tomba.h"
+#include "include_asm.h"
+
+extern Entity* g_ActiveEntitiesList;       // 0x800F2624
+extern Entity* D_800F239C;                 // Active Tail
+extern Entity* g_InactiveEntitiesList;     // 0x800FB168
+extern Entity* D_800F23A8;                 // Inactive Tail
+extern Entity* g_BackgroundEntitiesList;   // 0x800F2738
+extern Entity* D_800F23A0;                 // Background Tail
+
+
+extern u8 D_800E7E7C;
+extern Entity* D_800E8098;
+
+extern u8 D_800E7E80[388];
+extern Entity D_80100690[];
+extern Entity* D_800F273C;
+extern u8 D_800F2410;
+
+extern void func_8007982C(void);
+extern void func_8007ADDC(Entity* entity);
+extern void func_8009A420(void* dest, int val, int len);
+
 /**
- * @brief Initializes background entity pool with 4 pre-allocated entities
- * @note Original: func_8007A810 at 0x8007A810
+ * @brief Initializes the background entity pool with 4 pre-linked entities.
+ * @note Original address: 0x8007A810
  */
-// Entity_InitBackgroundPool
-
-
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
-void FUN_8007a810(void)
-
+void Entity_InitBackgroundPool(void)
 {
-  int iVar1;
-  int iVar2;
-  int iVar3;
-  int iVar4;
-  
-  FUN_8009a420(&DAT_800e7e80,0,0x184);
-  iVar1 = -0x7feff970;
-  _DAT_800f2738 = 0;
-  _DAT_800f23a0 = 0;
-  iVar3 = 0;
-  iVar4 = iVar1;
-  do {
-    iVar2 = iVar3;
-    iVar4 = iVar4 + 0x108;
-    FUN_8009a420(iVar1,0,0x108);
-    *(int *)(iVar1 + 0x24) = iVar4;
-    *(undefined1 *)(iVar1 + 0x28) = 5;
-    iVar3 = iVar2 + 1;
-    iVar1 = iVar1 + 0x108;
-  } while (iVar3 < 4);
-  *(undefined4 *)(&DAT_801006b4 + iVar2 * 0x108) = 0;
-  _DAT_800f273c = 0x80100690;
-  DAT_800f2410 = 4;
-  return;
+    register s32 val_5 asm("s3");
+    register Entity* next asm("s2");
+    register s32 i asm("s1");
+    register Entity* entity asm("s0");
+
+    func_8009A420(D_800E7E80, 0, 0x184);
+    g_BackgroundEntitiesList = 0;
+    D_800F23A0 = 0;
+
+    i = 0;
+    val_5 = 5;
+    entity = D_80100690;
+    next = entity + 1;
+    while (i < 4) {
+        func_8009A420(entity, 0, 0x108);
+        entity->next = next;
+        next++;
+        entity->flags = val_5;
+        entity++;
+        i++;
+    }
+
+    D_80100690[3].next = 0;
+    D_800F273C = D_80100690;
+    D_800F2410 = 4;
 }

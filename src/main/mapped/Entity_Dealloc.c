@@ -1,92 +1,107 @@
+#include "tomba.h"
+#include "include_asm.h"
+
+extern Entity* g_ActiveEntitiesList;       // 0x800F2624
+extern Entity* D_800F239C;                 // Active Tail
+extern Entity* g_InactiveEntitiesList;     // 0x800FB168
+extern Entity* D_800F23A8;                 // Inactive Tail
+extern Entity* g_BackgroundEntitiesList;   // 0x800F2738
+extern Entity* D_800F23A0;                 // Background Tail
+
+
+extern u8 D_800E7E7C;
+extern Entity* D_800E8098;
+
+extern u8 D_800E7E80[388];
+extern Entity D_80100690[];
+extern Entity* D_800F273C;
+extern u8 D_800F2410;
+
+extern void func_8007982C(void);
+extern void func_8007ADDC(Entity* entity);
+extern void func_8009A420(void* dest, int val, int len);
+
 /**
- * @brief Deallocates entity: removes from linked list, returns to pool, cleans up sprite
- * @note Original: func_8007A624 at 0x8007A624
+ * @brief Unlinks an entity from its list, cleans its fields, and returns it to
+ * the appropriate free pool based on its flags.
+ * @note Original address: 0x8007A624
  */
-// Entity_Dealloc
-
-
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
-void FUN_8007a624(undefined4 *param_1)
-
+void Entity_Dealloc(Entity* entity)
 {
-  byte bVar1;
-  undefined4 *puVar2;
-  undefined4 *puVar3;
-  
-  if (*(char *)((int)param_1 + 10) == '\0') {
-    puVar2 = (undefined4 *)&DAT_800fb168;
-    puVar3 = (undefined4 *)&DAT_800f23a8;
-  }
-  else {
-    puVar2 = (undefined4 *)&DAT_800f2624;
-    puVar3 = (undefined4 *)&DAT_800f239c;
-  }
-  if (param_1[8] == 0) {
-    *puVar2 = param_1[9];
-    if (param_1[9] != 0) {
-      *(undefined4 *)(param_1[9] + 0x20) = 0;
-      goto LAB_8007a6a0;
+    Entity** head_ptr;
+    Entity** tail_ptr;
+    u8 flags;
+    Entity* free_next;
+
+    if (((u8*)entity)[10] == 0) {
+        head_ptr = &g_InactiveEntitiesList;
+        tail_ptr = &D_800F23A8;
+    } else {
+        head_ptr = &g_ActiveEntitiesList;
+        tail_ptr = &D_800F239C;
     }
-LAB_8007a6bc:
-    *puVar3 = param_1[8];
-    if (param_1[8] != 0) {
-      *(undefined4 *)(param_1[8] + 0x24) = 0;
+
+    if (entity->prev != 0) {
+        entity->prev->next = entity->next;
+    } else {
+        *head_ptr = entity->next;
+        if (entity->next != 0) {
+            entity->next->prev = 0;
+        }
     }
-  }
-  else {
-    *(undefined4 *)(param_1[8] + 0x24) = param_1[9];
-LAB_8007a6a0:
-    if (param_1[9] == 0) goto LAB_8007a6bc;
-    *(undefined4 *)(param_1[9] + 0x20) = param_1[8];
-  }
-  bVar1 = *(byte *)(param_1 + 10);
-  *(byte *)(param_1 + 10) = bVar1 & 0x7f;
-  switch(bVar1 & 0x7f) {
-  case 0:
-    DAT_800e7e7c = DAT_800e7e7c + '\x01';
-    puVar2 = param_1;
-    param_1[9] = _DAT_800e8098;
-    _DAT_800e8098 = puVar2;
-    goto switchD_8007a710_default;
-  case 1:
-    DAT_800e7e7d = DAT_800e7e7d + '\x01';
-    puVar2 = _DAT_800e80a0;
-    _DAT_800e80a0 = param_1;
-    break;
-  case 2:
-    DAT_800ed8cc = DAT_800ed8cc + '\x01';
-    puVar2 = _DAT_800f2398;
-    _DAT_800f2398 = param_1;
-    break;
-  case 3:
-    DAT_800ed8c5 = DAT_800ed8c5 + '\x01';
-    puVar2 = _DAT_800ed8d4;
-    _DAT_800ed8d4 = param_1;
-    break;
-  case 4:
-    DAT_800ed8c4 = DAT_800ed8c4 + '\x01';
-    puVar2 = _DAT_800ed8d0;
-    _DAT_800ed8d0 = param_1;
-    break;
-  default:
-    goto switchD_8007a710_default;
-  }
-  param_1[9] = puVar2;
-  FUN_8007addc(param_1);
-switchD_8007a710_default:
-  *param_1 = 0;
-  param_1[1] = 0;
-  param_1[2] = 0;
-  param_1[3] = 0;
-  param_1[4] = 0;
-  param_1[5] = 0;
-  param_1[6] = 0;
-  param_1[0xe] = 0;
-  *(undefined1 *)((int)param_1 + 0x2a) = 0;
-  *(undefined1 *)((int)param_1 + 0x2b) = 0;
-  *(undefined1 *)((int)param_1 + 0x29) = 0;
-  *(undefined1 *)((int)param_1 + 0x5e) = 0;
-  return;
+
+    if (entity->next != 0) {
+        entity->next->prev = entity->prev;
+    } else {
+        *tail_ptr = entity->prev;
+        if (entity->prev != 0) {
+            entity->prev->next = 0;
+        }
+    }
+
+    flags = entity->flags & 0x7F;
+    entity->flags = flags;
+
+    if (flags == 0) {
+        D_800E7E7C++;
+        entity->next = D_800E8098;
+        D_800E8098 = entity;
+    } else if (flags == 1) {
+        D_800E7E7D++;
+        free_next = D_800E80A0;
+        D_800E80A0 = entity;
+        entity->next = free_next;
+        func_8007ADDC(entity);
+    } else if (flags == 2) {
+        D_800ED8CC++;
+        free_next = D_800F2398;
+        D_800F2398 = entity;
+        entity->next = free_next;
+        func_8007ADDC(entity);
+    } else if (flags == 3) {
+        D_800ED8C5++;
+        free_next = D_800ED8D4;
+        D_800ED8D4 = entity;
+        entity->next = free_next;
+        func_8007ADDC(entity);
+    } else if (flags == 4) {
+        D_800ED8C4++;
+        free_next = D_800ED8D0;
+        D_800ED8D0 = entity;
+        entity->next = free_next;
+        func_8007ADDC(entity);
+    }
+
+    *(s32*)((u8*)entity + 0x00) = 0;
+    *(s32*)((u8*)entity + 0x04) = 0;
+    *(s32*)((u8*)entity + 0x08) = 0;
+    *(s32*)((u8*)entity + 0x0C) = 0;
+    *(s32*)((u8*)entity + 0x10) = 0;
+    *(s32*)((u8*)entity + 0x14) = 0;
+    *(s32*)((u8*)entity + 0x18) = 0;
+    *(s32*)((u8*)entity + 0x38) = 0;
+    ((u8*)entity)[0x2A] = 0;
+    ((u8*)entity)[0x2B] = 0;
+    ((u8*)entity)[0x29] = 0;
+    ((u8*)entity)[0x5E] = 0;
 }

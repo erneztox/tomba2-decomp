@@ -73,6 +73,14 @@ MAPPINGS = {
     0x80074BF8: ("Audio_SetBank", "Sets active sound bank / BGM track for music switching"),
     0x80075E04: ("Audio_SPUCommand", "Sends raw SPU command with voice parameters (ADSR, pitch, volume)"),
 
+    # -- Entity sprite / animation pointer management --
+    0x800286CC: ("Entity_AdvanceSpritePtr", "Advances entity[0x3C] sprite data pointer by 1 byte, checks bit 0x80 terminator"),
+
+    # -- Entity physics / collision --
+    0x8004766C: ("Entity_PhysicsStep", "Physics/collision step: checks collision, updates entity position from result"),
+    0x80048750: ("Entity_PhysicsStepRot", "Physics step with rotation: computes rotation angles from collision data via atan2"),
+    0x80047778: ("Entity_CheckCollision", "Main collision detection: checks entity bounds against world geometry"),
+
     # -- Entity sprite setup --
     0x8004A828: ("Entity_SetupSpriteRender", "Configures sprite rendering flags from type table at 0x800A29CE (8 bytes/entry)"),
     0x8004B374: ("Entity_BlinkControl", "Toggles blink/flash bits on entity[0xD] based on frame counter for transparency effect"),

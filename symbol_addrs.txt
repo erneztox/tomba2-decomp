@@ -239,3 +239,5 @@ Entity_CheckCollision = 0x80047778;
 
 Collision_GetFloorHeight = 0x80047CBC;
 Collision_ProcessResult = 0x80048034;
+
+Entity_DrawSpriteRotated = 0x80028B70;

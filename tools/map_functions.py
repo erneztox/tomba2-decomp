@@ -75,6 +75,7 @@ MAPPINGS = {
 
     # -- Entity sprite / animation pointer management --
     0x800286CC: ("Entity_AdvanceSpritePtr", "Advances entity[0x3C] sprite data pointer by 1 byte, checks bit 0x80 terminator"),
+    0x80028B70: ("Entity_DrawSpriteRotated", "Renders a rotated sprite using GTE matrix multiply from entity[0x48] transform"),
 
     # -- Entity physics / collision --
     0x8004766C: ("Entity_PhysicsStep", "Physics/collision step: checks collision, updates entity position from result"),

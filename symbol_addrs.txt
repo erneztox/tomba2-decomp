@@ -337,3 +337,8 @@ Entity_PhysicsClimb = 0x8003FC00;
 Font_BuildChar = 0x80039E80;
 Menu_AnimIcon = 0x8003A3E8;
 Save_CursorPrev = 0x800399C0;
+
+Entity_SetAngleFromState = 0x8003FC78;
+Entity_PhysicsIfMatch = 0x8003FC8C;
+Entity_Behavior_Shake = 0x8003FD10;
+Entity_Behavior_ShakeSFX = 0x8003FED8;

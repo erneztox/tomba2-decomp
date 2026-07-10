@@ -223,6 +223,15 @@ MAPPINGS = {
     0x80038758: ("Menu_CursorPrev", "Moves menu cursor to previous item, wraps at 0"),
     0x80038794: ("Menu_CursorPrev6", "Moves menu cursor back up to 6 positions, returns true if wrapped"),
     0x8003989C: ("Save_UpdateSlots", "Updates save slot display: increments entity[0x23] for each save present"),
+    0x80039978: ("Save_CursorNext", "Advances save menu cursor with step of 5 (entity[0x1E]+=5)"),
+    0x800399C0: ("Save_CursorPrev", "Moves save menu cursor to previous item (entity[0x1F]--, entity[0x1E]--)"),
+
+    # -- Font rendering --
+    0x80039E80: ("Font_BuildChar", "Builds a font character tile: converts char code to 8x16 pixel UV coordinates"),
+
+    # -- Menu animation --
+    0x8003A3E8: ("Menu_AnimIcon", "Animates menu icon with sine wave oscillation using GTE trig functions"),
+
     # -- Engine update loops --
     0x8003FA1C: ("Engine_UpdateEntities", "Calls EntityLoop_Player then EntityLoop_Active for entity updates"),
     0x8003FA44: ("Engine_UpdateAll", "Main update: runs all entity loops (active, bg, player, obj, npc) + FX update"),
@@ -237,17 +246,12 @@ MAPPINGS = {
     0x8003FAA4: ("Entity_ApplyTransformCheck", "Applies GTE transform if entity[0xB] has bit 0x40 or 0x80 set"),
 
     # -- Entity physics (continued) --
-    0x8003FBC4: ("Entity_PhysicsFull", "Full physics step: runs collision check + rotation, sets entity[0x56] from result"),
-    0x8003FC00: ("Entity_PhysicsClimb", "Physics with climb: increments entity Y by 10 until clear, then applies rotation"),
+    0x8003FC78: ("Entity_SetAngleFromState", "Sets entity rotation angle: entity[0x56] = entity[0x2A] << 4"),
+    0x8003FC8C: ("Entity_PhysicsIfMatch", "Runs physics step only if global flag at 0x800BF816 matches entity[0x6A] ID"),
 
-    # -- Font rendering --
-    0x80039E80: ("Font_BuildChar", "Builds a font character tile: converts char code to 8x16 pixel UV coordinates"),
-
-    # -- Menu animation --
-    0x8003A3E8: ("Menu_AnimIcon", "Animates menu icon with sine wave oscillation using GTE trig functions"),
-
-    # -- Save menu (continued) --
-    0x800399C0: ("Save_CursorPrev", "Moves save menu cursor to previous item (entity[0x1F]--, entity[0x1E]--)"),
+    # -- Entity behaviors (continued) --
+    0x8003FD10: ("Entity_Behavior_Shake", "Camera shake effect: toggles sub-entity position with random offset every 16 frames"),
+    0x8003FED8: ("Entity_Behavior_ShakeSFX", "Shake with sound: same as Shake but plays SFX 0x19 on start, resets parent flag"),
 }
 
 # ============================================================

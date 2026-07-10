@@ -304,3 +304,14 @@ Entity_ProcessAnimDirect = 0x800328BC;
 Entity_DrawChild1 = 0x8003393C;
 Entity_DrawChild2 = 0x800342EC;
 Entity_SpawnChildAttached = 0x800331D8;
+
+Entity_DrawSpriteAndProject = 0x80033080;
+Entity_DrawChild3 = 0x800339A4;
+UI_DrawConfigMenu = 0x80034548;
+UI_SetSlotColors = 0x800345D8;
+Entity_CleanupRef = 0x80034634;
+Entity_ResetFull = 0x80034670;
+Event_TriggerTypeA = 0x80035528;
+Event_TriggerTypeB = 0x800355B4;
+Entity_LoopCheck6 = 0x80036708;
+Entity_LoopCheck6B = 0x8003687C;

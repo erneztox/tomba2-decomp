@@ -32,6 +32,30 @@ Entity_InitBackgroundPool = 0x8007A810;
 Entity_ClearInputFlags = 0x8007A8E0;
 Entity_UpdateAll = 0x8007A904;
 
+# -- Entity Spawning --
+Entity_InitBehavior = 0x80028E10;
+Entity_SpawnNoPos = 0x800310F4;
+Entity_SpawnWithPos = 0x8003116C;
+Entity_SpawnWithFlag = 0x800312D4;
+Entity_SpawnWithVector = 0x800313A0;
+Entity_SpawnSpecial = 0x80031470;
+
+# -- Entity Animation / Sprite Processing --
+Entity_ProcessProjCmd = 0x80027E5C;
+Entity_ProcessAnimFrame = 0x80027A4C;
+Entity_SubmitQuadToOT = 0x80027768;
+Entity_ProcessSpriteCmd = 0x800288AC;
+Entity_CheckVisibility = 0x8002B278;
+Entity_AdvanceAnimScript = 0x80031780;
+Entity_AdvanceAnimWord = 0x80031708;
+Entity_AdvanceAnimByte = 0x80031744;
+Entity_DrawTrailChain = 0x80029664;
+Entity_Behavior_Trail = 0x80029B40;
+Entity_RenderTrailSegments = 0x80029F6C;
+
+# -- Audio --
+Audio_PlaySoundEffect = 0x80074590;
+
 # -- Entity Drawing / GTE --
 Entity_Draw3DSprite = 0x8003C2D4;
 Entity_Draw3DSpriteScaled = 0x8003C464;

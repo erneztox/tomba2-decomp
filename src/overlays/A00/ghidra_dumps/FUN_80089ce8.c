@@ -1,0 +1,28 @@
+// FUN_80089ce8
+
+undefined4 FUN_80089ce8(byte param_1,int param_2)
+
+{
+  undefined4 uVar1;
+  int iVar2;
+  int iVar3;
+  
+  uVar1 = DAT_800abfbc;
+  iVar3 = 3;
+  while( true ) {
+    DAT_800abfbc = 0;
+    if ((param_1 != 1) && (((byte)DAT_800abfc8 & 0x10) != 0)) {
+      FUN_8008ac34(1,0,0,0);
+    }
+    if ((((param_2 == 0) || (*(int *)(&DAT_800abf34 + (uint)param_1 * 4) == 0)) ||
+        (iVar2 = FUN_8008ac34(2,param_2,0,0), iVar2 == 0)) &&
+       (DAT_800abfbc = uVar1, iVar2 = FUN_8008ac34(param_1,param_2,0,1), iVar2 == 0)) break;
+    iVar3 = iVar3 + -1;
+    if (iVar3 == -1) {
+      DAT_800abfbc = uVar1;
+      return 0;
+    }
+  }
+  return 1;
+}
+

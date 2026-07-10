@@ -1,0 +1,16 @@
+// FUN_8009bbfc
+
+void FUN_8009bbfc(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
+
+{
+  FUN_8009bfc0();
+  FUN_80080890();
+  FUN_8009bf48();
+  FUN_800808a0();
+  FUN_80080920(0);
+  FUN_8009bd84();
+  FUN_8009bf10(param_1,param_2,param_3,param_4);
+  DAT_800acf44 = 1;
+  return;
+}
+

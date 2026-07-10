@@ -1,0 +1,12 @@
+// FUN_80088ac8
+
+void FUN_80088ac8(int param_1,undefined1 param_2)
+
+{
+  *(undefined1 *)(param_1 + 0x37) = 0x47;
+  *(int *)(param_1 + 0x2c) = param_1 + 0x24;
+  *(undefined1 *)(param_1 + 0x24) = param_2;
+  *(undefined1 *)(param_1 + 0x36) = 1;
+  return;
+}
+

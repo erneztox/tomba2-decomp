@@ -255,3 +255,9 @@ Audio_PlaySFX_VolPan = 0x8007483C;
 Entity_PlayScriptSFX = 0x80043A10;
 Render_ClearQueue = 0x8004FB20;
 UI_ClearElement = 0x8004EE50;
+
+Sys_InitOverlay = 0x8001CB00;
+Sys_NoOp = 0x8001CB98;
+Sys_PadRead = 0x8001CE90;
+Sys_SetFlag10 = 0x8001CF78;
+Sys_CheckVSync = 0x8001CF94;

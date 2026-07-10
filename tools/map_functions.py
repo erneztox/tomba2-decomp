@@ -110,6 +110,13 @@ MAPPINGS = {
     0x8004FB20: ("Render_ClearQueue", "Clears render queue buffer at 0x800BF548 (700 bytes) with memset"),
     0x8004EE50: ("UI_ClearElement", "Clears UI element structure (0x8C bytes) with memset, sets terminator bytes"),
 
+    # -- System / init wrappers --
+    0x8001CB00: ("Sys_InitOverlay", "Calls overlay init function at 0x8011534C then internal callback"),
+    0x8001CB98: ("Sys_NoOp", "Empty stub function - likely placeholder or unused vtable slot"),
+    0x8001CE90: ("Sys_PadRead", "Controller pad read wrapper: calls low-level pad polling function"),
+    0x8001CF78: ("Sys_SetFlag10", "Sets bit 4 (0x10) on global system flag at 0x800BE0E4"),
+    0x8001CF94: ("Sys_CheckVSync", "Checks GPU VSync/interrupt state and triggers frame sync if needed"),
+
     # -- System call wrappers (PsyQ / low-level) --
     0x8001CF00: ("Sys_Call", "Generic system call wrapper: passes command packet to kernel at 0x80099490"),
     0x8001DB38: ("Sys_GPUSync", "GPU sync wrapper: calls GPU sync and returns status"),

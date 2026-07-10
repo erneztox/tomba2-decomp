@@ -44,17 +44,20 @@ def get_vram(chunk_id):
 
 # ── SDAT structured parser ────────────────────────────────────────────────────
 
-def parse_sdat_first_combo(sdat_data):
+def parse_sdat_all_cluts(sdat_data):
+    """Parse .sdat and return ALL unique (clut, tpage) pairs from POLY_FT4 primitives."""
     if len(sdat_data) < 4:
-        return None
+        return []
 
     try:
         block_count = struct.unpack('<H', sdat_data[2:4])[0]
         if block_count == 0 or block_count > 5000:
-            return None
+            return []
         offsets = struct.unpack(f'<{block_count}I', sdat_data[4:4 + block_count * 4])
     except struct.error:
-        return None
+        return []
+
+    combos = []  # list of (clut, tpage)
 
     for b_idx, offset in enumerate(offsets):
         end = offsets[b_idx + 1] if b_idx + 1 < block_count else len(sdat_data)
@@ -87,11 +90,13 @@ def parse_sdat_first_combo(sdat_data):
                         clut_x = (clut & 0x3F) * 16
                         clut_y = (clut >> 6) & 0x1FF
                         if clut_x < 1024 and clut_y < 512:
-                            return (clut, tpage) # Return only the first valid one!
+                            combo = (clut, tpage)
+                            if combo not in combos:
+                                combos.append(combo)
 
             pos += 36
 
-    return None
+    return combos
 
 # ── Spritesheet renderer ──────────────────────────────────────────────────────
 
@@ -167,21 +172,27 @@ def main():
         with open(sdat_path, 'rb') as f:
             sdat_data = f.read()
 
-        combo = parse_sdat_first_combo(sdat_data)
-        if not combo:
+        combos = parse_sdat_all_cluts(sdat_data)
+        if not combos:
             continue
 
-        clut, tpage = combo
         vram = get_vram(chunk_id)
 
-        out_name = f"spritesheet_{chunk_id}_{basename}.png"
-        out_path = os.path.join(OUT_DIR, out_name)
+        for variant_idx, (clut, tpage) in enumerate(combos):
+            if variant_idx == 0:
+                suffix = ""
+            else:
+                suffix = f"_v{variant_idx}"
 
-        img = render_spritesheet(vram, clut, tpage)
-        if img is not None:
-            img.save(out_path)
-            print(f"Saved: {out_name}")
-            total_saved += 1
+            out_name = f"spritesheet_{chunk_id}_{basename}{suffix}.png"
+            out_path = os.path.join(OUT_DIR, out_name)
+
+            img = render_spritesheet(vram, clut, tpage)
+            if img is not None:
+                img.save(out_path)
+                total_saved += 1
+                if variant_idx == 0:
+                    print(f"Saved: {out_name}")
 
     print(f"\nDone! Extracted {total_saved} perfectly colored spritesheets to {OUT_DIR}/")
 

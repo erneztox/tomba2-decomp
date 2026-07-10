@@ -294,3 +294,13 @@ Entity_Behavior_DustTrail = 0x8002BAFC;
 Entity_Behavior_AnimState1 = 0x8002C3EC;
 Entity_Behavior_AnimState2 = 0x8002C548;
 Entity_Behavior_Scripted = 0x80030A3C;
+
+Entity_SubmitSpriteRotX = 0x80031F84;
+Entity_SubmitSpriteRotAll = 0x800321D8;
+Entity_SubmitSpriteRotYX = 0x800323FC;
+Entity_SubmitSpriteRotZX = 0x8003265C;
+GTE_SetProjectionDist = 0x800329E0;
+Entity_ProcessAnimDirect = 0x800328BC;
+Entity_DrawChild1 = 0x8003393C;
+Entity_DrawChild2 = 0x800342EC;
+Entity_SpawnChildAttached = 0x800331D8;

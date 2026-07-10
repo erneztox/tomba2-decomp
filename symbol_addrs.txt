@@ -353,3 +353,14 @@ Entity_UpdateList8 = 0x80026368;
 Game_SetPause = 0x800269BC;
 Game_SetUnpause = 0x800269EC;
 Game_ClearPause = 0x800269FC;
+
+Entity_DrawSpriteNoColor = 0x800328EC;
+Entity_GetTypeData = 0x80040A58;
+Entity_InitFromScript = 0x80040CDC;
+Entity_InitScriptFlags = 0x80040D68;
+Entity_ScriptStep = 0x80040FA0;
+Entity_ScriptRun = 0x80041098;
+Entity_SpawnSubEntity = 0x80040AA4;
+Entity_MoveToward = 0x80041194;
+Entity_CalcAngleToward = 0x8004130C;
+Entity_CallCallback = 0x800412CC;

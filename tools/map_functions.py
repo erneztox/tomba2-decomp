@@ -245,6 +245,26 @@ MAPPINGS = {
     0x800269EC: ("Game_SetUnpause", "Sets unpause request flag (0x800BF80F = 1)"),
     0x800269FC: ("Game_ClearPause", "Clears pause state: resets entity flag and global pause variable"),
 
+    # -- Entity draw (continued) --
+    0x800328EC: ("Entity_DrawSpriteNoColor", "Draws sprite without color modulation: sets GTE color to 0, calls submit"),
+
+    # -- Entity script system --
+    0x80040A58: ("Entity_GetTypeData", "Reads entity type data from table at 0x800A33C9 (12 bytes/entry, 16 types)"),
+    0x80040CDC: ("Entity_InitFromScript", "Initializes entity from script data: sets up callback, flags, and script pointer"),
+    0x80040D68: ("Entity_InitScriptFlags", "Sets entity script processing flags from u16: bit 0x1000=flag2, 0x4000=flag4"),
+    0x80040FA0: ("Entity_ScriptStep", "Advances entity script by one step: handles state transitions via FUN_80040e54"),
+    0x80041098: ("Entity_ScriptRun", "Runs entity script loop: dispatches commands via opcode table at 0x800A3B78"),
+
+    # -- Entity spawn (continued) --
+    0x80040AA4: ("Entity_SpawnSubEntity", "Spawns a sub-entity from pool 4 with behavior at 0x8003AD48"),
+
+    # -- Entity movement --
+    0x80041194: ("Entity_MoveToward", "Moves entity toward target: physics step with collision, sets angle on success"),
+    0x8004130C: ("Entity_CalcAngleToward", "Calculates rotation angle from entity toward target entity"),
+
+    # -- Entity utility --
+    0x800412CC: ("Entity_CallCallback", "Calls function pointer stored at entity[0x74] as callback"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

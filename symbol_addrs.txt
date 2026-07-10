@@ -261,3 +261,14 @@ Sys_NoOp = 0x8001CB98;
 Sys_PadRead = 0x8001CE90;
 Sys_SetFlag10 = 0x8001CF78;
 Sys_CheckVSync = 0x8001CF94;
+
+Engine_DispatchLevel = 0x80022A80;
+Engine_DispatchLevelDraw = 0x80024CF4;
+Entity_CallInit = 0x8002311C;
+Entity_InitSpriteType2 = 0x8002343C;
+Entity_InitSpriteType3 = 0x80023528;
+Entity_SpawnIfClear = 0x80023548;
+Entity_SetAnimFlag = 0x80023764;
+Entity_CallHandler0 = 0x800241FC;
+Entity_CallHandler1 = 0x8002421C;
+Sys_IncCounter = 0x80026100;

@@ -110,6 +110,20 @@ MAPPINGS = {
     0x8004FB20: ("Render_ClearQueue", "Clears render queue buffer at 0x800BF548 (700 bytes) with memset"),
     0x8004EE50: ("UI_ClearElement", "Clears UI element structure (0x8C bytes) with memset, sets terminator bytes"),
 
+    # -- Engine level dispatch --
+    0x80022A80: ("Engine_DispatchLevel", "Dispatches level-specific update function from table at 0x8009D1D4 by game state"),
+    0x80024CF4: ("Engine_DispatchLevelDraw", "Dispatches level-specific draw function from table at 0x8009D22C by game state"),
+
+    # -- Entity init helpers --
+    0x8002311C: ("Entity_CallInit", "Calls entity init function at 0x8001EC3C"),
+    0x8002343C: ("Entity_InitSpriteType2", "Sets up sprite config bytes for type 2: state=2, size=2, count=2"),
+    0x80023528: ("Entity_InitSpriteType3", "Sets up sprite config bytes for type 3: state=3, size=2, count=11"),
+    0x80023548: ("Entity_SpawnIfClear", "Checks spawn collision and spawns entity if space is clear"),
+    0x80023764: ("Entity_SetAnimFlag", "Sets entity[0x29]=1 if animation check passes"),
+    0x800241FC: ("Entity_CallHandler0", "Wraps entity handler call with flag 0"),
+    0x8002421C: ("Entity_CallHandler1", "Wraps entity handler call with flag 1"),
+    0x80026100: ("Sys_IncCounter", "Increments global counter at 0x800BF87E with upper limit cap"),
+
     # -- System / init wrappers --
     0x8001CB00: ("Sys_InitOverlay", "Calls overlay init function at 0x8011534C then internal callback"),
     0x8001CB98: ("Sys_NoOp", "Empty stub function - likely placeholder or unused vtable slot"),

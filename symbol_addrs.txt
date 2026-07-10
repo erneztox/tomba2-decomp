@@ -326,3 +326,14 @@ Menu_CursorPrev = 0x80038758;
 Menu_CursorPrev6 = 0x80038794;
 Save_UpdateSlots = 0x8003989C;
 Save_CursorNext = 0x80039978;
+
+Engine_UpdateEntities = 0x8003FA1C;
+Engine_UpdateAll = 0x8003FA44;
+OT_SubmitPrimitive = 0x8003FAE8;
+GTE_ProjectVertex = 0x8003F7A0;
+Entity_ApplyTransformCheck = 0x8003FAA4;
+Entity_PhysicsFull = 0x8003FBC4;
+Entity_PhysicsClimb = 0x8003FC00;
+Font_BuildChar = 0x80039E80;
+Menu_AnimIcon = 0x8003A3E8;
+Save_CursorPrev = 0x800399C0;

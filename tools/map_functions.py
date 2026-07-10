@@ -223,7 +223,31 @@ MAPPINGS = {
     0x80038758: ("Menu_CursorPrev", "Moves menu cursor to previous item, wraps at 0"),
     0x80038794: ("Menu_CursorPrev6", "Moves menu cursor back up to 6 positions, returns true if wrapped"),
     0x8003989C: ("Save_UpdateSlots", "Updates save slot display: increments entity[0x23] for each save present"),
-    0x80039978: ("Save_CursorNext", "Advances save menu cursor with step of 5 (entity[0x1E]+=5)"),
+    # -- Engine update loops --
+    0x8003FA1C: ("Engine_UpdateEntities", "Calls EntityLoop_Player then EntityLoop_Active for entity updates"),
+    0x8003FA44: ("Engine_UpdateAll", "Main update: runs all entity loops (active, bg, player, obj, npc) + FX update"),
+
+    # -- OT / GPU submission --
+    0x8003FAE8: ("OT_SubmitPrimitive", "Submits a primitive to the ordering table with depth sorting"),
+
+    # -- GTE projection --
+    0x8003F7A0: ("GTE_ProjectVertex", "GTE RTPS projection of single vertex: returns screen XY and depth Z"),
+
+    # -- Entity transform --
+    0x8003FAA4: ("Entity_ApplyTransformCheck", "Applies GTE transform if entity[0xB] has bit 0x40 or 0x80 set"),
+
+    # -- Entity physics (continued) --
+    0x8003FBC4: ("Entity_PhysicsFull", "Full physics step: runs collision check + rotation, sets entity[0x56] from result"),
+    0x8003FC00: ("Entity_PhysicsClimb", "Physics with climb: increments entity Y by 10 until clear, then applies rotation"),
+
+    # -- Font rendering --
+    0x80039E80: ("Font_BuildChar", "Builds a font character tile: converts char code to 8x16 pixel UV coordinates"),
+
+    # -- Menu animation --
+    0x8003A3E8: ("Menu_AnimIcon", "Animates menu icon with sine wave oscillation using GTE trig functions"),
+
+    # -- Save menu (continued) --
+    0x800399C0: ("Save_CursorPrev", "Moves save menu cursor to previous item (entity[0x1F]--, entity[0x1E]--)"),
 }
 
 # ============================================================

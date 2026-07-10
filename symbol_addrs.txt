@@ -194,3 +194,12 @@ Entity_Behavior_PlayerController = 0x80040558;
 Texture_LoadPack = 0x80044E84;
 Texture_Decompress = 0x80044D8C;
 Texture_LoadUI = 0x80067DA8;
+
+UI_DrawPanel = 0x8005019C;
+UI_DrawTile = 0x8004FFB4;
+UI_DrawText = 0x8004EB94;
+UI_DrawOverlay = 0x8004FD30;
+Menu_ItemDispatch = 0x8004A3D4;
+Entity_Behavior_Collectible = 0x8004C238;
+Audio_SetBank = 0x80074BF8;
+Audio_SPUCommand = 0x80075E04;

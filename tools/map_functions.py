@@ -58,6 +58,20 @@ MAPPINGS = {
     0x800292B8: ("Entity_Behavior_AnimPlayer1", "Sprite animation player - variant 1 (selects data table by entity type)"),
     0x800293F4: ("Entity_Behavior_AnimPlayer2", "Sprite animation player - variant 2 (different data tables)"),
     0x80029530: ("Entity_Behavior_Floater", "Floating/orbiting behavior using trig functions and GTE timer"),
+
+    # -- UI / HUD rendering --
+    0x8005019C: ("UI_DrawPanel", "9-slice panel/window renderer: draws 4 corner tiles + 5 inner tiles via TILE primitives"),
+    0x8004FFB4: ("UI_DrawTile", "Draws a single UI tile primitive (0x2C/0x2E) at given rect position"),
+    0x8004EB94: ("UI_DrawText", "Text renderer: iterates string bytes, writes character SPRT tiles to OT"),
+    0x8004FD30: ("UI_DrawOverlay", "Screen overlay/fade renderer: draws rectangles and processes render queue items"),
+
+    # -- Item / menu system --
+    0x8004A3D4: ("Menu_ItemDispatch", "Item/weapon menu action dispatcher: 32 cases for item selection, texture loading"),
+    0x8004C238: ("Entity_Behavior_Collectible", "Collectible/item entity behavior: handles pickup, bounce, score display"),
+
+    # -- Audio system --
+    0x80074BF8: ("Audio_SetBank", "Sets active sound bank / BGM track for music switching"),
+    0x80075E04: ("Audio_SPUCommand", "Sends raw SPU command with voice parameters (ADSR, pitch, volume)"),
 }
 
 # ============================================================

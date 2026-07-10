@@ -80,6 +80,8 @@ MAPPINGS = {
     0x8004766C: ("Entity_PhysicsStep", "Physics/collision step: checks collision, updates entity position from result"),
     0x80048750: ("Entity_PhysicsStepRot", "Physics step with rotation: computes rotation angles from collision data via atan2"),
     0x80047778: ("Entity_CheckCollision", "Main collision detection: checks entity bounds against world geometry"),
+    0x80047CBC: ("Collision_GetFloorHeight", "Heightmap/floor collision: looks up ground height from world grid at entity position"),
+    0x80048034: ("Collision_ProcessResult", "Processes collision result: extracts surface normal and contact point from hit data"),
 
     # -- Entity sprite setup --
     0x8004A828: ("Entity_SetupSpriteRender", "Configures sprite rendering flags from type table at 0x800A29CE (8 bytes/entry)"),

@@ -236,3 +236,6 @@ Entity_AdvanceSpritePtr = 0x800286CC;
 Entity_PhysicsStep = 0x8004766C;
 Entity_PhysicsStepRot = 0x80048750;
 Entity_CheckCollision = 0x80047778;
+
+Collision_GetFloorHeight = 0x80047CBC;
+Collision_ProcessResult = 0x80048034;

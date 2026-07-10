@@ -265,6 +265,20 @@ MAPPINGS = {
     # -- Entity utility --
     0x800412CC: ("Entity_CallCallback", "Calls function pointer stored at entity[0x74] as callback"),
 
+    # -- Entity angle / rotation --
+    0x80041378: ("Entity_CalcAngleToTarget", "Calculates angle from entity to its script target at entity[0x72]"),
+    0x8004139C: ("Math_ApproachAngle", "Approaches target angle by max step with 12-bit wraparound handling"),
+    0x80041438: ("Entity_ApproachAngle", "Wraps Math_ApproachAngle for entity[0x56] rotation field"),
+
+    # -- Entity animation / sprite config --
+    0x80041468: ("Entity_AnimScriptStep", "Animation script step: state machine processing entity[0x78] animation events"),
+    0x8004162C: ("Entity_SetSubEntityTexture", "Sets texture/tpage for sub-entity by index from entity[0x72] table"),
+    0x800416A8: ("Entity_SetSpriteData", "Sets sprite data pointer at entity[0x7C] and texture at entity[0x3C]"),
+    0x800416F0: ("Entity_SetSpriteDataAuto", "Auto-configures sprite data from entity[0x72]/[0x74] params"),
+    0x80041718: ("Entity_SetAnimMode", "Sets entity animation mode (0=normal, non-0=alternate) with different calls"),
+    0x80041768: ("Entity_SetAnimModeIfNew", "Sets anim mode only if different from current entity[0x46] value"),
+    0x8004179C: ("Entity_ProcessAnimEvent", "Processes animation events: timing, sub-entity texture cycling"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

@@ -364,3 +364,14 @@ Entity_SpawnSubEntity = 0x80040AA4;
 Entity_MoveToward = 0x80041194;
 Entity_CalcAngleToward = 0x8004130C;
 Entity_CallCallback = 0x800412CC;
+
+Entity_CalcAngleToTarget = 0x80041378;
+Math_ApproachAngle = 0x8004139C;
+Entity_ApproachAngle = 0x80041438;
+Entity_AnimScriptStep = 0x80041468;
+Entity_SetSubEntityTexture = 0x8004162C;
+Entity_SetSpriteData = 0x800416A8;
+Entity_SetSpriteDataAuto = 0x800416F0;
+Entity_SetAnimMode = 0x80041718;
+Entity_SetAnimModeIfNew = 0x80041768;
+Entity_ProcessAnimEvent = 0x8004179C;

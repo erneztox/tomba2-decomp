@@ -76,6 +76,7 @@ MAPPINGS = {
     # -- Entity sprite setup --
     0x8004A828: ("Entity_SetupSpriteRender", "Configures sprite rendering flags from type table at 0x800A29CE (8 bytes/entry)"),
     0x8004B374: ("Entity_BlinkControl", "Toggles blink/flash bits on entity[0xD] based on frame counter for transparency effect"),
+    0x8004A9A4: ("Entity_InitFromTypeTable", "Initializes entity sprite/bounds from type data table at 0x800A29CC (8 bytes/entry)"),
 
     # -- System call wrappers (PsyQ / low-level) --
     0x8001CF00: ("Sys_Call", "Generic system call wrapper: passes command packet to kernel at 0x80099490"),

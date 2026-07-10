@@ -229,3 +229,5 @@ Sys_PlaySFX = 0x8002369C;
 Entity_SetupSpriteRender = 0x8004A828;
 
 Entity_BlinkControl = 0x8004B374;
+
+Entity_InitFromTypeTable = 0x8004A9A4;

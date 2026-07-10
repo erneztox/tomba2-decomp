@@ -315,3 +315,14 @@ Event_TriggerTypeA = 0x80035528;
 Event_TriggerTypeB = 0x800355B4;
 Entity_LoopCheck6 = 0x80036708;
 Entity_LoopCheck6B = 0x8003687C;
+
+Menu_ClearItems = 0x80036AE8;
+String_CopyFilterNL = 0x80036B28;
+Game_CheckArea = 0x80036D90;
+Game_CheckUnlock = 0x80036DC4;
+Menu_CursorNext = 0x800386C0;
+Menu_CursorNext6 = 0x80038708;
+Menu_CursorPrev = 0x80038758;
+Menu_CursorPrev6 = 0x80038794;
+Save_UpdateSlots = 0x8003989C;
+Save_CursorNext = 0x80039978;

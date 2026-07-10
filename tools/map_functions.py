@@ -200,6 +200,30 @@ MAPPINGS = {
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),
     0x800834D4: ("GPU_CheckTimeout", "GPU timeout/reset handler: resets GPU state if hung or error detected"),
+
+    # -- Batch 2024-07-10 (entity draw/UI/events) --
+    0x80033080: ("Entity_DrawSpriteAndProject", "Calls ProcessProjCmd then ProcessSpriteCmd for combined projection+sprite draw"),
+    0x800339A4: ("Entity_DrawChild3", "Draws child entity variant from data table at 0x800A23A4"),
+    0x80034548: ("UI_DrawConfigMenu", "Draws configuration menu layout: sets up panels, sliders, text elements"),
+    0x800345D8: ("UI_SetSlotColors", "Sets menu slot color configuration: active=100, inactive=2/3/0x84"),
+    0x80034634: ("Entity_CleanupRef", "Cleans up entity reference: deallocs if ref exists, clears pointer"),
+    0x80034670: ("Entity_ResetFull", "Full entity reset: clears state bytes, resets audio bank, cleans refs"),
+    0x80035528: ("Event_TriggerTypeA", "Triggers event type A (0x18): spawns entity with overlay func at 0x8011600C"),
+    0x800355B4: ("Event_TriggerTypeB", "Triggers event type B (0x1A): spawns entity with overlay func at 0x801189C4"),
+    0x80036708: ("Entity_LoopCheck6", "Loops entity check up to 6 times via FUN_800365f0, returns true if any pass"),
+    0x8003687C: ("Entity_LoopCheck6B", "Loops entity check up to 6 times via FUN_8003675c, returns true if any pass"),
+
+    # -- Menu / save system --
+    0x80036AE8: ("Menu_ClearItems", "Clears all 3 menu item slots by calling FUN_80036a14 with modes 0,1,2"),
+    0x80036B28: ("String_CopyFilterNL", "Copies string replacing newline chars with spaces, null-terminates"),
+    0x80036D90: ("Game_CheckArea", "Checks game area flag: returns 1 if area is 0 or 5 in specific game mode"),
+    0x80036DC4: ("Game_CheckUnlock", "Checks if area is unlocked via table at 0x800A24E4"),
+    0x800386C0: ("Menu_CursorNext", "Advances menu cursor to next item, wraps at max from entity[0x21]"),
+    0x80038708: ("Menu_CursorNext6", "Advances menu cursor up to 6 positions, returns true if wrapped"),
+    0x80038758: ("Menu_CursorPrev", "Moves menu cursor to previous item, wraps at 0"),
+    0x80038794: ("Menu_CursorPrev6", "Moves menu cursor back up to 6 positions, returns true if wrapped"),
+    0x8003989C: ("Save_UpdateSlots", "Updates save slot display: increments entity[0x23] for each save present"),
+    0x80039978: ("Save_CursorNext", "Advances save menu cursor with step of 5 (entity[0x1E]+=5)"),
 }
 
 # ============================================================

@@ -1,0 +1,19 @@
+/**
+ * @brief Sets game pause flag (0x800BF80F = 2), blocks input if already paused
+ * @note Original: func_800269BC at 0x800269BC
+ */
+// Game_SetPause
+
+
+
+void FUN_800269bc(int param_1)
+
+{
+  DAT_800bf80f = 2;
+  if (DAT_1f800137 == '\x01') {
+    *(undefined1 *)(param_1 + 1) = 1;
+    return;
+  }
+  DAT_1f800137 = 2;
+  return;
+}

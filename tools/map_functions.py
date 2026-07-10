@@ -223,6 +223,28 @@ MAPPINGS = {
     0x8008A96C: ("CD_Ready", "CD-ROM ready check: polls CD status with callback processing"),
     0x8008AC34: ("CD_Control", "CD-ROM control command: sends command with parameters, waits for completion"),
 
+    # -- CD-ROM (continued) --
+    0x8001CE04: ("CD_ReadRequest", "CD-ROM read request: initiates read with retry loop via FUN_80089ce8/80089b44"),
+    0x8001CEB0: ("CD_SeekToSector", "CD-ROM seek: moves laser to specific sector number, retries if needed"),
+    0x8001DC40: ("CD_LoadSectors", "Loads CD sectors to RAM: calculates sector count, aligns to 4-byte boundary"),
+
+    # -- Input / controller --
+    0x8001CF2C: ("Pad_InitReset", "Controller init/reset: resets pad state, waits for acknowledge from hardware"),
+
+    # -- Overlay loading --
+    0x8001D2A8: ("Sys_LoadOverlay", "Loads overlay binary from CD: sets up params, calls CD read + overlay init"),
+
+    # -- Entity interaction --
+    0x80023618: ("Entity_CheckInteraction", "Checks if two entities can interact: same type, valid spawn check"),
+
+    # -- Entity list update --
+    0x80026368: ("Entity_UpdateList8", "Iterates 8 entity slots at 0x80100400, calls type-specific update function"),
+
+    # -- Game state / pause --
+    0x800269BC: ("Game_SetPause", "Sets game pause flag (0x800BF80F = 2), blocks input if already paused"),
+    0x800269EC: ("Game_SetUnpause", "Sets unpause request flag (0x800BF80F = 1)"),
+    0x800269FC: ("Game_ClearPause", "Clears pause state: resets entity flag and global pause variable"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

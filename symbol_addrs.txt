@@ -166,3 +166,8 @@ HUD_DrawElement = 0x80025B78;
 
 # -- Player (mapped) --
 Player_Update = 0x800597AC;
+
+Entity_Behavior_Wander = 0x8002918C;
+Entity_Behavior_AnimPlayer1 = 0x800292B8;
+Entity_Behavior_AnimPlayer2 = 0x800293F4;
+Entity_Behavior_Floater = 0x80029530;

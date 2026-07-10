@@ -1,0 +1,199 @@
+#!/usr/bin/env python3
+"""
+Batch mapper: reads Ghidra dumps, assigns descriptive names,
+generates mapped .c files and updates symbol_addrs.txt.
+
+Usage:
+    python3 tools/map_functions.py
+
+Configure the MAPPINGS dict below with address -> name pairs.
+"""
+
+import os
+import re
+import sys
+
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+GHIDRA_DUMPS_DIR = os.path.join(PROJECT_ROOT, "src", "main", "ghidra_dumps")
+MAPPED_DIR = os.path.join(PROJECT_ROOT, "src", "main", "mapped")
+SYMBOL_FILE = os.path.join(PROJECT_ROOT, "symbol_addrs.txt")
+
+# ============================================================
+# MAPPINGS: addr (int) -> (descriptive_name, comment_line)
+# Add new entries here. The script does the rest.
+# ============================================================
+MAPPINGS = {
+    # Entity behaviors (state machines registered via Entity_InitBehavior)
+    0x8002918C: ("Entity_Behavior_Wander", "Random wander/patrol with visibility check and timer"),
+    0x800292B8: ("Entity_Behavior_AnimPlayer1", "Sprite animation player - variant 1 (selects data table by entity type)"),
+    0x800293F4: ("Entity_Behavior_AnimPlayer2", "Sprite animation player - variant 2 (different data tables)"),
+    0x80029530: ("Entity_Behavior_Floater", "Floating/orbiting behavior using trig functions and GTE timer"),
+}
+
+# ============================================================
+# Header template for mapped .c files
+# ============================================================
+HEADER_TEMPLATE = """/**
+ * @brief {comment}
+ * @note Original: {old_name} at 0x{addr:08X}
+ */
+// {name}
+
+"""
+
+def addr_to_filename(addr):
+    """Convert address to the Ghidra dump filename pattern."""
+    return f"FUN_{addr:08x}.c"
+
+def find_ghidra_dump(addr):
+    """Find the Ghidra dump file for an address (case-insensitive)."""
+    pattern = f"FUN_{addr:08x}"
+    if not os.path.isdir(GHIDRA_DUMPS_DIR):
+        return None
+
+    for fname in os.listdir(GHIDRA_DUMPS_DIR):
+        if fname.lower().startswith(pattern.lower()):
+            return os.path.join(GHIDRA_DUMPS_DIR, fname)
+    return None
+
+def generate_mapped_file(addr, name, comment, dump_path):
+    """Generate the mapped .c file from a Ghidra dump."""
+    with open(dump_path, "r") as f:
+        content = f.read()
+
+    old_name = f"func_{addr:08X}"
+    header = HEADER_TEMPLATE.format(
+        comment=comment,
+        old_name=old_name,
+        addr=addr,
+        name=name,
+    )
+
+    # If dump already has a descriptive header (first line is /**), skip
+    if content.strip().startswith("/**"):
+        # Replace the old name comment with new one
+        # Keep the body but update header
+        pass
+
+    # Remove the original function name line if present (Ghidra puts it)
+    # and prepend our header
+    lines = content.split("\n")
+    out_lines = [header]
+
+    # Skip Ghidra's function declaration line if present
+    skip_next = False
+    for line in lines:
+        stripped = line.strip()
+        # Skip Ghidra-style function declarations
+        if stripped.startswith("undefined") or stripped.startswith("void ") or \
+           stripped.startswith("int ") or stripped.startswith("uint ") or \
+           stripped.startswith("short ") or stripped.startswith("byte ") or \
+           stripped.startswith("char ") or stripped.startswith("bool "):
+            if "FUN_" in stripped or old_name.lower() in stripped.lower():
+                # Replace Ghidra name with our name in the declaration
+                new_line = re.sub(
+                    r'\b' + re.escape(old_name) + r'\b',
+                    name,
+                    line,
+                    flags=re.IGNORECASE
+                )
+                out_lines.append(new_line)
+                continue
+        # Keep includes
+        if stripped.startswith('#include'):
+            out_lines.append(line)
+            continue
+        # Keep WARNING comments
+        if stripped.startswith("/* WARNING"):
+            out_lines.append(line)
+            continue
+        # Skip empty lines at start
+        if not out_lines or out_lines[-1].strip():
+            out_lines.append(line)
+        elif stripped:
+            out_lines.append(line)
+
+    out_path = os.path.join(MAPPED_DIR, f"{name}.c")
+    with open(out_path, "w") as f:
+        f.write("\n".join(out_lines))
+
+    return out_path
+
+def update_symbol_addrs(entries):
+    """Add entries to symbol_addrs.txt if not already present."""
+    if not os.path.exists(SYMBOL_FILE):
+        print(f"ERROR: {SYMBOL_FILE} not found")
+        return
+
+    with open(SYMBOL_FILE, "r") as f:
+        existing = f.read()
+
+    new_lines = []
+    for addr, name in entries:
+        line = f"{name} = 0x{addr:08X};"
+        if line not in existing:
+            new_lines.append(line)
+
+    if not new_lines:
+        print("  (all entries already in symbol_addrs.txt)")
+        return
+
+    # Append to end of file
+    with open(SYMBOL_FILE, "a") as f:
+        f.write("\n")
+        for line in new_lines:
+            f.write(line + "\n")
+
+    print(f"  +{len(new_lines)} entries added to symbol_addrs.txt")
+
+
+def main():
+    os.makedirs(MAPPED_DIR, exist_ok=True)
+
+    mapped = []
+    skipped = []
+    errors = []
+
+    for addr, (name, comment) in MAPPINGS.items():
+        dump_path = find_ghidra_dump(addr)
+        if not dump_path:
+            errors.append(f"0x{addr:08X}: Ghidra dump not found")
+            continue
+
+        out_path = os.path.join(MAPPED_DIR, f"{name}.c")
+        if os.path.exists(out_path):
+            skipped.append(name)
+            continue
+
+        try:
+            path = generate_mapped_file(addr, name, comment, dump_path)
+            mapped.append((addr, name))
+            print(f"  OK  {name} <- 0x{addr:08X}")
+        except Exception as e:
+            errors.append(f"0x{addr:08X}: {e}")
+
+    # Update symbol_addrs.txt
+    if mapped:
+        update_symbol_addrs(mapped)
+
+    # Summary
+    print(f"\n--- Summary ---")
+    print(f"  Mapped:  {len(mapped)}")
+    print(f"  Skipped: {len(skipped)} (already exist)")
+    print(f"  Errors:  {len(errors)}")
+    for e in errors:
+        print(f"    {e}")
+
+    return 0 if not errors else 1
+
+
+if __name__ == "__main__":
+    if not MAPPINGS:
+        print("No mappings configured. Edit MAPPINGS dict in the script.")
+        print("Example:")
+        print("  MAPPINGS = {")
+        print("      0x8002918C: ('Entity_Behavior_Wander', 'Random wander/patrol behavior'),")
+        print("  }")
+        sys.exit(0)
+    sys.exit(main())

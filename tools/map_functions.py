@@ -73,6 +73,9 @@ MAPPINGS = {
     0x80074BF8: ("Audio_SetBank", "Sets active sound bank / BGM track for music switching"),
     0x80075E04: ("Audio_SPUCommand", "Sends raw SPU command with voice parameters (ADSR, pitch, volume)"),
 
+    # -- Entity sprite setup --
+    0x8004A828: ("Entity_SetupSpriteRender", "Configures sprite rendering flags from type table at 0x800A29CE (8 bytes/entry)"),
+
     # -- System call wrappers (PsyQ / low-level) --
     0x8001CF00: ("Sys_Call", "Generic system call wrapper: passes command packet to kernel at 0x80099490"),
     0x8001DB38: ("Sys_GPUSync", "GPU sync wrapper: calls GPU sync and returns status"),

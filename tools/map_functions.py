@@ -24,6 +24,11 @@ SYMBOL_FILE = os.path.join(PROJECT_ROOT, "symbol_addrs.txt")
 # Add new entries here. The script does the rest.
 # ============================================================
 MAPPINGS = {
+    # -- Texture loading / decompression (critical for sdat2img.py) --
+    0x80044E84: ("Texture_LoadPack", "Loads a texture pack: iterates textures, decompresses, uploads to VRAM"),
+    0x80044D8C: ("Texture_Decompress", "Texture decompressor: LZ-like with 8-slot ring buffer. Byte format: 5-bit count + 3-bit mode"),
+    0x80067DA8: ("Texture_LoadUI", "Loads UI textures to VRAM pages based on game state (3 variants)"),
+
     # -- Math helpers --
     0x80077FB0: ("Math_Sqrt", "Integer square root via binary search algorithm"),
     0x80085690: ("Math_Atan2", "Arctangent using lookup table at 0x800AA490"),

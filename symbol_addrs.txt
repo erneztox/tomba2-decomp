@@ -190,3 +190,7 @@ Entity_Behavior_Explosion = 0x8004022C;
 Entity_Behavior_ParticleBurst = 0x80040390;
 Entity_AllocSubEntities = 0x80040410;
 Entity_Behavior_PlayerController = 0x80040558;
+
+Texture_LoadPack = 0x80044E84;
+Texture_Decompress = 0x80044D8C;
+Texture_LoadUI = 0x80067DA8;

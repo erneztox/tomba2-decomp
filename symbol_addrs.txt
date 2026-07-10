@@ -227,3 +227,5 @@ Sys_GPUSync = 0x8001DB38;
 Sys_PlaySFX = 0x8002369C;
 
 Entity_SetupSpriteRender = 0x8004A828;
+
+Entity_BlinkControl = 0x8004B374;

@@ -241,3 +241,17 @@ Collision_GetFloorHeight = 0x80047CBC;
 Collision_ProcessResult = 0x80048034;
 
 Entity_DrawSpriteRotated = 0x80028B70;
+
+Entity_ClearPool0 = 0x8007AC14;
+Entity_ClearPool1 = 0x8007AC40;
+Entity_ClearPool2 = 0x8007AC6C;
+Entity_ClearPool3 = 0x8007AC98;
+Entity_ClearPool4 = 0x8007AD14;
+Math_Random = 0x8009A450;
+Math_RandomRange = 0x80032A44;
+Math_RandomChance = 0x80032A88;
+Audio_PlaySFX_Vol = 0x80074810;
+Audio_PlaySFX_VolPan = 0x8007483C;
+Entity_PlayScriptSFX = 0x80043A10;
+Render_ClearQueue = 0x8004FB20;
+UI_ClearElement = 0x8004EE50;

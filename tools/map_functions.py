@@ -89,6 +89,27 @@ MAPPINGS = {
     0x8004B374: ("Entity_BlinkControl", "Toggles blink/flash bits on entity[0xD] based on frame counter for transparency effect"),
     0x8004A9A4: ("Entity_InitFromTypeTable", "Initializes entity sprite/bounds from type data table at 0x800A29CC (8 bytes/entry)"),
 
+    # -- Entity init / pool clear --
+    0x8007AC14: ("Entity_ClearPool0", "Clears entity memory pool at 0x800E8008 (0x90 bytes) with memset"),
+    0x8007AC40: ("Entity_ClearPool1", "Clears entity memory pool at 0x800F2418 (0x20C bytes) with memset"),
+    0x8007AC6C: ("Entity_ClearPool2", "Clears entity memory pool at 0x80100660 (0x30 bytes) with memset"),
+    0x8007AC98: ("Entity_ClearPool3", "Clears entity memory pool at 0x800ED018 (0x3C bytes) with memset"),
+    0x8007AD14: ("Entity_ClearPool4", "Clears entity memory pool at 0x800ED058 (0x40 bytes) with memset"),
+
+    # -- Math (continued) --
+    0x8009A450: ("Math_Random", "LCG pseudo-random number generator: seed=seed*0x41c64e6d+0x3039, returns high 16 bits"),
+    0x80032A44: ("Math_RandomRange", "Random integer in range [min, max) using LCG generator"),
+    0x80032A88: ("Math_RandomChance", "Random probability check: returns random value shifted by N bits (1 in 2^N chance)"),
+
+    # -- Audio wrappers --
+    0x80074810: ("Audio_PlaySFX_Vol", "Plays sound effect with volume only (wraps Audio_PlaySoundEffect)"),
+    0x8007483C: ("Audio_PlaySFX_VolPan", "Plays sound effect with volume and pan (wraps Audio_PlaySoundEffect)"),
+
+    # -- Script / render helpers --
+    0x80043A10: ("Entity_PlayScriptSFX", "Plays SFX from entity script data at entity[0x72-0x76]"),
+    0x8004FB20: ("Render_ClearQueue", "Clears render queue buffer at 0x800BF548 (700 bytes) with memset"),
+    0x8004EE50: ("UI_ClearElement", "Clears UI element structure (0x8C bytes) with memset, sets terminator bytes"),
+
     # -- System call wrappers (PsyQ / low-level) --
     0x8001CF00: ("Sys_Call", "Generic system call wrapper: passes command packet to kernel at 0x80099490"),
     0x8001DB38: ("Sys_GPUSync", "GPU sync wrapper: calls GPU sync and returns status"),

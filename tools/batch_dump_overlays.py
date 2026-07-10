@@ -14,7 +14,14 @@ import os
 import time
 import sys
 
-SOCK = '/run/user/1000/ghidra-mcp/ghidra-53675.sock'
+# Auto-detect socket
+_sock_dir = '/run/user/1000/ghidra-mcp'
+_socks = [f for f in os.listdir(_sock_dir) if f.startswith('ghidra-')]
+if not _socks:
+    print('ERROR: No Ghidra socket found')
+    sys.exit(1)
+SOCK = os.path.join(_sock_dir, _socks[0])
+print(f'Using socket: {SOCK}')
 BIN_DIR = 'rom/extracted/BIN'
 OUT_BASE = 'src/overlays'
 PROJECT_DIR = '/'  # Ghidra project root folder
@@ -67,8 +74,14 @@ bin_files = sorted([f for f in os.listdir(BIN_DIR) if f.endswith('.BIN')])
 print(f"Found {len(bin_files)} overlay files: {', '.join(bin_files)}")
 print()
 
+# Skip already processed overlays
+SKIP = {'A00', 'A01', 'A02'}
+
 for bin_file in bin_files:
     name = bin_file[:-4]  # strip .BIN
+    if name in SKIP:
+        print(f'  Skipping {name} (already dumped)')
+        continue
     filepath = os.path.abspath(os.path.join(BIN_DIR, bin_file))
     out_dir = os.path.join(OUT_BASE, name, 'ghidra_dumps')
 

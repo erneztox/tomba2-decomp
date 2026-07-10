@@ -1,0 +1,30 @@
+// FUN_0000770c
+
+/* WARNING: Control flow encountered bad instruction data */
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_0000770c(short param_1,int param_2)
+
+{
+  int iVar1;
+  int iVar2;
+  
+  if (param_1 == 1) {
+                    /* WARNING: Bad instruction - Truncating control flow here */
+    halt_baddata();
+  }
+  if (param_1 < 2) {
+    if (param_1 == 0) {
+      halt_baddata();
+    }
+  }
+  else if (param_1 == 2) {
+    iVar1 = (param_2 << 0x10) >> 0xe;
+    iVar2 = _DAT_1f80021c + (uint)*(ushort *)(iVar1 + -0x7fee59c0) * 0x20 + 0x8760;
+    func_0x0001d2a8(0x12,iVar2,iVar2 + (*(ushort *)(iVar1 + -0x7fee59be) + 1) * 0x20,0);
+    return;
+  }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+

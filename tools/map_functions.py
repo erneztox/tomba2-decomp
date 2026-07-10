@@ -73,6 +73,11 @@ MAPPINGS = {
     0x80074BF8: ("Audio_SetBank", "Sets active sound bank / BGM track for music switching"),
     0x80075E04: ("Audio_SPUCommand", "Sends raw SPU command with voice parameters (ADSR, pitch, volume)"),
 
+    # -- System call wrappers (PsyQ / low-level) --
+    0x8001CF00: ("Sys_Call", "Generic system call wrapper: passes command packet to kernel at 0x80099490"),
+    0x8001DB38: ("Sys_GPUSync", "GPU sync wrapper: calls GPU sync and returns status"),
+    0x8002369C: ("Sys_PlaySFX", "Sound effect trigger wrapper: calls Audio_PlaySoundEffect with preset params"),
+
     # -- Dialogue / text system --
     0x80035738: ("Dialog_CharDispatch", "Dialogue character dispatcher: handles special chars (0x3E-0x68) for text boxes"),
 

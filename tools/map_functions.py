@@ -110,6 +110,24 @@ MAPPINGS = {
     0x8004FB20: ("Render_ClearQueue", "Clears render queue buffer at 0x800BF548 (700 bytes) with memset"),
     0x8004EE50: ("UI_ClearElement", "Clears UI element structure (0x8C bytes) with memset, sets terminator bytes"),
 
+    # -- Entity spawn helpers (continued) --
+    0x80031558: ("Entity_SpawnTrail", "Spawns trail follower entity with Entity_Behavior_Trail and draw func"),
+    0x800315D4: ("Entity_SpawnEffect", "Spawns effect entity with position from spawner, sets entity[0x48]=0x1000100"),
+
+    # -- GTE projection helpers --
+    0x800317CC: ("GTE_DepthCheck", "Standalone GTE depth/Z-sort check: RTPS projection + OT z-index calculation"),
+
+    # -- Entity rotated sprite rendering --
+    0x800318A0: ("Entity_SubmitRotatedSprite", "Submits rotated sprite to OT: GTE matrix from 3-byte rotation + MVMVA transform"),
+    0x80031AC4: ("Entity_SubmitSpriteRotY", "Submits Y-axis rotated sprite: adds GTE rotation on Y before MVMVA"),
+    0x80031D24: ("Entity_SubmitSpriteRotZ", "Submits Z-axis rotated sprite: adds GTE rotation on Z before MVMVA"),
+
+    # -- Entity behaviors (continued) --
+    0x8002BAFC: ("Entity_Behavior_DustTrail", "Dust trail particles: random velocity/position with 5-segment history buffer"),
+    0x8002C3EC: ("Entity_Behavior_AnimState1", "Animation state machine variant 1: switches on entity[7] with GTE transforms"),
+    0x8002C548: ("Entity_Behavior_AnimState2", "Animation state machine variant 2: same structure, different GTE setup"),
+    0x80030A3C: ("Entity_Behavior_Scripted", "Script-driven entity behavior: reads entity[0x6C] script data, complex state machine"),
+
     # -- Entity submit / draw --
     0x800262D8: ("Entity_SubmitDraw", "Submits entity draw data via FUN_8007e1b8 with data table lookup"),
     0x80026320: ("Entity_SubmitDraw2", "Submits entity draw data via FUN_8007e6dc with data table lookup"),

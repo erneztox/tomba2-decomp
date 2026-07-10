@@ -283,3 +283,14 @@ Entity_UpdateChildren = 0x80026C88;
 Entity_Behavior_Particle = 0x80027254;
 Entity_Behavior_TrailPt = 0x800275D4;
 Entity_Behavior_Sparkle = 0x8002A584;
+
+Entity_SpawnTrail = 0x80031558;
+Entity_SpawnEffect = 0x800315D4;
+GTE_DepthCheck = 0x800317CC;
+Entity_SubmitRotatedSprite = 0x800318A0;
+Entity_SubmitSpriteRotY = 0x80031AC4;
+Entity_SubmitSpriteRotZ = 0x80031D24;
+Entity_Behavior_DustTrail = 0x8002BAFC;
+Entity_Behavior_AnimState1 = 0x8002C3EC;
+Entity_Behavior_AnimState2 = 0x8002C548;
+Entity_Behavior_Scripted = 0x80030A3C;

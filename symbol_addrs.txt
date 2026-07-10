@@ -203,3 +203,21 @@ Menu_ItemDispatch = 0x8004A3D4;
 Entity_Behavior_Collectible = 0x8004C238;
 Audio_SetBank = 0x80074BF8;
 Audio_SPUCommand = 0x80075E04;
+
+Inventory_AddItem = 0x8004D338;
+Inventory_SetFlag = 0x8004D714;
+Event_TriggerCollectible = 0x80040B48;
+GPU_LoadImage = 0x80081218;
+GPU_StoreImage = 0x80081278;
+GPU_MoveImage = 0x800812D8;
+GPU_DrawOTag = 0x80081560;
+GPU_SetupPacket = 0x80080FD4;
+GPU_DrawSync = 0x80080F6C;
+GPU_LoadImage2 = 0x800836B8;
+CD_Sync = 0x8008A6EC;
+CD_Ready = 0x8008A96C;
+CD_Control = 0x8008AC34;
+Debug_Printf = 0x8009A730;
+GPU_CheckTimeout = 0x800834D4;
+
+Dialog_CharDispatch = 0x80035738;

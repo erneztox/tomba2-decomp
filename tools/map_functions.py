@@ -72,6 +72,33 @@ MAPPINGS = {
     # -- Audio system --
     0x80074BF8: ("Audio_SetBank", "Sets active sound bank / BGM track for music switching"),
     0x80075E04: ("Audio_SPUCommand", "Sends raw SPU command with voice parameters (ADSR, pitch, volume)"),
+
+    # -- Dialogue / text system --
+    0x80035738: ("Dialog_CharDispatch", "Dialogue character dispatcher: handles special chars (0x3E-0x68) for text boxes"),
+
+    # -- Inventory / item system --
+    0x8004D338: ("Inventory_AddItem", "Adds item to inventory: increments count (max 99), tracks in item tables at 0x800BFAB4"),
+    0x8004D714: ("Inventory_SetFlag", "Sets a bit flag in inventory bitfield tables based on item ID and category"),
+    0x80040B48: ("Event_TriggerCollectible", "Triggers collectible/event: marks as collected, updates global counters"),
+
+    # -- GPU / CD-ROM --
+    0x80081218: ("GPU_LoadImage", "PsyQ LoadImage wrapper: uploads texture data from RAM to VRAM"),
+    0x80081278: ("GPU_StoreImage", "PsyQ StoreImage wrapper: downloads VRAM to RAM"),
+    0x800812D8: ("GPU_MoveImage", "PsyQ MoveImage wrapper: copies data within VRAM"),
+    0x80081560: ("GPU_DrawOTag", "PsyQ DrawOTag wrapper: sends ordering table to GPU for rendering"),
+    0x80080FD4: ("GPU_SetupPacket", "Sets up GPU primitive packet header before DMA transfer"),
+    0x80080F6C: ("GPU_DrawSync", "Waits for GPU to finish current operation (DrawSync callback)"),
+    0x800836B8: ("GPU_LoadImage2", "Alternate LoadImage with timeout handling"),
+
+    # -- CD-ROM --
+    0x8008A6EC: ("CD_Sync", "CD-ROM sync: waits for CD drive to complete operation with timeout"),
+    0x8008A96C: ("CD_Ready", "CD-ROM ready check: polls CD status with callback processing"),
+    0x8008AC34: ("CD_Control", "CD-ROM control command: sends command with parameters, waits for completion"),
+
+    # -- System / Debug --
+    0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
+    0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),
+    0x800834D4: ("GPU_CheckTimeout", "GPU timeout/reset handler: resets GPU state if hung or error detected"),
 }
 
 # ============================================================

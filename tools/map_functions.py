@@ -182,6 +182,33 @@ MAPPINGS = {
     0x8004D714: ("Inventory_SetFlag", "Sets a bit flag in inventory bitfield tables based on item ID and category"),
     0x80040B48: ("Event_TriggerCollectible", "Triggers collectible/event: marks as collected, updates global counters"),
 
+    # -- Entity draw / actions (from Entity_Actions.c, now individual) --
+    0x8003CCA4: ("Entity_Draw", "Main entity draw dispatcher: switches on entity[0xD] for draw mode"),
+    0x8003CDD8: ("Entity_DrawChildren", "Draws child entities by iterating linked list from entity[0xC0]"),
+    0x8003C2D4: ("Entity_Draw3DSprite", "Draws 3D sprite with GTE transform: MVMVA + OT submission"),
+    0x8003C464: ("Entity_Draw3DSpriteScaled", "Draws scaled 3D sprite with GTE scale matrix + MVMVA"),
+    0x8003C5F8: ("Entity_Draw3DSpriteRotated", "Draws rotated 3D sprite with GTE rotation matrix + MVMVA"),
+    0x8003C788: ("Entity_Draw3DSpriteDirect", "Draws 3D sprite directly without GTE: uses screen coordinates"),
+    0x8003C8F4: ("Entity_SubmitGTEVertices", "Submits GTE-transformed vertices to OT as textured quad primitive"),
+
+    # -- Entity allocator (from Entity_Allocator.c, now individual) --
+    0x80079C3C: ("Entity_AllocPool0", "Allocates entity from pool 0, inserts into doubly-linked list at head/tail/before/after"),
+    0x80079DDC: ("Entity_AllocPool1", "Allocates entity from pool 1 with list insertion modes"),
+    0x80079F90: ("Entity_AllocPool2", "Allocates entity from pool 2 with list insertion modes"),
+    0x8007A12C: ("Entity_AllocPool3", "Allocates entity from pool 3 with list insertion modes"),
+    0x8007A2C8: ("Entity_AllocPool4", "Allocates entity from pool 4 with list insertion modes"),
+    0x8007A980: ("Entity_AllocByPoolId", "Routes allocation to correct pool (0-4) based on first parameter"),
+    0x8007A464: ("Entity_AllocBackground", "Allocates background entity from free list, inserts with mode selection"),
+    0x8007A5A8: ("Entity_Activate", "Activates an entity: removes from free list, inserts into active list"),
+    0x8007A624: ("Entity_Dealloc", "Deallocates entity: removes from linked list, returns to pool, cleans up sprite"),
+    0x8007A810: ("Entity_InitBackgroundPool", "Initializes background entity pool with 4 pre-allocated entities"),
+    0x8007A8E0: ("Entity_ClearInputFlags", "Resets engine state buffer and input flags"),
+    0x8007A904: ("Entity_UpdateAll", "Iterates all active and inactive entities, calls their update functions"),
+
+    # -- GPU sprite rendering (from gpu_sprite.c, now individual) --
+    0x8003D584: ("GPU_ModulateOTColors", "Modulates color values in OT primitives for fade/brightness effects"),
+    0x8003D23C: ("GPU_Render3DSprite", "Renders a 3D sprite: sets up GTE, transforms, submits to OT"),
+
     # -- GPU / CD-ROM --
     0x80081218: ("GPU_LoadImage", "PsyQ LoadImage wrapper: uploads texture data from RAM to VRAM"),
     0x80081278: ("GPU_StoreImage", "PsyQ StoreImage wrapper: downloads VRAM to RAM"),

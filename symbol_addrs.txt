@@ -171,3 +171,22 @@ Entity_Behavior_Wander = 0x8002918C;
 Entity_Behavior_AnimPlayer1 = 0x800292B8;
 Entity_Behavior_AnimPlayer2 = 0x800293F4;
 Entity_Behavior_Floater = 0x80029530;
+
+Math_Sqrt = 0x80077FB0;
+Math_Atan2 = 0x80085690;
+GTE_LoadRotMatrixFromSVec = 0x80085480;
+Entity_AllocChildSlot = 0x8007B26C;
+Entity_SpawnChildSequence = 0x80027144;
+Entity_GetChildCount = 0x800270F8;
+Entity_InitChildPipeline = 0x80027058;
+Entity_InitChildPosition = 0x80026D08;
+Entity_InitChildRotation = 0x80026DD8;
+Entity_ProcessProjCmdNoScale = 0x80027CB4;
+
+Entity_InitChildScale = 0x80026EB8;
+Entity_InitChildFinalize = 0x80026F88;
+Entity_Behavior_Explosion = 0x8004022C;
+
+Entity_Behavior_ParticleBurst = 0x80040390;
+Entity_AllocSubEntities = 0x80040410;
+Entity_Behavior_PlayerController = 0x80040558;

@@ -24,7 +24,31 @@ SYMBOL_FILE = os.path.join(PROJECT_ROOT, "symbol_addrs.txt")
 # Add new entries here. The script does the rest.
 # ============================================================
 MAPPINGS = {
-    # Entity behaviors (state machines registered via Entity_InitBehavior)
+    # -- Math helpers --
+    0x80077FB0: ("Math_Sqrt", "Integer square root via binary search algorithm"),
+    0x80085690: ("Math_Atan2", "Arctangent using lookup table at 0x800AA490"),
+
+    # -- GTE helpers --
+    0x80085480: ("GTE_LoadRotMatrixFromSVec", "Loads rotation matrix from SVec format into GTE registers"),
+
+    # -- Entity child spawning pipeline --
+    0x8007B26C: ("Entity_AllocChildSlot", "Allocates a free slot in the child entity table (0x28 slots of 0x40 bytes)"),
+    0x80027144: ("Entity_SpawnChildSequence", "Spawns a sequence of child entities using a count/distribution table"),
+    0x800270f8: ("Entity_GetChildCount", "Sums 8 u16 values from child distribution table"),
+    0x80027058: ("Entity_InitChildPipeline", "Runs child entity through 4-step init pipeline (position, rotation, scale, finalize)"),
+    0x80026D08: ("Entity_InitChildPosition", "Step 1: init child position from data (stride 0x24)"),
+    0x80026DD8: ("Entity_InitChildRotation", "Step 2: init child rotation/animation from data (stride 0x2C)"),
+    0x80026EB8: ("Entity_InitChildScale", "Step 3: init child scale/size from data (stride 0x24)"),
+    0x80026F88: ("Entity_InitChildFinalize", "Step 4: finalize child entity setup (stride 0x28)"),
+
+    # -- Entity animation variants --
+    0x80027CB4: ("Entity_ProcessProjCmdNoScale", "GTE projection + animation frame processing without entity[6] scale factor"),
+
+    # -- Entity behaviors (continued) --
+    0x8004022C: ("Entity_Behavior_Explosion", "Explosion/particle effect: accelerate, spawn children, dealloc"),
+    0x80040390: ("Entity_Behavior_ParticleBurst", "Particle burst: wait for animation flag, spawn children, dealloc"),
+    0x80040410: ("Entity_AllocSubEntities", "Allocates multiple sub-entity structures (hitboxes/parts) from table data"),
+    0x80040558: ("Entity_Behavior_PlayerController", "Main player/character state machine with 8 entity-type dispatch + 6 sub-states"),
     0x8002918C: ("Entity_Behavior_Wander", "Random wander/patrol with visibility check and timer"),
     0x800292B8: ("Entity_Behavior_AnimPlayer1", "Sprite animation player - variant 1 (selects data table by entity type)"),
     0x800293F4: ("Entity_Behavior_AnimPlayer2", "Sprite animation player - variant 2 (different data tables)"),

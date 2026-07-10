@@ -110,6 +110,26 @@ MAPPINGS = {
     0x8004FB20: ("Render_ClearQueue", "Clears render queue buffer at 0x800BF548 (700 bytes) with memset"),
     0x8004EE50: ("UI_ClearElement", "Clears UI element structure (0x8C bytes) with memset, sets terminator bytes"),
 
+    # -- Entity submit / draw --
+    0x800262D8: ("Entity_SubmitDraw", "Submits entity draw data via FUN_8007e1b8 with data table lookup"),
+    0x80026320: ("Entity_SubmitDraw2", "Submits entity draw data via FUN_8007e6dc with data table lookup"),
+
+    # -- Audio control --
+    0x80026470: ("Audio_Mute", "Mutes audio output with SPU command"),
+    0x800264BC: ("Audio_ResetChannel", "Resets audio channel: sends mute then re-enable SPU commands"),
+    0x80026510: ("Audio_ClearChannel", "Clears audio channel: sends mute SPU command"),
+
+    # -- Screen effects --
+    0x8002655C: ("Screen_FadeTransition", "Screen fade in/out transition: 4-phase fade with color ramp"),
+
+    # -- Entity child update --
+    0x80026C88: ("Entity_UpdateChildren", "Iterates 0x28 child entity slots, calls each child's update function"),
+
+    # -- Entity particle behaviors --
+    0x80027254: ("Entity_Behavior_Particle", "Particle effect entity: random velocity, deceleration, timed life"),
+    0x800275D4: ("Entity_Behavior_TrailPt", "5-point trail segment: orbital motion with sine/cosine, visibility check"),
+    0x8002A584: ("Entity_Behavior_Sparkle", "Sparkle/dust particles: random positions, follow parent entity with offset"),
+
     # -- Engine level dispatch --
     0x80022A80: ("Engine_DispatchLevel", "Dispatches level-specific update function from table at 0x8009D1D4 by game state"),
     0x80024CF4: ("Engine_DispatchLevelDraw", "Dispatches level-specific draw function from table at 0x8009D22C by game state"),

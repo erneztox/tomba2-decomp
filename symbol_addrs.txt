@@ -272,3 +272,14 @@ Entity_SetAnimFlag = 0x80023764;
 Entity_CallHandler0 = 0x800241FC;
 Entity_CallHandler1 = 0x8002421C;
 Sys_IncCounter = 0x80026100;
+
+Entity_SubmitDraw = 0x800262D8;
+Entity_SubmitDraw2 = 0x80026320;
+Audio_Mute = 0x80026470;
+Audio_ResetChannel = 0x800264BC;
+Audio_ClearChannel = 0x80026510;
+Screen_FadeTransition = 0x8002655C;
+Entity_UpdateChildren = 0x80026C88;
+Entity_Behavior_Particle = 0x80027254;
+Entity_Behavior_TrailPt = 0x800275D4;
+Entity_Behavior_Sparkle = 0x8002A584;

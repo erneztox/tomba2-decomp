@@ -279,6 +279,16 @@ MAPPINGS = {
     0x80041768: ("Entity_SetAnimModeIfNew", "Sets anim mode only if different from current entity[0x46] value"),
     0x8004179C: ("Entity_ProcessAnimEvent", "Processes animation events: timing, sub-entity texture cycling"),
 
+    # -- Entity physics / collision helpers --
+    0x80041AC0: ("Entity_PhysicsAndAngle", "Runs physics step + stores resulting angle in entity[0x60]"),
+    0x800419C4: ("Entity_CheckCollisionAndAngle", "Checks collision at position offset, stores surface angle in entity[0x62]"),
+
+    # -- Entity state / forwarding --
+    0x8004190C: ("Entity_SetAnimFlag79", "Sets entity animation flag at entity[0x79] from FUN_80076d68"),
+    0x80041FA8: ("Entity_ForwardToParent", "Calls parent entity function at entity[0x10] with same params"),
+    0x80041FCC: ("Entity_CheckStateAndSet", "Checks if entity[5] != 3, if so sets entity[5] = 10 and returns 1"),
+    0x80041FF8: ("Entity_ForwardStateToParent", "Forwards entity[5] state check to parent entity"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

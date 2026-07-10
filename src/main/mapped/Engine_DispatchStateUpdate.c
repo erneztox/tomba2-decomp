@@ -1,4 +1,9 @@
-#include "tomba.h"
+)
+/**
+ * @brief Byte-matching decompilation
+ * @note Original: func_8003D0BC at 0x8003D0BC
+ */
+// Engine_DispatchStateUpdate
 
 extern unsigned char D_800BF870;
 

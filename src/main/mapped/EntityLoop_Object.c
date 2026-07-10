@@ -1,5 +1,9 @@
-#include "tomba.h"
-#include "include_asm.h"
+)
+/**
+ * @brief Byte-matching decompilation
+ * @note Original: func_8003BB50 at 0x8003BB50
+ */
+// EntityLoop_Object
 
 extern Entity* D_800F2410[];
 

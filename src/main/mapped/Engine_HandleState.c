@@ -1,4 +1,9 @@
-#include "tomba.h"
+)
+/**
+ * @brief Byte-matching decompilation
+ * @note Original: func_8003DF04 at 0x8003DF04
+ */
+// Engine_HandleState
 
 extern unsigned char D_800BF870[];
 extern int D_800ED018;

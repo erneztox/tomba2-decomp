@@ -1,4 +1,9 @@
-#include "tomba.h"
+)
+/**
+ * @brief Byte-matching decompilation
+ * @note Original: func_8003F024 at 0x8003F024
+ */
+// EntityFX_Update
 
 extern void GPU_Render3DSprite(Entity*);
 

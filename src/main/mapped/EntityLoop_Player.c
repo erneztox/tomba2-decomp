@@ -1,5 +1,9 @@
-#include "tomba.h"
-#include "include_asm.h"
+)
+/**
+ * @brief Byte-matching decompilation
+ * @note Original: func_8003B588 at 0x8003B588
+ */
+// EntityLoop_Player
 
 extern Entity g_PlayerEntity; // D_800E7E80
 extern u32 func_80083E80(u32);

@@ -1,4 +1,9 @@
-#include "tomba.h"
+)
+/**
+ * @brief Byte-matching decompilation
+ * @note Original: func_8003EEC0 at 0x8003EEC0
+ */
+// EntityLoop_Background
 
 extern void func_8003CCA4(Entity*);
 extern void func_8003C2D4(Entity*);

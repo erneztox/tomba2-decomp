@@ -1,4 +1,9 @@
-#include "tomba.h"
+)
+/**
+ * @brief Byte-matching decompilation
+ * @note Original: func_80040530 at 0x80040530
+ */
+// GPU_ProcessRenderQueue
 
 typedef struct {
     s16 x, y;

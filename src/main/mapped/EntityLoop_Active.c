@@ -1,4 +1,9 @@
-#include "tomba.h"
+)
+/**
+ * @brief Byte-matching decompilation
+ * @note Original: func_8003C048 at 0x8003C048
+ */
+// EntityLoop_Active
 
 extern u8 DAT_800bf870;
 extern int DAT_1f8000f8;

@@ -1,4 +1,9 @@
-#include "tomba.h"
+)
+/**
+ * @brief Byte-matching decompilation
+ * @note Original: func_8003F9A8 at 0x8003F9A8
+ */
+// Engine_ExecuteGameLoop
 
 extern int D_800F2418;
 

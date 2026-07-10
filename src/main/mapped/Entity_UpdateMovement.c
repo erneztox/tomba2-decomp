@@ -1,4 +1,9 @@
-#include "tomba.h"
+)
+/**
+ * @brief Byte-matching decompilation
+ * @note Original: func_8003EF9C at 0x8003EF9C
+ */
+// Entity_UpdateMovement
 
 extern u8 *D_800BF544;
 extern void func_8003F07C(Entity*, int);

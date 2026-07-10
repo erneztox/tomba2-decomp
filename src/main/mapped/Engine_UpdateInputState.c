@@ -1,5 +1,9 @@
-#include "tomba.h"
-#include "include_asm.h"
+)
+/**
+ * @brief Byte-matching decompilation
+ * @note Original: func_80016598 at 0x80016598
+ */
+// Engine_UpdateInputState
 
 extern u8 D_800BF870[];
 extern u8 D_800ED065;

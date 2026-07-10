@@ -1,5 +1,9 @@
-#include "tomba.h"
-#include "include_asm.h"
+)
+/**
+ * @brief Byte-matching decompilation
+ * @note Original: func_8003BF00 at 0x8003BF00
+ */
+// EntityLoop_Background_Draw
 
 extern u8 D_800BF870[];
 

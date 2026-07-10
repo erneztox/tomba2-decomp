@@ -100,3 +100,45 @@ g_OrderingTable = 0x800BF544;
 g_OrderingTableEnd = 0x800ED8C8;
 g_PlayerEntity = 0x800E7E80;
 g_RenderQueue = 0x800BF548;
+
+# -- GTE / Math helpers (mapped) --
+GTE_LoadIdentityMatrix = 0x80051794;
+GTE_LoadScaleMatrix = 0x800517BC;
+GTE_ComposeMatrix = 0x80084110;
+GTE_SetRotationMatrix = 0x80084660;
+GTE_SetTranslationVector = 0x80084690;
+GTE_LoadRotationFromSVec = 0x800847F0;
+GTE_RotateVectorY = 0x80085050;
+Math_Sin = 0x80083E80;
+Math_Cos = 0x80083E80;
+
+# -- Render / OT (mapped) --
+OT_DrawRectSprite = 0x80081CF8;
+Render_ProcessQueueItem = 0x8004FB4C;
+
+# -- Entity system (mapped) --
+Entity_LoadVertexData = 0x8003B054;
+Entity_CopyVertexToSP = 0x8003B220;
+Entity_SubmitVerticesToOT = 0x8003B320;
+Entity_UpdatePhysics = 0x8003B704;
+Entity_ProcessAnimation = 0x8003F174;
+Entity_DrawQuad_Variant0 = 0x8003F344;
+Entity_DrawQuad_Variant1 = 0x8003F3F4;
+Entity_DrawQuad_Variant2 = 0x8003F4C4;
+Entity_DrawQuad_Variant3 = 0x8003F594;
+Entity_SubmitSpriteToOT = 0x8003F698;
+Entity_BehaviorDispatch = 0x8004CC88;
+Entity_UpdateState = 0x800726D4;
+Entity_CleanupSprite = 0x8007ADDC;
+Entity_ApplyTransform = 0x8002AE0C;
+Entity_ResetState = 0x80039F4C;
+
+# -- Engine / System (mapped) --
+Engine_ResetStateBuffer = 0x8007982C;
+Mem_Set = 0x8009A420;
+Input_UpdateState = 0x80025744;
+Input_ProcessButtons = 0x80025934;
+HUD_DrawElement = 0x80025B78;
+
+# -- Player (mapped) --
+Player_Update = 0x800597AC;

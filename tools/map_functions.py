@@ -323,6 +323,19 @@ MAPPINGS = {
     # -- System stubs --
     0x80080930: ("Sys_NoOp2", "Empty stub function - likely unused vtable or placeholder slot"),
 
+    # -- Game state / transitions --
+    0x80042310: ("Game_ReturnToTitle", "Returns to title screen: plays SFX 0x7F, resets state, calls level cleanup"),
+    0x80042728: ("Game_CheckIdle", "Checks if game is idle: no dialogs active (0x800ED06D) and no event flag (0x800BF849)"),
+    0x80043B88: ("Game_SetFlag84C", "Sets global flag at 0x800BF84C to boolean value from param"),
+
+    # -- Entity script execution --
+    0x8004266C: ("Entity_DoAction", "Performs action from script: calls FUN_800708b4 with entity[0x72] param"),
+    0x80043964: ("Entity_ExecScriptCmd1", "Executes script command via FUN_800438d4 with entity[0x72-0x76] params"),
+    0x800439A4: ("Entity_ExecScriptCmd2", "Executes script command variant with different data offset"),
+    0x800439E4: ("Entity_ExecScriptCmd3", "Executes script command via FUN_800521f4 with entity[0x72-0x76] params"),
+    0x80043BB0: ("Entity_SetFlag84C", "Sets global flag at 0x800BF84C from entity script data"),
+    0x80043E9C: ("Entity_ExecWithFlag1", "Wraps entity script execution with flag=1 parameter"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

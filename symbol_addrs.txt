@@ -410,3 +410,13 @@ GPU_SetTexPrimHeader = 0x80083CA0;
 GPU_SetTilePrimHeader = 0x80083CC0;
 Game_CheckBit50 = 0x80078894;
 Sys_NoOp2 = 0x80080930;
+
+Game_ReturnToTitle = 0x80042310;
+Game_CheckIdle = 0x80042728;
+Game_SetFlag84C = 0x80043B88;
+Entity_DoAction = 0x8004266C;
+Entity_ExecScriptCmd1 = 0x80043964;
+Entity_ExecScriptCmd2 = 0x800439A4;
+Entity_ExecScriptCmd3 = 0x800439E4;
+Entity_SetFlag84C = 0x80043BB0;
+Entity_ExecWithFlag1 = 0x80043E9C;

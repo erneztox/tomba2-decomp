@@ -596,6 +596,20 @@ MAPPINGS = {
     0x80051D90: ("Entity_TransformPoint2", "Variant point transform: uses pre-computed matrix, no translation add"),
     0x8005262C: ("Entity_InitDrawEnv", "Initializes entity draw environment: sets up GTE and render state"),
 
+    # -- Entity animation / movement --
+    0x80054DAC: ("Entity_SetAnimMode2", "Sets entity animation mode via entity[0x46] with mode-dependent call"),
+    0x80056B48: ("Entity_ApplyVelocity", "Applies velocity vector (entity[0x44-0x4C]) to entity position"),
+
+    # -- Input / game state --
+    0x80055864: ("Game_ReadInput", "Reads combined input state: checks 0x800E7E68 against 0x1F800172/0x1F800174"),
+
+    # -- Entity action / state --
+    0x80056D44: ("Entity_ResetActionState", "Resets entity action state: clears flags 0x146/0x167/0x16A/0x178/0x181"),
+    0x800588BC: ("Entity_StateTransition2", "Transitions entity to state 3 if input active and 0x164 flag set"),
+    0x8005A910: ("Entity_DispatchAction", "Dispatches entity action: calls overlay func or local handler based on flags"),
+    0x80065478: ("Entity_SetActionFlag", "Sets action flag: if 0x800BF816 set, calls 0x8005444C; else clears flags"),
+    0x800655A0: ("Entity_EndAction", "Ends current entity action: resets state, sets sub-state to 0x1E, calls cleanup"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

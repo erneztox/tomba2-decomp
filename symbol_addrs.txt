@@ -601,3 +601,12 @@ GPU_WaitVSync = 0x80051FB4;
 Pad_Init = 0x8005245C;
 Entity_TransformPoint2 = 0x80051D90;
 Entity_InitDrawEnv = 0x8005262C;
+
+Entity_SetAnimMode2 = 0x80054DAC;
+Entity_ApplyVelocity = 0x80056B48;
+Game_ReadInput = 0x80055864;
+Entity_ResetActionState = 0x80056D44;
+Entity_StateTransition2 = 0x800588BC;
+Entity_DispatchAction = 0x8005A910;
+Entity_SetActionFlag = 0x80065478;
+Entity_EndAction = 0x800655A0;

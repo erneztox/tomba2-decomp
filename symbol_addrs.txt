@@ -563,3 +563,14 @@ Inventory_CheckFlag = 0x8004D868;
 Entity_SpawnCollectible = 0x8004BD04;
 UI_UpdateElement = 0x8004F430;
 UI_DrawScreenOverlay = 0x80050970;
+
+Entity_SetSubState22 = 0x800440E4;
+Entity_ResetAnimAndState = 0x800442A0;
+Collision_GetSurfaceType = 0x8004960C;
+Collision_InitGrid = 0x80049968;
+Entity_WorldToScreen = 0x8004DAEC;
+UI_ClearList = 0x8004EE2C;
+Screen_InitOverlay = 0x800509B4;
+String_CopyUntil = 0x8004EF54;
+Entity_InitSubEntity = 0x80051B70;
+Inventory_SetBit = 0x8004D79C;

@@ -528,6 +528,30 @@ MAPPINGS = {
     0x8004F430: ("UI_UpdateElement", "Updates UI element: decrements timer, resets state if timer reaches 0"),
     0x80050970: ("UI_DrawScreenOverlay", "Draws screen overlay: calls 0x800508A8 or 0x8005082C based on flag"),
 
+    # -- Entity state helpers --
+    0x800440E4: ("Entity_SetSubState22", "Sets entity sub-state to 0x22 or 0x26 based on bit 15 of param"),
+    0x800442A0: ("Entity_ResetAnimAndState", "Resets entity animation mode and sets sub-state via entity[0x74]"),
+
+    # -- Collision system (continued) --
+    0x8004960C: ("Collision_GetSurfaceType", "Reads collision surface type byte from geometry response data"),
+    0x80049968: ("Collision_InitGrid", "Initializes collision grid pointers from header at 0x1F8001C8"),
+
+    # -- Entity world transform --
+    0x8004DAEC: ("Entity_WorldToScreen", "Converts entity world position to screen coords via GTE and checks visibility"),
+
+    # -- UI helpers --
+    0x8004EE2C: ("UI_ClearList", "Clears list of 12 u16 entries to 0xFFFF at given pointer"),
+    0x800509B4: ("Screen_InitOverlay", "Initializes screen overlay: sets GTE offset, calls render setup functions"),
+
+    # -- String utilities --
+    0x8004EF54: ("String_CopyUntil", "Copies string until terminator byte 0xFA or 0xFF, appends 0xFF"),
+
+    # -- Entity init (continued) --
+    0x80051B70: ("Entity_InitSubEntity", "Initializes sub-entity: allocates if slots available, sets default values"),
+
+    # -- Inventory (wrapper, kept for completeness) --
+    0x8004D79C: ("Inventory_SetBit", "Sets bit flag in inventory bitfield at 0x800BFDAC for item ID"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

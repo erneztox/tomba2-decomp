@@ -204,6 +204,131 @@ extern u32* g_AudioChannels;        // 0x80104C30 - Audio channel struct table
 // ============================================================
 
 // ============================================================
+// Audio Channel struct (0xB0 bytes per channel)
+// Array at g_AudioChannels (0x80104C30)
+// ============================================================
+typedef struct AudioChannel {
+    /* 0x00 */ u8*  data_ptr;      // Audio data pointer
+    /* 0x04 */ u8   _pad04[0xC];
+    /* 0x10 */ s16  _unk10;
+    /* 0x12 */ s16  _unk12;
+    /* 0x14 */ s16  active;        // Channel active flag
+    /* 0x15 */ s16  _unk15;
+    /* 0x16 */ s16  _unk16;
+    /* 0x17 */ u8   voice_index;   // Current voice index
+    /* 0x18 */ u8   key_on;        // Key on/note on
+    /* 0x19 */ u8   key_off;       // Key off
+    /* 0x1A */ u8   _unk1A;
+    /* 0x1B */ u8   _unk1B;
+    /* 0x1C */ u8   _unk1C;
+    /* 0x1D */ u8   _unk1D;
+    /* 0x1E */ u8   note_count;    // Note counter
+    /* 0x1F */ u8   _unk1F;
+    /* 0x20 */ u8   _pad20[6];
+    /* 0x26 */ u8   program;       // Program/instrument number
+    /* 0x27 */ u8   volume;        // Volume
+    /* 0x28 */ u8   _pad28[0x10];
+    /* 0x37 */ u8   _unk37;        // Voice parameter
+    /* 0x38 */ s32  _unk38;
+    /* 0x3C */ s32  _unk3C;
+    /* 0x40 */ u8   _pad40[8];
+    /* 0x48 */ s16  _unk48;
+    /* 0x4A */ s16  _unk4A;
+    /* 0x4C */ u8   _pad4C[6];
+    /* 0x52 */ s16  _unk52;
+    /* 0x54 */ s16  _unk54;
+    /* 0x56 */ u8   _pad56[2];
+    /* 0x58 */ s16  pan_left;       // Pan left
+    /* 0x5A */ s16  pan_right;      // Pan right
+    /* 0x5C */ u8   _pad5C[4];
+    /* 0x60 */ s16  voice_data[16]; // Voice data array (16 entries)
+    /* 0x80 */ s16  _unk80;
+    /* 0x82 */ u8   _pad82[6];
+    /* 0x88 */ s16  _unk88;
+    /* 0x8A */ s16  _unk8A;
+    /* 0x8C */ s16  _unk8C;
+    /* 0x8E */ u8   _pad8E[2];
+    /* 0x90 */ s32  voice_ptr;      // Voice pointer
+    /* 0x94 */ s16  _unk94;
+    /* 0x96 */ u8   _pad96[2];
+    /* 0x98 */ s32  state_flags;    // State flags (bit 0=active, bit 2=?, bit 4=?, bit 8=?)
+    /* 0x9C */ s32  callback;       // Callback pointer
+    /* 0xA0 */ s32  _unkA0;
+    /* 0xA4 */ u8   _padA4[0xC];
+} AudioChannel;  // 0xB0 bytes
+
+// ============================================================
+// GPU Primitive types (used in Ordering Table)
+// ============================================================
+typedef struct {
+    u8   r, g, b, code;   // 0x00: Color + command code
+    u16  x, y;             // 0x04: Position
+    u16  u, v;             // 0x08: UV / CLUT coords
+    u16  w, h;             // 0x0C: Width / Height (for SPRT) or CLUT (for TILE)
+} GPUPrim;  // 0x10 bytes (standard prim)
+
+// SPRT primitive (variable size, min 0x10)
+typedef struct {
+    u32  tag;             // 0x00: OT tag (next ptr + len)
+    u8   r, g, b, code;   // 0x04: Color + SPRT code (0x64)
+    s16  x0, y0;           // 0x08: Top-left
+    u8   u0, v0;           // 0x0C: UV top-left
+    u16  clut;             // 0x0E: CLUT
+    s16  x1, y1;           // 0x10: Bottom-right (or width/height)
+    u8   u1, v1;           // 0x14: UV bottom-right
+    u16  tpage;            // 0x16: Texture page
+} SprtPrim;  // 0x18 bytes
+
+// ============================================================
+// Collision result struct (in scratchpad at 0x1F8001E0)
+// ============================================================
+typedef struct {
+    s16  flags;           // 0x00: Collision flags
+    s16  normal_y;        // 0x02: Surface normal Y component
+    s16  normal_x;        // 0x04: Surface normal X component
+    s16  normal_z;        // 0x06: Surface normal Z component
+    s16  dist;            // 0x08: Collision distance/penetration
+} CollisionResult;  // 0x0A bytes
+
+// ============================================================
+// MDEC decoder context struct (~0xF0 bytes)
+// ============================================================
+typedef struct MDECContext {
+    /* 0x00 */ u8   _pad00[0xC];
+    /* 0x0C */ s32  dma_ptr;        // DMA pointer
+    /* 0x10 */ u8   _pad10[4];
+    /* 0x14 */ u8*  callback1;      // Callback function 1
+    /* 0x18 */ u8*  callback2;      // Callback function 2
+    /* 0x1C */ u8   _pad1C[0x10];
+    /* 0x2C */ s32  _unk2C;
+    /* 0x30 */ s32  _unk30;
+    /* 0x34 */ u8   status;         // Status byte
+    /* 0x35 */ u8   _pad35;
+    /* 0x36 */ u8   _unk36;
+    /* 0x37 */ u8   flags;          // Decoder flags
+    /* 0x38 */ u8   _pad38[4];
+    /* 0x3C */ u8*  bitstream;      // Bitstream data pointer
+    /* 0x40 */ u8   _pad40[4];
+    /* 0x44 */ u8   _unk44;
+    /* 0x45 */ u8   _unk45;
+    /* 0x46 */ u8   state;          // State machine (2=reset, 3=setIQ, 4=setSize)
+    /* 0x47 */ u8   sub_cmd;        // Sub-command
+    /* 0x48 */ u8   _pad48[3];
+    /* 0x4B */ u8   _unk4B;
+    /* 0x4C */ s32  _unk4C;
+    /* 0x50 */ u8   _pad50[7];
+    /* 0x57 */ u8   _unk57;
+    /* 0x58 */ u8   _pad58[0x90];
+    /* 0xE8 */ u8   iq_y;           // IQ table Y
+    /* 0xE9 */ u8   iq_cb;          // IQ table Cb
+    /* 0xEA */ u8   iq_cr;          // IQ table Cr
+    /* 0xEB */ u8   _unkEB;
+    /* 0xEC */ s16  width;          // Frame width
+    /* 0xEE */ s16  height;         // Frame height
+    /* 0xF0 */ s32  _unkF0;
+} MDECContext;  // ~0xF4 bytes
+
+// ============================================================
 // Overlay function stubs - called from MAIN.EXE
 // These are defined in overlay aa0 (0x8010xxxx-0x8014xxxx)
 // ============================================================

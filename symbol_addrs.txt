@@ -442,3 +442,14 @@ Entity_CheckActionTrigger = 0x80055C30;
 Entity_SetAccel = 0x80055F48;
 Entity_ResetStateFlags = 0x8005749C;
 Entity_StateTransition = 0x80058F24;
+
+Camera_SetPosition = 0x8006CBA8;
+Camera_SetTarget = 0x8006CBD0;
+Camera_SetFOV = 0x8006D934;
+Camera_SetRoll = 0x8006D950;
+Camera_UpdateFull = 0x8006E360;
+Engine_DispatchInit = 0x8006C77C;
+Engine_DispatchInit2 = 0x8006C7C4;
+Entity_InitFromTable = 0x8006AC7C;
+Entity_SyncToParent = 0x8006AFC4;
+Entity_InitBehaviorConfig = 0x8006C59C;

@@ -368,6 +368,22 @@ MAPPINGS = {
     0x8005749C: ("Entity_ResetStateFlags", "Resets entity state flags: clears 0x29/0x58/0x6A/0x144-0x178, advances state"),
     0x80058F24: ("Entity_StateTransition", "Transitions entity to state 3 with 60-frame timer, clears global flag"),
 
+    # -- Camera system --
+    0x8006CBA8: ("Camera_SetPosition", "Sets camera world position from entity coordinates (x, y, z)"),
+    0x8006CBD0: ("Camera_SetTarget", "Sets camera look-at target and rotation vectors from 6-short array"),
+    0x8006D934: ("Camera_SetFOV", "Sets camera field of view from param array"),
+    0x8006D950: ("Camera_SetRoll", "Sets camera roll angle from 4-byte data"),
+    0x8006E360: ("Camera_UpdateFull", "Full camera update: runs init, set position, target, FOV, and roll"),
+
+    # -- Engine dispatch (continued) --
+    0x8006C77C: ("Engine_DispatchInit", "Level-specific init dispatch from function table at 0x800A4AF8"),
+    0x8006C7C4: ("Engine_DispatchInit2", "Second level init dispatch from function table at 0x800A4B50"),
+
+    # -- Entity init / config --
+    0x8006AC7C: ("Entity_InitFromTable", "Initializes entity from data table at 0x800A4A94 indexed by param"),
+    0x8006AFC4: ("Entity_SyncToParent", "Syncs entity position to parent if parent is in state 1"),
+    0x8006C59C: ("Entity_InitBehaviorConfig", "Configures entity behavior: sets sprite bounds, draw func, and state to 1"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

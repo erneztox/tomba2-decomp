@@ -54,9 +54,9 @@ typedef struct Entity {
     /* 0x2C */ s16  pos_x;          // Position X
     /* 0x2E */ s16  pos_y;          // Position Y
     /* 0x30 */ s32  pos_y_fixed;    // Position Y (32-bit fixed point)
-    /* 0x34 */ s16  _pad34;
+    /* 0x34 */ s32  scale_y;        // Scale/projection Y (copied from anim_data, used as s32 and 2x s16)
     /* 0x36 */ s16  pos_z;          // Position Z
-    /* 0x38 */ void* anim_data;     // Animation data pointer
+    /* 0x38 */ void* anim_data;     // Animation data pointer (copied to 0x34)
     /* 0x3C */ u8*  sprite_data;    // Sprite/animation script data
     /* 0x40 */ s16  timer1;         // General timer
     /* 0x42 */ s16  timer2;         // General timer 2
@@ -66,17 +66,17 @@ typedef struct Entity {
     /* 0x48 */ s16  normal_x;       // Surface normal X
     /* 0x4A */ s16  velocity_y;     // Velocity Y (vertical)
     /* 0x4C */ s16  normal_z;       // Surface normal Z
-    /* 0x4E */ s16  _pad4E;
+    /* 0x4E */ s16  sprite_x;       // Sprite/draw X offset (set to pos_x, 0, 1, 4, 0x240)
     /* 0x50 */ s16  angle_offset;   // Angle offset for animations
-    /* 0x52 */ s16  _pad52;
+    /* 0x52 */ s16  sprite_y;       // Sprite/draw Y offset
     /* 0x54 */ s16  rot_x;          // Rotation X
     /* 0x56 */ s16  rot_y;          // Rotation Y (yaw)
     /* 0x58 */ s16  rot_z;          // Rotation Z
     /* 0x5A */ s16  target_rot_y;   // Target rotation Y
-    /* 0x5C */ s16  _pad5C;
+    /* 0x5C */ s16  draw_y;         // Draw Y position (copies from pos_y_fixed)
     /* 0x5E */ u8   flag_5E;        // Behavior flag
     /* 0x5F */ u8   input_flags;    // Input-related flags
-    /* 0x60 */ s16  _pad60;
+    /* 0x60 */ s16  draw_x;         // Draw X position (used for sprite offsets)
     /* 0x62 */ s16  angle_delta;    // Angle delta for rotation
     /* 0x64 */ s16  radius;         // Collision/radius
     /* 0x66 */ u8   camera_flags;   // Camera control flags
@@ -88,61 +88,61 @@ typedef struct Entity {
     /* 0x6E */ u8   sprite_param2;  // Sprite param 2 (often camera angle)
     /* 0x6F */ u8   sprite_param3;  // Sprite param 3
     /* 0x70 */ u8   anim_check;     // Animation check flag
-    /* 0x71 */ u8   _pad71;
+    /* 0x71 */ u8   state_71;       // State-related byte (23 accesses)
     /* 0x72 */ u16  event_id;       // Event/trigger ID
     /* 0x74 */ s16  event_param;    // Event parameter
     /* 0x76 */ u8   camera_mode;    // Camera mode
-    /* 0x77 */ u8   _pad77;
     /* 0x78 */ u8   sub_state;      // Sub-state machine counter
     /* 0x79 */ u8   sub_state2;     // Sub-state machine counter 2
-    /* 0x7A */ u8   _pad7A;
-    /* 0x7B */ u8   _pad7B;
+    /* 0x7A */ u8   state_7A;       // State byte
+    /* 0x7B */ u8   state_7B;       // State byte 2
     /* 0x7C */ u8   _pad7C[4];
     /* 0x80 */ s16  bounds_min_x;   // Collision bounds min X
     /* 0x82 */ s16  bounds_size;    // Collision bounds size / sprite scale
-    /* 0x84 */ s16  bounds_min_y;   // Collision bounds min Y
+    /* 0x84 */ s16  bounds_min_y;   // Collision bounds min Y / timer
     /* 0x86 */ s16  bounds_max_y;   // Collision bounds max Y
-    /* 0x88 */ s16  _pad88;
+    /* 0x88 */ s16  pos_offset;     // Position offset (18 accesses)
     /* 0x8A */ u8   _pad8A[6];
-    /* 0x90 */ s16  _pad90;
+    /* 0x90 */ s16  move_speed;     // Movement speed parameter (9 accesses)
     /* 0x92 */ u8   _pad92[6];
     /* 0x98 */ u32  gte_transform;  // GTE transform flags
-    /* 0x9C */ u32  _pad9C;
-    /* 0xA0 */ u32  _padA0;
+    /* 0x9C */ u32  gte_data;       // GTE-related data
+    /* 0xA0 */ u32  gte_data2;      // GTE-related data 2
     /* 0xA4 */ u8   _padA4[0x3C];
     /* 0xE0 */ u8   _padE0[0x60];
     /* 0x140 */ s16 draw_angle;     // Draw rotation angle
-    /* 0x142 */ u8  _pad142[2];
+    /* 0x142 */ s16 draw_scale;     // Draw scale (18 accesses)
     /* 0x144 */ u8  state_flag144;  // State flag
     /* 0x145 */ u8  state_flag145;  // State flag (often checked for transitions)
     /* 0x146 */ u8  state_flag146;  // State flag
     /* 0x147 */ u8  direction;      // Direction (0=right, 1=left)
-    /* 0x148 */ s32 _pad148;        // Often used as pointer or counter
+    /* 0x148 */ s32 state_data;     // State-specific data (pointer or counter)
     /* 0x14C */ s16 draw_pos_x;     // Draw position X (screen)
     /* 0x14E */ s16 draw_pos_y;     // Draw position Y (screen)
     /* 0x150 */ s16 draw_pos_z;     // Draw depth Z
-    /* 0x152 */ u8  _pad152[2];
     /* 0x154 */ s16 speed;          // Movement speed
-    /* 0x156 */ u8  _pad156[2];
+    /* 0x156 */ s16 speed2;         // Secondary speed (54 accesses)
     /* 0x158 */ void* state_ptr;    // State-specific data pointer
-    /* 0x15C */ u8  _pad15C[8];
+    /* 0x15C */ u8  _pad15C[7];
     /* 0x164 */ u8  action_flag;    // Action trigger flag
-    /* 0x165 */ u8  _pad165[2];
+    /* 0x165 */ u8  state_165;      // State byte (set to 0 or 1)
+    /* 0x166 */ u8  _pad166;
     /* 0x167 */ u8  input_state;    // Input state
-    /* 0x168 */ s16 _pad168;
-    /* 0x16A */ u8  _pad16A;
+    /* 0x168 */ s16 state_timer;    // State timer (75 accesses, set to 0 or 0xF)
+    /* 0x16A */ u8  flag_16A;       // Flag byte
     /* 0x16B */ u8  physics_flag;   // Physics/collision flag
-    /* 0x16C */ u8  _pad16C[2];
+    /* 0x16C */ s16 _pad16C;        // (17 accesses, purpose unclear)
     /* 0x16E */ s16 timer_main;     // Main timer
-    /* 0x170 */ s16 _pad170;
+    /* 0x170 */ s16 timer_170;      // Timer
     /* 0x172 */ s16 timer_172;      // Timer
     /* 0x174 */ u8  game_flags;     // Game state flags
-    /* 0x175 */ u8  _pad175;
+    /* 0x175 */ u8  flag_175;       // Flag
     /* 0x176 */ u8  behavior_type;  // Behavior type ID
-    /* 0x177 */ u8  _pad177[3];
+    /* 0x177 */ u8  flag_177;       // Flag
+    /* 0x178 */ u8  _pad178[2];
     /* 0x17A */ u8  flag_17A;
     /* 0x17B */ u8  flag_17B;
-    /* 0x17C */ u8  _pad17C[2];
+    /* 0x17C */ s16 entity_param;   // Entity parameter (3 accesses)
     /* 0x17E */ s16 entity_flags;   // Entity-level flags (bit 15 = facing, etc)
     /* 0x180 */ u8  _pad180[0x60];
 } Entity; // Total size ~0x1E0
@@ -208,52 +208,52 @@ extern u32* g_AudioChannels;        // 0x80104C30 - Audio channel struct table
 // Array at g_AudioChannels (0x80104C30)
 // ============================================================
 typedef struct AudioChannel {
-    /* 0x00 */ u8*  data_ptr;      // Audio data pointer
+    /* 0x00 */ u8*  data_ptr;      // Audio data pointer (incremented on play)
     /* 0x04 */ u8   _pad04[0xC];
-    /* 0x10 */ s16  _unk10;
+    /* 0x10 */ s16  pitch;         // Pitch/tone parameter
     /* 0x12 */ s16  _unk12;
-    /* 0x14 */ s16  active;        // Channel active flag
-    /* 0x15 */ s16  _unk15;
+    /* 0x14 */ u8   active;        // Channel active flag (set to 1 on enable)
+    /* 0x15 */ u8   _unk15;
     /* 0x16 */ s16  _unk16;
-    /* 0x17 */ u8   voice_index;   // Current voice index
-    /* 0x18 */ u8   key_on;        // Key on/note on
-    /* 0x19 */ u8   key_off;       // Key off
+    /* 0x17 */ u8   voice_index;   // Current voice index (0-?)
+    /* 0x18 */ u8   key_on;        // Note-on value
+    /* 0x19 */ u8   key_off;       // Note-off value
     /* 0x1A */ u8   _unk1A;
-    /* 0x1B */ u8   _unk1B;
+    /* 0x1B */ u8   cmd_type;      // Command type (0x14 = note, 0x1E = ?)
     /* 0x1C */ u8   _unk1C;
     /* 0x1D */ u8   _unk1D;
-    /* 0x1E */ u8   note_count;    // Note counter
+    /* 0x1E */ u8   note_count;    // Note counter (incremented per note)
     /* 0x1F */ u8   _unk1F;
     /* 0x20 */ u8   _pad20[6];
     /* 0x26 */ u8   program;       // Program/instrument number
-    /* 0x27 */ u8   volume;        // Volume
-    /* 0x28 */ u8   _pad28[0x10];
-    /* 0x37 */ u8   _unk37;        // Voice parameter
+    /* 0x27 */ u8   voice_vol;     // Voice volume (at voice_index offset)
+    /* 0x28 */ u8   _pad28[0x0F];
+    /* 0x37 */ u8   voice_param;   // Voice parameter (at voice_index offset)
     /* 0x38 */ s32  _unk38;
     /* 0x3C */ s32  _unk3C;
     /* 0x40 */ u8   _pad40[8];
-    /* 0x48 */ s16  _unk48;
-    /* 0x4A */ s16  _unk4A;
+    /* 0x48 */ s16  tone;          // Tone/pitch param (set by SetChannelParam)
+    /* 0x4A */ s16  _unk4A;        // Zeroed alongside tone
     /* 0x4C */ u8   _pad4C[6];
     /* 0x52 */ s16  _unk52;
-    /* 0x54 */ s16  _unk54;
+    /* 0x54 */ s16  voice_timer;   // Voice timer (compared with voice_ptr)
     /* 0x56 */ u8   _pad56[2];
     /* 0x58 */ s16  pan_left;       // Pan left
     /* 0x5A */ s16  pan_right;      // Pan right
     /* 0x5C */ u8   _pad5C[4];
-    /* 0x60 */ s16  voice_data[16]; // Voice data array (16 entries)
-    /* 0x80 */ s16  _unk80;
+    /* 0x60 */ s16  voice_data[16]; // Voice data array (16 entries, indexed by voice_index)
+    /* 0x80 */ s16  voice_mask;    // Voice allocation bitmask
     /* 0x82 */ u8   _pad82[6];
     /* 0x88 */ s16  _unk88;
     /* 0x8A */ s16  _unk8A;
     /* 0x8C */ s16  _unk8C;
     /* 0x8E */ u8   _pad8E[2];
-    /* 0x90 */ s32  voice_ptr;      // Voice pointer
+    /* 0x90 */ s32  voice_ptr;     // Voice allocation pointer (from AllocVoice)
     /* 0x94 */ s16  _unk94;
     /* 0x96 */ u8   _pad96[2];
-    /* 0x98 */ s32  state_flags;    // State flags (bit 0=active, bit 2=?, bit 4=?, bit 8=?)
-    /* 0x9C */ s32  callback;       // Callback pointer
-    /* 0xA0 */ s32  _unkA0;
+    /* 0x98 */ s32  flags;         // State flags (bit0=active, bit2, bit3, bit4, bit5, bit8)
+    /* 0x9C */ s32  voice_cb;      // Voice callback/data pointer
+    /* 0xA0 */ s32  voice_data2;   // Secondary voice data (zeroed with tone)
     /* 0xA4 */ u8   _padA4[0xC];
 } AudioChannel;  // 0xB0 bytes
 
@@ -291,19 +291,21 @@ typedef struct {
 } CollisionResult;  // 0x0A bytes
 
 // ============================================================
-// MDEC decoder context struct (~0xF0 bytes)
+// MDEC decoder context struct (~0xF4 bytes)
 // ============================================================
 typedef struct MDECContext {
-    /* 0x00 */ u8   _pad00[0xC];
+    /* 0x00 */ u8   _pad00[4];
+    /* 0x04 */ u8*  param_ptr;      // Parameter pointer (IQ table data)
+    /* 0x08 */ u8   _pad08[4];
     /* 0x0C */ s32  dma_ptr;        // DMA pointer
     /* 0x10 */ u8   _pad10[4];
     /* 0x14 */ u8*  callback1;      // Callback function 1
     /* 0x18 */ u8*  callback2;      // Callback function 2
     /* 0x1C */ u8   _pad1C[0x10];
     /* 0x2C */ s32  _unk2C;
-    /* 0x30 */ s32  _unk30;
-    /* 0x34 */ u8   status;         // Status byte
-    /* 0x35 */ u8   _pad35;
+    /* 0x30 */ u8*  output_ptr;     // Output buffer (decoded pixels?)
+    /* 0x34 */ u8   _pad34;
+    /* 0x35 */ u8   status;         // Status byte (0 = idle, set during decode)
     /* 0x36 */ u8   _unk36;
     /* 0x37 */ u8   flags;          // Decoder flags
     /* 0x38 */ u8   _pad38[4];
@@ -311,15 +313,17 @@ typedef struct MDECContext {
     /* 0x40 */ u8   _pad40[4];
     /* 0x44 */ u8   _unk44;
     /* 0x45 */ u8   _unk45;
-    /* 0x46 */ u8   state;          // State machine (2=reset, 3=setIQ, 4=setSize)
+    /* 0x46 */ u8   state;          // State (0=idle, 1=running, 2=reset, 3=setIQ, 4=setSize)
     /* 0x47 */ u8   sub_cmd;        // Sub-command
-    /* 0x48 */ u8   _pad48[3];
-    /* 0x4B */ u8   _unk4B;
-    /* 0x4C */ s32  _unk4C;
-    /* 0x50 */ u8   _pad50[7];
-    /* 0x57 */ u8   _unk57;
-    /* 0x58 */ u8   _pad58[0x90];
-    /* 0xE8 */ u8   iq_y;           // IQ table Y
+    /* 0x48 */ u8   _pad48;
+    /* 0x49 */ u8   cmd;            // Command byte (2 = something)
+    /* 0x4A */ u8   _unk4A;
+    /* 0x4B */ u8   _pad4B;
+    /* 0x4C */ s32  step_counter;   // Step counter (increments each decode step)
+    /* 0x50 */ u8   _pad50[0x94];
+    /* 0xE4 */ u8   iq_table;       // IQ table selector
+    /* 0xE5 */ u8   _padE5[3];
+    /* 0xE8 */ u8   iq_y;           // IQ table Y (checked for non-zero)
     /* 0xE9 */ u8   iq_cb;          // IQ table Cb
     /* 0xEA */ u8   iq_cr;          // IQ table Cr
     /* 0xEB */ u8   _unkEB;

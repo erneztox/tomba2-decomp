@@ -289,6 +289,24 @@ MAPPINGS = {
     0x80041FCC: ("Entity_CheckStateAndSet", "Checks if entity[5] != 3, if so sets entity[5] = 10 and returns 1"),
     0x80041FF8: ("Entity_ForwardStateToParent", "Forwards entity[5] state check to parent entity"),
 
+    # -- Game state flags --
+    0x80055824: ("Game_CheckFlagInput", "Checks global input flag at 0x800E7E68 AND with input state"),
+    0x80055844: ("Game_CheckFlagSys", "Checks system flag at 0x800ECF54 AND with input state"),
+    0x8006EFF4: ("Game_CheckBit", "Checks bit at position in global bitfield at 0x800BFE48"),
+
+    # -- Entity state helpers --
+    0x800535D4: ("Entity_GetState176", "Returns entity[0x176] + 1 as state value"),
+    0x800645CC: ("Entity_SetStateTo9", "Sets entity sub-state: entity[5]=9, entity[6]=0, entity[7]=0"),
+    0x80069AE4: ("Entity_CopyParentPos", "Copies parent entity position (0x2C-0x36) to this entity from 0x800E7F5C"),
+    0x80072EFC: ("Entity_CalcAngleDelta", "Calculates angle delta: entity[0x56] = entity[0x5A] - entity[0x50]"),
+
+    # -- Entity data tables --
+    0x80051B04: ("Entity_SetSubEntityData", "Sets sub-entity data pointer at entity[0x40] from table at 0x800ECF58"),
+
+    # -- String tables --
+    0x80078770: ("String_GetChar", "Gets character from string table at 0x800A4F88 by index and position"),
+    0x800787F8: ("String_LookupName", "Looks up name/label string from table at 0x800A2B64 by type index"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

@@ -388,3 +388,14 @@ Engine_DrawPool4_Type1 = 0x80025744;
 Engine_DrawPool4_Type2 = 0x80025934;
 Engine_DrawPool4_Type3 = 0x80025B78;
 Engine_Render3DSprites = 0x8003F024;
+
+Game_CheckFlagInput = 0x80055824;
+Game_CheckFlagSys = 0x80055844;
+Game_CheckBit = 0x8006EFF4;
+Entity_GetState176 = 0x800535D4;
+Entity_SetStateTo9 = 0x800645CC;
+Entity_CopyParentPos = 0x80069AE4;
+Entity_CalcAngleDelta = 0x80072EFC;
+Entity_SetSubEntityData = 0x80051B04;
+String_GetChar = 0x80078770;
+String_LookupName = 0x800787F8;

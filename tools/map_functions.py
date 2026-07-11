@@ -418,6 +418,20 @@ MAPPINGS = {
     0x800808A0: ("BIOS_Syscall0_2", "BIOS syscall wrapper: syscall(0)"),
     0x800808E0: ("BIOS_CallB0_6", "BIOS call stub: jumps to 0xB0"),
 
+    # -- CD-ROM callbacks / control --
+    0x80085C44: ("CD_CallbackDispatch", "Dispatches CD event callback via function table at 0x800ABDA0+0x18"),
+    0x80085C74: ("CD_GetStatus", "Returns CD-ROM status byte from 0x800AAD1A"),
+    0x80085C9C: ("CD_SetTimeout", "Sets CD timeout value at 0x800ABDA8, returns previous value"),
+    0x80086230: ("CD_InitRead", "Initializes CD-ROM read operation: sets up DMA, starts transfer"),
+    0x80086350: ("CD_InitSeek", "Initializes CD-ROM seek operation: configures parameters, starts seek"),
+    0x800865F0: ("CD_SetCallback", "Sets CD event callback function pointer at 0x800ABE20"),
+
+    # -- BIOS stubs (continued) --
+    0x800861E8: ("BIOS_CallA0", "BIOS call stub: jumps to 0xA0"),
+    0x80086200: ("BIOS_CallB0_7", "BIOS call stub: jumps to 0xB0"),
+    0x80086210: ("BIOS_CallB0_8", "BIOS call stub: jumps to 0xB0"),
+    0x80086220: ("BIOS_CallB0_9", "BIOS call stub: jumps to 0xB0"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

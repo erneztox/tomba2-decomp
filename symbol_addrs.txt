@@ -475,3 +475,14 @@ BIOS_ResetCallback = 0x80080880;
 BIOS_Syscall0 = 0x80080890;
 BIOS_Syscall0_2 = 0x800808A0;
 BIOS_CallB0_6 = 0x800808E0;
+
+CD_CallbackDispatch = 0x80085C44;
+CD_GetStatus = 0x80085C74;
+CD_SetTimeout = 0x80085C9C;
+CD_InitRead = 0x80086230;
+CD_InitSeek = 0x80086350;
+CD_SetCallback = 0x800865F0;
+BIOS_CallA0 = 0x800861E8;
+BIOS_CallB0_7 = 0x80086200;
+BIOS_CallB0_8 = 0x80086210;
+BIOS_CallB0_9 = 0x80086220;

@@ -508,3 +508,14 @@ CD_Init = 0x80089F68;
 CD_CheckInit = 0x80089F88;
 CD_CheckReady = 0x80089FA8;
 CD_SetTimerCallback = 0x80089FC8;
+
+CD_Dispatch0C = 0x80085B20;
+CD_Dispatch08 = 0x80085B50;
+CD_Dispatch04 = 0x80085B80;
+CD_Dispatch14 = 0x80085BB0;
+CD_Dispatch14_NoParam = 0x80085BE4;
+CD_Dispatch10 = 0x80085C14;
+CD_GetCallback = 0x80086604;
+CD_InitCallbacks = 0x80086738;
+BIOS_CallA0_2 = 0x800858F0;
+BIOS_CallC0 = 0x80085B10;

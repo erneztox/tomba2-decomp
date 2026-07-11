@@ -456,6 +456,20 @@ MAPPINGS = {
     0x80089FA8: ("CD_CheckReady", "Checks if CD is ready via 0x8008B720"),
     0x80089FC8: ("CD_SetTimerCallback", "Sets CD timer callback via 0x80085B80 with mode 3"),
 
+    # -- CD driver dispatch (function table at 0x800ABDA0) --
+    0x80085B20: ("CD_Dispatch0C", "Dispatches CD driver function at table+0x0C"),
+    0x80085B50: ("CD_Dispatch08", "Dispatches CD driver function at table+0x08"),
+    0x80085B80: ("CD_Dispatch04", "Dispatches CD driver function at table+0x04"),
+    0x80085BB0: ("CD_Dispatch14", "Dispatches CD driver function at table+0x14 with params"),
+    0x80085BE4: ("CD_Dispatch14_NoParam", "Dispatches CD driver function at table+0x14 without params"),
+    0x80085C14: ("CD_Dispatch10", "Dispatches CD driver function at table+0x10"),
+    0x80086604: ("CD_GetCallback", "Returns CD event callback function pointer from 0x800ABE20"),
+    0x80086738: ("CD_InitCallbacks", "Initializes CD callback function pointers at 0x80102444-0x8010244C"),
+
+    # -- BIOS stubs (continued) --
+    0x800858F0: ("BIOS_CallA0_2", "BIOS call stub: jumps to 0xA0"),
+    0x80085B10: ("BIOS_CallC0", "BIOS call stub: jumps to 0xC0"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

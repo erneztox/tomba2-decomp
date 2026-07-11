@@ -431,3 +431,14 @@ Entity_SpawnScorePopupEx = 0x8004B428;
 Game_AddScore = 0x8004B3F4;
 Entity_SetColorOverride = 0x8004B354;
 Entity_SelectWeapon = 0x8004B4B0;
+
+Sys_TriggerIRQ = 0x80051F80;
+Entity_SpawnWithBehavior = 0x800525D0;
+Entity_SetupBossUI = 0x80056EC8;
+Entity_CheckEventTrigger = 0x8005344C;
+Entity_UpdateAngle = 0x80055284;
+Entity_CheckInputActive = 0x800557EC;
+Entity_CheckActionTrigger = 0x80055C30;
+Entity_SetAccel = 0x80055F48;
+Entity_ResetStateFlags = 0x8005749C;
+Entity_StateTransition = 0x80058F24;

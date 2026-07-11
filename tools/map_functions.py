@@ -352,6 +352,22 @@ MAPPINGS = {
     0x8004B354: ("Entity_SetColorOverride", "Sets entity[0x18-0x1A] RGB to 0 (normal) or 0xFFFFFF (white flash)"),
     0x8004B4B0: ("Entity_SelectWeapon", "Selects weapon/item by index: calls FUN_8004d4c4 and updates globals"),
 
+    # -- System / IRQ --
+    0x80051F80: ("Sys_TriggerIRQ", "Triggers interrupt request: writes code to 0x1F800138, calls 0x80080880"),
+
+    # -- Entity spawn / setup --
+    0x800525D0: ("Entity_SpawnWithBehavior", "Spawns entity with behavior at 0x800527C8 and specific entity type"),
+    0x80056EC8: ("Entity_SetupBossUI", "Sets up boss HP bar UI: configures 2 sub-entities + spawns indicator"),
+
+    # -- Entity state / flags --
+    0x8005344C: ("Entity_CheckEventTrigger", "Checks if specific event (level 4, bit 0x10) should trigger for entity"),
+    0x80055284: ("Entity_UpdateAngle", "Updates entity[0x56] angle: conditional wraparound based on entity[0x147] flag"),
+    0x800557EC: ("Entity_CheckInputActive", "Checks if entity[0x148] is set OR input state flag is active"),
+    0x80055C30: ("Entity_CheckActionTrigger", "Checks if action trigger conditions met: sets sub-state to 0xB"),
+    0x80055F48: ("Entity_SetAccel", "Sets entity[0x4A] acceleration from table 0x800A457C based on entity[0x6D]"),
+    0x8005749C: ("Entity_ResetStateFlags", "Resets entity state flags: clears 0x29/0x58/0x6A/0x144-0x178, advances state"),
+    0x80058F24: ("Entity_StateTransition", "Transitions entity to state 3 with 60-frame timer, clears global flag"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

@@ -1,0 +1,17 @@
+/**
+ * @brief BIOS init sequence 2: calls indirect + BIOS_B0 + init + clears global
+ * @note Original: func_8009BD4C at 0x8009BD4C
+ */
+// BIOS_InitSequence2
+
+
+
+void FUN_8009bd4c(void)
+
+{
+  FUN_8009bf34();
+  FUN_8009bf00();
+  FUN_8009bdfc();
+  DAT_800acf44 = 0;
+  return;
+}

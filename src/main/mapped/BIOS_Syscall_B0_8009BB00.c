@@ -1,0 +1,14 @@
+/**
+ * @brief BIOS syscall 0xB0 (_96_remove) stub
+ * @note Original: func_8009BB00 at 0x8009BB00
+ */
+// BIOS_Syscall_B0_8009BB00
+
+
+
+void FUN_8009bb00(void)
+
+{
+  (*(code *)&SUB_000000b0)();
+  return;
+}

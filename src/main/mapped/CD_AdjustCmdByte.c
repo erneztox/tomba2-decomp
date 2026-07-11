@@ -1,0 +1,16 @@
+/**
+ * @brief Adjusts CD command byte: if table[param_1]&1, adds 0x20 to command
+ * @note Original: func_8009A3A4 at 0x8009A3A4
+ */
+// CD_AdjustCmdByte
+
+
+
+int FUN_8009a3a4(byte param_1)
+
+{
+  if (((&DAT_800ace75)[param_1] & 1) != 0) {
+    param_1 = param_1 + 0x20;
+  }
+  return (int)(char)param_1;
+}

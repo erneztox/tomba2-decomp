@@ -12,7 +12,7 @@ void FUN_8008f7a0(short param_1,short param_2,short param_3,undefined4 param_4)
   byte bVar1;
   undefined4 local_resc;
   byte in_stack_00000030;
-  undefined1 auStack_30 [8];
+  undefined1 auStack_30->counter1;
   ushort local_28;
   undefined2 local_22;
   

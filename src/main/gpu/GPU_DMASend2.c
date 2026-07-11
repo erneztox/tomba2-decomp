@@ -60,7 +60,7 @@ LAB_800827dc:
     *DAT_800a5aa4 = 0x1000000;
     *DAT_800a5aa4 = 0xa0000000;
     *DAT_800a5aa4 = *param_1;
-    *DAT_800a5aa4 = param_1[1];
+    *DAT_800a5aa4 = param_1->flags;
     while (iVar4 = iVar4 + -1, iVar4 != -1) {
       uVar1 = *param_2;
       param_2 = param_2 + 1;

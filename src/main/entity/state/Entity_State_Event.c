@@ -18,16 +18,16 @@ undefined4 FUN_80043bd4(int param_1)
   short sVar5;
   int *piVar6;
   
-  if (*(short *)(param_1 + 0x74) == 0) {
+  if (param_1->event_param == 0) {
     piVar6 = (int *)&DAT_800e7eac;
   }
   else {
     piVar6 = (int *)&DAT_800e7eb4;
   }
-  if (*(char *)(param_1 + 0x78) == '\0') {
-    if (*(short *)(param_1 + 0x72) == 2) {
+  if (param_1->sub_state == '\0') {
+    if (param_1->event_id == 2) {
       sVar2 = 0;
-      if (*(short *)(param_1 + 0x74) == 0) {
+      if (param_1->event_param == 0) {
         sVar5 = *(short *)(param_1 + 0x76) - _DAT_800e7eae;
       }
       else {
@@ -36,21 +36,21 @@ undefined4 FUN_80043bd4(int param_1)
       }
       sVar2 = FUN_80085690(-(int)sVar2,(int)sVar5);
       uVar3 = FUN_80077768((int)sVar2,(int)_DAT_800e7fc0,0);
-      *(undefined2 *)(param_1 + 0x72) = uVar3;
+      param_1->event_id = uVar3;
     }
     sVar2 = *(short *)(param_1 + 0x76) - *(short *)((int)piVar6 + 2);
     *(short *)(param_1 + 100) = sVar2;
     if (sVar2 == 0) {
       return 1;
     }
-    _DAT_1f800192 = *(undefined2 *)(param_1 + 0x72);
+    _DAT_1f800192 = param_1->event_id;
     _DAT_1f800190 = 0;
     DAT_800e7e85 = 0x1f;
     DAT_800e7e86 = 0;
-    *(char *)(param_1 + 0x78) = *(char *)(param_1 + 0x78) + '\x01';
+    param_1->sub_state = param_1->sub_state + '\x01';
   }
   else {
-    if (*(char *)(param_1 + 0x78) != '\x01') {
+    if (param_1->sub_state != '\x01') {
       return 0;
     }
     if (*(short *)(param_1 + 100) < 1) {
@@ -68,7 +68,7 @@ undefined4 FUN_80043bd4(int param_1)
       return 1;
     }
     _DAT_1f800190 = _DAT_1f80016e;
-    if (*(short *)(param_1 + 0x72) == 0) {
+    if (param_1->event_id == 0) {
       _DAT_1f800190 = _DAT_1f80016c;
     }
   }

@@ -103,10 +103,10 @@ LAB_80078f70:
           puVar9 = (uint *)(_DAT_800ed8c8 + param_5 * 4);
           *puVar2 = *puVar9 | 0x4000000;
           *puVar9 = (uint)puVar2;
-          puVar2[1] = _DAT_1f800004;
-          puVar2[2] = _DAT_1f800008;
-          puVar2[3] = _DAT_1f80000c;
-          puVar2[4] = _DAT_1f800010;
+          puVar2->flags = _DAT_1f800004;
+          puVar2->kind = _DAT_1f800008;
+          puVar2->sub_type = _DAT_1f80000c;
+          puVar2->state = _DAT_1f800010;
           uVar3 = _DAT_1f800008;
           _DAT_800bf544 = puVar2 + 5;
         }

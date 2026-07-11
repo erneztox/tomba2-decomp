@@ -14,14 +14,14 @@ void FUN_8006ea7c(int param_1)
   undefined4 uVar1;
   short sVar2;
   
-  *(undefined2 *)(param_1 + 0x56) = 0x100;
+  param_1->rot_y = 0x100;
   *(undefined1 *)(param_1 + 0x72) = 0;
-  *(undefined1 *)(param_1 + 0x76) = 0;
+  param_1->camera_mode = 0;
   *(undefined1 *)(param_1 + 0x77) = 0;
   *(undefined1 *)(param_1 + 0x74) = 0;
   *(undefined2 *)(param_1 + 6) = 0;
   uVar1 = _DAT_1f8000e0;
-  *(undefined2 *)(param_1 + 0x52) = 0x400;
+  param_1->sprite_y = 0x400;
   *(undefined2 *)(param_1 + 0x22) = 0xf0;
   *(undefined2 *)(param_1 + 0x8c) = 0;
   *(undefined4 *)(param_1 + 0xc) = uVar1;
@@ -31,7 +31,7 @@ void FUN_8006ea7c(int param_1)
       *(undefined1 *)(param_1 + 100) = 7;
       *(undefined2 *)(param_1 + 0x3a) = 0xaba;
       *(undefined2 *)(param_1 + 0x3e) = 0xfce0;
-      *(undefined2 *)(param_1 + 0x42) = 0xee0;
+      param_1->timer2 = 0xee0;
       _DAT_1f8000d2 = 0xd3b;
       _DAT_1f8000d6 = 0xf57d;
       _DAT_1f8000da = 0xdb2;
@@ -67,7 +67,7 @@ LAB_8006eb94:
     if (DAT_800e7e82 == '\0') {
       sVar2 = sVar2 + 0x35c;
       *(short *)(param_1 + 0x3e) = sVar2;
-      *(short *)(param_1 + 0xe) = sVar2;
+      param_1->anim_timer = sVar2;
       *(undefined1 *)(param_1 + 100) = 0xf;
       *(undefined2 *)(param_1 + 0x6c) = 0x578;
       *(undefined2 *)(param_1 + 0x6e) = 0x40;

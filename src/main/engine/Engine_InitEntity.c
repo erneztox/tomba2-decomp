@@ -29,8 +29,8 @@ void FUN_800798f8(void)
     iVar4 = iVar3;
     iVar5 = iVar5 + 0x88;
     FUN_8009a420(iVar1,0,0x88);
-    *(int *)(iVar1 + 0x24) = iVar5;
-    *(undefined1 *)(iVar1 + 0x28) = 0;
+    iVar1->next = iVar5;
+    iVar1->alloc_flags = 0;
     *(undefined1 *)(iVar1 + 0xc) = 0;
     iVar3 = iVar4 + 1;
     iVar1 = iVar1 + 0x88;
@@ -46,7 +46,7 @@ void FUN_800798f8(void)
     puVar6 = puVar6 + 0xc4;
     FUN_8009a420(puVar2,0,0xc4);
     *(undefined1 **)(puVar2 + 0x24) = puVar6;
-    puVar2[0x28] = 1;
+    puVar2->alloc_flags = 1;
     puVar2[0xc] = 0;
     iVar5 = iVar3 + 1;
     puVar2 = puVar2 + 0xc4;
@@ -61,8 +61,8 @@ void FUN_800798f8(void)
     iVar4 = iVar3;
     iVar5 = iVar5 + 0xd0;
     FUN_8009a420(iVar1,0,0xd0);
-    *(int *)(iVar1 + 0x24) = iVar5;
-    *(undefined1 *)(iVar1 + 0x28) = 2;
+    iVar1->next = iVar5;
+    iVar1->alloc_flags = 2;
     *(undefined1 *)(iVar1 + 0xc) = 0;
     iVar3 = iVar4 + 1;
     iVar1 = iVar1 + 0xd0;
@@ -77,8 +77,8 @@ void FUN_800798f8(void)
     iVar4 = iVar3;
     iVar5 = iVar5 + 0x108;
     FUN_8009a420(iVar1,0,0x108);
-    *(int *)(iVar1 + 0x24) = iVar5;
-    *(undefined1 *)(iVar1 + 0x28) = 3;
+    iVar1->next = iVar5;
+    iVar1->alloc_flags = 3;
     *(undefined1 *)(iVar1 + 0xc) = 0;
     iVar3 = iVar4 + 1;
     iVar1 = iVar1 + 0x108;
@@ -93,8 +93,8 @@ void FUN_800798f8(void)
     iVar4 = iVar3;
     iVar5 = iVar5 + 0x140;
     FUN_8009a420(iVar1,0,0x140);
-    *(int *)(iVar1 + 0x24) = iVar5;
-    *(undefined1 *)(iVar1 + 0x28) = 4;
+    iVar1->next = iVar5;
+    iVar1->alloc_flags = 4;
     *(undefined1 *)(iVar1 + 0xc) = 0;
     iVar3 = iVar4 + 1;
     iVar1 = iVar1 + 0x140;

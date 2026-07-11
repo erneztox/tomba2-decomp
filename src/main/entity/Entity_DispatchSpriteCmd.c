@@ -14,7 +14,7 @@ undefined4 FUN_80043634(int param_1)
   ushort uVar1;
   int iVar2;
   
-  uVar1 = *(ushort *)(param_1 + 0x72);
+  uVar1 = param_1->event_id;
   if ((uVar1 & 0x1000) == 0) {
     iVar2 = FUN_8006fb0c(param_1,uVar1 & 0xfff);
   }
@@ -23,8 +23,8 @@ undefined4 FUN_80043634(int param_1)
   }
   _DAT_800bf844 = iVar2;
   if (iVar2 != 0) {
-    *(undefined1 *)(iVar2 + 0x5e) = *(undefined1 *)(param_1 + 0x74);
-    *(undefined2 *)(iVar2 + 0x60) = *(undefined2 *)(param_1 + 0x76);
+    iVar2->flag_5E = *(undefined1 *)(param_1 + 0x74);
+    iVar2->draw_x = *(undefined2 *)(param_1 + 0x76);
   }
   return 1;
 }

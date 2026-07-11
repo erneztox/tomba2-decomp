@@ -16,7 +16,7 @@ void Entity_ProcessProjCmd(int param_1)
   undefined4 in_at;
   undefined4 uVar2;
 
-  if (*(int *)(param_1 + 0x34) != 0) {
+  if (param_1->scale_y != 0) {
     setCopControlWord(2,0,_DAT_1f8000f8);
     setCopControlWord(2,0x800,_DAT_1f8000fc);
     setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -28,7 +28,7 @@ void Entity_ProcessProjCmd(int param_1)
     setCopControlWord(2,0xd800,6);
     setCopControlWord(2,0xe000,0);
     setCopReg(2,in_zero,*(undefined4 *)(param_1 + 0x2c));
-    setCopReg(2,in_at,*(undefined4 *)(param_1 + 0x30));
+    setCopReg(2,in_at,param_1->pos_y_fixed);
     copFunction(2,0x180001);
     _DAT_1f800080 = getCopControlWord(2,0xf800);
     bVar1 = true;
@@ -58,11 +58,11 @@ void Entity_ProcessProjCmd(int param_1)
     }
     else {
       _DAT_1f800090 = 0;
-      // Scale factor from entity[6] (sprite size/priority)
-      _DAT_1f800084 = (int)(_DAT_1f800084 * (uint)*(byte *)(param_1 + 6)) >> 4;
+      // Scale factor from entity->action_state (sprite size/priority)
+      _DAT_1f800084 = (int)(_DAT_1f800084 * (uint)param_1->action_state) >> 4;
       _DAT_1f800088 = _DAT_1f800084;
-      uVar2 = Entity_ProcessAnimFrame(*(int *)(param_1 + 0x34),*(undefined4 *)(param_1 + 0x44));
-      *(undefined4 *)(param_1 + 0x38) = uVar2;
+      uVar2 = Entity_ProcessAnimFrame(param_1->scale_y,*(undefined4 *)(param_1 + 0x44));
+      param_1->anim_data = uVar2;
     }
   }
   return;

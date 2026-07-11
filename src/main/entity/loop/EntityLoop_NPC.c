@@ -47,28 +47,28 @@ void EntityLoop_NPC(void) {
         count--;
         
         if (entity->active_flag != 0) {
-            switch (entity->action_id) {
+            switch entity->action_id {
                 case 0x00:
                 case 0x0F:
                     func_8003CCA4(entity);
                     break;
                 case 0x01:
-                    if (D_800BF870[0] == 0x00) {
+                    if (D_800BF870->type == 0x00) {
                         func_801341E8(entity);
-                    } else if (D_800BF870[0] == 0x06) {
+                    } else if (D_800BF870->type == 0x06) {
                         func_80123C14(entity);
                     }
                     break;
                 case 0x02:
-                    if (D_800BF870[0] == 0x01) {
+                    if (D_800BF870->type == 0x01) {
                         func_80129114(entity);
-                    } else if (D_800BF870[0] == 0x06) {
+                    } else if (D_800BF870->type == 0x06) {
                         func_80120D2C(entity);
-                    } else if (D_800BF870[0] == 0x07) {
+                    } else if (D_800BF870->type == 0x07) {
                         func_8011AD44(entity);
-                    } else if (D_800BF870[0] == 0x0A) {
+                    } else if (D_800BF870->type == 0x0A) {
                         func_80115338(entity);
-                    } else if (D_800BF870[0] == 0x0F) {
+                    } else if (D_800BF870->type == 0x0F) {
                         func_80117984(entity);
                     }
                     break;

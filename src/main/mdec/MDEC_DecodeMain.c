@@ -93,14 +93,14 @@ LAB_800878b8:
       FUN_800873bc();
       bVar1 = *(byte *)(param_1 + 0x44);
       *(byte *)(param_1 + 0x44) = bVar1 + 1;
-      *(undefined1 *)((uint)bVar1 + *(int *)(param_1 + 0x3c)) = *DAT_800abeb4;
+      *(undefined1 *)((uint)bVar1 + param_1->sprite_data) = *DAT_800abeb4;
       (*DAT_800abe38)(0);
       return 0;
     }
     uVar3 = (*DAT_800abe40)(param_1,iVar2);
     iVar5 = FUN_80086ea4(param_1,uVar3);
     if (iVar5 < 0) break;
-    if (*(short *)(DAT_800abeb4 + 0xe) != 0x22) {
+    if (DAT_800abeb4->anim_timer != 0x22) {
       FUN_80089620(0x3c);
       iVar5 = FUN_8008732c();
       if (iVar5 == 0) {

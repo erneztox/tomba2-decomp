@@ -41,13 +41,13 @@ void Entity_SubmitQuadToOT(uint *param_1,int param_2,short param_3,char param_4)
   do {
     uVar8 = puVar5[-5];
     local_28 = (uint)CONCAT21((short)(((uint)*(byte *)((int)puVar5 + 6) << 0x18) >> 0x10),
-                              (char)puVar5[1]) << 8;
+                              (char)puVar5->flags) << 8;
     local_24 = CONCAT22(local_24._2_2_,(short)(((uint)*(byte *)((int)puVar5 + -9) << 0x18) >> 0x10))
     ;
     local_20 = (uint)CONCAT21((ushort)*(byte *)((int)puVar5 + 7) << 8,
                               *(undefined1 *)((int)puVar5 + 5)) << 8;
     local_1c = (uint)CONCAT21(local_1c._2_2_,*(undefined1 *)((int)puVar5 + -5)) << 8;
-    local_18 = (uint)CONCAT21((ushort)*(byte *)((int)puVar5 + 10) << 8,(char)puVar5[2]) << 8;
+    local_18 = (uint)CONCAT21((ushort)*(byte *)((int)puVar5 + 10) << 8,(char)puVar5->kind) << 8;
     local_14 = (uint)CONCAT21(local_14._2_2_,*(undefined1 *)((int)puVar5 + -1)) << 8;
     setCopReg(2,in_zero,local_28);
     setCopReg(2,in_at,local_24);
@@ -62,11 +62,11 @@ void Entity_SubmitQuadToOT(uint *param_1,int param_2,short param_3,char param_4)
     iVar7 = getCopControlWord(2,0xf800);
     if (-1 < iVar7) {
       uVar2 = getCopReg(2,0xc);
-      _DAT_800bf544[2] = uVar2;
+      _DAT_800bf544->kind = uVar2;
       uVar2 = getCopReg(2,0xd);
-      _DAT_800bf544[5] = uVar2;
+      _DAT_800bf544->behavior_state = uVar2;
       uVar2 = getCopReg(2,0xe);
-      _DAT_800bf544[8] = uVar2;
+      _DAT_800bf544->counter1 = uVar2;
       setCopReg(2,in_zero,local_10);
       setCopReg(2,in_at,local_c);
       puVar4[-7] = *puVar6 + param_2 * 0x400000;
@@ -74,7 +74,7 @@ void Entity_SubmitQuadToOT(uint *param_1,int param_2,short param_3,char param_4)
       iVar7 = getCopControlWord(2,0xf800);
       if (-1 < iVar7) {
         uVar2 = getCopReg(2,0xe);
-        _DAT_800bf544[0xb] = uVar2;
+        _DAT_800bf544->render_flags = uVar2;
         puVar4[-4] = uVar8 & 0x7fffff;
         copFunction(2,0x168002e);
         iVar7 = getCopReg(2,7);
@@ -86,24 +86,24 @@ void Entity_SubmitQuadToOT(uint *param_1,int param_2,short param_3,char param_4)
         if (-1 < local_4) {
           uVar2 = puVar5[-4];
           puVar4[-1] = uVar2;
-          puVar4[2] = (int)uVar2 >> 0x10;
+          puVar4->kind = (int)uVar2 >> 0x10;
           // Apply per-vertex color modulation (brightness offset)
           *(char *)(puVar4 + -4) = (char)puVar4[-4] + param_4;
           *(char *)(puVar4 + -7) = (char)puVar4[-7] + param_4;
-          *(char *)(puVar4 + 2) = (char)puVar4[2] + param_4;
+          puVar4->kind = (char)puVar4->kind + param_4;
           *(char *)(puVar4 + -1) = (char)puVar4[-1] + param_4;
           setCopReg(2,0x4000,_DAT_1f800090);
-          setCopReg(2,unaff_s4,puVar6[3]);
-          setCopReg(2,unaff_s5,puVar6[4]);
-          setCopReg(2,unaff_s6,puVar6[5]);
-          setCopReg(2,iVar3,puVar6[5]);
+          setCopReg(2,unaff_s4,puVar6->sub_type);
+          setCopReg(2,unaff_s5,puVar6->state);
+          setCopReg(2,unaff_s6,puVar6->behavior_state);
+          setCopReg(2,iVar3,puVar6->behavior_state);
           copFunction(2,0xf8002a);
           uVar2 = getCopReg(2,0x14);
-          _DAT_800bf544[1] = uVar2;
+          _DAT_800bf544->flags = uVar2;
           uVar2 = getCopReg(2,0x15);
-          _DAT_800bf544[4] = uVar2;
+          _DAT_800bf544->state = uVar2;
           uVar2 = getCopReg(2,0x16);
-          _DAT_800bf544[7] = uVar2;
+          _DAT_800bf544->sub_action = uVar2;
           uVar1 = 0x3e;
           if ((uVar8 & 0x40000000) == 0) {
             uVar1 = 0x3c;

@@ -21,17 +21,17 @@ undefined4 FUN_8001f830(byte *param_1,int param_2)
   int iVar8;
   int iVar9;
   
-  iVar9 = (int)(((uint)*(ushort *)(param_1 + 0x2e) - (uint)*(ushort *)(param_2 + 0x2e)) * 0x10000)
+  iVar9 = (int)(((uint)param_1->pos_y - (uint)param_2->pos_y) * 0x10000)
           >> 0x10;
-  iVar8 = (int)(((uint)*(ushort *)(param_1 + 0x36) - (uint)*(ushort *)(param_2 + 0x36)) * 0x10000)
+  iVar8 = (int)(((uint)param_1->pos_z - (uint)param_2->pos_z) * 0x10000)
           >> 0x10;
   uVar6 = FUN_80084080(iVar9 * iVar9 + iVar8 * iVar8);
   bVar4 = false;
-  if (((int)(uint)uVar6 <= (int)*(short *)(param_1 + 0x80) + (int)*(short *)(param_2 + 0x80)) &&
+  if (((int)(uint)uVar6 <= (int)param_1->bounds_min_x + (int)param_2->bounds_min_x) &&
      (bVar4 = false,
      (int)(((uint)*(ushort *)(param_1 + 0x32) - (uint)*(ushort *)(param_2 + 0x32)) +
-           (uint)*(ushort *)(param_1 + 0x84) + (uint)*(ushort *)(param_2 + 0x84) & 0xffff) <=
-     (int)*(short *)(param_1 + 0x86) + (int)*(short *)(param_2 + 0x86))) {
+           (uint)param_1->bounds_min_y + (uint)param_2->bounds_min_y & 0xffff) <=
+     (int)param_1->bounds_max_y + (int)param_2->bounds_max_y)) {
     _DAT_1f80008c = (int)(short)uVar6;
     _DAT_1f80009c = FUN_80085690(-iVar8,iVar9);
     bVar4 = true;
@@ -40,19 +40,19 @@ undefined4 FUN_8001f830(byte *param_1,int param_2)
   if (bVar4) {
     if ((*param_1 & 4) == 0) {
       iVar8 = FUN_80083f50(_DAT_1f80009c);
-      sVar1 = *(short *)(param_1 + 0x80);
-      sVar2 = *(short *)(param_2 + 0x80);
+      sVar1 = param_1->bounds_min_x;
+      sVar2 = param_2->bounds_min_x;
       iVar9 = FUN_80083e80(_DAT_1f80009c);
-      sVar3 = *(short *)(param_2 + 0x80);
-      *(short *)(param_1 + 0x2e) =
-           *(short *)(param_2 + 0x2e) + (short)(iVar8 * ((int)sVar1 + (int)sVar2) >> 0xc);
-      *(short *)(param_1 + 0x36) =
-           *(short *)(param_2 + 0x36) -
-           (short)(iVar9 * ((int)*(short *)(param_1 + 0x80) + (int)sVar3) >> 0xc);
+      sVar3 = param_2->bounds_min_x;
+      param_1->pos_y =
+           param_2->pos_y + (short)(iVar8 * ((int)sVar1 + (int)sVar2) >> 0xc);
+      param_1->pos_z =
+           param_2->pos_z -
+           (short)(iVar9 * ((int)param_1->bounds_min_x + (int)sVar3) >> 0xc);
     }
-    cVar5 = FUN_80077768((int)_DAT_1f80009c,(int)*(short *)(param_1 + 0x140),1);
+    cVar5 = FUN_80077768((int)_DAT_1f80009c,(int)param_1->draw_angle,1);
     uVar7 = 1;
-    param_1[0x5f] = cVar5 + 2;
+    param_1->input_flags = cVar5 + 2;
   }
   return uVar7;
 }

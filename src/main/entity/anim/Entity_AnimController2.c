@@ -17,111 +17,111 @@ void FUN_80076904(int param_1)
   int iVar6;
   uint uVar7;
   
-  uVar7 = *(uint *)((uint)**(ushort **)(param_1 + 0x38) * 4 + *(int *)(param_1 + 0x3c));
-  pbVar3 = (byte *)(*(int *)(param_1 + 0x3c) + (uVar7 & 0xffffff));
-  *(char *)(param_1 + 8) = (char)(uVar7 >> 0x18);
+  uVar7 = *(uint *)((uint)**(ushort **)(param_1 + 0x38) * 4 + param_1->sprite_data);
+  pbVar3 = (byte *)(param_1->sprite_data + (uVar7 & 0xffffff));
+  param_1->counter1 = (char)(uVar7 >> 0x18);
   if (((int)uVar7 >> 0x18 & 0x40U) == 0) {
-    bVar1 = (*(byte *)(param_1 + 8) & 0x80) != 0;
+    bVar1 = (param_1->counter1 & 0x80) != 0;
     if (bVar1) {
       uVar2 = (ushort)((int)((uint)*pbVar3 << 0x18) >> 0x14);
-      *(ushort *)(param_1 + 0x88) = uVar2;
-      *(ushort *)(param_1 + 0x88) = uVar2 | pbVar3[1] >> 4;
-      uVar2 = (ushort)((int)((uint)pbVar3[1] << 0x1c) >> 0x14);
+      param_1->gte_input = uVar2;
+      param_1->gte_input = uVar2 | pbVar3->flags >> 4;
+      uVar2 = (ushort)((int)((uint)pbVar3->flags << 0x1c) >> 0x14);
       *(ushort *)(param_1 + 0x8a) = uVar2;
       pbVar4 = pbVar3 + 3;
-      *(ushort *)(param_1 + 0x8a) = uVar2 | pbVar3[2];
+      *(ushort *)(param_1 + 0x8a) = uVar2 | pbVar3->kind;
       pbVar3 = pbVar3 + 4;
       uVar2 = (ushort)((int)((uint)*pbVar4 << 0x18) >> 0x14);
       *(ushort *)(param_1 + 0x8c) = uVar2;
       *(ushort *)(param_1 + 0x8c) = uVar2 | *pbVar3 >> 4;
     }
     iVar5 = 0;
-    *(byte *)(param_1 + 8) = *(byte *)(param_1 + 8) & 0x3f;
+    param_1->counter1 = param_1->counter1 & 0x3f;
     iVar6 = param_1;
-    if (*(char *)(param_1 + 9) != '\0') {
+    if (param_1->counter2 != '\0') {
       do {
-        if ((int)(uint)*(byte *)(param_1 + 8) <= iVar5) {
+        if ((int)(uint)param_1->counter1 <= iVar5) {
           return;
         }
         if ((iVar5 + (uint)bVar1 & 1) == 0) {
-          *(ushort *)(*(int *)(iVar6 + 0xc0) + 8) = (ushort)*pbVar3 << 4;
-          *(ushort *)(*(int *)(iVar6 + 0xc0) + 8) =
-               *(ushort *)(*(int *)(iVar6 + 0xc0) + 8) | (ushort)(pbVar3[1] >> 4);
-          *(ushort *)(*(int *)(iVar6 + 0xc0) + 10) = (pbVar3[1] & 0xf) << 8;
+          *(ushort *)(iVar6->sprite_ptr1 + 8) = (ushort)*pbVar3 << 4;
+          *(ushort *)(iVar6->sprite_ptr1 + 8) =
+               *(ushort *)(iVar6->sprite_ptr1 + 8) | (ushort)(pbVar3->flags >> 4);
+          *(ushort *)(iVar6->sprite_ptr1 + 10) = (pbVar3->flags & 0xf) << 8;
           pbVar4 = pbVar3 + 3;
-          *(ushort *)(*(int *)(iVar6 + 0xc0) + 10) =
-               *(ushort *)(*(int *)(iVar6 + 0xc0) + 10) | (ushort)pbVar3[2];
+          *(ushort *)(iVar6->sprite_ptr1 + 10) =
+               *(ushort *)(iVar6->sprite_ptr1 + 10) | (ushort)pbVar3->kind;
           pbVar3 = pbVar3 + 4;
-          *(ushort *)(*(int *)(iVar6 + 0xc0) + 0xc) = (ushort)*pbVar4 << 4;
-          *(ushort *)(*(int *)(iVar6 + 0xc0) + 0xc) =
-               *(ushort *)(*(int *)(iVar6 + 0xc0) + 0xc) | (ushort)(*pbVar3 >> 4);
+          *(ushort *)(iVar6->sprite_ptr1 + 0xc) = (ushort)*pbVar4 << 4;
+          *(ushort *)(iVar6->sprite_ptr1 + 0xc) =
+               *(ushort *)(iVar6->sprite_ptr1 + 0xc) | (ushort)(*pbVar3 >> 4);
         }
         else {
-          *(ushort *)(*(int *)(iVar6 + 0xc0) + 8) = (*pbVar3 & 0xf) << 8;
-          *(ushort *)(*(int *)(iVar6 + 0xc0) + 8) =
-               *(ushort *)(*(int *)(iVar6 + 0xc0) + 8) | (ushort)pbVar3[1];
-          *(ushort *)(*(int *)(iVar6 + 0xc0) + 10) = (ushort)pbVar3[2] << 4;
-          *(ushort *)(*(int *)(iVar6 + 0xc0) + 10) =
-               *(ushort *)(*(int *)(iVar6 + 0xc0) + 10) | (ushort)(pbVar3[3] >> 4);
+          *(ushort *)(iVar6->sprite_ptr1 + 8) = (*pbVar3 & 0xf) << 8;
+          *(ushort *)(iVar6->sprite_ptr1 + 8) =
+               *(ushort *)(iVar6->sprite_ptr1 + 8) | (ushort)pbVar3->flags;
+          *(ushort *)(iVar6->sprite_ptr1 + 10) = (ushort)pbVar3->kind << 4;
+          *(ushort *)(iVar6->sprite_ptr1 + 10) =
+               *(ushort *)(iVar6->sprite_ptr1 + 10) | (ushort)(pbVar3->sub_type >> 4);
           pbVar4 = pbVar3 + 4;
-          *(ushort *)(*(int *)(iVar6 + 0xc0) + 0xc) = (pbVar3[3] & 0xf) << 8;
+          *(ushort *)(iVar6->sprite_ptr1 + 0xc) = (pbVar3->sub_type & 0xf) << 8;
           pbVar3 = pbVar3 + 5;
-          *(ushort *)(*(int *)(iVar6 + 0xc0) + 0xc) =
-               *(ushort *)(*(int *)(iVar6 + 0xc0) + 0xc) | (ushort)*pbVar4;
+          *(ushort *)(iVar6->sprite_ptr1 + 0xc) =
+               *(ushort *)(iVar6->sprite_ptr1 + 0xc) | (ushort)*pbVar4;
         }
         iVar5 = iVar5 + 1;
         iVar6 = iVar6 + 4;
-      } while (iVar5 < (int)(uint)*(byte *)(param_1 + 9));
+      } while (iVar5 < (int)(uint)param_1->counter2);
     }
   }
   else {
     iVar6 = 0;
     if (((int)uVar7 >> 0x18 & 0x80U) != 0) {
       uVar2 = (ushort)((int)((uint)*pbVar3 << 0x18) >> 0x14);
-      *(ushort *)(param_1 + 0x88) = uVar2;
-      *(ushort *)(param_1 + 0x88) = uVar2 | pbVar3[1] >> 4;
-      uVar2 = (ushort)((int)((uint)pbVar3[1] << 0x1c) >> 0x14);
+      param_1->gte_input = uVar2;
+      param_1->gte_input = uVar2 | pbVar3->flags >> 4;
+      uVar2 = (ushort)((int)((uint)pbVar3->flags << 0x1c) >> 0x14);
       *(ushort *)(param_1 + 0x8a) = uVar2;
-      *(ushort *)(param_1 + 0x8a) = uVar2 | pbVar3[2];
+      *(ushort *)(param_1 + 0x8a) = uVar2 | pbVar3->kind;
       pbVar4 = pbVar3 + 4;
-      uVar2 = (ushort)((int)((uint)pbVar3[3] << 0x18) >> 0x14);
+      uVar2 = (ushort)((int)((uint)pbVar3->sub_type << 0x18) >> 0x14);
       *(ushort *)(param_1 + 0x8c) = uVar2;
       pbVar3 = pbVar3 + 9;
       *(ushort *)(param_1 + 0x8c) = uVar2 | *pbVar4 >> 4;
     }
-    *(byte *)(param_1 + 8) = *(byte *)(param_1 + 8) & 0x3f;
+    param_1->counter1 = param_1->counter1 & 0x3f;
     iVar5 = param_1;
-    if (*(char *)(param_1 + 9) != '\0') {
+    if (param_1->counter2 != '\0') {
       do {
-        bVar1 = (int)(uint)*(byte *)(param_1 + 8) <= iVar6;
+        bVar1 = (int)(uint)param_1->counter1 <= iVar6;
         iVar6 = iVar6 + 1;
         if (bVar1) {
           return;
         }
-        *(ushort *)(*(int *)(iVar5 + 0xc0) + 8) = (ushort)*pbVar3 << 4;
-        *(ushort *)(*(int *)(iVar5 + 0xc0) + 8) =
-             *(ushort *)(*(int *)(iVar5 + 0xc0) + 8) | (ushort)(pbVar3[1] >> 4);
-        *(ushort *)(*(int *)(iVar5 + 0xc0) + 10) = (pbVar3[1] & 0xf) << 8;
-        *(ushort *)(*(int *)(iVar5 + 0xc0) + 10) =
-             *(ushort *)(*(int *)(iVar5 + 0xc0) + 10) | (ushort)pbVar3[2];
-        *(ushort *)(*(int *)(iVar5 + 0xc0) + 0xc) = (ushort)pbVar3[3] << 4;
-        *(ushort *)(*(int *)(iVar5 + 0xc0) + 0xc) =
-             *(ushort *)(*(int *)(iVar5 + 0xc0) + 0xc) | (ushort)(pbVar3[4] >> 4);
-        *(ushort *)(*(int *)(iVar5 + 0xc0) + 0x38) = (pbVar3[4] & 0xf) << 8;
-        *(ushort *)(*(int *)(iVar5 + 0xc0) + 0x38) =
-             *(ushort *)(*(int *)(iVar5 + 0xc0) + 0x38) | (ushort)pbVar3[5];
-        *(short *)(*(int *)(iVar5 + 0xc0) + 0x38) = *(short *)(*(int *)(iVar5 + 0xc0) + 0x38) << 3;
-        *(ushort *)(*(int *)(iVar5 + 0xc0) + 0x3a) = (ushort)pbVar3[6] << 4;
-        *(ushort *)(*(int *)(iVar5 + 0xc0) + 0x3a) =
-             *(ushort *)(*(int *)(iVar5 + 0xc0) + 0x3a) | (ushort)(pbVar3[7] >> 4);
-        *(short *)(*(int *)(iVar5 + 0xc0) + 0x3a) = *(short *)(*(int *)(iVar5 + 0xc0) + 0x3a) << 3;
-        *(ushort *)(*(int *)(iVar5 + 0xc0) + 0x3c) = (pbVar3[7] & 0xf) << 8;
-        *(ushort *)(*(int *)(iVar5 + 0xc0) + 0x3c) =
-             *(ushort *)(*(int *)(iVar5 + 0xc0) + 0x3c) | (ushort)pbVar3[8];
+        *(ushort *)(iVar5->sprite_ptr1 + 8) = (ushort)*pbVar3 << 4;
+        *(ushort *)(iVar5->sprite_ptr1 + 8) =
+             *(ushort *)(iVar5->sprite_ptr1 + 8) | (ushort)(pbVar3->flags >> 4);
+        *(ushort *)(iVar5->sprite_ptr1 + 10) = (pbVar3->flags & 0xf) << 8;
+        *(ushort *)(iVar5->sprite_ptr1 + 10) =
+             *(ushort *)(iVar5->sprite_ptr1 + 10) | (ushort)pbVar3->kind;
+        *(ushort *)(iVar5->sprite_ptr1 + 0xc) = (ushort)pbVar3->sub_type << 4;
+        *(ushort *)(iVar5->sprite_ptr1 + 0xc) =
+             *(ushort *)(iVar5->sprite_ptr1 + 0xc) | (ushort)(pbVar3->state >> 4);
+        *(ushort *)(iVar5->sprite_ptr1 + 0x38) = (pbVar3->state & 0xf) << 8;
+        *(ushort *)(iVar5->sprite_ptr1 + 0x38) =
+             *(ushort *)(iVar5->sprite_ptr1 + 0x38) | (ushort)pbVar3->behavior_state;
+        *(short *)(iVar5->sprite_ptr1 + 0x38) = *(short *)(iVar5->sprite_ptr1 + 0x38) << 3;
+        *(ushort *)(iVar5->sprite_ptr1 + 0x3a) = (ushort)pbVar3->action_state << 4;
+        *(ushort *)(iVar5->sprite_ptr1 + 0x3a) =
+             *(ushort *)(iVar5->sprite_ptr1 + 0x3a) | (ushort)(pbVar3->sub_action >> 4);
+        *(short *)(iVar5->sprite_ptr1 + 0x3a) = *(short *)(iVar5->sprite_ptr1 + 0x3a) << 3;
+        *(ushort *)(iVar5->sprite_ptr1 + 0x3c) = (pbVar3->sub_action & 0xf) << 8;
+        *(ushort *)(iVar5->sprite_ptr1 + 0x3c) =
+             *(ushort *)(iVar5->sprite_ptr1 + 0x3c) | (ushort)pbVar3->counter1;
         pbVar3 = pbVar3 + 9;
-        *(short *)(*(int *)(iVar5 + 0xc0) + 0x3c) = *(short *)(*(int *)(iVar5 + 0xc0) + 0x3c) << 3;
+        *(short *)(iVar5->sprite_ptr1 + 0x3c) = *(short *)(iVar5->sprite_ptr1 + 0x3c) << 3;
         iVar5 = iVar5 + 4;
-      } while (iVar6 < (int)(uint)*(byte *)(param_1 + 9));
+      } while (iVar6 < (int)(uint)param_1->counter2);
     }
   }
   return;

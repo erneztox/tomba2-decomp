@@ -42,7 +42,7 @@ void FUN_8008e410(short param_1,short param_2,byte param_3)
   }
   else {
     if (*(char *)(iVar6 + 0x1e) == '\x02') {
-      if ((*(char *)(iVar6 + 0x19) == '\0') && (iVar8 = 0, local_68[0] != 0)) {
+      if ((*(char *)(iVar6 + 0x19) == '\0') && (iVar8 = 0, local_68->type != 0)) {
         local_38 = (uint)((byte)(param_3 + 0xbf) < 0x3f);
         local_34 = (uint)param_3 * 0x1900;
         iVar7 = 0;
@@ -57,7 +57,7 @@ void FUN_8008e410(short param_1,short param_2,byte param_3)
           FUN_80092c30((int)*(char *)(iVar6 + 0x26),*(undefined1 *)(uVar9 + iVar6 + 0x37),
                        iVar7 >> 0x10,&local_58);
           iVar7 = iVar7 + 0x10000;
-        } while (iVar8 < (int)(uint)local_68[0]);
+        } while (iVar8 < (int)(uint)local_68->type);
       }
       uVar4 = FUN_80090160((int)param_1,(int)param_2);
       *(undefined4 *)(iVar6 + 0x90) = uVar4;

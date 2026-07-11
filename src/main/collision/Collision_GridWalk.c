@@ -22,9 +22,9 @@ void FUN_800490e4(int param_1)
   puVar1 = _DAT_1f8001c8;
   if (*_DAT_1f8001c8 != 0) {
     do {
-      puVar5 = _DAT_1f8001c8 + puVar1[1];
+      puVar5 = _DAT_1f8001c8 + puVar1->flags;
       iVar4 = (int)(short)*puVar5;
-      iVar2 = (int)(short)puVar5[1];
+      iVar2 = (int)(short)puVar5->flags;
       iVar3 = iVar4;
       if (iVar4 == iVar2) {
         iVar2 = iVar2 + 0x40;
@@ -35,8 +35,8 @@ void FUN_800490e4(int param_1)
       }
       if ((int)((uint)_DAT_1f8001bc - (iVar3 + -0x80) & 0xffff) <=
           ((iVar2 + 0x80) - (iVar3 + -0x80)) * 0x10000 >> 0x10) {
-        iVar4 = (int)(short)puVar5[2];
-        iVar2 = (int)(short)puVar5[3];
+        iVar4 = (int)(short)puVar5->kind;
+        iVar2 = (int)(short)puVar5->sub_type;
         iVar3 = iVar4;
         if (iVar4 == iVar2) {
           iVar2 = iVar2 + 0x40;
@@ -47,7 +47,7 @@ void FUN_800490e4(int param_1)
         }
         if ((int)((uint)_DAT_1f8001c0 - (iVar3 + -0x80) & 0xffff) <=
             ((iVar2 + 0x80) - (iVar3 + -0x80)) * 0x10000 >> 0x10) {
-          *(char *)(param_1 + 0x2a) = (char)uVar6;
+          param_1->collision_dir = (char)uVar6;
           FUN_80048ecc(uVar6 & 0xff);
           return;
         }
@@ -56,7 +56,7 @@ void FUN_800490e4(int param_1)
       puVar1 = puVar1 + 1;
     } while (uVar6 <= *_DAT_1f8001c8);
   }
-  *(undefined1 *)(param_1 + 0x2a) = 1;
+  param_1->collision_dir = 1;
   FUN_80048ecc();
   _DAT_1f8001c0 = _DAT_1f8001b4;
   _DAT_1f8001bc = _DAT_1f8001b2;

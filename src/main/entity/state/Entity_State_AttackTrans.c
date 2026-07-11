@@ -1,5 +1,5 @@
 /**
- * @brief Attack transition: entity[6] state machine, calls FUN_80076d68 then branch on action flag
+ * @brief Attack transition: entity->action_state state machine, calls FUN_80076d68 then branch on action flag
  * @note Original: func_8006585C at 0x8006585C
  */
 // Entity_State_AttackTrans
@@ -11,17 +11,17 @@
 void FUN_8006585c(int param_1)
 
 {
-  if (*(char *)(param_1 + 6) == '\0') {
-    *(undefined1 *)(param_1 + 6) = 1;
+  if (param_1->action_state == '\0') {
+    param_1->action_state = 1;
   }
-  else if (*(char *)(param_1 + 6) != '\x01') goto LAB_800658a8;
+  else if (param_1->action_state != '\x01') goto LAB_800658a8;
   FUN_80076d68(param_1);
   DAT_800bf80e = 1;
 LAB_800658a8:
   if (_DAT_1f800184 == 2) {
     FUN_80055d5c(param_1);
-    *(undefined2 *)(param_1 + 0x50) = 0;
-    *(undefined2 *)(param_1 + 0x4a) = 0;
+    param_1->angle_offset = 0;
+    param_1->velocity_y = 0;
   }
   else {
     FUN_80065478(param_1,0);

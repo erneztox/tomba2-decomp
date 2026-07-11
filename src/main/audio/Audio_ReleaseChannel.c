@@ -22,7 +22,7 @@ void FUN_80074e48(void)
       do {
         iVar2 = iVar2 + 1;
         *puVar1 = 0;
-        puVar1[1] = puVar1[1] & 0xc0;
+        puVar1->flags = puVar1->flags & 0xc0;
         puVar1 = puVar1 + 0xc;
       } while (iVar2 < _DAT_800bed78);
     }

@@ -10,7 +10,7 @@ void Entity_DrawQuad_Variant1(undefined4 param_1,uint param_2,uint param_3)
   byte *pbVar1;
   
   if (param_2 < param_3) {
-    pbVar1 = (byte *)(param_2 + 7);
+    pbVar1 = param_2->sub_action;
     do {
       switch(*pbVar1 & 0xfc) {
       case 0x20:

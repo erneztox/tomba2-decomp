@@ -47,7 +47,7 @@ undefined4 FUN_80098330(uint *param_1)
   bVar3 = uVar12 == 0;
   local_78 = 0;
   if ((bVar3) || ((uVar12 & 1) != 0)) {
-    uVar11 = param_1[1];
+    uVar11 = param_1->flags;
     bVar1 = (uVar11 & 0x100) != 0;
     if (bVar1) {
       uVar11 = uVar11 & 0xfffffeff;
@@ -103,7 +103,7 @@ LAB_80098498:
         } while (iVar7 != -1);
         local_78 = 0xc011c00;
       }
-      DAT_800ac5b0 = param_1[3];
+      DAT_800ac5b0 = param_1->sub_type;
       local_60 = (short)((int)(DAT_800ac5b0 * 0x2000) / 0x7f) - local_74;
       local_40 = (short)((int)(DAT_800ac5b0 * 0x1000) / 0x7f);
       local_5e = local_40 - local_72;
@@ -133,7 +133,7 @@ LAB_80098498:
           local_78 = 0x80;
         }
       }
-      DAT_800ac5b4 = param_1[4];
+      DAT_800ac5b4 = param_1->state;
       local_66 = (undefined2)((int)(DAT_800ac5b4 * 0x8100) / 0x7f);
     }
     if (bVar1) {
@@ -150,8 +150,8 @@ LAB_80098498:
     }
     else {
       if ((bVar3) || ((uVar12 & 2) != 0)) {
-        *(short *)(DAT_800ac604 + 0x184) = (short)param_1[2];
-        DAT_800ac5ac = (undefined2)param_1[2];
+        *(short *)(DAT_800ac604 + 0x184) = (short)param_1->kind;
+        DAT_800ac5ac = (undefined2)param_1->kind;
       }
       if ((bVar3) || ((uVar12 & 4) != 0)) {
         *(undefined2 *)(DAT_800ac604 + 0x186) = *(undefined2 *)((int)param_1 + 10);

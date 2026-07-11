@@ -17,11 +17,11 @@ undefined4 FUN_8003f7d8(int param_1,undefined4 *param_2,int *param_3)
   int iVar2;
   
   setCopReg(2,in_zero,*param_2);
-  setCopReg(2,in_at,param_2[1]);
-  setCopReg(2,in_v0,param_2[2]);
-  setCopReg(2,in_v1,param_2[3]);
-  setCopReg(2,param_1,param_2[4]);
-  setCopReg(2,param_2,param_2[5]);
+  setCopReg(2,in_at,param_2->flags);
+  setCopReg(2,in_v0,param_2->kind);
+  setCopReg(2,in_v1,param_2->sub_type);
+  setCopReg(2,param_1,param_2->state);
+  setCopReg(2,param_2,param_2->behavior_state);
   copFunction(2,0x280030);
   iVar2 = getCopControlWord(2,0xf800);
   *param_3 = iVar2;
@@ -30,14 +30,14 @@ undefined4 FUN_8003f7d8(int param_1,undefined4 *param_2,int *param_3)
     uVar1 = getCopReg(2,0xc);
     *(undefined4 *)(param_1 + 8) = uVar1;
     uVar1 = getCopReg(2,0xd);
-    *(undefined4 *)(param_1 + 0x10) = uVar1;
+    param_1->parent = uVar1;
     uVar1 = getCopReg(2,0xe);
-    *(undefined4 *)(param_1 + 0x18) = uVar1;
+    param_1->script_data = uVar1;
     copFunction(2,0x1400006);
     iVar2 = getCopReg(2,0x18);
     *param_3 = iVar2;
-    setCopReg(2,in_zero,param_2[6]);
-    setCopReg(2,in_at,param_2[7]);
+    setCopReg(2,in_zero,param_2->action_state);
+    setCopReg(2,in_at,param_2->sub_action);
     copFunction(2,0x180001);
     iVar2 = getCopControlWord(2,0xf800);
     *param_3 = iVar2;
@@ -46,7 +46,7 @@ undefined4 FUN_8003f7d8(int param_1,undefined4 *param_2,int *param_3)
     }
     else {
       uVar1 = getCopReg(2,0xe);
-      *(undefined4 *)(param_1 + 0x20) = uVar1;
+      param_1->prev = uVar1;
       copFunction(2,0x168002e);
       uVar1 = getCopReg(2,7);
     }

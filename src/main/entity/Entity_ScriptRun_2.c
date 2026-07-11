@@ -15,7 +15,7 @@ undefined4 FUN_80041098(int param_1)
   
   do {
     iVar3 = 0;
-    if (*(char *)(param_1 + 0x70) < '\x01') {
+    if (param_1->anim_check < '\x01') {
       return 0;
     }
     iVar1 = (*(code *)(&PTR_FUN_800a3b78)[**(ushort **)(param_1 + 0x6c) & 0x7ff])(param_1);
@@ -27,7 +27,7 @@ LAB_80041160:
     }
     else if (iVar1 < 2) {
       if (iVar1 == 0) {
-        *(byte *)(param_1 + 0x71) = *(byte *)(param_1 + 0x71) | 1;
+        param_1->state_71 = param_1->state_71 | 1;
         return 1;
       }
     }

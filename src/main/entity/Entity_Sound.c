@@ -15,9 +15,9 @@ undefined4 FUN_80042f70(int param_1)
   char cVar2;
   int *piVar3;
   
-  sVar1 = *(short *)(param_1 + 0x72);
+  sVar1 = param_1->event_id;
   if (sVar1 == 1) {
-    piVar3 = (int *)(param_1 + 0x30);
+    piVar3 = param_1->pos_y_fixed;
   }
   else {
     if ((sVar1 < 2) && (piVar3 = (int *)(param_1 + 0x2c), sVar1 == 0)) {
@@ -25,17 +25,17 @@ undefined4 FUN_80042f70(int param_1)
     }
     else {
       sVar1 = *(short *)(param_1 + 0x32);
-      piVar3 = (int *)(param_1 + 0x34);
+      piVar3 = param_1->scale_y;
     }
     *(short *)(param_1 + 0x32) = sVar1 + 0x10;
   }
-  if (*(char *)(param_1 + 0x78) == '\0') {
+  if (param_1->sub_state == '\0') {
     if (*(short *)(param_1 + 0x76) == *(short *)((int)piVar3 + 2)) {
       return 1;
     }
-    *(undefined1 *)(param_1 + 0x78) = 1;
+    param_1->sub_state = 1;
   }
-  else if (*(char *)(param_1 + 0x78) != '\x01') {
+  else if (param_1->sub_state != '\x01') {
     return 0;
   }
   if ((int)*(short *)(param_1 + 0x76) - (int)*(short *)((int)piVar3 + 2) < 0) {
@@ -51,15 +51,15 @@ undefined4 FUN_80042f70(int param_1)
     }
   }
   FUN_80041ac0(param_1);
-  cVar2 = FUN_80049250(param_1,0,(int)*(short *)(param_1 + 0x74));
-  *(char *)(param_1 + 0x29) = cVar2;
+  cVar2 = FUN_80049250(param_1,0,(int)param_1->event_param);
+  param_1->collision_state = cVar2;
   if (cVar2 == '\x01') {
     FUN_80049674(param_1);
-    *(undefined2 *)(param_1 + 0x62) = _DAT_1f8001a2;
+    param_1->angle_delta = _DAT_1f8001a2;
   }
   if (*(short *)(param_1 + 0x76) == *(short *)((int)piVar3 + 2)) {
     return 1;
   }
-  FUN_80042ea4(param_1,param_1 + 0x68,(int)*(short *)(param_1 + 0x6a));
+  FUN_80042ea4(param_1,param_1 + 0x68,(int)param_1->type_flags);
   return 0;
 }

@@ -1,5 +1,5 @@
 /**
- * @brief Entity shop state: entity[7]=1, checks DAT_800bf816 flag
+ * @brief Entity shop state: entity->sub_action=1, checks DAT_800bf816 flag
  * @note Original: func_800735F4 at 0x800735F4
  */
 // Entity_State_Shop
@@ -14,36 +14,36 @@ void FUN_800735f4(int param_1,short param_2)
   short sVar3;
   int iVar4;
   
-  bVar1 = *(byte *)(param_1 + 7);
+  bVar1 = param_1->sub_action;
   if (bVar1 == 1) {
     if ((DAT_800bf816 != '\0') && (DAT_800bf80f == '\0')) {
-      if (*(byte *)(*(int *)(param_1 + 0x14) + 4) < 2) {
-        *(undefined1 *)(*(int *)(param_1 + 0x14) + 4) = 2;
-        *(undefined4 *)(param_1 + 0x14) = 0;
+      if (*(byte *)(param_1->script_ptr + 4) < 2) {
+        *(undefined1 *)(param_1->script_ptr + 4) = 2;
+        param_1->script_ptr = 0;
       }
       goto LAB_8007373c;
     }
-    sVar3 = *(short *)(param_1 + 0x40) + -1;
-    *(short *)(param_1 + 0x40) = sVar3;
+    sVar3 = param_1->timer1 + -1;
+    param_1->timer1 = sVar3;
     if (sVar3 != -1) {
       return;
     }
-    if (*(byte *)(*(int *)(param_1 + 0x14) + 4) < 2) {
-      *(undefined1 *)(*(int *)(param_1 + 0x14) + 4) = 2;
-      *(undefined4 *)(param_1 + 0x14) = 0;
+    if (*(byte *)(param_1->script_ptr + 4) < 2) {
+      *(undefined1 *)(param_1->script_ptr + 4) = 2;
+      param_1->script_ptr = 0;
     }
-    cVar2 = *(char *)(param_1 + 7);
+    cVar2 = param_1->sub_action;
   }
   else {
     if (1 < bVar1) {
       if (bVar1 != 2) {
         return;
       }
-      if (*(char *)(param_1 + 0x29) != '\0') {
+      if (param_1->collision_state != '\0') {
         return;
       }
 LAB_8007373c:
-      *(undefined1 *)(param_1 + 7) = 0;
+      param_1->sub_action = 0;
       return;
     }
     if (bVar1 != 0) {
@@ -52,17 +52,17 @@ LAB_8007373c:
     if (DAT_800bf816 != '\0') {
       return;
     }
-    if (*(char *)(param_1 + 0x29) == '\0') {
+    if (param_1->collision_state == '\0') {
       return;
     }
     iVar4 = FUN_8007e038((int)param_2,2);
-    *(int *)(param_1 + 0x14) = iVar4;
+    param_1->script_ptr = iVar4;
     if (iVar4 == 0) {
       return;
     }
-    cVar2 = *(char *)(param_1 + 7);
-    *(undefined2 *)(param_1 + 0x40) = 0x46;
+    cVar2 = param_1->sub_action;
+    param_1->timer1 = 0x46;
   }
-  *(char *)(param_1 + 7) = cVar2 + '\x01';
+  param_1->sub_action = cVar2 + '\x01';
   return;
 }

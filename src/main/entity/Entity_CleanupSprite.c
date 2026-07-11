@@ -13,7 +13,7 @@ void Entity_CleanupSprite(int param_1)
   uint uVar2;
   int iVar3;
   
-  uVar2 = (uint)*(byte *)(param_1 + 9);
+  uVar2 = (uint)param_1->counter2;
   if (uVar2 != 0) {
     iVar3 = uVar2 * 4 + param_1;
     do {
@@ -25,7 +25,7 @@ void Entity_CleanupSprite(int param_1)
       iVar3 = iVar3 + -4;
     } while (uVar2 != 0);
   }
-  *(undefined1 *)(param_1 + 9) = 0;
+  param_1->counter2 = 0;
   return;
 }
 

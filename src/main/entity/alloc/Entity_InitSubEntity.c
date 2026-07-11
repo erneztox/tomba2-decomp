@@ -16,28 +16,28 @@ bool FUN_80051b70(int param_1,int param_2,int param_3)
   
   bVar1 = _DAT_800ed098 < 1;
   if (bVar1) {
-    *(undefined1 *)(param_1 + 4) = 3;
+    param_1->state = 3;
   }
   else {
-    *(undefined1 *)(param_1 + 8) = 1;
-    *(undefined1 *)(param_1 + 9) = 1;
-    *(undefined1 *)(param_1 + 0xd) = 0;
-    *(undefined2 *)(param_1 + 0xbc) = 0x1000;
-    *(undefined2 *)(param_1 + 0xba) = 0x1000;
-    *(undefined2 *)(param_1 + 0xb8) = 0x1000;
+    param_1->counter1 = 1;
+    param_1->counter2 = 1;
+    param_1->sprite_flags = 0;
+    param_1->scale_z = 0x1000;
+    param_1->scale_y = 0x1000;
+    param_1->scale_x = 0x1000;
     iVar2 = FUN_8007aae8();
-    *(int *)(param_1 + 0xc0) = iVar2;
+    param_1->sprite_ptr1 = iVar2;
     *(undefined2 *)(iVar2 + 6) = 0xffff;
     **(undefined2 **)(param_1 + 0xc0) = 0;
-    *(undefined2 *)(*(int *)(param_1 + 0xc0) + 2) = 0;
-    *(undefined2 *)(*(int *)(param_1 + 0xc0) + 4) = 0;
-    *(undefined2 *)(*(int *)(param_1 + 0xc0) + 8) = 0;
-    *(undefined2 *)(*(int *)(param_1 + 0xc0) + 10) = 0;
-    *(undefined2 *)(*(int *)(param_1 + 0xc0) + 0xc) = 0;
-    *(undefined2 *)(*(int *)(param_1 + 0xc0) + 0x38) = 0x1000;
-    *(undefined2 *)(*(int *)(param_1 + 0xc0) + 0x3a) = 0x1000;
-    *(undefined2 *)(*(int *)(param_1 + 0xc0) + 0x3c) = 0x1000;
-    *(int *)(*(int *)(param_1 + 0xc0) + 0x40) =
+    *(undefined2 *)(param_1->sprite_ptr1 + 2) = 0;
+    *(undefined2 *)(param_1->sprite_ptr1 + 4) = 0;
+    *(undefined2 *)(param_1->sprite_ptr1 + 8) = 0;
+    *(undefined2 *)(param_1->sprite_ptr1 + 10) = 0;
+    *(undefined2 *)(param_1->sprite_ptr1 + 0xc) = 0;
+    *(undefined2 *)(param_1->sprite_ptr1 + 0x38) = 0x1000;
+    *(undefined2 *)(param_1->sprite_ptr1 + 0x3a) = 0x1000;
+    *(undefined2 *)(param_1->sprite_ptr1 + 0x3c) = 0x1000;
+    *(int *)(param_1->sprite_ptr1 + 0x40) =
          *(int *)(&DAT_800ecf58 + param_2 * 4) +
          *(int *)(*(int *)(&DAT_800ecf58 + param_2 * 4) + param_3 * 4 + 4);
   }

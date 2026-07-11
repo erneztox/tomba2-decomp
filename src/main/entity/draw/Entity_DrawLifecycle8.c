@@ -1,5 +1,5 @@
 /**
- * @brief Entity draw lifecycle variant 8: entity[4]=1, render path
+ * @brief Entity draw lifecycle variant 8: entity->state=1, render path
  * @note Original: func_80033278 at 0x80033278
  */
 // Entity_DrawLifecycle8
@@ -14,7 +14,7 @@ void FUN_80033278(int param_1)
   undefined *puVar3;
   short sVar4;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (3 < bVar1) {
@@ -30,14 +30,14 @@ void FUN_80033278(int param_1)
     if (DAT_1f800236 == '\x03') {
       uVar2 = 0x6e;
     }
-    *(undefined2 *)(param_1 + 0x4a) = uVar2;
-    *(undefined2 *)(param_1 + 0x4e) = 0;
-    *(undefined4 *)(param_1 + 0x38) = 0;
-    *(undefined1 *)(param_1 + 4) = 1;
+    param_1->velocity_y = uVar2;
+    param_1->sprite_x = 0;
+    param_1->anim_data = 0;
+    param_1->state = 1;
   }
-  *(undefined1 *)(param_1 + 1) = 1;
-  *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x38);
-  if (*(int *)(param_1 + 0x38) == 0) {
+  param_1->flags = 1;
+  param_1->scale_y = param_1->anim_data;
+  if (param_1->anim_data == 0) {
     if (DAT_1f800236 == '\x03') {
       puVar3 = &DAT_800a0c5c;
     }
@@ -47,15 +47,15 @@ void FUN_80033278(int param_1)
     *(undefined **)(param_1 + 0x38) = puVar3;
     *(undefined **)(param_1 + 0x34) = puVar3;
   }
-  sVar4 = *(short *)(param_1 + 0x4e) + *(short *)(param_1 + 0x4a);
-  *(short *)(param_1 + 0x4e) = sVar4;
+  sVar4 = param_1->sprite_x + param_1->velocity_y;
+  param_1->sprite_x = sVar4;
   if (sVar4 < 0x301) {
     if (sVar4 < -0x300) {
-      *(short *)(param_1 + 0x4e) = sVar4 + 0x300;
+      param_1->sprite_x = sVar4 + 0x300;
     }
   }
   else {
-    *(short *)(param_1 + 0x4e) = sVar4 + -0x300;
+    param_1->sprite_x = sVar4 + -0x300;
   }
   return;
 }

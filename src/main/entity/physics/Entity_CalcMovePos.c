@@ -20,23 +20,23 @@ ushort FUN_800634a8(int param_1)
   FUN_800635d4(param_1,1);
   FUN_80076d68(param_1);
   if ((*(char *)(param_1 + 0x169) == '\0') && ((_DAT_800ecf54 & (_DAT_1f800172 | 0x50)) != 0)) {
-    *(undefined2 *)(param_1 + 0x2e) = *(undefined2 *)(param_1 + 0x14c);
-    *(undefined2 *)(param_1 + 0x36) = *(undefined2 *)(param_1 + 0x150);
-    *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x14e) + *(short *)(param_1 + 100);
+    param_1->pos_y = param_1->draw_pos_x;
+    param_1->pos_z = param_1->draw_pos_z;
+    *(short *)(param_1 + 0x32) = param_1->draw_pos_y + *(short *)(param_1 + 100);
     uVar2 = _DAT_800ecf54;
   }
   else {
-    iVar3 = FUN_80083e80((int)*(short *)(param_1 + 0x58));
+    iVar3 = FUN_80083e80((int)param_1->rot_z);
     sVar1 = *(short *)(param_1 + 100);
-    iVar4 = FUN_80083e80((int)*(short *)(param_1 + 0x56));
+    iVar4 = FUN_80083e80((int)param_1->rot_y);
     iVar5 = (int)(short)(iVar3 * sVar1 >> 0xc);
-    iVar3 = FUN_80083f50((int)*(short *)(param_1 + 0x56));
-    *(short *)(param_1 + 0x36) = *(short *)(param_1 + 0x150) + (short)(iVar4 * iVar5 >> 0xc);
-    *(short *)(param_1 + 0x2e) = *(short *)(param_1 + 0x14c) - (short)(iVar3 * iVar5 >> 0xc);
-    iVar3 = FUN_80083f50((int)*(short *)(param_1 + 0x58));
+    iVar3 = FUN_80083f50((int)param_1->rot_y);
+    param_1->pos_z = param_1->draw_pos_z + (short)(iVar4 * iVar5 >> 0xc);
+    param_1->pos_y = param_1->draw_pos_x - (short)(iVar3 * iVar5 >> 0xc);
+    iVar3 = FUN_80083f50((int)param_1->rot_z);
     uVar2 = 0;
     *(short *)(param_1 + 0x32) =
-         *(short *)(param_1 + 0x14e) + (short)(iVar3 * *(short *)(param_1 + 100) >> 0xc);
+         param_1->draw_pos_y + (short)(iVar3 * *(short *)(param_1 + 100) >> 0xc);
   }
   return uVar2;
 }

@@ -39,10 +39,10 @@ int FUN_8004dc84(undefined4 param_1,int param_2)
   }
   pcVar2 = FUN_8004de04;
 LAB_8004dd1c:
-  *(code **)(iVar1 + 0x1c) = pcVar2;
-  *(short *)(iVar1 + 0x60) = (short)param_1;
+  iVar1->callback = pcVar2;
+  iVar1->draw_x = (short)param_1;
   uVar3 = FUN_8004dbc0(param_1);
-  *(undefined4 *)(iVar1 + 0x3c) = _DAT_800ecf58;
+  iVar1->sprite_data = _DAT_800ecf58;
   FUN_80077b38(iVar1,&PTR_DAT_80017334,uVar3);
   if (param_2 != 3) {
     DAT_800bf80a = 1;

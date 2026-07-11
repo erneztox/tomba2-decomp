@@ -19,7 +19,7 @@ void FUN_80086970(void)
   FUN_800873f0(2,&DAT_80102440);
   puVar1 = DAT_800abe98;
   *DAT_800abe98 = 0xfffffffe;
-  puVar1[1] = puVar1[1] | 1;
+  puVar1->flags = puVar1->flags | 1;
   FUN_80085b10(3,0);
   FUN_800808a0();
   (*DAT_800abe3c)(DAT_800abe6c);

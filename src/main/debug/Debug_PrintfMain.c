@@ -33,7 +33,7 @@ undefined1 * FUN_8009a770(undefined4 param_1,byte *param_2,uint *param_3)
   uint uVar22;
   undefined1 auStack_78 [16];
   undefined1 local_68 [38];
-  undefined1 local_42 [2];
+  undefined1 local_42->kind;
   undefined1 *local_40;
   undefined1 *local_3c;
   int local_38;
@@ -212,7 +212,7 @@ LAB_8009ab38:
           pcVar15 = local_68;
           puVar19 = (undefined1 *)0x1;
           iVar21 = 0;
-          local_68[0] = (char)*puVar13;
+          local_68->type = (char)*puVar13;
           goto LAB_8009abdc;
         case 0x68:
           bVar6 = true;

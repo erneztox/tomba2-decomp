@@ -15,7 +15,7 @@ int FUN_8003f7a0(undefined4 *param_1,undefined4 *param_2)
   int iVar2;
   
   setCopReg(2,in_zero,*param_1);
-  setCopReg(2,in_at,param_1[1]);
+  setCopReg(2,in_at,param_1->flags);
   copFunction(2,0x180001);
   uVar1 = getCopReg(2,0xe);
   *param_2 = uVar1;

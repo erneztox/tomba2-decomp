@@ -22,7 +22,7 @@ void Entity_UpdatePhysics(int param_1)
   short sVar11;
   short sVar12;
   short sVar13;
-  undefined1 auStack_88 [7];
+  undefined1 auStack_88->sub_action;
   undefined1 local_81;
   undefined1 local_7c;
   undefined1 local_7b;
@@ -64,17 +64,17 @@ void Entity_UpdatePhysics(int param_1)
   local_73 = local_7b;
   local_63 = local_6b;
   if (DAT_800e7fc6 < 4) {
-    iVar4 = FUN_80083f50(*(short *)(param_1 + 0x6a) + 0x400);
-    iVar7 = *(short *)(param_1 + 0x6a) + 0x400;
+    iVar4 = FUN_80083f50(param_1->type_flags + 0x400);
+    iVar7 = param_1->type_flags + 0x400;
   }
   else {
-    iVar4 = FUN_80083f50((int)*(short *)(param_1 + 0x6a));
-    iVar7 = (int)*(short *)(param_1 + 0x6a);
+    iVar4 = FUN_80083f50((int)param_1->type_flags);
+    iVar7 = (int)param_1->type_flags;
   }
   iVar5 = FUN_80083e80(iVar7);
-  iVar7 = FUN_80083f50((int)*(short *)(param_1 + 0x68));
+  iVar7 = FUN_80083f50((int)param_1->target_angle);
   iVar7 = iVar7 * iVar4 * 0x14;
-  iVar6 = FUN_80083e80((int)*(short *)(param_1 + 0x68));
+  iVar6 = FUN_80083e80((int)param_1->target_angle);
   local_40 = -iVar6 * iVar4 * 0x14 >> 0x18;
   FUN_80084660(&DAT_1f8000f8);
   FUN_80084690(&DAT_1f8000f8);
@@ -82,21 +82,21 @@ void Entity_UpdatePhysics(int param_1)
   sVar2 = (short)(iVar5 * 0x14 >> 0xc);
   cVar1 = (char)((uint)iVar7 >> 0x18);
   local_44 = (short)local_40;
-  if (*(short *)(param_1 + 0x60) == 3) {
+  if (param_1->draw_x == 3) {
     local_38 = &local_60;
-    local_3c = (*(int *)(iVar3 + 0x2c) + (int)*(short *)(param_1 + 0x2e)) / 2;
-    local_60 = *(short *)(iVar3 + 0x2c) - (short)cVar1;
-    sVar10 = (short)((*(int *)(iVar3 + 0x30) + (int)*(short *)(param_1 + 0x32)) / 2);
+    local_3c = (*(int *)(iVar3 + 0x2c) + (int)param_1->pos_y) / 2;
+    local_60 = iVar3->pos_x - (short)cVar1;
+    sVar10 = (short)((iVar3->pos_y_fixed + (int)*(short *)(param_1 + 0x32)) / 2);
     sVar13 = sVar10 - sVar2;
     sVar11 = (short)local_3c + (short)cVar1;
     sVar10 = sVar10 + sVar2;
     local_5e = *(short *)(iVar3 + 0x30) - sVar2;
     local_5c = *(short *)(iVar3 + 0x34) - local_44;
     local_3c = local_3c - iVar4;
-    local_50 = *(short *)(iVar3 + 0x2c) + (short)cVar1;
+    local_50 = iVar3->pos_x + (short)cVar1;
     local_58 = (short)local_3c;
     local_4e = *(short *)(iVar3 + 0x30) + sVar2;
-    sVar9 = (short)((*(int *)(iVar3 + 0x34) + (int)*(short *)(param_1 + 0x36)) / 2);
+    sVar9 = (short)((iVar3->scale_y + (int)param_1->pos_z) / 2);
     sVar12 = sVar9 - local_44;
     local_4c = *(short *)(iVar3 + 0x34) + local_44;
     sVar9 = sVar9 + local_44;
@@ -107,13 +107,13 @@ void Entity_UpdatePhysics(int param_1)
     local_44 = sVar9;
     local_30 = iVar4;
     FUN_8003b320(auStack_88,local_38,0);
-    local_58 = *(short *)(param_1 + 0x2e) - (short)local_30;
+    local_58 = param_1->pos_y - (short)local_30;
     local_46 = *(short *)(param_1 + 0x32);
     local_56 = *(short *)(param_1 + 0x32) - sVar2;
-    local_48 = *(short *)(param_1 + 0x2e) + (short)local_30;
+    local_48 = param_1->pos_y + (short)local_30;
     local_60 = (short)local_3c;
-    local_54 = *(short *)(param_1 + 0x36) - (short)local_40;
-    local_44 = *(short *)(param_1 + 0x36) + (short)local_40;
+    local_54 = param_1->pos_z - (short)local_40;
+    local_44 = param_1->pos_z + (short)local_40;
     psVar8 = local_38;
     local_5e = sVar13;
     local_5c = sVar12;
@@ -123,18 +123,18 @@ void Entity_UpdatePhysics(int param_1)
   }
   else {
     psVar8 = &local_60;
-    local_60 = *(short *)(iVar3 + 0x2c) - (short)cVar1;
+    local_60 = iVar3->pos_x - (short)cVar1;
     local_5e = *(short *)(iVar3 + 0x30) - sVar2;
-    local_58 = *(short *)(param_1 + 0x2e) - (short)cVar1;
+    local_58 = param_1->pos_y - (short)cVar1;
     local_56 = *(short *)(param_1 + 0x32) - sVar2;
-    local_50 = *(short *)(iVar3 + 0x2c) + (short)cVar1;
+    local_50 = iVar3->pos_x + (short)cVar1;
     local_4e = *(short *)(iVar3 + 0x30) + sVar2;
     local_46 = *(short *)(param_1 + 0x32);
-    local_48 = *(short *)(param_1 + 0x2e) + (short)cVar1;
+    local_48 = param_1->pos_y + (short)cVar1;
     local_5c = *(short *)(iVar3 + 0x34) - local_44;
-    local_54 = *(short *)(param_1 + 0x36) - local_44;
+    local_54 = param_1->pos_z - local_44;
     local_4c = *(short *)(iVar3 + 0x34) + local_44;
-    local_44 = *(short *)(param_1 + 0x36) + local_44;
+    local_44 = param_1->pos_z + local_44;
   }
   local_46 = local_46 + sVar2;
   FUN_8003b320(auStack_88,psVar8,0);

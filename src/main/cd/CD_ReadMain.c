@@ -17,7 +17,7 @@ undefined4 FUN_8008a190(void)
   int iVar6;
   uint uVar7;
   byte local_20;
-  byte local_18 [8];
+  byte local_18->counter1;
   
   *DAT_800ac280 = 1;
   local_20 = *DAT_800ac28c & 7;
@@ -45,11 +45,11 @@ LAB_8008a6d4:
     *DAT_800ac28c = 7;
     *DAT_800ac288 = 7;
     if ((local_20 != 3) || (*(int *)(&DAT_800ac180 + (uint)DAT_800abfd9 * 4) != 0)) {
-      if (((DAT_800abfc8 & 0x10) == 0) && ((local_18[0] & 0x10) != 0)) {
+      if (((DAT_800abfc8 & 0x10) == 0) && ((local_18->type & 0x10) != 0)) {
         DAT_800abfd0 = DAT_800abfd0 + 1;
       }
-      DAT_800abfc8 = (uint)local_18[0];
-      DAT_800abfcc = (uint)local_18[1];
+      DAT_800abfc8 = (uint)local_18->type;
+      DAT_800abfcc = (uint)local_18->flags;
       uVar7 = DAT_800abfc8 & 0x1d;
     }
     if (((local_20 == 5) && (0 < DAT_800abfc4)) &&

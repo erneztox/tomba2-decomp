@@ -1,5 +1,5 @@
 /**
- * @brief Entity action state machine: switch on entity[5], 6 states
+ * @brief Entity action state machine: switch on entity->behavior_state, 6 states
  * @note Original: func_80067CA4 at 0x80067CA4
  */
 // Entity_ActionStateMachine
@@ -9,7 +9,7 @@
 void FUN_80067ca4(int param_1)
 
 {
-  switch(*(undefined1 *)(param_1 + 5)) {
+  switch(param_1->behavior_state) {
   case 0:
     FUN_8006670c(param_1);
     goto LAB_80067d10;

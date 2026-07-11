@@ -24,8 +24,8 @@ byte FUN_80095c40(int param_1,int param_2)
     do {
       iVar1 = (DAT_80105cff * 0x10 + (iVar1 >> 0x18)) * 0x20 + _DAT_80105ce8;
       bVar4 = bVar3;
-      if (((int)(uint)*(byte *)(iVar1 + 6) <= (int)DAT_80105cfa) &&
-         ((int)DAT_80105cfa <= (int)(uint)*(byte *)(iVar1 + 7))) {
+      if (((int)(uint)iVar1->action_state <= (int)DAT_80105cfa) &&
+         ((int)DAT_80105cfa <= (int)(uint)iVar1->sub_action)) {
         bVar4 = bVar3 + 1;
         *(undefined1 *)(param_2 + (uint)bVar3) = *(undefined1 *)(iVar1 + 0x16);
         *(byte *)(param_1 + (uint)bVar3) = bVar2;

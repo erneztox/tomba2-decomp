@@ -1,5 +1,5 @@
 /**
- * @brief Entity collect behavior: entity[5] state 0->1, handles collection
+ * @brief Entity collect behavior: entity->behavior_state state 0->1, handles collection
  * @note Original: func_8004B9C8 at 0x8004B9C8
  */
 // Entity_Behavior_Collect
@@ -14,7 +14,7 @@ void FUN_8004b9c8(int param_1)
   byte bVar1;
   undefined4 uVar2;
   
-  bVar1 = *(byte *)(param_1 + 5);
+  bVar1 = param_1->behavior_state;
   if (bVar1 == 1) {
     if (_DAT_800e7fee != 0) {
       FUN_8004d650(DAT_800e7eee,1);
@@ -29,7 +29,7 @@ void FUN_8004b9c8(int param_1)
       DAT_800bf81c = 0;
       DAT_800bf88e = 0;
       DAT_800e7eee = '\0';
-      *(undefined1 *)(_DAT_800e7ef4 + 4) = 3;
+      _DAT_800e7ef4->state = 3;
       _DAT_800e7ef4 = 0;
     }
   }
@@ -41,7 +41,7 @@ void FUN_8004b9c8(int param_1)
       DAT_800bf81c = 0;
       DAT_800bf88e = 0;
       DAT_800e7eee = '\0';
-      *(undefined1 *)(_DAT_800e7ef4 + 4) = 3;
+      _DAT_800e7ef4->state = 3;
     }
     else {
       if (bVar1 != 3) {
@@ -53,7 +53,7 @@ void FUN_8004b9c8(int param_1)
       DAT_800bf81c = 0;
       DAT_800bf88e = 0;
       DAT_800e7eee = '\0';
-      *(undefined1 *)(_DAT_800e7ef4 + 4) = 3;
+      _DAT_800e7ef4->state = 3;
     }
     _DAT_800e7ef4 = 0;
   }

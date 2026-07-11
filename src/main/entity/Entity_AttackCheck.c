@@ -1,5 +1,5 @@
 /**
- * @brief Entity attack check: tests input + entity[0x167] + collision flags
+ * @brief Entity attack check: tests input + entity->input_state + collision flags
  * @note Original: func_80056E08 at 0x80056E08
  */
 // Entity_AttackCheck
@@ -16,28 +16,28 @@ void FUN_80056e08(int param_1)
   undefined *puVar3;
   
   if ((_DAT_800ecf54 & _DAT_1f800172) == 0) {
-    if (*(byte *)(param_1 + 0x167) < 0xb) {
-      if ((*(ushort *)(param_1 + 0x17e) & 0x180) == 0) {
-        bVar1 = *(byte *)(param_1 + 0x167);
+    if (param_1->input_state < 0xb) {
+      if ((param_1->entity_flags & 0x180) == 0) {
+        bVar1 = param_1->input_state;
         puVar3 = &DAT_800a4588;
       }
       else {
-        bVar1 = *(byte *)(param_1 + 0x167);
+        bVar1 = param_1->input_state;
         puVar3 = &DAT_800a45a0;
       }
-      *(short *)(param_1 + 0x4a) = *(short *)(param_1 + 0x4a) + *(short *)(puVar3 + (uint)bVar1 * 2)
+      param_1->velocity_y = param_1->velocity_y + *(short *)(puVar3 + (uint)bVar1 * 2)
       ;
-      *(undefined1 *)(param_1 + 0x167) = 0x10;
-      if (0 < *(short *)(param_1 + 0x4a)) {
-        *(undefined2 *)(param_1 + 0x4a) = 0;
+      param_1->input_state = 0x10;
+      if (0 < param_1->velocity_y) {
+        param_1->velocity_y = 0;
       }
     }
   }
   else {
-    cVar2 = *(char *)(param_1 + 0x167) + '\x01';
-    *(char *)(param_1 + 0x167) = cVar2;
+    cVar2 = param_1->input_state + '\x01';
+    param_1->input_state = cVar2;
     if (cVar2 == -1) {
-      *(undefined1 *)(param_1 + 0x167) = 0xfe;
+      param_1->input_state = 0xfe;
       return;
     }
   }

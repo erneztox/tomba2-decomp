@@ -13,7 +13,7 @@ void FUN_8007be18(undefined1 param_1)
 {
   undefined1 uVar1;
   
-  switch(*(undefined2 *)(_DAT_1f800138 + 0x50)) {
+  switch(_DAT_1f800138->angle_offset) {
   case 0:
     func_0x8018fa88(param_1);
     break;
@@ -25,7 +25,7 @@ void FUN_8007be18(undefined1 param_1)
     *(undefined1 *)(_DAT_1f800138 + 0x6b) = 1;
     DAT_800bf808 = 1;
     DAT_1f800136 = 1;
-    *(undefined2 *)(_DAT_1f800138 + 0x50) = 0;
+    _DAT_1f800138->angle_offset = 0;
     break;
   case 3:
     FUN_80074590(0x11,0,0);
@@ -39,7 +39,7 @@ void FUN_8007be18(undefined1 param_1)
     uVar1 = 9;
 LAB_8007bf00:
     *(undefined1 *)(_DAT_1f800138 + 0x6b) = uVar1;
-    *(undefined2 *)(_DAT_1f800138 + 0x50) = 0;
+    _DAT_1f800138->angle_offset = 0;
   }
   return;
 }

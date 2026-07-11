@@ -87,7 +87,7 @@ joined_r0x80035aa8:
         uVar6 = FUN_80035338(param_1,param_2,param_3,0x12);
       }
       else if ((param_3 != 1) && (iVar3 = FUN_8004bd04(param_1,0,2), iVar3 != 0)) {
-        *(undefined4 *)(iVar3 + 0x1c) = 0x801126c0;
+        iVar3->callback = 0x801126c0;
         uVar5 = 0x62;
 LAB_80035c68:
         FUN_8004d4f4(uVar5,1);
@@ -112,7 +112,7 @@ LAB_80035814:
         uVar6 = FUN_80035640(0);
         if (uVar6 != 0) {
           if ((param_3 != 1) && (iVar3 = FUN_8004bd04(param_1,0,1), iVar3 != 0)) {
-            *(undefined4 *)(iVar3 + 0x1c) = 0x80117228;
+            iVar3->callback = 0x80117228;
           }
           goto LAB_80035814;
         }
@@ -152,7 +152,7 @@ LAB_80035814:
         uVar6 = FUN_80035338(param_1,param_2,param_3,0x12);
       }
       else if ((param_3 != 1) && (iVar3 = FUN_8004bd04(param_1,0,1), iVar3 != 0)) {
-        *(undefined4 *)(iVar3 + 0x1c) = 0x801126c0;
+        iVar3->callback = 0x801126c0;
         uVar5 = 0x61;
         goto LAB_80035c68;
       }
@@ -194,7 +194,7 @@ LAB_80035814:
   case 0x77:
     if (DAT_800bf870 == 0) {
       if (DAT_800bf902 == '\0') break;
-      if (((*(char *)(_DAT_800bf854 + 0xbf) == '\x01') && ((DAT_800bf9ea & 0xf) != 0xf)) &&
+      if (((_DAT_800bf854->combat_flag == '\x01') && ((DAT_800bf9ea & 0xf) != 0xf)) &&
          (uVar6 = FUN_80035640(2), uVar6 != 0)) {
         if (param_3 == 1) goto LAB_80035f58;
         func_0x801252c0(param_1,3,0);

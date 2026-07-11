@@ -15,7 +15,7 @@ void FUN_800345d8(int param_1)
   uVar2 = 0;
   iVar1 = param_1;
   do {
-    if (uVar2 == *(byte *)(param_1 + 8)) {
+    if (uVar2 == param_1->counter1) {
       *(undefined1 *)(iVar1 + 0xc) = 0;
       *(undefined1 *)(iVar1 + 0x10) = 0;
       *(undefined1 *)(iVar1 + 0x14) = 100;

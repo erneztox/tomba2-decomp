@@ -16,21 +16,21 @@ undefined4 FUN_80024bd8(int param_1,int param_2,int param_3)
   int iVar3;
   int iVar4;
   
-  iVar4 = (int)(((uint)*(ushort *)(param_1 + 0x14c) - (uint)*(ushort *)(param_3 + 0x2c)) * 0x10000)
+  iVar4 = (int)(((uint)param_1->draw_pos_x - (uint)param_3->pos_x) * 0x10000)
           >> 0x10;
-  iVar3 = (int)(((uint)*(ushort *)(param_1 + 0x150) - (uint)*(ushort *)(param_3 + 0x34)) * 0x10000)
+  iVar3 = (int)(((uint)param_1->draw_pos_z - (uint)*(ushort *)(param_3 + 0x34)) * 0x10000)
           >> 0x10;
   uVar1 = FUN_80084080(iVar4 * iVar4 + iVar3 * iVar3);
   uVar2 = 0;
-  if (((int)(uVar1 & 0xffff) <= *(short *)(param_2 + 0x80) + _DAT_1f800088) &&
+  if (((int)(uVar1 & 0xffff) <= param_2->bounds_min_x + _DAT_1f800088) &&
      (uVar2 = 0,
-     (int)(((uint)*(ushort *)(param_1 + 0x14e) - (uint)*(ushort *)(param_3 + 0x30)) +
-           (uint)*(ushort *)(param_2 + 0x84) + (uint)*(ushort *)(param_1 + 0x68) & 0xffff) <=
-     (int)*(short *)(param_2 + 0x86) + ((int)((uint)*(ushort *)(param_1 + 0x68) << 0x10) >> 0xf))) {
+     (int)(((uint)param_1->draw_pos_y - (uint)*(ushort *)(param_3 + 0x30)) +
+           (uint)param_2->bounds_min_y + (uint)param_1->target_angle & 0xffff) <=
+     (int)param_2->bounds_max_y + ((int)((uint)param_1->target_angle << 0x10) >> 0xf))) {
     _DAT_1f80008c = FUN_80085690(-iVar3,iVar4);
     uVar2 = 1;
     _DAT_1f800084 = param_3;
-    *(short *)(param_1 + 0x156) = *(short *)(param_1 + 0x32) - *(short *)(param_3 + 0x30);
+    param_1->speed2 = *(short *)(param_1 + 0x32) - *(short *)(param_3 + 0x30);
   }
   return uVar2;
 }

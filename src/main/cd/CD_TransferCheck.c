@@ -37,7 +37,7 @@ uint FUN_800977c0(uint param_1)
     if (0 < DAT_800ac664) {
       do {
         iVar8 = iVar6;
-        if (((*puVar3 & 0x40000000) != 0) || (((*puVar3 & 0x80000000) != 0 && (uVar7 <= puVar3[1])))
+        if (((*puVar3 & 0x40000000) != 0) || (((*puVar3 & 0x80000000) != 0 && (uVar7 <= puVar3->flags)))
            ) break;
         iVar6 = iVar6 + 1;
         puVar3 = puVar3 + 2;
@@ -52,31 +52,31 @@ uint FUN_800977c0(uint param_1)
   if (iVar8 != -1) {
     puVar3 = DAT_800ac66c + iVar8 * 2;
     if ((*puVar3 & 0x40000000) == 0) {
-      uVar1 = puVar3[1];
+      uVar1 = puVar3->flags;
       if ((uVar7 < uVar1) && (DAT_800ac668 < DAT_800ac664)) {
         puVar2 = DAT_800ac66c + DAT_800ac668 * 2;
         uVar5 = *puVar2;
-        uVar4 = puVar2[1];
+        uVar4 = puVar2->flags;
         *puVar2 = *puVar3 + uVar7 | 0x80000000;
-        puVar2[1] = uVar1 - uVar7;
+        puVar2->flags = uVar1 - uVar7;
         DAT_800ac668 = DAT_800ac668 + 1;
-        puVar2[2] = uVar5;
-        puVar2[3] = uVar4;
+        puVar2->kind = uVar5;
+        puVar2->sub_type = uVar4;
       }
       puVar3 = DAT_800ac66c + iVar8 * 2;
-      puVar3[1] = uVar7;
+      puVar3->flags = uVar7;
       *puVar3 = *puVar3 & 0xfffffff;
       FUN_80097a90();
       uVar1 = DAT_800ac66c[iVar8 * 2];
     }
     else {
       uVar1 = 0xffffffff;
-      if ((iVar8 < DAT_800ac664) && (uVar1 = 0xffffffff, uVar7 <= puVar3[1] - iVar9)) {
+      if ((iVar8 < DAT_800ac664) && (uVar1 = 0xffffffff, uVar7 <= puVar3->flags - iVar9)) {
         DAT_800ac668 = iVar8 + 1;
         puVar2 = DAT_800ac66c + DAT_800ac668 * 2;
         *puVar2 = (*puVar3 & 0xfffffff) + uVar7 | 0x40000000;
-        puVar2[1] = puVar3[1] - uVar7;
-        puVar3[1] = uVar7;
+        puVar2->flags = puVar3->flags - uVar7;
+        puVar3->flags = uVar7;
         *puVar3 = *puVar3 & 0xfffffff;
         FUN_80097a90();
         uVar1 = DAT_800ac66c[iVar8 * 2];

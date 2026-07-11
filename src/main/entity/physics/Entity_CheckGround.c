@@ -22,7 +22,7 @@ undefined4 FUN_800696c4(int param_1,int param_2)
   if (param_2 == 0) {
     return 1;
   }
-  bVar1 = *(byte *)(param_1 + 0x46) >> 1;
+  bVar1 = param_1->anim_id >> 1;
   if (bVar1 == 2) {
     if ((uVar2 & 0xe) == 0) {
       return 1;
@@ -64,7 +64,7 @@ joined_r0x800697c8:
     else {
       DAT_1f80023a = 1;
       *(short *)(param_1 + 0x32) =
-           *(short *)(param_1 + 0x32) + (*(short *)(param_1 + 0x86) - *(short *)(param_1 + 0x84));
+           *(short *)(param_1 + 0x32) + (param_1->bounds_max_y - param_1->bounds_min_y);
     }
     return 2;
   }

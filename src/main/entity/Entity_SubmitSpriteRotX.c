@@ -31,8 +31,8 @@ void FUN_80031f84(undefined4 *param_1,byte *param_2,int param_3)
   FUN_80084eb0((int)*(short *)(param_3 + 6),&DAT_1f800020);
   FUN_80084250(0x1f800000,&DAT_1f800020);
   local_28 = (uint)*param_2;
-  local_24 = (uint)param_2[1];
-  local_20 = (uint)param_2[2];
+  local_24 = (uint)param_2->flags;
+  local_20 = (uint)param_2->kind;
   FUN_80084520(0x1f800000,&local_28);
   setCopControlWord(2,0,_DAT_1f8000f8);
   setCopControlWord(2,0x800,_DAT_1f8000fc);
@@ -66,7 +66,7 @@ void FUN_80031f84(undefined4 *param_1,byte *param_2,int param_3)
   _DAT_1f800008 = CONCAT22((short)uVar5,(short)uVar7);
   _DAT_1f800010 = CONCAT22(_DAT_1f800012,(short)uVar8);
   setCopReg(2,in_zero,*param_1);
-  setCopReg(2,extraout_at,param_1[1]);
+  setCopReg(2,extraout_at,param_1->flags);
   copFunction(2,0x486012);
   iVar1 = getCopReg(2,0x19);
   iVar2 = getCopReg(2,0x1a);

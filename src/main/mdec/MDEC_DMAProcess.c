@@ -48,7 +48,7 @@ uint FUN_80086ea4(int param_1,int param_2)
       uVar2 = *(ushort *)(DAT_800abe9c + 4);
     }
     bVar1 = *DAT_800abe9c;
-    *(short *)(DAT_800abe9c + 0xe) = sVar8;
+    DAT_800abe9c->anim_timer = sVar8;
     uVar7 = *puVar4;
     while ((uVar7 & 0x80) == 0) {
       iVar6 = FUN_80089640();
@@ -64,7 +64,7 @@ uint FUN_80086ea4(int param_1,int param_2)
       *(ushort *)(pbVar5 + 10) = *(ushort *)(pbVar5 + 10) | 0x10;
     }
     *(char *)(param_1 + 0x45) = *(char *)(param_1 + 0x45) + '\x01';
-    *(byte *)(*(int *)(param_1 + 0x3c) + (uint)*(byte *)(param_1 + 0x44)) = bVar1;
+    *(byte *)(param_1->sprite_data + (uint)*(byte *)(param_1 + 0x44)) = bVar1;
     *(char *)(param_1 + 0x44) = *(char *)(param_1 + 0x44) + '\x01';
   }
   return (uint)bVar1;

@@ -11,7 +11,7 @@ void FUN_80033630(int param_1)
 {
   byte bVar1;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (3 < bVar1) {
@@ -24,18 +24,18 @@ void FUN_80033630(int param_1)
       return;
     }
     *(undefined4 *)(param_1 + 0x48) = 0;
-    *(undefined2 *)(param_1 + 0x4c) = 0;
-    *(undefined1 *)(param_1 + 4) = 1;
-    *(undefined1 *)(param_1 + 5) = 0xff;
-    *(short *)(param_1 + 0x2e) = *(short *)(param_1 + 0x2e) + 0x78;
+    param_1->normal_z = 0;
+    param_1->state = 1;
+    param_1->behavior_state = 0xff;
+    param_1->pos_y = param_1->pos_y + 0x78;
   }
-  bVar1 = *(char *)(param_1 + 5) + 1;
-  *(byte *)(param_1 + 5) = bVar1;
+  bVar1 = param_1->behavior_state + 1;
+  param_1->behavior_state = bVar1;
   if (bVar1 < 6) {
-    *(undefined1 *)(param_1 + 1) = 1;
+    param_1->flags = 1;
   }
   else {
-    *(undefined1 *)(param_1 + 4) = 2;
+    param_1->state = 2;
   }
   return;
 }

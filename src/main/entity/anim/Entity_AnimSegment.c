@@ -1,5 +1,5 @@
 /**
- * @brief Single segment animation: entity[6] state machine, angle advance 0x100, radius from entity[0x82]
+ * @brief Single segment animation: entity->action_state state machine, angle advance 0x100, radius from entity[0x82]
  * @note Original: func_80071C48 at 0x80071C48
  */
 // Entity_AnimSegment
@@ -12,18 +12,18 @@ void FUN_80071c48(int param_1,undefined2 param_2,int param_3)
   ushort uVar1;
   int iVar2;
   
-  if (*(char *)(param_1 + 6) == '\0') {
-    uVar1 = *(short *)(param_1 + 0x60) + 0x100U & 0xfff;
-    *(ushort *)(param_1 + 0x60) = uVar1;
+  if (param_1->action_state == '\0') {
+    uVar1 = param_1->draw_x + 0x100U & 0xfff;
+    param_1->draw_x = uVar1;
     if (uVar1 == 0) {
-      *(char *)(param_1 + 6) = *(char *)(param_1 + 6) + '\x01';
+      param_1->action_state = param_1->action_state + '\x01';
     }
-    *(undefined2 *)(param_1 + 0x2e) = param_2;
-    iVar2 = FUN_80083e80((int)*(short *)(param_1 + 0x60));
-    *(int *)(param_1 + 0x30) = param_3 * 0x10000 + iVar2 * *(short *)(param_1 + 0x82) * 0x10;
+    param_1->pos_y = param_2;
+    iVar2 = FUN_80083e80((int)param_1->draw_x);
+    param_1->pos_y_fixed = param_3 * 0x10000 + iVar2 * param_1->bounds_size * 0x10;
   }
-  else if (*(char *)(param_1 + 6) == '\x01') {
-    *(undefined2 *)(param_1 + 0x2e) = param_2;
+  else if (param_1->action_state == '\x01') {
+    param_1->pos_y = param_2;
     *(short *)(param_1 + 0x32) = (short)param_3;
   }
   return;

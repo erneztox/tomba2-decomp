@@ -1,5 +1,5 @@
 /**
- * @brief Entity turn state: entity[6] state, turning around
+ * @brief Entity turn state: entity->action_state state, turning around
  * @note Original: func_80064BA0 at 0x80064BA0
  */
 // Entity_State_Turn
@@ -15,35 +15,35 @@ void FUN_80064ba0(int param_1)
   int iVar2;
   ushort local_18;
   
-  bVar1 = *(byte *)(param_1 + 6);
+  bVar1 = param_1->action_state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (bVar1 != 2) {
         return;
       }
       FUN_8006483c(param_1,0);
-      if (*(char *)(param_1 + 0x29) == '\0') {
-        if (0x2800 < *(short *)(param_1 + 0x4a)) {
-          *(undefined2 *)(param_1 + 0x44) = 0;
-          *(undefined4 *)(param_1 + 0x158) = 0;
-          *(undefined1 *)(param_1 + 0x164) = 0;
-          *(undefined2 *)(param_1 + 0x50) = *(undefined2 *)(param_1 + 0x4a);
+      if (param_1->collision_state == '\0') {
+        if (0x2800 < param_1->velocity_y) {
+          param_1->anim_counter = 0;
+          param_1->state_ptr = 0;
+          param_1->action_flag = 0;
+          param_1->angle_offset = param_1->velocity_y;
           FUN_80056d44(param_1,0);
-          *(undefined2 *)(param_1 + 0x4a) = *(undefined2 *)(param_1 + 0x50);
+          param_1->velocity_y = param_1->angle_offset;
         }
       }
       else {
-        *(undefined2 *)(param_1 + 0x4a) = 0;
-        *(undefined2 *)(param_1 + 0x50) = 0;
-        *(undefined1 *)(param_1 + 0x144) = 0;
-        *(undefined4 *)(param_1 + 0x158) = 0;
-        *(undefined1 *)(param_1 + 0x164) = 0;
-        *(undefined1 *)(param_1 + 7) = 0;
-        *(undefined2 *)(param_1 + 0x44) = 0;
-        *(undefined1 *)(param_1 + 0x145) = 0;
+        param_1->velocity_y = 0;
+        param_1->angle_offset = 0;
+        param_1->state_flag144 = 0;
+        param_1->state_ptr = 0;
+        param_1->action_flag = 0;
+        param_1->sub_action = 0;
+        param_1->anim_counter = 0;
+        param_1->state_flag145 = 0;
         FUN_8005314c();
-        *(undefined1 *)(param_1 + 5) = 2;
-        *(undefined1 *)(param_1 + 6) = 2;
+        param_1->behavior_state = 2;
+        param_1->action_state = 2;
         FUN_80054d14(param_1,0x17,1);
       }
       FUN_800551c4(param_1);
@@ -52,21 +52,21 @@ void FUN_80064ba0(int param_1)
     if (bVar1 != 0) {
       return;
     }
-    *(undefined2 *)(param_1 + 0x6a) = 0;
+    param_1->type_flags = 0;
     FUN_80054d14(param_1,0x1a,0);
     *(undefined1 *)(param_1 + 0x169) = 0x18;
-    *(undefined1 *)(param_1 + 7) = 0;
+    param_1->sub_action = 0;
     *(undefined1 *)(param_1 + 0x168) = 1;
-    *(char *)(param_1 + 6) = *(char *)(param_1 + 6) + '\x01';
+    param_1->action_state = param_1->action_state + '\x01';
     if ((*(uint *)(param_1 + 0x17c) & 0x4400200) == 0x200) {
-      *(undefined1 *)(param_1 + 0x164) = 0;
-      *(undefined4 *)(param_1 + 0x158) = 0;
-      *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x14e) + *(short *)(param_1 + 100);
+      param_1->action_flag = 0;
+      param_1->state_ptr = 0;
+      *(short *)(param_1 + 0x32) = param_1->draw_pos_y + *(short *)(param_1 + 100);
       FUN_80056d44(param_1,0);
       return;
     }
   }
-  iVar2 = *(int *)(param_1 + 0x158);
+  iVar2 = param_1->state_ptr;
   if (iVar2 == 1) {
     local_18 = FUN_800634a8(param_1);
   }
@@ -97,18 +97,18 @@ void FUN_80064ba0(int param_1)
   if ((local_18 & 0x40) == 0) {
     if ((local_18 & (_DAT_1f800172 | 0x10)) != 0) {
       if (iVar2 != 1) {
-        *(undefined1 *)(iVar2 + 0x29) = 0;
+        iVar2->collision_state = 0;
       }
-      *(undefined1 *)(param_1 + 7) = 0;
-      *(char *)(param_1 + 6) = *(char *)(param_1 + 6) + '\x01';
+      param_1->sub_action = 0;
+      param_1->action_state = param_1->action_state + '\x01';
     }
   }
   else {
     if (iVar2 != 1) {
-      *(undefined1 *)(iVar2 + 0x29) = 0;
+      iVar2->collision_state = 0;
     }
-    *(undefined1 *)(param_1 + 0x164) = 0;
-    *(undefined4 *)(param_1 + 0x158) = 0;
+    param_1->action_flag = 0;
+    param_1->state_ptr = 0;
     FUN_80056d44(param_1,0);
   }
   return;

@@ -18,7 +18,7 @@ undefined4 FUN_80053968(int param_1,int param_2)
   int iVar5;
   undefined4 *puVar6;
   
-  if (*(short *)(param_1 + 0x16e) == 0) {
+  if (param_1->timer_main == 0) {
 switchD_800539dc_caseD_4:
     uVar2 = 0;
   }
@@ -27,17 +27,17 @@ switchD_800539dc_caseD_4:
       return 0;
     }
     puVar6 = _DAT_1f800140;
-    switch(*(undefined1 *)(param_1 + 0x14a)) {
+    switch(param_1->behavior_flags) {
     case 0:
     case 2:
-      uVar4 = (uint)*(ushort *)(param_1 + 0x140);
+      uVar4 = (uint)param_1->draw_angle;
       iVar5 = 0;
       DAT_1f800182 = DAT_1f800146;
       break;
     case 1:
     case 3:
       iVar5 = 0;
-      uVar4 = *(ushort *)(param_1 + 0x140) + 0x800;
+      uVar4 = param_1->draw_angle + 0x800;
       DAT_1f800182 = DAT_1f800146;
       break;
     default:
@@ -45,13 +45,13 @@ switchD_800539dc_caseD_4:
     case 6:
     case 7:
       iVar5 = 1;
-      uVar4 = *(ushort *)(param_1 + 0x140) - 0x400;
+      uVar4 = param_1->draw_angle - 0x400;
       DAT_1f800182 = DAT_1f800146;
       break;
     case 10:
     case 0xb:
       iVar5 = 2;
-      uVar4 = *(ushort *)(param_1 + 0x140) + 0x400;
+      uVar4 = param_1->draw_angle + 0x400;
       DAT_1f800182 = DAT_1f800146;
     }
     do {
@@ -62,14 +62,14 @@ switchD_800539dc_caseD_4:
             pbVar3 = (byte *)*puVar6;
             DAT_1f800182 = DAT_1f800182 + -1;
             puVar6 = puVar6 + 1;
-          } while (((pbVar3[0xc] != 9) && ((pbVar3[0xc] != 2 || (pbVar3[2] != 0xb)))) ||
+          } while (((pbVar3[0xc] != 9) && ((pbVar3[0xc] != 2 || (pbVar3->kind != 0xb)))) ||
                   ((*pbVar3 & 1) == 0));
           if (iVar5 != 0) break;
-          if (pbVar3[0x2b] == 2) {
-            iVar1 = FUN_80085690(-((int)(((uint)*(ushort *)(pbVar3 + 0x36) -
-                                         (uint)*(ushort *)(param_1 + 0x36)) * 0x10000) >> 0x10),
-                                 (int)(((uint)*(ushort *)(pbVar3 + 0x2e) -
-                                       (uint)*(ushort *)(param_1 + 0x2e)) * 0x10000) >> 0x10);
+          if (pbVar3->move_mode == 2) {
+            iVar1 = FUN_80085690(-((int)(((uint)pbVar3->pos_z -
+                                         (uint)param_1->pos_z) * 0x10000) >> 0x10),
+                                 (int)(((uint)pbVar3->pos_y -
+                                       (uint)param_1->pos_y) * 0x10000) >> 0x10);
             iVar1 = (int)((iVar1 - uVar4) * 0x100000) >> 0x10;
             if (iVar1 < 0) {
               iVar1 = -iVar1;
@@ -78,16 +78,16 @@ switchD_800539dc_caseD_4:
               if (param_2 != 0) {
                 return 1;
               }
-              pbVar3[0x2b] = 3;
+              pbVar3->move_mode = 3;
               goto LAB_80053bb0;
             }
           }
         }
-      } while (1 < pbVar3[0x2b] - 1);
-      iVar1 = FUN_80085690(-((int)(((uint)*(ushort *)(pbVar3 + 0x36) -
-                                   (uint)*(ushort *)(param_1 + 0x36)) * 0x10000) >> 0x10),
-                           (int)(((uint)*(ushort *)(pbVar3 + 0x2e) -
-                                 (uint)*(ushort *)(param_1 + 0x2e)) * 0x10000) >> 0x10);
+      } while (1 < pbVar3->move_mode - 1);
+      iVar1 = FUN_80085690(-((int)(((uint)pbVar3->pos_z -
+                                   (uint)param_1->pos_z) * 0x10000) >> 0x10),
+                           (int)(((uint)pbVar3->pos_y -
+                                 (uint)param_1->pos_y) * 0x10000) >> 0x10);
       iVar1 = (int)((iVar1 - uVar4) * 0x100000) >> 0x10;
       if (iVar1 < 0) {
         iVar1 = -iVar1;
@@ -95,7 +95,7 @@ switchD_800539dc_caseD_4:
     } while (0xfff < iVar1);
     uVar2 = 1;
     if (param_2 == 0) {
-      pbVar3[0x2b] = 3;
+      pbVar3->move_mode = 3;
       if (iVar5 == 1) {
         DAT_800bf840 = 0x82;
       }

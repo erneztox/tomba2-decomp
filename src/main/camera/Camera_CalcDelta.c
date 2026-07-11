@@ -35,7 +35,7 @@ void FUN_8006dad8(int param_1)
   iVar3 = FUN_80083e80((int)sVar1);
   _DAT_1f8000d8 = _DAT_1f8000d8 - (iVar3 * iVar4 >> 1);
   if (iVar4 < 0x191) {
-    *(byte *)(param_1 + 0x66) = *(byte *)(param_1 + 0x66) | 1;
+    param_1->camera_flags = param_1->camera_flags | 1;
   }
   return;
 }

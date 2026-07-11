@@ -25,10 +25,10 @@ void FUN_8002ecd8(int param_1)
   setCopControlWord(2,0xa800,0);
   setCopControlWord(2,0xb000,0);
   setCopControlWord(2,0xb800,0);
-  uVar7 = *(undefined2 *)(param_1 + 0x48);
+  uVar7 = param_1->normal_x;
   _DAT_1f800090 = *(undefined4 *)(param_1 + 0x58);
-  uVar8 = *(undefined2 *)(param_1 + 0x4c);
-  if (*(char *)(param_1 + 3) == -0x6f) {
+  uVar8 = param_1->normal_z;
+  if (param_1->sub_type == -0x6f) {
     _DAT_1f80008c = 0x200020;
     _DAT_1f800088 = 0x10000;
     _DAT_1f800080 = 4;
@@ -45,7 +45,7 @@ void FUN_8002ecd8(int param_1)
     setCopControlWord(2,0xd800,6);
     setCopControlWord(2,0xe000,0);
     setCopReg(2,in_zero,*(undefined4 *)(param_1 + 0x2c));
-    setCopReg(2,in_at,*(undefined4 *)(param_1 + 0x30));
+    setCopReg(2,in_at,param_1->pos_y_fixed);
     copFunction(2,0x180001);
     _DAT_1f800080 = getCopControlWord(2,0xf800);
     bVar1 = true;
@@ -79,9 +79,9 @@ void FUN_8002ecd8(int param_1)
     _DAT_1f800088 = _DAT_1f800084;
   }
   _DAT_1f800084 = _DAT_1f800088;
-  iVar2 = FUN_80083e80((uint)*(byte *)(param_1 + 5) << 6);
+  iVar2 = FUN_80083e80((uint)param_1->behavior_state << 6);
   iVar6 = ((iVar2 << 5) >> 0xc) + 0x30;
-  iVar2 = FUN_80083f50((uint)*(byte *)(param_1 + 5) << 6);
+  iVar2 = FUN_80083f50((uint)param_1->behavior_state << 6);
   iVar4 = iVar6 - (iVar6 * 0x10000 >> 0x11);
   sVar3 = (short)iVar4;
   iVar6 = iVar6 - ((iVar2 << 5) >> 0xc);

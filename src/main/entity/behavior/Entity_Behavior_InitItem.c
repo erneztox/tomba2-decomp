@@ -11,8 +11,8 @@
 void FUN_8004b150(undefined1 *param_1,int param_2)
 
 {
-  if (param_1[5] == '\0') {
-    param_1[5] = 1;
+  if (param_1->behavior_state == '\0') {
+    param_1->behavior_state = 1;
     *param_1 = 1;
     if (param_2 == 0) {
       param_1[0x18] = 0;
@@ -25,16 +25,16 @@ void FUN_8004b150(undefined1 *param_1,int param_2)
   }
   if (param_2 == 0) {
     if ((_DAT_1f80017c & 0x1f) == 0) {
-      param_1[0xd] = param_1[0xd] | 0x20;
+      param_1->sprite_flags = param_1->sprite_flags | 0x20;
       return;
     }
-    param_1[0xd] = param_1[0xd] & 0xdf;
+    param_1->sprite_flags = param_1->sprite_flags & 0xdf;
     return;
   }
   if ((_DAT_1f80017c & 0x1f) == 0) {
-    param_1[0xd] = param_1[0xd] | 2;
+    param_1->sprite_flags = param_1->sprite_flags | 2;
     return;
   }
-  param_1[0xd] = param_1[0xd] & 0xfd;
+  param_1->sprite_flags = param_1->sprite_flags & 0xfd;
   return;
 }

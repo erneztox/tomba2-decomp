@@ -18,7 +18,7 @@ undefined4 FUN_8004d0d4(int param_1,char *param_2,uint param_3)
     uVar2 = 0xffffffff;
   }
   else {
-    bVar1 = param_2[2];
+    bVar1 = param_2->kind;
     if (((bVar1 & 0x80) == 0) && (iVar3 = FUN_8004d7ec((int)*(short *)(param_2 + 10),0), iVar3 != 0)
        ) {
       return 0;

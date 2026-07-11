@@ -15,9 +15,9 @@ undefined4 FUN_80042a8c(int param_1)
   short sVar2;
   
   DAT_800e806e = 0;
-  sVar1 = *(short *)(param_1 + 0x72);
+  sVar1 = param_1->event_id;
   if (sVar1 == 0) {
-    FUN_8006e1c0((int)*(short *)(param_1 + 0x74));
+    FUN_8006e1c0((int)param_1->event_param);
   }
   else if (sVar1 < 1) {
     if (sVar1 == -1) {
@@ -31,7 +31,7 @@ undefined4 FUN_80042a8c(int param_1)
   if (*(short *)(param_1 + 0x76) == 0) {
     sVar1 = *(short *)(param_1 + 100);
     _DAT_800e8044 = (int)*(short *)(param_1 + 0x66) << 0x10;
-    sVar2 = *(short *)(param_1 + 0x68);
+    sVar2 = param_1->target_angle;
   }
   else {
     if (*(short *)(param_1 + 0x76) != 1) {

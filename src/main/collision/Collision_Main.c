@@ -21,13 +21,13 @@ undefined4 FUN_800462e4(int param_1,ushort param_2,short param_3,short param_4)
   ushort uVar8;
   
   bVar2 = false;
-  if ((short)_DAT_1f8001ec[2] < 1) {
-    uVar8 = _DAT_1f8001ec[1];
-    _DAT_1f8001a4 = uVar8 + _DAT_1f8001ec[2];
+  if ((short)_DAT_1f8001ec->kind < 1) {
+    uVar8 = _DAT_1f8001ec->flags;
+    _DAT_1f8001a4 = uVar8 + _DAT_1f8001ec->kind;
   }
   else {
-    _DAT_1f8001a4 = _DAT_1f8001ec[1];
-    uVar8 = _DAT_1f8001a4 + _DAT_1f8001ec[2];
+    _DAT_1f8001a4 = _DAT_1f8001ec->flags;
+    uVar8 = _DAT_1f8001a4 + _DAT_1f8001ec->kind;
   }
   uVar1 = *_DAT_1f8001ec;
   uVar6 = (ushort)param_1;
@@ -78,7 +78,7 @@ undefined4 FUN_800462e4(int param_1,ushort param_2,short param_3,short param_4)
       uVar5 = 2;
     }
     _DAT_1f8001a6 = *_DAT_1f8001ec;
-    uVar8 = _DAT_1f8001ec[3];
+    uVar8 = _DAT_1f8001ec->sub_type;
     goto LAB_80046740;
   }
   if ((uVar1 & 0x40) == 0) {
@@ -87,7 +87,7 @@ undefined4 FUN_800462e4(int param_1,ushort param_2,short param_3,short param_4)
     }
     if ((short)_DAT_1f8001a4 <= _DAT_1f8001be) {
       if ((*_DAT_1f8001e0 & 8) == 0) {
-        iVar4 = (int)(short)_DAT_1f8001ec[2] * ((int)(short)_DAT_1f8001c2 - (int)(short)uVar6);
+        iVar4 = (int)(short)_DAT_1f8001ec->kind * ((int)(short)_DAT_1f8001c2 - (int)(short)uVar6);
         iVar7 = (int)(short)(uVar6 ^ 0x3f);
         iVar3 = iVar4 / iVar7;
         if (iVar7 == 0) {
@@ -96,11 +96,11 @@ undefined4 FUN_800462e4(int param_1,ushort param_2,short param_3,short param_4)
         if ((iVar7 == -1) && (iVar4 == -0x80000000)) {
           trap(0x1800);
         }
-        uVar8 = _DAT_1f8001ec[1];
+        uVar8 = _DAT_1f8001ec->flags;
       }
       else {
-        uVar8 = _DAT_1f8001ec[1];
-        iVar3 = (int)(short)_DAT_1f8001ec[2] * (int)(short)_DAT_1f8001c2 >> 6;
+        uVar8 = _DAT_1f8001ec->flags;
+        iVar3 = (int)(short)_DAT_1f8001ec->kind * (int)(short)_DAT_1f8001c2 >> 6;
       }
       if ((int)(((uint)uVar8 + iVar3) * 0x10000) >> 0x10 < (int)_DAT_1f8001be) goto LAB_80046530;
       goto LAB_80046538;
@@ -112,7 +112,7 @@ undefined4 FUN_800462e4(int param_1,ushort param_2,short param_3,short param_4)
     }
     if ((short)_DAT_1f8001a4 <= _DAT_1f8001be) {
       if ((*_DAT_1f8001e0 & 8) == 0) {
-        iVar4 = (int)(short)_DAT_1f8001ec[2] * ((int)(short)_DAT_1f8001c2 - (int)(short)uVar6);
+        iVar4 = (int)(short)_DAT_1f8001ec->kind * ((int)(short)_DAT_1f8001c2 - (int)(short)uVar6);
         iVar7 = (int)(short)(uVar6 ^ 0x3f);
         iVar3 = iVar4 / iVar7;
         if (iVar7 == 0) {
@@ -121,11 +121,11 @@ undefined4 FUN_800462e4(int param_1,ushort param_2,short param_3,short param_4)
         if ((iVar7 == -1) && (iVar4 == -0x80000000)) {
           trap(0x1800);
         }
-        uVar8 = _DAT_1f8001ec[1];
+        uVar8 = _DAT_1f8001ec->flags;
       }
       else {
-        uVar8 = _DAT_1f8001ec[1];
-        iVar3 = (int)(short)_DAT_1f8001ec[2] * (int)(short)_DAT_1f8001c2 >> 6;
+        uVar8 = _DAT_1f8001ec->flags;
+        iVar3 = (int)(short)_DAT_1f8001ec->kind * (int)(short)_DAT_1f8001c2 >> 6;
       }
       if ((int)_DAT_1f8001be < (int)(((uint)uVar8 + iVar3) * 0x10000) >> 0x10) {
 LAB_80046530:
@@ -142,14 +142,14 @@ LAB_80046538:
   }
   if (((param_3 == 0) || ((_DAT_1f8001a6 & 0x400) == 0)) ||
      ((int)(short)_DAT_1f8001a4 <= _DAT_1f8001be + -0x20)) {
-    _DAT_1f8001c4 = _DAT_1f8001be - _DAT_1f8001ec[1];
+    _DAT_1f8001c4 = _DAT_1f8001be - _DAT_1f8001ec->flags;
   }
   else {
-    _DAT_1f8001c4 = _DAT_1f8001a4 - _DAT_1f8001ec[1];
+    _DAT_1f8001c4 = _DAT_1f8001a4 - _DAT_1f8001ec->flags;
   }
   if ((*_DAT_1f8001e0 & 8) == 0) {
     iVar7 = (int)(short)(uVar6 ^ 0x3f);
-    iVar4 = (int)(short)_DAT_1f8001ec[2];
+    iVar4 = (int)(short)_DAT_1f8001ec->kind;
     if (iVar4 == 0) {
       trap(0x1c00);
     }
@@ -168,7 +168,7 @@ LAB_80046538:
     _DAT_1f8001c6 = (ushort)(iVar4 / iVar7);
   }
   else {
-    iVar4 = (int)(short)_DAT_1f8001ec[2];
+    iVar4 = (int)(short)_DAT_1f8001ec->kind;
     if (iVar4 == 0) {
       trap(0x1c00);
     }
@@ -182,7 +182,7 @@ LAB_80046538:
   }
   uVar5 = 1;
   _DAT_1f8001a6 = *_DAT_1f8001ec;
-  uVar8 = _DAT_1f8001ec[3];
+  uVar8 = _DAT_1f8001ec->sub_type;
 LAB_80046740:
   _DAT_1f8001e8 = _DAT_1f8001dc + (uint)uVar8 * 3;
   return uVar5;

@@ -1,5 +1,5 @@
 /**
- * @brief Entity draw type selector: entity[4]=1 state, picks draw path
+ * @brief Entity draw type selector: entity->state=1 state, picks draw path
  * @note Original: func_8002F230 at 0x8002F230
  */
 // Entity_DrawType
@@ -16,7 +16,7 @@ void FUN_8002f230(int param_1)
   short *psVar5;
   int iVar6;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (3 < bVar1) {
@@ -27,24 +27,24 @@ void FUN_8002f230(int param_1)
     if (bVar1 != 0) {
       return;
     }
-    *(undefined2 *)(param_1 + 0x4e) = 7;
+    param_1->sprite_x = 7;
     uVar2 = FUN_8009a450();
-    *(undefined2 *)(param_1 + 0x48) = uVar2;
-    *(undefined2 *)(param_1 + 0x4a) = 0xff92;
+    param_1->normal_x = uVar2;
+    param_1->velocity_y = 0xff92;
     *(undefined2 *)(param_1 + 0x32) = 0xffce;
-    *(undefined1 *)(param_1 + 4) = 1;
+    param_1->state = 1;
   }
-  psVar5 = (short *)(param_1 + 0x50);
-  *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x38);
-  if (*(int *)(param_1 + 0x38) != 0) {
+  psVar5 = param_1->angle_offset;
+  param_1->scale_y = param_1->anim_data;
+  if (param_1->anim_data != 0) {
     iVar6 = 0;
-    psVar4 = (short *)(param_1 + 0x52);
+    psVar4 = param_1->sprite_y;
     do {
       iVar6 = iVar6 + 1;
       iVar3 = FUN_8009a450();
       *psVar5 = *psVar5 + -8 + (short)(iVar3 >> 0xb);
       iVar3 = FUN_8009a450();
-      psVar4[1] = psVar4[1] + -8 + (short)(iVar3 >> 0xb);
+      psVar4->flags = psVar4->flags + -8 + (short)(iVar3 >> 0xb);
       iVar3 = FUN_8009a450();
       psVar5 = psVar5 + 4;
       *psVar4 = *psVar4 + -4 + (short)(iVar3 >> 0xb);

@@ -18,7 +18,7 @@ void FUN_800387e0(int param_1)
   
   if ((_DAT_800e7e68 & 0xc000) == 0) {
     if ((_DAT_800e7e68 & 0x2000) != 0) {
-      *(undefined1 *)(param_1 + 9) = 0;
+      param_1->counter2 = 0;
       FUN_80034670();
       return;
     }
@@ -55,7 +55,7 @@ LAB_8003887c:
             iVar1 = FUN_80038758(param_1);
             uVar3 = 0x15;
             if (iVar1 == 0) {
-              *(undefined1 *)(param_1 + 9) = 0;
+              param_1->counter2 = 0;
               FUN_80034670(param_1);
               goto LAB_800389dc;
             }

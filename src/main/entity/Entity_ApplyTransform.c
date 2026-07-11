@@ -113,7 +113,7 @@ void FUN_8002ae0c(undefined4 *param_1,int param_2,int param_3)
     _DAT_1f800008 = CONCAT22((short)uVar2,(short)uVar4);
     _DAT_1f800010 = CONCAT22(_DAT_1f800012,(short)uVar5);
     setCopReg(2,in_zero,*param_1);
-    setCopReg(2,extraout_at_00,param_1[1]);
+    setCopReg(2,extraout_at_00,param_1->flags);
     copFunction(2,0x486012);
   }
   _DAT_1f800014 = getCopReg(2,0x19);

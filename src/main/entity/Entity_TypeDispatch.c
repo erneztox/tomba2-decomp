@@ -1,5 +1,5 @@
 /**
- * @brief Entity type dispatcher: switch on entity[2]/[0xC] type
+ * @brief Entity type dispatcher: switch on entity->kind/[0xC] type
  * @note Original: func_8005B134 at 0x8005B134
  */
 // Entity_TypeDispatch
@@ -13,7 +13,7 @@ undefined4 FUN_8005b134(undefined4 param_1,int param_2)
   
   uVar1 = 0xffffffff;
   if (*(char *)(param_2 + 0xc) == '\x02') {
-    switch(*(undefined1 *)(param_2 + 2)) {
+    switch(param_2->kind) {
     case 0:
       return 3;
     default:
@@ -33,7 +33,7 @@ undefined4 FUN_8005b134(undefined4 param_1,int param_2)
       return 0x84;
     case 0x1b:
       uVar1 = 0x8b;
-      if ((*(byte *)(param_2 + 3) & 3) == 0) {
+      if ((param_2->sub_type & 3) == 0) {
         return 0x87;
       }
       break;

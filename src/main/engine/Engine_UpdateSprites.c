@@ -15,11 +15,11 @@ void FUN_800788ac(void)
   if (DAT_1f80019a == '\x01') {
     _DAT_800bed8c = _DAT_800bed8c - 1;
     if (_DAT_800bed8c == 0) {
-      if (_DAT_800bed88[1] == 0) {
+      if (_DAT_800bed88->flags == 0) {
         _DAT_800bed88 = _DAT_800bed88 + 2;
       }
       _DAT_800ecf54 = *_DAT_800bed88;
-      _DAT_800bed8c = _DAT_800bed88[1];
+      _DAT_800bed8c = _DAT_800bed88->flags;
       _DAT_800bed88 = _DAT_800bed88 + 2;
     }
   }

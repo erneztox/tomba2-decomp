@@ -13,10 +13,10 @@ void FUN_8004b0d8(int param_1)
   
   iVar1 = FUN_800310f4(0x1f,0xffffff74);
   if (iVar1 != 0) {
-    *(byte *)(iVar1 + 0x28) = *(byte *)(iVar1 + 0x28) | 0x80;
-    *(undefined2 *)(iVar1 + 0x2c) = *(undefined2 *)(param_1 + 0x2e);
-    *(undefined2 *)(iVar1 + 0x2e) = *(undefined2 *)(param_1 + 0x32);
-    *(undefined2 *)(iVar1 + 0x30) = *(undefined2 *)(param_1 + 0x36);
+    iVar1->alloc_flags = iVar1->alloc_flags | 0x80;
+    iVar1->pos_x = param_1->pos_y;
+    iVar1->pos_y = *(undefined2 *)(param_1 + 0x32);
+    *(undefined2 *)(iVar1 + 0x30) = param_1->pos_z;
   }
   FUN_80074590(0x28,0,0);
   return;

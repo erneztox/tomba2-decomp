@@ -26,8 +26,8 @@ undefined4 FUN_80047cbc(void)
   puVar8 = (ushort *)(_DAT_1f8001cc + iVar6 * 4);
   iVar7 = (int)(short)_DAT_1f8001c0 - (int)_DAT_1f8001ac >> 6;
   if ((iVar7 < (int)(uint)*puVar8) ||
-     ((uVar10 = ((uint)puVar8[1] + iVar7) - (uint)*puVar8, iVar6 < (int)((_DAT_1f8001ae >> 6) - 2)
-      && ((uint)puVar8[3] <= (uVar10 & 0xffff))))) {
+     ((uVar10 = ((uint)puVar8->flags + iVar7) - (uint)*puVar8, iVar6 < (int)((_DAT_1f8001ae >> 6) - 2)
+      && ((uint)puVar8->sub_type <= (uVar10 & 0xffff))))) {
     return 0;
   }
   _DAT_1f80008c = uVar10 & 0xffff;
@@ -45,10 +45,10 @@ undefined4 FUN_80047cbc(void)
         return 1;
       }
       if ((uVar2 & 0x4000) == 0) break;
-      _DAT_1f8001e0 = (ushort *)(_DAT_1f8001d4 + (uint)puVar8[1] * 8);
+      _DAT_1f8001e0 = (ushort *)(_DAT_1f8001d4 + (uint)puVar8->flags * 8);
       uVar10 = 1;
       if ((uVar2 & 1) != 0) {
-        if (1 < puVar8[2]) {
+        if (1 < puVar8->kind) {
           do {
             puVar3 = _DAT_1f8001e0 + 4;
             puVar9 = _DAT_1f8001e0 + 6;
@@ -56,11 +56,11 @@ undefined4 FUN_80047cbc(void)
             _DAT_1f8001e0 = puVar3;
             if ((ushort)(*puVar9 - (_DAT_1f8001be + -0x20)) < *puVar1) break;
             uVar10 = uVar10 + 1;
-          } while ((int)uVar10 < (int)(uint)puVar8[2]);
+          } while ((int)uVar10 < (int)(uint)puVar8->kind);
         }
-        if (((uVar10 == (puVar8[3] & 0xff)) || (uVar10 == puVar8[3] >> 8)) || (uVar10 == puVar8[2]))
+        if (((uVar10 == (puVar8->sub_type & 0xff)) || (uVar10 == puVar8->sub_type >> 8)) || (uVar10 == puVar8->kind))
         {
-          _DAT_1f8001e0 = (ushort *)(_DAT_1f8001d4 + (uint)puVar8[1] * 8);
+          _DAT_1f8001e0 = (ushort *)(_DAT_1f8001d4 + (uint)puVar8->flags * 8);
         }
       }
       uVar2 = *_DAT_1f8001e0;
@@ -118,8 +118,8 @@ LAB_80047f9c:
       _DAT_1f8001e0 = puVar8;
       return 0;
     }
-    uVar10 = ((uint)puVar9[1] + iVar7) - uVar10 & 0xffff;
-    if (puVar9[3] <= uVar10) {
+    uVar10 = ((uint)puVar9->flags + iVar7) - uVar10 & 0xffff;
+    if (puVar9->sub_type <= uVar10) {
       _DAT_1f8001e0 = puVar8;
       return 0;
     }

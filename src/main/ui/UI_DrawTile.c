@@ -39,17 +39,17 @@ void FUN_8004ffb4(short *param_1,undefined4 param_2,ushort param_3,int param_4)
   else {
     *(undefined1 *)((int)puVar2 + 6) = 0x40;
     *(undefined1 *)((int)puVar2 + 5) = 0x40;
-    *(undefined1 *)(puVar2 + 1) = 0x40;
+    puVar2->flags = 0x40;
   }
   *(undefined2 *)((int)puVar2 + 0x16) = 0x5f;
   *(short *)(puVar2 + 2) = *param_1;
-  *(short *)((int)puVar2 + 10) = param_1[1];
-  *(short *)(puVar2 + 4) = *param_1 + param_1[2];
-  *(short *)((int)puVar2 + 0x12) = param_1[1];
+  *(short *)((int)puVar2 + 10) = param_1->flags;
+  *(short *)(puVar2 + 4) = *param_1 + param_1->kind;
+  *(short *)((int)puVar2 + 0x12) = param_1->flags;
   *(short *)(puVar2 + 6) = *param_1;
-  *(short *)((int)puVar2 + 0x1a) = param_1[1] + param_1[3];
-  *(short *)(puVar2 + 8) = *param_1 + param_1[2];
-  *(short *)((int)puVar2 + 0x22) = param_1[1] + param_1[3];
+  *(short *)((int)puVar2 + 0x1a) = param_1->flags + param_1->sub_type;
+  *(short *)(puVar2 + 8) = *param_1 + param_1->kind;
+  *(short *)((int)puVar2 + 0x22) = param_1->flags + param_1->sub_type;
   switch(param_2) {
   case 0:
     uVar6 = 0xc0;
@@ -87,11 +87,11 @@ void FUN_8004ffb4(short *param_1,undefined4 param_2,ushort param_3,int param_4)
   *(undefined1 *)((int)puVar2 + 0x15) = uVar3;
   uVar3 = 0x8f;
 LAB_8005015c:
-  *(undefined1 *)(puVar2 + 3) = uVar6;
-  *(undefined1 *)(puVar2 + 5) = uVar5;
-  *(undefined1 *)(puVar2 + 7) = uVar6;
+  puVar2->sub_type = uVar6;
+  puVar2->behavior_state = uVar5;
+  puVar2->sub_action = uVar6;
   *(undefined1 *)((int)puVar2 + 0x1d) = uVar3;
-  *(undefined1 *)(puVar2 + 9) = uVar5;
+  puVar2->counter2 = uVar5;
   *(undefined1 *)((int)puVar2 + 0x25) = uVar3;
 switchD_800500e4_default:
   puVar7 = (uint *)(_DAT_800ed8c8 + param_4 * 4);

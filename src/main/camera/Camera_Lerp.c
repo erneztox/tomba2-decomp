@@ -35,7 +35,7 @@ bool FUN_8006cec4(int *param_1,int param_2,int param_3)
     if (param_3 != 0) {
       iVar1 = FUN_8006ce74(iVar1 * 0x10000 >> 0x10,(int)sVar2);
     }
-    param_1[1] = param_1[1] + ((iVar1 << 0x10) >> 3);
+    param_1->flags = param_1->flags + ((iVar1 << 0x10) >> 3);
   }
   iVar1 = (uint)*(ushort *)(param_2 + 10) - (uint)*(ushort *)((int)param_1 + 10);
   if ((iVar1 + 10U & 0xffff) < 0x15) {
@@ -46,7 +46,7 @@ bool FUN_8006cec4(int *param_1,int param_2,int param_3)
     if (param_3 != 0) {
       iVar1 = FUN_8006ce74(iVar1 * 0x10000 >> 0x10,(int)sVar2);
     }
-    param_1[2] = param_1[2] + ((iVar1 << 0x10) >> 3);
+    param_1->kind = param_1->kind + ((iVar1 << 0x10) >> 3);
   }
   return iVar3 == 3;
 }

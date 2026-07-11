@@ -37,9 +37,9 @@ LAB_80097b4c:
         }
         puVar2 = puVar3 + iVar5 * 2;
         if (((*puVar2 & 0x80000000) == 0) ||
-           ((*puVar2 & 0xfffffff) != (*puVar4 & 0xfffffff) + puVar4[1])) goto LAB_80097b4c;
+           ((*puVar2 & 0xfffffff) != (*puVar4 & 0xfffffff) + puVar4->flags)) goto LAB_80097b4c;
         *puVar2 = 0x2fffffff;
-        puVar4[1] = puVar4[1] + puVar2[1];
+        puVar4->flags = puVar4->flags + puVar2->flags;
       }
     } while (iVar7 <= iVar8);
   }
@@ -48,7 +48,7 @@ LAB_80097b4c:
   puVar3 = DAT_800ac66c;
   if (-1 < DAT_800ac668) {
     do {
-      if (puVar3[1] == 0) {
+      if (puVar3->flags == 0) {
         *puVar3 = 0x2fffffff;
       }
       iVar7 = iVar7 + 1;
@@ -71,10 +71,10 @@ LAB_80097b4c:
           uVar6 = *puVar4;
           if ((uVar1 & 0xfffffff) < (uVar6 & 0xfffffff)) {
             *puVar4 = uVar1;
-            uVar1 = puVar4[1];
-            puVar4[1] = puVar2[1];
+            uVar1 = puVar4->flags;
+            puVar4->flags = puVar2->flags;
             *puVar2 = uVar6;
-            puVar2[1] = uVar1;
+            puVar2->flags = uVar1;
           }
           iVar5 = iVar5 + 1;
           puVar2 = puVar2 + 2;
@@ -93,7 +93,7 @@ LAB_80097b4c:
         puVar4 = DAT_800ac66c + DAT_800ac668 * 2;
         *puVar3 = *puVar4;
         DAT_800ac668 = iVar8;
-        puVar3[1] = puVar4[1];
+        puVar3->flags = puVar4->flags;
         break;
       }
       iVar8 = iVar8 + 1;
@@ -112,7 +112,7 @@ LAB_80097b4c:
       iVar7 = DAT_800ac668 * 2;
       iVar5 = iVar8 + -1;
       DAT_800ac668 = iVar8;
-      puVar4[1] = puVar4[1] + puVar3[iVar7 + 1];
+      puVar4->flags = puVar4->flags + puVar3[iVar7 + 1];
       puVar4 = puVar4 + -2;
       iVar8 = iVar5;
     } while (-1 < iVar5);

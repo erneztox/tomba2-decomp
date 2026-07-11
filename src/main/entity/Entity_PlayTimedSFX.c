@@ -19,7 +19,7 @@ undefined4 FUN_80042ea4(int param_1,ushort *param_2,uint param_3)
   if ((int)(short)*param_2 != 0) {
     if ((uVar1 & 0x3f) == 0) {
       if ((uVar1 & 0x80) != 0) {
-        if (*(char *)(*(int *)(param_1 + 0x38) + 4) == '\0') {
+        if (*(char *)(param_1->anim_data + 4) == '\0') {
           *param_2 = uVar1 & 0xffbf;
         }
         else if ((uVar1 & 0x40) == 0) {

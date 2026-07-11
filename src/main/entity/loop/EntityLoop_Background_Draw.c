@@ -44,7 +44,7 @@ void EntityLoop_Background_Draw(void) {
         count--;
         
         if (entity->active_flag != 0) {
-            switch (entity->action_id) {
+            switch entity->action_id {
                 case 0x00:
                 case 0x0F:
                     func_8003CCA4(entity);
@@ -62,7 +62,7 @@ void EntityLoop_Background_Draw(void) {
                     func_8003C788(entity);
                     break;
                 case 0x1F:
-                    if (D_800BF870[0] == 0x14) {
+                    if (D_800BF870->type == 0x14) {
                         func_8010FC70(entity);
                     } else {
                         func_8004CC88(entity);

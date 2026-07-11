@@ -12,7 +12,7 @@ void FUN_80050b08(void)
 
 {
   uint uVar1;
-  undefined1 local_28 [8];
+  undefined1 local_28->counter1;
   
   FUN_80089788();
   FUN_80085b20();
@@ -28,7 +28,7 @@ void FUN_80050b08(void)
   FUN_80099310(0x1010);
   FUN_800991b0(0x20000);
   FUN_800993a0(1);
-  local_28[0] = 0x80;
+  local_28->type = 0x80;
   FUN_80089bac(0xe,local_28,0);
   FUN_80085900(3);
   FUN_80075130();

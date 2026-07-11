@@ -9,13 +9,13 @@
 void FUN_80069634(int param_1)
 
 {
-  *(undefined2 *)(param_1 + 0x44) =
+  param_1->anim_counter =
        *(undefined2 *)
-        (&DAT_800a4a6c + (uint)*(byte *)(param_1 + 0x5e) * 2 + (*(byte *)(param_1 + 2) - 1) * 4);
-  if (*(char *)(param_1 + 0x5e) != '\0') {
-    *(undefined2 *)(param_1 + 0x40) = 2;
+        (&DAT_800a4a6c + (uint)param_1->flag_5E * 2 + (param_1->kind - 1) * 4);
+  if (param_1->flag_5E != '\0') {
+    param_1->timer1 = 2;
     return;
   }
-  *(undefined2 *)(param_1 + 0x40) = 1;
+  param_1->timer1 = 1;
   return;
 }

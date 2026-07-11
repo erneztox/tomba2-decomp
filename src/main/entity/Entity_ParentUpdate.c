@@ -12,40 +12,40 @@ void FUN_8005b20c(int param_1,int param_2)
   short sVar1;
   int iVar2;
   
-  iVar2 = *(int *)(param_1 + 0x10);
+  iVar2 = param_1->parent;
   if (param_2 != 0) {
-    *(undefined1 *)(iVar2 + 0x2a) = *(undefined1 *)(param_1 + 0x2a);
-    *(short *)(iVar2 + 0x2e) =
-         (short)((*(int *)(*(int *)(param_1 + 0xdc) + 0x2c) +
-                 *(int *)(*(int *)(param_1 + 0xd0) + 0x2c)) / 2);
+    iVar2->collision_dir = param_1->collision_dir;
+    iVar2->pos_y =
+         (short)((*(int *)(param_1->data_ptr + 0x2c) +
+                 *(int *)(param_1->target_ptr + 0x2c)) / 2);
     *(short *)(iVar2 + 0x32) =
-         (short)((*(int *)(*(int *)(param_1 + 0xdc) + 0x30) +
-                 *(int *)(*(int *)(param_1 + 0xd0) + 0x30)) / 2);
-    *(short *)(iVar2 + 0x36) =
-         (short)((*(int *)(*(int *)(param_1 + 0xdc) + 0x34) +
-                 *(int *)(*(int *)(param_1 + 0xd0) + 0x34)) / 2);
-    *(undefined2 *)(iVar2 + 0x56) = *(undefined2 *)(param_1 + 0x56);
-    *(undefined2 *)(iVar2 + 0x58) = *(undefined2 *)(&DAT_800a46ac + *(short *)(param_1 + 0x40) * 2);
+         (short)((*(int *)(param_1->data_ptr + 0x30) +
+                 *(int *)(param_1->target_ptr + 0x30)) / 2);
+    iVar2->pos_z =
+         (short)((*(int *)(param_1->data_ptr + 0x34) +
+                 *(int *)(param_1->target_ptr + 0x34)) / 2);
+    iVar2->rot_y = param_1->rot_y;
+    iVar2->rot_z = *(undefined2 *)(&DAT_800a46ac + param_1->timer1 * 2);
     return;
   }
-  *(undefined1 *)(iVar2 + 0x2a) = *(undefined1 *)(param_1 + 0x2a);
+  iVar2->collision_dir = param_1->collision_dir;
   *(undefined4 *)(iVar2 + 0x2c) = *(undefined4 *)(param_1 + 0x2c);
-  *(undefined4 *)(iVar2 + 0x34) = *(undefined4 *)(param_1 + 0x34);
-  if (*(short *)(param_1 + 0x17e) < 0) {
-    sVar1 = *(short *)(param_1 + 0x32) + *(short *)(iVar2 + 0x84) + 0x28;
+  iVar2->scale_y = param_1->scale_y;
+  if (param_1->entity_flags < 0) {
+    sVar1 = *(short *)(param_1 + 0x32) + iVar2->bounds_min_y + 0x28;
   }
   else {
-    sVar1 = *(short *)(param_1 + 0x32) + *(short *)(iVar2 + 0x84) + 0x50;
+    sVar1 = *(short *)(param_1 + 0x32) + iVar2->bounds_min_y + 0x50;
   }
   *(short *)(iVar2 + 0x32) = sVar1;
-  if (*(byte *)(param_1 + 0x78) < 6) {
-    *(undefined2 *)(iVar2 + 0x56) = *(undefined2 *)(param_1 + 0x56);
+  if (param_1->sub_state < 6) {
+    iVar2->rot_y = param_1->rot_y;
   }
-  if (*(char *)(param_1 + 0x78) == '\x06') {
-    *(undefined2 *)(param_1 + 0x58) = 0xff00;
-    *(undefined2 *)(iVar2 + 0x58) = 0xff00;
+  if (param_1->sub_state == '\x06') {
+    param_1->rot_z = 0xff00;
+    iVar2->rot_z = 0xff00;
     return;
   }
-  *(undefined2 *)(iVar2 + 0x58) = *(undefined2 *)(param_1 + 0x58);
+  iVar2->rot_z = param_1->rot_z;
   return;
 }

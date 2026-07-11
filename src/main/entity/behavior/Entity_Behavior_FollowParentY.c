@@ -12,13 +12,13 @@ void FUN_800543c0(int param_1)
   int iVar1;
   short sVar2;
   
-  if ((*(char *)(param_1 + 0x16b) == '\0') && (*(char *)(param_1 + 0x29) == '\0')) {
-    if (*(char *)(param_1 + 0x78) == '\0') {
-      sVar2 = *(short *)(param_1 + 0x62);
+  if ((param_1->physics_flag == '\0') && (param_1->collision_state == '\0')) {
+    if (param_1->sub_state == '\0') {
+      sVar2 = param_1->angle_delta;
     }
     else {
-      iVar1 = *(int *)(param_1 + 0x10);
-      sVar2 = (*(short *)(iVar1 + 0x86) - *(short *)(iVar1 + 0x84)) -
+      iVar1 = param_1->parent;
+      sVar2 = (iVar1->bounds_max_y - iVar1->bounds_min_y) -
               (*(short *)(param_1 + 0x32) - *(short *)(iVar1 + 0x32));
     }
     FUN_80049250(param_1,0,(int)sVar2);

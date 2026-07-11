@@ -10,9 +10,9 @@ void FUN_80051b34(undefined4 *param_1,undefined4 *param_2)
 
 {
   *param_2 = *param_1;
-  param_2[1] = param_1[1];
-  param_2[2] = param_1[2];
-  param_2[3] = param_1[3];
-  param_2[4] = param_1[4];
+  param_2->flags = param_1->flags;
+  param_2->kind = param_1->kind;
+  param_2->sub_type = param_1->sub_type;
+  param_2->state = param_1->state;
   return;
 }

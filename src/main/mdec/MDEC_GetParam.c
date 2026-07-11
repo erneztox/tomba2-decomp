@@ -24,16 +24,16 @@ undefined1 FUN_80087cb0(undefined4 param_1,int param_2,undefined4 param_3)
       uVar1 = *puVar3;
       break;
     case 2:
-      uVar1 = puVar3[1];
+      uVar1 = puVar3->flags;
       break;
     case 3:
-      uVar1 = puVar3[2];
+      uVar1 = puVar3->kind;
       break;
     case 4:
-      uVar1 = puVar3[3];
+      uVar1 = puVar3->sub_type;
       break;
     case 5:
-      uVar1 = puVar3[4];
+      uVar1 = puVar3->state;
       break;
     default:
       goto switchD_80087d28_default;

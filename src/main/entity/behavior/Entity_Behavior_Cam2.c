@@ -1,5 +1,5 @@
 /**
- * @brief Entity camera behavior variant 2: entity[4] state machine
+ * @brief Entity camera behavior variant 2: entity->state state machine
  * @note Original: func_8006C608 at 0x8006C608
  */
 // Entity_Behavior_Cam2
@@ -13,12 +13,12 @@ void FUN_8006c608(undefined1 *param_1)
   short sVar2;
   int iVar3;
   
-  bVar1 = param_1[4];
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (bVar1 == 2) {
-        if (*(short *)(param_1 + 0x60) < 0xe) {
-          *(short *)(param_1 + 0x60) = *(short *)(param_1 + 0x60) + 2;
+        if (param_1->draw_x < 0xe) {
+          param_1->draw_x = param_1->draw_x + 2;
           return;
         }
       }
@@ -33,30 +33,30 @@ void FUN_8006c608(undefined1 *param_1)
     }
     FUN_8006c59c(param_1);
   }
-  param_1[1] = 1;
-  if (param_1[0x2b] == '\0') {
-    sVar2 = *(short *)(param_1 + 0x42);
-    if ((*(short *)(param_1 + 0x42) != 0) && (*(short *)(param_1 + 0x42) = sVar2 + -1, sVar2 == 1))
+  param_1->flags = 1;
+  if (param_1->move_mode == '\0') {
+    sVar2 = param_1->timer2;
+    if ((param_1->timer2 != 0) && (param_1->timer2 = sVar2 + -1, sVar2 == 1))
     {
-      param_1[0x2b] = 0;
+      param_1->move_mode = 0;
     }
   }
   else {
-    *(undefined2 *)(param_1 + 0x42) = 2;
+    param_1->timer2 = 2;
   }
-  sVar2 = *(short *)(param_1 + 0x40);
-  *(short *)(param_1 + 0x40) = sVar2 + -1;
+  sVar2 = param_1->timer1;
+  param_1->timer1 = sVar2 + -1;
   if (sVar2 == 1) {
     *param_1 = 2;
-    param_1[4] = 2;
+    param_1->state = 2;
   }
-  iVar3 = FUN_80083f50((int)*(short *)(param_1 + 0x56));
-  *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + (iVar3 * *(short *)(param_1 + 0x44) >> 4);
-  iVar3 = FUN_80083e80((int)*(short *)(param_1 + 0x56));
-  *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x34) - (iVar3 * *(short *)(param_1 + 0x44) >> 4);
-  if (*(short *)(param_1 + 0x60) < 4) {
-    *(short *)(param_1 + 0x60) = *(short *)(param_1 + 0x60) + 2;
+  iVar3 = FUN_80083f50((int)param_1->rot_y);
+  *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + (iVar3 * param_1->anim_counter >> 4);
+  iVar3 = FUN_80083e80((int)param_1->rot_y);
+  param_1->scale_y = param_1->scale_y - (iVar3 * param_1->anim_counter >> 4);
+  if (param_1->draw_x < 4) {
+    param_1->draw_x = param_1->draw_x + 2;
   }
-  *(ushort *)(param_1 + 0x60) = *(ushort *)(param_1 + 0x60) ^ 1;
+  param_1->draw_x = param_1->draw_x ^ 1;
   return;
 }

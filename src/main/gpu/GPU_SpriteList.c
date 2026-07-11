@@ -25,15 +25,15 @@ void FUN_8007eae4(void)
   undefined2 local_5e;
   short local_5c;
   undefined2 local_5a;
-  undefined *local_58 [4];
-  short local_48 [8];
-  ushort local_38 [8];
+  undefined local_58->state;
+  short local_48->counter1;
+  ushort local_38->counter1;
   
   uVar4 = 0;
   iVar5 = 0x58;
-  local_58[0] = PTR_s_Options_800a2854;
-  local_58[1] = PTR_s_Load_data_800a2858;
-  local_58[2] = PTR_s_Quit_game_800a285c;
+  local_58->type = PTR_s_Options_800a2854;
+  local_58->flags = PTR_s_Load_data_800a2858;
+  local_58->kind = PTR_s_Quit_game_800a285c;
   sVar2 = FUN_800793c4(local_58,3,local_48);
   do {
     *(int *)(local_38 + uVar4 * 2) = iVar5;

@@ -44,7 +44,7 @@ void FUN_80039110(int param_1)
   local_3a = 0;
   local_3e = cVar8 + 0xc;
   do {
-    if ((1 < uVar13) || (*(char *)(param_1 + 8) == '\x02')) {
+    if ((1 < uVar13) || (param_1->counter1 == '\x02')) {
       local_48 = *puVar12;
       local_40 = *(short *)(puVar12 + 2) + (short)cVar7;
       local_3c = *(undefined2 *)(puVar12 + 4);
@@ -54,7 +54,7 @@ void FUN_80039110(int param_1)
     uVar13 = uVar13 + 1;
     puVar12 = puVar12 + 8;
   } while ((int)uVar13 < 6);
-  if (*(char *)(param_1 + 8) == '\x02') {
+  if (param_1->counter1 == '\x02') {
     FUN_80025934(0x800ed058,1,uVar14);
     bVar1 = DAT_800bf882 != '\0';
     if (bVar1) {

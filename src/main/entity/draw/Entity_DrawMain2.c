@@ -16,7 +16,7 @@ void FUN_8002c920(int param_1)
   short sVar5;
   int iVar6;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (3 < bVar1) {
@@ -29,14 +29,14 @@ void FUN_8002c920(int param_1)
     if (bVar1 != 0) {
       return;
     }
-    *(undefined1 *)(param_1 + 4) = 1;
-    *(undefined1 *)(param_1 + 5) = 0;
+    param_1->state = 1;
+    param_1->behavior_state = 0;
     *(undefined4 *)(param_1 + 0x50) = 0;
     *(undefined4 *)(param_1 + 0x54) = 0;
-    *(undefined2 *)(param_1 + 0x58) = *(undefined2 *)(param_1 + 0x2c);
-    *(undefined2 *)(param_1 + 0x5a) = *(undefined2 *)(param_1 + 0x2e);
+    param_1->rot_z = param_1->pos_x;
+    param_1->target_rot_y = param_1->pos_y;
     sVar4 = 0x834;
-    *(short *)(param_1 + 0x5c) = *(short *)(param_1 + 0x30) + 3000;
+    param_1->draw_y = *(short *)(param_1 + 0x30) + 3000;
     do {
       sVar5 = 16000 - sVar4;
       iVar3 = 0;
@@ -51,7 +51,7 @@ void FUN_8002c920(int param_1)
         }
       }
       bVar1 = DAT_800e7e7c;
-      *(undefined2 *)(iVar3 + 0x2c) = 100;
+      iVar3->pos_x = 100;
       *(short *)(iVar3 + 0x30) = sVar5;
       iVar3 = 0;
       if (6 < bVar1) {
@@ -66,7 +66,7 @@ void FUN_8002c920(int param_1)
       }
       sVar4 = sVar4 + 0x834;
       iVar6 = iVar6 + 1;
-      *(undefined2 *)(iVar3 + 0x2c) = 0x76c;
+      iVar3->pos_x = 0x76c;
       *(short *)(iVar3 + 0x30) = sVar5;
     } while (iVar6 < 6);
   }
@@ -87,7 +87,7 @@ void FUN_8002c920(int param_1)
         FUN_80028e10(iVar6,0x1a);
       }
     }
-    *(undefined2 *)(iVar6 + 0x2c) = 100;
+    iVar6->pos_x = 100;
     bVar1 = DAT_800e7e7c;
     *(undefined2 *)(iVar6 + 0x30) = 16000;
     iVar6 = 0;
@@ -101,7 +101,7 @@ void FUN_8002c920(int param_1)
         FUN_80028e10(iVar6,0x1a);
       }
     }
-    *(undefined2 *)(iVar6 + 0x2c) = 0x76c;
+    iVar6->pos_x = 0x76c;
     *(undefined2 *)(iVar6 + 0x30) = 16000;
     return;
   }
@@ -114,11 +114,11 @@ void FUN_8002c920(int param_1)
   }
   *(uint *)(param_1 + 0x50) = uVar2;
 LAB_8002cad0:
-  *(undefined1 *)(param_1 + 1) = 1;
-  if (*(char *)(param_1 + 5) == '\0') {
-    *(short *)(param_1 + 0x5c) =
-         *(short *)(param_1 + 0x5c) +
-         (short)((uint)((int)*(short *)(param_1 + 0x30) - (*(short *)(param_1 + 0x5c) + 300)) >> 8);
+  param_1->flags = 1;
+  if (param_1->behavior_state == '\0') {
+    param_1->draw_y =
+         param_1->draw_y +
+         (short)((uint)((int)*(short *)(param_1 + 0x30) - (param_1->draw_y + 300)) >> 8);
     uVar2 = *(uint *)(param_1 + 0x54);
     *(uint *)(param_1 + 0x54) = uVar2 + 1;
     if ((uVar2 & 0x1f) == 0) {
@@ -133,7 +133,7 @@ LAB_8002cad0:
           FUN_80028e10(iVar6,0x1a);
         }
       }
-      *(undefined2 *)(iVar6 + 0x2c) = 100;
+      iVar6->pos_x = 100;
       bVar1 = DAT_800e7e7c;
       *(undefined2 *)(iVar6 + 0x30) = 16000;
       iVar6 = 0;
@@ -147,15 +147,15 @@ LAB_8002cad0:
           FUN_80028e10(iVar6,0x1a);
         }
       }
-      *(undefined2 *)(iVar6 + 0x2c) = 0x76c;
+      iVar6->pos_x = 0x76c;
       *(undefined2 *)(iVar6 + 0x30) = 16000;
     }
     if (DAT_1f80019b != '\0') {
-      *(undefined1 *)(param_1 + 5) = 1;
+      param_1->behavior_state = 1;
     }
   }
-  else if (*(char *)(param_1 + 5) == '\x01') {
-    *(short *)(param_1 + 0x5c) = *(short *)(param_1 + 0x5c) + -0x42;
+  else if (param_1->behavior_state == '\x01') {
+    param_1->draw_y = param_1->draw_y + -0x42;
   }
   return;
 }

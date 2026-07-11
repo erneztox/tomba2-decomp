@@ -1,5 +1,5 @@
 /**
- * @brief Entity talk behavior: entity[5]=0->1, inits dialog via FUN_80041194
+ * @brief Entity talk behavior: entity->behavior_state=0->1, inits dialog via FUN_80041194
  * @note Original: func_8004B208 at 0x8004B208
  */
 // Entity_Behavior_Talk
@@ -13,10 +13,10 @@ void FUN_8004b208(undefined1 *param_1,int param_2)
 {
   byte bVar1;
   
-  if (param_1[5] == '\0') {
-    param_1[5] = 1;
+  if (param_1->behavior_state == '\0') {
+    param_1->behavior_state = 1;
     *param_1 = 1;
-    FUN_80041194(param_1,(int)*(short *)(param_1 + 0x86) - (int)*(short *)(param_1 + 0x84),0,0);
+    FUN_80041194(param_1,(int)param_1->bounds_max_y - (int)param_1->bounds_min_y,0,0);
     if (param_2 == 0) {
       param_1[0x18] = 0;
     }
@@ -28,18 +28,18 @@ void FUN_8004b208(undefined1 *param_1,int param_2)
   }
   if (param_2 == 0) {
     if ((_DAT_1f80017c & 0x1f) == 0) {
-      bVar1 = param_1[0xd] | 0x20;
+      bVar1 = param_1->sprite_flags | 0x20;
     }
     else {
-      bVar1 = param_1[0xd] & 0xdf;
+      bVar1 = param_1->sprite_flags & 0xdf;
     }
   }
   else if ((_DAT_1f80017c & 0x1f) == 0) {
-    bVar1 = param_1[0xd] | 2;
+    bVar1 = param_1->sprite_flags | 2;
   }
   else {
-    bVar1 = param_1[0xd] & 0xfd;
+    bVar1 = param_1->sprite_flags & 0xfd;
   }
-  param_1[0xd] = bVar1;
+  param_1->sprite_flags = bVar1;
   return;
 }

@@ -44,7 +44,7 @@ void Entity_SubmitGTEVertices(Entity* entity, s32 flag) {
         p16 = (s16*)(*(int*)((char*)entity_reg + 0x3C) + (*p38) * 4);
         count = (s32)*p16;
         {
-            register s32 temp_vertex_offset asm("a0") = p16[1];
+            register s32 temp_vertex_offset asm("a0") = p16->flags;
             vertex_ptr = *(int*)((char*)entity_reg + 0x3C) + temp_vertex_offset;
         }
         sp_ptr = (u32*)0x1F800000;
@@ -62,11 +62,11 @@ void Entity_SubmitGTEVertices(Entity* entity, s32 flag) {
             {
                 register u32 flag_val asm("t4");
                 __asm__ volatile ("cfc2\t%0, $31\n\tnop" : "=r"(flag_val));
-                local_30_ptr[0] = flag_val;
+                local_30_ptr->type = flag_val;
             }
             
-            if ((s32)local_30_ptr[0] < 0) {
-                local_30_ptr[2] = neg_1; // sp + 0x38
+            if ((s32)local_30_ptr->type < 0) {
+                local_30_ptr->kind = neg_1; // sp + 0x38
             } else {
                 // Save SXY0, SXY1, SXY2 to scratchpad
                 __asm__ volatile (
@@ -91,11 +91,11 @@ void Entity_SubmitGTEVertices(Entity* entity, s32 flag) {
                 {
                     register u32 flag_val asm("t4");
                     __asm__ volatile ("cfc2\t%0, $31\n\tnop" : "=r"(flag_val));
-                    local_30_ptr[0] = flag_val;
+                    local_30_ptr->type = flag_val;
                 }
                 
-                if ((s32)local_30_ptr[0] < 0) {
-                    local_30_ptr[2] = neg_1;
+                if ((s32)local_30_ptr->type < 0) {
+                    local_30_ptr->kind = neg_1;
                 } else {
                     // Save SXY2 (which has the projected Vertex 3) to 0x1F800020 (SXY3)
                     __asm__ volatile (
@@ -105,12 +105,12 @@ void Entity_SubmitGTEVertices(Entity* entity, s32 flag) {
                     
                     __asm__ volatile ("nop\n\tavsz4");
                     __asm__ volatile ("swc2\t$7, 4(%0)" : : "r"(local_30_ptr)); // sp + 0x34
-                    local_30_ptr[2] = local_30_ptr[1];
+                    local_30_ptr->kind = local_30_ptr->flags;
                 }
             }
             
             // Check boundary culling for projected coordinates
-            if ((s32)local_30_ptr[2] >= 0) {
+            if ((s32)local_30_ptr->kind >= 0) {
                 if (((u16*)sp_ptr)[8/2] < 0x140 || 
                     ((u16*)sp_ptr)[0x10/2] < 0x140 || 
                     ((u16*)sp_ptr)[0x18/2] < 0x140 || 
@@ -121,15 +121,15 @@ void Entity_SubmitGTEVertices(Entity* entity, s32 flag) {
                         ((u16*)sp_ptr)[0x1A/2] < 0xF0 || 
                         ((u16*)sp_ptr)[0x22/2] < 0xF0) {
                         
-                        local_30_ptr[2] += (s32)entity_reg->count1;
-                        shift = local_30_ptr[2] >> 10;
-                        local_30_ptr[2] = (local_30_ptr[2] >> shift) + (shift << 9);
+                        local_30_ptr->kind += (s32)entity_reg->count1;
+                        shift = local_30_ptr->kind >> 10;
+                        local_30_ptr->kind = (local_30_ptr->kind >> shift) + (shift << 9);
                         
-                        if ((u32)(local_30_ptr[2] - 4) >= 0x7FC) {
-                            local_30_ptr[2] = neg_1;
+                        if ((u32)(local_30_ptr->kind - 4) >= 0x7FC) {
+                            local_30_ptr->kind = neg_1;
                         }
                         
-                        if ((s32)local_30_ptr[2] >= 0) {
+                        if ((s32)local_30_ptr->kind >= 0) {
                             static const void* jtbl[] = {
                                 &&case_0, &&case_1, &&case_2, &&case_3,
                                 &&case_default, &&case_default, &&case_default, &&case_default,
@@ -182,29 +182,29 @@ void Entity_SubmitGTEVertices(Entity* entity, s32 flag) {
                         case_default:
                             ;
                             
-                            ot_entry = D_800ED8C8 + local_30_ptr[2];
+                            ot_entry = D_800ED8C8 + local_30_ptr->kind;
                             ot_ptr = D_800BF544;
-                            ot_ptr[0] = *ot_entry | 0x09000000;
+                            ot_ptr->type = *ot_entry | 0x09000000;
                             *ot_entry = (u32)ot_ptr;
                             
                             ot_ptr++;
-                            *ot_ptr = sp_ptr[1];
+                            *ot_ptr = sp_ptr->flags;
                             ot_ptr++;
-                            *ot_ptr = sp_ptr[2];
+                            *ot_ptr = sp_ptr->kind;
                             ot_ptr++;
-                            *ot_ptr = sp_ptr[3];
+                            *ot_ptr = sp_ptr->sub_type;
                             ot_ptr++;
-                            *ot_ptr = sp_ptr[4];
+                            *ot_ptr = sp_ptr->state;
                             ot_ptr++;
-                            *ot_ptr = sp_ptr[5];
+                            *ot_ptr = sp_ptr->behavior_state;
                             ot_ptr++;
-                            *ot_ptr = sp_ptr[6];
+                            *ot_ptr = sp_ptr->action_state;
                             ot_ptr++;
-                            *ot_ptr = sp_ptr[7];
+                            *ot_ptr = sp_ptr->sub_action;
                             ot_ptr++;
-                            *ot_ptr = sp_ptr[8];
+                            *ot_ptr = sp_ptr->counter1;
                             ot_ptr++;
-                            *ot_ptr = sp_ptr[9];
+                            *ot_ptr = sp_ptr->counter2;
                             ot_ptr++;
                             
                             D_800BF544 = ot_ptr;

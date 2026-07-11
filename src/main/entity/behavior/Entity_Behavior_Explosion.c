@@ -15,41 +15,41 @@ void FUN_8004022c(int param_1)
   short sVar2;
   int iVar3;
   
-  bVar1 = *(byte *)(param_1 + 6);
+  bVar1 = param_1->action_state;
   if (bVar1 == 1) {
-    if (*(char *)(param_1 + 0x29) == '\0') {
-      sVar2 = *(short *)(param_1 + 0x4a);
-      iVar3 = (uint)*(ushort *)(param_1 + 0x4a) + (uint)*(ushort *)(param_1 + 0x50);
-      *(short *)(param_1 + 0x4a) = (short)iVar3;
-      *(int *)(param_1 + 0x30) = *(int *)(param_1 + 0x30) + sVar2 * 0x100;
+    if (param_1->collision_state == '\0') {
+      sVar2 = param_1->velocity_y;
+      iVar3 = (uint)param_1->velocity_y + (uint)param_1->angle_offset;
+      param_1->velocity_y = (short)iVar3;
+      param_1->pos_y_fixed = param_1->pos_y_fixed + sVar2 * 0x100;
       if (0x3000 < iVar3 * 0x10000 >> 0x10) {
-        *(undefined2 *)(param_1 + 0x4a) = 0x3000;
+        param_1->velocity_y = 0x3000;
       }
       FUN_8004766c(param_1);
-      if ((*(char *)(param_1 + 0x29) != '\0') ||
+      if ((param_1->collision_state != '\0') ||
          (iVar3 = FUN_80049250(param_1,0,
-                               (int)(((uint)*(ushort *)(param_1 + 0x86) -
-                                     (uint)*(ushort *)(param_1 + 0x84)) * 0x10000) >> 0x10),
+                               (int)(((uint)param_1->bounds_max_y -
+                                     (uint)param_1->bounds_min_y) * 0x10000) >> 0x10),
          iVar3 != 0)) {
-        *(char *)(param_1 + 6) = *(char *)(param_1 + 6) + '\x01';
+        param_1->action_state = param_1->action_state + '\x01';
       }
     }
     else {
-      *(undefined1 *)(param_1 + 6) = 2;
+      param_1->action_state = 2;
     }
   }
   else if (bVar1 < 2) {
     if (bVar1 == 0) {
-      *(undefined2 *)(param_1 + 0x4a) = 0x1000;
-      *(undefined1 *)(param_1 + 6) = 1;
-      *(undefined2 *)(param_1 + 0x50) = 0x200;
+      param_1->velocity_y = 0x1000;
+      param_1->action_state = 1;
+      param_1->angle_offset = 0x200;
     }
   }
   else if (bVar1 == 2) {
-    FUN_80027144(*(undefined4 *)(*(int *)(param_1 + 0xc0) + 0x40),param_1 + 0x2c,0x700,8);
+    FUN_80027144(*(undefined4 *)(param_1->sprite_ptr1 + 0x40),param_1 + 0x2c,0x700,8);
     FUN_80074590(0xc,0,0);
-    *(undefined1 *)(param_1 + 4) = 3;
-    if (*(char *)(param_1 + 0x5e) == '\x05') {
+    param_1->state = 3;
+    if (param_1->flag_5E == '\x05') {
       _DAT_800bf850 = _DAT_800bf850 + -1;
     }
   }

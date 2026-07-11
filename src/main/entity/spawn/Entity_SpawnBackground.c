@@ -14,25 +14,25 @@ void FUN_800534b0(int param_1,undefined1 param_2,int param_3,int param_4)
   
   iVar2 = FUN_8007ab20();
   if (iVar2 != 0) {
-    *(undefined2 *)(iVar2 + 0x2e) = *(undefined2 *)(param_1 + 0x2e);
+    iVar2->pos_y = param_1->pos_y;
     *(undefined2 *)(iVar2 + 0x32) = *(undefined2 *)(param_1 + 0x32);
-    *(undefined2 *)(iVar2 + 0x36) = *(undefined2 *)(param_1 + 0x36);
-    uVar1 = *(undefined1 *)(param_1 + 0x14a);
-    *(undefined2 *)(iVar2 + 0x54) = 0;
-    *(undefined2 *)(iVar2 + 0x58) = 0;
-    *(undefined1 *)(iVar2 + 0x46) = uVar1;
+    iVar2->pos_z = param_1->pos_z;
+    uVar1 = param_1->behavior_flags;
+    iVar2->rot_x = 0;
+    iVar2->rot_z = 0;
+    iVar2->anim_id = uVar1;
     if (param_3 == 0) {
-      *(undefined2 *)(iVar2 + 0x56) = *(undefined2 *)(param_1 + 0x56);
+      iVar2->rot_y = param_1->rot_y;
     }
     else {
-      *(short *)(iVar2 + 0x56) = *(short *)(param_1 + 0x56) + -0x800;
+      iVar2->rot_y = param_1->rot_y + -0x800;
     }
     *(undefined **)(iVar2 + 0x1c) = (&PTR_FUN_800a4480)[param_4 + -1];
-    uVar1 = *(undefined1 *)(param_1 + 0x2a);
-    *(char *)(iVar2 + 2) = (char)param_4;
-    *(undefined1 *)(iVar2 + 3) = param_2;
-    *(undefined1 *)(iVar2 + 0x2a) = uVar1;
-    *(undefined1 *)(iVar2 + 0x5e) = *(undefined1 *)(param_1 + 0xbe);
+    uVar1 = param_1->collision_dir;
+    iVar2->kind = (char)param_4;
+    iVar2->sub_type = param_2;
+    iVar2->collision_dir = uVar1;
+    iVar2->flag_5E = param_1->gte_flags;
     if (param_4 - 4U < 3) {
       DAT_1f800231 = DAT_1f800231 + '\x01';
     }

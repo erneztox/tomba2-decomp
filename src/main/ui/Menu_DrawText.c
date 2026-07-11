@@ -15,18 +15,18 @@ void FUN_8007f73c(void)
   int iVar2;
   ushort *puVar3;
   int iVar4;
-  undefined *local_38 [4];
-  ushort local_28 [4];
-  undefined1 auStack_20 [8];
+  undefined local_38->state;
+  ushort local_28->state;
+  undefined1 auStack_20->counter1;
   
   FUN_80079374(0x30,0x30,0,PTR_s_Screen_adjust_800a2890,0);
   iVar4 = 0;
   iVar1 = FUN_80079528(PTR_s_Screen_adjust_800a2890);
   FUN_8007fcc8(0x28,0x2c,(iVar1 * 8 + 0x10) * 0x10000 >> 0x10,0x18,0);
-  local_28[0] = 0x5c;
-  local_28[1] = 0x84;
-  local_38[0] = PTR_s_Vertical_800a28cc;
-  local_38[1] = PTR_s_Horizontal_800a28d0;
+  local_28->type = 0x5c;
+  local_28->flags = 0x84;
+  local_38->type = PTR_s_Vertical_800a28cc;
+  local_38->flags = PTR_s_Horizontal_800a28d0;
   iVar1 = 0;
   do {
     iVar2 = FUN_80079528(*(undefined4 *)((int)local_38 + iVar1));

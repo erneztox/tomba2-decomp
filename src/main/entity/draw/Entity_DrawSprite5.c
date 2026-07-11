@@ -37,7 +37,7 @@ void FUN_80030d68(int param_1)
   local_48 = DAT_800102fc;
   local_44 = DAT_80010300;
   local_40 = DAT_80010304;
-  uVar1 = (uint)(*(byte *)(param_1 + 5) >> 1);
+  uVar1 = (uint)(param_1->behavior_state >> 1);
   iVar8 = uVar1 * 3;
   setCopControlWord(2,0xa800,(uint)*(byte *)((int)&local_48 + iVar8) << 4);
   setCopControlWord(2,0xb000,(uint)*(byte *)((int)&local_48 + iVar8 + 1) << 4);
@@ -47,7 +47,7 @@ void FUN_80030d68(int param_1)
   do {
     FUN_80085480(param_1 + 0x48,0x1f800000);
     FUN_80051794(&DAT_1f800020);
-    FUN_80084eb0((int)*(short *)(param_1 + 0x4e),&DAT_1f800020);
+    FUN_80084eb0((int)param_1->sprite_x,&DAT_1f800020);
     FUN_80084250(0x1f800000,&DAT_1f800020);
     local_38 = (uint)*(byte *)(&local_58 + uVar1) << 2;
     local_34 = (uint)*(byte *)((int)&local_58 + uVar1 * 4 + 1) << 2;
@@ -85,7 +85,7 @@ void FUN_80030d68(int param_1)
     _DAT_1f800008 = CONCAT22((short)uVar3,(short)uVar5);
     _DAT_1f800010 = CONCAT22(_DAT_1f800012,(short)uVar6);
     setCopReg(2,in_zero,*(undefined4 *)(param_1 + 0x2c));
-    setCopReg(2,extraout_at,*(undefined4 *)(param_1 + 0x30));
+    setCopReg(2,extraout_at,param_1->pos_y_fixed);
     copFunction(2,0x486012);
     _DAT_1f800014 = getCopReg(2,0x19);
     _DAT_1f800018 = getCopReg(2,0x1a);
@@ -103,7 +103,7 @@ void FUN_80030d68(int param_1)
     setCopControlWord(2,0x3800,_DAT_1f80001c);
     FUN_80027768(&DAT_8009f3e0,0,0,uVar1 << 5);
     iVar8 = iVar8 + 1;
-    *(short *)(param_1 + 0x4e) = *(short *)(param_1 + 0x4e) + 0x400;
+    param_1->sprite_x = param_1->sprite_x + 0x400;
   } while (iVar8 < 4);
   return;
 }

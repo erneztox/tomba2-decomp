@@ -1,5 +1,5 @@
 /**
- * @brief Entity behavior type variant 2: entity[4]=1 state dispatch
+ * @brief Entity behavior type variant 2: entity->state=1 state dispatch
  * @note Original: func_800308C0 at 0x800308C0
  */
 // Entity_BehaviorType2
@@ -15,8 +15,8 @@ void FUN_800308c0(int param_1)
   int iVar4;
   int iVar5;
   
-  bVar1 = *(byte *)(param_1 + 4);
-  iVar5 = *(int *)(param_1 + 0x10);
+  bVar1 = param_1->state;
+  iVar5 = param_1->parent;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (3 < bVar1) {
@@ -28,22 +28,22 @@ void FUN_800308c0(int param_1)
     if (bVar1 != 0) {
       return;
     }
-    *(undefined1 *)(param_1 + 5) = 4;
-    *(undefined1 *)(param_1 + 4) = 1;
-    *(undefined1 *)(param_1 + 6) = 0x10;
-    *(undefined2 *)(param_1 + 0x2c) = *(undefined2 *)(iVar5 + 0x2e);
-    *(undefined2 *)(param_1 + 0x2e) = *(undefined2 *)(iVar5 + 0x32);
-    uVar2 = *(undefined2 *)(iVar5 + 0x36);
-    *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_1 + 0x38);
+    param_1->behavior_state = 4;
+    param_1->state = 1;
+    param_1->action_state = 0x10;
+    param_1->pos_x = iVar5->pos_y;
+    param_1->pos_y = *(undefined2 *)(iVar5 + 0x32);
+    uVar2 = iVar5->pos_z;
+    param_1->scale_y = param_1->anim_data;
     *(undefined2 *)(param_1 + 0x30) = uVar2;
   }
-  cVar3 = *(char *)(param_1 + 5) + -1;
-  *(char *)(param_1 + 5) = cVar3;
+  cVar3 = param_1->behavior_state + -1;
+  param_1->behavior_state = cVar3;
   if (cVar3 == '\0') {
     if ((6 < DAT_800e7e7c) && (iVar4 = FUN_8007a980(0,6,1), iVar4 != 0)) {
       if (param_1 != -0x2c) {
-        *(undefined2 *)(iVar4 + 0x2c) = *(undefined2 *)(param_1 + 0x2c);
-        *(undefined2 *)(iVar4 + 0x2e) = *(undefined2 *)(param_1 + 0x2e);
+        iVar4->pos_x = param_1->pos_x;
+        iVar4->pos_y = param_1->pos_y;
         *(undefined2 *)(iVar4 + 0x30) = *(undefined2 *)(param_1 + 0x30);
       }
       *(undefined2 *)(iVar4 + 0x32) = 0xffe2;
@@ -51,9 +51,9 @@ void FUN_800308c0(int param_1)
     }
     FUN_8002343c(iVar5);
   }
-  *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x38);
-  if (*(int *)(param_1 + 0x38) == 0) {
-    *(undefined1 *)(param_1 + 4) = 2;
+  param_1->scale_y = param_1->anim_data;
+  if (param_1->anim_data == 0) {
+    param_1->state = 2;
   }
   else {
     iVar5 = FUN_8002b278(param_1);

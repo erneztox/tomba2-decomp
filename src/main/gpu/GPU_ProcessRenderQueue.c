@@ -19,10 +19,10 @@ extern void func_8004FB4C(void *item);
 typedef struct {
     u8 pad00;
     u8 flag;
-    u8 pad02[6];
+    u8 pad02->action_state;
     s16 count;
-    u8 pad0A[2];
-    u8 items[1][0x8C];
+    u8 pad0A->kind;
+    u8 items->flags[0x8C];
 } RenderQueue;
 
 extern RenderQueue D_800BF548;
@@ -52,8 +52,8 @@ void GPU_ProcessRenderQueue(void) {
             rect.y = (*(u8*)0x1F800135) << 8;
             func_80081CF8(p, &rect);
             ot_ptr = D_800ED8C8;
-            *p = ot_ptr[3] | 0x02000000;
-            ot_ptr[3] = (u32)p;
+            *p = ot_ptr->sub_type | 0x02000000;
+            ot_ptr->sub_type = (u32)p;
         }
 
         if (D_800BF548.count > 0) {
@@ -76,8 +76,8 @@ void GPU_ProcessRenderQueue(void) {
             rect.y = ((*(u8*)0x1F800135) << 8) + 0x99;
             func_80081CF8(p, &rect);
             ot_ptr = D_800ED8C8;
-            *p = ot_ptr[3] | 0x02000000;
-            ot_ptr[3] = (u32)p;
+            *p = ot_ptr->sub_type | 0x02000000;
+            ot_ptr->sub_type = (u32)p;
         }
     }
 }

@@ -1,5 +1,5 @@
 /**
- * @brief Entity move behavior variant 2: entity[5] state
+ * @brief Entity move behavior variant 2: entity->behavior_state state
  * @note Original: func_80068BE8 at 0x80068BE8
  */
 // Entity_Behavior_Move2
@@ -15,7 +15,7 @@ void FUN_80068be8(int param_1)
   byte bVar4;
   int iVar5;
   
-  bVar4 = *(byte *)(param_1 + 5);
+  bVar4 = param_1->behavior_state;
   if (bVar4 != 1) {
     if (1 < bVar4) {
       if (bVar4 == 2) {
@@ -27,57 +27,57 @@ void FUN_80068be8(int param_1)
       func_0x8012c7cc(param_1);
       iVar3 = FUN_80077a4c(param_1,0,0,0);
       if (iVar3 == 0) {
-        *(undefined1 *)(param_1 + 4) = 3;
+        param_1->state = 3;
         return;
       }
-      bVar4 = *(byte *)(param_1 + 3);
+      bVar4 = param_1->sub_type;
       goto joined_r0x80068de0;
     }
     if (bVar4 != 0) {
       return;
     }
-    FUN_80074590((&DAT_800a4a58)[*(byte *)(param_1 + 3) & 0x7f],0,0);
-    bVar4 = *(byte *)(param_1 + 3) & 0x7f;
+    FUN_80074590((&DAT_800a4a58)[param_1->sub_type & 0x7f],0,0);
+    bVar4 = param_1->sub_type & 0x7f;
     if ((bVar4 == 7) || (bVar4 == 0xb)) {
-      *(undefined1 *)(param_1 + 5) = 3;
-      *(undefined1 *)(param_1 + 6) = 0;
+      param_1->behavior_state = 3;
+      param_1->action_state = 0;
       func_0x8012c7cc();
       return;
     }
-    *(undefined2 *)(param_1 + 0x40) = 0x3c;
-    *(undefined2 *)(param_1 + 0x4a) = 0xe000;
-    *(undefined2 *)(param_1 + 0x44) = 0xffec;
-    *(char *)(param_1 + 5) = *(char *)(param_1 + 5) + '\x01';
+    param_1->timer1 = 0x3c;
+    param_1->velocity_y = 0xe000;
+    param_1->anim_counter = 0xffec;
+    param_1->behavior_state = param_1->behavior_state + '\x01';
   }
-  sVar1 = *(short *)(param_1 + 0x4a) + 0x200;
-  *(short *)(param_1 + 0x4a) = sVar1;
-  *(short *)(param_1 + 0x58) = *(short *)(param_1 + 0x58) + -0x200;
+  sVar1 = param_1->velocity_y + 0x200;
+  param_1->velocity_y = sVar1;
+  param_1->rot_z = param_1->rot_z + -0x200;
   if (0x3000 < sVar1) {
-    *(undefined2 *)(param_1 + 0x4a) = 0x3000;
+    param_1->velocity_y = 0x3000;
   }
-  *(int *)(param_1 + 0x30) = *(int *)(param_1 + 0x30) + *(short *)(param_1 + 0x4a) * 0x100;
+  param_1->pos_y_fixed = param_1->pos_y_fixed + param_1->velocity_y * 0x100;
   iVar3 = FUN_80083f50((int)*(short *)(param_1 + 0xbe));
-  iVar5 = iVar3 * *(short *)(param_1 + 0x44) >> 4;
-  iVar3 = *(short *)(param_1 + 0x4c) * iVar5;
-  *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + *(short *)(param_1 + 0x48) * iVar5;
-  *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x34) + iVar3;
-  if ((*(byte *)(param_1 + 0x46) & 8) == 0) {
+  iVar5 = iVar3 * param_1->anim_counter >> 4;
+  iVar3 = param_1->normal_z * iVar5;
+  *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + param_1->normal_x * iVar5;
+  param_1->scale_y = param_1->scale_y + iVar3;
+  if ((param_1->anim_id & 8) == 0) {
     uVar2 = FUN_80085690(-iVar3);
-    *(undefined2 *)(param_1 + 0x56) = uVar2;
+    param_1->rot_y = uVar2;
   }
   iVar3 = FUN_80069858(param_1,1,0);
   if ((iVar3 != 0) ||
-     (sVar1 = *(short *)(param_1 + 0x40), *(short *)(param_1 + 0x40) = sVar1 + -1, sVar1 == 1)) {
+     (sVar1 = param_1->timer1, param_1->timer1 = sVar1 + -1, sVar1 == 1)) {
     FUN_80074590(0x1b,0,0);
     FUN_800315d4(param_1 + 0x2c);
-    *(undefined1 *)(param_1 + 4) = 3;
+    param_1->state = 3;
   }
   iVar3 = FUN_80077a4c(param_1,0,0,0);
   if (iVar3 == 0) {
-    *(undefined1 *)(param_1 + 4) = 3;
+    param_1->state = 3;
     return;
   }
-  bVar4 = *(byte *)(param_1 + 3);
+  bVar4 = param_1->sub_type;
 joined_r0x80068de0:
   if ((bVar4 & 0x80) == 0) {
     FUN_800518fc(param_1);

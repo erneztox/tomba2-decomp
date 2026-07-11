@@ -16,9 +16,9 @@ void FUN_8007b008(void)
   
   iVar1 = _DAT_800f2624;
   while (iVar1 != 0) {
-    iVar2 = *(int *)(iVar1 + 0x24);
-    *(undefined1 *)(iVar1 + 1) = 0;
-    (**(code **)(iVar1 + 0x1c))();
+    iVar2 = iVar1->next;
+    iVar1->flags = 0;
+    (*iVar1->callback)();
     iVar1 = iVar2;
   }
   return;

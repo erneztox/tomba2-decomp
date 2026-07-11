@@ -20,7 +20,7 @@ void FUN_80039034(int param_1)
   if (DAT_800bf883 != 0) {
     do {
       sVar1 = *psVar4;
-      sVar2 = psVar4[1];
+      sVar2 = psVar4->flags;
       psVar4 = psVar4 + 2;
       uVar3 = FUN_80038f7c(*(undefined1 *)((short)iVar5 + -0x7ff4077c));
       FUN_8007e938(*(undefined4 *)(param_1 + 4),(int)sVar1,(int)sVar2,0,uVar3);

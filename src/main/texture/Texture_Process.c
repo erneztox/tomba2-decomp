@@ -17,15 +17,15 @@ void FUN_80044f58(void)
   int iVar4;
   undefined1 *puVar5;
   
-  if (*(char *)(_DAT_1f800138 + 0x6d) == '\x02') {
+  if (_DAT_1f800138->sprite_param1 == '\x02') {
     uVar2 = 4;
-    if (((int)(uint)_DAT_800bfe56 >> (*(byte *)(_DAT_1f800138 + 0x6e) & 0x1f) & 1U) != 0) {
+    if (((int)(uint)_DAT_800bfe56 >> (_DAT_1f800138->sprite_param2 & 0x1f) & 1U) != 0) {
       uVar2 = 0x1a;
     }
-    iVar4 = DAT_800be0f0 + (uint)*(byte *)(_DAT_1f800138 + 0x6e);
+    iVar4 = DAT_800be0f0 + (uint)_DAT_1f800138->sprite_param2;
   }
   else {
-    uVar2 = (uint)*(byte *)(_DAT_1f800138 + 0x6e);
+    uVar2 = (uint)_DAT_1f800138->sprite_param2;
     iVar4 = DAT_800be0f0;
   }
   FUN_8001dc40(&DAT_800ef478,iVar4 + uVar2,0x800);
@@ -41,7 +41,7 @@ void FUN_80044f58(void)
     *puVar3 = *puVar1;
     puVar3 = puVar3 + 1;
   } while (iVar4 < 0x2a);
-  if (*(char *)(_DAT_1f800138 + 0x6d) == '\0') {
+  if (_DAT_1f800138->sprite_param1 == '\0') {
     DAT_1f80019b = 1;
     FUN_80051fb4();
   }

@@ -20,8 +20,8 @@ void FUN_800281ec(int param_1)
   int iVar4;
   undefined4 uVar5;
   
-  if (*(int *)(param_1 + 0x34) != 0) {
-    if (*(char *)(param_1 + 3) == '!') {
+  if (param_1->scale_y != 0) {
+    if (param_1->sub_type == '!') {
       setCopControlWord(2,0,_DAT_1f8000f8);
       setCopControlWord(2,0x800,_DAT_1f8000fc);
       setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -49,12 +49,12 @@ void FUN_800281ec(int param_1)
     iVar4 = 0;
     puVar3 = (undefined4 *)(param_1 + 0x50);
     _DAT_1f800090 = 0;
-    uVar5 = *(undefined4 *)(param_1 + 0x34);
+    uVar5 = param_1->scale_y;
     FUN_80031780(param_1,&DAT_1f800090,uVar2);
     uVar2 = extraout_at;
     do {
       setCopReg(2,in_zero,*puVar3);
-      setCopReg(2,uVar2,puVar3[1]);
+      setCopReg(2,uVar2,puVar3->flags);
       copFunction(2,0x180001);
       _DAT_1f800080 = getCopControlWord(2,0xf800);
       bVar1 = true;
@@ -86,7 +86,7 @@ void FUN_800281ec(int param_1)
       }
       iVar4 = iVar4 + 1;
       puVar3 = puVar3 + 2;
-    } while (iVar4 * 0x10000 >> 0x10 < (int)*(short *)(param_1 + 0x4e));
+    } while (iVar4 * 0x10000 >> 0x10 < (int)param_1->sprite_x);
   }
   return;
 }

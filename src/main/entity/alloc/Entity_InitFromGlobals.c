@@ -1,5 +1,5 @@
 /**
- * @brief Inits entity state from globals: sets sprite flags entity[0xD] from DAT_800bf881
+ * @brief Inits entity state from globals: sets sprite flags entity->sprite_flags from DAT_800bf881
  * @note Original: func_800682C4 at 0x800682C4
  */
 // Entity_InitFromGlobals
@@ -11,18 +11,18 @@ void FUN_800682c4(int param_1,int param_2)
 {
   byte bVar1;
   
-  *(undefined1 *)(param_1 + 0x6c) = DAT_800bf88c;
-  *(undefined1 *)(param_1 + 0x176) = DAT_800bf88c;
-  *(undefined1 *)(param_1 + 0x6d) = DAT_800bf88d;
-  *(undefined1 *)(param_1 + 0x6f) = DAT_800bf88f;
-  *(undefined1 *)(param_1 + 0x6e) = DAT_800bf88e;
+  param_1->sprite_cmd = DAT_800bf88c;
+  param_1->behavior_type = DAT_800bf88c;
+  param_1->sprite_param1 = DAT_800bf88d;
+  param_1->sprite_param3 = DAT_800bf88f;
+  param_1->sprite_param2 = DAT_800bf88e;
   bVar1 = DAT_800bf881;
-  *(byte *)(param_1 + 0x174) = DAT_800bf881;
+  param_1->game_flags = DAT_800bf881;
   if ((bVar1 & 8) != 0) {
-    *(undefined1 *)(param_1 + 0xd) = 0x42;
+    param_1->sprite_flags = 0x42;
   }
-  if ((*(byte *)(param_1 + 0x174) & 0x30) != 0) {
-    *(byte *)(param_1 + 0xd) = *(byte *)(param_1 + 0xd) | 0x12;
+  if ((param_1->game_flags & 0x30) != 0) {
+    param_1->sprite_flags = param_1->sprite_flags | 0x12;
   }
   *(undefined4 *)(param_1 + 0x70) = 0;
   *(undefined4 *)(param_1 + 0x74) = 0;

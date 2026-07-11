@@ -45,16 +45,16 @@ void FUN_8003e448(ushort *param_1,undefined4 param_2)
   local_44 = _DAT_1f80008e;
   local_48 = _DAT_1f80008c;
   uVar1 = *param_1;
-  uVar2 = param_1[1];
+  uVar2 = param_1->flags;
   iVar16 = (int)_DAT_1f80008c;
   uVar3 = *param_1;
-  uVar4 = param_1[2];
-  uVar5 = param_1[1];
-  uVar6 = param_1[3];
+  uVar4 = param_1->kind;
+  uVar5 = param_1->flags;
+  uVar6 = param_1->sub_type;
   uVar7 = *param_1;
-  uVar8 = param_1[2];
-  uVar9 = param_1[1];
-  uVar10 = param_1[3];
+  uVar8 = param_1->kind;
+  uVar9 = param_1->flags;
+  uVar10 = param_1->sub_type;
   iVar17 = (int)_DAT_1f80008e;
   iVar13 = FUN_80083f50(param_2);
   iVar14 = FUN_80083e80(param_2);
@@ -99,13 +99,13 @@ void FUN_8003e448(ushort *param_1,undefined4 param_2)
   local_30 = (short)(iVar17 * iVar13 + iVar16 * iVar14 >> 0xc) + local_30;
   local_2c = (short)(iVar16 * iVar13 - iVar17 * iVar14 >> 0xc) + local_2c;
   *(short *)(puVar11 + 2) = local_48;
-  *(undefined1 *)(puVar11 + 9) = 0x3f;
-  *(undefined1 *)(puVar11 + 5) = 0x3f;
+  puVar11->counter2 = 0x3f;
+  puVar11->behavior_state = 0x3f;
   *(short *)((int)puVar11 + 0x12) = local_3c;
   *(short *)(puVar11 + 6) = local_38;
   *(short *)((int)puVar11 + 0x1a) = local_34;
-  *(undefined1 *)(puVar11 + 7) = 0;
-  *(undefined1 *)(puVar11 + 3) = 0;
+  puVar11->sub_action = 0;
+  puVar11->sub_type = 0;
   *(undefined1 *)((int)puVar11 + 0x15) = 0;
   *(undefined1 *)((int)puVar11 + 0xd) = 0;
   *(undefined1 *)((int)puVar11 + 0x25) = 0xff;
@@ -114,10 +114,10 @@ void FUN_8003e448(ushort *param_1,undefined4 param_2)
   *(short *)((int)puVar11 + 10) = local_44;
   *(short *)(puVar11 + 4) = local_40;
   *(short *)((int)puVar11 + 0x22) = local_2c;
-  uVar2 = param_1[1];
-  uVar1 = param_1[1];
+  uVar2 = param_1->flags;
+  uVar1 = param_1->flags;
   uVar3 = *param_1;
-  *(undefined1 *)(puVar11 + 1) = 0x80;
+  puVar11->flags = 0x80;
   *(ushort *)((int)puVar11 + 0x16) =
        (ushort)((int)(iVar18 + (short)uVar1 & 0x100U) >> 4) | (ushort)((uVar3 & 0x3ff) >> 6) | 0x100
        | (ushort)(((uint)uVar2 + iVar18 & 0x200) << 2);

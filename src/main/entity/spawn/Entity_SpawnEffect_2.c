@@ -18,8 +18,8 @@ void FUN_800315d4(int param_1)
     iVar2 = 0;
     if (iVar1 != 0) {
       if (param_1 != 0) {
-        *(undefined2 *)(iVar1 + 0x2c) = *(undefined2 *)(param_1 + 2);
-        *(undefined2 *)(iVar1 + 0x2e) = *(undefined2 *)(param_1 + 6);
+        iVar1->pos_x = *(undefined2 *)(param_1 + 2);
+        iVar1->pos_y = *(undefined2 *)(param_1 + 6);
         *(undefined2 *)(iVar1 + 0x30) = *(undefined2 *)(param_1 + 10);
       }
       *(undefined2 *)(iVar1 + 0x32) = 0xffec;
@@ -36,8 +36,8 @@ void FUN_800315d4(int param_1)
     iVar2 = 0;
     if (iVar1 != 0) {
       if (param_1 != 0) {
-        *(undefined2 *)(iVar1 + 0x2c) = *(undefined2 *)(param_1 + 2);
-        *(undefined2 *)(iVar1 + 0x2e) = *(undefined2 *)(param_1 + 6);
+        iVar1->pos_x = *(undefined2 *)(param_1 + 2);
+        iVar1->pos_y = *(undefined2 *)(param_1 + 6);
         *(undefined2 *)(iVar1 + 0x30) = *(undefined2 *)(param_1 + 10);
       }
       *(undefined2 *)(iVar1 + 0x32) = 0xffe7;

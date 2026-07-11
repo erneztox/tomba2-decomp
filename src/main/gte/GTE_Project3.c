@@ -27,7 +27,7 @@ void FUN_8002dd88(int param_1)
   setCopControlWord(2,0xd800,6);
   setCopControlWord(2,0xe000,0);
   setCopReg(2,in_zero,*(undefined4 *)(param_1 + 0x2c));
-  setCopReg(2,in_at,*(undefined4 *)(param_1 + 0x30));
+  setCopReg(2,in_at,param_1->pos_y_fixed);
   copFunction(2,0x180001);
   _DAT_1f800080 = getCopControlWord(2,0xf800);
   bVar1 = true;
@@ -58,8 +58,8 @@ void FUN_8002dd88(int param_1)
     _DAT_1f800090 = *(undefined4 *)(param_1 + 0x50);
     _DAT_1f800088 = _DAT_1f800084 * *(int *)(param_1 + 0x58) >> 8;
     _DAT_1f800084 = _DAT_1f800084 * *(int *)(param_1 + 0x54) >> 8;
-    uVar2 = FUN_80027a4c(*(undefined4 *)(param_1 + 0x34),*(undefined4 *)(param_1 + 0x44));
-    *(undefined4 *)(param_1 + 0x38) = uVar2;
+    uVar2 = FUN_80027a4c(param_1->scale_y,*(undefined4 *)(param_1 + 0x44));
+    param_1->anim_data = uVar2;
   }
   return;
 }

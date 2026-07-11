@@ -43,7 +43,7 @@ void FUN_8007e1b8(undefined4 *param_1,short *param_2,int param_3,byte *param_4)
   *param_4 = bVar1 & 0xf;
   psVar15 = (short *)(param_3 + *param_2 * 4);
   iVar26 = (int)*psVar15;
-  puVar25 = (uint *)(param_3 + psVar15[1]);
+  puVar25 = (uint *)(param_3 + psVar15->flags);
   pcVar24 = (char *)((int)puVar25 + 0xf);
   do {
     _DAT_1f80000c = *puVar25;
@@ -187,21 +187,21 @@ LAB_8007e618:
     _DAT_1f800024 = uVar10;
     _DAT_1f80001c = uVar9;
     _DAT_1f800014 = uVar16;
-    puVar22 = (uint *)(_DAT_800ed8c8 + (uint)param_4[1] * 4);
+    puVar22 = (uint *)(_DAT_800ed8c8 + (uint)param_4->flags * 4);
     *_DAT_800bf544 = *puVar22 | 0x9000000;
     *puVar22 = (uint)_DAT_800bf544;
     pcVar24 = pcVar24 + 0x10;
     puVar25 = puVar25 + 4;
     iVar26 = iVar26 + -1;
-    _DAT_800bf544[1] = _DAT_1f800004;
-    _DAT_800bf544[2] = _DAT_1f800008;
-    _DAT_800bf544[3] = _DAT_1f80000c;
-    _DAT_800bf544[4] = _DAT_1f800010;
-    _DAT_800bf544[5] = _DAT_1f800014;
-    _DAT_800bf544[6] = _DAT_1f800018;
-    _DAT_800bf544[7] = _DAT_1f80001c;
-    _DAT_800bf544[8] = _DAT_1f800020;
-    _DAT_800bf544[9] = _DAT_1f800024;
+    _DAT_800bf544->flags = _DAT_1f800004;
+    _DAT_800bf544->kind = _DAT_1f800008;
+    _DAT_800bf544->sub_type = _DAT_1f80000c;
+    _DAT_800bf544->state = _DAT_1f800010;
+    _DAT_800bf544->behavior_state = _DAT_1f800014;
+    _DAT_800bf544->action_state = _DAT_1f800018;
+    _DAT_800bf544->sub_action = _DAT_1f80001c;
+    _DAT_800bf544->counter1 = _DAT_1f800020;
+    _DAT_800bf544->counter2 = _DAT_1f800024;
     _DAT_800bf544 = _DAT_800bf544 + 10;
     if (iVar26 == 0) {
       return;

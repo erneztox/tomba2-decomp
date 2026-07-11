@@ -13,8 +13,8 @@ void FUN_8001d940(void)
 {
   bool bVar1;
   int iVar2;
-  undefined1 auStack_20 [8];
-  undefined1 local_18 [8];
+  undefined1 auStack_20->counter1;
+  undefined1 local_18->counter1;
   
   bVar1 = false;
   DAT_800be0e4 = 0;
@@ -35,7 +35,7 @@ LAB_8001d998:
         DAT_800be0ea = 0;
         iVar2 = FUN_8001ce04(9,0,local_18);
       } while (iVar2 != 0);
-      FUN_8001cf94(local_18[0]);
+      FUN_8001cf94local_18->type;
       if (!bVar1) {
         bVar1 = true;
         FUN_8001ceb0(0xa0,local_18);

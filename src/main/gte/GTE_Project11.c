@@ -31,13 +31,13 @@ void FUN_8002fdd0(int param_1)
   int local_28;
   
   uVar2 = DAT_800102ec;
-  sVar3 = *(short *)(param_1 + 0x50);
+  sVar3 = param_1->angle_offset;
   if (sVar3 < 0) {
     sVar3 = 0;
   }
-  sVar1 = *(short *)(param_1 + 0x52);
+  sVar1 = param_1->sprite_y;
   uVar12 = CONCAT22((short)((uint)in_stack_ffffffc4 >> 0x10),*(undefined2 *)(param_1 + 0x30));
-  uVar11 = CONCAT22(*(short *)(param_1 + 0x2e) + sVar3 * -10,*(undefined2 *)(param_1 + 0x2c));
+  uVar11 = CONCAT22(param_1->pos_y + sVar3 * -10,param_1->pos_x);
   setCopControlWord(2,0xa800,0x1e0);
   setCopControlWord(2,0xb000,0x3c0);
   setCopControlWord(2,0xb800,0x640);
@@ -99,7 +99,7 @@ void FUN_8002fdd0(int param_1)
     setCopControlWord(2,0x3800,_DAT_1f80001c);
     FUN_80027768(&DAT_8009f3e0,0,(int)*(short *)(param_1 + 0x32),(int)sVar1,uVar11,uVar12);
     iVar10 = iVar10 + 1;
-    *(short *)(param_1 + 0x4a) = *(short *)(param_1 + 0x4a) + 0x400;
+    param_1->velocity_y = param_1->velocity_y + 0x400;
   } while (iVar10 < 4);
   return;
 }

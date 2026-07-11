@@ -1,5 +1,5 @@
 /**
- * @brief Menu dialog handler: entity[5] state 0->1->2, manages text
+ * @brief Menu dialog handler: entity->behavior_state state 0->1->2, manages text
  * @note Original: func_8003ABE4 at 0x8003ABE4
  */
 // Menu_Dialog
@@ -14,7 +14,7 @@ void FUN_8003abe4(int param_1)
   int iVar3;
   int iVar4;
   
-  bVar1 = *(byte *)(param_1 + 5);
+  bVar1 = param_1->behavior_state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (bVar1 != 2) {
@@ -22,46 +22,46 @@ void FUN_8003abe4(int param_1)
       }
       iVar4 = 0;
       iVar3 = param_1;
-      if (*(char *)(param_1 + 8) != '\0') {
+      if (param_1->counter1 != '\0') {
         do {
-          FUN_8003a470(param_1,*(undefined4 *)(iVar3 + 0xc0));
+          FUN_8003a470(param_1,iVar3->sprite_ptr1);
           iVar4 = iVar4 + 1;
           iVar3 = iVar3 + 4;
-        } while (iVar4 < (int)(uint)*(byte *)(param_1 + 8));
+        } while (iVar4 < (int)(uint)param_1->counter1);
       }
-      *(short *)(param_1 + 0x36) = *(short *)(param_1 + 0x36) + -4;
+      param_1->pos_z = param_1->pos_z + -4;
       return;
     }
     if (bVar1 != 0) {
       return;
     }
-    *(undefined1 *)(param_1 + 5) = 1;
-    *(undefined2 *)(param_1 + 0x40) = 0x28;
+    param_1->behavior_state = 1;
+    param_1->timer1 = 0x28;
   }
-  sVar2 = *(short *)(param_1 + 0x40) + -1;
-  *(short *)(param_1 + 0x40) = sVar2;
+  sVar2 = param_1->timer1 + -1;
+  param_1->timer1 = sVar2;
   if (sVar2 == -1) {
     iVar4 = 0;
     iVar3 = param_1;
-    if (*(char *)(param_1 + 8) != '\0') {
+    if (param_1->counter1 != '\0') {
       do {
-        *(undefined1 *)(*(int *)(iVar3 + 0xc0) + 0x3e) = 0;
+        *(undefined1 *)(iVar3->sprite_ptr1 + 0x3e) = 0;
         iVar4 = iVar4 + 1;
         iVar3 = iVar3 + 4;
-      } while (iVar4 < (int)(uint)*(byte *)(param_1 + 8));
+      } while (iVar4 < (int)(uint)param_1->counter1);
     }
-    *(undefined1 *)(param_1 + 0x5e) = 2;
-    *(char *)(param_1 + 5) = *(char *)(param_1 + 5) + '\x01';
+    param_1->flag_5E = 2;
+    param_1->behavior_state = param_1->behavior_state + '\x01';
   }
   else {
     iVar4 = 0;
     iVar3 = param_1;
-    if (*(char *)(param_1 + 8) != '\0') {
+    if (param_1->counter1 != '\0') {
       do {
-        FUN_8003a3e8(param_1,*(undefined4 *)(iVar3 + 0xc0));
+        FUN_8003a3e8(param_1,iVar3->sprite_ptr1);
         iVar4 = iVar4 + 1;
         iVar3 = iVar3 + 4;
-      } while (iVar4 < (int)(uint)*(byte *)(param_1 + 8));
+      } while (iVar4 < (int)(uint)param_1->counter1);
     }
   }
   return;

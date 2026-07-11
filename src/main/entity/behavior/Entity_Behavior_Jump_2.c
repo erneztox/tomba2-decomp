@@ -1,5 +1,5 @@
 /**
- * @brief Entity jump behavior: entity[6]=0 state, sets velocity, advances on ground contact
+ * @brief Entity jump behavior: entity->action_state=0 state, sets velocity, advances on ground contact
  * @note Original: func_800714C0 at 0x800714C0
  */
 // Entity_Behavior_Jump
@@ -13,17 +13,17 @@ undefined4 FUN_800714c0(int param_1,undefined2 param_2)
 {
   short sVar1;
   
-  if (*(char *)(param_1 + 6) == '\0') {
-    *(undefined2 *)(param_1 + 0x4a) = param_2;
-    *(char *)(param_1 + 6) = *(char *)(param_1 + 6) + '\x01';
+  if (param_1->action_state == '\0') {
+    param_1->velocity_y = param_2;
+    param_1->action_state = param_1->action_state + '\x01';
   }
-  else if (*(char *)(param_1 + 6) == '\x01') {
-    sVar1 = *(short *)(param_1 + 0x4a) + 0x100;
-    *(short *)(param_1 + 0x4a) = sVar1;
+  else if (param_1->action_state == '\x01') {
+    sVar1 = param_1->velocity_y + 0x100;
+    param_1->velocity_y = sVar1;
     if (0x3000 < sVar1) {
-      *(undefined2 *)(param_1 + 0x4a) = 0x3000;
+      param_1->velocity_y = 0x3000;
     }
-    *(int *)(param_1 + 0x30) = *(int *)(param_1 + 0x30) + *(short *)(param_1 + 0x4a) * 0x100;
+    param_1->pos_y_fixed = param_1->pos_y_fixed + param_1->velocity_y * 0x100;
     if (_DAT_800bf82a < *(short *)(param_1 + 0x32)) {
       *(short *)(param_1 + 0x32) = _DAT_800bf82a;
       return 1;

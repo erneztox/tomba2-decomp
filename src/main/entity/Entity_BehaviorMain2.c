@@ -1,5 +1,5 @@
 /**
- * @brief Entity behavior main variant 2: entity[4]=1 dispatch
+ * @brief Entity behavior main variant 2: entity->state=1 dispatch
  * @note Original: func_80073CD8 at 0x80073CD8
  */
 // Entity_BehaviorMain2
@@ -17,7 +17,7 @@ void FUN_80073cd8(undefined1 *param_1)
   short sVar4;
   int iVar5;
   
-  bVar1 = param_1[4];
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (bVar1 == 2) {
@@ -36,31 +36,31 @@ void FUN_80073cd8(undefined1 *param_1)
     if (iVar5 != 0) {
       return;
     }
-    param_1[0x2b] = 0;
-    *(undefined4 *)(param_1 + 0x14) = 0;
-    *(undefined2 *)(param_1 + 0x54) = 0;
-    *(undefined2 *)(param_1 + 0x58) = 0;
-    param_1[4] = param_1[4] + '\x01';
+    param_1->move_mode = 0;
+    param_1->script_ptr = 0;
+    param_1->rot_x = 0;
+    param_1->rot_z = 0;
+    param_1->state = param_1->state + '\x01';
     if (((DAT_800bf870 == 2) || (DAT_800bf870 == 7)) || (DAT_800bf870 == 0x14)) {
       *param_1 = 1;
-      *(undefined2 *)(param_1 + 0x80) = 0xa0;
-      *(undefined2 *)(param_1 + 0x82) = 0x140;
+      param_1->bounds_min_x = 0xa0;
+      param_1->bounds_size = 0x140;
       uVar3 = 0xed;
     }
     else {
       if (DAT_800bf873 == '\0') {
         *param_1 = 1;
       }
-      *(undefined2 *)(param_1 + 0x80) = 300;
-      *(undefined2 *)(param_1 + 0x82) = 600;
+      param_1->bounds_min_x = 300;
+      param_1->bounds_size = 600;
       uVar3 = 0xcb;
     }
-    *(undefined2 *)(param_1 + 0x84) = uVar3;
-    *(undefined2 *)(param_1 + 0x86) = uVar3;
-    switch(param_1[3]) {
+    param_1->bounds_min_y = uVar3;
+    param_1->bounds_max_y = uVar3;
+    switchparam_1->sub_type {
     case 2:
-      param_1[8] = 0;
-      *(undefined2 *)(param_1 + 0x56) = 0xc00;
+      param_1->counter1 = 0;
+      param_1->rot_y = 0xc00;
       return;
     default:
       return;
@@ -69,25 +69,25 @@ void FUN_80073cd8(undefined1 *param_1)
     case 7:
     case 0x1d:
     case 0x1e:
-      *(undefined2 *)(param_1 + 0x56) = 0;
+      param_1->rot_y = 0;
       return;
     case 8:
-      param_1[0xb] = 0xf;
+      param_1->render_flags = 0xf;
       return;
     case 0xc:
     case 0xd:
     case 0xe:
-      *(undefined2 *)(param_1 + 0x56) = 0x400;
-      *(undefined2 *)(param_1 + 0x80) = 0x3c;
-      *(undefined2 *)(param_1 + 0x82) = 0x78;
-      *(undefined2 *)(param_1 + 0x84) = 0x3e;
-      param_1[8] = 0;
-      *(undefined2 *)(param_1 + 0x86) = 0x7c;
+      param_1->rot_y = 0x400;
+      param_1->bounds_min_x = 0x3c;
+      param_1->bounds_size = 0x78;
+      param_1->bounds_min_y = 0x3e;
+      param_1->counter1 = 0;
+      param_1->bounds_max_y = 0x7c;
       return;
     case 0x11:
       goto switchD_80073e20_caseD_11;
     case 0x14:
-      param_1[8] = 0;
+      param_1->counter1 = 0;
       return;
     case 0x15:
     case 0x16:
@@ -96,85 +96,85 @@ void FUN_80073cd8(undefined1 *param_1)
       *param_1 = 1;
       return;
     case 0x20:
-      *(undefined2 *)(param_1 + 0x56) = 0x4d0;
+      param_1->rot_y = 0x4d0;
       return;
     }
   }
   FUN_8007778c(param_1);
-  cVar2 = param_1[5];
+  cVar2 = param_1->behavior_state;
   switch(cVar2) {
   case '\x01':
   case '\x05':
-    if ((param_1[3] != '\x02') ||
+    if ((param_1->sub_type != '\x02') ||
        ((sVar4 = 0x16, DAT_800bf907 != -1 && (sVar4 = 0x15, DAT_800bf8c3 == '\0')))) {
-      sVar4 = *(short *)(&DAT_800a4ca8 + (uint)(byte)param_1[3] * 2);
+      sVar4 = *(short *)(&DAT_800a4ca8 + (uint)(byte)param_1->sub_type * 2);
     }
     iVar5 = FUN_8007e110((int)sVar4,0);
-    *(int *)(param_1 + 0x14) = iVar5;
+    param_1->script_ptr = iVar5;
     if (iVar5 != 0) {
-      cVar2 = param_1[5] + '\x01';
+      cVar2 = param_1->behavior_state + '\x01';
       goto LAB_8007409c;
     }
     break;
   case '\x02':
     if ((_DAT_800e7e68 & _DAT_1f800174) != 0) {
-      cVar2 = param_1[5] + '\x01';
+      cVar2 = param_1->behavior_state + '\x01';
       goto LAB_8007409c;
     }
     break;
   case '\x03':
-    if (*(byte *)(*(int *)(param_1 + 0x14) + 4) < 2) {
-      *(undefined1 *)(*(int *)(param_1 + 0x14) + 4) = 2;
-      *(undefined4 *)(param_1 + 0x14) = 0;
+    if (*(byte *)(param_1->script_ptr + 4) < 2) {
+      *(undefined1 *)(param_1->script_ptr + 4) = 2;
+      param_1->script_ptr = 0;
     }
     *param_1 = 2;
-    cVar2 = param_1[5] + '\x01';
+    cVar2 = param_1->behavior_state + '\x01';
 LAB_8007409c:
-    param_1[5] = cVar2;
+    param_1->behavior_state = cVar2;
     break;
   case '\x04':
     *param_1 = 1;
-    param_1[5] = 0;
+    param_1->behavior_state = 0;
   case '\0':
-    if (param_1[0x2b] == '\x03') {
-      bVar1 = param_1[3];
-      param_1[5] = param_1[5] + '\x01';
+    if (param_1->move_mode == '\x03') {
+      bVar1 = param_1->sub_type;
+      param_1->behavior_state = param_1->behavior_state + '\x01';
       if (bVar1 == 0xd) {
         iVar5 = FUN_80040b48(0x50);
         if (iVar5 != 0) {
-          param_1[5] = 5;
+          param_1->behavior_state = 5;
         }
       }
       else if (bVar1 < 0xe) {
         if ((bVar1 == 0xc) && (iVar5 = FUN_80040b48(0x4e), iVar5 != 0)) {
-          param_1[5] = 5;
+          param_1->behavior_state = 5;
         }
       }
       else if ((bVar1 == 0xe) && (iVar5 = FUN_80040b48(0x4f), iVar5 != 0)) {
-        param_1[5] = 5;
+        param_1->behavior_state = 5;
       }
     }
     break;
   case '\x06':
     iVar5 = FUN_80042728();
     if (iVar5 != 0) {
-      param_1[5] = 2;
+      param_1->behavior_state = 2;
     }
     break;
   default:
     goto switchD_80073ef8_default;
   }
-  cVar2 = param_1[5];
+  cVar2 = param_1->behavior_state;
 switchD_80073ef8_default:
   if ((cVar2 != '\x04') &&
      ((((DAT_800bf870 == 2 || (DAT_800bf870 == 7)) || (DAT_800bf870 == 0x14)) &&
-      ((*(int *)(param_1 + 0x14) != 0 && (DAT_800e7e85 != '\x1f')))))) {
-    *(undefined1 *)(*(int *)(param_1 + 0x14) + 4) = 2;
-    *(undefined4 *)(param_1 + 0x14) = 0;
+      ((param_1->script_ptr != 0 && (DAT_800e7e85 != '\x1f')))))) {
+    *(undefined1 *)(param_1->script_ptr + 4) = 2;
+    param_1->script_ptr = 0;
     *param_1 = 1;
-    param_1[5] = 0;
+    param_1->behavior_state = 0;
   }
-  param_1[0x2b] = 0;
+  param_1->move_mode = 0;
   FUN_800517f8(param_1);
   return;
 switchD_80073e20_caseD_11:

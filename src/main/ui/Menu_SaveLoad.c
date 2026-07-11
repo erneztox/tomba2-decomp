@@ -1,5 +1,5 @@
 /**
- * @brief Menu save/load handler: entity[5] state, manages save data
+ * @brief Menu save/load handler: entity->behavior_state state, manages save data
  * @note Original: func_8003A9A0 at 0x8003A9A0
  */
 // Menu_SaveLoad
@@ -15,81 +15,81 @@ void FUN_8003a9a0(int param_1)
   int iVar2;
   int iVar3;
   
-  switch(*(undefined1 *)(param_1 + 5)) {
+  switch(param_1->behavior_state) {
   case 0:
     iVar3 = 0;
     iVar2 = param_1;
-    if (*(char *)(param_1 + 8) != '\0') {
+    if (param_1->counter1 != '\0') {
       do {
-        FUN_8003a290(param_1,*(undefined4 *)(iVar2 + 0xc0));
+        FUN_8003a290(param_1,iVar2->sprite_ptr1);
         iVar3 = iVar3 + 1;
         iVar2 = iVar2 + 4;
-      } while (iVar3 < (int)(uint)*(byte *)(param_1 + 8));
+      } while (iVar3 < (int)(uint)param_1->counter1);
     }
     iVar2 = (int)_DAT_801003f8;
-    sVar1 = *(short *)(param_1 + 0x36) + -0x10;
-    *(short *)(param_1 + 0x36) = sVar1;
+    sVar1 = param_1->pos_z + -0x10;
+    param_1->pos_z = sVar1;
     if ((int)sVar1 < iVar2 + 8) {
-      *(short *)(param_1 + 0x36) = _DAT_801003f8 + 8;
-      *(undefined1 *)(param_1 + 0x5e) = 1;
+      param_1->pos_z = _DAT_801003f8 + 8;
+      param_1->flag_5E = 1;
     }
     break;
   case 1:
     iVar3 = 0;
-    *(undefined2 *)(param_1 + 0x40) = 0x28;
-    *(char *)(param_1 + 5) = *(char *)(param_1 + 5) + '\x01';
+    param_1->timer1 = 0x28;
+    param_1->behavior_state = param_1->behavior_state + '\x01';
     iVar2 = param_1;
-    if (*(char *)(param_1 + 8) != '\0') {
+    if (param_1->counter1 != '\0') {
       do {
-        *(undefined1 *)(*(int *)(iVar2 + 0xc0) + 0x3e) = 0;
+        *(undefined1 *)(iVar2->sprite_ptr1 + 0x3e) = 0;
         iVar3 = iVar3 + 1;
         iVar2 = iVar2 + 4;
-      } while (iVar3 < (int)(uint)*(byte *)(param_1 + 8));
+      } while (iVar3 < (int)(uint)param_1->counter1);
     }
   case 2:
-    sVar1 = *(short *)(param_1 + 0x40) + -1;
-    *(short *)(param_1 + 0x40) = sVar1;
+    sVar1 = param_1->timer1 + -1;
+    param_1->timer1 = sVar1;
     if (sVar1 == -1) {
       iVar3 = 0;
       iVar2 = param_1;
-      if (*(char *)(param_1 + 8) != '\0') {
+      if (param_1->counter1 != '\0') {
         do {
-          *(undefined1 *)(*(int *)(iVar2 + 0xc0) + 0x3e) = 0;
+          *(undefined1 *)(iVar2->sprite_ptr1 + 0x3e) = 0;
           iVar3 = iVar3 + 1;
           iVar2 = iVar2 + 4;
-        } while (iVar3 < (int)(uint)*(byte *)(param_1 + 8));
+        } while (iVar3 < (int)(uint)param_1->counter1);
       }
-      FUN_80040aa4((int)*(short *)(param_1 + 0x60),2);
+      FUN_80040aa4((int)param_1->draw_x,2);
       DAT_800ed06c = DAT_800ed06c + '\x01';
-      *(char *)(param_1 + 5) = *(char *)(param_1 + 5) + '\x01';
+      param_1->behavior_state = param_1->behavior_state + '\x01';
     }
     else {
       iVar3 = 0;
       iVar2 = param_1;
-      if (*(char *)(param_1 + 8) != '\0') {
+      if (param_1->counter1 != '\0') {
         do {
-          FUN_8003a3e8(param_1,*(undefined4 *)(iVar2 + 0xc0));
+          FUN_8003a3e8(param_1,iVar2->sprite_ptr1);
           iVar3 = iVar3 + 1;
           iVar2 = iVar2 + 4;
-        } while (iVar3 < (int)(uint)*(byte *)(param_1 + 8));
+        } while (iVar3 < (int)(uint)param_1->counter1);
       }
     }
     break;
   case 3:
   case 4:
-    *(char *)(param_1 + 5) = *(char *)(param_1 + 5) + '\x01';
+    param_1->behavior_state = param_1->behavior_state + '\x01';
   case 5:
     iVar3 = 0;
-    *(undefined1 *)(param_1 + 0x5e) = 2;
+    param_1->flag_5E = 2;
     iVar2 = param_1;
-    if (*(char *)(param_1 + 8) != '\0') {
+    if (param_1->counter1 != '\0') {
       do {
-        FUN_8003a470(param_1,*(undefined4 *)(iVar2 + 0xc0));
+        FUN_8003a470(param_1,iVar2->sprite_ptr1);
         iVar3 = iVar3 + 1;
         iVar2 = iVar2 + 4;
-      } while (iVar3 < (int)(uint)*(byte *)(param_1 + 8));
+      } while (iVar3 < (int)(uint)param_1->counter1);
     }
-    *(short *)(param_1 + 0x36) = *(short *)(param_1 + 0x36) + -4;
+    param_1->pos_z = param_1->pos_z + -4;
   }
   return;
 }

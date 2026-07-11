@@ -11,10 +11,10 @@
 void FUN_8006abf4(int param_1)
 
 {
-  *(undefined1 *)(param_1 + 0xb) = 0x10;
-  *(undefined1 *)(param_1 + 0xd) = 0;
-  *(undefined2 *)(param_1 + 0x5c) = 0;
-  *(undefined4 *)(param_1 + 0x3c) = _DAT_800ecf58;
+  param_1->render_flags = 0x10;
+  param_1->sprite_flags = 0;
+  param_1->draw_y = 0;
+  param_1->sprite_data = _DAT_800ecf58;
   FUN_80077b38(param_1,&PTR_DAT_80017334,0x36);
   return;
 }

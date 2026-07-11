@@ -18,8 +18,8 @@ void FUN_80033b94(int param_1,undefined4 param_2,short param_3)
   FUN_80033afc(0x8000,(int)DAT_800a2410,0x20,iVar3);
   FUN_80033afc(0x2000,(int)DAT_800a2414,0x20,iVar3);
   FUN_80033afc(0x1000,(int)DAT_800a2418,0x20,iVar3);
-  if (*(char *)(param_1 + 9) == '\0') {
-    if (*(char *)(param_1 + 8) == '\x02') {
+  if (param_1->counter2 == '\0') {
+    if (param_1->counter1 == '\x02') {
       FUN_80079324(0x1c,0x1c,0x14,PTR_s_____800a3a64,iVar3);
       FUN_80079324(0x68,0x1c,0x14,PTR_s_____800a3a64,iVar3);
       puVar2 = PTR_s__Close_800a3a60;
@@ -31,7 +31,7 @@ void FUN_80033b94(int param_1,undefined4 param_2,short param_3)
     }
   }
   else {
-    bVar1 = *(byte *)(param_1 + 8);
+    bVar1 = param_1->counter1;
     if (bVar1 != 1) {
       if (bVar1 < 2) {
         if (bVar1 != 0) {

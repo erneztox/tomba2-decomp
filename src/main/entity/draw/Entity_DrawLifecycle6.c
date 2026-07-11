@@ -1,5 +1,5 @@
 /**
- * @brief Entity draw lifecycle variant 6: entity[4]=1, processes draw
+ * @brief Entity draw lifecycle variant 6: entity->state=1, processes draw
  * @note Original: func_80032F98 at 0x80032F98
  */
 // Entity_DrawLifecycle6
@@ -15,7 +15,7 @@ void FUN_80032f98(int param_1)
   undefined2 uVar2;
   undefined *puVar3;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (3 < bVar1) {
@@ -34,20 +34,20 @@ void FUN_80032f98(int param_1)
     }
     *(undefined **)(param_1 + 0x38) = puVar3;
     *(undefined **)(param_1 + 0x34) = puVar3;
-    *(undefined1 *)(param_1 + 4) = 1;
-    *(undefined1 *)(param_1 + 6) = 0x10;
+    param_1->state = 1;
+    param_1->action_state = 0x10;
     *(undefined2 *)(param_1 + 0x32) = 0xff6a;
   }
-  *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x38);
-  if (*(int *)(param_1 + 0x38) != 0) {
-    *(undefined2 *)(param_1 + 0x2c) = _DAT_800e7eae;
-    *(undefined2 *)(param_1 + 0x2e) = _DAT_800e7eb2;
+  param_1->scale_y = param_1->anim_data;
+  if (param_1->anim_data != 0) {
+    param_1->pos_x = _DAT_800e7eae;
+    param_1->pos_y = _DAT_800e7eb2;
     uVar2 = _DAT_800e7eb6;
-    *(undefined1 *)(param_1 + 1) = 1;
+    param_1->flags = 1;
     *(undefined2 *)(param_1 + 0x30) = uVar2;
     return;
   }
-  *(undefined1 *)(param_1 + 4) = 2;
+  param_1->state = 2;
 LAB_80033068:
   FUN_8007a624();
   return;

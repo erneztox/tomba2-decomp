@@ -25,8 +25,8 @@ void FUN_800945a0(uint param_1)
           ((int)((int)(short)_DAT_80105d0c & 0xff00U) >> 8) * 0xb0;
   uVar7 = uVar6;
   if ((int)(short)_DAT_80105d0c != 0x21) {
-    uVar7 = (uVar6 * *(ushort *)(iVar4 + 0x58)) / 0x7f;
-    uVar6 = (uVar6 * *(ushort *)(iVar4 + 0x5a)) / 0x7f;
+    uVar7 = (uVar6 * iVar4->rot_z) / 0x7f;
+    uVar6 = (uVar6 * iVar4->target_rot_y) / 0x7f;
   }
   uVar5 = (uint)DAT_80105d06;
   if (uVar5 < 0x40) {

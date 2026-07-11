@@ -17,15 +17,15 @@ void Entity_SubmitVerticesToOT(int param_1,undefined4 *param_2,int param_3)
   undefined4 in_v1;
   uint *puVar3;
   int iVar4;
-  undefined1 local_10 [8];
+  undefined1 local_10->counter1;
   int local_8;
   
   setCopReg(2,in_zero,*param_2);
-  setCopReg(2,in_at,param_2[1]);
-  setCopReg(2,in_v0,param_2[2]);
-  setCopReg(2,in_v1,param_2[3]);
-  setCopReg(2,local_10,param_2[4]);
-  setCopReg(2,param_2,param_2[5]);
+  setCopReg(2,in_at,param_2->flags);
+  setCopReg(2,in_v0,param_2->kind);
+  setCopReg(2,in_v1,param_2->sub_type);
+  setCopReg(2,local_10,param_2->state);
+  setCopReg(2,param_2,param_2->behavior_state);
   copFunction(2,0x280030);
   iVar4 = getCopControlWord(2,0xf800);
   iVar2 = -1;
@@ -33,13 +33,13 @@ void Entity_SubmitVerticesToOT(int param_1,undefined4 *param_2,int param_3)
     uVar1 = getCopReg(2,0xc);
     *(undefined4 *)(param_1 + 8) = uVar1;
     uVar1 = getCopReg(2,0xd);
-    *(undefined4 *)(param_1 + 0x10) = uVar1;
+    param_1->parent = uVar1;
     uVar1 = getCopReg(2,0xe);
-    *(undefined4 *)(param_1 + 0x18) = uVar1;
+    param_1->script_data = uVar1;
     copFunction(2,0x1400006);
     getCopReg(2,0x18);
-    setCopReg(2,in_zero,param_2[6]);
-    setCopReg(2,in_at,param_2[7]);
+    setCopReg(2,in_zero,param_2->action_state);
+    setCopReg(2,in_at,param_2->sub_action);
     copFunction(2,0x180001);
     iVar2 = getCopControlWord(2,0xf800);
     if (iVar2 < 0) {
@@ -47,7 +47,7 @@ void Entity_SubmitVerticesToOT(int param_1,undefined4 *param_2,int param_3)
     }
     else {
       uVar1 = getCopReg(2,0xe);
-      *(undefined4 *)(param_1 + 0x20) = uVar1;
+      param_1->prev = uVar1;
       copFunction(2,0x168002e);
       iVar2 = getCopReg(2,7);
     }
@@ -66,15 +66,15 @@ void Entity_SubmitVerticesToOT(int param_1,undefined4 *param_2,int param_3)
       puVar3 = (uint *)(_DAT_800ed8c8 + local_8 * 4);
       *_DAT_800bf544 = *puVar3 | 0x9000000;
       *puVar3 = (uint)_DAT_800bf544;
-      _DAT_800bf544[1] = *(uint *)(param_1 + 4);
-      _DAT_800bf544[2] = *(uint *)(param_1 + 8);
-      _DAT_800bf544[3] = *(uint *)(param_1 + 0xc);
-      _DAT_800bf544[4] = *(uint *)(param_1 + 0x10);
-      _DAT_800bf544[5] = *(uint *)(param_1 + 0x14);
-      _DAT_800bf544[6] = *(uint *)(param_1 + 0x18);
-      _DAT_800bf544[7] = *(uint *)(param_1 + 0x1c);
-      _DAT_800bf544[8] = *(uint *)(param_1 + 0x20);
-      _DAT_800bf544[9] = *(uint *)(param_1 + 0x24);
+      _DAT_800bf544->flags = *(uint *)(param_1 + 4);
+      _DAT_800bf544->kind = *(uint *)(param_1 + 8);
+      _DAT_800bf544->sub_type = *(uint *)(param_1 + 0xc);
+      _DAT_800bf544->state = param_1->parent;
+      _DAT_800bf544->behavior_state = param_1->script_ptr;
+      _DAT_800bf544->action_state = param_1->script_data;
+      _DAT_800bf544->sub_action = param_1->callback;
+      _DAT_800bf544->counter1 = param_1->prev;
+      _DAT_800bf544->counter2 = param_1->next;
       _DAT_800bf544 = _DAT_800bf544 + 10;
     }
   }

@@ -1,5 +1,5 @@
 /**
- * @brief Entity type lookup: switch on entity[2] returns sprite/animation mode
+ * @brief Entity type lookup: switch on entity->kind returns sprite/animation mode
  * @note Original: func_8005B5E4 at 0x8005B5E4
  */
 // Entity_LookupType
@@ -9,7 +9,7 @@
 undefined4 FUN_8005b5e4(int param_1)
 
 {
-  switch(*(undefined1 *)(param_1 + 2)) {
+  switch(param_1->kind) {
   case 0:
   case 0x10:
   case 0x19:

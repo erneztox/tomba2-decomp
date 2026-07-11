@@ -16,15 +16,15 @@ void FUN_8007ee74(uint param_1)
   uint uVar5;
   uint uVar6;
   int iVar7;
-  undefined *local_48 [4];
-  short local_38 [8];
-  ushort local_28 [8];
+  undefined local_48->state;
+  short local_38->counter1;
+  ushort local_28->counter1;
   
   uVar6 = 0;
   iVar7 = 0x50;
-  local_48[0] = PTR_s_Continue_800a286c;
-  local_48[1] = PTR_s_Load_data_800a2870;
-  local_48[2] = PTR_s_Quit_game_800a2874;
+  local_48->type = PTR_s_Continue_800a286c;
+  local_48->flags = PTR_s_Load_data_800a2870;
+  local_48->kind = PTR_s_Quit_game_800a2874;
   sVar4 = FUN_800793c4(local_48,3,local_38);
   uVar5 = param_1;
   do {

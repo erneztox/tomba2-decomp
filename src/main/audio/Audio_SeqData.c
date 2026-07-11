@@ -14,7 +14,7 @@ void FUN_80093650(byte param_1)
   uint uVar1;
   int iVar2;
   ushort uVar3;
-  int local_60 [2];
+  int local_60->kind;
   undefined2 local_58;
   undefined2 local_56;
   undefined2 local_4c;
@@ -52,7 +52,7 @@ void FUN_80093650(byte param_1)
     DAT_80105cec = 0x18;
   }
   uVar1 = 0;
-  local_60[1] = 0x60093;
+  local_60->flags = 0x60093;
   local_4c = 0x1000;
   local_44 = 0x1000;
   local_26 = 0x80ff;
@@ -62,7 +62,7 @@ void FUN_80093650(byte param_1)
   if ('\0' < (char)DAT_80105cec) {
     do {
       iVar2 = (uVar1 & 0xffff) * 0x38;
-      local_60[0] = 1 << (uVar1 & 0x1f);
+      local_60->type = 1 << (uVar1 & 0x1f);
       *(undefined2 *)(iVar2 + -0x7fefab36) = 0x18;
       *(undefined2 *)(iVar2 + -0x7fefab38) = 0xff;
       (&DAT_801054e5)[iVar2] = 0;

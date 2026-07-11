@@ -25,6 +25,6 @@ undefined4 FUN_800836b8(undefined4 param_1,undefined4 param_2)
     uVar2 = *DAT_800a5ab4;
   }
   FUN_80085b80(2,FUN_80083ad0);
-  (**(code **)(PTR_PTR_800a5998 + 0x20))(param_1,param_2);
+  (*PTR_PTR_800a5998->prev)(param_1,param_2);
   return 0;
 }

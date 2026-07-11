@@ -28,7 +28,7 @@ uint * FUN_8008007c(uint *param_1,int param_2,int param_3)
     do {
       param_3 = param_3 + -1;
       setCopReg(2,in_zero,param_1[10]);
-      setCopReg(2,0x800,param_1[9] >> 0x10);
+      setCopReg(2,0x800,param_1->counter2 >> 0x10);
       uVar6 = puVar9[-3];
       puVar8[-5] = uVar6 & 0xfff0f0f0;
       copFunction(2,0x180001);
@@ -38,13 +38,13 @@ uint * FUN_8008007c(uint *param_1,int param_2,int param_3)
       _DAT_1f800080 = getCopControlWord(2,0xf800);
       if (-1 < _DAT_1f800080) {
         uVar5 = getCopReg(2,0xe);
-        _DAT_800bf544[0xb] = uVar5;
-        setCopReg(2,in_zero,param_1[5]);
-        setCopReg(2,0x800,param_1[6]);
-        setCopReg(2,0x1800,param_1[6] >> 0x10);
-        setCopReg(2,_DAT_800bf544 + 0xb,param_1[7]);
-        setCopReg(2,uVar6,param_1[8]);
-        setCopReg(2,0x2800,param_1[9]);
+        _DAT_800bf544->render_flags = uVar5;
+        setCopReg(2,in_zero,param_1->behavior_state);
+        setCopReg(2,0x800,param_1->action_state);
+        setCopReg(2,0x1800,param_1->action_state >> 0x10);
+        setCopReg(2,_DAT_800bf544 + 0xb,param_1->sub_action);
+        setCopReg(2,uVar6,param_1->counter1);
+        setCopReg(2,0x2800,param_1->counter2);
         uVar5 = *param_1;
         puVar8[-0xb] = uVar5 & 0xfff0f0f0;
         copFunction(2,0x280030);
@@ -56,11 +56,11 @@ uint * FUN_8008007c(uint *param_1,int param_2,int param_3)
           _DAT_1f800080 = getCopReg(2,0x18);
           if (0 < _DAT_1f800080) {
             uVar5 = getCopReg(2,0xc);
-            _DAT_800bf544[2] = uVar5;
+            _DAT_800bf544->kind = uVar5;
             uVar5 = getCopReg(2,0xd);
-            _DAT_800bf544[5] = uVar5;
+            _DAT_800bf544->behavior_state = uVar5;
             uVar5 = getCopReg(2,0xe);
-            _DAT_800bf544[8] = uVar5;
+            _DAT_800bf544->counter1 = uVar5;
             if ((((((ushort)puVar8[-10] < 0x140) || ((ushort)puVar8[-7] < 0x140)) ||
                  ((ushort)puVar8[-4] < 0x140)) || ((ushort)puVar8[-1] < 0x140)) &&
                (((*(ushort *)((int)puVar8 + -0x26) < 0xf0 ||

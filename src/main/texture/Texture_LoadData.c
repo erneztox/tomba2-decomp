@@ -20,6 +20,6 @@ void FUN_800450bc(undefined4 *param_1,int param_2)
   }
   *param_1 = puVar2;
   uVar1 = FUN_80080930();
-  param_1[1] = uVar1;
+  param_1->flags = uVar1;
   return;
 }

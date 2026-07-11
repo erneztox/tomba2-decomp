@@ -24,7 +24,7 @@ void EntityLoop_Background(void) {
             break;
         }
 
-        switch (entity->action_id) {
+        switch entity->action_id {
             case 0:
             case 0xF:
                 func_8003CCA4(entity);

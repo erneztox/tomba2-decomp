@@ -41,8 +41,8 @@ LAB_800481dc:
     _DAT_1f8001c2 = _DAT_1f8001c6;
     _DAT_1f8001c6 = uVar4;
   }
-  uVar5 = (uint)(_DAT_1f8001e0[3] >> 8);
-  uVar6 = _DAT_1f8001e0[3] & 0xff;
+  uVar5 = (uint)(_DAT_1f8001e0->sub_type >> 8);
+  uVar6 = _DAT_1f8001e0->sub_type & 0xff;
   if ((uVar1 & 8) == 0) {
     iVar2 = uVar5 * ((int)(short)_DAT_1f8001c2 - uVar6);
     uVar6 = uVar6 ^ 0x3f;

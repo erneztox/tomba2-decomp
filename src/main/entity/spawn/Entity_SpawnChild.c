@@ -21,9 +21,9 @@ int FUN_80072ddc(undefined4 param_1,byte param_2,char param_3,undefined1 param_4
     iVar2 = 0;
   }
   else {
-    *(byte *)(iVar2 + 0x28) = param_2;
-    *(undefined4 *)(iVar2 + 0x10) = param_1;
-    *(undefined1 *)(iVar2 + 2) = param_4;
+    iVar2->alloc_flags = param_2;
+    iVar2->parent = param_1;
+    iVar2->kind = param_4;
   }
   return iVar2;
 }

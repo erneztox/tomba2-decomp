@@ -21,6 +21,6 @@ undefined4 FUN_800416a8(int param_1,short param_2,undefined4 param_3)
     uVar1 = *(undefined4 *)(&DAT_800ecf58 + param_2 * 4);
     *(undefined4 *)(param_1 + 0x7c) = param_3;
   }
-  *(undefined4 *)(param_1 + 0x3c) = uVar1;
+  param_1->sprite_data = uVar1;
   return 1;
 }

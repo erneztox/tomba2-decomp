@@ -10,7 +10,7 @@ void FUN_800499e8(void)
 
 {
   int iVar1;
-  undefined1 auStack_20 [4];
+  undefined1 auStack_20->state;
   undefined4 local_1c;
   
   DAT_1f80019a = 0;

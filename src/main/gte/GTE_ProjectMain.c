@@ -84,7 +84,7 @@ void FUN_8002bc9c(int param_1)
       _DAT_1f800008 = CONCAT22((short)uVar5,(short)uVar7);
       _DAT_1f800010 = CONCAT22(_DAT_1f800012,(short)uVar8);
       setCopReg(2,in_zero,*(undefined4 *)(param_1 + 0x2c));
-      setCopReg(2,extraout_at,*(undefined4 *)(param_1 + 0x30));
+      setCopReg(2,extraout_at,param_1->pos_y_fixed);
       copFunction(2,0x486012);
       _DAT_1f800014 = getCopReg(2,0x19);
       _DAT_1f800018 = getCopReg(2,0x1a);
@@ -102,11 +102,11 @@ void FUN_8002bc9c(int param_1)
       setCopControlWord(2,0x3800,_DAT_1f80001c);
       FUN_80027768(uVar11,0,(int)*(short *)(param_1 + 0x32),0);
       iVar10 = iVar10 + 1;
-      *(short *)(param_1 + 0x4a) = *(short *)(param_1 + 0x4a) + 0x400;
+      param_1->velocity_y = param_1->velocity_y + 0x400;
       in_at = extraout_at_00;
     } while (iVar10 < 4);
   }
-  if ((*(byte *)(param_1 + 3) - 0x14 < 2) && (*(int *)(param_1 + 0x34) != 0)) {
+  if ((param_1->sub_type - 0x14 < 2) && (param_1->scale_y != 0)) {
     setCopControlWord(2,0,_DAT_1f8000f8);
     setCopControlWord(2,0x800,_DAT_1f8000fc);
     setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -147,8 +147,8 @@ void FUN_8002bc9c(int param_1)
     }
     else {
       _DAT_1f800088 = _DAT_1f800084;
-      uVar11 = FUN_80027a4c(*(int *)(param_1 + 0x34),*(undefined4 *)(param_1 + 0x44));
-      *(undefined4 *)(param_1 + 0x38) = uVar11;
+      uVar11 = FUN_80027a4c(param_1->scale_y,*(undefined4 *)(param_1 + 0x44));
+      param_1->anim_data = uVar11;
     }
   }
   return;

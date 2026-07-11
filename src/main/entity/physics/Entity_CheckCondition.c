@@ -1,5 +1,5 @@
 /**
- * @brief Entity condition check: tests entity[2] and game state for behavior activation
+ * @brief Entity condition check: tests entity->kind and game state for behavior activation
  * @note Original: func_8006BD20 at 0x8006BD20
  */
 // Entity_CheckCondition
@@ -13,7 +13,7 @@ void FUN_8006bd20(int param_1)
 {
   int iVar1;
   
-  if (((7 < *(byte *)(param_1 + 2)) &&
+  if (((7 < param_1->kind) &&
       (((DAT_800bf870 != '\x05' || (2 < DAT_800bf871 - 1)) && ((DAT_800e7ff4 & 8) != 0)))) &&
      ((FUN_80058304(&DAT_800e7e80,1), DAT_800bfad6 == '\0' &&
       (iVar1 = FUN_80022d08(&DAT_800e7e80,param_1,1,1), iVar1 != 0)))) {

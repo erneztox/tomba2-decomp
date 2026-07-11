@@ -1,5 +1,5 @@
 /**
- * @brief Rotates entity toward target angle: entity[6] state, uses FUN_800776f8 approach, sets flag
+ * @brief Rotates entity toward target angle: entity->action_state state, uses FUN_800776f8 approach, sets flag
  * @note Original: func_800654D4 at 0x800654D4
  */
 // Entity_RotateToTarget
@@ -15,19 +15,19 @@ void FUN_800654d4(int param_1)
   short sVar2;
   uint uVar3;
   
-  bVar1 = *(byte *)(param_1 + 6);
+  bVar1 = param_1->action_state;
   if (bVar1 != 1) {
     if ((1 < bVar1) || (bVar1 != 0)) goto LAB_80065574;
-    *(undefined2 *)(param_1 + 0x58) = 0;
+    param_1->rot_z = 0;
     DAT_800bf80e = 0;
-    *(char *)(param_1 + 6) = *(char *)(param_1 + 6) + '\x01';
+    param_1->action_state = param_1->action_state + '\x01';
     FUN_80054d14(param_1,2,0);
   }
   uVar3 = (uint)_DAT_1f800192;
-  sVar2 = FUN_800776f8(uVar3 & 0xfff,(int)*(short *)(param_1 + 0x56),0x100);
-  *(short *)(param_1 + 0x56) = sVar2;
+  sVar2 = FUN_800776f8(uVar3 & 0xfff,(int)param_1->rot_y,0x100);
+  param_1->rot_y = sVar2;
   if ((int)sVar2 == (uVar3 & 0xfff)) {
-    *(char *)(param_1 + 6) = *(char *)(param_1 + 6) + '\x01';
+    param_1->action_state = param_1->action_state + '\x01';
     DAT_800bf80e = 1;
   }
 LAB_80065574:

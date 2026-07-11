@@ -37,10 +37,10 @@ int FUN_80046e2c(int param_1,short param_2,short param_3,short param_4)
   uVar12 = (uint)(iVar7 * iVar10) >> 0xc;
   while( true ) {
     sVar9 = (short)uVar12;
-    _DAT_1f8001bc = *(short *)(param_1 + 0x2e) + sVar9;
+    _DAT_1f8001bc = param_1->pos_y + sVar9;
     _DAT_1f8001be = *(short *)(param_1 + 0x32) + param_3;
     sVar2 = (short)uVar13;
-    _DAT_1f8001c0 = *(short *)(param_1 + 0x36) + sVar2;
+    _DAT_1f8001c0 = param_1->pos_z + sVar2;
     iVar7 = FUN_800498c8(param_1);
     if (iVar7 == 0) {
       return 0;
@@ -90,23 +90,23 @@ int FUN_80046e2c(int param_1,short param_2,short param_3,short param_4)
     }
     else if ((uVar5 == 4) || (uVar5 == 8)) {
       uVar5 = _DAT_1f8001bc & 0xffc0;
-      *(ushort *)(param_1 + 0x36) = _DAT_1f8001c0 & 0xffc0;
+      param_1->pos_z = _DAT_1f8001c0 & 0xffc0;
       sVar3 = _DAT_1f8001c2;
-      *(ushort *)(param_1 + 0x2e) = uVar5;
-      *(ushort *)(param_1 + 0x2e) = uVar5 + sVar3;
+      param_1->pos_y = uVar5;
+      param_1->pos_y = uVar5 + sVar3;
       bVar1 = (uVar6 & 0x8000) != 0;
-      *(short *)(param_1 + 0x36) = *(short *)(param_1 + 0x36) + sVar4;
+      param_1->pos_z = param_1->pos_z + sVar4;
       if (bVar1) {
         iVar14 = iVar14 + -1;
       }
       uVar6 = (ushort)bVar1;
       if (uVar6 == 0) {
-        *(short *)(param_1 + 0x2e) = *(short *)(param_1 + 0x2e) - sVar9;
-        *(short *)(param_1 + 0x36) = *(short *)(param_1 + 0x36) - sVar2;
+        param_1->pos_y = param_1->pos_y - sVar9;
+        param_1->pos_z = param_1->pos_z - sVar2;
         return (int)unaff_s4;
       }
-      *(short *)(param_1 + 0x2e) = *(short *)(param_1 + 0x2e) - sVar9;
-      *(short *)(param_1 + 0x36) = *(short *)(param_1 + 0x36) - sVar2;
+      param_1->pos_y = param_1->pos_y - sVar9;
+      param_1->pos_z = param_1->pos_z - sVar2;
       iVar7 = FUN_80083f50(iVar11);
       uVar12 = iVar7 * (iVar10 + -1) >> 0xc;
       iVar7 = FUN_80083e80(iVar11);

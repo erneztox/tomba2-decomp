@@ -53,7 +53,7 @@ LAB_80025eac:
     FUN_80025b78(0x800ed058);
   }
 LAB_80025fbc:
-  if ((*(short *)(_DAT_1f800138 + 0x4c) == 6) && (*(short *)(_DAT_1f800138 + 0x4e) != 0)) {
+  if ((_DAT_1f800138->normal_z == 6) && (_DAT_1f800138->sprite_x != 0)) {
     if (DAT_800bf870 == 5) {
       func_0x801121ac();
     }

@@ -34,8 +34,8 @@ void Engine_UpdateInputState(void) {
     u8 bVar1;
     
     if (D_800ED065 != 0) {
-        if ((D_800BF870[0] != 5 || D_800BF870[1] > 3) && D_800BF870[0] != 3) {
-            if (D_800BF870[0] != 0x14 && D_801F800137 != 1 && (D_800BF822 & 4) == 0) {
+        if ((D_800BF870->type != 5 || D_800BF870->flags > 3) && D_800BF870->type != 3) {
+            if (D_800BF870->type != 0x14 && D_801F800137 != 1 && (D_800BF822 & 4) == 0) {
                 func_80025744(D_800ED058);
             }
         }
@@ -43,8 +43,8 @@ void Engine_UpdateInputState(void) {
     
     bVar1 = D_800ED061 & 3;
     if (bVar1 == 1) {
-        if ((D_800BF870[0] != 5 || D_800BF870[1] > 3) && 
-            (D_800BF870[0] != 2 && D_800BF870[0] != 7 && D_800BF870[0] != 0x14)) {
+        if ((D_800BF870->type != 5 || D_800BF870->flags > 3) && 
+            (D_800BF870->type != 2 && D_800BF870->type != 7 && D_800BF870->type != 0x14)) {
             if (D_800ED059 != 0) {
                 func_80025934(D_800ED058, 0, 0);
             }
@@ -53,15 +53,15 @@ void Engine_UpdateInputState(void) {
         func_80025934(D_800ED058, 0, 0);
     }
     
-    if (D_800ED059 != 0 && D_800BF870[0] != 3) {
-        if (D_800BF870[0] < 4) {
-            if (D_800BF870[0] == 2) {
+    if (D_800ED059 != 0 && D_800BF870->type != 3) {
+        if (D_800BF870->type < 4) {
+            if (D_800BF870->type == 2) {
                 if (D_800BF816 == 0 && D_800ED060 == 0) {
                     func_80113628(D_800ED058);
                 }
             }
         } else {
-            if (D_800BF870[0] == 7) {
+            if (D_800BF870->type == 7) {
                 if (D_800BF816 == 0 && D_800ED060 == 0) {
                     func_801140A0(D_800ED058);
                 }
@@ -74,9 +74,9 @@ void Engine_UpdateInputState(void) {
     }
     
     if (*(s16*)(D_1F800138 + 0x4C) == 6 && *(s16*)(D_1F800138 + 0x4E) != 0) {
-        if (D_800BF870[0] == 5) {
+        if (D_800BF870->type == 5) {
             func_801121AC();
-        } else if (D_800BF870[0] == 0x14) {
+        } else if (D_800BF870->type == 0x14) {
             func_8010F8CC();
         }
     }

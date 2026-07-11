@@ -18,9 +18,9 @@ undefined4 FUN_8004a3d4(int param_1)
   if (_DAT_800e7fee == 0) {
     return 0;
   }
-  switch((int)((*(ushort *)(param_1 + 0x68) - 1) * 0x10000) >> 0x10) {
+  switch((int)((param_1->target_angle - 1) * 0x10000) >> 0x10) {
   case 0:
-    iVar2 = (int)*(short *)(param_1 + 0x68);
+    iVar2 = (int)param_1->target_angle;
     FUN_8004d4c4(iVar2,1);
     uVar3 = 0x1e;
     goto LAB_8004a490;
@@ -32,13 +32,13 @@ undefined4 FUN_8004a3d4(int param_1)
   case 6:
   case 7:
   case 8:
-    sVar1 = *(short *)(param_1 + 0x68);
+    sVar1 = param_1->target_angle;
     FUN_8004d4c4((int)sVar1,1);
     DAT_800bf88c = (undefined1)sVar1;
     DAT_800e7eec = DAT_800bf88c;
     break;
   case 5:
-    iVar2 = (int)*(short *)(param_1 + 0x68);
+    iVar2 = (int)param_1->target_angle;
     FUN_8004d4c4(iVar2,1);
     uVar3 = 0xf;
 LAB_8004a490:
@@ -59,11 +59,11 @@ LAB_8004a4e0:
     DAT_800bf9cf = DAT_800bf9cf + '\x01';
     break;
   case 0x2e:
-    FUN_8004d4c4((int)*(short *)(param_1 + 0x68),1);
+    FUN_8004d4c4((int)param_1->target_angle,1);
     FUN_80040b48(0x18);
     break;
   case 0x46:
-    FUN_8004d4c4((int)*(short *)(param_1 + 0x68),1);
+    FUN_8004d4c4((int)param_1->target_angle,1);
     FUN_80040b48(0x4d);
     break;
   case 0x56:
@@ -72,11 +72,11 @@ LAB_8004a4e0:
     FUN_80040b48(0x3e);
     break;
   case 0x69:
-    FUN_8004d4c4((int)*(short *)(param_1 + 0x68),1);
+    FUN_8004d4c4((int)param_1->target_angle,1);
     FUN_80040c00(0x58);
     break;
   case 0x6a:
-    FUN_8004d4c4((int)*(short *)(param_1 + 0x68),1);
+    FUN_8004d4c4((int)param_1->target_angle,1);
     FUN_80040c00(0x59);
     break;
   case 0x6f:
@@ -115,7 +115,7 @@ LAB_8004a640:
     FUN_8004ed94(uVar3,0x41);
     break;
   case 0x7b:
-    FUN_8004d4c4((int)*(short *)(param_1 + 0x68),1);
+    FUN_8004d4c4((int)param_1->target_angle,1);
     goto LAB_8004a6cc;
   case 0x88:
     FUN_8004d4f4(0x60,2);
@@ -137,7 +137,7 @@ LAB_8004a6cc:
     FUN_8004ed94(0xf,0x41);
     iVar2 = FUN_800310f4(0x711,0);
     if (iVar2 != 0) {
-      *(byte *)(iVar2 + 0x28) = *(byte *)(iVar2 + 0x28) | 0x80;
+      iVar2->alloc_flags = iVar2->alloc_flags | 0x80;
     }
     break;
   case 0x95:
@@ -147,7 +147,7 @@ LAB_8004a6cc:
     _DAT_800bf874 = _DAT_800bf874 + 100000;
     FUN_80071b44(param_1,100000,0);
   default:
-    FUN_8004d4c4((int)*(short *)(param_1 + 0x68),1);
+    FUN_8004d4c4((int)param_1->target_angle,1);
     break;
   case 0x9f:
   case 0xa0:
@@ -156,15 +156,15 @@ LAB_8004a6cc:
     func_0x80115aec(param_1);
     break;
   case 0xa5:
-    FUN_8004d4c4((int)*(short *)(param_1 + 0x68),1);
+    FUN_8004d4c4((int)param_1->target_angle,1);
     func_0x80114f24(param_1);
   }
   iVar2 = FUN_800310f4(0x1f,0xffffff74);
   if (iVar2 != 0) {
-    *(byte *)(iVar2 + 0x28) = *(byte *)(iVar2 + 0x28) | 0x80;
-    *(undefined2 *)(iVar2 + 0x2c) = *(undefined2 *)(param_1 + 0x2e);
-    *(undefined2 *)(iVar2 + 0x2e) = *(undefined2 *)(param_1 + 0x32);
-    *(undefined2 *)(iVar2 + 0x30) = *(undefined2 *)(param_1 + 0x36);
+    iVar2->alloc_flags = iVar2->alloc_flags | 0x80;
+    iVar2->pos_x = param_1->pos_y;
+    iVar2->pos_y = *(undefined2 *)(param_1 + 0x32);
+    *(undefined2 *)(iVar2 + 0x30) = param_1->pos_z;
   }
   FUN_80074590(0x28,0,0);
   return 1;

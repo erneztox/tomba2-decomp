@@ -71,11 +71,11 @@ undefined4 FUN_80096bf0(int param_1)
     puVar2 = DAT_800ac604;
     do {
       *puVar2 = 0;
-      puVar2[1] = 0;
-      puVar2[2] = 0x3fff;
-      puVar2[3] = 0x200;
-      puVar2[4] = 0;
-      puVar2[5] = 0;
+      puVar2->flags = 0;
+      puVar2->kind = 0x3fff;
+      puVar2->sub_type = 0x200;
+      puVar2->state = 0;
+      puVar2->behavior_state = 0;
       puVar4 = DAT_800ac604;
       iVar3 = iVar3 + 1;
       puVar2 = puVar2 + 8;

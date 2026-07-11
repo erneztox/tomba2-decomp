@@ -13,7 +13,7 @@ undefined4 FUN_8008c5d8(int param_1)
   undefined4 uVar2;
   int iVar3;
   uint uVar4;
-  undefined1 local_18 [8];
+  undefined1 local_18->counter1;
   
   FUN_80089b84(0);
   FUN_80089b98(0);
@@ -42,7 +42,7 @@ undefined4 FUN_8008c5d8(int param_1)
     }
   }
   FUN_80089aa8();
-  local_18[0] = (undefined1)DAT_800ac2f0;
+  local_18->type = (undefined1)DAT_800ac2f0;
   uVar4 = DAT_800ac2f0 & 0xff;
   uVar1 = FUN_80089a10();
   if (((uVar4 != uVar1) || (param_1 != 0)) && (iVar3 = FUN_80089bac(0xe,local_18,0), iVar3 == 0)) {

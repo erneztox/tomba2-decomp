@@ -41,8 +41,8 @@ bool FUN_80045cac(int param_1,ushort param_2,short param_3,short param_4)
   iVar6 = -iVar7;
   while( true ) {
     do {
-      _DAT_1f8001bc = *(short *)(param_1 + 0x2e) + (short)iVar7;
-      _DAT_1f8001c0 = *(short *)(param_1 + 0x36) + (short)uVar11;
+      _DAT_1f8001bc = param_1->pos_y + (short)iVar7;
+      _DAT_1f8001c0 = param_1->pos_z + (short)uVar11;
       iVar8 = FUN_800498c8(param_1);
       if (iVar8 == 0) {
         return false;
@@ -78,12 +78,12 @@ bool FUN_80045cac(int param_1,ushort param_2,short param_3,short param_4)
       else {
         local_38 = uVar5 & 0x7fff;
         uVar9 = _DAT_1f8001bc & 0xffc0;
-        *(ushort *)(param_1 + 0x36) = _DAT_1f8001c0 & 0xffc0;
+        param_1->pos_z = _DAT_1f8001c0 & 0xffc0;
         sVar3 = _DAT_1f8001c2;
-        *(ushort *)(param_1 + 0x2e) = uVar9;
-        *(ushort *)(param_1 + 0x2e) = uVar9 + sVar3;
+        param_1->pos_y = uVar9;
+        param_1->pos_y = uVar9 + sVar3;
         bVar1 = ((int)(short)uVar5 & 0x8000U) != 0;
-        *(short *)(param_1 + 0x36) = *(short *)(param_1 + 0x36) + sVar4;
+        param_1->pos_z = param_1->pos_z + sVar4;
         if (bVar1) {
           local_30 = local_30 + -1;
         }
@@ -101,12 +101,12 @@ bool FUN_80045cac(int param_1,ushort param_2,short param_3,short param_4)
           else {
             uVar11 = uVar11 - 1;
           }
-          *(short *)(param_1 + 0x2e) = *(short *)(param_1 + 0x2e) - (short)iVar7;
-          *(short *)(param_1 + 0x36) = *(short *)(param_1 + 0x36) - (short)uVar11;
+          param_1->pos_y = param_1->pos_y - (short)iVar7;
+          param_1->pos_z = param_1->pos_z - (short)uVar11;
         }
         else {
-          *(short *)(param_1 + 0x2e) = *(short *)(param_1 + 0x2e) - (short)iVar7;
-          *(short *)(param_1 + 0x36) = *(short *)(param_1 + 0x36) - (short)uVar11;
+          param_1->pos_y = param_1->pos_y - (short)iVar7;
+          param_1->pos_z = param_1->pos_z - (short)uVar11;
           iVar7 = FUN_80083f50(iVar10);
           iVar7 = iVar7 * (short)param_2 >> 0xc;
           iVar8 = FUN_80083e80(iVar10);

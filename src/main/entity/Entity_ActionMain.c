@@ -11,7 +11,7 @@ void FUN_80058f5c(int param_1)
 {
   char cVar1;
   
-  switch(*(undefined1 *)(param_1 + 5)) {
+  switch(param_1->behavior_state) {
   case 0:
     FUN_8005a910(param_1);
     goto LAB_800594a0;
@@ -22,29 +22,29 @@ void FUN_80058f5c(int param_1)
     FUN_8005aee4(param_1);
     goto LAB_8005919c;
   case 3:
-    *(undefined1 *)(param_1 + 0x17b) = 1;
+    param_1->flag_17B = 1;
     FUN_8005b63c(param_1);
-    cVar1 = *(char *)(param_1 + 0x29);
+    cVar1 = param_1->collision_state;
     goto code_r0x800590f8;
   case 4:
-    *(undefined1 *)(param_1 + 0x17b) = 1;
+    param_1->flag_17B = 1;
     FUN_800645e0(param_1);
     goto LAB_80059194;
   case 5:
   case 0x32:
-    *(undefined1 *)(param_1 + 0x17b) = 1;
+    param_1->flag_17B = 1;
     FUN_8005c8a0(param_1);
     break;
   case 6:
-    *(undefined1 *)(param_1 + 0x17b) = 1;
+    param_1->flag_17B = 1;
     FUN_8005d16c(param_1);
     break;
   case 7:
-    *(undefined1 *)(param_1 + 0x17b) = 1;
+    param_1->flag_17B = 1;
     FUN_80064ba0(param_1);
     goto LAB_80059220;
   case 8:
-    *(undefined1 *)(param_1 + 0x17b) = 1;
+    param_1->flag_17B = 1;
     FUN_80064e48(param_1);
     goto LAB_80059220;
   case 9:
@@ -70,31 +70,31 @@ void FUN_80058f5c(int param_1)
     break;
   case 0x10:
     FUN_8005c26c(param_1);
-    if (*(char *)(param_1 + 0x78) == '\a') {
+    if (param_1->sub_state == '\a') {
       return;
     }
-    *(undefined1 *)(param_1 + 0x17b) = 1;
+    param_1->flag_17B = 1;
     cVar1 = DAT_1f800137;
 code_r0x800590f8:
     if (cVar1 != '\0') {
       FUN_80053d90(param_1);
-      *(undefined1 *)(param_1 + 0x144) = 0;
+      param_1->state_flag144 = 0;
       FUN_80054198(param_1);
-      *(undefined1 *)(param_1 + 5) = 0;
-      *(undefined1 *)(param_1 + 6) = 0;
-      *(undefined1 *)(param_1 + 7) = 0;
+      param_1->behavior_state = 0;
+      param_1->action_state = 0;
+      param_1->sub_action = 0;
     }
     break;
   case 0x11:
-    *(undefined1 *)(param_1 + 0x17b) = 1;
+    param_1->flag_17B = 1;
     FUN_8005f2f0(param_1);
     break;
   case 0x12:
-    *(undefined1 *)(param_1 + 0x17b) = 1;
+    param_1->flag_17B = 1;
     FUN_8005fb54(param_1);
     goto LAB_800594a0;
   case 0x13:
-    *(undefined1 *)(param_1 + 0x17b) = 1;
+    param_1->flag_17B = 1;
     FUN_8005f1b0(param_1);
     break;
   case 0x14:
@@ -125,7 +125,7 @@ LAB_8005919c:
     }
     break;
   case 0x19:
-    *(undefined1 *)(param_1 + 0x17b) = 1;
+    param_1->flag_17B = 1;
     FUN_80060c60(param_1);
 LAB_80059220:
     FUN_80058f24(param_1);
@@ -164,7 +164,7 @@ LAB_80059220:
     if (DAT_1f800137 != '\0') {
       return;
     }
-    *(undefined1 *)(param_1 + 5) = 0x2d;
+    param_1->behavior_state = 0x2d;
     goto LAB_800594b4;
   case 0x1e:
     FUN_800654d4(param_1);
@@ -185,7 +185,7 @@ LAB_80059220:
     FUN_800655a0(param_1);
     break;
   case 0x24:
-    *(undefined1 *)(param_1 + 0x17b) = 1;
+    param_1->flag_17B = 1;
     FUN_80065a54(param_1);
     break;
   case 0x25:
@@ -198,9 +198,9 @@ LAB_80059220:
     FUN_800661e0(param_1);
 LAB_800594a0:
     if (DAT_1f800137 == '\0') {
-      *(undefined1 *)(param_1 + 5) = 0x20;
+      param_1->behavior_state = 0x20;
 LAB_800594b4:
-      *(undefined1 *)(param_1 + 6) = 0;
+      param_1->action_state = 0;
     }
     break;
   case 0x29:
@@ -213,7 +213,7 @@ LAB_800594b4:
     func_0x80113608(param_1);
     break;
   case 0x2c:
-    *(undefined1 *)(param_1 + 0x17b) = 1;
+    param_1->flag_17B = 1;
     func_0x801125e4(param_1);
     break;
   case 0x2d:
@@ -251,7 +251,7 @@ LAB_800594b4:
     FUN_8006228c(param_1);
     break;
   case 0x3a:
-    *(undefined1 *)(param_1 + 0x17b) = 1;
+    param_1->flag_17B = 1;
     FUN_800624b4(param_1);
     break;
   case 0x3b:

@@ -1,5 +1,5 @@
 /**
- * @brief Entity attack state variant 5: entity[6] state machine
+ * @brief Entity attack state variant 5: entity->action_state state machine
  * @note Original: func_8006506C at 0x8006506C
  */
 // Entity_State_Attack5
@@ -15,7 +15,7 @@ void FUN_8006506c(int param_1)
   int iVar2;
   undefined4 uVar3;
   
-  bVar1 = *(byte *)(param_1 + 6);
+  bVar1 = param_1->action_state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (bVar1 == 2) {
@@ -26,12 +26,12 @@ void FUN_8006506c(int param_1)
           }
           *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 0x10;
           FUN_80062d8c(param_1,1);
-          *(undefined1 *)(param_1 + 6) = 1;
+          param_1->action_state = 1;
           return;
         }
-        *(undefined1 *)(param_1 + 5) = 7;
-        *(undefined1 *)(param_1 + 6) = 2;
-        *(undefined1 *)(param_1 + 7) = 0;
+        param_1->behavior_state = 7;
+        param_1->action_state = 2;
+        param_1->sub_action = 0;
         return;
       }
       if (bVar1 != 3) {
@@ -49,27 +49,27 @@ void FUN_8006506c(int param_1)
       return;
     }
     FUN_80054198(param_1);
-    *(undefined2 *)(param_1 + 0x6a) = 0;
+    param_1->type_flags = 0;
     if ((*(uint *)(param_1 + 0x17c) & 0x4400200) == 0x200) {
-      *(undefined1 *)(param_1 + 6) = 3;
-      *(undefined1 *)(param_1 + 7) = 0;
+      param_1->action_state = 3;
+      param_1->sub_action = 0;
       FUN_80054d14(param_1,0x40);
-      if ((*(byte *)(param_1 + 0x15c) & 2) == 0) {
+      if ((param_1->anim_param & 2) == 0) {
         return;
       }
       *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 0x20;
       FUN_80062d8c(param_1,0x81);
       return;
     }
-    if ((*(byte *)(param_1 + 0x15c) & 2) != 0) {
+    if ((param_1->anim_param & 2) != 0) {
       FUN_80054d14(param_1,0x18,3);
-      *(undefined1 *)(param_1 + 6) = 2;
-      *(undefined1 *)(param_1 + 7) = 0;
+      param_1->action_state = 2;
+      param_1->sub_action = 0;
       return;
     }
     FUN_80054d14(param_1,0x40,3);
-    *(undefined1 *)(param_1 + 7) = 0;
-    *(char *)(param_1 + 6) = *(char *)(param_1 + 6) + '\x01';
+    param_1->sub_action = 0;
+    param_1->action_state = param_1->action_state + '\x01';
   }
   FUN_80076d68(param_1);
   if ((_DAT_800ecf54 & 0x10) == 0) {
@@ -92,16 +92,16 @@ void FUN_8006506c(int param_1)
 LAB_80065238:
   iVar2 = FUN_80055824();
   if (iVar2 != 0) {
-    *(undefined1 *)(param_1 + 5) = 4;
-    *(undefined1 *)(param_1 + 6) = 2;
-    *(undefined1 *)(param_1 + 0x164) = 0;
-    *(undefined1 *)(param_1 + 7) = 0;
-    *(undefined4 *)(param_1 + 0x158) = 0;
-    *(undefined2 *)(param_1 + 0x58) = 0;
-    *(undefined2 *)(param_1 + 0x40) = 8;
+    param_1->behavior_state = 4;
+    param_1->action_state = 2;
+    param_1->action_flag = 0;
+    param_1->sub_action = 0;
+    param_1->state_ptr = 0;
+    param_1->rot_z = 0;
+    param_1->timer1 = 8;
     FUN_80074590(0x1d,0,0);
     FUN_80055e28(param_1,0);
-    *(byte *)(param_1 + 0x149) = (*(byte *)(param_1 + 0x14a) & 1) + 2;
+    *(byte *)(param_1 + 0x149) = (param_1->behavior_flags & 1) + 2;
     FUN_80054d14(param_1,0x14,0);
   }
   return;

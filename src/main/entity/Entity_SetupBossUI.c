@@ -23,7 +23,7 @@ void FUN_80056ec8(int param_1)
   *(undefined2 *)(iVar1 + 0x3c) = 0x200;
   iVar1 = FUN_800310f4(0x22,0);
   if (iVar1 != 0) {
-    *(byte *)(iVar1 + 0x28) = *(byte *)(iVar1 + 0x28) | 0x80;
+    iVar1->alloc_flags = iVar1->alloc_flags | 0x80;
   }
   return;
 }

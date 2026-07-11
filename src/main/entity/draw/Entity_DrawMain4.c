@@ -35,7 +35,7 @@ void FUN_8002d65c(int param_1)
   undefined4 in_stack_ffffffa4;
   undefined2 uVar18;
   uint uVar19;
-  undefined1 auStack_50 [8];
+  undefined1 auStack_50->counter1;
   undefined4 local_48;
   undefined4 local_44;
   int local_40;
@@ -46,7 +46,7 @@ void FUN_8002d65c(int param_1)
   
   uVar16 = 0;
   iVar14 = 0;
-  iVar17 = *(int *)(param_1 + 0x34);
+  iVar17 = param_1->scale_y;
   if (iVar17 != 0) {
     setCopControlWord(2,0,_DAT_1f8000f8);
     setCopControlWord(2,0x800,_DAT_1f8000fc);
@@ -66,11 +66,11 @@ void FUN_8002d65c(int param_1)
     do {
       uVar18 = (undefined2)((uint)in_stack_ffffffa4 >> 0x10);
       iVar3 = FUN_80083f50(iVar14);
-      sVar5 = *(short *)(param_1 + 0x2c) + (short)(iVar3 * 0x4b0 >> 0xc);
+      sVar5 = param_1->pos_x + (short)(iVar3 * 0x4b0 >> 0xc);
       iVar3 = FUN_80083e80(iVar14);
       in_stack_ffffffa4 =
            CONCAT22(uVar18,*(short *)(param_1 + 0x30) + (short)(iVar3 * 0x4b0 >> 0xc));
-      sVar6 = *(short *)(param_1 + 0x2e) + *(short *)(param_1 + 0x4e);
+      sVar6 = param_1->pos_y + param_1->sprite_x;
       sVar2 = sVar6 + -0xc00;
       iVar3 = 0;
       if (3 < iVar15) {
@@ -131,7 +131,7 @@ void FUN_8002d65c(int param_1)
       iVar15 = iVar15 + 1;
       iVar14 = iVar14 + 0x400;
     } while (iVar15 < 8);
-    *(undefined4 *)(param_1 + 0x38) = uVar16;
+    param_1->anim_data = uVar16;
     uVar19 = DAT_800102b4;
     FUN_8009a420(auStack_50,0,8,puVar7,uVar10,in_stack_ffffffa4,DAT_800102b4);
     local_48 = *(undefined4 *)(param_1 + 0x2c);

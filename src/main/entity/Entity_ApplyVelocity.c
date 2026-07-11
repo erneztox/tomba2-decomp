@@ -10,19 +10,19 @@ void FUN_80056b48(int param_1,int param_2)
 
 {
   *(int *)(param_1 + 0x2c) =
-       *(int *)(param_1 + 0x2c) + (int)*(short *)(param_1 + 0x48) * (int)*(short *)(param_1 + 0x44);
-  *(int *)(param_1 + 0x34) =
-       *(int *)(param_1 + 0x34) + (int)*(short *)(param_1 + 0x4c) * (int)*(short *)(param_1 + 0x44);
+       *(int *)(param_1 + 0x2c) + (int)param_1->normal_x * (int)param_1->anim_counter;
+  param_1->scale_y =
+       param_1->scale_y + (int)param_1->normal_z * (int)param_1->anim_counter;
   if (param_2 == 0) {
-    *(int *)(param_1 + 0x30) =
-         *(int *)(param_1 + 0x30) +
-         (int)*(short *)(param_1 + 0x4a) * (int)*(short *)(param_1 + 0x44);
+    param_1->pos_y_fixed =
+         param_1->pos_y_fixed +
+         (int)param_1->velocity_y * (int)param_1->anim_counter;
   }
-  if ((*(char *)(param_1 + 0x16b) == '\0') && (*(char *)(param_1 + 0x61) == '\0')) {
+  if ((param_1->physics_flag == '\0') && (*(char *)(param_1 + 0x61) == '\0')) {
     FUN_80054650(param_1,0);
   }
   else {
-    *(byte *)(param_1 + 0x5f) = *(byte *)(param_1 + 0x5f) & 0xfb;
+    param_1->input_flags = param_1->input_flags & 0xfb;
   }
   return;
 }

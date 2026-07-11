@@ -10,7 +10,7 @@ void FUN_80073260(undefined1 *param_1)
 
 {
   *param_1 = 2;
-  if (param_1[0xbf] != '\0') {
+  if (param_1->combat_flag != '\0') {
     FUN_80074590(0x17,0,0xf);
   }
   DAT_800e7fc5 = 0;

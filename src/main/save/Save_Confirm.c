@@ -1,5 +1,5 @@
 /**
- * @brief Save confirmation: entity[1] state, handles yes/no
+ * @brief Save confirmation: entity->flags state, handles yes/no
  * @note Original: func_800399FC at 0x800399FC
  */
 // Save_Confirm
@@ -17,7 +17,7 @@ void FUN_800399fc(int param_1)
   uint uVar4;
   undefined4 uVar5;
   
-  bVar1 = *(byte *)(param_1 + 1);
+  bVar1 = param_1->flags;
   if (bVar1 != 1) {
     if (bVar1 < 2) {
       if (bVar1 != 0) {
@@ -29,18 +29,18 @@ void FUN_800399fc(int param_1)
         return;
       }
       FUN_80034634(param_1);
-      *(undefined1 *)(param_1 + 1) = 0;
+      param_1->flags = 0;
     }
     sVar2 = FUN_8003990c(*(undefined1 *)(param_1 + 0x1f));
     iVar3 = FUN_8007e038((int)sVar2,1);
     *(int *)(param_1 + 0x28) = iVar3;
     if (iVar3 != 0) {
-      *(char *)(param_1 + 1) = *(char *)(param_1 + 1) + '\x01';
+      param_1->flags = param_1->flags + '\x01';
     }
   }
   if ((_DAT_800e7e68 & 0x2000) != 0) {
 LAB_80039b30:
-    *(undefined1 *)(param_1 + 9) = 0;
+    param_1->counter2 = 0;
     FUN_80034670(param_1);
     return;
   }
@@ -67,7 +67,7 @@ LAB_80039b30:
     if (iVar3 == 0) goto LAB_80039ba4;
 LAB_80039b88:
     uVar5 = 0x15;
-    *(char *)(param_1 + 1) = *(char *)(param_1 + 1) + '\x01';
+    param_1->flags = param_1->flags + '\x01';
   }
   else {
     *(undefined2 *)(param_1 + 0x18) = 0;

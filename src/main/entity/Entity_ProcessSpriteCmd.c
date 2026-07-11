@@ -29,8 +29,8 @@ void Entity_ProcessSpriteCmd(int param_1)
   if (pbVar8 != (byte *)0x0) {
     FUN_80085480(param_1 + 0x48,0x1f800000);
     local_28 = (uint)*pbVar8 << 2;
-    local_24 = (uint)pbVar8[1] << 2;
-    local_20 = (uint)pbVar8[2] << 2;
+    local_24 = (uint)pbVar8->flags << 2;
+    local_20 = (uint)pbVar8->kind << 2;
     FUN_80084520(0x1f800000,&local_28);
     setCopControlWord(2,0,_DAT_1f8000f8);
     setCopControlWord(2,0x800,_DAT_1f8000fc);
@@ -64,7 +64,7 @@ void Entity_ProcessSpriteCmd(int param_1)
     _DAT_1f800008 = CONCAT22((short)uVar3,(short)uVar5);
     _DAT_1f800010 = CONCAT22(_DAT_1f800012,(short)uVar6);
     setCopReg(2,in_zero,*(undefined4 *)(param_1 + 0x2c));
-    setCopReg(2,extraout_at,*(undefined4 *)(param_1 + 0x30));
+    setCopReg(2,extraout_at,param_1->pos_y_fixed);
     copFunction(2,0x486012);
     _DAT_1f800014 = getCopReg(2,0x19);
     _DAT_1f800018 = getCopReg(2,0x1a);
@@ -80,15 +80,15 @@ void Entity_ProcessSpriteCmd(int param_1)
     setCopControlWord(2,0x2800,_DAT_1f800014);
     setCopControlWord(2,0x3000,_DAT_1f800018);
     setCopControlWord(2,0x3800,_DAT_1f80001c);
-    if ((pbVar8[3] & 0x40) == 0) {
+    if ((pbVar8->sub_type & 0x40) == 0) {
       _DAT_1f800090 = 0;
-      bVar1 = pbVar8[3] & 0xf;   // Extract color/CLUT index (4 bits)
+      bVar1 = pbVar8->sub_type & 0xf;   // Extract color/CLUT index (4 bits)
     }
     else {
-      _DAT_1f800090 = (pbVar8[3] & 0x3f) * -0x40 + 0x1000;
+      _DAT_1f800090 = (pbVar8->sub_type & 0x3f) * -0x40 + 0x1000;
       bVar1 = 0;
     }
-    if ((pbVar8[3] & 0x80) == 0) {
+    if ((pbVar8->sub_type & 0x80) == 0) {
       *(byte **)(param_1 + 0x40) = pbVar8 + 4;
     }
     else {
@@ -99,7 +99,7 @@ void Entity_ProcessSpriteCmd(int param_1)
     setCopControlWord(2,0xb800,0);
     // Submit sprite to OT with color info
     FUN_80027768(*(undefined4 *)(param_1 + 0x50),bVar1,(int)*(short *)(param_1 + 0x32),
-                 *(undefined1 *)(param_1 + 0x29));
+                 param_1->collision_state);
   }
   return;
 }

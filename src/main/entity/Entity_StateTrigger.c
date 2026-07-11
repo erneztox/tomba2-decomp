@@ -1,5 +1,5 @@
 /**
- * @brief Entity state trigger: entity[0x78]=1, checks flag vs DAT_800bf816
+ * @brief Entity state trigger: entity->sub_state=1, checks flag vs DAT_800bf816
  * @note Original: func_80043D8C at 0x80043D8C
  */
 // Entity_StateTrigger
@@ -13,13 +13,13 @@ undefined4 FUN_80043d8c(int param_1,char param_2)
 {
   byte bVar1;
   
-  bVar1 = *(byte *)(param_1 + 0x78);
+  bVar1 = param_1->sub_state;
   if (bVar1 == 1) {
     _DAT_1f800190 = 0;
     if (DAT_800bf816 == param_2) {
-      *(char *)(param_1 + 0x78) = *(char *)(param_1 + 0x78) + '\x01';
+      param_1->sub_state = param_1->sub_state + '\x01';
     }
-    else if (*(short *)(param_1 + 0x74) == 0) {
+    else if (param_1->event_param == 0) {
       _DAT_1f800190 = _DAT_1f80016c;
     }
     else {
@@ -31,14 +31,14 @@ undefined4 FUN_80043d8c(int param_1,char param_2)
       return 0;
     }
     if (*(short *)(param_1 + 0x76) == 0) {
-      *(undefined1 *)(param_1 + 0x78) = 2;
+      param_1->sub_state = 2;
     }
     else {
       _DAT_1f800190 = 0;
-      _DAT_1f800192 = *(undefined2 *)(param_1 + 0x74);
+      _DAT_1f800192 = param_1->event_param;
       DAT_800e7e85 = 0x1f;
       DAT_800e7e86 = 0;
-      *(undefined1 *)(param_1 + 0x78) = 1;
+      param_1->sub_state = 1;
     }
   }
   else {

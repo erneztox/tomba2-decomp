@@ -20,19 +20,19 @@ undefined4 FUN_80047b5c(int param_1,int param_2)
   
   if (param_2 == 0) {
     uVar6 = 0xfff3;
-    uVar5 = (uint)(byte)_DAT_1f8001e4[3];
+    uVar5 = (uint)(byte)_DAT_1f8001e4->sub_type;
   }
   else {
     uVar6 = 0xfffd;
-    uVar5 = (uint)(_DAT_1f8001e4[3] >> 8);
+    uVar5 = (uint)(_DAT_1f8001e4->sub_type >> 8);
   }
-  pbVar4 = (byte *)(_DAT_1f8001d4 + (uint)_DAT_1f8001e4[1] * 8 + ((int)(uVar5 << 0x10) >> 0xd));
+  pbVar4 = (byte *)(_DAT_1f8001d4 + (uint)_DAT_1f8001e4->flags * 8 + ((int)(uVar5 << 0x10) >> 0xd));
   if (((*_DAT_1f8001e4 & 1) == 0) ||
      (uVar2 = 0,
      (ushort)(*(short *)(pbVar4 + 4) - (*(short *)(param_1 + 0x32) + -0x80)) <=
      *(ushort *)(pbVar4 + 6))) {
     psVar3 = (short *)(_DAT_1f8001c8 + (uint)*(ushort *)((uint)*pbVar4 * 2 + _DAT_1f8001c8) * 2);
-    sVar1 = FUN_80085690((int)psVar3[3] - (int)psVar3[2],(int)psVar3[1] - (int)*psVar3);
+    sVar1 = FUN_80085690((int)psVar3->sub_type - (int)psVar3->kind,(int)psVar3->flags - (int)*psVar3);
     _DAT_1f8001a0 = -sVar1;
     _DAT_1f8001a2 = _DAT_1f8001a0;
     if ((*_DAT_1f8001e4 & 0x10) == 0) {

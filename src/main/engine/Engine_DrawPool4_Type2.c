@@ -44,10 +44,10 @@ void FUN_80025934(int param_1,int param_2,undefined1 param_3)
     iVar1 = 0;
     do {
       pbVar2 = puVar4 + iVar1;
-      local_38 = pbVar2[3];
-      local_30 = (ushort)pbVar2[1] + sVar5;
-      local_2e = (ushort)pbVar2[2] + sVar6;
-      FUN_8007e1b8(&local_30,(&PTR_DAT_80017334)[*pbVar2],*(undefined4 *)(param_1 + 0x3c),&local_38)
+      local_38 = pbVar2->sub_type;
+      local_30 = (ushort)pbVar2->flags + sVar5;
+      local_2e = (ushort)pbVar2->kind + sVar6;
+      FUN_8007e1b8(&local_30,(&PTR_DAT_80017334)[*pbVar2],param_1->sprite_data,&local_38)
       ;
       iVar3 = iVar3 + 1;
       iVar1 = iVar3 * 4;
@@ -57,10 +57,10 @@ void FUN_80025934(int param_1,int param_2,undefined1 param_3)
   if (iVar3 < (int)(uint)DAT_800bf87d) {
     do {
       pbVar2 = puVar4 + iVar3 * 4;
-      local_38 = pbVar2[3];
-      local_30 = (ushort)pbVar2[1] + sVar5;
-      local_2e = (ushort)pbVar2[2] + sVar6;
-      FUN_8007e1b8(&local_30,(&PTR_DAT_80017334)[*pbVar2 + 1],*(undefined4 *)(param_1 + 0x3c),
+      local_38 = pbVar2->sub_type;
+      local_30 = (ushort)pbVar2->flags + sVar5;
+      local_2e = (ushort)pbVar2->kind + sVar6;
+      FUN_8007e1b8(&local_30,(&PTR_DAT_80017334)[*pbVar2 + 1],param_1->sprite_data,
                    &local_38);
       iVar3 = iVar3 + 1;
     } while (iVar3 < (int)(uint)DAT_800bf87d);
@@ -75,13 +75,13 @@ void FUN_80025934(int param_1,int param_2,undefined1 param_3)
   FUN_8007e6dc(&local_30,
                *(undefined4 *)
                 ((int)&PTR_DAT_80017334 + ((int)((_DAT_800e7fee + 0x11) * 0x10000) >> 0xe)),
-               *(undefined4 *)(param_1 + 0x3c),&local_38);
+               param_1->sprite_data,&local_38);
   local_36 = 0x8000;
   do {
     iVar1 = 4 - iVar3;
     iVar3 = iVar3 + 1;
     FUN_8007e1b8(&local_30,*(undefined4 *)((int)&PTR_DAT_80017334 + (iVar1 * 0x10000 >> 0xe)),
-                 *(undefined4 *)(param_1 + 0x3c),&local_38);
+                 param_1->sprite_data,&local_38);
   } while (iVar3 < 2);
   return;
 }

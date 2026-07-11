@@ -1,5 +1,5 @@
 /**
- * @brief Processes collision result: calls FUN_8001f40c, branches on entity[0x164] mode
+ * @brief Processes collision result: calls FUN_8001f40c, branches on entity->action_flag mode
  * @note Original: func_800235A0 at 0x800235A0
  */
 // Entity_ProcessCollision
@@ -17,7 +17,7 @@ undefined4 FUN_800235a0(int param_1,undefined4 param_2)
     uVar2 = 0;
   }
   else {
-    if (*(char *)(param_1 + 0x164) == '\f') {
+    if (param_1->action_flag == '\f') {
       uVar2 = 4;
     }
     else {

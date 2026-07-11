@@ -25,7 +25,7 @@ void FUN_80044e84(int *param_1,int param_2)
       piVar3 = param_1 + 1;
       param_1 = param_1 + 3;
       iVar1 = *param_1;
-      iVar2 = param_2 + (int)psVar4[5] * (int)psVar4[6] * -2;
+      iVar2 = param_2 + (int)psVar4->behavior_state * (int)psVar4->action_state * -2;
       FUN_80044d8c(piVar3,iVar2,piVar6);
       FUN_80081218(piVar3,iVar2);
       FUN_80080f6c(0);

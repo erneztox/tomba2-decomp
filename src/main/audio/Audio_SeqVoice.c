@@ -24,8 +24,8 @@ undefined4 FUN_80091460(short param_1,short param_2)
   pbVar5 = (byte *)*piVar6 + 1;
   *piVar6 = (int)pbVar5;
   if (((*(uint *)(iVar2 + *(int *)(&DAT_80104c30 + param_1 * 4) + 0x98) & 0x401) == 0x401) &&
-     (pbVar5 == (byte *)(piVar6[4] + 1))) {
-    FUN_8009121c((int)param_1,(int)param_2,*(undefined1 *)(piVar6[4] + 1));
+     (pbVar5 == (byte *)(piVar6->state + 1))) {
+    FUN_8009121c((int)param_1,(int)param_2,*(undefined1 *)(piVar6->state + 1));
     return 0xffffffff;
   }
   if ((bVar4 & 0x80) == 0) {
@@ -68,7 +68,7 @@ undefined4 FUN_80091460(short param_1,short param_2)
         *(undefined1 *)((int)piVar6 + 0x16) = 0x90;
         bVar4 = *pbVar5;
         *piVar6 = (int)(pbVar5 + 1);
-        bVar1 = pbVar5[1];
+        bVar1 = pbVar5->flags;
         *piVar6 = (int)(pbVar5 + 2);
         iVar2 = FUN_80090160((int)param_1,(int)param_2);
         piVar6[0x24] = iVar2;

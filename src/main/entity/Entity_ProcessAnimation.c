@@ -13,25 +13,25 @@ void Entity_ProcessAnimation(int param_1,undefined4 param_2)
   int iVar2;
   int iVar3;
   
-  if ((*(char *)(param_1 + 8) != '\0') &&
-     (iVar2 = 0, iVar3 = param_1, *(char *)(param_1 + 9) != '\0')) {
+  if ((param_1->counter1 != '\0') &&
+     (iVar2 = 0, iVar3 = param_1, param_1->counter2 != '\0')) {
     do {
-      if ((int)(uint)*(byte *)(param_1 + 8) <= iVar2) {
+      if ((int)(uint)param_1->counter1 <= iVar2) {
         return;
       }
-      iVar1 = *(int *)(iVar3 + 0xc0);
-      setCopControlWord(2,0,*(undefined4 *)(iVar1 + 0x18));
-      setCopControlWord(2,0x800,*(undefined4 *)(iVar1 + 0x1c));
-      setCopControlWord(2,0x1000,*(undefined4 *)(iVar1 + 0x20));
-      setCopControlWord(2,0x1800,*(undefined4 *)(iVar1 + 0x24));
+      iVar1 = iVar3->sprite_ptr1;
+      setCopControlWord(2,0,iVar1->script_data);
+      setCopControlWord(2,0x800,iVar1->callback);
+      setCopControlWord(2,0x1000,iVar1->prev);
+      setCopControlWord(2,0x1800,iVar1->next);
       setCopControlWord(2,0x2000,*(undefined4 *)(iVar1 + 0x28));
       setCopControlWord(2,0x2800,*(undefined4 *)(iVar1 + 0x2c));
-      setCopControlWord(2,0x3000,*(undefined4 *)(iVar1 + 0x30));
-      setCopControlWord(2,0x3800,*(undefined4 *)(iVar1 + 0x34));
+      setCopControlWord(2,0x3000,iVar1->pos_y_fixed);
+      setCopControlWord(2,0x3800,iVar1->scale_y);
       FUN_8003f698(*(undefined4 *)(iVar1 + 0x40),_DAT_800ed8c8,param_2);
       iVar2 = iVar2 + 1;
       iVar3 = iVar3 + 4;
-    } while (iVar2 < (int)(uint)*(byte *)(param_1 + 9));
+    } while (iVar2 < (int)(uint)param_1->counter2);
   }
   return;
 }

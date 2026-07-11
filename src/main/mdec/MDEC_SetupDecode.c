@@ -14,7 +14,7 @@ undefined1 FUN_80087aec(void)
   
   iVar2 = (*DAT_800abe4c)();
   if ((((*(char *)(iVar2 + 0x37) != '\0') || (*(char *)(iVar2 + 0x38) != '\0')) ||
-      ((iVar2 != *(int *)(iVar2 + 0x10) && (*(char *)(iVar2 + 0x39) != '\0')))) ||
+      ((iVar2 != iVar2->parent && (*(char *)(iVar2 + 0x39) != '\0')))) ||
      (**(char **)(iVar2 + 0x30) != '\0')) {
     bVar1 = *(byte *)(iVar2 + 0x49);
     if (bVar1 == 3) {

@@ -16,9 +16,9 @@ void FUN_80022760(int param_1)
   char *pcVar3;
   undefined4 *puVar4;
   
-  if (((*(short *)(param_1 + 0x16e) == 0) || (DAT_800bf80d != '\0')) ||
+  if (((param_1->timer_main == 0) || (DAT_800bf80d != '\0')) ||
      (uVar2 = 0, puVar4 = _DAT_1f800154, cVar1 = DAT_1f80015c,
-     (*(ushort *)(param_1 + 0x17e) & 0x200) != 0)) {
+     (param_1->entity_flags & 0x200) != 0)) {
     return;
   }
 joined_r0x800227c8:
@@ -31,7 +31,7 @@ joined_r0x800227c8:
   DAT_1f800182 = cVar1 + -1;
   puVar4 = puVar4 + 1;
   if (*pcVar3 != '\x01') goto switchD_8002281c_caseD_5;
-  switch(pcVar3[2]) {
+  switchpcVar3->kind {
   case '\0':
   case '\x01':
   case '\x02':
@@ -39,7 +39,7 @@ joined_r0x800227c8:
   case '\a':
     goto switchD_8002281c_caseD_0;
   case '\x04':
-    if (pcVar3[0x5e] == '\x02') {
+    if (pcVar3->flag_5E == '\x02') {
       func_0x80114e74(param_1);
       uVar2 = DAT_800bf80d;
       cVar1 = DAT_1f800182;

@@ -1,5 +1,5 @@
 /**
- * @brief UI inventory menu: entity[4]=1, manages inventory UI
+ * @brief UI inventory menu: entity->state=1, manages inventory UI
  * @note Original: func_8004CE14 at 0x8004CE14
  */
 // UI_InventoryMenu
@@ -18,7 +18,7 @@ void FUN_8004ce14(undefined1 *param_1)
   uint uVar7;
   char *pcVar8;
   
-  bVar1 = param_1[4];
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (bVar1 == 2) {
@@ -34,21 +34,21 @@ void FUN_8004ce14(undefined1 *param_1)
       return;
     }
     if (DAT_800bf873 != '\0') {
-      param_1[4] = 3;
+      param_1->state = 3;
       return;
     }
-    param_1[4] = 1;
+    param_1->state = 1;
     *param_1 = 1;
-    uVar2 = *(undefined4 *)(&DAT_800a3f00 + (uint)(byte)param_1[3] * 4);
+    uVar2 = *(undefined4 *)(&DAT_800a3f00 + (uint)(byte)param_1->sub_type * 4);
     *(undefined4 *)(param_1 + 0x74) = 0;
     *(undefined4 *)(param_1 + 0x6c) = uVar2;
     FUN_8004b354(param_1,0);
   }
   if (DAT_800bf870 == '\0') {
-    if (param_1[3] == '\x01') {
+    if (param_1->sub_type == '\x01') {
       if (DAT_1f800207 < 0x1c) goto LAB_8004cf64;
     }
-    else if ((param_1[3] != '\x02') || (0x1b < DAT_1f800207)) {
+    else if ((param_1->sub_type != '\x02') || (0x1b < DAT_1f800207)) {
 LAB_8004cf64:
       uVar7 = 0;
       pcVar8 = *(char **)(param_1 + 0x6c);
@@ -59,7 +59,7 @@ LAB_8004cf64:
         if (*pcVar8 != -1) {
           bVar1 = *(byte *)(psVar5 + -3);
           if ((bVar1 & 0x80) == 0) {
-            iVar4 = FUN_8004d7ec((int)psVar5[1],0);
+            iVar4 = FUN_8004d7ec((int)psVar5->flags,0);
             iVar3 = 0;
             if (iVar4 != 0) goto LAB_8004cff4;
           }
@@ -67,7 +67,7 @@ LAB_8004cf64:
           iVar3 = 0;
           if ((*(uint *)(param_1 + 0x74) & uVar6) == 0) {
             if ((bVar1 & 0x80) != 0) {
-              iVar4 = FUN_8004d868((int)psVar5[1],0);
+              iVar4 = FUN_8004d868((int)psVar5->flags,0);
               iVar3 = 0;
               if (iVar4 != 0) goto LAB_8004cff4;
             }
@@ -79,15 +79,15 @@ LAB_8004cf64:
         }
 LAB_8004cff4:
         if (iVar3 < 0) {
-          *(short *)(param_1 + 0x6a) = (short)uVar7;
-          param_1[0xb] = 0x1f;
-          param_1[1] = 1;
+          param_1->type_flags = (short)uVar7;
+          param_1->render_flags = 0x1f;
+          param_1->flags = 1;
           FUN_80077efc();
           return;
         }
         if (iVar3 != 0) {
           if ((DAT_800bf870 == '\x01') && (0xe < DAT_800bf871)) {
-            iVar3 = func_0x80111ccc((char)psVar5[2]);
+            iVar3 = func_0x80111ccc((char)psVar5->kind);
           }
           else {
             iVar3 = FUN_80077acc(param_1,(int)psVar5[-2],(int)psVar5[-1],(int)*psVar5);

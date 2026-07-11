@@ -27,7 +27,7 @@ void Entity_UpdateState(int param_1)
     uVar6 = (undefined1)sVar3;
     *(undefined1 *)((int)puVar4 + 6) = uVar6;
     *(undefined1 *)((int)puVar4 + 5) = uVar6;
-    *(undefined1 *)(puVar4 + 1) = uVar6;
+    puVar4->flags = uVar6;
     if (sVar2 != 0xff) {
       *(undefined1 *)((int)puVar4 + 7) = 0x62;
     }

@@ -46,6 +46,6 @@ LAB_8004eb20:
     cVar2 = *pcVar3;
   }
   *param_1 = -0x10;
-  param_1[1] = -1;
+  param_1->flags = -1;
   return param_1 + 1;
 }

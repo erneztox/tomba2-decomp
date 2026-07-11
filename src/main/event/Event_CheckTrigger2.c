@@ -27,12 +27,12 @@ bool FUN_80035640(int param_1)
         bVar1 = false;
         _DAT_1f800080 = iVar2;
         if ((*(char *)(iVar2 + 0xc) == (&DAT_800a2469)[param_1]) &&
-           (bVar1 = false, *(char *)(iVar2 + 2) == (&DAT_800a246a)[param_1])) {
+           (bVar1 = false, iVar2->kind == (&DAT_800a246a)[param_1])) {
           if ((&DAT_800a246b)[param_1] == -1) {
             bVar1 = true;
           }
           else {
-            bVar1 = *(char *)(iVar2 + 3) == (&DAT_800a246b)[param_1];
+            bVar1 = iVar2->sub_type == (&DAT_800a246b)[param_1];
           }
         }
       }

@@ -1,5 +1,5 @@
 /**
- * @brief Entity draw lifecycle variant 7: entity[4]=1, different draw path
+ * @brief Entity draw lifecycle variant 7: entity->state=1, different draw path
  * @note Original: func_80033450 at 0x80033450
  */
 // Entity_DrawLifecycle7
@@ -12,7 +12,7 @@ void FUN_80033450(int param_1)
   byte bVar1;
   int iVar2;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (3 < bVar1) {
@@ -25,28 +25,28 @@ void FUN_80033450(int param_1)
       return;
     }
     *(undefined4 *)(param_1 + 0x5c) = 0xc010c;
-    *(undefined1 *)(param_1 + 4) = 1;
-    *(undefined1 *)(param_1 + 5) = 0;
+    param_1->state = 1;
+    param_1->behavior_state = 0;
     *(undefined4 *)(param_1 + 0x58) = 0;
     *(undefined4 *)(param_1 + 0x60) = 0x1000;
   }
-  bVar1 = *(char *)(param_1 + 5) + 1;
-  *(byte *)(param_1 + 5) = bVar1;
+  bVar1 = param_1->behavior_state + 1;
+  param_1->behavior_state = bVar1;
   *(undefined4 *)(param_1 + 100) = *(undefined4 *)(&DAT_800a2068 + (uint)bVar1 * 4);
-  if (*(byte *)(param_1 + 5) < 4) {
+  if (param_1->behavior_state < 4) {
     *(int *)(param_1 + 0x5c) = *(int *)(param_1 + 0x5c) + *(int *)(param_1 + 0x60);
     *(int *)(param_1 + 0x60) = *(int *)(param_1 + 0x60) + -0x300;
     iVar2 = *(int *)(param_1 + 0x58) + 0xcc;
   }
   else {
-    if (0xf < *(byte *)(param_1 + 5)) {
-      *(undefined1 *)(param_1 + 4) = 2;
+    if (0xf < param_1->behavior_state) {
+      param_1->state = 2;
       return;
     }
     iVar2 = *(int *)(param_1 + 0x58) + 0x174;
     *(int *)(param_1 + 0x5c) = *(int *)(param_1 + 0x5c) + 0x200;
   }
   *(int *)(param_1 + 0x58) = iVar2;
-  *(undefined1 *)(param_1 + 1) = 1;
+  param_1->flags = 1;
   return;
 }

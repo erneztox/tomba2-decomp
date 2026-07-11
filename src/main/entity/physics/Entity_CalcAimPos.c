@@ -15,14 +15,14 @@ void FUN_80024af0(int param_1)
   int iVar2;
   short sVar3;
   
-  if (*(char *)(param_1 + 0x147) == '\0') {
-    uVar1 = *(ushort *)(param_1 + 0x140);
+  if (param_1->direction == '\0') {
+    uVar1 = param_1->draw_angle;
   }
   else {
-    uVar1 = *(short *)(param_1 + 0x140) - 0x800U & 0xfff;
+    uVar1 = param_1->draw_angle - 0x800U & 0xfff;
   }
-  *(ushort *)(param_1 + 0x56) = uVar1;
-  if (*(short *)(param_1 + 0x17e) < 0) {
+  param_1->rot_y = uVar1;
+  if (param_1->entity_flags < 0) {
     _DAT_1f800088 = 0x14;
     sVar3 = *(short *)(param_1 + 0x66) + -10;
   }
@@ -30,10 +30,10 @@ void FUN_80024af0(int param_1)
     _DAT_1f800088 = 0x28;
     sVar3 = *(short *)(param_1 + 0x66) + -0x1e;
   }
-  iVar2 = FUN_80083f50((int)*(short *)(param_1 + 0x56));
-  *(short *)(param_1 + 0x14c) = *(short *)(param_1 + 0x2e) + (short)(iVar2 * sVar3 >> 0xc);
-  iVar2 = FUN_80083e80((int)*(short *)(param_1 + 0x56));
-  *(short *)(param_1 + 0x14e) = *(short *)(param_1 + 0x32) - *(short *)(param_1 + 0x68);
-  *(short *)(param_1 + 0x150) = *(short *)(param_1 + 0x36) - (short)(iVar2 * sVar3 >> 0xc);
+  iVar2 = FUN_80083f50((int)param_1->rot_y);
+  param_1->draw_pos_x = param_1->pos_y + (short)(iVar2 * sVar3 >> 0xc);
+  iVar2 = FUN_80083e80((int)param_1->rot_y);
+  param_1->draw_pos_y = *(short *)(param_1 + 0x32) - param_1->target_angle;
+  param_1->draw_pos_z = param_1->pos_z - (short)(iVar2 * sVar3 >> 0xc);
   return;
 }

@@ -29,12 +29,12 @@ uint * FUN_8007fdb0(uint *param_1,int param_2,int param_3)
     iVar3 = 0x1f800000;
     do {
       param_3 = param_3 + -1;
-      setCopReg(2,in_zero,puVar9[4]);
-      setCopReg(2,iVar3,puVar9[6]);
-      setCopReg(2,0x800,puVar9[5]);
-      setCopReg(2,param_1,puVar9[7]);
-      setCopReg(2,0x1800,puVar9[5] >> 0x10);
-      setCopReg(2,param_2,puVar9[8]);
+      setCopReg(2,in_zero,puVar9->state);
+      setCopReg(2,iVar3,puVar9->action_state);
+      setCopReg(2,0x800,puVar9->behavior_state);
+      setCopReg(2,param_1,puVar9->sub_action);
+      setCopReg(2,0x1800,puVar9->behavior_state >> 0x10);
+      setCopReg(2,param_2,puVar9->counter1);
       puVar7[-8] = *puVar9;
       copFunction(2,0x280030);
       puVar7[-6] = *(uint *)(puVar8 + -0xd);
@@ -47,11 +47,11 @@ uint * FUN_8007fdb0(uint *param_1,int param_2,int param_3)
         _DAT_1f800080 = getCopReg(2,0x18);
         if (0 < _DAT_1f800080) {
           uVar2 = getCopReg(2,0xc);
-          _DAT_800bf544[2] = uVar2;
+          _DAT_800bf544->kind = uVar2;
           uVar2 = getCopReg(2,0xd);
-          _DAT_800bf544[5] = uVar2;
+          _DAT_800bf544->behavior_state = uVar2;
           uVar2 = getCopReg(2,0xe);
-          _DAT_800bf544[8] = uVar2;
+          _DAT_800bf544->counter1 = uVar2;
           if (((((ushort)puVar7[-7] < 0x140) || ((ushort)puVar7[-4] < 0x140)) ||
               ((ushort)puVar7[-1] < 0x140)) &&
              (((*(ushort *)((int)puVar7 + -0x1a) < 0xf0 || (*(ushort *)((int)puVar7 + -0xe) < 0xf0))

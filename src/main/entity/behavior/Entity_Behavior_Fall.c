@@ -1,5 +1,5 @@
 /**
- * @brief Entity fall behavior: entity[7] state 0->1->2->3, gravity
+ * @brief Entity fall behavior: entity->sub_action state 0->1->2->3, gravity
  * @note Original: func_8006B1FC at 0x8006B1FC
  */
 // Entity_Behavior_Fall
@@ -12,63 +12,63 @@ void FUN_8006b1fc(int param_1)
   short sVar1;
   byte bVar2;
   
-  bVar2 = *(byte *)(param_1 + 7);
+  bVar2 = param_1->sub_action;
   if (bVar2 != 1) {
     if (1 < bVar2) {
       if (bVar2 != 2) {
         if (bVar2 != 3) {
           return;
         }
-        *(short *)(param_1 + 0x44) = *(short *)(param_1 + 0x44) - *(short *)(param_1 + 0x76);
-        *(short *)(param_1 + 0x6a) = *(short *)(param_1 + 0x6a) + -0x80;
-        if ((*(char *)(param_1 + 0x2b) == '\x01') &&
-           (sVar1 = *(short *)(param_1 + 0x42), *(short *)(param_1 + 0x42) = sVar1 + -1, sVar1 == 1)
+        param_1->anim_counter = param_1->anim_counter - *(short *)(param_1 + 0x76);
+        param_1->type_flags = param_1->type_flags + -0x80;
+        if ((param_1->move_mode == '\x01') &&
+           (sVar1 = param_1->timer2, param_1->timer2 = sVar1 + -1, sVar1 == 1)
            ) {
-          *(undefined1 *)(param_1 + 0x2b) = 0;
-          *(undefined2 *)(param_1 + 0x42) = 2;
+          param_1->move_mode = 0;
+          param_1->timer2 = 2;
         }
-        if ((-1 < *(short *)(param_1 + 0x44)) && (*(byte *)(param_1 + 0x2b) < 2)) {
+        if ((-1 < param_1->anim_counter) && (param_1->move_mode < 2)) {
           return;
         }
-        *(undefined1 *)(param_1 + 0x2b) = 2;
-        *(undefined2 *)(param_1 + 0x44) = 0;
-        *(undefined1 *)(param_1 + 7) = 0;
-        bVar2 = *(byte *)(param_1 + 0x46) >> 1 & 3;
-        *(char *)(param_1 + 6) = *(char *)(param_1 + 6) + '\x01';
+        param_1->move_mode = 2;
+        param_1->anim_counter = 0;
+        param_1->sub_action = 0;
+        bVar2 = param_1->anim_id >> 1 & 3;
+        param_1->action_state = param_1->action_state + '\x01';
         if (bVar2 == 2) {
-          *(undefined2 *)(param_1 + 0x6a) = 0x980;
+          param_1->type_flags = 0x980;
           return;
         }
         if (2 < bVar2) {
           if (bVar2 != 3) {
             return;
           }
-          *(undefined2 *)(param_1 + 0x6a) = 0x700;
+          param_1->type_flags = 0x700;
           return;
         }
-        *(undefined2 *)(param_1 + 0x6a) = 0xc00;
+        param_1->type_flags = 0xc00;
         return;
       }
-      if (*(byte *)(param_1 + 0x2b) == 1) {
-        *(undefined2 *)(param_1 + 0x42) = 2;
-        *(undefined1 *)(param_1 + 0x2b) = 0;
+      if (param_1->move_mode == 1) {
+        param_1->timer2 = 2;
+        param_1->move_mode = 0;
       }
-      else if (1 < *(byte *)(param_1 + 0x2b)) {
-        *(undefined2 *)(param_1 + 0x44) = 0;
+      else if (1 < param_1->move_mode) {
+        param_1->anim_counter = 0;
       }
       goto LAB_8006b264;
     }
     if (bVar2 != 0) {
       return;
     }
-    *(undefined1 *)(param_1 + 7) = 1;
+    param_1->sub_action = 1;
   }
-  if (1 < *(byte *)(param_1 + 0x2b)) {
-    *(undefined2 *)(param_1 + 0x44) = 0;
-    *(undefined1 *)(param_1 + 7) = 3;
+  if (1 < param_1->move_mode) {
+    param_1->anim_counter = 0;
+    param_1->sub_action = 3;
     return;
   }
 LAB_8006b264:
-  *(char *)(param_1 + 7) = *(char *)(param_1 + 7) + '\x01';
+  param_1->sub_action = param_1->sub_action + '\x01';
   return;
 }

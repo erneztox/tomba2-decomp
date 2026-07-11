@@ -15,14 +15,14 @@ void FUN_8003c5f8(int param_1)
   undefined4 in_zero;
   undefined4 extraout_at;
   
-  if (*(int *)(param_1 + 0x38) != 0) {
+  if (param_1->anim_data != 0) {
     FUN_80051794(0x1f800000);
     FUN_80051794(&DAT_1f800020);
     FUN_800847f0(param_1 + 0x54,&DAT_1f800020);
-    bVar1 = *(byte *)(param_1 + 0x47);
+    bVar1 = param_1->sub_anim_id;
     FUN_80084110(&DAT_1f800020,0x1f800000,&DAT_1f800040);
-    _DAT_1f8000c0 = CONCAT22(*(undefined2 *)(param_1 + 0x32),*(undefined2 *)(param_1 + 0x2e));
-    _DAT_1f8000c4 = CONCAT22(DAT_1f8000c4_2,*(undefined2 *)(param_1 + 0x36));
+    _DAT_1f8000c0 = CONCAT22(*(undefined2 *)(param_1 + 0x32),param_1->pos_y);
+    _DAT_1f8000c4 = CONCAT22(DAT_1f8000c4_2,param_1->pos_z);
     setCopControlWord(2,0,_DAT_1f8000f8);
     setCopControlWord(2,0x800,_DAT_1f8000fc);
     setCopControlWord(2,0x1000,_DAT_1f800100);

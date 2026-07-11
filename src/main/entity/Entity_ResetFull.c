@@ -9,9 +9,9 @@
 void FUN_80034670(int param_1)
 
 {
-  *(undefined1 *)(param_1 + 1) = 0;
-  *(undefined1 *)(param_1 + 2) = 0;
-  *(undefined1 *)(param_1 + 3) = 0;
+  param_1->flags = 0;
+  param_1->kind = 0;
+  param_1->sub_type = 0;
   *(undefined1 *)(param_1 + 0x1c) = 0;
   *(undefined1 *)(param_1 + 0x1d) = 0;
   *(undefined1 *)(param_1 + 0x1e) = 0;

@@ -1,5 +1,5 @@
 /**
- * @brief Entity state checker: switch on entity[0x6C] type, returns state
+ * @brief Entity state checker: switch on entity->sprite_cmd type, returns state
  * @note Original: func_800535E0 at 0x800535E0
  */
 // Entity_CheckState
@@ -12,7 +12,7 @@ bool FUN_800535e0(int param_1,int param_2)
   if (DAT_800f2410 == '\0') {
     return false;
   }
-  switch(*(undefined1 *)(param_1 + 0x6c)) {
+  switch(param_1->sprite_cmd) {
   case 0:
   case 1:
   case 2:

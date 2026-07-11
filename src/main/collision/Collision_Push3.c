@@ -27,9 +27,9 @@ int FUN_8004602c(ushort param_1,short param_2,short param_3)
   }
   uVar5 = 0;
   sVar2 = FUN_80048360();
-  uVar7 = (uint)_DAT_1f8001e0[2];
-  _DAT_1f8001ec = (ushort *)(_DAT_1f8001d8 + (uint)_DAT_1f8001e0[1] * 8);
-  uVar1 = _DAT_1f8001e0[3];
+  uVar7 = (uint)_DAT_1f8001e0->kind;
+  _DAT_1f8001ec = (ushort *)(_DAT_1f8001d8 + (uint)_DAT_1f8001e0->flags * 8);
+  uVar1 = _DAT_1f8001e0->sub_type;
   if (uVar7 != 0) {
     do {
       uVar6 = uVar5;

@@ -58,7 +58,7 @@ LAB_80082a10:
     *DAT_800a5aa4 = 0x1000000;
     *DAT_800a5aa4 = 0xc0000000;
     *DAT_800a5aa4 = *param_1;
-    *DAT_800a5aa4 = param_1[1];
+    *DAT_800a5aa4 = param_1->flags;
     uVar2 = *DAT_800a5aa8;
     while ((uVar2 & 0x8000000) == 0) {
       iVar3 = FUN_800834d4();

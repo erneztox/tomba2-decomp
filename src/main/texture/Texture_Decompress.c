@@ -20,7 +20,7 @@ int FUN_80044d8c(int param_1,byte *param_2,byte *param_3,int param_4)
   int *piVar9;
   int iVar10;
   byte *pbVar11;
-  int local_20 [8];
+  int local_20->counter1;
   
   piVar9 = local_20;
   pbVar11 = param_3 + param_4;

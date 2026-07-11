@@ -17,11 +17,11 @@ void FUN_8004b2e8(void)
   
   iVar3 = FUN_800310f4(0x1f,0xffffff74);
   if (iVar3 != 0) {
-    *(byte *)(iVar3 + 0x28) = *(byte *)(iVar3 + 0x28) | 0x80;
+    iVar3->alloc_flags = iVar3->alloc_flags | 0x80;
     uVar2 = _DAT_1f800164;
     uVar1 = _DAT_1f800162;
-    *(undefined2 *)(iVar3 + 0x2c) = _DAT_1f800160;
-    *(undefined2 *)(iVar3 + 0x2e) = uVar1;
+    iVar3->pos_x = _DAT_1f800160;
+    iVar3->pos_y = uVar1;
     *(undefined2 *)(iVar3 + 0x30) = uVar2;
   }
   FUN_80074590(0x28,0,0);

@@ -11,16 +11,16 @@ undefined4 FUN_80022d08(byte *param_1,byte *param_2,int param_3,int param_4)
 {
   ushort uVar1;
   
-  if (((((((*(ushort *)(param_1 + 0x17e) & 0x200) == 0) && (DAT_800bfe55 == '\0')) &&
-        (param_1[0x144] != 2)) && ((*(short *)(param_1 + 0x16e) != 0 && (DAT_800bf839 == '\0')))) &&
+  if (((((((param_1->entity_flags & 0x200) == 0) && (DAT_800bfe55 == '\0')) &&
+        (param_1->state_flag144 != 2)) && ((param_1->timer_main != 0 && (DAT_800bf839 == '\0')))) &&
       ((DAT_1f800137 == '\0' && ((*param_1 & 2) == 0)))) &&
      ((param_4 != 0 || ((*param_2 & 2) == 0)))) {
     *param_1 = *param_1 | 2;
-    if (*(short *)(param_1 + 0x17e) < 0) {
+    if (param_1->entity_flags < 0) {
       param_3 = param_3 << 1;
     }
-    uVar1 = *(ushort *)(param_1 + 0x16e);
-    *(short *)(param_1 + 0x16e) = (short)((uint)uVar1 - param_3);
+    uVar1 = param_1->timer_main;
+    param_1->timer_main = (short)((uint)uVar1 - param_3);
     if ((int)(((uint)uVar1 - param_3) * 0x10000) < 1) {
       param_1[0x16e] = 0;
       param_1[0x16f] = 0;

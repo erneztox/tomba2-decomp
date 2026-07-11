@@ -1,5 +1,5 @@
 /**
- * @brief MDEC DMA wait: polls DAT_800abe9c word[4] bit until clear, checks timeout
+ * @brief MDEC DMA wait: polls DAT_800abe9c word->state bit until clear, checks timeout
  * @note Original: func_8008732C at 0x8008732C
  */
 // MDEC_WaitDMA

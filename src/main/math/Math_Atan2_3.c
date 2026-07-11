@@ -28,10 +28,10 @@ int FUN_80084d10(uint param_1,int param_2)
   sVar2 = *(short *)(param_2 + 8);
   sVar3 = *(short *)(param_2 + 10);
   *(short *)(param_2 + 6) = (short)(iVar5 * sVar1 - iVar4 * *(short *)(param_2 + 0xc) >> 0xc);
-  *(short *)(param_2 + 8) = (short)(iVar5 * sVar2 - iVar4 * *(short *)(param_2 + 0xe) >> 0xc);
+  *(short *)(param_2 + 8) = (short)(iVar5 * sVar2 - iVar4 * param_2->anim_timer >> 0xc);
   *(short *)(param_2 + 10) = (short)(iVar5 * sVar3 - iVar4 * *(short *)(param_2 + 0x10) >> 0xc);
   *(short *)(param_2 + 0xc) = (short)(iVar4 * sVar1 + iVar5 * *(short *)(param_2 + 0xc) >> 0xc);
-  *(short *)(param_2 + 0xe) = (short)(iVar4 * sVar2 + iVar5 * *(short *)(param_2 + 0xe) >> 0xc);
+  param_2->anim_timer = (short)(iVar4 * sVar2 + iVar5 * param_2->anim_timer >> 0xc);
   *(short *)(param_2 + 0x10) = (short)(iVar4 * sVar3 + iVar5 * *(short *)(param_2 + 0x10) >> 0xc);
   return param_2;
 }

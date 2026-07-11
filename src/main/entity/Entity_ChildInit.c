@@ -16,15 +16,15 @@ undefined4 FUN_8006f9d8(undefined4 param_1,int param_2,int param_3,undefined2 pa
   uint uVar5;
   undefined **ppuVar6;
   
-  *(code **)(param_2 + 0x1c) = FUN_80070018;
-  *(undefined4 *)(param_2 + 0x10) = param_1;
-  *(undefined2 *)(param_2 + 0x5c) = 0;
-  *(byte *)(param_2 + 0x28) = *(byte *)(param_2 + 0x28) | 0x80;
+  param_2->callback = FUN_80070018;
+  param_2->parent = param_1;
+  param_2->draw_y = 0;
+  param_2->alloc_flags = param_2->alloc_flags | 0x80;
   uVar2 = *(undefined2 *)(param_3 + 4);
-  bVar1 = *(byte *)(param_3 + 2);
+  bVar1 = param_3->kind;
   uVar3 = *(ushort *)(param_3 + 2);
   uVar5 = uVar3 & 0x7f;
-  *(byte *)(param_2 + 0x5f) = bVar1 & 0x80;
+  param_2->input_flags = bVar1 & 0x80;
   if ((bVar1 & 0x80) == 0) {
     iVar4 = FUN_80051b70(param_2,uVar5,uVar2);
     if (iVar4 != 0) {
@@ -32,7 +32,7 @@ undefined4 FUN_8006f9d8(undefined4 param_1,int param_2,int param_3,undefined2 pa
     }
   }
   else {
-    *(undefined4 *)(param_2 + 0x3c) = *(undefined4 *)(&DAT_800ecf58 + uVar5 * 4);
+    param_2->sprite_data = *(undefined4 *)(&DAT_800ecf58 + uVar5 * 4);
     if ((uVar3 & 0x7f) == 0) {
       ppuVar6 = &PTR_DAT_80017334;
     }
@@ -40,24 +40,24 @@ undefined4 FUN_8006f9d8(undefined4 param_1,int param_2,int param_3,undefined2 pa
       ppuVar6 = *(undefined ***)(&DAT_800a58fc + (uint)DAT_800bf870 * 4);
     }
     FUN_80077b38(param_2,ppuVar6,uVar2);
-    *(undefined1 *)(param_2 + 0xb) = 0x10;
-    *(undefined1 *)(param_2 + 0xd) = 0;
-    *(undefined1 *)(param_2 + 0x47) = 0;
-    *(undefined2 *)(param_2 + 0x5a) = 0;
-    *(undefined1 *)(param_2 + 8) = 0xf0;
+    param_2->render_flags = 0x10;
+    param_2->sprite_flags = 0;
+    param_2->sub_anim_id = 0;
+    param_2->target_rot_y = 0;
+    param_2->counter1 = 0xf0;
   }
-  *(undefined2 *)(param_2 + 0x60) = 0xffe0;
-  *(undefined2 *)(param_2 + 0x68) = param_4;
-  *(undefined2 *)(param_2 + 0x62) = 0;
-  *(undefined2 *)(param_2 + 0x54) = 0;
-  *(undefined2 *)(param_2 + 0x56) = 0;
-  *(undefined2 *)(param_2 + 0x58) = 0;
+  param_2->draw_x = 0xffe0;
+  param_2->target_angle = param_4;
+  param_2->angle_delta = 0;
+  param_2->rot_x = 0;
+  param_2->rot_y = 0;
+  param_2->rot_z = 0;
   if (DAT_800bf816 == '\0') {
-    *(undefined1 *)(param_2 + 0xbe) = 0;
+    param_2->gte_flags = 0;
   }
   else {
-    *(undefined1 *)(param_2 + 0xbe) = 1;
+    param_2->gte_flags = 1;
   }
-  *(undefined2 *)(param_2 + 0x74) = 0;
+  param_2->event_param = 0;
   return 1;
 }

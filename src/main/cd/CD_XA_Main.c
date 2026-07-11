@@ -21,16 +21,16 @@ void FUN_80099970(uint *param_1)
   int local_28;
   
   uVar8 = 0;
-  uVar7 = param_1[1];
+  uVar7 = param_1->flags;
   puVar9 = &DAT_800ac5c0;
   bVar1 = uVar7 == 0;
   do {
     if ((*param_1 & 1 << (uVar8 & 0x1f)) != 0) {
       if ((bVar1) || ((uVar7 & 0x10) != 0)) {
-        *(short *)(uVar8 * 0x10 + DAT_800ac604 + 4) = (short)param_1[5];
+        *(short *)(uVar8 * 0x10 + DAT_800ac604 + 4) = (short)param_1->behavior_state;
       }
       if ((bVar1) || ((uVar7 & 0x40) != 0)) {
-        *puVar9 = (ushort)param_1[6];
+        *puVar9 = (ushort)param_1->action_state;
       }
       if ((bVar1) || ((uVar7 & 0x20) != 0)) {
         uVar2 = FUN_80099f70(*puVar9 >> 8,*puVar9 & 0xff,*(ushort *)((int)param_1 + 0x16) >> 8,
@@ -39,9 +39,9 @@ void FUN_80099970(uint *param_1)
       }
       if ((bVar1) || ((uVar7 & 1) != 0)) {
         uVar6 = 0;
-        uVar5 = (ushort)param_1[2] & 0x7fff;
+        uVar5 = (ushort)param_1->kind & 0x7fff;
         if ((bVar1) || ((uVar7 & 4) != 0)) {
-          switch((int)(((ushort)param_1[3] - 1) * 0x10000) >> 0x10) {
+          switch((int)(((ushort)param_1->sub_type - 1) * 0x10000) >> 0x10) {
           case 0:
             uVar6 = 0x8000;
             break;
@@ -65,8 +65,8 @@ void FUN_80099970(uint *param_1)
           }
         }
         if (uVar6 != 0) {
-          if ((short)param_1[2] < 0x80) {
-            if ((short)param_1[2] < 0) {
+          if ((short)param_1->kind < 0x80) {
+            if ((short)param_1->kind < 0) {
               uVar5 = 0;
             }
           }
@@ -116,10 +116,10 @@ void FUN_80099970(uint *param_1)
         *(ushort *)(uVar8 * 0x10 + DAT_800ac604 + 2) = uVar5 | uVar6;
       }
       if ((bVar1) || ((uVar7 & 0x80) != 0)) {
-        FUN_80097540(uVar8 << 3 | 3,param_1[7]);
+        FUN_80097540(uVar8 << 3 | 3,param_1->sub_action);
       }
       if ((bVar1) || ((uVar7 & 0x10000) != 0)) {
-        FUN_80097540(uVar8 << 3 | 7,param_1[8]);
+        FUN_80097540(uVar8 << 3 | 7,param_1->counter1);
       }
       if ((bVar1) || ((uVar7 & 0x20000) != 0)) {
         *(undefined2 *)(uVar8 * 0x10 + DAT_800ac604 + 8) = *(undefined2 *)((int)param_1 + 0x3a);
@@ -133,7 +133,7 @@ void FUN_80099970(uint *param_1)
           uVar6 = 0x7f;
         }
         uVar5 = 0;
-        if (((bVar1) || ((uVar7 & 0x100) != 0)) && (param_1[9] == 5)) {
+        if (((bVar1) || ((uVar7 & 0x100) != 0)) && (param_1->counter2 == 5)) {
           uVar5 = 0x80;
         }
         iVar4 = uVar8 * 0x10 + DAT_800ac604;
@@ -148,7 +148,7 @@ void FUN_80099970(uint *param_1)
         *(ushort *)(iVar4 + 8) = *(ushort *)(iVar4 + 8) & 0xff0f | uVar6 << 4;
       }
       if ((bVar1) || ((uVar7 & 0x2000) != 0)) {
-        uVar6 = (ushort)param_1[0xd];
+        uVar6 = (ushort)param_1->sprite_flags;
         if (0x7f < uVar6) {
           uVar6 = 0x7f;
         }
@@ -176,7 +176,7 @@ void FUN_80099970(uint *param_1)
           uVar6 = 0x1f;
         }
         uVar5 = 0;
-        if ((((bVar1) || ((uVar7 & 0x400) != 0)) && (param_1[0xb] != 3)) && (param_1[0xb] == 7)) {
+        if ((((bVar1) || ((uVar7 & 0x400) != 0)) && (param_1->render_flags != 3)) && (param_1->render_flags == 7)) {
           uVar5 = 0x20;
         }
         iVar4 = uVar8 * 0x10 + DAT_800ac604;

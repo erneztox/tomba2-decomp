@@ -54,7 +54,7 @@ void FUN_8006d2ac(int param_1)
   case 2:
   case 3:
     iVar8 = *(int *)(_DAT_800e7e90 + 0x2c) << 0x10;
-    iVar11 = *(int *)(_DAT_800e7e90 + 0x34) << 0x10;
+    iVar11 = _DAT_800e7e90->scale_y << 0x10;
     break;
   case 7:
     sVar3 = _DAT_800e7fd0;
@@ -93,42 +93,42 @@ LAB_8006d420:
     }
   }
   else if (bVar2) {
-    if (*(int *)(param_1 + 0x14) <= iVar4) {
-      if (*(int *)(param_1 + 0x14) < 0) {
-        *(undefined4 *)(param_1 + 0x14) = 0;
+    if (param_1->script_ptr <= iVar4) {
+      if (param_1->script_ptr < 0) {
+        param_1->script_ptr = 0;
       }
-      iVar4 = *(int *)(param_1 + 0x14);
+      iVar4 = param_1->script_ptr;
       iVar5 = 0x10000;
       goto LAB_8006d5ac;
     }
     if (0x27ffff < iVar4) {
-      *(undefined4 *)(param_1 + 0x14) = 0x280000;
+      param_1->script_ptr = 0x280000;
       goto LAB_8006d5c8;
     }
   }
   else {
     iVar4 = iVar5 * -0x100;
-    if (iVar4 <= *(int *)(param_1 + 0x14)) {
-      if (0 < *(int *)(param_1 + 0x14)) {
-        *(undefined4 *)(param_1 + 0x14) = 0;
+    if (iVar4 <= param_1->script_ptr) {
+      if (0 < param_1->script_ptr) {
+        param_1->script_ptr = 0;
       }
-      iVar4 = *(int *)(param_1 + 0x14);
+      iVar4 = param_1->script_ptr;
       iVar5 = -0x10000;
 LAB_8006d5ac:
-      *(int *)(param_1 + 0x14) = iVar4 + iVar5;
+      param_1->script_ptr = iVar4 + iVar5;
       goto LAB_8006d5c8;
     }
     if (iVar4 < -0x27ffff) {
-      *(undefined4 *)(param_1 + 0x14) = 0xffd80000;
+      param_1->script_ptr = 0xffd80000;
       goto LAB_8006d5c8;
     }
   }
-  *(int *)(param_1 + 0x14) = iVar4;
+  param_1->script_ptr = iVar4;
 LAB_8006d5c8:
-  *(int *)(param_1 + 0x58) = *(int *)(param_1 + 0x58) + (*(int *)(param_1 + 0x14) >> 8);
+  *(int *)(param_1 + 0x58) = *(int *)(param_1 + 0x58) + (param_1->script_ptr >> 8);
   iVar4 = FUN_80083f50((int)_DAT_800e7fc0);
   *(int *)(param_1 + 8) = iVar8 + (iVar4 * *(int *)(param_1 + 0x58) >> 4);
   iVar8 = FUN_80083e80((int)_DAT_800e7fc0);
-  *(int *)(param_1 + 0x10) = iVar11 - (iVar8 * *(int *)(param_1 + 0x58) >> 4);
+  param_1->parent = iVar11 - (iVar8 * *(int *)(param_1 + 0x58) >> 4);
   return;
 }

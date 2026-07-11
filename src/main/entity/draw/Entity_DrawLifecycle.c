@@ -1,5 +1,5 @@
 /**
- * @brief Entity draw lifecycle: entity[4]=1 state, processes sprite, dealloc at state 4
+ * @brief Entity draw lifecycle: entity->state=1 state, processes sprite, dealloc at state 4
  * @note Original: func_800330AC at 0x800330AC
  */
 // Entity_DrawLifecycle
@@ -11,7 +11,7 @@ void FUN_800330ac(int param_1)
 {
   byte bVar1;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (3 < bVar1) {
@@ -25,16 +25,16 @@ void FUN_800330ac(int param_1)
     }
     *(undefined **)(param_1 + 0x40) = &DAT_800a1eb8;
     *(undefined ***)(param_1 + 0x50) = &PTR_DAT_800a1ea0;
-    *(undefined1 *)(param_1 + 4) = 1;
+    param_1->state = 1;
     *(undefined2 *)(param_1 + 0x32) = 0xffce;
-    *(undefined4 *)(param_1 + 0x34) = 0x1000100;
+    param_1->scale_y = 0x1000100;
   }
-  *(int *)(param_1 + 0x3c) = *(int *)(param_1 + 0x40);
+  param_1->sprite_data = *(int *)(param_1 + 0x40);
   if (*(int *)(param_1 + 0x40) == 0) {
-    *(undefined1 *)(param_1 + 4) = 3;
+    param_1->state = 3;
   }
   else {
-    *(undefined1 *)(param_1 + 1) = 1;
+    param_1->flags = 1;
   }
   return;
 }

@@ -1,5 +1,5 @@
 /**
- * @brief Entity attack behavior main: entity[6] switch, attack types
+ * @brief Entity attack behavior main: entity->action_state switch, attack types
  * @note Original: func_8006B494 at 0x8006B494
  */
 // Entity_Behavior_Attack
@@ -19,33 +19,33 @@ void FUN_8006b494(undefined1 *param_1)
   int iVar6;
   short sVar7;
   
-  switch(param_1[6]) {
+  switchparam_1->action_state {
   case 0:
     FUN_8006b124(param_1,0);
-    param_1[6] = param_1[6] + '\x01';
+    param_1->action_state = param_1->action_state + '\x01';
     break;
   case 1:
     FUN_8006b020(param_1,0);
-    sVar7 = *(short *)(param_1 + 0x40);
-    *(short *)(param_1 + 0x40) = sVar7 + -1;
+    sVar7 = param_1->timer1;
+    param_1->timer1 = sVar7 + -1;
     if (sVar7 == 1) {
       FUN_80074590(0xb,0,0);
       *param_1 = 1;
-      *(undefined2 *)(param_1 + 0x54) = 0;
-      param_1[6] = param_1[6] + '\x01';
+      param_1->rot_x = 0;
+      param_1->action_state = param_1->action_state + '\x01';
       iVar2 = FUN_8006b390(param_1);
-      if ((iVar2 != 0) && (param_1[2] == '\x04')) {
-        param_1[0x2b] = 2;
-        param_1[4] = 2;
+      if ((iVar2 != 0) && (param_1->kind == '\x04')) {
+        param_1->move_mode = 2;
+        param_1->state = 2;
       }
     }
     break;
   case 2:
-    param_1[7] = 0;
-    param_1[6] = param_1[6] + '\x01';
+    param_1->sub_action = 0;
+    param_1->action_state = param_1->action_state + '\x01';
     *(undefined2 *)(param_1 + 0x66) = 0;
-    if (1 < (byte)param_1[0x2b]) {
-      *(undefined2 *)(param_1 + 0x44) = 0;
+    if (1 < (byte)param_1->move_mode) {
+      param_1->anim_counter = 0;
     }
     break;
   case 3:
@@ -53,82 +53,82 @@ void FUN_8006b494(undefined1 *param_1)
     FUN_8006b0d8(param_1);
     break;
   case 4:
-    param_1[6] = param_1[6] + '\x01';
+    param_1->action_state = param_1->action_state + '\x01';
     *(undefined2 *)(param_1 + 0x70) = 0x40;
   case 5:
-    if ((param_1[0x2b] == '\x01') &&
-       (sVar7 = *(short *)(param_1 + 0x42), *(short *)(param_1 + 0x42) = sVar7 + -1, sVar7 == 1)) {
-      param_1[0x2b] = 0;
-      *(undefined2 *)(param_1 + 0x42) = 2;
+    if ((param_1->move_mode == '\x01') &&
+       (sVar7 = param_1->timer2, param_1->timer2 = sVar7 + -1, sVar7 == 1)) {
+      param_1->move_mode = 0;
+      param_1->timer2 = 2;
     }
-    sVar7 = *(short *)(param_1 + 0x44);
-    *(short *)(param_1 + 0x44) = sVar7 + 0x12;
+    sVar7 = param_1->anim_counter;
+    param_1->anim_counter = sVar7 + 0x12;
     if (0x50 < (short)(sVar7 + 0x12)) {
-      param_1[0x2b] = 2;
-      *(undefined2 *)(param_1 + 0x40) = 0;
-      param_1[6] = param_1[6] + '\x01';
+      param_1->move_mode = 2;
+      param_1->timer1 = 0;
+      param_1->action_state = param_1->action_state + '\x01';
     }
     FUN_8006b0d8(param_1);
     sVar7 = FUN_80069a2c(param_1,*(undefined4 *)(_DAT_800e7f5c + 0x2c),
-                         *(undefined4 *)(_DAT_800e7f5c + 0x30),*(undefined4 *)(_DAT_800e7f5c + 0x34)
+                         _DAT_800e7f5c->pos_y_fixed,_DAT_800e7f5c->scale_y
                         );
-    uVar1 = FUN_800776f8((int)sVar7,(int)*(short *)(param_1 + 0x6a),(int)*(short *)(param_1 + 0x70))
+    uVar1 = FUN_800776f8((int)sVar7,(int)param_1->type_flags,(int)*(short *)(param_1 + 0x70))
     ;
-    *(undefined2 *)(param_1 + 0x6a) = uVar1;
-    *(short *)(param_1 + 0x70) = *(short *)(param_1 + 0x70) + *(short *)(param_1 + 0x44);
+    param_1->type_flags = uVar1;
+    *(short *)(param_1 + 0x70) = *(short *)(param_1 + 0x70) + param_1->anim_counter;
     break;
   case 6:
     uVar1 = FUN_80069a2c(param_1,*(undefined4 *)(_DAT_800e7f5c + 0x2c),
-                         *(undefined4 *)(_DAT_800e7f5c + 0x30),*(undefined4 *)(_DAT_800e7f5c + 0x34)
+                         _DAT_800e7f5c->pos_y_fixed,_DAT_800e7f5c->scale_y
                         );
-    *(undefined2 *)(param_1 + 0x6a) = uVar1;
-    *(undefined2 *)(param_1 + 0x72) = 1;
-    uVar1 = FUN_800782b0(param_1 + 0x2c,(int)*(short *)(_DAT_800e7f5c + 0x2c),
+    param_1->type_flags = uVar1;
+    param_1->event_id = 1;
+    uVar1 = FUN_800782b0(param_1 + 0x2c,(int)_DAT_800e7f5c->pos_x,
                          (int)*(short *)(_DAT_800e7f5c + 0x34));
-    *(undefined2 *)(param_1 + 0x74) = uVar1;
-    sVar7 = *(short *)(param_1 + 0x44);
-    *(short *)(param_1 + 0x44) = sVar7 + 0x32;
+    param_1->event_param = uVar1;
+    sVar7 = param_1->anim_counter;
+    param_1->anim_counter = sVar7 + 0x32;
     if (0x1a4 < (short)(sVar7 + 0x32)) {
-      *(undefined2 *)(param_1 + 0x44) = 0x1a4;
+      param_1->anim_counter = 0x1a4;
     }
     iVar2 = FUN_80069b6c(param_1);
     if (iVar2 != 0) goto switchD_8006b4f0_caseD_7;
     break;
   case 7:
 switchD_8006b4f0_caseD_7:
-    param_1[1] = 0;
+    param_1->flags = 0;
     *param_1 = 2;
-    param_1[4] = param_1[4] + '\x01';
+    param_1->state = param_1->state + '\x01';
     *(undefined2 *)(param_1 + 0x6e) = 1;
-    *(undefined2 *)(param_1 + 0x2e) = _DAT_800e7eae;
+    param_1->pos_y = _DAT_800e7eae;
     *(undefined2 *)(param_1 + 0x32) = _DAT_800e7eb2;
     DAT_1f800231 = DAT_1f800231 + -1;
-    *(undefined2 *)(param_1 + 0x36) = _DAT_800e7eb6;
+    param_1->pos_z = _DAT_800e7eb6;
     return;
   }
-  if (2 < (byte)param_1[6]) {
-    *(short *)(param_1 + 0x58) = *(short *)(param_1 + 0x58) + 0x280;
-    if ((param_1[0x46] & 1) == 0) {
-      sVar7 = *(short *)(param_1 + 0x6a);
+  if (2 < (byte)param_1->action_state) {
+    param_1->rot_z = param_1->rot_z + 0x280;
+    if ((param_1->anim_id & 1) == 0) {
+      sVar7 = param_1->type_flags;
     }
     else {
-      sVar7 = 0x800 - *(short *)(param_1 + 0x6a);
+      sVar7 = 0x800 - param_1->type_flags;
     }
     iVar2 = FUN_80083e80((int)sVar7);
     iVar2 = (iVar2 * 0x50) / 100;
-    if (*(short *)(param_1 + 0x72) == 0) {
-      iVar3 = (int)*(short *)(param_1 + 0x44);
+    if (param_1->event_id == 0) {
+      iVar3 = (int)param_1->anim_counter;
       if (iVar3 < 0) {
         iVar3 = iVar3 + 0x3f;
       }
       iVar6 = 0;
       if (0 < iVar3 >> 6) {
         do {
-          *(int *)(param_1 + 0x30) = *(int *)(param_1 + 0x30) + iVar2 * 0x400;
+          param_1->pos_y_fixed = param_1->pos_y_fixed + iVar2 * 0x400;
           iVar4 = FUN_80083f50((int)sVar7);
           iVar4 = iVar4 * 0x40 >> 4;
-          *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + *(short *)(param_1 + 0x48) * iVar4;
-          *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x34) + *(short *)(param_1 + 0x4c) * iVar4;
+          *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + param_1->normal_x * iVar4;
+          param_1->scale_y = param_1->scale_y + param_1->normal_z * iVar4;
           iVar4 = FUN_8006b390(param_1);
           iVar6 = iVar6 + 1;
           if (iVar4 != 0) {
@@ -136,28 +136,28 @@ switchD_8006b4f0_caseD_7:
           }
         } while (iVar6 < iVar3 >> 6);
       }
-      uVar5 = *(ushort *)(param_1 + 0x44) & 0x3f;
-      if ((*(ushort *)(param_1 + 0x44) & 0x3f) != 0) {
-        *(uint *)(param_1 + 0x30) = *(int *)(param_1 + 0x30) + iVar2 * uVar5 * 0x10;
+      uVar5 = param_1->anim_counter & 0x3f;
+      if ((param_1->anim_counter & 0x3f) != 0) {
+        param_1->pos_y_fixed = param_1->pos_y_fixed + iVar2 * uVar5 * 0x10;
         iVar2 = FUN_80083f50((int)sVar7);
         iVar2 = (int)(iVar2 * uVar5) >> 4;
-        *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + *(short *)(param_1 + 0x48) * iVar2;
-        *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x34) + *(short *)(param_1 + 0x4c) * iVar2;
+        *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + param_1->normal_x * iVar2;
+        param_1->scale_y = param_1->scale_y + param_1->normal_z * iVar2;
         FUN_8006b390();
       }
     }
     else {
-      *(int *)(param_1 + 0x30) =
-           *(int *)(param_1 + 0x30) + iVar2 * *(short *)(param_1 + 0x44) * 0x10;
+      param_1->pos_y_fixed =
+           param_1->pos_y_fixed + iVar2 * param_1->anim_counter * 0x10;
       iVar2 = FUN_80083f50((int)sVar7);
-      iVar2 = iVar2 * *(short *)(param_1 + 0x44) >> 4;
+      iVar2 = iVar2 * param_1->anim_counter >> 4;
       if (iVar2 < 0) {
         iVar2 = -iVar2;
       }
-      iVar3 = FUN_80083f50((int)*(short *)(param_1 + 0x74));
+      iVar3 = FUN_80083f50((int)param_1->event_param);
       *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + (iVar3 * iVar2 >> 4);
-      iVar3 = FUN_80083e80((int)*(short *)(param_1 + 0x74));
-      *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x34) - (iVar3 * iVar2 >> 4);
+      iVar3 = FUN_80083e80((int)param_1->event_param);
+      param_1->scale_y = param_1->scale_y - (iVar3 * iVar2 >> 4);
     }
   }
   return;

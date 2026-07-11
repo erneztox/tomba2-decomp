@@ -16,8 +16,8 @@ int FUN_800815d0(int param_1)
   }
   FUN_80081fb0(param_1 + 0x1c,param_1);
   puVar1 = PTR_PTR_800a5998;
-  *(uint *)(param_1 + 0x1c) = *(uint *)(param_1 + 0x1c) | 0xffffff;
-  (**(code **)(puVar1 + 8))(*(undefined4 *)(puVar1 + 0x18),param_1 + 0x1c,0x40,0);
+  param_1->callback = param_1->callback | 0xffffff;
+  (**(code **)(puVar1 + 8))(puVar1->script_data,param_1 + 0x1c,0x40,0);
   FUN_8009a3e0(&DAT_800a59b0,param_1,0x5c);
   return param_1;
 }

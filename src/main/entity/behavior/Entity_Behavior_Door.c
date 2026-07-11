@@ -1,5 +1,5 @@
 /**
- * @brief Entity door behavior: entity[4]=1, checks game state transition
+ * @brief Entity door behavior: entity->state=1, checks game state transition
  * @note Original: func_80026864 at 0x80026864
  */
 // Entity_Behavior_Door
@@ -15,12 +15,12 @@ void FUN_80026864(int param_1)
   if (DAT_1f80019a != '\x02') {
     return;
   }
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 == 1) {
     sVar2 = *(short *)(param_1 + 8) + 1;
     *(short *)(param_1 + 8) = sVar2;
     if (0xb < sVar2) {
-      *(char *)(param_1 + 4) = *(char *)(param_1 + 4) + '\x01';
+      param_1->state = param_1->state + '\x01';
     }
   }
   else {
@@ -31,13 +31,13 @@ void FUN_80026864(int param_1)
       if (DAT_1f800137 != '\x01') {
         return;
       }
-      *(undefined1 *)(param_1 + 4) = 1;
+      param_1->state = 1;
       *(undefined2 *)(param_1 + 8) = 0;
       return;
     }
     if (bVar1 == 2) {
       if ((DAT_1f800137 == '\0') || (DAT_1f800137 == '\x02')) {
-        *(undefined1 *)(param_1 + 4) = 3;
+        param_1->state = 3;
       }
       sVar2 = *(short *)(param_1 + 8);
       goto LAB_80026984;
@@ -48,7 +48,7 @@ void FUN_80026864(int param_1)
     sVar2 = *(short *)(param_1 + 8);
     *(short *)(param_1 + 8) = sVar2 + -1;
     if (sVar2 == 1) {
-      *(undefined1 *)(param_1 + 4) = 0;
+      param_1->state = 0;
     }
   }
   sVar2 = *(short *)(param_1 + 8);

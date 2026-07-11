@@ -25,7 +25,7 @@ void FUN_80054b34(int param_1,int param_2,int param_3)
   }
   else {
     uVar2 = (&PTR_DAT_800a4524)[param_2 * 3 + param_3]
-            [(uint)*(byte *)(param_1 + 0xbe) + (*(byte *)(param_1 + 0x14a) & 6)];
+            [(uint)param_1->gte_flags + (param_1->behavior_flags & 6)];
     if (param_2 == 0) {
       uVar3 = 0;
     }

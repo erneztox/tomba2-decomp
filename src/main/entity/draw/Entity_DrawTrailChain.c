@@ -61,7 +61,7 @@ LAB_800297f0:
     }
     else {
       setCopReg(2,in_zero,*local_2c);
-      setCopReg(2,in_at,local_2c[1]);
+      setCopReg(2,in_at,local_2c->flags);
       copFunction(2,0x180001);
       _DAT_1f800080 = getCopControlWord(2,0xf800);
       if (_DAT_1f800080 < 0) goto LAB_800297f0;
@@ -96,8 +96,8 @@ LAB_800297f0:
       *(short *)((int)puVar5 + 10) = _DAT_1f80008e - sVar9;
       *(short *)(puVar5 + 4) = _DAT_1f800090 - (short)iVar8;
       *(short *)((int)puVar5 + 0x12) = _DAT_1f800092 - (short)iVar10;
-      puVar5[6] = _DAT_1f80008c;
-      puVar5[8] = _DAT_1f800090;
+      puVar5->action_state = _DAT_1f80008c;
+      puVar5->counter1 = _DAT_1f800090;
       *(short *)(puVar5 + 0xb) = _DAT_1f80008c + sVar7;
       *(short *)((int)puVar5 + 0x2e) = _DAT_1f80008e + sVar9;
       *(short *)(puVar5 + 0xd) = _DAT_1f800090 + (short)iVar8;
@@ -106,22 +106,22 @@ LAB_800297f0:
       uVar2 = _DAT_1f800090;
       puVar5[0xc] = 0;
       puVar5[10] = 0;
-      puVar5[3] = 0;
-      puVar5[1] = 0;
+      puVar5->sub_type = 0;
+      puVar5->flags = 0;
       puVar5[0x11] = uVar2;
       uVar2 = *local_res8;
       puVar5[0xe] = uVar2;
-      puVar5[5] = uVar2;
-      uVar2 = local_res8[1];
+      puVar5->behavior_state = uVar2;
+      uVar2 = local_res8->flags;
       puVar5[0x10] = uVar2;
-      puVar5[7] = uVar2;
+      puVar5->sub_action = uVar2;
       *(undefined1 *)((int)puVar5 + 0x2b) = 0x3a;
       *(undefined1 *)((int)puVar5 + 7) = 0x3a;
       puVar3 = (uint *)(_DAT_800ed8c8 + _DAT_1f800080 * 4);
       *puVar5 = *puVar3 | 0x8000000;
       *puVar3 = (uint)puVar5;
       puVar3 = (uint *)(_DAT_800ed8c8 + _DAT_1f800080 * 4);
-      puVar5[9] = *puVar3 | 0x8000000;
+      puVar5->counter2 = *puVar3 | 0x8000000;
       *puVar3 = (uint)(puVar5 + 9);
       puVar4 = puVar5 + 0x12;
       FUN_80083de0(puVar4,0,1,0x35,0);

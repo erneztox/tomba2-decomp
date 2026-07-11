@@ -12,7 +12,7 @@ void FUN_80032918(int param_1)
   byte bVar1;
   int iVar2;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (3 < bVar1) {
@@ -24,16 +24,16 @@ void FUN_80032918(int param_1)
     if (bVar1 != 0) {
       return;
     }
-    *(undefined1 *)(param_1 + 6) = 0x10;
-    *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_1 + 0x38);
-    *(undefined1 *)(param_1 + 4) = 1;
-    if (*(char *)(param_1 + 3) == '7') {
-      *(short *)(param_1 + 0x44) = *(short *)(param_1 + 0x44) + 0x40;
+    param_1->action_state = 0x10;
+    param_1->scale_y = param_1->anim_data;
+    param_1->state = 1;
+    if (param_1->sub_type == '7') {
+      param_1->anim_counter = param_1->anim_counter + 0x40;
     }
   }
-  *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x38);
-  if (*(int *)(param_1 + 0x38) == 0) {
-    *(undefined1 *)(param_1 + 4) = 2;
+  param_1->scale_y = param_1->anim_data;
+  if (param_1->anim_data == 0) {
+    param_1->state = 2;
   }
   else {
     iVar2 = FUN_8002b278(param_1);

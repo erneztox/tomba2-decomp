@@ -25,30 +25,30 @@ void FUN_8003a5e4(int param_1,short *param_2)
     else {
       sVar3 = ((short)((ulonglong)((longlong)iVar4 * 0x55555556) >> 0x20) - sVar3) + 5;
     }
-    param_2[8] = sVar3;
-    param_2[9] = -0x100;
+    param_2->counter1 = sVar3;
+    param_2->counter2 = -0x100;
   case '\x01':
-    sVar3 = param_2[9];
-    *param_2 = *param_2 + param_2[8];
-    sVar2 = param_2[9];
-    param_2[9] = sVar2 + 0x20;
-    param_2[1] = param_2[1] + (sVar3 >> 4);
+    sVar3 = param_2->counter2;
+    *param_2 = *param_2 + param_2->counter1;
+    sVar2 = param_2->counter2;
+    param_2->counter2 = sVar2 + 0x20;
+    param_2->flags = param_2->flags + (sVar3 >> 4);
     if (0x100 < (short)(sVar2 + 0x20)) {
       cVar1 = (char)param_2[0x1f];
       sVar3 = -0xc0;
 LAB_8003a6c4:
-      param_2[9] = sVar3;
+      param_2->counter2 = sVar3;
 LAB_8003a6cc:
       *(char *)(param_2 + 0x1f) = cVar1 + '\x01';
       return;
     }
     break;
   case '\x02':
-    sVar3 = param_2[9];
-    *param_2 = *param_2 + param_2[8];
-    sVar2 = param_2[9];
-    param_2[9] = sVar2 + 0x18;
-    param_2[1] = param_2[1] + (sVar3 >> 4);
+    sVar3 = param_2->counter2;
+    *param_2 = *param_2 + param_2->counter1;
+    sVar2 = param_2->counter2;
+    param_2->counter2 = sVar2 + 0x18;
+    param_2->flags = param_2->flags + (sVar3 >> 4);
     if ((short)(sVar2 + 0x18) < 0xc1) {
       return;
     }
@@ -56,11 +56,11 @@ LAB_8003a6cc:
     sVar3 = -0x80;
     goto LAB_8003a6c4;
   case '\x03':
-    sVar3 = param_2[9];
-    *param_2 = *param_2 + param_2[8];
-    sVar2 = param_2[9];
-    param_2[9] = sVar2 + 0x10;
-    param_2[1] = param_2[1] + (sVar3 >> 4);
+    sVar3 = param_2->counter2;
+    *param_2 = *param_2 + param_2->counter1;
+    sVar2 = param_2->counter2;
+    param_2->counter2 = sVar2 + 0x10;
+    param_2->flags = param_2->flags + (sVar3 >> 4);
     if ((short)(sVar2 + 0x10) < 0x81) {
       return;
     }
@@ -68,7 +68,7 @@ LAB_8003a6cc:
     goto LAB_8003a6cc;
   case '\x04':
     if (*(char *)((int)param_2 + 0x3f) == '\0') {
-      *(undefined1 *)(param_1 + 4) = 2;
+      param_1->state = 2;
     }
   }
   return;

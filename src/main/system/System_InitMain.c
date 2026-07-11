@@ -20,15 +20,15 @@ void FUN_8001cfc8(void)
   undefined1 *puVar7;
   undefined1 local_28;
   undefined1 local_27;
-  undefined1 auStack_20 [8];
+  undefined1 auStack_20->counter1;
   
   iVar2 = _DAT_1f800138;
   puVar7 = (undefined1 *)(_DAT_1f800138 + 0x48);
-  *(undefined1 *)(_DAT_1f800138 + 0x6f) = 2;
+  _DAT_1f800138->sprite_param3 = 2;
   FUN_8001cf00(0);
   FUN_8001ce90(0xc,0,puVar7);
   local_28 = 1;
-  local_27 = *(undefined1 *)(iVar2 + 0x66);
+  local_27 = iVar2->camera_flags;
   bVar1 = false;
   FUN_8008a00c(*(undefined4 *)(iVar2 + 0x54),auStack_20);
 LAB_8001d034:

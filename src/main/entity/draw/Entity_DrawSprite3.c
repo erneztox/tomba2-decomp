@@ -31,13 +31,13 @@ void FUN_8002c138(int param_1)
   
   local_2c = 0;
   local_30 = 0;
-  local_2e = *(undefined2 *)(param_1 + 0x56);
-  iVar1 = ((int)((uint)*(ushort *)(param_1 + 0x60) << 0x10) >> 0x11) * 5;
-  if ((*(ushort *)(param_1 + 0x60) & 1) != 0) {
+  local_2e = param_1->rot_y;
+  iVar1 = ((int)((uint)param_1->draw_x << 0x10) >> 0x11) * 5;
+  if ((param_1->draw_x & 1) != 0) {
     local_2c = 0xaa;
   }
-  local_28 = CONCAT22(*(undefined2 *)(param_1 + 0x32),*(undefined2 *)(param_1 + 0x2e));
-  local_24 = CONCAT22(local_24._2_2_,*(undefined2 *)(param_1 + 0x36));
+  local_28 = CONCAT22(*(undefined2 *)(param_1 + 0x32),param_1->pos_y);
+  local_24 = CONCAT22(local_24._2_2_,param_1->pos_z);
   setCopControlWord(2,0xa800,0);
   setCopControlWord(2,0xb000,0);
   setCopControlWord(2,0xb800,0);

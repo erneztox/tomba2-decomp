@@ -55,6 +55,6 @@ void FUN_8004f8dc(int param_1)
     } while (iVar5 < *(short *)(param_1 + 8));
   }
   *(undefined2 *)(param_1 + 4) = 0;
-  *(undefined1 *)(param_1 + 1) = 2;
+  param_1->flags = 2;
   return;
 }

@@ -1,5 +1,5 @@
 /**
- * @brief Entity draw lifecycle variant 3: entity[4]=1, different sprite path
+ * @brief Entity draw lifecycle variant 3: entity->state=1, different sprite path
  * @note Original: func_80033560 at 0x80033560
  */
 // Entity_DrawLifecycle3
@@ -11,28 +11,28 @@ void FUN_80033560(int param_1)
 {
   byte bVar1;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 == 1) {
-    *(undefined1 *)(param_1 + 1) = 1;
-    *(byte *)(param_1 + 0x29) = *(char *)(param_1 + 0x29) - 1U & 0x1f;
+    param_1->flags = 1;
+    param_1->collision_state = param_1->collision_state - 1U & 0x1f;
     if (DAT_800e7ff9 == '\0') {
-      *(undefined1 *)(param_1 + 4) = 2;
+      param_1->state = 2;
     }
   }
   else if (bVar1 < 2) {
     if (bVar1 == 0) {
-      *(undefined1 *)(param_1 + 4) = 1;
-      *(undefined1 *)(param_1 + 7) = 0;
-      *(undefined1 *)(param_1 + 0x29) = 0;
+      param_1->state = 1;
+      param_1->sub_action = 0;
+      param_1->collision_state = 0;
     }
   }
   else if (bVar1 == 2) {
-    if (*(char *)(param_1 + 7) < '\0') {
-      *(undefined1 *)(param_1 + 4) = 3;
+    if (param_1->sub_action < '\0') {
+      param_1->state = 3;
     }
     else {
-      *(undefined1 *)(param_1 + 1) = 1;
-      *(char *)(param_1 + 7) = *(char *)(param_1 + 7) + '\f';
+      param_1->flags = 1;
+      param_1->sub_action = param_1->sub_action + '\f';
     }
   }
   else if (bVar1 == 3) {

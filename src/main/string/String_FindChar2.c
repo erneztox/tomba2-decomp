@@ -24,7 +24,7 @@ char * FUN_8009a490(char *param_1,char *param_2)
       cVar1 = *param_1;
       pcVar4 = param_1;
       while (cVar1 != '\0') {
-        cVar1 = pcVar4[1];
+        cVar1 = pcVar4->flags;
         pcVar4 = pcVar4 + 1;
       }
       do {

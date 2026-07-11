@@ -1,5 +1,5 @@
 /**
- * @brief Entity attack state variant 4: entity[6] switch
+ * @brief Entity attack state variant 4: entity->action_state switch
  * @note Original: func_8006762C at 0x8006762C
  */
 // Entity_State_Attack4
@@ -14,7 +14,7 @@ void FUN_8006762c(int param_1)
   char cVar1;
   short sVar2;
   
-  switch(*(undefined1 *)(param_1 + 6)) {
+  switch(param_1->action_state) {
   case 0:
     if (DAT_800bfad7 == '\0') {
       FUN_8006625c(param_1);
@@ -24,7 +24,7 @@ void FUN_8006762c(int param_1)
     FUN_80053d90(param_1);
     FUN_80074590(0x24,0,0);
     DAT_800bf80d = 1;
-    *(undefined1 *)(param_1 + 6) = 6;
+    param_1->action_state = 6;
     goto switchD_80067664_default;
   case 1:
   case 6:
@@ -47,42 +47,42 @@ void FUN_8006762c(int param_1)
     else if (DAT_800bf870 == '\x0e') {
       func_0x8010b4f4(param_1);
     }
-    *(undefined1 *)(param_1 + 0x145) = 0;
-    *(undefined1 *)(param_1 + 0x146) = 0;
+    param_1->state_flag145 = 0;
+    param_1->state_flag146 = 0;
     *(undefined1 *)(param_1 + 0x61) = 0;
     FUN_80054198(param_1);
     FUN_80054d14(param_1,0x71,0);
     FUN_800551c4(param_1);
-    *(undefined2 *)(param_1 + 0x4a) = 0x2400;
-    *(undefined2 *)(param_1 + 0x58) = 0;
-    *(undefined2 *)(param_1 + 0x40) = 10;
-    *(undefined1 *)(param_1 + 7) = 0;
-    *(char *)(param_1 + 6) = *(char *)(param_1 + 6) + '\x01';
+    param_1->velocity_y = 0x2400;
+    param_1->rot_z = 0;
+    param_1->timer1 = 10;
+    param_1->sub_action = 0;
+    param_1->action_state = param_1->action_state + '\x01';
     return;
   case 2:
   case 7:
-    sVar2 = *(short *)(param_1 + 0x40) + -1;
-    *(short *)(param_1 + 0x40) = sVar2;
+    sVar2 = param_1->timer1 + -1;
+    param_1->timer1 = sVar2;
     if (sVar2 == -1) {
       DAT_800e806c = 8;
       _DAT_800e8042 = _DAT_1f800160;
       _DAT_800e8046 = _DAT_1f800162;
       _DAT_800e804a = _DAT_1f800164;
-      cVar1 = *(char *)(param_1 + 6);
-      *(undefined2 *)(param_1 + 0x40) = 0x14;
+      cVar1 = param_1->action_state;
+      param_1->timer1 = 0x14;
 code_r0x800678c0:
-      *(char *)(param_1 + 6) = cVar1 + '\x01';
+      param_1->action_state = cVar1 + '\x01';
     }
     break;
   case 3:
   case 8:
-    sVar2 = *(short *)(param_1 + 0x40);
-    *(short *)(param_1 + 0x40) = sVar2 + -1;
+    sVar2 = param_1->timer1;
+    param_1->timer1 = sVar2 + -1;
     if (sVar2 == 1) {
-      FUN_800662d8(param_1,*(char *)(param_1 + 6) == '\b');
+      FUN_800662d8(param_1,param_1->action_state == '\b');
       DAT_800bf80d = 2;
       DAT_800bf80f = '\x02';
-      *(char *)(param_1 + 6) = *(char *)(param_1 + 6) + '\x01';
+      param_1->action_state = param_1->action_state + '\x01';
       FUN_8005245c();
     }
     break;
@@ -90,7 +90,7 @@ code_r0x800678c0:
   case 9:
     if (DAT_800bf80f == '\0') {
       DAT_800bf80d = 3;
-      cVar1 = *(char *)(param_1 + 6);
+      cVar1 = param_1->action_state;
       goto code_r0x800678c0;
     }
     break;

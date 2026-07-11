@@ -16,10 +16,10 @@ int FUN_800725d4(undefined2 *param_1)
     iVar1 = 0;
   }
   else {
-    *(undefined1 *)(iVar1 + 2) = 0x17;
-    *(code **)(iVar1 + 0x1c) = FUN_8007263c;
+    iVar1->kind = 0x17;
+    iVar1->callback = FUN_8007263c;
     *(undefined2 **)(iVar1 + 0x10) = param_1;
-    *(byte *)(iVar1 + 0x28) = *(byte *)(iVar1 + 0x28) | 0x80;
+    iVar1->alloc_flags = iVar1->alloc_flags | 0x80;
     *param_1 = 0xffff;
   }
   return iVar1;

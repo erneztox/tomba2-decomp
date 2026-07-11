@@ -20,19 +20,19 @@ int FUN_8006ff10(undefined4 param_1,undefined2 param_2)
     iVar2 = FUN_80072ddc(param_1,*puVar1,3,4);
     iVar4 = iVar3 + 1;
     if (iVar2 != 0) {
-      *(code **)(iVar2 + 0x1c) = FUN_80070018;
-      *(undefined4 *)(iVar2 + 0x10) = param_1;
-      *(undefined2 *)(iVar2 + 0x68) = param_2;
-      *(byte *)(iVar2 + 0x28) = *(byte *)(iVar2 + 0x28) | 0x80;
+      iVar2->callback = FUN_80070018;
+      iVar2->parent = param_1;
+      iVar2->target_angle = param_2;
+      iVar2->alloc_flags = iVar2->alloc_flags | 0x80;
       if (DAT_800bf816 == '\0') {
-        *(undefined1 *)(iVar2 + 0xbe) = 0;
+        iVar2->gte_flags = 0;
       }
       else {
-        *(undefined1 *)(iVar2 + 0xbe) = 1;
+        iVar2->gte_flags = 1;
       }
-      *(undefined1 *)(iVar2 + 0x5f) = 1;
-      *(undefined2 *)(iVar2 + 0x74) = 0;
-      *(undefined1 *)(iVar2 + 4) = 2;
+      iVar2->input_flags = 1;
+      iVar2->event_param = 0;
+      iVar2->state = 2;
       return iVar2;
     }
     puVar1 = &DAT_800a4bb9 + iVar3;

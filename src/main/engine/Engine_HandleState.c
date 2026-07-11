@@ -29,10 +29,10 @@ extern void func_80116778(int*);
  * @note Original address: 0x8003DF04
  */
 void Engine_HandleState(void) {
-    if (D_800BF870[0] == 0x15) {
+    if (D_800BF870->type == 0x15) {
         func_8010BE30(&D_800ED018);
-    } else if (D_800BF870[3] == 0) {
-        switch (D_800BF870[0]) {
+    } else if (D_800BF870->sub_type == 0) {
+        switch D_800BF870->type {
             case 0:
                 func_80115598(&D_800ED018);
                 break;

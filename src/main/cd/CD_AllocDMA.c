@@ -27,7 +27,7 @@ undefined4 FUN_800982a0(int param_1)
       if (uVar2 <= (uVar1 & 0xfffffff)) {
         return 1;
       }
-      if (uVar2 < (uVar1 & 0xfffffff) + puVar3[1]) {
+      if (uVar2 < (uVar1 & 0xfffffff) + puVar3->flags) {
         return 1;
       }
     }

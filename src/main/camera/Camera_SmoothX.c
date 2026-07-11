@@ -27,7 +27,7 @@ bool FUN_8006d960(undefined4 param_1,int *param_2)
   iVar3 = (uint)*(ushort *)((int)param_2 + 10) - (_DAT_1f8000e4 >> 0x10);
   bVar2 = (iVar3 + 10U & 0xffff) < 0x15;
   if (bVar2) {
-    _DAT_1f8000e4 = param_2[2];
+    _DAT_1f8000e4 = param_2->kind;
   }
   else {
     iVar3 = FUN_8006ce74(iVar3 * 0x10000 >> 0x10,0x1800);

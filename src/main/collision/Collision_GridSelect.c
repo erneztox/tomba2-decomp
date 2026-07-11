@@ -25,17 +25,17 @@ void FUN_80048d3c(void)
     _DAT_1f8001c8 = _DAT_800ecf74;
     puVar1 = (ushort *)(_DAT_800ecf74 + (uint)*(ushort *)(_DAT_800ecf74 + 2) * 2);
     _DAT_1f8001b2 = *puVar1;
-    _DAT_1f8001b6 = puVar1[1];
+    _DAT_1f8001b6 = puVar1->flags;
     _DAT_1f8001cc = puVar1 + 10;
-    _DAT_1f8001b4 = puVar1[2];
-    _DAT_1f8001b8 = puVar1[3];
-    _DAT_1f8001ba = puVar1[4];
-    _DAT_1f8001d0 = puVar1 + puVar1[6];
-    _DAT_1f8001d4 = puVar1 + puVar1[7];
-    _DAT_1f8001d8 = puVar1 + puVar1[8];
-    _DAT_1f8001dc = puVar1 + puVar1[9];
-    DAT_1f8001fc = (undefined1)puVar1[5];
-    DAT_1f8001fd = (undefined1)(puVar1[5] >> 8);
+    _DAT_1f8001b4 = puVar1->kind;
+    _DAT_1f8001b8 = puVar1->sub_type;
+    _DAT_1f8001ba = puVar1->state;
+    _DAT_1f8001d0 = puVar1 + puVar1->action_state;
+    _DAT_1f8001d4 = puVar1 + puVar1->sub_action;
+    _DAT_1f8001d8 = puVar1 + puVar1->counter1;
+    _DAT_1f8001dc = puVar1 + puVar1->counter2;
+    DAT_1f8001fc = (undefined1)puVar1->behavior_state;
+    DAT_1f8001fd = (undefined1)(puVar1->behavior_state >> 8);
     if (_DAT_1f8001b6 < _DAT_1f8001b2) {
       _DAT_1f8001ae = _DAT_1f8001b2 - _DAT_1f8001b6;
       _DAT_1f8001aa = _DAT_1f8001b6;

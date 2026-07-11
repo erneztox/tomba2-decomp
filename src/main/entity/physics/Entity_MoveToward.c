@@ -50,15 +50,15 @@ undefined4 FUN_80041194(int param_1,short param_2,byte param_3,int param_4)
   FUN_80049674(param_1);
   uVar2 = _DAT_1f8001a2;
   sVar1 = _DAT_1f8001a0;
-  *(byte *)(param_1 + 0xbe) = param_3 & 1;
-  *(short *)(param_1 + 0x60) = sVar1;
-  *(undefined2 *)(param_1 + 0x62) = uVar2;
+  param_1->gte_flags = param_3 & 1;
+  param_1->draw_x = sVar1;
+  param_1->angle_delta = uVar2;
   if ((param_3 & 1) == 0) {
-    uVar3 = *(ushort *)(param_1 + 0x60);
+    uVar3 = param_1->draw_x;
   }
   else {
     uVar3 = sVar1 - 0x800U & 0xfff;
   }
-  *(ushort *)(param_1 + 0x56) = uVar3;
+  param_1->rot_y = uVar3;
   return 1;
 }

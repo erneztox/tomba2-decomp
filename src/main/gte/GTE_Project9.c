@@ -23,12 +23,12 @@ void FUN_8002ab5c(int param_1)
   int local_24;
   int local_20;
   
-  _DAT_1f800090 = (0x80 - *(short *)(param_1 + 0x4e)) * 0x20;
+  _DAT_1f800090 = (0x80 - param_1->sprite_x) * 0x20;
   setCopControlWord(2,0xa800,0);
   setCopControlWord(2,0xb000,0);
   setCopControlWord(2,0xb800,0);
-  DAT_800a2014 = (byte)((int)*(short *)(param_1 + 0x40) * (int)*(short *)(param_1 + 0x50) >> 0xb);
-  DAT_800a2016 = (byte)((int)*(short *)(param_1 + 0x42) * (int)*(short *)(param_1 + 0x50) >> 0xb);
+  DAT_800a2014 = (byte)((int)param_1->timer1 * (int)param_1->angle_offset >> 0xb);
+  DAT_800a2016 = (byte)((int)param_1->timer2 * (int)param_1->angle_offset >> 0xb);
   FUN_80085480(param_1 + 0x54,0x1f800000);
   local_28 = (uint)DAT_800a2014 << 2;
   local_24 = (uint)DAT_800a2015 << 2;

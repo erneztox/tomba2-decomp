@@ -18,8 +18,8 @@ int FUN_80035528(undefined4 param_1,undefined4 param_2,int param_3)
   iVar2 = FUN_80035640(0x18);
   if (((iVar2 != 0) && (param_3 != 1)) &&
      (iVar3 = FUN_8004bd04(param_1,0,1), uVar1 = _DAT_1f800080, iVar3 != 0)) {
-    *(undefined4 *)(iVar3 + 0x1c) = 0x8011600c;
-    *(undefined4 *)(iVar3 + 0x14) = uVar1;
+    iVar3->callback = 0x8011600c;
+    iVar3->script_ptr = uVar1;
     FUN_8004d4f4(0x61,1);
   }
   return iVar2;

@@ -18,7 +18,7 @@ void FUN_8009c230(void)
   _DAT_80105f58 = unaff_retaddr;
   FUN_80080890();
   iVar1 = (*(code *)&SUB_000000b0)();
-  iVar1 = *(int *)(iVar1 + 0x18);
+  iVar1 = iVar1->script_data;
   puVar2 = &DAT_8009c2a0;
   do {
     *(undefined4 *)(iVar1 + 0x70) = *puVar2;

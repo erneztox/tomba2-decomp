@@ -92,8 +92,8 @@ void FUN_8002e680(int param_1,int param_2,uint param_3,uint param_4)
       iVar18 = iVar28;
       iVar19 = iVar11;
     }
-    puVar23[1] = uVar27;
-    puVar23[5] = uVar27;
+    puVar23->flags = uVar27;
+    puVar23->behavior_state = uVar27;
     puVar23[10] = uVar27;
     puVar23[0xe] = uVar27;
     puVar23[0x13] = uVar27;
@@ -102,8 +102,8 @@ void FUN_8002e680(int param_1,int param_2,uint param_3,uint param_4)
     puVar23[0x20] = uVar27;
     iVar28 = iVar21 * iVar25 >> 0xc;
     iVar11 = iVar13 * iVar25 >> 0xc;
-    puVar23[3] = uVar26;
-    puVar23[7] = uVar26;
+    puVar23->sub_type = uVar26;
+    puVar23->sub_action = uVar26;
     puVar23[0xc] = uVar26;
     puVar23[0x10] = uVar26;
     puVar23[0x15] = uVar26;
@@ -175,14 +175,14 @@ void FUN_8002e680(int param_1,int param_2,uint param_3,uint param_4)
     *(short *)((int)puVar23 + 0x6a) = sVar8 + sVar6;
     *puVar23 = (uint)(puVar23 + 9) | 0x8000000;
     *(short *)(puVar23 + 0x23) = sVar7 - sVar6;
-    puVar23[9] = (uint)(puVar23 + 0x12) | 0x8000000;
+    puVar23->counter2 = (uint)(puVar23 + 0x12) | 0x8000000;
     puVar23[0x12] = (uint)(puVar23 + 0x1b) | 0x8000000;
     puVar23[0x1b] = (uint)puVar15 | 0x8000000;
     *(short *)(puVar23 + 0x11) = local_30;
     puVar24 = puVar15;
     if (iVar16 != 0) {
       puVar23[0x25] = uVar27;
-      puVar23[0x29] = uVar27;
+      puVar23->collision_state = uVar27;
       puVar23[0x2e] = uVar27;
       puVar23[0x32] = uVar27;
       puVar23[0x37] = uVar27;
@@ -190,13 +190,13 @@ void FUN_8002e680(int param_1,int param_2,uint param_3,uint param_4)
       puVar23[0x40] = uVar27;
       puVar23[0x44] = uVar27;
       puVar23[0x27] = uVar26;
-      puVar23[0x2b] = uVar26;
+      puVar23->move_mode = uVar26;
       puVar23[0x30] = uVar26;
       puVar23[0x34] = uVar26;
       puVar23[0x39] = uVar26;
       puVar23[0x3d] = uVar26;
       puVar23[0x42] = uVar26;
-      puVar23[0x46] = uVar26;
+      puVar23->anim_id = uVar26;
       *(short *)(puVar23 + 0x26) = local_84;
       *(short *)((int)puVar23 + 0xbe) = local_78;
       *(short *)(puVar23 + 0x38) = local_7c;
@@ -220,7 +220,7 @@ void FUN_8002e680(int param_1,int param_2,uint param_3,uint param_4)
       puVar24 = puVar23 + 0x48;
       *(short *)(puVar23 + 0x33) = sVar7 + sVar4;
       *(short *)(puVar23 + 0x45) = sVar7 - sVar4;
-      *(short *)(puVar23 + 0x2c) = sVar7 + sVar5;
+      puVar23->pos_x = sVar7 + sVar5;
       *(short *)((int)puVar23 + 0xd6) = sVar8 - sVar5;
       *(short *)(puVar23 + 0x3e) = sVar7 - sVar5;
       *(short *)((int)puVar23 + 0x11e) = sVar8 + sVar5;

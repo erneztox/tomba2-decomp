@@ -29,10 +29,10 @@ void FUN_8004f6d0(int param_1)
   if (0 < iVar4) {
     puVar7 = (undefined2 *)(param_1 + 0x10);
     do {
-      if (2 < *(byte *)(puVar7 + 2)) {
+      if (2 < puVar7->kind) {
         iVar11 = iVar11 + 1;
       }
-      bVar2 = *(byte *)(puVar7 + 3);
+      bVar2 = puVar7->sub_type;
       if (bVar2 == 1) {
         bVar2 = *(char *)((int)puVar7 + 7) + 2;
         *(byte *)((int)puVar7 + 7) = bVar2;
@@ -50,7 +50,7 @@ void FUN_8004f6d0(int param_1)
           iVar8 = iVar8 + 1;
           *(undefined1 *)((int)puVar7 + 0x39) = 0xff;
           *(undefined1 *)((int)puVar7 + 7) = 0;
-          *(undefined1 *)(puVar7 + 3) = 0;
+          puVar7->sub_type = 0;
         }
       }
       else if (bVar2 < 2) {
@@ -59,15 +59,15 @@ void FUN_8004f6d0(int param_1)
         }
       }
       else if (bVar2 == 2) {
-        sVar1 = puVar7[5];
-        puVar7[5] = sVar1 - 0x100U;
+        sVar1 = puVar7->behavior_state;
+        puVar7->behavior_state = sVar1 - 0x100U;
         if ((int)((uint)(ushort)(sVar1 - 0x100U) << 0x10) < 0) {
           iVar8 = iVar8 + 1;
-          puVar7[5] = 0;
-          *(undefined1 *)(puVar7 + 3) = 0;
+          puVar7->behavior_state = 0;
+          puVar7->sub_type = 0;
         }
-        iVar4 = FUN_80083e80((int)(short)puVar7[5]);
-        iVar4 = iVar4 * (short)puVar7[4];
+        iVar4 = FUN_80083e80((int)(short)puVar7->behavior_state);
+        iVar4 = iVar4 * (short)puVar7->state;
         if (iVar4 < 0) {
           iVar4 = iVar4 + 0xfff;
         }
@@ -87,7 +87,7 @@ void FUN_8004f6d0(int param_1)
       iVar4 = (int)*(short *)(param_1 + 8);
     }
     if (iVar4 == 0) {
-      *(undefined1 *)(param_1 + 1) = 0;
+      param_1->flags = 0;
     }
     else {
       uVar3 = 2;
@@ -96,7 +96,7 @@ void FUN_8004f6d0(int param_1)
         uVar3 = 1;
       }
       *(undefined2 *)(param_1 + 4) = 0;
-      *(undefined1 *)(param_1 + 1) = uVar3;
+      param_1->flags = uVar3;
     }
   }
   return;

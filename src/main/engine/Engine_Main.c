@@ -58,13 +58,13 @@ bool FUN_8003ebe0(void)
     sVar8 = 0;
     do {
       puVar2 = _DAT_800bf544;
-      _DAT_800bf544[1] = uVar3 << 0x10 | uVar3 << 8 | uVar3;
-      puVar2[4] = 0x1000080;
+      _DAT_800bf544->flags = uVar3 << 0x10 | uVar3 << 8 | uVar3;
+      puVar2->state = 0x1000080;
       *(undefined2 *)((int)puVar2 + 10) = 0;
       if (iVar7 == 0) {
-        puVar2[3] = 0x7fe80000;
+        puVar2->sub_type = 0x7fe80000;
         if (iVar10 == 0) {
-          *(undefined1 *)(puVar2 + 3) = 0x40;
+          puVar2->sub_type = 0x40;
           *(undefined2 *)(puVar2 + 4) = 0x40;
           *(undefined2 *)(puVar2 + 2) = 0;
         }
@@ -73,7 +73,7 @@ bool FUN_8003ebe0(void)
         }
       }
       else {
-        puVar2[3] = 0x7fa80000;
+        puVar2->sub_type = 0x7fa80000;
         *(short *)(puVar2 + 2) = sVar8;
       }
       FUN_80083cc0(puVar2);

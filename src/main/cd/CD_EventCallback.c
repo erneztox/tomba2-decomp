@@ -36,7 +36,7 @@ undefined4 FUN_8008bbe8(void)
           iVar6 = iVar3 * 0x2c;
           *(undefined4 *)(iVar6 + -0x7fefd290) = *(undefined4 *)(pbVar5 + 2);
           iVar7 = iVar6 + -0x7fefd28c;
-          bVar1 = pbVar5[6];
+          bVar1 = pbVar5->action_state;
           iVar3 = iVar3 + 1;
           *(int *)(iVar6 + -0x7fefd298) = iVar3;
           *(uint *)(iVar6 + -0x7fefd294) = (uint)bVar1;

@@ -18,30 +18,30 @@ void FUN_80025744(int param_1)
   undefined1 local_28;
   undefined1 local_27;
   undefined2 local_26;
-  short local_20 [4];
+  short local_20->state;
   
   local_27 = 8;
   local_26 = 0x8000;
-  local_20[0] = 0x20;
+  local_20->type = 0x20;
   local_28 = 0;
-  local_20[2] = 0;
-  local_20[3] = 0;
-  local_20[1] = 200;
-  FUN_8007e1b8(local_20,*(undefined4 *)(param_1 + 0x38),*(undefined4 *)(param_1 + 0x3c),&local_28);
+  local_20->kind = 0;
+  local_20->sub_type = 0;
+  local_20->flags = 200;
+  FUN_8007e1b8(local_20,param_1->anim_data,param_1->sprite_data,&local_28);
   local_26 = 0;
-  local_20[2] = DAT_800bf87f - 0x18;
-  local_20[0] = local_20[0] + 0x18;
-  FUN_8007e1b8(local_20,PTR_DAT_800173d8,*(undefined4 *)(param_1 + 0x3c),&local_28);
-  sVar2 = local_20[2];
-  local_20[2] = 0;
-  local_20[0] = local_20[0] + sVar2;
-  FUN_8007e1b8(local_20,PTR_DAT_800173dc,*(undefined4 *)(param_1 + 0x3c),&local_28);
+  local_20->kind = DAT_800bf87f - 0x18;
+  local_20->type = local_20->type + 0x18;
+  FUN_8007e1b8(local_20,PTR_DAT_800173d8,param_1->sprite_data,&local_28);
+  sVar2 = local_20->kind;
+  local_20->kind = 0;
+  local_20->type = local_20->type + sVar2;
+  FUN_8007e1b8(local_20,PTR_DAT_800173dc,param_1->sprite_data,&local_28);
   if (DAT_800bf87e == 0) {
     return;
   }
-  local_20[0] = 0x32;
-  local_20[1] = 0xcc;
-  local_20[2] = (short)DAT_800bf87e;
+  local_20->type = 0x32;
+  local_20->flags = 0xcc;
+  local_20->kind = (short)DAT_800bf87e;
   bVar1 = false;
   switch(DAT_800e7eef) {
   case 0x12:
@@ -70,6 +70,6 @@ switchD_80025868_default:
   if ((bVar1) && ((_DAT_1f80017c & 3) != 0)) {
     puVar4 = PTR_DAT_800173c0;
   }
-  FUN_8007e1b8(local_20,puVar4,*(undefined4 *)(param_1 + 0x3c),&local_28);
+  FUN_8007e1b8(local_20,puVar4,param_1->sprite_data,&local_28);
   return;
 }

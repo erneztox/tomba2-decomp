@@ -23,14 +23,14 @@ int FUN_80035338(undefined4 param_1,int param_2,int param_3,undefined4 param_4)
       if (iVar2 == 0) {
         return iVar1;
       }
-      *(undefined4 *)(iVar2 + 0x14) = _DAT_1f800080;
+      iVar2->script_ptr = _DAT_1f800080;
     }
     else {
       iVar2 = FUN_8004bd04(param_1,1,1);
       if (iVar2 == 0) {
         return iVar1;
       }
-      *(undefined4 *)(iVar2 + 0x14) = _DAT_1f800080;
+      iVar2->script_ptr = _DAT_1f800080;
       uVar3 = 0x61;
       if ((DAT_800bf870 == '\0') && (DAT_800bf8b8 != -1)) {
         uVar3 = 0x28;

@@ -15,13 +15,13 @@ undefined4 FUN_8006042c(int param_1)
     return 2;
   }
   if (DAT_1f800237 == '\0') {
-    bVar1 = *(byte *)(param_1 + 0x167);
+    bVar1 = param_1->input_state;
     if (bVar1 == 1) {
 LAB_800604bc:
-      if (*(byte *)(param_1 + 0x5f) == 0) {
+      if (param_1->input_flags == 0) {
         return 0;
       }
-      if ((*(byte *)(param_1 + 0x5f) & 1) != 0) {
+      if ((param_1->input_flags & 1) != 0) {
         return 1;
       }
       return 0;
@@ -39,7 +39,7 @@ LAB_800604bc:
     }
   }
   else {
-    bVar1 = *(byte *)(param_1 + 0x167);
+    bVar1 = param_1->input_state;
     if (bVar1 != 1) {
       if (bVar1 < 2) {
         if (bVar1 != 0) {
@@ -52,20 +52,20 @@ LAB_800604bc:
         }
         goto LAB_8006049c;
       }
-      if (*(byte *)(param_1 + 0x5f) == 0) {
+      if (param_1->input_flags == 0) {
         return 0;
       }
-      if ((*(byte *)(param_1 + 0x5f) & 1) == 0) {
+      if ((param_1->input_flags & 1) == 0) {
         return 0;
       }
       return 1;
     }
   }
 LAB_8006049c:
-  if (*(byte *)(param_1 + 0x5f) == 0) {
+  if (param_1->input_flags == 0) {
     return 0;
   }
-  if ((*(byte *)(param_1 + 0x5f) & 1) == 0) {
+  if ((param_1->input_flags & 1) == 0) {
     return 1;
   }
   return 0;

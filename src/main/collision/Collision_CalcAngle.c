@@ -21,8 +21,8 @@ void FUN_80049760(int param_1)
   iVar1 = FUN_80083f50();
   iVar2 = FUN_80083e80((int)(short)_DAT_1f8001a0);
   _DAT_1f8001a2 = 0;
-  *(short *)(param_1 + 0x48) = (short)(iVar1 >> 4);
-  *(short *)(param_1 + 0x4c) = (short)(iVar2 >> 4);
+  param_1->normal_x = (short)(iVar1 >> 4);
+  param_1->normal_z = (short)(iVar2 >> 4);
   _DAT_1f8001a0 = -_DAT_1f8001a0 & 0xfff;
   return;
 }

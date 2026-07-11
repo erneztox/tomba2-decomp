@@ -28,8 +28,8 @@ uint FUN_80035424(undefined4 param_1,int param_2,int param_3)
       if (iVar4 == 0) {
         return uVar2;
       }
-      *(undefined4 *)(iVar4 + 0x1c) = 0x80111ecc;
-      *(undefined4 *)(iVar4 + 0x14) = uVar1;
+      iVar4->callback = 0x80111ecc;
+      iVar4->script_ptr = uVar1;
     }
     else {
       iVar4 = FUN_8004bd04(param_1,0,1);
@@ -38,8 +38,8 @@ uint FUN_80035424(undefined4 param_1,int param_2,int param_3)
       if (iVar4 == 0) {
         return uVar2;
       }
-      *(undefined4 *)(iVar4 + 0x1c) = 0x80111ecc;
-      *(undefined4 *)(iVar4 + 0x14) = uVar1;
+      iVar4->callback = 0x80111ecc;
+      iVar4->script_ptr = uVar1;
     }
     DAT_800bf809 = 1;
     FUN_8004d4f4(uVar5,1);

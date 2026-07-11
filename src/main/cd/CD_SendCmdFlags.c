@@ -11,9 +11,9 @@
 void FUN_8008cc30(uint param_1)
 
 {
-  undefined1 local_10 [8];
+  undefined1 local_10->counter1;
   
-  local_10[0] = (undefined1)param_1;
+  local_10->type = (undefined1)param_1;
   FUN_80089bac(0xe,local_10,0);
   if ((param_1 & 0x100) != 0) {
     _DAT_80102760 = (uint)((param_1 & 0x20) == 0);

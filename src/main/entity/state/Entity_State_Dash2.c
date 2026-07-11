@@ -18,20 +18,20 @@ undefined4 FUN_80057150(int param_1,int param_2)
   undefined4 uVar5;
   
   iVar3 = 0;
-  if ((*(ushort *)(param_1 + 0x17e) & 0x40) == 0) {
+  if ((param_1->entity_flags & 0x40) == 0) {
 LAB_80057208:
     iVar3 = 2;
   }
   else {
-    if (*(char *)(param_1 + 0x46) == -0x35) {
-      if ((*(ushort *)(*(int *)(param_1 + 0x38) + 6) & 0x8000) != 0) {
+    if (param_1->anim_id == -0x35) {
+      if ((*(ushort *)(param_1->anim_data + 6) & 0x8000) != 0) {
         FUN_80054d14(param_1,0xca,4);
         iVar3 = 2;
         goto LAB_80057210;
       }
     }
     else {
-      if (*(char *)(param_1 + 0x46) != -0x36) goto LAB_80057210;
+      if (param_1->anim_id != -0x36) goto LAB_80057210;
       if ((_DAT_800e7e68 & _DAT_1f800172) == 0) goto LAB_80057208;
       FUN_80054d14(param_1,0xcb,4);
       FUN_80074590(0x35,0,0);
@@ -45,23 +45,23 @@ LAB_80057210:
   if (iVar3 != 2) {
     return 0xe00;
   }
-  if ((*(char *)(param_1 + 0x146) != '\0') || (*(char *)(param_1 + 0x78) != '\0')) {
+  if ((param_1->state_flag146 != '\0') || (param_1->sub_state != '\0')) {
     param_2 = 8;
   }
-  if (((*(byte *)(param_1 + 0x14a) & 2) == 0) &&
-     ((*(byte *)(param_1 + 0x14a) & 1) == *(byte *)(param_1 + 0x147))) {
+  if (((param_1->behavior_flags & 2) == 0) &&
+     ((param_1->behavior_flags & 1) == param_1->direction)) {
     uVar4 = 0x60;
     if (param_2 == 8) {
       return 0xe00;
     }
-    sVar1 = *(short *)(param_1 + 0x58);
+    sVar1 = param_1->rot_z;
     uVar5 = 0x10;
   }
   else {
-    if ((*(byte *)(param_1 + 0x14a) & 8) != 0) {
+    if ((param_1->behavior_flags & 8) != 0) {
       if (param_2 != 8) {
-        uVar2 = FUN_800776f8(0xf00,(int)*(short *)(param_1 + 0x58),0x20);
-        *(undefined2 *)(param_1 + 0x58) = uVar2;
+        uVar2 = FUN_800776f8(0xf00,(int)param_1->rot_z,0x20);
+        param_1->rot_z = uVar2;
       }
       return 0x1a00;
     }
@@ -69,10 +69,10 @@ LAB_80057210:
     if (param_2 == 8) {
       return 0xe00;
     }
-    sVar1 = *(short *)(param_1 + 0x58);
+    sVar1 = param_1->rot_z;
     uVar5 = 0x40;
   }
   uVar2 = FUN_800776f8(uVar4,(int)sVar1,uVar5);
-  *(undefined2 *)(param_1 + 0x58) = uVar2;
+  param_1->rot_z = uVar2;
   return 0xe00;
 }

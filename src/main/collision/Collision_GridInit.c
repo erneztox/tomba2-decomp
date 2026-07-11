@@ -13,8 +13,8 @@ void FUN_8004798c(int param_1)
 {
   bool bVar1;
   
-  if (*(char *)(param_1 + 0x2a) != DAT_1f8001fe) {
-    FUN_80048ecc(*(char *)(param_1 + 0x2a));
+  if (param_1->collision_dir != DAT_1f8001fe) {
+    FUN_80048ecc(param_1->collision_dir);
   }
   if (_DAT_1f8001ae < _DAT_1f8001b0) {
     bVar1 = _DAT_1f8001b0 < (ushort)(_DAT_1f8001c0 - _DAT_1f8001ac);

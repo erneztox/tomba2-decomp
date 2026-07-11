@@ -29,33 +29,33 @@ void FUN_8006e010(int param_1)
     default:
       sVar2 = -0x180;
     }
-    iVar3 = *(int *)(param_1 + 0x34);
+    iVar3 = param_1->scale_y;
     iVar4 = (int)sVar2;
     if (iVar4 < iVar3) {
-      *(int *)(param_1 + 0x34) = iVar3 + -8;
+      param_1->scale_y = iVar3 + -8;
       bVar1 = iVar4 < iVar3 + -8;
     }
     else {
-      *(int *)(param_1 + 0x34) = iVar3 + 8;
+      param_1->scale_y = iVar3 + 8;
       bVar1 = iVar3 + 8 < iVar4;
     }
     if (!bVar1) {
-      *(int *)(param_1 + 0x34) = iVar4;
+      param_1->scale_y = iVar4;
       return;
     }
   }
   else {
-    iVar3 = *(int *)(param_1 + 0x34);
+    iVar3 = param_1->scale_y;
     if (iVar3 < 1) {
-      *(int *)(param_1 + 0x34) = iVar3 + 8;
+      param_1->scale_y = iVar3 + 8;
       if (-1 < iVar3 + 8) {
-        *(undefined4 *)(param_1 + 0x34) = 0;
+        param_1->scale_y = 0;
       }
     }
     else {
-      *(int *)(param_1 + 0x34) = iVar3 + -8;
+      param_1->scale_y = iVar3 + -8;
       if (iVar3 + -8 < 1) {
-        *(undefined4 *)(param_1 + 0x34) = 0;
+        param_1->scale_y = 0;
         return;
       }
     }

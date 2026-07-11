@@ -23,7 +23,7 @@ void FUN_800531dc(int param_1)
       if (DAT_800bf870 != 6) {
         return;
       }
-      if (*(char *)(param_1 + 0x2a) == '\x0e') {
+      if (param_1->collision_dir == '\x0e') {
         if (-0x1dd6 < *(short *)(param_1 + 0x32)) {
           return;
         }

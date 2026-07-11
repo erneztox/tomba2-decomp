@@ -1,5 +1,5 @@
 /**
- * @brief Entity sprite updater: entity[4]=1, processes draw commands
+ * @brief Entity sprite updater: entity->state=1, processes draw commands
  * @note Original: func_8007DA50 at 0x8007DA50
  */
 // Entity_SpriteUpdate
@@ -13,7 +13,7 @@ void FUN_8007da50(int param_1)
   short sVar2;
   int iVar3;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 == 1) {
     FUN_8007d594(param_1);
   }
@@ -21,41 +21,41 @@ void FUN_8007da50(int param_1)
     if (bVar1 == 0) {
       *(undefined1 *)(param_1 + 0x18) =
            *(undefined1 *)(*(short *)(param_1 + 0x5e) * 4 + *(int *)(param_1 + 0x4c) + 3);
-      if (*(char *)(param_1 + 0xd) != -1) {
-        *(undefined1 *)(param_1 + 0xd) =
+      if (param_1->sprite_flags != -1) {
+        param_1->sprite_flags =
              *(undefined1 *)(*(short *)(param_1 + 0x5e) * 4 + *(int *)(param_1 + 0x4c) + 2);
       }
       iVar3 = *(int *)(param_1 + 0x50) +
               (uint)*(ushort *)(*(short *)(param_1 + 0x5e) * 4 + *(int *)(param_1 + 0x4c));
-      *(byte *)(param_1 + 0x46) = *(byte *)(param_1 + 0x46) | 1;
-      *(int *)(param_1 + 0x10) = iVar3;
-      *(int *)(param_1 + 0x14) = iVar3;
+      param_1->anim_id = param_1->anim_id | 1;
+      param_1->parent = iVar3;
+      param_1->script_ptr = iVar3;
       FUN_8007d0d0(param_1);
-      *(undefined2 *)(param_1 + 0x42) = 0;
-      if ((DAT_800bf84b == '\0') && (*(byte *)(param_1 + 3) < 4)) {
+      param_1->timer2 = 0;
+      if ((DAT_800bf84b == '\0') && (param_1->sub_type < 4)) {
         FUN_8007c940(param_1);
         *(undefined4 *)(param_1 + 0x80) = *(undefined4 *)(param_1 + 0x54);
         *(undefined4 *)(param_1 + 0x84) = *(undefined4 *)(param_1 + 0x58);
-        *(undefined2 *)(param_1 + 0x58) = 8;
-        *(undefined2 *)(param_1 + 0x54) = 0x9c;
-        if (*(short *)(param_1 + 0x56) < 0x80) {
-          sVar2 = -*(short *)(param_1 + 0x5a);
+        param_1->rot_z = 8;
+        param_1->rot_x = 0x9c;
+        if (param_1->rot_y < 0x80) {
+          sVar2 = -param_1->target_rot_y;
         }
         else {
           sVar2 = 0x100;
         }
-        *(short *)(param_1 + 0x56) = sVar2;
-        *(undefined2 *)(param_1 + 0x60) = 0x10;
-        *(undefined1 *)(param_1 + 6) = 0;
-        *(undefined1 *)(param_1 + 5) = 0x5a;
+        param_1->rot_y = sVar2;
+        param_1->draw_x = 0x10;
+        param_1->action_state = 0;
+        param_1->behavior_state = 0x5a;
       }
       else {
-        *(undefined1 *)(param_1 + 5) = 1;
-        *(int *)(param_1 + 0x14) = *(int *)(param_1 + 0x14) + 1;
+        param_1->behavior_state = 1;
+        param_1->script_ptr = param_1->script_ptr + 1;
       }
       DAT_800bf84b = '\x01';
       DAT_800bf822 = DAT_800bf822 | 2;
-      *(char *)(param_1 + 4) = *(char *)(param_1 + 4) + '\x01';
+      param_1->state = param_1->state + '\x01';
     }
   }
   else if ((bVar1 != 2) && (bVar1 == 3)) {

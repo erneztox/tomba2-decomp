@@ -20,9 +20,9 @@ undefined4 FUN_800812d8(undefined4 *param_1,uint param_2,int param_3)
     else {
       DAT_800a5a44 = param_3 << 0x10 | param_2 & 0xffff;
       DAT_800a5a40 = *param_1;
-      DAT_800a5a48 = param_1[1];
+      DAT_800a5a48 = param_1->flags;
       uVar1 = (**(code **)(PTR_PTR_800a5998 + 8))
-                        (*(undefined4 *)(PTR_PTR_800a5998 + 0x18),&DAT_800a5a38,0x14,0);
+                        (PTR_PTR_800a5998->script_data,&DAT_800a5a38,0x14,0);
     }
   }
   return uVar1;

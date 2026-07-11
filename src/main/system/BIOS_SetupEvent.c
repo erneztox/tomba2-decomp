@@ -20,8 +20,8 @@ void FUN_8009c0f8(void)
   iVar1 = (*(code *)&SUB_000000b0)();
   _DAT_0000dffc =
        (undefined4 *)
-       (*(int *)(*(int *)(iVar1 + 0x18) + 0x70) * 0x10000 +
-        (*(uint *)(*(int *)(iVar1 + 0x18) + 0x74) & 0xffff) + 0x28);
+       (*(int *)(iVar1->script_data + 0x70) * 0x10000 +
+        (*(uint *)(iVar1->script_data + 0x74) & 0xffff) + 0x28);
   puVar2 = &DAT_8009c0d0;
   do {
     *_DAT_0000dffc = *puVar2;

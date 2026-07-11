@@ -22,10 +22,10 @@ void Render_ProcessQueueItem(undefined4 *param_1)
   
   puVar1 = _DAT_800bf544;
   local_30 = (short)*param_1;
-  local_2c = (short)param_1[1];
+  local_2c = (short)param_1->flags;
   sStack_2e = (short)((uint)*param_1 >> 0x10);
   _local_30 = CONCAT22(sStack_2e,local_30 + -4);
-  uStack_2a = (undefined2)((uint)param_1[1] >> 0x10);
+  uStack_2a = (undefined2)((uint)param_1->flags >> 0x10);
   _local_2c = CONCAT22(uStack_2a,local_2c + 8);
   if ((*(byte *)((int)param_1 + 10) < 3) && (*(byte *)((int)param_1 + 10) != 0)) {
     local_24 = 0x140;

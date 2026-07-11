@@ -1,5 +1,5 @@
 /**
- * @brief Entity parent behavior: entity[4]=1, reads parent[0x10]
+ * @brief Entity parent behavior: entity->state=1, reads parent[0x10]
  * @note Original: func_8002B7B0 at 0x8002B7B0
  */
 // Entity_Behavior_Parent
@@ -15,8 +15,8 @@ void FUN_8002b7b0(int param_1)
   undefined2 uVar4;
   int iVar5;
   
-  bVar1 = *(byte *)(param_1 + 4);
-  iVar5 = *(int *)(param_1 + 0x10);
+  bVar1 = param_1->state;
+  iVar5 = param_1->parent;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (3 < bVar1) {
@@ -33,31 +33,31 @@ void FUN_8002b7b0(int param_1)
     uVar4 = DAT_8009ddba;
     uVar3 = DAT_8009ddb8;
     *(undefined2 *)(param_1 + 0x32) = 0xffd8;
-    *(undefined4 *)(param_1 + 0x38) = 0;
+    param_1->anim_data = 0;
     *(undefined4 *)(param_1 + 4) = 1;
-    *(undefined2 *)(param_1 + 0x44) = uVar3;
+    param_1->anim_counter = uVar3;
     *(undefined2 *)(param_1 + 0x46) = uVar4;
   }
-  if ((*(byte *)(*(int *)(param_1 + 0x14) + 0x1b) & 0x40) == 0) {
-    *(undefined1 *)(param_1 + 4) = 2;
+  if ((*(byte *)(param_1->script_ptr + 0x1b) & 0x40) == 0) {
+    param_1->state = 2;
   }
   else {
-    *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x38);
-    if (*(int *)(param_1 + 0x38) == 0) {
+    param_1->scale_y = param_1->anim_data;
+    if (param_1->anim_data == 0) {
       *(undefined **)(param_1 + 0x38) = &DAT_8009ddbc;
       *(undefined **)(param_1 + 0x34) = &DAT_8009ddbc;
     }
-    cVar2 = *(char *)(*(int *)(param_1 + 0x14) + 1);
-    *(char *)(param_1 + 1) = cVar2;
+    cVar2 = *(char *)(param_1->script_ptr + 1);
+    param_1->flags = cVar2;
     if (cVar2 != '\0') {
-      *(undefined2 *)(param_1 + 0x2c) = *(undefined2 *)(iVar5 + 0x2c);
-      *(undefined2 *)(param_1 + 0x2e) = *(undefined2 *)(iVar5 + 0x30);
+      param_1->pos_x = iVar5->pos_x;
+      param_1->pos_y = *(undefined2 *)(iVar5 + 0x30);
       uVar3 = *(undefined2 *)(iVar5 + 0x34);
-      *(ushort *)(param_1 + 0x4a) = *(short *)(param_1 + 0x4a) + 0x88U & 0xfff;
+      param_1->velocity_y = param_1->velocity_y + 0x88U & 0xfff;
       *(undefined2 *)(param_1 + 0x30) = uVar3;
-      iVar5 = FUN_80083e80((uint)*(byte *)(param_1 + 7) << 4);
-      *(short *)(param_1 + 0x48) = (short)(iVar5 >> 4);
-      *(char *)(param_1 + 7) = *(char *)(param_1 + 7) + '\x02';
+      iVar5 = FUN_80083e80((uint)param_1->sub_action << 4);
+      param_1->normal_x = (short)(iVar5 >> 4);
+      param_1->sub_action = param_1->sub_action + '\x02';
     }
   }
   return;

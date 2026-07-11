@@ -28,7 +28,7 @@ int * Entity_ProcessAnimFrame(int *param_1,undefined4 param_2)
   setCopReg(2,0x4000,_DAT_1f800090);
   psVar11 = (short *)((int)_DAT_800bf544 + 0x1a);
   do {
-    uVar12 = param_1[1];
+    uVar12 = param_1->flags;
     bVar3 = (byte)uVar12 & 0xf8;
     bVar6 = (byte)(uVar12 >> 8);
     bVar4 = bVar6 & 0xf8;
@@ -36,17 +36,17 @@ int * Entity_ProcessAnimFrame(int *param_1,undefined4 param_2)
     cVar7 = ((byte)uVar12 & 7) * '\b';
     cVar5 = (bVar6 & 7) * '\b';
     if ((uVar13 & 0x2000) == 0) {
-      *(byte *)(psVar11 + 1) = bVar3 + 1;
+      psVar11->flags = bVar3 + 1;
       *(byte *)(psVar11 + -7) = bVar3 + 1;
       cVar7 = bVar3 + cVar7 + '\a';
     }
     else {
       cVar7 = bVar3 + cVar7 + '\x06';
-      *(char *)(psVar11 + 1) = cVar7;
+      psVar11->flags = cVar7;
       *(char *)(psVar11 + -7) = cVar7;
       cVar7 = bVar3 + 1;
     }
-    *(char *)(psVar11 + 5) = cVar7;
+    psVar11->behavior_state = cVar7;
     *(char *)(psVar11 + -3) = cVar7;
     if ((uVar13 & 0x1000) == 0) {
       *(byte *)((int)psVar11 + -5) = bVar4 + 1;
@@ -65,10 +65,10 @@ int * Entity_ProcessAnimFrame(int *param_1,undefined4 param_2)
     // Pack R,G,B into PSX color format: (cmd_byte << 24) | (B << 16) | (G << 8) | R
     *(uint *)(psVar11 + -0xb) =
          (((uVar13 & 1) << 1 | 0x2c) << 8 | uVar12) << 0x10 | uVar12 << 8 | uVar12;
-    setCopReg(2,psVar11,_DAT_800bf544[1]);
+    setCopReg(2,psVar11,_DAT_800bf544->flags);
     copFunction(2,0x780010);
     uVar12 = getCopReg(2,0x16);
-    _DAT_800bf544[1] = uVar12;
+    _DAT_800bf544->flags = uVar12;
     psVar11[-2] = (ushort)((uint)param_2 >> 0x10) | (ushort)((uVar13 & 6) << 4);
     psVar11[-6] = (short)param_2 + (short)((uVar13 & 0xf00) >> 2);
     iVar9 = *param_1;
@@ -79,13 +79,13 @@ int * Entity_ProcessAnimFrame(int *param_1,undefined4 param_2)
     psVar11[-9] = sVar8;
     iVar9 = (iVar9 >> 0x18) * _DAT_1f800088;
     sVar8 = _DAT_1f80008c + (short)((uint)iVar1 >> 0x10);
-    psVar11[3] = sVar8;
+    psVar11->sub_type = sVar8;
     psVar11[-5] = sVar8;
     sVar8 = _DAT_1f80008e + (short)((uint)iVar2 >> 0x10);
     psVar11[-4] = sVar8;
     psVar11[-8] = sVar8;
     sVar8 = _DAT_1f80008e + (short)((uint)iVar9 >> 0x10);
-    psVar11[4] = sVar8;
+    psVar11->state = sVar8;
     *psVar11 = sVar8;
     puVar10 = (uint *)(_DAT_800ed8c8 + _DAT_1f800080 * 4);
     *_DAT_800bf544 = *puVar10 | 0x9000000;

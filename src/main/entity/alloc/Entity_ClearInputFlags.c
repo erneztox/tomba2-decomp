@@ -30,5 +30,5 @@ void Entity_ClearInputFlags(void)
     register u16* ptr asm("v0");
     func_8007982C();
     ptr = (u16*)0x1F800000;
-    ptr[0xBE] = 0;
+    ptr->gte_flags = 0;
 }

@@ -25,14 +25,14 @@ void FUN_8003cdd8(int param_1,undefined4 param_2)
   undefined4 uVar8;
   int iVar9;
   
-  if ((*(char *)(param_1 + 8) != '\0') && (iVar9 = 0, *(char *)(param_1 + 9) != '\0')) {
+  if ((param_1->counter1 != '\0') && (iVar9 = 0, param_1->counter2 != '\0')) {
     do {
-      if ((int)(uint)*(byte *)(param_1 + 8) <= iVar9) {
+      if ((int)(uint)param_1->counter1 <= iVar9) {
         return;
       }
       iVar2 = *(int *)(param_1 + iVar9 * 4 + 0xc0);
       if (*(int *)(iVar2 + 0x40) != 0) {
-        _DAT_1f8000c0 = CONCAT22(*(undefined2 *)(iVar2 + 0x30),*(undefined2 *)(iVar2 + 0x2c));
+        _DAT_1f8000c0 = CONCAT22(*(undefined2 *)(iVar2 + 0x30),iVar2->pos_x);
         _DAT_1f8000c4 = CONCAT22(DAT_1f8000c4_2,*(undefined2 *)(iVar2 + 0x34));
         setCopControlWord(2,0,_DAT_1f8000f8);
         setCopControlWord(2,0x800,_DAT_1f8000fc);
@@ -83,14 +83,14 @@ void FUN_8003cdd8(int param_1,undefined4 param_2)
         setCopControlWord(2,0x3000,_DAT_1f800018);
         setCopControlWord(2,0x3800,_DAT_1f80001c);
         iVar1 = _DAT_800ed8c8;
-        if ((*(byte *)(param_1 + 0xd) & 0xf) == 4) {
+        if ((param_1->sprite_flags & 0xf) == 4) {
           iVar1 = _DAT_800ed8c8 + *(char *)(iVar2 + 0x3f) * 4;
         }
         FUN_8003f698(*(undefined4 *)(iVar2 + 0x40),iVar1,param_2);
         in_at = extraout_at;
       }
       iVar9 = iVar9 + 1;
-    } while (iVar9 < (int)(uint)*(byte *)(param_1 + 9));
+    } while (iVar9 < (int)(uint)param_1->counter2);
   }
   return;
 }

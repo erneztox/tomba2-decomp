@@ -16,17 +16,17 @@ void FUN_8007ed5c(uint param_1)
   uint uVar5;
   uint uVar6;
   int iVar7;
-  undefined *local_38 [4];
-  short local_28 [4];
-  ushort local_20 [4];
+  undefined local_38->state;
+  short local_28->state;
+  ushort local_20->state;
   
   uVar6 = 0;
   iVar7 = 0x68;
-  local_38[0] = PTR_s_Save__800a2860;
+  local_38->type = PTR_s_Save__800a2860;
   FUN_800793c4(local_38,1,local_28);
-  FUN_80079374((int)local_28[0],0x50,0,local_38[0],0);
-  local_38[0] = PTR_DAT_800a2864;
-  local_38[1] = PTR_DAT_800a2868;
+  FUN_80079374((int)local_28->type,0x50,0,local_38->type,0);
+  local_38->type = PTR_DAT_800a2864;
+  local_38->flags = PTR_DAT_800a2868;
   sVar4 = FUN_800793c4(local_38,2,local_28);
   uVar5 = param_1;
   do {

@@ -18,24 +18,24 @@ undefined4 FUN_800532a0(int param_1)
   uint uVar5;
   int iVar6;
   
-  uVar1 = *(ushort *)(param_1 + 0x6a) >> 0xc;
-  uVar5 = (*(ushort *)(param_1 + 0x6a) & 0xf00) >> 8;
+  uVar1 = param_1->type_flags >> 0xc;
+  uVar5 = (param_1->type_flags & 0xf00) >> 8;
   if (uVar5 < 4) {
     if (uVar5 == 0) {
-      iVar6 = (int)*(short *)(param_1 + 0x142);
-      cVar2 = -(char)(*(short *)(param_1 + 0x142) >> 7);
+      iVar6 = (int)param_1->draw_scale;
+      cVar2 = -(char)(param_1->draw_scale >> 7);
       if (uVar1 == 2) {
         cVar3 = cVar2 + '\x04';
-        if (*(char *)(param_1 + 0x147) == '\0') {
-          if (0 < (int)((uint)*(ushort *)(param_1 + 0x44) << 0x10)) {
-            *(short *)(param_1 + 0x44) = (short)*(ushort *)(param_1 + 0x44) >> 1;
+        if (param_1->direction == '\0') {
+          if (0 < (int)((uint)param_1->anim_counter << 0x10)) {
+            param_1->anim_counter = (short)param_1->anim_counter >> 1;
           }
           goto LAB_800533ec;
         }
       }
       else {
         if (uVar1 != 3) goto LAB_800533ec;
-        iVar4 = (int)*(short *)(param_1 + 0x44);
+        iVar4 = (int)param_1->anim_counter;
         if (iVar4 < 0) {
           iVar4 = -iVar4;
         }
@@ -60,20 +60,20 @@ undefined4 FUN_800532a0(int param_1)
       if (DAT_800bf870 != '\x04') goto LAB_800533ec;
       cVar3 = '\x06';
     }
-    else if ((uVar1 != 4) || (cVar3 = '\b', (*(ushort *)(param_1 + 0x17e) & 0x30) == 0))
+    else if ((uVar1 != 4) || (cVar3 = '\b', (param_1->entity_flags & 0x30) == 0))
     goto LAB_800533ec;
   }
-  *(char *)(param_1 + 0x16a) = cVar3;
+  param_1->flag_16A = cVar3;
 LAB_800533ec:
-  cVar3 = (&DAT_800a4478)[(*(byte *)(param_1 + 0x16a) & 0xe) >> 1];
+  cVar3 = (&DAT_800a4478)[(param_1->flag_16A & 0xe) >> 1];
   if (cVar3 != '\0') {
-    if (*(char *)(param_1 + 5) != cVar3) {
-      *(char *)(param_1 + 5) = cVar3;
-      *(undefined1 *)(param_1 + 6) = 0;
-      *(undefined1 *)(param_1 + 7) = 0;
+    if (param_1->behavior_state != cVar3) {
+      param_1->behavior_state = cVar3;
+      param_1->action_state = 0;
+      param_1->sub_action = 0;
       return 1;
     }
-    if (*(char *)(param_1 + 5) == '3') {
+    if (param_1->behavior_state == '3') {
       return 1;
     }
   }

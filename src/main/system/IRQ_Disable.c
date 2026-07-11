@@ -21,7 +21,7 @@ void FUN_80085810(void)
   _DAT_80102430 = unaff_retaddr;
   FUN_80080890();
   iVar1 = (*(code *)&SUB_000000b0)();
-  piVar2 = (int *)(*(int *)(iVar1 + 0x18) + 0x28);
+  piVar2 = (int *)(iVar1->script_data + 0x28);
   piVar3 = &DAT_800858bc;
   piVar4 = piVar2;
   do {

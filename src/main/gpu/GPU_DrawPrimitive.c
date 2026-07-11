@@ -11,8 +11,8 @@ void FUN_80081504(int param_1)
 {
   undefined1 uVar1;
   
-  uVar1 = *(undefined1 *)(param_1 + 3);
-  (**(code **)(PTR_PTR_800a5998 + 0x3c))(0);
-  (**(code **)(PTR_PTR_800a5998 + 0x14))(param_1 + 4,uVar1);
+  uVar1 = param_1->sub_type;
+  (*PTR_PTR_800a5998->sprite_data)(0);
+  (*PTR_PTR_800a5998->script_ptr)(param_1 + 4,uVar1);
   return;
 }

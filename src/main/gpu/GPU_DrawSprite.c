@@ -31,9 +31,9 @@ void FUN_80033a0c(int param_1,int param_2,undefined1 param_3)
     }
     local_28 = *puVar2;
     iVar3 = iVar3 + 1;
-    local_26 = puVar2[1];
-    local_24 = puVar2[2];
-    local_22 = puVar2[3];
+    local_26 = puVar2->flags;
+    local_24 = puVar2->kind;
+    local_22 = puVar2->sub_type;
     puVar2 = puVar2 + 4;
     psVar1 = (short *)(param_2 + -4);
     param_2 = param_2 + 2;

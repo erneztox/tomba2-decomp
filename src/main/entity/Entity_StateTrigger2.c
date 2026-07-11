@@ -1,5 +1,5 @@
 /**
- * @brief Entity state trigger variant 2: entity[0x78]=1, checks flags
+ * @brief Entity state trigger variant 2: entity->sub_state=1, checks flags
  * @note Original: func_8004491C at 0x8004491C
  */
 // Entity_StateTrigger2
@@ -15,9 +15,9 @@ undefined4 FUN_8004491c(int param_1)
   ushort uVar2;
   int iVar3;
   
-  bVar1 = *(byte *)(param_1 + 0x78);
+  bVar1 = param_1->sub_state;
   if (bVar1 == 1) {
-    if (*(char *)(param_1 + 0x79) != '\x01') {
+    if (param_1->sub_state2 != '\x01') {
       return 0;
     }
     FUN_800440e4(&DAT_800e7e80,0xcf,2);
@@ -26,7 +26,7 @@ undefined4 FUN_8004491c(int param_1)
     if (bVar1 != 0) {
       return 0;
     }
-    uVar2 = *(ushort *)(param_1 + 0x72);
+    uVar2 = param_1->event_id;
     if ((uVar2 & 0x2000) == 0) {
       if ((uVar2 & 0x1000) == 0) {
         iVar3 = FUN_8006fb0c(param_1,uVar2 & 0x3ff);
@@ -41,18 +41,18 @@ undefined4 FUN_8004491c(int param_1)
     _DAT_800bf844 = iVar3;
     if (iVar3 != 0) {
       if ((**(ushort **)(param_1 + 0x6c) & 0x2000) == 0) {
-        *(undefined1 *)(iVar3 + 0x5e) = 1;
+        iVar3->flag_5E = 1;
       }
       else {
-        *(undefined2 *)(iVar3 + 0x60) = *(undefined2 *)(param_1 + 0x66);
-        *(undefined2 *)(iVar3 + 0x62) = *(undefined2 *)(param_1 + 0x6a);
-        *(undefined1 *)(iVar3 + 0x5e) = *(undefined1 *)(param_1 + 0x68);
+        iVar3->draw_x = *(undefined2 *)(param_1 + 0x66);
+        iVar3->angle_delta = param_1->type_flags;
+        iVar3->flag_5E = *(undefined1 *)(param_1 + 0x68);
       }
-      if ((*(ushort *)(param_1 + 0x72) & 0x800) == 0) {
-        *(byte *)(iVar3 + 0x5f) = *(byte *)(iVar3 + 0x5f) | 1;
+      if ((param_1->event_id & 0x800) == 0) {
+        iVar3->input_flags = iVar3->input_flags | 1;
       }
     }
-    FUN_80041718(param_1,(int)*(short *)(param_1 + 0x74),4);
+    FUN_80041718(param_1,(int)param_1->event_param,4);
   }
   else {
     if (bVar1 != 2) {
@@ -68,14 +68,14 @@ undefined4 FUN_8004491c(int param_1)
       return 0;
     }
     FUN_800440e4(&DAT_800e7e80,2,4);
-    *(undefined1 *)(_DAT_800bf844 + 4) = 2;
-    *(undefined1 *)(_DAT_800bf844 + 5) = 0;
-    *(undefined1 *)(_DAT_800bf844 + 6) = 0;
+    _DAT_800bf844->state = 2;
+    _DAT_800bf844->behavior_state = 0;
+    _DAT_800bf844->action_state = 0;
     FUN_80041718(param_1,(int)*(short *)(param_1 + 0x76),4);
-    if ((*(ushort *)(param_1 + 0x72) & 0x800) != 0) {
+    if ((param_1->event_id & 0x800) != 0) {
       return 1;
     }
   }
-  *(char *)(param_1 + 0x78) = *(char *)(param_1 + 0x78) + '\x01';
+  param_1->sub_state = param_1->sub_state + '\x01';
   return 0;
 }

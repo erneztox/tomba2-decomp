@@ -19,12 +19,12 @@ byte * FUN_8007c940(int param_1)
   byte *pbVar6;
   byte bVar7;
   byte bVar8;
-  short local_28 [4];
+  short local_28->state;
   
   FUN_8007d208();
   bVar8 = 0;
   pbVar6 = *(byte **)(param_1 + 0x10);
-  local_28[0] = *(short *)(param_1 + 0x54);
+  local_28->type = param_1->rot_x;
   psVar5 = (short *)&DAT_800ecb88;
   bVar7 = *(byte *)(param_1 + 0x56);
   _DAT_1f80017e = 0;
@@ -66,8 +66,8 @@ byte * FUN_8007c940(int param_1)
         psVar1 = (short *)FUN_8007c8c8(psVar5,*pbVar6 + 0x33,local_28,bVar7);
         break;
       default:
-        *(byte *)(psVar5 + 1) = bVar7;
-        *psVar5 = local_28[0];
+        psVar5->flags = bVar7;
+        *psVar5 = local_28->type;
         if (*pbVar6 - 0x60 < 0x21) {
           *(undefined1 *)((int)psVar5 + 3) = 0x80;
           iVar4 = *pbVar6 - 0x60;
@@ -75,19 +75,19 @@ byte * FUN_8007c940(int param_1)
           if (iVar4 < 0) {
             iVar2 = *pbVar6 - 0x51;
           }
-          psVar5[2] = ((short)iVar4 + (short)(iVar2 >> 4) * -0x10) * 0x10;
+          psVar5->kind = ((short)iVar4 + (short)(iVar2 >> 4) * -0x10) * 0x10;
           iVar2 = *pbVar6 - 0x60;
           if (iVar2 < 0) {
             iVar2 = *pbVar6 - 0x51;
           }
-          psVar5[3] = (short)(iVar2 >> 4) * 0x10 + 0x78;
-          local_28[0] = local_28[0] + 0x10;
+          psVar5->sub_type = (short)(iVar2 >> 4) * 0x10 + 0x78;
+          local_28->type = local_28->type + 0x10;
         }
         else {
           *(byte *)((int)psVar5 + 3) = bVar8;
-          psVar5[2] = (*pbVar6 & 0x1f) << 3;
-          local_28[0] = local_28[0] + 8;
-          psVar5[3] = (ushort)(*pbVar6 >> 5) * 0x10 + 0x28;
+          psVar5->kind = (*pbVar6 & 0x1f) << 3;
+          local_28->type = local_28->type + 8;
+          psVar5->sub_type = (ushort)(*pbVar6 >> 5) * 0x10 + 0x28;
         }
         _DAT_1f80017e = _DAT_1f80017e + 1;
         psVar5 = psVar5 + 4;
@@ -96,11 +96,11 @@ byte * FUN_8007c940(int param_1)
       case 0xfc:
         goto switchD_8007c9ec_caseD_f8;
       case 0xfa:
-        local_28[0] = *(short *)(param_1 + 0x54);
+        local_28->type = param_1->rot_x;
         bVar7 = bVar7 + 0x10;
         goto switchD_8007c9ec_caseD_f8;
       case 0xfb:
-        local_28[0] = local_28[0] + 8;
+        local_28->type = local_28->type + 8;
         goto switchD_8007c9ec_caseD_f8;
       }
       _DAT_1f80017e = _DAT_1f80017e + (short)((int)psVar1 - (int)psVar5 >> 3);

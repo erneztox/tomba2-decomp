@@ -20,18 +20,18 @@ undefined4 FUN_80020c34(int param_1,int param_2)
   int iVar7;
   short sVar8;
   
-  iVar7 = (uint)*(ushort *)(param_1 + 0x2e) - (uint)*(ushort *)(param_2 + 0x2e);
+  iVar7 = (uint)param_1->pos_y - (uint)param_2->pos_y;
   iVar2 = iVar7 * 0x10000 >> 0x10;
-  iVar5 = (uint)*(ushort *)(param_1 + 0x36) - (uint)*(ushort *)(param_2 + 0x36);
+  iVar5 = (uint)param_1->pos_z - (uint)param_2->pos_z;
   iVar3 = iVar5 * 0x10000 >> 0x10;
   uVar1 = FUN_80084080(iVar2 * iVar2 + iVar3 * iVar3);
   uVar4 = 0xffffffff;
-  if ((int)(uint)uVar1 <= (int)*(short *)(param_1 + 0x80) + (int)*(short *)(param_2 + 0x80)) {
+  if ((int)(uint)uVar1 <= (int)param_1->bounds_min_x + (int)param_2->bounds_min_x) {
     iVar3 = (uint)*(ushort *)(param_1 + 0x32) - (uint)*(ushort *)(param_2 + 0x32);
     sVar6 = (short)iVar3;
-    iVar2 = (uint)*(ushort *)(param_1 + 0x84) + (uint)*(ushort *)(param_2 + 0x84);
+    iVar2 = (uint)param_1->bounds_min_y + (uint)param_2->bounds_min_y;
     sVar8 = (short)iVar2;
-    if ((int)*(short *)(param_1 + 0x86) + (int)*(short *)(param_2 + 0x86) <
+    if ((int)param_1->bounds_max_y + (int)param_2->bounds_max_y <
         (int)(iVar3 + iVar2 & 0xffffU)) {
       uVar4 = 0xffffffff;
     }
@@ -40,10 +40,10 @@ undefined4 FUN_80020c34(int param_1,int param_2)
         sVar6 = -sVar6;
       }
       else {
-        sVar8 = (*(short *)(param_2 + 0x86) - *(ushort *)(param_2 + 0x84)) +
-                (*(short *)(param_1 + 0x86) - *(ushort *)(param_1 + 0x84));
+        sVar8 = (param_2->bounds_max_y - param_2->bounds_min_y) +
+                (param_1->bounds_max_y - param_1->bounds_min_y);
       }
-      if (((int)*(short *)(param_1 + 0x80) + (int)*(short *)(param_2 + 0x80)) - (int)(short)uVar1 <
+      if (((int)param_1->bounds_min_x + (int)param_2->bounds_min_x) - (int)(short)uVar1 <
           (int)sVar8 - (int)sVar6) {
         _DAT_1f80009c = FUN_80085690(-(int)(short)iVar5,(int)(short)iVar7);
         uVar4 = 1;

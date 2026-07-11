@@ -1,5 +1,5 @@
 /**
- * @brief UI dialog main: entity[4]=1, full dialog state machine
+ * @brief UI dialog main: entity->state=1, full dialog state machine
  * @note Original: func_8004DF94 at 0x8004DF94
  */
 // UI_DialogMain
@@ -16,22 +16,22 @@ void FUN_8004df94(int param_1)
   char cVar3;
   undefined4 uVar4;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (bVar1 < 2) {
       if (bVar1 != 0) {
         return;
       }
-      *(undefined1 *)(param_1 + 4) = 1;
-      *(undefined1 *)(param_1 + 0xb) = 0x10;
-      *(undefined1 *)(param_1 + 0xd) = 0;
-      *(undefined1 *)(param_1 + 0x47) = 0;
-      *(undefined2 *)(param_1 + 0x5a) = 0;
-      *(undefined2 *)(param_1 + 0x5c) = 0;
+      param_1->state = 1;
+      param_1->render_flags = 0x10;
+      param_1->sprite_flags = 0;
+      param_1->sub_anim_id = 0;
+      param_1->target_rot_y = 0;
+      param_1->draw_y = 0;
       return;
     }
     if (bVar1 == 2) {
-      *(undefined1 *)(param_1 + 4) = 3;
+      param_1->state = 3;
       DAT_1f800137 = 0;
       DAT_800ed061 = DAT_800ed061 & 0xfd;
       return;
@@ -42,14 +42,14 @@ void FUN_8004df94(int param_1)
     FUN_8007a624(param_1);
     return;
   }
-  switch((int)((*(ushort *)(param_1 + 0x60) - 0x66) * 0x10000) >> 0x10) {
+  switch((int)((param_1->draw_x - 0x66) * 0x10000) >> 0x10) {
   case 0:
-    cVar3 = *(char *)(param_1 + 5);
+    cVar3 = param_1->behavior_state;
     if (cVar3 == '\0') {
       iVar2 = FUN_8004daec(param_1);
       if (iVar2 != 0) {
-        *(undefined2 *)(param_1 + 0x42) = 0x10;
-        *(char *)(param_1 + 5) = *(char *)(param_1 + 5) + '\x01';
+        param_1->timer2 = 0x10;
+        param_1->behavior_state = param_1->behavior_state + '\x01';
         if ((_DAT_800bf880 & 0x800) != 0) {
           FUN_80058304(&DAT_800e7e80,2);
         }
@@ -63,21 +63,21 @@ LAB_8004e1fc:
     }
     goto LAB_8004e240;
   case 1:
-    cVar3 = *(char *)(param_1 + 5);
+    cVar3 = param_1->behavior_state;
     if (cVar3 != '\0') goto LAB_8004e1fc;
     iVar2 = FUN_8004daec(param_1);
     if (iVar2 != 0) {
-      *(undefined2 *)(param_1 + 0x42) = 0x10;
-      *(char *)(param_1 + 5) = *(char *)(param_1 + 5) + '\x01';
+      param_1->timer2 = 0x10;
+      param_1->behavior_state = param_1->behavior_state + '\x01';
     }
     goto LAB_8004e240;
   case 2:
-    cVar3 = *(char *)(param_1 + 5);
+    cVar3 = param_1->behavior_state;
     if (cVar3 != '\0') goto LAB_8004e1fc;
     iVar2 = FUN_8004daec(param_1);
     if (iVar2 != 0) {
-      *(undefined2 *)(param_1 + 0x42) = 0x10;
-      *(char *)(param_1 + 5) = *(char *)(param_1 + 5) + '\x01';
+      param_1->timer2 = 0x10;
+      param_1->behavior_state = param_1->behavior_state + '\x01';
       if (((_DAT_800bf880 & 0x200) != 0) || ((_DAT_800bf880 & 0x100) != 0)) {
         FUN_80058304(&DAT_800e7e80,10);
       }
@@ -128,8 +128,8 @@ joined_r0x8004e160:
     }
   }
   FUN_80058304(&DAT_800e7e80,uVar4);
-  *(undefined1 *)(param_1 + 4) = 2;
+  param_1->state = 2;
 switchD_8004e040_caseD_6:
-  *(undefined1 *)(param_1 + 1) = 1;
+  param_1->flags = 1;
   return;
 }

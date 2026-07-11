@@ -1,5 +1,5 @@
 /**
- * @brief Entity player behavior: entity[4]=1, player control
+ * @brief Entity player behavior: entity->state=1, player control
  * @note Original: func_800739AC at 0x800739AC
  */
 // Entity_Behavior_Player
@@ -17,7 +17,7 @@ void FUN_800739ac(undefined1 *param_1)
   int iVar4;
   int iVar5;
   
-  bVar1 = param_1[4];
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (bVar1 == 2) {
@@ -37,56 +37,56 @@ void FUN_800739ac(undefined1 *param_1)
       return;
     }
     *param_1 = 1;
-    param_1[4] = param_1[4] + '\x01';
+    param_1->state = param_1->state + '\x01';
     if (((DAT_800bf870 == 2) || (DAT_800bf870 == 7)) || (DAT_800bf870 == 0x14)) {
-      *(undefined2 *)(param_1 + 0x80) = 0xa0;
+      param_1->bounds_min_x = 0xa0;
       uVar3 = 0x140;
     }
     else {
-      *(undefined2 *)(param_1 + 0x80) = 300;
+      param_1->bounds_min_x = 300;
       uVar3 = 600;
     }
-    *(undefined2 *)(param_1 + 0x82) = uVar3;
-    *(undefined2 *)(param_1 + 0x84) = 0xed;
-    *(undefined2 *)(param_1 + 0x86) = 0xed;
-    param_1[0x2b] = 0;
+    param_1->bounds_size = uVar3;
+    param_1->bounds_min_y = 0xed;
+    param_1->bounds_max_y = 0xed;
+    param_1->move_mode = 0;
     if (DAT_800bf870 != 5) {
       return;
     }
-    if (param_1[3] != '\x05') {
+    if (param_1->sub_type != '\x05') {
       return;
     }
-    param_1[0xb] = 0xf;
+    param_1->render_flags = 0xf;
     return;
   }
   iVar5 = FUN_8007778c(param_1);
   iVar4 = _DAT_1f800138;
   if (iVar5 == 0) {
-    param_1[0x2b] = 0;
+    param_1->move_mode = 0;
     return;
   }
-  switch(param_1[5]) {
+  switchparam_1->behavior_state {
   case 0:
     goto switchD_80073b0c_caseD_0;
   case 1:
     if (((DAT_800bf870 == 2) || (DAT_800bf870 == 7)) && (cVar2 = '\x04', DAT_800e7e85 != '\x1f'))
     goto LAB_80073ca0;
-    FUN_800737f8(param_1[3]);
+    FUN_800737f8param_1->sub_type;
     if ((_DAT_800e7e68 & 0x2000) != 0) goto LAB_80073be0;
     break;
   case 2:
     FUN_800738b0();
     if ((_DAT_800e7e68 & 0x4000) != 0) {
 LAB_80073be0:
-      param_1[5] = param_1[5] + '\x01';
+      param_1->behavior_state = param_1->behavior_state + '\x01';
       FUN_80074590(0x11,0,0);
-      param_1[0x2b] = 0;
+      param_1->move_mode = 0;
       goto LAB_80073ca8;
     }
     if ((_DAT_800e7e68 & 0x2000) != 0) {
-      param_1[5] = 4;
+      param_1->behavior_state = 4;
       FUN_80074bf8(1);
-      param_1[0x2b] = 0;
+      param_1->move_mode = 0;
       goto LAB_80073ca8;
     }
     break;
@@ -97,31 +97,31 @@ LAB_80073be0:
     _DAT_800bf894 = _DAT_800e7eb0;
     _DAT_800bf898 = _DAT_800e7eb4;
     DAT_800bfe38 = DAT_800e7eaa;
-    *(undefined2 *)(_DAT_1f800138 + 0x50) = 0;
+    _DAT_1f800138->angle_offset = 0;
     *(undefined1 *)(iVar4 + 0x6b) = 8;
-    param_1[5] = param_1[5] + '\x01';
+    param_1->behavior_state = param_1->behavior_state + '\x01';
     FUN_8005082c(0,0,0);
-    param_1[0x2b] = 0;
+    param_1->move_mode = 0;
     goto LAB_80073ca8;
   case 4:
     *param_1 = 2;
-    cVar2 = param_1[5] + '\x01';
+    cVar2 = param_1->behavior_state + '\x01';
 LAB_80073ca0:
-    param_1[5] = cVar2;
+    param_1->behavior_state = cVar2;
     break;
   case 5:
     *param_1 = 1;
-    param_1[5] = 0;
+    param_1->behavior_state = 0;
 switchD_80073b0c_caseD_0:
-    if (param_1[0x2b] == '\x03') {
-      DAT_800bf871 = param_1[3];
-      param_1[5] = param_1[5] + '\x01';
+    if (param_1->move_mode == '\x03') {
+      DAT_800bf871 = param_1->sub_type;
+      param_1->behavior_state = param_1->behavior_state + '\x01';
       FUN_800782f0(DAT_800bf870,DAT_800bf871);
-      param_1[0x2b] = 0;
+      param_1->move_mode = 0;
       goto LAB_80073ca8;
     }
   }
-  param_1[0x2b] = 0;
+  param_1->move_mode = 0;
 LAB_80073ca8:
   FUN_800517f8(param_1);
   return;

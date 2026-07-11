@@ -44,7 +44,7 @@ void EntityLoop_Object(void) {
         
         if (entity->active_flag != 0) {
             if (entity->action_id < 0x90) { // Safety check or optimization for jumptable? Wait, ASM does sltiu v0, v1, 0x90
-                switch (entity->action_id) {
+                switch entity->action_id {
                     case 0x00:
                     case 0x0F:
                     case 0x40:

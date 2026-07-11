@@ -36,7 +36,7 @@ undefined4 FUN_80080940(char *param_1,undefined4 param_2)
   piVar6 = piVar8 + (*(uint *)(in_zero + 0x154) / 0x50) * 0x14;
   for (; piVar8 < piVar6; piVar8 = piVar8 + 0x14) {
     if ((*piVar8 != 0) && (iVar3 = FUN_8009a540(*piVar8,&DAT_80100ab8), iVar3 == 0)) {
-      _DAT_80100ab0 = piVar8[0xd];
+      _DAT_80100ab0 = piVar8->sprite_flags;
       bVar2 = true;
       goto LAB_80080a10;
     }
@@ -49,7 +49,7 @@ LAB_80080a10:
     piVar6 = piVar8 + (*(uint *)(in_zero + 0x154) / 0x50) * 0x14;
     for (; piVar8 < piVar6; piVar8 = piVar8 + 0x14) {
       if ((*piVar8 != 0) && (iVar3 = FUN_8009a540(*piVar8,&DAT_80100ab8), iVar3 == 0)) {
-        piVar8[0xd] = (int)FUN_80080adc;
+        piVar8->sprite_flags = (int)FUN_80080adc;
         break;
       }
     }

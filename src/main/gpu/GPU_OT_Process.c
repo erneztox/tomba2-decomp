@@ -28,11 +28,11 @@ void FUN_8003e264(void)
     *(undefined2 *)(_DAT_800bf544 + 4) = 0x40;
     *(undefined1 *)((int)puVar2 + 6) = 0x80;
     *(undefined1 *)((int)puVar2 + 5) = 0x80;
-    *(undefined1 *)(puVar2 + 1) = 0x80;
+    puVar2->flags = 0x80;
     *(short *)(puVar2 + 2) = (short)uVar5;
     *(undefined2 *)((int)puVar2 + 10) = 0;
     *(undefined1 *)((int)puVar2 + 0xd) = 0;
-    *(undefined1 *)(puVar2 + 3) = 0;
+    puVar2->sub_type = 0;
     *(undefined2 *)((int)puVar2 + 0xe) = 0;
     *(undefined2 *)((int)puVar2 + 0x12) = 0x100;
     FUN_80083cc0(puVar2);

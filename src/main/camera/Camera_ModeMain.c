@@ -53,10 +53,10 @@ LAB_8006d700:
     }
     goto LAB_8006d7d4;
   case 2:
-    iVar4 = *(int *)(_DAT_800e7e90 + 0x30) << 0x10;
+    iVar4 = _DAT_800e7e90->pos_y_fixed << 0x10;
     break;
   case 3:
-    iVar4 = *(int *)(_DAT_800e7e90 + 0x30) << 0x10;
+    iVar4 = _DAT_800e7e90->pos_y_fixed << 0x10;
     goto LAB_8006d7d4;
   default:
     iVar4 = _DAT_800e7eb0;
@@ -80,23 +80,23 @@ LAB_8006d7d4:
     iVar2 = iVar2 + iVar5;
     bVar1 = true;
     if (-1 < iVar2) {
-      *(undefined4 *)(param_1 + 0x18) = 0;
+      param_1->script_data = 0;
       return;
     }
   }
   if (bVar1) {
     if (DAT_800e7fc5 == '\0') {
       if (iVar2 < -0x160000) {
-        if (iVar2 <= *(int *)(param_1 + 0x18)) {
-          if (0 < *(int *)(param_1 + 0x18)) {
-            *(undefined4 *)(param_1 + 0x18) = 0;
+        if (iVar2 <= param_1->script_data) {
+          if (0 < param_1->script_data) {
+            param_1->script_data = 0;
           }
-          iVar4 = *(int *)(param_1 + 0x18);
+          iVar4 = param_1->script_data;
           iVar3 = -0x16000;
           goto LAB_8006d878;
         }
         if (iVar2 < -0x15ffff) {
-          *(undefined4 *)(param_1 + 0x18) = 0xffea0000;
+          param_1->script_data = 0xffea0000;
           goto LAB_8006d918;
         }
       }
@@ -107,12 +107,12 @@ LAB_8006d7d4:
       }
       iVar2 = iVar2 + 0x1000000;
       if (iVar2 < -0x5fffff) {
-        *(undefined4 *)(param_1 + 0x18) = 0xffa00000;
+        param_1->script_data = 0xffa00000;
         goto LAB_8006d918;
       }
     }
 LAB_8006d90c:
-    *(int *)(param_1 + 0x18) = iVar2;
+    param_1->script_data = iVar2;
   }
   else {
     iVar4 = iVar4 + iVar3;
@@ -120,23 +120,23 @@ LAB_8006d90c:
       iVar3 = -0x2580000;
       goto code_r0x8006d924;
     }
-    if (iVar2 < *(int *)(param_1 + 0x18)) {
+    if (iVar2 < param_1->script_data) {
       if (iVar2 < 0x500000) goto LAB_8006d90c;
-      *(undefined4 *)(param_1 + 0x18) = 0x500000;
+      param_1->script_data = 0x500000;
     }
     else {
-      if (*(int *)(param_1 + 0x18) < 0) {
-        *(undefined4 *)(param_1 + 0x18) = 0;
+      if (param_1->script_data < 0) {
+        param_1->script_data = 0;
       }
-      iVar4 = *(int *)(param_1 + 0x18);
+      iVar4 = param_1->script_data;
       iVar3 = 0x100000;
 LAB_8006d878:
-      *(int *)(param_1 + 0x18) = iVar4 + iVar3;
+      param_1->script_data = iVar4 + iVar3;
     }
   }
 LAB_8006d918:
   iVar4 = *(int *)(param_1 + 0xc);
-  iVar3 = *(int *)(param_1 + 0x18);
+  iVar3 = param_1->script_data;
 code_r0x8006d924:
   *(int *)(param_1 + 0xc) = iVar4 + iVar3;
   return;

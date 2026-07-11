@@ -48,9 +48,9 @@ void FUN_80037e44(int param_1)
     puVar9 = puVar9 + 10;
     FUN_8007e1b8(&local_40,(&PTR_DAT_80017334)[*psVar1],*(undefined4 *)(param_1 + 4),&local_48);
   } while (iVar11 < 6);
-  if (*(char *)(param_1 + 8) == '\0') {
+  if (param_1->counter1 == '\0') {
     iVar11 = 0;
-    if (*(char *)(param_1 + 9) == '\0') {
+    if (param_1->counter2 == '\0') {
       puVar9 = &DAT_800a2644;
       local_47 = (undefined1)local_38;
       do {

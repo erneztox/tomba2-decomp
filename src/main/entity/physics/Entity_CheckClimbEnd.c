@@ -14,11 +14,11 @@ void FUN_800661e0(int param_1)
   int iVar1;
   
   FUN_80076d68();
-  if ((DAT_1f800236 == '\x05') && (*(char *)(param_1 + 6) == '\0')) {
+  if ((DAT_1f800236 == '\x05') && (param_1->action_state == '\0')) {
     *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 10;
     iVar1 = FUN_8005444c(param_1);
     if (iVar1 != 0) {
-      *(char *)(param_1 + 6) = *(char *)(param_1 + 6) + '\x01';
+      param_1->action_state = param_1->action_state + '\x01';
       _DAT_800e7efe = 1;
     }
   }

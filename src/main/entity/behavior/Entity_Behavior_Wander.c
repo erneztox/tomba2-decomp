@@ -15,7 +15,7 @@ void FUN_8002918c(int param_1)
   short sVar2;
   int iVar3;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (3 < bVar1) {
@@ -27,26 +27,26 @@ void FUN_8002918c(int param_1)
     if (bVar1 != 0) {
       return;
     }
-    *(undefined1 *)(param_1 + 4) = 1;
-    *(undefined1 *)(param_1 + 7) = 0;
-    *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_1 + 0x38);
+    param_1->state = 1;
+    param_1->sub_action = 0;
+    param_1->scale_y = param_1->anim_data;
     iVar3 = FUN_8009a450();
-    *(char *)(param_1 + 6) = (char)(iVar3 >> 0xb) + '\b';
-    if ((*(char *)(param_1 + 3) == '5') && (_DAT_800e7ffe < 0)) {
+    param_1->action_state = (char)(iVar3 >> 0xb) + '\b';
+    if ((param_1->sub_type == '5') && (_DAT_800e7ffe < 0)) {
       iVar3 = FUN_8009a450();
-      *(char *)(param_1 + 6) = (char)(iVar3 >> 0xc) + '\x03';
+      param_1->action_state = (char)(iVar3 >> 0xc) + '\x03';
     }
   }
   iVar3 = FUN_8009a450();
-  *(char *)(param_1 + 7) = *(char *)(param_1 + 7) + (char)(iVar3 >> 9);
+  param_1->sub_action = param_1->sub_action + (char)(iVar3 >> 9);
   sVar2 = FUN_8002b278(param_1);
-  if (*(char *)(param_1 + 7) < '\0') {
-    *(char *)(param_1 + 7) = *(char *)(param_1 + 7) + -0x80;
+  if (param_1->sub_action < '\0') {
+    param_1->sub_action = param_1->sub_action + -0x80;
   }
   else {
-    *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x38);
-    if (*(int *)(param_1 + 0x38) == 0) {
-      *(undefined1 *)(param_1 + 4) = 2;
+    param_1->scale_y = param_1->anim_data;
+    if (param_1->anim_data == 0) {
+      param_1->state = 2;
     }
     else if (sVar2 == 0) {
       FUN_80031780(param_1);

@@ -41,7 +41,7 @@ LAB_8006340c:
       return 1;
     }
   }
-  if ((*(char *)(param_1 + 5) == '\x04') || (uVar2 = 1, *(char *)(param_1 + 5) == '\t')) {
+  if ((param_1->behavior_state == '\x04') || (uVar2 = 1, param_1->behavior_state == '\t')) {
     uVar2 = 0;
   }
   return uVar2;

@@ -14,7 +14,7 @@ undefined4 FUN_80042bdc(int param_1)
   short sVar1;
   short sVar2;
   
-  if (*(short *)(param_1 + 0x72) == 0) {
+  if (param_1->event_id == 0) {
     FUN_8006e1c0(1);
   }
   else {
@@ -24,7 +24,7 @@ undefined4 FUN_80042bdc(int param_1)
   _DAT_800e8040 = (int)_DAT_1f800160 << 0x10;
   _DAT_800e8044 = (_DAT_1f800162 + -0x8c) * 0x10000;
   _DAT_800e8048 = (int)_DAT_1f800164 << 0x10;
-  sVar1 = *(short *)(param_1 + 0x74);
+  sVar1 = param_1->event_param;
   if (sVar1 != 1) {
     if (sVar1 < 2) {
       sVar2 = 0x180;
@@ -43,7 +43,7 @@ undefined4 FUN_80042bdc(int param_1)
   }
   sVar2 = 0x180;
 LAB_80042cac:
-  if ((*(short *)(param_1 + 0x74) < 2) && (DAT_800e7fc7 != '\0')) {
+  if ((param_1->event_param < 2) && (DAT_800e7fc7 != '\0')) {
     sVar2 = -sVar2;
   }
   _DAT_800e8078 = sVar2 + _DAT_800e7fc0 + _DAT_800e805a;

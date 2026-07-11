@@ -30,7 +30,7 @@ LAB_80080ba0:
       return;
     }
     if ((*piVar4 != 0) && (iVar2 = FUN_8009a540(*piVar4,&DAT_80100ab8), iVar2 == 0)) {
-      piVar4[0xd] = (int)pcVar1;
+      piVar4->sprite_flags = (int)pcVar1;
       goto LAB_80080ba0;
     }
     piVar4 = piVar4 + 0x14;

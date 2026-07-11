@@ -1,5 +1,5 @@
 /**
- * @brief Entity draw behavior: entity[4]=1, configures sprite+draw
+ * @brief Entity draw behavior: entity->state=1, configures sprite+draw
  * @note Original: func_8002FC40 at 0x8002FC40
  */
 // Entity_Behavior_Draw
@@ -17,9 +17,9 @@ void FUN_8002fc40(int param_1)
   ushort *puVar6;
   int iVar7;
   
-  bVar1 = *(byte *)(param_1 + 4);
-  iVar7 = *(int *)(param_1 + 0x10);
-  puVar6 = (ushort *)(param_1 + 0x50);
+  bVar1 = param_1->state;
+  iVar7 = param_1->parent;
+  puVar6 = param_1->angle_offset;
   if (bVar1 == 1) {
 LAB_8002fce0:
     uVar3 = *puVar6;
@@ -27,37 +27,37 @@ LAB_8002fce0:
     if ((int)((uint)(ushort)(uVar3 - 6) << 0x10) < 1) {
       if ((6 < DAT_800e7e7c) && (iVar5 = FUN_8007a980(0,6,1), iVar5 != 0)) {
         if (param_1 != -0x2c) {
-          *(undefined2 *)(iVar5 + 0x2c) = *(undefined2 *)(param_1 + 0x2c);
-          *(undefined2 *)(iVar5 + 0x2e) = *(undefined2 *)(param_1 + 0x2e);
+          iVar5->pos_x = param_1->pos_x;
+          iVar5->pos_y = param_1->pos_y;
           *(undefined2 *)(iVar5 + 0x30) = *(undefined2 *)(param_1 + 0x30);
         }
         *(undefined2 *)(iVar5 + 0x32) = 0xffe2;
         FUN_80028e10(iVar5,8);
       }
       FUN_8002343c(iVar7);
-      *(undefined1 *)(param_1 + 4) = 2;
+      param_1->state = 2;
       *puVar6 = 0;
 LAB_8002fd80:
-      sVar4 = *(short *)(param_1 + 0x52) + 0x20;
-      *(short *)(param_1 + 0x52) = sVar4;
+      sVar4 = param_1->sprite_y + 0x20;
+      param_1->sprite_y = sVar4;
       if (0x5f < sVar4) goto LAB_8002fdac;
     }
-    *(undefined1 *)(param_1 + 1) = 1;
+    param_1->flags = 1;
   }
   else {
     if (bVar1 < 2) {
       if (bVar1 != 0) {
         return;
       }
-      *(undefined1 *)(param_1 + 4) = 1;
-      *(undefined2 *)(param_1 + 0x2c) = *(undefined2 *)(iVar7 + 0x2e);
-      *(undefined2 *)(param_1 + 0x2e) = *(undefined2 *)(iVar7 + 0x32);
-      uVar2 = *(undefined2 *)(iVar7 + 0x36);
+      param_1->state = 1;
+      param_1->pos_x = iVar7->pos_y;
+      param_1->pos_y = *(undefined2 *)(iVar7 + 0x32);
+      uVar2 = iVar7->pos_z;
       *(undefined4 *)(param_1 + 0x48) = 0;
-      *(undefined2 *)(param_1 + 0x4c) = 0;
-      *(undefined2 *)(param_1 + 0x50) = 0x3c;
+      param_1->normal_z = 0;
+      param_1->angle_offset = 0x3c;
       *(undefined2 *)(param_1 + 0x30) = uVar2;
-      *(undefined2 *)(param_1 + 0x52) = 0;
+      param_1->sprite_y = 0;
       goto LAB_8002fce0;
     }
     if (bVar1 == 2) goto LAB_8002fd80;

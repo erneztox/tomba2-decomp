@@ -68,8 +68,8 @@ void FUN_8002f514(undefined4 param_1,int param_2)
     sVar3 = _DAT_1f800162 + -200;
     if ((6 < DAT_800e7e7c) && (iVar4 = FUN_8007a980(0,6,1), iVar4 != 0)) {
       uVar5 = 0x36;
-      *(undefined2 *)(iVar4 + 0x2c) = uVar1;
-      *(short *)(iVar4 + 0x2e) = sVar3;
+      iVar4->pos_x = uVar1;
+      iVar4->pos_y = sVar3;
       *(undefined2 *)(iVar4 + 0x32) = 0xff38;
       *(undefined2 *)(iVar4 + 0x30) = uVar2;
 LAB_8002f704:
@@ -80,7 +80,7 @@ LAB_8002f704:
   iVar4 = 0;
 LAB_8002f70c:
   if ((param_2 != 0) && (iVar4 != 0)) {
-    *(int *)(iVar4 + 0x10) = param_2;
+    iVar4->parent = param_2;
   }
   return;
 }

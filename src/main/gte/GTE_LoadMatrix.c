@@ -18,25 +18,25 @@ void FUN_80051614(int param_1,undefined4 param_2,int param_3,int param_4)
     FUN_80085480(param_1 + 0x54,0x1f800000);
   }
   else {
-    _DAT_1f800040 = (int)*(short *)(param_1 + 0xb8);
+    _DAT_1f800040 = (int)param_1->scale_x;
     _DAT_1f800044 = 0;
     _DAT_1f80004c = 0;
     _DAT_1f800054 = 0;
     _DAT_1f800058 = 0;
     _DAT_1f80005c = 0;
-    _DAT_1f800048 = (int)*(short *)(param_1 + 0xba);
-    _DAT_1f800050 = (int)*(short *)(param_1 + 0xbc);
+    _DAT_1f800048 = (int)param_1->scale_y;
+    _DAT_1f800050 = (int)param_1->scale_z;
     FUN_80085480(param_1 + 0x54,&DAT_1f800020);
     FUN_80084110(&DAT_1f800020,&DAT_1f800040,0x1f800000);
   }
   FUN_80084110(iVar1 + 0x18,0x1f800000,param_1 + 0x98);
   FUN_80084220(param_2,param_1 + 0xac);
-  *(int *)(param_1 + 0xac) = *(int *)(param_1 + 0xac) + *(int *)(iVar1 + 0x2c);
-  *(int *)(param_1 + 0xb0) = *(int *)(param_1 + 0xb0) + *(int *)(iVar1 + 0x30);
-  *(int *)(param_1 + 0xb4) = *(int *)(param_1 + 0xb4) + *(int *)(iVar1 + 0x34);
-  *(undefined2 *)(param_1 + 0x2e) = *(undefined2 *)(param_1 + 0xac);
+  param_1->projected_x = param_1->projected_x + *(int *)(iVar1 + 0x2c);
+  param_1->projected_y = param_1->projected_y + iVar1->pos_y_fixed;
+  param_1->projected_z = param_1->projected_z + iVar1->scale_y;
+  param_1->pos_y = *(undefined2 *)(param_1 + 0xac);
   *(undefined2 *)(param_1 + 0x32) = *(undefined2 *)(param_1 + 0xb0);
-  *(undefined2 *)(param_1 + 0x36) = *(undefined2 *)(param_1 + 0xb4);
+  param_1->pos_z = *(undefined2 *)(param_1 + 0xb4);
   if (param_4 == 0) {
     FUN_80051300(param_1);
   }

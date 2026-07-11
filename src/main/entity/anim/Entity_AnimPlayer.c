@@ -24,13 +24,13 @@ void FUN_80071768(int param_1)
   
   local_18 = DAT_80016b30;
   local_14 = DAT_80016b34;
-  if ((*(char *)(param_1 + 5) == '\0') || (((int)_DAT_800e7ffe & 0x8200U) != 0)) {
-    *(undefined1 *)(param_1 + 1) = 0;
+  if ((param_1->behavior_state == '\0') || (((int)_DAT_800e7ffe & 0x8200U) != 0)) {
+    param_1->flags = 0;
   }
   else {
-    *(undefined1 *)(param_1 + 1) = 1;
+    param_1->flags = 1;
   }
-  bVar1 = *(byte *)(param_1 + 5);
+  bVar1 = param_1->behavior_state;
   if (bVar1 == 1) {
     DAT_800bf843 = 4;
     if (((DAT_800bf831 & 0x80) != 0) || ((DAT_1f800137 != '\0' && (DAT_800bf80e != '\0')))) {
@@ -70,20 +70,20 @@ void FUN_80071768(int param_1)
         DAT_800bf843 = 0;
         return;
       }
-      *(undefined1 *)(param_1 + 7) = 0;
-      *(undefined1 *)(param_1 + 6) = 0;
-      *(undefined1 *)(param_1 + 5) = 1;
+      param_1->sub_action = 0;
+      param_1->action_state = 0;
+      param_1->behavior_state = 1;
       return;
     }
     if (bVar1 == 2) {
       DAT_800bf843 = 1;
-      if (*(byte *)(param_1 + 0xbf) < 10) {
-        uVar5 = (uint)*(byte *)(param_1 + 0xbf);
+      if (param_1->combat_flag < 10) {
+        uVar5 = (uint)param_1->combat_flag;
         ppuVar3 = &PTR_FUN_800a4bc0;
       }
       else if (DAT_800bf870 == '\0') {
         ppuVar3 = (undefined **)0x80149e74;
-        uVar5 = *(byte *)(param_1 + 0xbf) - 10;
+        uVar5 = param_1->combat_flag - 10;
       }
       else {
         if (DAT_800bf870 != '\a') {
@@ -91,7 +91,7 @@ void FUN_80071768(int param_1)
           return;
         }
         ppuVar3 = (undefined **)0x80132e78;
-        uVar5 = *(byte *)(param_1 + 0xbf) - 10;
+        uVar5 = param_1->combat_flag - 10;
       }
       (*(code *)ppuVar3[uVar5])(param_1);
       return;

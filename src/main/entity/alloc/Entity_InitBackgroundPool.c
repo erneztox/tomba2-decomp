@@ -49,7 +49,7 @@ void Entity_InitBackgroundPool(void)
         i++;
     }
 
-    D_80100690[3].next = 0;
+    D_80100690->sub_type.next = 0;
     D_800F273C = D_80100690;
     D_800F2410 = 4;
 }

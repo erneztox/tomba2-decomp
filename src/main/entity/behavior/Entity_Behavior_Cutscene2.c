@@ -1,5 +1,5 @@
 /**
- * @brief Entity cutscene behavior variant 2: entity[4] state
+ * @brief Entity cutscene behavior variant 2: entity->state state
  * @note Original: func_80072A78 at 0x80072A78
  */
 // Entity_Behavior_Cutscene2
@@ -96,19 +96,19 @@ void FUN_80072a78(void)
         }
         iVar5 = FUN_8007a980(bVar2 & 0x7f,bVar6,!bVar1);
         if (iVar5 != 0) {
-          *(byte *)(iVar5 + 0x28) = *pbVar4;
-          *(undefined4 *)(iVar5 + 0x1c) = *(undefined4 *)(pbVar7 + 4);
-          *(byte *)(iVar5 + 2) = pbVar7[-4];
-          *(byte *)(iVar5 + 3) = pbVar7[-3];
-          *(undefined2 *)(iVar5 + 0x2e) = *(undefined2 *)(pbVar7 + -10);
+          iVar5->alloc_flags = *pbVar4;
+          iVar5->callback = *(undefined4 *)(pbVar7 + 4);
+          iVar5->kind = pbVar7[-4];
+          iVar5->sub_type = pbVar7[-3];
+          iVar5->pos_y = *(undefined2 *)(pbVar7 + -10);
           *(undefined2 *)(iVar5 + 0x32) = *(undefined2 *)(pbVar7 + -8);
           uVar3 = *(undefined2 *)(pbVar7 + -6);
-          *(undefined2 *)(iVar5 + 0x54) = 0;
-          *(undefined2 *)(iVar5 + 0x36) = uVar3;
-          *(ushort *)(iVar5 + 0x56) =
+          iVar5->rot_x = 0;
+          iVar5->pos_z = uVar3;
+          iVar5->rot_y =
                (short)((ulonglong)((longlong)(*(short *)(pbVar7 + -2) * 0x1000) * 0xb60b60b7) >>
                       0x28) - (*(short *)(pbVar7 + -2) >> 0xf) & 0xfff;
-          *(ushort *)(iVar5 + 0x58) =
+          iVar5->rot_z =
                (short)((ulonglong)((longlong)(*(short *)pbVar7 * 0x1000) * 0xb60b60b7) >> 0x28) -
                (*(short *)pbVar7 >> 0xf) & 0xfff;
         }

@@ -21,10 +21,10 @@ void FUN_80099490(uint *param_1)
   uVar4 = 0;
   if (bVar1) {
 LAB_800994bc:
-    switch((short)param_1[2]) {
+    switch((short)param_1->kind) {
     default:
 switchD_800994e0_caseD_0:
-      uVar3 = (ushort)param_1[1];
+      uVar3 = (ushort)param_1->flags;
       uVar2 = 0;
       break;
     case 1:
@@ -50,8 +50,8 @@ switchD_800994e0_caseD_0:
     }
     if (uVar2 != 0) {
       uVar3 = 0x7f;
-      if (((short)param_1[1] < 0x80) && (uVar3 = 0, -1 < (short)param_1[1])) {
-        uVar3 = (ushort)param_1[1];
+      if (((short)param_1->flags < 0x80) && (uVar3 = 0, -1 < (short)param_1->flags)) {
+        uVar3 = (ushort)param_1->flags;
       }
     }
     *(ushort *)(DAT_800ac604 + 0x180) = uVar3 & 0x7fff | uVar2;
@@ -103,19 +103,19 @@ switchD_800995a0_caseD_0:
   *(ushort *)(DAT_800ac604 + 0x182) = uVar4 & 0x7fff | uVar3;
 LAB_80099624:
   if ((bVar1) || ((uVar5 & 0x40) != 0)) {
-    *(short *)(DAT_800ac604 + 0x1b0) = (short)param_1[4];
+    *(short *)(DAT_800ac604 + 0x1b0) = (short)param_1->state;
   }
   if ((bVar1) || ((uVar5 & 0x80) != 0)) {
     *(undefined2 *)(DAT_800ac604 + 0x1b2) = *(undefined2 *)((int)param_1 + 0x12);
   }
   if ((bVar1) || ((uVar5 & 0x400) != 0)) {
-    *(short *)(DAT_800ac604 + 0x1b4) = (short)param_1[7];
+    *(short *)(DAT_800ac604 + 0x1b4) = (short)param_1->sub_action;
   }
   if ((bVar1) || ((uVar5 & 0x800) != 0)) {
     *(undefined2 *)(DAT_800ac604 + 0x1b6) = *(undefined2 *)((int)param_1 + 0x1e);
   }
   if ((bVar1) || ((uVar5 & 0x100) != 0)) {
-    if (param_1[5] == 0) {
+    if (param_1->behavior_state == 0) {
       uVar3 = *(ushort *)(DAT_800ac604 + 0x1aa) & 0xfffb;
     }
     else {
@@ -124,7 +124,7 @@ LAB_80099624:
     *(ushort *)(DAT_800ac604 + 0x1aa) = uVar3;
   }
   if ((bVar1) || ((uVar5 & 0x200) != 0)) {
-    if (param_1[6] == 0) {
+    if (param_1->action_state == 0) {
       uVar3 = *(ushort *)(DAT_800ac604 + 0x1aa) & 0xfffe;
     }
     else {
@@ -133,7 +133,7 @@ LAB_80099624:
     *(ushort *)(DAT_800ac604 + 0x1aa) = uVar3;
   }
   if ((bVar1) || ((uVar5 & 0x1000) != 0)) {
-    if (param_1[8] == 0) {
+    if (param_1->counter1 == 0) {
       uVar3 = *(ushort *)(DAT_800ac604 + 0x1aa) & 0xfff7;
     }
     else {
@@ -142,7 +142,7 @@ LAB_80099624:
     *(ushort *)(DAT_800ac604 + 0x1aa) = uVar3;
   }
   if ((bVar1) || ((uVar5 & 0x2000) != 0)) {
-    if (param_1[9] == 0) {
+    if (param_1->counter2 == 0) {
       uVar3 = *(ushort *)(DAT_800ac604 + 0x1aa) & 0xfffd;
     }
     else {

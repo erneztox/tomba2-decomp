@@ -24,12 +24,12 @@ void FUN_800384ec(int param_1)
   do {
     if (*pcVar1 == '\0') {
       *(char *)(param_1 + 10) = *(char *)(param_1 + 10) + '\x01';
-      *(char *)((uint)(byte)pcVar1[2] * 3 + _DAT_800e7e6c + 1) = (char)iVar2;
-      *(undefined1 *)((uint)(byte)pcVar1[2] * 3 + _DAT_800e7e6c + 2) =
+      *(char *)((uint)(byte)pcVar1->kind * 3 + _DAT_800e7e6c + 1) = (char)iVar2;
+      *(undefined1 *)((uint)(byte)pcVar1->kind * 3 + _DAT_800e7e6c + 2) =
            *(undefined1 *)(iVar2 + -0x7ff4074c);
-      *(char *)((uint)(byte)pcVar1[2] * 3 + _DAT_800e7e6c) = pcVar1[2];
-      if ((*(char *)(iVar2 + -0x7ff4074c) != '\0') && (bVar4 < (byte)pcVar1[2])) {
-        bVar4 = pcVar1[2];
+      *(char *)((uint)(byte)pcVar1->kind * 3 + _DAT_800e7e6c) = pcVar1->kind;
+      if ((*(char *)(iVar2 + -0x7ff4074c) != '\0') && (bVar4 < (byte)pcVar1->kind)) {
+        bVar4 = pcVar1->kind;
       }
     }
     iVar2 = iVar2 + 1;
@@ -40,13 +40,13 @@ void FUN_800384ec(int param_1)
   pcVar1 = &DAT_800a33d4;
   do {
     if (*pcVar1 != '\0') {
-      *(char *)(param_1 + 0xb) = *(char *)(param_1 + 0xb) + '\x01';
-      *(char *)((uint)(byte)pcVar1[2] * 3 + _DAT_800bf53c + 1) = (char)iVar2;
-      *(undefined1 *)((uint)(byte)pcVar1[2] * 3 + _DAT_800bf53c + 2) =
+      param_1->render_flags = param_1->render_flags + '\x01';
+      *(char *)((uint)(byte)pcVar1->kind * 3 + _DAT_800bf53c + 1) = (char)iVar2;
+      *(undefined1 *)((uint)(byte)pcVar1->kind * 3 + _DAT_800bf53c + 2) =
            *(undefined1 *)(iVar2 + -0x7ff4074c);
-      *(char *)((uint)(byte)pcVar1[2] * 3 + _DAT_800bf53c) = pcVar1[2];
-      if ((*(char *)(iVar2 + -0x7ff4074c) != '\0') && (bVar3 < (byte)pcVar1[2])) {
-        bVar3 = pcVar1[2];
+      *(char *)((uint)(byte)pcVar1->kind * 3 + _DAT_800bf53c) = pcVar1->kind;
+      if ((*(char *)(iVar2 + -0x7ff4074c) != '\0') && (bVar3 < (byte)pcVar1->kind)) {
+        bVar3 = pcVar1->kind;
       }
     }
     iVar2 = iVar2 + 1;

@@ -13,10 +13,10 @@ undefined4 FUN_800889f4(int param_1)
     (*DAT_800abe3c)();
   }
   else {
-    if (*(char *)(param_1 + 0x46) == '\x02') {
+    if (param_1->anim_id == '\x02') {
       return 1;
     }
-    *(undefined1 *)(param_1 + 0x46) = 0xfe;
+    param_1->anim_id = 0xfe;
   }
   return 0;
 }

@@ -59,7 +59,7 @@ LAB_8003443c:
     DAT_800bf81c = '\0';
     DAT_800bf88e = 0;
     DAT_800e7eee = '\0';
-    *(undefined1 *)(_DAT_800e7ef4 + 4) = 3;
+    _DAT_800e7ef4->state = 3;
     _DAT_800e7ef4 = 0;
   }
   if (DAT_800bf80a != '\0') {

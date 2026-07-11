@@ -12,28 +12,28 @@ void FUN_8004bd64(int param_1,byte param_2,int param_3,int param_4,short *param_
   short sVar1;
   
   if (param_2 == 1) {
-    *(short *)(param_1 + 0x2e) = *(short *)(param_3 + 0x2c) + *param_5;
-    *(short *)(param_1 + 0x32) = *(short *)(param_3 + 0x30) + param_5[1];
+    param_1->pos_y = param_3->pos_x + *param_5;
+    *(short *)(param_1 + 0x32) = *(short *)(param_3 + 0x30) + param_5->flags;
     sVar1 = *(short *)(param_3 + 0x34);
 LAB_8004be6c:
-    sVar1 = sVar1 + param_5[2];
+    sVar1 = sVar1 + param_5->kind;
   }
   else {
     if (1 < param_2) {
       if (param_2 != 2) goto LAB_8004be7c;
-      *(short *)(param_1 + 0x2e) = *(short *)(param_4 + 0x2c) + *param_5;
-      *(short *)(param_1 + 0x32) = *(short *)(param_4 + 0x30) + param_5[1];
+      param_1->pos_y = param_4->pos_x + *param_5;
+      *(short *)(param_1 + 0x32) = *(short *)(param_4 + 0x30) + param_5->flags;
       sVar1 = *(short *)(param_4 + 0x34);
       goto LAB_8004be6c;
     }
     if (param_2 != 0) goto LAB_8004be7c;
-    *(short *)(param_1 + 0x2e) = (short)((*(int *)(param_3 + 0x2c) + *(int *)(param_4 + 0x2c)) / 2);
-    *(short *)(param_1 + 0x32) = (short)((*(int *)(param_3 + 0x30) + *(int *)(param_4 + 0x30)) / 2);
-    sVar1 = (short)((*(int *)(param_3 + 0x34) + *(int *)(param_4 + 0x34)) / 2);
+    param_1->pos_y = (short)((*(int *)(param_3 + 0x2c) + *(int *)(param_4 + 0x2c)) / 2);
+    *(short *)(param_1 + 0x32) = (short)((param_3->pos_y_fixed + param_4->pos_y_fixed) / 2);
+    sVar1 = (short)((param_3->scale_y + param_4->scale_y) / 2);
   }
-  *(short *)(param_1 + 0x36) = sVar1;
+  param_1->pos_z = sVar1;
 LAB_8004be7c:
-  if ((*(byte *)(param_1 + 0x28) & 0x7f) != 0) {
+  if ((param_1->alloc_flags & 0x7f) != 0) {
     FUN_800517f8();
   }
   return;

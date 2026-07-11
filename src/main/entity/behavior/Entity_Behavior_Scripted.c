@@ -1,5 +1,5 @@
 /**
- * @brief Script-driven entity behavior: reads entity[0x6C] script data, complex state machine
+ * @brief Script-driven entity behavior: reads entity->sprite_cmd script data, complex state machine
  * @note Original: func_80030A3C at 0x80030A3C
  */
 // Entity_Behavior_Scripted
@@ -24,8 +24,8 @@ void FUN_80030a3c(int param_1)
   short *psVar11;
   short local_48;
   
-  bVar1 = *(byte *)(param_1 + 4);
-  psVar11 = (short *)(param_1 + 0x50);
+  bVar1 = param_1->state;
+  psVar11 = param_1->angle_offset;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (3 < bVar1) {
@@ -39,10 +39,10 @@ void FUN_80030a3c(int param_1)
       return;
     }
     local_48 = 0;
-    sVar5 = *(short *)(param_1 + 0x2c);
-    sVar2 = *(short *)(param_1 + 0x2e);
+    sVar5 = param_1->pos_x;
+    sVar2 = param_1->pos_y;
     sVar3 = *(short *)(param_1 + 0x30);
-    *(undefined2 *)(param_1 + 0x4e) = 3;
+    param_1->sprite_x = 3;
     do {
       uVar6 = FUN_8009a450();
       uVar10 = (uVar6 & 0x3f) - 0x20;
@@ -50,7 +50,7 @@ void FUN_80030a3c(int param_1)
       uVar9 = (uVar6 & 0x3f) - 0x20;
       uVar6 = FUN_8009a450();
       uVar6 = (uVar6 & 0x3f) - 0x20;
-      if (*(char *)(param_1 + 3) == ',') {
+      if (param_1->sub_type == ',') {
         uVar4 = FUN_8009a450();
         uVar10 = (int)(uVar10 * 0x10000) >> 0x11;
         uVar9 = (int)(uVar9 * 0x10000) >> 0x11;
@@ -76,36 +76,36 @@ void FUN_80030a3c(int param_1)
       *psVar8 = (short)uVar6 >> 2;
       psVar8 = psVar8 + 4;
     } while (local_48 < 3);
-    *(undefined1 *)(param_1 + 4) = 1;
-    *(undefined1 *)(param_1 + 6) = 0;
-    *(undefined1 *)(param_1 + 7) = 0;
-    *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(param_1 + 0x38);
+    param_1->state = 1;
+    param_1->action_state = 0;
+    param_1->sub_action = 0;
+    param_1->scale_y = param_1->anim_data;
   }
-  psVar11 = (short *)(param_1 + 0x50);
+  psVar11 = param_1->angle_offset;
   sVar5 = FUN_8002b278(param_1);
   iVar7 = FUN_8009a450();
-  iVar7 = (uint)*(byte *)(param_1 + 7) + (iVar7 >> 0xb) + 0x20;
-  *(char *)(param_1 + 7) = (char)iVar7;
+  iVar7 = (uint)param_1->sub_action + (iVar7 >> 0xb) + 0x20;
+  param_1->sub_action = (char)iVar7;
   if (iVar7 * 0x1000000 < 0) {
-    *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x38);
-    if (*(int *)(param_1 + 0x38) == 0) {
-      *(undefined1 *)(param_1 + 4) = 2;
+    param_1->scale_y = param_1->anim_data;
+    if (param_1->anim_data == 0) {
+      param_1->state = 2;
       return;
     }
     if (sVar5 == 0) {
       FUN_80031780(param_1);
     }
     else {
-      *(char *)(param_1 + 7) = *(char *)(param_1 + 7) + -0x80;
+      param_1->sub_action = param_1->sub_action + -0x80;
     }
   }
-  psVar8 = (short *)(param_1 + 0x6a);
+  psVar8 = param_1->type_flags;
   local_48 = 0;
   uVar4 = _DAT_1f80017c & 1;
   do {
     *psVar11 = *psVar11 + psVar8[-1];
     psVar8[-0xc] = psVar8[-0xc] + *psVar8;
-    psVar8[-0xb] = psVar8[-0xb] + psVar8[1];
+    psVar8[-0xb] = psVar8[-0xb] + psVar8->flags;
     if ((DAT_800bf870 != '\x06') || (uVar4 == 0)) {
       *psVar8 = *psVar8 + 1;
     }

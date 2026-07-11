@@ -19,7 +19,7 @@ undefined4 FUN_80086a80(int param_1)
   *(undefined2 *)(DAT_800abe9c + 10) = 0x40;
   *(undefined2 *)(puVar2 + 10) = 0;
   *(undefined2 *)(puVar2 + 8) = 0xd;
-  *(undefined2 *)(puVar2 + 0xe) = 0x88;
+  puVar2->anim_timer = 0x88;
   uVar5 = 0x91;
   if (*(char *)(param_1 + 0xe8) == '\b') {
     uVar5 = 0x50;

@@ -16,9 +16,9 @@ int FUN_8006f0e4(void)
     iVar1 = 0;
   }
   else {
-    *(code **)(iVar1 + 0x1c) = FUN_8006f2d0;
-    *(undefined1 *)(iVar1 + 2) = 1;
-    *(byte *)(iVar1 + 0x28) = *(byte *)(iVar1 + 0x28) | 0x80;
+    iVar1->callback = FUN_8006f2d0;
+    iVar1->kind = 1;
+    iVar1->alloc_flags = iVar1->alloc_flags | 0x80;
   }
   return iVar1;
 }

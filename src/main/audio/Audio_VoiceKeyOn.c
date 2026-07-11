@@ -21,13 +21,13 @@ int FUN_80095530(uint param_1,undefined2 param_2,undefined2 param_3)
   int iVar8;
   
   iVar7 = *(int *)(&DAT_80104c30 + (param_1 & 0xff) * 4) + ((int)(param_1 & 0xff00) >> 8) * 0xb0;
-  *(undefined2 *)(iVar7 + 0x58) = param_2;
-  *(undefined2 *)(iVar7 + 0x5a) = param_3;
-  if (0x7e < *(ushort *)(iVar7 + 0x58)) {
-    *(undefined2 *)(iVar7 + 0x58) = 0x7f;
+  iVar7->rot_z = param_2;
+  iVar7->target_rot_y = param_3;
+  if (0x7e < iVar7->rot_z) {
+    iVar7->rot_z = 0x7f;
   }
-  if (0x7e < *(ushort *)(iVar7 + 0x5a)) {
-    *(undefined2 *)(iVar7 + 0x5a) = 0x7f;
+  if (0x7e < iVar7->target_rot_y) {
+    iVar7->target_rot_y = 0x7f;
   }
   iVar8 = 0;
   if ('\0' < DAT_80105cec) {
@@ -44,10 +44,10 @@ int FUN_80095530(uint param_1,undefined2 param_2,undefined2 param_3)
                         (int)*(short *)(*(short *)(iVar1 + -0x7fefab2c) * 2 + iVar7 + 0x60)) / 0x7f)
                        * 0x3fff) / 0x3f01) *
                  (uint)*(byte *)(*(short *)(iVar1 + -0x7fefab24) * 0x10 + _DAT_80105cdc + 1) *
-                (uint)*(byte *)(iVar6 + 2)) / 0x3f01;
-        uVar4 = (uVar5 * *(ushort *)(iVar7 + 0x58)) / 0x7f;
-        uVar3 = (uint)*(byte *)(iVar6 + 3);
-        uVar5 = (uVar5 * *(ushort *)(iVar7 + 0x5a)) / 0x7f;
+                (uint)iVar6->kind) / 0x3f01;
+        uVar4 = (uVar5 * iVar7->rot_z) / 0x7f;
+        uVar3 = (uint)iVar6->sub_type;
+        uVar5 = (uVar5 * iVar7->target_rot_y) / 0x7f;
         if (uVar3 < 0x40) {
           uVar5 = (uVar5 * uVar3) / 0x3f;
         }

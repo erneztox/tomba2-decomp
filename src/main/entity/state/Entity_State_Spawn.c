@@ -22,7 +22,7 @@ undefined4 FUN_80043108(int param_1)
   uint uVar9;
   
   iVar8 = *(int *)(param_1 + 0x6c);
-  bVar1 = *(byte *)(param_1 + 0x78);
+  bVar1 = param_1->sub_state;
   sVar2 = *(short *)(iVar8 + 10);
   if (bVar1 != 1) {
     if (1 < bVar1) {
@@ -38,13 +38,13 @@ undefined4 FUN_80043108(int param_1)
     if (iVar5 == 0) {
       iVar5 = 10;
     }
-    iVar7 = (uint)*(ushort *)(param_1 + 0x76) - (uint)*(ushort *)(param_1 + 0x36);
+    iVar7 = (uint)*(ushort *)(param_1 + 0x76) - (uint)param_1->pos_z;
     iVar6 = iVar7 * 0x10000 >> 0x10;
-    *(short *)(param_1 + 0x48) = *(short *)(param_1 + 0x72) - *(short *)(param_1 + 0x2e);
-    *(short *)(param_1 + 0x4c) = (short)iVar7;
-    *(short *)(param_1 + 0x4a) = *(short *)(param_1 + 0x74) - *(short *)(param_1 + 0x32);
+    param_1->normal_x = param_1->event_id - param_1->pos_y;
+    param_1->normal_z = (short)iVar7;
+    param_1->velocity_y = param_1->event_param - *(short *)(param_1 + 0x32);
     sVar3 = FUN_80084080(iVar6 * iVar6 +
-                         (int)*(short *)(param_1 + 0x48) * (int)*(short *)(param_1 + 0x48));
+                         (int)param_1->normal_x * (int)param_1->normal_x);
     iVar5 = (int)(short)iVar5;
     uVar9 = (int)sVar3 / iVar5;
     if (iVar5 == 0) {
@@ -60,50 +60,50 @@ undefined4 FUN_80043108(int param_1)
     if (*(short *)(param_1 + 100) == 0) {
       trap(0x1c00);
     }
-    *(undefined2 *)(param_1 + 0x44) = 0x1000;
+    param_1->anim_counter = 0x1000;
     *(short *)(param_1 + 100) = (short)(0x1000 / (int)*(short *)(param_1 + 100));
     if (sVar2 == -1) {
-      uVar4 = FUN_80085690(-(int)*(short *)(param_1 + 0x4c),(int)*(short *)(param_1 + 0x48));
-      *(ushort *)(param_1 + 0x56) = uVar4 & 0xfff;
+      uVar4 = FUN_80085690(-(int)param_1->normal_z,(int)param_1->normal_x);
+      param_1->rot_y = uVar4 & 0xfff;
     }
     else if (sVar2 == 0) {
-      *(undefined1 *)(param_1 + 0x78) = 2;
+      param_1->sub_state = 2;
       return 0;
     }
-    uVar4 = FUN_80085690(-(int)*(short *)(param_1 + 0x4c),(int)*(short *)(param_1 + 0x48));
+    uVar4 = FUN_80085690(-(int)param_1->normal_z,(int)param_1->normal_x);
     *(ushort *)(param_1 + 0x66) = uVar4 & 0xfff;
-    *(char *)(param_1 + 0x78) = *(char *)(param_1 + 0x78) + '\x01';
+    param_1->sub_state = param_1->sub_state + '\x01';
   }
   iVar5 = FUN_80041438(param_1,(int)*(short *)(param_1 + 0x66),0x100);
   if (iVar5 != 0) {
-    *(char *)(param_1 + 0x78) = *(char *)(param_1 + 0x78) + '\x01';
+    param_1->sub_state = param_1->sub_state + '\x01';
   }
   if (sVar2 == 1) {
     return 0;
   }
 LAB_80043310:
-  iVar5 = (uint)*(ushort *)(param_1 + 0x44) - (uint)*(ushort *)(param_1 + 100);
-  *(short *)(param_1 + 0x44) = (short)iVar5;
+  iVar5 = (uint)param_1->anim_counter - (uint)*(ushort *)(param_1 + 100);
+  param_1->anim_counter = (short)iVar5;
   if (iVar5 * 0x10000 < 1) {
-    *(undefined2 *)(param_1 + 0x44) = 0;
+    param_1->anim_counter = 0;
   }
-  iVar5 = (int)*(short *)(param_1 + 0x44) * (int)*(short *)(param_1 + 0x48);
+  iVar5 = (int)param_1->anim_counter * (int)param_1->normal_x;
   if (iVar5 < 0) {
     iVar5 = iVar5 + 0xfff;
   }
-  iVar6 = (int)*(short *)(param_1 + 0x44) * (int)*(short *)(param_1 + 0x4a);
-  *(short *)(param_1 + 0x2e) = *(short *)(iVar8 + 2) - (short)(iVar5 >> 0xc);
+  iVar6 = (int)param_1->anim_counter * (int)param_1->velocity_y;
+  param_1->pos_y = *(short *)(iVar8 + 2) - (short)(iVar5 >> 0xc);
   if (iVar6 < 0) {
     iVar6 = iVar6 + 0xfff;
   }
-  iVar5 = (int)*(short *)(param_1 + 0x44) * (int)*(short *)(param_1 + 0x4c);
+  iVar5 = (int)param_1->anim_counter * (int)param_1->normal_z;
   *(short *)(param_1 + 0x32) = *(short *)(iVar8 + 4) - (short)(iVar6 >> 0xc);
   if (iVar5 < 0) {
     iVar5 = iVar5 + 0xfff;
   }
-  *(short *)(param_1 + 0x36) = *(short *)(iVar8 + 6) - (short)(iVar5 >> 0xc);
-  if (*(short *)(param_1 + 0x44) != 0) {
-    FUN_80042ea4(param_1,param_1 + 0x68,(int)*(short *)(param_1 + 0x6a));
+  param_1->pos_z = *(short *)(iVar8 + 6) - (short)(iVar5 >> 0xc);
+  if (param_1->anim_counter != 0) {
+    FUN_80042ea4(param_1,param_1 + 0x68,(int)param_1->type_flags);
     return 0;
   }
   return 1;

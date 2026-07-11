@@ -23,13 +23,13 @@ void FUN_8007fc24(void)
   *(undefined1 *)((int)puVar2 + 0xe) = 0x46;
   *(undefined1 *)((int)puVar2 + 0x16) = 0x46;
   *(undefined1 *)((int)puVar2 + 0x1e) = 0x10;
-  *(undefined1 *)(puVar2 + 1) = 0;
+  puVar2->flags = 0;
   *(undefined1 *)((int)puVar2 + 5) = 0;
-  *(undefined1 *)(puVar2 + 3) = 0;
+  puVar2->sub_type = 0;
   *(undefined1 *)((int)puVar2 + 0xd) = 0;
-  *(undefined1 *)(puVar2 + 5) = 0;
+  puVar2->behavior_state = 0;
   *(undefined1 *)((int)puVar2 + 0x15) = 0;
-  *(undefined1 *)(puVar2 + 7) = 0;
+  puVar2->sub_action = 0;
   *(undefined1 *)((int)puVar2 + 0x1d) = 0;
   *(undefined2 *)(puVar2 + 2) = 0;
   *(undefined2 *)((int)puVar2 + 10) = 0;

@@ -24,7 +24,7 @@ void FUN_80036a14(int param_1,uint param_2)
       iVar2 = 0;
       pbVar1 = &DAT_800a2be8;
       do {
-        if ((((&DAT_800bfab4)[iVar2] != '\0') && (*pbVar1 == param_2)) && (pbVar1[2] < pbVar4[2])) {
+        if ((((&DAT_800bfab4)[iVar2] != '\0') && (*pbVar1 == param_2)) && (pbVar1->kind < pbVar4->kind)) {
           cVar3 = cVar3 + '\x01';
         }
         iVar2 = iVar2 + 1;

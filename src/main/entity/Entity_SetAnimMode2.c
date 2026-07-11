@@ -1,5 +1,5 @@
 /**
- * @brief Sets entity animation mode via entity[0x46] with mode-dependent call
+ * @brief Sets entity animation mode via entity->anim_id with mode-dependent call
  * @note Original: func_80054DAC at 0x80054DAC
  */
 // Entity_SetAnimMode2
@@ -9,7 +9,7 @@
 void FUN_80054dac(int param_1,undefined4 param_2,short param_3)
 
 {
-  *(char *)(param_1 + 0x46) = (char)param_2;
+  param_1->anim_id = (char)param_2;
   FUN_80054790();
   if (param_3 == 0) {
     FUN_80077c40(param_1,&PTR_DAT_80017fe8,param_2);

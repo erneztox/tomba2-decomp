@@ -40,7 +40,7 @@ void FUN_80038a00(int param_1)
   local_56 = 0;
   local_4c = 0;
   local_57 = bVar2 + 7;
-  local_30 = (short)*(char *)(param_1 + 0xd);
+  local_30 = (short)param_1->sprite_flags;
   local_38 = (short)*(char *)(param_1 + 0x11);
   do {
     local_58 = *puVar5;
@@ -52,10 +52,10 @@ void FUN_80038a00(int param_1)
     puVar5 = puVar5 + 10;
     FUN_8007e1b8(&local_50,(&PTR_DAT_80017334)[*psVar1],*(undefined4 *)(param_1 + 4),&local_58);
   } while (iVar7 < 6);
-  if (*(char *)(param_1 + 8) == '\x01') {
+  if (param_1->counter1 == '\x01') {
     iVar7 = 0;
     local_57 = bVar2;
-    if (*(char *)(param_1 + 9) == '\0') {
+    if (param_1->counter2 == '\0') {
       puVar5 = &DAT_800a2704;
       do {
         local_58 = *puVar5;
@@ -130,7 +130,7 @@ void FUN_80038a00(int param_1)
     sVar9 = 0x3c;
     do {
       iVar11 = iVar7 + (uint)*(byte *)(param_1 + 0x1e);
-      if ((int)(uint)*(byte *)(param_1 + 0xb) <= iVar11) break;
+      if ((int)(uint)param_1->render_flags <= iVar11) break;
       uVar6 = (uint)*(byte *)(iVar11 * 3 + _DAT_800bf53c + 1);
       if (*(char *)(uVar6 + 0x800bf8b4) != '\0') {
         if (*(char *)(uVar6 + 0x800bf8b4) == -1) {

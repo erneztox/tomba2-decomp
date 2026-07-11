@@ -18,15 +18,15 @@ int FUN_800727d4(undefined4 param_1,undefined4 param_2,undefined4 param_3)
     iVar3 = 0;
   }
   else {
-    *(code **)(iVar3 + 0x1c) = FUN_80072898;
-    *(undefined1 *)(iVar3 + 2) = 0x1d;
-    *(char *)(iVar3 + 3) = (char)param_3;
-    *(short *)(iVar3 + 0x60) = (short)param_2;
-    *(undefined4 *)(iVar3 + 0x10) = param_1;
-    *(byte *)(iVar3 + 0x28) = *(byte *)(iVar3 + 0x28) | 0x80;
+    iVar3->callback = FUN_80072898;
+    iVar3->kind = 0x1d;
+    iVar3->sub_type = (char)param_3;
+    iVar3->draw_x = (short)param_2;
+    iVar3->parent = param_1;
+    iVar3->alloc_flags = iVar3->alloc_flags | 0x80;
     uVar1 = FUN_80079634(iVar2,iVar3 + 0x44);
-    *(undefined2 *)(iVar3 + 0xe) = uVar1;
-    *(undefined2 *)(iVar3 + 0x5c) = 0x7c7e;
+    iVar3->anim_timer = uVar1;
+    iVar3->draw_y = 0x7c7e;
   }
   return iVar3;
 }

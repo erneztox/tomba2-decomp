@@ -9,7 +9,7 @@
 void FUN_800423fc(int param_1)
 
 {
-  if (*(short *)(param_1 + 0x72) == 0) {
+  if (param_1->event_id == 0) {
     FUN_80042310();
   }
   else {

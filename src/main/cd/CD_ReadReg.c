@@ -15,7 +15,7 @@ void FUN_8009a170(int param_1,ushort *param_2,ushort *param_3)
   
   puVar3 = (ushort *)(param_1 * 0x10 + DAT_800ac604);
   uVar1 = *puVar3;
-  uVar2 = puVar3[1];
+  uVar2 = puVar3->flags;
   if (uVar1 < 0x4000) {
     *param_2 = uVar1;
   }

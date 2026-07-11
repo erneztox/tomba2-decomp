@@ -17,9 +17,9 @@ void FUN_800452c0(void)
   uint *puVar4;
   undefined1 uVar5;
   
-  if (*(char *)(_DAT_1f800138 + 0x6d) == '\0') {
-    uVar2 = 1 << (*(byte *)(_DAT_1f800138 + 0x6e) & 0x1f);
-    if (((uint)DAT_1f8001ff == (uint)*(byte *)(_DAT_1f800138 + 0x6e)) &&
+  if (_DAT_1f800138->sprite_param1 == '\0') {
+    uVar2 = 1 << (_DAT_1f800138->sprite_param2 & 0x1f);
+    if (((uint)DAT_1f8001ff == (uint)_DAT_1f800138->sprite_param2) &&
        ((_DAT_800bfe56 & uVar2) == (_DAT_1f800278 & uVar2))) {
       FUN_80045258((_DAT_800bf89e & 0xf) << 1,0x2f);
       DAT_1f800206 = 0;
@@ -31,11 +31,11 @@ void FUN_800452c0(void)
   while (_DAT_801fe0e0 != 0) {
     FUN_80051f80(1);
   }
-  *(undefined1 *)(_DAT_1f800138 + 0x6d) = 2;
-  DAT_1f8001ff = *(undefined1 *)(_DAT_1f800138 + 0x6e);
+  _DAT_1f800138->sprite_param1 = 2;
+  DAT_1f8001ff = _DAT_1f800138->sprite_param2;
   _DAT_1f800278 = _DAT_800bfe56;
-  DAT_800bf872 = *(undefined1 *)(_DAT_1f800138 + 0x6e);
-  DAT_800bf870 = *(char *)(_DAT_1f800138 + 0x6e);
+  DAT_800bf872 = _DAT_1f800138->sprite_param2;
+  DAT_800bf870 = _DAT_1f800138->sprite_param2;
   FUN_80045080(0x80108f9c,DAT_800bf870 + '\x03');
   FUN_8007566c(DAT_800bf870,_DAT_1f80022c);
   FUN_80044f58();

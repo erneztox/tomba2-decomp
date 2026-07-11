@@ -21,7 +21,7 @@ void FUN_8006b020(int param_1,int param_2)
   else {
     if (param_2 < 2) {
       if (param_2 != 0) goto LAB_8006b0c0;
-      bVar1 = *(char *)(param_1 + 2) == '\x06';
+      bVar1 = param_1->kind == '\x06';
       _DAT_1f8000cc = 0xfff0;
     }
     else {

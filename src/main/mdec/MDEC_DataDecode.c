@@ -22,12 +22,12 @@ void FUN_8008da58(uint param_1,undefined4 param_2,int param_3,uint param_4,undef
     if ((uVar2 & 0x1000000) == 0) {
 LAB_8008dad4:
       if (param_6 == '\x01') {
-        bVar1 = *(byte *)(DAT_800ac3c0 + 2) | (byte)(1 << (param_1 & 0x1f));
+        bVar1 = DAT_800ac3c0->kind | (byte)(1 << (param_1 & 0x1f));
       }
       else {
-        bVar1 = *(byte *)(DAT_800ac3c0 + 2) & ~(byte)(1 << (param_1 & 0x1f));
+        bVar1 = DAT_800ac3c0->kind & ~(byte)(1 << (param_1 & 0x1f));
       }
-      *(byte *)(DAT_800ac3c0 + 2) = bVar1;
+      DAT_800ac3c0->kind = bVar1;
       iVar3 = param_1 * 0x10;
       *DAT_800ac3bc = *DAT_800ac3bc | 1 << (param_1 * 4 + 3 & 0x1f);
       *(undefined4 *)(&DAT_1f801080 + iVar3) = param_2;

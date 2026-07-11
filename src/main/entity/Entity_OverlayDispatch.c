@@ -9,7 +9,7 @@
 void FUN_800662d8(int param_1,undefined4 param_2)
 
 {
-  if (*(short *)(param_1 + 0x16e) == 0) {
+  if (param_1->timer_main == 0) {
     param_2 = 0;
   }
   if (DAT_800bf870 == 6) {

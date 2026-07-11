@@ -25,9 +25,9 @@ void FUN_80027144(undefined4 param_1,int param_2,undefined2 param_3,uint param_4
       }
       iVar3 = FUN_8007b26c();
       if (iVar3 != 0) {
-        *(byte *)(iVar3 + 1) = (byte)((int)(param_4 << 0x10) >> 0x14) & 0xf;
+        iVar3->flags = (byte)((int)(param_4 << 0x10) >> 0x14) & 0xf;
         *(undefined2 *)(iVar3 + 0xc) = param_3;
-        *(char *)(iVar3 + 2) = (char)iVar5;
+        iVar3->kind = (char)iVar5;
         *(undefined2 *)(iVar3 + 0x1e) = *(undefined2 *)(param_2 + 2);
         *(undefined2 *)(iVar3 + 0x22) = *(undefined2 *)(param_2 + 6);
         *(undefined2 *)(iVar3 + 0x26) = *(undefined2 *)(param_2 + 10);

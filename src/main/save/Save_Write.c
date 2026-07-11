@@ -46,10 +46,10 @@ void FUN_80039bcc(int param_1)
     puVar8 = puVar8 + 8;
     FUN_8007e1b8(&local_28,(&PTR_DAT_80017334)[*psVar1],*(undefined4 *)(param_1 + 4),&local_30);
   } while (iVar9 < 6);
-  if (*(char *)(param_1 + 8) == '\x03') {
+  if (param_1->counter1 == '\x03') {
     iVar9 = 0;
     local_2f = bVar4;
-    if (*(char *)(param_1 + 9) == '\0') {
+    if (param_1->counter2 == '\0') {
       puVar8 = &DAT_800a280c;
       local_26 = cVar3 + 0xc;
       local_24 = 0;

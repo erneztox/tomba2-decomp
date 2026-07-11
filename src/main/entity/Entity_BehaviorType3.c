@@ -1,5 +1,5 @@
 /**
- * @brief Entity behavior type variant 3: entity[4]=1, type dispatch
+ * @brief Entity behavior type variant 3: entity->state=1, type dispatch
  * @note Original: func_8002B8F4 at 0x8002B8F4
  */
 // Entity_BehaviorType3
@@ -15,7 +15,7 @@ void FUN_8002b8f4(int param_1)
   int iVar4;
   int iVar5;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (3 < bVar1) {
@@ -31,21 +31,21 @@ void FUN_8002b8f4(int param_1)
     *(undefined ***)(param_1 + 0x50) = &PTR_DAT_800a2018;
     *(undefined4 *)(param_1 + 0x48) = 0;
     *(undefined4 *)(param_1 + 0x4c) = 0;
-    *(undefined1 *)(param_1 + 4) = 1;
-    *(undefined1 *)(param_1 + 7) = 0;
-    *(undefined2 *)(param_1 + 0x58) = *(undefined2 *)(param_1 + 0x2c);
-    *(short *)(param_1 + 0x5a) = *(short *)(param_1 + 0x2e) + -0x78;
-    *(undefined2 *)(param_1 + 0x5c) = *(undefined2 *)(param_1 + 0x30);
+    param_1->state = 1;
+    param_1->sub_action = 0;
+    param_1->rot_z = param_1->pos_x;
+    param_1->target_rot_y = param_1->pos_y + -0x78;
+    param_1->draw_y = *(undefined2 *)(param_1 + 0x30);
   }
-  *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x38);
-  *(int *)(param_1 + 0x3c) = *(int *)(param_1 + 0x40);
-  if ((*(int *)(param_1 + 0x38) == 0) && (*(int *)(param_1 + 0x40) == 0)) {
-    *(undefined1 *)(param_1 + 4) = 2;
+  param_1->scale_y = param_1->anim_data;
+  param_1->sprite_data = *(int *)(param_1 + 0x40);
+  if ((param_1->anim_data == 0) && (*(int *)(param_1 + 0x40) == 0)) {
+    param_1->state = 2;
     return;
   }
-  if (*(byte *)(param_1 + 3) - 0x14 < 2) {
-    cVar2 = *(char *)(param_1 + 7) + '\x01';
-    *(char *)(param_1 + 7) = cVar2;
+  if (param_1->sub_type - 0x14 < 2) {
+    cVar2 = param_1->sub_action + '\x01';
+    param_1->sub_action = cVar2;
     if (cVar2 == '\a') {
       iVar5 = 0;
       if (6 < DAT_800e7e7c) {
@@ -53,8 +53,8 @@ void FUN_8002b8f4(int param_1)
         iVar5 = 0;
         if (iVar4 != 0) {
           if (param_1 != -0x2c) {
-            *(undefined2 *)(iVar4 + 0x2c) = *(undefined2 *)(param_1 + 0x2c);
-            *(undefined2 *)(iVar4 + 0x2e) = *(undefined2 *)(param_1 + 0x2e);
+            iVar4->pos_x = param_1->pos_x;
+            iVar4->pos_y = param_1->pos_y;
             *(undefined2 *)(iVar4 + 0x30) = *(undefined2 *)(param_1 + 0x30);
           }
           *(undefined2 *)(iVar4 + 0x32) = 0xffce;
@@ -63,17 +63,17 @@ void FUN_8002b8f4(int param_1)
         }
       }
       if (iVar5 != 0) {
-        *(byte *)(iVar5 + 0x28) = *(byte *)(iVar5 + 0x28) | 0x80;
+        iVar5->alloc_flags = iVar5->alloc_flags | 0x80;
       }
     }
-    if (*(char *)(param_1 + 3) == '\x15') {
-      sVar3 = *(short *)(param_1 + 0x5a) + -0x10;
+    if (param_1->sub_type == '\x15') {
+      sVar3 = param_1->target_rot_y + -0x10;
     }
     else {
-      if (*(char *)(param_1 + 3) != '\x14') goto LAB_8002bab0;
-      sVar3 = *(short *)(param_1 + 0x5a) + -10;
+      if (param_1->sub_type != '\x14') goto LAB_8002bab0;
+      sVar3 = param_1->target_rot_y + -10;
     }
-    *(short *)(param_1 + 0x5a) = sVar3;
+    param_1->target_rot_y = sVar3;
   }
 LAB_8002bab0:
   iVar5 = FUN_8002b278(param_1);

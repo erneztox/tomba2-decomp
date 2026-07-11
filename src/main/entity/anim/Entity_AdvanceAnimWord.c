@@ -11,11 +11,11 @@ void Entity_AdvanceAnimWord(int param_1)
 {
   int iVar1;
 
-  iVar1 = *(int *)(param_1 + 0x3c);
+  iVar1 = param_1->sprite_data;
   if (iVar1 != 0) {
-    if ((*(byte *)(iVar1 + 3) & 0x80) != 0) {
+    if ((iVar1->sub_type & 0x80) != 0) {
       *(undefined4 *)(param_1 + 0x40) = 0;
-      *(undefined4 *)(param_1 + 0x3c) = 0;
+      param_1->sprite_data = 0;
       return;
     }
     *(int *)(param_1 + 0x40) = iVar1 + 4;

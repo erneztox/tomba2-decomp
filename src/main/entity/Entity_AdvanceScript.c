@@ -15,12 +15,12 @@ void FUN_8007d14c(int param_1)
   *(char **)(param_1 + 0x10) = *(char **)(param_1 + 0x14);
   if (**(char **)(param_1 + 0x14) == -1) {
 LAB_8007d17c:
-    *(undefined1 *)(param_1 + 5) = 0;
+    param_1->behavior_state = 0;
   }
   else {
     iVar2 = FUN_8007c0d0(param_1,1);
     if (iVar2 == 1) {
-      bVar1 = *(byte *)(param_1 + 0x46) | 1;
+      bVar1 = param_1->anim_id | 1;
     }
     else {
       if (iVar2 < 2) {
@@ -28,13 +28,13 @@ LAB_8007d17c:
         goto LAB_8007d17c;
       }
       if (iVar2 != 2) goto LAB_8007d1e4;
-      bVar1 = *(byte *)(param_1 + 0x46) | 0x81;
+      bVar1 = param_1->anim_id | 0x81;
     }
-    *(byte *)(param_1 + 0x46) = bVar1;
+    param_1->anim_id = bVar1;
   }
 LAB_8007d1e4:
-  if (*(char *)(param_1 + 5) != '\0') {
-    *(undefined1 *)(param_1 + 5) = 1;
+  if (param_1->behavior_state != '\0') {
+    param_1->behavior_state = 1;
   }
   return;
 }

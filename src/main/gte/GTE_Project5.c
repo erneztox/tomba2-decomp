@@ -27,7 +27,7 @@ void FUN_8002e458(int param_1)
   setCopControlWord(2,0xd800,6);
   setCopControlWord(2,0xe000,0);
   setCopReg(2,in_zero,*(undefined4 *)(param_1 + 0x2c));
-  setCopReg(2,in_at,*(undefined4 *)(param_1 + 0x30));
+  setCopReg(2,in_at,param_1->pos_y_fixed);
   copFunction(2,0x180001);
   _DAT_1f800080 = getCopControlWord(2,0xf800);
   bVar1 = true;

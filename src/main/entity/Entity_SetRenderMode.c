@@ -1,5 +1,5 @@
 /**
- * @brief Entity render mode setter: sets entity[0xB] flags based on param (0x80/0x20 or 0x10/0x40)
+ * @brief Entity render mode setter: sets entity->render_flags flags based on param (0x80/0x20 or 0x10/0x40)
  * @note Original: func_80052144 at 0x80052144
  */
 // Entity_SetRenderMode

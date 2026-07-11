@@ -21,7 +21,7 @@ undefined4 FUN_800498c8(int param_1)
       return 0;
     }
     if ((*_DAT_1f8001e0 & 0x4000) == 0) break;
-    *(char *)(param_1 + 0x2a) = (char)*_DAT_1f8001e0;
+    param_1->collision_dir = (char)*_DAT_1f8001e0;
     if ((*_DAT_1f8001e0 & 0x4000) == 0) {
       return 1;
     }

@@ -20,7 +20,7 @@ void FUN_8006e464(int param_1)
   uint uVar7;
   int iVar8;
   
-  if (*(char *)(param_1 + 0x76) != '\0') {
+  if (param_1->camera_mode != '\0') {
     return;
   }
   if ((DAT_800e7ee1 != 0) && ((*(byte *)(param_1 + 0x72) & 0x80) != 0)) {
@@ -56,10 +56,10 @@ void FUN_8006e464(int param_1)
         case 3:
           if ((*(char *)(param_1 + 0x77) == '\0') && (DAT_800bf870 != '\x06')) {
             if (_DAT_800e7fc0 == _DAT_800e7ed6) {
-              uVar7 = (uint)*(ushort *)(param_1 + 0x56) + (uint)DAT_800e7fe8 * -0x40;
+              uVar7 = (uint)param_1->rot_y + (uint)DAT_800e7fe8 * -0x40;
             }
             else {
-              uVar7 = (uint)DAT_800e7fe8 * 0x40 - (uint)*(ushort *)(param_1 + 0x56);
+              uVar7 = (uint)DAT_800e7fe8 * 0x40 - (uint)param_1->rot_y;
             }
             goto LAB_8006e640;
           }
@@ -69,17 +69,17 @@ joined_r0x8006e620:
       }
       else if ((bVar1 & 1) == 0) {
 LAB_8006e628:
-        uVar7 = (uint)*(ushort *)(param_1 + 0x56);
+        uVar7 = (uint)param_1->rot_y;
         goto LAB_8006e640;
       }
 LAB_8006e634:
-      uVar7 = -(uint)*(ushort *)(param_1 + 0x56);
+      uVar7 = -(uint)param_1->rot_y;
     }
     else {
       sVar2 = sVar2 + -600;
     }
 LAB_8006e640:
-    iVar4 = uVar7 + (uint)_DAT_800e7fc0 + (uint)*(ushort *)(param_1 + 0x52);
+    iVar4 = uVar7 + (uint)_DAT_800e7fc0 + (uint)param_1->sprite_y;
     *(short *)(param_1 + 0x8c) = (short)iVar4;
     iVar4 = FUN_80083f50(iVar4 * 0x10000 >> 0x10);
     iVar8 = (int)sVar2;
@@ -147,7 +147,7 @@ LAB_8006e7e4:
   iVar4 = FUN_80083e80((int)sVar2);
   _DAT_1f8000d8 = _DAT_1f8000d8 - (iVar4 * iVar8 >> 1);
   if (iVar8 < 0x191) {
-    *(byte *)(param_1 + 0x66) = *(byte *)(param_1 + 0x66) | 1;
+    param_1->camera_flags = param_1->camera_flags | 1;
   }
   return;
 }

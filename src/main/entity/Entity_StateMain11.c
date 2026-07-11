@@ -15,39 +15,39 @@ void FUN_8005f2f0(byte *param_1)
   short sVar2;
   int iVar3;
   
-  param_1[0x17b] = 1;
+  param_1->flag_17B = 1;
   DAT_1f80027a = 1;
-  bVar1 = param_1[6];
+  bVar1 = param_1->action_state;
   if (bVar1 == 1) {
 LAB_8005f3c0:
-    param_1[6] = param_1[6] + 1;
+    param_1->action_state = param_1->action_state + 1;
     if (DAT_800bf81a != '\0') {
-      param_1[0x6c] = DAT_800bf88c;
+      param_1->sprite_cmd = DAT_800bf88c;
       DAT_800bf81a = '\0';
     }
     if (DAT_800bf81b != '\0') {
-      param_1[0x6d] = DAT_800bf88d;
+      param_1->sprite_param1 = DAT_800bf88d;
       DAT_800bf81b = '\0';
     }
     if (DAT_800bf81c != '\0') {
-      param_1[0x6e] = DAT_800bf88e;
+      param_1->sprite_param2 = DAT_800bf88e;
       FUN_80067fe4(param_1);
       DAT_800bf81c = '\0';
     }
     if (DAT_800bf81d != '\0') {
       DAT_1f80027a = 2;
-      param_1[0xd] = param_1[0xd] & 0x7f;
-      param_1[0x6f] = DAT_800bf88f;
+      param_1->sprite_flags = param_1->sprite_flags & 0x7f;
+      param_1->sprite_param3 = DAT_800bf88f;
       FUN_80067ef4(param_1);
-      param_1[6] = 3;
-      *(ushort *)(param_1 + 0x7a) = *(ushort *)(param_1 + 0x56) & 0xfff;
+      param_1->action_state = 3;
+      *(ushort *)(param_1 + 0x7a) = param_1->rot_y & 0xfff;
       DAT_800bf81d = '\0';
       param_1[0x40] = 0x1e;
       param_1[0x41] = 0;
       FUN_8001cf2c();
     }
 LAB_8005f4fc:
-    if (param_1[2] != 0) {
+    if (param_1->kind != 0) {
       return;
     }
     FUN_80055d5c(param_1);
@@ -66,12 +66,12 @@ LAB_8005f4fc:
     DAT_800bf80e = 0;
     FUN_80054198(param_1);
     FUN_80054d14(param_1,2,4);
-    if (param_1[2] == 0) {
+    if (param_1->kind == 0) {
       FUN_80053d90(param_1);
       FUN_800551c4(param_1);
     }
-    param_1[7] = 0;
-    param_1[6] = param_1[6] + 1;
+    param_1->sub_action = 0;
+    param_1->action_state = param_1->action_state + 1;
     goto LAB_8005f3c0;
   }
   if (bVar1 == 2) {
@@ -81,13 +81,13 @@ LAB_8005f4fc:
       *param_1 = 3;
       param_1[0x172] = 0xf;
       param_1[0x173] = 0;
-      param_1[5] = 0;
+      param_1->behavior_state = 0;
     }
     else {
-      param_1[5] = 0x12;
+      param_1->behavior_state = 0x12;
     }
-    param_1[6] = 0;
-    param_1[7] = 0;
+    param_1->action_state = 0;
+    param_1->sub_action = 0;
     FUN_80054d14(param_1,2,4);
     goto LAB_8005f4fc;
   }
@@ -96,27 +96,27 @@ LAB_8005f4fc:
     return;
   }
   DAT_1f80027a = 2;
-  param_1[0x17a] = 1;
-  switch(param_1[7]) {
+  param_1->flag_17A = 1;
+  switchparam_1->sub_action {
   case 0:
     FUN_80076d68(param_1);
-    if (*(short *)(param_1 + 0x40) != 0) {
-      *(short *)(param_1 + 0x40) = *(short *)(param_1 + 0x40) + -1;
+    if (param_1->timer1 != 0) {
+      param_1->timer1 = param_1->timer1 + -1;
       return;
     }
     if ((DAT_800bf80a != '\x03') || (DAT_800bf80b != '_')) {
-      if (param_1[2] == 0) {
-        sVar2 = FUN_800776f8((int)((*(ushort *)(param_1 + 0x140) + 0x400) * 0x10000) >> 0x10,
-                             (int)*(short *)(param_1 + 0x56),0x100);
-        *(short *)(param_1 + 0x56) = sVar2;
-        if ((int)sVar2 != ((int)*(short *)(param_1 + 0x140) + 0x400U & 0xfff)) {
+      if (param_1->kind == 0) {
+        sVar2 = FUN_800776f8((int)((param_1->draw_angle + 0x400) * 0x10000) >> 0x10,
+                             (int)param_1->rot_y,0x100);
+        param_1->rot_y = sVar2;
+        if ((int)sVar2 != ((int)param_1->draw_angle + 0x400U & 0xfff)) {
           return;
         }
       }
       else {
         sVar2 = FUN_800776f8((int)((_DAT_800e805a + 0x800) * 0x10000) >> 0x10,
-                             (int)*(short *)(param_1 + 0x56),0x100);
-        *(short *)(param_1 + 0x56) = sVar2;
+                             (int)param_1->rot_y,0x100);
+        param_1->rot_y = sVar2;
         if ((int)sVar2 != ((int)(short)_DAT_800e805a + 0x800U & 0xfff)) {
           return;
         }
@@ -133,62 +133,62 @@ LAB_8005f4fc:
     FUN_80054d14(param_1,99,8);
     param_1[0x4a] = 0;
     param_1[0x4b] = 0xe0;
-    bVar1 = param_1[7];
-    param_1[0x145] = 1;
+    bVar1 = param_1->sub_action;
+    param_1->state_flag145 = 1;
     goto code_r0x8005f890;
   case 2:
     FUN_80076d68(param_1);
-    sVar2 = *(short *)(param_1 + 0x4a);
-    *(short *)(param_1 + 0x4a) = sVar2 + 0x300;
+    sVar2 = param_1->velocity_y;
+    param_1->velocity_y = sVar2 + 0x300;
     if (-0x901 < (short)(sVar2 + 0x300)) {
-      param_1[7] = param_1[7] + 1;
+      param_1->sub_action = param_1->sub_action + 1;
       iVar3 = FUN_800310f4(0x1e,0);
       if (iVar3 != 0) {
-        *(byte *)(iVar3 + 0x28) = *(byte *)(iVar3 + 0x28) | 0x80;
+        iVar3->alloc_flags = iVar3->alloc_flags | 0x80;
       }
       FUN_80074590(0x37,0x16,0x1e);
-      *(int *)(param_1 + 0x10) = iVar3;
+      param_1->parent = iVar3;
     }
     goto LAB_8005f74c;
   case 3:
     FUN_80076d68(param_1);
-    sVar2 = *(short *)(param_1 + 0x4a);
-    *(ushort *)(param_1 + 0x4a) = sVar2 + 0x300U;
+    sVar2 = param_1->velocity_y;
+    param_1->velocity_y = sVar2 + 0x300U;
     if (-1 < (int)((uint)(ushort)(sVar2 + 0x300U) << 0x10)) {
-      param_1[1] = 0;
-      param_1[0x145] = 2;
-      param_1[7] = param_1[7] + 1;
+      param_1->flags = 0;
+      param_1->state_flag145 = 2;
+      param_1->sub_action = param_1->sub_action + 1;
     }
 LAB_8005f74c:
-    *(int *)(param_1 + 0x30) = *(int *)(param_1 + 0x30) + *(short *)(param_1 + 0x4a) * 0x100;
+    param_1->pos_y_fixed = param_1->pos_y_fixed + param_1->velocity_y * 0x100;
     break;
   case 4:
     goto switchD_8005f560_caseD_4;
   case 5:
     iVar3 = FUN_80044cd4(_DAT_800ed014,
-                         *(uint *)(&DAT_800fb170 + (*(ushort *)(param_1 + 0x17e) & 0xf) * 8) >> 0xb,
-                         *(int *)(&DAT_800fb170 + ((*(ushort *)(param_1 + 0x17e) & 0xf) << 3 | 4)) -
-                         *(uint *)(&DAT_800fb170 + (*(ushort *)(param_1 + 0x17e) & 0xf) * 8));
+                         *(uint *)(&DAT_800fb170 + (param_1->entity_flags & 0xf) * 8) >> 0xb,
+                         *(int *)(&DAT_800fb170 + ((param_1->entity_flags & 0xf) << 3 | 4)) -
+                         *(uint *)(&DAT_800fb170 + (param_1->entity_flags & 0xf) * 8));
     if (iVar3 == 0) {
       return;
     }
     goto switchD_8005f560_caseD_4;
   case 6:
     if (DAT_1f80019b != '\0') {
-      iVar3 = *(int *)(param_1 + 0x10);
+      iVar3 = param_1->parent;
       if (iVar3 != 0) {
-        *(undefined1 *)(iVar3 + 4) = 2;
-        *(undefined1 *)(iVar3 + 5) = 0;
+        iVar3->state = 2;
+        iVar3->behavior_state = 0;
       }
       FUN_80057fd4(param_1);
       FUN_80054d14(param_1,100,8);
-      param_1[1] = 1;
+      param_1->flags = 1;
       if (DAT_1f800137 != '\x01') {
         FUN_80074f24(DAT_800bf870);
       }
-      param_1[7] = param_1[7] + 1;
+      param_1->sub_action = param_1->sub_action + 1;
       if ((DAT_800bf80a == '\x03') && (DAT_800bf80b == '_')) {
-        param_1[7] = 0xc;
+        param_1->sub_action = 0xc;
         FUN_80054d14(param_1,0xe4,0);
       }
     }
@@ -197,33 +197,33 @@ LAB_8005f74c:
     DAT_1f80027a = 1;
     FUN_80076d68(param_1);
 switchD_8005f560_caseD_4:
-    bVar1 = param_1[7];
+    bVar1 = param_1->sub_action;
 code_r0x8005f890:
-    param_1[7] = bVar1 + 1;
+    param_1->sub_action = bVar1 + 1;
     break;
   case 8:
     DAT_1f80027a = 1;
     FUN_80076d68(param_1);
-    sVar2 = *(short *)(param_1 + 0x4a);
-    *(short *)(param_1 + 0x4a) = sVar2 + 0x300;
+    sVar2 = param_1->velocity_y;
+    param_1->velocity_y = sVar2 + 0x300;
     if (0x1fff < (short)(sVar2 + 0x300)) {
       param_1[0x4a] = 0;
       param_1[0x4b] = 0x20;
     }
-    *(int *)(param_1 + 0x30) = *(int *)(param_1 + 0x30) + *(short *)(param_1 + 0x4a) * 0x100;
-    if ((*(short *)(param_1 + 0x7c) <= *(short *)(param_1 + 0x32)) || (param_1[0x29] != 0)) {
+    param_1->pos_y_fixed = param_1->pos_y_fixed + param_1->velocity_y * 0x100;
+    if ((*(short *)(param_1 + 0x7c) <= *(short *)(param_1 + 0x32)) || (param_1->collision_state != 0)) {
       FUN_8005314c(param_1);
-      if (param_1[0x29] == 0) {
+      if (param_1->collision_state == 0) {
         *(undefined2 *)(param_1 + 0x32) = *(undefined2 *)(param_1 + 0x7c);
       }
       FUN_80054d14(param_1,0x65,6);
       param_1[0x40] = 8;
       param_1[0x41] = 0;
-      param_1[0x145] = 0;
-      param_1[7] = param_1[7] + 1;
-      if ((param_1[0x6f] - 0x12 < 5) && ((byte)(&DAT_800a4542)[param_1[0x6f]] >> 1 <= DAT_800bf87e))
+      param_1->state_flag145 = 0;
+      param_1->sub_action = param_1->sub_action + 1;
+      if ((param_1->sprite_param3 - 0x12 < 5) && ((byte)(&DAT_800a4542)[param_1->sprite_param3] >> 1 <= DAT_800bf87e))
       {
-        FUN_8004ed94((int)*(short *)(&DAT_800a46e4 + (param_1[0x6f] - 0x12) * 2),0x41);
+        FUN_8004ed94((int)*(short *)(&DAT_800a46e4 + (param_1->sprite_param3 - 0x12) * 2),0x41);
       }
     }
     break;
@@ -231,23 +231,23 @@ code_r0x8005f890:
   case 10:
     DAT_1f80027a = 1;
     FUN_80076d68(param_1);
-    sVar2 = *(short *)(param_1 + 0x40);
-    *(short *)(param_1 + 0x40) = sVar2 + -1;
+    sVar2 = param_1->timer1;
+    param_1->timer1 = sVar2 + -1;
     if (sVar2 == 1) {
       param_1[0x40] = 8;
       param_1[0x41] = 0;
-      param_1[7] = param_1[7] + 1;
+      param_1->sub_action = param_1->sub_action + 1;
       FUN_80054d14(param_1,2);
     }
     break;
   case 0xb:
     DAT_1f80027a = 1;
     FUN_80076d68(param_1);
-    sVar2 = FUN_800776f8((int)*(short *)(param_1 + 0x7a),(int)*(short *)(param_1 + 0x56),0x100);
-    *(short *)(param_1 + 0x56) = sVar2;
+    sVar2 = FUN_800776f8((int)*(short *)(param_1 + 0x7a),(int)param_1->rot_y,0x100);
+    param_1->rot_y = sVar2;
     if (sVar2 == *(short *)(param_1 + 0x7a)) {
-      param_1[6] = 2;
-      param_1[7] = 0;
+      param_1->action_state = 2;
+      param_1->sub_action = 0;
     }
     break;
   case 0xc:

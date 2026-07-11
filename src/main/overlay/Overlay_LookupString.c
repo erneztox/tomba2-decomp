@@ -20,7 +20,7 @@ void FUN_800263e8(void)
     *puVar2 = 1;
     cVar1 = *pcVar3;
     pcVar3 = pcVar3 + 1;
-    puVar2[2] = cVar1;
+    puVar2->kind = cVar1;
     cVar1 = *pcVar3;
   }
   return;

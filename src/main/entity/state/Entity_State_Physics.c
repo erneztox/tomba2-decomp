@@ -1,5 +1,5 @@
 /**
- * @brief Entity physics state: entity[0x29]=0, checks entity[0x147] dir, sets angle
+ * @brief Entity physics state: entity->collision_state=0, checks entity->direction dir, sets angle
  * @note Original: func_800551C4 at 0x800551C4
  */
 // Entity_State_Physics
@@ -9,24 +9,24 @@
 void FUN_800551c4(int param_1)
 
 {
-  if (*(char *)(param_1 + 0x29) == '\0') {
-    if (*(char *)(param_1 + 0x147) != '\0') {
-      *(ushort *)(param_1 + 0x56) = *(short *)(param_1 + 0x140) - 0x800U & 0xfff;
+  if (param_1->collision_state == '\0') {
+    if (param_1->direction != '\0') {
+      param_1->rot_y = param_1->draw_angle - 0x800U & 0xfff;
       return;
     }
-    *(undefined2 *)(param_1 + 0x56) = *(undefined2 *)(param_1 + 0x140);
+    param_1->rot_y = param_1->draw_angle;
   }
-  else if (*(char *)(param_1 + 0x147) == '\0') {
-    *(undefined2 *)(param_1 + 0x56) = *(undefined2 *)(param_1 + 0x140);
-    if (*(char *)(param_1 + 0x145) == '\0') {
-      *(short *)(param_1 + 0x58) = *(short *)(param_1 + 0x142) >> 1;
+  else if (param_1->direction == '\0') {
+    param_1->rot_y = param_1->draw_angle;
+    if (param_1->state_flag145 == '\0') {
+      param_1->rot_z = param_1->draw_scale >> 1;
       return;
     }
   }
   else {
-    *(ushort *)(param_1 + 0x56) = *(short *)(param_1 + 0x140) - 0x800U & 0xfff;
-    if (*(char *)(param_1 + 0x145) == '\0') {
-      *(ushort *)(param_1 + 0x58) = 0x1000U - (*(short *)(param_1 + 0x142) >> 1) & 0xfff;
+    param_1->rot_y = param_1->draw_angle - 0x800U & 0xfff;
+    if (param_1->state_flag145 == '\0') {
+      param_1->rot_z = 0x1000U - (param_1->draw_scale >> 1) & 0xfff;
       return;
     }
   }

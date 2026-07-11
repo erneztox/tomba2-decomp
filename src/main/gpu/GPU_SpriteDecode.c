@@ -37,8 +37,8 @@ LAB_8007d098:
     }
     if ((uVar2 + 8 & 0xff) < 2) {
       iVar5 = (uint)uVar4 << 0x10;
-      if ((*(char *)(param_1 + 0x47) != '\0') ||
-         (iVar5 = (uint)uVar4 << 0x10, 1 < *(byte *)(param_1 + 3))) goto LAB_8007d098;
+      if ((param_1->sub_anim_id != '\0') ||
+         (iVar5 = (uint)uVar4 << 0x10, 1 < param_1->sub_type)) goto LAB_8007d098;
       *param_2 = *param_2 + 2;
       goto LAB_8007d094;
     }

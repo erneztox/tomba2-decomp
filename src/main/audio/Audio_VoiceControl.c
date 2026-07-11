@@ -27,10 +27,10 @@ void FUN_8008fe40(ushort param_1,short param_2)
   pbVar7 = (byte *)*puVar8;
   bVar1 = *pbVar7;
   *puVar8 = pbVar7 + 1;
-  bVar2 = pbVar7[1];
+  bVar2 = pbVar7->flags;
   *puVar8 = pbVar7 + 2;
   iVar3 = _DAT_80104c2c;
-  uVar5 = (uint)pbVar7[2] | (uint)bVar1 << 0x10 | (uint)bVar2 << 8;
+  uVar5 = (uint)pbVar7->kind | (uint)bVar1 << 0x10 | (uint)bVar2 << 8;
   uVar9 = 60000000 / uVar5;
   if (uVar5 == 0) {
     trap(0x1c00);

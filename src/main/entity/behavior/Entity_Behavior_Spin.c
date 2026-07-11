@@ -14,58 +14,58 @@ void FUN_80063158(byte *param_1)
   byte bVar1;
   short sVar2;
   
-  sVar2 = *(short *)(param_1 + 0x154);
-  *(short *)(param_1 + 0x154) = sVar2 + -0x20;
+  sVar2 = param_1->speed;
+  param_1->speed = sVar2 + -0x20;
   if ((short)(sVar2 + -0x20) < 0x20) {
     param_1[0x154] = 0x20;
     param_1[0x155] = 0;
   }
-  *(short *)(param_1 + 0x42) = *(short *)(param_1 + 0x42) + *(short *)(param_1 + 0x154);
-  if (param_1[0x15c] == param_1[0x147]) {
-    sVar2 = *(short *)(param_1 + 0x56) - *(short *)(param_1 + 0x154);
+  param_1->timer2 = param_1->timer2 + param_1->speed;
+  if (param_1->anim_param == param_1->direction) {
+    sVar2 = param_1->rot_y - param_1->speed;
   }
   else {
-    sVar2 = *(short *)(param_1 + 0x56) + *(short *)(param_1 + 0x154);
+    sVar2 = param_1->rot_y + param_1->speed;
   }
-  *(short *)(param_1 + 0x56) = sVar2;
-  if (0x400 < *(short *)(param_1 + 0x42)) {
+  param_1->rot_y = sVar2;
+  if (0x400 < param_1->timer2) {
     if ((_DAT_800e7e68 & _DAT_1f800172) != 0) {
-      param_1[0x5e] = param_1[0x5e] | 1;
+      param_1->flag_5E = param_1->flag_5E | 1;
     }
-    if (((param_1[0x174] & 7) == 0) && ((_DAT_800e7e68 & _DAT_1f800174) != 0)) {
-      param_1[0x5e] = param_1[0x5e] | 2;
+    if (((param_1->game_flags & 7) == 0) && ((_DAT_800e7e68 & _DAT_1f800174) != 0)) {
+      param_1->flag_5E = param_1->flag_5E | 2;
     }
   }
-  if (*(short *)(param_1 + 0x42) < 0x801) {
+  if (param_1->timer2 < 0x801) {
     return;
   }
-  if (param_1[0x147] == 0) {
-    param_1[0x147] = 1;
+  if (param_1->direction == 0) {
+    param_1->direction = 1;
     param_1[0x149] = 3;
-    param_1[0x14a] = 3;
-    *(short *)(param_1 + 0x56) = *(short *)(param_1 + 0x140) + 0x800;
+    param_1->behavior_flags = 3;
+    param_1->rot_y = param_1->draw_angle + 0x800;
   }
   else {
-    param_1[0x147] = 0;
+    param_1->direction = 0;
     param_1[0x149] = 2;
-    param_1[0x14a] = 2;
-    *(undefined2 *)(param_1 + 0x56) = *(undefined2 *)(param_1 + 0x140);
+    param_1->behavior_flags = 2;
+    param_1->rot_y = param_1->draw_angle;
   }
-  if ((*(short *)(param_1 + 0x16e) < 1) || (bVar1 = *param_1, (bVar1 & 2) != 0)) {
+  if ((param_1->timer_main < 1) || (bVar1 = *param_1, (bVar1 & 2) != 0)) {
     bVar1 = *param_1;
     param_1[0x42] = 0;
     param_1[0x43] = 0;
   }
   else {
-    if ((param_1[0x5e] & 1) != 0) {
+    if ((param_1->flag_5E & 1) != 0) {
       *param_1 = bVar1 & 3;
-      param_1[0x5e] = 0;
+      param_1->flag_5E = 0;
       FUN_80064524();
       return;
     }
-    if ((param_1[0x5e] & 2) != 0) {
+    if ((param_1->flag_5E & 2) != 0) {
       *param_1 = bVar1 & 3;
-      param_1[0x5e] = 0;
+      param_1->flag_5E = 0;
       FUN_800645cc();
       return;
     }
@@ -73,14 +73,14 @@ void FUN_80063158(byte *param_1)
     param_1[0x155] = 0;
     param_1[0x42] = 0;
     param_1[0x43] = 0;
-    if ((((_DAT_800ecf54 & _DAT_1f80016c) != 0) && (param_1[0x147] == 0)) ||
-       (((_DAT_800ecf54 & _DAT_1f80016e) != 0 && (param_1[0x147] == 1)))) {
-      param_1[7] = 0;
+    if ((((_DAT_800ecf54 & _DAT_1f80016c) != 0) && (param_1->direction == 0)) ||
+       (((_DAT_800ecf54 & _DAT_1f80016e) != 0 && (param_1->direction == 1)))) {
+      param_1->sub_action = 0;
       return;
     }
     bVar1 = *param_1;
   }
-  param_1[7] = 2;
+  param_1->sub_action = 2;
   *param_1 = bVar1 & 3;
   return;
 }

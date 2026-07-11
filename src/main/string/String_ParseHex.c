@@ -14,7 +14,7 @@ short FUN_80079554(undefined1 *param_1)
   undefined *puVar3;
   undefined **ppuVar4;
   
-  sVar1 = CONCAT11(*param_1,param_1[1]);
+  sVar1 = CONCAT11(*param_1,param_1->flags);
   if (sVar1 == 0xa0a) {
     return 0xa0a;
   }

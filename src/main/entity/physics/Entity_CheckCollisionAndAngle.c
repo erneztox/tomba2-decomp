@@ -16,7 +16,7 @@ bool FUN_800419c4(int param_1,short param_2,short param_3)
   iVar1 = FUN_80049250(param_1,(int)param_2,(int)param_3);
   if (iVar1 == 1) {
     FUN_80049674(param_1);
-    *(undefined2 *)(param_1 + 0x62) = _DAT_1f8001a2;
+    param_1->angle_delta = _DAT_1f8001a2;
   }
   return iVar1 == 1;
 }

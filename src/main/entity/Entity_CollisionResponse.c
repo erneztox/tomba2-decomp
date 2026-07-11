@@ -1,5 +1,5 @@
 /**
- * @brief Entity collision response: sets entity[0x29], pushes
+ * @brief Entity collision response: sets entity->collision_state, pushes
  * @note Original: func_80020868 at 0x80020868
  */
 // Entity_CollisionResponse
@@ -19,38 +19,38 @@ void FUN_80020868(int param_1,int param_2)
   int iVar6;
   int iVar7;
   
-  *(undefined1 *)(param_2 + 0x29) = 0;
-  if ((DAT_800bf816 != '\0') && (DAT_800bf817 != *(char *)(param_2 + 3))) {
+  param_2->collision_state = 0;
+  if ((DAT_800bf816 != '\0') && (DAT_800bf817 != param_2->sub_type)) {
     return;
   }
-  if (*(char *)(param_1 + 0x2a) != *(char *)(param_2 + 0x2a)) {
+  if (param_1->collision_dir != param_2->collision_dir) {
     return;
   }
   iVar5 = FUN_8001f9dc(param_1,param_2);
   if (iVar5 == 0) {
     return;
   }
-  if (*(char *)(param_2 + 0x5f) == '\0') {
-    iVar5 = (uint)*(ushort *)(param_1 + 0x140) << 0x10;
+  if (param_2->input_flags == '\0') {
+    iVar5 = (uint)param_1->draw_angle << 0x10;
   }
   else {
-    iVar5 = (*(ushort *)(param_1 + 0x140) + 0x800) * 0x10000;
+    iVar5 = (param_1->draw_angle + 0x800) * 0x10000;
   }
   iVar6 = FUN_80083f50(iVar5 >> 0x10);
-  sVar1 = *(short *)(param_1 + 0x80);
-  sVar2 = *(short *)(param_2 + 0x80);
+  sVar1 = param_1->bounds_min_x;
+  sVar2 = param_2->bounds_min_x;
   iVar5 = FUN_80083e80(iVar5 >> 0x10);
-  sVar3 = *(short *)(param_2 + 0x80);
+  sVar3 = param_2->bounds_min_x;
   iVar7 = (int)_DAT_1f80009c;
-  *(short *)(param_1 + 0x2e) =
+  param_1->pos_y =
        (short)(iVar6 * ((int)sVar1 + (int)sVar2) >> 0xc) +
-       *(short *)(param_2 + 0x2e) + *(short *)(param_2 + 0x60);
-  *(short *)(param_1 + 0x36) =
-       (*(short *)(param_2 + 0x36) + *(short *)(param_2 + 100)) -
-       (short)(iVar5 * ((int)*(short *)(param_1 + 0x80) + (int)sVar3) >> 0xc);
-  cVar4 = FUN_80077768(iVar7,(int)*(short *)(param_1 + 0x140),1);
-  *(char *)(param_1 + 0x5f) = cVar4 + '\x02';
-  if (*(char *)(param_2 + 0x5f) == *(char *)(param_1 + 0x147)) {
+       param_2->pos_y + param_2->draw_x;
+  param_1->pos_z =
+       (param_2->pos_z + *(short *)(param_2 + 100)) -
+       (short)(iVar5 * ((int)param_1->bounds_min_x + (int)sVar3) >> 0xc);
+  cVar4 = FUN_80077768(iVar7,(int)param_1->draw_angle,1);
+  param_1->input_flags = cVar4 + '\x02';
+  if (param_2->input_flags == param_1->direction) {
     return;
   }
   if (DAT_1f800230 != '\0') {
@@ -60,13 +60,13 @@ void FUN_80020868(int param_1,int param_2)
     return;
   }
   if (DAT_800bf873 == '\0') {
-    *(undefined1 *)(param_2 + 0x29) = 1;
-    DAT_800bf81f = ('\x01' - *(char *)(param_2 + 0x5f)) * '\x10';
+    param_2->collision_state = 1;
+    DAT_800bf81f = ('\x01' - param_2->input_flags) * '\x10';
     return;
   }
   switch(DAT_800bf870) {
   case 1:
-    cVar4 = *(char *)(param_1 + 0x2a);
+    cVar4 = param_1->collision_dir;
     if ((((cVar4 == 'I') || (cVar4 == '\x19')) || (cVar4 == '\x1a')) || (cVar4 == '\''))
     goto switchD_80020a0c_caseD_9;
     if (cVar4 != '+') {
@@ -76,30 +76,30 @@ void FUN_80020868(int param_1,int param_2)
   default:
     goto switchD_80020a0c_caseD_2;
   case 5:
-    if (*(char *)(param_1 + 0x2a) != '\b') {
+    if (param_1->collision_dir != '\b') {
       return;
     }
-    if (*(short *)(param_1 + 0x36) < 0x2969) {
+    if (param_1->pos_z < 0x2969) {
       return;
     }
     break;
   case 6:
-    if (*(char *)(param_1 + 0x2a) != '\a') {
+    if (param_1->collision_dir != '\a') {
       return;
     }
-    if (0x1ce7 < *(short *)(param_1 + 0x2e)) {
+    if (0x1ce7 < param_1->pos_y) {
       return;
     }
     break;
   case 8:
-    if (*(char *)(param_1 + 0x2a) != '\x1f') {
+    if (param_1->collision_dir != '\x1f') {
       return;
     }
   case 9:
 switchD_80020a0c_caseD_9:
   }
-  *(undefined1 *)(param_2 + 0x29) = 1;
-  DAT_800bf81f = ('\x01' - *(char *)(param_2 + 0x5f)) * '\x10';
+  param_2->collision_state = 1;
+  DAT_800bf81f = ('\x01' - param_2->input_flags) * '\x10';
 switchD_80020a0c_caseD_2:
   return;
 }

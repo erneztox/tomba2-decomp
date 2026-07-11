@@ -66,7 +66,7 @@ void FUN_8002df68(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   _DAT_1f800008 = CONCAT22((short)uVar2,(short)uVar4);
   _DAT_1f800010 = CONCAT22(_DAT_1f800012,(short)uVar5);
   setCopReg(2,in_zero,*(undefined4 *)(param_1 + 0x2c));
-  setCopReg(2,extraout_at,*(undefined4 *)(param_1 + 0x30));
+  setCopReg(2,extraout_at,param_1->pos_y_fixed);
   copFunction(2,0x486012);
   _DAT_1f800014 = getCopReg(2,0x19);
   _DAT_1f800018 = getCopReg(2,0x1a);

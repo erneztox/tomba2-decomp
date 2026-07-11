@@ -23,18 +23,18 @@ void FUN_80057dc0(int param_1,int param_2)
   undefined2 uVar3;
   
   if (param_2 == 0) {
-    if (((int)*(short *)(param_1 + 0x17e) & 0x8000U) != 0) {
+    if (((int)param_1->entity_flags & 0x8000U) != 0) {
       *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + -0x46;
     }
-    uVar1 = *(ushort *)(param_1 + 0x17e) & 0x7fff;
+    uVar1 = param_1->entity_flags & 0x7fff;
   }
   else {
-    if (((int)*(short *)(param_1 + 0x17e) & 0x8000U) == 0) {
+    if (((int)param_1->entity_flags & 0x8000U) == 0) {
       *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 0x46;
     }
-    uVar1 = *(ushort *)(param_1 + 0x17e) | 0x8000;
+    uVar1 = param_1->entity_flags | 0x8000;
   }
-  *(ushort *)(param_1 + 0x17e) = uVar1;
+  param_1->entity_flags = uVar1;
   param_2 = param_2 + 1;
   if (param_2 == 0) {
     trap(0x1c00);
@@ -58,19 +58,19 @@ void FUN_80057dc0(int param_1,int param_2)
     trap(0x1c00);
   }
   uVar2 = (undefined2)(0x1000 / param_2);
-  *(undefined2 *)(param_1 + 0xb8) = uVar2;
-  *(undefined2 *)(param_1 + 0xba) = uVar2;
-  *(undefined2 *)(param_1 + 0xbc) = uVar2;
-  *(short *)(param_1 + 0x80) = (short)(0x32 / param_2);
+  param_1->scale_x = uVar2;
+  param_1->scale_y = uVar2;
+  param_1->scale_z = uVar2;
+  param_1->bounds_min_x = (short)(0x32 / param_2);
   uVar3 = (undefined2)(100 / param_2);
-  *(undefined2 *)(param_1 + 0x82) = uVar3;
+  param_1->bounds_size = uVar3;
   uVar2 = (undefined2)(0x8c / param_2);
-  *(undefined2 *)(param_1 + 0x84) = uVar2;
-  *(short *)(param_1 + 0x86) = (short)(0x10e / param_2);
-  *(undefined2 *)(param_1 + 0x62) = uVar2;
+  param_1->bounds_min_y = uVar2;
+  param_1->bounds_max_y = (short)(0x10e / param_2);
+  param_1->angle_delta = uVar2;
   *(undefined2 *)(param_1 + 100) = uVar2;
   *(undefined2 *)(param_1 + 0x66) = uVar3;
-  *(short *)(param_1 + 0x68) = (short)(0x1e / param_2);
+  param_1->target_angle = (short)(0x1e / param_2);
   _DAT_800e802a = (short)(0xf0 / param_2);
   return;
 }

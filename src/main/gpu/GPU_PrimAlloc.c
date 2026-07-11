@@ -13,27 +13,27 @@ undefined4 FUN_80082504(ushort *param_1,uint param_2)
 {
   ushort uVar1;
   
-  if ((short)param_1[2] < 0) {
+  if ((short)param_1->kind < 0) {
     uVar1 = 0;
   }
   else {
     uVar1 = DAT_800a59a4 - 1;
-    if ((int)(short)param_1[2] <= DAT_800a59a4 + -1) {
-      uVar1 = param_1[2];
+    if ((int)(short)param_1->kind <= DAT_800a59a4 + -1) {
+      uVar1 = param_1->kind;
     }
   }
-  param_1[2] = uVar1;
-  if ((short)param_1[3] < 0) {
+  param_1->kind = uVar1;
+  if ((short)param_1->sub_type < 0) {
     uVar1 = 0;
   }
   else {
     uVar1 = DAT_800a59a6 - 1;
-    if ((int)(short)param_1[3] <= DAT_800a59a6 + -1) {
-      uVar1 = param_1[3];
+    if ((int)(short)param_1->sub_type <= DAT_800a59a6 + -1) {
+      uVar1 = param_1->sub_type;
     }
   }
-  param_1[3] = uVar1;
-  if (((*param_1 & 0x3f) == 0) && ((param_1[2] & 0x3f) == 0)) {
+  param_1->sub_type = uVar1;
+  if (((*param_1 & 0x3f) == 0) && ((param_1->kind & 0x3f) == 0)) {
     _DAT_80100ae0 = 0x5ffffff;
     _DAT_80100ae4 = 0xe6000000;
     _DAT_80100aec = param_2 & 0xffffff | 0x2000000;

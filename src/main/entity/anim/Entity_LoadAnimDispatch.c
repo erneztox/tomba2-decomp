@@ -17,7 +17,7 @@ void FUN_80054e24(int param_1,int param_2,int param_3)
       goto LAB_80054e68;
     }
     iVar1 = param_3 + 0x6c;
-    if ((param_2 != 0) || (*(byte *)(param_1 + 0x147) != (*(byte *)(param_1 + 0x16a) & 1)))
+    if ((param_2 != 0) || (param_1->direction != (param_1->flag_16A & 1)))
     goto LAB_80054e68;
   }
   iVar1 = param_3 + 0x6a;

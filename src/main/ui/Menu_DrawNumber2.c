@@ -16,17 +16,17 @@ void FUN_8007ef60(uint param_1)
   uint uVar5;
   uint uVar6;
   int iVar7;
-  undefined *local_48 [4];
-  short local_38 [8];
-  ushort local_28 [8];
+  undefined local_48->state;
+  short local_38->counter1;
+  ushort local_28->counter1;
   
   uVar6 = 0;
   iVar7 = 0x68;
-  local_48[0] = PTR_s_OK_to_quit_game__800a2878;
+  local_48->type = PTR_s_OK_to_quit_game__800a2878;
   FUN_800793c4(local_48,1,local_38);
-  FUN_80079374((int)local_38[0],0x50,0,local_48[0],0);
-  local_48[0] = PTR_DAT_800a287c;
-  local_48[1] = PTR_DAT_800a2880;
+  FUN_80079374((int)local_38->type,0x50,0,local_48->type,0);
+  local_48->type = PTR_DAT_800a287c;
+  local_48->flags = PTR_DAT_800a2880;
   sVar4 = FUN_800793c4(local_48,2,local_38);
   uVar5 = param_1;
   do {

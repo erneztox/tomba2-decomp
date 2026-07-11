@@ -12,7 +12,7 @@ void FUN_80083de0(int param_1,int param_2,int param_3,uint param_4,byte *param_5
   uint uVar1;
   
   uVar1 = 0xe1000000;
-  *(undefined1 *)(param_1 + 3) = 2;
+  param_1->sub_type = 2;
   if (param_3 != 0) {
     uVar1 = 0xe1000200;
   }
@@ -26,7 +26,7 @@ void FUN_80083de0(int param_1,int param_2,int param_3,uint param_4,byte *param_5
   }
   else {
     *(uint *)(param_1 + 8) =
-         (uint)(param_5[2] >> 3) << 0xf | (uint)(*param_5 >> 3) << 10 | 0xe2000000 |
+         (uint)(param_5->kind >> 3) << 0xf | (uint)(*param_5 >> 3) << 10 | 0xe2000000 |
          (-(int)*(short *)(param_5 + 6) & 0xf8U) << 2 |
          (int)(-(int)*(short *)(param_5 + 4) & 0xffU) >> 3;
   }

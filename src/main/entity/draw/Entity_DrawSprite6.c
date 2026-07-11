@@ -28,7 +28,7 @@ void FUN_8002b3a4(int param_1)
   int local_34;
   int local_30;
   
-  if (*(int *)(param_1 + 0x34) != 0) {
+  if (param_1->scale_y != 0) {
     FUN_80085480(param_1 + 0x48,0x1f800000);
     local_38 = (uint)DAT_800a1cd4 << 2;
     local_34 = (uint)DAT_800a1cd5 << 2;
@@ -66,7 +66,7 @@ void FUN_8002b3a4(int param_1)
     _DAT_1f800008 = CONCAT22((short)uVar4,(short)uVar6);
     _DAT_1f800010 = CONCAT22(_DAT_1f800012,(short)uVar7);
     setCopReg(2,in_zero,*(undefined4 *)(param_1 + 0x2c));
-    setCopReg(2,extraout_at,*(undefined4 *)(param_1 + 0x30));
+    setCopReg(2,extraout_at,param_1->pos_y_fixed);
     copFunction(2,0x486012);
     _DAT_1f800014 = getCopReg(2,0x19);
     _DAT_1f800018 = getCopReg(2,0x1a);
@@ -85,8 +85,8 @@ void FUN_8002b3a4(int param_1)
     setCopControlWord(2,0xd800,6);
     setCopControlWord(2,0xe000,0);
     iVar10 = 0;
-    _DAT_1f8000c0 = CONCAT22(*(short *)(param_1 + 0x50) << 6,_DAT_1f8000c0);
-    uVar4 = *(undefined4 *)(param_1 + 0x34);
+    _DAT_1f8000c0 = CONCAT22(param_1->angle_offset << 6,_DAT_1f8000c0);
+    uVar4 = param_1->scale_y;
     _DAT_1f800090 = 0;
     iVar9 = 0;
     uVar3 = uVar4;
@@ -129,7 +129,7 @@ void FUN_8002b3a4(int param_1)
       iVar10 = iVar10 + 1;
       iVar9 = iVar10 * 0x400;
     } while (iVar10 < 4);
-    *(undefined4 *)(param_1 + 0x38) = uVar3;
+    param_1->anim_data = uVar3;
   }
   return;
 }

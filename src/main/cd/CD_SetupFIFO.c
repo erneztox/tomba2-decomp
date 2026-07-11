@@ -20,7 +20,7 @@ int FUN_80097760(int param_1,undefined4 *param_2)
     DAT_800ac668 = 0;
     DAT_800ac664 = param_1;
     DAT_800ac66c = param_2;
-    param_2[1] = (0x10000 << (uVar1 & 0x1f)) + -0x1010;
+    param_2->flags = (0x10000 << (uVar1 & 0x1f)) + -0x1010;
   }
   return param_1;
 }

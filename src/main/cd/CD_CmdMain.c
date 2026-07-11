@@ -60,7 +60,7 @@ LAB_80096678:
       puVar7 = param_1 + 8;
       if (*param_1 >> 8 == 0x564142) {
         _DAT_80105cda = 0x40;
-        if (((*param_1 & 0xff) == 0x70) && (_DAT_80105cda = 0x40, 4 < (int)param_1[1])) {
+        if (((*param_1 & 0xff) == 0x70) && (_DAT_80105cda = 0x40, 4 < (int)param_1->flags)) {
           _DAT_80105cda = 0x80;
         }
         uVar4 = (uint)_DAT_80105cda;
@@ -74,7 +74,7 @@ LAB_80096678:
           puVar8 = puVar7;
           if (uVar4 != 0) {
             do {
-              puVar8[2] = uVar9;
+              puVar8->kind = uVar9;
               if ((char)*puVar8 != '\0') {
                 uVar9 = uVar9 + 1;
               }
@@ -91,7 +91,7 @@ LAB_80096678:
           do {
             if (iVar2 <= (int)(uint)bVar1) {
               iVar3 = (uint)(ushort)*puVar8 << 2;
-              if (4 < (int)param_1[1]) {
+              if (4 < (int)param_1->flags) {
                 iVar3 = (uint)(ushort)*puVar8 << 3;
               }
               *piVar6 = iVar3;

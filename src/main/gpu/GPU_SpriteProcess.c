@@ -20,9 +20,9 @@ void FUN_8007cc00(int param_1)
   ushort uVar7;
   uint *puVar8;
   
-  if (*(char *)(param_1 + 0x47) == '\x01') {
+  if (param_1->sub_anim_id == '\x01') {
     uVar7 = 0xff;
-    if (*(char *)(param_1 + 3) == '\x01') {
+    if (param_1->sub_type == '\x01') {
       uVar7 = 0x12;
       _DAT_1f80000e = 0x7cbe;
     }
@@ -49,8 +49,8 @@ void FUN_8007cc00(int param_1)
       puVar3[-2] = _DAT_1f80000e;
       puVar3[-5] = *puVar6;
       puVar3[-4] = (ushort)pbVar4[-1];
-      *(byte *)(puVar3 + -3) = pbVar4[1];
-      *(byte *)((int)puVar3 + -5) = pbVar4[3];
+      *(byte *)(puVar3 + -3) = pbVar4->flags;
+      *(byte *)((int)puVar3 + -5) = pbVar4->sub_type;
       if ((*pbVar4 & 0x80) == 0) {
         puVar3[-1] = _DAT_1f800010;
       }

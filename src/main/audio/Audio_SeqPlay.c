@@ -34,7 +34,7 @@ void FUN_80075824(uint *param_1)
     *param_1 = *param_1 | 3;
     goto LAB_800759fc;
   }
-  iVar3 = (int)(short)param_1[0xb];
+  iVar3 = (int)(short)param_1->render_flags;
   iVar4 = (int)*(short *)((int)param_1 + 0x2a);
   iVar5 = 0x100;
   if (DAT_1f800137 == '\x02') {

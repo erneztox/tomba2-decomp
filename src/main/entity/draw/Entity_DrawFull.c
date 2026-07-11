@@ -39,21 +39,21 @@ void FUN_8003791c(int param_1,undefined1 param_2)
   FUN_8007e1b8(&local_30,PTR_DAT_800174c8,*(undefined4 *)(param_1 + 4),&local_38);
   puVar7 = &DAT_800a2698;
   do {
-    if (puVar7[5] == 0) {
+    if (puVar7->behavior_state == 0) {
       local_30 = *puVar7;
-      local_2e = puVar7[1];
+      local_2e = puVar7->flags;
 LAB_80037a00:
       local_2c = *(undefined4 *)(puVar7 + 2);
     }
     else {
-      if (puVar7[5] == 1) {
+      if (puVar7->behavior_state == 1) {
         local_30 = *puVar7;
-        local_2e = puVar7[1] + _DAT_800d1e68 * 0x14;
+        local_2e = puVar7->flags + _DAT_800d1e68 * 0x14;
         goto LAB_80037a00;
       }
       local_30 = *puVar7;
-      local_2e = puVar7[1];
-      local_2c = CONCAT22(puVar7[3] + _DAT_800d1e68 * 0x15,puVar7[2]);
+      local_2e = puVar7->flags;
+      local_2c = CONCAT22(puVar7->sub_type + _DAT_800d1e68 * 0x15,puVar7->kind);
     }
     psVar1 = puVar7 + 4;
     puVar7 = puVar7 + 6;

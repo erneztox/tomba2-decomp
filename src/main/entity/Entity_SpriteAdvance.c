@@ -1,5 +1,5 @@
 /**
- * @brief Entity sprite advance: reads sprite[0x6C], advances ptr
+ * @brief Entity sprite advance: reads sprite->sprite_cmd, advances ptr
  * @note Original: func_80040E54 at 0x80040E54
  */
 // Entity_SpriteAdvance

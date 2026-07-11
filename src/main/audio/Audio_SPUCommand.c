@@ -28,7 +28,7 @@ uint FUN_80075e04(uint param_1,uint param_2,byte param_3,byte param_4,byte param
     uVar3 = _DAT_800bed78;
     uVar5 = param_2;
     do {
-      if ((param_1 == pbVar2[7]) &&
+      if ((param_1 == pbVar2->sub_action) &&
          (((int)(uint)*pbVar2 < (int)uVar5 || ((*pbVar2 == uVar5 && ((byte)*puVar1 <= bVar6)))))) {
         uVar5 = (uint)*pbVar2;
         bVar6 = (byte)*puVar1;
@@ -46,7 +46,7 @@ uint FUN_80075e04(uint param_1,uint param_2,byte param_3,byte param_4,byte param
   else {
     *(byte *)((int)puVar4 + 2) = param_3;
     *(byte *)((int)puVar4 + 3) = param_4;
-    *(byte *)(puVar4 + 1) = param_5;
+    puVar4->flags = param_5;
     *(byte *)((int)puVar4 + 5) = param_6;
     *(byte *)((int)puVar4 + 6) = param_7;
     *(byte *)((int)puVar4 + 1) = (byte)param_2;

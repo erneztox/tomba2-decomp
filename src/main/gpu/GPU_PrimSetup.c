@@ -16,17 +16,17 @@ void FUN_8007cdd4(short *param_1)
   
   *(undefined1 *)((int)_DAT_800bf544 + 7) = 0x65;
   *(undefined2 *)((int)_DAT_800bf544 + 0xe) = 0x7c3f;
-  *(short *)(_DAT_800bf544 + 2) = *param_1 + param_1[2] + -0x10;
-  *(short *)((int)_DAT_800bf544 + 10) = param_1[1] + param_1[3] + -0x10;
+  *(short *)(_DAT_800bf544 + 2) = *param_1 + param_1->kind + -0x10;
+  *(short *)((int)_DAT_800bf544 + 10) = param_1->flags + param_1->sub_type + -0x10;
   if (DAT_800bfe4c == '\0') {
-    *(undefined1 *)(_DAT_800bf544 + 3) = 0;
+    _DAT_800bf544->sub_type = 0;
   }
   else {
     if (DAT_800bfe4c != '\x01') {
       *(undefined1 *)((int)_DAT_800bf544 + 0xd) = 0x78;
       goto LAB_8007ce68;
     }
-    *(undefined1 *)(_DAT_800bf544 + 3) = 0x10;
+    _DAT_800bf544->sub_type = 0x10;
   }
   *(undefined1 *)((int)_DAT_800bf544 + 0xd) = 0x78;
 LAB_8007ce68:

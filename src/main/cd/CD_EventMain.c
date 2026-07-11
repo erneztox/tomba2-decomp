@@ -45,7 +45,7 @@ joined_r0x8009b108:
             while( true ) {
               while( true ) {
                 pcVar2 = local_res4 + 1;
-                iVar4 = (int)local_res4[1];
+                iVar4 = (int)local_res4->flags;
                 if (iVar4 != 0x2d) break;
                 local_38 = local_38 | 1;
                 local_res4 = pcVar2;
@@ -55,7 +55,7 @@ joined_r0x8009b108:
               local_res4 = pcVar2;
             }
             if (iVar4 != 0x20) break;
-            local_38._0_2_ = CONCAT11(local_res4[1],(byte)local_38);
+            local_38._0_2_ = CONCAT11(local_res4->flags,(byte)local_38);
             local_res4 = pcVar2;
           }
           if (iVar4 != 0x23) break;
@@ -73,29 +73,29 @@ joined_r0x8009b108:
           local_34 = -local_34;
           local_38 = local_38 | 1;
         }
-        iVar4 = (int)local_res4[2];
+        iVar4 = (int)local_res4->kind;
         local_res4 = local_res4 + 2;
       }
       else {
         while (local_res4 = pcVar2, iVar4 - 0x30U < 10) {
           local_34 = local_34 * 10 + -0x30 + iVar4;
           pcVar2 = local_res4 + 1;
-          iVar4 = (int)local_res4[1];
+          iVar4 = (int)local_res4->flags;
         }
       }
       if (iVar4 == 0x2e) {
-        iVar4 = (int)local_res4[1];
+        iVar4 = (int)local_res4->flags;
         pcVar2 = local_res4;
         if (iVar4 == 0x2a) {
           local_30 = *local_28;
           local_28 = local_28 + 1;
-          iVar4 = (int)local_res4[2];
+          iVar4 = (int)local_res4->kind;
           local_res4 = local_res4 + 2;
         }
         else {
           while (local_res4 = pcVar2 + 1, iVar4 - 0x30U < 10) {
             local_30 = local_30 * 10 + -0x30 + iVar4;
-            iVar4 = (int)pcVar2[2];
+            iVar4 = (int)pcVar2->kind;
             pcVar2 = local_res4;
           }
         }
@@ -292,7 +292,7 @@ LAB_8009b860:
           }
           goto LAB_8009b8ec;
         }
-        iVar4 = (int)local_res4[1];
+        iVar4 = (int)local_res4->flags;
         local_res4 = local_res4 + 1;
       } while( true );
     }
@@ -307,7 +307,7 @@ LAB_8009b854:
   *(char *)(param_1 + iVar8) = (char)iVar4;
   iVar8 = iVar8 + 1;
 LAB_8009b8ec:
-  cVar1 = local_res4[1];
+  cVar1 = local_res4->flags;
   local_res4 = local_res4 + 1;
   goto joined_r0x8009b108;
 }

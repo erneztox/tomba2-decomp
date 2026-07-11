@@ -12,11 +12,11 @@ undefined4 FUN_8005344c(int param_1)
 
 {
   if (((DAT_800bf870 == '\x04') && ((_DAT_800bfe56 & 0x10) == 0)) &&
-     ((*(ushort *)(param_1 + 0x6a) & 0xf00) == 0x500)) {
-    *(undefined1 *)(param_1 + 0x16a) = 0xc;
-    *(undefined1 *)(param_1 + 5) = 0x37;
-    *(undefined1 *)(param_1 + 6) = 0;
-    *(undefined1 *)(param_1 + 7) = 0;
+     ((param_1->type_flags & 0xf00) == 0x500)) {
+    param_1->flag_16A = 0xc;
+    param_1->behavior_state = 0x37;
+    param_1->action_state = 0;
+    param_1->sub_action = 0;
     return 1;
   }
   return 0;

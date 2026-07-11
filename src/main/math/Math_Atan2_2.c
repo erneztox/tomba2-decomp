@@ -25,13 +25,13 @@ short * FUN_80084eb0(uint param_1,short *param_2)
   }
   iVar5 = iVar5 >> 0x10;
   sVar1 = *param_2;
-  sVar2 = param_2[1];
-  sVar3 = param_2[2];
-  *param_2 = (short)(iVar5 * sVar1 - iVar4 * param_2[6] >> 0xc);
-  param_2[1] = (short)(iVar5 * sVar2 - iVar4 * param_2[7] >> 0xc);
-  param_2[2] = (short)(iVar5 * sVar3 - iVar4 * param_2[8] >> 0xc);
-  param_2[6] = (short)(iVar4 * sVar1 + iVar5 * param_2[6] >> 0xc);
-  param_2[7] = (short)(iVar4 * sVar2 + iVar5 * param_2[7] >> 0xc);
-  param_2[8] = (short)(iVar4 * sVar3 + iVar5 * param_2[8] >> 0xc);
+  sVar2 = param_2->flags;
+  sVar3 = param_2->kind;
+  *param_2 = (short)(iVar5 * sVar1 - iVar4 param_2->action_state >> 0xc);
+  param_2->flags = (short)(iVar5 * sVar2 - iVar4 param_2->sub_action >> 0xc);
+  param_2->kind = (short)(iVar5 * sVar3 - iVar4 param_2->counter1 >> 0xc);
+  param_2->action_state = (short)(iVar4 * sVar1 + iVar5 param_2->action_state >> 0xc);
+  param_2->sub_action = (short)(iVar4 * sVar2 + iVar5 param_2->sub_action >> 0xc);
+  param_2->counter1 = (short)(iVar4 * sVar3 + iVar5 param_2->counter1 >> 0xc);
   return param_2;
 }

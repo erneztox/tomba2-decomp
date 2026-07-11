@@ -22,37 +22,37 @@ int FUN_800537b8(int param_1,int param_2,undefined1 param_3)
     iVar4 = 0;
   }
   else {
-    uVar2 = *(undefined1 *)(param_1 + 0x14a);
-    *(undefined2 *)(iVar4 + 0x54) = 0;
-    *(undefined1 *)(iVar4 + 0x46) = uVar2;
-    uVar3 = *(undefined2 *)(param_1 + 0x56);
-    *(undefined2 *)(iVar4 + 0x58) = 0;
-    *(code **)(iVar4 + 0x1c) = FUN_80068fbc;
-    *(undefined2 *)(iVar4 + 0x56) = uVar3;
-    uVar2 = *(undefined1 *)(param_1 + 0x2a);
-    *(undefined1 *)(iVar4 + 2) = 0;
-    *(undefined1 *)(iVar4 + 3) = param_3;
-    *(undefined1 *)(iVar4 + 0x5e) = 0;
-    *(undefined1 *)(iVar4 + 0x2a) = uVar2;
-    *(undefined1 *)(iVar4 + 0xb) = *(undefined1 *)(param_2 + 0xb);
-    *(undefined1 *)(iVar4 + 9) = *(undefined1 *)(param_2 + 9);
-    *(undefined1 *)(iVar4 + 8) = *(undefined1 *)(param_2 + 8);
-    *(undefined1 *)(param_2 + 9) = 0;
-    *(undefined2 *)(iVar4 + 0x5c) = *(undefined2 *)(param_2 + 0x5c);
-    *(undefined1 *)(iVar4 + 0xd) = *(undefined1 *)(param_2 + 0xd);
+    uVar2 = param_1->behavior_flags;
+    iVar4->rot_x = 0;
+    iVar4->anim_id = uVar2;
+    uVar3 = param_1->rot_y;
+    iVar4->rot_z = 0;
+    iVar4->callback = FUN_80068fbc;
+    iVar4->rot_y = uVar3;
+    uVar2 = param_1->collision_dir;
+    iVar4->kind = 0;
+    iVar4->sub_type = param_3;
+    iVar4->flag_5E = 0;
+    iVar4->collision_dir = uVar2;
+    iVar4->render_flags = param_2->render_flags;
+    iVar4->counter2 = param_2->counter2;
+    iVar4->counter1 = param_2->counter1;
+    param_2->counter2 = 0;
+    iVar4->draw_y = param_2->draw_y;
+    iVar4->sprite_flags = param_2->sprite_flags;
     *(undefined1 *)(iVar4 + 0x18) = *(undefined1 *)(param_2 + 0x18);
     *(undefined1 *)(iVar4 + 0x19) = *(undefined1 *)(param_2 + 0x19);
     *(undefined1 *)(iVar4 + 0x1a) = *(undefined1 *)(param_2 + 0x1a);
-    *(undefined4 *)(iVar4 + 0x3c) = *(undefined4 *)(param_2 + 0x3c);
+    iVar4->sprite_data = param_2->sprite_data;
     iVar5 = iVar4;
-    if (*(char *)(iVar4 + 9) != '\0') {
+    if (iVar4->counter2 != '\0') {
       do {
-        puVar1 = (undefined4 *)(param_2 + 0xc0);
+        puVar1 = param_2->sprite_ptr1;
         param_2 = param_2 + 4;
         iVar6 = iVar6 + 1;
-        *(undefined4 *)(iVar5 + 0xc0) = *puVar1;
+        iVar5->sprite_ptr1 = *puVar1;
         iVar5 = iVar5 + 4;
-      } while (iVar6 < (int)(uint)*(byte *)(iVar4 + 9));
+      } while (iVar6 < (int)(uint)iVar4->counter2);
     }
   }
   return iVar4;

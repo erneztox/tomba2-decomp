@@ -15,14 +15,14 @@ undefined4 FUN_80047778(int param_1)
   ushort uVar2;
   undefined4 uVar3;
   
-  uVar2 = (ushort)*(byte *)(param_1 + 0x2a);
+  uVar2 = (ushort)param_1->collision_dir;
   uVar3 = 1;
   if ((uVar2 == 0) || ((*_DAT_1f8001c8 & 0xff) < uVar2)) {
     FUN_800490e4(param_1);
   }
   else {
     if (uVar2 != DAT_1f8001fe) {
-      FUN_80048ecc(*(undefined1 *)(param_1 + 0x2a));
+      FUN_80048ecc(param_1->collision_dir);
     }
     if (_DAT_1f8001ae < _DAT_1f8001b0) {
       bVar1 = _DAT_1f8001b0 < (ushort)(_DAT_1f8001c0 - _DAT_1f8001ac);

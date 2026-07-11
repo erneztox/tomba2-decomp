@@ -28,8 +28,8 @@ uint FUN_800248d0(int param_1)
       pbVar5 = (byte *)*puVar7;
       DAT_1f800182 = DAT_1f800182 + -1;
       puVar7 = puVar7 + 1;
-      if (((pbVar5[2] < 0x65) &&
-          (((int)(uint)(byte)(&DAT_80017324)[pbVar5[2] >> 3] >> (pbVar5[2] & 7) & 1U) != 0)) &&
+      if (((pbVar5->kind < 0x65) &&
+          (((int)(uint)(byte)(&DAT_80017324)[pbVar5->kind >> 3] >> (pbVar5->kind & 7) & 1U) != 0)) &&
          ((*pbVar5 & 1) != 0)) {
         FUN_8002f514((bVar1 & 0xf) - 3,pbVar5);
         uVar4 = 1;
@@ -45,16 +45,16 @@ uint FUN_800248d0(int param_1)
       puVar7 = puVar7 + 1;
       DAT_1f800182 = DAT_1f800182 + -1;
       if ((*puVar6 & 0xff00ff) == 0x670001) {
-        iVar2 = (int)(((uint)*(ushort *)(param_1 + 0x2e) - (uint)*(ushort *)((int)puVar6 + 0x2e)) *
+        iVar2 = (int)(((uint)param_1->pos_y - (uint)*(ushort *)((int)puVar6 + 0x2e)) *
                      0x10000) >> 0x10;
-        iVar3 = (int)(((uint)*(ushort *)(param_1 + 0x36) - (uint)*(ushort *)((int)puVar6 + 0x36)) *
+        iVar3 = (int)(((uint)param_1->pos_z - (uint)*(ushort *)((int)puVar6 + 0x36)) *
                      0x10000) >> 0x10;
         uVar4 = FUN_80084080(iVar2 * iVar2 + iVar3 * iVar3);
-        if (*(short *)(param_1 + 0x80) + 700 < (int)(uVar4 & 0xffff)) {
+        if (param_1->bounds_min_x + 700 < (int)(uVar4 & 0xffff)) {
           return uVar4 & 0xffff;
         }
-        uVar4 = (uint)(*(short *)(param_1 + 0x86) + 0x208 <
-                      (int)((uint)*(ushort *)(param_1 + 0x84) +
+        uVar4 = (uint)(param_1->bounds_max_y + 0x208 <
+                      (int)((uint)param_1->bounds_min_y +
                             ((uint)*(ushort *)(param_1 + 0x32) -
                             (uint)*(ushort *)((int)puVar6 + 0x32)) + 0x1a4 & 0xffff));
         if (uVar4 != 0) {

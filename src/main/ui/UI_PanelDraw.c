@@ -78,7 +78,7 @@ void FUN_8004f514(int param_1)
       } while (iVar7 < *(short *)(param_1 + 8));
     }
     *(undefined2 *)(param_1 + 4) = 8;
-    *(undefined1 *)(param_1 + 1) = 3;
+    param_1->flags = 3;
   }
   return;
 }

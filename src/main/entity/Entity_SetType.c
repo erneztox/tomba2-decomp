@@ -1,5 +1,5 @@
 /**
- * @brief Sets entity type byte at entity[0x3] to given value
+ * @brief Sets entity type byte at entity->sub_type to given value
  * @note Original: func_8004CC64 at 0x8004CC64
  */
 // Entity_SetType

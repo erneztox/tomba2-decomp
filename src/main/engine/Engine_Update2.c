@@ -38,10 +38,10 @@ void FUN_8003e030(void)
       puVar2 = _DAT_800bf544;
       *(undefined1 *)((int)_DAT_800bf544 + 6) = 0x80;
       *(undefined1 *)((int)puVar2 + 5) = 0x80;
-      *(undefined1 *)(puVar2 + 1) = 0x80;
+      puVar2->flags = 0x80;
       *(short *)((int)puVar2 + 10) = (short)(iVar5 * iVar7 >> 0x12);
       *(undefined1 *)((int)puVar2 + 0xd) = 0;
-      *(undefined1 *)(puVar2 + 3) = 0;
+      puVar2->sub_type = 0;
       *(undefined2 *)((int)puVar2 + 0xe) = 0;
       *(short *)(puVar2 + 2) = (short)uVar8 + (short)(iVar4 * iVar7 * 3 >> 0x12);
       *(undefined2 *)(puVar2 + 4) = 0x40;

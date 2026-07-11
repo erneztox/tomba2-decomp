@@ -79,11 +79,11 @@ void EntityLoop_Player(void) {
     func_800597AC(&g_PlayerEntity);
 
     if (g_PlayerEntity.active_flag != 0) {
-        pad04_4 = pEntity[0x8];
+        pad04_4 = pEntity->counter1;
         if ((*(u16*)(pEntity + 0x17E) & 0x20) != 0 && *(u8*)(pEntity + 0x179) != 0) {
-            pEntity[0x8] = pEntity[0x9];
+            pEntity->counter1 = pEntity->counter2;
         }
         func_8003CCA4(&g_PlayerEntity);
-        pEntity[0x8] = pad04_4;
+        pEntity->counter1 = pad04_4;
     }
 }

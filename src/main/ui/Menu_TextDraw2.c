@@ -33,7 +33,7 @@ int FUN_80078988(short param_1,undefined2 param_2,int param_3,char *param_4,int 
   _DAT_1f80002c = CONCAT22(uVar2,_DAT_1f80002c);
   if (*param_4 != '\0') {
     do {
-      uVar5 = (uint)CONCAT11(*param_4,param_4[1]);
+      uVar5 = (uint)CONCAT11(*param_4,param_4->flags);
       uVar9 = 0xa0a;
       if ((((uVar5 != 0xa0a) && (uVar9 = uVar5 + 0x7dc1, 0x19 < (uVar5 + 0x7da0 & 0xffff))) &&
           (uVar9 = uVar5 + 0x7dc0, 0x19 < (uVar5 + 0x7d7f & 0xffff))) &&
@@ -68,9 +68,9 @@ LAB_80078bfc:
         puVar7 = (uint *)(_DAT_800ed8c8 + param_5 * 4);
         *_DAT_800bf544 = *puVar7 | 0x3000000;
         *puVar7 = (uint)_DAT_800bf544;
-        _DAT_800bf544[1] = _DAT_1f800024;
-        _DAT_800bf544[2] = _DAT_1f800028;
-        _DAT_800bf544[3] = _DAT_1f80002c;
+        _DAT_800bf544->flags = _DAT_1f800024;
+        _DAT_800bf544->kind = _DAT_1f800028;
+        _DAT_800bf544->sub_type = _DAT_1f80002c;
         puVar7 = _DAT_800bf544 + 4;
         _DAT_1f800028 = CONCAT22(_DAT_1f80002a,_DAT_1f800028 + 8);
         if ((uVar9 & 0x8000) != 0) {
@@ -82,9 +82,9 @@ LAB_80078bfc:
           puVar8 = (uint *)(_DAT_800ed8c8 + param_5 * 4);
           *puVar7 = *puVar8 | 0x3000000;
           *puVar8 = (uint)puVar7;
-          _DAT_800bf544[5] = _DAT_1f800024;
-          _DAT_800bf544[6] = _DAT_1f800028;
-          _DAT_800bf544[7] = _DAT_1f80002c;
+          _DAT_800bf544->behavior_state = _DAT_1f800024;
+          _DAT_800bf544->action_state = _DAT_1f800028;
+          _DAT_800bf544->sub_action = _DAT_1f80002c;
           _DAT_800bf544 = _DAT_800bf544 + 8;
           sVar3 = _DAT_1f800028 + 5;
           goto LAB_80078bfc;

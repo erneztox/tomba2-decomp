@@ -12,10 +12,10 @@ void FUN_8004bef4(int param_1)
   int iVar1;
   undefined4 uVar2;
   
-  if (*(short *)(param_1 + 0x5c) == 0) {
+  if (param_1->draw_y == 0) {
     uVar2 = 0;
   }
-  else if (*(short *)(param_1 + 0x5c) == 1) {
+  else if (param_1->draw_y == 1) {
     uVar2 = 1;
   }
   else {
@@ -23,14 +23,14 @@ void FUN_8004bef4(int param_1)
   }
   iVar1 = FUN_80051b70(param_1,1,uVar2);
   if (iVar1 == 0) {
-    *(undefined2 *)(param_1 + 0x80) = 0x46;
-    *(undefined2 *)(param_1 + 0x82) = 0x8c;
-    *(undefined2 *)(param_1 + 0x84) = 100;
-    *(undefined2 *)(param_1 + 0x86) = 100;
-    *(undefined2 *)(param_1 + 0x54) = 0;
-    *(undefined2 *)(param_1 + 0x56) = 0;
-    *(undefined2 *)(param_1 + 0x58) = 0;
-    *(undefined1 *)(param_1 + 0x29) = 0;
+    param_1->bounds_min_x = 0x46;
+    param_1->bounds_size = 0x8c;
+    param_1->bounds_min_y = 100;
+    param_1->bounds_max_y = 100;
+    param_1->rot_x = 0;
+    param_1->rot_y = 0;
+    param_1->rot_z = 0;
+    param_1->collision_state = 0;
   }
   return;
 }

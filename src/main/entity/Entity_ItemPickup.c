@@ -31,19 +31,19 @@ int FUN_8004c0e4(undefined4 param_1,byte param_2,int param_3)
       iVar5 = 0;
     }
     else {
-      *(code **)(iVar5 + 0x1c) = FUN_8004c238;
-      *(byte *)(iVar5 + 3) = pbVar6[1];
+      iVar5->callback = FUN_8004c238;
+      iVar5->sub_type = pbVar6->flags;
       bVar2 = *pbVar6;
-      *(undefined2 *)(iVar5 + 0x60) = 1;
-      *(byte *)(iVar5 + 0x5e) = bVar2 & 0x7f;
+      iVar5->draw_x = 1;
+      iVar5->flag_5E = bVar2 & 0x7f;
       uVar3 = *(undefined2 *)(pbVar6 + 2);
       *(undefined2 *)(iVar5 + 100) = 2;
-      *(undefined2 *)(iVar5 + 0x62) = uVar3;
+      iVar5->angle_delta = uVar3;
       if ((bVar1 & 0x80) != 0) {
         *(undefined2 *)(iVar5 + 100) = 6;
       }
       if ((DAT_800bf870 == 0) && ((byte)(param_2 - 1) < 5)) {
-        *(ushort *)(iVar5 + 0x40) = param_2 - 1;
+        iVar5->timer1 = param_2 - 1;
       }
     }
   }

@@ -14,7 +14,7 @@ undefined4 FUN_800559f4(int param_1)
   byte bVar1;
   ushort uVar2;
   
-  if (*(short *)(param_1 + 0x16e) == 0) {
+  if (param_1->timer_main == 0) {
     return 0;
   }
   if (DAT_1f800137 != '\0') {
@@ -22,19 +22,19 @@ undefined4 FUN_800559f4(int param_1)
   }
   if (((int)*(short *)(param_1 + 0x16c) & 0xc000U) == 0xc000) {
     FUN_8004766c(param_1);
-    if (((*(uint *)(param_1 + 0x148) & 0xa0000) == 0xa0000) &&
+    if (((param_1->state_data & 0xa0000) == 0xa0000) &&
        (FUN_80047b5c(param_1,1), (_DAT_1f8001a8 & 2) != 0)) {
       *(undefined1 *)(param_1 + 0x61) = 0x20;
       _DAT_1f80018e = 0x1100;
       _DAT_1f800194 = _DAT_1f8001a2 & 0xfff;
       _DAT_1f800196 = _DAT_1f8001a0 & 0xfff;
-      if (*(char *)(param_1 + 5) == '\n') {
+      if (param_1->behavior_state == '\n') {
         _DAT_1f80018e = 0x1100;
         return 3;
       }
-      *(undefined1 *)(param_1 + 5) = 10;
-      *(undefined1 *)(param_1 + 6) = 0;
-      *(undefined1 *)(param_1 + 7) = 0;
+      param_1->behavior_state = 10;
+      param_1->action_state = 0;
+      param_1->sub_action = 0;
       return 3;
     }
     FUN_80047b5c(param_1,0);
@@ -42,16 +42,16 @@ undefined4 FUN_800559f4(int param_1)
       _DAT_1f80018e = 0x2000;
       _DAT_1f800194 = _DAT_1f8001a2 & 0xfff;
       _DAT_1f800196 = _DAT_1f8001a0 & 0xfff;
-      if (*(char *)(param_1 + 5) == '\v') {
+      if (param_1->behavior_state == '\v') {
         _DAT_1f80018e = 0x2000;
         return 2;
       }
-      *(undefined1 *)(param_1 + 5) = 0xb;
-      *(undefined1 *)(param_1 + 6) = 0;
-      *(undefined1 *)(param_1 + 7) = 0;
+      param_1->behavior_state = 0xb;
+      param_1->action_state = 0;
+      param_1->sub_action = 0;
       return 2;
     }
-    if ((*(uint *)(param_1 + 0x148) & 0x60000) != 0x60000) {
+    if ((param_1->state_data & 0x60000) != 0x60000) {
       return 0;
     }
     if ((_DAT_1f8001a8 & 4) == 0) {
@@ -63,7 +63,7 @@ undefined4 FUN_800559f4(int param_1)
     _DAT_1f800196 = _DAT_1f8001a0 & 0xfff;
     goto LAB_80055bfc;
   }
-  bVar1 = *(byte *)(param_1 + 0x14a);
+  bVar1 = param_1->behavior_flags;
   if ((bVar1 & 2) == 0) {
     return 0;
   }
@@ -86,10 +86,10 @@ LAB_80055be8:
   }
   _DAT_1f800194 = _DAT_1f80018c;
 LAB_80055bfc:
-  if (*(char *)(param_1 + 5) != '\n') {
-    *(undefined1 *)(param_1 + 5) = 10;
-    *(undefined1 *)(param_1 + 6) = 0;
-    *(undefined1 *)(param_1 + 7) = 0;
+  if (param_1->behavior_state != '\n') {
+    param_1->behavior_state = 10;
+    param_1->action_state = 0;
+    param_1->sub_action = 0;
     return 1;
   }
   return 1;

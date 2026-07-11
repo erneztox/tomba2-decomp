@@ -18,13 +18,13 @@ undefined4 FUN_80049e54(int param_1,int param_2)
   uint uVar5;
   
   uVar2 = _DAT_800e7fee;
-  if (*(char *)(param_1 + 7) == '\0') {
+  if (param_1->sub_action == '\0') {
     if ((short)_DAT_800e7fee < 1) {
       uVar4 = 0;
     }
     else {
-      *(undefined1 *)(param_1 + 7) = 1;
-      *(undefined2 *)(param_1 + 0x40) = 0x10;
+      param_1->sub_action = 1;
+      param_1->timer1 = 0x10;
       uVar5 = (uint)_DAT_800e7fee;
       DAT_800ed061 = DAT_800ed061 | 2;
       _DAT_800e7fee = (ushort)(uVar5 + param_2);
@@ -42,9 +42,9 @@ undefined4 FUN_80049e54(int param_1,int param_2)
   }
   else {
     uVar4 = 0;
-    if (*(char *)(param_1 + 7) == '\x01') {
-      sVar3 = *(short *)(param_1 + 0x40) + -1;
-      *(short *)(param_1 + 0x40) = sVar3;
+    if (param_1->sub_action == '\x01') {
+      sVar3 = param_1->timer1 + -1;
+      param_1->timer1 = sVar3;
       uVar4 = 0;
       if (sVar3 == -1) {
         uVar4 = 1;

@@ -1,5 +1,5 @@
 /**
- * @brief Entity state main variant 5: entity[4]=1, state dispatch
+ * @brief Entity state main variant 5: entity->state=1, state dispatch
  * @note Original: func_80059ED8 at 0x80059ED8
  */
 // Entity_StateMain5
@@ -19,7 +19,7 @@ void FUN_80059ed8(int param_1)
   uint uVar6;
   char *pcVar7;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   pcVar7 = *(char **)(param_1 + 0x10);
   if (bVar1 != 1) {
     if (1 < bVar1) {
@@ -35,33 +35,33 @@ void FUN_80059ed8(int param_1)
     if (pcVar7[0x181] == '\0') {
       _DAT_1f80019e = 0;
     }
-    *(undefined2 *)(param_1 + 0x54) = 0;
-    *(char *)(param_1 + 4) = *(char *)(param_1 + 4) + '\x01';
-    if (*(short *)(pcVar7 + 0x17e) < 0) {
-      *(undefined2 *)(param_1 + 0x40) = 0x28;
+    param_1->rot_x = 0;
+    param_1->state = param_1->state + '\x01';
+    if (pcVar7->entity_flags < 0) {
+      param_1->timer1 = 0x28;
       uVar4 = 0x37;
     }
     else {
-      *(undefined2 *)(param_1 + 0x40) = 0x50;
+      param_1->timer1 = 0x50;
       uVar4 = 0x6e;
     }
-    *(undefined2 *)(param_1 + 0x42) = uVar4;
-    *(undefined2 *)(param_1 + 0xe) = 0;
-    *(undefined1 *)(param_1 + 0x2b) = 0;
-    *(undefined1 *)(param_1 + 0x46) = 0;
-    *(undefined1 *)(param_1 + 0x5f) = 0;
+    param_1->timer2 = uVar4;
+    param_1->anim_timer = 0;
+    param_1->move_mode = 0;
+    param_1->anim_id = 0;
+    param_1->input_flags = 0;
     return;
   }
   if (*pcVar7 == '\0') {
     return;
   }
-  cVar2 = pcVar7[1];
-  *(char *)(param_1 + 1) = cVar2;
+  cVar2 = pcVar7->flags;
+  param_1->flags = cVar2;
   if (cVar2 == '\0') {
     return;
   }
   if (DAT_800bfe55 != '\0') {
-    iVar5 = (int)*(short *)(pcVar7 + 0x44);
+    iVar5 = (int)pcVar7->anim_counter;
     if (iVar5 < 0) {
       iVar5 = -iVar5;
     }
@@ -69,28 +69,28 @@ void FUN_80059ed8(int param_1)
       FUN_800312d4(0x2c,pcVar7 + 0x2c,0xffffffec);
     }
   }
-  if (*(short *)(pcVar7 + 0x17e) < 0) {
-    *(undefined2 *)(param_1 + 0x40) = 0x28;
+  if (pcVar7->entity_flags < 0) {
+    param_1->timer1 = 0x28;
     uVar4 = 0x37;
   }
   else {
-    *(undefined2 *)(param_1 + 0x40) = 0x50;
+    param_1->timer1 = 0x50;
     uVar4 = 0x6e;
   }
-  *(undefined2 *)(param_1 + 0x42) = uVar4;
+  param_1->timer2 = uVar4;
   *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(pcVar7 + 0x2c);
-  *(undefined4 *)(param_1 + 0x30) = *(undefined4 *)(pcVar7 + 0x30);
-  *(undefined4 *)(param_1 + 0x34) = *(undefined4 *)(pcVar7 + 0x34);
-  *(char *)(param_1 + 0x2a) = pcVar7[0x2a];
-  if ((pcVar7[0x29] == '\0') || (pcVar7[0x78] != '\0')) {
-    if (pcVar7[0x16b] == '\b') {
-      *(undefined2 *)(param_1 + 0x48) = *(undefined2 *)(param_1 + 0x2e);
+  param_1->pos_y_fixed = pcVar7->pos_y_fixed;
+  param_1->scale_y = pcVar7->scale_y;
+  param_1->collision_dir = pcVar7->collision_dir;
+  if ((pcVar7->collision_state == '\0') || (pcVar7->sub_state != '\0')) {
+    if (pcVar7->physics_flag == '\b') {
+      param_1->normal_x = param_1->pos_y;
       uVar3 = _DAT_800bf812;
       uVar4 = _DAT_1f800210;
-      *(undefined2 *)(param_1 + 0x4c) = *(undefined2 *)(param_1 + 0x36);
-      *(undefined2 *)(param_1 + 0x58) = 0;
-      *(undefined2 *)(param_1 + 0x56) = uVar4;
-      *(undefined2 *)(param_1 + 0x4a) = uVar3;
+      param_1->normal_z = param_1->pos_z;
+      param_1->rot_z = 0;
+      param_1->rot_y = uVar4;
+      param_1->velocity_y = uVar3;
       goto LAB_8005a1ac;
     }
     iVar5 = FUN_800489e4(param_1,(int)*(short *)(param_1 + 0x32));
@@ -101,50 +101,50 @@ void FUN_80059ed8(int param_1)
       if ((((uVar6 != 2) && (uVar6 != 7)) &&
           (((int)((uint)_DAT_1f8001a6 << 0x10) >> 0x10 & 0x8000U) == 0)) &&
          (*(short *)(param_1 + 0x32) <= _DAT_1f8001a4)) {
-        *(short *)(param_1 + 0x4a) = _DAT_1f8001a4;
-        *(undefined2 *)(param_1 + 0x48) = *(undefined2 *)(param_1 + 0x2e);
-        *(undefined2 *)(param_1 + 0x4c) = *(undefined2 *)(param_1 + 0x36);
-        *(undefined2 *)(param_1 + 0x56) = uVar4;
-        *(undefined2 *)(param_1 + 0x58) = uVar3;
+        param_1->velocity_y = _DAT_1f8001a4;
+        param_1->normal_x = param_1->pos_y;
+        param_1->normal_z = param_1->pos_z;
+        param_1->rot_y = uVar4;
+        param_1->rot_z = uVar3;
         goto LAB_8005a1ac;
       }
     }
   }
-  else if ((*(ushort *)(pcVar7 + 0x6a) >> 8 & 0xf) != 2) {
-    *(undefined2 *)(param_1 + 0x48) = *(undefined2 *)(pcVar7 + 0x2e);
-    *(short *)(param_1 + 0x4a) = *(short *)(pcVar7 + 0x32) + *(short *)(pcVar7 + 0x84);
-    *(undefined2 *)(param_1 + 0x4c) = *(undefined2 *)(pcVar7 + 0x36);
-    *(undefined2 *)(param_1 + 0x56) = *(undefined2 *)(pcVar7 + 0x140);
-    *(undefined2 *)(param_1 + 0x58) = *(undefined2 *)(pcVar7 + 0x142);
+  else if ((pcVar7->type_flags >> 8 & 0xf) != 2) {
+    param_1->normal_x = pcVar7->pos_y;
+    param_1->velocity_y = *(short *)(pcVar7 + 0x32) + pcVar7->bounds_min_y;
+    param_1->normal_z = pcVar7->pos_z;
+    param_1->rot_y = pcVar7->draw_angle;
+    param_1->rot_z = pcVar7->draw_scale;
     goto LAB_8005a1ac;
   }
-  *(undefined1 *)(param_1 + 1) = 0;
+  param_1->flags = 0;
 LAB_8005a1ac:
-  if (*(char *)(param_1 + 1) != '\0') {
-    iVar5 = 0x80 - (((int)*(short *)(param_1 + 0x4a) - (int)*(short *)(pcVar7 + 0x32)) + -0x78 >> 2)
+  if (param_1->flags != '\0') {
+    iVar5 = 0x80 - (((int)param_1->velocity_y - (int)*(short *)(pcVar7 + 0x32)) + -0x78 >> 2)
     ;
-    *(short *)(param_1 + 0x4e) = (short)iVar5;
+    param_1->sprite_x = (short)iVar5;
     iVar5 = iVar5 * 0x10000 >> 0x10;
     if (iVar5 < 0) {
-      *(undefined2 *)(param_1 + 0x4e) = 0;
-      *(undefined1 *)(param_1 + 1) = 0;
+      param_1->sprite_x = 0;
+      param_1->flags = 0;
     }
     else if (0x80 < iVar5) {
-      *(undefined2 *)(param_1 + 0x4e) = 0x80;
+      param_1->sprite_x = 0x80;
     }
-    iVar5 = 0x100 - (((int)*(short *)(param_1 + 0x4a) - (int)*(short *)(pcVar7 + 0x32)) + -0x78 >> 2
+    iVar5 = 0x100 - (((int)param_1->velocity_y - (int)*(short *)(pcVar7 + 0x32)) + -0x78 >> 2
                     );
-    *(short *)(param_1 + 0x50) = (short)iVar5;
+    param_1->angle_offset = (short)iVar5;
     iVar5 = iVar5 * 0x10000 >> 0x10;
     if (iVar5 < 0) {
-      *(undefined2 *)(param_1 + 0x50) = 0;
-      *(undefined1 *)(param_1 + 1) = 0;
+      param_1->angle_offset = 0;
+      param_1->flags = 0;
     }
     else if (0x100 < iVar5) {
-      *(undefined2 *)(param_1 + 0x50) = 0x100;
+      param_1->angle_offset = 0x100;
     }
   }
-  if (((DAT_800bf873 == '\0') && (DAT_800bf80d == '\0')) && (*(int *)(pcVar7 + 0x158) == 0)) {
+  if (((DAT_800bf873 == '\0') && (DAT_800bf80d == '\0')) && (pcVar7->state_ptr == 0)) {
     switch(DAT_800bf870) {
     case 0:
       if (DAT_800bf816 == '\0') {
@@ -162,7 +162,7 @@ LAB_8005a1ac:
       }
       break;
     case 8:
-      if (pcVar7[0x16b] == '\0') {
+      if (pcVar7->physics_flag == '\0') {
         func_0x8011332c(param_1,pcVar7);
       }
       break;

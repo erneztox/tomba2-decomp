@@ -31,7 +31,7 @@ void GPU_ModulateOTColors(Entity *entity, u8 *ot_start, u8 *ot_end) {
     if (ot_start < ot_end) {
         col = ot_start + 6;
         do {
-            u8 type = col[1] & 0xFC;
+            u8 type = col->flags & 0xFC;
             
             if ((u32)(type - 0x20) < 0x1D) {
                 switch (type) {

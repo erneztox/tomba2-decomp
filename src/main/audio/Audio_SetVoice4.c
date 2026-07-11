@@ -14,7 +14,7 @@ void FUN_8008f4d0(short param_1,short param_2,short param_3,undefined4 param_4)
   undefined2 uStack0000001c;
   undefined2 uStack0000001e;
   byte in_stack_00000030;
-  undefined1 auStack_30 [4];
+  undefined1 auStack_30->state;
   ushort local_2c;
   
   bVar1 = in_stack_00000030;

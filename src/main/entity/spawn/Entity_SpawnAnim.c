@@ -1,5 +1,5 @@
 /**
- * @brief Entity spawn animator: entity[6] state, spawns + anims
+ * @brief Entity spawn animator: entity->action_state state, spawns + anims
  * @note Original: func_80071DFC at 0x80071DFC
  */
 // Entity_SpawnAnim
@@ -32,8 +32,8 @@ void FUN_80071dfc(int param_1)
   ushort local_28;
   short local_26;
   
-  if (*(char *)(param_1 + 5) == '\0') {
-    *(undefined1 *)(param_1 + 5) = 1;
+  if (param_1->behavior_state == '\0') {
+    param_1->behavior_state = 1;
     iVar6 = 0;
     iVar8 = 0;
     do {
@@ -41,38 +41,38 @@ void FUN_80071dfc(int param_1)
       iVar6 = iVar6 + 1;
       iVar8 = iVar6 * 0x10000;
     } while (iVar6 * 0x10000 >> 0x10 < 0x10);
-    *(undefined2 *)(param_1 + 0x82) = 8;
-    *(undefined2 *)(param_1 + 0x42) = 0;
-    *(undefined1 *)(param_1 + 0x5e) = 0;
-    iVar8 = (uint)*(ushort *)(param_1 + 0xe) << 0x10;
+    param_1->bounds_size = 8;
+    param_1->timer2 = 0;
+    param_1->flag_5E = 0;
+    iVar8 = (uint)param_1->anim_timer << 0x10;
     uVar5 = (iVar8 >> 0x10) - (iVar8 >> 0x1f) >> 1;
-    *(char *)(param_1 + 0x5f) = (char)uVar5;
-    if ((*(ushort *)(param_1 + 0xe) & 1) == 0) {
-      cVar3 = *(char *)(param_1 + 0x5f) * '\b' + -4;
+    param_1->input_flags = (char)uVar5;
+    if ((param_1->anim_timer & 1) == 0) {
+      cVar3 = param_1->input_flags * '\b' + -4;
     }
     else {
       cVar3 = (char)((uVar5 & 0xff) << 3);
     }
-    *(char *)(param_1 + 0x5f) = cVar3;
+    param_1->input_flags = cVar3;
   }
-  else if (*(char *)(param_1 + 5) != '\x01') {
+  else if (param_1->behavior_state != '\x01') {
     return;
   }
-  bVar4 = *(char *)(param_1 + 0x5e) + 1;
-  *(byte *)(param_1 + 0x5e) = bVar4;
+  bVar4 = param_1->flag_5E + 1;
+  param_1->flag_5E = bVar4;
   if ((bVar4 & 1) == 0) {
-    *(short *)(param_1 + 0x42) = *(short *)(param_1 + 0x42) + 1;
+    param_1->timer2 = param_1->timer2 + 1;
   }
-  sVar1 = *(short *)(param_1 + 0x40);
-  *(short *)(param_1 + 0x40) = sVar1 + -1;
+  sVar1 = param_1->timer1;
+  param_1->timer1 = sVar1 + -1;
   if (sVar1 == 1) {
-    *(undefined1 *)(param_1 + 4) = 3;
+    param_1->state = 3;
     _DAT_800bf83c = 0;
   }
   else {
     FUN_80084660(&DAT_1f8000f8);
     FUN_80084690(&DAT_1f8000f8);
-    if (*(char *)(param_1 + 3) == '\0') {
+    if (param_1->sub_type == '\0') {
       _DAT_1f8000c0 = _DAT_800e7eae;
       if ((DAT_800e7ff4 & 4) == 0) {
         _DAT_1f8000c2 = _DAT_800e7eb2 + -200;
@@ -83,20 +83,20 @@ void FUN_80071dfc(int param_1)
       _DAT_1f8000c4 = _DAT_800e7eb6;
     }
     else {
-      _DAT_1f8000c0 = *(undefined2 *)(*(int *)(param_1 + 0x10) + 0x2e);
-      _DAT_1f8000c2 = *(short *)(*(int *)(param_1 + 0x10) + 0x32) + -200;
-      _DAT_1f8000c4 = *(undefined2 *)(*(int *)(param_1 + 0x10) + 0x36);
+      _DAT_1f8000c0 = *(undefined2 *)(param_1->parent + 0x2e);
+      _DAT_1f8000c2 = *(short *)(param_1->parent + 0x32) + -200;
+      _DAT_1f8000c4 = *(undefined2 *)(param_1->parent + 0x36);
     }
     local_37 = FUN_8003f7a0(&DAT_1f8000c0,&local_28);
     uVar2 = _DAT_800ecf58;
-    bVar4 = *(byte *)(param_1 + 0x5f);
+    bVar4 = param_1->input_flags;
     iVar8 = 0;
     local_38 = 0;
-    local_36 = *(undefined2 *)(param_1 + 0x5c);
+    local_36 = param_1->draw_y;
     local_2c = 0;
     local_2a = 0;
     puVar9 = (undefined1 *)(param_1 + 0x44);
-    if (0 < *(short *)(param_1 + 0xe)) {
+    if (0 < param_1->anim_timer) {
       iVar6 = 0;
       do {
         iVar7 = (int)(((uint)local_28 - (uint)bVar4) * 0x10000) >> 0x10;
@@ -106,7 +106,7 @@ void FUN_80071dfc(int param_1)
         else {
           FUN_80071cf4(param_1,iVar7,(int)local_26);
         }
-        local_30 = *(undefined2 *)(param_1 + 0x2e);
+        local_30 = param_1->pos_y;
         local_2e = *(undefined2 *)(param_1 + 0x32);
         local_40 = *puVar9;
         puVar9 = puVar9 + 1;
@@ -117,7 +117,7 @@ void FUN_80071dfc(int param_1)
                      uVar2,&local_38);
         iVar8 = iVar8 + 1;
         iVar6 = iVar8 * 0x10000;
-      } while (iVar8 * 0x10000 >> 0x10 < (int)*(short *)(param_1 + 0xe));
+      } while (iVar8 * 0x10000 >> 0x10 < (int)param_1->anim_timer);
     }
   }
   return;

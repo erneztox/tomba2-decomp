@@ -12,6 +12,6 @@ void FUN_8006d934(undefined4 param_1,undefined4 *param_2)
 
 {
   _DAT_1f8000dc = *param_2;
-  _DAT_1f8000e4 = param_2[2];
+  _DAT_1f8000e4 = param_2->kind;
   return;
 }

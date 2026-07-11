@@ -13,17 +13,17 @@ void FUN_8001d364(uint param_1,uint param_2)
 {
   int iVar1;
   uint uVar2;
-  undefined *local_28 [4];
+  undefined local_28->state;
   undefined *local_18;
   undefined *local_14;
   undefined *local_10;
   undefined *local_c;
   
   uVar2 = (int)param_1 >> 3 & 7;
-  local_28[0] = PTR_DAT_8001005c;
-  local_28[1] = PTR_DAT_80010060;
-  local_28[2] = PTR_DAT_80010064;
-  local_28[3] = PTR_DAT_80010068;
+  local_28->type = PTR_DAT_8001005c;
+  local_28->flags = PTR_DAT_80010060;
+  local_28->kind = PTR_DAT_80010064;
+  local_28->sub_type = PTR_DAT_80010068;
   local_18 = PTR_DAT_8001006c;
   local_14 = PTR_DAT_80010070;
   local_10 = PTR_DAT_80010074;

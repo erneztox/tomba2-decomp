@@ -43,6 +43,6 @@ void FUN_8006032c(int param_1,int param_2)
     *(undefined1 *)(param_1 + 0x169) = 0;
   }
   _DAT_1f800238 = 0;
-  *(ushort *)(param_1 + 0x44) = (ushort)(byte)(&DAT_800a46f0)[*(byte *)(param_1 + 0x168)];
+  param_1->anim_counter = (ushort)(byte)(&DAT_800a46f0)[*(byte *)(param_1 + 0x168)];
   return;
 }

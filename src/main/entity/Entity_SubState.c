@@ -1,5 +1,5 @@
 /**
- * @brief Entity sub-state handler: checks entity[0x16B] flag, branches
+ * @brief Entity sub-state handler: checks entity->physics_flag flag, branches
  * @note Original: func_800541F4 at 0x800541F4
  */
 // Entity_SubState
@@ -17,16 +17,16 @@ undefined4 FUN_800541f4(int param_1,uint param_2)
   int iVar4;
   
   DAT_1f800253 = DAT_1f800253 & 4;
-  if (*(char *)(param_1 + 0x16b) != '\0') {
+  if (param_1->physics_flag != '\0') {
     return 0;
   }
   uVar3 = 0xff7e;
-  if ((*(char *)(param_1 + 0x145) != '\0') && (uVar3 = 0xffa6, *(short *)(param_1 + 0x4a) < -0x2700)
+  if ((param_1->state_flag145 != '\0') && (uVar3 = 0xffa6, param_1->velocity_y < -0x2700)
      ) {
     uVar3 = 0xff88;
   }
   iVar4 = 0x38;
-  if (*(short *)(param_1 + 0x17e) < 0) {
+  if (param_1->entity_flags < 0) {
     uVar3 = (ushort)((uint)(((int)((uint)uVar3 << 0x10) >> 0x10) -
                            ((int)((uint)uVar3 << 0x10) >> 0x1f)) >> 1);
     iVar4 = 0x1c;
@@ -50,8 +50,8 @@ LAB_800542dc:
     }
     return 0;
   }
-  if (((*(byte *)(param_1 + 0x145) & 1) != 0) && (*(short *)(param_1 + 0x4a) < 0)) {
-    *(undefined2 *)(param_1 + 0x4a) = 0;
+  if (((param_1->state_flag145 & 1) != 0) && (param_1->velocity_y < 0)) {
+    param_1->velocity_y = 0;
   }
   if ((param_2 & 2) == 0) {
     if ((((int)(short)_DAT_1f8001a6 & 0x8000U) == 0) || (DAT_800bf873 != '\0')) {
@@ -59,7 +59,7 @@ LAB_800542dc:
     }
     else {
       uVar1 = 2;
-      if ((*(ushort *)(param_1 + 0x17e) & 0x200) == 0) {
+      if ((param_1->entity_flags & 0x200) == 0) {
         FUN_80022d08(param_1,0,1,1);
         uVar1 = 2;
       }

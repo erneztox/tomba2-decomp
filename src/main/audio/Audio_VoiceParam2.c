@@ -47,9 +47,9 @@ int FUN_80095d10(uint param_1,short param_2,short param_3,ushort param_4,ushort 
           (*(short *)(iVar3 + -0x7fefab24) == iVar9)) &&
          ((int)*(short *)(iVar3 + -0x7fefab20) == (int)param_2)) {
         iVar3 = (uint)*(byte *)(iVar10 + 0x17) * 2 + iVar10;
-        uVar4 = (uint)*(short *)(iVar3 + 0x60);
+        uVar4 = (uint)iVar3->draw_x;
         if ((uVar4 != param_4) && (uVar4 == 0)) {
-          *(undefined2 *)(iVar3 + 0x60) = 1;
+          iVar3->draw_x = 1;
         }
         sVar2 = (short)iVar8;
         iVar3 = sVar2 * 0x38;
@@ -57,11 +57,11 @@ int FUN_80095d10(uint param_1,short param_2,short param_3,ushort param_4,ushort 
                 0x20 + _DAT_80105ce8;
         uVar6 = (((int)(((int)((int)*(short *)(iVar3 + -0x7fefab30) * (uint)param_4) / 0x7f) *
                        (uint)*(byte *)(_DAT_80105ce4 + 0x18) * 0x3fff) / 0x3f01) *
-                 (uint)*(byte *)(iVar9 * 0x10 + _DAT_80105cdc + 1) * (uint)*(byte *)(iVar7 + 2)) /
+                 (uint)*(byte *)(iVar9 * 0x10 + _DAT_80105cdc + 1) * (uint)iVar7->kind) /
                 0x3f01;
-        uVar4 = (uVar6 * *(ushort *)(iVar10 + 0x58)) / 0x7f;
-        uVar5 = (uint)*(byte *)(iVar7 + 3);
-        uVar6 = (uVar6 * *(ushort *)(iVar10 + 0x5a)) / 0x7f;
+        uVar4 = (uVar6 * iVar10->rot_z) / 0x7f;
+        uVar5 = (uint)iVar7->sub_type;
+        uVar6 = (uVar6 * iVar10->target_rot_y) / 0x7f;
         if (uVar5 < 0x40) {
           uVar6 = (uVar6 * uVar5) / 0x3f;
         }

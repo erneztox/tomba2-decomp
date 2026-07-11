@@ -1,5 +1,5 @@
 /**
- * @brief Entity animation player: entity[4]=1 state, calls advance + GTE compose
+ * @brief Entity animation player: entity->state=1 state, calls advance + GTE compose
  * @note Original: func_80071A3C at 0x80071A3C
  */
 // Entity_PlayAnimation
@@ -11,10 +11,10 @@ void FUN_80071a3c(int param_1)
 {
   byte bVar1;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 == 1) {
     FUN_80071768(param_1);
-    if (*(char *)(param_1 + 1) != '\0') {
+    if (param_1->flags != '\0') {
       FUN_800518fc(param_1);
     }
   }

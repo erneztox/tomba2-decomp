@@ -1,5 +1,5 @@
 /**
- * @brief Updates entity[0x56] angle: conditional wraparound based on entity[0x147] flag
+ * @brief Updates entity[0x56] angle: conditional wraparound based on entity->direction flag
  * @note Original: func_80055284 at 0x80055284
  */
 // Entity_UpdateAngle
@@ -9,10 +9,10 @@
 void FUN_80055284(int param_1)
 
 {
-  if (*(char *)(param_1 + 0x147) != '\0') {
-    *(ushort *)(param_1 + 0x56) = *(short *)(param_1 + 0x140) - 0x800U & 0xfff;
+  if (param_1->direction != '\0') {
+    param_1->rot_y = param_1->draw_angle - 0x800U & 0xfff;
     return;
   }
-  *(undefined2 *)(param_1 + 0x56) = *(undefined2 *)(param_1 + 0x140);
+  param_1->rot_y = param_1->draw_angle;
   return;
 }

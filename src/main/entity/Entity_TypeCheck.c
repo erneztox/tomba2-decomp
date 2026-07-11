@@ -1,5 +1,5 @@
 /**
- * @brief Entity type checker: switch on entity[2] + entity[0xC] type
+ * @brief Entity type checker: switch on entity->kind + entity[0xC] type
  * @note Original: func_8005C138 at 0x8005C138
  */
 // Entity_TypeCheck
@@ -14,7 +14,7 @@ undefined4 FUN_8005c138(undefined4 param_1,int param_2)
   if (*(char *)(param_2 + 0xc) != '\x02') {
     return 0;
   }
-  bVar1 = *(byte *)(param_2 + 2);
+  bVar1 = param_2->kind;
   if (bVar1 < 0x31) {
     if ((bVar1 < 0x2e) && (bVar1 != 0xf)) {
       if (bVar1 < 0x10) {
@@ -22,9 +22,9 @@ undefined4 FUN_8005c138(undefined4 param_1,int param_2)
           if (bVar1 != 4) {
             return 0;
           }
-          *(undefined1 *)(param_2 + 4) = 2;
-          *(undefined1 *)(param_2 + 5) = 0;
-          *(undefined1 *)(param_2 + 6) = 0;
+          param_2->state = 2;
+          param_2->behavior_state = 0;
+          param_2->action_state = 0;
           return 1;
         }
       }
@@ -61,8 +61,8 @@ undefined4 FUN_8005c138(undefined4 param_1,int param_2)
       }
     }
   }
-  *(undefined1 *)(param_2 + 4) = 2;
-  *(undefined1 *)(param_2 + 5) = 3;
-  *(undefined1 *)(param_2 + 6) = 0;
+  param_2->state = 2;
+  param_2->behavior_state = 3;
+  param_2->action_state = 0;
   return 1;
 }

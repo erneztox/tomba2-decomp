@@ -25,7 +25,7 @@ undefined4 FUN_8007712c(int param_1,short param_2,short param_3,short param_4)
   iVar5 = (int)_DAT_1f8000e8;
   iVar6 = (int)_DAT_1f8000ea;
   iVar7 = (int)_DAT_1f8000ec;
-  *(undefined1 *)(param_1 + 1) = 0;
+  param_1->flags = 0;
   if (DAT_800bf870 == '\x04') {
     _DAT_1f800084 = 2;
   }
@@ -162,7 +162,7 @@ LAB_80077550:
     return 0;
   }
 switchD_800771f8_default:
-  *(undefined1 *)(param_1 + 1) = 1;
+  param_1->flags = 1;
   if (_DAT_1f800080 != 0) {
     return 1;
   }

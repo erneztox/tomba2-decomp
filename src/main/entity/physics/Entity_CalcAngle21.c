@@ -13,7 +13,7 @@ undefined4 FUN_8001fdb4(undefined1 *param_1,int param_2,int param_3,undefined4 p
 {
   int iVar1;
   undefined4 uVar2;
-  undefined1 auStack_20 [2];
+  undefined1 auStack_20->kind;
   undefined2 local_1e;
   short local_1a;
   undefined2 local_16;
@@ -34,19 +34,19 @@ undefined4 FUN_8001fdb4(undefined1 *param_1,int param_2,int param_3,undefined4 p
     FUN_80054d14(&DAT_800e7e80,param_4,uVar2);
     FUN_80053d0c(&DAT_800e7e80);
     *param_1 = 2;
-    param_1[4] = 2;
-    param_1[5] = 1;
-    param_1[6] = 0;
+    param_1->state = 2;
+    param_1->behavior_state = 1;
+    param_1->action_state = 0;
     _DAT_800e7e90 = param_1;
     FUN_800312d4(7,&DAT_800e7eac,0xffffffec);
   }
   else {
     *param_1 = 2;
     iVar1 = _DAT_1f80009c;
-    param_1[4] = 2;
-    param_1[5] = 2;
-    param_1[6] = 0;
-    param_1[0x2b] = (char)(iVar1 + 0x800 >> 4);
+    param_1->state = 2;
+    param_1->behavior_state = 2;
+    param_1->action_state = 0;
+    param_1->move_mode = (char)(iVar1 + 0x800 >> 4);
     DAT_800e7e85 = 2;
     DAT_800e7e86 = 1;
     DAT_800e7e87 = 0;

@@ -22,20 +22,20 @@ void FUN_80036dfc(undefined1 *param_1)
   undefined4 uVar9;
   undefined4 uVar10;
   int local_20;
-  short local_1c [2];
-  ushort local_18 [4];
+  short local_1c->kind;
+  ushort local_18->state;
   
-  switch(param_1[1]) {
+  switchparam_1->flags {
   case 0:
     param_1[0x20] = 0;
-    param_1[1] = param_1[1] + '\x01';
+    param_1->flags = param_1->flags + '\x01';
   case 1:
     bVar3 = false;
     iVar7 = FUN_800368d0(param_1,param_1[0x1f],param_1[0x1d]);
     if ((_DAT_800e7e68 & 0xc00) == 0) {
       if ((_DAT_800e7e68 & 0x4000) == 0) {
         if ((_DAT_800e7e68 & 0x2000) != 0) {
-          param_1[9] = 0;
+          param_1->counter2 = 0;
           FUN_80034670(param_1);
           return;
         }
@@ -94,7 +94,7 @@ LAB_80037184:
                   iVar7 = FUN_8003675c(param_1,0);
                   if (iVar7 == 0) goto LAB_80037110;
                   if (0 < iVar7) goto LAB_80037184;
-                  param_1[9] = 0;
+                  param_1->counter2 = 0;
                   FUN_80034670(param_1);
                 }
               }
@@ -152,14 +152,14 @@ code_r0x800376d0:
         return;
       }
       if (iVar7 == 999) {
-        param_1[1] = 4;
+        param_1->flags = 4;
         uVar9 = 0x11;
       }
       else {
         iVar6 = FUN_80035fac(param_1,iVar7,0);
         if (iVar6 == 0) {
           if (iVar7 - 0x5fU < 2) {
-            param_1[1] = param_1[1] + '\x01';
+            param_1->flags = param_1->flags + '\x01';
             param_1[0x27] = param_1[0x27] + '\x01';
           }
           else {
@@ -190,18 +190,18 @@ LAB_80036fec:
       }
     }
     else {
-      param_1[1] = 5;
+      param_1->flags = 5;
       uVar9 = 0x11;
     }
     break;
   case 2:
     if ((_DAT_800e7e68 & 0x4000) == 0) {
       if ((_DAT_800e7e68 & 0x2000) != 0) {
-        cVar4 = param_1[1];
+        cVar4 = param_1->flags;
         cVar1 = param_1[0x27];
         param_1[0x2d] = 0;
 LAB_800374b4:
-        param_1[1] = cVar4 + -1;
+        param_1->flags = cVar4 + -1;
         param_1[0x27] = cVar1 + -1;
         FUN_80074bf8(1);
         return;
@@ -262,7 +262,7 @@ LAB_800375c8:
       iVar7 = FUN_80036d90((int)*(short *)(&DAT_800d1e6a + (uint)(byte)param_1[0x2d] * 0xc));
       uVar9 = 0x12;
       if (iVar7 == 0) {
-        param_1[1] = param_1[1] + '\x01';
+        param_1->flags = param_1->flags + '\x01';
         param_1[0x27] = param_1[0x27] + '\x01';
         FUN_80074590(0x11,0,0);
         return;
@@ -272,7 +272,7 @@ LAB_800375c8:
   case 3:
     if ((_DAT_800e7e68 & 0x4000) == 0) {
       if ((_DAT_800e7e68 & 0x2000) != 0) {
-        cVar4 = param_1[1];
+        cVar4 = param_1->flags;
         cVar1 = param_1[0x27];
         param_1[0x2e] = 0;
         goto LAB_800374b4;
@@ -335,7 +335,7 @@ LAB_800375c8:
                    (int)*(short *)((uint)(byte)param_1[0x2e] * 2 + (uint)(byte)param_1[0x2d] * 0xc +
                                   -0x7ff2e192),local_1c,local_18);
       DAT_800bf80a = 3;
-      _DAT_800bf83a = local_1c[0] << 8 | local_18[0];
+      _DAT_800bf83a = local_1c->type << 8 | local_18->type;
       DAT_800bf80b = FUN_800368d0(param_1,param_1[0x1f],param_1[0x1d]);
       DAT_800bf809 = 1;
       if (DAT_800bf80b == '`') {
@@ -358,12 +358,12 @@ LAB_800375c8:
     }
     else {
       if (DAT_800bf8a0 != '\x01') {
-        param_1[1] = 1;
+        param_1->flags = 1;
         return;
       }
       FUN_80036bac(param_1);
     }
-    param_1[1] = 1;
+    param_1->flags = 1;
     return;
   case 5:
     DAT_800bf8a0 = '\x01' - DAT_800bf8a0;
@@ -373,7 +373,7 @@ LAB_800375c8:
     else if (DAT_800bf8a0 == '\x01') {
       FUN_80036bac(param_1);
     }
-    param_1[1] = 1;
+    param_1->flags = 1;
     iVar7 = FUN_800368d0(param_1,param_1[0x1f],param_1[0x1d]);
     if (iVar7 == 999) {
       uVar5 = 5;

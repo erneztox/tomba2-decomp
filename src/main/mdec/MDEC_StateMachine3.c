@@ -1,5 +1,5 @@
 /**
- * @brief MDEC state machine variant 3: entity[0x46]=3/4 states
+ * @brief MDEC state machine variant 3: entity->anim_id=3/4 states
  * @note Original: func_80087FA0 at 0x80087FA0
  */
 // MDEC_StateMachine3
@@ -15,21 +15,21 @@ undefined4 FUN_80087fa0(int param_1)
   short sVar4;
   int iVar5;
   
-  bVar1 = *(byte *)(param_1 + 0x46);
+  bVar1 = param_1->anim_id;
   if (bVar1 == 3) {
-    iVar5 = *(int *)(param_1 + 0x3c);
-    if (*(char *)(iVar5 + 2) != '\0') {
+    iVar5 = param_1->sprite_data;
+    if (iVar5->kind != '\0') {
       return 0;
     }
-    if (*(char *)(iVar5 + 3) != '\0') {
+    if (iVar5->sub_type != '\0') {
       return 0;
     }
-    sVar4 = (ushort)*(byte *)(iVar5 + 5) + (ushort)*(byte *)(iVar5 + 4) * 0x100;
+    sVar4 = (ushort)iVar5->behavior_state + (ushort)iVar5->state * 0x100;
     *(short *)(param_1 + 0xe6) = sVar4;
     if (*(short *)(param_1 + 0xee) == sVar4) {
       *(undefined2 *)(param_1 + 0xee) = 0xffff;
       *(undefined1 *)(param_1 + 0xeb) = 0;
-      *(undefined1 *)(param_1 + 0x47) = 0;
+      param_1->sub_anim_id = 0;
       return 1;
     }
     *(short *)(param_1 + 0xee) = sVar4;
@@ -38,25 +38,25 @@ undefined4 FUN_80087fa0(int param_1)
     if (bVar1 != 2) {
       return 1;
     }
-    iVar5 = *(int *)(param_1 + 0x3c);
-    if (*(char *)(iVar5 + 7) != '\0') {
+    iVar5 = param_1->sprite_data;
+    if (iVar5->sub_action != '\0') {
       return 0;
     }
-    if ((((*(char *)(param_1 + 0xe3) == *(char *)(iVar5 + 3)) &&
-         (*(char *)(param_1 + 0xe4) == *(char *)(iVar5 + 4))) &&
-        (*(char *)(param_1 + 0xe9) == *(char *)(iVar5 + 5))) &&
-       (*(char *)(param_1 + 0xea) == *(char *)(iVar5 + 6))) {
+    if ((((*(char *)(param_1 + 0xe3) == iVar5->sub_type) &&
+         (*(char *)(param_1 + 0xe4) == iVar5->state)) &&
+        (*(char *)(param_1 + 0xe9) == iVar5->behavior_state)) &&
+       (*(char *)(param_1 + 0xea) == iVar5->action_state)) {
       *(undefined2 *)(param_1 + 0xee) = 0;
     }
     else {
       *(undefined2 *)(param_1 + 0xee) = 0xffff;
     }
-    *(undefined1 *)(param_1 + 0xe3) = *(undefined1 *)(*(int *)(param_1 + 0x3c) + 3);
-    uVar2 = *(undefined1 *)(*(int *)(param_1 + 0x3c) + 4);
+    *(undefined1 *)(param_1 + 0xe3) = *(undefined1 *)(param_1->sprite_data + 3);
+    uVar2 = *(undefined1 *)(param_1->sprite_data + 4);
     *(undefined2 *)(param_1 + 0xe6) = 0;
     *(undefined1 *)(param_1 + 0xe4) = uVar2;
-    *(undefined1 *)(param_1 + 0xe9) = *(undefined1 *)(*(int *)(param_1 + 0x3c) + 5);
-    uVar2 = *(undefined1 *)(*(int *)(param_1 + 0x3c) + 6);
+    *(undefined1 *)(param_1 + 0xe9) = *(undefined1 *)(param_1->sprite_data + 5);
+    uVar2 = *(undefined1 *)(param_1->sprite_data + 6);
     *(undefined2 *)(param_1 + 0xec) = 0;
     *(undefined1 *)(param_1 + 0xea) = uVar2;
     if (*(short *)(param_1 + 0xee) == 0) {
@@ -68,35 +68,35 @@ undefined4 FUN_80087fa0(int param_1)
     if (bVar1 != 4) {
       return 1;
     }
-    iVar5 = *(int *)(param_1 + 0x3c);
-    if (*(char *)(iVar5 + 2) != '\0') {
+    iVar5 = param_1->sprite_data;
+    if (iVar5->kind != '\0') {
       return 0;
     }
-    if (*(char *)(iVar5 + 3) != '\0') {
+    if (iVar5->sub_type != '\0') {
       return 0;
     }
-    bVar1 = *(byte *)(iVar5 + 4);
-    bVar3 = *(char *)(param_1 + 0x47) + 1;
-    *(byte *)(param_1 + 0x47) = bVar3;
+    bVar1 = iVar5->state;
+    bVar3 = param_1->sub_anim_id + 1;
+    param_1->sub_anim_id = bVar3;
     *(ushort *)(param_1 + 0xec) = *(short *)(param_1 + 0xec) + 8 + (bVar1 + 3 & 0x1fc);
     if (*(byte *)(param_1 + 0xea) <= bVar3) {
       iVar5 = FUN_80088210(param_1);
       if (iVar5 < 0x81) {
         if (*(short *)(param_1 + 0xee) != *(short *)(param_1 + 0xec)) {
           *(short *)(param_1 + 0xee) = *(short *)(param_1 + 0xec);
-          *(undefined1 *)(param_1 + 0x47) = 0;
+          param_1->sub_anim_id = 0;
           *(undefined2 *)(param_1 + 0xec) = 0;
           return 0;
         }
         *(undefined2 *)(param_1 + 0xee) = 0;
         *(undefined1 *)(param_1 + 0xeb) = 0;
-        *(undefined1 *)(param_1 + 0x46) = 0xff;
+        param_1->anim_id = 0xff;
         FUN_80088248(param_1,param_1 + 99);
-        *(undefined1 *)(param_1 + 0x46) = 2;
+        param_1->anim_id = 2;
       }
       else {
         (*DAT_800abe3c)(param_1);
-        *(undefined1 *)(param_1 + 0x46) = 0xfe;
+        param_1->anim_id = 0xfe;
         *(undefined1 *)(param_1 + 0x49) = 2;
       }
     }

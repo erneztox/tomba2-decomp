@@ -31,7 +31,7 @@ undefined2 * FUN_80085cb4(void)
     FUN_80086220(&DAT_800aad50);
     DAT_800aad18 = 1;
     uVar5 = FUN_80086230();
-    *(undefined4 *)(PTR_PTR_800abda0 + 0x14) = uVar5;
+    PTR_PTR_800abda0->script_ptr = uVar5;
     uVar5 = FUN_80086350();
     *(undefined4 *)(PTR_PTR_800abda0 + 4) = uVar5;
     FUN_800861e8();

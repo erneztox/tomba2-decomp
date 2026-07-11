@@ -99,17 +99,17 @@ void GPU_Render3DSprite(Entity *entity) {
     D_800BF544 = ot_ptr + 8;
 
     ot_entry  = D_800ED8C8 + z_index;
-    ot_ptr[0] = *ot_entry | 0x7000000;
+    ot_ptr->type = *ot_entry | 0x7000000;
     *ot_entry = (u32)ot_ptr;
     ot_ptr++;
 
-    ot_ptr[0] = ((u32*)&D_1F800000)[0x4  / 4]; ot_ptr++;
-    ot_ptr[0] = ((u32*)&D_1F800000)[0x8  / 4]; ot_ptr++;
-    ot_ptr[0] = ((u32*)&D_1F800000)[0xC  / 4]; ot_ptr++;
-    ot_ptr[0] = ((u32*)&D_1F800000)[0x10 / 4]; ot_ptr++;
-    ot_ptr[0] = ((u32*)&D_1F800000)[0x14 / 4]; ot_ptr++;
-    ot_ptr[0] = ((u32*)&D_1F800000)[0x18 / 4]; ot_ptr++;
-    ot_ptr[1] = ((u32*)&D_1F800000)[0x1C / 4];
+    ot_ptr->type = ((u32*)&D_1F800000)[0x4  / 4]; ot_ptr++;
+    ot_ptr->type = ((u32*)&D_1F800000)[0x8  / 4]; ot_ptr++;
+    ot_ptr->type = ((u32*)&D_1F800000)[0xC  / 4]; ot_ptr++;
+    ot_ptr->type = ((u32*)&D_1F800000)[0x10 / 4]; ot_ptr++;
+    ot_ptr->type = ((u32*)&D_1F800000)[0x14 / 4]; ot_ptr++;
+    ot_ptr->type = ((u32*)&D_1F800000)[0x18 / 4]; ot_ptr++;
+    ot_ptr->flags = ((u32*)&D_1F800000)[0x1C / 4];
 }
 
 

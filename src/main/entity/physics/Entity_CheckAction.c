@@ -12,11 +12,11 @@ undefined4 FUN_800552ec(int param_1)
 
 {
   if ((((DAT_1f800230 == '\0') && (*(char *)(param_1 + 0x181) == '\0')) &&
-      ((_DAT_800ecf54 & 0x40) != 0)) && ((*(ushort *)(param_1 + 0x17e) & 0x7c00) != 0)) {
+      ((_DAT_800ecf54 & 0x40) != 0)) && ((param_1->entity_flags & 0x7c00) != 0)) {
     if (DAT_800bf8eb != '\0') {
       return 1;
     }
-    if ((byte)(&DAT_800a4550)[*(ushort *)(param_1 + 0x17e) & 0xf] >> 1 <= DAT_800bf87e) {
+    if ((byte)(&DAT_800a4550)[param_1->entity_flags & 0xf] >> 1 <= DAT_800bf87e) {
       return 1;
     }
   }

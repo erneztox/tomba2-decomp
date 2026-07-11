@@ -33,7 +33,7 @@ uint FUN_800870b4(int param_1,byte param_2)
     pbVar2[0xf] = 0;
   }
   else {
-    *(undefined2 *)(DAT_800abe9c + 0xe) = uVar6;
+    DAT_800abe9c->anim_timer = uVar6;
   }
   uVar4 = *DAT_800abe98;
   while( true ) {
@@ -52,7 +52,7 @@ uint FUN_800870b4(int param_1,byte param_2)
       }
       *(char *)(param_1 + 0x45) = *(char *)(param_1 + 0x45) + '\x01';
       if (*(char *)(param_1 + 0x44) != -1) {
-        *(byte *)(*(int *)(param_1 + 0x3c) + (uint)*(byte *)(param_1 + 0x44)) = bVar1;
+        *(byte *)(param_1->sprite_data + (uint)*(byte *)(param_1 + 0x44)) = bVar1;
       }
       *(char *)(param_1 + 0x44) = *(char *)(param_1 + 0x44) + '\x01';
       return uVar3;

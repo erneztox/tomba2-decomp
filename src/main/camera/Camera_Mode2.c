@@ -11,7 +11,7 @@ void FUN_8006e2fc(int param_1,undefined4 param_2)
 {
   FUN_8006d934();
   FUN_8006d950(param_1,param_2);
-  if (*(char *)(param_1 + 0x76) == '\0') {
+  if (param_1->camera_mode == '\0') {
     FUN_8006dad8(param_1);
     FUN_8006def0(param_1);
   }

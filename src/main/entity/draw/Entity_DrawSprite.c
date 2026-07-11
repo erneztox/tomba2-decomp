@@ -28,16 +28,16 @@ void FUN_8002e1e8(int param_1)
   local_14 = DAT_800102c8;
   local_10 = DAT_800102cc;
   local_c = DAT_800102d0;
-  bVar2 = *(byte *)(param_1 + 4);
+  bVar2 = param_1->state;
   if (bVar2 < 3) {
     if (bVar2 == 0) {
-      *(undefined1 *)(param_1 + 4) = 1;
+      param_1->state = 1;
       *(undefined4 *)(param_1 + 100) = 0x400;
       *(undefined4 *)(param_1 + 0x6c) = 0x200;
       *(undefined4 *)(param_1 + 0x60) = 0;
       *(undefined4 *)(param_1 + 0x68) = 0;
       *(undefined2 *)(param_1 + 0x32) = 0xff38;
-      bVar2 = *(byte *)(param_1 + 4);
+      bVar2 = param_1->state;
     }
     if (bVar2 == 1) {
       *(uint *)(param_1 + 0x60) =
@@ -51,26 +51,26 @@ void FUN_8002e1e8(int param_1)
       uVar3 = *(uint *)(param_1 + 0x6c) - (*(uint *)(param_1 + 0x6c) >> 2);
       *(uint *)(param_1 + 0x6c) = uVar3;
       if (uVar3 < 9) {
-        *(undefined1 *)(param_1 + 4) = 3;
+        param_1->state = 3;
       }
     }
-    bVar2 = *(char *)(param_1 + 7) + 1;
-    *(byte *)(param_1 + 7) = bVar2;
+    bVar2 = param_1->sub_action + 1;
+    param_1->sub_action = bVar2;
     if (5 < bVar2) {
-      *(undefined1 *)(param_1 + 7) = 0;
+      param_1->sub_action = 0;
     }
     *(uint *)(param_1 + 0x50) =
-         *(int *)(param_1 + 0x60) * (uint)*(byte *)(&local_20 + *(byte *)(param_1 + 7)) >> 4;
+         *(int *)(param_1 + 0x60) * (uint)*(byte *)(&local_20 + param_1->sub_action) >> 4;
     *(uint *)(param_1 + 0x54) =
          *(int *)(param_1 + 100) *
-         (uint)*(byte *)((int)&local_20 + (uint)*(byte *)(param_1 + 7) * 4 + 1) >> 4;
+         (uint)*(byte *)((int)&local_20 + (uint)param_1->sub_action * 4 + 1) >> 4;
     *(uint *)(param_1 + 0x58) =
          *(int *)(param_1 + 0x68) *
-         (uint)*(byte *)((int)&local_20 + (uint)*(byte *)(param_1 + 7) * 4 + 2) >> 4;
-    bVar2 = *(byte *)((int)&local_20 + (uint)*(byte *)(param_1 + 7) * 4 + 3);
+         (uint)*(byte *)((int)&local_20 + (uint)param_1->sub_action * 4 + 2) >> 4;
+    bVar2 = *(byte *)((int)&local_20 + (uint)param_1->sub_action * 4 + 3);
     *(undefined4 *)(param_1 + 0x2c) = _DAT_1f800160;
     uVar1 = _DAT_1f800164;
-    *(undefined1 *)(param_1 + 1) = 1;
+    param_1->flags = 1;
     *(undefined2 *)(param_1 + 0x30) = uVar1;
     *(uint *)(param_1 + 0x5c) = *(int *)(param_1 + 0x6c) * (uint)bVar2 >> 4;
   }

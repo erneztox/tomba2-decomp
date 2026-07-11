@@ -1,5 +1,5 @@
 /**
- * @brief Entity child update: decrements entity[8], if expired calls callback entity[0xC]
+ * @brief Entity child update: decrements entity->counter1, if expired calls callback entity[0xC]
  * @note Original: func_80026A1C at 0x80026A1C
  */
 // Entity_UpdateChild

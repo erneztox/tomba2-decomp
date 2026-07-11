@@ -1,5 +1,5 @@
 /**
- * @brief Updates camera position: GTE cos/sin on entity[0x6E]/[0x70], radius entity[0x6C]
+ * @brief Updates camera position: GTE cos/sin on entity->sprite_param2/[0x70], radius entity->sprite_cmd
  * @note Original: func_8006DC38 at 0x8006DC38
  */
 // Camera_UpdatePosition
@@ -23,6 +23,6 @@ void FUN_8006dc38(int param_1)
   iVar2 = FUN_80083e80((int)*(short *)(param_1 + 0x70));
   _DAT_1f8000d0 = (iVar3 + (iVar1 * iVar4 >> 0xc)) * 0x10000;
   _DAT_1f8000d8 = ((int)_DAT_1f8000e6 - (iVar2 * iVar4 >> 0xc)) * 0x10000;
-  *(byte *)(param_1 + 0x66) = *(byte *)(param_1 + 0x66) | 1;
+  param_1->camera_flags = param_1->camera_flags | 1;
   return;
 }

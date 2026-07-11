@@ -22,8 +22,8 @@ undefined4 FUN_80047468(int param_1,short param_2,short param_3,short param_4)
   iVar6 = (int)param_2;
   iVar3 = FUN_80083f50((int)param_4);
   _DAT_1f8001be = *(short *)(param_1 + 0x32) + param_3;
-  _DAT_1f8001c0 = *(short *)(param_1 + 0x36) + (short)(-iVar2 * iVar6 >> 0xc);
-  _DAT_1f8001bc = *(short *)(param_1 + 0x2e) + (short)(iVar3 * iVar6 >> 0xc);
+  _DAT_1f8001c0 = param_1->pos_z + (short)(-iVar2 * iVar6 >> 0xc);
+  _DAT_1f8001bc = param_1->pos_y + (short)(iVar3 * iVar6 >> 0xc);
   iVar2 = FUN_800498c8();
   if (iVar2 != 0) {
     sVar1 = FUN_80085690((uint)_DAT_1f8001b8 - (uint)_DAT_1f8001b4,

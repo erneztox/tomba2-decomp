@@ -19,7 +19,7 @@ void FUN_8002bafc(int param_1)
   short *psVar8;
   short *psVar9;
   
-  bVar1 = *(byte *)(param_1 + 4);
+  bVar1 = param_1->state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (3 < bVar1) {
@@ -27,17 +27,17 @@ void FUN_8002bafc(int param_1)
       }
       goto LAB_8002bc68;
     }
-    psVar9 = (short *)(param_1 + 0x50);
+    psVar9 = param_1->angle_offset;
     if (bVar1 != 0) {
       return;
     }
     iVar7 = 0;
-    puVar6 = (undefined2 *)(param_1 + 0x56);
-    sVar2 = *(short *)(param_1 + 0x2c);
-    sVar3 = *(short *)(param_1 + 0x2e);
+    puVar6 = param_1->rot_y;
+    sVar2 = param_1->pos_x;
+    sVar3 = param_1->pos_y;
     sVar4 = *(short *)(param_1 + 0x30);
-    *(undefined2 *)(param_1 + 0x4e) = 7;
-    *(undefined1 *)(param_1 + 4) = 1;
+    param_1->sprite_x = 7;
+    param_1->state = 1;
     do {
       iVar7 = iVar7 + 1;
       iVar5 = FUN_8009a450();
@@ -51,18 +51,18 @@ void FUN_8002bafc(int param_1)
       psVar9 = psVar9 + 4;
     } while (iVar7 < 7);
   }
-  *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x38);
-  if (*(int *)(param_1 + 0x38) != 0) {
-    psVar8 = (short *)(param_1 + 0x50);
+  param_1->scale_y = param_1->anim_data;
+  if (param_1->anim_data != 0) {
+    psVar8 = param_1->angle_offset;
     iVar7 = 0;
-    psVar9 = (short *)(param_1 + 0x52);
+    psVar9 = param_1->sprite_y;
     do {
       iVar7 = iVar7 + 1;
       iVar5 = FUN_8009a450();
       *psVar8 = *psVar8 + (short)(iVar5 + -0x4000 >> 0xb);
       iVar5 = FUN_8009a450();
       psVar8 = psVar8 + 4;
-      psVar9[1] = psVar9[1] + (short)(iVar5 + -0x4000 >> 0xb);
+      psVar9->flags = psVar9->flags + (short)(iVar5 + -0x4000 >> 0xb);
       *psVar9 = *psVar9 + -0x12;
       psVar9 = psVar9 + 4;
     } while (iVar7 < 7);

@@ -11,9 +11,9 @@ void Entity_DrawQuad_Variant3(int param_1,uint param_2,uint param_3)
   byte *pbVar2;
   undefined4 uVar3;
   
-  uVar3 = *(undefined4 *)(param_1 + 0x18);
+  uVar3 = param_1->script_data;
   if (param_2 < param_3) {
-    pbVar2 = (byte *)(param_2 + 7);
+    pbVar2 = param_2->sub_action;
     do {
       switch(*pbVar2 & 0xfc) {
       case 0x20:

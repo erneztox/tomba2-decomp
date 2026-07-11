@@ -14,7 +14,7 @@ void FUN_8005314c(int param_1)
   undefined4 uVar3;
   undefined4 uVar4;
   
-  iVar1 = (uint)*(ushort *)(param_1 + 0x6a) << 0x10;
+  iVar1 = (uint)param_1->type_flags << 0x10;
   switch(iVar1 >> 0x18 & 0xf) {
   case 0:
   case 3:

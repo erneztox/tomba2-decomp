@@ -16,16 +16,16 @@ undefined4 FUN_80022f04(int param_1,int param_2)
   int iVar3;
   int iVar4;
   
-  iVar4 = (int)(((uint)*(ushort *)(param_1 + 0x2e) - (uint)*(ushort *)(param_2 + 0x2e)) * 0x10000)
+  iVar4 = (int)(((uint)param_1->pos_y - (uint)param_2->pos_y) * 0x10000)
           >> 0x10;
-  iVar3 = (int)(((uint)*(ushort *)(param_1 + 0x36) - (uint)*(ushort *)(param_2 + 0x36)) * 0x10000)
+  iVar3 = (int)(((uint)param_1->pos_z - (uint)param_2->pos_z) * 0x10000)
           >> 0x10;
   uVar1 = FUN_80084080(iVar4 * iVar4 + iVar3 * iVar3);
   uVar2 = 0;
-  if ((int)(uint)uVar1 <= (int)*(short *)(param_1 + 0x80) + (int)*(short *)(param_2 + 0x80)) {
-    if ((int)*(short *)(param_1 + 0x86) + (int)*(short *)(param_2 + 0x86) <
+  if ((int)(uint)uVar1 <= (int)param_1->bounds_min_x + (int)param_2->bounds_min_x) {
+    if ((int)param_1->bounds_max_y + (int)param_2->bounds_max_y <
         (int)(((uint)*(ushort *)(param_1 + 0x32) - (uint)*(ushort *)(param_2 + 0x32)) +
-              (uint)*(ushort *)(param_1 + 0x84) + (uint)*(ushort *)(param_2 + 0x84) & 0xffff)) {
+              (uint)param_1->bounds_min_y + (uint)param_2->bounds_min_y & 0xffff)) {
       uVar2 = 0;
     }
     else {

@@ -46,8 +46,8 @@ uint FUN_800939a0(uint param_1,short param_2,short param_3,undefined2 param_4,us
     }
     DAT_80105cfd = param_6;
     puVar5 = (undefined1 *)(local_38 * 0x10 + _DAT_80105cdc);
-    DAT_80105d02 = puVar5[1];
-    DAT_80105d03 = puVar5[4];
+    DAT_80105d02 = puVar5->flags;
+    DAT_80105d03 = puVar5->state;
     DAT_80105cf8 = *puVar5;
     uVar6 = 0xffffffff;
     _DAT_80105d0c = sVar2;
@@ -68,11 +68,11 @@ uint FUN_800939a0(uint param_1,short param_2,short param_3,undefined2 param_4,us
             pcVar7 = (char *)(((int)DAT_80105d04 + DAT_80105cff * 0x10 & 0xffffU) * 0x20 +
                              _DAT_80105ce8);
             DAT_80105d07 = *pcVar7;
-            DAT_80105d05 = pcVar7[2];
-            DAT_80105d06 = pcVar7[3];
-            DAT_80105d08 = pcVar7[4];
-            DAT_80105d09 = pcVar7[5];
-            DAT_80105d0a = pcVar7[1];
+            DAT_80105d05 = pcVar7->kind;
+            DAT_80105d06 = pcVar7->sub_type;
+            DAT_80105d08 = pcVar7->state;
+            DAT_80105d09 = pcVar7->behavior_state;
+            DAT_80105d0a = pcVar7->flags;
             uVar8 = FUN_80094150(0);
             uVar8 = uVar8 & 0xff;
             _DAT_80105d10 = (short)uVar8;

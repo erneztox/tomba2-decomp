@@ -32,20 +32,20 @@ void FUN_800783dc(void)
   _DAT_800e7fee = _DAT_800e7ff0;
   if (DAT_800bf870 == 3) {
     _DAT_800e7e90 = FUN_80072ddc(0,3,4,0x1b);
-    *(undefined4 *)(_DAT_800e7e90 + 0x1c) = 0x8010b37c;
+    _DAT_800e7e90->callback = 0x8010b37c;
   }
   else if (DAT_1f800134 == '\0') {
     psVar3 = (short *)((&PTR_DAT_800a54a8)[DAT_800bf870] + (uint)DAT_800bf871 * 8);
     _DAT_800e7eac = (int)*psVar3 << 0x10;
     if (_DAT_800bf89e < 0) {
-      uVar2 = psVar3[1] + 0x46;
+      uVar2 = psVar3->flags + 0x46;
     }
     else {
-      uVar2 = psVar3[1];
+      uVar2 = psVar3->flags;
     }
     _DAT_800e7eb0 = (uint)uVar2 << 0x10;
-    _DAT_800e7eb4 = (int)psVar3[2] << 0x10;
-    uVar1 = psVar3[3];
+    _DAT_800e7eb4 = (int)psVar3->kind << 0x10;
+    uVar1 = psVar3->sub_type;
     DAT_800e7eaa = (byte)uVar1 & 0x7f;
     DAT_800e7fdc = (byte)((int)((uint)uVar1 << 0x10) >> 0x17) & 1;
     DAT_800e7fc7 = (byte)(uVar1 >> 8) & 1;

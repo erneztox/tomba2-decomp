@@ -1,5 +1,5 @@
 /**
- * @brief Entity sprite mode setter variant 2: switch on entity[0x6F]
+ * @brief Entity sprite mode setter variant 2: switch on entity->sprite_param3
  * @note Original: func_80067EF4 at 0x80067EF4
  */
 // Entity_SpriteMode2
@@ -13,9 +13,9 @@ void FUN_80067ef4(int param_1)
 {
   ushort uVar1;
   
-  switch(*(undefined1 *)(param_1 + 0x6f)) {
+  switch(param_1->sprite_param3) {
   case 0:
-    uVar1 = *(ushort *)(param_1 + 0x17e) & 0x8000 | 0x10;
+    uVar1 = param_1->entity_flags & 0x8000 | 0x10;
     break;
   default:
     goto switchD_80067f24_caseD_1;
@@ -41,7 +41,7 @@ void FUN_80067ef4(int param_1)
     uVar1 = 0x1006;
     break;
   case 0x15:
-    uVar1 = *(ushort *)(param_1 + 0x17e) & 0x8000 | 0x2007;
+    uVar1 = param_1->entity_flags & 0x8000 | 0x2007;
     break;
   case 0x16:
     uVar1 = 0x4008;
@@ -49,12 +49,12 @@ void FUN_80067ef4(int param_1)
   case 0x6c:
     uVar1 = 0x209;
   }
-  *(ushort *)(param_1 + 0x17e) = uVar1;
+  param_1->entity_flags = uVar1;
 switchD_80067f24_caseD_1:
-  if ((*(byte *)(param_1 + 0x174) & 4) != 0) {
-    *(ushort *)(param_1 + 0x17e) = *(ushort *)(param_1 + 0x17e) | 0x8000;
+  if ((param_1->game_flags & 4) != 0) {
+    param_1->entity_flags = param_1->entity_flags | 0x8000;
   }
-  _DAT_800bf89e = *(undefined2 *)(param_1 + 0x17e);
+  _DAT_800bf89e = param_1->entity_flags;
   FUN_80024e00(0x800ed058);
   return;
 }

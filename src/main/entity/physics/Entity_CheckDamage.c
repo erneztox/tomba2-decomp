@@ -1,5 +1,5 @@
 /**
- * @brief Entity damage check: tests entity[0x46] flags + global DAT_800e7edf condition
+ * @brief Entity damage check: tests entity->anim_id flags + global DAT_800e7edf condition
  * @note Original: func_8006918C at 0x8006918C
  */
 // Entity_CheckDamage
@@ -14,7 +14,7 @@ void FUN_8006918c(undefined1 *param_1,int param_2)
   
   if (param_2 != 0) {
     bVar1 = false;
-    if (((param_1[0x46] & 4) == 0) && (DAT_800e7edf != 0)) {
+    if (((param_1->anim_id & 4) == 0) && (DAT_800e7edf != 0)) {
       bVar1 = (DAT_800e7edf & 1) == DAT_800e7fc7;
     }
     if (bVar1) goto LAB_800691fc;

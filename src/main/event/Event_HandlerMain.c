@@ -22,7 +22,7 @@ void FUN_80036240(int param_1)
   undefined1 *puVar9;
   int iVar10;
   short sVar11;
-  int local_30 [2];
+  int local_30->kind;
   
   sVar11 = 0;
   iVar8 = 0;
@@ -38,7 +38,7 @@ void FUN_80036240(int param_1)
     iVar5 = iVar10;
     if (0 < iVar1) {
       do {
-        iVar2 = FUN_80078894(local_30[0] + iVar4);
+        iVar2 = FUN_80078894(local_30->type + iVar4);
         if (iVar2 != 0) {
           *(short *)(iVar5 + -0x7ff2e192) = (short)iVar4;
           iVar5 = iVar5 + 2;

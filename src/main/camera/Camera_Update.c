@@ -40,7 +40,7 @@ void FUN_8006dcf4(int param_1)
     case 0xb:
       iVar2 = 700;
       if ((*(char *)(_DAT_800e7fd8 + 0xc) == '\x04') &&
-         (iVar2 = 0x44c, *(char *)(_DAT_800e7fd8 + 2) == '\0')) goto switchD_8006dd4c_caseD_3;
+         (iVar2 = 0x44c, _DAT_800e7fd8->kind == '\0')) goto switchD_8006dd4c_caseD_3;
       break;
     default:
       return;
@@ -63,7 +63,7 @@ switchD_8006dd4c_caseD_3:
   if ((iVar4 + 10U & 0xffff) < 0x15) {
     _DAT_1f8000d4 =
          CONCAT22(*(ushort *)(param_1 + 0x26) + (_DAT_1f8000e2 - (short)iVar2),_DAT_1f8000d4);
-    *(byte *)(param_1 + 0x66) = *(byte *)(param_1 + 0x66) | 2;
+    param_1->camera_flags = param_1->camera_flags | 2;
   }
   else {
     _DAT_1f8000d4 = _DAT_1f8000d4 - (iVar4 * 0x10000 >> 3);
@@ -72,16 +72,16 @@ switchD_8006dd4c_caseD_3:
     if ((*(byte *)(param_1 + 0x74) & 8) == 0) {
       return;
     }
-    bVar1 = *(short *)(param_1 + 0x4a) < _DAT_1f8000d6;
+    bVar1 = param_1->velocity_y < _DAT_1f8000d6;
   }
   else {
-    bVar1 = _DAT_1f8000d6 < *(short *)(param_1 + 0x4a);
+    bVar1 = _DAT_1f8000d6 < param_1->velocity_y;
   }
   if (bVar1) {
     return;
   }
-  _DAT_1f8000d4 = CONCAT22(*(undefined2 *)(param_1 + 0x4a),_DAT_1f8000d4);
+  _DAT_1f8000d4 = CONCAT22(param_1->velocity_y,_DAT_1f8000d4);
 LAB_8006ded8:
-  *(byte *)(param_1 + 0x66) = *(byte *)(param_1 + 0x66) | 2;
+  param_1->camera_flags = param_1->camera_flags | 2;
   return;
 }

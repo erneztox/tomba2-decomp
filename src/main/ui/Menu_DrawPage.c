@@ -13,17 +13,17 @@ void FUN_8007f498(void)
   int iVar2;
   undefined4 uVar3;
   uint uVar4;
-  undefined *local_30 [4];
-  ushort local_20 [4];
+  undefined local_30->state;
+  ushort local_20->state;
   
   uVar4 = 0;
   FUN_80079374(0x30,0x30,0,PTR_s_Sound_800a288c,0);
-  local_20[0] = 0x50;
-  local_20[1] = 0x70;
-  local_20[2] = 0x90;
-  local_30[0] = PTR_s_Speakers_800a28b0;
-  local_30[1] = PTR_DAT_800a28bc;
-  local_30[2] = PTR_DAT_800a28c8;
+  local_20->type = 0x50;
+  local_20->flags = 0x70;
+  local_20->kind = 0x90;
+  local_30->type = PTR_s_Speakers_800a28b0;
+  local_30->flags = PTR_DAT_800a28bc;
+  local_30->kind = PTR_DAT_800a28c8;
   iVar2 = 0;
   do {
     FUN_80079374(0x40,(int)*(short *)((int)local_20 + iVar2),(uint)(DAT_800bf808 == uVar4) << 3,
@@ -35,8 +35,8 @@ void FUN_8007f498(void)
   iVar2 = 0x940000;
   FUN_8007e998(0x2c,(int)((local_20[DAT_800bf808] + 4) * 0x10000) >> 0x10);
   FUN_80079374(0xd7,0x52,0,&DAT_800172f0,0);
-  local_30[0] = PTR_s_Stereo_800a28b4;
-  local_30[1] = PTR_s_Monaural_800a28b8;
+  local_30->type = PTR_s_Stereo_800a28b4;
+  local_30->flags = PTR_s_Monaural_800a28b8;
   do {
     uVar3 = 0;
     if (uVar4 == DAT_800fb163) {

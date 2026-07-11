@@ -13,7 +13,7 @@ undefined4 FUN_8004e29c(int param_1)
 {
   undefined4 uVar1;
   
-  switch((int)((*(ushort *)(param_1 + 0x60) - 0x6f) * 0x10000) >> 0x10) {
+  switch((int)((param_1->draw_x - 0x6f) * 0x10000) >> 0x10) {
   case 0:
   case 1:
     if (DAT_800bf870 != '\x01') {

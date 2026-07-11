@@ -26,7 +26,7 @@ void FUN_80037b6c(int param_1,undefined1 param_2)
   short local_38;
   short local_36;
   undefined4 local_34;
-  int local_30 [2];
+  int local_30->kind;
   
   FUN_80036560((int)*(short *)(&DAT_800d1e6a + (uint)*(byte *)(param_1 + 0x2d) * 0xc),local_30);
   sVar2 = *(short *)(&DAT_800d1e6c + (uint)*(byte *)(param_1 + 0x2d) * 0xc);
@@ -41,20 +41,20 @@ void FUN_80037b6c(int param_1,undefined1 param_2)
   FUN_8007e1b8(&local_38,PTR_DAT_800174c8,*(undefined4 *)(param_1 + 4),&local_40);
   psVar10 = &DAT_800a2698;
   do {
-    if (psVar10[5] == 0) {
+    if (psVar10->behavior_state == 0) {
       local_38 = *psVar10 + 0x8e;
-      local_36 = psVar10[1] + sVar3;
+      local_36 = psVar10->flags + sVar3;
       local_34 = *(undefined4 *)(psVar10 + 2);
     }
-    else if (psVar10[5] == 1) {
+    else if (psVar10->behavior_state == 1) {
       local_38 = *psVar10 + 0x8e;
-      local_36 = psVar10[1] + sVar2 * 0x14 + sVar3;
+      local_36 = psVar10->flags + sVar2 * 0x14 + sVar3;
       local_34 = *(undefined4 *)(psVar10 + 2);
     }
     else {
       local_38 = *psVar10 + 0x8e;
-      local_36 = psVar10[1] + sVar3;
-      local_34 = CONCAT22(psVar10[3] + sVar2 * 0x14,psVar10[2]);
+      local_36 = psVar10->flags + sVar3;
+      local_34 = CONCAT22(psVar10->sub_type + sVar2 * 0x14,psVar10->kind);
     }
     psVar1 = psVar10 + 4;
     psVar10 = psVar10 + 6;
@@ -65,7 +65,7 @@ void FUN_80037b6c(int param_1,undefined1 param_2)
     iVar8 = iVar8 + 0x40;
     iVar5 = 0;
     do {
-      iVar5 = local_30[0] + *(short *)(iVar5 + (uint)*(byte *)(param_1 + 0x2d) * 0xc + -0x7ff2e192);
+      iVar5 = local_30->type + *(short *)(iVar5 + (uint)*(byte *)(param_1 + 0x2d) * 0xc + -0x7ff2e192);
       ppuVar9 = &PTR_s_Town_of_the_Fishermen_800a2b84 + iVar5;
       uVar4 = FUN_80073750(*ppuVar9);
       iVar5 = FUN_80036dc4(iVar5);

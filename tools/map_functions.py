@@ -494,6 +494,18 @@ MAPPINGS = {
     0x8008BBC8: ("CD_CompareName", "Compares two 12-byte CD file names, returns true if match"),
     0x8008C1EC: ("CD_OpenFile", "Opens file on CD: looks up name, seeks to sector, returns success"),
 
+    # -- Memory card / filesystem utilities --
+    0x80096A40: ("MC_GetFileSize", "Returns file size for memory card file handle"),
+    0x80096A70: ("MC_Close", "Closes memory card file handle"),
+    0x800970EC: ("MC_Write", "Writes data to memory card file"),
+    0x80097498: ("MC_Open", "Opens memory card file by name"),
+    0x800974FC: ("MC_Read", "Reads data from memory card file"),
+    0x80097678: ("MC_Init", "Initializes memory card subsystem"),
+    0x800976A0: ("MC_Start", "Starts memory card access"),
+    0x800976C8: ("MC_Stop", "Stops memory card access"),
+    0x80097730: ("MC_Flush", "Flushes memory card write buffer"),
+    0x80097E10: ("MC_Seek", "Seeks to position in memory card file"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

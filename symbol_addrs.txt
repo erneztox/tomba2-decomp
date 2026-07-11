@@ -541,3 +541,14 @@ CD_ResetCallbacks = 0x8008B28C;
 CD_ReadSector = 0x8008B720;
 CD_CompareName = 0x8008BBC8;
 CD_OpenFile = 0x8008C1EC;
+
+MC_GetFileSize = 0x80096A40;
+MC_Close = 0x80096A70;
+MC_Write = 0x800970EC;
+MC_Open = 0x80097498;
+MC_Read = 0x800974FC;
+MC_Init = 0x80097678;
+MC_Start = 0x800976A0;
+MC_Stop = 0x800976C8;
+MC_Flush = 0x80097730;
+MC_Seek = 0x80097E10;

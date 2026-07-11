@@ -574,3 +574,12 @@ Screen_InitOverlay = 0x800509B4;
 String_CopyUntil = 0x8004EF54;
 Entity_InitSubEntity = 0x80051B70;
 Inventory_SetBit = 0x8004D79C;
+
+Entity_ExecWithFlag0 = 0x80043EBC;
+CD_CallbackStub = 0x80045558;
+CD_CheckLoaded = 0x80045580;
+Collision_Check1 = 0x80049250;
+Collision_Check2 = 0x80049280;
+Collision_Check3 = 0x800493E8;
+Entity_SetType = 0x8004CC64;
+Menu_UpdateItemCount = 0x8004D4F4;

@@ -552,6 +552,22 @@ MAPPINGS = {
     # -- Inventory (wrapper, kept for completeness) --
     0x8004D79C: ("Inventory_SetBit", "Sets bit flag in inventory bitfield at 0x800BFDAC for item ID"),
 
+    # -- Entity script (continued) --
+    0x80043EBC: ("Entity_ExecWithFlag0", "Wraps entity script execution with flag=0 parameter"),
+
+    # -- CD / asset loading --
+    0x80045558: ("CD_CallbackStub", "CD event callback stub: calls 0x8008A00C with preset params"),
+    0x80045580: ("CD_CheckLoaded", "Checks if asset is loaded by looking up sector table"),
+
+    # -- Collision checks --
+    0x80049250: ("Collision_Check1", "Collision check variant 1: calls 0x80045B30 with entity angle"),
+    0x80049280: ("Collision_Check2", "Collision check variant 2: calls 0x80045CAC with entity angle"),
+    0x800493E8: ("Collision_Check3", "Collision check variant 3: calls 0x800468AC with entity angle"),
+
+    # -- Entity type / item --
+    0x8004CC64: ("Entity_SetType", "Sets entity type byte at entity[0x3] to given value"),
+    0x8004D4F4: ("Menu_UpdateItemCount", "Updates item count display after selection change"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

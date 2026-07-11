@@ -20,13 +20,13 @@ void SOP_GameStateTransition(int param_1)
   if (bVar1 < 2) {
     if (bVar1 == 0) {
       g_GameSubState = 2;
-      Camera_SetTarget(&DAT_800e8008,0x8010c968);
+      Camera_SetTarget(&g_EntityPool0,0x8010c968);
                     /* WARNING: Bad instruction - Truncating control flow here */
       halt_baddata();
     }
   }
   else if (bVar1 == 2) {
-    g_SOP_Complete = 1;
+    g_SeqComplete2 = 1;
   }
                     /* WARNING: Bad instruction - Truncating control flow here */
   halt_baddata();

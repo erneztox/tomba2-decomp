@@ -4,7 +4,7 @@ void OPN_StateDispatch(int param_1)
 
 {
   if (param_1->sub_type < 0xc) {
-                    /* WARNING: Could not emulate address calculation at 0x00000cbc */
+                    /* WARNING: Could not emulate address calculation at 0x08010cbc */
                     /* WARNING: Treating indirect jump as call */
     (**(code **)((uint)param_1->sub_type * 4 + -0x7fe75fbc))();
     return;

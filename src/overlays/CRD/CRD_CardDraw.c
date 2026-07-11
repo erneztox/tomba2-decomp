@@ -1,7 +1,7 @@
 // CRD_CardDraw (CRD_CardDraw) - Card drawing/sprite display
 
 /* WARNING: Control flow encountered bad instruction data */
-/* WARNING: Removing unreachable block (ram,0x000017bc) */
+/* WARNING: Removing unreachable block (ram,0x080117bc) */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 void CRD_CardDraw(int param_1)

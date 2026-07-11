@@ -36,7 +36,7 @@ void SOP_ChildEntityTracker(int param_1)
         param_1->angle_offset = 0x400;
         param_1->behavior_state = param_1->behavior_state + '\x01';
       }
-      goto LAB_00002c44;
+      goto LAB_08012c44;
     }
     if (bVar1 != 0) {
       halt_baddata();
@@ -52,7 +52,7 @@ void SOP_ChildEntityTracker(int param_1)
                     /* WARNING: Bad instruction - Truncating control flow here */
     halt_baddata();
   }
-LAB_00002c44:
+LAB_08012c44:
   iVar3 = param_1->parent;
   param_1->pos_y = *(s16 *)(iVar3->data_ptr + 0x2c);
   *(short *)(param_1 + 0x32) = *(short *)(iVar3->data_ptr + 0x30) + 0x14;

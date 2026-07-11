@@ -9,22 +9,22 @@ void SOP_MainUpdate(void)
   u16 uVar1;
   int iVar2;
   
-  if (g_SOP_Entity->draw_x == 0) {
+  if (g_OverlayEntity->draw_x == 0) {
     Screen_FadeTransition(0x80100400);
     func_0x0010a0e0(0x800f2418);
     Entity_UpdateLoop();
-    g_SOP_LoadingFlag = 1;
-    if (DAT_800e8008 == '\0') {
-      DAT_800e8008 = 1;
+    g_LoadingFlag = 1;
+    if (g_EntityPool0 == '\0') {
+      g_EntityPool0 = 1;
                     /* WARNING: Bad instruction - Truncating control flow here */
       halt_baddata();
     }
-    if (DAT_800e8008 == '\x01') {
-      if (DAT_800e806c == '\0') {
-        Camera_SetModeSeq(&DAT_800e8008,0x800e8040);
+    if (g_EntityPool0 == '\x01') {
+      if (g_LoadSubState == '\0') {
+        Camera_SetModeSeq(&g_EntityPool0,0x800e8040);
       }
-      else if (DAT_800e806c == '\x01') {
-        DAT_800e806c = 0;
+      else if (g_LoadSubState == '\x01') {
+        g_LoadSubState = 0;
         Audio_SeqPlay2();
         if (g_GameSubState != '\x05') {
           func_0x0010bffc(0x800ed018);
@@ -34,7 +34,7 @@ void SOP_MainUpdate(void)
         if (g_GameSubState != '\x05') {
           func_0x0010c26c(0x800ed018);
         }
-        g_SOP_LoadingFlag = 0;
+        g_LoadingFlag = 0;
                     /* WARNING: Bad instruction - Truncating control flow here */
         halt_baddata();
       }
@@ -42,16 +42,16 @@ void SOP_MainUpdate(void)
                     /* WARNING: Bad instruction - Truncating control flow here */
     halt_baddata();
   }
-  g_SOP_Entity->draw_x = g_SOP_Entity->draw_x + -1;
-  uVar1 = g_SOP_Entity->sprite_y;
+  g_OverlayEntity->draw_x = g_OverlayEntity->draw_x + -1;
+  uVar1 = g_OverlayEntity->sprite_y;
   if (uVar1 == 1) {
     iVar2 = func_0x0010c79c();
     if (iVar2 != 0) {
-      g_SOP_Entity->sprite_y = g_SOP_Entity->sprite_y + 1;
+      g_OverlayEntity->sprite_y = g_OverlayEntity->sprite_y + 1;
     }
   }
   else if ((uVar1 < 2) && (uVar1 == 0)) {
-    g_SOP_Entity->angle_delta = 0;
+    g_OverlayEntity->angle_delta = 0;
     Engine_LoadOverlayEntry(0xe);
                     /* WARNING: Bad instruction - Truncating control flow here */
     halt_baddata();

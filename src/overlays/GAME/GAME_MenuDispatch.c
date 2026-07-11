@@ -6,7 +6,7 @@ void GAME_MenuDispatch(void)
 
 {
   if (*(u8 *)(g_OverlayEntity + 0x6b) < 0xc) {
-                    /* WARNING: Could not emulate address calculation at 0x00001f1c */
+                    /* WARNING: Could not emulate address calculation at 0x08011f1c */
                     /* WARNING: Treating indirect jump as call */
     (**(code **)((uint)*(u8 *)(g_OverlayEntity + 0x6b) * 4 + -0x7fef9d14))();
     return;

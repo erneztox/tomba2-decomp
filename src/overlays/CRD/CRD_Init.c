@@ -1,7 +1,7 @@
 // CRD_Init (CRD_Init) - Card game initialization
 
 /* WARNING: Control flow encountered bad instruction data */
-/* WARNING: Removing unreachable block (ram,0x0000117c) */
+/* WARNING: Removing unreachable block (ram,0x0801117c) */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 void CRD_Init(int param_1)

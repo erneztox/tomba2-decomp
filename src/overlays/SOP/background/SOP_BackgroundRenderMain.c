@@ -13,8 +13,8 @@ s32 SOP_BackgroundRenderMain(void)
   int iVar5;
   int iVar6;
   
-  iVar3 = g_SOP_Entity;
-  uVar1 = g_SOP_Entity->rot_x;
+  iVar3 = g_OverlayEntity;
+  uVar1 = g_OverlayEntity->rot_x;
   if (uVar1 != 1) {
     if (1 < uVar1) {
       halt_baddata();
@@ -22,7 +22,7 @@ s32 SOP_BackgroundRenderMain(void)
     if (uVar1 != 0) {
       halt_baddata();
     }
-    g_SOP_Entity->sprite_param2 = 0;
+    g_OverlayEntity->sprite_param2 = 0;
     _DAT_8010d394 = 0xe0;
     iVar3->rot_x = 1;
     _DAT_8010d398 = 0;
@@ -30,7 +30,7 @@ s32 SOP_BackgroundRenderMain(void)
   iVar3 = _DAT_8010d394 + -1;
   if (_DAT_8010d394 + 0x30b < -0x10) {
     _DAT_8010d394 = iVar3;
-    g_SOP_Entity->rot_x = g_SOP_Entity->rot_x + 1;
+    g_OverlayEntity->rot_x = g_OverlayEntity->rot_x + 1;
                     /* WARNING: Bad instruction - Truncating control flow here */
     halt_baddata();
   }

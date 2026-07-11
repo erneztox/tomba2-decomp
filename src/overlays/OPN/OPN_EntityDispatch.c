@@ -4,7 +4,7 @@ void OPN_EntityDispatch(int param_1)
 
 {
   if (param_1->action_state < 0xf) {
-                    /* WARNING: Could not emulate address calculation at 0x00000338 */
+                    /* WARNING: Could not emulate address calculation at 0x08010338 */
                     /* WARNING: Treating indirect jump as call */
     (**(code **)((uint)param_1->action_state * 4 + -0x7fe75ffc))();
     return;

@@ -93,7 +93,7 @@ void OPN_CameraUpdate(int param_1)
       _DAT_1f800088 = iVar1;
       return;
     }
-                    /* WARNING: Could not emulate address calculation at 0x00001aac */
+                    /* WARNING: Could not emulate address calculation at 0x08011aac */
                     /* WARNING: Treating indirect jump as call */
     (**(code **)(_DAT_80100704 * 4 + -0x7fe75f8c))();
     return;

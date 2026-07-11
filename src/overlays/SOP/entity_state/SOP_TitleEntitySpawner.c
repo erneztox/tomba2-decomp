@@ -32,7 +32,7 @@ void SOP_TitleEntitySpawner(int param_1)
     if (bVar1 == 0) {
       Texture_LoadUI(0x800e7e80);
       iVar3 = Entity_AllocFromPool(param_1,0x11,_DAT_800ed014,0x800a3fa8);
-      uVar2 = _DAT_800ecf68;
+      uVar2 = _g_SavedPosition;
       if (iVar3 != 0) {
         return;
       }

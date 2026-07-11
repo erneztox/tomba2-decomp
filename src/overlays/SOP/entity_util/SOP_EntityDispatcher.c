@@ -4,7 +4,7 @@ void SOP_EntityDispatcher(int param_1)
 
 {
   if (param_1->action_state < 7) {
-                    /* WARNING: Could not emulate address calculation at 0x0000261c */
+                    /* WARNING: Could not emulate address calculation at 0x0801261c */
                     /* WARNING: Treating indirect jump as call */
     (**(code **)((uint)param_1->action_state * 4 + -0x7fef702c))();
     return;

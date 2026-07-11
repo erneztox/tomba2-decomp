@@ -56,7 +56,7 @@ void CRD_AnimCollect(int param_1)
                     /* WARNING: Bad instruction - Truncating control flow here */
           halt_baddata();
         }
-LAB_00003040:
+LAB_08013040:
         param_1->rot_x = 0;
         param_1->rot_y = 0;
       }
@@ -74,7 +74,7 @@ LAB_00003040:
           _DAT_800bf4ee = 0x50;
           halt_baddata();
         }
-        goto LAB_00003040;
+        goto LAB_08013040;
       }
     }
     sVar2 = param_1->rot_y;
@@ -86,7 +86,7 @@ LAB_00003040:
                     /* WARNING: Bad instruction - Truncating control flow here */
         halt_baddata();
       }
-      goto joined_r0x000030cc;
+      goto joined_r0x080130cc;
     }
   }
   iVar3 = (int)*psVar7 - (uint)param_1->sub_anim_id;
@@ -96,7 +96,7 @@ LAB_00003040:
   if (2 < iVar3) {
     iVar3 = 3;
   }
-joined_r0x000030cc:
+joined_r0x080130cc:
   while (iVar3 = iVar3 + -1, iVar3 != -1) {
     bVar5 = true;
     if (param_1->rot_y == 0) {

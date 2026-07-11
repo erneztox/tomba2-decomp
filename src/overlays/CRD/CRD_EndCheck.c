@@ -67,7 +67,7 @@ void CRD_EndCheck(u8 *param_1)
                     /* WARNING: Bad instruction - Truncating control flow here */
         halt_baddata();
       }
-LAB_00003a88:
+LAB_08013a88:
       if (_DAT_800bf4b2 != -1) {
         *_DAT_800bf4a8 = 0;
         _DAT_800bf4b2 = -1;
@@ -139,7 +139,7 @@ LAB_00003a88:
         String_Copy(_DAT_800bf4a4,_DAT_800a2930);
         _DAT_800bf4b0 = 0x37;
       }
-      goto LAB_00003a88;
+      goto LAB_08013a88;
     }
     if (_DAT_800bf4b0 != -1) {
       *_DAT_800bf4a4 = 0;

@@ -31,7 +31,7 @@ void SOP_EntitySpawner2(int param_1)
       if (iVar2 != 0) {
         return;
       }
-      param_1->sprite_data = _DAT_800ecf68;
+      param_1->sprite_data = _g_SavedPosition;
       Entity_LoadAnimData3(param_1,0x80017fe8,2);
       param_1->bounds_min_y = 0x60;
       param_1->sub_type = 1;

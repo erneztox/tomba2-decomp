@@ -20,24 +20,24 @@ void SOP_ScreenSpaceTransform(int param_1)
   _DAT_800a3f90 = 0x5780;
   *(s16 *)(param_1 + 10) = (*(s16 **)(param_1 + 0xc))[1];
   _DAT_800a3f94 = 0x1c7;
-  local_2c = (int)_DAT_1f8000da;
-  uVar4 = 0xfffffe39U - (int)_DAT_1f8000f2 & 0xfff;
-  local_30 = (int)_DAT_1f8000d2;
+  local_2c = (int)_g_GTE_Matrix12;
+  uVar4 = 0xfffffe39U - (int)_g_GTE_RotY & 0xfff;
+  local_30 = (int)_g_GTE_Matrix01;
   iVar1 = Math_Cos(uVar4);
   local_28 = local_30 + (iVar1 * _DAT_800a3f90 >> 0xc);
   iVar1 = Math_CosGTE(uVar4);
-  uVar4 = _DAT_800a3f94 - _DAT_1f8000f2 & 0xfff;
+  uVar4 = _DAT_800a3f94 - _g_GTE_RotY & 0xfff;
   local_24 = local_2c + (iVar1 * _DAT_800a3f90 >> 0xc);
   iVar1 = Math_Cos(uVar4);
   local_20 = local_30 + (iVar1 * _DAT_800a3f90 >> 0xc);
   iVar1 = Math_CosGTE(uVar4);
   local_1c = local_2c + (iVar1 * _DAT_800a3f90 >> 0xc);
-  iVar1 = Math_Cos((int)_DAT_1f8000f0);
+  iVar1 = Math_Cos((int)_g_GTE_RotX);
   if (iVar1 < 0) {
     iVar1 = -iVar1;
   }
-  iVar2 = Math_Cos(-(int)_DAT_1f8000f2);
-  iVar3 = Math_CosGTE(-(int)_DAT_1f8000f2);
+  iVar2 = Math_Cos(-(int)_g_GTE_RotY);
+  iVar3 = Math_CosGTE(-(int)_g_GTE_RotY);
   iVar2 = (iVar2 * iVar1 >> 0xc) * _DAT_800a3f90 * 5 >> 0x10;
   iVar1 = (iVar3 * iVar1 >> 0xc) * _DAT_800a3f90 * 5 >> 0x10;
   local_30 = (local_30 - iVar2) / 0x280;

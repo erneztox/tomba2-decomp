@@ -1,11 +1,11 @@
 // CRD_AISelect (CRD_AISelect) - AI card selection
 
 /* WARNING: Control flow encountered bad instruction data */
-/* WARNING: Removing unreachable block (ram,0x00001c5c) */
-/* WARNING: Removing unreachable block (ram,0x00001c6c) */
-/* WARNING: Removing unreachable block (ram,0x00001c7c) */
-/* WARNING: Removing unreachable block (ram,0x00001cf0) */
-/* WARNING: Removing unreachable block (ram,0x00001d0c) */
+/* WARNING: Removing unreachable block (ram,0x08011c5c) */
+/* WARNING: Removing unreachable block (ram,0x0018bc80) */
+/* WARNING: Removing unreachable block (ram,0x08011c7c) */
+/* WARNING: Removing unreachable block (ram,0x08011cf0) */
+/* WARNING: Removing unreachable block (ram,0x08011d0c) */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 void CRD_AISelect(int param_1)

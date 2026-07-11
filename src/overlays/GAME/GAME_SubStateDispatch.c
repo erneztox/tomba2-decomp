@@ -6,7 +6,7 @@ void GAME_SubStateDispatch(void)
 
 {
   if (g_OverlayEntity->sprite_x < 0xc) {
-                    /* WARNING: Could not emulate address calculation at 0x000009a4 */
+                    /* WARNING: Could not emulate address calculation at 0x080109a4 */
                     /* WARNING: Treating indirect jump as call */
     (**(code **)((uint)g_OverlayEntity->sprite_x * 4 + -0x7fef9d94))();
     return;

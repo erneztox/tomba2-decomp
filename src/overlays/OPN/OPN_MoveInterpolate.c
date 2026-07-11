@@ -1,9 +1,9 @@
 // OPN_MoveInterpolate (OPN_MoveInterpolate) - Movement interpolation: interpolates entity to target in 20 frames with gravity
 
 /* WARNING: Control flow encountered bad instruction data */
-/* WARNING: Removing unreachable block (ram,0x00002660) */
-/* WARNING: Removing unreachable block (ram,0x00002670) */
-/* WARNING: Removing unreachable block (ram,0x00002678) */
+/* WARNING: Removing unreachable block (ram,0x08012660) */
+/* WARNING: Removing unreachable block (ram,0x08012670) */
+/* WARNING: Removing unreachable block (ram,0x08012678) */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 void OPN_MoveInterpolate(int param_1)

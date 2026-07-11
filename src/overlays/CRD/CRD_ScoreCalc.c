@@ -107,7 +107,7 @@ void CRD_ScoreCalc(u8 *param_1)
         halt_baddata();
       }
     }
-LAB_00002490:
+LAB_08012490:
     param_1[0x3f] = 0;
     param_1[0x40] = 0;
     return;
@@ -169,7 +169,7 @@ LAB_00002490:
     if (bVar1 != 1) {
       halt_baddata();
     }
-    if (param_1[(u8)param_1->anim_id + 0x4e] != -1) goto LAB_00002490;
+    if (param_1[(u8)param_1->anim_id + 0x4e] != -1) goto LAB_08012490;
   }
   else if (bVar1 != 4) {
                     /* WARNING: Bad instruction - Truncating control flow here */

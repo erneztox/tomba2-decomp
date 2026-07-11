@@ -5,10 +5,10 @@
 void SOP_StateDispatch(void)
 
 {
-  if (g_SOP_Entity->angle_offset < 5) {
-                    /* WARNING: Could not emulate address calculation at 0x000004f0 */
+  if (g_OverlayEntity->angle_offset < 5) {
+                    /* WARNING: Could not emulate address calculation at 0x080104f0 */
                     /* WARNING: Treating indirect jump as call */
-    (**(code **)((uint)g_SOP_Entity->angle_offset * 4 + -0x7fef7060))();
+    (**(code **)((uint)g_OverlayEntity->angle_offset * 4 + -0x7fef7060))();
     return;
   }
   return;

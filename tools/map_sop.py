@@ -14,7 +14,7 @@ GHIDRA_DIR = os.path.join(PROJECT_ROOT, "src", "overlays", "SOP", "ghidra_dumps"
 MAPPED_DIR = os.path.join(PROJECT_ROOT, "src", "overlays", "SOP", "mapped")
 SYMBOL_FILE = os.path.join(PROJECT_ROOT, "symbol_addrs.txt")
 
-SOP_BASE = 0x80100000
+SOP_BASE = 0x08010000
 
 # offset -> (descriptive_name, comment)
 MAPPINGS = {
@@ -85,7 +85,7 @@ def main():
 
     for offset, (name, comment) in sorted(MAPPINGS.items()):
         full_addr = SOP_BASE + offset
-        ghidra_name = f"FUN_{offset:08x}"
+        ghidra_name = f"FUN_{SOP_BASE + offset:08x}"
         ghidra_path = os.path.join(GHIDRA_DIR, f"{ghidra_name}.c")
 
         if not os.path.exists(ghidra_path):

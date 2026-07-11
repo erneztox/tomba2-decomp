@@ -14,7 +14,7 @@ s32 SOP_VerticalMovementEntity(int param_1)
       Audio_PlaySoundEffect(7,0,0);
       param_1->sub_state = param_1->sub_state + '\x01';
     }
-LAB_00002998:
+LAB_08012998:
     sVar2 = param_1->velocity_y + 0x360;
     param_1->velocity_y = sVar2;
     if (0x3e00 < sVar2) {
@@ -30,7 +30,7 @@ LAB_00002998:
       param_1->sub_state = param_1->sub_state + '\x01';
     }
   }
-  else if (bVar1 == 2) goto LAB_00002998;
+  else if (bVar1 == 2) goto LAB_08012998;
                     /* WARNING: Bad instruction - Truncating control flow here */
   halt_baddata();
 }

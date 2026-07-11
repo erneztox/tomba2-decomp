@@ -32,7 +32,7 @@ void SOP_ParentTrackedEntitySpawner(int param_1)
         return;
       }
       iVar2 = param_1->parent;
-      param_1->sprite_data = _DAT_800ecf80;
+      param_1->sprite_data = _g_AnimDataPtr;
       Entity_LoadAnimData(param_1,0x8010d490,0);
       param_1->sprite_flags = 0;
       param_1->draw_y = 0;

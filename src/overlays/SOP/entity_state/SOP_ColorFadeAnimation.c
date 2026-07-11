@@ -21,7 +21,7 @@ s32 SOP_ColorFadeAnimation(int param_1)
         Entity_LoadAnimData3(param_1,0x8001b860,2);
         halt_baddata();
       }
-      goto LAB_00002230;
+      goto LAB_08012230;
     }
     if (bVar1 != 0) {
                     /* WARNING: Bad instruction - Truncating control flow here */
@@ -39,7 +39,7 @@ s32 SOP_ColorFadeAnimation(int param_1)
   if (0xfff < param_1->scale_x) {
     param_1->action_state = param_1->action_state + '\x01';
   }
-LAB_00002230:
+LAB_08012230:
   param_1->pos_y = param_1->move_speed;
   *(s16 *)(param_1 + 0x32) = param_1->gte_offset_y;
   param_1->pos_z = param_1->gte_offset_z;

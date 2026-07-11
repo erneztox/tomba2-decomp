@@ -22,6 +22,8 @@ OVERLAY_BASES = {
     "A0F": 0x80000000,
 }
 
+GHIDRA_BASE = 0x08010000  # All overlays use this in Ghidra
+
 OVERLAYS = {
     "GAME": {
         "category": "game",
@@ -194,7 +196,8 @@ def main():
 
         for offset, name, comment in data["mappings"]:
             full_addr = base + offset
-            ghidra_name = f"FUN_{offset:08x}"
+            ghidra_addr = GHIDRA_BASE + offset
+            ghidra_name = f"FUN_{ghidra_addr:08x}"
             ghidra_path = os.path.join(ghidra_dir, f"{ghidra_name}.c")
 
             if not os.path.exists(ghidra_path):

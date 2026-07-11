@@ -1,7 +1,7 @@
 // CRD_SoundControl (CRD_SoundControl) - Card game sound effects
 
 /* WARNING: Control flow encountered bad instruction data */
-/* WARNING: Removing unreachable block (ram,0x000036ac) */
+/* WARNING: Removing unreachable block (ram,0x0018d6bc) */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 void CRD_SoundControl(char *param_1)

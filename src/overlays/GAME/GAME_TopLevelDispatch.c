@@ -6,7 +6,7 @@ void GAME_TopLevelDispatch(void)
 
 {
   if (g_OverlayEntity->velocity_y < 6) {
-                    /* WARNING: Could not emulate address calculation at 0x0000258c */
+                    /* WARNING: Could not emulate address calculation at 0x0801258c */
                     /* WARNING: Treating indirect jump as call */
     (**(code **)((uint)g_OverlayEntity->velocity_y * 4 + -0x7fef9ce4))();
     return;

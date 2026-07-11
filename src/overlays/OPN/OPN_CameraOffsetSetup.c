@@ -35,7 +35,7 @@ void OPN_CameraOffsetSetup(int param_1)
       }
       return;
     }
-                    /* WARNING: Could not emulate address calculation at 0x00001ff4 */
+                    /* WARNING: Could not emulate address calculation at 0x08011ff4 */
                     /* WARNING: Treating indirect jump as call */
     (**(code **)((uint)param_1->action_state * 4 + -0x7fe75f6c))();
     return;

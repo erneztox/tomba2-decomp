@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80055c30(int param_1)
+s32 Entity_CheckActionTrigger(int param_1)
 
 {
   if ((param_1->timer_main == 0) || (g_CurrentOverlay != '\0')) {

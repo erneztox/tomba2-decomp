@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8002f230(int param_1)
+void Entity_DrawType(int param_1)
 
 {
   u8 bVar1;
@@ -29,7 +29,7 @@ void FUN_8002f230(int param_1)
       return;
     }
     param_1->sprite_x = 7;
-    uVar2 = FUN_8009a450();
+    uVar2 = Math_Random();
     param_1->normal_x = uVar2;
     param_1->velocity_y = 0xff92;
     *(s16 *)(param_1 + 0x32) = 0xffce;
@@ -42,23 +42,23 @@ void FUN_8002f230(int param_1)
     psVar4 = param_1->sprite_y;
     do {
       iVar6 = iVar6 + 1;
-      iVar3 = FUN_8009a450();
+      iVar3 = Math_Random();
       *psVar5 = *psVar5 + -8 + (s16)(iVar3 >> 0xb);
-      iVar3 = FUN_8009a450();
+      iVar3 = Math_Random();
       psVar4->flags = psVar4->flags + -8 + (s16)(iVar3 >> 0xb);
-      iVar3 = FUN_8009a450();
+      iVar3 = Math_Random();
       psVar5 = psVar5 + 4;
       *psVar4 = *psVar4 + -4 + (s16)(iVar3 >> 0xb);
       psVar4 = psVar4 + 4;
     } while (iVar6 < 7);
-    iVar6 = FUN_8002b278(param_1);
+    iVar6 = Entity_CheckVisibility(param_1);
     if (iVar6 != 0) {
       return;
     }
-    FUN_80031780(param_1);
+    Entity_AdvanceAnimScript(param_1);
     return;
   }
 LAB_8002f348:
-  FUN_8007a624(param_1);
+  Entity_Dealloc(param_1);
   return;
 }

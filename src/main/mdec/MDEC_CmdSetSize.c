@@ -6,7 +6,7 @@
 
 
 
-void FUN_80088ac8(int param_1,u8 param_2)
+void MDEC_CmdSetSize(int param_1,u8 param_2)
 
 {
   param_1->state = 0x47;

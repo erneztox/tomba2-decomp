@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80053d90(int param_1)
+void Entity_StateSwitch(int param_1)
 
 {
   u16 uVar1;
@@ -51,6 +51,6 @@ switchD_80053dc4_default:
   param_1->state_flag144 = 0;
   param_1->sub_state = 0;
   *(u8 *)(param_1 + 0x181) = 0;
-  FUN_80053d0c();
+  Entity_StateCheck();
   return;
 }

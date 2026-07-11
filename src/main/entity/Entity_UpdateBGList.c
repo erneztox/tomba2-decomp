@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80069b28(void)
+void Entity_UpdateBGList(void)
 
 {
   s32 *puVar1;

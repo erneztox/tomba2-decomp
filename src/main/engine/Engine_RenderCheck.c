@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8005229c(void)
+void Engine_RenderCheck(void)
 
 {
   int iVar1;
@@ -18,11 +18,11 @@ void FUN_8005229c(void)
   }
   if ((DAT_800fb167 == '\0') && (_g_RenderFlag != 0)) {
     if (DAT_800ecf4e == 1) {
-      iVar1 = FUN_80087aec(0);
+      iVar1 = MDEC_SetupDecode(0);
       if (iVar1 != 6) {
         return;
       }
-      FUN_80087e2c(0,&DAT_800a3f98);
+      MDEC_CallbackDispatch(0,&DAT_800a3f98);
       DAT_800ecf4e = 2;
       return;
     }
@@ -32,13 +32,13 @@ void FUN_8005229c(void)
       }
       if (_DAT_800ecf4c != 0) {
         _DAT_800ecf4c = 0;
-        FUN_80087eac(0,&DAT_800ecf4c,2);
+        MDEC_InitDecode(0,&DAT_800ecf4c,2);
       }
-      iVar1 = FUN_80087aec(0);
+      iVar1 = MDEC_SetupDecode(0);
       if (iVar1 != 6) {
         return;
       }
-      FUN_80087e2c(0,&DAT_800a3f98);
+      MDEC_CallbackDispatch(0,&DAT_800a3f98);
       return;
     }
     if (DAT_800ecf4e == 2) {
@@ -47,7 +47,7 @@ void FUN_8005229c(void)
         return;
       }
       _DAT_800ecf4c = 0;
-      FUN_80087eac(0,&DAT_800ecf4c,2);
+      MDEC_InitDecode(0,&DAT_800ecf4c,2);
       DAT_800ecf4e = 3;
       DAT_800ecf4f = 0;
       return;
@@ -65,12 +65,12 @@ void FUN_8005229c(void)
     }
     if (_DAT_800ecf4c != 0) {
       _DAT_800ecf4c = 0;
-      FUN_80087eac(0,&DAT_800ecf4c,2);
+      MDEC_InitDecode(0,&DAT_800ecf4c,2);
     }
   }
-  iVar1 = FUN_80087aec(0);
+  iVar1 = MDEC_SetupDecode(0);
   if (iVar1 == 6) {
-    FUN_80087e2c(0,&DAT_800a3f98);
+    MDEC_CallbackDispatch(0,&DAT_800a3f98);
     DAT_800ecf4e = 0;
   }
   return;

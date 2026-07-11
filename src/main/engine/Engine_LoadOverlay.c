@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80075024(s8 param_1)
+void Engine_LoadOverlay(s8 param_1)
 
 {
   u8 uVar1;
@@ -16,7 +16,7 @@ void FUN_80075024(s8 param_1)
   if (param_1 == '\x05') {
     uVar1 = 0x13;
   }
-  FUN_800750d8(uVar1,1);
+  Sys_OverlayDispatch(uVar1,1);
   DAT_1f80023b = uVar1;
   DAT_800be22b = 0;
   return;

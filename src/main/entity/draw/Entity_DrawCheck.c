@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80051128(int param_1)
+void Entity_DrawCheck(int param_1)
 
 {
   s16 sVar1;
@@ -33,19 +33,19 @@ void FUN_80051128(int param_1)
       _g_GTE_Data8 = (int)*(s16 *)(iVar3 + 0x3a);
       _g_GTE_Data10 = (int)*(s16 *)(iVar3 + 0x3c);
       sVar1 = *(s16 *)(iVar3 + 6);
-      FUN_80085480(iVar3 + 8,&DAT_1f800020);
-      FUN_80084110(&DAT_1f800020,0x1f800000,&DAT_1f800040);
+      GTE_LoadRotMatrixFromSVec(iVar3 + 8,&DAT_1f800020);
+      GTE_ComposeMatrix(&DAT_1f800020,0x1f800000,&DAT_1f800040);
       if (sVar1 == -1) {
-        FUN_80084110(param_1 + 0x98,&DAT_1f800040,iVar3 + 0x18);
-        FUN_80084220(iVar3,iVar3 + 0x2c);
+        GTE_ComposeMatrix(param_1 + 0x98,&DAT_1f800040,iVar3 + 0x18);
+        GTE_MulMatrix(iVar3,iVar3 + 0x2c);
         *(int *)(iVar3 + 0x2c) = *(int *)(iVar3 + 0x2c) + param_1->projected_x;
         iVar3->pos_y_fixed = iVar3->pos_y_fixed + param_1->projected_y;
         iVar2 = iVar3->scale_y + param_1->projected_z;
       }
       else {
         iVar2 = param_1 + sVar1 * 4;
-        FUN_80084110(iVar2->sprite_ptr1 + 0x18,&DAT_1f800040,iVar3 + 0x18);
-        FUN_80084220(iVar3,iVar3 + 0x2c);
+        GTE_ComposeMatrix(iVar2->sprite_ptr1 + 0x18,&DAT_1f800040,iVar3 + 0x18);
+        GTE_MulMatrix(iVar3,iVar3 + 0x2c);
         *(int *)(iVar3 + 0x2c) = *(int *)(iVar3 + 0x2c) + *(int *)(iVar2->sprite_ptr1 + 0x2c);
         iVar3->pos_y_fixed = iVar3->pos_y_fixed + *(int *)(iVar2->sprite_ptr1 + 0x30);
         iVar2 = iVar3->scale_y + *(int *)(iVar2->sprite_ptr1 + 0x34);

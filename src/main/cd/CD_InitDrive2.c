@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_8008b19c(void)
+s32 CD_InitDrive2(void)
 
 {
   int iVar1;

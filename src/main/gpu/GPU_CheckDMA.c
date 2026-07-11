@@ -6,12 +6,12 @@
 
 
 
-void FUN_800834a0(void)
+void GPU_CheckDMA(void)
 
 {
   int iVar1;
   
-  iVar1 = FUN_80085900(0xffffffff);
+  iVar1 = Timer_GetCounter(0xffffffff);
   DAT_800a5adc = iVar1 + 0xf0;
   DAT_800a5ae0 = 0;
   return;

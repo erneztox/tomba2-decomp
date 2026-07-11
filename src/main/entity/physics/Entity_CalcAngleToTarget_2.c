@@ -7,9 +7,9 @@
 
 
 #include "tomba.h"
-void FUN_80041378(int param_1)
+void Entity_CalcAngleToTarget(int param_1)
 
 {
-  FUN_8004130c(param_1,(int)param_1->event_id);
+  Entity_CalcAngleToward(param_1,(int)param_1->event_id);
   return;
 }

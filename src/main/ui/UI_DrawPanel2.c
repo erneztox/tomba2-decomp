@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8004fa38(s16 *param_1,s16 param_2,u8 param_3)
+void UI_DrawPanel2(s16 *param_1,s16 param_2,u8 param_3)
 
 {
   s16 sVar1;
@@ -16,10 +16,10 @@ void FUN_8004fa38(s16 *param_1,s16 param_2,u8 param_3)
   s16 *psVar3;
   
   if (7 < _DAT_800bf552) {
-    FUN_8004f8dc(&DAT_800bf548);
+    UI_PanelUpdate(&DAT_800bf548);
   }
   iVar2 = _DAT_800bf552 * 0x20;
-  FUN_8004ee2c((s32 *)(iVar2 + -0x7ff40908));
+  UI_ClearList((s32 *)(iVar2 + -0x7ff40908));
   if (param_2 == -1) {
     *(s32 *)(iVar2 + -0x7ff40908) = param_1;
   }

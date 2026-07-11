@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_800541f4(int param_1,uint param_2)
+s32 Entity_SubState(int param_1,uint param_2)
 
 {
   u8 uVar1;
@@ -33,14 +33,14 @@ s32 FUN_800541f4(int param_1,uint param_2)
     iVar4 = 0x1c;
   }
   if ((param_2 & 1) == 0) {
-    iVar2 = FUN_800493e8(param_1,iVar4,(int)(s16)uVar3);
+    iVar2 = Collision_Check3(param_1,iVar4,(int)(s16)uVar3);
     if (iVar2 != 0) goto LAB_800542dc;
     iVar4 = -iVar4;
   }
   else {
     iVar4 = 0;
   }
-  iVar2 = FUN_800493e8(param_1,iVar4,(int)(s16)uVar3);
+  iVar2 = Collision_Check3(param_1,iVar4,(int)(s16)uVar3);
   if (iVar2 == 0) {
     return 0;
   }
@@ -61,7 +61,7 @@ LAB_800542dc:
     else {
       uVar1 = 2;
       if ((param_1->entity_flags & 0x200) == 0) {
-        FUN_80022d08(param_1,0,1,1);
+        Entity_BehaviorList(param_1,0,1,1);
         uVar1 = 2;
       }
     }

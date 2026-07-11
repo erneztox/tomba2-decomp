@@ -6,7 +6,7 @@
 
 
 
-char * FUN_8009ae10(char *param_1,s8 param_2,int param_3)
+char * Mem_CopyN(char *param_1,s8 param_2,int param_3)
 
 {
   char *pcVar1;

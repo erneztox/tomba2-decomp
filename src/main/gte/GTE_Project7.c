@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_80032cbc(s32 *param_1,u8 *param_2)
+void GTE_Project7(s32 *param_1,u8 *param_2)
 
 {
   int iVar1;
@@ -31,7 +31,7 @@ void FUN_80032cbc(s32 *param_1,u8 *param_2)
   local_20 = (uint)*param_2;
   local_1c = (uint)param_2->flags;
   local_18 = (uint)param_2->kind;
-  FUN_80084520(0x1f800000,&local_20);
+  GTE_TransformVec(0x1f800000,&local_20);
   setCopControlWord(2,0,_g_GTE_WorkF8);
   setCopControlWord(2,0x800,_DAT_1f8000fc);
   setCopControlWord(2,0x1000,_DAT_1f800100);

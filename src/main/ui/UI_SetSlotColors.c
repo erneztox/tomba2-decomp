@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800345d8(int param_1)
+void UI_SetSlotColors(int param_1)
 
 {
   int iVar1;

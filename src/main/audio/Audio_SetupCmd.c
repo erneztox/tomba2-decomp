@@ -6,7 +6,7 @@
 
 
 
-void FUN_80090700(s16 param_1,s16 param_2)
+void Audio_SetupCmd(s16 param_1,s16 param_2)
 
 {
   s32 local_30;
@@ -16,6 +16,6 @@ void FUN_80090700(s16 param_1,s16 param_2)
   local_30 = 3;
   local_2c = param_1 * 0x81;
   local_2a = param_2 * 0x81;
-  FUN_80099490(&local_30);
+  CD_SPU_Main(&local_30);
   return;
 }

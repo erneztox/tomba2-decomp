@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_80022760(int param_1)
+void Entity_BehaviorList2(int param_1)
 
 {
   s8 cVar1;
@@ -48,14 +48,14 @@ joined_r0x800227c8:
       goto joined_r0x800227c8;
     }
 switchD_8002281c_caseD_0:
-    FUN_80022060(param_1);
+    Entity_CalcAngle10(param_1);
     uVar2 = g_TimerFlag;
     cVar1 = g_State182;
     goto joined_r0x800227c8;
   default:
     break;
   case '\x06':
-    FUN_80022190(param_1);
+    Entity_DrawChild3_2(param_1);
   }
 switchD_8002281c_caseD_5:
   uVar2 = g_TimerFlag;

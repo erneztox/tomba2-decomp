@@ -6,7 +6,7 @@
 
 
 
-int FUN_8009a600(char *param_1)
+int String_Compare(char *param_1)
 
 {
   s8 cVar1;

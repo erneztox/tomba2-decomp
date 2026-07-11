@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8005fa84(u8 *param_1)
+void Entity_SetupBehavior(u8 *param_1)
 
 {
   u8 bVar1;
@@ -25,14 +25,14 @@ void FUN_8005fa84(u8 *param_1)
   else {
     if (DAT_800bf80b == '`') {
       param_1->action_state = 4;
-      FUN_80054d14(param_1,2,6);
+      Entity_LoadAnimIfChanged(param_1,2,6);
       return;
     }
     if (((DAT_800bf80b == -0x68) || (DAT_800bf80b == -0x5a)) || (bVar1 = 3, DAT_800bf80b == -0x59))
     {
       DAT_800bf80a = 4;
       param_1->action_state = 4;
-      FUN_80054d14(param_1,2,6);
+      Entity_LoadAnimIfChanged(param_1,2,6);
       return;
     }
   }

@@ -6,9 +6,9 @@
 
 
 
-void FUN_80074810(u8 param_1,s8 param_2)
+void Audio_PlaySFX_Vol(u8 param_1,s8 param_2)
 
 {
-  FUN_80074590(param_1,(int)param_2,0);
+  Audio_PlaySoundEffect(param_1,(int)param_2,0);
   return;
 }

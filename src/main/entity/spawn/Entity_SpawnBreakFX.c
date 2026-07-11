@@ -9,14 +9,14 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8004b2e8(void)
+void Entity_SpawnBreakFX(void)
 
 {
   s16 uVar1;
   s16 uVar2;
   int iVar3;
   
-  iVar3 = FUN_800310f4(0x1f,0xffffff74);
+  iVar3 = Entity_SpawnNoPos(0x1f,0xffffff74);
   if (iVar3 != 0) {
     iVar3->alloc_flags = iVar3->alloc_flags | 0x80;
     uVar2 = _g_PlayerPosZ;
@@ -25,6 +25,6 @@ void FUN_8004b2e8(void)
     iVar3->pos_y = uVar1;
     *(s16 *)(iVar3 + 0x30) = uVar2;
   }
-  FUN_80074590(0x28,0,0);
+  Audio_PlaySoundEffect(0x28,0,0);
   return;
 }

@@ -1,5 +1,5 @@
 /**
- * @brief Audio key on: checks slot state, calls FUN_800962b0, triggers voice
+ * @brief Audio key on: checks slot state, calls CD_CheckSlot, triggers voice
  * @note Original: func_80092310 at 0x80092310
  */
 // Audio_KeyOn
@@ -9,14 +9,14 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80092310(s16 param_1,s16 param_2,u8 *param_3)
+s32 Audio_KeyOn(s16 param_1,s16 param_2,u8 *param_3)
 
 {
   s32 uVar1;
   int iVar2;
   
   if (*(s8*)(param_1 + -0x7fefa2e8) == '\x01') {
-    FUN_800962b0((int)param_1,(int)param_2);
+    CD_CheckSlot((int)param_1,(int)param_2);
     iVar2 = param_2 * 0x10;
     *param_3 = *(u8 *)(iVar2 + _DAT_80105cdc);
     param_3->flags = *(u8 *)(iVar2 + _DAT_80105cdc + 1);

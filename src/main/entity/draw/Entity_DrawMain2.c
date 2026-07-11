@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8002c920(int param_1)
+void Entity_DrawMain2(int param_1)
 
 {
   u8 bVar1;
@@ -23,7 +23,7 @@ void FUN_8002c920(int param_1)
       if (3 < bVar1) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     iVar6 = 1;
@@ -42,13 +42,13 @@ void FUN_8002c920(int param_1)
       sVar5 = 16000 - sVar4;
       iVar3 = 0;
       if (6 < DAT_800e7e7c) {
-        iVar3 = FUN_8007a980(0,6,1);
+        iVar3 = Entity_AllocByPoolId(0,6,1);
         if (iVar3 == 0) {
           iVar3 = 0;
         }
         else {
           *(s16 *)(iVar3 + 0x32) = 0;
-          FUN_80028e10(iVar3,0x1a);
+          Entity_InitBehavior(iVar3,0x1a);
         }
       }
       bVar1 = DAT_800e7e7c;
@@ -56,13 +56,13 @@ void FUN_8002c920(int param_1)
       *(s16 *)(iVar3 + 0x30) = sVar5;
       iVar3 = 0;
       if (6 < bVar1) {
-        iVar3 = FUN_8007a980(0,6,1);
+        iVar3 = Entity_AllocByPoolId(0,6,1);
         if (iVar3 == 0) {
           iVar3 = 0;
         }
         else {
           *(s16 *)(iVar3 + 0x32) = 0;
-          FUN_80028e10(iVar3,0x1a);
+          Entity_InitBehavior(iVar3,0x1a);
         }
       }
       sVar4 = sVar4 + 0x834;
@@ -79,13 +79,13 @@ void FUN_8002c920(int param_1)
     }
     iVar6 = 0;
     if (6 < DAT_800e7e7c) {
-      iVar6 = FUN_8007a980(0,6,1);
+      iVar6 = Entity_AllocByPoolId(0,6,1);
       if (iVar6 == 0) {
         iVar6 = 0;
       }
       else {
         *(s16 *)(iVar6 + 0x32) = 0;
-        FUN_80028e10(iVar6,0x1a);
+        Entity_InitBehavior(iVar6,0x1a);
       }
     }
     iVar6->pos_x = 100;
@@ -93,13 +93,13 @@ void FUN_8002c920(int param_1)
     *(s16 *)(iVar6 + 0x30) = 16000;
     iVar6 = 0;
     if (6 < bVar1) {
-      iVar6 = FUN_8007a980(0,6,1);
+      iVar6 = Entity_AllocByPoolId(0,6,1);
       if (iVar6 == 0) {
         iVar6 = 0;
       }
       else {
         *(s16 *)(iVar6 + 0x32) = 0;
-        FUN_80028e10(iVar6,0x1a);
+        Entity_InitBehavior(iVar6,0x1a);
       }
     }
     iVar6->pos_x = 0x76c;
@@ -125,13 +125,13 @@ LAB_8002cad0:
     if ((uVar2 & 0x1f) == 0) {
       iVar6 = 0;
       if (6 < DAT_800e7e7c) {
-        iVar6 = FUN_8007a980(0,6,1);
+        iVar6 = Entity_AllocByPoolId(0,6,1);
         if (iVar6 == 0) {
           iVar6 = 0;
         }
         else {
           *(s16 *)(iVar6 + 0x32) = 0;
-          FUN_80028e10(iVar6,0x1a);
+          Entity_InitBehavior(iVar6,0x1a);
         }
       }
       iVar6->pos_x = 100;
@@ -139,13 +139,13 @@ LAB_8002cad0:
       *(s16 *)(iVar6 + 0x30) = 16000;
       iVar6 = 0;
       if (6 < bVar1) {
-        iVar6 = FUN_8007a980(0,6,1);
+        iVar6 = Entity_AllocByPoolId(0,6,1);
         if (iVar6 == 0) {
           iVar6 = 0;
         }
         else {
           *(s16 *)(iVar6 + 0x32) = 0;
-          FUN_80028e10(iVar6,0x1a);
+          Entity_InitBehavior(iVar6,0x1a);
         }
       }
       iVar6->pos_x = 0x76c;

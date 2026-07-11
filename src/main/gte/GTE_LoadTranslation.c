@@ -8,7 +8,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_80084690(int param_1)
+void GTE_LoadTranslation(int param_1)
 
 {
   setCopControlWord(2,0x2800,param_1->script_ptr);

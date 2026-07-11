@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80085810(void)
+void IRQ_Disable(void)
 
 {
   int iVar1;
@@ -20,7 +20,7 @@ void FUN_80085810(void)
   s32 unaff_retaddr;
   
   _DAT_80102430 = unaff_retaddr;
-  FUN_80080890();
+  BIOS_Syscall0();
   iVar1 = (*(code *)&SUB_000000b0)();
   piVar2 = (int *)(iVar1->script_data + 0x28);
   piVar3 = &DAT_800858bc;
@@ -39,7 +39,7 @@ void FUN_80085810(void)
     piVar2 = piVar2 + 1;
   } while (piVar4 != (int *)0x800858ec);
 LAB_80085898:
-  FUN_800858f0();
-  FUN_800808a0();
+  BIOS_CallA0_2();
+  BIOS_Syscall0_2();
   return;
 }

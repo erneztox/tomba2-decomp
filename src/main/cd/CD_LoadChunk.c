@@ -6,13 +6,13 @@
 
 
 
-void FUN_80045080(s32 param_1,uint param_2)
+void CD_LoadChunk(s32 param_1,uint param_2)
 
 {
   int iVar1;
   
   iVar1 = (param_2 & 0xff) * 8;
-  FUN_8001dc40(param_1,*(s32 *)(&DAT_800be118 + iVar1),*(s32 *)(&DAT_800be11c + iVar1)
+  CD_LoadSectors(param_1,*(s32 *)(&DAT_800be118 + iVar1),*(s32 *)(&DAT_800be11c + iVar1)
               );
   return;
 }

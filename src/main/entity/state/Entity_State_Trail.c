@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_8006be88(int param_1)
+void Entity_State_Trail(int param_1)
 
 {
   s16 uVar1;
@@ -23,8 +23,8 @@ void FUN_8006be88(int param_1)
   s16 local_1e;
   
   if (param_1->move_mode < 2) {
-    iVar2 = FUN_800495dc(param_1,0,0x5a);
-    if ((iVar2 < 1) && (iVar3 = FUN_800495dc(param_1,0,0), iVar3 < 1)) {
+    iVar2 = Entity_CollisionWrap5(param_1,0,0x5a);
+    if ((iVar2 < 1) && (iVar3 = Entity_CollisionWrap5(param_1,0,0), iVar3 < 1)) {
       if (((iVar2 == -1) || (iVar3 == -1)) &&
          (((_DAT_1f8001a6 & 0xf00) == 0x100 || ((_DAT_1f8001a6 & 0xf00) == 0x200)))) {
         param_1->move_mode = 3;
@@ -51,21 +51,21 @@ void FUN_8006be88(int param_1)
       param_1->move_mode = 3;
       local_22 = *(s16 *)(param_1 + 0x32) + 0x5a;
       local_1e = param_1->pos_z;
-      FUN_8003116c(param_1->kind + 0xc,auStack_28,0xffffffb0);
-      FUN_80031470(2,auStack_28,param_1->flag_5E,param_1 + 0x68);
-      FUN_80074590(0x32,0,0);
+      Entity_SpawnWithPos(param_1->kind + 0xc,auStack_28,0xffffffb0);
+      Entity_SpawnSpecial(2,auStack_28,param_1->flag_5E,param_1 + 0x68);
+      Audio_PlaySoundEffect(0x32,0,0);
       iVar2 = 0;
       sVar4 = _g_EntityAngle;
       if (param_1->flag_5E != '\0') {
         do {
-          iVar3 = FUN_8007ab20();
+          iVar3 = Entity_AllocBackground03();
           if (iVar3 == 0) {
             return;
           }
           iVar3->pos_y = param_1->pos_y;
           *(s16 *)(iVar3 + 0x32) = *(s16 *)(param_1 + 0x32) + 0x5a;
           uVar1 = param_1->pos_z;
-          iVar3->callback = FUN_8006c608;
+          iVar3->callback = Entity_Behavior_Cam2;
           iVar3->kind = 10;
           iVar3->sub_type = (char)iVar2;
           iVar3->pos_z = uVar1;

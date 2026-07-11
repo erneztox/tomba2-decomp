@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80039978(int param_1)
+s32 Save_CursorNext(int param_1)
 
 {
   uint uVar1;

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8007ceec(int param_1,u16 *param_2,s16 *param_3)
+void GPU_SpriteDecode(int param_1,u16 *param_2,s16 *param_3)
 
 {
   u8 bVar1;

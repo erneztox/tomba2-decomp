@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_8004a118(int param_1)
+s32 Entity_SpawnItem2(int param_1)
 
 {
   int iVar1;
@@ -19,24 +19,24 @@ s32 FUN_8004a118(int param_1)
     if (_g_FrameCounter < 1) {
       return 0;
     }
-    iVar1 = FUN_800310f4(0x1f,0xffffff74);
+    iVar1 = Entity_SpawnNoPos(0x1f,0xffffff74);
     if (iVar1 != 0) {
       iVar1->alloc_flags = iVar1->alloc_flags | 0x80;
       iVar1->pos_x = param_1->pos_y;
       iVar1->pos_y = *(s16 *)(param_1 + 0x32);
       *(s16 *)(iVar1 + 0x30) = param_1->pos_z;
     }
-    FUN_80074590(0x28,0,0);
+    Audio_PlaySoundEffect(0x28,0,0);
     DAT_800bf882 = DAT_800bf882 + '\x01';
     if (DAT_800bf882 == '\x01') {
-      FUN_8004ed94(0x17,0x41);
+      UI_DrawElement(0x17,0x41);
       return 1;
     }
     if (DAT_800bf882 == '\x02') {
       if ((DAT_800bf91e == -1) || (uVar2 = 0x17, g_ItemCount < 8)) {
         uVar2 = 0xe;
       }
-      FUN_8004ed94(uVar2,0x41);
+      UI_DrawElement(uVar2,0x41);
       DAT_800bf882 = DAT_800bf882 + -2;
       param_1->sub_action = 0;
       param_1->action_state = param_1->action_state + '\x01';
@@ -46,7 +46,7 @@ s32 FUN_8004a118(int param_1)
   else if (param_1->action_state != '\x01') {
     return 0;
   }
-  iVar1 = FUN_80049f80(param_1);
+  iVar1 = UI_InventoryUpdate(param_1);
   if (iVar1 == 0) {
     return 0;
   }

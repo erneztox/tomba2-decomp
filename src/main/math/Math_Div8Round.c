@@ -6,7 +6,7 @@
 
 
 
-uint FUN_8004d7ec(int param_1,s8 param_2)
+uint Math_Div8Round(int param_1,s8 param_2)
 
 {
   s16 sVar1;

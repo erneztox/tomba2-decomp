@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800721dc(int param_1,s16 param_2,int param_3)
+void Entity_AnimSegment2(int param_1,s16 param_2,int param_3)
 
 {
   u8 bVar1;
@@ -21,7 +21,7 @@ void FUN_800721dc(int param_1,s16 param_2,int param_3)
     if (uVar2 == 0) {
       param_1->action_state = param_1->action_state + '\x01';
     }
-    iVar3 = FUN_80083e80((int)param_1->target_rot_y);
+    iVar3 = Math_Cos((int)param_1->target_rot_y);
     param_1->pos_y = param_2;
     iVar3 = iVar3 * param_1->bounds_size * 8;
   }
@@ -42,7 +42,7 @@ void FUN_800721dc(int param_1,s16 param_2,int param_3)
     if (uVar2 == 0) {
       param_1->action_state = param_1->action_state + '\x01';
     }
-    iVar3 = FUN_80083e80((int)param_1->target_rot_y);
+    iVar3 = Math_Cos((int)param_1->target_rot_y);
     param_1->pos_y = param_2;
     iVar3 = iVar3 * param_1->bounds_size * 0x10;
   }

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800892a4(int param_1)
+void MDEC_DecodeControl(int param_1)
 
 {
   u8 bVar1;
@@ -78,7 +78,7 @@ LAB_800894ac:
       return;
     }
     if (param_1->state == (code *)0x0) {
-      cVar2 = FUN_80087fa0(param_1);
+      cVar2 = MDEC_StateMachine3(param_1);
     }
     else {
       cVar2 = (param_1->state)(param_1);

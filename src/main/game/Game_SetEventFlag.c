@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8006f00c(uint param_1)
+void Game_SetEventFlag(uint param_1)
 
 {
   _g_EventFlags = _g_EventFlags | 1 << (param_1 & 0x1f);

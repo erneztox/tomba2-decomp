@@ -6,7 +6,7 @@
 
 
 
-void FUN_8004d79c(int param_1)
+void Inventory_SetBit(int param_1)
 
 {
   int iVar1;

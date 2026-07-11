@@ -1,5 +1,5 @@
 /**
- * @brief Advances entity script by one step: handles state transitions via FUN_80040e54
+ * @brief Advances entity script by one step: handles state transitions via Entity_SpriteAdvance
  * @note Original: func_80040FA0 at 0x80040FA0
  */
 // Entity_ScriptStep
@@ -7,13 +7,13 @@
 
 
 #include "tomba.h"
-s32 FUN_80040fa0(int param_1)
+s32 Entity_ScriptStep(int param_1)
 
 {
   u8 uVar1;
   s32 uVar2;
   
-  uVar2 = FUN_80040e54();
+  uVar2 = Entity_SpriteAdvance();
   switch(uVar2) {
   case 0:
     if (param_1->anim_check == '\x02') {

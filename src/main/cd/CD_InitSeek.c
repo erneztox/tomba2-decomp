@@ -6,11 +6,11 @@
 
 
 
-u8 * FUN_80086350(void)
+u8 * CD_InitSeek(void)
 
 {
-  FUN_800865c8(&DAT_800abdf4,8);
+  Mem_Zero3(&DAT_800abdf4,8);
   *DAT_800abdf0 = 0;
-  FUN_80085b50(3,FUN_8008639c);
+  CD_Dispatch08(3,CD_ProcessInterrupt);
   return &LAB_8008651c;
 }

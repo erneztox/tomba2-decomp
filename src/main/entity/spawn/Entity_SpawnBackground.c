@@ -7,13 +7,13 @@
 
 
 #include "tomba.h"
-void FUN_800534b0(int param_1,u8 param_2,int param_3,int param_4)
+void Entity_SpawnBackground(int param_1,u8 param_2,int param_3,int param_4)
 
 {
   u8 uVar1;
   int iVar2;
   
-  iVar2 = FUN_8007ab20();
+  iVar2 = Entity_AllocBackground03();
   if (iVar2 != 0) {
     iVar2->pos_y = param_1->pos_y;
     *(s16 *)(iVar2 + 0x32) = *(s16 *)(param_1 + 0x32);

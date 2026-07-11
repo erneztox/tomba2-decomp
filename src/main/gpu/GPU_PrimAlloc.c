@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80082504(u16 *param_1,uint param_2)
+s32 GPU_PrimAlloc(u16 *param_1,uint param_2)
 
 {
   u16 uVar1;
@@ -53,13 +53,13 @@ s32 FUN_80082504(u16 *param_1,uint param_2)
     _DAT_80100afc = *(s32 *)param_1;
     _DAT_80100b00 = *(s32 *)(param_1 + 2);
     _DAT_80100b08 = 0x3ffffff;
-    _DAT_80100b0c = FUN_80082cb0(3);
+    _DAT_80100b0c = GPU_SendCommandAndRead(3);
     _DAT_80100b0c = _DAT_80100b0c | 0xe3000000;
-    _DAT_80100b10 = FUN_80082cb0(4);
+    _DAT_80100b10 = GPU_SendCommandAndRead(4);
     _DAT_80100b10 = _DAT_80100b10 | 0xe4000000;
-    _DAT_80100b14 = FUN_80082cb0(5);
+    _DAT_80100b14 = GPU_SendCommandAndRead(5);
     _DAT_80100b14 = _DAT_80100b14 | 0xe5000000;
   }
-  FUN_80082c68(&DAT_80100ae0);
+  GPU_InitDrawEnv(&DAT_80100ae0);
   return 0;
 }

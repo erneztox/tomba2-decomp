@@ -6,7 +6,7 @@
 
 
 
-u8 FUN_80087d84(s32 param_1,int param_2,int param_3)
+u8 MDEC_SetParam2(s32 param_1,int param_2,int param_3)
 
 {
   u8 bVar1;

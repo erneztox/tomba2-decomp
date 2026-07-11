@@ -8,23 +8,23 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8004fe84(void)
+void UI_PanelDispatch(void)
 
 {
   if (DAT_800bf548 == 1) {
     if (DAT_800bf549 == 1) {
-      FUN_8004f474(&DAT_800bf548);
+      UI_ListUpdate(&DAT_800bf548);
     }
     else if (DAT_800bf549 < 2) {
       if (DAT_800bf549 == 0) {
-        FUN_8004f430(&DAT_800bf548);
+        UI_UpdateElement(&DAT_800bf548);
       }
     }
     else if (DAT_800bf549 == 2) {
-      FUN_8004f514(&DAT_800bf548);
+      UI_PanelDraw(&DAT_800bf548);
     }
     else if (DAT_800bf549 == 3) {
-      FUN_8004f6d0(&DAT_800bf548);
+      UI_MenuUpdate(&DAT_800bf548);
     }
     if ((DAT_800bf549 == 0) && (_DAT_800bf552 == 0)) {
       g_EventInput = g_EventInput & 0xfe;

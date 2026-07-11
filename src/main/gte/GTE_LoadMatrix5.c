@@ -8,7 +8,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_80084660(s32 *param_1)
+void GTE_LoadMatrix5(s32 *param_1)
 
 {
   setCopControlWord(2,0,*param_1);

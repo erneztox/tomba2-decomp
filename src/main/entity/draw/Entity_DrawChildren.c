@@ -5,13 +5,13 @@
 // Entity_DrawChildren
 
 
-// FUN_8003CDD8
+// Entity_DrawChildren
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8003cdd8(int param_1,s32 param_2)
+void Entity_DrawChildren(int param_1,s32 param_2)
 
 {
   s32 in_zero;
@@ -88,7 +88,7 @@ void FUN_8003cdd8(int param_1,s32 param_2)
         if ((param_1->sprite_flags & 0xf) == 4) {
           iVar1 = _g_EntityBuffer + *(s8*)(iVar2 + 0x3f) * 4;
         }
-        FUN_8003f698(*(s32 *)(iVar2 + 0x40),iVar1,param_2);
+        Entity_SubmitSpriteToOT(*(s32 *)(iVar2 + 0x40),iVar1,param_2);
         in_at = extraout_at;
       }
       iVar9 = iVar9 + 1;

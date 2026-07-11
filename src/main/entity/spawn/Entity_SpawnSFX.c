@@ -7,16 +7,16 @@
 
 
 #include "tomba.h"
-int FUN_8007413c(int param_1)
+int Entity_SpawnSFX(int param_1)
 
 {
   s8 cVar1;
   int iVar2;
   int iVar3;
   
-  iVar2 = FUN_80072ddc(param_1,0,5,4);
+  iVar2 = Entity_SpawnChild(param_1,0,5,4);
   if (iVar2 != 0) {
-    iVar2->callback = FUN_8004c930;
+    iVar2->callback = Entity_Behavior_NPC;
     iVar2->pos_y = param_1->pos_y;
     iVar3 = (uint)param_1->bounds_min_y << 0x10;
     *(s16 *)(iVar2 + 0x32) =

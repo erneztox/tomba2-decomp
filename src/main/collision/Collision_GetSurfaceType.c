@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_8004960c(int param_1,int param_2)
+s32 Collision_GetSurfaceType(int param_1,int param_2)
 
 {
   uint uVar1;

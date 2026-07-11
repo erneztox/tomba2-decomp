@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8003fc78(int param_1)
+void Entity_SetAngleFromState(int param_1)
 
 {
   param_1->rot_z = 0;

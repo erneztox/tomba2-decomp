@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80040410(int param_1,uint param_2)
+s32 Entity_AllocSubEntities(int param_1,uint param_2)
 
 {
   s32 uVar1;
@@ -38,7 +38,7 @@ s32 FUN_80040410(int param_1,uint param_2)
       puVar5 = &DAT_800a3b1c;
       iVar4 = param_1;
       do {
-        iVar2 = FUN_8007aae8();
+        iVar2 = Entity_AllocFromFreeList();
         iVar4->sprite_ptr1 = iVar2;
         *(s16 *)(iVar2 + 6) = (s16)iVar6 + -1;
         **(s16 **)(iVar4 + 0xc0) = *puVar5;
@@ -51,7 +51,7 @@ s32 FUN_80040410(int param_1,uint param_2)
         psVar3 = (s16 *)(&DAT_800a3b28 + iVar7);
         *(s16 *)(iVar4->sprite_ptr1 + 0xc) = 0;
         iVar7 = iVar7 + 2;
-        FUN_80051b04(iVar4->sprite_ptr1,1,(int)*psVar3);
+        Entity_SetSubEntityData(iVar4->sprite_ptr1,1,(int)*psVar3);
         iVar4 = iVar4 + 4;
       } while (iVar6 < (int)(uint)param_1->counter1);
     }

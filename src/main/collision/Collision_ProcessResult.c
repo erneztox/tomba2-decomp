@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80048034(void)
+void Collision_ProcessResult(void)
 
 {
   s32 bVar1;

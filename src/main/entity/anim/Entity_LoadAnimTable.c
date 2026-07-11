@@ -7,14 +7,14 @@
 
 
 #include "tomba.h"
-void FUN_80054b34(int param_1,int param_2,int param_3)
+void Entity_LoadAnimTable(int param_1,int param_2,int param_3)
 
 {
   int iVar1;
   u8 uVar2;
   s32 uVar3;
   
-  iVar1 = FUN_800535d4();
+  iVar1 = Entity_GetState176();
   if (iVar1 - 7U < 3) {
     uVar2 = (&PTR_DAT_800a4544)[param_2][param_3];
     if (param_2 == 0) {
@@ -34,6 +34,6 @@ void FUN_80054b34(int param_1,int param_2,int param_3)
       uVar3 = 5;
     }
   }
-  FUN_80054d14(param_1,uVar2,uVar3);
+  Entity_LoadAnimIfChanged(param_1,uVar2,uVar3);
   return;
 }

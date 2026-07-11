@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8008ec60(s16 param_1,s16 param_2,s8 param_3)
+void Audio_ChannelVoice(s16 param_1,s16 param_2,s8 param_3)
 
 {
   u8 bVar1;
@@ -18,7 +18,7 @@ void FUN_8008ec60(s16 param_1,s16 param_2,s8 param_3)
   if (param_3 == '\x14') {
     *(u8 *)((int)puVar3 + 0x1b) = 0x14;
     puVar3->flags = 1;
-    uVar2 = FUN_80090160();
+    uVar2 = Audio_AllocVoice();
     puVar3[0x24] = uVar2;
     puVar3->flags = *puVar3;
   }
@@ -28,13 +28,13 @@ void FUN_8008ec60(s16 param_1,s16 param_2,s8 param_3)
       *(u8 *)((int)puVar3 + 0x1b) = 0x1e;
       if (bVar1 != 0) {
         if (0x7e < bVar1) {
-          FUN_80090160();
+          Audio_AllocVoice();
           puVar3[0x24] = 0;
           *puVar3 = puVar3->flags;
           return;
         }
         *(u8 *)((int)puVar3 + 0x1d) = bVar1 - 1;
-        uVar2 = FUN_80090160();
+        uVar2 = Audio_AllocVoice();
         puVar3[0x24] = uVar2;
         if (*(s8*)((int)puVar3 + 0x1d) != '\0') {
           *puVar3 = puVar3->flags;
@@ -49,7 +49,7 @@ void FUN_8008ec60(s16 param_1,s16 param_2,s8 param_3)
       *(s8*)((int)puVar3 + 0x1b) = param_3;
       *(s8*)((int)puVar3 + 0x1f) = *(s8*)((int)puVar3 + 0x1f) + '\x01';
     }
-    uVar2 = FUN_80090160((int)param_1,(int)param_2);
+    uVar2 = Audio_AllocVoice((int)param_1,(int)param_2);
     puVar3[0x24] = uVar2;
   }
   return;

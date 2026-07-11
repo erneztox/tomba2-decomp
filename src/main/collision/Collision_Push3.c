@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_8004602c(u16 param_1,s16 param_2,s16 param_3)
+int Collision_Push3(u16 param_1,s16 param_2,s16 param_3)
 
 {
   u16 uVar1;
@@ -27,7 +27,7 @@ int FUN_8004602c(u16 param_1,s16 param_2,s16 param_3)
     local_30 = param_1;
   }
   uVar5 = 0;
-  sVar2 = FUN_80048360();
+  sVar2 = Collision_CheckResult();
   uVar7 = (uint)_g_CollisionResult->kind;
   _g_CollisionData = (u16 *)(_DAT_1f8001d8 + (uint)_g_CollisionResult->flags * 8);
   uVar1 = _g_CollisionResult->sub_type;
@@ -35,10 +35,10 @@ int FUN_8004602c(u16 param_1,s16 param_2,s16 param_3)
     do {
       uVar6 = uVar5;
       if (((*_g_CollisionData & param_1) != 0) && ((*_g_CollisionData & local_30) != 0)) {
-        iVar3 = FUN_800462e4((int)sVar2,uVar1 >> 8,iVar4,(int)param_3);
+        iVar3 = Collision_Main((int)sVar2,uVar1 >> 8,iVar4,(int)param_3);
         if ((iVar4 != 0) && (iVar3 < 0)) {
           _DAT_1f8001be = _DAT_1f8001be + 0x14;
-          iVar3 = FUN_800462e4((int)sVar2,uVar1 >> 8,iVar4,(int)param_3);
+          iVar3 = Collision_Main((int)sVar2,uVar1 >> 8,iVar4,(int)param_3);
           _DAT_1f8001be = _DAT_1f8001be + -0x14;
         }
         uVar6 = uVar7;

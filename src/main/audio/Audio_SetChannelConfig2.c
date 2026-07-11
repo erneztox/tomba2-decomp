@@ -6,10 +6,10 @@
 
 
 
-void FUN_800750a4(u8 param_1)
+void Audio_SetChannelConfig2(u8 param_1)
 
 {
-  FUN_800750d8(param_1,1);
+  Sys_OverlayDispatch(param_1,1);
   DAT_1f80023b = param_1;
   return;
 }

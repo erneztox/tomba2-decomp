@@ -9,7 +9,7 @@
 /* WARNING: Removing unreachable block (ram,0x800532d0) */
 
 #include "tomba.h"
-s32 FUN_800532a0(int param_1)
+s32 Entity_StateDispatch3(int param_1)
 
 {
   u16 uVar1;

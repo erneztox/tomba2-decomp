@@ -7,15 +7,15 @@
 
 
 #include "tomba.h"
-s32 FUN_8008c1ec(s32 param_1,s32 param_2,s32 param_3)
+s32 CD_OpenFile(s32 param_1,s32 param_2,s32 param_3)
 
 {
   int iVar1;
   u8 auStack_18->counter1;
   
-  FUN_8008a00c(param_2,auStack_18);
-  FUN_80089bac(2,auStack_18,0);
-  FUN_8008c960(param_1,param_3,0x80);
-  iVar1 = FUN_8008cafc(0,0);
+  CD_CalcSector(param_2,auStack_18);
+  CD_SendCmdRetry(2,auStack_18,0);
+  CD_SyncLoop(param_1,param_3,0x80);
+  iVar1 = CD_CheckTimeout(0,0);
   return iVar1 == 0;
 }

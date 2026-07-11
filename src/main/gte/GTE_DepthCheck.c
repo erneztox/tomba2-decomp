@@ -9,7 +9,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_800317cc(s16 param_1)
+s32 GTE_DepthCheck(s16 param_1)
 
 {
   copFunction(2,0x180001);

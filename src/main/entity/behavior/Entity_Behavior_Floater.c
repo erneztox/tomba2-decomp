@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80029530(int param_1)
+void Entity_Behavior_Floater(int param_1)
 
 {
   u8 bVar1;
@@ -22,7 +22,7 @@ void FUN_80029530(int param_1)
       if (3 < bVar1) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar1 != 0) {
@@ -33,7 +33,7 @@ void FUN_80029530(int param_1)
     *(void ***)(param_1 + 0x50) = &PTR_DAT_800a1ecc;
     *(s32 *)(param_1 + 0x48) = 0;
     *(s32 *)(param_1 + 0x4c) = 0;
-    FUN_80074590(8,0,0);
+    Audio_PlaySoundEffect(8,0,0);
   }
   param_1->sprite_data = *(int *)(param_1 + 0x40);
   if (*(int *)(param_1 + 0x40) == 0) {
@@ -42,14 +42,14 @@ void FUN_80029530(int param_1)
   else {
     iVar2 = (int)_DAT_1f800168;
     param_1->pos_y = _g_PlayerPosY + 10;
-    iVar2 = FUN_80083f50(iVar2);
+    iVar2 = Math_CosGTE(iVar2);
     iVar3 = (int)_DAT_1f800168;
     param_1->pos_x = _g_PlayerPosX + (s16)((uint)(iVar2 * 3) >> 8);
-    iVar2 = FUN_80083e80(iVar3);
+    iVar2 = Math_Cos(iVar3);
     *(s16 *)(param_1 + 0x30) = _g_PlayerPosZ + (s16)((uint)(iVar2 * 3) >> 8);
-    iVar2 = FUN_8002b278(param_1);
+    iVar2 = Entity_CheckVisibility(param_1);
     if (iVar2 == 0) {
-      FUN_80031744(param_1);
+      Entity_AdvanceAnimByte(param_1);
     }
   }
   return;

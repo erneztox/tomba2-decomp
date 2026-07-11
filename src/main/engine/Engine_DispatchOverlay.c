@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80074f24(uint param_1)
+void Engine_DispatchOverlay(uint param_1)
 
 {
   void *puVar1;
@@ -32,7 +32,7 @@ void FUN_80074f24(uint param_1)
         uVar2 = puVar1[param_1 & 0xff];
       }
     }
-    FUN_800750d8(uVar2,1);
+    Sys_OverlayDispatch(uVar2,1);
     DAT_800be22b = 0;
     DAT_1f80023b = uVar2;
   }

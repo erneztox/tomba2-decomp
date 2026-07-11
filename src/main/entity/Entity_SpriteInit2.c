@@ -9,14 +9,14 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80042bdc(int param_1)
+s32 Entity_SpriteInit2(int param_1)
 
 {
   s16 sVar1;
   s16 sVar2;
   
   if (param_1->event_id == 0) {
-    FUN_8006e1c0(1);
+    Entity_CopyStateData(1);
   }
   else {
     g_CameraEntity = 1;

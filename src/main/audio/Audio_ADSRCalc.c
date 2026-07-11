@@ -6,7 +6,7 @@
 
 
 
-uint FUN_80094474(s16 param_1,int param_2,u16 param_3,uint param_4)
+uint Audio_ADSRCalc(s16 param_1,int param_2,u16 param_3,uint param_4)
 
 {
   int iVar1;

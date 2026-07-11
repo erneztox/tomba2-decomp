@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8007263c(int param_1)
+void Entity_UpdateLifecycle(int param_1)
 
 {
   u8 bVar1;
@@ -28,7 +28,7 @@ void FUN_8007263c(int param_1)
     }
   }
   else if (bVar1 < 4) {
-    FUN_8007a624();
+    Entity_Dealloc();
   }
   return;
 }

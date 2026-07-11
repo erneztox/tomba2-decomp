@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-uint FUN_80048360(void)
+uint Collision_CheckResult(void)
 
 {
   u16 uVar1;

@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8002bc9c(int param_1)
+void GTE_ProjectMain(int param_1)
 
 {
   s32 bVar1;
@@ -49,11 +49,11 @@ void FUN_8002bc9c(int param_1)
     setCopControlWord(2,0xb800,0);
     iVar10 = 0;
     do {
-      FUN_80085480(param_1 + 0x48,0x1f800000);
+      GTE_LoadRotMatrixFromSVec(param_1 + 0x48,0x1f800000);
       local_38 = (uint)DAT_800a1cd4 << 2;
       local_34 = (uint)DAT_800a1cd5 << 2;
       local_30 = (uint)DAT_800a1cd6 << 2;
-      FUN_80084520(0x1f800000,&local_38);
+      GTE_TransformVec(0x1f800000,&local_38);
       setCopControlWord(2,0,_g_GTE_WorkF8);
       setCopControlWord(2,0x800,_DAT_1f8000fc);
       setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -102,7 +102,7 @@ void FUN_8002bc9c(int param_1)
       setCopControlWord(2,0x2800,_g_GTE_Data14);
       setCopControlWord(2,0x3000,_g_GTE_Data18);
       setCopControlWord(2,0x3800,_g_GTE_Data1C);
-      FUN_80027768(uVar11,0,(int)*(s16 *)(param_1 + 0x32),0);
+      Entity_SubmitQuadToOT(uVar11,0,(int)*(s16 *)(param_1 + 0x32),0);
       iVar10 = iVar10 + 1;
       param_1->velocity_y = param_1->velocity_y + 0x400;
       in_at = extraout_at_00;
@@ -145,11 +145,11 @@ void FUN_8002bc9c(int param_1)
       }
     }
     if (bVar1) {
-      FUN_80031780(param_1);
+      Entity_AdvanceAnimScript(param_1);
     }
     else {
       _DAT_1f800088 = _g_GTE_Work84;
-      uVar11 = FUN_80027a4c(param_1->scale_y,*(s32 *)(param_1 + 0x44));
+      uVar11 = Entity_ProcessAnimFrame(param_1->scale_y,*(s32 *)(param_1 + 0x44));
       param_1->anim_data = uVar11;
     }
   }

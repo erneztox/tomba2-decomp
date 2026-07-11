@@ -8,7 +8,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-s32 * FUN_80084470(s32 *param_1,s32 *param_2,s32 *param_3)
+s32 * GTE_MulMatrixVec(s32 *param_1,s32 *param_2,s32 *param_3)
 
 {
   s32 uVar1;

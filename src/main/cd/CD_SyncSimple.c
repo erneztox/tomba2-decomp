@@ -6,9 +6,9 @@
 
 
 
-void FUN_80089b44(void)
+void CD_SyncSimple(void)
 
 {
-  FUN_8008a6ec();
+  CD_Sync();
   return;
 }

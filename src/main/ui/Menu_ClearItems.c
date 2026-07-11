@@ -1,16 +1,16 @@
 /**
- * @brief Clears all 3 menu item slots by calling FUN_80036a14 with modes 0,1,2
+ * @brief Clears all 3 menu item slots by calling Game_StateLoad with modes 0,1,2
  * @note Original: func_80036AE8 at 0x80036AE8
  */
 // Menu_ClearItems
 
 
 
-void FUN_80036ae8(s32 param_1)
+void Menu_ClearItems(s32 param_1)
 
 {
-  FUN_80036a14(param_1,0);
-  FUN_80036a14(param_1,1);
-  FUN_80036a14(param_1,2);
+  Game_StateLoad(param_1,0);
+  Game_StateLoad(param_1,1);
+  Game_StateLoad(param_1,2);
   return;
 }

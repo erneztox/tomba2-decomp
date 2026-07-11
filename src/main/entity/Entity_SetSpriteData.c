@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_800416a8(int param_1,s16 param_2,s32 param_3)
+s32 Entity_SetSpriteData(int param_1,s16 param_2,s32 param_3)
 
 {
   s32 uVar1;

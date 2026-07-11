@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8002bafc(int param_1)
+void Entity_Behavior_DustTrail(int param_1)
 
 {
   u8 bVar1;
@@ -41,11 +41,11 @@ void FUN_8002bafc(int param_1)
     param_1->state = 1;
     do {
       iVar7 = iVar7 + 1;
-      iVar5 = FUN_8009a450();
+      iVar5 = Math_Random();
       *psVar9 = sVar2 + (s16)((uint)(iVar5 + -0x4000) >> 8);
-      iVar5 = FUN_8009a450();
+      iVar5 = Math_Random();
       puVar6[-2] = sVar3 + (s16)((uint)(iVar5 + -0x4000) >> 8);
-      iVar5 = FUN_8009a450();
+      iVar5 = Math_Random();
       puVar6[-1] = sVar4 + (s16)((uint)(iVar5 + -0x4000) >> 8);
       *puVar6 = 0x100;
       puVar6 = puVar6 + 4;
@@ -59,22 +59,22 @@ void FUN_8002bafc(int param_1)
     psVar9 = param_1->sprite_y;
     do {
       iVar7 = iVar7 + 1;
-      iVar5 = FUN_8009a450();
+      iVar5 = Math_Random();
       *psVar8 = *psVar8 + (s16)(iVar5 + -0x4000 >> 0xb);
-      iVar5 = FUN_8009a450();
+      iVar5 = Math_Random();
       psVar8 = psVar8 + 4;
       psVar9->flags = psVar9->flags + (s16)(iVar5 + -0x4000 >> 0xb);
       *psVar9 = *psVar9 + -0x12;
       psVar9 = psVar9 + 4;
     } while (iVar7 < 7);
-    iVar7 = FUN_8002b278(param_1);
+    iVar7 = Entity_CheckVisibility(param_1);
     if (iVar7 != 0) {
       return;
     }
-    FUN_80031780(param_1);
+    Entity_AdvanceAnimScript(param_1);
     return;
   }
 LAB_8002bc68:
-  FUN_8007a624(param_1);
+  Entity_Dealloc(param_1);
   return;
 }

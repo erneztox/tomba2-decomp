@@ -1,7 +1,7 @@
 /**
  * @brief Plays a sound effect with volume and pan parameters.
  *        Routes to either global or level-specific sound tables.
- *        Opcodes >= 0x70 handle BGM/SE bank switching via FUN_80074bf8.
+ *        Opcodes >= 0x70 handle BGM/SE bank switching via Audio_SetBank.
  * @note Original: func_80074590 at 0x80074590
  */
 // Audio_PlaySoundEffect
@@ -35,21 +35,21 @@ s32 Audio_PlaySoundEffect(uint param_1,s8 param_2,s8 param_3)
     param_1 = param_1 & 0xff;
     if (0x6f < param_1) {
       switch(param_1) {
-      case 0x70: FUN_80074bf8(2);  return 0;
-      case 0x71: FUN_80074bf8(3);  return 0;
-      case 0x72: FUN_80074bf8(4);  return 0;
-      case 0x73: FUN_80074bf8(5);  return 0;
-      case 0x74: FUN_80074bf8(6);  return 0;
-      case 0x75: FUN_80074bf8(7);  return 0;
+      case 0x70: Audio_SetBank(2);  return 0;
+      case 0x71: Audio_SetBank(3);  return 0;
+      case 0x72: Audio_SetBank(4);  return 0;
+      case 0x73: Audio_SetBank(5);  return 0;
+      case 0x74: Audio_SetBank(6);  return 0;
+      case 0x75: Audio_SetBank(7);  return 0;
       case 0x76:
-      case 0x7a: FUN_80074bf8(10); return 0;
+      case 0x7a: Audio_SetBank(10); return 0;
       case 0x77:
-      case 0x7b: FUN_80074bf8(0xb); return 0;
+      case 0x7b: Audio_SetBank(0xb); return 0;
       case 0x78:
-      case 0x7c: FUN_80074bf8(0xc); return 0;
-      case 0x79: FUN_80074bf8(0xd); return 0;
+      case 0x7c: Audio_SetBank(0xc); return 0;
+      case 0x79: Audio_SetBank(0xd); return 0;
       default:   return 0;
-      case 0x7f: FUN_80074eec();   return 0;
+      case 0x7f: Audio_ResetSystem();   return 0;
       }
     }
     // Global sound table
@@ -77,7 +77,7 @@ LAB_8007472c:
   }
   sVar1 = 0;
 LAB_800747b8:
-  uVar3 = FUN_80075e04(cVar5,pcVar6->flags,pcVar6->flags,pcVar6->flags | bVar4,(int)pcVar6->flags + (int)param_2,
+  uVar3 = Audio_SPUCommand(cVar5,pcVar6->flags,pcVar6->flags,pcVar6->flags | bVar4,(int)pcVar6->flags + (int)param_2,
                        pcVar6->flags,(int)sVar1,(int)sVar1);
   return uVar3;
 }

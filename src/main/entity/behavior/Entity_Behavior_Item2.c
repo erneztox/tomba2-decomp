@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8004bb38(u8 *param_1)
+void Entity_Behavior_Item2(u8 *param_1)
 
 {
   u8 bVar1;
@@ -29,15 +29,15 @@ void FUN_8004bb38(u8 *param_1)
         else if (param_1->behavior_state != '\x01') {
           return;
         }
-        FUN_80051614(param_1,param_1 + 0x88,0,0);
+        GTE_LoadMatrix(param_1,param_1 + 0x88,0,0);
         cVar2 = DAT_800e7e81;
         param_1->flags = DAT_800e7e81;
         if (cVar2 != '\0') {
-          FUN_80077efc(param_1);
+          Sprite_Alloc3(param_1);
         }
       }
       else if (param_1->flag_5E == '\x01') {
-        FUN_8004b788(param_1);
+        Entity_Behavior_Talk2(param_1);
       }
     }
   }
@@ -52,7 +52,7 @@ void FUN_8004bb38(u8 *param_1)
       else {
         uVar4 = 0x17;
       }
-      iVar3 = FUN_80051b70(param_1,1,uVar4);
+      iVar3 = Entity_InitSubEntity(param_1,1,uVar4);
       if (iVar3 == 0) {
         param_1->bounds_min_x = 0x46;
         param_1->bounds_size = 0x8c;
@@ -67,11 +67,11 @@ void FUN_8004bb38(u8 *param_1)
   }
   else if (bVar1 == 2) {
     if (param_1->sub_type == '\0') {
-      FUN_8004b9c8(param_1);
+      Entity_Behavior_Collect(param_1);
     }
   }
   else if (bVar1 == 3) {
-    FUN_8007a624(param_1);
+    Entity_Dealloc(param_1);
   }
   return;
 }

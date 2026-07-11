@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s8 FUN_80040e54(int param_1,int param_2)
+s8 Entity_SpriteAdvance(int param_1,int param_2)
 
 {
   u16 uVar1;
@@ -22,13 +22,13 @@ s8 FUN_80040e54(int param_1,int param_2)
   uVar2 = (int)(s16)uVar1 & 0xe000;
   if (uVar2 == 0x6000) {
     if (param_2 != 0) {
-      FUN_80040de0(param_1,puVar3 + 0xc);
+      Entity_InitScriptData(param_1,puVar3 + 0xc);
       goto LAB_80040f7c;
     }
     uVar4 = *(s32 *)(puVar3 + 10);
 LAB_80040f54:
     cVar5 = cVar5 + '\x01';
-    FUN_80040de0(param_1,uVar4);
+    Entity_InitScriptData(param_1,uVar4);
   }
   else {
     if (0x6000 < uVar2) {
@@ -53,7 +53,7 @@ LAB_80040f54:
     if (uVar2 != 0x2000) {
       if (uVar2 < 0x2001) {
         if (uVar2 == 0) {
-          FUN_80040de0(param_1,puVar3 + 4);
+          Entity_InitScriptData(param_1,puVar3 + 4);
         }
         goto LAB_80040f7c;
       }
@@ -63,7 +63,7 @@ LAB_80040f54:
         goto LAB_80040f54;
       }
     }
-    FUN_80040de0(param_1,puVar3 + 8);
+    Entity_InitScriptData(param_1,puVar3 + 8);
   }
 LAB_80040f7c:
   if (((int)(s16)uVar1 & 0x800U) != 0) {

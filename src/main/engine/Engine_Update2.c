@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8003e030(void)
+void Engine_Update2(void)
 
 {
   s32 bVar1;
@@ -25,11 +25,11 @@ void FUN_8003e030(void)
     DAT_800a3b10 = DAT_800a3b10 + 0x88;
     DAT_800a3b14 = DAT_800a3b14 + 0x20;
     iVar7 = _DAT_1f800094 * 0x180 >> 8;
-    iVar4 = FUN_80083f50();
-    iVar5 = FUN_80083e80(DAT_800a3b10);
+    iVar4 = Math_CosGTE();
+    iVar5 = Math_Cos(DAT_800a3b10);
     puVar2 = _g_OT_Buffer;
     uVar8 = 0;
-    FUN_80083db0(_g_OT_Buffer,0);
+    GPU_SetupPrimitive2(_g_OT_Buffer,0);
     puVar3 = _g_EntityBuffer;
     bVar1 = DAT_1f800135 == '\0';
     *puVar2 = *puVar2 & 0xff000000 | *_g_EntityBuffer & 0xffffff;
@@ -47,15 +47,15 @@ void FUN_8003e030(void)
       *(s16 *)(puVar2 + 2) = (s16)uVar8 + (s16)(iVar4 * iVar7 * 3 >> 0x12);
       *(s16 *)(puVar2 + 4) = 0x40;
       *(s16 *)((int)puVar2 + 0x12) = 0x100;
-      FUN_80083cc0(puVar2);
-      FUN_80083c70(puVar2,1);
+      GPU_SetTilePrimHeader(puVar2);
+      Entity_SetFlagBit1(puVar2,1);
       puVar3 = _g_EntityBuffer;
       *puVar2 = *puVar2 & 0xff000000 | *_g_EntityBuffer & 0xffffff;
       puVar6 = puVar2 + 5;
       _g_OT_Buffer = puVar6;
       *puVar3 = *puVar3 & 0xff000000 | (uint)puVar2 & 0xffffff;
-      FUN_80083de0(puVar6,1,1,(uint)bVar1 << 4 | (uVar8 & 0x3ff) >> 6 | 0x100,0);
-      FUN_80083c30(_g_EntityBuffer,puVar6);
+      GPU_SetupDrawMode2(puVar6,1,1,(uint)bVar1 << 4 | (uVar8 & 0x3ff) >> 6 | 0x100,0);
+      OT_LinkPrimitives(_g_EntityBuffer,puVar6);
       _g_OT_Buffer = puVar2 + 8;
       uVar8 = uVar8 + 0x40;
     } while ((uVar8 & 0xffff) < 0x140);

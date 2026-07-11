@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80037e44(int param_1)
+void Entity_DrawMain3(int param_1)
 
 {
   s16 *psVar1;
@@ -47,7 +47,7 @@ void FUN_80037e44(int param_1)
     local_3c = CONCAT22(local_3c._2_2_,*(s16 *)(puVar9 + 6));
     psVar1 = (s16 *)(puVar9 + 8);
     puVar9 = puVar9 + 10;
-    FUN_8007e1b8(&local_40,(&PTR_DAT_80017334)[*psVar1],*(s32 *)(param_1 + 4),&local_48);
+    GPU_SpriteDrawMain(&local_40,(&PTR_DAT_80017334)[*psVar1],*(s32 *)(param_1 + 4),&local_48);
   } while (iVar11 < 6);
   if (param_1->counter1 == '\0') {
     iVar11 = 0;
@@ -62,11 +62,11 @@ void FUN_80037e44(int param_1)
         local_3c = CONCAT22(local_3c._2_2_,*(s16 *)(puVar9 + 6));
         psVar1 = (s16 *)(puVar9 + 8);
         puVar9 = puVar9 + 10;
-        FUN_8007e1b8(&local_40,(&PTR_DAT_80017334)[*psVar1],*(s32 *)(param_1 + 4),&local_48);
+        GPU_SpriteDrawMain(&local_40,(&PTR_DAT_80017334)[*psVar1],*(s32 *)(param_1 + 4),&local_48);
       } while (iVar11 < 2);
     }
     else {
-      iVar11 = FUN_800368d0(param_1,*(u8 *)(param_1 + 0x1f),*(u8 *)(param_1 + 0x1d))
+      iVar11 = Entity_CheckLoop(param_1,*(u8 *)(param_1 + 0x1f),*(u8 *)(param_1 + 0x1d))
       ;
       if ((iVar11 == 999) || ((&DAT_800a2be8)[iVar11 * 0xc] != '\0')) {
         local_3e = (u16)*(u8 *)(param_1 + 0x1c) * 0x14 + 0x39;
@@ -82,13 +82,13 @@ void FUN_80037e44(int param_1)
       local_46 = 0;
       local_47 = (u8)local_38;
       local_3c = 0;
-      FUN_8007e1b8(&local_40,PTR_DAT_800174c8,*(s32 *)(param_1 + 4),&local_48);
+      GPU_SpriteDrawMain(&local_40,PTR_DAT_800174c8,*(s32 *)(param_1 + 4),&local_48);
     }
     if (*(s8*)(param_1 + 0x27) != '\0') {
-      FUN_8003791c(param_1,0x14);
+      Entity_DrawFull(param_1,0x14);
     }
     if (*(s8*)(param_1 + 0x27) == '\x02') {
-      FUN_80037b6c(param_1,0x14);
+      Entity_DrawUI2(param_1,0x14);
     }
     iVar11 = 0x30;
     iVar12 = 0;
@@ -98,21 +98,21 @@ void FUN_80037e44(int param_1)
       if ((int)(local_30 - (uint)*(u8 *)(param_1 + 0x1e)) <= iVar12) break;
       iVar10 = 0;
       do {
-        uVar4 = FUN_800368d0(param_1,iVar12 + (uint)*(u8 *)(param_1 + 0x1e),iVar10);
+        uVar4 = Entity_CheckLoop(param_1,iVar12 + (uint)*(u8 *)(param_1 + 0x1e),iVar10);
         if (((int)uVar4 < 0) || (uVar4 == 999)) break;
         if ((&DAT_800a2be8)[uVar4 * 0xc] == '\0') {
-          iVar5 = FUN_800349a4(param_1,uVar4,1);
+          iVar5 = Event_Check6(param_1,uVar4,1);
           uVar7 = 8;
           if (iVar5 == 0) {
             uVar7 = 4;
           }
-          FUN_800376ec(param_1,(int)(s16)uVar4,(int)(s16)iVar10,(int)(s16)iVar11,uVar7,
+          Entity_DrawChild2_2(param_1,(int)(s16)uVar4,(int)(s16)iVar10,(int)(s16)iVar11,uVar7,
                        uVar8 + 3);
           uVar7 = 0xab;
           if (iVar10 == 0) {
             uVar7 = 0x1b;
           }
-          FUN_8007e938(*(s32 *)(param_1 + 4),uVar7,iVar11 + 4,uVar8 + 4,
+          GPU_RenderSprite2(*(s32 *)(param_1 + 4),uVar7,iVar11 + 4,uVar8 + 4,
                        (int)*(s16 *)(&DAT_800a24f4 + uVar4 * 2));
           cVar2 = (&DAT_800a2be9)[uVar4 * 0xc];
           if ((((cVar2 == '\0') && (uVar4 == g_SpriteParam1)) ||
@@ -122,7 +122,7 @@ void FUN_80037e44(int param_1)
             if (iVar10 == 0) {
               uVar7 = 0x24;
             }
-            FUN_800342ec(param_1,uVar7,iVar11,uVar8 + 3);
+            Entity_DrawChild2(param_1,uVar7,iVar11,uVar8 + 3);
           }
         }
         iVar10 = iVar10 + 1;
@@ -132,7 +132,7 @@ void FUN_80037e44(int param_1)
     } while (iVar12 < 7);
     if ((local_30 < (int)(*(u8 *)(param_1 + 0x1e) + 7)) &&
        ((uint)*(u8 *)(param_1 + 0x1e) <= (uint)((int)(*(u8 *)(param_1 + 0x24) + 1) >> 1))) {
-      FUN_80037894(param_1,(iVar11 + -4) * 0x10000 >> 0x10,local_38);
+      Entity_DrawPrim(param_1,(iVar11 + -4) * 0x10000 >> 0x10,local_38);
     }
     iVar11 = iVar11 + 4;
     if (iVar12 < 7) {
@@ -142,18 +142,18 @@ void FUN_80037e44(int param_1)
         if ((int)(uint)*(u8 *)(param_1 + 0x22) <= iVar12) break;
         iVar5 = 0;
         do {
-          uVar4 = FUN_800368d0(param_1,iVar12 + (uint)*(u8 *)(param_1 + 0x1e),iVar5);
+          uVar4 = Entity_CheckLoop(param_1,iVar12 + (uint)*(u8 *)(param_1 + 0x1e),iVar5);
           if ((int)uVar4 < 0) break;
           if (uVar4 == 999) {
             uVar7 = 0xbc;
             if (iVar5 == 0) {
               uVar7 = 0x2c;
             }
-            FUN_80079324(uVar7,iVar10 >> 0x10,1,PTR_s_<__Sort__>_800a3a78,uVar8);
+            GPU_RenderSprite_V2(uVar7,iVar10 >> 0x10,1,PTR_s_<__Sort__>_800a3a78,uVar8);
             break;
           }
           if ((&DAT_800a2be8)[uVar4 * 0xc] == '\x01') {
-            iVar6 = FUN_80035fac(param_1,uVar4,1);
+            iVar6 = Event_Dispatch(param_1,uVar4,1);
             uVar7 = 5;
             if (iVar6 == 0) {
               uVar7 = 2;
@@ -162,12 +162,12 @@ void FUN_80037e44(int param_1)
           else {
             uVar7 = 3;
           }
-          FUN_800376ec(param_1,(int)(s16)uVar4,(int)(s16)iVar5,iVar10 >> 0x10,uVar7,uVar8 + 3);
+          Entity_DrawChild2_2(param_1,(int)(s16)uVar4,(int)(s16)iVar5,iVar10 >> 0x10,uVar7,uVar8 + 3);
           uVar7 = 0xab;
           if (iVar5 == 0) {
             uVar7 = 0x1b;
           }
-          FUN_8007e938(*(s32 *)(param_1 + 4),uVar7,iVar11 + 4,uVar8 + 4,
+          GPU_RenderSprite2(*(s32 *)(param_1 + 4),uVar7,iVar11 + 4,uVar8 + 4,
                        (int)*(s16 *)(&DAT_800a24f4 + uVar4 * 2));
           if ((((&DAT_800a2be9)[uVar4 * 0xc] == '\x03') && (uVar4 == g_SpriteParam3)) ||
              ((uVar4 == 0x58 && (DAT_800bfe55 != '\0')))) {
@@ -175,7 +175,7 @@ void FUN_80037e44(int param_1)
             if (iVar5 == 0) {
               uVar7 = 0x24;
             }
-            FUN_800342ec(param_1,uVar7,iVar11,uVar8 + 3);
+            Entity_DrawChild2(param_1,uVar7,iVar11,uVar8 + 3);
           }
           iVar5 = iVar5 + 1;
         } while (iVar5 < 2);
@@ -186,13 +186,13 @@ void FUN_80037e44(int param_1)
     }
     uVar8 = 0;
     if (*(s8*)(param_1 + 0x1e) != '\0') {
-      FUN_8003393c(param_1,local_38);
+      Entity_DrawChild1(param_1,local_38);
       uVar8 = (uint)*(u8 *)(param_1 + 0x1e);
     }
     if (uVar8 + 6 < (uint)*(u8 *)(param_1 + 0x22)) {
-      FUN_800339a4(param_1,local_38);
+      Entity_DrawChild3(param_1,local_38);
     }
-    FUN_80033a0c(param_1,&DAT_800a2680,local_38 + 7);
+    GPU_DrawSprite(param_1,&DAT_800a2680,local_38 + 7);
   }
   return;
 }

@@ -6,7 +6,7 @@
 
 
 
-int FUN_800793c4(s32 *param_1,int param_2,int *param_3)
+int String_TableLookup(s32 *param_1,int param_2,int *param_3)
 
 {
   uint uVar1;
@@ -18,7 +18,7 @@ int FUN_800793c4(s32 *param_1,int param_2,int *param_3)
   iVar3 = 0;
   if (0 < param_2) {
     do {
-      uVar1 = FUN_8009a600(*param_1);
+      uVar1 = String_Compare(*param_1);
       iVar2 = (uVar1 >> 1) * -8 + 0xa0;
       *param_3 = iVar2;
       if (iVar2 < iVar4) {

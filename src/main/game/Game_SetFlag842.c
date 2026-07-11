@@ -6,7 +6,7 @@
 
 
 
-void FUN_80077d64(void)
+void Game_SetFlag842(void)
 
 {
   if ((g_SFXCounter & 0x80) == 0) {

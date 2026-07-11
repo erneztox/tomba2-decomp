@@ -6,24 +6,24 @@
 
 
 
-void FUN_8009ae60(u8 param_1)
+void CD_QueueCmd(u8 param_1)
 
 {
   if (param_1 == 9) {
     do {
-      FUN_8009ae60(0x20);
+      CD_QueueCmd(0x20);
     } while ((DAT_800acf04 & 7) != 0);
   }
   else {
     if (param_1 == 10) {
-      FUN_8009ae60(0xd);
+      CD_QueueCmd(0xd);
       DAT_800acf04 = 0;
     }
     else if (((int)(char)(&DAT_800ace75)[param_1] & 0x97U) != 0) {
       DAT_800acf04 = DAT_800acf04 + 1;
     }
     if (0x1f < DAT_800acf08) {
-      FUN_800808e0(1,0x80105ef8);
+      BIOS_Syscall_B0_800808E0(1,0x80105ef8);
       DAT_800acf08 = 0;
     }
     *(u8 *)(DAT_800acf08 + -0x7fefa108) = param_1;

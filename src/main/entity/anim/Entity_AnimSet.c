@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80064358(int param_1,u8 param_2,int param_3)
+void Entity_AnimSet(int param_1,u8 param_2,int param_3)
 
 {
   s16 sVar1;
@@ -27,10 +27,10 @@ void FUN_80064358(int param_1,u8 param_2,int param_3)
   uVar6 = *(u16 *)(&DAT_800a47c6 + iVar4);
   sVar1 = *(s16 *)(&DAT_800a47c8 + iVar4);
   if (param_2 == 0) {
-    FUN_80055f48(param_1,0);
+    Entity_SetAccel(param_1,0);
     uVar6 = param_1->velocity_y + 0xa80;
   }
-  FUN_80054d14(param_1,(int)sVar1,0);
+  Entity_LoadAnimIfChanged(param_1,(int)sVar1,0);
   if (sVar7 != 0) {
     sVar7 = sVar7 + (u16)*(u8 *)(param_1 + 0x168) * 0x400;
   }
@@ -62,9 +62,9 @@ void FUN_80064358(int param_1,u8 param_2,int param_3)
     }
   }
   if (param_2 == 0) {
-    iVar4 = FUN_80083f50((int)param_1->rot_y);
+    iVar4 = Math_CosGTE((int)param_1->rot_y);
     sVar7 = param_3->bounds_min_x;
-    iVar3 = FUN_80083e80((int)param_1->rot_y);
+    iVar3 = Math_Cos((int)param_1->rot_y);
     sVar1 = param_3->bounds_min_x;
     param_1->pos_y = param_1->pos_y - (s16)(iVar4 * sVar7 >> 0xc);
     param_1->pos_z = param_1->pos_z + (s16)(iVar3 * sVar1 >> 0xc);

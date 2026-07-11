@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 * FUN_8008b8f0(s32 *param_1,char *param_2)
+s32 * CD_FileOpen(s32 *param_1,char *param_2)
 
 {
   s8 cVar1;
@@ -26,7 +26,7 @@ s32 * FUN_8008b8f0(s32 *param_1,char *param_2)
   s8 local_40 [32];
   
   if (DAT_800ac2d8 != DAT_800abfd0) {
-    iVar4 = FUN_8008bbe8();
+    iVar4 = CD_EventCallback();
     if (iVar4 == 0) {
       return (s32 *)0x0;
     }
@@ -58,7 +58,7 @@ s32 * FUN_8008b8f0(s32 *param_1,char *param_2)
     if (cVar3 == '\0') goto LAB_8008b9fc;
     pcVar10 = pcVar10 + 1;
     *pcVar12 = '\0';
-    iVar4 = FUN_8008beac(iVar4,local_40);
+    iVar4 = CD_PollEvent(iVar4,local_40);
     if (iVar4 == -1) {
       local_40->type = '\0';
       break;
@@ -76,16 +76,16 @@ LAB_8008b9fc:
     }
     else {
       *pcVar12 = '\0';
-      iVar4 = FUN_8008bf50();
+      iVar4 = CD_EventProcess();
       if (iVar4 == 0) {
         if (0 < DAT_800abfc4) {
-          FUN_8009a730(s_CdSearchFile__disc_error_8001c3b4);
+          Debug_Printf(s_CdSearchFile__disc_error_8001c3b4);
           return (s32 *)0x0;
         }
         return (s32 *)0x0;
       }
       if (1 < DAT_800abfc4) {
-        FUN_8009a730(s_CdSearchFile__searching__s____8001c3d0,local_40);
+        Debug_Printf(s_CdSearchFile__searching__s____8001c3d0,local_40);
       }
       iVar13 = 0;
       puVar5 = &DAT_80102770;
@@ -93,10 +93,10 @@ LAB_8008b9fc:
       iVar4 = 0;
       do {
         if ((&DAT_80102770)[iVar4] == '\0') break;
-        iVar6 = FUN_8008bbc8(puVar5,local_40);
+        iVar6 = CD_CompareName(puVar5,local_40);
         if (iVar6 != 0) {
           if (1 < DAT_800abfc4) {
-            FUN_8009a730(s__s__found_8001c3f0,local_40);
+            Debug_Printf(s__s__found_8001c3f0,local_40);
           }
           uVar7 = puVar11->flags;
           uVar8 = puVar11->kind;
@@ -121,10 +121,10 @@ LAB_8008b9fc:
       }
       pcVar10 = s__s__not_found_8001c3fc;
     }
-    FUN_8009a730(pcVar10,param_2);
+    Debug_Printf(pcVar10,param_2);
   }
   else if (0 < DAT_800abfc4) {
-    FUN_8009a730(s__s__path_level___d__error_8001c380,param_2,iVar13);
+    Debug_Printf(s__s__path_level___d__error_8001c380,param_2,iVar13);
     return (s32 *)0x0;
   }
   return (s32 *)0x0;

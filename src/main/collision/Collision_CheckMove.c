@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_8004720c(u16 param_1,s16 param_2)
+int Collision_CheckMove(u16 param_1,s16 param_2)
 
 {
   u16 uVar1;
@@ -20,7 +20,7 @@ int FUN_8004720c(u16 param_1,s16 param_2)
   uint uVar6;
   int iVar7;
   
-  sVar2 = FUN_80048360();
+  sVar2 = Collision_CheckResult();
   iVar7 = 1;
   uVar4 = 0;
   uVar1 = _g_CollisionResult->sub_type;
@@ -33,10 +33,10 @@ int FUN_8004720c(u16 param_1,s16 param_2)
       if (param_2 == 0) {
         if ((*_g_CollisionData & 1) == 0) {
           if ((*_g_CollisionData & 2) == 0) goto LAB_80047300;
-          iVar3 = FUN_800459d0(iVar3);
+          iVar3 = Collision_Move2(iVar3);
         }
         else {
-          iVar3 = FUN_80045810(iVar3,iVar7);
+          iVar3 = Collision_Push(iVar3,iVar7);
           iVar7 = 0;
         }
         if (iVar3 != -1) {
@@ -46,7 +46,7 @@ int FUN_8004720c(u16 param_1,s16 param_2)
       else {
 LAB_80047300:
         if ((*_g_CollisionData & param_1) != 0) {
-          iVar3 = FUN_800462e4(iVar3,uVar1 >> 8,0,(int)param_2);
+          iVar3 = Collision_Main(iVar3,uVar1 >> 8,0,(int)param_2);
           uVar5 = uVar6;
           if (iVar3 != 1) {
             if (iVar3 < 2) {

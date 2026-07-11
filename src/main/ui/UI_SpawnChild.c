@@ -7,18 +7,18 @@
 
 
 #include "tomba.h"
-int FUN_8004d19c(s32 param_1,u8 *param_2,int param_3)
+int UI_SpawnChild(s32 param_1,u8 *param_2,int param_3)
 
 {
   u8 uVar1;
   int iVar2;
   
-  iVar2 = FUN_80072ddc(0,*param_2,param_2->flags,param_2->kind & 0x7f);
+  iVar2 = Entity_SpawnChild(0,*param_2,param_2->flags,param_2->kind & 0x7f);
   if (iVar2 == 0) {
     iVar2 = 0;
   }
   else {
-    iVar2->callback = FUN_8004aac4;
+    iVar2->callback = Entity_Main;
     *(int *)(iVar2 + 0x2c) = (int)*(s16 *)(param_2 + 4) << 0x10;
     iVar2->pos_y_fixed = (int)*(s16 *)(param_2 + 6) << 0x10;
     iVar2->scale_y = (int)*(s16 *)(param_2 + 8) << 0x10;
@@ -33,7 +33,7 @@ int FUN_8004d19c(s32 param_1,u8 *param_2,int param_3)
       *(s16 *)(iVar2 + 100) = 5;
     }
     *(s16 *)(iVar2 + 0x66) = 0;
-    FUN_8004aac4(iVar2);
+    Entity_Main(iVar2);
     if (param_3 == 0) {
       iVar2->state = STATE_FINISH;
     }

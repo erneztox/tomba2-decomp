@@ -7,12 +7,12 @@
 
 
 #include "tomba.h"
-void FUN_8006a8c8(s32 param_1)
+void Entity_SpawnChild27(s32 param_1)
 
 {
   int iVar1;
   
-  iVar1 = FUN_800310f4(0x27,0);
+  iVar1 = Entity_SpawnNoPos(0x27,0);
   if (iVar1 != 0) {
     iVar1->parent = param_1;
   }

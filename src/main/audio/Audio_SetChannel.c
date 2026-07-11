@@ -6,7 +6,7 @@
 
 
 
-void FUN_8008eb60(s16 param_1,s16 param_2,u8 param_3)
+void Audio_SetChannel(s16 param_1,s16 param_2,u8 param_3)
 
 {
   code *pcVar1;
@@ -32,7 +32,7 @@ void FUN_8008eb60(s16 param_1,s16 param_2,u8 param_3)
     iVar6->flags = 0;
     iVar6->flags = iVar6->flags + '\x01';
   }
-  uVar2 = FUN_80090160((int)param_1,(int)param_2);
+  uVar2 = Audio_AllocVoice((int)param_1,(int)param_2);
   iVar6->flags = uVar2;
   return;
 }

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80043720(int param_1)
+s32 Entity_StateWait3(int param_1)
 
 {
   u8 bVar1;
@@ -25,15 +25,15 @@ s32 FUN_80043720(int param_1)
     switch(param_1->event_id) {
     case 0:
     case 1:
-      FUN_8004ed94((int)param_1->event_param,(int)*(s16 *)(param_1 + 0x76));
+      UI_DrawElement((int)param_1->event_param,(int)*(s16 *)(param_1 + 0x76));
       break;
     case 2:
     case 3:
-      FUN_8004ed0c((int)param_1->event_param,(int)*(s16 *)(param_1 + 0x76));
+      UI_DrawItemIcon((int)param_1->event_param,(int)*(s16 *)(param_1 + 0x76));
       break;
     case 4:
     case 5:
-      FUN_8004eddc((int)param_1->event_param,(int)*(s16 *)(param_1 + 0x76));
+      UI_DrawElement_2((int)param_1->event_param,(int)*(s16 *)(param_1 + 0x76));
       break;
     case 10:
       param_1->sub_state = 2;

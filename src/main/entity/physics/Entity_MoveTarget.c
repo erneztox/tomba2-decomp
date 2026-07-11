@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80023a04(int param_1,int param_2,uint param_3)
+s32 Entity_MoveTarget(int param_1,int param_2,uint param_3)
 
 {
   s16 sVar1;
@@ -30,7 +30,7 @@ s32 FUN_80023a04(int param_1,int param_2,uint param_3)
   iVar6 = iVar12 * 0x10000 >> 0x10;
   iVar11 = (uint)param_1->pos_z - (uint)param_2->pos_z;
   iVar7 = iVar11 * 0x10000 >> 0x10;
-  uVar8 = FUN_80084080(iVar6 * iVar6 + iVar7 * iVar7);
+  uVar8 = Math_SqrtGTE(iVar6 * iVar6 + iVar7 * iVar7);
   uVar3 = param_1->bounds_min_x;
   uVar4 = param_2->bounds_min_x;
   if ((int)param_1->bounds_min_x + (int)param_2->bounds_min_x < (int)(uVar8 & 0xffff)) {
@@ -52,13 +52,13 @@ s32 FUN_80023a04(int param_1,int param_2,uint param_3)
             ((uint)param_2->bounds_max_y - (uint)param_2->bounds_min_y);
     iVar13 = iVar7;
   }
-  _g_AngleTarget = FUN_80085690(-(int)(s16)iVar11,(int)(s16)iVar12);
+  _g_AngleTarget = Math_Atan2(-(int)(s16)iVar11,(int)(s16)iVar12);
   _g_GTE_Work8C = (int)(s16)uVar8;
   if ((int)((((uint)uVar3 + (uint)uVar4) - uVar8) * 0x10000) < (iVar7 - iVar6) * 0x10000) {
-    iVar6 = FUN_80083f50();
+    iVar6 = Math_CosGTE();
     sVar10 = param_1->bounds_min_x;
     sVar1 = param_2->bounds_min_x;
-    iVar7 = FUN_80083e80(_g_AngleTarget);
+    iVar7 = Math_Cos(_g_AngleTarget);
     sVar2 = param_2->bounds_min_x;
     param_1->pos_y =
          param_2->pos_y + (s16)(iVar6 * ((int)sVar10 + (int)sVar1) >> 0xc);
@@ -66,7 +66,7 @@ s32 FUN_80023a04(int param_1,int param_2,uint param_3)
          param_2->pos_z -
          (s16)(iVar7 * ((int)param_1->bounds_min_x + (int)sVar2) >> 0xc);
     if (*(s8*)(param_1 + 0xc) == '\x02') {
-      cVar5 = FUN_80077768((int)_g_AngleTarget,(int)param_1->draw_x,1);
+      cVar5 = Math_CompareAngle((int)_g_AngleTarget,(int)param_1->draw_x,1);
       param_1->input_flags = cVar5 + '\x02';
     }
     return 0;

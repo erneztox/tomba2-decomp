@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8007d594(int param_1)
+void GPU_SpriteMain(int param_1)
 
 {
   s8 cVar1;
@@ -47,7 +47,7 @@ void FUN_8007d594(int param_1)
       goto LAB_8007d6a8;
       uVar6 = 0;
 LAB_8007d6c8:
-      FUN_8007c0d0(param_1,uVar6);
+      Entity_ScriptRun_2(param_1,uVar6);
     }
     else if (param_1->sub_type < 6) {
 LAB_8007d6a8:
@@ -60,23 +60,23 @@ LAB_8007d6a8:
     }
     goto LAB_8007d79c;
   case 2:
-    FUN_8007c940(param_1);
+    GPU_SpriteBuild(param_1);
     if (((_g_PadState & _DAT_1f800174) == 0) || ((param_1->anim_id & 1) != 0))
     goto LAB_8007d73c;
     if (param_1->sprite_flags != -1) {
-      FUN_8001cf78();
+      Sys_SetFlag10();
     }
   case 10:
 switchD_8007d5f4_caseD_a:
-    FUN_8007d14c(param_1);
+    Entity_AdvanceScript(param_1);
     break;
   case 3:
-    FUN_8007c940(param_1);
+    GPU_SpriteBuild(param_1);
 LAB_8007d73c:
     sVar3 = param_1->timer2;
     if ((sVar3 != -1) && (param_1->timer2 = sVar3 + 1U, 8 < (u16)(sVar3 + 1U))) {
       param_1->timer2 = sVar3 + 1U & 0xf;
-      FUN_8007cdd4(param_1 + 0x54);
+      GPU_PrimSetup(param_1 + 0x54);
     }
     break;
   case 4:
@@ -87,10 +87,10 @@ LAB_8007d73c:
       param_1->behavior_state = 3;
     }
 LAB_8007d79c:
-    FUN_8007c940(param_1);
+    GPU_SpriteBuild(param_1);
     break;
   case 5:
-    FUN_8007c940(param_1);
+    GPU_SpriteBuild(param_1);
     if (param_1->timer2 != 0) {
       param_1->timer2 = param_1->timer2 + -1;
       if (((param_1->sprite_flags == -1) || ((DAT_800be0e4 & 0x80) != 0)) ||
@@ -169,8 +169,8 @@ LAB_8007d79c:
 LAB_8007da18:
     param_1->behavior_state = cVar1;
   }
-  FUN_8007cc00(param_1);
-  FUN_8005019c(param_1 + 0x54,*(u8 *)((int)&local_10 + (uint)*(u8 *)(param_1 + 0x18)),1,2)
+  GPU_SpriteProcess(param_1);
+  UI_DrawPanel(param_1 + 0x54,*(u8 *)((int)&local_10 + (uint)*(u8 *)(param_1 + 0x18)),1,2)
   ;
   return;
 }

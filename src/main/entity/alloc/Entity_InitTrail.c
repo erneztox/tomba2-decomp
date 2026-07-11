@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006b020(int param_1,int param_2)
+void Entity_InitTrail(int param_1,int param_2)
 
 {
   s32 bVar1;
@@ -33,6 +33,6 @@ void FUN_8006b020(int param_1,int param_2)
   }
   _DAT_1f8000ca = 0;
 LAB_8006b0c0:
-  FUN_80051614(param_1,&DAT_1f8000c8,7,bVar1);
+  GTE_LoadMatrix(param_1,&DAT_1f8000c8,7,bVar1);
   return;
 }

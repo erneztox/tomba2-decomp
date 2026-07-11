@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_8009be34(void)
+s32 BIOS_Delay(void)
 
 {
   s32 local_10;

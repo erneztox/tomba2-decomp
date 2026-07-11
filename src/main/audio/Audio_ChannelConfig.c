@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80090a60(uint param_1,s16 param_2,uint param_3)
+s32 Audio_ChannelConfig(uint param_1,s16 param_2,uint param_3)
 
 {
   s32 uVar1;

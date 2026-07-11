@@ -6,7 +6,7 @@
 
 
 
-void FUN_80094b10(uint param_1)
+void Menu_ClearSlot(uint param_1)
 
 {
   int iVar1;

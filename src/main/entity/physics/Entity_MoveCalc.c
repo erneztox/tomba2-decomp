@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_8002423c(int param_1,int param_2)
+s32 Entity_MoveCalc(int param_1,int param_2)
 
 {
   int iVar1;
@@ -24,7 +24,7 @@ s32 FUN_8002423c(int param_1,int param_2)
             >> 0x10;
     iVar2 = (int)(((uint)param_1->pos_z - (uint)param_2->pos_z) * 0x10000)
             >> 0x10;
-    uVar3 = FUN_80084080(iVar1 * iVar1 + iVar2 * iVar2);
+    uVar3 = Math_SqrtGTE(iVar1 * iVar1 + iVar2 * iVar2);
     uVar4 = 0xffffffff;
     if ((int)(uVar3 & 0xffff) <= (int)param_1->bounds_min_x + (int)param_2->bounds_min_x)
     {

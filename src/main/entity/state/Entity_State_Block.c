@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006a900(int param_1)
+void Entity_State_Block(int param_1)
 
 {
   s16 sVar1;
@@ -35,11 +35,11 @@ void FUN_8006a900(int param_1)
   param_1->timer1 = sVar7 + -1;
   if (sVar7 == 1) {
     if (DAT_800e7f3e == '\0') {
-      FUN_80074590(9,0,0);
+      Audio_PlaySoundEffect(9,0,0);
       uVar3 = 0x12;
     }
     else {
-      FUN_80074590(10,0,0);
+      Audio_PlaySoundEffect(10,0,0);
       uVar3 = 10;
     }
     param_1->timer1 = uVar3;
@@ -55,19 +55,19 @@ void FUN_8006a900(int param_1)
     iVar8 = 0x78;
     if (param_1->flag_5E == '\0') {
       param_1->flag_5E = 1;
-      FUN_8006a8c8(param_1);
+      Entity_SpawnChild27(param_1);
     }
     param_1->type_flags = param_1->type_flags + 0x1c0;
     sVar7 = _g_EntityAngle + 0x180;
   }
   param_1->type_flags = param_1->type_flags & 0xfff;
-  iVar4 = FUN_80083f50();
-  iVar5 = FUN_80083f50((int)sVar7);
+  iVar4 = Math_CosGTE();
+  iVar5 = Math_CosGTE((int)sVar7);
   iVar4 = (int)(s16)(iVar6 * iVar4 >> 0xc);
   param_1->pos_y = _DAT_800e7f5c->pos_x + (s16)(iVar5 * iVar4 >> 0xc);
-  iVar6 = FUN_80083e80((int)param_1->type_flags);
+  iVar6 = Math_Cos((int)param_1->type_flags);
   *(s16 *)(param_1 + 0x32) = *(s16 *)(_DAT_800e7f5c + 0x30) + (s16)(iVar8 * iVar6 >> 0xc);
-  iVar6 = FUN_80083e80((int)sVar7);
+  iVar6 = Math_Cos((int)sVar7);
   sVar1 = *(s16 *)(_DAT_800e7f5c + 0x34);
   param_1->rot_y = sVar7;
   param_1->pos_z = sVar1 - (s16)(iVar6 * iVar4 >> 0xc);
@@ -95,10 +95,10 @@ void FUN_8006a900(int param_1)
     uVar2 = DAT_800e7eaa;
     param_1->behavior_state = 1;
     param_1->collision_dir = uVar2;
-    FUN_80069bec(param_1);
+    Entity_Behavior_Enemy2(param_1);
     *(s16 *)(param_1->sprite_ptr1 + 0xc) = 0;
     param_1->action_state = 1;
-    FUN_80069688();
+    Entity_DispatchBehavior();
   }
   return;
 }

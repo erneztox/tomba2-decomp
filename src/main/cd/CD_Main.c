@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80098330(uint *param_1)
+s32 CD_Main(uint *param_1)
 
 {
   s32 bVar1;
@@ -55,7 +55,7 @@ s32 FUN_80098330(uint *param_1)
     }
     local_30 = (uint)bVar1;
     if (uVar11 < 10) {
-      iVar7 = FUN_800982a0((&DAT_800acb94)[uVar11]);
+      iVar7 = CD_AllocDMA((&DAT_800acb94)[uVar11]);
       bVar1 = true;
       if (iVar7 == 0) {
         puVar10 = &local_78;
@@ -160,13 +160,13 @@ LAB_80098498:
       }
     }
     if (((bVar1) || (bVar4)) || (bVar6)) {
-      FUN_80098810(&local_78);
+      CD_SPU_Transfer2(&local_78);
     }
     if (local_30 != 0) {
-      FUN_80098de0(DAT_800ac5a8);
+      CD_SPU_Transfer(DAT_800ac5a8);
     }
     if (bVar1) {
-      FUN_800974fc(0xd1,DAT_800ac5a0,0);
+      MC_Read(0xd1,DAT_800ac5a0,0);
       if (uVar13 == 0) {
         return 0;
       }

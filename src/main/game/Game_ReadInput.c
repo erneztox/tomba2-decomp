@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-uint FUN_80055864(void)
+uint Game_ReadInput(void)
 
 {
   uint uVar1;

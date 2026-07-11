@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8008cff0(int param_1,uint param_2)
+void CD_ClearBuffer(int param_1,uint param_2)
 
 {
   int iVar1;

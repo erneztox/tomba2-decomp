@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8003989c(int param_1)
+void Save_UpdateSlots(int param_1)
 
 {
   int *piVar1;

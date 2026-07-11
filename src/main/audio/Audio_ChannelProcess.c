@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80091120(int param_1,s16 param_2)
+void Audio_ChannelProcess(int param_1,s16 param_2)
 
 {
   int iVar1;
@@ -23,7 +23,7 @@ void FUN_80091120(int param_1,s16 param_2)
     }
     do {
       do {
-        FUN_80091460((param_1 << 0x10) >> 0x10,(int)param_2);
+        Audio_SeqVoice((param_1 << 0x10) >> 0x10,(int)param_2);
       } while (iVar3->flags == 0);
       iVar1 = iVar1 + iVar3->flags;
       iVar2 = iVar1 - iVar3->flags;

@@ -9,17 +9,17 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80071b44(int param_1,int param_2,s8 param_3)
+void Entity_SpawnChild2(int param_1,int param_2,s8 param_3)
 
 {
   int iVar1;
   s16 uVar2;
   int iVar3;
   
-  iVar3 = FUN_80072ddc(param_1,0x80,3,0xd);
+  iVar3 = Entity_SpawnChild(param_1,0x80,3,0xd);
   iVar1 = _DAT_800bf83c;
   if (iVar3 != 0) {
-    iVar3->callback = FUN_80072520;
+    iVar3->callback = Entity_Behavior_TimedLife;
     iVar3->sub_type = param_3;
     if (param_3 == '\x01') {
       _DAT_800bf874 = _DAT_800bf874 + param_2;
@@ -27,14 +27,14 @@ void FUN_80071b44(int param_1,int param_2,s8 param_3)
       iVar3->rot_y = *(s16 *)(param_1 + 0x32);
       iVar3->rot_z = param_1->pos_z;
     }
-    uVar2 = FUN_80079634(param_2,iVar3 + 0x44);
+    uVar2 = String_Format(param_2,iVar3 + 0x44);
     iVar3->anim_timer = uVar2;
     uVar2 = 0x7c7e;
     if (4999 < param_2) {
       uVar2 = 0x7c3e;
     }
     iVar3->draw_y = uVar2;
-    FUN_80074590(0x11,0xf,0);
+    Audio_PlaySoundEffect(0x11,0xf,0);
     iVar1 = iVar3;
     if (_DAT_800bf83c != 0) {
       _DAT_800bf83c->state = STATE_DEAD;

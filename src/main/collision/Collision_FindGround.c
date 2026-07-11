@@ -9,15 +9,15 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_800498c8(int param_1)
+s32 Collision_FindGround(int param_1)
 
 {
   int iVar1;
   
   while( true ) {
-    FUN_8004798c(param_1);
-    FUN_80049968(g_CollisionZone);
-    iVar1 = FUN_80047cbc();
+    Collision_GridInit(param_1);
+    Collision_InitGrid(g_CollisionZone);
+    iVar1 = Collision_GetFloorHeight();
     if (iVar1 == 0) {
       return 0;
     }

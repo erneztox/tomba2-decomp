@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80024f18(int param_1)
+void Entity_BehaviorType5(int param_1)
 
 {
   u8 bVar1;
@@ -104,7 +104,7 @@ void FUN_80024f18(int param_1)
     bVar3 = false;
     if (bVar1 != 0) goto LAB_80025154;
     param_1->state = 1;
-    FUN_8004ed94(0xb,0x40);
+    UI_DrawElement(0xb,0x40);
     *(s16 *)(param_1 + 0x10) = 0x10;
   }
   bVar3 = false;

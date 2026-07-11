@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-s32 FUN_80043a10(int param_1)
+s32 Entity_PlayScriptSFX(int param_1)
 
 {
-  FUN_80074590(*(u8 *)(param_1 + 0x72),(int)*(s8*)(param_1 + 0x74),
+  Audio_PlaySoundEffect(*(u8 *)(param_1 + 0x72),(int)*(s8*)(param_1 + 0x74),
                (int)param_1->camera_mode);
   return 1;
 }

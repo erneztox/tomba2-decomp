@@ -6,12 +6,12 @@
 
 
 
-void FUN_80086a3c(void)
+void MDEC_StartDMA(void)
 
 {
-  FUN_80080890();
-  FUN_80085b10(3,1);
-  FUN_80087400(2,&DAT_80102440);
-  FUN_800808a0();
+  BIOS_Syscall0();
+  BIOS_CallC0(3,1);
+  BIOS_Syscall_C0_80087400(2,&DAT_80102440);
+  BIOS_Syscall0_2();
   return;
 }

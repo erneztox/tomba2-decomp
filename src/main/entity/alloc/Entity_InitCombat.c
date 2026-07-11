@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800708cc(int param_1)
+void Entity_InitCombat(int param_1)
 
 {
   param_1->anim_counter = 0x400;

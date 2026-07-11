@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006c988(int param_1)
+void Camera_ModeSwitch(int param_1)
 
 {
   s16 sVar1;
@@ -25,13 +25,13 @@ void FUN_8006c988(int param_1)
     *(s16 *)(param_1 + 0x8a) = sVar1;
     break;
   case 2:
-    uVar2 = FUN_8009a450();
+    uVar2 = Math_Random();
     _DAT_1f8000d2 = param_1->bounds_max_y + -0x10 + (uVar2 & 0x1f);
-    uVar2 = FUN_8009a450();
+    uVar2 = Math_Random();
     _DAT_1f8000da = *(s16 *)(param_1 + 0x8a) + -0x10 + (uVar2 & 0x1f);
-    uVar2 = FUN_8009a450();
+    uVar2 = Math_Random();
     _DAT_1f8000d6 = param_1->gte_input + -8 + (uVar2 & 0xf);
-    FUN_800521f4(0,0,0x81,2);
+    Sys_CallWithParams(0,0,0x81,2);
     break;
   case 3:
     _DAT_1f8000d2 = param_1->bounds_max_y;
@@ -43,21 +43,21 @@ void FUN_8006c988(int param_1)
     param_1->gte_input = sVar1;
     break;
   case 5:
-    uVar2 = FUN_8009a450();
+    uVar2 = Math_Random();
     _DAT_1f8000d6 = param_1->gte_input + -0x20 + (uVar2 & 0x3f);
-    FUN_800521f4(0,0,0xf1,2);
+    Sys_CallWithParams(0,0,0xf1,2);
     break;
   case 6:
     param_1->camera_mode = 7;
     param_1->gte_input = sVar1;
   case 7:
     if (*(s8*)(param_1 + 100) == '\0') {
-      uVar2 = FUN_8009a450();
+      uVar2 = Math_Random();
       uVar2 = uVar2 & 0x3f;
       _DAT_1f8000d6 = param_1->gte_input + -0x20;
 LAB_8006cb84:
       _DAT_1f8000d6 = _DAT_1f8000d6 + uVar2;
-      FUN_800521f4(0,0,0x81,2);
+      Sys_CallWithParams(0,0,0x81,2);
     }
 LAB_8006cb90:
     param_1->camera_mode = 0;
@@ -67,7 +67,7 @@ LAB_8006cb90:
     param_1->gte_input = sVar1;
   case 9:
     if (*(s8*)(param_1 + 100) == '\0') {
-      uVar2 = FUN_8009a450();
+      uVar2 = Math_Random();
       uVar2 = uVar2 & 0x1f;
       _DAT_1f8000d6 = param_1->gte_input + -0x10;
       goto LAB_8006cb84;

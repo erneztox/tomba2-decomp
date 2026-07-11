@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8006c478(u8 *param_1)
+void Entity_Behavior_Cam(u8 *param_1)
 
 {
   u8 bVar1;
@@ -22,14 +22,14 @@ void FUN_8006c478(u8 *param_1)
       if (bVar1 != 3) {
         return;
       }
-      FUN_8007ab44(param_1);
+      Entity_ListInsert(param_1);
       return;
     }
     if (bVar1 != 0) {
       return;
     }
     param_1->input_flags = 0x80;
-    FUN_8006acac(param_1);
+    Entity_InitConfig(param_1);
     **(s16 **)(param_1 + 0xc0) = 0xff6a;
     *param_1 = 2;
     param_1->rot_x = 0;
@@ -40,16 +40,16 @@ void FUN_8006c478(u8 *param_1)
       param_1->behavior_state = 1;
     }
     else {
-      FUN_80031558(param_1,(u8)param_1->kind - 1);
+      Entity_SpawnTrail(param_1,(u8)param_1->kind - 1);
     }
   }
   if (param_1->behavior_state == '\0') {
-    FUN_8006c328(param_1);
+    Entity_State_Camera(param_1);
   }
   else if (param_1->behavior_state == '\x01') {
-    FUN_8006c0c4(param_1);
+    Entity_Behavior_AttackMain(param_1);
   }
-  FUN_8006b020(param_1,1);
+  Entity_InitTrail(param_1,1);
   param_1->flags = 1;
   return;
 }

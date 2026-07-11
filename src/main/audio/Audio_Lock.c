@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_800929bc(u16 param_1)
+s32 Audio_Lock(u16 param_1)
 
 {
   s32 uVar1;
@@ -21,7 +21,7 @@ s32 FUN_800929bc(u16 param_1)
     uVar1 = 0xffffffff;
     if (param_1 < 0x18) {
       _DAT_80105d10 = param_1;
-      FUN_80094b50(0);
+      Audio_SPU_Key(0);
       uVar1 = 0;
       _DAT_80104c24 = 0;
     }

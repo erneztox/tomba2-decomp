@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-int FUN_8009b0c0(int param_1,char *param_2,uint param_3,s32 param_4)
+int CD_EventMain(int param_1,char *param_2,uint param_3,s32 param_4)
 
 {
   s8 cVar1;
@@ -192,10 +192,10 @@ joined_r0x8009b108:
           local_28 = local_28 + 1;
           if ((local_38 >> 2 & 1) == 0) {
             if ((local_38 >> 4 & 1) == 0) {
-              uVar5 = FUN_8009a600(pbVar6);
+              uVar5 = String_Compare(pbVar6);
             }
             else {
-              iVar4 = FUN_8009ae10(pbVar6,0,local_30);
+              iVar4 = Mem_CopyN(pbVar6,0,local_30);
               uVar5 = iVar4 - (int)pbVar6;
               if (iVar4 == 0) {
                 uVar5 = local_30;
@@ -285,7 +285,7 @@ LAB_8009b860:
             } while ((int)uVar5 < (int)local_34);
             iVar4 = param_1 + iVar8;
           }
-          FUN_8009b940(iVar4,pbVar6,uVar5);
+          Mem_Move(iVar4,pbVar6,uVar5);
           iVar8 = iVar8 + uVar5;
           for (; (int)uVar5 < (int)local_34; uVar5 = uVar5 + 1) {
             *(u8 *)(param_1 + iVar8) = 0x20;

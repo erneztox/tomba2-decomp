@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80041f34(int param_1)
+s32 Entity_CheckLifecycle(int param_1)
 
 {
   if (param_1 == 0) {

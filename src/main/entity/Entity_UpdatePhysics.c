@@ -65,20 +65,20 @@ void Entity_UpdatePhysics(int param_1)
   local_73 = local_7b;
   local_63 = local_6b;
   if (DAT_800e7fc6 < 4) {
-    iVar4 = FUN_80083f50(param_1->type_flags + 0x400);
+    iVar4 = Math_CosGTE(param_1->type_flags + 0x400);
     iVar7 = param_1->type_flags + 0x400;
   }
   else {
-    iVar4 = FUN_80083f50((int)param_1->type_flags);
+    iVar4 = Math_CosGTE((int)param_1->type_flags);
     iVar7 = (int)param_1->type_flags;
   }
-  iVar5 = FUN_80083e80(iVar7);
-  iVar7 = FUN_80083f50((int)param_1->target_angle);
+  iVar5 = Math_Cos(iVar7);
+  iVar7 = Math_CosGTE((int)param_1->target_angle);
   iVar7 = iVar7 * iVar4 * 0x14;
-  iVar6 = FUN_80083e80((int)param_1->target_angle);
+  iVar6 = Math_Cos((int)param_1->target_angle);
   local_40 = -iVar6 * iVar4 * 0x14 >> 0x18;
-  FUN_80084660(&g_GTE_WorkF8);
-  FUN_80084690(&g_GTE_WorkF8);
+  GTE_LoadMatrix5(&g_GTE_WorkF8);
+  GTE_LoadTranslation(&g_GTE_WorkF8);
   iVar4 = iVar7 >> 0x18;
   sVar2 = (s16)(iVar5 * 0x14 >> 0xc);
   cVar1 = (char)((uint)iVar7 >> 0x18);
@@ -107,7 +107,7 @@ void Entity_UpdatePhysics(int param_1)
     local_46 = sVar10;
     local_44 = sVar9;
     local_30 = iVar4;
-    FUN_8003b320(auStack_88,local_38,0);
+    Entity_SubmitVerticesToOT(auStack_88,local_38,0);
     local_58 = param_1->pos_y - (s16)local_30;
     local_46 = *(s16 *)(param_1 + 0x32);
     local_56 = *(s16 *)(param_1 + 0x32) - sVar2;
@@ -138,7 +138,7 @@ void Entity_UpdatePhysics(int param_1)
     local_44 = param_1->pos_z + local_44;
   }
   local_46 = local_46 + sVar2;
-  FUN_8003b320(auStack_88,psVar8,0);
+  Entity_SubmitVerticesToOT(auStack_88,psVar8,0);
   return;
 }
 

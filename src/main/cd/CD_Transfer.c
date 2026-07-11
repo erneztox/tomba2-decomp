@@ -6,7 +6,7 @@
 
 
 
-int FUN_800991b0(uint param_1)
+int CD_Transfer(uint param_1)
 
 {
   s32 bVar1;
@@ -41,13 +41,13 @@ int FUN_800991b0(uint param_1)
     else {
       uVar4 = 0x400;
     }
-    FUN_80097194(2,iVar5);
-    FUN_80097194(1);
-    FUN_80097194(3,&DAT_800ac674,uVar4);
+    CD_SPU_Cmd2(2,iVar5);
+    CD_SPU_Cmd2(1);
+    CD_SPU_Cmd2(3,&DAT_800ac674,uVar4);
     param_1 = param_1 - 0x400;
     iVar5 = iVar5 + 0x400;
     iVar6 = iVar6 + uVar4;
-    FUN_80098f80(DAT_800ac58c);
+    BIOS_Syscall_B0_80098F80(DAT_800ac58c);
   } while (bVar2);
   if (bVar1) {
     DAT_800ac620 = iVar3;

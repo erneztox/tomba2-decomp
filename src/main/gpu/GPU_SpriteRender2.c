@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_80078ca8(uint param_1,uint param_2,s16 param_3,u8 *param_4,int param_5)
+int GPU_SpriteRender2(uint param_1,uint param_2,s16 param_3,u8 *param_4,int param_5)
 
 {
   u8 bVar1;
@@ -39,7 +39,7 @@ int FUN_80078ca8(uint param_1,uint param_2,s16 param_3,u8 *param_4,int param_5)
     _g_GTE_Data10 = param_2;
     _g_OT_Buffer = puVar2;
     if (bVar1 == 0) {
-      FUN_80083de0(puVar2,0,0,0x1f,0);
+      GPU_SetupDrawMode2(puVar2,0,0,0x1f,0);
       puVar9 = (uint *)(_g_EntityBuffer + param_5 * 4);
       *puVar2 = *puVar9 | 0x2000000;
       *puVar9 = (uint)puVar2;
@@ -62,25 +62,25 @@ LAB_80078f70:
         if (bVar1 == 1) {
           iVar8 = (int)_g_GTE_Data8;
           iVar10 = (int)_DAT_1f80000a;
-          FUN_80078988(iVar8,iVar10,iVar6,&DAT_80016da8,param_5);
+          Menu_TextDraw2(iVar8,iVar10,iVar6,&DAT_80016da8,param_5);
           uVar3 = _g_GTE_Data8;
         }
         else if (bVar1 == 2) {
           iVar8 = (int)_g_GTE_Data8;
           iVar10 = (int)_DAT_1f80000a;
-          FUN_80078988(iVar8,iVar10,iVar6,&DAT_80016dac,param_5);
+          Menu_TextDraw2(iVar8,iVar10,iVar6,&DAT_80016dac,param_5);
           uVar3 = _g_GTE_Data8;
         }
         else if (bVar1 == 3) {
           iVar8 = (int)_g_GTE_Data8;
           iVar10 = (int)_DAT_1f80000a;
-          FUN_80078988(iVar8,iVar10,iVar6,&DAT_80016da4,param_5);
+          Menu_TextDraw2(iVar8,iVar10,iVar6,&DAT_80016da4,param_5);
           uVar3 = _g_GTE_Data8;
         }
         else if (bVar1 == 4) {
           iVar8 = (int)_g_GTE_Data8;
           iVar10 = (int)_DAT_1f80000a;
-          FUN_80078988(iVar8,iVar10,iVar6,&DAT_80016da0,param_5);
+          Menu_TextDraw2(iVar8,iVar10,iVar6,&DAT_80016da0,param_5);
           uVar3 = _g_GTE_Data8;
         }
         else {

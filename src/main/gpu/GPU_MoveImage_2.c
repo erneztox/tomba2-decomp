@@ -7,12 +7,12 @@
 
 
 #include "tomba.h"
-s32 FUN_800812d8(s32 *param_1,uint param_2,int param_3)
+s32 GPU_MoveImage(s32 *param_1,uint param_2,int param_3)
 
 {
   s32 uVar1;
   
-  FUN_80080fd4(s_MoveImage_8001bf44,param_1);
+  GPU_SetupPacket(s_MoveImage_8001bf44,param_1);
   uVar1 = 0xffffffff;
   if (*(s16 *)(param_1 + 1) != 0) {
     if (*(s16 *)((int)param_1 + 6) == 0) {

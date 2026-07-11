@@ -1,5 +1,5 @@
 /**
- * @brief MDEC DMA check: tests DAT_800abe98 flags, calls FUN_80086a80 if active
+ * @brief MDEC DMA check: tests DAT_800abe98 flags, calls MDEC_DMAStart2 if active
  * @note Original: func_80086764 at 0x80086764
  */
 // MDEC_CheckDMA
@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80086764(void)
+s32 MDEC_CheckDMA(void)
 
 {
   s32 uVar1;

@@ -30,7 +30,7 @@ void Entity_ProcessAnimation(int param_1,s32 param_2)
       setCopControlWord(2,0x2800,*(s32 *)(iVar1 + 0x2c));
       setCopControlWord(2,0x3000,iVar1->pos_y_fixed);
       setCopControlWord(2,0x3800,iVar1->scale_y);
-      FUN_8003f698(*(s32 *)(iVar1 + 0x40),_g_EntityBuffer,param_2);
+      Entity_SubmitSpriteToOT(*(s32 *)(iVar1 + 0x40),_g_EntityBuffer,param_2);
       iVar2 = iVar2 + 1;
       iVar3 = iVar3 + 4;
     } while (iVar2 < (int)(uint)param_1->counter2);

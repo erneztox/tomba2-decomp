@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-uint FUN_800248d0(int param_1)
+uint Entity_Behavior_Painter2(int param_1)
 
 {
   u8 bVar1;
@@ -32,7 +32,7 @@ uint FUN_800248d0(int param_1)
       if (((pbVar5->kind < 0x65) &&
           (((int)(uint)(u8)(&DAT_80017324)[pbVar5->kind >> 3] >> (pbVar5->kind & 7) & 1U) != 0)) &&
          ((*pbVar5 & 1) != 0)) {
-        FUN_8002f514((bVar1 & 0xf) - 3,pbVar5);
+        Entity_Behavior_Spawn((bVar1 & 0xf) - 3,pbVar5);
         uVar4 = 1;
       }
     }
@@ -50,7 +50,7 @@ uint FUN_800248d0(int param_1)
                      0x10000) >> 0x10;
         iVar3 = (int)(((uint)param_1->pos_z - (uint)*(u16 *)((int)puVar6 + 0x36)) *
                      0x10000) >> 0x10;
-        uVar4 = FUN_80084080(iVar2 * iVar2 + iVar3 * iVar3);
+        uVar4 = Math_SqrtGTE(iVar2 * iVar2 + iVar3 * iVar3);
         if (param_1->bounds_min_x + 700 < (int)(uVar4 & 0xffff)) {
           return uVar4 & 0xffff;
         }
@@ -61,7 +61,7 @@ uint FUN_800248d0(int param_1)
         if (uVar4 != 0) {
           return uVar4;
         }
-        FUN_8002f514((bVar1 & 0xf) - 3,puVar6);
+        Entity_Behavior_Spawn((bVar1 & 0xf) - 3,puVar6);
         uVar4 = 1;
       }
     }

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800658e4(int param_1)
+void Entity_State_Attack2(int param_1)
 
 {
   int iVar1;
@@ -21,16 +21,16 @@ void FUN_800658e4(int param_1)
   else if (param_1->action_state != '\x01') {
     return;
   }
-  iVar1 = FUN_80076d68(param_1);
+  iVar1 = Entity_AnimFrame(param_1);
   if (iVar1 == 1) {
     g_ActionTrigger = 1;
   }
   if (_g_ActionInput != 1) {
     if (_g_ActionInput != 2) {
-      FUN_80065478(param_1,1);
+      Entity_SetActionFlag(param_1,1);
       return;
     }
-    FUN_80055d5c(param_1);
+    Entity_PhysicsStep2(param_1);
   }
   param_1->angle_offset = 0;
   param_1->velocity_y = 0;

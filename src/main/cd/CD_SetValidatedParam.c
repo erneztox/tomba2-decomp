@@ -6,7 +6,7 @@
 
 
 
-int FUN_800963a0(s8 param_1)
+int CD_SetValidatedParam(s8 param_1)
 
 {
   int iVar1;

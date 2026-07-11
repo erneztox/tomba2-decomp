@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800269fc(int param_1)
+void Game_ClearPause(int param_1)
 
 {
   if (param_1->flags != '\0') {

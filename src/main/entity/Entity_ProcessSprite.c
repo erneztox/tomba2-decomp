@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8007dde0(int param_1)
+void Entity_ProcessSprite(int param_1)
 
 {
   u8 bVar1;
@@ -15,9 +15,9 @@ void FUN_8007dde0(int param_1)
   
   bVar1 = param_1->state;
   if (bVar1 == 1) {
-    FUN_8007c940(param_1);
-    FUN_8007cc00(param_1);
-    FUN_8005019c(param_1 + 0x54,*(u8 *)(param_1 + 0x18),1,2);
+    GPU_SpriteBuild(param_1);
+    GPU_SpriteProcess(param_1);
+    UI_DrawPanel(param_1 + 0x54,*(u8 *)(param_1 + 0x18),1,2);
   }
   else if (bVar1 < 2) {
     if (bVar1 == 0) {
@@ -26,7 +26,7 @@ void FUN_8007dde0(int param_1)
               (uint)*(u16 *)(*(s16 *)(param_1 + 0x5e) * 4 + *(int *)(param_1 + 0x4c));
       param_1->parent = iVar2;
       param_1->script_ptr = iVar2;
-      FUN_8007c0d0(param_1,0);
+      Entity_ScriptRun_2(param_1,0);
       param_1->anim_id = 1;
       param_1->state = param_1->state + '\x01';
       g_EventInput = g_EventInput | 8;
@@ -37,7 +37,7 @@ void FUN_8007dde0(int param_1)
   }
   else if (bVar1 == 3) {
     g_EventInput = g_EventInput & 0xf7;
-    FUN_8007a624(param_1);
+    Entity_Dealloc(param_1);
   }
   return;
 }

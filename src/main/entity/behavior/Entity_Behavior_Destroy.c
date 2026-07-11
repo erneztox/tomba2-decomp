@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8006ae28(u8 *param_1)
+void Entity_Behavior_Destroy(u8 *param_1)
 
 {
   u8 bVar1;
@@ -22,7 +22,7 @@ void FUN_8006ae28(u8 *param_1)
         return;
       }
       if (bVar1 == 3) {
-        FUN_8007ab44(param_1);
+        Entity_ListInsert(param_1);
         return;
       }
       return;
@@ -35,7 +35,7 @@ void FUN_8006ae28(u8 *param_1)
       uVar3 = 0x20;
     }
     param_1->input_flags = uVar3;
-    FUN_8006acac(param_1);
+    Entity_InitConfig(param_1);
     param_1->target_angle = param_1->rot_y;
     param_1->state = param_1->state + '\x01';
     *(s16 *)(param_1 + 0x66) = 0;
@@ -44,15 +44,15 @@ void FUN_8006ae28(u8 *param_1)
     *param_1 = 2;
     if (param_1->sub_type == '\0') {
       param_1->behavior_state = 1;
-      FUN_80069688(param_1);
+      Entity_DispatchBehavior(param_1);
     }
     else {
-      FUN_80031558(param_1,(u8)param_1->kind - 1);
+      Entity_SpawnTrail(param_1,(u8)param_1->kind - 1);
     }
   }
   bVar1 = param_1->behavior_state;
   if (bVar1 == 1) {
-    FUN_8006a384(param_1);
+    Entity_Behavior_EnemyMain(param_1);
     cVar2 = param_1->kind;
 joined_r0x8006af70:
     if (cVar2 == '\x01') goto LAB_8006af94;
@@ -63,7 +63,7 @@ joined_r0x8006af70:
         param_1->flags = 1;
         return;
       }
-      FUN_8006a900(param_1);
+      Entity_State_Block(param_1);
       cVar2 = param_1->kind;
       goto joined_r0x8006af70;
     }
@@ -71,9 +71,9 @@ joined_r0x8006af70:
       param_1->flags = 1;
       return;
     }
-    FUN_8006a080(param_1);
+    Entity_State_Bounce(param_1);
   }
-  FUN_800517f8(param_1);
+  Entity_UpdateMatrix(param_1);
 LAB_8006af94:
   param_1->flags = 1;
   return;

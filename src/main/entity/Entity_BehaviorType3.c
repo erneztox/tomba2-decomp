@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8002b8f4(int param_1)
+void Entity_BehaviorType3(int param_1)
 
 {
   u8 bVar1;
@@ -22,7 +22,7 @@ void FUN_8002b8f4(int param_1)
       if (3 < bVar1) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar1 != 0) {
@@ -50,7 +50,7 @@ void FUN_8002b8f4(int param_1)
     if (cVar2 == '\a') {
       iVar5 = 0;
       if (6 < DAT_800e7e7c) {
-        iVar4 = FUN_8007a980(0,6,1);
+        iVar4 = Entity_AllocByPoolId(0,6,1);
         iVar5 = 0;
         if (iVar4 != 0) {
           if (param_1 != -0x2c) {
@@ -59,7 +59,7 @@ void FUN_8002b8f4(int param_1)
             *(s16 *)(iVar4 + 0x30) = *(s16 *)(param_1 + 0x30);
           }
           *(s16 *)(iVar4 + 0x32) = 0xffce;
-          FUN_80028e10(iVar4,3);
+          Entity_InitBehavior(iVar4,3);
           iVar5 = iVar4;
         }
       }
@@ -77,10 +77,10 @@ void FUN_8002b8f4(int param_1)
     param_1->target_rot_y = sVar3;
   }
 LAB_8002bab0:
-  iVar5 = FUN_8002b278(param_1);
+  iVar5 = Entity_CheckVisibility(param_1);
   if (iVar5 == 0) {
-    FUN_80031744(param_1);
-    FUN_80031780(param_1);
+    Entity_AdvanceAnimByte(param_1);
+    Entity_AdvanceAnimScript(param_1);
   }
   return;
 }

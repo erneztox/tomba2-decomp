@@ -6,10 +6,10 @@
 
 
 
-void FUN_80033080(s32 param_1)
+void Entity_DrawSpriteAndProject(s32 param_1)
 
 {
-  FUN_80027e5c();
-  FUN_800288ac(param_1);
+  Entity_ProcessProjCmd();
+  Entity_ProcessSpriteCmd(param_1);
   return;
 }

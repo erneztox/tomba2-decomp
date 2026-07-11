@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8009bf34(void)
+void BIOS_CallIndirect2(void)
 
 {
                     /* WARNING: Could not recover jumptable at 0x8009bf40. Too many branches */

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-u8 * FUN_8009a770(s32 param_1,u8 *param_2,uint *param_3)
+u8 * Debug_PrintfMain(s32 param_1,u8 *param_2,uint *param_3)
 
 {
   u8 bVar1;
@@ -241,10 +241,10 @@ LAB_8009ab38:
             pcVar15 = s__null__8001c754;
           }
           if ((int)puVar17 < 0) {
-            puVar17 = (u8 *)FUN_8009a600(pcVar15);
+            puVar17 = (u8 *)String_Compare(pcVar15);
           }
           else {
-            iVar8 = FUN_8009ae10(pcVar15,0,puVar17);
+            iVar8 = Mem_CopyN(pcVar15,0,puVar17);
             if ((iVar8 != 0) &&
                (iVar21 = 0, puVar19 = (u8 *)(iVar8 - (int)pcVar15),
                iVar8 - (int)pcVar15 <= (int)puVar17)) goto LAB_8009abdc;
@@ -254,11 +254,11 @@ LAB_8009ab38:
           goto LAB_8009abdc;
         }
       }
-      FUN_8009ae60(uVar9);
+      CD_QueueCmd(uVar9);
       goto LAB_8009adcc;
     }
 switchD_8009a814_caseD_0:
-    FUN_8009af5c();
+    CD_FlushCmd();
   }
   return local_40;
 switchD_8009a814_caseD_6c:
@@ -303,40 +303,40 @@ LAB_8009abdc:
   if (((uVar16 == 0) && (local_34 != (u8 *)0x0)) &&
      (puVar11 = puVar18, (int)puVar18 < (int)local_34)) {
     do {
-      FUN_8009ae60(0x20);
+      CD_QueueCmd(0x20);
       puVar11 = puVar11 + 1;
     } while ((int)puVar11 < (int)local_34);
   }
   if (iVar21 != 0) {
-    FUN_8009ae60();
+    CD_QueueCmd();
   }
   if (bVar4) {
-    FUN_8009ae60(0x30);
-    FUN_8009ae60((int)(char)*param_2);
+    CD_QueueCmd(0x30);
+    CD_QueueCmd((int)(char)*param_2);
   }
   if ((uVar16 == 0x20) && (puVar11 = puVar18, (int)puVar18 < (int)local_34)) {
     do {
-      FUN_8009ae60(0x30);
+      CD_QueueCmd(0x30);
       puVar11 = puVar11 + 1;
     } while ((int)puVar11 < (int)local_34);
   }
   if ((int)puVar17 < (int)local_3c) {
     do {
-      FUN_8009ae60(0x30);
+      CD_QueueCmd(0x30);
       puVar17 = puVar17 + 1;
     } while ((int)puVar17 < (int)local_3c);
   }
   while (puVar19 = puVar19 + -1, -1 < (int)puVar19) {
     cVar3 = *pcVar15;
     pcVar15 = (s8*)((int)pcVar15 + 1);
-    FUN_8009ae60((int)cVar3);
+    CD_QueueCmd((int)cVar3);
   }
   while (local_38 = local_38 + -1, -1 < local_38) {
-    FUN_8009ae60(0x30);
+    CD_QueueCmd(0x30);
   }
   if (((uVar16 & 0x10) != 0) && (puVar17 = puVar18, (int)puVar18 < (int)local_34)) {
     do {
-      FUN_8009ae60(0x20);
+      CD_QueueCmd(0x20);
       puVar17 = puVar17 + 1;
     } while ((int)puVar17 < (int)local_34);
   }

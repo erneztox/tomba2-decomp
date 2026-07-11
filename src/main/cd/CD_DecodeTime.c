@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-int FUN_8008a110(u8 *param_1)
+int CD_DecodeTime(u8 *param_1)
 
 {
   return (((uint)(*param_1 >> 4) * 10 + (*param_1 & 0xf)) * 0x3c +

@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8008d0f0(s32 param_1,s32 param_2,s32 param_3)
+void CD_SetParams(s32 param_1,s32 param_2,s32 param_3)
 
 {
   _DAT_80102720 = param_1;

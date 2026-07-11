@@ -7,13 +7,13 @@
 
 
 #include "tomba.h"
-void FUN_80053fdc(u8 *param_1,int param_2)
+void Entity_StateEnd3(u8 *param_1,int param_2)
 
 {
   s16 sVar1;
   int iVar2;
   
-  iVar2 = FUN_80053e50();
+  iVar2 = Entity_StateEnd2();
   if (iVar2 != 0) {
     return;
   }
@@ -39,11 +39,11 @@ void FUN_80053fdc(u8 *param_1,int param_2)
     param_1[0x173] = 0;
     return;
   }
-  FUN_800521f4(0,0x81,0x81,0xf);
-  FUN_80058304(param_1,0xb);
+  Sys_CallWithParams(0,0x81,0x81,0xf);
+  Entity_ActionDispatch(param_1,0xb);
   g_ActionState = 0;
   if ((*param_1 & 4) == 0) {
-    FUN_80053d90(param_1);
+    Entity_StateSwitch(param_1);
     param_1[0x61] = 0;
   }
   if (param_2 == 1) {
@@ -53,8 +53,8 @@ void FUN_80053fdc(u8 *param_1,int param_2)
     param_1->sprite_flags = param_1->sprite_flags | 0x82;
     if ((*param_1 & 0xc) != 0) {
 LAB_800540f8:
-      FUN_80074590(0x23,0,0);
-      FUN_800312d4(6,param_1 + 0x2c,0xffffffb0);
+      Audio_PlaySoundEffect(0x23,0,0);
+      Entity_SpawnWithFlag(6,param_1 + 0x2c,0xffffffb0);
       return;
     }
     *param_1 = 3;

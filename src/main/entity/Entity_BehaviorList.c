@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80022d08(u8 *param_1,u8 *param_2,int param_3,int param_4)
+s32 Entity_BehaviorList(u8 *param_1,u8 *param_2,int param_3,int param_4)
 
 {
   u16 uVar1;

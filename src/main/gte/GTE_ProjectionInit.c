@@ -8,11 +8,11 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80078610(void)
+void GTE_ProjectionInit(void)
 
 {
-  FUN_80051794(&g_GTE_WorkF8);
-  FUN_80051794(0x1f800118);
+  GTE_LoadIdentityMatrix(&g_GTE_WorkF8);
+  GTE_LoadIdentityMatrix(0x1f800118);
   _DAT_1f8000ee = 0xf92a;
   _DAT_1f8000ec = 0x1000;
   _DAT_1f8000e8 = 0;
@@ -38,13 +38,13 @@ void FUN_80078610(void)
   _DAT_1f8000d8 = _DAT_800e7eb4 + -0x6d60000;
   _DAT_800e8014 = _DAT_800e7eac;
   _DAT_1f8000d0 = _DAT_800e7eac;
-  FUN_8006d02c();
+  Camera_Commit();
   if (g_GameState == '\x03') {
     _DAT_801003f8 = 0xe9;
   }
   else {
     _DAT_801003f8 = 0x15e;
   }
-  FUN_800846f0(_DAT_801003f8);
+  GTE_SetReg_D000(_DAT_801003f8);
   return;
 }

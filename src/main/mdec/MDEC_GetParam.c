@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-u8 FUN_80087cb0(s32 param_1,int param_2,s32 param_3)
+u8 MDEC_GetParam(s32 param_1,int param_2,s32 param_3)
 
 {
   u8 uVar1;

@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80070f90(int param_1,u16 *param_2)
+s32 Math_Lerp(int param_1,u16 *param_2)
 
 {
   int iVar1;

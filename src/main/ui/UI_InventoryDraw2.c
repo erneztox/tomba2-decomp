@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8004e928(int param_1)
+void UI_InventoryDraw2(int param_1)
 
 {
   u8 bVar1;
@@ -35,11 +35,11 @@ void FUN_8004e928(int param_1)
     if (bVar1 != 3) {
       return;
     }
-    FUN_8007a624(param_1);
+    Entity_Dealloc(param_1);
     return;
   }
   if (param_1->behavior_state == '\0') {
-    iVar2 = FUN_8004daec(param_1);
+    iVar2 = Entity_WorldToScreen(param_1);
     if (iVar2 != 0) {
       param_1->behavior_state = param_1->behavior_state + '\x01';
     }
@@ -52,7 +52,7 @@ void FUN_8004e928(int param_1)
   bVar1 = g_ItemFlag;
   if (param_1->draw_x == 0x5d) {
 LAB_8004ea08:
-    FUN_80026100(bVar1);
+    Sys_IncCounter(bVar1);
   }
   else if (param_1->draw_x == 0x5e) {
     bVar1 = g_ItemFlag >> 1;

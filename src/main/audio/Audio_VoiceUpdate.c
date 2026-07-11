@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80092fd0(void)
+void Audio_VoiceUpdate(void)
 
 {
   u16 uVar1;

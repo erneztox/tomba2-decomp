@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-s32 FUN_800665f4(int param_1)
+s32 Entity_CheckFlag(int param_1)
 
 {
   u16 uVar1;

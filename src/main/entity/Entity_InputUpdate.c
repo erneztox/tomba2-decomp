@@ -9,7 +9,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80059d28(void)
+void Entity_InputUpdate(void)
 
 {
   if (g_InputTimer != '\0') {
@@ -33,7 +33,7 @@ void FUN_80059d28(void)
     }
     else {
 LAB_80059e30:
-      FUN_8005950c(&g_CollisionEntity);
+      Entity_InputProcess(&g_CollisionEntity);
     }
   }
   else if (g_GameState == GAMESTATE_7) {
@@ -56,6 +56,6 @@ LAB_80059e40:
   if ((g_CurrentOverlay == '\0') && (DAT_800e8000 != '\0')) {
     DAT_800e8000 = DAT_800e8000 + -1;
   }
-  FUN_8009a450();
+  Math_Random();
   return;
 }

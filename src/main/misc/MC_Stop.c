@@ -6,7 +6,7 @@
 
 
 
-void FUN_800976c8(void)
+void MC_Stop(void)
 
 {
   s32 local_8;

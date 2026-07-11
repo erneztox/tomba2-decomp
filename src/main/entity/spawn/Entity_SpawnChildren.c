@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_8006fc34(s32 param_1,u8 param_2)
+int Entity_SpawnChildren(s32 param_1,u8 param_2)
 
 {
   u16 uVar1;
@@ -20,17 +20,17 @@ int FUN_8006fc34(s32 param_1,u8 param_2)
   
   iVar5 = 0;
   do {
-    iVar3 = FUN_80072ddc(param_1,(&DAT_800a4bb8)[iVar5],3,4);
+    iVar3 = Entity_SpawnChild(param_1,(&DAT_800a4bb8)[iVar5],3,4);
     iVar5 = iVar5 + 1;
     if (iVar3 != 0) {
-      iVar3->callback = FUN_80070018;
+      iVar3->callback = Entity_ChildUpdate2;
       iVar3->sub_type = param_2 & 0x7f;
       iVar3->input_flags = param_2 & 0x80;
       iVar3->parent = param_1;
       iVar5 = (uint)iVar3->sub_type * 8;
       iVar3->alloc_flags = iVar3->alloc_flags | 0x80;
       if (iVar3->input_flags == '\0') {
-        iVar4 = FUN_80051b70(iVar3,(int)*(s16 *)(&DAT_800a29ce + iVar5),
+        iVar4 = Entity_InitSubEntity(iVar3,(int)*(s16 *)(&DAT_800a29ce + iVar5),
                              (int)*(s16 *)(&DAT_800a29cc + iVar5));
         if (iVar4 != 0) {
           return 0;
@@ -38,7 +38,7 @@ int FUN_8006fc34(s32 param_1,u8 param_2)
       }
       else {
         iVar3->sprite_data = _g_OT_Data;
-        FUN_80077b38(iVar3,&PTR_DAT_80017334,(int)*(s16 *)(&DAT_800a29cc + iVar5));
+        Entity_LoadAnimData(iVar3,&PTR_DAT_80017334,(int)*(s16 *)(&DAT_800a29cc + iVar5));
         iVar3->sprite_flags = 0;
         iVar3->render_flags = 0x10;
         iVar3->sub_anim_id = 0;

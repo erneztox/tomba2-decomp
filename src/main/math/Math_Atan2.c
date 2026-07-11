@@ -6,7 +6,7 @@
 
 
 
-int FUN_80085690(uint param_1,uint param_2)
+int Math_Atan2(uint param_1,uint param_2)
 
 {
   s32 bVar1;

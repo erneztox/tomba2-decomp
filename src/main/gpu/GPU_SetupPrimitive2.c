@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80083db0(int param_1,int param_2)
+void GPU_SetupPrimitive2(int param_1,int param_2)
 
 {
   s32 uVar1;

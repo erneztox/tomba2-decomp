@@ -6,7 +6,7 @@
 
 
 
-void FUN_800506d0(void)
+void Screen_Clear(void)
 
 {
   s16 sVar1;

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80024448(int param_1)
+s32 Entity_BehaviorSet(int param_1)
 
 {
   s16 sVar1;
@@ -21,14 +21,14 @@ s32 FUN_80024448(int param_1)
     uVar3 = 0x4a;
   }
   *(u8 *)(param_1 + 0x17d) = 0;
-  iVar2 = FUN_80046a44(param_1,(int)*(s16 *)(param_1 + 0x66),(int)-param_1->target_angle,
+  iVar2 = Collision_CheckFull2(param_1,(int)*(s16 *)(param_1 + 0x66),(int)-param_1->target_angle,
                        uVar3);
   if (iVar2 == 0) {
     uVar3 = 0;
   }
   else {
     *(u8 *)(param_1 + 0x17d) = (u8)((u16)_DAT_1f8001a6 >> 0xb) & 3;
-    FUN_80048654(param_1);
+    Entity_CalcCollisionAngle(param_1);
     sVar1 = _g_CollisionNormalX;
     param_1->draw_angle = _g_CollisionNormalX;
     if (param_1->direction == '\0') {
@@ -39,7 +39,7 @@ s32 FUN_80024448(int param_1)
     }
     if ((iVar2 == 2) && ((*(u8 *)(param_1 + 0x17d) & 1) != 0)) {
       param_1->action_flag = 7;
-      FUN_80024af0(param_1);
+      Entity_CalcAimPos(param_1);
     }
     else {
       param_1->action_flag = 4;

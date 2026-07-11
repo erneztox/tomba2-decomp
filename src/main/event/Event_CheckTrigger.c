@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_80035088(s32 param_1,s32 param_2,int param_3)
+s32 Event_CheckTrigger(s32 param_1,s32 param_2,int param_3)
 
 {
   s32 uVar1;
@@ -18,12 +18,12 @@ s32 FUN_80035088(s32 param_1,s32 param_2,int param_3)
     if (param_3 != 1) {
       if (DAT_800bfe55 == '\0') {
         DAT_800bfe55 = '\x01';
-        FUN_8004d6d4(param_2);
+        Menu_ActionMode0(param_2);
         uVar1 = 0;
       }
       else {
         DAT_800bfe55 = '\0';
-        FUN_8004d6f4();
+        Menu_ActionMode3();
         uVar1 = 0;
       }
     }

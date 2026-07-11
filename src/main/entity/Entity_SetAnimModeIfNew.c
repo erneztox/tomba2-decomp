@@ -7,14 +7,14 @@
 
 
 #include "tomba.h"
-s32 FUN_80041768(int param_1,uint param_2,s16 param_3)
+s32 Entity_SetAnimModeIfNew(int param_1,uint param_2,s16 param_3)
 
 {
   s32 uVar1;
   
   uVar1 = 1;
   if ((uint)param_1->anim_id != (param_2 & 0xff)) {
-    uVar1 = FUN_80041718(param_1,param_2,(int)param_3);
+    uVar1 = Entity_SetAnimMode(param_1,param_2,(int)param_3);
   }
   return uVar1;
 }

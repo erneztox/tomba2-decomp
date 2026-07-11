@@ -8,7 +8,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_8004c238(int param_1)
+void Entity_Behavior_Collectible(int param_1)
 
 {
   u8 bVar1;
@@ -30,7 +30,7 @@ void FUN_8004c238(int param_1)
       case 5:
         if ((param_1->alloc_flags & 0x7f) != 0) goto switchD_8004c2b8_caseD_a;
 switchD_8004c2b8_caseD_6:
-        FUN_8004a828(param_1);
+        Entity_SetupSpriteRender(param_1);
         return;
       case 6:
       case 7:
@@ -44,7 +44,7 @@ switchD_8004c2b8_caseD_6:
       case 10:
       case 0xb:
 switchD_8004c2b8_caseD_a:
-        FUN_8004a9a4(param_1);
+        Entity_InitFromTypeTable(param_1);
         return;
       default:
         return;
@@ -54,7 +54,7 @@ switchD_8004c2b8_caseD_a:
       if (bVar1 != 3) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (param_1->behavior_state != '\0') {
@@ -63,10 +63,10 @@ switchD_8004c2b8_caseD_a:
       }
       if (param_1->draw_x != 0) {
         if ((*(u16 *)(param_1 + 100) & 4) == 0) {
-          FUN_8004d714((int)param_1->angle_delta,1);
+          Inventory_SetFlag((int)param_1->angle_delta,1);
         }
         else {
-          FUN_8004d79c((int)param_1->angle_delta,1);
+          Inventory_SetBit((int)param_1->angle_delta,1);
         }
       }
       param_1->state = STATE_DEAD;
@@ -74,46 +74,46 @@ switchD_8004c2b8_caseD_a:
     }
     switch(param_1->sub_type) {
     case 0:
-      iVar2 = FUN_80049e54(param_1,1);
+      iVar2 = UI_ElementUpdate(param_1,1);
       goto LAB_8004c8ac;
     case 1:
-      iVar2 = FUN_80049e54(param_1,2);
+      iVar2 = UI_ElementUpdate(param_1,2);
       goto LAB_8004c8ac;
     default:
-      iVar2 = FUN_8004a3d4(param_1);
+      iVar2 = Menu_ItemDispatch(param_1);
       goto LAB_8004c8ac;
     case 4:
-      FUN_8004b3f4(param_1,100);
+      Game_AddScore(param_1,100);
       break;
     case 5:
-      FUN_8004b3f4(param_1,200);
+      Game_AddScore(param_1,200);
       break;
     case 6:
-      FUN_8004b3f4(param_1,500);
+      Game_AddScore(param_1,500);
       break;
     case 7:
-      FUN_8004b3f4(param_1,1000);
+      Game_AddScore(param_1,1000);
       break;
     case 8:
-      FUN_8004b3f4(param_1,5000);
+      Game_AddScore(param_1,5000);
       break;
     case 9:
-      FUN_8004b3f4(param_1,10000);
+      Game_AddScore(param_1,10000);
       break;
     case 10:
-      FUN_8004b3f4(param_1,20000);
+      Game_AddScore(param_1,20000);
       break;
     case 0xb:
-      FUN_8004b3f4(param_1,100000);
+      Game_AddScore(param_1,100000);
       break;
     case 0xf:
-      iVar2 = FUN_8004a118(param_1);
+      iVar2 = Entity_SpawnItem2(param_1);
       goto LAB_8004c8ac;
     case 0x10:
-      iVar2 = FUN_8004a2a0(param_1);
+      iVar2 = Entity_SpawnItem(param_1);
       goto LAB_8004c8ac;
     case 0x11:
-      iVar2 = FUN_8004b428(param_1);
+      iVar2 = Entity_SpawnScorePopupEx(param_1);
 LAB_8004c8ac:
       if (iVar2 == 0) {
         return;
@@ -125,57 +125,57 @@ LAB_8004c8ac:
   switch(param_1->flag_5E) {
   case 0:
     if ((param_1->alloc_flags & 0x80) == 0) {
-      iVar2 = FUN_8007778c(param_1);
+      iVar2 = GTE_ProjectSprite2(param_1);
       if (iVar2 == 0) goto LAB_8004c378;
     }
     else if ((g_ActionFlag != '\0') && ((u16)g_HurtParam == param_1->type_flags)) {
       param_1->flags = 1;
 LAB_8004c378:
-      FUN_80077efc(param_1);
+      Sprite_Alloc3(param_1);
     }
     if (param_1->flags == '\0') goto switchD_8004c31c_default;
-    FUN_8004b150(param_1,0);
+    Entity_Behavior_InitItem(param_1,0);
     goto LAB_8004c48c;
   case 1:
     if ((param_1->alloc_flags & 0x80) == 0) {
-      iVar2 = FUN_8007778c(param_1);
+      iVar2 = GTE_ProjectSprite2(param_1);
       if (iVar2 == 0) goto LAB_8004c3f8;
     }
     else if ((g_ActionFlag != '\0') && ((u16)g_HurtParam == param_1->type_flags)) {
       param_1->flags = 1;
 LAB_8004c3f8:
-      FUN_80077efc(param_1);
+      Sprite_Alloc3(param_1);
     }
-    FUN_80049a60(param_1,0);
+    Entity_State_Title(param_1,0);
     goto LAB_8004c48c;
   case 2:
     if ((param_1->alloc_flags & 0x80) == 0) {
-      iVar2 = FUN_8007778c(param_1);
+      iVar2 = GTE_ProjectSprite2(param_1);
       if (iVar2 == 0) goto LAB_8004c468;
     }
     else if ((g_ActionFlag != '\0') && ((u16)g_HurtParam == param_1->type_flags)) {
       param_1->flags = 1;
 LAB_8004c468:
-      FUN_80077efc(param_1);
+      Sprite_Alloc3(param_1);
     }
     if (param_1->flags == '\0') goto switchD_8004c31c_default;
-    FUN_8004b208(param_1,0);
+    Entity_Behavior_Talk(param_1,0);
 LAB_8004c48c:
-    FUN_80077b5c(param_1);
+    Entity_AdvanceAnim3(param_1);
     param_1->collision_state = 0;
     break;
   case 3:
     if ((param_1->alloc_flags & 0x80) == 0) {
-      iVar2 = FUN_8007778c(param_1);
+      iVar2 = GTE_ProjectSprite2(param_1);
       if (iVar2 == 0) goto LAB_8004c4f0;
     }
     else if ((g_ActionFlag != '\0') && ((u16)g_HurtParam == param_1->type_flags)) {
       param_1->flags = 1;
 LAB_8004c4f0:
-      FUN_80077efc(param_1);
+      Sprite_Alloc3(param_1);
     }
     if (param_1->flags != '\0') {
-      FUN_8004b150(param_1,1);
+      Entity_Behavior_InitItem(param_1,1);
       goto LAB_8004c604;
     }
   default:
@@ -184,31 +184,31 @@ switchD_8004c31c_default:
     break;
   case 4:
     if ((param_1->alloc_flags & 0x80) == 0) {
-      iVar2 = FUN_8007778c(param_1);
+      iVar2 = GTE_ProjectSprite2(param_1);
       if (iVar2 == 0) goto LAB_8004c570;
     }
     else if ((g_ActionFlag != '\0') && ((u16)g_HurtParam == param_1->type_flags)) {
       param_1->flags = 1;
 LAB_8004c570:
-      FUN_80077efc(param_1);
+      Sprite_Alloc3(param_1);
     }
-    FUN_80049a60(param_1,1);
+    Entity_State_Title(param_1,1);
 LAB_8004c604:
-    FUN_80051844(param_1);
+    GTE_LoadScaleCompose(param_1);
     param_1->collision_state = 0;
     break;
   case 5:
     if ((param_1->alloc_flags & 0x80) == 0) {
-      iVar2 = FUN_8007778c(param_1);
+      iVar2 = GTE_ProjectSprite2(param_1);
       if (iVar2 == 0) goto LAB_8004c5e0;
     }
     else if ((g_ActionFlag != '\0') && ((u16)g_HurtParam == param_1->type_flags)) {
       param_1->flags = 1;
 LAB_8004c5e0:
-      FUN_80077efc(param_1);
+      Sprite_Alloc3(param_1);
     }
     if (param_1->flags != '\0') {
-      FUN_8004b208(param_1,1);
+      Entity_Behavior_Talk(param_1,1);
       goto LAB_8004c604;
     }
     goto switchD_8004c31c_default;

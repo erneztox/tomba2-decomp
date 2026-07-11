@@ -6,14 +6,14 @@
 
 
 
-void FUN_80050970(void)
+void UI_DrawScreenOverlay(void)
 
 {
   if (g_ActionFlag == '\0') {
-    FUN_800508a8();
+    Screen_SetMode();
   }
   else {
-    FUN_8005082c(0,0,0);
+    Game_InitSaveData(0,0,0);
   }
   return;
 }

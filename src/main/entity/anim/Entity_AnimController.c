@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80072898(int param_1)
+void Entity_AnimController(int param_1)
 
 {
   u8 bVar1;
@@ -50,8 +50,8 @@ void FUN_80072898(int param_1)
           local_20 = *puVar7;
           sVar6 = sVar6 + 9;
           local_1f = 0;
-          iVar4 = FUN_8009a1f0(&local_20);
-          FUN_8007e1b8(local_28,*(s32 *)
+          iVar4 = CD_ReadSector_2(&local_20);
+          GPU_SpriteDrawMain(local_28,*(s32 *)
                                  ((int)&PTR_DAT_80017334 + ((iVar4 + 0x69) * 0x10000 >> 0xe)),
                        param_1->sprite_data,&local_30);
           puVar7 = puVar7 + 1;
@@ -76,7 +76,7 @@ void FUN_80072898(int param_1)
     }
   }
   else if ((bVar1 != 2) && (bVar1 == 3)) {
-    FUN_8007a624(param_1);
+    Entity_Dealloc(param_1);
   }
   return;
 }

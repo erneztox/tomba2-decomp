@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80080e74(s32 param_1)
+s32 GPU_DrawSyncCallback(s32 param_1)
 
 {
   s32 uVar1;

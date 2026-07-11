@@ -6,7 +6,7 @@
 
 
 
-uint FUN_8004d868(int param_1)
+uint Inventory_CheckFlag(int param_1)
 
 {
   int iVar1;

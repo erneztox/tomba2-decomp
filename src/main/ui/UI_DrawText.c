@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8004eb94(u8 *param_1,s16 param_2)
+void UI_DrawText(u8 *param_1,s16 param_2)
 
 {
   u8 bVar1;
@@ -20,7 +20,7 @@ void FUN_8004eb94(u8 *param_1,s16 param_2)
   uint *puVar7;
   
   if (*param_1 != 0xff) {
-    iVar3 = FUN_8004ea4c(param_1,0);
+    iVar3 = UI_RenderChar(param_1,0);
     iVar3 = 0xa0 - (((iVar3 << 0x10) >> 0x10) - ((iVar3 << 0x10) >> 0x1f) >> 1);
     bVar1 = *param_1;
     puVar7 = _g_OT_Buffer;
@@ -52,7 +52,7 @@ void FUN_8004eb94(u8 *param_1,s16 param_2)
       } while (bVar1 != 0xff);
     }
     _g_OT_Buffer = puVar7 + 3;
-    FUN_80083de0(puVar7,0,0,0x1f,0);
+    GPU_SetupDrawMode2(puVar7,0,0,0x1f,0);
     iVar3 = _g_EntityBuffer;
     *puVar7 = *(uint *)(_g_EntityBuffer + 0xc) | 0x2000000;
     *(uint **)(iVar3 + 0xc) = puVar7;

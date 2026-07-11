@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80083cc0(int param_1)
+void GPU_SetTilePrimHeader(int param_1)
 
 {
   param_1->sub_type = 4;

@@ -9,7 +9,7 @@
 /* WARNING: Removing unreachable block (ram,0x800828a0) */
 
 #include "tomba.h"
-s32 FUN_80082734(s32 *param_1,s32 *param_2)
+s32 GPU_DMASend2(s32 *param_1,s32 *param_2)
 
 {
   s32 uVar1;
@@ -20,7 +20,7 @@ s32 FUN_80082734(s32 *param_1,s32 *param_2)
   s16 sVar6;
   int iVar7;
   
-  FUN_800834a0();
+  GPU_CheckDMA();
   if (*(s16 *)(param_1 + 1) < 0) {
     sVar5 = 0;
   }
@@ -51,7 +51,7 @@ LAB_800827dc:
     iVar4 = iVar4 / 2 + iVar7 * -0x10;
     uVar2 = *DAT_800a5aa8;
     while ((uVar2 & 0x4000000) == 0) {
-      iVar3 = FUN_800834d4();
+      iVar3 = GPU_CheckTimeout();
       if (iVar3 != 0) {
         return 0xffffffff;
       }

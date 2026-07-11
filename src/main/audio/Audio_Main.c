@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_800931c0(void)
+void Audio_Main(void)
 
 {
   uint uVar1;
@@ -42,7 +42,7 @@ void FUN_800931c0(void)
     iVar10 = -0x7fefab32;
     iVar7 = 0;
     do {
-      FUN_8009a1d0(uVar5,iVar10);
+      CD_GetField(uVar5,iVar10);
       if (*(s16 *)(iVar7 + -0x7fefab32) == 0) {
         *(uint *)(&DAT_80105bb0 + _DAT_80105bac * 4) =
              *(uint *)(&DAT_80105bb0 + _DAT_80105bac * 4) | 1 << (uVar5 & 0x1f);
@@ -73,7 +73,7 @@ void FUN_800931c0(void)
               uVar4 = 0;
               uVar1 = 1 << (uVar6 - 0x10 & 0x1f);
             }
-            FUN_80097e10(0,(uVar1 & 0xff) << 0x10 | (int)(s16)uVar4);
+            MC_Seek(0,(uVar1 & 0xff) << 0x10 | (int)(s16)uVar4);
           }
           *pcVar8 = '\0';
         }
@@ -126,7 +126,7 @@ void FUN_800931c0(void)
       local_2c = *puVar15;
     }
     if (local_64 != 0) {
-      FUN_80099970(&local_68);
+      CD_XA_Main(&local_68);
     }
     *pbVar9 = 0;
     pbVar9 = pbVar9 + 1;
@@ -138,10 +138,10 @@ void FUN_800931c0(void)
     uVar5 = uVar5 + 1;
     puVar2 = puVar2 + 8;
   } while ((int)uVar5 < 0x18);
-  FUN_80098f90(0,(uint)CONCAT12(DAT_80105bf2,_DAT_80105bf0));
-  FUN_80098f90(1,(uint)CONCAT12(DAT_801054ba,_DAT_801054b8));
-  FUN_80098db0(8,(uint)CONCAT12(DAT_801054be,_DAT_801054bc));
-  FUN_80097e10(8,(uint)CONCAT12(DAT_801054c2,_DAT_801054c0));
+  CD_SPU_Write2(0,(uint)CONCAT12(DAT_80105bf2,_DAT_80105bf0));
+  CD_SPU_Write2(1,(uint)CONCAT12(DAT_801054ba,_DAT_801054b8));
+  CD_Cmd_CC_CD(8,(uint)CONCAT12(DAT_801054be,_DAT_801054bc));
+  MC_Seek(8,(uint)CONCAT12(DAT_801054c2,_DAT_801054c0));
   _DAT_80105bf0 = 0;
   _DAT_80105bf2 = 0;
   _DAT_801054b8 = 0;

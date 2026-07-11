@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80080fd4(s32 param_1,s16 *param_2)
+void GPU_SetupPacket(s32 param_1,s16 *param_2)
 
 {
   int iVar1;

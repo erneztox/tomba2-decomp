@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80061a7c(u8 *param_1)
+void Entity_State_Swim(u8 *param_1)
 
 {
   u8 bVar1;
@@ -16,7 +16,7 @@ void FUN_80061a7c(u8 *param_1)
   int iVar4;
   s16 uVar5;
   
-  FUN_80076d68();
+  Entity_AnimFrame();
   bVar1 = param_1->action_state;
   if (bVar1 == 1) {
     sVar3 = param_1->timer1;
@@ -24,8 +24,8 @@ void FUN_80061a7c(u8 *param_1)
     if (sVar3 != 1) {
       return;
     }
-    FUN_8002f514(6,0);
-    FUN_80074590(0x37,0,0);
+    Entity_Behavior_Spawn(6,0);
+    Audio_PlaySoundEffect(0x37,0,0);
     param_1->timer1 = 10;
     param_1->action_state = param_1->action_state + '\x01';
     param_1->timer2 = (u16)(u8)(&DAT_800a4550)[param_1->entity_flags & 0xf];
@@ -37,8 +37,8 @@ void FUN_80061a7c(u8 *param_1)
     }
     DAT_800bf809 = 1;
     *param_1 = 7;
-    FUN_80054198(param_1);
-    FUN_80054d14(param_1,0x72,4);
+    Entity_ResetState_2(param_1);
+    Entity_LoadAnimIfChanged(param_1,0x72,4);
     cVar2 = param_1->action_state;
     uVar5 = 0x19;
 LAB_80061b9c:
@@ -52,7 +52,7 @@ LAB_80061b9c:
       if (sVar3 != 1) {
         return;
       }
-      iVar4 = FUN_800248d0(param_1);
+      iVar4 = Entity_Behavior_Painter2(param_1);
       uVar5 = 0x46;
       if (iVar4 != 0) {
         cVar2 = param_1->action_state;
@@ -82,7 +82,7 @@ LAB_80061b9c:
     param_1->behavior_state = 0;
     param_1->action_state = 0;
     param_1->sub_action = 0;
-    FUN_80054d14(param_1,2,5);
+    Entity_LoadAnimIfChanged(param_1,2,5);
     DAT_800bf809 = 0;
   }
   return;

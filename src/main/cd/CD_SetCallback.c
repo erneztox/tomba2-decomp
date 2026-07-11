@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_800865f0(s32 param_1)
+s32 CD_SetCallback(s32 param_1)
 
 {
   s32 uVar1;

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80027254(int param_1)
+void Entity_Behavior_Particle(int param_1)
 
 {
   u8 bVar1;
@@ -40,9 +40,9 @@ void FUN_80027254(int param_1)
       *(u8 *)(param_1 + 0xe) = *(u8 *)(param_1 + 0x33);
       *(s16 *)(param_1 + 0x14) = sVar2;
       *(s16 *)(param_1 + 0x10) = sVar2;
-      uVar3 = FUN_8009a450();
+      uVar3 = Math_Random();
       *(u16 *)(param_1 + 0x10) = *(s16 *)(param_1 + 0x10) + (uVar3 & 3);
-      uVar3 = FUN_8009a450();
+      uVar3 = Math_Random();
       *(u16 *)(param_1 + 0x14) = *(s16 *)(param_1 + 0x14) + (uVar3 & 3);
       if ((param_1->flags & 1) == 0) {
         *(s16 *)(param_1 + 8) = 0x30;
@@ -57,7 +57,7 @@ void FUN_80027254(int param_1)
         *(s16 *)(param_1 + 0x14) =
              *(s16 *)(param_1 + 0x14) * 4 *
              *(s16 *)(puVar5 + (param_1->kind + 6 & 7) * 2);
-        uVar3 = FUN_8009a450();
+        uVar3 = Math_Random();
         *(u16 *)(param_1 + 0x12) = (((uVar3 & 3) + 1) * -8 + -0x20) * 0x100;
         *(s16 *)(param_1 + 0x18) = 0x300;
       }
@@ -94,7 +94,7 @@ void FUN_80027254(int param_1)
     }
   }
   else if ((bVar1 != 2) && (bVar1 == 3)) {
-    FUN_8007b2ac(param_1);
+    Math_InitVec3(param_1);
   }
   return;
 }

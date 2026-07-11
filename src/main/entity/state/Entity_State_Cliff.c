@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80062a30(int param_1,int param_2,uint param_3)
+void Entity_State_Cliff(int param_1,int param_2,uint param_3)
 
 {
   s16 uVar1;
@@ -17,7 +17,7 @@ void FUN_80062a30(int param_1,int param_2,uint param_3)
   int iVar5;
   
   if (param_3 == 3) {
-    uVar3 = FUN_8005444c();
+    uVar3 = Entity_CollisionGround();
     if ((uVar3 & 1) == 0) {
       return;
     }
@@ -30,7 +30,7 @@ void FUN_80062a30(int param_1,int param_2,uint param_3)
     param_1->behavior_state = 0;
     param_1->action_state = 0;
 LAB_80062d68:
-    FUN_80054d14(param_1,2,3);
+    Entity_LoadAnimIfChanged(param_1,2,3);
     return;
   }
   if ((param_3 & 4) == 0) {
@@ -75,7 +75,7 @@ LAB_80062d68:
         param_1->state_ptr = 0;
         param_1->anim_counter = 0;
         param_1->speed2 = param_1->speed2 + 0x2c;
-        FUN_80056d44(param_1,0);
+        Entity_ResetActionState(param_1,0);
         if (param_2->kind != '\x17') {
           return;
         }
@@ -92,7 +92,7 @@ LAB_80062d68:
     if ((param_3 & 0x40) != 0) {
       return;
     }
-    uVar3 = FUN_8005444c(param_1);
+    uVar3 = Entity_CollisionGround(param_1);
     if ((uVar3 & 1) == 0) {
       return;
     }
@@ -103,7 +103,7 @@ LAB_80062d68:
     param_1->sub_action = 0;
     if (param_3 == 0x85) {
       param_1->direction = '\x01' - param_1->direction;
-      FUN_80054198(param_1);
+      Entity_ResetState_2(param_1);
       param_1->behavior_state = 0x35;
       return;
     }
@@ -130,7 +130,7 @@ LAB_80062d68:
   }
   param_1->speed2 = sVar2;
 LAB_80062b98:
-  iVar4 = FUN_800541f4(param_1,1);
+  iVar4 = Entity_SubState(param_1,1);
   if (iVar4 != 0) {
     param_1->speed2 = uVar1;
   }

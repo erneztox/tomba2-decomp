@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8006b0d8(char *param_1)
+void Entity_SetState4(char *param_1)
 
 {
   if ((param_1->kind != '\x04') && (*param_1 == '\x02')) {

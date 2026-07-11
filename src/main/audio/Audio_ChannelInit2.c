@@ -1,5 +1,5 @@
 /**
- * @brief Audio channel init variant 2: sets voice, calls FUN_80095530
+ * @brief Audio channel init variant 2: sets voice, calls Audio_VoiceKeyOn
  * @note Original: func_8008DC00 at 0x8008DC00
  */
 // Audio_ChannelInit2
@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8008dc00(s16 param_1)
+void Audio_ChannelInit2(s16 param_1)
 
 {
   int iVar1;
@@ -20,8 +20,8 @@ void FUN_8008dc00(s16 param_1)
   uint uVar6;
   
   uVar6 = (uint)param_1;
-  FUN_80095530(uVar6,0,0,1);
-  FUN_80095b90(uVar6);
+  Audio_VoiceKeyOn(uVar6,0,0,1);
+  Audio_ScanChannel(uVar6);
   _DAT_80104c28 = _DAT_80104c28 & ~(1 << (uVar6 & 0x1f));
   iVar5 = 0;
   if (0 < _DAT_801054b2) {

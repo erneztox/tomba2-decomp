@@ -6,7 +6,7 @@
 
 
 
-undefined8 FUN_80083618(uint param_1)
+undefined8 GPU_SendDMAPacket(uint param_1)
 
 {
   uint *puVar1;

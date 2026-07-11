@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80056c00(int param_1,int param_2)
+void Entity_PhysicsMove(int param_1,int param_2)
 
 {
   s16 sVar1;
@@ -16,7 +16,7 @@ void FUN_80056c00(int param_1,int param_2)
   
   if (param_1->collision_state == '\0' && param_1->state_flag145 == '\0') {
     if ((g_TimerFlag == '\0') && (DAT_800bf848 != '\0')) {
-      FUN_80056d44(param_1,0);
+      Entity_ResetActionState(param_1,0);
     }
     else {
       sVar1 = param_1->angle_offset + 0x800;
@@ -27,7 +27,7 @@ void FUN_80056c00(int param_1,int param_2)
       if (((0x1dff < param_1->angle_offset) &&
           (*(u8 *)(param_1 + 0x148) = 1, param_2 == 0)) &&
          (param_1->state_flag146 != '\x04')) {
-        FUN_80056d44(param_1,0);
+        Entity_ResetActionState(param_1,0);
         if ((param_1->entity_flags & 0x40) == 0) {
           uVar2 = param_1->angle_offset;
         }
@@ -46,7 +46,7 @@ void FUN_80056c00(int param_1,int param_2)
   }
   else {
     if (0x1400 < param_1->angle_offset) {
-      FUN_8005314c();
+      Entity_StateDispatch();
     }
     param_1->angle_offset = 0;
     *(u8 *)(param_1 + 0x148) = 0;

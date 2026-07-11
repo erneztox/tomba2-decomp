@@ -6,9 +6,9 @@
 
 
 
-void FUN_80041438(int param_1,s16 param_2,s16 param_3)
+void Entity_ApproachAngle(int param_1,s16 param_2,s16 param_3)
 
 {
-  FUN_8004139c(param_1 + 0x56,(int)param_2,(int)param_3);
+  Math_ApproachAngle(param_1 + 0x56,(int)param_2,(int)param_3);
   return;
 }

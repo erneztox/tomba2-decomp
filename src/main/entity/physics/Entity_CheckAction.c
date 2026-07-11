@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_800552ec(int param_1)
+s32 Entity_CheckAction(int param_1)
 
 {
   if ((((g_State230 == '\0') && (*(s8*)(param_1 + 0x181) == '\0')) &&

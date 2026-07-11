@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 * FUN_800847b0(s32 *param_1,s32 *param_2)
+s32 * GTE_StoreMatrix(s32 *param_1,s32 *param_2)
 
 {
   s16 uVar1;

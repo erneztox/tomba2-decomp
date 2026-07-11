@@ -16,7 +16,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80057dc0(int param_1,int param_2)
+void Entity_State_Jump3(int param_1,int param_2)
 
 {
   u16 uVar1;

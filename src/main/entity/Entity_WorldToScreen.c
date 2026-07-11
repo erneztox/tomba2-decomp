@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_8004daec(int param_1)
+s32 Entity_WorldToScreen(int param_1)
 
 {
   int iVar1;
@@ -18,11 +18,11 @@ s32 FUN_8004daec(int param_1)
   _g_GTE_WorkC0 = 0x14;
   _DAT_1f8000c2 = 0;
   _g_GTE_WorkC4 = 0x32;
-  FUN_800844c0(_DAT_800e7f50 + 0x18,&g_GTE_WorkC0,&DAT_1f8000c8);
+  GTE_MulMatrix2(_DAT_800e7f50 + 0x18,&g_GTE_WorkC0,&DAT_1f8000c8);
   param_1->pos_y = _DAT_1f8000c8 + iVar1->pos_x;
   *(s16 *)(param_1 + 0x32) = _DAT_1f8000ca + *(s16 *)(iVar1 + 0x30);
   param_1->pos_z = _DAT_1f8000cc + *(s16 *)(iVar1 + 0x34);
-  FUN_8007778c(param_1);
-  FUN_80077b5c(param_1);
+  GTE_ProjectSprite2(param_1);
+  Entity_AdvanceAnim3(param_1);
   return DAT_800bf80a == '\0';
 }

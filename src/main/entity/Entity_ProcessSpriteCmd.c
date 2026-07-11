@@ -29,11 +29,11 @@ void Entity_ProcessSpriteCmd(int param_1)
 
   pbVar8 = *(u8 **)(param_1 + 0x3c);
   if (pbVar8 != (u8 *)0x0) {
-    FUN_80085480(param_1 + 0x48,0x1f800000);
+    GTE_LoadRotMatrixFromSVec(param_1 + 0x48,0x1f800000);
     local_28 = (uint)*pbVar8 << 2;
     local_24 = (uint)pbVar8->flags << 2;
     local_20 = (uint)pbVar8->kind << 2;
-    FUN_80084520(0x1f800000,&local_28);
+    GTE_TransformVec(0x1f800000,&local_28);
     setCopControlWord(2,0,_g_GTE_WorkF8);
     setCopControlWord(2,0x800,_DAT_1f8000fc);
     setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -100,7 +100,7 @@ void Entity_ProcessSpriteCmd(int param_1)
     setCopControlWord(2,0xb000,0);
     setCopControlWord(2,0xb800,0);
     // Submit sprite to OT with color info
-    FUN_80027768(*(s32 *)(param_1 + 0x50),bVar1,(int)*(s16 *)(param_1 + 0x32),
+    Entity_SubmitQuadToOT(*(s32 *)(param_1 + 0x50),bVar1,(int)*(s16 *)(param_1 + 0x32),
                  param_1->collision_state);
   }
   return;

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80057a68(u8 *param_1)
+s32 Entity_State_Hit(u8 *param_1)
 
 {
   u8 bVar1;
@@ -17,7 +17,7 @@ s32 FUN_80057a68(u8 *param_1)
   int iVar3;
   s32 uVar4;
   
-  iVar3 = FUN_80024548(param_1,0);
+  iVar3 = Entity_Behavior_Hit(param_1,0);
   param_1->state_ptr = iVar3;
   if (iVar3 == 0) {
     return 0;
@@ -91,6 +91,6 @@ LAB_80057ba8:
     param_1->behavior_state = 4;
   }
 LAB_80057be4:
-  FUN_80074590(uVar4,0,0);
+  Audio_PlaySoundEffect(uVar4,0,0);
   return 1;
 }

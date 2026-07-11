@@ -10,7 +10,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80039e80(u8 *param_1,int param_2)
+s32 Font_BuildChar(u8 *param_1,int param_2)
 
 {
   s8 cVar1;

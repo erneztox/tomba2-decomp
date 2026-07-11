@@ -6,7 +6,7 @@
 
 
 
-void FUN_8009401c(s16 param_1,s16 param_2,s16 param_3,s32 param_4,u16 param_5,
+void Audio_PitchBend(s16 param_1,s16 param_2,s16 param_3,s32 param_4,u16 param_5,
                  u16 param_6)
 
 {
@@ -38,6 +38,6 @@ void FUN_8009401c(s16 param_1,s16 param_2,s16 param_3,s32 param_4,u16 param_5,
     uVar2 = 0x7f - (uVar3 << 6) / uVar1;
     param_5 = param_6;
   }
-  FUN_800939a0(0x21,(int)param_1,(int)param_2,param_3,param_5,uVar2 & 0xffff);
+  Audio_SeqCommand(0x21,(int)param_1,(int)param_2,param_3,param_5,uVar2 & 0xffff);
   return;
 }

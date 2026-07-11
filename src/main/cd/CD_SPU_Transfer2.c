@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80098810(uint *param_1)
+void CD_SPU_Transfer2(uint *param_1)
 
 {
   s32 bVar1;

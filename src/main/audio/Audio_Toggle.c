@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80090a0c(void)
+void Audio_Toggle(void)
 
 {
   if (DAT_800ac438 == 0) {

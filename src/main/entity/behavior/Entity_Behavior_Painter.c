@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80024794(int param_1)
+s32 Entity_Behavior_Painter(int param_1)
 
 {
   s8 cVar1;

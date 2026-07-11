@@ -6,7 +6,7 @@
 
 
 
-uint FUN_80077fb0(uint param_1)
+uint Math_Sqrt(uint param_1)
 
 {
   uint uVar1;

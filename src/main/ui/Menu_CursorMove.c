@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8003a470(int param_1,s16 *param_2)
+void Menu_CursorMove(int param_1,s16 *param_2)
 
 {
   u8 bVar1;
@@ -48,11 +48,11 @@ void FUN_8003a470(int param_1,s16 *param_2)
     param_2->counter2 = -0x180;
   }
   *(s8*)(param_2 + 0x1f) = (char)param_2[0x1f] + '\x01';
-  uVar3 = FUN_8009a450();
+  uVar3 = Math_Random();
   param_2->counter2 = (uVar3 & 0x1f) - 0xc0;
   param_2->render_flags = 6;
   param_2->counter1 = *param_2 << 4;
-  iVar4 = FUN_8003a1e4(param_1,param_2);
+  iVar4 = Entity_DebugText(param_1,param_2);
   iVar5 = (int)param_2->render_flags;
   if (iVar5 == 0) {
     trap(0x1c00);

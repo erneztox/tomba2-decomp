@@ -6,10 +6,10 @@
 
 
 
-void FUN_80073300(void)
+void Entity_EnterHurtState3(void)
 
 {
-  FUN_80073260();
+  Entity_EnterHurtState();
   g_HurtState = 3;
   return;
 }

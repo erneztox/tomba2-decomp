@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_8005308c(void)
+s32 Entity_CheckAction2(void)
 
 {
   if ((_DAT_800e7e84 & 0xff) != 1) {
@@ -28,7 +28,7 @@ s32 FUN_8005308c(void)
     }
   }
   if (g_CameraMode2 == '\0') {
-    FUN_80054198(&g_CollisionEntity);
+    Entity_ResetState_2(&g_CollisionEntity);
   }
   g_ActionState = 0;
   g_State230 = 1;

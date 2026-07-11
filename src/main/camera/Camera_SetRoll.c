@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8006d950(s32 param_1,int param_2)
+void Camera_SetRoll(s32 param_1,int param_2)
 
 {
   _g_CameraY = *(s32 *)(param_2 + 4);

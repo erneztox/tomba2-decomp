@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80041fcc(int param_1)
+s32 Entity_CheckStateAndSet(int param_1)
 
 {
   if (param_1 != 0) {

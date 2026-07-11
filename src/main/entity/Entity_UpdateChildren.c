@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80026c88(void)
+void Entity_UpdateChildren(void)
 
 {
   char *pcVar1;

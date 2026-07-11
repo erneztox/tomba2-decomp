@@ -6,7 +6,7 @@
 
 
 
-void * FUN_800787f8(int param_1)
+void * String_LookupName(int param_1)
 
 {
   return (&PTR_s_The_Starting_Beach_800a2b64)[(u8)(&DAT_800a55c8)[param_1]];

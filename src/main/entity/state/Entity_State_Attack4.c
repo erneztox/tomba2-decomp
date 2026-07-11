@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_8006762c(int param_1)
+void Entity_State_Attack4(int param_1)
 
 {
   s8 cVar1;
@@ -19,12 +19,12 @@ void FUN_8006762c(int param_1)
   switch(param_1->action_state) {
   case 0:
     if (DAT_800bfad7 == '\0') {
-      FUN_8006625c(param_1);
+      Entity_Behavior_TimedSFX(param_1);
     }
   case 0xb:
-    FUN_80058304(param_1,2);
-    FUN_80053d90(param_1);
-    FUN_80074590(0x24,0,0);
+    Entity_ActionDispatch(param_1,2);
+    Entity_StateSwitch(param_1);
+    Audio_PlaySoundEffect(0x24,0,0);
     g_TimerFlag = 1;
     param_1->action_state = 6;
     goto switchD_80067664_default;
@@ -36,7 +36,7 @@ void FUN_8006762c(int param_1)
     }
     else if (g_GameState == '\x06') {
       if ((_DAT_800bfe56 & 0x40) == 0) {
-        FUN_80074590(0x8b,0,0);
+        Audio_PlaySoundEffect(0x8b,0,0);
       }
       Overlay_801147cc(param_1);
     }
@@ -52,9 +52,9 @@ void FUN_8006762c(int param_1)
     param_1->state_flag145 = 0;
     param_1->state_flag146 = 0;
     *(u8 *)(param_1 + 0x61) = 0;
-    FUN_80054198(param_1);
-    FUN_80054d14(param_1,0x71,0);
-    FUN_800551c4(param_1);
+    Entity_ResetState_2(param_1);
+    Entity_LoadAnimIfChanged(param_1,0x71,0);
+    Entity_State_Physics(param_1);
     param_1->velocity_y = 0x2400;
     param_1->rot_z = 0;
     param_1->timer1 = 10;
@@ -81,11 +81,11 @@ code_r0x800678c0:
     sVar2 = param_1->timer1;
     param_1->timer1 = sVar2 + -1;
     if (sVar2 == 1) {
-      FUN_800662d8(param_1,param_1->action_state == '\b');
+      Entity_OverlayDispatch(param_1,param_1->action_state == '\b');
       g_TimerFlag = 2;
       DAT_800bf80f = '\x02';
       param_1->action_state = param_1->action_state + '\x01';
-      FUN_8005245c();
+      Pad_Init();
     }
     break;
   case 4:
@@ -102,8 +102,8 @@ code_r0x800678c0:
   default:
     goto switchD_80067664_default;
   }
-  FUN_800674f4(param_1);
-  FUN_80076d68(param_1);
+  Entity_State_Shoot(param_1);
+  Entity_AnimFrame(param_1);
 switchD_80067664_default:
   return;
 }

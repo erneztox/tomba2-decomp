@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8002918c(int param_1)
+void Entity_Behavior_Wander(int param_1)
 
 {
   u8 bVar1;
@@ -22,7 +22,7 @@ void FUN_8002918c(int param_1)
       if (3 < bVar1) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar1 != 0) {
@@ -31,16 +31,16 @@ void FUN_8002918c(int param_1)
     param_1->state = 1;
     param_1->sub_action = 0;
     param_1->scale_y = param_1->anim_data;
-    iVar3 = FUN_8009a450();
+    iVar3 = Math_Random();
     param_1->action_state = (char)(iVar3 >> 0xb) + '\b';
     if ((param_1->sub_type == '5') && (_DAT_800e7ffe < 0)) {
-      iVar3 = FUN_8009a450();
+      iVar3 = Math_Random();
       param_1->action_state = (char)(iVar3 >> 0xc) + '\x03';
     }
   }
-  iVar3 = FUN_8009a450();
+  iVar3 = Math_Random();
   param_1->sub_action = param_1->sub_action + (char)(iVar3 >> 9);
-  sVar2 = FUN_8002b278(param_1);
+  sVar2 = Entity_CheckVisibility(param_1);
   if (param_1->sub_action < '\0') {
     param_1->sub_action = param_1->sub_action + -0x80;
   }
@@ -50,7 +50,7 @@ void FUN_8002918c(int param_1)
       param_1->state = STATE_FINISH;
     }
     else if (sVar2 == 0) {
-      FUN_80031780(param_1);
+      Entity_AdvanceAnimScript(param_1);
     }
   }
   return;

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8007d208(int param_1)
+void GPU_SpriteCmd(int param_1)
 
 {
   u8 bVar1;
@@ -30,10 +30,10 @@ void FUN_8007d208(int param_1)
   param_1->anim_id = param_1->anim_id & 0xfe;
   if ((((param_1->anim_counter == 1) || (DAT_800bfe4e == '\0')) &&
       (param_1->draw_y != -1)) && (param_1->sprite_flags != -1)) {
-    FUN_8001d41c((int)param_1->draw_y,
+    Engine_OverlayLoad((int)param_1->draw_y,
                  (uint)param_1->sprite_flags + (uint)param_1->collision_state);
   }
-  FUN_8007ceec(param_1,&local_10,local_e);
+  GPU_SpriteDecode(param_1,&local_10,local_e);
   bVar1 = param_1->sub_anim_id;
   param_1->rot_x =
        0xa0 - (s16)(((int)((uint)local_10 << 0x10) >> 0x10) -

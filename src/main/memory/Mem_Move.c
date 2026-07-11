@@ -6,7 +6,7 @@
 
 
 
-u8 * FUN_8009b940(u8 *param_1,u8 *param_2,int param_3)
+u8 * Mem_Move(u8 *param_1,u8 *param_2,int param_3)
 
 {
   u8 uVar1;

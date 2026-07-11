@@ -12,7 +12,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8004c930(u8 *param_1)
+void Entity_Behavior_NPC(u8 *param_1)
 
 {
   u8 bVar1;
@@ -31,7 +31,7 @@ void FUN_8004c930(u8 *param_1)
       if (bVar1 != 0) {
         return;
       }
-      FUN_8004a828(param_1);
+      Entity_SetupSpriteRender(param_1);
       param_1->state = param_1->state + '\x01';
       iVar9 = (int)_g_CameraTargetX;
       iVar8 = (int)_g_CameraTargetY;
@@ -61,7 +61,7 @@ void FUN_8004c930(u8 *param_1)
       return;
     }
     if (bVar1 == 2) {
-      iVar5 = FUN_8004a3d4(param_1);
+      iVar5 = Menu_ItemDispatch(param_1);
       if (iVar5 == 0) {
         return;
       }
@@ -71,7 +71,7 @@ void FUN_8004c930(u8 *param_1)
     if (bVar1 != 3) {
       return;
     }
-    FUN_8007a624(param_1);
+    Entity_Dealloc(param_1);
     return;
   }
   if (param_1->behavior_state == '\0') {
@@ -103,6 +103,6 @@ void FUN_8004c930(u8 *param_1)
   }
   param_1->flags = 1;
 LAB_8004cb94:
-  FUN_80077efc(param_1);
+  Sprite_Alloc3(param_1);
   return;
 }

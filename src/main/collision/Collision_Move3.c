@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_800468ac(int param_1,s16 param_2,s16 param_3,s16 param_4)
+s32 Collision_Move3(int param_1,s16 param_2,s16 param_3,s16 param_4)
 
 {
   s16 sVar1;
@@ -21,21 +21,21 @@ s32 FUN_800468ac(int param_1,s16 param_2,s16 param_3,s16 param_4)
   uint uVar7;
   uint uVar8;
   
-  iVar3 = FUN_80083e80((int)param_4);
+  iVar3 = Math_Cos((int)param_4);
   iVar5 = (int)param_2;
   uVar8 = (uint)(-iVar3 * iVar5) >> 0xc;
-  iVar3 = FUN_80083f50((int)param_4);
+  iVar3 = Math_CosGTE((int)param_4);
   iVar6 = 0;
   _DAT_1f8001be = *(s16 *)(param_1 + 0x32) + param_3;
   uVar7 = (uint)(iVar3 * iVar5) >> 0xc;
   do {
     _DAT_1f8001bc = param_1->pos_y + (s16)uVar7;
     _DAT_1f8001c0 = param_1->pos_z + (s16)uVar8;
-    iVar3 = FUN_800498c8(param_1);
+    iVar3 = Collision_FindGround(param_1);
     if (iVar3 == 0) {
       return false;
     }
-    sVar1 = FUN_80085690((uint)_DAT_1f8001b8 - (uint)_DAT_1f8001b4,
+    sVar1 = Math_Atan2((uint)_DAT_1f8001b8 - (uint)_DAT_1f8001b4,
                          (uint)_DAT_1f8001b6 - (uint)_DAT_1f8001b2);
     if (iVar6 == 0) {
       uVar2 = (-sVar1 - param_1->rot_y) + 0x400U & 0xfff;
@@ -53,7 +53,7 @@ s32 FUN_800468ac(int param_1,s16 param_2,s16 param_3,s16 param_4)
         uVar4 = 8;
       }
     }
-    sVar1 = FUN_8004602c(uVar4,0,0);
+    sVar1 = Collision_Push3(uVar4,0,0);
     uVar7 = -uVar7;
     if (sVar1 != 0) break;
     iVar6 = iVar6 + 1;

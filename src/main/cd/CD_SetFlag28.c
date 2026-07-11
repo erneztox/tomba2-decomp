@@ -6,7 +6,7 @@
 
 
 
-void FUN_80096370(u8 param_1)
+void CD_SetFlag28(u8 param_1)
 
 {
   DAT_80105d28 = param_1;

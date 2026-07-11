@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8008fc10(s16 param_1,s16 param_2,u8 param_3)
+void Audio_VoiceAlloc2(s16 param_1,s16 param_2,u8 param_3)
 
 {
   u8 uVar1;
@@ -42,7 +42,7 @@ void FUN_8008fc10(s16 param_1,s16 param_2,u8 param_3)
           if ((param_3 == 10) || (pcVar2 = _DAT_80104bb4, param_3 == 0xb)) goto LAB_8008fde8;
         }
 LAB_8008fe20:
-        uVar3 = FUN_80090160((int)param_1,(int)param_2);
+        uVar3 = Audio_AllocVoice((int)param_1,(int)param_2);
         puVar6[0x24] = uVar3;
         return;
       }

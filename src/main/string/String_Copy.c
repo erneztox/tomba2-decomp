@@ -6,7 +6,7 @@
 
 
 
-char * FUN_8009a5b0(char *param_1,char *param_2)
+char * String_Copy(char *param_1,char *param_2)
 
 {
   s8 cVar1;

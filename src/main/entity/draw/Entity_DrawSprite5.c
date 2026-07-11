@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_80030d68(int param_1)
+void Entity_DrawSprite5(int param_1)
 
 {
   s32 in_zero;
@@ -47,14 +47,14 @@ void FUN_80030d68(int param_1)
   iVar8 = 0;
   _DAT_1f800090 = 0xfff;
   do {
-    FUN_80085480(param_1 + 0x48,0x1f800000);
-    FUN_80051794(&DAT_1f800020);
-    FUN_80084eb0((int)param_1->sprite_x,&DAT_1f800020);
-    FUN_80084250(0x1f800000,&DAT_1f800020);
+    GTE_LoadRotMatrixFromSVec(param_1 + 0x48,0x1f800000);
+    GTE_LoadIdentityMatrix(&DAT_1f800020);
+    Math_Atan2_2((int)param_1->sprite_x,&DAT_1f800020);
+    GTE_MulMatrix3(0x1f800000,&DAT_1f800020);
     local_38 = (uint)*(u8 *)(&local_58 + uVar1) << 2;
     local_34 = (uint)*(u8 *)((int)&local_58 + uVar1 * 4 + 1) << 2;
     local_30 = (uint)*(u8 *)((int)&local_58 + uVar1 * 4 + 2) << 2;
-    FUN_80084520(0x1f800000,&local_38);
+    GTE_TransformVec(0x1f800000,&local_38);
     setCopControlWord(2,0,_g_GTE_WorkF8);
     setCopControlWord(2,0x800,_DAT_1f8000fc);
     setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -103,7 +103,7 @@ void FUN_80030d68(int param_1)
     setCopControlWord(2,0x2800,_g_GTE_Data14);
     setCopControlWord(2,0x3000,_g_GTE_Data18);
     setCopControlWord(2,0x3800,_g_GTE_Data1C);
-    FUN_80027768(&DAT_8009f3e0,0,0,uVar1 << 5);
+    Entity_SubmitQuadToOT(&DAT_8009f3e0,0,0,uVar1 << 5);
     iVar8 = iVar8 + 1;
     param_1->sprite_x = param_1->sprite_x + 0x400;
   } while (iVar8 < 4);

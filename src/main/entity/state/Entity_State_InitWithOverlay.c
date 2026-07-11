@@ -8,12 +8,12 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_800653f4(int param_1)
+void Entity_State_InitWithOverlay(int param_1)
 
 {
   if (param_1->action_state == '\0') {
-    FUN_80054198(param_1);
-    FUN_80054d14(param_1,0x40,0);
+    Entity_ResetState_2(param_1);
+    Entity_LoadAnimIfChanged(param_1,0x40,0);
     param_1->sub_action = 0;
     param_1->action_state = param_1->action_state + '\x01';
   }

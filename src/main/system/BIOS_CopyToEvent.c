@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8009c230(void)
+void BIOS_CopyToEvent(void)
 
 {
   int iVar1;
@@ -17,7 +17,7 @@ void FUN_8009c230(void)
   s32 unaff_retaddr;
   
   _DAT_80105f58 = unaff_retaddr;
-  FUN_80080890();
+  BIOS_Syscall0();
   iVar1 = (*(code *)&SUB_000000b0)();
   iVar1 = iVar1->script_data;
   puVar2 = &DAT_8009c2a0;
@@ -26,7 +26,7 @@ void FUN_8009c230(void)
     puVar2 = puVar2 + 1;
     iVar1 = iVar1 + 4;
   } while (puVar2 != (s32 *)0x8009c2ac);
-  FUN_800858f0();
-  FUN_800808a0();
+  BIOS_CallA0_2();
+  BIOS_Syscall0_2();
   return;
 }

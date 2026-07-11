@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80096bf0(int param_1)
+s32 CD_SPU_Init(int param_1)
 
 {
   uint uVar1;
@@ -23,7 +23,7 @@ s32 FUN_80096bf0(int param_1)
   g_SPU_Regs[0xc0] = 0;
   puVar2[0xc1] = 0;
   puVar2[0xd5] = 0;
-  FUN_800976c8();
+  MC_Stop();
   puVar2 = g_SPU_Regs;
   g_SPU_Regs[0xc0] = 0;
   puVar2[0xc1] = 0;
@@ -31,7 +31,7 @@ s32 FUN_80096bf0(int param_1)
     uVar1 = 1;
     do {
       if (0xf00 < uVar1) {
-        FUN_8009a730(s_SPU_T_O___s__8001c670,s_wait__reset__8001c680);
+        Debug_Printf(s_SPU_T_O___s__8001c670,s_wait__reset__8001c680);
         break;
       }
       uVar1 = uVar1 + 1;
@@ -67,7 +67,7 @@ s32 FUN_80096bf0(int param_1)
     puVar2[0xd9] = 0;
     puVar2[0xda] = 0;
     puVar2[0xdb] = 0;
-    FUN_80096e70(&DAT_800ac644,0x10);
+    CD_SPU_Read(&DAT_800ac644,0x10);
     iVar3 = 0;
     puVar2 = g_SPU_Regs;
     do {
@@ -83,17 +83,17 @@ s32 FUN_80096bf0(int param_1)
     } while (iVar3 < 0x18);
     g_SPU_Regs[0xc4] = 0xffff;
     puVar4[0xc5] = 0xff;
-    FUN_800976c8();
-    FUN_800976c8();
-    FUN_800976c8();
-    FUN_800976c8();
+    MC_Stop();
+    MC_Stop();
+    MC_Stop();
+    MC_Stop();
     puVar2 = g_SPU_Regs;
     g_SPU_Regs[0xc6] = 0xffff;
     puVar2[199] = 0xff;
-    FUN_800976c8();
-    FUN_800976c8();
-    FUN_800976c8();
-    FUN_800976c8();
+    MC_Stop();
+    MC_Stop();
+    MC_Stop();
+    MC_Stop();
   }
   DAT_800ac638 = 1;
   g_SPU_Regs[0xd5] = 0xc000;

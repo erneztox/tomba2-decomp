@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_800365f0(int param_1,int param_2)
+s32 Entity_LoopCheck(int param_1,int param_2)
 
 {
   u8 bVar1;
@@ -16,9 +16,9 @@ s32 FUN_800365f0(int param_1,int param_2)
   
   uVar2 = 0;
   if ((int)(uint)*(u8 *)(param_1 + 0x1f) < (int)(*(u8 *)(param_1 + 0x22) - 1)) {
-    iVar3 = FUN_800368d0(param_1,*(u8 *)(param_1 + 0x1f) + 1,*(u8 *)(param_1 + 0x1d));
+    iVar3 = Entity_CheckLoop(param_1,*(u8 *)(param_1 + 0x1f) + 1,*(u8 *)(param_1 + 0x1d));
     if (iVar3 < 0) {
-      iVar3 = FUN_800368d0(param_1,*(u8 *)(param_1 + 0x1f) + 2,*(u8 *)(param_1 + 0x1d));
+      iVar3 = Entity_CheckLoop(param_1,*(u8 *)(param_1 + 0x1f) + 2,*(u8 *)(param_1 + 0x1d));
       iVar4 = 0;
       if (iVar3 < 0) {
         return 0;

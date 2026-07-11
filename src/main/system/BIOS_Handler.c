@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_8009ba10(s32 *param_1)
+s32 BIOS_Handler(s32 *param_1)
 
 {
   s32 unaff_s0;

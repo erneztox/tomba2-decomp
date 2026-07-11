@@ -1,20 +1,20 @@
 /**
- * @brief CD init attempt: tries FUN_8008b2d8 then FUN_8008b19c, returns success s32
+ * @brief CD init attempt: tries CD_Init3 then CD_InitDrive2, returns success s32
  * @note Original: func_80089930 at 0x80089930
  */
 // CD_InitAttempt
 
 
 
-s32 FUN_80089930(void)
+s32 CD_InitAttempt(void)
 
 {
   s32 bVar1;
   int iVar2;
   
-  iVar2 = FUN_8008b2d8();
+  iVar2 = CD_Init3();
   if (iVar2 == 0) {
-    iVar2 = FUN_8008b19c();
+    iVar2 = CD_InitDrive2();
     bVar1 = iVar2 == 0;
   }
   else {

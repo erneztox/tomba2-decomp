@@ -8,19 +8,19 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8007b18c(void)
+void Engine_InitPool(void)
 
 {
   int *piVar1;
   int iVar2;
   int iVar3;
   
-  FUN_8004fb20();
+  Render_ClearQueue();
   iVar2 = 0;
-  FUN_800798f8();
+  Engine_InitEntity();
   iVar3 = -0x7ff0d8c0;
   do {
-    FUN_8009a420(iVar3,0,0x44);
+    Mem_Set(iVar3,0,0x44);
     iVar2 = iVar2 + 1;
     iVar3 = iVar3 + 0x44;
   } while (iVar2 < 0x208);
@@ -35,13 +35,13 @@ void FUN_8007b18c(void)
     iVar2 = iVar2 + -0x44;
   } while (iVar3 < 0x208);
   _g_EntityPoolCount = 0x208;
-  FUN_8007acc4();
-  FUN_8007a810();
-  FUN_8007ac14();
-  FUN_8007ac40();
-  FUN_8007ac6c();
-  FUN_8007ac98();
-  FUN_8007ad14();
-  FUN_8007ad40();
+  Entity_ClearPool5();
+  Entity_InitBackgroundPool();
+  Entity_ClearPool0();
+  Entity_ClearPool1();
+  Entity_ClearPool2();
+  Entity_ClearPool3();
+  Entity_ClearPool4();
+  Entity_InitRenderQueue();
   return;
 }

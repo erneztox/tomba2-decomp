@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80047778(int param_1)
+s32 Entity_CheckCollision(int param_1)
 
 {
   s32 bVar1;
@@ -19,11 +19,11 @@ s32 FUN_80047778(int param_1)
   uVar2 = (u16)param_1->collision_dir;
   uVar3 = 1;
   if ((uVar2 == 0) || ((*_g_CollisionGrid & 0xff) < uVar2)) {
-    FUN_800490e4(param_1);
+    Collision_GridWalk(param_1);
   }
   else {
     if (uVar2 != g_CollisionZone) {
-      FUN_80048ecc(param_1->collision_dir);
+      Collision_GridLookup(param_1->collision_dir);
     }
     if (_DAT_1f8001ae < _DAT_1f8001b0) {
       bVar1 = _DAT_1f8001b0 < (u16)(_DAT_1f8001c0 - _DAT_1f8001ac);
@@ -32,7 +32,7 @@ s32 FUN_80047778(int param_1)
       bVar1 = _DAT_1f8001ae < (u16)(_DAT_1f8001bc - _DAT_1f8001aa);
     }
     if (bVar1) {
-      uVar3 = FUN_80048fc4(param_1,0);
+      uVar3 = Collision_Slope2(param_1,0);
     }
   }
   if (_DAT_1f8001ae < _DAT_1f8001b0) {

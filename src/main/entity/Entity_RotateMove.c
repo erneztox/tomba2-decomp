@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80075f0c(int param_1,s16 param_2)
+void Entity_RotateMove(int param_1,s16 param_2)
 
 {
   int iVar1;

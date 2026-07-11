@@ -6,7 +6,7 @@
 
 
 
-u8 FUN_80089a10(void)
+u8 CD_GetStatusByte(void)
 
 {
   return DAT_800abfd8;

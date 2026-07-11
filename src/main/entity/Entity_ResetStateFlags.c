@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8005749c(int param_1)
+void Entity_ResetStateFlags(int param_1)
 
 {
   if (param_1->state_flag146 != '\0') {

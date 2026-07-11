@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8006c59c(u8 *param_1)
+void Entity_InitBehaviorConfig(u8 *param_1)
 
 {
   param_1->anim_counter = 0x1000;
@@ -21,7 +21,7 @@ void FUN_8006c59c(u8 *param_1)
   param_1->input_flags = 0;
   param_1->move_mode = 0;
   param_1->timer2 = 0;
-  param_1->script_data = FUN_8002c138;
+  param_1->script_data = Entity_DrawSprite3;
   param_1->draw_x = 0;
   param_1->state = param_1->state + '\x01';
   return;

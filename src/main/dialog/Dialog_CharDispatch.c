@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-u8 FUN_80035738(s32 param_1,s32 param_2,int param_3)
+u8 Dialog_CharDispatch(s32 param_1,s32 param_2,int param_3)
 
 {
   s8 cVar1;
@@ -70,7 +70,7 @@ joined_r0x80035aa8:
   case 0x62:
     switch(g_GameState) {
     case 0:
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x10);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x10);
       break;
     case 1:
       if (g_ActionFlag != '\0') {
@@ -79,28 +79,28 @@ joined_r0x80035aa8:
         cVar1 = DAT_800bf910;
         goto joined_r0x80035aa8;
       }
-      uVar6 = FUN_80035424(param_1,param_2,param_3);
+      uVar6 = Event_Check4(param_1,param_2,param_3);
       if (uVar6 != 0) goto LAB_80035f50;
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x11);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x11);
       break;
     case 5:
-      uVar6 = FUN_80035640(0xd);
+      uVar6 = Event_CheckTrigger2(0xd);
       if (uVar6 == 0) {
-        uVar6 = FUN_80035338(param_1,param_2,param_3,0x12);
+        uVar6 = Event_Handler(param_1,param_2,param_3,0x12);
       }
-      else if ((param_3 != 1) && (iVar3 = FUN_8004bd04(param_1,0,2), iVar3 != 0)) {
+      else if ((param_3 != 1) && (iVar3 = Entity_SpawnCollectible(param_1,0,2), iVar3 != 0)) {
         iVar3->callback = 0x801126c0;
         uVar5 = 0x62;
 LAB_80035c68:
-        FUN_8004d4f4(uVar5,1);
+        Menu_UpdateItemCount(uVar5,1);
         goto LAB_80035f50;
       }
       break;
     case 7:
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x13);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x13);
       break;
     case 8:
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x14);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x14);
     }
     break;
   case 99:
@@ -111,93 +111,93 @@ LAB_80035814:
         if (uVar6 != 0) goto LAB_80035f50;
       }
       else {
-        uVar6 = FUN_80035640(0);
+        uVar6 = Event_CheckTrigger2(0);
         if (uVar6 != 0) {
-          if ((param_3 != 1) && (iVar3 = FUN_8004bd04(param_1,0,1), iVar3 != 0)) {
+          if ((param_3 != 1) && (iVar3 = Entity_SpawnCollectible(param_1,0,1), iVar3 != 0)) {
             iVar3->callback = 0x80117228;
           }
           goto LAB_80035814;
         }
       }
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x10);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x10);
       break;
     case 1:
       if (g_ActionFlag != '\0') goto joined_r0x80035aa8;
-      uVar6 = FUN_80035424(param_1,param_2,param_3);
+      uVar6 = Event_Check4(param_1,param_2,param_3);
       if (uVar6 != 0) goto LAB_80035f50;
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x11);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x11);
       break;
     case 5:
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x12);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x12);
       break;
     case 7:
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x13);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x13);
       break;
     case 8:
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x14);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x14);
     }
     break;
   case 100:
     switch(g_GameState) {
     case 0:
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x10);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x10);
       break;
     case 1:
       if (g_ActionFlag != '\0') goto joined_r0x80035aa8;
-      uVar6 = FUN_80035424(param_1,param_2,param_3);
+      uVar6 = Event_Check4(param_1,param_2,param_3);
       if (uVar6 != 0) goto LAB_80035f50;
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x11);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x11);
       break;
     case 5:
-      uVar6 = FUN_80035640(0xd);
+      uVar6 = Event_CheckTrigger2(0xd);
       if (uVar6 == 0) {
-        uVar6 = FUN_80035338(param_1,param_2,param_3,0x12);
+        uVar6 = Event_Handler(param_1,param_2,param_3,0x12);
       }
-      else if ((param_3 != 1) && (iVar3 = FUN_8004bd04(param_1,0,1), iVar3 != 0)) {
+      else if ((param_3 != 1) && (iVar3 = Entity_SpawnCollectible(param_1,0,1), iVar3 != 0)) {
         iVar3->callback = 0x801126c0;
         uVar5 = 0x61;
         goto LAB_80035c68;
       }
       break;
     case 7:
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x13);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x13);
       break;
     case 8:
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x14);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x14);
     }
     break;
   case 0x65:
     switch(g_GameState) {
     case 0:
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x10);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x10);
       break;
     case 1:
       if (g_ActionFlag != '\0') goto joined_r0x80035aa8;
-      uVar6 = FUN_80035424(param_1,param_2,param_3);
+      uVar6 = Event_Check4(param_1,param_2,param_3);
       if (uVar6 != 0) goto LAB_80035f50;
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x11);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x11);
       break;
     case 4:
-      uVar6 = FUN_800355b4(param_1,param_2,param_3);
+      uVar6 = Event_TriggerTypeB(param_1,param_2,param_3);
       break;
     case 5:
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x12);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x12);
       break;
     case 6:
-      uVar6 = FUN_80035528(param_1,param_2,param_3);
+      uVar6 = Event_TriggerTypeA(param_1,param_2,param_3);
       break;
     case 7:
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x13);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x13);
       break;
     case 8:
-      uVar6 = FUN_80035338(param_1,param_2,param_3,0x14);
+      uVar6 = Event_Handler(param_1,param_2,param_3,0x14);
     }
     break;
   case 0x77:
     if (g_GameState == GAMESTATE_TITLE) {
       if (DAT_800bf902 == '\0') break;
       if (((_DAT_800bf854->combat_flag == '\x01') && ((DAT_800bf9ea & 0xf) != 0xf)) &&
-         (uVar6 = FUN_80035640(2), uVar6 != 0)) {
+         (uVar6 = Event_CheckTrigger2(2), uVar6 != 0)) {
         if (param_3 == 1) goto LAB_80035f58;
         Overlay_801252c0(param_1,3,0);
       }
@@ -214,7 +214,7 @@ LAB_80035814:
     goto LAB_80035f40;
   case 0x79:
   case 0x7a:
-    uVar6 = FUN_80035640(3);
+    uVar6 = Event_CheckTrigger2(3);
     uVar5 = 5;
     goto LAB_80035ee4;
   case 0x7c:
@@ -237,7 +237,7 @@ LAB_80035814:
   case 0x7f:
   case 0x80:
   case 0x92:
-    uVar6 = FUN_80035640(4);
+    uVar6 = Event_CheckTrigger2(4);
     uVar5 = 0x15;
     goto LAB_80035ee4;
   case 0x81:
@@ -249,7 +249,7 @@ LAB_80035814:
     uVar5 = 0xf;
     goto LAB_80035f40;
   case 0x85:
-    uVar6 = FUN_80035640(3);
+    uVar6 = Event_CheckTrigger2(3);
     uVar5 = 6;
     goto LAB_80035ee4;
   case 0x86:
@@ -258,18 +258,18 @@ LAB_80035814:
     goto LAB_80035f40;
   case 0x87:
     if (DAT_800bf9bd == '\0') goto LAB_80035f2c;
-    uVar6 = FUN_80035640(10);
-    uVar4 = FUN_80035640(0xb);
+    uVar6 = Event_CheckTrigger2(10);
+    uVar4 = Event_CheckTrigger2(0xb);
     uVar6 = uVar6 | uVar4;
     uVar5 = 0xc;
 LAB_80035ee4:
-    uVar4 = FUN_80035640(uVar5);
+    uVar4 = Event_CheckTrigger2(uVar5);
     uVar6 = uVar6 | uVar4;
     break;
   case 0x88:
     uVar5 = 0x1d;
 LAB_80035f40:
-    uVar6 = FUN_80035640(uVar5);
+    uVar6 = Event_CheckTrigger2(uVar5);
   }
 LAB_80035f50:
   if (param_3 == 1) {
@@ -282,7 +282,7 @@ LAB_80035f58:
   else {
     DAT_800bf80a = 1;
     DAT_800bf80b = (u8)param_2;
-    FUN_8004d650(param_2,1);
+    Inventory_RemoveItem3(param_2,1);
     uVar2 = 0;
   }
   return uVar2;

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80080ed4(int param_1)
+void GPU_SetDisplayMask(int param_1)
 
 {
   s32 uVar1;
@@ -16,7 +16,7 @@ void FUN_80080ed4(int param_1)
     (*(code *)PTR_FUN_800a599c)(s_SetDispMask__d_____8001bec8,param_1);
   }
   if (param_1 == 0) {
-    FUN_80083af8(&DAT_800a5a0c,0xffffffff,0x14);
+    Mem_Set_2(&DAT_800a5a0c,0xffffffff,0x14);
   }
   uVar1 = 0x3000001;
   if (param_1 != 0) {

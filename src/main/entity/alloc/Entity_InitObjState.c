@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8006914c(char *param_1)
+void Entity_InitObjState(char *param_1)
 
 {
   if (*param_1 == '\x02') {

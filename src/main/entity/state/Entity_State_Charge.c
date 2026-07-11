@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80064e48(int param_1)
+void Entity_State_Charge(int param_1)
 
 {
   u8 bVar1;
@@ -21,7 +21,7 @@ void FUN_80064e48(int param_1)
     if (1 < bVar1) {
       if (bVar1 == 2) {
         param_1->state_flag144 = 0;
-        FUN_80074590(0x1e,0,0);
+        Audio_PlaySoundEffect(0x1e,0,0);
         param_1->action_state = param_1->action_state + '\x01';
         param_1->action_flag = 0;
         param_1->state_ptr = 0;
@@ -50,15 +50,15 @@ void FUN_80064e48(int param_1)
           }
         }
       }
-      FUN_80056b48(param_1,1);
-      FUN_80055d5c(param_1);
-      FUN_800574e0(param_1,1);
-      FUN_80076d68(param_1);
+      Entity_ApplyVelocity(param_1,1);
+      Entity_PhysicsStep2(param_1);
+      Entity_State_Combo(param_1,1);
+      Entity_AnimFrame(param_1);
       if (param_1->timer1 != 0) {
         param_1->timer1 = param_1->timer1 + -1;
       }
       if ((param_1->velocity_y < -0xdff) || (param_1->timer1 != 0)) {
-        iVar5 = FUN_80055634(param_1,1);
+        iVar5 = Entity_CheckCollisionFlags(param_1,1);
         if (iVar5 != 0) {
           param_1->state_flag144 = 0;
           param_1->action_state = 0;
@@ -92,8 +92,8 @@ void FUN_80064e48(int param_1)
     *(u8 *)(param_1 + 0x169) = uVar2;
     *(u8 *)(param_1 + 0x168) = *(u8 *)(param_1 + 0x169) >> 4;
   }
-  FUN_80063f9c(param_1);
+  Entity_PhysicsMain(param_1);
 LAB_80065050:
-  FUN_800551c4(param_1);
+  Entity_State_Physics(param_1);
   return;
 }

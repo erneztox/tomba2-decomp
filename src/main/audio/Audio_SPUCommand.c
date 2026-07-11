@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-uint FUN_80075e04(uint param_1,uint param_2,u8 param_3,u8 param_4,u8 param_5,u8 param_6,
+uint Audio_SPUCommand(uint param_1,uint param_2,u8 param_3,u8 param_4,u8 param_5,u8 param_6,
                  u8 param_7,u8 param_8)
 
 {

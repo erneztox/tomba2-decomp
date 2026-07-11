@@ -7,9 +7,9 @@
 
 
 #include "tomba.h"
-void FUN_80041ff8(int param_1)
+void Entity_ForwardStateToParent(int param_1)
 
 {
-  FUN_80041fcc(param_1->parent);
+  Entity_CheckStateAndSet(param_1->parent);
   return;
 }

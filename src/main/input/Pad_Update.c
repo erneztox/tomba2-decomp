@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8001d7c4(s8 param_1,u8 *param_2)
+void Pad_Update(s8 param_1,u8 *param_2)
 
 {
   s32 bVar1;
@@ -17,23 +17,23 @@ void FUN_8001d7c4(s8 param_1,u8 *param_2)
   
   bVar1 = false;
   if ((param_1 == '\x01') && ((*param_2 & 0x20) != 0)) {
-    iVar2 = FUN_80089fec(1);
+    iVar2 = CD_InitSub(1);
     if (iVar2 == 0) {
-      FUN_80089f88(auStack_20,3);
-      iVar2 = FUN_8008a110(auStack_20);
+      CD_CheckInit(auStack_20,3);
+      iVar2 = CD_DecodeTime(auStack_20);
       if (iVar2 == DAT_800be0e0 + 1) {
         DAT_800be0e0 = iVar2;
         if (_g_DMASize < 0x200) {
           if (0 < _g_DMASize) {
             bVar1 = true;
-            FUN_80089f88(_g_DMASrc,_g_DMASize);
+            CD_CheckInit(_g_DMASrc,_g_DMASize);
             iVar2 = _g_DMASize;
             _g_DMASize = 0;
             _g_DMASrc = _g_DMASrc + iVar2 * 4;
           }
         }
         else {
-          FUN_80089f88(_g_DMASrc,0x200);
+          CD_CheckInit(_g_DMASrc,0x200);
           _g_DMASize = _g_DMASize + -0x200;
           _g_DMASrc = _g_DMASrc + 0x800;
           if (_g_DMASize == 0) {
@@ -56,8 +56,8 @@ void FUN_8001d7c4(s8 param_1,u8 *param_2)
     DAT_800be0e8 = DAT_800be0e8 + 1;
   }
   if (bVar1) {
-    FUN_80089b98(0);
-    FUN_80089ce8(9,0);
+    CD_SetErrorCallback(0);
+    CD_SendCmdRetry2(9,0);
   }
   return;
 }

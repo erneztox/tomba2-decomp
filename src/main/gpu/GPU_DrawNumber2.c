@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8007c688(s32 param_1,s16 *param_2,u8 param_3,s16 param_4)
+void GPU_DrawNumber2(s32 param_1,s16 *param_2,u8 param_3,s16 param_4)
 
 {
   u16 uVar1;
@@ -29,9 +29,9 @@ void FUN_8007c688(s32 param_1,s16 *param_2,u8 param_3,s16 param_4)
     *param_2 = *param_2 + 0x10;
   }
   else {
-    param_1 = FUN_8007c2a4(param_1,param_2,param_3,uVar2 & 0xff | 0x80,uVar3);
+    param_1 = GPU_DrawNumber(param_1,param_2,param_3,uVar2 & 0xff | 0x80,uVar3);
     uVar2 = 0;
   }
-  FUN_8007c2a4(param_1,param_2,param_3,(uint)uVar1 % 100 | uVar2,uVar3);
+  GPU_DrawNumber(param_1,param_2,param_3,(uint)uVar1 % 100 | uVar2,uVar3);
   return;
 }

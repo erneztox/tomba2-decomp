@@ -6,7 +6,7 @@
 
 
 
-void FUN_800909c0(void)
+void Audio_CallCallbacks(void)
 
 {
   if (DAT_800ac430 != (code *)0x0) {

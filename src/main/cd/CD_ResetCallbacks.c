@@ -6,14 +6,14 @@
 
 
 
-void FUN_8008b28c(void)
+void CD_ResetCallbacks(void)
 
 {
   DAT_800abfc0 = 0;
   DAT_800abfbc = 0;
   DAT_800abfcc = 0;
   DAT_800abfc8 = 0;
-  FUN_80085b20();
-  FUN_80085b50(2,FUN_8008b818);
+  CD_Dispatch0C();
+  CD_Dispatch08(2,CD_PollSync);
   return;
 }

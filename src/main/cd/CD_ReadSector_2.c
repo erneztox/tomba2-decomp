@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_8008b720(s32 param_1,uint param_2)
+s32 CD_ReadSector(s32 param_1,uint param_2)
 
 {
   u8 bVar1;

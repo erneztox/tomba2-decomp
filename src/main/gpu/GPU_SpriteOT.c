@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8007e9c8(undefined3 param_1,s8 param_2,int param_3)
+void GPU_SpriteOT(undefined3 param_1,s8 param_2,int param_3)
 
 {
   uint *puVar1;
@@ -33,7 +33,7 @@ void FUN_8007e9c8(undefined3 param_1,s8 param_2,int param_3)
     uVar3 = 0x20;
   }
   _g_OT_Buffer = puVar1;
-  FUN_80083de0(puVar1,0,0,uVar3,0);
+  GPU_SetupDrawMode2(puVar1,0,0,uVar3,0);
   puVar2 = (uint *)(_g_EntityBuffer + param_3 * 4);
   *puVar1 = *puVar2 | 0x2000000;
   *puVar2 = (uint)puVar1;

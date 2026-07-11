@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8004022c(int param_1)
+void Entity_Behavior_Explosion(int param_1)
 
 {
   u8 bVar1;
@@ -26,9 +26,9 @@ void FUN_8004022c(int param_1)
       if (0x3000 < iVar3 * 0x10000 >> 0x10) {
         param_1->velocity_y = 0x3000;
       }
-      FUN_8004766c(param_1);
+      Entity_PhysicsStep(param_1);
       if ((param_1->collision_state != '\0') ||
-         (iVar3 = FUN_80049250(param_1,0,
+         (iVar3 = Collision_Check1(param_1,0,
                                (int)(((uint)param_1->bounds_max_y -
                                      (uint)param_1->bounds_min_y) * 0x10000) >> 0x10),
          iVar3 != 0)) {
@@ -47,8 +47,8 @@ void FUN_8004022c(int param_1)
     }
   }
   else if (bVar1 == 2) {
-    FUN_80027144(*(s32 *)(param_1->sprite_ptr1 + 0x40),param_1 + 0x2c,0x700,8);
-    FUN_80074590(0xc,0,0);
+    Entity_SpawnChildSequence(*(s32 *)(param_1->sprite_ptr1 + 0x40),param_1 + 0x2c,0x700,8);
+    Audio_PlaySoundEffect(0xc,0,0);
     param_1->state = STATE_DEAD;
     if (param_1->flag_5E == '\x05') {
       _DAT_800bf850 = _DAT_800bf850 + -1;

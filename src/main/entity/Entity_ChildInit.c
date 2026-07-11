@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_8006f9d8(s32 param_1,int param_2,int param_3,s16 param_4)
+s32 Entity_ChildInit(s32 param_1,int param_2,int param_3,s16 param_4)
 
 {
   u8 bVar1;
@@ -17,7 +17,7 @@ s32 FUN_8006f9d8(s32 param_1,int param_2,int param_3,s16 param_4)
   uint uVar5;
   void **ppuVar6;
   
-  param_2->callback = FUN_80070018;
+  param_2->callback = Entity_ChildUpdate2;
   param_2->parent = param_1;
   param_2->draw_y = 0;
   param_2->alloc_flags = param_2->alloc_flags | 0x80;
@@ -27,7 +27,7 @@ s32 FUN_8006f9d8(s32 param_1,int param_2,int param_3,s16 param_4)
   uVar5 = uVar3 & 0x7f;
   param_2->input_flags = bVar1 & 0x80;
   if ((bVar1 & 0x80) == 0) {
-    iVar4 = FUN_80051b70(param_2,uVar5,uVar2);
+    iVar4 = Entity_InitSubEntity(param_2,uVar5,uVar2);
     if (iVar4 != 0) {
       return 0;
     }
@@ -40,7 +40,7 @@ s32 FUN_8006f9d8(s32 param_1,int param_2,int param_3,s16 param_4)
     else {
       ppuVar6 = *(void ***)(&DAT_800a58fc + (uint)g_GameState * 4);
     }
-    FUN_80077b38(param_2,ppuVar6,uVar2);
+    Entity_LoadAnimData(param_2,ppuVar6,uVar2);
     param_2->render_flags = 0x10;
     param_2->sprite_flags = 0;
     param_2->sub_anim_id = 0;

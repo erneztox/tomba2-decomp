@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_80040c00(int param_1)
+s32 Entity_CheckCollectible(int param_1)
 
 {
   s8 cVar1;
@@ -30,7 +30,7 @@ s32 FUN_80040c00(int param_1)
     else {
       *(u8 *)(param_1 + -0x7ff4074c) = 0xff;
       _DAT_800bf8aa = _DAT_800bf8aa + 1;
-      iVar3 = FUN_80040a58(param_1,1);
+      iVar3 = Entity_GetTypeData(param_1,1);
       _DAT_800bf874 = _DAT_800bf874 + iVar3;
       (&DAT_800ed06e)[DAT_800ed06d] = (char)param_1;
       (&DAT_800ed074)[DAT_800ed06d] = 1;

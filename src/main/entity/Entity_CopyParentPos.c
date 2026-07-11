@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80069ae4(int param_1)
+void Entity_CopyParentPos(int param_1)
 
 {
   param_1->pos_y = _DAT_800e7f5c->pos_x;

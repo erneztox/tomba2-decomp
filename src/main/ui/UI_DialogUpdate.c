@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8004de04(int param_1)
+void UI_DialogUpdate(int param_1)
 
 {
   u8 bVar1;
@@ -17,16 +17,16 @@ void FUN_8004de04(int param_1)
   bVar1 = param_1->state;
   if (bVar1 == 1) {
     if (param_1->behavior_state == '\0') {
-      iVar3 = FUN_8004daec(param_1);
+      iVar3 = Entity_WorldToScreen(param_1);
       if (iVar3 != 0) {
         param_1->behavior_state = param_1->behavior_state + '\x01';
       }
     }
     else if (param_1->behavior_state == '\x01') {
-      FUN_8004dd90(param_1);
+      UI_UpdateElement_2(param_1);
     }
     if (param_1->draw_x == 0x59) {
-      FUN_80026100(g_ItemFlag);
+      Sys_IncCounter(g_ItemFlag);
     }
     param_1->flags = 1;
     DAT_800ed061 = DAT_800ed061 | 2;
@@ -65,7 +65,7 @@ void FUN_8004de04(int param_1)
     DAT_800ed061 = DAT_800ed061 & 0xfd;
   }
   else if (bVar1 == 3) {
-    FUN_8007a624(param_1);
+    Entity_Dealloc(param_1);
   }
   return;
 }

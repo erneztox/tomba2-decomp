@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_8007aae8(void)
+s32 Entity_AllocFromFreeList(void)
 
 {
   s32 uVar1;

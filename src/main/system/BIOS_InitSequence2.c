@@ -6,12 +6,12 @@
 
 
 
-void FUN_8009bd4c(void)
+void BIOS_InitSequence2(void)
 
 {
-  FUN_8009bf34();
-  FUN_8009bf00();
-  FUN_8009bdfc();
+  BIOS_CallIndirect2();
+  BIOS_Syscall_B0_8009BF00();
+  BIOS_MDECInit();
   DAT_800acf44 = 0;
   return;
 }

@@ -9,20 +9,20 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006e0f0(int param_1)
+void Camera_Mode6(int param_1)
 
 {
-  FUN_8006d2ac();
-  FUN_8006d960(param_1,param_1 + 8);
-  FUN_8006d654(param_1);
-  FUN_8006da54(param_1,param_1 + 8);
-  FUN_8006c80c(param_1);
+  Camera_UpdateMain();
+  Camera_SmoothX(param_1,param_1 + 8);
+  Camera_ModeMain(param_1);
+  Camera_SmoothY(param_1,param_1 + 8);
+  Camera_Border(param_1);
   if ((param_1->camera_mode == '\0') && (DAT_800e7ffa == '\0')) {
-    FUN_8006dcf4(param_1);
+    Camera_Update(param_1);
   }
-  FUN_8006d02c(param_1);
+  Camera_Commit(param_1);
   if (*(s8*)(param_1 + 0x77) == '\0') {
-    FUN_8006e010(param_1);
+    Camera_Config(param_1);
   }
   _g_GTE_Work114 = _g_GTE_Work114 - (*(int *)(param_1 + 0x28) + param_1->scale_y);
   return;

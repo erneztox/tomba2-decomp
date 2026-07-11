@@ -6,11 +6,11 @@
 
 
 
-void FUN_8006e3b0(s32 param_1,s32 param_2)
+void Camera_SetModeSeq(s32 param_1,s32 param_2)
 
 {
-  FUN_8006d934();
-  FUN_8006d950(param_1,param_2);
-  FUN_8006d02c(param_1);
+  Camera_SetFOV();
+  Camera_SetRoll(param_1,param_2);
+  Camera_Commit(param_1);
   return;
 }

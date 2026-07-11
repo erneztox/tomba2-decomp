@@ -1,21 +1,21 @@
 /**
- * @brief CD event setup: branches on DAT_800ac620 flag, calls FUN_80097194 or FUN_80096e70
+ * @brief CD event setup: branches on DAT_800ac620 flag, calls CD_SPU_Cmd2 or CD_SPU_Read
  * @note Original: func_80097414 at 0x80097414
  */
 // CD_SetupEvent
 
 
 
-s32 FUN_80097414(s32 param_1,s32 param_2)
+s32 CD_SetupEvent(s32 param_1,s32 param_2)
 
 {
   if (DAT_800ac620 == 0) {
-    FUN_80097194(2,(uint)DAT_800ac61c << (DAT_800ac62c & 0x1f));
-    FUN_80097194(1);
-    FUN_80097194(3,param_1,param_2);
+    CD_SPU_Cmd2(2,(uint)DAT_800ac61c << (DAT_800ac62c & 0x1f));
+    CD_SPU_Cmd2(1);
+    CD_SPU_Cmd2(3,param_1,param_2);
   }
   else {
-    FUN_80096e70(param_1,param_2);
+    CD_SPU_Read(param_1,param_2);
   }
   return param_2;
 }

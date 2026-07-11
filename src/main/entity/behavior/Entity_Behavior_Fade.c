@@ -6,7 +6,7 @@
 
 
 
-void FUN_80026024(int param_1)
+void Entity_Behavior_Fade(int param_1)
 
 {
   s32 bVar1;
@@ -20,7 +20,7 @@ void FUN_80026024(int param_1)
   if (*(s8*)(param_1 + 0x15) == '\0') {
     return;
   }
-  FUN_80040aa4(*(u8 *)(param_1 + 0x16),*(u8 *)(param_1 + 0x1c));
+  Entity_SpawnSubEntity(*(u8 *)(param_1 + 0x16),*(u8 *)(param_1 + 0x1c));
   if (*(s8*)(param_1 + 0x1c) == '\0') {
     uVar3 = 2;
   }
@@ -28,7 +28,7 @@ void FUN_80026024(int param_1)
     uVar3 = 3;
     if (*(s8*)(param_1 + 0x1c) != '\x01') goto LAB_8002608c;
   }
-  FUN_80074bf8(uVar3);
+  Audio_SetBank(uVar3);
 LAB_8002608c:
   if (0 < (int)(*(u8 *)(param_1 + 0x15) - 1)) {
     iVar2 = 0;

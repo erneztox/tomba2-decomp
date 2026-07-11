@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_800867cc(void)
+s32 MDEC_FrameReady(void)
 
 {
   int iVar1;
@@ -25,14 +25,14 @@ s32 FUN_800867cc(void)
     if ((DAT_800abe70 != 0) && (DAT_800abe88 <= DAT_800abe8c)) {
       DAT_800abe7c = 0;
       DAT_800abe78 = DAT_800abe88;
-      iVar1 = FUN_80086a80(DAT_800abe6c + DAT_800abe88 * 0xf0);
+      iVar1 = MDEC_DMAStart2(DAT_800abe6c + DAT_800abe88 * 0xf0);
       if (iVar1 == 0) {
         (*DAT_800abe38)(0xffff);
       }
       DAT_800abe80 = 0;
       if (DAT_800abe78 <= DAT_800abe8c) {
         do {
-          FUN_80086db4(DAT_800abe6c + DAT_800abe78 * 0xf0);
+          MDEC_CallbackChain(DAT_800abe6c + DAT_800abe78 * 0xf0);
         } while (DAT_800abe78 <= DAT_800abe8c);
       }
       DAT_800abe9c->state = 0x88;

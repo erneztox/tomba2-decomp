@@ -6,7 +6,7 @@
 
 
 
-int FUN_8006fb0c(s32 param_1,s16 param_2)
+int Entity_LoadSprite2(s32 param_1,s16 param_2)
 
 {
   s16 sVar1;
@@ -25,10 +25,10 @@ int FUN_8006fb0c(s32 param_1,s16 param_2)
     iVar3 = 0;
     if (*psVar4 != -1) {
       do {
-        iVar2 = FUN_80072ddc(param_1,(&DAT_800a4bb8)[iVar3],3,4);
+        iVar2 = Entity_SpawnChild(param_1,(&DAT_800a4bb8)[iVar3],3,4);
         iVar3 = iVar3 + 1;
         if (iVar2 != 0) {
-          iVar3 = FUN_8006f9d8(param_1,iVar2,psVar4,(int)param_2);
+          iVar3 = Entity_ChildInit(param_1,iVar2,psVar4,(int)param_2);
           if (iVar3 == 0) {
             return 0;
           }

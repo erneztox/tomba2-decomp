@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80033ff4(int param_1,s16 param_2)
+void Entity_DrawChild6(int param_1,s16 param_2)
 
 {
   u8 bVar1;
@@ -32,7 +32,7 @@ void FUN_80033ff4(int param_1,s16 param_2)
     if ((iVar4 != 0) || (*(s16 *)(param_1 + 8) != 0x103)) {
       local_30 = *puVar6;
       local_28->type = *(s16 *)(puVar6 + 2);
-      FUN_8007e1b8(local_28,(&PTR_DAT_80017334)[*(s16 *)(puVar6 + 4)],*(s32 *)(param_1 + 4)
+      GPU_SpriteDrawMain(local_28,(&PTR_DAT_80017334)[*(s16 *)(puVar6 + 4)],*(s32 *)(param_1 + 4)
                    ,&local_30);
     }
     iVar4 = iVar4 + 1;
@@ -45,7 +45,7 @@ void FUN_80033ff4(int param_1,s16 param_2)
     pbVar2 = &DAT_800a2430 + iVar4;
     iVar4 = iVar4 + 1;
     local_28->type = sVar5;
-    FUN_8007e1b8(local_28,(&PTR_DAT_80017334)[*pbVar2],*(s32 *)(param_1 + 4),&local_30);
+    GPU_SpriteDrawMain(local_28,(&PTR_DAT_80017334)[*pbVar2],*(s32 *)(param_1 + 4),&local_30);
     sVar5 = sVar5 + 0x10;
   } while (iVar4 < 0x12);
   if (param_1->counter2 == '\0') {
@@ -81,7 +81,7 @@ void FUN_80033ff4(int param_1,s16 param_2)
         if (bVar1 != 4) {
           return;
         }
-        iVar4 = FUN_800368d0(param_1,*(u8 *)(param_1 + 0x1f),*(u8 *)(param_1 + 0x1d)
+        iVar4 = Entity_CheckLoop(param_1,*(u8 *)(param_1 + 0x1f),*(u8 *)(param_1 + 0x1d)
                             );
         puVar3 = (&PTR_s_A_spiked_iron_ball_on_a_long_rop_800a2bf0)[iVar4 * 3];
       }
@@ -92,6 +92,6 @@ void FUN_80033ff4(int param_1,s16 param_2)
     return;
   }
 LAB_800342c0:
-  FUN_80079324(0x28,0xbf,0x12,puVar3,param_2 + -4);
+  GPU_RenderSprite_V2(0x28,0xbf,0x12,puVar3,param_2 + -4);
   return;
 }

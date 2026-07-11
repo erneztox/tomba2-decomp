@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8004f474(int param_1)
+void UI_ListUpdate(int param_1)
 
 {
   int iVar1;

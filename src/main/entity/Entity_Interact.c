@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80023320(int param_1,uint param_2,uint param_3,uint param_4)
+void Entity_Interact(int param_1,uint param_2,uint param_3,uint param_4)
 
 {
   s16 sVar1;
@@ -41,7 +41,7 @@ void FUN_80023320(int param_1,uint param_2,uint param_3,uint param_4)
     _DAT_1f800202 = *(s16 *)(param_1 + 0x32);
     _DAT_1f800204 = param_1->pos_z;
     DAT_1f80023a = (param_4 & 0x1000) == 0;
-    FUN_80074590(0xc,0,0);
+    Audio_PlaySoundEffect(0xc,0,0);
   }
   return;
 }

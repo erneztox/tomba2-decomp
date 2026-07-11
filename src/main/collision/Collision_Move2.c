@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_800459d0(u16 param_1)
+s32 Collision_Move2(u16 param_1)
 
 {
   u16 uVar1;

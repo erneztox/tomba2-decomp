@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006ea7c(int param_1)
+void Camera_Init(int param_1)
 
 {
   s32 uVar1;
@@ -44,8 +44,8 @@ void FUN_8006ea7c(int param_1)
   default:
     *(u8 *)(param_1 + 100) = 0;
 LAB_8006eb94:
-    FUN_8006e0f0(param_1);
-    FUN_8006e918(param_1);
+    Camera_Mode6(param_1);
+    Camera_CalcOrbitPos(param_1);
     break;
   case 2:
   case 7:
@@ -62,7 +62,7 @@ LAB_8006eb94:
     *(u8 *)(param_1 + 100) = 0x80;
   }
   if (g_GameMode - 5 < 2) {
-    FUN_8006cba8(&DAT_800e7eac);
+    Camera_SetPosition(&DAT_800e7eac);
     sVar2 = *(s16 *)(param_1 + 0x3e);
     *(s16 *)(param_1 + 0x3e) = sVar2 + 1000;
     if (DAT_800e7e82 == '\0') {
@@ -73,8 +73,8 @@ LAB_8006eb94:
       *(s16 *)(param_1 + 0x6c) = 0x578;
       *(s16 *)(param_1 + 0x6e) = 0x40;
       *(s16 *)(param_1 + 0x70) = _g_CameraAngle + 0x400;
-      FUN_8006e294(param_1,param_1 + 0x38);
-      FUN_8006e3b0(param_1,&DAT_800e7eac);
+      Camera_Mode1(param_1,param_1 + 0x38);
+      Camera_SetModeSeq(param_1,&DAT_800e7eac);
     }
   }
   return;

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80022e04(int param_1,int param_2,int param_3)
+s32 Entity_AngleToTarget2(int param_1,int param_2,int param_3)
 
 {
   uint uVar1;
@@ -21,7 +21,7 @@ s32 FUN_80022e04(int param_1,int param_2,int param_3)
           >> 0x10;
   iVar3 = (int)(((uint)param_1->pos_z - (uint)*(u16 *)(param_3 + 0x34)) * 0x10000)
           >> 0x10;
-  uVar1 = FUN_80084080(iVar4 * iVar4 + iVar3 * iVar3);
+  uVar1 = Math_SqrtGTE(iVar4 * iVar4 + iVar3 * iVar3);
   uVar2 = 0;
   if ((int)(uVar1 & 0xffff) <= (int)param_1->bounds_min_x + (int)param_2->bounds_min_x) {
     if ((int)param_1->bounds_max_y + (int)param_2->bounds_max_y <
@@ -30,7 +30,7 @@ s32 FUN_80022e04(int param_1,int param_2,int param_3)
       uVar2 = 0;
     }
     else {
-      _g_AngleTarget = FUN_80085690(-iVar3,iVar4);
+      _g_AngleTarget = Math_Atan2(-iVar3,iVar4);
       uVar2 = 1;
     }
   }

@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8002ab5c(int param_1)
+void GTE_Project9(int param_1)
 
 {
   s32 in_zero;
@@ -31,11 +31,11 @@ void FUN_8002ab5c(int param_1)
   setCopControlWord(2,0xb800,0);
   DAT_800a2014 = (u8)((int)param_1->timer1 * (int)param_1->angle_offset >> 0xb);
   DAT_800a2016 = (u8)((int)param_1->timer2 * (int)param_1->angle_offset >> 0xb);
-  FUN_80085480(param_1 + 0x54,0x1f800000);
+  GTE_LoadRotMatrixFromSVec(param_1 + 0x54,0x1f800000);
   local_28 = (uint)DAT_800a2014 << 2;
   local_24 = (uint)DAT_800a2015 << 2;
   local_20 = (uint)DAT_800a2016 << 2;
-  FUN_80084520(0x1f800000,&local_28);
+  GTE_TransformVec(0x1f800000,&local_28);
   setCopControlWord(2,0,_g_GTE_WorkF8);
   setCopControlWord(2,0x800,_DAT_1f8000fc);
   setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -84,6 +84,6 @@ void FUN_8002ab5c(int param_1)
   setCopControlWord(2,0x2800,_g_GTE_Data14);
   setCopControlWord(2,0x3000,_g_GTE_Data18);
   setCopControlWord(2,0x3800,_g_GTE_Data1C);
-  FUN_80027768(&DAT_8009fae8,0,0,0);
+  Entity_SubmitQuadToOT(&DAT_8009fae8,0,0,0);
   return;
 }

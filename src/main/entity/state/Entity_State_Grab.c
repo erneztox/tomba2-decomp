@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8003ffcc(int param_1)
+void Entity_State_Grab(int param_1)
 
 {
   s16 uVar1;
@@ -18,16 +18,16 @@ void FUN_8003ffcc(int param_1)
   code *pcVar4;
   
   if (param_1->action_state == '\0') {
-    FUN_80074590(0x1a,0,0);
+    Audio_PlaySoundEffect(0x1a,0,0);
     param_1->move_speed = 0x100;
     param_1->action_state = param_1->action_state + '\x01';
     if (*(s16 *)(param_1 + 100) == 1) {
-      iVar3 = FUN_80072ddc(param_1,*(u8 *)(param_1 + 0x68),5,0);
-      pcVar4 = FUN_8004aac4;
+      iVar3 = Entity_SpawnChild(param_1,*(u8 *)(param_1 + 0x68),5,0);
+      pcVar4 = Entity_Main;
     }
     else {
-      iVar3 = FUN_80072ddc(param_1,*(u8 *)(param_1 + 0x68),5,4);
-      pcVar4 = FUN_8004c238;
+      iVar3 = Entity_SpawnChild(param_1,*(u8 *)(param_1 + 0x68),5,4);
+      pcVar4 = Entity_Behavior_Collectible;
     }
     iVar3->callback = pcVar4;
     if ((param_1->alloc_flags & 0x80) == 0) {
@@ -70,7 +70,7 @@ void FUN_8003ffcc(int param_1)
     return;
   }
   if (param_1->sub_type == '\0') {
-    FUN_80040c00(0x38);
+    Entity_CheckCollectible(0x38);
   }
   switch(param_1->flag_5E) {
   case 0:

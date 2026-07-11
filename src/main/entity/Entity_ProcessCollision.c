@@ -1,5 +1,5 @@
 /**
- * @brief Processes collision result: calls FUN_8001f40c, branches on entity->action_flag mode
+ * @brief Processes collision result: calls Entity_CalcPos, branches on entity->action_flag mode
  * @note Original: func_800235A0 at 0x800235A0
  */
 // Entity_ProcessCollision
@@ -7,13 +7,13 @@
 
 
 #include "tomba.h"
-s32 FUN_800235a0(int param_1,s32 param_2)
+s32 Entity_ProcessCollision(int param_1,s32 param_2)
 
 {
   int iVar1;
   s32 uVar2;
   
-  iVar1 = FUN_8001f40c(param_1,param_2,1);
+  iVar1 = Entity_CalcPos(param_1,param_2,1);
   if (iVar1 < 0) {
     uVar2 = 0;
   }
@@ -24,7 +24,7 @@ s32 FUN_800235a0(int param_1,s32 param_2)
     else {
       uVar2 = 1;
     }
-    FUN_8001ff7c(param_1,param_2,iVar1,uVar2);
+    Entity_MoveTo(param_1,param_2,iVar1,uVar2);
     uVar2 = 1;
   }
   return uVar2;

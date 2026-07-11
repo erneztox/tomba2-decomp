@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8004bd64(int param_1,u8 param_2,int param_3,int param_4,s16 *param_5)
+void Entity_SetPosition(int param_1,u8 param_2,int param_3,int param_4,s16 *param_5)
 
 {
   s16 sVar1;
@@ -35,7 +35,7 @@ LAB_8004be6c:
   param_1->pos_z = sVar1;
 LAB_8004be7c:
   if ((param_1->alloc_flags & 0x7f) != 0) {
-    FUN_800517f8();
+    Entity_UpdateMatrix();
   }
   return;
 }

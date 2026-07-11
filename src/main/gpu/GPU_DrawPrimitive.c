@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80081504(int param_1)
+void GPU_DrawPrimitive(int param_1)
 
 {
   u8 uVar1;

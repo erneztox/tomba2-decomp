@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80074b44(void)
+void Audio_InitSPU(void)
 
 {
   u8 *puVar1;
@@ -27,6 +27,6 @@ void FUN_80074b44(void)
       puVar1 = puVar1 + 0xc;
     } while ((int)uVar2 < 0x18);
   }
-  FUN_80098f90(0);
+  CD_SPU_Write2(0);
   return;
 }

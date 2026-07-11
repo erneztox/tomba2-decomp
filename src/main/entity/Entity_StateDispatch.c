@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8005314c(int param_1)
+void Entity_StateDispatch(int param_1)
 
 {
   int iVar1;
@@ -42,7 +42,7 @@ LAB_800531bc:
   uVar3 = 0;
   uVar4 = 0;
 LAB_800531c4:
-  FUN_80074590(uVar2,uVar3,uVar4);
+  Audio_PlaySoundEffect(uVar2,uVar3,uVar4);
 switchD_80053190_caseD_1:
   return;
 }

@@ -6,7 +6,7 @@
 
 
 
-void FUN_80086db4(int param_1)
+void MDEC_CallbackChain(int param_1)
 
 {
   void **ppuVar1;
@@ -20,8 +20,8 @@ void FUN_80086db4(int param_1)
   }
   else {
     if ((DAT_800abe7c != 0) && ((DAT_800abe7c != 3 || (**(char **)(param_1 + 0x3c) != -0x80)))) {
-      FUN_80089620(0x3c);
-      iVar2 = FUN_8008732c();
+      MDEC_SetParam(0x3c);
+      iVar2 = MDEC_WaitDMA();
       if (iVar2 == 0) {
         (*DAT_800abe38)(0xfffffffd);
       }

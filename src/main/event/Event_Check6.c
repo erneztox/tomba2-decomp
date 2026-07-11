@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_800349a4(s32 param_1,uint param_2,int param_3)
+s32 Event_Check6(s32 param_1,uint param_2,int param_3)
 
 {
   s8 cVar1;

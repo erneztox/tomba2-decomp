@@ -6,9 +6,9 @@
 
 
 
-void FUN_80090980(void)
+void SPU_Start(void)
 
 {
-  FUN_80090750(1);
+  Audio_InitSeq(1);
   return;
 }

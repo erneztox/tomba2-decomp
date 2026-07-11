@@ -6,7 +6,7 @@
 
 
 
-void * FUN_80078798(uint param_1,uint param_2)
+void * String_LookupDialog(uint param_1,uint param_2)
 
 {
   return (&PTR_s_Town_of_the_Fishermen_800a2b84)

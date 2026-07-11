@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80063b94(int param_1,int param_2)
+void Entity_StateMain4(int param_1,int param_2)
 
 {
   u8 bVar1;
@@ -144,6 +144,6 @@ LAB_80063e84:
       uVar9 = 0;
     }
   }
-  FUN_80054d14(param_1,uVar6,uVar9);
+  Entity_LoadAnimIfChanged(param_1,uVar6,uVar9);
   return;
 }

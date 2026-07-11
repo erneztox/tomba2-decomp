@@ -6,7 +6,7 @@
 
 
 
-u8 * FUN_8009a340(u8 *param_1,int param_2)
+u8 * Mem_Compare(u8 *param_1,int param_2)
 
 {
   u8 *puVar1;

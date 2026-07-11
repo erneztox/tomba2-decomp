@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8008d110(void)
+void MDEC_Main(void)
 
 {
   s32 *puVar1;
@@ -23,7 +23,7 @@ void FUN_8008d110(void)
   
   if (_DAT_80102704 != 1) {
     if ((_DAT_801026f0 == 0) || ((*DAT_800ac3c4 & 0x1000000) == 0)) {
-      iVar2 = FUN_80089b64(1,local_10);
+      iVar2 = CD_ReadySimple(1,local_10);
       if (iVar2 != 5) {
         if ((local_10->state & 4) == 0) {
           _DAT_80104b80 = _DAT_80102728 + _DAT_8010270c * 0x10;
@@ -47,10 +47,10 @@ void FUN_8008d110(void)
               } while (uVar5 < 8);
             }
             if (_DAT_80102718 == 0) {
-              FUN_8008da58(3,_DAT_80104b80,0,8,0x11000000,0,0);
+              MDEC_DataDecode(3,_DAT_80104b80,0,8,0x11000000,0,0);
             }
             else {
-              FUN_8008da2c(_DAT_80104b80,_DAT_80102718 + _DAT_80102708 * 0x800,8,0);
+              MDEC_QueueCmd(_DAT_80104b80,_DAT_80102718 + _DAT_80102708 * 0x800,8,0);
             }
             puVar1 = DAT_800ac3b4;
             uVar5 = *DAT_800ac3d4;
@@ -81,7 +81,7 @@ void FUN_8008d110(void)
                   if ((_DAT_8010271c != 0) && (_DAT_8010271c <= _DAT_801026e8)) {
                     _DAT_801026e8 = 0;
                     _DAT_801026ec = 0;
-                    FUN_8008cff0(_DAT_80102710,_DAT_8010270c - _DAT_80102710);
+                    CD_ClearBuffer(_DAT_80102710,_DAT_8010270c - _DAT_80102710);
                     _DAT_8010270c = _DAT_80102710;
                     *_DAT_80104b80 = 0;
                     _DAT_80102720 = 1;
@@ -145,10 +145,10 @@ void FUN_8008d110(void)
                 if ((u16)_DAT_80104b80->state - 1 == (uint)(u16)_DAT_80104b80->state) {
                   _DAT_80102704 = 1;
                   if (_DAT_80102718 == 0) {
-                    FUN_8008da58(3,_DAT_80102724,0,0x1f8,uVar3,1,0);
+                    MDEC_DataDecode(3,_DAT_80102724,0,0x1f8,uVar3,1,0);
                   }
                   else {
-                    FUN_8008da2c(_DAT_80102724,_DAT_80102718 + _DAT_80102708 * 0x800 + 0x20,0x1f8,1)
+                    MDEC_QueueCmd(_DAT_80102724,_DAT_80102718 + _DAT_80102708 * 0x800 + 0x20,0x1f8,1)
                     ;
                     _DAT_80102708 = _DAT_80102708 + 1;
                   }
@@ -157,23 +157,23 @@ void FUN_8008d110(void)
                   _DAT_80102700 = _DAT_801026f8;
                 }
                 else if (_DAT_80102718 == 0) {
-                  FUN_8008da58(3,_DAT_80102724,0,0x1f8,uVar3,0,0);
+                  MDEC_DataDecode(3,_DAT_80102724,0,0x1f8,uVar3,0,0);
                 }
                 else {
-                  FUN_8008da2c(_DAT_80102724,_DAT_80102718 + _DAT_80102708 * 0x800 + 0x20,0x1f8,0);
+                  MDEC_QueueCmd(_DAT_80102724,_DAT_80102718 + _DAT_80102708 * 0x800 + 0x20,0x1f8,0);
                   _DAT_80102708 = _DAT_80102708 + 1;
                 }
                 *DAT_800ac3b8 = 0x1325;
                 *_DAT_80104b80 = 3;
                 _DAT_8010270c = _DAT_8010270c + 1;
                 if ((_DAT_80102718 != 0) && (_DAT_80102704 != 0)) {
-                  FUN_8008cdc0();
+                  CD_AllocBuffer();
                 }
               }
               else {
                 _DAT_801026e8 = 0;
                 _DAT_801026ec = 0;
-                FUN_8008cff0(_DAT_80102710,_DAT_8010270c - _DAT_80102710);
+                CD_ClearBuffer(_DAT_80102710,_DAT_8010270c - _DAT_80102710);
                 _DAT_8010270c = _DAT_80102710;
                 *_DAT_80104b80 = 0;
                 if (_DAT_80102718 != 0) {

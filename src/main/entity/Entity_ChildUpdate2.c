@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80070018(int param_1,int param_2)
+void Entity_ChildUpdate2(int param_1,int param_2)
 
 {
   u8 bVar1;
@@ -22,10 +22,10 @@ void FUN_80070018(int param_1,int param_2)
     }
     iVar3 = param_1->parent;
     if (param_1->behavior_state == '\0') {
-      FUN_800702c0(param_1);
+      Entity_State_Follow(param_1);
     }
     else if (param_1->behavior_state == '\x01') {
-      FUN_80070650(param_1);
+      Entity_OffsetX(param_1);
     }
     cVar2 = iVar3->flags;
     param_1->flags = cVar2;
@@ -46,7 +46,7 @@ void FUN_80070018(int param_1,int param_2)
       if (bVar1 != 3) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (param_1->event_param == 0) {
@@ -54,34 +54,34 @@ void FUN_80070018(int param_1,int param_2)
         if ((param_1->input_flags & 2) != 0) {
           switch(param_1->sub_type) {
           case 0:
-            param_2 = FUN_80049e54(param_1,1);
+            param_2 = UI_ElementUpdate(param_1,1);
             break;
           case 1:
-            param_2 = FUN_80049e54(param_1,2);
+            param_2 = UI_ElementUpdate(param_1,2);
             break;
           case 4:
-            param_2 = FUN_8004b3f4(param_1,100);
+            param_2 = Game_AddScore(param_1,100);
             break;
           case 5:
-            param_2 = FUN_8004b3f4(param_1,200);
+            param_2 = Game_AddScore(param_1,200);
             break;
           case 6:
-            param_2 = FUN_8004b3f4(param_1,500);
+            param_2 = Game_AddScore(param_1,500);
             break;
           case 7:
-            param_2 = FUN_8004b3f4(param_1,1000);
+            param_2 = Game_AddScore(param_1,1000);
             break;
           case 0xb:
-            param_2 = FUN_8004b3f4(param_1,100000);
+            param_2 = Game_AddScore(param_1,100000);
             break;
           case 0xf:
-            param_2 = FUN_8004a118(param_1);
+            param_2 = Entity_SpawnItem2(param_1);
             break;
           case 0x10:
-            param_2 = FUN_8004a2a0(param_1);
+            param_2 = Entity_SpawnItem(param_1);
             break;
           case 0x11:
-            param_2 = FUN_8004b428(param_1);
+            param_2 = Entity_SpawnScorePopupEx(param_1);
           }
           if (param_2 == 0) {
             return;
@@ -89,7 +89,7 @@ void FUN_80070018(int param_1,int param_2)
           param_1->state = STATE_DEAD;
           return;
         }
-        iVar3 = FUN_8004a3d4(param_1);
+        iVar3 = Menu_ItemDispatch(param_1);
         if (iVar3 == 0) {
           return;
         }
@@ -106,10 +106,10 @@ void FUN_80070018(int param_1,int param_2)
     bVar1 = param_1->input_flags;
   }
   if ((bVar1 & 0x80) == 0) {
-    FUN_800517f8(param_1);
+    Entity_UpdateMatrix(param_1);
   }
   else {
-    FUN_80077b5c(param_1);
+    Entity_AdvanceAnim3(param_1);
   }
   return;
 }

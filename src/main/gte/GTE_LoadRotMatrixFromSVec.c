@@ -8,7 +8,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_80085480(int *param_1,uint *param_2)
+void GTE_LoadRotMatrixFromSVec(int *param_1,uint *param_2)
 
 {
   uint uVar1;

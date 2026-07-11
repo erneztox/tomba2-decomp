@@ -6,9 +6,9 @@
 
 
 
-void FUN_80089fec(void)
+void CD_InitSub(void)
 
 {
-  FUN_8008b4b8();
+  CD_SyncWithTimeout();
   return;
 }

@@ -6,7 +6,7 @@
 
 
 
-uint FUN_80097540(int param_1,uint param_2)
+uint CD_AlignDMA(int param_1,uint param_2)
 
 {
   uint uVar1;

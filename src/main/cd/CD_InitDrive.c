@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_8008b040(u8 *param_1)
+s32 CD_InitDrive(u8 *param_1)
 
 {
   *DAT_800ac280 = 2;

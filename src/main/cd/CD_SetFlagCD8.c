@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80096380(void)
+void CD_SetFlagCD8(void)
 
 {
   _DAT_80105cd8 = 1;

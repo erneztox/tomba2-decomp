@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80077c40(int param_1,int param_2,int param_3)
+void Entity_LoadAnimData3(int param_1,int param_2,int param_3)
 
 {
   s16 sVar1;
@@ -19,7 +19,7 @@ void FUN_80077c40(int param_1,int param_2,int param_3)
   uVar2 = *(u16 *)(iVar4 + 6);
   param_1->anim_data = iVar4;
   param_1->anim_timer = uVar2 & 0xfff;
-  FUN_80076904();
+  Entity_AnimController2();
   uVar2 = *(u16 *)(iVar4 + 6);
   uVar3 = uVar2 & 0xc000;
   if ((uVar2 & 0x2000) == 0) {
@@ -44,6 +44,6 @@ void FUN_80077c40(int param_1,int param_2,int param_3)
   iVar4 = *(int *)(iVar4 + 8);
   sVar1 = param_1->anim_timer;
 LAB_80077ce0:
-  FUN_80075ff8(param_1,iVar4,(int)sVar1);
+  Audio_SeqMain2(param_1,iVar4,(int)sVar1);
   return;
 }

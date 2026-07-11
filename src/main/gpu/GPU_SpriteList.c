@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8007eae4(void)
+void GPU_SpriteList(void)
 
 {
   s16 sVar1;
@@ -35,11 +35,11 @@ void FUN_8007eae4(void)
   local_58->type = PTR_s_Options_800a2854;
   local_58->flags = PTR_s_Load_data_800a2858;
   local_58->kind = PTR_s_Quit_game_800a285c;
-  sVar2 = FUN_800793c4(local_58,3,local_48);
+  sVar2 = String_TableLookup(local_58,3,local_48);
   do {
     *(int *)(local_38 + uVar4 * 2) = iVar5;
     iVar5 = iVar5 + 0x10;
-    FUN_80079374((int)local_48[uVar4 * 2],(int)(s16)local_38[uVar4 * 2],
+    GPU_RenderSprite_V1((int)local_48[uVar4 * 2],(int)(s16)local_38[uVar4 * 2],
                  (uint)(DAT_800bf808 == uVar4) << 1,local_58[uVar4],0);
     uVar4 = uVar4 + 1;
   } while ((int)uVar4 < 3);
@@ -47,7 +47,7 @@ void FUN_8007eae4(void)
   sVar7 = sVar2 + -0xe;
   sVar6 = 0x148 - sVar2;
   sVar1 = sVar2 * -2 + 0x146;
-  FUN_8007e998((int)sVar2,(int)((local_38[(uint)DAT_800bf808 * 2] + 4) * 0x10000) >> 0x10,1);
+  GPU_DrawSprite98((int)sVar2,(int)((local_38[(uint)DAT_800bf808 * 2] + 4) * 0x10000) >> 0x10,1);
   local_67 = 1;
   local_68 = 0;
   local_66 = 0x8000;
@@ -111,7 +111,7 @@ LAB_8007ec40:
 LAB_8007ece4:
     psVar3 = &DAT_800a58e8 + iVar5;
     iVar5 = iVar5 + 1;
-    FUN_8007e1b8(&local_60,(&PTR_DAT_80017334)[*psVar3],_g_OT_Data,&local_68);
+    GPU_SpriteDrawMain(&local_60,(&PTR_DAT_80017334)[*psVar3],_g_OT_Data,&local_68);
     if (8 < iVar5) {
       return;
     }

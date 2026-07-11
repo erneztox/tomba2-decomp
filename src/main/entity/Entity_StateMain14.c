@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_8005b63c(int param_1)
+void Entity_StateMain14(int param_1)
 
 {
   s16 uVar1;
@@ -27,13 +27,13 @@ void FUN_8005b63c(int param_1)
   switch(param_1->action_state) {
   case 0:
     param_1->direction = param_1->behavior_flags & 1;
-    FUN_80055284(param_1);
+    Entity_UpdateAngle(param_1);
     param_1->flag_16A = 0;
-    FUN_80053d0c(param_1);
-    FUN_80053bf8(param_1,0);
+    Entity_StateCheck(param_1);
+    Entity_FlagHandler(param_1,0);
     param_1->state_flag146 = 0;
     param_1->velocity_y = 0;
-    iVar4 = FUN_8005b5e4(puVar9);
+    iVar4 = Entity_LookupType(puVar9);
     if (iVar4 == 0) {
       if (*(s8*)(param_1 + 0x181) != '\0') {
         *(u8 *)(param_1 + 0x181) = 1;
@@ -53,23 +53,23 @@ void FUN_8005b63c(int param_1)
     else {
       uVar8 = 2;
     }
-    FUN_8005b370(param_1,uVar8);
+    Entity_PhysicsApply(param_1,uVar8);
     param_1->velocity_y = 0;
     break;
   case 1:
 switchD_8005b678_caseD_1:
-    FUN_80055e28(param_1,1);
-    FUN_80055fbc(param_1,param_1->behavior_flags);
-    FUN_80056b48(param_1,1);
-    FUN_80055d5c(param_1);
+    Entity_PhysicsUpdate(param_1,1);
+    Entity_BehaviorDispatcher(param_1,param_1->behavior_flags);
+    Entity_ApplyVelocity(param_1,1);
+    Entity_PhysicsStep2(param_1);
     if ((*(s8*)(param_1 + 0x181) == '\0') &&
-       (FUN_800574e0(param_1,6), (param_1->entity_flags & 0x40) != 0)) {
+       (Entity_State_Combo(param_1,6), (param_1->entity_flags & 0x40) != 0)) {
       param_1->state_flag144 = 0;
     }
-    iVar4 = FUN_80053bf8(param_1,0);
+    iVar4 = Entity_FlagHandler(param_1,0);
     if (iVar4 == 0) {
-      FUN_80076d68(param_1);
-      iVar4 = FUN_80055824();
+      Entity_AnimFrame(param_1);
+      iVar4 = Game_CheckFlagInput();
       if (iVar4 == 0) {
         if (param_1->collision_state == '\0') {
           if (*(s8*)(param_1 + 0x181) == '\0') goto LAB_8005b868;
@@ -89,7 +89,7 @@ switchD_8005b678_caseD_1:
       }
     }
     else {
-      FUN_80076d68(param_1);
+      Entity_AnimFrame(param_1);
       if (param_1->collision_state == '\0') {
         if (*(s8*)(param_1 + 0x181) == '\0') goto LAB_8005b868;
       }
@@ -98,26 +98,26 @@ switchD_8005b678_caseD_1:
       }
       param_1->state_flag144 = 0;
       param_1->action_state = param_1->action_state + '\x01';
-      FUN_80053bf8(param_1);
+      Entity_FlagHandler(param_1);
     }
 LAB_8005b868:
-    FUN_8005b20c(param_1,0);
+    Entity_ParentUpdate(param_1,0);
     break;
   case 2:
     if (*(s8*)(param_1 + 0x181) == '\0') {
-      FUN_80055e28(param_1,1);
-      FUN_80055fbc(param_1,param_1->behavior_flags | 2);
-      FUN_80056b48(param_1,1);
-      FUN_80055d5c(param_1);
+      Entity_PhysicsUpdate(param_1,1);
+      Entity_BehaviorDispatcher(param_1,param_1->behavior_flags | 2);
+      Entity_ApplyVelocity(param_1,1);
+      Entity_PhysicsStep2(param_1);
       *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
-      FUN_8005444c(param_1);
+      Entity_CollisionGround(param_1);
       if (param_1->sub_state == '\x06') {
         param_1->direction = 0;
       }
-      FUN_800551c4(param_1);
-      FUN_80056c00(param_1,1);
-      FUN_80076d68(param_1);
-      iVar4 = FUN_80055824();
+      Entity_State_Physics(param_1);
+      Entity_PhysicsMove(param_1,1);
+      Entity_AnimFrame(param_1);
+      iVar4 = Game_CheckFlagInput();
       if (iVar4 != 0) {
         cVar5 = param_1->action_state;
         *(u8 *)(param_1 + 0x181) = 0;
@@ -146,7 +146,7 @@ LAB_8005b868:
           param_1->anim_counter = sVar3;
         }
       }
-      FUN_80055e28(param_1,1);
+      Entity_PhysicsUpdate(param_1,1);
       if (g_GameState == '\0') {
         Overlay_8010c89c(param_1,0);
       }
@@ -159,8 +159,8 @@ LAB_8005b868:
       else if (g_GameState == '\x0e') {
         Overlay_8010b408(param_1,0);
       }
-      FUN_80076d68(param_1);
-      iVar4 = FUN_80055824();
+      Entity_AnimFrame(param_1);
+      iVar4 = Game_CheckFlagInput();
       if (iVar4 != 0) {
         cVar5 = param_1->action_state;
         param_1->state_flag145 = 1;
@@ -172,19 +172,19 @@ LAB_8005ba0c:
     }
     goto LAB_8005bba0;
   case 3:
-    FUN_80074590(0x20,0,0);
+    Audio_PlaySoundEffect(0x20,0,0);
     param_1->rot_z = 0;
-    FUN_80054d14(param_1,param_1->anim_id + 1,0);
+    Entity_LoadAnimIfChanged(param_1,param_1->anim_id + 1,0);
     param_1->sub_action = 0;
     param_1->action_state = param_1->action_state + '\x01';
   case 4:
-    FUN_80055e28(param_1,1);
-    FUN_80055fbc(param_1,param_1->behavior_flags);
-    FUN_80056b48(param_1,1);
-    FUN_80055d5c(param_1);
-    FUN_800574e0(param_1,2);
+    Entity_PhysicsUpdate(param_1,1);
+    Entity_BehaviorDispatcher(param_1,param_1->behavior_flags);
+    Entity_ApplyVelocity(param_1,1);
+    Entity_PhysicsStep2(param_1);
+    Entity_State_Combo(param_1,2);
     if ((DAT_800bf848 == '\0') &&
-       ((iVar4 = FUN_80055824(), iVar4 != 0 || (param_1->collision_state != '\0')))) {
+       ((iVar4 = Game_CheckFlagInput(), iVar4 != 0 || (param_1->collision_state != '\0')))) {
       param_1->action_state = param_1->action_state + '\x01';
       if (param_1->sub_state == 9) {
         Overlay_80113628(param_1,puVar9);
@@ -197,9 +197,9 @@ LAB_8005ba0c:
         else {
           puVar9->state = STATE_DEAD;
         }
-        iVar4 = FUN_8005b134(param_1,puVar9);
-        if ((iVar4 == -1) || (iVar4 = FUN_800537b8(param_1,puVar9), iVar4 == 0)) {
-          FUN_80054d14(param_1,0x26,0);
+        iVar4 = Entity_TypeDispatch(param_1,puVar9);
+        if ((iVar4 == -1) || (iVar4 = Entity_BGSpawn(param_1,puVar9), iVar4 == 0)) {
+          Entity_LoadAnimIfChanged(param_1,0x26,0);
           param_1->state_flag145 = 1;
           param_1->sub_action = 1;
           param_1->action_state = 7;
@@ -215,22 +215,22 @@ LAB_8005ba0c:
         }
       }
     }
-    FUN_800551c4(param_1);
+    Entity_State_Physics(param_1);
 LAB_8005bba0:
-    FUN_8005b20c(param_1,0);
+    Entity_ParentUpdate(param_1,0);
     return;
   case 5:
-    FUN_800541f4(param_1,0);
+    Entity_SubState(param_1,0);
     if (((param_1->behavior_flags & 8) == 0) || (uVar8 = 0x24, 5 < param_1->sub_state)) {
       uVar8 = 0x22;
     }
-    FUN_80054d14(param_1,uVar8,0);
+    Entity_LoadAnimIfChanged(param_1,uVar8,0);
     param_1->timer1 = 0;
     param_1->timer2 = 0;
     uVar1 = *(s16 *)(&DAT_800a4694 + param_1->timer1 * 2);
     param_1->action_state = param_1->action_state + '\x01';
     param_1->rot_z = uVar1;
-    FUN_8005b20c();
+    Entity_ParentUpdate();
     return;
   case 6:
     sVar3 = param_1->timer1 + 1;
@@ -241,13 +241,13 @@ LAB_8005bba0:
     param_1->rot_z =
          *(s16 *)(&DAT_800a4694 + param_1->timer1 * 2);
     if (param_1->timer2 == 0) {
-      FUN_8005b20c(param_1,1);
+      Entity_ParentUpdate(param_1,1);
       sVar3 = 5;
       if (((param_1->behavior_flags & 8) != 0) && (param_1->sub_state < 6)) {
         sVar3 = 6;
       }
       if (*(s16 *)(param_1->anim_data + 2) == sVar3) {
-        FUN_80074590(0x21,0,0);
+        Audio_PlaySoundEffect(0x21,0,0);
         if (param_1->sub_state < 5) {
           puVar9->behavior_state = 1;
         }
@@ -259,9 +259,9 @@ LAB_8005bba0:
         param_1->sub_state = 0;
       }
     }
-    iVar4 = FUN_80076d68(param_1);
+    iVar4 = Entity_AnimFrame(param_1);
     if (iVar4 == 1) {
-      FUN_80054d14(param_1,param_1->anim_id + 1,0);
+      Entity_LoadAnimIfChanged(param_1,param_1->anim_id + 1,0);
       param_1->state_flag145 = 1;
       param_1->collision_state = 0;
       param_1->state_flag144 = 0;
@@ -272,43 +272,43 @@ LAB_8005bba0:
     }
     break;
   case 7:
-    FUN_80055e28(param_1,0);
-    FUN_80055fbc(param_1,param_1->behavior_flags);
-    FUN_80056b48(param_1,1);
-    FUN_80055d5c(param_1);
-    FUN_80076d68(param_1);
+    Entity_PhysicsUpdate(param_1,0);
+    Entity_BehaviorDispatcher(param_1,param_1->behavior_flags);
+    Entity_ApplyVelocity(param_1,1);
+    Entity_PhysicsStep2(param_1);
+    Entity_AnimFrame(param_1);
     if ((1 < *(u16 *)(param_1->anim_data + 2)) &&
        (sVar3 = param_1->rot_z + 0x200, param_1->rot_z = sVar3,
        0xfff < sVar3)) {
       param_1->rot_z = 0x1000;
       param_1->behavior_state = 2;
       param_1->action_state = 1;
-      FUN_80054d14(param_1,0x15,3);
+      Entity_LoadAnimIfChanged(param_1,0x15,3);
     }
-    FUN_800574e0(param_1,8);
-    FUN_80057c08(param_1,0);
+    Entity_State_Combo(param_1,8);
+    Entity_State_Ground(param_1,0);
     return;
   case 8:
-    iVar4 = FUN_80076d68(param_1);
+    iVar4 = Entity_AnimFrame(param_1);
     if ((iVar4 == 1) || (puVar9->kind == '\x1b')) {
-      iVar4 = FUN_80053bf8(param_1,0);
+      iVar4 = Entity_FlagHandler(param_1,0);
       if (iVar4 != 0) {
-        FUN_80055d5c(param_1);
-        FUN_80053bf8(param_1,1);
+        Entity_PhysicsStep2(param_1);
+        Entity_FlagHandler(param_1,1);
       }
       param_1->state_flag144 = 0;
       param_1->action_state = param_1->action_state + '\x01';
     }
-    FUN_80055e28(param_1,1);
-    iVar4 = FUN_8005b5e4(puVar9);
+    Entity_PhysicsUpdate(param_1,1);
+    iVar4 = Entity_LookupType(puVar9);
     goto joined_r0x8005bf5c;
   case 9:
-    FUN_80076d68(param_1);
-    FUN_80055e28(param_1,1);
+    Entity_AnimFrame(param_1);
+    Entity_PhysicsUpdate(param_1,1);
     if ((param_1->timer_main == param_1->timer_170) &&
-       (iVar4 = FUN_80055824(), iVar4 != 0)) {
+       (iVar4 = Game_CheckFlagInput(), iVar4 != 0)) {
       param_1->behavior_flags = param_1->direction + '\x02';
-      iVar4 = FUN_8005b5e4(puVar9);
+      iVar4 = Entity_LookupType(puVar9);
       if ((iVar4 == 2) || (iVar4 == 4)) {
         uVar2 = 5;
         if (iVar4 == 4) {
@@ -327,32 +327,32 @@ LAB_8005bf24:
       }
       param_1->action_state = cVar5;
     }
-    iVar4 = FUN_8005b5e4(puVar9);
+    iVar4 = Entity_LookupType(puVar9);
 joined_r0x8005bf5c:
     uVar8 = 2;
     if (iVar4 < 3) {
       uVar8 = 0;
     }
-    FUN_8005b370(param_1,uVar8);
-    FUN_800551c4(param_1);
+    Entity_PhysicsApply(param_1,uVar8);
+    Entity_State_Physics(param_1);
     param_1->collision_state = 1;
     param_1->type_flags = 0;
-    iVar4 = FUN_80049280(param_1,0,(int)param_1->angle_delta);
+    iVar4 = Collision_Check2(param_1,0,(int)param_1->angle_delta);
     if (iVar4 == 0) {
       return;
     }
     param_1->type_flags = _DAT_1f8001a6;
     return;
   case 10:
-    FUN_80074590(0x20,0,0);
-    FUN_80054d14(param_1,param_1->anim_id + 1,0);
+    Audio_PlaySoundEffect(0x20,0,0);
+    Entity_LoadAnimIfChanged(param_1,param_1->anim_id + 1,0);
     param_1->sub_action = 0;
     param_1->rot_z = 0;
     param_1->action_state = param_1->action_state + '\x01';
     puVar9->behavior_state = 2;
     puVar9->action_state = 0;
     param_1->sub_state = 0;
-    iVar4 = FUN_8005b5e4(puVar9);
+    iVar4 = Entity_LookupType(puVar9);
     if (iVar4 == 3) {
       param_1->action_state = 0xc;
       param_1->velocity_y = 0xcd00;
@@ -366,25 +366,25 @@ joined_r0x8005bf5c:
     }
     param_1->velocity_y = 0xc500;
   case 0xb:
-    FUN_80055e28(param_1,1);
-    FUN_80055fbc(param_1,param_1->behavior_flags);
-    FUN_80056b48(param_1,1);
-    FUN_80055d5c(param_1);
-    FUN_800574e0(param_1,1);
+    Entity_PhysicsUpdate(param_1,1);
+    Entity_BehaviorDispatcher(param_1,param_1->behavior_flags);
+    Entity_ApplyVelocity(param_1,1);
+    Entity_PhysicsStep2(param_1);
+    Entity_State_Combo(param_1,1);
     if (param_1->state_flag145 == '\x02') {
       param_1->behavior_state = 2;
       param_1->action_state = 1;
-      FUN_80054d14(param_1,0x15,3);
+      Entity_LoadAnimIfChanged(param_1,0x15,3);
     }
     break;
   case 0xc:
-    FUN_80055e28(param_1,1);
-    FUN_80055fbc(param_1,param_1->behavior_flags);
-    FUN_80056b48(param_1,1);
-    FUN_80055d5c(param_1);
-    FUN_800574e0(param_1,1);
+    Entity_PhysicsUpdate(param_1,1);
+    Entity_BehaviorDispatcher(param_1,param_1->behavior_flags);
+    Entity_ApplyVelocity(param_1,1);
+    Entity_PhysicsStep2(param_1);
+    Entity_State_Combo(param_1,1);
     if (param_1->state_flag145 == '\x02') {
-      FUN_80054d14(param_1,0x26,0);
+      Entity_LoadAnimIfChanged(param_1,0x26,0);
       param_1->behavior_state = 0x10;
       param_1->action_state = 5;
       param_1->rot_z = 0x20;
@@ -393,7 +393,7 @@ joined_r0x8005bf5c:
   default:
     goto switchD_8005b678_default;
   }
-  FUN_800551c4(param_1);
+  Entity_State_Physics(param_1);
 switchD_8005b678_default:
   return;
 }

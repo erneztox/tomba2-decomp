@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8007091c(int param_1,s16 param_2,int param_3,s8 param_4)
+void Entity_Behavior_Sequence(int param_1,s16 param_2,int param_3,s8 param_4)
 
 {
   u8 bVar1;
@@ -37,7 +37,7 @@ void FUN_8007091c(int param_1,s16 param_2,int param_3,s8 param_4)
     if (iVar7 < 0) {
       iVar7 = iVar7 + 0xfff;
     }
-    iVar9 = FUN_80083f50(uVar4);
+    iVar9 = Math_CosGTE(uVar4);
     iVar7 = (int)(s16)(iVar7 >> 0xc);
     iVar9 = iVar9 * iVar7;
     if (iVar9 < 0) {
@@ -49,7 +49,7 @@ void FUN_8007091c(int param_1,s16 param_2,int param_3,s8 param_4)
       iVar9 = iVar9 + 0xfff;
     }
     *(s16 *)(param_1 + 0x32) = (_g_PlayerPosY - (s16)(iVar9 >> 0xc)) + -0x46;
-    iVar9 = FUN_80083f50(uVar4 + 0x400);
+    iVar9 = Math_CosGTE(uVar4 + 0x400);
     sVar5 = _g_PlayerPosZ;
     iVar9 = iVar9 * iVar7;
     if (iVar9 < 0) {
@@ -64,7 +64,7 @@ void FUN_8007091c(int param_1,s16 param_2,int param_3,s8 param_4)
     param_1->scale_z = uVar6;
     param_1->scale_y = uVar6;
     param_1->scale_x = uVar6;
-    uVar6 = FUN_80085690((int)param_1->pos_z - (int)sVar5,
+    uVar6 = Math_Atan2((int)param_1->pos_z - (int)sVar5,
                          (int)_g_PlayerPosX - (int)param_1->pos_y);
     param_1->rot_y = uVar6;
     if (*(s16 *)(param_1 + 100) != 0x2000) {
@@ -81,7 +81,7 @@ void FUN_8007091c(int param_1,s16 param_2,int param_3,s8 param_4)
         return;
       }
       param_1->anim_id = 0;
-      FUN_80077c40(param_1,&PTR_DAT_8001b860,0);
+      Entity_LoadAnimData3(param_1,&PTR_DAT_8001b860,0);
       sVar3 = _g_PlayerPosZ;
       sVar2 = _g_PlayerPosY;
       sVar5 = _g_PlayerPosX;
@@ -89,9 +89,9 @@ void FUN_8007091c(int param_1,s16 param_2,int param_3,s8 param_4)
       param_1->pos_y = sVar5;
       *(s16 *)(param_1 + 0x32) = sVar2;
       param_1->pos_z = sVar3;
-      iVar7 = FUN_80083e80((int)-param_2);
-      uVar8 = FUN_80083f50((int)-param_2);
-      uVar4 = FUN_80085690(-iVar7,uVar8);
+      iVar7 = Math_Cos((int)-param_2);
+      uVar8 = Math_CosGTE((int)-param_2);
+      uVar4 = Math_Atan2(-iVar7,uVar8);
       *(u16 *)(param_1 + 0x66) = uVar4 & 0xfff;
       *(u16 *)(param_1 + 0x66) = (uVar4 & 0xfff) + *(s16 *)(param_3 + 10);
       param_1->action_state = param_1->action_state + '\x01';
@@ -100,11 +100,11 @@ void FUN_8007091c(int param_1,s16 param_2,int param_3,s8 param_4)
     if (bVar1 != 2) {
       return;
     }
-    iVar7 = FUN_80041438(param_1,(int)_g_EntityAngle,0x180);
+    iVar7 = Entity_ApproachAngle(param_1,(int)_g_EntityAngle,0x180);
     if (iVar7 == 0) {
       return;
     }
   }
-  FUN_800708cc(param_1);
+  Entity_InitCombat(param_1);
   return;
 }

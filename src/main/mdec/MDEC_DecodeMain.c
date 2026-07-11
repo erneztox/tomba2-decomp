@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-int FUN_800876a0(int param_1)
+int MDEC_DecodeMain(int param_1)
 
 {
   u8 bVar1;
@@ -32,12 +32,12 @@ int FUN_800876a0(int param_1)
         (*DAT_800abe44)(param_1->state + iVar6);
       }
       uVar3 = (*DAT_800abe40)(param_1,1);
-      iVar4 = FUN_800870b4(param_1,uVar3);
+      iVar4 = MDEC_DataRead(param_1,uVar3);
       if (iVar4 < 0) {
         return iVar4;
       }
-      FUN_80089620(0x3c);
-      iVar4 = FUN_8008732c();
+      MDEC_SetParam(0x3c);
+      iVar4 = MDEC_WaitDMA();
       iVar5 = iVar5 + 1;
       if (iVar4 == 0) {
         return -3;
@@ -76,12 +76,12 @@ LAB_800878b8:
         *piVar7 = 3;
       }
       uVar3 = (*DAT_800abe40)(param_1,iVar2);
-      iVar4 = FUN_80086ea4(param_1,uVar3);
+      iVar4 = MDEC_DMAProcess(param_1,uVar3);
       if (iVar4 < 0) {
         return iVar4;
       }
-      FUN_80089620(0x3c);
-      iVar4 = FUN_8008732c();
+      MDEC_SetParam(0x3c);
+      iVar4 = MDEC_WaitDMA();
       if (iVar4 == 0) {
         return -3;
       }
@@ -91,7 +91,7 @@ LAB_800878b8:
   while( true ) {
     DAT_800abeb0 = DAT_800abeb0 + -1;
     if (DAT_800abeb0 < 1) {
-      FUN_800873bc();
+      MDEC_WaitReady();
       bVar1 = param_1->state;
       param_1->state = bVar1 + 1;
       *(u8 *)((uint)bVar1 + param_1->state) = *DAT_800abeb4;
@@ -99,11 +99,11 @@ LAB_800878b8:
       return 0;
     }
     uVar3 = (*DAT_800abe40)(param_1,iVar2);
-    iVar5 = FUN_80086ea4(param_1,uVar3);
+    iVar5 = MDEC_DMAProcess(param_1,uVar3);
     if (iVar5 < 0) break;
     if (DAT_800abeb4->state != 0x22) {
-      FUN_80089620(0x3c);
-      iVar5 = FUN_8008732c();
+      MDEC_SetParam(0x3c);
+      iVar5 = MDEC_WaitDMA();
       if (iVar5 == 0) {
         return -3;
       }

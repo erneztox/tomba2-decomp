@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s16 * FUN_8007c8c8(s16 *param_1,u16 param_2,s16 *param_3,u8 param_4)
+s16 * GPU_SetupPrimitive(s16 *param_1,u16 param_2,s16 *param_3,u8 param_4)
 
 {
   s16 sVar1;

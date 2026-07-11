@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006bdf0(int param_1,int param_2)
+void Entity_InitAttackTrail(int param_1,int param_2)
 
 {
   s16 sVar1;
@@ -21,9 +21,9 @@ void FUN_8006bdf0(int param_1,int param_2)
   }
   param_1->target_angle = sVar1;
   param_1->type_flags = 0x400;
-  FUN_80074590(0x22,0,0);
+  Audio_PlaySoundEffect(0x22,0,0);
   if (param_2 == 0) {
-    FUN_80031558(param_1,param_1->kind - 1);
+    Entity_SpawnTrail(param_1,param_1->kind - 1);
   }
   return;
 }

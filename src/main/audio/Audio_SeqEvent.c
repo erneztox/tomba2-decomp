@@ -6,7 +6,7 @@
 
 
 
-u8 FUN_80094150(void)
+u8 Audio_SeqEvent(void)
 
 {
   u16 uVar1;

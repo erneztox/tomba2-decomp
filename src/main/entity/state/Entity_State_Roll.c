@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-s32 FUN_8006271c(int param_1,int param_2)
+s32 Entity_State_Roll(int param_1,int param_2)
 
 {
   s16 sVar1;
@@ -30,9 +30,9 @@ s32 FUN_8006271c(int param_1,int param_2)
   }
   iVar2 = param_1->rot_y + 0x800;
   iVar5 = iVar2 * 0x10000 >> 0x10;
-  iVar3 = FUN_80083f50(iVar5);
+  iVar3 = Math_CosGTE(iVar5);
   param_1->pos_y = iVar6->pos_x + (s16)(iVar3 * iVar8 >> 0xc);
-  iVar3 = FUN_80083e80(iVar5);
+  iVar3 = Math_Cos(iVar5);
   param_1->pos_z = *(s16 *)(iVar6 + 0x34) - (s16)(iVar3 * iVar8 >> 0xc);
   iVar3 = param_2;
   if (param_1->state_165 != '\0') {
@@ -49,7 +49,7 @@ s32 FUN_8006271c(int param_1,int param_2)
     param_1->speed2 = param_1->speed2 + (s16)(char)(&DAT_800a4700)[iVar3];
   }
   *(s16 *)(param_1 + 0x32) = *(s16 *)(iVar6 + 0x30) + param_1->speed2;
-  FUN_80024af0(param_1);
+  Entity_CalcAimPos(param_1);
   sVar1 = (s16)iVar2;
   if (g_GameState == '\0') {
     iVar7 = Overlay_801148d8(param_1,iVar7);
@@ -58,22 +58,22 @@ s32 FUN_8006271c(int param_1,int param_2)
 LAB_800629f0:
       param_1->action_flag = 0;
       param_1->state_ptr = 0;
-      FUN_80056d44(param_1,0);
+      Entity_ResetActionState(param_1,0);
       return 0;
     }
     param_1->parent = _g_GTE_Work84;
-    iVar7 = FUN_80083f50((int)sVar1);
+    iVar7 = Math_CosGTE((int)sVar1);
     param_1->pos_y = iVar6->pos_x + (s16)(iVar7 * iVar8 >> 0xc);
-    iVar7 = FUN_80083e80((int)sVar1);
+    iVar7 = Math_Cos((int)sVar1);
     param_1->pos_z = *(s16 *)(iVar6 + 0x34) - (s16)(iVar7 * iVar8 >> 0xc);
     *(s16 *)(param_1 + 0x32) = *(s16 *)(iVar6 + 0x30) + param_1->speed2;
-    uVar4 = FUN_8005444c(param_1);
+    uVar4 = Entity_CollisionGround(param_1);
     if ((uVar4 & 1) != 0) {
       param_1->action_flag = 0;
       param_1->state_ptr = 0;
       param_1->behavior_state = 0;
       param_1->action_state = 0;
-      FUN_80054d14(param_1,2,3);
+      Entity_LoadAnimIfChanged(param_1,2,3);
       return 0;
     }
   }
@@ -82,18 +82,18 @@ LAB_800629f0:
        (iVar7 = Overlay_80110e60(param_1,iVar7), iVar6 = _g_GTE_Work84, iVar7 == 0))
     goto LAB_800629f0;
     param_1->parent = _g_GTE_Work84;
-    iVar7 = FUN_80083f50((int)sVar1);
+    iVar7 = Math_CosGTE((int)sVar1);
     param_1->pos_y = iVar6->pos_x + (s16)(iVar7 * iVar8 >> 0xc);
-    iVar7 = FUN_80083e80((int)sVar1);
+    iVar7 = Math_Cos((int)sVar1);
     param_1->pos_z = *(s16 *)(iVar6 + 0x34) - (s16)(iVar7 * iVar8 >> 0xc);
     *(s16 *)(param_1 + 0x32) = *(s16 *)(iVar6 + 0x30) + param_1->speed2;
-    uVar4 = FUN_8005444c(param_1);
+    uVar4 = Entity_CollisionGround(param_1);
     if ((uVar4 & 1) != 0) {
       param_1->action_flag = 0;
       param_1->state_ptr = 0;
       param_1->behavior_state = 0;
       param_1->action_state = 0;
-      FUN_80054d14(param_1,2,3);
+      Entity_LoadAnimIfChanged(param_1,2,3);
       return 0;
     }
   }

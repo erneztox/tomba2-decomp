@@ -8,7 +8,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_800662d8(int param_1,s32 param_2)
+void Entity_OverlayDispatch(int param_1,s32 param_2)
 
 {
   if (param_1->timer_main == 0) {

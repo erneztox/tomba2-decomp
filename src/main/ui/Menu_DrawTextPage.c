@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8007ee74(uint param_1)
+void Menu_DrawTextPage(uint param_1)
 
 {
   void **ppuVar1;
@@ -26,7 +26,7 @@ void FUN_8007ee74(uint param_1)
   local_48->type = PTR_s_Continue_800a286c;
   local_48->flags = PTR_s_Load_data_800a2870;
   local_48->kind = PTR_s_Quit_game_800a2874;
-  sVar4 = FUN_800793c4(local_48,3,local_38);
+  sVar4 = String_TableLookup(local_48,3,local_38);
   uVar5 = param_1;
   do {
     iVar2 = uVar6 * 2;
@@ -35,10 +35,10 @@ void FUN_8007ee74(uint param_1)
     iVar7 = iVar7 + 0x18;
     ppuVar1 = local_48 + uVar6;
     uVar6 = uVar6 + 1;
-    FUN_80079374((int)local_38[iVar3],(int)(s16)local_28[iVar2],(uint)(uVar5 == 0) << 1,*ppuVar1,0
+    GPU_RenderSprite_V1((int)local_38[iVar3],(int)(s16)local_28[iVar2],(uint)(uVar5 == 0) << 1,*ppuVar1,0
                 );
     uVar5 = param_1 ^ uVar6;
   } while ((int)uVar6 < 3);
-  FUN_8007e998((int)sVar4,(int)((local_28[param_1 * 2] + 4) * 0x10000) >> 0x10,1);
+  GPU_DrawSprite98((int)sVar4,(int)((local_28[param_1 * 2] + 4) * 0x10000) >> 0x10,1);
   return;
 }

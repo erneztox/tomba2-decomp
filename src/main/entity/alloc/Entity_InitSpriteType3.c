@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80023528(u8 *param_1)
+void Entity_InitSpriteType3(u8 *param_1)
 
 {
   *param_1 = 3;

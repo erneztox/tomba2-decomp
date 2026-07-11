@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80032f98(int param_1)
+void Entity_DrawLifecycle6(int param_1)
 
 {
   u8 bVar1;
@@ -50,6 +50,6 @@ void FUN_80032f98(int param_1)
   }
   param_1->state = STATE_FINISH;
 LAB_80033068:
-  FUN_8007a624();
+  Entity_Dealloc();
   return;
 }

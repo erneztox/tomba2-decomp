@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8007b2c0(int param_1)
+void Pad_InitConfig(int param_1)
 
 {
   if (param_1 == 0) {

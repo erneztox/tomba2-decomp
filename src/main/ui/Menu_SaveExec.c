@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8003a790(int param_1)
+void Menu_SaveExec(int param_1)
 
 {
   u8 bVar1;
@@ -40,7 +40,7 @@ void FUN_8003a790(int param_1)
       iVar3 = param_1;
       if (param_1->counter1 != '\0') {
         do {
-          FUN_8003a290(param_1,iVar3->sprite_ptr1);
+          Menu_CursorDraw(param_1,iVar3->sprite_ptr1);
           iVar4 = iVar4 + 1;
           iVar3 = iVar3 + 4;
         } while (iVar4 < (int)(uint)param_1->counter1);
@@ -65,7 +65,7 @@ void FUN_8003a790(int param_1)
         return;
       }
       do {
-        FUN_8003a5e4(param_1,iVar3->sprite_ptr1);
+        Menu_SlotDraw(param_1,iVar3->sprite_ptr1);
         iVar4 = iVar4 + 1;
         iVar3 = iVar3 + 4;
       } while (iVar4 < (int)(uint)param_1->counter1);
@@ -92,7 +92,7 @@ void FUN_8003a790(int param_1)
     iVar3 = param_1;
     if (param_1->counter1 != '\0') {
       do {
-        FUN_8003a3e8(param_1,iVar3->sprite_ptr1);
+        Menu_AnimIcon(param_1,iVar3->sprite_ptr1);
         iVar4 = iVar4 + 1;
         iVar3 = iVar3 + 4;
       } while (iVar4 < (int)(uint)param_1->counter1);

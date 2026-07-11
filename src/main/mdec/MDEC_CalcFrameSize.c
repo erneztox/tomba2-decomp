@@ -6,7 +6,7 @@
 
 
 
-int FUN_80088210(int param_1)
+int MDEC_CalcFrameSize(int param_1)
 
 {
   return ((int)(*(u8 *)(param_1 + 0xe3) + 1) >> 1) * 4 +

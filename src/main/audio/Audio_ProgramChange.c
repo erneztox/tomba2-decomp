@@ -6,7 +6,7 @@
 
 
 
-void FUN_8008e390(s16 param_1,s16 param_2)
+void Audio_ProgramChange(s16 param_1,s16 param_2)
 
 {
   u8 uVar1;
@@ -17,7 +17,7 @@ void FUN_8008e390(s16 param_1,s16 param_2)
   uVar1 = *(u8 *)*puVar3;
   *puVar3 = (u8 *)*puVar3 + 1;
   *(u8 *)((int)puVar3 + 0x26) = uVar1;
-  uVar2 = FUN_80090160();
+  uVar2 = Audio_AllocVoice();
   puVar3[0x24] = uVar2;
   return;
 }

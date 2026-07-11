@@ -6,9 +6,9 @@
 
 
 
-void FUN_80089fc8(s32 param_1)
+void CD_SetTimerCallback(s32 param_1)
 
 {
-  FUN_80085b80(3,param_1);
+  CD_Dispatch04(3,param_1);
   return;
 }

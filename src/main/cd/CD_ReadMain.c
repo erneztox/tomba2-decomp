@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_8008a190(void)
+s32 CD_ReadMain(void)
 
 {
   u8 bVar1;
@@ -54,8 +54,8 @@ LAB_8008a6d4:
       uVar7 = DAT_800abfc8 & 0x1d;
     }
     if (((local_20 == 5) && (0 < DAT_800abfc4)) &&
-       (FUN_8009a730(s_DiskError__8001c288), 0 < DAT_800abfc4)) {
-      FUN_8009a730(s_com__s_code___02x__02x__8001c294,(&PTR_s_CdlSync_800abfe0)[DAT_800abfd9],
+       (Debug_Printf(s_DiskError__8001c288), 0 < DAT_800abfc4)) {
+      Debug_Printf(s_com__s_code___02x__02x__8001c294,(&PTR_s_CdlSync_800abfe0)[DAT_800abfd9],
                    DAT_800abfc8,DAT_800abfcc);
     }
     switch(local_20) {
@@ -195,8 +195,8 @@ LAB_8008a6d4:
       uVar2 = 6;
       break;
     default:
-      FUN_8009b9b0(s_CDROM__unknown_intr_8001c2b0);
-      FUN_8009a730(s___d__8001c2c4,local_20);
+      Debug_PrintString(s_CDROM__unknown_intr_8001c2b0);
+      Debug_Printf(s___d__8001c2c4,local_20);
       goto LAB_8008a6d4;
     }
   }

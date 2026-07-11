@@ -8,7 +8,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-int FUN_8007566c(int param_1,int param_2)
+int Audio_SPU_Update(int param_1,int param_2)
 
 {
   s16 *psVar1;
@@ -16,14 +16,14 @@ int FUN_8007566c(int param_1,int param_2)
   int iVar3;
   
   if (-1 < DAT_800a4f7e) {
-    FUN_800963d0();
+    CD_ReleaseSlot();
     DAT_800a4f7e = -1;
   }
   iVar3 = 10;
   psVar1 = &DAT_800be3b8;
   do {
     if (psVar1->flags != 0) {
-      FUN_8008dd7c((int)*psVar1);
+      MDEC_Cmd2((int)*psVar1);
       psVar1->flags = 0;
     }
     iVar3 = iVar3 + 1;
@@ -33,8 +33,8 @@ int FUN_8007566c(int param_1,int param_2)
   piVar2 = (int *)(param_2 +
                   ((uint)*(u16 *)(iVar3 + -0x7fe7dffe) - (uint)*(u16 *)(iVar3 + -0x7fe7e000))
                   * 0x800 + -0x800);
-  FUN_800753ac(param_2);
-  FUN_800753d4(&DAT_800a4f7e,param_2 + *piVar2,param_2 + piVar2->flags);
+  CD_LoadToRAM(param_2);
+  CD_ReadSeek(&DAT_800a4f7e,param_2 + *piVar2,param_2 + piVar2->flags);
   switch(g_GameState) {
   case 5:
     Overlay_8013ac40();

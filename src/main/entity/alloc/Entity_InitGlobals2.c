@@ -6,7 +6,7 @@
 
 
 
-void FUN_8007b38c(void)
+void Entity_InitGlobals2(void)
 
 {
   DAT_800bfe4c = DAT_800fb166;
@@ -16,6 +16,6 @@ void FUN_8007b38c(void)
   DAT_800bf88a = DAT_800fb164;
   DAT_800bf88b = DAT_800fb165;
   DAT_800bfe4d = DAT_800fb167;
-  FUN_8007b2c0(DAT_800fb166);
+  Pad_InitConfig(DAT_800fb166);
   return;
 }

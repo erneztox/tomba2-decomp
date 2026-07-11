@@ -8,7 +8,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_80040558(u8 *param_1)
+void Entity_Behavior_PlayerController(u8 *param_1)
 
 {
   u8 bVar1;
@@ -22,27 +22,27 @@ void FUN_80040558(u8 *param_1)
         if (bVar1 != 3) {
           return;
         }
-        FUN_8007a624(param_1);
+        Entity_Dealloc(param_1);
         return;
       }
       switchparam_1->behavior_state {
       case 1:
         if ((param_1->sub_type == '\0') && (DAT_800bfad1 == '\0')) {
-          FUN_80040b48(0x38);
+          Event_TriggerCollectible(0x38);
         }
         if (param_1->flag_5E != '\x02') goto LAB_8004099c;
         *(u8 *)(param_1->parent + 0x5e) = 1;
         break;
       case 2:
-        FUN_8003fe00(param_1);
+        Entity_AnimMode(param_1);
         break;
       case 3:
-        FUN_8003fed8(param_1);
+        Entity_Behavior_ShakeSFX(param_1);
       }
       if (param_1->flag_5E == '\x02') {
         param_1->flags = *(u8 *)(param_1->parent + 1);
         Overlay_8012866c(param_1);
-        FUN_80077e7c(param_1);
+        Sprite_Alloc2(param_1);
         return;
       }
 LAB_8004099c:
@@ -54,7 +54,7 @@ LAB_8004099c:
           iVar3 = Overlay_8012e168(param_1);
         }
         else {
-          iVar3 = FUN_8007778c(param_1);
+          iVar3 = GTE_ProjectSprite2(param_1);
         }
         if (iVar3 == 0) {
           return;
@@ -65,16 +65,16 @@ LAB_8004099c:
           return;
         }
         param_1->flags = 1;
-        FUN_80077e7c(param_1);
+        Sprite_Alloc2(param_1);
       }
-      FUN_800517f8(param_1);
+      Entity_UpdateMatrix(param_1);
       return;
     }
     if (bVar1 != 0) {
       return;
     }
     if (param_1->behavior_state == '\0') {
-      iVar3 = FUN_80040410(param_1,param_1->sub_type);
+      iVar3 = Entity_AllocSubEntities(param_1,param_1->sub_type);
       if (iVar3 != 0) {
         param_1->behavior_state = param_1->behavior_state + '\x01';
       }
@@ -93,10 +93,10 @@ LAB_8004099c:
     }
     switchparam_1->flag_5E {
     case 0:
-      FUN_8003fbc4(param_1);
+      Entity_PhysicsFull(param_1);
       break;
     case 1:
-      FUN_8003fc00(param_1);
+      Entity_PhysicsClimb(param_1);
       break;
     case 2:
       Overlay_801286f4(param_1);
@@ -104,13 +104,13 @@ LAB_8004099c:
     default:
       goto switchD_80040648_caseD_3;
     case 4:
-      FUN_8003fc78(param_1);
+      Entity_SetAngleFromState(param_1);
       break;
     case 5:
       Overlay_80120188(param_1);
       break;
     case 6:
-      iVar3 = FUN_8003fc8c(param_1);
+      iVar3 = Entity_PhysicsIfMatch(param_1);
       goto LAB_800406b8;
     case 7:
       iVar3 = Overlay_801146e8(param_1);
@@ -136,19 +136,19 @@ switchD_80040648_caseD_3:
   }
   switchparam_1->behavior_state {
   case 0:
-    FUN_8003fd10(param_1);
+    Entity_Behavior_Shake(param_1);
     break;
   case 1:
-    FUN_8003fed8(param_1);
+    Entity_Behavior_ShakeSFX(param_1);
     break;
   case 2:
-    FUN_8003ffcc(param_1);
+    Entity_State_Grab(param_1);
     break;
   case 3:
-    FUN_8004022c(param_1);
+    Entity_Behavior_Explosion(param_1);
     break;
   case 4:
-    FUN_80040390(param_1);
+    Entity_Behavior_ParticleBurst(param_1);
     break;
   case 5:
     Overlay_80114934(param_1);
@@ -165,7 +165,7 @@ switchD_80040648_caseD_3:
     param_1->flags = cVar2;
     if (cVar2 != '\0') {
       Overlay_8012866c(param_1);
-      FUN_80077e7c(param_1);
+      Sprite_Alloc2(param_1);
       param_1->collision_state = 0;
       goto LAB_800408cc;
     }
@@ -182,16 +182,16 @@ switchD_800407d0_caseD_0:
           iVar3 = Overlay_8012e168(param_1);
         }
         else {
-          iVar3 = FUN_8007778c(param_1);
+          iVar3 = GTE_ProjectSprite2(param_1);
         }
         if (iVar3 != 0) goto LAB_80040878;
       }
     }
     else if ((param_1->alloc_flags & 0x80) != 0) {
       param_1->flags = 1;
-      FUN_80077e7c(param_1);
+      Sprite_Alloc2(param_1);
 LAB_80040878:
-      FUN_800517f8(param_1);
+      Entity_UpdateMatrix(param_1);
       param_1->collision_state = 0;
       goto LAB_800408cc;
     }

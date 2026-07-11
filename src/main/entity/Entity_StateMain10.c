@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80065a54(u8 *param_1)
+void Entity_StateMain10(u8 *param_1)
 
 {
   u8 bVar1;
@@ -17,7 +17,7 @@ void FUN_80065a54(u8 *param_1)
   
   switchparam_1->action_state {
   case 0:
-    FUN_80053d90(param_1);
+    Entity_StateSwitch(param_1);
     if (g_CurrentOverlay == '\x01') {
       g_ActionTrigger = '\0';
       uVar4 = 0xe;
@@ -41,27 +41,27 @@ LAB_80065b04:
     param_1->state_flag146 = 0;
     param_1->direction = DAT_800bf81f >> 4;
     param_1->action_state = param_1->action_state + '\x01';
-    FUN_80054198(param_1);
+    Entity_ResetState_2(param_1);
     param_1->velocity_y = 0;
-    FUN_80054d14(param_1,4,0);
+    Entity_LoadAnimIfChanged(param_1,4,0);
     uVar4 = 0xf000;
     if (param_1->direction == '\0') {
       uVar4 = 0x1000;
     }
     break;
   case 1:
-    FUN_80076d68(param_1);
+    Entity_AnimFrame(param_1);
     if (param_1->state_flag145 == '\0') {
-      FUN_80056b48(param_1,0);
-      FUN_80055d5c(param_1);
-      FUN_80065478(param_1,1);
+      Entity_ApplyVelocity(param_1,0);
+      Entity_PhysicsStep2(param_1);
+      Entity_SetActionFlag(param_1,1);
     }
     else {
-      FUN_80056b48(param_1,1);
-      FUN_80055d5c(param_1);
+      Entity_ApplyVelocity(param_1,1);
+      Entity_PhysicsStep2(param_1);
       *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
-      FUN_8005444c(param_1);
-      FUN_80056c00(param_1,1);
+      Entity_CollisionGround(param_1);
+      Entity_PhysicsMove(param_1,1);
     }
     sVar2 = param_1->timer1;
     param_1->timer1 = sVar2 + -1;
@@ -74,8 +74,8 @@ LAB_80065b04:
     param_1->behavior_state = 0;
     param_1->action_state = 0;
     param_1->sub_action = 0;
-    FUN_80054198(param_1);
-    FUN_80054d14(param_1,2,3);
+    Entity_ResetState_2(param_1);
+    Entity_LoadAnimIfChanged(param_1,2,3);
     if (g_CurrentOverlay == '\x01') {
       g_ActionTrigger = g_CurrentOverlay;
     }
@@ -112,12 +112,12 @@ LAB_80065b04:
   case 4:
     bVar1 = param_1->sub_action;
     if (bVar1 == 1) {
-      FUN_80076d68(param_1);
-      FUN_80056b48(param_1,0);
-      FUN_80055d5c(param_1);
+      Entity_AnimFrame(param_1);
+      Entity_ApplyVelocity(param_1,0);
+      Entity_PhysicsStep2(param_1);
       *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
-      FUN_8005444c(param_1);
-      FUN_80056c00(param_1,1);
+      Entity_CollisionGround(param_1);
+      Entity_PhysicsMove(param_1,1);
       sVar2 = param_1->timer1;
       param_1->timer1 = sVar2 + -1;
       if (sVar2 == 1) {
@@ -129,11 +129,11 @@ LAB_80065b04:
       if (bVar1 != 0) {
         return;
       }
-      FUN_80053d90(param_1);
+      Entity_StateSwitch(param_1);
       param_1->timer1 = 0x1c;
       param_1->sub_action = param_1->sub_action + '\x01';
-      FUN_80054198(param_1);
-      FUN_80054d14(param_1,4,0);
+      Entity_ResetState_2(param_1);
+      Entity_LoadAnimIfChanged(param_1,4,0);
       uVar4 = 0xf000;
       if (param_1->direction == '\0') {
         uVar4 = 0x1000;
@@ -148,33 +148,33 @@ LAB_80065b04:
     param_1->behavior_state = 0;
     param_1->action_state = 0;
     param_1->sub_action = 0;
-    FUN_80054198(param_1);
-    FUN_80054d14(param_1,2,3);
+    Entity_ResetState_2(param_1);
+    Entity_LoadAnimIfChanged(param_1,2,3);
     if (g_CurrentOverlay == '\x02') {
       g_CurrentOverlay = '\0';
     }
     goto LAB_80066090;
   case 5:
-    FUN_80053d90(param_1);
+    Entity_StateSwitch(param_1);
     if (g_CurrentOverlay == '\x01') {
       g_ActionTrigger = '\0';
     }
     param_1->timer1 = 0x26;
     param_1->state_flag146 = 0;
     param_1->direction = DAT_800bf81f >> 4;
-    FUN_80054198(param_1);
+    Entity_ResetState_2(param_1);
     param_1->velocity_y = 0;
-    FUN_80054d14(param_1,4,0);
+    Entity_LoadAnimIfChanged(param_1,4,0);
     uVar4 = 0xf800;
     if (param_1->direction == '\0') {
       uVar4 = 0x800;
     }
     param_1->anim_counter = uVar4;
-    FUN_800551c4(param_1);
+    Entity_State_Physics(param_1);
     param_1->action_state = 1;
     return;
   case 6:
-    FUN_80053d90(param_1);
+    Entity_StateSwitch(param_1);
     if (g_CurrentOverlay == '\x01') {
       g_ActionTrigger = '\0';
     }
@@ -182,20 +182,20 @@ LAB_80065b04:
     param_1->state_flag146 = 0;
     param_1->direction = DAT_800bf81f >> 4;
     param_1->action_state = param_1->action_state + '\x01';
-    FUN_80054198(param_1);
+    Entity_ResetState_2(param_1);
     param_1->velocity_y = 0;
-    FUN_80054d14(param_1,4,0);
+    Entity_LoadAnimIfChanged(param_1,4,0);
     uVar4 = 0xf000;
     if (param_1->direction == '\0') {
       uVar4 = 0x1000;
     }
     break;
   case 7:
-    FUN_80076d68(param_1);
-    FUN_80056b48(param_1,0);
-    FUN_80055d5c(param_1);
+    Entity_AnimFrame(param_1);
+    Entity_ApplyVelocity(param_1,0);
+    Entity_PhysicsStep2(param_1);
     *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
-    FUN_8005444c(param_1);
+    Entity_CollisionGround(param_1);
     sVar2 = param_1->timer1;
     param_1->timer1 = sVar2 + -1;
     cVar3 = '\x02';
@@ -203,22 +203,22 @@ LAB_80065b04:
 LAB_80065f6c:
     param_1->action_state = cVar3;
 LAB_80065f70:
-    FUN_800551c4(param_1);
+    Entity_State_Physics(param_1);
     if (((int)param_1->timer1 % 7 & 0xffffU) != 0) {
       return;
     }
-    FUN_80074590(0,5,0);
+    Audio_PlaySoundEffect(0,5,0);
     return;
   case 8:
-    FUN_80053d90(param_1);
+    Entity_StateSwitch(param_1);
     param_1->timer1 = 0x1c;
     param_1->state_flag146 = 0;
     bVar1 = DAT_800bf81f;
     param_1->action_state = 1;
     param_1->direction = bVar1 >> 4;
-    FUN_80054198(param_1);
+    Entity_ResetState_2(param_1);
     param_1->velocity_y = 0;
-    FUN_80054d14(param_1,4,0);
+    Entity_LoadAnimIfChanged(param_1,4,0);
     uVar4 = 0xf000;
     if (param_1->direction == '\0') {
       uVar4 = 0x1000;
@@ -226,14 +226,14 @@ LAB_80065f70:
     break;
   case 9:
     param_1->timer1 = 0x14;
-    FUN_80053d90(param_1);
+    Entity_StateSwitch(param_1);
     param_1->state_flag146 = 0;
     bVar1 = DAT_800bf81f;
     param_1->action_state = 1;
     param_1->direction = bVar1 >> 4;
-    FUN_80054198(param_1);
+    Entity_ResetState_2(param_1);
     param_1->velocity_y = 0;
-    FUN_80054d14(param_1,4,0);
+    Entity_LoadAnimIfChanged(param_1,4,0);
     uVar4 = 0xf000;
     if (param_1->direction == '\0') {
       uVar4 = 0x1000;
@@ -244,7 +244,7 @@ LAB_80065f70:
   }
   param_1->anim_counter = uVar4;
 LAB_80066090:
-  FUN_800551c4(param_1);
+  Entity_State_Physics(param_1);
 switchD_80065a90_default:
   return;
 }

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80044144(int param_1)
+s32 Entity_State_Collision(int param_1)
 
 {
   u8 bVar1;
@@ -22,7 +22,7 @@ s32 FUN_80044144(int param_1)
     uVar3 = *(u16 *)(param_1 + 0x66);
     if (((int)*(s16 *)(param_1 + 0x66) & 0x8000U) == 0) {
       if ((uVar3 & 0xff) != (u16)_DAT_800e7eb8->state) goto LAB_8004427c;
-      FUN_80074810(*(u8 *)(param_1 + 0x68),0);
+      Audio_PlaySFX_Vol(*(u8 *)(param_1 + 0x68),0);
       uVar3 = *(u16 *)(param_1 + 0x66) | 0x8000;
     }
     else {
@@ -45,7 +45,7 @@ s32 FUN_80044144(int param_1)
           uVar4 = (uint)param_1->event_param;
           sVar2 = *(s16 *)(param_1 + 0x76);
         }
-        FUN_800440e4(&g_CollisionEntity,uVar4,(int)sVar2);
+        Entity_SetSubState22(&g_CollisionEntity,uVar4,(int)sVar2);
         if (param_1->event_id == 0) {
           if ((**(u16 **)(param_1 + 0x6c) & 0x2000) == 0) {
             param_1->sub_state = 2;

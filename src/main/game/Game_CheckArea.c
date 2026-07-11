@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80036d90(int param_1)
+s32 Game_CheckArea(int param_1)
 
 {
   if ((g_SubState != '\0') && ((param_1 == 0 || (param_1 == 5)))) {

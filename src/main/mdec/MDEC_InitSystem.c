@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80088b00(s32 param_1,s32 param_2)
+void MDEC_InitSystem(s32 param_1,s32 param_2)
 
 {
   int iVar1;
@@ -21,17 +21,17 @@ void FUN_80088b00(s32 param_1,s32 param_2)
   
   DAT_800abe70 = 0;
   DAT_800abe84 = 0;
-  FUN_80089160();
+  MDEC_InitCallbacks();
   iVar7 = -0x7fefdb00;
-  DAT_800abe38 = FUN_80088cc8;
+  DAT_800abe38 = MDEC_SwapAllBuffers;
   DAT_800abe3c = &LAB_80088c60;
   DAT_800abe40 = &LAB_80088dcc;
-  DAT_800abe44 = FUN_80088e88;
+  DAT_800abe44 = MDEC_DecodeFrame;
   DAT_800abe48 = &LAB_80089104;
   DAT_800abe4c = &LAB_8008913c;
   DAT_800abe6c = 0x80102500;
-  DAT_800abe5c = FUN_80088dbc;
-  FUN_8009a340(0x80102500,0x1e0);
+  DAT_800abe5c = MDEC_SwapCommand;
+  Mem_Compare(0x80102500,0x1e0);
   iVar6 = 0;
   piVar2 = (int *)&DAT_80102540;
   iVar5 = -0x7fefdb48;
@@ -58,7 +58,7 @@ void FUN_80088b00(s32 param_1,s32 param_2)
     piVar2 = piVar2 + 0x3c;
     iVar7 = iVar7 + 0xf0;
   } while (iVar6 < 2);
-  FUN_80086738();
+  CD_InitCallbacks();
   DAT_800abe70 = 1;
   return;
 }

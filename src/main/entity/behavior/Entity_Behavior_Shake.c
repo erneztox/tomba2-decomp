@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8003fd10(int param_1)
+void Entity_Behavior_Shake(int param_1)
 
 {
   s16 sVar1;
@@ -33,7 +33,7 @@ void FUN_8003fd10(int param_1)
       param_1->action_state = param_1->action_state + -1;
     }
     *(u16 *)(param_1->sprite_ptr1 + 2) = (_g_FrameCounter2 & 1) * 6;
-    uVar2 = FUN_8009a450();
+    uVar2 = Math_Random();
     **(s16 **)(param_1 + 0xc0) = ((uVar2 & 3) - 2) * 6;
   }
   return;

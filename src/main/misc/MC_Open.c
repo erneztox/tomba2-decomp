@@ -6,11 +6,11 @@
 
 
 
-s32 FUN_80097498(s32 param_1,s32 param_2)
+s32 MC_Open(s32 param_1,s32 param_2)
 
 {
-  FUN_80097194(2,(uint)DAT_800ac61c << (DAT_800ac62c & 0x1f));
-  FUN_80097194(0);
-  FUN_80097194(3,param_1,param_2);
+  CD_SPU_Cmd2(2,(uint)DAT_800ac61c << (DAT_800ac62c & 0x1f));
+  CD_SPU_Cmd2(0);
+  CD_SPU_Cmd2(3,param_1,param_2);
   return param_2;
 }

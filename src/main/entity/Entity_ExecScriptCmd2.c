@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-void FUN_800439a4(int param_1)
+void Entity_ExecScriptCmd2(int param_1)
 
 {
-  FUN_800438d4((int)param_1->event_id,
+  Entity_BehaviorDispatch_2((int)param_1->event_id,
                *(u8 *)(param_1->event_param + -0x7ff4074c),
                param_1->camera_mode);
   return;

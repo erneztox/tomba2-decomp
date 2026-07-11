@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-int FUN_8004c0e4(s32 param_1,u8 param_2,int param_3)
+int Entity_ItemPickup(s32 param_1,u8 param_2,int param_3)
 
 {
   u8 bVar1;
@@ -20,19 +20,19 @@ int FUN_8004c0e4(s32 param_1,u8 param_2,int param_3)
   pbVar6 = (u8 *)(*(int *)(&DAT_800a3edc + (uint)g_GameState * 4) + (uint)param_2 * 4);
   bVar1 = *pbVar6;
   if ((bVar1 & 0x80) == 0) {
-    iVar4 = FUN_8004d7ec((int)*(s16 *)(pbVar6 + 2),1);
+    iVar4 = Math_Div8Round((int)*(s16 *)(pbVar6 + 2),1);
   }
   else {
-    iVar4 = FUN_8004d868((int)*(s16 *)(pbVar6 + 2),1);
+    iVar4 = Inventory_CheckFlag((int)*(s16 *)(pbVar6 + 2),1);
   }
   iVar5 = 0;
   if (iVar4 == 0) {
-    iVar5 = FUN_80072ddc(param_1,param_3 != 0,5,4);
+    iVar5 = Entity_SpawnChild(param_1,param_3 != 0,5,4);
     if (iVar5 == 0) {
       iVar5 = 0;
     }
     else {
-      iVar5->callback = FUN_8004c238;
+      iVar5->callback = Entity_Behavior_Collectible;
       iVar5->sub_type = pbVar6->flags;
       bVar2 = *pbVar6;
       iVar5->draw_x = 1;

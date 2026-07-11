@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8007e1b8(s32 *param_1,s16 *param_2,int param_3,u8 *param_4)
+void GPU_SpriteDrawMain(s32 *param_1,s16 *param_2,int param_3,u8 *param_4)
 
 {
   u8 bVar1;

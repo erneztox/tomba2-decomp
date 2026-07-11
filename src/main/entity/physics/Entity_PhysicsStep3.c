@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80060a80(int param_1,uint param_2)
+void Entity_PhysicsStep3(int param_1,uint param_2)
 
 {
   uint uVar1;
@@ -23,9 +23,9 @@ void FUN_80060a80(int param_1,uint param_2)
   int iVar9;
   
   iVar8 = (int)((param_1->sprite_x - 0x400) * 0x10000) >> 0x10;
-  iVar3 = FUN_80083f50(iVar8);
+  iVar3 = Math_CosGTE(iVar8);
   iVar9 = iVar3 * _DAT_1f80020c >> 0xc;
-  iVar3 = FUN_80083e80(iVar8);
+  iVar3 = Math_Cos(iVar8);
   uVar1 = iVar3 * _DAT_1f80020c;
   if ((int)param_2 < 2) {
     if (g_State237 == '\0') {
@@ -35,13 +35,13 @@ void FUN_80060a80(int param_1,uint param_2)
       iVar8 = (param_1->draw_angle + 0x800) * 0x10000;
     }
     iVar8 = iVar8 >> 0x10;
-    iVar3 = FUN_80083f50(iVar8);
+    iVar3 = Math_CosGTE(iVar8);
   }
   else {
-    iVar3 = FUN_80083f50((int)_DAT_1f800178);
+    iVar3 = Math_CosGTE((int)_DAT_1f800178);
     iVar8 = (int)_DAT_1f800178;
   }
-  iVar8 = FUN_80083e80(iVar8);
+  iVar8 = Math_Cos(iVar8);
   if ((param_2 & 1) == 0) {
     iVar4 = param_1->data_ptr;
     sVar7 = param_1->pos_y - iVar4->pos_x;
@@ -59,10 +59,10 @@ void FUN_80060a80(int param_1,uint param_2)
   *(s16 *)(param_1 + 0x32) = sVar6 + sVar2;
   param_1->pos_z = sVar5 + (sVar7 - (s16)((uint)-(iVar8 * iVar9) >> 0xc));
   if ((int)param_2 < 2) {
-    FUN_80055d5c(param_1);
-    FUN_800541f4(param_1,1);
-    FUN_80054650(param_1,0);
-    FUN_8005444c(param_1);
+    Entity_PhysicsStep2(param_1);
+    Entity_SubState(param_1,1);
+    Entity_Behavior_Init2(param_1,0);
+    Entity_CollisionGround(param_1);
   }
   return;
 }

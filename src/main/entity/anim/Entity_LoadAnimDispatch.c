@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80054e24(int param_1,int param_2,int param_3)
+void Entity_LoadAnimDispatch(int param_1,int param_2,int param_3)
 
 {
   int iVar1;
@@ -23,6 +23,6 @@ void FUN_80054e24(int param_1,int param_2,int param_3)
   }
   iVar1 = param_3 + 0x6a;
 LAB_80054e68:
-  FUN_80054d14(param_1,iVar1,0);
+  Entity_LoadAnimIfChanged(param_1,iVar1,0);
   return;
 }

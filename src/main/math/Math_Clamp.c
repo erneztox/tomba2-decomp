@@ -6,7 +6,7 @@
 
 
 
-int FUN_8006ce74(s16 param_1,s16 param_2)
+int Math_Clamp(s16 param_1,s16 param_2)
 
 {
   int iVar1;

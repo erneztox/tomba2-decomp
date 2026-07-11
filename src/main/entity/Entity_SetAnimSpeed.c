@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80069634(int param_1)
+void Entity_SetAnimSpeed(int param_1)
 
 {
   param_1->anim_counter =

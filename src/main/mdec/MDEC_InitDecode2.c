@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80088248(int *param_1,int param_2)
+s32 MDEC_InitDecode2(int *param_1,int param_2)
 
 {
   int iVar1;
@@ -20,7 +20,7 @@ s32 FUN_80088248(int *param_1,int param_2)
     if (iVar1 == 0) {
       *(u8 *)((int)param_1 + 0x49) = 4;
       *(u8 *)((int)param_1 + 0x46) = 1;
-      param_1->state = (int)FUN_8008831c;
+      param_1->state = (int)MDEC_StateMachine2;
       param_1->state = (int)&LAB_800883c4;
       iVar1 = (param_2 + 3 >> 2) * 4;
       *param_1 = iVar1;

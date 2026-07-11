@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80042ea4(int param_1,u16 *param_2,uint param_3)
+s32 Entity_PlayTimedSFX(int param_1,u16 *param_2,uint param_3)
 
 {
   u16 uVar1;
@@ -25,13 +25,13 @@ s32 FUN_80042ea4(int param_1,u16 *param_2,uint param_3)
         }
         else if ((uVar1 & 0x40) == 0) {
           *param_2 = uVar1 | 0x40;
-          FUN_80074590(param_3 & 0xff,0,(int)cVar2);
+          Audio_PlaySoundEffect(param_3 & 0xff,0,(int)cVar2);
           return 1;
         }
       }
     }
     else if (((uint)_g_FrameCounter2 & (int)(s16)*param_2) == 0) {
-      FUN_80074590(param_3 & 0xff,0,(int)cVar2);
+      Audio_PlaySoundEffect(param_3 & 0xff,0,(int)cVar2);
     }
   }
   return 0;

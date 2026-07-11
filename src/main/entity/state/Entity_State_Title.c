@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80049a60(u8 *param_1,int param_2)
+void Entity_State_Title(u8 *param_1,int param_2)
 
 {
   s8 cVar1;
@@ -42,8 +42,8 @@ void FUN_80049a60(u8 *param_1,int param_2)
       if (-0x1800 < iVar5) {
         *param_1 = 1;
       }
-      FUN_8004766c(param_1);
-      iVar5 = FUN_800493e8(param_1,0,(int)-param_1->bounds_min_y);
+      Entity_PhysicsStep(param_1);
+      iVar5 = Collision_Check3(param_1,0,(int)-param_1->bounds_min_y);
       if (iVar5 != 0) {
         *param_1 = 1;
         param_1->velocity_y = 0;
@@ -60,8 +60,8 @@ void FUN_80049a60(u8 *param_1,int param_2)
     }
     if (param_1->collision_state == '\0') {
       if ((param_1->alloc_flags & 0x80) == 0) {
-        FUN_8004766c(param_1);
-        iVar5 = FUN_80049250(param_1,0,
+        Entity_PhysicsStep(param_1);
+        iVar5 = Collision_Check1(param_1,0,
                              (int)(((uint)param_1->bounds_max_y -
                                    (uint)param_1->bounds_min_y) * 0x10000) >> 0x10);
         if (iVar5 != 1) {
@@ -86,8 +86,8 @@ LAB_80049d18:
                _DAT_800bf812 - (param_1->bounds_max_y - param_1->bounds_min_y);
           goto LAB_80049d18;
         }
-        FUN_8004766c(param_1);
-        iVar5 = FUN_80049250(param_1,0,
+        Entity_PhysicsStep(param_1);
+        iVar5 = Collision_Check1(param_1,0,
                              (int)(((uint)param_1->bounds_max_y -
                                    (uint)param_1->bounds_min_y) * 0x10000) >> 0x10);
         if (iVar5 == 0) break;
@@ -114,7 +114,7 @@ LAB_80049bc8:
     if (param_1->velocity_y < 0x3000) {
       param_1->velocity_y = param_1->velocity_y + param_1->angle_offset;
     }
-    iVar5 = FUN_80077acc(param_1,(int)param_1->pos_y,(int)*(s16 *)(param_1 + 0x32),
+    iVar5 = GTE_ProjectSprite1(param_1,(int)param_1->pos_y,(int)*(s16 *)(param_1 + 0x32),
                          (int)param_1->pos_z);
     if (iVar5 == 0) {
       param_1->state = STATE_DEAD;

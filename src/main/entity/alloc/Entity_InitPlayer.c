@@ -9,14 +9,14 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800716b4(int param_1)
+void Entity_InitPlayer(int param_1)
 
 {
   s32 uVar1;
   int iVar2;
   
   _g_PlayerEntity = param_1;
-  iVar2 = FUN_800519e0(param_1,0xc,_g_EntityConfig,&DAT_800a4bc8);
+  iVar2 = Entity_AllocFromPool(param_1,0xc,_g_EntityConfig,&DAT_800a4bc8);
   uVar1 = _g_EntityConfig2;
   if (iVar2 == 0) {
     param_1->render_flags = 0xf;
@@ -31,7 +31,7 @@ void FUN_800716b4(int param_1)
     param_1->rot_x = 0;
     param_1->state_7B = 0;
     param_1->sprite_data = uVar1;
-    FUN_80040cdc(param_1,&PTR_DAT_8001b860,&DAT_800a3cd0);
+    Entity_InitFromScript(param_1,&PTR_DAT_8001b860,&DAT_800a3cd0);
     param_1->state = param_1->state + '\x01';
   }
   return;

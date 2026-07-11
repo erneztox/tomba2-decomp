@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8002df68(int param_1,s32 param_2,s32 param_3,s32 param_4)
+void GTE_Project8(int param_1,s32 param_2,s32 param_3,s32 param_4)
 
 {
   s32 in_zero;
@@ -31,11 +31,11 @@ void FUN_8002df68(int param_1,s32 param_2,s32 param_3,s32 param_4)
   setCopControlWord(2,0xb000,0);
   setCopControlWord(2,0xb800,0);
   uVar7 = DAT_800102b8;
-  FUN_80085480(param_1 + 0x48,0x1f800000,param_3,param_4,DAT_800102b8);
+  GTE_LoadRotMatrixFromSVec(param_1 + 0x48,0x1f800000,param_3,param_4,DAT_800102b8);
   local_20 = (uVar7 & 0xff) << 2;
   local_1c = (uVar7 >> 8 & 0xff) << 2;
   local_18 = (uVar7 >> 0x10 & 0xff) << 2;
-  FUN_80084520(0x1f800000,&local_20);
+  GTE_TransformVec(0x1f800000,&local_20);
   setCopControlWord(2,0,_g_GTE_WorkF8);
   setCopControlWord(2,0x800,_DAT_1f8000fc);
   setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -84,6 +84,6 @@ void FUN_8002df68(int param_1,s32 param_2,s32 param_3,s32 param_4)
   setCopControlWord(2,0x2800,_g_GTE_Data14);
   setCopControlWord(2,0x3000,_g_GTE_Data18);
   setCopControlWord(2,0x3800,_g_GTE_Data1C);
-  FUN_80027768(&DAT_800a16c0,0,0,0);
+  Entity_SubmitQuadToOT(&DAT_800a16c0,0,0,0);
   return;
 }

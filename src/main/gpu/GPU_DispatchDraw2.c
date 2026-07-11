@@ -6,14 +6,14 @@
 
 
 
-void FUN_800803dc(uint *param_1,s32 param_2)
+void GPU_DispatchDraw2(uint *param_1,s32 param_2)
 
 {
   s32 uVar1;
   uint uVar2;
   
   uVar2 = *param_1;
-  uVar1 = FUN_8007fdb0(param_1 + 4,param_2,uVar2 & 0xffff);
-  FUN_8008007c(uVar1,param_2,uVar2 >> 0x10);
+  uVar1 = GPU_OT_Build(param_1 + 4,param_2,uVar2 & 0xffff);
+  GPU_OT_Submit2(uVar1,param_2,uVar2 >> 0x10);
   return;
 }

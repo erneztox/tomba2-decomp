@@ -6,7 +6,7 @@
 
 
 
-void FUN_800873bc(void)
+void MDEC_WaitReady(void)
 
 {
   do {

@@ -6,7 +6,7 @@
 
 
 
-u8 FUN_80080d64(s8 param_1)
+u8 GPU_SetQueueDepth(s8 param_1)
 
 {
   u8 uVar1;

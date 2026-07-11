@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800635d4(int param_1,uint param_2)
+void Entity_Update(int param_1,uint param_2)
 
 {
   s32 bVar1;
@@ -180,7 +180,7 @@ LAB_80063a48:
     }
     if (2 < *(u8 *)(param_1 + 0x168)) {
       param_1->sub_action = 1;
-      FUN_80074590(6,0,0);
+      Audio_PlaySoundEffect(6,0,0);
       return;
     }
     uVar3 = 1;

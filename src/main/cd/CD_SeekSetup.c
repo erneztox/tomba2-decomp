@@ -6,7 +6,7 @@
 
 
 
-int FUN_80085f5c(uint param_1,int param_2)
+int CD_SeekSetup(uint param_1,int param_2)
 
 {
   u16 uVar1;
@@ -32,17 +32,17 @@ int FUN_80085f5c(uint param_1,int param_2)
       DAT_800aad48 = DAT_800aad48 | uVar1;
     }
     if (param_1 == 0) {
-      FUN_80080920(param_2 == 0);
-      FUN_80085b10(3,param_2 == 0);
+      BIOS_Syscall_B0_80080920(param_2 == 0);
+      BIOS_CallC0(3,param_2 == 0);
     }
     if (param_1 == 4) {
-      FUN_80085b10(0,param_2 == 0);
+      BIOS_CallC0(0,param_2 == 0);
     }
     if (param_1 == 5) {
-      FUN_80085b10(1,param_2 == 0);
+      BIOS_CallC0(1,param_2 == 0);
     }
     if (param_1 == 6) {
-      FUN_80085b10(2,param_2 == 0);
+      BIOS_CallC0(2,param_2 == 0);
     }
     *DAT_800abda8 = uVar3;
   }

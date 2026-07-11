@@ -6,9 +6,9 @@
 
 
 
-void FUN_80097e10(s32 param_1,s32 param_2)
+void MC_Seek(s32 param_1,s32 param_2)
 
 {
-  FUN_80097e40(param_1,param_2,0xca,0xcb);
+  CD_SPU_Cmd(param_1,param_2,0xca,0xcb);
   return;
 }

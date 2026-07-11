@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80051300(int param_1)
+void Entity_CheckState2(int param_1)
 
 {
   s16 sVar1;
@@ -23,18 +23,18 @@ void FUN_80051300(int param_1)
       }
       iVar3 = *(int *)(param_1 + iVar4 * 4 + 0xc0);
       sVar1 = *(s16 *)(iVar3 + 6);
-      FUN_80085480(iVar3 + 8,0x1f800000);
+      GTE_LoadRotMatrixFromSVec(iVar3 + 8,0x1f800000);
       if (sVar1 == -1) {
-        FUN_80084110(param_1 + 0x98,0x1f800000,iVar3 + 0x18);
-        FUN_80084220(iVar3,iVar3 + 0x2c);
+        GTE_ComposeMatrix(param_1 + 0x98,0x1f800000,iVar3 + 0x18);
+        GTE_MulMatrix(iVar3,iVar3 + 0x2c);
         *(int *)(iVar3 + 0x2c) = *(int *)(iVar3 + 0x2c) + param_1->projected_x;
         iVar3->pos_y_fixed = iVar3->pos_y_fixed + param_1->projected_y;
         iVar2 = iVar3->scale_y + param_1->projected_z;
       }
       else {
         iVar2 = param_1 + sVar1 * 4;
-        FUN_80084110(iVar2->sprite_ptr1 + 0x18,0x1f800000,iVar3 + 0x18);
-        FUN_80084220(iVar3,iVar3 + 0x2c);
+        GTE_ComposeMatrix(iVar2->sprite_ptr1 + 0x18,0x1f800000,iVar3 + 0x18);
+        GTE_MulMatrix(iVar3,iVar3 + 0x2c);
         *(int *)(iVar3 + 0x2c) = *(int *)(iVar3 + 0x2c) + *(int *)(iVar2->sprite_ptr1 + 0x2c);
         iVar3->pos_y_fixed = iVar3->pos_y_fixed + *(int *)(iVar2->sprite_ptr1 + 0x30);
         iVar2 = iVar3->scale_y + *(int *)(iVar2->sprite_ptr1 + 0x34);

@@ -6,7 +6,7 @@
 
 
 
-uint FUN_80087bb8(s32 param_1,int param_2,int param_3)
+uint MDEC_GetStatus(s32 param_1,int param_2,int param_3)
 
 {
   int *piVar1;

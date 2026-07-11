@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_800386c0(int param_1)
+s32 Menu_CursorNext(int param_1)
 
 {
   uint uVar1;

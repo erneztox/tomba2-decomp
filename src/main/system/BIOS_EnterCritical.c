@@ -6,7 +6,7 @@
 
 
 
-void FUN_80080820(void)
+void BIOS_EnterCritical(void)
 
 {
   (*(code *)&LAB_000000a0)();

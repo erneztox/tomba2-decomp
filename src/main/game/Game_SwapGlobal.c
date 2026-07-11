@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_8009d044(s32 param_1)
+s32 Game_SwapGlobal(s32 param_1)
 
 {
   s32 uVar1;

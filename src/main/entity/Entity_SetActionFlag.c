@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80065478(int param_1,int param_2)
+void Entity_SetActionFlag(int param_1,int param_2)
 
 {
   if ((g_ActionFlag == '\0') || (param_2 == 0)) {
@@ -16,8 +16,8 @@ void FUN_80065478(int param_1,int param_2)
     param_1->collision_state = 1;
   }
   else {
-    FUN_8005444c(param_1);
-    FUN_80056c00(param_1,1);
+    Entity_CollisionGround(param_1);
+    Entity_PhysicsMove(param_1,1);
   }
   return;
 }

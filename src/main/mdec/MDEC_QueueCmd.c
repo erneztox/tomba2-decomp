@@ -6,7 +6,7 @@
 
 
 
-void FUN_8008da2c(s32 *param_1,s32 *param_2,uint param_3)
+void MDEC_QueueCmd(s32 *param_1,s32 *param_2,uint param_3)
 
 {
   s32 uVar1;

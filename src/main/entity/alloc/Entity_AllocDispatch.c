@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_8007aa38(int param_1,uint param_2,s32 param_3,uint param_4)
+s32 Entity_AllocDispatch(int param_1,uint param_2,s32 param_3,uint param_4)
 
 {
   s32 uVar1;
@@ -17,19 +17,19 @@ s32 FUN_8007aa38(int param_1,uint param_2,s32 param_3,uint param_4)
     uVar1 = 0;
     switch(param_2 >> 8 & 0x7f) {
     case 0:
-      uVar1 = FUN_80079c3c(param_1,uVar2);
+      uVar1 = Entity_AllocPool0(param_1,uVar2);
       break;
     case 1:
-      uVar1 = FUN_80079ddc(param_1,uVar2);
+      uVar1 = Entity_AllocPool1(param_1,uVar2);
       break;
     case 2:
-      uVar1 = FUN_80079f90(param_1,uVar2);
+      uVar1 = Entity_AllocPool2(param_1,uVar2);
       break;
     case 3:
-      uVar1 = FUN_8007a12c(param_1,uVar2);
+      uVar1 = Entity_AllocPool3(param_1,uVar2);
       break;
     case 4:
-      uVar1 = FUN_8007a2c8(param_1,uVar2);
+      uVar1 = Entity_AllocPool4(param_1,uVar2);
     }
   }
   else {

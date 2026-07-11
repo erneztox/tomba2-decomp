@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_8005c138(s32 param_1,int param_2)
+s32 Entity_TypeCheck(s32 param_1,int param_2)
 
 {
   u8 bVar1;

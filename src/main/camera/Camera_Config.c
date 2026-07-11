@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8006e010(int param_1)
+void Camera_Config(int param_1)
 
 {
   s32 bVar1;

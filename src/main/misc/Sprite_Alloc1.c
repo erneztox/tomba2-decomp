@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80077ebc(s32 param_1)
+void Sprite_Alloc1(s32 param_1)
 
 {
   s32 *puVar1;

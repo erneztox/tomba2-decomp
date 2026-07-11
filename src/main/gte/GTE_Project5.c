@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8002e458(int param_1)
+void GTE_Project5(int param_1)
 
 {
   s32 bVar1;
@@ -60,11 +60,11 @@ void FUN_8002e458(int param_1)
     _g_GTE_Work84 = _g_GTE_Work84 * *(int *)(param_1 + 0x50) >> 8;
     _DAT_1f800090 = 0;
     _DAT_1f800088 = _DAT_1f800088 >> 8;
-    FUN_8002847c(&DAT_8009fbe4,0,0);
+    GTE_ProjectEntity2(&DAT_8009fbe4,0,0);
     _DAT_1f800090 = 0;
     _g_GTE_Work84 = uVar2 * *(int *)(param_1 + 0x58) >> 8;
     _DAT_1f800088 = uVar2 * *(int *)(param_1 + 0x5c) >> 8;
-    FUN_8002847c(&DAT_8009fbe4,0,0);
+    GTE_ProjectEntity2(&DAT_8009fbe4,0,0);
   }
   return;
 }

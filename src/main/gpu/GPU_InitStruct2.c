@@ -6,9 +6,9 @@
 
 
 
-s32 FUN_80081c94(s32 param_1)
+s32 GPU_InitStruct2(s32 param_1)
 
 {
-  FUN_8009a3e0(param_1,&DAT_800a5a0c,0x14);
+  Mem_Copy(param_1,&DAT_800a5a0c,0x14);
   return param_1;
 }

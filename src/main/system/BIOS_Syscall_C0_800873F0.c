@@ -6,7 +6,7 @@
 
 
 
-void FUN_800873f0(void)
+void BIOS_Syscall_C0_800873F0(void)
 
 {
   (*(code *)&LAB_000000c0)();

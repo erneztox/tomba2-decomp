@@ -1,12 +1,12 @@
 /**
- * @brief Debug string output: sends chars to CD queue via FUN_8009ae60, flushes at end
+ * @brief Debug string output: sends chars to CD queue via CD_QueueCmd, flushes at end
  * @note Original: func_8009B9B0 at 0x8009B9B0
  */
 // Debug_PrintString
 
 
 
-void FUN_8009b9b0(char *param_1)
+void Debug_PrintString(char *param_1)
 
 {
   s8 cVar1;
@@ -18,8 +18,8 @@ void FUN_8009b9b0(char *param_1)
     cVar1 = *param_1;
     param_1 = param_1 + 1;
     if (cVar1 == '\0') break;
-    FUN_8009ae60((int)cVar1);
+    CD_QueueCmd((int)cVar1);
   }
-  FUN_8009af5c();
+  CD_FlushCmd();
   return;
 }

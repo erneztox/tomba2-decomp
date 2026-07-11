@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80083c70(int param_1,int param_2)
+void Entity_SetFlagBit1(int param_1,int param_2)
 
 {
   u8 bVar1;

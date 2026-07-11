@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-u8 * FUN_8007c940(int param_1)
+u8 * GPU_SpriteBuild(int param_1)
 
 {
   s16 *psVar1;
@@ -22,7 +22,7 @@ u8 * FUN_8007c940(int param_1)
   u8 bVar8;
   s16 local_28->state;
   
-  FUN_8007d208();
+  GPU_SpriteCmd();
   bVar8 = 0;
   pbVar6 = *(u8 **)(param_1 + 0x10);
   local_28->type = param_1->rot_x;
@@ -38,33 +38,33 @@ u8 * FUN_8007c940(int param_1)
       case 0xc0:
       case 0xc1:
       case 0xc2:
-        psVar1 = (s16 *)FUN_8007c3cc(psVar5,local_28,bVar7,*pbVar6 - 0xc0);
+        psVar1 = (s16 *)GPU_DrawTile(psVar5,local_28,bVar7,*pbVar6 - 0xc0);
         break;
       case 0xc3:
-        psVar1 = (s16 *)FUN_8007c5e4(psVar5,local_28,bVar7 + 2);
+        psVar1 = (s16 *)GPU_DrawDigit(psVar5,local_28,bVar7 + 2);
         break;
       case 0xc4:
       case 0xc5:
       case 0xc6:
       case 199:
       case 200:
-        psVar1 = (s16 *)FUN_8007c780(psVar5,local_28,bVar7 + 2,*pbVar6 - 0xc4);
+        psVar1 = (s16 *)GPU_DrawDigit3(psVar5,local_28,bVar7 + 2,*pbVar6 - 0xc4);
         break;
       case 0xc9:
-        psVar1 = (s16 *)FUN_8007c620(psVar5,local_28,bVar7 + 2);
+        psVar1 = (s16 *)GPU_DrawDigit1(psVar5,local_28,bVar7 + 2);
         break;
       case 0xca:
       case 0xcb:
-        psVar1 = (s16 *)FUN_8007c688(psVar5,local_28,bVar7 + 2,*pbVar6 - 0xca);
+        psVar1 = (s16 *)GPU_DrawNumber2(psVar5,local_28,bVar7 + 2,*pbVar6 - 0xca);
         break;
       case 0xcc:
-        psVar1 = (s16 *)FUN_8007c654(psVar5,local_28,bVar7 + 2);
+        psVar1 = (s16 *)GPU_DrawDigit2(psVar5,local_28,bVar7 + 2);
         break;
       case 0xcd:
       case 0xce:
       case 0xcf:
       case 0xd0:
-        psVar1 = (s16 *)FUN_8007c8c8(psVar5,*pbVar6 + 0x33,local_28,bVar7);
+        psVar1 = (s16 *)GPU_SetupPrimitive(psVar5,*pbVar6 + 0x33,local_28,bVar7);
         break;
       default:
         psVar5->flags = bVar7;

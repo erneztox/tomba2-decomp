@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_8009cc14(void)
+s32 CD_GetReg(void)
 
 {
   return *g_CD_Status;

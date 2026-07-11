@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8002847c(int *param_1,int param_2)
+void GTE_ProjectEntity2(int *param_1,int param_2)
 
 {
   uint uVar1;

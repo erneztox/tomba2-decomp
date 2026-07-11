@@ -7,22 +7,22 @@
 
 
 #include "tomba.h"
-void FUN_80087f1c(int param_1)
+void MDEC_StateMachine(int param_1)
 
 {
   u8 bVar1;
   
   bVar1 = param_1->state;
   if (bVar1 == 3) {
-    FUN_80088a88(param_1,param_1->state);
+    MDEC_CmdSetIQ(param_1,param_1->state);
   }
   else if (bVar1 < 4) {
     if (bVar1 == 2) {
-      FUN_80088a74();
+      MDEC_CmdReset();
     }
   }
   else if (bVar1 == 4) {
-    FUN_80088ac8(param_1,param_1->state);
+    MDEC_CmdSetSize(param_1,param_1->state);
   }
   return;
 }

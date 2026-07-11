@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8002fc40(int param_1)
+void Entity_Behavior_Draw(int param_1)
 
 {
   u8 bVar1;
@@ -26,16 +26,16 @@ LAB_8002fce0:
     uVar3 = *puVar6;
     *puVar6 = uVar3 - 6;
     if ((int)((uint)(u16)(uVar3 - 6) << 0x10) < 1) {
-      if ((6 < DAT_800e7e7c) && (iVar5 = FUN_8007a980(0,6,1), iVar5 != 0)) {
+      if ((6 < DAT_800e7e7c) && (iVar5 = Entity_AllocByPoolId(0,6,1), iVar5 != 0)) {
         if (param_1 != -0x2c) {
           iVar5->pos_x = param_1->pos_x;
           iVar5->pos_y = param_1->pos_y;
           *(s16 *)(iVar5 + 0x30) = *(s16 *)(param_1 + 0x30);
         }
         *(s16 *)(iVar5 + 0x32) = 0xffe2;
-        FUN_80028e10(iVar5,8);
+        Entity_InitBehavior(iVar5,8);
       }
-      FUN_8002343c(iVar7);
+      Entity_InitSpriteType2(iVar7);
       param_1->state = STATE_FINISH;
       *puVar6 = 0;
 LAB_8002fd80:
@@ -66,7 +66,7 @@ LAB_8002fd80:
       return;
     }
 LAB_8002fdac:
-    FUN_8007a624(param_1);
+    Entity_Dealloc(param_1);
   }
   return;
 }

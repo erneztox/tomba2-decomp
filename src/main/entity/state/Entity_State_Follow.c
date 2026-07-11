@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800702c0(int param_1)
+void Entity_State_Follow(int param_1)
 
 {
   s16 sVar1;
@@ -54,12 +54,12 @@ void FUN_800702c0(int param_1)
     param_1->pos_z = (s16)((iVar2 + iVar4) / 2);
     goto switchD_8007030c_default;
   case 3:
-    iVar2 = FUN_80083f50((int)iVar4->rot_y);
+    iVar2 = Math_CosGTE((int)iVar4->rot_y);
     iVar2 = iVar2 * iVar4->bounds_min_x;
     param_1->pos_y =
          *(s16 *)(iVar4->sprite_ptr1 + 0x2c) - (s16)(iVar2 - (iVar2 >> 0x1f) >> 0xd);
     *(s16 *)(param_1 + 0x32) = *(s16 *)(iVar4->sprite_ptr1 + 0x30);
-    iVar2 = FUN_80083e80((int)iVar4->rot_y);
+    iVar2 = Math_Cos((int)iVar4->rot_y);
     iVar2 = iVar2 * iVar4->bounds_min_x;
     sVar3 = *(s16 *)(iVar4->sprite_ptr1 + 0x34);
     *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + param_1->draw_x;
@@ -97,9 +97,9 @@ void FUN_800702c0(int param_1)
 LAB_800705dc:
   param_1->pos_z = sVar3;
 switchD_8007030c_default:
-  iVar4 = FUN_80083f50((int)sVar5);
+  iVar4 = Math_CosGTE((int)sVar5);
   param_1->pos_y = param_1->pos_y + (s16)(iVar4 * sVar6 >> 0xc);
-  iVar4 = FUN_80083e80((int)sVar5);
+  iVar4 = Math_Cos((int)sVar5);
   param_1->pos_z = param_1->pos_z + (s16)(-iVar4 * (int)sVar6 >> 0xc);
   return;
 }

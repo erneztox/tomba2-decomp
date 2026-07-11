@@ -6,7 +6,7 @@
 
 
 
-void FUN_80024cf4(void)
+void Engine_DispatchLevelDraw(void)
 
 {
   (**(code **)(&DAT_8009d22c + (uint)g_GameState * 4))();

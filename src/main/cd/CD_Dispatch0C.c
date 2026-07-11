@@ -6,7 +6,7 @@
 
 
 
-void FUN_80085b20(void)
+void CD_Dispatch0C(void)
 
 {
   (**(code **)(PTR_PTR_800abda0 + 0xc))();

@@ -8,7 +8,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-s32 FUN_8003f7d8(int param_1,s32 *param_2,int *param_3)
+s32 GTE_RTPS(int param_1,s32 *param_2,int *param_3)
 
 {
   s32 in_zero;

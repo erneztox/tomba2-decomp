@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8004bef4(int param_1)
+void Entity_Behavior_Collectible2(int param_1)
 
 {
   int iVar1;
@@ -22,7 +22,7 @@ void FUN_8004bef4(int param_1)
   else {
     uVar2 = 0x17;
   }
-  iVar1 = FUN_80051b70(param_1,1,uVar2);
+  iVar1 = Entity_InitSubEntity(param_1,1,uVar2);
   if (iVar1 == 0) {
     param_1->bounds_min_x = 0x46;
     param_1->bounds_size = 0x8c;

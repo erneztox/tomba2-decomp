@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80083bf0(s16 *param_1,s16 param_2,s16 param_3,s16 param_4,
+void GPU_InitPacket(s16 *param_1,s16 param_2,s16 param_3,s16 param_4,
                  s16 param_5)
 
 {

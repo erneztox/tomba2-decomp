@@ -7,7 +7,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80039f4c(int param_1)
+void Entity_ResetState(int param_1)
 
 {
   uint *puVar1;
@@ -32,7 +32,7 @@ void FUN_80039f4c(int param_1)
   s8 local_48 [32];
   u8 auStack_28->counter1;
   
-  FUN_8003f174(param_1,1);
+  Entity_ProcessAnimation(param_1,1);
   local_66 = 0xfff9;
   local_5e = 0xfff9;
   local_68 = 0xfffd;
@@ -47,8 +47,8 @@ void FUN_80039f4c(int param_1)
   local_4c = 0xffff;
   if (param_1->sub_type == '\x02') {
     pcVar6 = local_48;
-    FUN_8009a5b0(pcVar6,PTR_s_Clear_800a3a8c);
-    FUN_8009a490(pcVar6,&DAT_80014a1c);
+    String_Copy(pcVar6,PTR_s_Clear_800a3a8c);
+    String_FindChar2(pcVar6,&DAT_80014a1c);
   }
   else {
     pcVar6 = (&PTR_DAT_800a33cc)[param_1->draw_x * 3];
@@ -56,13 +56,13 @@ void FUN_80039f4c(int param_1)
   iVar5 = 0;
   if ((param_1->counter2 != '\0') && (iVar7 = param_1, param_1->counter1 != '\0')) {
     while (*pcVar6 != '\0') {
-      iVar3 = FUN_80039e80(pcVar6,_g_OT_Buffer);
+      iVar3 = Font_BuildChar(pcVar6,_g_OT_Buffer);
       puVar1 = _g_OT_Buffer;
       if (iVar3 != -1) {
         _g_OT_Buffer = _g_OT_Buffer + 10;
-        FUN_80084660(iVar7->sprite_ptr1 + 0x18);
-        FUN_80084690(iVar7->sprite_ptr1 + 0x18);
-        iVar3 = FUN_8003f7d8(puVar1,&local_68,auStack_28);
+        GTE_LoadMatrix5(iVar7->sprite_ptr1 + 0x18);
+        GTE_LoadTranslation(iVar7->sprite_ptr1 + 0x18);
+        iVar3 = GTE_RTPS(puVar1,&local_68,auStack_28);
         if (((-1 < iVar3 + -1) &&
             (((((u16)puVar1->kind < 0x140 || ((u16)puVar1->state < 0x140)) ||
               ((u16)puVar1->action_state < 0x140)) || ((u16)puVar1->counter1 < 0x140)))) &&

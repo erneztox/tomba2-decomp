@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80054c08(int param_1,int param_2)
+void Entity_AnimLoad2(int param_1,int param_2)
 
 {
   u8 uVar1;
@@ -17,7 +17,7 @@ void FUN_80054c08(int param_1,int param_2)
   void *puVar5;
   uint uVar6;
   
-  iVar3 = FUN_800535d4();
+  iVar3 = Entity_GetState176();
   bVar2 = 2 < iVar3 - 7U;
   if (param_2 == 0) {
     if (bVar2) {
@@ -31,10 +31,10 @@ void FUN_80054c08(int param_1,int param_2)
     uVar6 = (uint)(u8)puVar5[uVar4];
     if (param_1->anim_id != uVar6) {
       *(void*)(param_1 + 0x46) = puVar5[uVar4];
-      FUN_80054790(param_1,uVar6);
+      Entity_AnimLoad3(param_1,uVar6);
       *(void **)(param_1 + 0x38) =
            (&PTR_DAT_80017fe8)[uVar6] + *(s16 *)(param_1->anim_data + 2) * 8;
-      FUN_80076904();
+      Entity_AnimController2();
     }
   }
   else {
@@ -45,7 +45,7 @@ void FUN_80054c08(int param_1,int param_2)
     else {
       uVar1 = (&DAT_800a44f0)[param_1->gte_flags];
     }
-    FUN_80054d14(param_1,uVar1,0);
+    Entity_LoadAnimIfChanged(param_1,uVar1,0);
   }
   return;
 }

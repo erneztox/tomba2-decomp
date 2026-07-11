@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_80096590(uint *param_1,int param_2,code *param_3,s32 param_4)
+int CD_CmdMain(uint *param_1,int param_2,code *param_3,s32 param_4)
 
 {
   u8 bVar1;
@@ -25,11 +25,11 @@ int FUN_80096590(uint *param_1,int param_2,code *param_3,s32 param_4)
   int local_420 [256];
   
   iVar10 = 0x10;
-  iVar2 = FUN_80099478();
+  iVar2 = CD_IsReady();
   if (iVar2 == 1) {
     return -1;
   }
-  FUN_80099450(1);
+  CD_SetReady(1);
   iVar2 = (int)(s16)param_2;
   if (iVar2 < 0x10) {
     iVar5 = 0;
@@ -136,11 +136,11 @@ LAB_80096678:
       else {
         *(u8 *)(iVar5 + -0x7fefa2e8) = 0;
       }
-      FUN_80099450(0);
+      CD_SetReady(0);
       _DAT_80105d70 = _DAT_80105d70 + -1;
       return -1;
     }
   }
-  FUN_80099450(0);
+  CD_SetReady(0);
   return -1;
 }

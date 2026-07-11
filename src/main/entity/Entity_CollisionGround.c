@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s8 FUN_8005444c(int param_1)
+s8 Entity_CollisionGround(int param_1)
 
 {
   u8 bVar1;
@@ -45,11 +45,11 @@ s8 FUN_8005444c(int param_1)
             (*(s16 *)(param_1 + 0x32) - *(s16 *)(iVar6 + 0x32));
   }
   if (*(s8*)(param_1 + 0x61) == '\0') {
-    cVar4 = FUN_80049250(param_1,0,(int)sVar8);
+    cVar4 = Collision_Check1(param_1,0,(int)sVar8);
     param_1->collision_state = cVar4;
     if (cVar4 == '\0') {
       bVar2 = true;
-      cVar4 = FUN_80049250(param_1,(int)sVar9,(int)sVar8);
+      cVar4 = Collision_Check1(param_1,(int)sVar9,(int)sVar8);
       param_1->collision_state = cVar4;
       if (cVar4 == '\0') {
         iVar6 = (int)-sVar9;
@@ -60,7 +60,7 @@ s8 FUN_8005444c(int param_1)
   else {
     iVar6 = 0;
 LAB_80054518:
-    cVar4 = FUN_80049250(param_1,iVar6,(int)sVar8);
+    cVar4 = Collision_Check1(param_1,iVar6,(int)sVar8);
     param_1->collision_state = cVar4;
     if (cVar4 == '\0') goto LAB_80054630;
   }
@@ -83,7 +83,7 @@ LAB_80054518:
     else {
       *(s16 *)(param_1 + 0x16c) = _DAT_1f8001a8;
     }
-    FUN_80049674(param_1);
+    Collision_CalcSlope(param_1);
     param_1->draw_scale = _g_CollisionNormalY;
   }
 LAB_80054630:

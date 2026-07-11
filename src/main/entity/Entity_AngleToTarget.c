@@ -7,20 +7,20 @@
 
 
 #include "tomba.h"
-void FUN_80052720(int param_1)
+void Entity_AngleToTarget(int param_1)
 
 {
   s16 sVar1;
   int iVar2;
   int iVar3;
   
-  sVar1 = FUN_800782b0(param_1 + 0x2c,(int)*(s16 *)(param_1 + 100),(int)param_1->target_angle
+  sVar1 = Math_CalcAngle2D(param_1 + 0x2c,(int)*(s16 *)(param_1 + 100),(int)param_1->target_angle
                       );
-  sVar1 = FUN_800776f8((int)sVar1,(int)param_1->rot_y,0x18);
+  sVar1 = Math_ApproachAngle_2((int)sVar1,(int)param_1->rot_y,0x18);
   param_1->rot_y = sVar1;
-  iVar2 = FUN_80083f50((int)sVar1);
+  iVar2 = Math_CosGTE((int)sVar1);
   sVar1 = param_1->anim_counter;
-  iVar3 = FUN_80083e80((int)param_1->rot_y);
+  iVar3 = Math_Cos((int)param_1->rot_y);
   *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + (iVar2 * sVar1 >> 4);
   param_1->scale_y = param_1->scale_y - (iVar3 * param_1->anim_counter >> 4);
   return;

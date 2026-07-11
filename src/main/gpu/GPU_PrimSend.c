@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80081db8(int param_1,u16 *param_2)
+void GPU_PrimSend(int param_1,u16 *param_2)
 
 {
   u16 uVar1;
@@ -18,16 +18,16 @@ void FUN_80081db8(int param_1,u16 *param_2)
   s32 local_18;
   s32 local_14;
   
-  uVar4 = FUN_80082240((int)(s16)*param_2,(int)(s16)param_2->flags);
+  uVar4 = GPU_CheckQueueSpace((int)(s16)*param_2,(int)(s16)param_2->flags);
   *(s32 *)(param_1 + 4) = uVar4;
-  uVar4 = FUN_800822d8((int)(((uint)param_2->kind + (uint)*param_2 + -1) * 0x10000) >> 0x10,
+  uVar4 = GPU_CheckQueueSpace2((int)(((uint)param_2->kind + (uint)*param_2 + -1) * 0x10000) >> 0x10,
                        (int)(((uint)param_2->flags + (uint)param_2->sub_type + -1) * 0x10000) >> 0x10);
   *(s32 *)(param_1 + 8) = uVar4;
-  uVar4 = FUN_80082370((int)(s16)param_2->state,(int)(s16)param_2->behavior_state);
+  uVar4 = GPU_EncodeTPage((int)(s16)param_2->state,(int)(s16)param_2->behavior_state);
   *(s32 *)(param_1 + 0xc) = uVar4;
-  uVar4 = FUN_80082220(*(u8 *)((int)param_2 + 0x17),(char)param_2->render_flags,param_2[10]);
+  uVar4 = GPU_EncodeDrawMode(*(u8 *)((int)param_2 + 0x17),(char)param_2->render_flags,param_2[10]);
   param_1->parent = uVar4;
-  uVar4 = FUN_8008238c(param_2 + 6);
+  uVar4 = GPU_EncodeTexture(param_2 + 6);
   param_1->script_ptr = uVar4;
   param_1->script_data = 0xe6000000;
   cVar5 = '\a';

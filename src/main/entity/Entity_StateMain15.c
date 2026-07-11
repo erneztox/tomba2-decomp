@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80060c60(u8 *param_1)
+void Entity_StateMain15(u8 *param_1)
 
 {
   s8 cVar1;
@@ -53,19 +53,19 @@ void FUN_80060c60(u8 *param_1)
     cVar1 = param_1->action_flag;
     if (((cVar1 == '\x01') || (cVar1 == '\t')) || (cVar1 == '\v')) {
       param_1->direction = '\x01' - param_1->direction;
-      FUN_80055284(param_1);
-      FUN_80053d0c(param_1);
+      Entity_UpdateAngle(param_1);
+      Entity_StateCheck(param_1);
       param_1->rot_z = param_1->sprite_x;
-      FUN_80063b94(param_1,2);
+      Entity_StateMain4(param_1,2);
     }
-    FUN_80053d90(param_1);
+    Entity_StateSwitch(param_1);
     if (param_1->state_flag145 != '\0') {
       param_1->rot_z = param_1->sprite_x;
-      FUN_80063b94(param_1,2);
+      Entity_StateMain4(param_1,2);
     }
     _DAT_1f800178 = param_1->rot_y;
     g_State237 = param_1->direction;
-    FUN_800597ac(param_1);
+    Player_Update(param_1);
     iVar11 = param_1->data_ptr;
     iVar10 = (int)(((uint)_DAT_1f800200 - (uint)iVar11->pos_x) * 0x10000) >> 0x10;
     iVar12 = (int)(((uint)_DAT_1f800204 - (uint)*(u16 *)(iVar11 + 0x34)) * 0x10000) >> 0x10;
@@ -73,7 +73,7 @@ void FUN_80060c60(u8 *param_1)
     param_1->draw_pos_x = iVar11->pos_x;
     param_1->draw_pos_y = *(s16 *)(iVar11 + 0x30);
     param_1->draw_pos_z = *(s16 *)(iVar11 + 0x34);
-    uVar5 = FUN_80077fb0(iVar10 * iVar10 + iVar12 * iVar12 + iVar8 * iVar8);
+    uVar5 = Math_Sqrt(iVar10 * iVar10 + iVar12 * iVar12 + iVar8 * iVar8);
     _DAT_1f80020c = (uint)uVar5;
     if (_DAT_1f80020c < 0x80) {
       if (_DAT_1f80020c < 0x30) {
@@ -105,7 +105,7 @@ LAB_80060f34:
       }
     }
     param_1[0x169] = 0;
-    FUN_80060a80(param_1,1);
+    Entity_PhysicsStep3(param_1,1);
     param_1->action_flag = 0xc;
     if (param_1->state_flag145 != '\0') {
       param_1->rot_z = param_1->sprite_x;
@@ -135,7 +135,7 @@ LAB_80061004:
     if ((int)_DAT_1f80020c <= (int)param_1->timer2) {
       _DAT_1f80020c = (int)param_1->timer2;
     }
-    FUN_800597ac(param_1);
+    Player_Update(param_1);
     param_1->pos_y =
          param_1->pos_y -
          (*(s16 *)(param_1->data_ptr + 0x2c) - param_1->draw_pos_x);
@@ -145,7 +145,7 @@ LAB_80061004:
     param_1->pos_z =
          param_1->pos_z -
          (*(s16 *)(param_1->data_ptr + 0x34) - param_1->draw_pos_z);
-    FUN_80060a80(param_1,1);
+    Entity_PhysicsStep3(param_1,1);
     if (g_State27c == 1) {
       if ((param_1->input_flags != 0) && ((1 < g_State253 || (g_State237 == (param_1->input_flags & 1))))) {
         param_1->timer2 = _DAT_1f80020c;
@@ -165,7 +165,7 @@ LAB_80061004:
       param_1->state_flag145 = 0;
       param_1->action_state = param_1->action_state + '\x01';
       param_1->rot_z = param_1->sprite_x;
-      FUN_80063b94(param_1,2);
+      Entity_StateMain4(param_1,2);
       break;
     }
     goto LAB_800613dc;
@@ -179,17 +179,17 @@ LAB_80061004:
     param_1->action_state = param_1->action_state + '\x01';
   case 3:
     param_1->flag_177 = param_1->flag_177 | 1;
-    FUN_80076d68(param_1);
-    FUN_80055e28(param_1,0);
+    Entity_AnimFrame(param_1);
+    Entity_PhysicsUpdate(param_1,0);
     iVar10 = 0x700;
     if ((param_1->behavior_flags & 1) == 0) {
       iVar10 = 0x100;
     }
-    sVar7 = FUN_800776f8(iVar10,(int)param_1->draw_pos_x,0x100);
+    sVar7 = Math_ApproachAngle_2(iVar10,(int)param_1->draw_pos_x,0x100);
     param_1->draw_pos_x = sVar7;
     if (sVar7 == iVar10) {
       param_1->direction = param_1->behavior_flags & 1;
-      FUN_80055284(param_1);
+      Entity_UpdateAngle(param_1);
       param_1->draw_pos_y = 0;
     }
     else if (param_1->direction == '\0') {
@@ -228,13 +228,13 @@ LAB_80061004:
       param_1[0x168] = 0;
       param_1[0x169] = 0;
     }
-    FUN_80060544(param_1,bVar2);
-    FUN_80060a80(param_1,0);
+    Entity_StateMain8(param_1,bVar2);
+    Entity_PhysicsStep3(param_1,0);
     if ((((param_1->state_flag146 == '\0') || (DAT_1f80023a == '\0')) || (_DAT_1f80020c != 0)) ||
        (param_1->input_state != '\x04')) {
       if (param_1->collision_state != '\0') {
 LAB_800613dc:
-        FUN_8005314c(param_1);
+        Entity_StateDispatch(param_1);
         param_1->state_flag146 = 0;
         param_1->state_flag145 = 0;
       }
@@ -252,9 +252,9 @@ LAB_800613dc:
     if (400 < (int)_DAT_1f80020c) {
       _DAT_1f80020c = 400;
     }
-    FUN_80076d68(param_1);
+    Entity_AnimFrame(param_1);
     uVar9 = param_1->draw_angle + 0x400 & 0xfff;
-    sVar7 = FUN_800776f8(uVar9,(int)param_1->rot_y,0x100);
+    sVar7 = Math_ApproachAngle_2(uVar9,(int)param_1->rot_y,0x100);
     param_1->rot_y = sVar7;
     if ((int)sVar7 == uVar9) {
       if (g_State237 == 0) {
@@ -267,8 +267,8 @@ LAB_800613dc:
       g_State237 = param_1->direction;
       param_1->action_state = param_1->action_state + '\x01';
     }
-    FUN_80060544(param_1,1);
-    FUN_80060a80(param_1,2);
+    Entity_StateMain8(param_1,1);
+    Entity_PhysicsStep3(param_1,2);
     break;
   case 5:
     DAT_1f80027b = '\x02';
@@ -276,9 +276,9 @@ LAB_800613dc:
     if (400 < (int)_DAT_1f80020c) {
       _DAT_1f80020c = 400;
     }
-    FUN_80076d68(param_1);
-    FUN_80060544(param_1,2);
-    FUN_80060a80(param_1,2);
+    Entity_AnimFrame(param_1);
+    Entity_StateMain8(param_1,2);
+    Entity_PhysicsStep3(param_1,2);
     if (param_1[0x169] != '\0') {
       param_1->action_flag = 0;
       param_1->state_flag146 = 0;
@@ -294,14 +294,14 @@ LAB_800613dc:
       *(u16 *)(param_1 + 0x7e) = uVar3;
       param_1->sprite_x = (s16)((iVar12 - param_1->pos_y) / 0xc);
       param_1->sprite_y = (s16)((iVar10 - param_1->pos_z) / 0xc);
-      FUN_80054d14(param_1,0xe9,0);
+      Entity_LoadAnimIfChanged(param_1,0xe9,0);
       param_1->rot_z = 0;
     }
     break;
   case 6:
     DAT_1f80027b = '\x02';
-    FUN_80076d68(param_1);
-    FUN_800574e0(param_1,0x11);
+    Entity_AnimFrame(param_1);
+    Entity_State_Combo(param_1,0x11);
     if (param_1->collision_state == '\0') {
 LAB_8006160c:
       if (param_1->timer1 != 0) {
@@ -313,10 +313,10 @@ LAB_8006160c:
         param_1->timer_172 = 4;
         param_1->pos_y = *(s16 *)(param_1 + 0x7a);
         param_1->pos_z = *(s16 *)(param_1 + 0x7e);
-        bVar4 = FUN_80055e28(param_1,0);
+        bVar4 = Entity_PhysicsUpdate(param_1,0);
         param_1->direction = bVar4 & 1;
-        FUN_80054198(param_1);
-        FUN_80055d5c(param_1);
+        Entity_ResetState_2(param_1);
+        Entity_PhysicsStep2(param_1);
       }
     }
     else if (param_1->timer1 != 0) {
@@ -329,7 +329,7 @@ LAB_8006160c:
     else {
       uVar9 = param_1->draw_angle + 0x800;
     }
-    sVar7 = FUN_800776f8(uVar9 & 0xfff,(int)param_1->rot_y,0xe0);
+    sVar7 = Math_ApproachAngle_2(uVar9 & 0xfff,(int)param_1->rot_y,0xe0);
     param_1->rot_y = sVar7;
     if (((int)sVar7 == (uVar9 & 0xfff)) || (param_1->collision_state != '\0')) {
       if (param_1->collision_state == '\0') {
@@ -338,7 +338,7 @@ LAB_8006160c:
       }
       else {
 LAB_800617bc:
-        FUN_8005314c(param_1);
+        Entity_StateDispatch(param_1);
         param_1->behavior_state = 0;
         param_1->action_state = 0;
         param_1->sub_action = 0;
@@ -347,10 +347,10 @@ LAB_800617bc:
     break;
   case 7:
     DAT_1f80027b = '\x02';
-    FUN_80076d68(param_1);
-    FUN_80055d5c(param_1);
-    FUN_800574e0(param_1,0x11);
-    FUN_80057c08(param_1,1);
+    Entity_AnimFrame(param_1);
+    Entity_PhysicsStep2(param_1);
+    Entity_State_Combo(param_1,0x11);
+    Entity_State_Ground(param_1,1);
     if (param_1->action_flag == '\0') {
       if (param_1->timer1 != 0) {
         param_1->timer1 = param_1->timer1 + -1;
@@ -361,7 +361,7 @@ LAB_800617bc:
         }
         if (param_1->collision_state == '\0') {
           param_1->angle_offset = param_1->velocity_y;
-          FUN_80056d44(param_1,0);
+          Entity_ResetActionState(param_1,0);
           param_1->velocity_y = param_1->angle_offset;
           break;
         }
@@ -375,10 +375,10 @@ LAB_800617bc:
   if ((DAT_1f80027b != '\x02') && (param_1->state_flag146 == '\0')) {
     param_1->action_flag = 0;
     param_1->velocity_y = 0;
-    FUN_80054198(param_1);
+    Entity_ResetState_2(param_1);
     if (param_1->collision_state == '\0') {
 LAB_800618dc:
-      FUN_80056d44(param_1,0);
+      Entity_ResetActionState(param_1,0);
       return;
     }
     param_1->behavior_state = 0;
@@ -390,11 +390,11 @@ LAB_8006196c:
   if (DAT_1f80027b != '\0') {
     return;
   }
-  iVar10 = FUN_80055864();
+  iVar10 = Game_ReadInput();
   if (iVar10 == 0) {
     return;
   }
-  FUN_80055e28(param_1,0);
+  Entity_PhysicsUpdate(param_1,0);
   param_1->action_flag = 0;
   param_1->state_flag146 = 0;
   if (g_State237 == param_1->direction) {
@@ -408,20 +408,20 @@ LAB_8006196c:
     param_1->state_flag146 = 0;
     param_1->action_flag = 0;
     param_1->velocity_y = 0;
-    FUN_80054198(param_1);
+    Entity_ResetState_2(param_1);
     if (param_1->collision_state != '\0') {
       param_1->behavior_state = 0;
       goto LAB_8006196c;
     }
     if ((int)_DAT_1f80020c < 0x41) goto LAB_800618dc;
     if ((int)_DAT_1f80020c < 200) {
-      FUN_80055f48(param_1,0);
+      Entity_SetAccel(param_1,0);
       param_1->velocity_y = param_1->velocity_y >> 1;
     }
     else {
-      FUN_80055f48(param_1,0);
+      Entity_SetAccel(param_1,0);
     }
-    FUN_80074590(0x1d,0,0);
+    Audio_PlaySoundEffect(0x1d,0,0);
     param_1->behavior_state = 2;
     param_1[0x181] = 0;
     param_1->rot_z = 0;
@@ -451,11 +451,11 @@ LAB_800619b8:
   param_1->anim_counter = uVar6;
   if ((g_State253 < 2) && (0x40 < (int)_DAT_1f80020c)) {
     if ((int)_DAT_1f80020c < 200) {
-      FUN_80055f48(param_1,0);
+      Entity_SetAccel(param_1,0);
       param_1->velocity_y = param_1->velocity_y >> 1;
     }
     else {
-      FUN_80055f48(param_1,0);
+      Entity_SetAccel(param_1,0);
     }
   }
   else {
@@ -466,6 +466,6 @@ LAB_800619b8:
   param_1->action_state = 2;
   param_1->sub_action = 0;
 LAB_80061a60:
-  FUN_80054d14(param_1,0x14,4);
+  Entity_LoadAnimIfChanged(param_1,0x14,4);
   return;
 }

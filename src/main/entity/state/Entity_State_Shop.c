@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800735f4(int param_1,s16 param_2)
+void Entity_State_Shop(int param_1,s16 param_2)
 
 {
   u8 bVar1;
@@ -56,7 +56,7 @@ LAB_8007373c:
     if (param_1->collision_state == '\0') {
       return;
     }
-    iVar4 = FUN_8007e038((int)param_2,2);
+    iVar4 = Entity_ActivatePool3((int)param_2,2);
     param_1->script_ptr = iVar4;
     if (iVar4 == 0) {
       return;

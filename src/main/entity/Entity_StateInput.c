@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-u8 FUN_80060268(int param_1)
+u8 Entity_StateInput(int param_1)
 
 {
   u8 bVar1;

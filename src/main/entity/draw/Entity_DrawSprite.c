@@ -10,7 +10,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8002e1e8(int param_1)
+void Entity_DrawSprite(int param_1)
 
 {
   s16 uVar1;
@@ -76,7 +76,7 @@ void FUN_8002e1e8(int param_1)
     *(uint *)(param_1 + 0x5c) = *(int *)(param_1 + 0x6c) * (uint)bVar2 >> 4;
   }
   else if (bVar2 == 3) {
-    FUN_8007a624(param_1);
+    Entity_Dealloc(param_1);
   }
   return;
 }

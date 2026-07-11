@@ -9,14 +9,14 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80092420(s16 param_1,s16 param_2,int param_3,u8 *param_4)
+s32 Audio_VoiceSet1(s16 param_1,s16 param_2,int param_3,u8 *param_4)
 
 {
   s32 uVar1;
   int iVar2;
   
   if (*(s8*)(param_1 + -0x7fefa2e8) == '\x01') {
-    FUN_800962b0((int)param_1,(int)param_2);
+    CD_CheckSlot((int)param_1,(int)param_2);
     iVar2 = (param_3 + DAT_80105cff * 0x10) * 0x10000 >> 0xb;
     *param_4 = *(u8 *)(iVar2 + _DAT_80105ce8);
     param_4->flags = *(u8 *)(iVar2 + _DAT_80105ce8 + 1);

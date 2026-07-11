@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800315d4(int param_1)
+void Entity_SpawnEffect(int param_1)
 
 {
   int iVar1;
@@ -15,7 +15,7 @@ void FUN_800315d4(int param_1)
   
   iVar2 = 0;
   if (6 < DAT_800e7e7c) {
-    iVar1 = FUN_8007a980(0,6,1);
+    iVar1 = Entity_AllocByPoolId(0,6,1);
     iVar2 = 0;
     if (iVar1 != 0) {
       if (param_1 != 0) {
@@ -24,7 +24,7 @@ void FUN_800315d4(int param_1)
         *(s16 *)(iVar1 + 0x30) = *(s16 *)(param_1 + 10);
       }
       *(s16 *)(iVar1 + 0x32) = 0xffec;
-      FUN_80028e10(iVar1,9);
+      Entity_InitBehavior(iVar1,9);
       iVar2 = iVar1;
     }
   }
@@ -33,7 +33,7 @@ void FUN_800315d4(int param_1)
   }
   iVar2 = 0;
   if (6 < DAT_800e7e7c) {
-    iVar1 = FUN_8007a980(0,6,1);
+    iVar1 = Entity_AllocByPoolId(0,6,1);
     iVar2 = 0;
     if (iVar1 != 0) {
       if (param_1 != 0) {
@@ -42,7 +42,7 @@ void FUN_800315d4(int param_1)
         *(s16 *)(iVar1 + 0x30) = *(s16 *)(param_1 + 10);
       }
       *(s16 *)(iVar1 + 0x32) = 0xffe7;
-      FUN_80028e10(iVar1,5);
+      Entity_InitBehavior(iVar1,5);
       iVar2 = iVar1;
     }
   }

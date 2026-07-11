@@ -7,28 +7,28 @@
 
 
 #include "tomba.h"
-void FUN_800738b0(void)
+void Entity_InitUI(void)
 
 {
   int iVar1;
   int iVar2;
   s16 local_10->state;
   
-  FUN_80033afc(0x4000,0xbc,0x58,0);
-  FUN_80033afc(0x2000,0xbc,0x6c,0);
-  iVar1 = FUN_80073750(PTR_s_Save__800a2860);
+  GPU_DrawQuad(0x4000,0xbc,0x58,0);
+  GPU_DrawQuad(0x2000,0xbc,0x6c,0);
+  iVar1 = UI_StringParse(PTR_s_Save__800a2860);
   iVar2 = iVar1 * -4 + 0xa0;
   local_10->type = (s16)iVar2;
   local_10->flags = 0x3c;
   local_10->kind = (s16)(iVar1 << 3);
   local_10->sub_type = 0x3c;
-  FUN_80079374(iVar2 * 0x10000 >> 0x10,0x3c,0,PTR_s_Save__800a2860,0);
-  FUN_80079374(0x80,0x50,0,PTR_DAT_800a2864,0);
-  FUN_80079374(0x80,100,0,PTR_DAT_800a2868,0);
+  GPU_RenderSprite_V1(iVar2 * 0x10000 >> 0x10,0x3c,0,PTR_s_Save__800a2860,0);
+  GPU_RenderSprite_V1(0x80,0x50,0,PTR_DAT_800a2864,0);
+  GPU_RenderSprite_V1(0x80,100,0,PTR_DAT_800a2868,0);
   if (0x78 < local_10->type) {
     local_10->type = 0x78;
     local_10->kind = 0x50;
   }
-  FUN_8005019c(local_10,7,1,1);
+  UI_DrawPanel(local_10,7,1,1);
   return;
 }

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800788ac(void)
+void Engine_UpdateSprites(void)
 
 {
   _g_ScreenFlag = _g_InputState;
@@ -25,10 +25,10 @@ void FUN_800788ac(void)
     }
   }
   else {
-    _g_InputState = FUN_800524b4(0);
+    _g_InputState = Entity_RenderInit(0);
   }
   _g_PadState = _g_InputState & ~_g_ScreenFlag;
   _DAT_800f23a4 = _g_ScreenFlag & ~_g_InputState;
-  FUN_8005229c();
+  Engine_RenderCheck();
   return;
 }

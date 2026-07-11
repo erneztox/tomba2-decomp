@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80098150(int param_1)
+s32 GPU_SPU_Cmd(int param_1)
 
 {
   u16 uVar1;
@@ -20,7 +20,7 @@ s32 FUN_80098150(int param_1)
     if (param_1 != 1) {
       return DAT_800ac598;
     }
-    if ((DAT_800ac59c == 1) || (iVar2 = FUN_800982a0(DAT_800ac5a0), iVar2 == 0)) {
+    if ((DAT_800ac59c == 1) || (iVar2 = CD_AllocDMA(DAT_800ac5a0), iVar2 == 0)) {
       uVar1 = *(u16 *)(g_SPU_Regs + 0x1aa) | 0x80;
       DAT_800ac598 = 1;
     }

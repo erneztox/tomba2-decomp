@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_8008b620(s32 param_1,uint param_2)
+s32 CD_InitParams(s32 param_1,uint param_2)
 
 {
   uint uVar1;

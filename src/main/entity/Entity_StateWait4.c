@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80041d60(int param_1)
+s32 Entity_StateWait4(int param_1)
 
 {
   u8 bVar1;
@@ -23,7 +23,7 @@ s32 FUN_80041d60(int param_1)
     if ((param_1->event_id & 0x1000) == 0) {
       uVar4 = 0;
     }
-    iVar3 = FUN_8007def8(param_1->event_id & 0xfff,param_1->state_7A,uVar4);
+    iVar3 = Entity_SpawnSprite(param_1->event_id & 0xfff,param_1->state_7A,uVar4);
     param_1->parent = iVar3;
     if (iVar3 == 0) {
       return 0;
@@ -32,7 +32,7 @@ s32 FUN_80041d60(int param_1)
     if (((int)param_1->event_id & 0x8000U) == 0) {
       iVar3 = param_1;
     }
-    FUN_80041768(iVar3,(int)*(s16 *)(param_1 + 0x76),4);
+    Entity_SetAnimModeIfNew(iVar3,(int)*(s16 *)(param_1 + 0x76),4);
   }
   else if (bVar1 < 2) {
     if (bVar1 != 0) {
@@ -64,7 +64,7 @@ s32 FUN_80041d60(int param_1)
         if ((uVar2 & 0x8000) == 0) {
           iVar3 = param_1;
         }
-        FUN_80041768(iVar3,iVar3->state_7B,4);
+        Entity_SetAnimModeIfNew(iVar3,iVar3->state_7B,4);
         return 0;
       }
       return 0;
@@ -74,7 +74,7 @@ s32 FUN_80041d60(int param_1)
       if ((param_1->event_id & 0x8000) == 0) {
         iVar3 = param_1;
       }
-      FUN_80041768(iVar3,iVar3->state_7B,4);
+      Entity_SetAnimModeIfNew(iVar3,iVar3->state_7B,4);
     }
     *(u8 *)(param_1->parent + 4) = 3;
   }

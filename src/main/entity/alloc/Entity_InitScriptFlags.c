@@ -7,12 +7,12 @@
 
 
 #include "tomba.h"
-void FUN_80040d68(int param_1,u16 *param_2)
+void Entity_InitScriptFlags(int param_1,u16 *param_2)
 
 {
   param_1->anim_check = 0;
   param_1->sub_state = 0;
-  FUN_80040de0();
+  Entity_InitScriptData();
   param_1->state_71 = 0;
   if ((*param_2 & 0x1000) != 0) {
     param_1->state_71 = 2;

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_80095a9c(uint param_1,s16 *param_2,s16 *param_3)
+int Audio_LookupChannel(uint param_1,s16 *param_2,s16 *param_3)
 
 {
   int iVar1;

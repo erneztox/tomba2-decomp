@@ -10,7 +10,7 @@
 #include "tomba.h"
 #include "common.h"
 
-uint FUN_8001dd00(char *param_1,char *param_2,int param_3,uint param_4)
+uint Entity_Main2(char *param_1,char *param_2,int param_3,uint param_4)
 
 {
   s16 sVar1;
@@ -45,7 +45,7 @@ uint FUN_8001dd00(char *param_1,char *param_2,int param_3,uint param_4)
   uVar8 = 0;
   switch(*param_1) {
   case 1:
-    FUN_80074590(10,0,0);
+    Audio_PlaySoundEffect(10,0,0);
     uVar8 = 2;
     if ((param_4 & 0x90) == 0) {
       if ((param_4 & 2) != 0) {
@@ -63,7 +63,7 @@ uint FUN_8001dd00(char *param_1,char *param_2,int param_3,uint param_4)
         param_2->action_state = 0;
         param_2->move_mode = (char)(param_1->target_angle >> 4);
         puVar7 = param_1 + 0x2c;
-        FUN_8003116c((u8)param_1->kind + 0xc,puVar7,0xffffffb0);
+        Entity_SpawnWithPos((u8)param_1->kind + 0xc,puVar7,0xffffffb0);
         uVar6 = 1;
         goto LAB_8001e67c;
       }
@@ -85,8 +85,8 @@ LAB_8001de18:
         param_2->action_state = 0;
       }
       puVar7 = param_1 + 0x2c;
-      FUN_800313a0(0x16,puVar7,0xffffffb0,param_1 + 0x54);
-      FUN_8003116c((u8)param_1->kind + 0xc,puVar7,0xffffffb0);
+      Entity_SpawnWithVector(0x16,puVar7,0xffffffb0,param_1 + 0x54);
+      Entity_SpawnWithPos((u8)param_1->kind + 0xc,puVar7,0xffffffb0);
       uVar6 = 1;
       goto LAB_8001e67c;
     }
@@ -94,7 +94,7 @@ LAB_8001de18:
     puVar7 = param_1 + 0x2c;
     goto LAB_8001e67c;
   case 2:
-    FUN_80074590(0xb,0,0);
+    Audio_PlaySoundEffect(0xb,0,0);
     uVar8 = 8;
     if ((param_4 & 0x10) == 0) {
       param_2->move_mode = (char)(param_1->rot_y >> 4);
@@ -118,13 +118,13 @@ LAB_8001de18:
     }
     break;
   case 3:
-    FUN_80074590(0xc,0,0);
+    Audio_PlaySoundEffect(0xc,0,0);
     uVar8 = 0x20;
     if ((param_4 & 0x60) == 0) {
       if ((param_4 & 1) == 0) {
         if (param_1->flag_5E == '\0') {
           *param_1 = 2;
-          FUN_80074590(0xd,0,0);
+          Audio_PlaySoundEffect(0xd,0,0);
         }
         else {
           param_1->move_mode = 1;
@@ -160,7 +160,7 @@ LAB_8001de18:
           _DAT_1f800202 = *(s16 *)(param_1 + 0x32);
           _DAT_1f800204 = param_1->pos_z;
           DAT_1f80023a = (param_4 & 0x1000) == 0;
-          FUN_80074590(0xc,0,0);
+          Audio_PlaySoundEffect(0xc,0,0);
         }
         uVar6 = 2;
         puVar7 = param_1 + 0x2c;
@@ -171,7 +171,7 @@ LAB_8001de18:
         }
         else {
           *param_1 = 2;
-          FUN_80074590(0xd,0,0);
+          Audio_PlaySoundEffect(0xd,0,0);
         }
         uVar4 = param_1->rot_y;
         *param_2 = 3;
@@ -204,7 +204,7 @@ LAB_8001de18:
           _DAT_1f800202 = *(s16 *)(param_1 + 0x32);
           _DAT_1f800204 = param_1->pos_z;
           DAT_1f80023a = (param_4 & 0x1000) == 0;
-          FUN_80074590(0xc,0,0);
+          Audio_PlaySoundEffect(0xc,0,0);
         }
         uVar6 = 2;
         puVar7 = param_1 + 0x2c;
@@ -222,7 +222,7 @@ LAB_8001de18:
     }
     break;
   case 4:
-    FUN_80074590(0x2e,0,0);
+    Audio_PlaySoundEffect(0x2e,0,0);
     uVar8 = 0x40;
     if ((param_4 & 0xbe) == 0) {
       param_2->move_mode = (char)(param_1->target_angle >> 4);
@@ -244,8 +244,8 @@ LAB_8001de18:
     }
     goto LAB_8001e59c;
   case 5:
-    FUN_80074590(0x2c,0,0);
-    FUN_80074590(0x2d,0,0);
+    Audio_PlaySoundEffect(0x2c,0,0);
+    Audio_PlaySoundEffect(0x2d,0,0);
     *param_1 = 2;
     if ((param_4 & 0xbc) == 0) {
       param_2->move_mode = (char)(param_1->target_angle >> 4);
@@ -262,20 +262,20 @@ LAB_8001de18:
       param_2->action_state = 0;
     }
     puVar7 = param_1 + 0x2c;
-    FUN_800313a0(0x17,puVar7,0xffffffb0,param_1 + 0x54);
-    FUN_8003116c(0x18,puVar7,0xffffffb0);
-    FUN_80027144(*(s32 *)(param_1->sprite_ptr1 + 0x40),puVar7,0x400,0x15);
-    FUN_80074590(0xc,0,0);
+    Entity_SpawnWithVector(0x17,puVar7,0xffffffb0,param_1 + 0x54);
+    Entity_SpawnWithPos(0x18,puVar7,0xffffffb0);
+    Entity_SpawnChildSequence(*(s32 *)(param_1->sprite_ptr1 + 0x40),puVar7,0x400,0x15);
+    Audio_PlaySoundEffect(0xc,0,0);
     return 0x42;
   case 6:
-    FUN_80074590(0x2c,0,0);
+    Audio_PlaySoundEffect(0x2c,0,0);
     uVar8 = 0x42;
     if ((param_4 & 0xbc) == 0) {
       param_2->move_mode = (char)(param_1->target_angle >> 4);
       if ((param_4 & 1) == 0) {
         if (param_1->flag_5E == '\0') {
           *param_1 = 2;
-          FUN_80074590(0x2d,0,0);
+          Audio_PlaySoundEffect(0x2d,0,0);
         }
         else {
           param_1->move_mode = 1;
@@ -290,9 +290,9 @@ LAB_8001de18:
         }
         else {
           *param_1 = 2;
-          FUN_80074590(0x2d,0,0);
-          FUN_80027144(*(s32 *)(param_1->sprite_ptr1 + 0x40),param_1 + 0x2c,0x400,0x15);
-          FUN_80074590(0xc,0,0);
+          Audio_PlaySoundEffect(0x2d,0,0);
+          Entity_SpawnChildSequence(*(s32 *)(param_1->sprite_ptr1 + 0x40),param_1 + 0x2c,0x400,0x15);
+          Audio_PlaySoundEffect(0xc,0,0);
         }
         *param_2 = 3;
         param_2->state = STATE_FINISH;
@@ -306,17 +306,17 @@ LAB_8001de18:
     }
     else {
       *param_1 = 2;
-      FUN_80074590(0x2d,0,0);
-      FUN_80027144(*(s32 *)(param_1->sprite_ptr1 + 0x40),param_1 + 0x2c,0x400,0x15);
-      FUN_80074590(0xc,0,0);
+      Audio_PlaySoundEffect(0x2d,0,0);
+      Entity_SpawnChildSequence(*(s32 *)(param_1->sprite_ptr1 + 0x40),param_1 + 0x2c,0x400,0x15);
+      Audio_PlaySoundEffect(0xc,0,0);
     }
-    FUN_8003116c(0x18,param_1 + 0x2c,0xffffffb0);
+    Entity_SpawnWithPos(0x18,param_1 + 0x2c,0xffffffb0);
     uVar6 = 0x17;
 LAB_8001e59c:
-    FUN_800313a0(uVar6,param_1 + 0x2c,0xffffffb0,param_1 + 0x54);
+    Entity_SpawnWithVector(uVar6,param_1 + 0x2c,0xffffffb0,param_1 + 0x54);
     return uVar8;
   case 7:
-    FUN_80074590(0x31,0,0);
+    Audio_PlaySoundEffect(0x31,0,0);
     uVar8 = 0x80;
     if ((param_4 & 0x7e) == 0) {
       param_1->move_mode = 1;
@@ -349,7 +349,7 @@ LAB_8001e59c:
     local_6a = local_6a + 0x5a;
     break;
   case 8:
-    FUN_80074590(0x31,0,0);
+    Audio_PlaySoundEffect(0x31,0,0);
     if ((param_4 & 0x7a) == 0) {
       param_1->move_mode = 1;
       param_2->move_mode = (char)(param_1->target_angle >> 4);
@@ -380,7 +380,7 @@ LAB_8001e59c:
     }
     goto LAB_8001e818;
   case 9:
-    FUN_80074590(0x31,0,0);
+    Audio_PlaySoundEffect(0x31,0,0);
     if ((param_4 & 0x7a) == 0) {
       param_2->move_mode = (char)(param_1->target_angle >> 4);
       if ((param_4 & 1) == 0) {
@@ -409,11 +409,11 @@ LAB_8001e59c:
       local_36 = param_1->pos_z;
     }
 LAB_8001e818:
-    FUN_80031470(uVar8,puVar7,param_1->flag_5E,param_1 + 0x68);
-    FUN_8003116c((u8)param_1->kind + 0xc,puVar7,0xffffffb0);
+    Entity_SpawnSpecial(uVar8,puVar7,param_1->flag_5E,param_1 + 0x68);
+    Entity_SpawnWithPos((u8)param_1->kind + 0xc,puVar7,0xffffffb0);
     return 0x84;
   case 10:
-    FUN_80074590(0xd,0,0);
+    Audio_PlaySoundEffect(0xd,0,0);
     uVar6 = 2;
     if ((param_4 & 0xfe) == 0) {
       param_2->move_mode = (char)(param_1->rot_y >> 4);
@@ -439,7 +439,7 @@ LAB_8001e818:
     goto LAB_8001e67c;
   case 0xb:
     uVar8 = 0x100;
-    FUN_80074590(0xd,0,0);
+    Audio_PlaySoundEffect(0xd,0,0);
     if ((param_4 & 0x800) != 0) {
       uVar4 = param_1->rot_y;
       *param_2 = 3;
@@ -447,7 +447,7 @@ LAB_8001e818:
       param_2->behavior_state = 10;
       param_2->action_state = 0;
       param_2->move_mode = (char)(uVar4 >> 4);
-      FUN_80031470(1,param_1 + 0x2c,0,param_1 + 0x68);
+      Entity_SpawnSpecial(1,param_1 + 0x2c,0,param_1 + 0x68);
       return 0x100;
     }
     param_2->move_mode = 10;
@@ -460,7 +460,7 @@ LAB_8001e818:
   }
   uVar5 = param_1->flag_5E;
 LAB_8001e67c:
-  FUN_80031470(uVar6,puVar7,uVar5,param_1 + 0x68);
+  Entity_SpawnSpecial(uVar6,puVar7,uVar5,param_1 + 0x68);
 switchD_8001dd00_default:
   return uVar8;
 }

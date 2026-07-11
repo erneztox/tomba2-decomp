@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_80095d10(uint param_1,s16 param_2,s16 param_3,u16 param_4,u16 param_5)
+int Audio_VoiceParam2(uint param_1,s16 param_2,s16 param_3,u16 param_4,u16 param_5)
 
 {
   s16 sVar1;
@@ -31,7 +31,7 @@ int FUN_80095d10(uint param_1,s16 param_2,s16 param_3,u16 param_4,u16 param_5)
   uVar11 = (uint)param_5;
   iVar10 = *(int *)(&g_AudioChannels + (param_1 & 0xff) * 4) +
            ((int)((int)sVar1 & 0xff00U) >> 8) * 0xb0;
-  FUN_800962b0((int)param_2,iVar9);
+  CD_CheckSlot((int)param_2,iVar9);
   if (uVar11 == 0) {
     uVar11 = 1;
   }

@@ -6,7 +6,7 @@
 
 
 
-uint FUN_80098100(uint param_1)
+uint GPU_SetRegClamped(uint param_1)
 
 {
   uint uVar1;

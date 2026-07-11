@@ -6,7 +6,7 @@
 
 
 
-void FUN_8009bb00(void)
+void BIOS_Syscall_B0_8009BB00(void)
 
 {
   (*(code *)&SUB_000000b0)();

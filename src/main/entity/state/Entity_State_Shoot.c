@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800674f4(int param_1)
+void Entity_State_Shoot(int param_1)
 
 {
   s16 sVar1;
@@ -46,7 +46,7 @@ void FUN_800674f4(int param_1)
   local_12 = _DAT_1f80019e;
   local_e = param_1->pos_z;
   if (g_GameState == '\0') {
-    FUN_8003116c(0x10d,auStack_18,0xfffffff6);
+    Entity_SpawnWithPos(0x10d,auStack_18,0xfffffff6);
   }
   else {
     if (g_GameState == '\x06') {
@@ -59,7 +59,7 @@ void FUN_800674f4(int param_1)
       uVar4 = 0xf06;
       if (g_GameState != '\x0e') goto LAB_8006760c;
     }
-    FUN_800312d4(uVar4,auStack_18,0xfffffff6);
+    Entity_SpawnWithFlag(uVar4,auStack_18,0xfffffff6);
   }
 LAB_8006760c:
   cVar2 = param_1->sub_action + -1;

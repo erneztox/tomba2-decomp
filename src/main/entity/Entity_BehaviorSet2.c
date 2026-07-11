@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80068e68(int param_1)
+void Entity_BehaviorSet2(int param_1)
 
 {
   uint uVar1;
@@ -45,14 +45,14 @@ void FUN_80068e68(int param_1)
   param_1->input_flags = 0;
   if ((param_1->sub_type & 0x80) == 0) {
     uVar1 = param_1->sub_type & 0x7f;
-    FUN_80077c40(param_1,*(s32 *)(&DAT_800a4a00 + uVar1 * 4),(&DAT_800a4a44)[uVar1]);
+    Entity_LoadAnimData3(param_1,*(s32 *)(&DAT_800a4a00 + uVar1 * 4),(&DAT_800a4a44)[uVar1]);
   }
-  FUN_80069858(param_1,0,1);
+  Entity_PhysicsInit(param_1,0,1);
   if ((param_1->sub_type & 0x80) == 0) {
-    FUN_800518fc(param_1);
+    GTE_ComposeAndProject(param_1);
   }
   else {
-    FUN_800517f8(param_1);
+    Entity_UpdateMatrix(param_1);
   }
   param_1->state = param_1->state + '\x01';
   return;

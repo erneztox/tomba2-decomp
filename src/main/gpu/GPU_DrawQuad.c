@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80033afc(int param_1,s16 param_2,s16 param_3,u8 param_4)
+void GPU_DrawQuad(int param_1,s16 param_2,s16 param_3,u8 param_4)
 
 {
   int iVar1;
@@ -39,6 +39,6 @@ void FUN_80033afc(int param_1,s16 param_2,s16 param_3,u8 param_4)
   local_17 = param_4;
   local_10 = param_2;
   local_e = param_3;
-  FUN_8007e6dc(&local_10,(&PTR_DAT_80017334)[iVar1],_g_OT_Data,&local_18);
+  GPU_SpriteRender(&local_10,(&PTR_DAT_80017334)[iVar1],_g_OT_Data,&local_18);
   return;
 }

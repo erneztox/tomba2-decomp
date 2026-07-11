@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-uint FUN_8009a450(void)
+uint Math_Random(void)
 
 {
   _DAT_80105ee8 = _DAT_80105ee8 * 0x41c64e6d + 0x3039;

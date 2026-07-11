@@ -1,5 +1,5 @@
 /**
- * @brief Camera mode 2: init + conditionally calls FUN_8006dad8/FUN_8006def0 + commit
+ * @brief Camera mode 2: init + conditionally calls Camera_CalcDelta/Camera_SmoothMove + commit
  * @note Original: func_8006E2FC at 0x8006E2FC
  */
 // Camera_Mode2
@@ -7,15 +7,15 @@
 
 
 #include "tomba.h"
-void FUN_8006e2fc(int param_1,s32 param_2)
+void Camera_Mode2(int param_1,s32 param_2)
 
 {
-  FUN_8006d934();
-  FUN_8006d950(param_1,param_2);
+  Camera_SetFOV();
+  Camera_SetRoll(param_1,param_2);
   if (param_1->camera_mode == '\0') {
-    FUN_8006dad8(param_1);
-    FUN_8006def0(param_1);
+    Camera_CalcDelta(param_1);
+    Camera_SmoothMove(param_1);
   }
-  FUN_8006d02c(param_1);
+  Camera_Commit(param_1);
   return;
 }

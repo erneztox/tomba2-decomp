@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_8007e110(s16 param_1,u8 param_2)
+int Entity_InitSprite(s16 param_1,u8 param_2)
 
 {
   u16 uVar1;
@@ -17,14 +17,14 @@ int FUN_8007e110(s16 param_1,u8 param_2)
   int iVar3;
   u16 *puVar4;
   
-  iVar3 = FUN_8007a5a8(3);
+  iVar3 = Entity_Activate(3);
   if (iVar3 == 0) {
     iVar3 = 0;
   }
   else {
     iVar3->sub_anim_id = 2;
     iVar3->sub_type = param_2;
-    iVar3->callback = FUN_8007dde0;
+    iVar3->callback = Entity_ProcessSprite;
     iVar3->alloc_flags = iVar3->alloc_flags | 0x80;
     puVar2 = _g_SpriteData;
     *(u16 **)(iVar3 + 0x48) = _g_SpriteData;

@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8002d65c(int param_1)
+void Entity_DrawMain4(int param_1)
 
 {
   s32 bVar1;
@@ -67,9 +67,9 @@ void FUN_8002d65c(int param_1)
     iVar15 = 0;
     do {
       uVar18 = (s16)((uint)in_stack_ffffffa4 >> 0x10);
-      iVar3 = FUN_80083f50(iVar14);
+      iVar3 = Math_CosGTE(iVar14);
       sVar5 = param_1->pos_x + (s16)(iVar3 * 0x4b0 >> 0xc);
-      iVar3 = FUN_80083e80(iVar14);
+      iVar3 = Math_Cos(iVar14);
       in_stack_ffffffa4 =
            CONCAT22(uVar18,*(s16 *)(param_1 + 0x30) + (s16)(iVar3 * 0x4b0 >> 0xc));
       sVar6 = param_1->pos_y + param_1->sprite_x;
@@ -119,7 +119,7 @@ void FUN_8002d65c(int param_1)
           _g_GTE_Work84 = _g_GTE_Work84 - (_g_GTE_Work84 >> 2);
           local_30 = puVar7;
           local_2c = puVar8;
-          uVar16 = FUN_80027a4c(iVar17,*(s32 *)(param_1 + 0x44));
+          uVar16 = Entity_ProcessAnimFrame(iVar17,*(s32 *)(param_1 + 0x44));
           uVar9 = extraout_at_00;
           puVar7 = local_30;
           puVar8 = local_2c;
@@ -135,14 +135,14 @@ void FUN_8002d65c(int param_1)
     } while (iVar15 < 8);
     param_1->anim_data = uVar16;
     uVar19 = DAT_800102b4;
-    FUN_8009a420(auStack_50,0,8,puVar7,uVar10,in_stack_ffffffa4,DAT_800102b4);
+    Mem_Set(auStack_50,0,8,puVar7,uVar10,in_stack_ffffffa4,DAT_800102b4);
     local_48 = *(s32 *)(param_1 + 0x2c);
     local_44 = CONCAT22(local_44._2_2_,*(s16 *)(param_1 + 0x30));
-    FUN_80085480(auStack_50,0x1f800000);
+    GTE_LoadRotMatrixFromSVec(auStack_50,0x1f800000);
     local_40 = (uVar19 & 0xff) << 2;
     local_38 = (uVar19 >> 0x10 & 0xff) << 2;
     local_3c = (uVar19 >> 8 & 0xff) << 2;
-    FUN_80084520(0x1f800000,&local_40);
+    GTE_TransformVec(0x1f800000,&local_40);
     setCopControlWord(2,0,_g_GTE_WorkF8);
     setCopControlWord(2,0x800,_DAT_1f8000fc);
     setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -202,7 +202,7 @@ void FUN_8002d65c(int param_1)
     setCopControlWord(2,0xa800,0);
     setCopControlWord(2,0xb000,0);
     setCopControlWord(2,0xb800,0);
-    FUN_80027768(&DAT_800a172c,0,0,DAT_800a2064);
+    Entity_SubmitQuadToOT(&DAT_800a172c,0,0,DAT_800a2064);
   }
   return;
 }

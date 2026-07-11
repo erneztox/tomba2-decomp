@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80086604(void)
+s32 CD_GetCallback(void)
 
 {
   return DAT_800abe20;

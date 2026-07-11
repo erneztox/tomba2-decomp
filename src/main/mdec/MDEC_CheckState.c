@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_800889f4(int param_1)
+s32 MDEC_CheckState(int param_1)
 
 {
   if (*(s8*)(param_1 + 0x53) == '\0') {

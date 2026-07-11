@@ -6,7 +6,7 @@
 
 
 
-int FUN_800368d0(int param_1,int param_2,int param_3)
+int Entity_CheckLoop(int param_1,int param_2,int param_3)
 
 {
   int iVar1;

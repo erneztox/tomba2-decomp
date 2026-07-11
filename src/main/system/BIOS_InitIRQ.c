@@ -6,21 +6,21 @@
 
 
 
-void FUN_8009bb10(s32 param_1)
+void BIOS_InitIRQ(s32 param_1)
 
 {
   int iVar1;
   
-  FUN_80080920(0);
-  FUN_80080890();
-  iVar1 = FUN_8009bbec();
+  BIOS_Syscall_B0_80080920(0);
+  BIOS_Syscall0();
+  iVar1 = CD_GetStatus_2();
   if (iVar1 == 0) {
     param_1 = 0;
   }
-  FUN_8009c030(param_1);
-  FUN_8009c1fc();
-  FUN_8009c0f8();
-  FUN_8009c18c();
-  FUN_800808a0();
+  BIOS_Syscall_B0_8009C030(param_1);
+  BIOS_CopyData2();
+  BIOS_SetupEvent();
+  BIOS_CopyData();
+  BIOS_Syscall0_2();
   return;
 }

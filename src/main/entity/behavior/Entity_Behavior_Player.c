@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800739ac(u8 *param_1)
+void Entity_Behavior_Player(u8 *param_1)
 
 {
   u8 bVar1;
@@ -27,13 +27,13 @@ void FUN_800739ac(u8 *param_1)
       if (bVar1 != 3) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar1 != 0) {
       return;
     }
-    iVar4 = FUN_80051b70(param_1,0xc,(int)*(s16 *)(&DAT_800a4c80 + (uint)g_GameState * 2));
+    iVar4 = Entity_InitSubEntity(param_1,0xc,(int)*(s16 *)(&DAT_800a4c80 + (uint)g_GameState * 2));
     if (iVar4 != 0) {
       return;
     }
@@ -60,7 +60,7 @@ void FUN_800739ac(u8 *param_1)
     param_1->render_flags = 0xf;
     return;
   }
-  iVar5 = FUN_8007778c(param_1);
+  iVar5 = GTE_ProjectSprite2(param_1);
   iVar4 = _g_CurrentEntity;
   if (iVar5 == 0) {
     param_1->move_mode = 0;
@@ -72,21 +72,21 @@ void FUN_800739ac(u8 *param_1)
   case 1:
     if (((g_GameState == GAMESTATE_2) || (g_GameState == GAMESTATE_7)) && (cVar2 = '\x04', g_CollisionType != '\x1f'))
     goto LAB_80073ca0;
-    FUN_800737f8param_1->sub_type;
+    Entity_DrawUIparam_1->sub_type;
     if ((_g_PadState & 0x2000) != 0) goto LAB_80073be0;
     break;
   case 2:
-    FUN_800738b0();
+    Entity_InitUI();
     if ((_g_PadState & 0x4000) != 0) {
 LAB_80073be0:
       param_1->behavior_state = param_1->behavior_state + '\x01';
-      FUN_80074590(0x11,0,0);
+      Audio_PlaySoundEffect(0x11,0,0);
       param_1->move_mode = 0;
       goto LAB_80073ca8;
     }
     if ((_g_PadState & 0x2000) != 0) {
       param_1->behavior_state = 4;
-      FUN_80074bf8(1);
+      Audio_SetBank(1);
       param_1->move_mode = 0;
       goto LAB_80073ca8;
     }
@@ -101,7 +101,7 @@ LAB_80073be0:
     _g_CurrentEntity->angle_offset = 0;
     *(u8 *)(iVar4 + 0x6b) = 8;
     param_1->behavior_state = param_1->behavior_state + '\x01';
-    FUN_8005082c(0,0,0);
+    Game_InitSaveData(0,0,0);
     param_1->move_mode = 0;
     goto LAB_80073ca8;
   case 4:
@@ -117,13 +117,13 @@ switchD_80073b0c_caseD_0:
     if (param_1->move_mode == '\x03') {
       g_LevelId = param_1->sub_type;
       param_1->behavior_state = param_1->behavior_state + '\x01';
-      FUN_800782f0(g_GameState,g_LevelId);
+      Game_SetEventFlag2(g_GameState,g_LevelId);
       param_1->move_mode = 0;
       goto LAB_80073ca8;
     }
   }
   param_1->move_mode = 0;
 LAB_80073ca8:
-  FUN_800517f8(param_1);
+  Entity_UpdateMatrix(param_1);
   return;
 }

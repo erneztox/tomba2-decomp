@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8007fc24(void)
+void GPU_OT_Advance(void)
 
 {
   u8 *puVar1;

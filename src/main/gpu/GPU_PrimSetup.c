@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8007cdd4(s16 *param_1)
+void GPU_PrimSetup(s16 *param_1)
 
 {
   int iVar1;
@@ -38,7 +38,7 @@ LAB_8007ce68:
   *(uint **)(iVar1 + 8) = _g_OT_Buffer;
   puVar2 = _g_OT_Buffer + 5;
   _g_OT_Buffer = _g_OT_Buffer + 8;
-  FUN_80083de0(puVar2,0,0,0x1f,0);
+  GPU_SetupDrawMode2(puVar2,0,0,0x1f,0);
   iVar1 = _g_EntityBuffer;
   *puVar2 = *(uint *)(_g_EntityBuffer + 8) | 0x2000000;
   *(uint **)(iVar1 + 8) = puVar2;

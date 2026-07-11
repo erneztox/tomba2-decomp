@@ -6,7 +6,7 @@
 
 
 
-void FUN_80088a54(int param_1,u8 param_2)
+void MDEC_CmdDecode(int param_1,u8 param_2)
 
 {
   param_1->state = 0x43;

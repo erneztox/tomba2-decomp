@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8002dd88(int param_1)
+void GTE_Project3(int param_1)
 
 {
   s32 bVar1;
@@ -60,7 +60,7 @@ void FUN_8002dd88(int param_1)
     _DAT_1f800090 = *(s32 *)(param_1 + 0x50);
     _DAT_1f800088 = _g_GTE_Work84 * *(int *)(param_1 + 0x58) >> 8;
     _g_GTE_Work84 = _g_GTE_Work84 * *(int *)(param_1 + 0x54) >> 8;
-    uVar2 = FUN_80027a4c(param_1->scale_y,*(s32 *)(param_1 + 0x44));
+    uVar2 = Entity_ProcessAnimFrame(param_1->scale_y,*(s32 *)(param_1 + 0x44));
     param_1->anim_data = uVar2;
   }
   return;

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800656fc(u8 *param_1)
+void Entity_StateAction(u8 *param_1)
 
 {
   u8 bVar1;
@@ -29,17 +29,17 @@ void FUN_800656fc(u8 *param_1)
         param_1->action_state = 0;
         param_1->sub_action = 0;
         param_1->velocity_y = 0;
-        FUN_80055d5c(param_1);
+        Entity_PhysicsStep2(param_1);
         param_1[0x180] = 6;
       }
       goto LAB_80065834;
     }
     if (bVar1 != 0) goto LAB_80065834;
-    FUN_80054d14(param_1,2,6);
+    Entity_LoadAnimIfChanged(param_1,2,6);
     param_1->action_state = param_1->action_state + '\x01';
-    bVar1 = FUN_80055e28(param_1,0);
+    bVar1 = Entity_PhysicsUpdate(param_1,0);
     param_1->direction = bVar1 & 1;
-    FUN_80054198(param_1);
+    Entity_ResetState_2(param_1);
     if (param_1->direction == '\0') {
       _g_AngleInput = param_1->draw_angle;
     }
@@ -48,13 +48,13 @@ void FUN_800656fc(u8 *param_1)
     }
   }
   uVar3 = (uint)_g_AngleInput;
-  sVar2 = FUN_800776f8(uVar3 & 0xfff,(int)param_1->rot_y,0x100);
+  sVar2 = Math_ApproachAngle_2(uVar3 & 0xfff,(int)param_1->rot_y,0x100);
   param_1->rot_y = sVar2;
   if ((int)sVar2 == (uVar3 & 0xfff)) {
     param_1->action_state = param_1->action_state + '\x01';
   }
 LAB_80065834:
-  FUN_80076d68(param_1);
-  FUN_80065478(param_1,1);
+  Entity_AnimFrame(param_1);
+  Entity_SetActionFlag(param_1,1);
   return;
 }

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_8004130c(int param_1,int param_2)
+s32 Entity_CalcAngleToward(int param_1,int param_2)
 
 {
   u16 uVar1;

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8007d14c(int param_1)
+void Entity_AdvanceScript(int param_1)
 
 {
   u8 bVar1;
@@ -19,7 +19,7 @@ LAB_8007d17c:
     param_1->behavior_state = 0;
   }
   else {
-    iVar2 = FUN_8007c0d0(param_1,1);
+    iVar2 = Entity_ScriptRun_2(param_1,1);
     if (iVar2 == 1) {
       bVar1 = param_1->anim_id | 1;
     }

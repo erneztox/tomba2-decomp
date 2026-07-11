@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8002a584(int param_1)
+void Entity_Behavior_Sparkle(int param_1)
 
 {
   u8 uVar1;
@@ -30,7 +30,7 @@ void FUN_8002a584(int param_1)
       if (3 < bVar2) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     iVar6 = 0;
@@ -40,12 +40,12 @@ void FUN_8002a584(int param_1)
     }
     do {
       iVar6 = iVar6 + 1;
-      uVar1 = FUN_8009a450();
+      uVar1 = Math_Random();
       *puVar5 = uVar1;
-      uVar1 = FUN_8009a450();
+      uVar1 = Math_Random();
       puVar5->flags = uVar1;
       puVar5->kind = 0;
-      bVar2 = FUN_8009a450();
+      bVar2 = Math_Random();
       puVar5->sub_type = bVar2 & 0x1f;
       puVar5 = puVar5 + 4;
     } while (iVar6 < 10);
@@ -93,17 +93,17 @@ void FUN_8002a584(int param_1)
       puVar8->sub_type = cVar3 - 3U;
       if ((int)((uint)(u8)(cVar3 - 3U) << 0x18) < 1) {
         if (param_1->action_state == '\x02') {
-          bVar2 = FUN_8009a450();
+          bVar2 = Math_Random();
           cVar3 = (bVar2 & 0xf) + 0x20;
         }
         else {
-          bVar2 = FUN_8009a450();
+          bVar2 = Math_Random();
           cVar3 = (bVar2 & 0xf) + 0x13;
         }
         puVar8->sub_type = cVar3;
-        uVar1 = FUN_8009a450();
+        uVar1 = Math_Random();
         *puVar8 = uVar1;
-        uVar1 = FUN_8009a450();
+        uVar1 = Math_Random();
         puVar8->flags = uVar1;
       }
       puVar8 = puVar8 + 4;

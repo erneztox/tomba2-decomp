@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-uint FUN_8008e100(s32 param_1,s16 param_2)
+uint Audio_SeqOpen(s32 param_1,s16 param_2)
 
 {
   s16 sVar1;
@@ -16,7 +16,7 @@ uint FUN_8008e100(s32 param_1,s16 param_2)
   uint uVar3;
   
   if (_DAT_80104c28 == 0xffffffff) {
-    FUN_8009a730(s_Can_t_Open_Sequence_data_any_mor_8001c5e0);
+    Debug_Printf(s_Can_t_Open_Sequence_data_any_mor_8001c5e0);
     uVar2 = 0xffffffff;
   }
   else {
@@ -29,44 +29,44 @@ uint FUN_8008e100(s32 param_1,s16 param_2)
     } while ((int)uVar2 < 0x20);
     uVar3 = (uint)(s16)uVar3;
     _DAT_80104c28 = _DAT_80104c28 | 1 << (uVar3 & 0x1f);
-    sVar1 = FUN_80090210(uVar3,(int)param_2,param_1);
-    _DAT_80104b90 = FUN_80090010;
-    _DAT_80104b94 = FUN_800900f0;
-    _DAT_80104b9c = FUN_8008fe40;
-    _DAT_80104b98 = FUN_8008fb60;
-    _DAT_80104ba0 = FUN_8008fc10;
-    _DAT_80104ba4 = FUN_8008e390;
-    _DAT_80104bac = FUN_8008e790;
-    _DAT_80104bb0 = FUN_8008e860;
-    _DAT_80104bb4 = FUN_8008e930;
-    _DAT_80104bb8 = FUN_8008ea20;
-    _DAT_80104bbc = FUN_8008eb60;
-    _DAT_80104bc0 = FUN_8008ec60;
-    _DAT_80104bc4 = FUN_8008eda0;
-    _DAT_80104bc8 = FUN_8008ee10;
-    _DAT_80104bcc = FUN_8008ead0;
-    _DAT_80104bd0 = FUN_8008ee80;
-    _DAT_80104ba8 = FUN_8008e410;
-    _DAT_80104bd4 = FUN_8008ef40;
-    _DAT_80104bd8 = FUN_8008efd0;
-    _DAT_80104bdc = FUN_8008f090;
-    _DAT_80104be0 = FUN_8008f120;
-    _DAT_80104be4 = FUN_8008f1b0;
-    _DAT_80104be8 = FUN_8008f360;
-    _DAT_80104bec = FUN_8008f420;
-    _DAT_80104bf0 = FUN_8008f4d0;
-    _DAT_80104bf4 = FUN_8008f580;
-    _DAT_80104bf8 = FUN_8008f630;
-    _DAT_80104bfc = FUN_8008f6f0;
-    _DAT_80104c00 = FUN_8008f7a0;
-    _DAT_80104c04 = FUN_8008f850;
-    _DAT_80104c08 = FUN_8008f930;
-    _DAT_80104c0c = FUN_8008f9d0;
-    _DAT_80104c10 = FUN_8008fa70;
-    _DAT_80104c14 = FUN_8008faa0;
-    _DAT_80104c18 = FUN_8008fad0;
-    _DAT_80104c1c = FUN_8008fb00;
-    _DAT_80104c20 = FUN_8008fb30;
+    sVar1 = Audio_SeqMain(uVar3,(int)param_2,param_1);
+    _DAT_80104b90 = Audio_ChannelDispatch;
+    _DAT_80104b94 = SPU_SetVoiceAttr2;
+    _DAT_80104b9c = Audio_VoiceControl;
+    _DAT_80104b98 = Audio_ChannelPlay;
+    _DAT_80104ba0 = Audio_VoiceAlloc2;
+    _DAT_80104ba4 = Audio_ProgramChange;
+    _DAT_80104bac = Audio_ChannelSetParam3;
+    _DAT_80104bb0 = Audio_ChannelCmd;
+    _DAT_80104bb4 = Audio_ChannelCmd2;
+    _DAT_80104bb8 = Audio_ChannelParam;
+    _DAT_80104bbc = Audio_SetChannel;
+    _DAT_80104bc0 = Audio_ChannelVoice;
+    _DAT_80104bc4 = Audio_NoteOn;
+    _DAT_80104bc8 = SPU_SetVoiceAttr;
+    _DAT_80104bcc = Audio_AllocChannel;
+    _DAT_80104bd0 = Audio_ResetChannel_2;
+    _DAT_80104ba8 = Audio_SeqLoad;
+    _DAT_80104bd4 = Audio_SeqCmd;
+    _DAT_80104bd8 = Audio_SeqCmd2;
+    _DAT_80104bdc = Audio_Cmd6;
+    _DAT_80104be0 = Audio_Cmd5;
+    _DAT_80104be4 = Audio_SetVoice5;
+    _DAT_80104be8 = Audio_SetVoice6;
+    _DAT_80104bec = Audio_SetVoice3;
+    _DAT_80104bf0 = Audio_SetVoice4;
+    _DAT_80104bf4 = Audio_SetVoice7;
+    _DAT_80104bf8 = Audio_SetVoice9;
+    _DAT_80104bfc = Audio_SetVoice10;
+    _DAT_80104c00 = Audio_VoiceParam;
+    _DAT_80104c04 = Audio_SetVoice8;
+    _DAT_80104c08 = Audio_SetVoice;
+    _DAT_80104c0c = Audio_SetVoice2;
+    _DAT_80104c10 = SPU_Dispatch1;
+    _DAT_80104c14 = SPU_Dispatch2;
+    _DAT_80104c18 = SPU_Dispatch3;
+    _DAT_80104c1c = SPU_Dispatch4;
+    _DAT_80104c20 = SPU_Dispatch5;
     uVar2 = 0xffffffff;
     if (sVar1 != -1) {
       uVar2 = uVar3;

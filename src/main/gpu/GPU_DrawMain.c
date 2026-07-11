@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-u16 * FUN_8008179c(u16 *param_1)
+u16 * GPU_DrawMain(u16 *param_1)
 
 {
   u16 uVar1;
@@ -30,7 +30,7 @@ u16 * FUN_8008179c(u16 *param_1)
   if ((((DAT_800a5a1c != *(int *)(param_1 + 8)) || (DAT_800a5a0c != *param_1)) ||
       (DAT_800a5a0e != param_1->flags)) ||
      ((DAT_800a5a10 != param_1->kind || (DAT_800a5a12 != param_1->sub_type)))) {
-    cVar3 = FUN_80086604();
+    cVar3 = CD_GetCallback();
     param_1->counter2 = cVar3;
     if (cVar3 == '\x01') {
       uVar10 = 0x8000008;
@@ -72,7 +72,7 @@ u16 * FUN_8008179c(u16 *param_1)
   if (((DAT_800a5a14 == param_1->state) && (DAT_800a5a16 == param_1->behavior_state)) &&
      ((DAT_800a5a18 == param_1->action_state && ((DAT_800a5a1a == param_1->sub_action && ((char)param_1->counter2 != '\b'))))))
   goto LAB_80081c64;
-  cVar3 = FUN_80086604();
+  cVar3 = CD_GetCallback();
   param_1->counter2 = cVar3;
   uVar10 = (int)(s16)param_1->behavior_state + 0x13;
   if (cVar3 == '\0') {
@@ -152,6 +152,6 @@ LAB_80081bfc:
   (*PTR_PTR_800a5998->parent)((uVar7 & 0xfff) << 0xc | uVar8 & 0xfff | 0x6000000);
   (*PTR_PTR_800a5998->parent)((uVar10 & 0x3ff) << 10 | uVar6 & 0x3ff | 0x7000000);
 LAB_80081c64:
-  FUN_8009a3e0(&DAT_800a5a0c,param_1,0x14);
+  Mem_Copy(&DAT_800a5a0c,param_1,0x14);
   return param_1;
 }

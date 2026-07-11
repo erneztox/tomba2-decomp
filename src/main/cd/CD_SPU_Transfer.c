@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80098de0(uint param_1)
+s32 CD_SPU_Transfer(uint param_1)
 
 {
   s32 bVar1;
@@ -19,7 +19,7 @@ s32 FUN_80098de0(uint param_1)
   
   local_28 = 0;
   if (param_1 < 10) {
-    iVar4 = FUN_800982a0((&DAT_800acb94)[param_1]);
+    iVar4 = CD_AllocDMA((&DAT_800acb94)[param_1]);
     iVar3 = DAT_800ac620;
     if (iVar4 == 0) {
       if (param_1 == 0) {
@@ -46,12 +46,12 @@ s32 FUN_80098de0(uint param_1)
           bVar2 = false;
           uVar5 = uVar6;
         }
-        FUN_80097194(2,iVar4);
-        FUN_80097194(1);
-        FUN_80097194(3,&DAT_800ac674,uVar5);
+        CD_SPU_Cmd2(2,iVar4);
+        CD_SPU_Cmd2(1);
+        CD_SPU_Cmd2(3,&DAT_800ac674,uVar5);
         uVar6 = uVar6 - 0x400;
         iVar4 = iVar4 + 0x400;
-        FUN_80098f80(DAT_800ac58c);
+        BIOS_Syscall_B0_80098F80(DAT_800ac58c);
       } while (bVar2);
       if (bVar1) {
         DAT_800ac620 = iVar3;

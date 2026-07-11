@@ -22,7 +22,7 @@ s32 Entity_CheckVisibility(int param_1)
   iVar4 = (int)param_1->pos_y - (int)_DAT_1f8000d6;
   iVar3 = (int)*(s16 *)(param_1 + 0x30) - (int)_DAT_1f8000da;
   // Squared distance from camera
-  uVar1 = FUN_80077fb0(iVar5 * iVar5 + iVar4 * iVar4 + iVar3 * iVar3);
+  uVar1 = Math_Sqrt(iVar5 * iVar5 + iVar4 * iVar4 + iVar3 * iVar3);
   uVar1 = uVar1 & 0xffff;
   uVar2 = 0;
   if (0x1ff < uVar1) {

@@ -9,13 +9,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8001db38(void)
+void Sys_GPUSync(void)
 
 {
-  FUN_8001d940(_g_CurrentEntity);
+  System_Reset(_g_CurrentEntity);
   if (_g_CurrentEntity->sprite_cmd != '\0') {
     g_DMAFlag = 1;
   }
-  FUN_80051fb4();
+  GPU_WaitVSync();
   return;
 }

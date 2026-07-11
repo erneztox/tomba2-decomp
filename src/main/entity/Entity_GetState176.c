@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-int FUN_800535d4(int param_1)
+int Entity_GetState176(int param_1)
 
 {
   return param_1->behavior_type + 1;

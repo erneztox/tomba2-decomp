@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_8004d0d4(int param_1,char *param_2,uint param_3)
+s32 UI_ParseCmd(int param_1,char *param_2,uint param_3)
 
 {
   u8 bVar1;
@@ -20,7 +20,7 @@ s32 FUN_8004d0d4(int param_1,char *param_2,uint param_3)
   }
   else {
     bVar1 = param_2->kind;
-    if (((bVar1 & 0x80) == 0) && (iVar3 = FUN_8004d7ec((int)*(s16 *)(param_2 + 10),0), iVar3 != 0)
+    if (((bVar1 & 0x80) == 0) && (iVar3 = Math_Div8Round((int)*(s16 *)(param_2 + 10),0), iVar3 != 0)
        ) {
       return 0;
     }
@@ -28,7 +28,7 @@ s32 FUN_8004d0d4(int param_1,char *param_2,uint param_3)
     uVar2 = 0;
     if ((*(uint *)(param_1 + 0x74) & uVar4) == 0) {
       if (((bVar1 & 0x80) != 0) &&
-         (iVar3 = FUN_8004d868((int)*(s16 *)(param_2 + 10),0), iVar3 != 0)) {
+         (iVar3 = Inventory_CheckFlag((int)*(s16 *)(param_2 + 10),0), iVar3 != 0)) {
         return 0;
       }
       uVar2 = 0;

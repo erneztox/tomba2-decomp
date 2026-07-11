@@ -6,9 +6,9 @@
 
 
 
-void FUN_80089b64(void)
+void CD_ReadySimple(void)
 
 {
-  FUN_8008a96c();
+  CD_Ready();
   return;
 }

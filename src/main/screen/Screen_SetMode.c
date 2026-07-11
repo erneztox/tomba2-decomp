@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_800508a8(void)
+void Screen_SetMode(void)
 
 {
   int iVar1;

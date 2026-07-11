@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80063158(u8 *param_1)
+void Entity_Behavior_Spin(u8 *param_1)
 
 {
   u8 bVar1;
@@ -61,13 +61,13 @@ void FUN_80063158(u8 *param_1)
     if ((param_1->flag_5E & 1) != 0) {
       *param_1 = bVar1 & 3;
       param_1->flag_5E = 0;
-      FUN_80064524();
+      Entity_State_Jump();
       return;
     }
     if ((param_1->flag_5E & 2) != 0) {
       *param_1 = bVar1 & 3;
       param_1->flag_5E = 0;
-      FUN_800645cc();
+      Entity_SetStateTo9();
       return;
     }
     param_1[0x154] = 0;

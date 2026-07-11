@@ -6,7 +6,7 @@
 
 
 
-int FUN_80090160(int param_1,s16 param_2)
+int Audio_AllocVoice(int param_1,s16 param_2)
 
 {
   u8 bVar1;

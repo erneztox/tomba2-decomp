@@ -6,7 +6,7 @@
 
 
 
-void FUN_80026100(s8 param_1)
+void Sys_IncCounter(s8 param_1)
 
 {
   g_ItemMax = g_ItemMax + param_1;

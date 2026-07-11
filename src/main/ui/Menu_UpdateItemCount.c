@@ -6,9 +6,9 @@
 
 
 
-void FUN_8004d4f4(void)
+void Menu_UpdateItemCount(void)
 
 {
-  FUN_8004d338();
+  Inventory_AddItem();
   return;
 }

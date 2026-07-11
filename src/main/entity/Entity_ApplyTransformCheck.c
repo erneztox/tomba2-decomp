@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8003faa4(int param_1)
+void Entity_ApplyTransformCheck(int param_1)
 
 {
   int iVar1;
@@ -19,6 +19,6 @@ void FUN_8003faa4(int param_1)
     }
     iVar1 = (int)param_1->bounds_min_x;
   }
-  FUN_8002ae0c(param_1,iVar1,0);
+  Entity_ApplyTransform(param_1,iVar1,0);
   return;
 }

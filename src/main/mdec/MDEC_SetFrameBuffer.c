@@ -6,7 +6,7 @@
 
 
 
-void FUN_80087f00(int param_1,s32 param_2,u8 param_3)
+void MDEC_SetFrameBuffer(int param_1,s32 param_2,u8 param_3)
 
 {
   *(s32 *)(param_1 + 0x28) = param_2;

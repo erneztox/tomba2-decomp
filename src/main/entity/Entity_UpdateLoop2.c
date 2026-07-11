@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8007b04c(void)
+void Entity_UpdateLoop2(void)
 
 {
   int iVar1;

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_8004162c(int param_1)
+s32 Entity_SetSubEntityTexture(int param_1)
 
 {
   int iVar1;
@@ -24,7 +24,7 @@ s32 FUN_8004162c(int param_1)
     *(s32 *)(*(int *)(iVar2 + iVar1 + 0xc0) + 0x40) = 0;
   }
   else {
-    FUN_80051b04(*(s32 *)(iVar2 + iVar1 + 0xc0),(int)param_1->event_param,
+    Entity_SetSubEntityData(*(s32 *)(iVar2 + iVar1 + 0xc0),(int)param_1->event_param,
                  (int)*(s16 *)(param_1 + 0x76));
   }
   return 1;

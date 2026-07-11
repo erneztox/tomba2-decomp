@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800384ec(int param_1)
+void Game_LoadData(int param_1)
 
 {
   char *pcVar1;

@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-uint FUN_80086620(uint param_1)
+uint MDEC_Config(uint param_1)
 
 {
   uint uVar1;

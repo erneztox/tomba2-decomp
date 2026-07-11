@@ -7,14 +7,14 @@
 
 
 #include "tomba.h"
-s32 FUN_80043a40(int param_1)
+s32 Entity_State_Scene(int param_1)
 
 {
   u8 bVar1;
   u16 uVar2;
   s16 sVar3;
   
-  FUN_80074eec();
+  Audio_ResetSystem();
   bVar1 = param_1->sub_state;
   if (bVar1 == 1) {
     uVar2 = *(s16 *)(param_1 + 0x76) - 1;
@@ -62,7 +62,7 @@ s32 FUN_80043a40(int param_1)
   }
   DAT_1f800233 = 1;
 LAB_80043ad0:
-  FUN_8001d71c((int)param_1->event_param);
+  Engine_LoadOverlayEntry((int)param_1->event_param);
   if (param_1->event_id == 3) {
     param_1->sub_state = param_1->sub_state + '\x01';
     return 0;

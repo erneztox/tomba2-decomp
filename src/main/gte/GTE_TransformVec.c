@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-uint * FUN_80084520(uint *param_1,int *param_2)
+uint * GTE_TransformVec(uint *param_1,int *param_2)
 
 {
   int iVar1;

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800624b4(u8 *param_1)
+void Entity_State_Ladder(u8 *param_1)
 
 {
   s32 uVar1;
@@ -24,22 +24,22 @@ void FUN_800624b4(u8 *param_1)
     *param_1 = 6;
     DAT_800bf809 = 1;
     if (param_1->kind == '\0') {
-      FUN_80053d90(param_1);
-      FUN_800551c4(param_1);
+      Entity_StateSwitch(param_1);
+      Entity_State_Physics(param_1);
     }
     g_SpriteParam4 = param_1->sprite_param3;
-    FUN_80067ef4(param_1);
-    FUN_8001cf2c();
+    Entity_SpriteMode2(param_1);
+    Pad_InitReset();
     if (param_1->kind == '\0') {
-      FUN_80055d5c(param_1);
+      Entity_PhysicsStep2(param_1);
     }
     param_1->action_state = param_1->action_state + '\x01';
-    FUN_80076d68(param_1);
-    iVar3 = FUN_800310f4(0x1e,0);
+    Entity_AnimFrame(param_1);
+    iVar3 = Entity_SpawnNoPos(0x1e,0);
     if (iVar3 != 0) {
       iVar3->alloc_flags = iVar3->alloc_flags | 0x80;
     }
-    FUN_80074590(0x37,0x16,0x1e);
+    Audio_PlaySoundEffect(0x37,0x16,0x1e);
     param_1->parent = iVar3;
     param_1->timer1 = 5;
     break;
@@ -53,12 +53,12 @@ void FUN_800624b4(u8 *param_1)
     goto code_r0x8006266c;
   case 2:
     if (_DAT_801fe0e0 != 0) {
-      FUN_8001cf2c();
+      Pad_InitReset();
       return;
     }
     goto LAB_80062664;
   case 3:
-    iVar3 = FUN_80044cd4(_DAT_800ed014,
+    iVar3 = Texture_TransferToVRAM(_DAT_800ed014,
                          *(uint *)(&DAT_800fb170 + (param_1->entity_flags & 0xf) * 8) >> 0xb,
                          *(int *)(&DAT_800fb170 + ((param_1->entity_flags & 0xf) << 3 | 4)) -
                          *(uint *)(&DAT_800fb170 + (param_1->entity_flags & 0xf) * 8));
@@ -77,10 +77,10 @@ code_r0x8006266c:
         iVar3->state = STATE_FINISH;
         iVar3->behavior_state = 0;
       }
-      FUN_80057fd4(param_1);
+      Entity_StateMain3(param_1);
       param_1->flags = 1;
       if (g_CurrentOverlay != '\x01') {
-        FUN_80074f24(g_GameState);
+        Engine_DispatchOverlay(g_GameState);
       }
       *param_1 = 3;
       uVar1 = _DAT_1f80023c;

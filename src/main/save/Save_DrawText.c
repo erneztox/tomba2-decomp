@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-uint FUN_8003990c(int param_1)
+uint Save_DrawText(int param_1)
 
 {
   s32 bVar1;

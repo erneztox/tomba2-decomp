@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80055284(int param_1)
+void Entity_UpdateAngle(int param_1)
 
 {
   if (param_1->direction != '\0') {

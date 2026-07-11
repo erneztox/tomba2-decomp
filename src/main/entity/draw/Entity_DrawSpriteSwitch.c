@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8007d0d0(int param_1)
+void Entity_DrawSpriteSwitch(int param_1)
 
 {
   switch(param_1->sub_type) {

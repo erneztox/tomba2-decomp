@@ -1,12 +1,12 @@
 /**
- * @brief Loops entity check up to 6 times via FUN_8003675c, returns true if any pass
+ * @brief Loops entity check up to 6 times via Entity_LoopCheck2, returns true if any pass
  * @note Original: func_8003687C at 0x8003687C
  */
 // Entity_LoopCheck6B
 
 
 
-s32 FUN_8003687c(s32 param_1)
+s32 Entity_LoopCheck6B(s32 param_1)
 
 {
   int iVar1;
@@ -14,7 +14,7 @@ s32 FUN_8003687c(s32 param_1)
   
   iVar2 = 0;
   do {
-    iVar1 = FUN_8003675c(param_1,1);
+    iVar1 = Entity_LoopCheck2(param_1,1);
     if (iVar1 == 0) {
       return iVar2 != 0;
     }

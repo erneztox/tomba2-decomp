@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80036dc4(int param_1)
+s32 Game_CheckUnlock(int param_1)
 
 {
   s32 uVar1;

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80024338(int param_1,int param_2)
+s32 Entity_TargetDistance(int param_1,int param_2)
 
 {
   uint uVar1;
@@ -21,14 +21,14 @@ s32 FUN_80024338(int param_1,int param_2)
           >> 0x10;
   iVar3 = (int)(((uint)param_1->draw_pos_z - (uint)param_2->pos_z) * 0x10000)
           >> 0x10;
-  uVar1 = FUN_80084080(iVar4 * iVar4 + iVar3 * iVar3);
+  uVar1 = Math_SqrtGTE(iVar4 * iVar4 + iVar3 * iVar3);
   uVar2 = 0;
   if (((int)(uVar1 & 0xffff) <= param_2->bounds_min_x + _DAT_1f800088) &&
      (uVar2 = 0,
      (int)(((uint)param_1->draw_pos_y - (uint)*(u16 *)(param_2 + 0x32)) +
            (uint)param_2->bounds_min_y + (uint)param_1->target_angle & 0xffff) <=
      (int)param_2->bounds_max_y + ((int)((uint)param_1->target_angle << 0x10) >> 0xf))) {
-    _g_GTE_Work8C = FUN_80085690(-iVar3,iVar4);
+    _g_GTE_Work8C = Math_Atan2(-iVar3,iVar4);
     uVar2 = 1;
     _g_GTE_Work84 = 0;
     param_1->speed2 = *(s16 *)(param_1 + 0x32) - *(s16 *)(param_2 + 0x32);

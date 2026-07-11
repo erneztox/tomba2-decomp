@@ -6,7 +6,7 @@
 
 
 
-void FUN_800339a4(int param_1,u8 param_2)
+void Entity_DrawChild3(int param_1,u8 param_2)
 
 {
   u8 local_18;
@@ -24,6 +24,6 @@ void FUN_800339a4(int param_1,u8 param_2)
   local_10 = DAT_800a23a4;
   local_c = DAT_800a23a8;
   local_17 = param_2;
-  FUN_8007e1b8(&local_10,PTR_DAT_800174b0,*(s32 *)(param_1 + 4),&local_18);
+  GPU_SpriteDrawMain(&local_10,PTR_DAT_800174b0,*(s32 *)(param_1 + 4),&local_18);
   return;
 }

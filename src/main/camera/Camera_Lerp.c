@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_8006cec4(int *param_1,int param_2,int param_3)
+s32 Camera_Lerp(int *param_1,int param_2,int param_3)
 
 {
   int iVar1;
@@ -23,7 +23,7 @@ s32 FUN_8006cec4(int *param_1,int param_2,int param_3)
   }
   else {
     if (param_3 != 0) {
-      iVar1 = FUN_8006ce74(iVar1 * 0x10000 >> 0x10,(int)sVar2);
+      iVar1 = Math_Clamp(iVar1 * 0x10000 >> 0x10,(int)sVar2);
     }
     *param_1 = *param_1 + ((iVar1 << 0x10) >> 3);
   }
@@ -34,7 +34,7 @@ s32 FUN_8006cec4(int *param_1,int param_2,int param_3)
   }
   else {
     if (param_3 != 0) {
-      iVar1 = FUN_8006ce74(iVar1 * 0x10000 >> 0x10,(int)sVar2);
+      iVar1 = Math_Clamp(iVar1 * 0x10000 >> 0x10,(int)sVar2);
     }
     param_1->flags = param_1->flags + ((iVar1 << 0x10) >> 3);
   }
@@ -45,7 +45,7 @@ s32 FUN_8006cec4(int *param_1,int param_2,int param_3)
   }
   else {
     if (param_3 != 0) {
-      iVar1 = FUN_8006ce74(iVar1 * 0x10000 >> 0x10,(int)sVar2);
+      iVar1 = Math_Clamp(iVar1 * 0x10000 >> 0x10,(int)sVar2);
     }
     param_1->kind = param_1->kind + ((iVar1 << 0x10) >> 3);
   }

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80068fbc(u8 *param_1)
+void Entity_BehaviorSet3(u8 *param_1)
 
 {
   u8 bVar1;
@@ -20,17 +20,17 @@ void FUN_80068fbc(u8 *param_1)
       if (bVar1 != 0) {
         return;
       }
-      FUN_80068e68(param_1);
+      Entity_BehaviorSet2(param_1);
       return;
     }
     if (bVar1 == 2) {
-      FUN_80068be8(param_1);
+      Entity_Behavior_Move2(param_1);
       return;
     }
     if (bVar1 != 3) {
       return;
     }
-    FUN_8007ab44(param_1);
+    Entity_ListInsert(param_1);
     return;
   }
   bVar1 = param_1->behavior_state;
@@ -46,24 +46,24 @@ void FUN_80068fbc(u8 *param_1)
       }
       param_1->flags = 1;
       if ((param_1->sub_type & 0x80) != 0) {
-        FUN_800517f8(param_1);
+        Entity_UpdateMatrix(param_1);
         return;
       }
-      FUN_800518fc(param_1);
+      GTE_ComposeAndProject(param_1);
       return;
     }
     if (bVar1 != 2) {
       return;
     }
   }
-  FUN_80068a94(param_1);
+  Entity_Behavior_Move(param_1);
   if ((param_1->sub_type & 0x80) == 0) {
-    FUN_800518fc(param_1);
+    GTE_ComposeAndProject(param_1);
   }
   else {
-    FUN_800517f8(param_1);
+    Entity_UpdateMatrix(param_1);
   }
-  iVar3 = FUN_80077a4c(param_1,0,0,0);
+  iVar3 = GTE_ProjectSprite9(param_1,0,0,0);
   if ((iVar3 == 0) &&
      (sVar2 = param_1->timer2, param_1->timer2 = sVar2 + -1, sVar2 == 1)) {
     param_1->state = STATE_DEAD;

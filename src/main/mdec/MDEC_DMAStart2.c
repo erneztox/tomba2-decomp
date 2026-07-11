@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80086a80(int param_1)
+s32 MDEC_DMAStart2(int param_1)
 
 {
   code *pcVar1;
@@ -25,7 +25,7 @@ s32 FUN_80086a80(int param_1)
   if (param_1->state == '\b') {
     uVar5 = 0x50;
   }
-  FUN_80089620(uVar5);
+  MDEC_SetParam(uVar5);
   uVar4 = 0x1003;
   if (DAT_800abe78 != 0) {
     uVar4 = 0x3003;
@@ -53,42 +53,42 @@ s32 FUN_80086a80(int param_1)
     *(u16 *)(DAT_800abe9c + 10) = *(u16 *)(DAT_800abe9c + 10) | 0x10;
     if ((*(u16 *)(puVar2 + 4) & 0x200) != 0) {
       do {
-        iVar3 = FUN_80089640();
+        iVar3 = MDEC_WaitVSync();
       } while (iVar3 == 0);
       *DAT_800abe9c = 1;
-      FUN_80089620(2000);
-      iVar3 = FUN_8008732c();
+      MDEC_SetParam(2000);
+      iVar3 = MDEC_WaitDMA();
       if (iVar3 == 0) {
         return 0;
       }
-      FUN_800873bc();
-      FUN_80089620(0x1ae);
+      MDEC_WaitReady();
+      MDEC_SetParam(0x1ae);
       do {
         if ((*DAT_800abe98 & 0x80) != 0) {
           *DAT_800abe9c = 0x42;
-          FUN_80089620();
-          iVar3 = FUN_8008732c();
+          MDEC_SetParam();
+          iVar3 = MDEC_WaitDMA();
           if (iVar3 == 0) {
             return 0;
           }
-          FUN_800873bc();
-          FUN_80089620(0x1ae);
+          MDEC_WaitReady();
+          MDEC_SetParam(0x1ae);
           do {
             if ((*DAT_800abe98 & 0x80) != 0) {
               *DAT_800abe9c = 1;
-              FUN_80089620();
-              iVar3 = FUN_8008732c();
+              MDEC_SetParam();
+              iVar3 = MDEC_WaitDMA();
               if (iVar3 == 0) {
                 return 0;
               }
-              FUN_800873bc();
+              MDEC_WaitReady();
               return 0;
             }
-            iVar3 = FUN_80089640(0x3c);
+            iVar3 = MDEC_WaitVSync(0x3c);
           } while (iVar3 == 0);
           return 0;
         }
-        iVar3 = FUN_80089640(0x3c);
+        iVar3 = MDEC_WaitVSync(0x3c);
       } while (iVar3 == 0);
       return 0;
     }

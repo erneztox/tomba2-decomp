@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80022330(int param_1,int param_2)
+void Entity_DrawChild4(int param_1,int param_2)
 
 {
   s32 bVar1;
@@ -30,7 +30,7 @@ void FUN_80022330(int param_1,int param_2)
       if ((*(uint *)(param_2 + 0x70) & 1 << (uVar7 & 0x1f)) != 0) {
         iVar2 = (int)(((uint)param_1->pos_y - (uint)puVar6[-1]) * 0x10000) >> 0x10;
         iVar3 = (int)(((uint)param_1->pos_z - (uint)puVar6->flags) * 0x10000) >> 0x10;
-        uVar4 = FUN_80084080(iVar2 * iVar2 + iVar3 * iVar3);
+        uVar4 = Math_SqrtGTE(iVar2 * iVar2 + iVar3 * iVar3);
         bVar1 = false;
         if ((int)(uVar4 & 0xffff) <=
             (int)((int)param_1->bounds_min_x + (uint)(u8)(&DAT_800a29d0)[iVar5])) {
@@ -43,7 +43,7 @@ void FUN_80022330(int param_1,int param_2)
           uVar7 = 1 << (uVar7 & 0x1f);
           *(uint *)(param_2 + 0x74) = *(uint *)(param_2 + 0x74) | uVar7;
           *(uint *)(param_2 + 0x70) = *(uint *)(param_2 + 0x70) & ~uVar7;
-          iVar8 = FUN_8004d19c(param_2,iVar8);
+          iVar8 = UI_SpawnChild(param_2,iVar8);
           if (((_DAT_800e7ffe & 0x200) == 0) && (param_1->parent == 0)) {
             param_1->parent = iVar8;
             param_1->move_mode = 2;
@@ -54,8 +54,8 @@ void FUN_80022330(int param_1,int param_2)
           param_1->move_mode = 2;
           iVar8->move_mode = 2;
           iVar8->anim_id = param_1->anim_id & 1;
-          FUN_80074590(0x2f,0,0);
-          FUN_80031470(2,param_1 + 0x2c,param_1->flag_5E,param_1 + 0x68);
+          Audio_PlaySoundEffect(0x2f,0,0);
+          Entity_SpawnSpecial(2,param_1 + 0x2c,param_1->flag_5E,param_1 + 0x68);
           return;
         }
       }

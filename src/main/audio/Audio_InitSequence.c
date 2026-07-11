@@ -6,12 +6,12 @@
 
 
 
-void FUN_8008e040(void)
+void Audio_InitSequence(void)
 
 {
-  FUN_80085b20();
-  FUN_80096a70();
-  FUN_80098de0(7);
-  FUN_8008dfa0();
+  CD_Dispatch0C();
+  MC_Close();
+  CD_SPU_Transfer(7);
+  Audio_Init2();
   return;
 }

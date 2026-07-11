@@ -9,13 +9,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006ac38(int param_1)
+void Entity_InitSpriteConfig2(int param_1)
 
 {
   param_1->render_flags = 0x10;
   param_1->sprite_flags = 0;
   param_1->draw_y = 0;
   param_1->sprite_data = _g_OT_Data;
-  FUN_80077b38(param_1,&PTR_DAT_80017334,0x13c);
+  Entity_LoadAnimData(param_1,&PTR_DAT_80017334,0x13c);
   return;
 }

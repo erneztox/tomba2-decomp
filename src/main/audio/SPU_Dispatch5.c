@@ -6,11 +6,11 @@
 
 
 
-void FUN_8008fb30(void)
+void SPU_Dispatch5(void)
 
 {
   u8 in_stack_00000030;
   
-  FUN_80092a30(in_stack_00000030);
+  Audio_CmdWithParam2(in_stack_00000030);
   return;
 }

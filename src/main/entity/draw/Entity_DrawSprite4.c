@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8002a834(int param_1)
+void Entity_DrawSprite4(int param_1)
 
 {
   s32 in_zero;
@@ -47,11 +47,11 @@ void FUN_8002a834(int param_1)
     local_3c = (u16)pbVar2->kind << 4;
     local_37 = local_38;
     local_36 = local_38;
-    FUN_80085480(&local_40,0x1f800000);
+    GTE_LoadRotMatrixFromSVec(&local_40,0x1f800000);
     local_30 = (uint)local_38 << 2;
     local_28 = (uint)local_36 << 2;
     local_2c = (uint)local_37 << 2;
-    FUN_80084520(0x1f800000,&local_30);
+    GTE_TransformVec(0x1f800000,&local_30);
     setCopControlWord(2,0,_g_GTE_WorkF8);
     setCopControlWord(2,0x800,_DAT_1f8000fc);
     setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -102,7 +102,7 @@ void FUN_8002a834(int param_1)
     setCopControlWord(2,0x3800,_g_GTE_Data1C);
     pbVar2 = pbVar2 + 4;
     iVar1 = iVar1 + 1;
-    FUN_80027768(&DAT_8009fb0c,0,(int)*(s16 *)(param_1 + 0x32),0);
+    Entity_SubmitQuadToOT(&DAT_8009fb0c,0,(int)*(s16 *)(param_1 + 0x32),0);
   } while (iVar1 < 10);
   return;
 }

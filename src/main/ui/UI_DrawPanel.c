@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8005019c(s16 *param_1,u16 param_2,s8 param_3,int param_4)
+void UI_DrawPanel(s16 *param_1,u16 param_2,s8 param_3,int param_4)
 
 {
   u8 *puVar1;
@@ -160,7 +160,7 @@ void FUN_8005019c(s16 *param_1,u16 param_2,s8 param_3,int param_4)
   *puVar7 = (uint)puVar5;
   puVar5 = _g_OT_Buffer;
   _g_OT_Buffer = _g_OT_Buffer + 3;
-  FUN_80083de0(puVar5,0,0,0x5f,0);
+  GPU_SetupDrawMode2(puVar5,0,0,0x5f,0);
   puVar7 = (uint *)(_g_EntityBuffer + param_4 * 4);
   *puVar5 = *puVar7 | 0x2000000;
   *puVar7 = (uint)puVar5;
@@ -169,16 +169,16 @@ void FUN_8005019c(s16 *param_1,u16 param_2,s8 param_3,int param_4)
   local_22 = 8;
   local_28 = *param_1;
   local_26 = param_1->flags + -8;
-  FUN_8004ffb4(&local_28,0,param_2,param_4);
+  UI_DrawTile(&local_28,0,param_2,param_4);
   local_26 = param_1->flags + param_1->sub_type;
-  FUN_8004ffb4(&local_28,1,param_2,param_4);
+  UI_DrawTile(&local_28,1,param_2,param_4);
   local_24 = 8;
   local_22 = param_1->sub_type;
   local_26 = param_1->flags;
   local_28 = *param_1 + -8;
-  FUN_8004ffb4(&local_28,2,param_2,param_4);
+  UI_DrawTile(&local_28,2,param_2,param_4);
   local_28 = *param_1 + param_1->kind;
-  FUN_8004ffb4(&local_28,3,param_2,param_4);
-  FUN_8004ffb4(param_1,4,param_2,param_4);
+  UI_DrawTile(&local_28,3,param_2,param_4);
+  UI_DrawTile(param_1,4,param_2,param_4);
   return;
 }

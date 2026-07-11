@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-uint FUN_8008a96c(int param_1,u8 *param_2)
+uint CD_Ready(int param_1,u8 *param_2)
 
 {
   u8 bVar1;
@@ -18,20 +18,20 @@ uint FUN_8008a96c(int param_1,u8 *param_2)
   uint uVar5;
   u8 *puVar6;
   
-  _DAT_80102748 = FUN_80085900(0xffffffff);
+  _DAT_80102748 = Timer_GetCounter(0xffffffff);
   _DAT_80102748 = _DAT_80102748 + 0x3c0;
   _DAT_8010274c = 0;
   _DAT_80102750 = s_CD_ready_8001c2ec;
   while( true ) {
-    iVar4 = FUN_80085900(0xffffffff);
+    iVar4 = Timer_GetCounter(0xffffffff);
     if ((_DAT_80102748 < iVar4) ||
        (iVar4 = _DAT_8010274c + 1, bVar3 = 0x3c0000 < _DAT_8010274c, _DAT_8010274c = iVar4, bVar3))
     {
-      FUN_8009b9b0(s_CD_timeout__8001c25c);
-      FUN_8009a730(s__s___s__Sync__s__Ready__s_8001c26c,_DAT_80102750,
+      Debug_PrintString(s_CD_timeout__8001c25c);
+      Debug_Printf(s__s___s__Sync__s__Ready__s_8001c26c,_DAT_80102750,
                    (&PTR_s_CdlSync_800abfe0)[DAT_800abfd9],(&PTR_s_NoIntr_800ac060)[DAT_800ac298],
                    (&PTR_s_NoIntr_800ac060)[DAT_800ac299]);
-      FUN_8008b0c8();
+      CD_Reset();
       iVar4 = -1;
     }
     else {
@@ -40,11 +40,11 @@ uint FUN_8008a96c(int param_1,u8 *param_2)
     if (iVar4 != 0) {
       return 0xffffffff;
     }
-    iVar4 = FUN_80085c74();
+    iVar4 = CD_GetStatus();
     if (iVar4 != 0) {
       bVar1 = *DAT_800ac280;
       while( true ) {
-        uVar5 = FUN_8008a190();
+        uVar5 = CD_ReadMain();
         if (uVar5 == 0) break;
         if (((uVar5 & 4) != 0) && (DAT_800abfc0 != (code *)0x0)) {
           (*DAT_800abfc0)(DAT_800ac299,&DAT_80102738);

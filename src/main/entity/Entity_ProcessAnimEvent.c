@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_8004179c(int param_1)
+s32 Entity_ProcessAnimEvent(int param_1)
 
 {
   u8 bVar1;
@@ -26,7 +26,7 @@ s32 FUN_8004179c(int param_1)
     uVar2 = *(u16 *)(param_1 + 0x66);
     if (((int)*(s16 *)(param_1 + 0x66) & 0x8000U) == 0) {
       if ((uVar2 & 0xff) != (u16)*(u8 *)(iVar4->anim_data + 4)) goto LAB_800418dc;
-      FUN_80074590(*(u8 *)(param_1 + 0x68),0,0);
+      Audio_PlaySoundEffect(*(u8 *)(param_1 + 0x68),0,0);
       uVar3 = *(u16 *)(param_1 + 0x66) | 0x8000;
     }
     else {
@@ -43,7 +43,7 @@ s32 FUN_8004179c(int param_1)
       if (param_1->event_param == -1) {
         param_1->event_param = (u16)param_1->state_7B;
       }
-      FUN_80041768(iVar4,(int)param_1->event_param,(int)*(s16 *)(param_1 + 0x76));
+      Entity_SetAnimModeIfNew(iVar4,(int)param_1->event_param,(int)*(s16 *)(param_1 + 0x76));
       if ((param_1->event_id & 2) != 0) {
         if ((**(u16 **)(param_1 + 0x6c) & 0x2000) == 0) {
           param_1->sub_state = 2;

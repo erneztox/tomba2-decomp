@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80097a90(void)
+void CD_DMAProcess(void)
 
 {
   uint uVar1;

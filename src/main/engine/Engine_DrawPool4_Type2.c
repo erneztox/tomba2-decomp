@@ -1,5 +1,5 @@
 /**
- * @brief Draws Pool 4 entity using FUN_8007e6dc
+ * @brief Draws Pool 4 entity using GPU_SpriteRender
  * @note Original: func_80025934 at 0x80025934
  */
 // Engine_DrawPool4_Type2
@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80025934(int param_1,int param_2,u8 param_3)
+void Engine_DrawPool4_Type2(int param_1,int param_2,u8 param_3)
 
 {
   int iVar1;
@@ -48,7 +48,7 @@ void FUN_80025934(int param_1,int param_2,u8 param_3)
       local_38 = pbVar2->sub_type;
       local_30 = (u16)pbVar2->flags + sVar5;
       local_2e = (u16)pbVar2->kind + sVar6;
-      FUN_8007e1b8(&local_30,(&PTR_DAT_80017334)[*pbVar2],param_1->sprite_data,&local_38)
+      GPU_SpriteDrawMain(&local_30,(&PTR_DAT_80017334)[*pbVar2],param_1->sprite_data,&local_38)
       ;
       iVar3 = iVar3 + 1;
       iVar1 = iVar3 * 4;
@@ -61,7 +61,7 @@ void FUN_80025934(int param_1,int param_2,u8 param_3)
       local_38 = pbVar2->sub_type;
       local_30 = (u16)pbVar2->flags + sVar5;
       local_2e = (u16)pbVar2->kind + sVar6;
-      FUN_8007e1b8(&local_30,(&PTR_DAT_80017334)[*pbVar2 + 1],param_1->sprite_data,
+      GPU_SpriteDrawMain(&local_30,(&PTR_DAT_80017334)[*pbVar2 + 1],param_1->sprite_data,
                    &local_38);
       iVar3 = iVar3 + 1;
     } while (iVar3 < (int)(uint)g_ItemCount);
@@ -73,7 +73,7 @@ void FUN_80025934(int param_1,int param_2,u8 param_3)
   local_36 = 0;
   local_2c = 0;
   local_2a = 0;
-  FUN_8007e6dc(&local_30,
+  GPU_SpriteRender(&local_30,
                *(s32 *)
                 ((int)&PTR_DAT_80017334 + ((int)((_g_FrameCounter + 0x11) * 0x10000) >> 0xe)),
                param_1->sprite_data,&local_38);
@@ -81,7 +81,7 @@ void FUN_80025934(int param_1,int param_2,u8 param_3)
   do {
     iVar1 = 4 - iVar3;
     iVar3 = iVar3 + 1;
-    FUN_8007e1b8(&local_30,*(s32 *)((int)&PTR_DAT_80017334 + (iVar1 * 0x10000 >> 0xe)),
+    GPU_SpriteDrawMain(&local_30,*(s32 *)((int)&PTR_DAT_80017334 + (iVar1 * 0x10000 >> 0xe)),
                  param_1->sprite_data,&local_38);
   } while (iVar3 < 2);
   return;

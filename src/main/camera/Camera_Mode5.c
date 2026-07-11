@@ -7,19 +7,19 @@
 
 
 #include "tomba.h"
-void FUN_8006e3f4(int param_1,s32 param_2)
+void Camera_Mode5(int param_1,s32 param_2)
 
 {
   int iVar1;
   
-  iVar1 = FUN_8006d960();
+  iVar1 = Camera_SmoothX();
   if (iVar1 != 0) {
     param_1->camera_flags = param_1->camera_flags | 1;
   }
-  iVar1 = FUN_8006da54(param_1,param_2);
+  iVar1 = Camera_SmoothY(param_1,param_2);
   if (iVar1 != 0) {
     param_1->camera_flags = param_1->camera_flags | 2;
   }
-  FUN_8006d02c(param_1);
+  Camera_Commit(param_1);
   return;
 }

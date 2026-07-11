@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80091b50(int param_1,s16 param_2,s16 param_3)
+void Audio_SystemCmd(int param_1,s16 param_2,s16 param_3)
 
 {
   int iVar1;

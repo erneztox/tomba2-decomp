@@ -6,7 +6,7 @@
 
 
 
-void FUN_800998e4(u8 *param_1)
+void CD_SPU_Poll(u8 *param_1)
 
 {
   s16 sVar1;

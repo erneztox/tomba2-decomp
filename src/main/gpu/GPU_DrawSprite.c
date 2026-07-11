@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80033a0c(int param_1,int param_2,u8 param_3)
+void GPU_DrawSprite(int param_1,int param_2,u8 param_3)
 
 {
   s16 *psVar1;
@@ -38,7 +38,7 @@ void FUN_80033a0c(int param_1,int param_2,u8 param_3)
     puVar2 = puVar2 + 4;
     psVar1 = (s16 *)(param_2 + -4);
     param_2 = param_2 + 2;
-    FUN_8007e1b8(&local_28,(&PTR_DAT_80017334)[*psVar1],*(s32 *)(param_1 + 4),&local_30);
+    GPU_SpriteDrawMain(&local_28,(&PTR_DAT_80017334)[*psVar1],*(s32 *)(param_1 + 4),&local_30);
   } while (iVar3 < 0xe);
   return;
 }

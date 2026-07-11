@@ -6,9 +6,9 @@
 
 
 
-void FUN_80096a70(void)
+void MC_Close(void)
 
 {
-  FUN_80096a90(0);
+  CD_Init2(0);
   return;
 }

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006c0c4(u8 *param_1)
+void Entity_Behavior_AttackMain(u8 *param_1)
 
 {
   s8 cVar1;
@@ -19,17 +19,17 @@ void FUN_8006c0c4(u8 *param_1)
   
   switchparam_1->action_state {
   case 0:
-    FUN_8006bdf0(param_1,0);
+    Entity_InitAttackTrail(param_1,0);
     cVar1 = param_1->action_state;
     goto LAB_8006c25c;
   case 1:
     param_1->action_state = param_1->action_state + '\x01';
     if (param_1->flag_5E == '\0') {
-      FUN_80074590(0xb,0xfffffffe,0);
+      Audio_PlaySoundEffect(0xb,0xfffffffe,0);
       param_1->timer1 = 4;
     }
     else {
-      FUN_80074590(0xb,0xfffffffc,0);
+      Audio_PlaySoundEffect(0xb,0xfffffffc,0);
       param_1->timer1 = 2;
     }
     break;
@@ -51,7 +51,7 @@ void FUN_8006c0c4(u8 *param_1)
       }
       param_1->timer1 = uVar3;
       param_1->timer2 = 3;
-      FUN_8006bd20(param_1);
+      Entity_CheckCondition(param_1);
     }
     break;
   case 3:
@@ -60,7 +60,7 @@ void FUN_8006c0c4(u8 *param_1)
       param_1->timer2 = 3;
       param_1->move_mode = 0;
     }
-    FUN_8006be88(param_1);
+    Entity_State_Trail(param_1);
     if ((u8)param_1->move_mode < 2) goto LAB_8006c2a8;
     if (param_1->move_mode == 2) {
       DAT_800e7ef9 = 2;
@@ -73,7 +73,7 @@ LAB_8006c25c:
     break;
   case 4:
     if (param_1->timer2 < 0x800) {
-      iVar4 = FUN_80083e80();
+      iVar4 = Math_Cos();
       _DAT_800e7eb0 = _DAT_800e7eb0 + iVar4 * -0x100;
       param_1->timer2 = param_1->timer2 + 0x155;
     }

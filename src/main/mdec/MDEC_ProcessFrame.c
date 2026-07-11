@@ -6,7 +6,7 @@
 
 
 
-uint FUN_80087530(int param_1)
+uint MDEC_ProcessFrame(int param_1)
 
 {
   uint uVar1;
@@ -21,7 +21,7 @@ uint FUN_80087530(int param_1)
   if (param_1->state == '\0') {
     uVar3 = DAT_800abe84;
   }
-  uVar1 = FUN_800870b4(param_1,uVar3);
+  uVar1 = MDEC_DataRead(param_1,uVar3);
   if (-1 < (int)uVar1) {
     uVar2 = uVar1 & 0xf;
     DAT_800abeb0 = uVar2 << 1;

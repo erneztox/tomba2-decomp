@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8007ab44(s32 *param_1)
+void Entity_ListInsert(s32 *param_1)
 
 {
   s32 *puVar1;
@@ -38,7 +38,7 @@ LAB_8007abc0:
   puVar1 = param_1;
   param_1->counter2 = _DAT_800f273c;
   _DAT_800f273c = puVar1;
-  FUN_8007addc(param_1);
+  Entity_CleanupSprite(param_1);
   *param_1 = 0;
   param_1->flags = 0;
   param_1->kind = 0;

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80075ff8(int param_1,u16 *param_2,s16 param_3)
+void Audio_SeqMain2(int param_1,u16 *param_2,s16 param_3)
 
 {
   int iVar1;

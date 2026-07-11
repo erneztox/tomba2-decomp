@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_800421cc(int param_1)
+s32 Entity_CheckEvent(int param_1)
 
 {
   s32 uVar1;
@@ -20,7 +20,7 @@ s32 FUN_800421cc(int param_1)
     }
   }
   else if (param_1->event_id == 1) {
-    iVar2 = FUN_8006cdcc(0x800e8008);
+    iVar2 = Entity_DecrementTimer2(0x800e8008);
     uVar1 = 1;
     if (iVar2 != 1) {
       uVar1 = 0;

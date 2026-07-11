@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80085c14(void)
+void CD_Dispatch10(void)
 
 {
   (*PTR_PTR_800abda0->parent)();

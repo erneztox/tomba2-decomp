@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8006918c(u8 *param_1,int param_2)
+void Entity_CheckDamage(u8 *param_1,int param_2)
 
 {
   s32 bVar1;
@@ -20,14 +20,14 @@ void FUN_8006918c(u8 *param_1,int param_2)
     }
     if (bVar1) goto LAB_800691fc;
   }
-  iVar2 = FUN_80069858(param_1,0,0);
+  iVar2 = Entity_PhysicsInit(param_1,0,0);
   if (iVar2 == 0) {
     return;
   }
 LAB_800691fc:
   *param_1 = 2;
-  FUN_80074590(0xe,0,0);
-  FUN_80031470(2,param_1 + 0x2c,0,param_1 + 0x68);
-  FUN_8006914c(param_1);
+  Audio_PlaySoundEffect(0xe,0,0);
+  Entity_SpawnSpecial(2,param_1 + 0x2c,0,param_1 + 0x68);
+  Entity_InitObjState(param_1);
   return;
 }

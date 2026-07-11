@@ -8,7 +8,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_8005a910(int param_1)
+void Entity_DispatchAction(int param_1)
 
 {
   if (((g_ActionFlag == '\0') && (*(s8*)(param_1 + 0x17c) != '\0')) &&
@@ -16,7 +16,7 @@ void FUN_8005a910(int param_1)
     Overlay_80112b50();
   }
   else {
-    FUN_8005a970();
+    Entity_State_Action2();
   }
   return;
 }

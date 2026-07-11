@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80049e54(int param_1,int param_2)
+s32 UI_ElementUpdate(int param_1,int param_2)
 
 {
   s32 bVar1;
@@ -37,7 +37,7 @@ s32 FUN_80049e54(int param_1,int param_2)
       if (bVar1) {
         _DAT_800e7ff0 = _g_FrameCounter - 1;
       }
-      FUN_80072114(param_1,param_2);
+      Entity_SpawnDropItem(param_1,param_2);
       uVar4 = 0;
     }
   }

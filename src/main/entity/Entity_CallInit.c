@@ -6,9 +6,9 @@
 
 
 
-void FUN_8002311c(void)
+void Entity_CallInit(void)
 
 {
-  FUN_8001ec3c();
+  Entity_MoveMain();
   return;
 }

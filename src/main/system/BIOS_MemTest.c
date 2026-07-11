@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_8009c2b0(int param_1,s32 param_2,u8 *param_3)
+s32 BIOS_MemTest(int param_1,s32 param_2,u8 *param_3)
 
 {
   u8 bVar1;
@@ -32,22 +32,22 @@ s32 FUN_8009c2b0(int param_1,s32 param_2,u8 *param_3)
     if (7 < iVar6) {
       return 0;
     }
-    FUN_8009bb00();
-    iVar5 = FUN_8009baf0(param_1,param_2,param_3);
+    BIOS_Syscall_B0_8009BB00();
+    iVar5 = BIOS_Syscall_B0_8009BAF0(param_1,param_2,param_3);
     if (iVar5 != 1) break;
     do {
-      uVar3 = FUN_8009c610(param_1 >> 4);
+      uVar3 = BIOS_Syscall_B0_8009C610(param_1 >> 4);
     } while ((uVar3 & 1) == 0);
-    FUN_8009a340(local_a0,0x80);
-    FUN_8009bb00();
-    iVar5 = FUN_8009c600(param_1,param_2,local_a0);
+    Mem_Compare(local_a0,0x80);
+    BIOS_Syscall_B0_8009BB00();
+    iVar5 = BIOS_Syscall_B0_8009C600(param_1,param_2,local_a0);
     if (iVar5 == 1) {
       do {
-        uVar3 = FUN_8009c610(param_1 >> 4);
+        uVar3 = BIOS_Syscall_B0_8009C610(param_1 >> 4);
       } while ((uVar3 & 1) == 0);
     }
     else {
-      FUN_8009a730(s_card_read_error_8001ca50);
+      Debug_Printf(s_card_read_error_8001ca50);
     }
     pbVar4 = local_a0;
     bVar2 = 0;

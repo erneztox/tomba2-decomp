@@ -6,17 +6,17 @@
 
 
 
-void FUN_8005245c(void)
+void Pad_Init(void)
 
 {
   int iVar1;
   
   DAT_800ecf4c = 0;
   DAT_800ecf4d = 0;
-  FUN_80087eac(0,&DAT_800ecf4c,2);
-  iVar1 = FUN_80087aec(0);
+  MDEC_InitDecode(0,&DAT_800ecf4c,2);
+  iVar1 = MDEC_SetupDecode(0);
   if (iVar1 == 6) {
-    FUN_80087e2c(0,&DAT_800a3fa0);
+    MDEC_CallbackDispatch(0,&DAT_800a3fa0);
   }
   return;
 }

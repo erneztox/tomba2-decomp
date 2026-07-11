@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800527c8(int param_1)
+void Entity_DrawMain7(int param_1)
 
 {
   u8 bVar1;
@@ -28,20 +28,20 @@ void FUN_800527c8(int param_1)
       if (3 < bVar1) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar1 != 0) {
       return;
     }
-    iVar5 = FUN_800519e0(param_1,0x12,_DAT_800ecf6c,&DAT_800a43e8);
+    iVar5 = Entity_AllocFromPool(param_1,0x12,_DAT_800ecf6c,&DAT_800a43e8);
     uVar2 = _DAT_800ecf70;
     if (iVar5 != 0) {
       return;
     }
     *(void ***)(param_1 + 0x7c) = &PTR_DAT_8001b354;
     param_1->sprite_data = uVar2;
-    FUN_80041718(param_1,0,0);
+    Entity_SetAnimMode(param_1,0,0);
     param_1->state = param_1->state + '\x01';
     if (param_1->sub_type == '\0') {
       param_1->pos_y = _g_CameraTargetX;
@@ -51,13 +51,13 @@ void FUN_800527c8(int param_1)
         uVar3 = _g_CameraAngle + 0x400U & 0xfff;
       }
       else {
-        uVar3 = FUN_800782b0(param_1 + 0x2c,(int)_DAT_1f8000d2,(int)_DAT_1f8000da);
+        uVar3 = Math_CalcAngle2D(param_1 + 0x2c,(int)_DAT_1f8000d2,(int)_DAT_1f8000da);
       }
       param_1->rot_y = uVar3;
       _g_CameraTargetY = *(s16 *)(param_1 + 0x32) + -0x3c;
       _g_EntityAngle = param_1->rot_y;
       param_1->timer1 = 0x1e;
-      FUN_80054d14(&g_CollisionEntity,0xe4,0);
+      Entity_LoadAnimIfChanged(&g_CollisionEntity,0xe4,0);
       DAT_800e7ffa = 1;
       return;
     }
@@ -68,9 +68,9 @@ void FUN_800527c8(int param_1)
     uVar3 = _g_EntityAngle;
     param_1->timer1 = 0x14;
     param_1->draw_x = uVar3 & 0xfff;
-    FUN_80041718(param_1,3,0);
+    Entity_SetAnimMode(param_1,3,0);
     DAT_800e7e81 = 0;
-    FUN_80054d14(&g_CollisionEntity,0xe4,0);
+    Entity_LoadAnimIfChanged(&g_CollisionEntity,0xe4,0);
     param_1->flags = 0;
     return;
   }
@@ -83,7 +83,7 @@ void FUN_800527c8(int param_1)
         _g_GTE_WorkC0 = 0xfc18;
         _DAT_1f8000c2 = 0;
         _g_GTE_WorkC4 = 600;
-        FUN_80084470(0x1f800118,&g_GTE_WorkC0,&g_GTE_Data14);
+        GTE_MulMatrixVec(0x1f800118,&g_GTE_WorkC0,&g_GTE_Data14);
         param_1->pos_y = _DAT_1f8000d2 + _g_GTE_Data14;
         param_1->pos_z = _DAT_1f8000da + _g_GTE_Data1C;
         sVar4 = _g_CameraTargetY;
@@ -92,37 +92,37 @@ void FUN_800527c8(int param_1)
         DAT_800e7e81 = 1;
         param_1->velocity_y = 0;
         param_1->anim_counter = 0x1800;
-        sVar4 = FUN_800782b0(param_1 + 0x2c,(int)*(s16 *)(param_1 + 100),
+        sVar4 = Math_CalcAngle2D(param_1 + 0x2c,(int)*(s16 *)(param_1 + 100),
                              (int)param_1->target_angle);
         param_1->rot_y = sVar4 - 0x200U & 0xfff;
         param_1->behavior_state = param_1->behavior_state + '\x01';
       }
       break;
     case 1:
-      FUN_80052720(param_1);
-      FUN_80052694(param_1);
+      Entity_AngleToTarget(param_1);
+      Entity_AdvanceAnim(param_1);
       param_1->flags = 1;
       if (*(s16 *)(param_1 + 0x32) == *(s16 *)(param_1 + 0x66)) {
         param_1->behavior_state = param_1->behavior_state + '\x01';
-        FUN_80041768(param_1,1,4);
+        Entity_SetAnimModeIfNew(param_1,1,4);
       }
       break;
     case 2:
       local_36 = *(s16 *)(param_1 + 100);
       local_32 = *(s16 *)(param_1 + 0x66);
       local_2e = param_1->target_angle;
-      iVar5 = FUN_8006cec4(param_1 + 0x2c,auStack_38,0xe0);
+      iVar5 = Camera_Lerp(param_1 + 0x2c,auStack_38,0xe0);
       if (iVar5 != 0) {
         param_1->behavior_state = param_1->behavior_state + '\x01';
-        FUN_80041768(param_1,0,4);
+        Entity_SetAnimModeIfNew(param_1,0,4);
       }
       goto LAB_80052f48;
     case 3:
-      sVar4 = FUN_800776f8((int)param_1->draw_x,(int)param_1->rot_y,0x80);
+      sVar4 = Math_ApproachAngle_2((int)param_1->draw_x,(int)param_1->rot_y,0x80);
       param_1->rot_y = sVar4;
       if (sVar4 == param_1->draw_x) {
         param_1->behavior_state = param_1->behavior_state + '\x01';
-        FUN_80054d14(&g_CollisionEntity,2,0x10);
+        Entity_LoadAnimIfChanged(&g_CollisionEntity,2,0x10);
       }
 LAB_80052f48:
       param_1->flags = 1;
@@ -160,25 +160,25 @@ LAB_80052f48:
   case 0:
     _g_CameraTargetY = *(s16 *)(param_1 + 0x32) + -0x3c;
     if (param_1->timer1 == 0) {
-      iVar5 = FUN_80042728();
+      iVar5 = Game_CheckIdle();
       if (iVar5 != 0) {
         param_1->anim_counter = 0x100;
         param_1->velocity_y = 0;
-        FUN_80041768(param_1,2,4);
+        Entity_SetAnimModeIfNew(param_1,2,4);
         param_1->timer1 = 0x14;
         param_1->timer2 = 0xc;
         param_1->behavior_state = param_1->behavior_state + '\x01';
         _g_GTE_WorkC0 = 400;
         _DAT_1f8000c2 = 0;
         _g_GTE_WorkC4 = 0;
-        FUN_80084470(0x1f800118,&g_GTE_WorkC0,&g_GTE_Data14);
+        GTE_MulMatrixVec(0x1f800118,&g_GTE_WorkC0,&g_GTE_Data14);
         *(s16 *)(param_1 + 100) = _DAT_1f8000d2 + _g_GTE_Data14;
         *(s16 *)(param_1 + 0x66) = _DAT_1f8000d6 + _g_GTE_Data18;
         param_1->target_angle = _DAT_1f8000da + _g_GTE_Data1C;
         _g_GTE_WorkC0 = 0xfc18;
         _DAT_1f8000c2 = 0;
         _g_GTE_WorkC4 = 600;
-        FUN_80084470(0x1f800118,&g_GTE_WorkC0,&g_GTE_Data14);
+        GTE_MulMatrixVec(0x1f800118,&g_GTE_WorkC0,&g_GTE_Data14);
         param_1->draw_x = _DAT_1f8000d2 + _g_GTE_Data14;
         param_1->angle_delta = _DAT_1f8000da + _g_GTE_Data1C;
       }
@@ -201,7 +201,7 @@ LAB_80052f48:
     break;
   case 2:
     if ((_g_FrameCounter2 & 7) == 0) {
-      FUN_80074590(0x38,(int)*(s8*)(param_1 + 0x42),0);
+      Audio_PlaySoundEffect(0x38,(int)*(s8*)(param_1 + 0x42),0);
       sVar4 = param_1->timer2 + 2;
       param_1->timer2 = sVar4;
       if (0x1a < sVar4) {
@@ -219,7 +219,7 @@ LAB_80052f48:
     break;
   case 3:
     if ((_g_FrameCounter2 & 7) == 0) {
-      FUN_80074590(0x38,(int)*(s8*)(param_1 + 0x42),0);
+      Audio_PlaySoundEffect(0x38,(int)*(s8*)(param_1 + 0x42),0);
       sVar4 = param_1->timer2 + 2;
       param_1->timer2 = sVar4;
       if (0x1a < sVar4) {
@@ -238,7 +238,7 @@ LAB_80052f48:
     break;
   case 4:
     if ((_g_FrameCounter2 & 7) == 0) {
-      FUN_80074590(0x38,(int)*(s8*)(param_1 + 0x42),0);
+      Audio_PlaySoundEffect(0x38,(int)*(s8*)(param_1 + 0x42),0);
       sVar4 = param_1->timer2 + 2;
       param_1->timer2 = sVar4;
       if (0x1a < sVar4) {
@@ -249,8 +249,8 @@ LAB_80052f48:
   default:
     goto switchD_800529e4_default;
   }
-  FUN_80052720(param_1);
-  FUN_8005262c(param_1);
+  Entity_AngleToTarget(param_1);
+  Entity_InitDrawEnv(param_1);
 switchD_800529e4_default:
   DAT_800e7ffa = 1;
   _g_CameraTargetX = param_1->pos_y;
@@ -261,7 +261,7 @@ switchD_800529e4_default:
   _g_EntityAngle = param_1->rot_y;
   param_1->flags = 1;
 LAB_80053040:
-  FUN_8004190c(param_1);
-  FUN_800518fc(param_1);
+  Entity_SetAnimFlag79(param_1);
+  GTE_ComposeAndProject(param_1);
   return;
 }

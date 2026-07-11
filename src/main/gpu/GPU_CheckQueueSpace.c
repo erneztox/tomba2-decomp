@@ -6,7 +6,7 @@
 
 
 
-uint FUN_80082240(uint param_1,uint param_2)
+uint GPU_CheckQueueSpace(uint param_1,uint param_2)
 
 {
   uint uVar1;

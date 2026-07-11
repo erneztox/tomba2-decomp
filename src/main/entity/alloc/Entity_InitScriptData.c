@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80040de0(int param_1,u16 *param_2)
+void Entity_InitScriptData(int param_1,u16 *param_2)
 
 {
   *(u16 **)(param_1 + 0x6c) = param_2;

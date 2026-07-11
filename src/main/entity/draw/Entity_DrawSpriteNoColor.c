@@ -8,10 +8,10 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_800328ec(s32 param_1)
+void Entity_DrawSpriteNoColor(s32 param_1)
 
 {
   _DAT_1f800090 = 0;
-  FUN_8002847c(param_1,0,0);
+  GTE_ProjectEntity2(param_1,0,0);
   return;
 }

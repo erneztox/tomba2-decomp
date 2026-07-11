@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_8005344c(int param_1)
+s32 Entity_CheckEventTrigger(int param_1)
 
 {
   if (((g_GameState == '\x04') && ((_DAT_800bfe56 & 0x10) == 0)) &&

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800269bc(int param_1)
+void Game_SetPause(int param_1)
 
 {
   DAT_800bf80f = 2;

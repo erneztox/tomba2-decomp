@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80052198(u8 param_1,u8 *param_2)
+s32 Entity_SetCollisionFlag(u8 param_1,u8 *param_2)
 
 {
   u8 bVar1;

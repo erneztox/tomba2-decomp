@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80087fa0(int param_1)
+s32 MDEC_StateMachine3(int param_1)
 
 {
   u8 bVar1;
@@ -81,7 +81,7 @@ s32 FUN_80087fa0(int param_1)
     param_1->state = bVar3;
     param_1->state = param_1->state + 8 + (bVar1 + 3 & 0x1fc);
     if (param_1->state <= bVar3) {
-      iVar5 = FUN_80088210(param_1);
+      iVar5 = MDEC_CalcFrameSize(param_1);
       if (iVar5 < 0x81) {
         if (param_1->state != param_1->state) {
           param_1->state = param_1->state;
@@ -92,7 +92,7 @@ s32 FUN_80087fa0(int param_1)
         param_1->state = 0;
         *(u8 *)(param_1 + 0xeb) = 0;
         param_1->state = 0xff;
-        FUN_80088248(param_1,param_1 + 99);
+        MDEC_InitDecode2(param_1,param_1 + 99);
         param_1->state = STATE_FINISH;
       }
       else {

@@ -6,7 +6,7 @@
 
 
 
-void FUN_8003f024(void)
+void Engine_Render3DSprites(void)
 
 {
   char *pcVar1;
@@ -16,7 +16,7 @@ void FUN_8003f024(void)
   pcVar1 = &g_SpriteQueue;
   do {
     if (*pcVar1 != '\0') {
-      FUN_8003d23c(pcVar1);
+      GPU_Render3DSprite(pcVar1);
     }
     iVar2 = iVar2 + 1;
     pcVar1 = pcVar1 + 0x40;

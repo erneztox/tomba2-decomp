@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-int FUN_80026d08(int param_1,u16 *param_2,int param_3,int param_4)
+int Entity_InitChildPosition(int param_1,u16 *param_2,int param_3,int param_4)
 
 {
   u8 *puVar1;

@@ -6,7 +6,7 @@
 
 
 
-char * FUN_8007b26c(void)
+char * Entity_AllocChildSlot(void)
 
 {
   char *pcVar1;

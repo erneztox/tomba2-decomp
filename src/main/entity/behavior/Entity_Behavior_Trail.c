@@ -57,7 +57,7 @@ void Entity_Behavior_Trail(int param_1)
       if (bVar1 != 3) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     // Shift history buffer

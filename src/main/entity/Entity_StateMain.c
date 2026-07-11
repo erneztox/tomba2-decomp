@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80054e80(int param_1,int param_2)
+void Entity_StateMain(int param_1,int param_2)
 
 {
   uint uVar1;
@@ -29,11 +29,11 @@ void FUN_80054e80(int param_1,int param_2)
       sVar3 = -sVar3;
     }
     if (sVar3 < 0xd01) {
-      FUN_80054d14(param_1,0xc6,4);
+      Entity_LoadAnimIfChanged(param_1,0xc6,4);
       if ((_g_FrameCounter2 & 0xf) != 0) {
         return;
       }
-      FUN_80074590(0x3b,0,0);
+      Audio_PlaySoundEffect(0x3b,0,0);
       return;
     }
   }
@@ -41,10 +41,10 @@ void FUN_80054e80(int param_1,int param_2)
     if (param_1->anim_id == 'n') {
       return;
     }
-    FUN_80074590(0x1c,0,0);
+    Audio_PlaySoundEffect(0x1c,0,0);
     param_1->anim_id = 0x6e;
-    FUN_80054790(param_1,0x6e);
-    FUN_80077cfc(param_1,&PTR_DAT_80017fe8,0x6e,(int)param_1->anim_frame);
+    Entity_AnimLoad3(param_1,0x6e);
+    Entity_LoadAnimDataEx(param_1,&PTR_DAT_80017fe8,0x6e,(int)param_1->anim_frame);
     return;
   }
   if (((param_1->behavior_flags & 2) == 0) || ((param_1->type_flags & 0xf00) != 0x500)) {
@@ -82,7 +82,7 @@ void FUN_80054e80(int param_1,int param_2)
     case 0x10:
       uVar7 = uVar7 - 1;
     }
-    FUN_80077c40(param_1,&PTR_DAT_80017fe8,uVar7);
+    Entity_LoadAnimData3(param_1,&PTR_DAT_80017fe8,uVar7);
     param_1->anim_id = (char)uVar7;
   }
   else {
@@ -97,13 +97,13 @@ void FUN_80054e80(int param_1,int param_2)
           if ((param_1->anim_timer & 0x7f) != 1) {
             return;
           }
-          FUN_80076d68(param_1);
+          Entity_AnimFrame(param_1);
           uVar4 = 5;
           uVar1 = *(u16 *)(param_1->anim_data + 2) + 1 & 3;
         }
         puVar2 = (&PTR_DAT_80017fe8)[uVar7];
         *(void **)(param_1 + 0x38) = puVar2 + uVar1 * 8;
-        FUN_80077e3c(param_1,puVar2 + uVar1 * 8,uVar4);
+        Entity_SetupAnimFrame(param_1,puVar2 + uVar1 * 8,uVar4);
         param_1->anim_id = (char)uVar7;
         goto LAB_800551a4;
       }
@@ -121,10 +121,10 @@ void FUN_80054e80(int param_1,int param_2)
     else {
       iVar6 = (int)(s16)param_2;
     }
-    FUN_80077cfc(param_1,&PTR_DAT_80017fe8,uVar5,iVar6);
+    Entity_LoadAnimDataEx(param_1,&PTR_DAT_80017fe8,uVar5,iVar6);
     param_1->anim_id = (char)uVar7;
   }
 LAB_800551a4:
-  FUN_80054790(param_1,uVar7);
+  Entity_AnimLoad3(param_1,uVar7);
   return;
 }

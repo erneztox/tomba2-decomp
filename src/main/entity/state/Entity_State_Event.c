@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80043bd4(int param_1)
+s32 Entity_State_Event(int param_1)
 
 {
   s32 bVar1;
@@ -35,8 +35,8 @@ s32 FUN_80043bd4(int param_1)
         sVar5 = 0;
         sVar2 = *(s16 *)(param_1 + 0x76) - _g_CameraTargetZ;
       }
-      sVar2 = FUN_80085690(-(int)sVar2,(int)sVar5);
-      uVar3 = FUN_80077768((int)sVar2,(int)_g_CameraAngle,0);
+      sVar2 = Math_Atan2(-(int)sVar2,(int)sVar5);
+      uVar3 = Math_CompareAngle((int)sVar2,(int)_g_CameraAngle,0);
       param_1->event_id = uVar3;
     }
     sVar2 = *(s16 *)(param_1 + 0x76) - *(s16 *)((int)piVar6 + 2);

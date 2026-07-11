@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_80046e2c(int param_1,s16 param_2,s16 param_3,s16 param_4)
+int Collision_CheckEnv(int param_1,s16 param_2,s16 param_3,s16 param_4)
 
 {
   s32 bVar1;
@@ -29,10 +29,10 @@ int FUN_80046e2c(int param_1,s16 param_2,s16 param_3,s16 param_4)
   int iVar14;
   
   iVar11 = (int)param_4;
-  iVar7 = FUN_80083e80(iVar11);
+  iVar7 = Math_Cos(iVar11);
   iVar10 = (int)param_2;
   uVar13 = (uint)(-iVar7 * iVar10) >> 0xc;
-  iVar7 = FUN_80083f50(iVar11);
+  iVar7 = Math_CosGTE(iVar11);
   uVar6 = 0;
   iVar14 = 10;
   uVar12 = (uint)(iVar7 * iVar10) >> 0xc;
@@ -42,12 +42,12 @@ int FUN_80046e2c(int param_1,s16 param_2,s16 param_3,s16 param_4)
     _DAT_1f8001be = *(s16 *)(param_1 + 0x32) + param_3;
     sVar2 = (s16)uVar13;
     _DAT_1f8001c0 = param_1->pos_z + sVar2;
-    iVar7 = FUN_800498c8(param_1);
+    iVar7 = Collision_FindGround(param_1);
     if (iVar7 == 0) {
       return 0;
     }
     if (uVar6 == 0) {
-      sVar4 = FUN_80085690((uint)_DAT_1f8001b8 - (uint)_DAT_1f8001b4,
+      sVar4 = Math_Atan2((uint)_DAT_1f8001b8 - (uint)_DAT_1f8001b4,
                            (uint)_DAT_1f8001b6 - (uint)_DAT_1f8001b2);
       uVar5 = (-param_4 - sVar4) + 0x400U & 0xfff;
       if (iVar10 < 0) {
@@ -58,7 +58,7 @@ int FUN_80046e2c(int param_1,s16 param_2,s16 param_3,s16 param_4)
         unaff_s4 = 8;
       }
     }
-    uVar6 = FUN_8004720c((int)unaff_s4,(int)(s16)uVar6);
+    uVar6 = Collision_CheckMove((int)unaff_s4,(int)(s16)uVar6);
     sVar4 = _g_CollisionFlag2;
     if (uVar6 == 0) {
       return 0;
@@ -108,9 +108,9 @@ int FUN_80046e2c(int param_1,s16 param_2,s16 param_3,s16 param_4)
       }
       param_1->pos_y = param_1->pos_y - sVar9;
       param_1->pos_z = param_1->pos_z - sVar2;
-      iVar7 = FUN_80083f50(iVar11);
+      iVar7 = Math_CosGTE(iVar11);
       uVar12 = iVar7 * (iVar10 + -1) >> 0xc;
-      iVar7 = FUN_80083e80(iVar11);
+      iVar7 = Math_Cos(iVar11);
       uVar13 = -iVar7 * (iVar10 + -1) >> 0xc;
       uVar5 = param_4 + 0x200U & 0xfff;
       if (uVar5 < 0x401) {

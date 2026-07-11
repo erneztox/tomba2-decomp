@@ -9,14 +9,14 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80074e48(void)
+void Audio_ReleaseChannel(void)
 
 {
   u8 *puVar1;
   int iVar2;
   
   if (_DAT_800bed80 != -1) {
-    FUN_80091af0((int)*(s16 *)(&DAT_800be368 + _DAT_800bed80 * 8));
+    Audio_Cmd2((int)*(s16 *)(&DAT_800be368 + _DAT_800bed80 * 8));
     iVar2 = 0;
     if (0 < _DAT_800bed78) {
       puVar1 = &DAT_800be238;
@@ -29,7 +29,7 @@ void FUN_80074e48(void)
     }
     _DAT_800bed78 = 0;
     _DAT_800bed80 = -1;
-    FUN_800963a0(0);
+    CD_SetValidatedParam(0);
   }
   return;
 }

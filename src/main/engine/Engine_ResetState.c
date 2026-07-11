@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80050a0c(void)
+void Engine_ResetState(void)
 
 {
   _DAT_800e809c = 0;
@@ -21,6 +21,6 @@ void FUN_80050a0c(void)
   DAT_1f800234 = 0;
   g_DMAFlag = 0;
   g_PadFlag = 0;
-  FUN_8009a480(0x45);
+  Game_SetGlobal(0x45);
   return;
 }

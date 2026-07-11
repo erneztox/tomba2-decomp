@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8004a9a4(int param_1)
+void Entity_InitFromTypeTable(int param_1)
 
 {
   s16 uVar1;
@@ -18,7 +18,7 @@ void FUN_8004a9a4(int param_1)
   int iVar4;
   
   iVar4 = (uint)param_1->sub_type * 8;
-  FUN_80051b70(param_1,(int)*(s16 *)(&DAT_800a29ce + iVar4),(int)*(s16 *)(&DAT_800a29cc + iVar4)
+  Entity_InitSubEntity(param_1,(int)*(s16 *)(&DAT_800a29ce + iVar4),(int)*(s16 *)(&DAT_800a29cc + iVar4)
               );
   param_1->scale_x = 0x1300;
   param_1->scale_y = 0x1300;
@@ -30,8 +30,8 @@ void FUN_8004a9a4(int param_1)
   uVar1 = *(s16 *)(&DAT_800a29d2 + iVar4);
   param_1->move_mode = 0;
   param_1->target_angle = uVar1;
-  FUN_8004766c(param_1);
-  FUN_80048750(param_1);
+  Entity_PhysicsStep(param_1);
+  Entity_PhysicsStepRot(param_1);
   uVar1 = _g_CollisionNormalX;
   sVar2 = param_1->target_angle;
   param_1->rot_z = 0;

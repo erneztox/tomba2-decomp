@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80068a94(u8 *param_1)
+void Entity_Behavior_Move(u8 *param_1)
 
 {
   s16 sVar1;
@@ -30,22 +30,22 @@ void FUN_80068a94(u8 *param_1)
     param_1->behavior_state = 0;
   }
   param_1->rot_z = param_1->rot_z + 0x200;
-  iVar3 = FUN_80083e80((int)*(s16 *)(param_1 + 0xbe));
+  iVar3 = Math_Cos((int)*(s16 *)(param_1 + 0xbe));
   param_1->pos_y_fixed = param_1->pos_y_fixed + iVar3 * param_1->anim_counter * 0x10;
-  iVar3 = FUN_80083f50((int)*(s16 *)(param_1 + 0xbe));
+  iVar3 = Math_CosGTE((int)*(s16 *)(param_1 + 0xbe));
   iVar4 = iVar3 * param_1->anim_counter >> 4;
   iVar3 = param_1->normal_z * iVar4;
   *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + param_1->normal_x * iVar4;
   param_1->scale_y = param_1->scale_y + iVar3;
   if ((param_1->anim_id & 8) == 0) {
-    uVar2 = FUN_80085690(-iVar3);
+    uVar2 = Math_Atan2(-iVar3);
     param_1->rot_y = uVar2;
   }
-  iVar3 = FUN_80069858(param_1,0,0);
+  iVar3 = Entity_PhysicsInit(param_1,0,0);
   if (iVar3 != 0) {
     param_1->move_mode = 2;
-    FUN_80074590(0xe,0,0);
-    FUN_80031470(2,param_1 + 0x2c,0,param_1 + 0x68);
+    Audio_PlaySoundEffect(0xe,0,0);
+    Entity_SpawnSpecial(2,param_1 + 0x2c,0,param_1 + 0x68);
   }
   return;
 }

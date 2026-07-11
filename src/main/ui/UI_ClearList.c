@@ -6,7 +6,7 @@
 
 
 
-void FUN_8004ee2c(s32 *param_1)
+void UI_ClearList(s32 *param_1)
 
 {
   int iVar1;

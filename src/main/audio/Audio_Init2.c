@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8008dfa0(void)
+void Audio_Init2(void)
 
 {
   s16 uVar1;
@@ -30,7 +30,7 @@ void FUN_8008dfa0(void)
     *puVar6 = uVar1;
     puVar6 = puVar6 + 1;
   } while (iVar3 < 0x10);
-  FUN_80093650(0x18);
+  Audio_SeqData(0x18);
   iVar7 = 0;
   iVar3 = -0x7fefb350;
   do {

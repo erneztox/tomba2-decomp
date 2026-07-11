@@ -6,7 +6,7 @@
 
 
 
-void FUN_8007acc4(void)
+void Entity_ClearPool5(void)
 
 {
   u8 *puVar1;
@@ -15,7 +15,7 @@ void FUN_8007acc4(void)
   iVar2 = 0;
   puVar1 = &DAT_80100400;
   do {
-    FUN_8009a420(puVar1,0,0x4c);
+    Mem_Set(puVar1,0,0x4c);
     iVar2 = iVar2 + 1;
     puVar1 = puVar1 + 0x4c;
   } while (iVar2 < 8);

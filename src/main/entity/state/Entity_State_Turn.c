@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_80064ba0(int param_1)
+void Entity_State_Turn(int param_1)
 
 {
   u8 bVar1;
@@ -23,14 +23,14 @@ void FUN_80064ba0(int param_1)
       if (bVar1 != 2) {
         return;
       }
-      FUN_8006483c(param_1,0);
+      Entity_State_Wall(param_1,0);
       if (param_1->collision_state == '\0') {
         if (0x2800 < param_1->velocity_y) {
           param_1->anim_counter = 0;
           param_1->state_ptr = 0;
           param_1->action_flag = 0;
           param_1->angle_offset = param_1->velocity_y;
-          FUN_80056d44(param_1,0);
+          Entity_ResetActionState(param_1,0);
           param_1->velocity_y = param_1->angle_offset;
         }
       }
@@ -43,19 +43,19 @@ void FUN_80064ba0(int param_1)
         param_1->sub_action = 0;
         param_1->anim_counter = 0;
         param_1->state_flag145 = 0;
-        FUN_8005314c();
+        Entity_StateDispatch();
         param_1->behavior_state = 2;
         param_1->action_state = 2;
-        FUN_80054d14(param_1,0x17,1);
+        Entity_LoadAnimIfChanged(param_1,0x17,1);
       }
-      FUN_800551c4(param_1);
+      Entity_State_Physics(param_1);
       return;
     }
     if (bVar1 != 0) {
       return;
     }
     param_1->type_flags = 0;
-    FUN_80054d14(param_1,0x1a,0);
+    Entity_LoadAnimIfChanged(param_1,0x1a,0);
     *(u8 *)(param_1 + 0x169) = 0x18;
     param_1->sub_action = 0;
     *(u8 *)(param_1 + 0x168) = 1;
@@ -64,13 +64,13 @@ void FUN_80064ba0(int param_1)
       param_1->action_flag = 0;
       param_1->state_ptr = 0;
       *(s16 *)(param_1 + 0x32) = param_1->draw_pos_y + *(s16 *)(param_1 + 100);
-      FUN_80056d44(param_1,0);
+      Entity_ResetActionState(param_1,0);
       return;
     }
   }
   iVar2 = param_1->state_ptr;
   if (iVar2 == 1) {
-    local_18 = FUN_800634a8(param_1);
+    local_18 = Entity_CalcMovePos(param_1);
   }
   else {
     switch(g_GameState) {
@@ -111,7 +111,7 @@ void FUN_80064ba0(int param_1)
     }
     param_1->action_flag = 0;
     param_1->state_ptr = 0;
-    FUN_80056d44(param_1,0);
+    Entity_ResetActionState(param_1,0);
   }
   return;
 }

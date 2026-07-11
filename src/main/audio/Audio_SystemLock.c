@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80090bd0(void)
+void Audio_SystemLock(void)
 
 {
   int iVar1;
@@ -22,7 +22,7 @@ void FUN_80090bd0(void)
   if (_DAT_80104c24 != 1) {
     _DAT_80104c24 = 1;
     uVar6 = 0;
-    FUN_800931c0();
+    Audio_Main();
     if (0 < _DAT_801054b0) {
       piVar7 = (int *)&g_AudioChannels;
       do {
@@ -33,28 +33,28 @@ void FUN_80090bd0(void)
           do {
             iVar2 = iVar3 >> 0x10;
             if ((*(uint *)(iVar1 + *piVar7 + 0x98) & 1) != 0) {
-              FUN_800910f0(iVar4,iVar2);
+              Audio_Cmd4(iVar4,iVar2);
               if ((*(uint *)(iVar1 + *piVar7 + 0x98) & 0x10) != 0) {
-                FUN_80090e40(iVar4,iVar2);
+                Audio_VoiceSet(iVar4,iVar2);
               }
               if ((*(uint *)(iVar1 + *piVar7 + 0x98) & 0x20) != 0) {
-                FUN_80090e40(iVar4,iVar2);
+                Audio_VoiceSet(iVar4,iVar2);
               }
               if ((*(uint *)(iVar1 + *piVar7 + 0x98) & 0x40) != 0) {
-                FUN_80092080(iVar4,iVar2);
+                Audio_SeqCmd_2(iVar4,iVar2);
               }
               if ((*(uint *)(iVar1 + *piVar7 + 0x98) & 0x80) != 0) {
-                FUN_80092080(iVar4,iVar2);
+                Audio_SeqCmd_2(iVar4,iVar2);
               }
             }
             if ((*(uint *)(iVar1 + *piVar7 + 0x98) & 2) != 0) {
-              FUN_80091050(iVar4,iVar2);
+              Audio_InitChannel(iVar4,iVar2);
             }
             if ((*(uint *)(iVar1 + *piVar7 + 0x98) & 8) != 0) {
-              FUN_80091910(iVar4,iVar2);
+              Audio_EnableChannel(iVar4,iVar2);
             }
             if ((*(uint *)(iVar1 + *piVar7 + 0x98) & 4) != 0) {
-              FUN_80091970(iVar4,iVar2);
+              Audio_ChannelKey(iVar4,iVar2);
               *(s32 *)(iVar1 + *piVar7 + 0x98) = 0;
             }
             iVar3 = iVar3 + 0x10000;

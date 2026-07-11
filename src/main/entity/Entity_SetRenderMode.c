@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s16 FUN_80052144(u8 param_1,s16 param_2)
+s16 Entity_SetRenderMode(u8 param_1,s16 param_2)
 
 {
   s16 uVar1;

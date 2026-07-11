@@ -1,5 +1,5 @@
 /**
- * @brief Triggers event: entity->sub_state state, checks entity[0x72/0x74] conditions, calls FUN_80042728
+ * @brief Triggers event: entity->sub_state state, checks entity[0x72/0x74] conditions, calls Game_CheckIdle
  * @note Original: func_80042758 at 0x80042758
  */
 // Entity_TriggerEvent
@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80042758(int param_1)
+s32 Entity_TriggerEvent(int param_1)
 
 {
   s32 uVar1;
@@ -15,7 +15,7 @@ s32 FUN_80042758(int param_1)
   
   if (param_1->sub_state == '\0') {
     if (-1 < param_1->event_id) {
-      iVar2 = FUN_80040b48();
+      iVar2 = Event_TriggerCollectible();
       if (iVar2 != 1) {
         return 1;
       }
@@ -29,7 +29,7 @@ s32 FUN_80042758(int param_1)
   else {
     uVar1 = 0;
     if (param_1->sub_state == '\x01') {
-      uVar1 = FUN_80042728();
+      uVar1 = Game_CheckIdle();
     }
   }
   return uVar1;

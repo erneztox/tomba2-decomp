@@ -6,14 +6,14 @@
 
 
 
-s32 FUN_80023548(s32 param_1,s32 param_2)
+s32 Entity_SpawnIfClear(s32 param_1,s32 param_2)
 
 {
   int iVar1;
   
-  iVar1 = FUN_8001f40c(param_1,param_2,1);
+  iVar1 = Entity_CalcPos(param_1,param_2,1);
   if (-1 < iVar1) {
-    FUN_8001ff7c(param_1,param_2,iVar1,1);
+    Entity_MoveTo(param_1,param_2,iVar1,1);
   }
   return -1 < iVar1;
 }

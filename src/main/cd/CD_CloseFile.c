@@ -6,20 +6,20 @@
 
 
 
-void FUN_8008cd40(void)
+void CD_CloseFile(void)
 
 {
-  FUN_80080890();
+  BIOS_Syscall0();
   if (DAT_800abfdc == 1) {
-    FUN_8009d06c(0);
-    FUN_8009d044(0);
+    Sys_RegisterEvent3(0);
+    Game_SwapGlobal(0);
   }
   else {
-    FUN_80089fc8(0);
-    FUN_80089b98(0);
+    CD_SetTimerCallback(0);
+    CD_SetErrorCallback(0);
   }
   *DAT_800ac334 = 0;
   *DAT_800ac340 = 0;
-  FUN_800808a0();
+  BIOS_Syscall0_2();
   return;
 }

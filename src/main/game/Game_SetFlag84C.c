@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80043b88(s32 param_1,s8 param_2)
+s32 Game_SetFlag84C(s32 param_1,s8 param_2)
 
 {
   DAT_800bf84c = param_2 != '\0';

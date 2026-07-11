@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s16 * FUN_80085cb4(void)
+s16 * CD_CallbackDispatch2(void)
 
 {
   s16 *puVar1;
@@ -23,21 +23,21 @@ s16 * FUN_80085cb4(void)
     *DAT_800abda8 = 0;
     *puVar1 = *puVar2;
     *DAT_800abdac = 0x33333333;
-    FUN_800861bc(&DAT_800aad18,0x41a);
-    iVar4 = FUN_8009ba10(&DAT_800aad50);
+    Mem_Zero(&DAT_800aad18,0x41a);
+    iVar4 = BIOS_Handler(&DAT_800aad50);
     if (iVar4 != 0) {
-      FUN_80085d8c();
+      CD_InterruptHandler();
     }
     DAT_800aad54 = &DAT_800abd30;
-    FUN_80086220(&DAT_800aad50);
+    BIOS_Syscall_B0_80086220(&DAT_800aad50);
     DAT_800aad18 = 1;
-    uVar5 = FUN_80086230();
+    uVar5 = CD_InitRead();
     PTR_PTR_800abda0->script_ptr = uVar5;
-    uVar5 = FUN_80086350();
+    uVar5 = CD_InitSeek();
     *(s32 *)(PTR_PTR_800abda0 + 4) = uVar5;
-    FUN_800861e8();
+    BIOS_CallA0();
     puVar3 = &DAT_800aad18;
-    FUN_800808a0();
+    BIOS_Syscall0_2();
   }
   return puVar3;
 }

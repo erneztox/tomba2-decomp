@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8006b1fc(int param_1)
+void Entity_Behavior_Fall(int param_1)
 
 {
   s16 sVar1;

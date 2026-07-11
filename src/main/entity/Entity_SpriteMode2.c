@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80067ef4(int param_1)
+void Entity_SpriteMode2(int param_1)
 
 {
   u16 uVar1;
@@ -56,6 +56,6 @@ switchD_80067f24_caseD_1:
     param_1->entity_flags = param_1->entity_flags | 0x8000;
   }
   _DAT_800bf89e = param_1->entity_flags;
-  FUN_80024e00(0x800ed058);
+  Entity_SpriteConfig(0x800ed058);
   return;
 }

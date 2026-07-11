@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8006c80c(void)
+void Camera_Border(void)
 
 {
   switch(g_GameState) {

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80089508(int param_1)
+void MDEC_DecodeStep(int param_1)
 
 {
   u8 bVar1;

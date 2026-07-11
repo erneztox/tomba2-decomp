@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-int FUN_80072f14(int param_1)
+int Entity_RotateLimb(int param_1)
 
 {
   u16 uVar1;
@@ -29,7 +29,7 @@ int FUN_80072f14(int param_1)
   iVar2 = 1;
 LAB_80072f94:
   if ((iVar2 != 0) && (param_1->combat_flag != '\0')) {
-    FUN_80074590(0x18,0,0xf);
+    Audio_PlaySoundEffect(0x18,0,0xf);
   }
   param_1->rot_y = param_1->target_rot_y - param_1->angle_offset;
   return iVar2;

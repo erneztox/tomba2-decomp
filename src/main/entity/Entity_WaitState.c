@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_800424f0(int param_1)
+s32 Entity_WaitState(int param_1)
 
 {
   s32 local_18;
@@ -17,12 +17,12 @@ s32 FUN_800424f0(int param_1)
       return 1;
     }
     if ((*(u16 *)(param_1 + 0x76) & 4) == 0) {
-      FUN_80070724(param_1->event_id & 0xfff,(int)param_1->event_param,
+      Entity_SetCombatFlags(param_1->event_id & 0xfff,(int)param_1->event_param,
                    (int)(s16)*(u16 *)(param_1 + 0x76));
     }
     else {
       local_18 = CONCAT22(*(s16 *)(param_1 + 100),(s16)local_18);
-      FUN_8007074c(param_1->event_id & 0xfff,(int)param_1->event_param,
+      Entity_SetCombatFlagsEx(param_1->event_id & 0xfff,(int)param_1->event_param,
                    (int)*(s16 *)(param_1 + 0x76),local_18);
     }
     if (((int)param_1->event_id & 0x8000U) != 0) {

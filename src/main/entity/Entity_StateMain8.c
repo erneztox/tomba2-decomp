@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80060544(int param_1,int param_2)
+void Entity_StateMain8(int param_1,int param_2)
 
 {
   u8 bVar1;
@@ -28,7 +28,7 @@ void FUN_80060544(int param_1,int param_2)
   case 10:
     param_1->sub_action = param_1->sub_action + '\x01';
     if (param_2 == 0) {
-      FUN_80060268(param_1);
+      Entity_StateInput(param_1);
     }
     sVar2 = param_1->anim_counter + 8;
     param_1->anim_counter = sVar2;
@@ -38,7 +38,7 @@ void FUN_80060544(int param_1,int param_2)
     iVar4 = (uint)param_1->sprite_x - (uint)param_1->anim_counter;
     param_1->sprite_x = (s16)iVar4;
     if (iVar4 * 0x10000 < 1) {
-      sVar2 = FUN_8006032c(param_1,param_2);
+      sVar2 = Entity_StateMachine2(param_1,param_2);
       if (sVar2 == 0) {
 LAB_800608b8:
         param_1->input_state = 4;
@@ -66,11 +66,11 @@ LAB_800606b0:
       iVar4 = (uint)param_1->sprite_x - (uint)param_1->anim_counter;
       param_1->sprite_x = (s16)iVar4;
       if (0 < iVar4 * 0x10000) break;
-      sVar2 = FUN_8006032c(param_1,param_2);
+      sVar2 = Entity_StateMachine2(param_1,param_2);
       goto joined_r0x800608ac;
     }
-    FUN_80060268(param_1);
-    iVar4 = FUN_8006042c(param_1);
+    Entity_StateInput(param_1);
+    iVar4 = Entity_CheckState3(param_1);
     if (iVar4 == 0) goto LAB_800606b0;
     iVar4 = (int)param_1->sprite_x;
     if (iVar4 < 0) {
@@ -108,8 +108,8 @@ LAB_800607a0:
       param_1->sprite_x = param_1->sprite_x - param_1->anim_counter;
       break;
     }
-    FUN_80060268(param_1);
-    iVar4 = FUN_8006042c(param_1);
+    Entity_StateInput(param_1);
+    iVar4 = Entity_CheckState3(param_1);
     if (iVar4 == 0) goto LAB_800607a0;
     param_1->anim_counter = 0x20;
     bVar1 = *(s8*)(param_1 + 0x168) - 4;
@@ -123,8 +123,8 @@ LAB_800608cc:
   case 3:
     param_1->input_state = 3;
     if (param_2 == 0) {
-      FUN_80060268(param_1);
-      iVar4 = FUN_8006042c(param_1);
+      Entity_StateInput(param_1);
+      iVar4 = Entity_CheckState3(param_1);
       if (iVar4 != 0) {
         iVar4 = (int)param_1->sprite_x;
         if (iVar4 < 0) {
@@ -150,15 +150,15 @@ LAB_800608cc:
     uVar3 = param_1->sprite_x + param_1->anim_counter;
     param_1->sprite_x = uVar3;
     if ((int)((uint)uVar3 << 0x10) < 0) break;
-    sVar2 = FUN_8006032c(param_1,param_2);
+    sVar2 = Entity_StateMachine2(param_1,param_2);
 joined_r0x800608ac:
     if (sVar2 != 0) goto LAB_800608cc;
     goto LAB_800608b8;
   case 4:
     param_1->input_state = 1;
     if (param_2 == 0) {
-      FUN_80060268(param_1);
-      iVar4 = FUN_8006042c(param_1);
+      Entity_StateInput(param_1);
+      iVar4 = Entity_CheckState3(param_1);
       if (iVar4 != 0) {
         param_1->anim_counter = 0x20;
         bVar1 = *(s8*)(param_1 + 0x168) - 4;
@@ -185,7 +185,7 @@ joined_r0x800608ac:
     param_1->sprite_x = 0;
     param_1->input_state = 4;
     if (param_2 == 0) {
-      iVar4 = FUN_80060268(param_1);
+      iVar4 = Entity_StateInput(param_1);
       if (iVar4 == 1) {
         *(u8 *)(param_1 + 0x168) = 3;
         if (g_State237 == param_1->direction) {
@@ -213,6 +213,6 @@ joined_r0x800608ac:
   else {
     param_1->rot_z = -param_1->sprite_x;
   }
-  FUN_80063b94(param_1,1);
+  Entity_StateMain4(param_1,1);
   return;
 }

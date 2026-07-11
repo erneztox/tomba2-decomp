@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-int FUN_800537b8(int param_1,int param_2,u8 param_3)
+int Entity_BGSpawn(int param_1,int param_2,u8 param_3)
 
 {
   s32 *puVar1;
@@ -17,7 +17,7 @@ int FUN_800537b8(int param_1,int param_2,u8 param_3)
   int iVar5;
   int iVar6;
   
-  iVar4 = FUN_8007ab20();
+  iVar4 = Entity_AllocBackground03();
   iVar6 = 0;
   if (iVar4 == 0) {
     iVar4 = 0;
@@ -28,7 +28,7 @@ int FUN_800537b8(int param_1,int param_2,u8 param_3)
     iVar4->anim_id = uVar2;
     uVar3 = param_1->rot_y;
     iVar4->rot_z = 0;
-    iVar4->callback = FUN_80068fbc;
+    iVar4->callback = Entity_BehaviorSet3;
     iVar4->rot_y = uVar3;
     uVar2 = param_1->collision_dir;
     iVar4->kind = 0;

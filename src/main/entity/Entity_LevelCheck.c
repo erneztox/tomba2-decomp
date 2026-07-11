@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800531dc(int param_1)
+void Entity_LevelCheck(int param_1)
 
 {
   if (g_GameState == GAMESTATE_LEVEL) {

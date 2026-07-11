@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80043d8c(int param_1,s8 param_2)
+s32 Entity_StateTrigger(int param_1,s8 param_2)
 
 {
   u8 bVar1;

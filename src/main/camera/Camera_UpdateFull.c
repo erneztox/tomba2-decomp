@@ -6,12 +6,12 @@
 
 
 
-void FUN_8006e360(s32 param_1,s32 param_2)
+void Camera_UpdateFull(s32 param_1,s32 param_2)
 
 {
-  FUN_8006d654();
-  FUN_8006d934(param_1,param_2);
-  FUN_8006d950(param_1,param_2);
-  FUN_8006d02c(param_1);
+  Camera_ModeMain();
+  Camera_SetFOV(param_1,param_2);
+  Camera_SetRoll(param_1,param_2);
+  Camera_Commit(param_1);
   return;
 }

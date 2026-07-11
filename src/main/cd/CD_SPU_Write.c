@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80098d30(uint *param_1)
+s32 CD_SPU_Write(uint *param_1)
 
 {
   uint uVar1;

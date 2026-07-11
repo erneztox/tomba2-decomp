@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8003fe00(int param_1,int param_2)
+void Entity_AnimMode(int param_1,int param_2)
 
 {
   u8 bVar1;
@@ -30,7 +30,7 @@ void FUN_8003fe00(int param_1,int param_2)
   param_1->state = 1;
   if ((&DAT_800bfab4)[param_2] == '\0') {
     param_1->behavior_state = 1;
-    FUN_8004ed94(0x2b,0x41);
+    UI_DrawElement(0x2b,0x41);
   }
   else {
     param_1->behavior_state = 2;

@@ -6,7 +6,7 @@
 
 
 
-void FUN_8006c77c(void)
+void Engine_DispatchInit(void)
 
 {
   if (g_GameState != 3) {

@@ -6,11 +6,11 @@
 
 
 
-s32 FUN_80089fa8(void)
+s32 CD_CheckReady(void)
 
 {
   int iVar1;
   
-  iVar1 = FUN_8008b720();
+  iVar1 = CD_ReadSector();
   return iVar1 == 0;
 }

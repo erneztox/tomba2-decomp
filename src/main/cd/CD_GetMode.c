@@ -6,7 +6,7 @@
 
 
 
-u8 FUN_80089a00(void)
+u8 CD_GetMode(void)
 
 {
   return (u8)DAT_800abfc8;

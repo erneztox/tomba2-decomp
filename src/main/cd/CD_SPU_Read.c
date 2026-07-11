@@ -6,7 +6,7 @@
 
 
 
-void FUN_80096e70(s16 *param_1,uint param_2)
+void CD_SPU_Read(s16 *param_1,uint param_2)
 
 {
   u16 *puVar1;
@@ -20,7 +20,7 @@ void FUN_80096e70(s16 *param_1,uint param_2)
   puVar1 = (u16 *)(g_SPU_Regs + 0x1ae);
   *(s16 *)(g_SPU_Regs + 0x1a6) = DAT_800ac61c;
   uVar7 = *puVar1 & 0x7ff;
-  FUN_800976c8();
+  MC_Stop();
   iVar3 = g_SPU_Regs;
   do {
     g_SPU_Regs = iVar3;
@@ -30,7 +30,7 @@ void FUN_80096e70(s16 *param_1,uint param_2)
         uVar6 = 1;
         do {
           if (0xf00 < uVar6) {
-            FUN_8009a730(s_SPU_T_O___s__8001c670,s_wait__dmaf_clear_W__8001c6a4);
+            Debug_Printf(s_SPU_T_O___s__8001c670,s_wait__dmaf_clear_W__8001c6a4);
             return;
           }
           uVar6 = uVar6 + 1;
@@ -52,20 +52,20 @@ void FUN_80096e70(s16 *param_1,uint param_2)
       } while (iVar4 < (int)uVar6);
     }
     *(u16 *)(g_SPU_Regs + 0x1aa) = *(u16 *)(g_SPU_Regs + 0x1aa) & 0xffcf | 0x10;
-    FUN_800976c8();
+    MC_Stop();
     if ((*(u16 *)(g_SPU_Regs + 0x1ae) & 0x400) != 0) {
       uVar5 = 1;
       do {
         if (0xf00 < uVar5) {
-          FUN_8009a730(s_SPU_T_O___s__8001c670,s_wait__wrdy_H__>_L__8001c690);
+          Debug_Printf(s_SPU_T_O___s__8001c670,s_wait__wrdy_H__>_L__8001c690);
           break;
         }
         uVar5 = uVar5 + 1;
       } while ((*(u16 *)(g_SPU_Regs + 0x1ae) & 0x400) != 0);
     }
     param_2 = param_2 - uVar6;
-    FUN_800976c8();
-    FUN_800976c8();
+    MC_Stop();
+    MC_Stop();
     iVar3 = g_SPU_Regs;
   } while( true );
 }

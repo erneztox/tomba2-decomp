@@ -6,9 +6,9 @@
 
 
 
-void FUN_80045558(u8 param_1)
+void CD_CallbackStub(u8 param_1)
 
 {
-  FUN_80045080(0x8018a000,param_1);
+  CD_LoadChunk(0x8018a000,param_1);
   return;
 }

@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8002b3a4(int param_1)
+void Entity_DrawSprite6(int param_1)
 
 {
   s32 bVar1;
@@ -31,11 +31,11 @@ void FUN_8002b3a4(int param_1)
   int local_30;
   
   if (param_1->scale_y != 0) {
-    FUN_80085480(param_1 + 0x48,0x1f800000);
+    GTE_LoadRotMatrixFromSVec(param_1 + 0x48,0x1f800000);
     local_38 = (uint)DAT_800a1cd4 << 2;
     local_34 = (uint)DAT_800a1cd5 << 2;
     local_30 = (uint)DAT_800a1cd6 << 2;
-    FUN_80084520(0x1f800000,&local_38);
+    GTE_TransformVec(0x1f800000,&local_38);
     setCopControlWord(2,0,_g_GTE_WorkF8);
     setCopControlWord(2,0x800,_DAT_1f8000fc);
     setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -93,9 +93,9 @@ void FUN_8002b3a4(int param_1)
     iVar9 = 0;
     uVar3 = uVar4;
     do {
-      iVar2 = FUN_80083f50(iVar9);
+      iVar2 = Math_CosGTE(iVar9);
       _g_GTE_WorkC0 = CONCAT22(_DAT_1f8000c2,(s16)((uint)(iVar2 * 0x19) >> 4));
-      iVar9 = FUN_80083e80(iVar9);
+      iVar9 = Math_Cos(iVar9);
       _g_GTE_WorkC4 = CONCAT22(g_GTE_WorkC4_2,(s16)((uint)(iVar9 * 0x19) >> 4));
       setCopReg(2,in_zero,_g_GTE_WorkC0);
       setCopReg(2,extraout_at_00,_g_GTE_WorkC4);
@@ -126,7 +126,7 @@ void FUN_8002b3a4(int param_1)
       }
       if (!bVar1) {
         _DAT_1f800088 = _g_GTE_Work84;
-        uVar3 = FUN_80027a4c(uVar4,*(s32 *)(param_1 + 0x44));
+        uVar3 = Entity_ProcessAnimFrame(uVar4,*(s32 *)(param_1 + 0x44));
       }
       iVar10 = iVar10 + 1;
       iVar9 = iVar10 * 0x400;

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-uint FUN_800939a0(uint param_1,s16 param_2,s16 param_3,s16 param_4,u16 param_5,
+uint Audio_SeqCommand(uint param_1,s16 param_2,s16 param_3,s16 param_4,u16 param_5,
                  u8 param_6)
 
 {
@@ -32,7 +32,7 @@ uint FUN_800939a0(uint param_1,s16 param_2,s16 param_3,s16 param_4,u16 param_5,
   iVar10 = *(int *)(&g_AudioChannels + (param_1 & 0xff) * 4) +
            ((int)((int)sVar2 & 0xff00U) >> 8) * 0xb0;
   local_38 = param_3;
-  iVar4 = FUN_800962b0((int)param_2,(int)param_3);
+  iVar4 = CD_CheckSlot((int)param_2,(int)param_3);
   uVar6 = 0xffffffff;
   if (iVar4 == 0) {
     DAT_80105cfa = (u8)param_4;
@@ -54,10 +54,10 @@ uint FUN_800939a0(uint param_1,s16 param_2,s16 param_3,s16 param_4,u16 param_5,
     _DAT_80105d0c = sVar2;
     if ((int)DAT_80105cff < (int)(uint)_DAT_80105ce4->flags) {
       if (param_5 == 0) {
-        uVar6 = FUN_80093ebc((int)sVar2,(int)param_2,(int)local_38,param_4);
+        uVar6 = Audio_ChannelEvent((int)sVar2,(int)param_2,(int)local_38,param_4);
       }
       else {
-        bVar1 = FUN_80095c40(local_b8,local_138);
+        bVar1 = Audio_PollChannel(local_b8,local_138);
         bVar9 = 0;
         uVar6 = 0;
         if (bVar1 != 0) {
@@ -74,7 +74,7 @@ uint FUN_800939a0(uint param_1,s16 param_2,s16 param_3,s16 param_4,u16 param_5,
             DAT_80105d08 = pcVar7->flags;
             DAT_80105d09 = pcVar7->flags;
             DAT_80105d0a = pcVar7->flags;
-            uVar8 = FUN_80094150(0);
+            uVar8 = Audio_SeqEvent(0);
             uVar8 = uVar8 & 0xff;
             _DAT_80105d10 = (s16)uVar8;
             if ((int)uVar8 < (int)DAT_80105cec) {
@@ -94,13 +94,13 @@ uint FUN_800939a0(uint param_1,s16 param_2,s16 param_3,s16 param_4,u16 param_5,
               *(s16 *)(_DAT_80105d10 * 0x38 + -0x7fefab2a) = param_4;
               *(s16 *)(_DAT_80105d10 * 0x38 + -0x7fefab1e) = (s16)DAT_80105d07;
               *(u16 *)(_DAT_80105d10 * 0x38 + -0x7fefab38) = _DAT_80105d0e;
-              FUN_80092fd0();
+              Audio_VoiceUpdate();
               if (_DAT_80105d0e == 0xff) {
-                FUN_800945a0(DAT_80105d10);
+                Audio_SeqTimer2(DAT_80105d10);
               }
               else {
-                uVar3 = FUN_800943c0();
-                FUN_80094c10(bVar1,uVar3);
+                uVar3 = Audio_ClampParam();
+                Audio_SeqTime(bVar1,uVar3);
               }
               uVar6 = uVar6 | 1 << ((int)_DAT_80105d10 & 0x1fU);
             }

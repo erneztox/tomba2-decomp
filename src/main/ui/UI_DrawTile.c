@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8004ffb4(s16 *param_1,s32 param_2,u16 param_3,int param_4)
+void UI_DrawTile(s16 *param_1,s32 param_2,u16 param_3,int param_4)
 
 {
   u8 *puVar1;

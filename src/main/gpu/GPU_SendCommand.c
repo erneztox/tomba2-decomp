@@ -6,7 +6,7 @@
 
 
 
-void FUN_80082bf0(uint param_1)
+void GPU_SendCommand(uint param_1)
 
 {
   *DAT_800a5aa8 = param_1;

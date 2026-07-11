@@ -7,7 +7,7 @@
 
 
 
-void FUN_800846f0(s32 param_1)
+void GTE_SetReg_D000(s32 param_1)
 
 {
   setCopControlWord(2,0xd000,param_1);

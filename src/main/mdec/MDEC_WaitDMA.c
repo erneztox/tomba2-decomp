@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_8008732c(void)
+s32 MDEC_WaitDMA(void)
 
 {
   u16 uVar1;
@@ -21,7 +21,7 @@ s32 FUN_8008732c(void)
       *(u16 *)(DAT_800abe9c + 10) = *(u16 *)(DAT_800abe9c + 10) | 0x10;
       return 1;
     }
-    iVar2 = FUN_80089640();
+    iVar2 = MDEC_WaitVSync();
     if (iVar2 != 0) break;
     uVar1 = *(u16 *)(DAT_800abe9c + 4);
   }

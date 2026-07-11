@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_80080424(u8 *param_1)
+void Entity_BehaviorType6(u8 *param_1)
 
 {
   s32 bVar1;
@@ -24,7 +24,7 @@ void FUN_80080424(u8 *param_1)
   if (bVar2 == 1) {
     if (g_ActionMode != '\0') {
       param_1->collision_state = 0;
-      FUN_8007778c(param_1);
+      GTE_ProjectSprite2(param_1);
       return;
     }
     bVar2 = param_1->action_state;
@@ -46,7 +46,7 @@ void FUN_80080424(u8 *param_1)
       *param_1 = 2;
     }
     if (bVar1) {
-      FUN_8007778c(param_1);
+      GTE_ProjectSprite2(param_1);
     }
     if (param_1->sub_type != '\x01') {
       if (param_1->sub_type != '\x02') {
@@ -61,7 +61,7 @@ void FUN_80080424(u8 *param_1)
          *(s16 *)(param_1 + 0x32) + (s16)(char)((u16)param_1->velocity_y >> 8);
     param_1->velocity_y = param_1->velocity_y + param_1->angle_offset;
     if (param_1->collision_state == '\0') {
-      iVar5 = FUN_80049250(param_1,0,0x32);
+      iVar5 = Collision_Check1(param_1,0,0x32);
     }
     else {
       iVar5 = 1;
@@ -80,10 +80,10 @@ void FUN_80080424(u8 *param_1)
   else {
     if (1 < bVar2) {
       if (bVar2 == 2) {
-        iVar5 = FUN_80040b48(0x81);
+        iVar5 = Event_TriggerCollectible(0x81);
         if (-1 < iVar5) {
-          FUN_8004d4c4(0x76,1);
-          FUN_8004b0d8(param_1);
+          Inventory_AddItemEx(0x76,1);
+          Entity_SpawnScorePopup(param_1);
         }
         param_1->state = STATE_DEAD;
         return;
@@ -91,7 +91,7 @@ void FUN_80080424(u8 *param_1)
       if (bVar2 != 3) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar2 != 0) {
@@ -105,9 +105,9 @@ void FUN_80080424(u8 *param_1)
     param_1->counter1 = 0;
     param_1->draw_y = 0;
     param_1->sprite_data = uVar4;
-    FUN_80077b38(param_1,&PTR_DAT_80017334,0x162);
+    Entity_LoadAnimData(param_1,&PTR_DAT_80017334,0x162);
     param_1->sub_anim_id = 0;
-    FUN_8004766c(param_1);
+    Entity_PhysicsStep(param_1);
     param_1->bounds_min_x = 0x1e;
     param_1->bounds_size = 0x3c;
     param_1->bounds_min_y = 0x3c;

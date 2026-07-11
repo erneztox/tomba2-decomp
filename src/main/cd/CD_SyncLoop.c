@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_8008c960(s32 param_1,s32 param_2,uint param_3)
+s32 CD_SyncLoop(s32 param_1,s32 param_2,uint param_3)
 
 {
   int iVar1;
@@ -14,12 +14,12 @@ s32 FUN_8008c960(s32 param_1,s32 param_2,uint param_3)
   uint uVar3;
   
   if (g_CD_Event != 0) {
-    iVar1 = FUN_80085900(0xffffffff);
+    iVar1 = Timer_GetCounter(0xffffffff);
     do {
       if (g_CD_Event == 0) goto LAB_8008c9dc;
-      iVar2 = FUN_80085900(0xffffffff);
+      iVar2 = Timer_GetCounter(0xffffffff);
     } while ((uint)(iVar2 - iVar1) < 0x79);
-    FUN_80089b84(g_CD_Param);
+    CD_SetEventCallback(g_CD_Param);
     g_CD_Event = 0;
   }
 LAB_8008c9dc:
@@ -35,16 +35,16 @@ LAB_8008c9dc:
   DAT_800ac2f0 = param_3 | 0x20;
   DAT_800ac2e4 = param_1;
   DAT_800ac2e8 = param_2;
-  g_CD_Param = FUN_80089b84(0);
-  DAT_800ac310 = FUN_80089b98(0);
+  g_CD_Param = CD_SetEventCallback(0);
+  DAT_800ac310 = CD_SetErrorCallback(0);
   if ((DAT_800abf28 & 1) != 0) {
-    DAT_800ac314 = FUN_80089fc8(0);
+    DAT_800ac314 = CD_SetTimerCallback(0);
   }
-  g_CD_SeekPos = FUN_80085900(0xffffffff);
-  uVar3 = FUN_80089a00();
+  g_CD_SeekPos = Timer_GetCounter(0xffffffff);
+  uVar3 = CD_GetMode();
   if ((uVar3 & 0xe0) != 0) {
-    FUN_80089e1c(9,0,0);
+    CD_CmdRetry(9,0,0);
   }
-  iVar1 = FUN_8008c5d8(0);
+  iVar1 = CD_EventHandler(0);
   return 0 < iVar1;
 }

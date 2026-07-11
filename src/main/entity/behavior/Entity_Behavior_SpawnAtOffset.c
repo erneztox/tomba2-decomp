@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800538e0(int param_1,int param_2,int param_3)
+void Entity_Behavior_SpawnAtOffset(int param_1,int param_2,int param_3)
 
 {
   u16 uVar1;
@@ -22,7 +22,7 @@ void FUN_800538e0(int param_1,int param_2,int param_3)
     local_16 = *(s16 *)(param_2 + 2);
     local_12 = *(s16 *)(param_2 + 6) + param_1->bounds_min_y;
     local_e = *(s16 *)(param_2 + 10);
-    iVar2 = FUN_8003116c(0x35,auStack_18,0xffffffa6);
+    iVar2 = Entity_SpawnWithPos(0x35,auStack_18,0xffffffa6);
     if (iVar2 != 0) {
       iVar2->alloc_flags = iVar2->alloc_flags | 0x80;
     }

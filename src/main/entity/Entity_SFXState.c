@@ -6,7 +6,7 @@
 
 
 
-void FUN_8006f04c(void)
+void Entity_SFXState(void)
 
 {
   uint uVar1;
@@ -29,9 +29,9 @@ void FUN_8006f04c(void)
     goto LAB_8006f0d4;
   case 7:
   case 8:
-    FUN_8006f02c(uVar1);
+    Game_SetFlag2(uVar1);
   }
-  FUN_8006f00c(uVar1);
+  Game_SetEventFlag(uVar1);
 LAB_8006f0d4:
   g_SFXState = 0;
   return;

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8002ef58(int param_1)
+void Entity_DrawBehavior(int param_1)
 
 {
   u8 bVar1;
@@ -28,7 +28,7 @@ void FUN_8002ef58(int param_1)
       if (3 < bVar1) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar1 != 0) {
@@ -47,8 +47,8 @@ void FUN_8002ef58(int param_1)
     param_1->state = STATE_FINISH;
   }
   else {
-    iVar5 = FUN_80083f50((int)param_1->sprite_x);
-    iVar6 = FUN_80083e80(0x400 - ((int)((uint)param_1->sprite_x << 0x10) >> 0x11));
+    iVar5 = Math_CosGTE((int)param_1->sprite_x);
+    iVar6 = Math_Cos(0x400 - ((int)((uint)param_1->sprite_x << 0x10) >> 0x11));
     param_1->pos_x =
          param_1->angle_offset +
          (s16)((int)param_1->rot_z * (0x1000 - iVar5) >> 0xc);
@@ -60,7 +60,7 @@ void FUN_8002ef58(int param_1)
     iVar6 = (int)param_1->sprite_x;
     iVar5 = 0;
     if (6 < DAT_800e7e7c) {
-      iVar7 = FUN_8007a980(0,6,1);
+      iVar7 = Entity_AllocByPoolId(0,6,1);
       iVar5 = 0;
       if (iVar7 != 0) {
         if (param_1 != -0x2c) {
@@ -69,7 +69,7 @@ void FUN_8002ef58(int param_1)
           *(s16 *)(iVar7 + 0x30) = *(s16 *)(param_1 + 0x30);
         }
         *(s16 *)(iVar7 + 0x32) = 0xffd8;
-        FUN_80028e10(iVar7,0x21);
+        Entity_InitBehavior(iVar7,0x21);
         iVar5 = iVar7;
       }
     }
@@ -78,8 +78,8 @@ void FUN_8002ef58(int param_1)
       iVar7 = 0;
       puVar10 = iVar5->rot_y;
       do {
-        iVar8 = FUN_80083f50(iVar6);
-        iVar9 = FUN_80083e80(0x400 - (iVar6 >> 1));
+        iVar8 = Math_CosGTE(iVar6);
+        iVar9 = Math_Cos(0x400 - (iVar6 >> 1));
         *psVar11 = param_1->angle_offset +
                    (s16)((int)param_1->rot_z * (0x1000 - iVar8) >> 0xd);
         puVar10[-1] = param_1->rot_x +

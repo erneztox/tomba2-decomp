@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_800898a0(void)
+s32 CD_InitWithRetry(void)
 
 {
   int iVar1;
@@ -14,16 +14,16 @@ s32 FUN_800898a0(void)
   
   iVar2 = 4;
   do {
-    iVar1 = FUN_80089930();
+    iVar1 = CD_InitAttempt();
     if (iVar1 == 1) {
-      DAT_800abf24 = FUN_800899bc;
+      DAT_800abf24 = CD_Cmd_40b;
       DAT_800abf28 = 0;
-      DAT_800abfbc = FUN_8008996c;
-      DAT_800abfc0 = FUN_80089994;
+      DAT_800abfbc = CD_Cmd_20;
+      DAT_800abfc0 = CD_Cmd_40;
       return 1;
     }
     iVar2 = iVar2 + -1;
   } while (iVar2 != -1);
-  FUN_8009a730(s_CdInit__Init_failed_8001c0f0);
+  Debug_Printf(s_CdInit__Init_failed_8001c0f0);
   return 0;
 }

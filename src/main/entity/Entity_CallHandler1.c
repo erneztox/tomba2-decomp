@@ -6,9 +6,9 @@
 
 
 
-void FUN_8002421c(s32 param_1,s32 param_2)
+void Entity_CallHandler1(s32 param_1,s32 param_2)
 
 {
-  FUN_80023a04(param_1,param_2,1);
+  Entity_MoveTarget(param_1,param_2,1);
   return;
 }

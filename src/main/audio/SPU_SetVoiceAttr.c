@@ -6,7 +6,7 @@
 
 
 
-void FUN_8008ee10(s16 param_1,s16 param_2,u8 param_3)
+void SPU_SetVoiceAttr(s16 param_1,s16 param_2,u8 param_3)
 
 {
   s32 uVar1;
@@ -15,7 +15,7 @@ void FUN_8008ee10(s16 param_1,s16 param_2,u8 param_3)
   iVar2 = *(int *)(&g_AudioChannels + param_1 * 4) + param_2 * 0xb0;
   iVar2->flags = param_3;
   iVar2->flags = iVar2->flags + '\x01';
-  uVar1 = FUN_80090160();
+  uVar1 = Audio_AllocVoice();
   iVar2->flags = uVar1;
   return;
 }

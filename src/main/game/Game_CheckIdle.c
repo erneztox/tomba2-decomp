@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80042728(void)
+s32 Game_CheckIdle(void)
 
 {
   s32 uVar1;

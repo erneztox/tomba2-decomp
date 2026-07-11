@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-int FUN_80072ddc(s32 param_1,u8 param_2,s8 param_3,u8 param_4)
+int Entity_SpawnChild(s32 param_1,u8 param_2,s8 param_3,u8 param_4)
 
 {
   s32 bVar1;
@@ -17,7 +17,7 @@ int FUN_80072ddc(s32 param_1,u8 param_2,s8 param_3,u8 param_4)
   if (bVar1) {
     param_3 = '\x03';
   }
-  iVar2 = FUN_8007a980(param_2 & 0x7f,param_3,bVar1);
+  iVar2 = Entity_AllocByPoolId(param_2 & 0x7f,param_3,bVar1);
   if (iVar2 == 0) {
     iVar2 = 0;
   }

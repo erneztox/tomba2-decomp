@@ -6,9 +6,9 @@
 
 
 
-void FUN_800328bc(int param_1,s32 param_2)
+void Entity_ProcessAnimDirect(int param_1,s32 param_2)
 
 {
-  FUN_80027a4c(param_2,*(s32 *)(param_1 + 0x44));
+  Entity_ProcessAnimFrame(param_2,*(s32 *)(param_1 + 0x44));
   return;
 }

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80055f48(int param_1,int param_2)
+void Entity_SetAccel(int param_1,int param_2)
 
 {
   if ((param_1->game_flags & 0x30) == 0) {

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80066478(int param_1)
+void Entity_ApplyGravity(int param_1)
 
 {
   s16 sVar1;
@@ -17,11 +17,11 @@ void FUN_80066478(int param_1)
      (sVar1 = param_1->rot_z + 0x40, param_1->rot_z = sVar1, -0x200 < sVar1)
      ) {
     param_1->rot_z = 0xfe00;
-    FUN_80076d68();
+    Entity_AnimFrame();
   }
-  FUN_80056b48(param_1,1);
-  FUN_80055d5c(param_1);
-  FUN_800541f4(param_1,3);
+  Entity_ApplyVelocity(param_1,1);
+  Entity_PhysicsStep2(param_1);
+  Entity_SubState(param_1,3);
   uVar2 = param_1->velocity_y + 0x400;
   param_1->velocity_y = uVar2;
   if (0 < (int)((uint)uVar2 << 0x10)) {

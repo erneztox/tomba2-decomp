@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800655dc(int param_1)
+void Entity_StateEnd(int param_1)
 
 {
   u8 bVar1;
@@ -37,16 +37,16 @@ void FUN_800655dc(int param_1)
     else {
       _g_AngleInput = param_1->draw_angle - 0x800U & 0xfff;
     }
-    FUN_80054d14(param_1,2,0);
+    Entity_LoadAnimIfChanged(param_1,2,0);
   }
   uVar3 = (uint)_g_AngleInput;
-  sVar2 = FUN_800776f8(uVar3 & 0xfff,(int)param_1->rot_y,0x100);
+  sVar2 = Math_ApproachAngle_2(uVar3 & 0xfff,(int)param_1->rot_y,0x100);
   param_1->rot_y = sVar2;
   if ((int)sVar2 == (uVar3 & 0xfff)) {
     param_1->action_state = param_1->action_state + '\x01';
   }
 LAB_800656d4:
-  FUN_80076d68(param_1);
-  FUN_80065478(param_1,1);
+  Entity_AnimFrame(param_1);
+  Entity_SetActionFlag(param_1,1);
   return;
 }

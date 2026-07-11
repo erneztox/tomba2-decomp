@@ -1,5 +1,5 @@
 /**
- * @brief Collision wrapper 4: calls FUN_80046e2c with entity[0x56] as angle
+ * @brief Collision wrapper 4: calls Collision_CheckEnv with entity[0x56] as angle
  * @note Original: func_800495AC at 0x800495AC
  */
 // Entity_CollisionWrap4
@@ -7,9 +7,9 @@
 
 
 #include "tomba.h"
-void FUN_800495ac(int param_1,s16 param_2,s16 param_3)
+void Entity_CollisionWrap4(int param_1,s16 param_2,s16 param_3)
 
 {
-  FUN_80046e2c(param_1,(int)param_2,(int)param_3,(int)param_1->rot_y);
+  Collision_CheckEnv(param_1,(int)param_2,(int)param_3,(int)param_1->rot_y);
   return;
 }

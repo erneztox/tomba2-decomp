@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80099970(uint *param_1)
+void CD_XA_Main(uint *param_1)
 
 {
   s32 bVar1;
@@ -34,7 +34,7 @@ void FUN_80099970(uint *param_1)
         *puVar9 = (u16)param_1->action_state;
       }
       if ((bVar1) || ((uVar7 & 0x20) != 0)) {
-        uVar2 = FUN_80099f70(*puVar9 >> 8,*puVar9 & 0xff,*(u16 *)((int)param_1 + 0x16) >> 8,
+        uVar2 = CD_XA_Decode(*puVar9 >> 8,*puVar9 & 0xff,*(u16 *)((int)param_1 + 0x16) >> 8,
                              *(u16 *)((int)param_1 + 0x16) & 0xff);
         *(s16 *)(uVar8 * 0x10 + g_SPU_Regs + 4) = uVar2;
       }
@@ -117,10 +117,10 @@ void FUN_80099970(uint *param_1)
         *(u16 *)(uVar8 * 0x10 + g_SPU_Regs + 2) = uVar5 | uVar6;
       }
       if ((bVar1) || ((uVar7 & 0x80) != 0)) {
-        FUN_80097540(uVar8 << 3 | 3,param_1->sub_action);
+        CD_AlignDMA(uVar8 << 3 | 3,param_1->sub_action);
       }
       if ((bVar1) || ((uVar7 & 0x10000) != 0)) {
-        FUN_80097540(uVar8 << 3 | 7,param_1->counter1);
+        CD_AlignDMA(uVar8 << 3 | 7,param_1->counter1);
       }
       if ((bVar1) || ((uVar7 & 0x20000) != 0)) {
         *(s16 *)(uVar8 * 0x10 + g_SPU_Regs + 8) = *(s16 *)((int)param_1 + 0x3a);

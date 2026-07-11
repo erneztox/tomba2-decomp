@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_8009cb80(void)
+s32 MDEC_SyncOut(void)
 
 {
   uint uVar1;
@@ -22,6 +22,6 @@ s32 FUN_8009cb80(void)
     if (local_10 == -1) break;
     uVar1 = *g_CD_Control;
   }
-  FUN_8009cc2c(s_MDEC_out_sync_8001ca9c);
+  Sys_TimeoutError(s_MDEC_out_sync_8001ca9c);
   return 0xffffffff;
 }

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80026148(int param_1)
+s32 Entity_Behavior_Cutscene(int param_1)
 
 {
   u8 bVar1;
@@ -41,7 +41,7 @@ s32 FUN_80026148(int param_1)
       return 0;
     }
     param_1->state = 1;
-    FUN_8004ed94(0xb,0x40);
+    UI_DrawElement(0xb,0x40);
     *(s16 *)(param_1 + 0x10) = 0x10;
   }
   return 0;

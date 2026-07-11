@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80041098(int param_1)
+s32 Entity_ScriptRun(int param_1)
 
 {
   int iVar1;
@@ -24,7 +24,7 @@ s32 FUN_80041098(int param_1)
 LAB_80041150:
       uVar2 = 0;
 LAB_80041160:
-      iVar3 = FUN_80040fa0(param_1,uVar2);
+      iVar3 = Entity_ScriptStep(param_1,uVar2);
     }
     else if (iVar1 < 2) {
       if (iVar1 == 0) {

@@ -6,7 +6,7 @@
 
 
 
-void FUN_80088ae8(int param_1)
+void MDEC_CmdSetBS(int param_1)
 
 {
   param_1->state = 0x4b;

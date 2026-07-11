@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80072efc(int param_1)
+void Entity_CalcAngleDelta(int param_1)
 
 {
   param_1->rot_y = param_1->target_rot_y - param_1->angle_offset;

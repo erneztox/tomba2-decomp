@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006cc1c(int param_1,s16 *param_2,s16 param_3)
+void Camera_Smooth(int param_1,s16 *param_2,s16 param_3)
 
 {
   int iVar1;

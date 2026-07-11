@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800551c4(int param_1)
+void Entity_State_Physics(int param_1)
 
 {
   if (param_1->collision_state == '\0') {

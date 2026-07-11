@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800205cc(u8 *param_1,char *param_2)
+void Entity_CheckTarget(u8 *param_1,char *param_2)
 
 {
   s16 sVar1;
@@ -22,23 +22,23 @@ void FUN_800205cc(u8 *param_1,char *param_2)
   
   if (*param_2 == '\x05') {
     if (((param_1->entity_flags & 0x200) == 0) && (param_1->sub_state == 0)) {
-      FUN_8001f830();
+      Entity_CalcAngle16();
     }
   }
   else if (((int)param_1->entity_flags & 0x8000U) == 0) {
-    uVar4 = FUN_8001f40c(param_1,param_2,0);
+    uVar4 = Entity_CalcPos(param_1,param_2,0);
     if (-1 < (int)uVar4) {
       if (*param_2 == '\x01') {
         if ((param_1->state_flag144 == 1) && ((int)uVar4 < 2)) {
-          FUN_8001fdb4(param_2,0xffff8002,3,0x1e);
+          Entity_CalcAngle21(param_2,0xffff8002,3,0x1e);
         }
         else if ((param_1->entity_flags & 0x200) == 0) {
           if ((uVar4 & 1) == 0) {
             if ((*param_1 & 4) == 0) {
-              iVar5 = FUN_80083f50(_g_AngleTarget);
+              iVar5 = Math_CosGTE(_g_AngleTarget);
               sVar7 = param_1->bounds_min_x;
               sVar3 = param_2->bounds_min_x;
-              iVar6 = FUN_80083e80(_g_AngleTarget);
+              iVar6 = Math_Cos(_g_AngleTarget);
               sVar1 = param_2->bounds_min_x;
               param_1->pos_y =
                    param_2->pos_y + (s16)(iVar5 * ((int)sVar7 + (int)sVar3) >> 0xc);
@@ -47,7 +47,7 @@ void FUN_800205cc(u8 *param_1,char *param_2)
                    (s16)(iVar6 * ((int)param_1->bounds_min_x + (int)sVar1) >> 0xc);
             }
             param_1[0x60] = 1;
-            cVar2 = FUN_80077768((int)_g_AngleTarget,(int)param_1->draw_angle,1);
+            cVar2 = Math_CompareAngle((int)_g_AngleTarget,(int)param_1->draw_angle,1);
             param_1->input_flags = cVar2 + 2;
           }
           else if ((uVar4 == 1) && ((param_1->state_flag145 & 1) == 0)) {
@@ -87,7 +87,7 @@ void FUN_800205cc(u8 *param_1,char *param_2)
     }
   }
   else {
-    FUN_8001ec3c(param_1,param_2);
+    Entity_MoveMain(param_1,param_2);
   }
   return;
 }

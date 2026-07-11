@@ -6,7 +6,7 @@
 
 
 
-uint FUN_80097e40(int param_1,uint param_2,int param_3,int param_4)
+uint CD_SPU_Cmd(int param_1,uint param_2,int param_3,int param_4)
 
 {
   u16 uVar1;

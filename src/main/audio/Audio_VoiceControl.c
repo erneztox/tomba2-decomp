@@ -10,7 +10,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8008fe40(u16 param_1,s16 param_2)
+void Audio_VoiceControl(u16 param_1,s16 param_2)
 
 {
   u8 bVar1;
@@ -63,7 +63,7 @@ void FUN_8008fe40(u16 param_1,s16 param_2)
   }
   puVar8->flags = sVar4;
 LAB_8008ffe0:
-  uVar6 = FUN_80090160((int)(s16)param_1,(int)param_2);
+  uVar6 = Audio_AllocVoice((int)(s16)param_1,(int)param_2);
   puVar8[0x24] = uVar6;
   return;
 }

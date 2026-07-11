@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8003791c(int param_1,u8 param_2)
+void Entity_DrawFull(int param_1,u8 param_2)
 
 {
   s16 *psVar1;
@@ -37,7 +37,7 @@ void FUN_8003791c(int param_1,u8 param_2)
   local_2e = (u16)*(u8 *)(param_1 + 0x2d) * 0x14 + 0x49;
   puVar11 = &DAT_800d1e68;
   local_37 = param_2;
-  FUN_8007e1b8(&local_30,PTR_DAT_800174c8,*(s32 *)(param_1 + 4),&local_38);
+  GPU_SpriteDrawMain(&local_30,PTR_DAT_800174c8,*(s32 *)(param_1 + 4),&local_38);
   puVar7 = &DAT_800a2698;
   do {
     if (puVar7->behavior_state == 0) {
@@ -58,7 +58,7 @@ LAB_80037a00:
     }
     psVar1 = puVar7 + 4;
     puVar7 = puVar7 + 6;
-    FUN_8007e1b8(&local_30,(&PTR_DAT_80017334)[*psVar1],*(s32 *)(param_1 + 4),&local_38);
+    GPU_SpriteDrawMain(&local_30,(&PTR_DAT_80017334)[*psVar1],*(s32 *)(param_1 + 4),&local_38);
     if (-0x7ff5d8fd < (int)puVar7) {
       iVar10 = 0;
       if (0 < _DAT_800d1e68) {
@@ -66,8 +66,8 @@ LAB_80037a00:
         do {
           sVar2 = *(s16 *)(puVar11 + 2);
           ppuVar8 = &PTR_s_The_Starting_Beach_800a2b64 + sVar2;
-          uVar3 = FUN_80073750(*ppuVar8);
-          iVar4 = FUN_80036d90((int)sVar2);
+          uVar3 = UI_StringParse(*ppuVar8);
+          iVar4 = Game_CheckArea((int)sVar2);
           if (iVar4 == 0) {
             puVar6 = *ppuVar8;
             uVar5 = 0;
@@ -78,7 +78,7 @@ LAB_80037a00:
           }
           iVar4 = iVar9 + ((int)~uVar3 >> 0x1f & 4U) + 0x40;
           iVar9 = iVar9 + 0x14;
-          FUN_80079324(0x24,iVar4 * 0x10000 >> 0x10,uVar5,puVar6,0);
+          GPU_RenderSprite_V2(0x24,iVar4 * 0x10000 >> 0x10,uVar5,puVar6,0);
           iVar10 = iVar10 + 1;
           puVar11 = puVar11 + 0xc;
         } while (iVar10 < _DAT_800d1e68);

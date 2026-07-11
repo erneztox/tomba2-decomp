@@ -7,9 +7,9 @@
 
 
 #include "tomba.h"
-void FUN_800416f0(int param_1)
+void Entity_SetSpriteDataAuto(int param_1)
 
 {
-  FUN_800416a8(param_1,(int)param_1->event_id,*(s32 *)(param_1 + 0x74));
+  Entity_SetSpriteData(param_1,(int)param_1->event_id,*(s32 *)(param_1 + 0x74));
   return;
 }

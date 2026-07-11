@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80082c28(s32 *param_1,int param_2)
+s32 GPU_SendPrimList(s32 *param_1,int param_2)
 
 {
   s32 uVar1;

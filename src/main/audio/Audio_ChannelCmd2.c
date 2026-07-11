@@ -6,7 +6,7 @@
 
 
 
-void FUN_8008e930(u16 param_1,s16 param_2,u8 param_3)
+void Audio_ChannelCmd2(u16 param_1,s16 param_2,u8 param_3)
 
 {
   u8 bVar1;
@@ -17,11 +17,11 @@ void FUN_8008e930(u16 param_1,s16 param_2,u8 param_3)
   iVar3 = *(int *)(&g_AudioChannels + (s16)param_1 * 4) + param_2 * 0xb0;
   bVar1 = iVar3->flags;
   iVar4 = iVar3 + (uint)bVar1;
-  FUN_800953b0((int)iVar3->flags,iVar4->flags,param_3);
-  FUN_80095d10((int)(s16)(param_1 | param_2 << 8),(int)iVar3->flags,
+  CD_ReadByteAt1((int)iVar3->flags,iVar4->flags,param_3);
+  Audio_VoiceParam2((int)(s16)(param_1 | param_2 << 8),(int)iVar3->flags,
                iVar4->flags,*(s16 *)((uint)bVar1 * 2 + iVar3 + 0x60),
                iVar4->flags);
-  uVar2 = FUN_80090160((int)(s16)param_1,(int)param_2);
+  uVar2 = Audio_AllocVoice((int)(s16)param_1,(int)param_2);
   iVar3->flags = uVar2;
   return;
 }

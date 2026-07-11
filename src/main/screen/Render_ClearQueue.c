@@ -6,9 +6,9 @@
 
 
 
-void FUN_8004fb20(void)
+void Render_ClearQueue(void)
 
 {
-  FUN_8009a420(&DAT_800bf548,0,700);
+  Mem_Set(&DAT_800bf548,0,700);
   return;
 }

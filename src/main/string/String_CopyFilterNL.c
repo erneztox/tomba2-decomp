@@ -6,13 +6,13 @@
 
 
 
-void FUN_80036b28(char *param_1,char *param_2)
+void String_CopyFilterNL(char *param_1,char *param_2)
 
 {
   int iVar1;
   int iVar2;
   
-  iVar1 = FUN_8009a600();
+  iVar1 = String_Compare();
   iVar2 = 0;
   if (0 < iVar1) {
     do {

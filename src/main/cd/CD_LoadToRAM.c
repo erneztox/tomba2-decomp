@@ -6,9 +6,9 @@
 
 
 
-void FUN_800753ac(s32 param_1,int param_2)
+void CD_LoadToRAM(s32 param_1,int param_2)
 
 {
-  FUN_8001dc40(param_1,DAT_800be108 + param_2);
+  CD_LoadSectors(param_1,DAT_800be108 + param_2);
   return;
 }

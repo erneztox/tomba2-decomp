@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_80089640(void)
+s32 MDEC_WaitVSync(void)
 
 {
   uint uVar1;

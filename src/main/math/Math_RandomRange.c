@@ -6,11 +6,11 @@
 
 
 
-int FUN_80032a44(int param_1,int param_2)
+int Math_RandomRange(int param_1,int param_2)
 
 {
   int iVar1;
   
-  iVar1 = FUN_8009a450();
+  iVar1 = Math_Random();
   return (iVar1 * (param_2 - param_1) >> 0xf) + param_1;
 }

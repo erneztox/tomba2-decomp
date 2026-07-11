@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8005262c(int param_1)
+void Entity_InitDrawEnv(int param_1)
 
 {
   s16 sVar1;

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80093650(u8 param_1)
+void Audio_SeqData(u8 param_1)
 
 {
   uint uVar1;
@@ -23,9 +23,9 @@ void FUN_80093650(u8 param_1)
   s16 local_26;
   s16 local_24;
   
-  FUN_80099450(0);
+  CD_SetReady(0);
   _DAT_80105c90 = 0;
-  FUN_80097760(0x20,0x80105dc0);
+  CD_SetupFIFO(0x20,0x80105dc0);
   uVar3 = 0;
   uVar1 = 0;
   do {
@@ -87,9 +87,9 @@ void FUN_80093650(u8 param_1)
       *(s16 *)(iVar2 + -0x7fefab08) = 0;
       *(s16 *)(iVar2 + -0x7fefab06) = 0;
       *(s16 *)(iVar2 + -0x7fefab12) = 0;
-      FUN_80099970(local_60);
+      CD_XA_Main(local_60);
       _DAT_80105d10 = (s16)uVar1;
-      FUN_80094b50(1);
+      Audio_SPU_Key(1);
       uVar1 = uVar1 + 1;
     } while ((int)(uVar1 & 0xffff) < (int)(char)DAT_80105cec);
   }
@@ -108,6 +108,6 @@ void FUN_80093650(u8 param_1)
   _DAT_80105cd8 = 0;
   _DAT_80105cf0 = 0;
   _DAT_80105cda = 0x80;
-  FUN_800931c0();
+  Audio_Main();
   return;
 }

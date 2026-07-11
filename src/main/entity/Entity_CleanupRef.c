@@ -6,11 +6,11 @@
 
 
 
-void FUN_80034634(int param_1)
+void Entity_CleanupRef(int param_1)
 
 {
   if (*(int *)(param_1 + 0x28) != 0) {
-    FUN_8007a624();
+    Entity_Dealloc();
     *(s32 *)(param_1 + 0x28) = 0;
   }
   return;

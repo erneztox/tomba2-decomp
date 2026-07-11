@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_800399c0(int param_1)
+s32 Save_CursorPrev(int param_1)
 
 {
   s8 cVar1;

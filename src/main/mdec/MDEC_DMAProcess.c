@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-uint FUN_80086ea4(int param_1,int param_2)
+uint MDEC_DMAProcess(int param_1,int param_2)
 
 {
   u8 bVar1;
@@ -33,7 +33,7 @@ uint FUN_80086ea4(int param_1,int param_2)
       uVar2 = *(u16 *)(DAT_800abe9c + 4);
     }
     do {
-      iVar6 = FUN_80089640();
+      iVar6 = MDEC_WaitVSync();
     } while (iVar6 == 0);
     *DAT_800abe9c = ~bVar3;
   }
@@ -52,7 +52,7 @@ uint FUN_80086ea4(int param_1,int param_2)
     DAT_800abe9c->state = sVar8;
     uVar7 = *puVar4;
     while ((uVar7 & 0x80) == 0) {
-      iVar6 = FUN_80089640();
+      iVar6 = MDEC_WaitVSync();
       if (iVar6 != 0) {
         return 0xffffffec;
       }

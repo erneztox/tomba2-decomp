@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-int FUN_80093ebc(s16 param_1,s16 param_2,s16 param_3,uint param_4)
+int Audio_ChannelEvent(s16 param_1,s16 param_2,s16 param_3,uint param_4)
 
 {
   int iVar1;
@@ -27,11 +27,11 @@ int FUN_80093ebc(s16 param_1,s16 param_2,s16 param_3,uint param_4)
           (*(s16 *)(iVar1 + -0x7fefab20) == param_2)))) {
         if (*(s16 *)(iVar1 + -0x7fefab38) == 0xff) {
           iVar3 = iVar3 + 1;
-          FUN_80094b10();
+          Menu_ClearSlot();
         }
         else {
           _DAT_80105d10 = (u16)uVar2 & 0xff;
-          FUN_80094b50(0);
+          Audio_SPU_Key(0);
           iVar3 = iVar3 + 1;
         }
       }

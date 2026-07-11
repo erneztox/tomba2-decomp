@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_8007496c(uint param_1,int param_2,int param_3)
+s32 Audio_SPU_Find(uint param_1,int param_2,int param_3)
 
 {
   s32 uVar1;
@@ -30,7 +30,7 @@ s32 FUN_8007496c(uint param_1,int param_2,int param_3)
     }
     (&DAT_800be23f)[iVar2] = (char)param_3;
     (&DAT_800be23e)[iVar2] = (char)param_2;
-    FUN_80092e3c(param_1 & 0xff,(param_2 << 0x17) >> 0x10,(param_3 << 0x17) >> 0x10);
+    Audio_WriteDevice(param_1 & 0xff,(param_2 << 0x17) >> 0x10,(param_3 << 0x17) >> 0x10);
     uVar1 = 1;
   }
   else {

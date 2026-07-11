@@ -6,11 +6,11 @@
 
 
 
-int FUN_80096a40(s16 param_1)
+int MC_GetFileSize(s16 param_1)
 
 {
   s16 sVar1;
   
-  sVar1 = FUN_800993a0((int)param_1);
+  sVar1 = CD_SyncCheck((int)param_1);
   return (int)sVar1;
 }

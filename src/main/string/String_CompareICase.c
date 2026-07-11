@@ -6,7 +6,7 @@
 
 
 
-int FUN_8009a640(char *param_1,char *param_2,int param_3)
+int String_CompareICase(char *param_1,char *param_2,int param_3)
 
 {
   s8 cVar1;

@@ -6,7 +6,7 @@
 
 
 
-void FUN_8009c1fc(void)
+void BIOS_CopyData2(void)
 
 {
   s32 *puVar1;

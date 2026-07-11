@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80047b5c(int param_1,int param_2)
+s32 Collision_CheckMain(int param_1,int param_2)
 
 {
   s16 sVar1;
@@ -33,7 +33,7 @@ s32 FUN_80047b5c(int param_1,int param_2)
      (u16)(*(s16 *)(pbVar4 + 4) - (*(s16 *)(param_1 + 0x32) + -0x80)) <=
      *(u16 *)(pbVar4 + 6))) {
     psVar3 = (s16 *)(_g_CollisionGrid + (uint)*(u16 *)((uint)*pbVar4 * 2 + _g_CollisionGrid) * 2);
-    sVar1 = FUN_80085690((int)psVar3->sub_type - (int)psVar3->kind,(int)psVar3->flags - (int)*psVar3);
+    sVar1 = Math_Atan2((int)psVar3->sub_type - (int)psVar3->kind,(int)psVar3->flags - (int)*psVar3);
     _g_CollisionNormalX = -sVar1;
     _g_CollisionNormalY = _g_CollisionNormalX;
     if ((*_DAT_1f8001e4 & 0x10) == 0) {

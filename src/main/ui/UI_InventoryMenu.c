@@ -8,7 +8,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_8004ce14(u8 *param_1)
+void UI_InventoryMenu(u8 *param_1)
 
 {
   u8 bVar1;
@@ -29,7 +29,7 @@ void FUN_8004ce14(u8 *param_1)
       if (bVar1 != 3) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar1 != 0) {
@@ -44,7 +44,7 @@ void FUN_8004ce14(u8 *param_1)
     uVar2 = *(s32 *)(&DAT_800a3f00 + (uint)(u8)param_1->sub_type * 4);
     *(s32 *)(param_1 + 0x74) = 0;
     *(s32 *)(param_1 + 0x6c) = uVar2;
-    FUN_8004b354(param_1,0);
+    Entity_SetColorOverride(param_1,0);
   }
   if (g_GameState == '\0') {
     if (param_1->sub_type == '\x01') {
@@ -61,7 +61,7 @@ LAB_8004cf64:
         if (*pcVar8 != -1) {
           bVar1 = *(u8 *)(psVar5 + -3);
           if ((bVar1 & 0x80) == 0) {
-            iVar4 = FUN_8004d7ec((int)psVar5->flags,0);
+            iVar4 = Math_Div8Round((int)psVar5->flags,0);
             iVar3 = 0;
             if (iVar4 != 0) goto LAB_8004cff4;
           }
@@ -69,7 +69,7 @@ LAB_8004cf64:
           iVar3 = 0;
           if ((*(uint *)(param_1 + 0x74) & uVar6) == 0) {
             if ((bVar1 & 0x80) != 0) {
-              iVar4 = FUN_8004d868((int)psVar5->flags,0);
+              iVar4 = Inventory_CheckFlag((int)psVar5->flags,0);
               iVar3 = 0;
               if (iVar4 != 0) goto LAB_8004cff4;
             }
@@ -84,7 +84,7 @@ LAB_8004cff4:
           param_1->type_flags = (s16)uVar7;
           param_1->render_flags = 0x1f;
           param_1->flags = 1;
-          FUN_80077efc();
+          Sprite_Alloc3();
           return;
         }
         if (iVar3 != 0) {
@@ -92,7 +92,7 @@ LAB_8004cff4:
             iVar3 = Overlay_80111ccc((char)psVar5->kind);
           }
           else {
-            iVar3 = FUN_80077acc(param_1,(int)psVar5[-2],(int)psVar5[-1],(int)*psVar5);
+            iVar3 = GTE_ProjectSprite1(param_1,(int)psVar5[-2],(int)psVar5[-1],(int)*psVar5);
           }
           if (iVar3 != 0) {
             *(uint *)(param_1 + 0x70) = *(uint *)(param_1 + 0x70) | 1 << (uVar7 & 0x1f);

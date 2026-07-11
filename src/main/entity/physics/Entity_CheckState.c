@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_800535e0(int param_1,int param_2)
+s32 Entity_CheckState(int param_1,int param_2)
 
 {
   if (DAT_800f2410 == '\0') {

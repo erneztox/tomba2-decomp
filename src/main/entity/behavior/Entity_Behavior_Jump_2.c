@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_800714c0(int param_1,s16 param_2)
+s32 Entity_Behavior_Jump(int param_1,s16 param_2)
 
 {
   s16 sVar1;

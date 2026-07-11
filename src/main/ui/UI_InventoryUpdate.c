@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80049f80(int param_1)
+s32 UI_InventoryUpdate(int param_1)
 
 {
   u8 bVar1;
@@ -36,7 +36,7 @@ s32 FUN_80049f80(int param_1)
   }
   if (param_1->timer2 == 0) {
     if (g_ItemCount == _g_FrameCounter) {
-      FUN_80072114(param_1,0);
+      Entity_SpawnDropItem(param_1,0);
     }
   }
   else {

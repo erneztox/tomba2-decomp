@@ -6,10 +6,10 @@
 
 
 
-void FUN_8009ca60(s32 param_1,uint param_2)
+void MDEC_SetupOut(s32 param_1,uint param_2)
 
 {
-  FUN_8009cb80();
+  MDEC_SyncOut();
   *DAT_800ad09c = *DAT_800ad09c | 0x88;
   *g_CD_Control = 0;
   *DAT_800ad070 = param_1;

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80035640(int param_1)
+s32 Event_CheckTrigger2(int param_1)
 
 {
   s32 bVar1;

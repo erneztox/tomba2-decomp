@@ -6,12 +6,12 @@
 
 
 
-u8 * FUN_80086230(void)
+u8 * CD_InitRead(void)
 
 {
   *DAT_800abde4 = 0x100;
   DAT_800abde0 = 0;
-  FUN_80086320(&DAT_800abdc0,8);
-  FUN_80085b50(0,FUN_80086288);
+  Mem_Zero2(&DAT_800abdc0,8);
+  CD_Dispatch08(0,IRQ_Dispatch);
   return &LAB_800862f4;
 }

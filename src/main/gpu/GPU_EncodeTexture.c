@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-uint FUN_8008238c(u8 *param_1)
+uint GPU_EncodeTexture(u8 *param_1)
 
 {
   uint uVar1;

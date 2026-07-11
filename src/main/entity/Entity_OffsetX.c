@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80070650(int param_1)
+void Entity_OffsetX(int param_1)
 
 {
   s16 sVar1;

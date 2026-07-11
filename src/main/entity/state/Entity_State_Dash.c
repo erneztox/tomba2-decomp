@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8005706c(int param_1,uint param_2)
+void Entity_State_Dash(int param_1,uint param_2)
 
 {
   s16 sVar1;
@@ -21,12 +21,12 @@ void FUN_8005706c(int param_1,uint param_2)
   else {
     if ((param_1->entity_flags & 0x40) == 0) {
       *(u8 *)(param_1 + 0x178) = 0;
-      FUN_80056ec8(param_1);
+      Entity_SetupBossUI(param_1);
     }
     else {
       uVar2 = (uint)param_1->anim_id;
       if (((uVar2 - 0x14 < 2) || (uVar2 == 0x62)) || (uVar2 == 0x12)) {
-        FUN_80054d14(param_1,0xca,6);
+        Entity_LoadAnimIfChanged(param_1,0xca,6);
         *(u8 *)(param_1 + 0x178) = 0;
       }
     }

@@ -7,18 +7,18 @@
 
 
 #include "tomba.h"
-void FUN_80070e60(int param_1)
+void Entity_MoveInCircle(int param_1)
 
 {
   int iVar1;
   
-  iVar1 = FUN_80083f50((int)param_1->anim_counter);
+  iVar1 = Math_CosGTE((int)param_1->anim_counter);
   iVar1 = iVar1 * 0x18;
   if (iVar1 < 0) {
     iVar1 = iVar1 + 0xfff;
   }
   param_1->pos_y = param_1->sprite_x + (s16)(iVar1 >> 0xc);
-  iVar1 = FUN_80083e80((int)param_1->anim_counter << 1);
+  iVar1 = Math_Cos((int)param_1->anim_counter << 1);
   iVar1 = iVar1 * 0x18;
   if (iVar1 < 0) {
     iVar1 = iVar1 + 0xfff;

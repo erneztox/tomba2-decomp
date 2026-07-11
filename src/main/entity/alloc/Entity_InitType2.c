@@ -9,13 +9,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80058648(u8 *param_1,int param_2)
+void Entity_InitType2(u8 *param_1,int param_2)
 
 {
   s32 uVar1;
   int iVar2;
   
-  iVar2 = FUN_800519e0(param_1,0x11,_DAT_800ed014,&DAT_800a3fa8);
+  iVar2 = Entity_AllocFromPool(param_1,0x11,_DAT_800ed014,&DAT_800a3fa8);
   if (iVar2 != 0) {
     return;
   }
@@ -47,10 +47,10 @@ void FUN_80058648(u8 *param_1,int param_2)
   param_1->physics_flag = 0;
   _g_CameraY = param_1->pos_y_fixed;
   _DAT_1f8000e4 = param_1->scale_y;
-  FUN_800682c4(param_1,param_2);
-  FUN_80057dc0(param_1,(uint)(int)param_1->entity_flags >> 0xf & 1);
+  Entity_InitFromGlobals(param_1,param_2);
+  Entity_State_Jump3(param_1,(uint)(int)param_1->entity_flags >> 0xf & 1);
   _DAT_1f80018e = 0;
-  FUN_80057fd4(param_1);
+  Entity_StateMain3(param_1);
   if (param_2 != 0) goto LAB_8005889c;
   if (g_GameState == GAMESTATE_3) {
     param_1->kind = 0;
@@ -76,7 +76,7 @@ LAB_800587d4:
     g_CurrentOverlay = 2;
     param_1->state = 4;
     param_1->behavior_state = 0x28;
-    FUN_80068214(param_1);
+    Entity_SpawnProjectile(param_1);
   }
   else if (param_1->anim_param != '\0') {
     param_1->state = 4;
@@ -91,6 +91,6 @@ LAB_800587d4:
     param_1->anim_param = 0;
   }
 LAB_8005889c:
-  FUN_800597ac(param_1);
+  Player_Update(param_1);
   return;
 }

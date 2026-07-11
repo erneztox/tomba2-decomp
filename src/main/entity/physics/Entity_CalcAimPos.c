@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80024af0(int param_1)
+void Entity_CalcAimPos(int param_1)
 
 {
   u16 uVar1;
@@ -31,9 +31,9 @@ void FUN_80024af0(int param_1)
     _DAT_1f800088 = 0x28;
     sVar3 = *(s16 *)(param_1 + 0x66) + -0x1e;
   }
-  iVar2 = FUN_80083f50((int)param_1->rot_y);
+  iVar2 = Math_CosGTE((int)param_1->rot_y);
   param_1->draw_pos_x = param_1->pos_y + (s16)(iVar2 * sVar3 >> 0xc);
-  iVar2 = FUN_80083e80((int)param_1->rot_y);
+  iVar2 = Math_Cos((int)param_1->rot_y);
   param_1->draw_pos_y = *(s16 *)(param_1 + 0x32) - param_1->target_angle;
   param_1->draw_pos_z = param_1->pos_z - (s16)(iVar2 * sVar3 >> 0xc);
   return;

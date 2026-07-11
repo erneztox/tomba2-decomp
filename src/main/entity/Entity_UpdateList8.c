@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80026368(void)
+void Entity_UpdateList8(void)
 
 {
   char *pcVar1;

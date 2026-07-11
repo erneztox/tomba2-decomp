@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80071dfc(int param_1)
+void Entity_SpawnAnim(int param_1)
 
 {
   s16 sVar1;
@@ -71,8 +71,8 @@ void FUN_80071dfc(int param_1)
     _DAT_800bf83c = 0;
   }
   else {
-    FUN_80084660(&g_GTE_WorkF8);
-    FUN_80084690(&g_GTE_WorkF8);
+    GTE_LoadMatrix5(&g_GTE_WorkF8);
+    GTE_LoadTranslation(&g_GTE_WorkF8);
     if (param_1->sub_type == '\0') {
       _g_GTE_WorkC0 = _g_CameraTargetX;
       if ((DAT_800e7ff4 & 4) == 0) {
@@ -88,7 +88,7 @@ void FUN_80071dfc(int param_1)
       _DAT_1f8000c2 = *(s16 *)(param_1->parent + 0x32) + -200;
       _g_GTE_WorkC4 = *(s16 *)(param_1->parent + 0x36);
     }
-    local_37 = FUN_8003f7a0(&g_GTE_WorkC0,&local_28);
+    local_37 = GTE_ProjectVertex(&g_GTE_WorkC0,&local_28);
     uVar2 = _g_OT_Data;
     bVar4 = param_1->input_flags;
     iVar8 = 0;
@@ -102,18 +102,18 @@ void FUN_80071dfc(int param_1)
       do {
         iVar7 = (int)(((uint)local_28 - (uint)bVar4) * 0x10000) >> 0x10;
         if (iVar6 >> 0x10 == 0) {
-          FUN_80071c48(param_1,iVar7,(int)local_26);
+          Entity_AnimSegment(param_1,iVar7,(int)local_26);
         }
         else {
-          FUN_80071cf4(param_1,iVar7,(int)local_26);
+          Entity_AnimChain(param_1,iVar7,(int)local_26);
         }
         local_30 = param_1->pos_y;
         local_2e = *(s16 *)(param_1 + 0x32);
         local_40 = *puVar9;
         puVar9 = puVar9 + 1;
         local_3f = 0;
-        iVar6 = FUN_8009a1f0(&local_40);
-        FUN_8007e1b8(&local_30,
+        iVar6 = CD_ReadSector_2(&local_40);
+        GPU_SpriteDrawMain(&local_30,
                      *(s32 *)((int)&PTR_DAT_80017334 + ((iVar6 + 0x69) * 0x10000 >> 0xe)),
                      uVar2,&local_38);
         iVar8 = iVar8 + 1;

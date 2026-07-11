@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s16 * FUN_8007c780(s16 *param_1,s16 *param_2,u8 param_3,s16 param_4)
+s16 * GPU_DrawDigit3(s16 *param_1,s16 *param_2,u8 param_3,s16 param_4)
 
 {
   u8 bVar1;

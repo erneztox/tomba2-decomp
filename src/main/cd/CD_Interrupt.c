@@ -6,14 +6,14 @@
 
 
 
-void FUN_80097030(void)
+void CD_Interrupt(void)
 
 {
   int iVar1;
   uint uVar2;
   
   if (DAT_800ac654 == 0) {
-    FUN_800976c8();
+    MC_Stop();
   }
   iVar1 = g_SPU_Regs;
   *(u16 *)(g_SPU_Regs + 0x1aa) = *(u16 *)(g_SPU_Regs + 0x1aa) & 0xffcf;
@@ -25,7 +25,7 @@ void FUN_80097030(void)
     } while ((*(u16 *)(iVar1 + 0x1aa) & 0x30) != 0);
   }
   if (DAT_800ac63c == (code *)0x0) {
-    FUN_800899f0(0xf0000009,0x20);
+    BIOS_Syscall_B0_800899F0(0xf0000009,0x20);
   }
   else {
     (*DAT_800ac63c)();

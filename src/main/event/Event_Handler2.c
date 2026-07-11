@@ -6,7 +6,7 @@
 
 
 
-void FUN_800364ac(int param_1,uint param_2,s32 *param_3,s32 *param_4)
+void Event_Handler2(int param_1,uint param_2,s32 *param_3,s32 *param_4)
 
 {
   s32 uVar1;
@@ -47,7 +47,7 @@ void FUN_800364ac(int param_1,uint param_2,s32 *param_3,s32 *param_4)
   }
 LAB_80036540:
   *param_3 = uVar1;
-  uVar1 = FUN_80078770(uVar1,param_2 & 0xff);
+  uVar1 = String_GetChar(uVar1,param_2 & 0xff);
   *param_4 = uVar1;
   return;
 }

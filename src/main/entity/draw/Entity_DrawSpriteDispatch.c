@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-s32 FUN_80024d34(int param_1)
+s32 Entity_DrawSpriteDispatch(int param_1)
 
 {
   s8 cVar1;

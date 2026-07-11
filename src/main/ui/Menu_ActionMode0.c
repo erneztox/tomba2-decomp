@@ -6,9 +6,9 @@
 
 
 
-void FUN_8004d6d4(s32 param_1)
+void Menu_ActionMode0(s32 param_1)
 
 {
-  FUN_8004ed0c(param_1,0);
+  UI_DrawItemIcon(param_1,0);
   return;
 }

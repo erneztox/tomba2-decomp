@@ -9,14 +9,14 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8003fed8(u8 *param_1)
+void Entity_Behavior_ShakeSFX(u8 *param_1)
 
 {
   s16 sVar1;
   u16 uVar2;
   
   if (param_1->action_state == '\0') {
-    FUN_80074590(0x19,0,0);
+    Audio_PlaySoundEffect(0x19,0,0);
     *param_1 = 1;
     param_1->timer1 = 0x10;
     param_1->action_state = param_1->action_state + '\x01';
@@ -29,7 +29,7 @@ void FUN_8003fed8(u8 *param_1)
       param_1->action_state = 0;
     }
     *(u16 *)(param_1->sprite_ptr1 + 2) = (_g_FrameCounter2 & 1) * 6;
-    uVar2 = FUN_8009a450();
+    uVar2 = Math_Random();
     **(s16 **)(param_1 + 0xc0) = ((uVar2 & 3) - 2) * 6;
   }
   if (param_1->flag_5E == '\x02') {

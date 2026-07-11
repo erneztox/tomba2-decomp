@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80053968(int param_1,int param_2)
+s32 Entity_Behavior_End(int param_1,int param_2)
 
 {
   int iVar1;
@@ -67,7 +67,7 @@ switchD_800539dc_caseD_4:
                   ((*pbVar3 & 1) == 0));
           if (iVar5 != 0) break;
           if (pbVar3->move_mode == 2) {
-            iVar1 = FUN_80085690(-((int)(((uint)pbVar3->pos_z -
+            iVar1 = Math_Atan2(-((int)(((uint)pbVar3->pos_z -
                                          (uint)param_1->pos_z) * 0x10000) >> 0x10),
                                  (int)(((uint)pbVar3->pos_y -
                                        (uint)param_1->pos_y) * 0x10000) >> 0x10);
@@ -85,7 +85,7 @@ switchD_800539dc_caseD_4:
           }
         }
       } while (1 < pbVar3->move_mode - 1);
-      iVar1 = FUN_80085690(-((int)(((uint)pbVar3->pos_z -
+      iVar1 = Math_Atan2(-((int)(((uint)pbVar3->pos_z -
                                    (uint)param_1->pos_z) * 0x10000) >> 0x10),
                            (int)(((uint)pbVar3->pos_y -
                                  (uint)param_1->pos_y) * 0x10000) >> 0x10);

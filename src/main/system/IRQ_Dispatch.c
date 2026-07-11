@@ -6,7 +6,7 @@
 
 
 
-void FUN_80086288(void)
+void IRQ_Dispatch(void)
 
 {
   s32 *puVar1;

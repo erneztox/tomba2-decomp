@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_8001fdb4(u8 *param_1,int param_2,int param_3,s32 param_4)
+s32 Entity_CalcAngle21(u8 *param_1,int param_2,int param_3,s32 param_4)
 
 {
   int iVar1;
@@ -32,14 +32,14 @@ s32 FUN_8001fdb4(u8 *param_1,int param_2,int param_3,s32 param_4)
     else {
       uVar2 = 4;
     }
-    FUN_80054d14(&g_CollisionEntity,param_4,uVar2);
-    FUN_80053d0c(&g_CollisionEntity);
+    Entity_LoadAnimIfChanged(&g_CollisionEntity,param_4,uVar2);
+    Entity_StateCheck(&g_CollisionEntity);
     *param_1 = 2;
     param_1->state = STATE_FINISH;
     param_1->behavior_state = 1;
     param_1->action_state = 0;
     _DAT_800e7e90 = param_1;
-    FUN_800312d4(7,&DAT_800e7eac,0xffffffec);
+    Entity_SpawnWithFlag(7,&DAT_800e7eac,0xffffffec);
   }
   else {
     *param_1 = 2;
@@ -54,12 +54,12 @@ s32 FUN_8001fdb4(u8 *param_1,int param_2,int param_3,s32 param_4)
     DAT_800e7fc5 = 1;
     DAT_800e7fc4 = 0;
     DAT_800e7ea9 = 0;
-    FUN_80053d0c(&g_CollisionEntity);
-    FUN_80074590(0x1d,0,0);
+    Entity_StateCheck(&g_CollisionEntity);
+    Audio_PlaySoundEffect(0x1d,0,0);
     _DAT_800e7ed8 = 0;
-    FUN_80054d14(&g_CollisionEntity,0x13,2);
+    Entity_LoadAnimIfChanged(&g_CollisionEntity,0x13,2);
     if (DAT_800e8001 == '\0') {
-      FUN_800538e0(&g_CollisionEntity,&DAT_800e7eac,0);
+      Entity_Behavior_SpawnAtOffset(&g_CollisionEntity,&DAT_800e7eac,0);
     }
     else {
       DAT_800e8001 = '\0';
@@ -67,8 +67,8 @@ s32 FUN_8001fdb4(u8 *param_1,int param_2,int param_3,s32 param_4)
     local_1e = _g_CameraTargetX;
     local_1a = _g_CameraTargetY + _DAT_800e7ee2;
     local_16 = _g_CameraTargetZ;
-    FUN_80031470(1,auStack_20,0,&g_EntityAngle);
-    FUN_80074590(0xd,0xfffffffa,0);
+    Entity_SpawnSpecial(1,auStack_20,0,&g_EntityAngle);
+    Audio_PlaySoundEffect(0xd,0xfffffffa,0);
   }
   return 1;
 }

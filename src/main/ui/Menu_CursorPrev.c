@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80038758(int param_1)
+s32 Menu_CursorPrev(int param_1)
 
 {
   s8 cVar1;

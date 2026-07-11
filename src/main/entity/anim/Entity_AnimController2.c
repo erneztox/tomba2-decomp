@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80076904(int param_1)
+void Entity_AnimController2(int param_1)
 
 {
   s32 bVar1;

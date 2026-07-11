@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006d2ac(int param_1)
+void Camera_UpdateMain(int param_1)
 
 {
   s16 sVar1;
@@ -75,18 +75,18 @@ LAB_8006d420:
   if (bVar10 != 0) {
     sVar3 = _g_CameraAngle + 0x800;
   }
-  iVar4 = FUN_80083f50((int)sVar3);
+  iVar4 = Math_CosGTE((int)sVar3);
   sVar1 = *(s16 *)(param_1 + 0x22);
-  iVar5 = FUN_80083e80((int)sVar3);
+  iVar5 = Math_Cos((int)sVar3);
   sVar3 = *(s16 *)(param_1 + 0x22);
-  iVar6 = FUN_80083f50((int)_g_CameraAngle);
+  iVar6 = Math_CosGTE((int)_g_CameraAngle);
   iVar9 = *(int *)(param_1 + 0x58);
-  iVar7 = FUN_80083e80((int)_g_CameraAngle);
+  iVar7 = Math_Cos((int)_g_CameraAngle);
   iVar9 = iVar4 * sVar1 * 0x10 - (iVar6 * iVar9 >> 4) >> 8;
   iVar6 = iVar5 * sVar3 * -0x10 + (iVar7 * *(int *)(param_1 + 0x58) >> 4) >> 8;
-  iVar5 = FUN_80084080(iVar9 * iVar9 + iVar6 * iVar6);
+  iVar5 = Math_SqrtGTE(iVar9 * iVar9 + iVar6 * iVar6);
   iVar4 = iVar5 * 0x100;
-  sVar3 = FUN_80085690(-iVar6,iVar9);
+  sVar3 = Math_Atan2(-iVar6,iVar9);
   bVar2 = 0x7ff < ((sVar3 - _g_CameraAngle) - 0x400U & 0xfff);
   if (iVar4 < 0x140001) {
     if (!bVar2) {
@@ -127,9 +127,9 @@ LAB_8006d5ac:
   param_1->script_ptr = iVar4;
 LAB_8006d5c8:
   *(int *)(param_1 + 0x58) = *(int *)(param_1 + 0x58) + (param_1->script_ptr >> 8);
-  iVar4 = FUN_80083f50((int)_g_CameraAngle);
+  iVar4 = Math_CosGTE((int)_g_CameraAngle);
   *(int *)(param_1 + 8) = iVar8 + (iVar4 * *(int *)(param_1 + 0x58) >> 4);
-  iVar8 = FUN_80083e80((int)_g_CameraAngle);
+  iVar8 = Math_Cos((int)_g_CameraAngle);
   param_1->parent = iVar11 - (iVar8 * *(int *)(param_1 + 0x58) >> 4);
   return;
 }

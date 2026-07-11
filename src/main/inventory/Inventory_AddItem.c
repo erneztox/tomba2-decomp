@@ -6,7 +6,7 @@
 
 
 
-void FUN_8004d338(int param_1,s8 param_2)
+void Inventory_AddItem(int param_1,s8 param_2)
 
 {
   s8 cVar1;

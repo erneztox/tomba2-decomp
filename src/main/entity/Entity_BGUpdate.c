@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80022554(void)
+void Entity_BGUpdate(void)
 
 {
   u8 bVar1;
@@ -37,13 +37,13 @@ joined_r0x80022608:
               }
               else {
                 if (bVar1 == 6) {
-                  FUN_80022330(pbVar2,pbVar4);
+                  Entity_DrawChild4(pbVar2,pbVar4);
                   goto joined_r0x80022608;
                 }
                 if (bVar1 != 7) goto joined_r0x80022608;
               }
             }
-            iVar3 = FUN_80020c34(pbVar2,pbVar4);
+            iVar3 = Entity_CalcAngle17(pbVar2,pbVar4);
             if (-1 < iVar3) {
               pbVar2->move_mode = 2;
               pbVar4->move_mode = 2;
@@ -55,8 +55,8 @@ joined_r0x80022608:
                 pbVar4->pos_z = pbVar2->pos_z;
               }
               pbVar4->anim_id = pbVar2->anim_id & 1;
-              FUN_80074590(0x2f,0,0);
-              FUN_80031470(2,pbVar2 + 0x2c,pbVar2->flag_5E,pbVar2 + 0x68);
+              Audio_PlaySoundEffect(0x2f,0,0);
+              Entity_SpawnSpecial(2,pbVar2 + 0x2c,pbVar2->flag_5E,pbVar2 + 0x68);
               g_State182 = '\0';
             }
           }

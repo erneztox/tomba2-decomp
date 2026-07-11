@@ -9,7 +9,7 @@
 /* WARNING: Type propagation algorithm not settling */
 
 #include "tomba.h"
-s32 FUN_80076d68(int param_1)
+s32 Entity_AnimFrame(int param_1)
 
 {
   s16 sVar1;
@@ -29,7 +29,7 @@ s32 FUN_80076d68(int param_1)
         param_1->anim_data = *(s32 *)(iVar4 + 8);
       }
       param_1->anim_timer = *(u16 *)(param_1->anim_data + 6) & 0xfff;
-      FUN_80076904(param_1);
+      Entity_AnimController2(param_1);
       iVar4 = param_1->anim_data;
       uVar2 = *(u16 *)(iVar4 + 6);
     }
@@ -47,7 +47,7 @@ s32 FUN_80076d68(int param_1)
           param_1->anim_data = *(s32 *)(iVar4 + 8);
         }
         param_1->anim_timer = *(u16 *)(param_1->anim_data + 6) & 0xfff;
-        FUN_80076904(param_1);
+        Entity_AnimController2(param_1);
         iVar4 = param_1->anim_data;
         uVar2 = *(u16 *)(iVar4 + 6);
         uVar3 = uVar2 & 0xc000;
@@ -73,7 +73,7 @@ s32 FUN_80076d68(int param_1)
         iVar4 = *(int *)(iVar4 + 8);
         sVar1 = param_1->anim_timer;
 LAB_8007700c:
-        FUN_80075ff8(param_1,iVar4,(int)sVar1);
+        Audio_SeqMain2(param_1,iVar4,(int)sVar1);
         return 1;
       }
       if (uVar5 != 0) {
@@ -83,7 +83,7 @@ LAB_8007700c:
         param_1->anim_data = iVar4 + 8;
       }
       param_1->anim_timer = *(u16 *)(param_1->anim_data + 6) & 0xfff;
-      FUN_80076904(param_1);
+      Entity_AnimController2(param_1);
       iVar4 = param_1->anim_data;
       uVar2 = *(u16 *)(iVar4 + 6);
     }
@@ -94,7 +94,7 @@ LAB_8007700c:
           if (uVar2 != 0) {
             return 0;
           }
-          FUN_80075ff8(param_1,iVar4 + 8,(int)param_1->anim_timer);
+          Audio_SeqMain2(param_1,iVar4 + 8,(int)param_1->anim_timer);
           return 0;
         }
         if (uVar2 == 0x8000) {
@@ -104,14 +104,14 @@ LAB_8007700c:
           return 0;
         }
       }
-      FUN_80075ff8(param_1,*(s32 *)(iVar4 + 8),(int)param_1->anim_timer);
+      Audio_SeqMain2(param_1,*(s32 *)(iVar4 + 8),(int)param_1->anim_timer);
       return 0;
     }
   }
   else {
     sVar1 = (s16)iVar4;
     if (-1 < param_1->anim_data) {
-      FUN_80075f0c(param_1);
+      Entity_RotateMove(param_1);
       param_1->anim_timer = sVar1 + (param_1->anim_timer & 0x1000);
       return 2;
     }

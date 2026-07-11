@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800905e0(u16 param_1,s16 param_2,s8 param_3,u8 param_4)
+void Audio_ScanChannels(u16 param_1,s16 param_2,s8 param_3,u8 param_4)
 
 {
   s32 *puVar1;
@@ -27,7 +27,7 @@ void FUN_800905e0(u16 param_1,s16 param_2,s8 param_3,u8 param_4)
     *(uint *)(iVar2 + *piVar3 + 0x98) = *(uint *)(iVar2 + *piVar3 + 0x98) | 1;
     puVar1->flags = 1;
     *(u8 *)((int)puVar1 + 0x21) = 0;
-    FUN_80095530((int)(s16)(param_1 | param_2 << 8),*(s16 *)(puVar1 + 0x16),
+    Audio_VoiceKeyOn((int)(s16)(param_1 | param_2 << 8),*(s16 *)(puVar1 + 0x16),
                  *(s16 *)((int)puVar1 + 0x5a),1);
   }
   else if (param_3 == '\0') {

@@ -10,7 +10,7 @@
 /* WARNING: Instruction at (ram,0x800840c8) overlaps instruction at (ram,0x800840c4)
     */
 
-uint FUN_80084080(int param_1)
+uint Math_SqrtGTE(int param_1)
 
 {
   uint uVar1;

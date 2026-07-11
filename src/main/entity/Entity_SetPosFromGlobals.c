@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80070f00(int param_1,int param_2,s32 *param_3)
+void Entity_SetPosFromGlobals(int param_1,int param_2,s32 *param_3)
 
 {
   if (param_2 == 0) {

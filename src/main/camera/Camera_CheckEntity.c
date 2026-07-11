@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8006e1e4(void)
+void Camera_CheckEntity(void)
 
 {
   if (DAT_800e7e82 == '\x01') {

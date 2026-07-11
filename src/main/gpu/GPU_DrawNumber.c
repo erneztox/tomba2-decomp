@@ -10,7 +10,7 @@
 /* WARNING: Removing unreachable block (ram,0x8007c390) */
 
 #include "tomba.h"
-s16 * FUN_8007c2a4(s16 *param_1,s16 *param_2,u8 param_3,uint param_4,
+s16 * GPU_DrawNumber(s16 *param_1,s16 *param_2,u8 param_3,uint param_4,
                     u8 param_5)
 
 {

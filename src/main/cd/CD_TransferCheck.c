@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-uint FUN_800977c0(uint param_1)
+uint CD_TransferCheck(uint param_1)
 
 {
   uint uVar1;
@@ -32,7 +32,7 @@ uint FUN_800977c0(uint param_1)
   }
   uVar7 = ((int)param_1 >> (DAT_800ac62c & 0x1f)) << (DAT_800ac62c & 0x1f);
   if ((*DAT_800ac66c & 0x40000000) == 0) {
-    FUN_80097a90();
+    CD_DMAProcess();
     puVar3 = DAT_800ac66c;
     iVar8 = -1;
     if (0 < DAT_800ac664) {
@@ -67,7 +67,7 @@ uint FUN_800977c0(uint param_1)
       puVar3 = DAT_800ac66c + iVar8 * 2;
       puVar3->flags = uVar7;
       *puVar3 = *puVar3 & 0xfffffff;
-      FUN_80097a90();
+      CD_DMAProcess();
       uVar1 = DAT_800ac66c[iVar8 * 2];
     }
     else {
@@ -79,7 +79,7 @@ uint FUN_800977c0(uint param_1)
         puVar2->flags = puVar3->flags - uVar7;
         puVar3->flags = uVar7;
         *puVar3 = *puVar3 & 0xfffffff;
-        FUN_80097a90();
+        CD_DMAProcess();
         uVar1 = DAT_800ac66c[iVar8 * 2];
       }
     }

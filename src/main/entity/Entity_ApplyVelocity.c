@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80056b48(int param_1,int param_2)
+void Entity_ApplyVelocity(int param_1,int param_2)
 
 {
   *(int *)(param_1 + 0x2c) =
@@ -20,7 +20,7 @@ void FUN_80056b48(int param_1,int param_2)
          (int)param_1->velocity_y * (int)param_1->anim_counter;
   }
   if ((param_1->physics_flag == '\0') && (*(s8*)(param_1 + 0x61) == '\0')) {
-    FUN_80054650(param_1,0);
+    Entity_Behavior_Init2(param_1,0);
   }
   else {
     param_1->input_flags = param_1->input_flags & 0xfb;

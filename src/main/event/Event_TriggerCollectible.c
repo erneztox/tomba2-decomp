@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_80040b48(int param_1)
+s32 Event_TriggerCollectible(int param_1)
 
 {
   s32 uVar1;
@@ -22,7 +22,7 @@ s32 FUN_80040b48(int param_1)
     if (*(s8*)(param_1 + -0x7ff4074c) == '\0') {
       *(u8 *)(param_1 + -0x7ff4074c) = 1;
       _DAT_800bf8a8 = _DAT_800bf8a8 + 1;
-      iVar2 = FUN_80040a58(param_1,0);
+      iVar2 = Entity_GetTypeData(param_1,0);
       _DAT_800bf874 = _DAT_800bf874 + iVar2;
       (&DAT_800ed06e)[DAT_800ed06d] = (char)param_1;
       (&DAT_800ed074)[DAT_800ed06d] = 0;

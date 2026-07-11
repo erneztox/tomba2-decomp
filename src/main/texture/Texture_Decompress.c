@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-int FUN_80044d8c(int param_1,u8 *param_2,u8 *param_3,int param_4)
+int Texture_Decompress(int param_1,u8 *param_2,u8 *param_3,int param_4)
 
 {
   int *piVar1;

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8004f6d0(int param_1)
+void UI_MenuUpdate(int param_1)
 
 {
   s16 sVar1;
@@ -67,7 +67,7 @@ void FUN_8004f6d0(int param_1)
           puVar7->behavior_state = 0;
           puVar7->sub_type = 0;
         }
-        iVar4 = FUN_80083e80((int)(s16)puVar7->behavior_state);
+        iVar4 = Math_Cos((int)(s16)puVar7->behavior_state);
         iVar4 = iVar4 * (s16)puVar7->state;
         if (iVar4 < 0) {
           iVar4 = iVar4 + 0xfff;
@@ -84,7 +84,7 @@ void FUN_8004f6d0(int param_1)
   }
   if (iVar8 == iVar4) {
     if (iVar11 != 0) {
-      FUN_8004ee88(param_1);
+      UI_TextDraw(param_1);
       iVar4 = (int)*(s16 *)(param_1 + 8);
     }
     if (iVar4 == 0) {
@@ -93,7 +93,7 @@ void FUN_8004f6d0(int param_1)
     else {
       uVar3 = 2;
       if (*(s16 *)(param_1 + 10) != 0) {
-        FUN_8004f378(param_1);
+        UI_InitDialog(param_1);
         uVar3 = 1;
       }
       *(s16 *)(param_1 + 4) = 0;

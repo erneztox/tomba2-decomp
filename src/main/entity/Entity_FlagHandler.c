@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80053bf8(u8 *param_1,int param_2)
+s32 Entity_FlagHandler(u8 *param_1,int param_2)
 
 {
   u8 bVar1;
@@ -24,9 +24,9 @@ s32 FUN_80053bf8(u8 *param_1,int param_2)
         }
         else if (bVar1 < 4) {
           if (((bVar1 == 2) && (((int)*(s16 *)(param_1 + 0x16c) & 0xc000U) == 0xc000)) &&
-             (FUN_80047b5c(param_1,0), (_DAT_1f8001a8 & 8) != 0)) {
-            FUN_8004960c(param_1,0);
-            FUN_80049760(param_1);
+             (Collision_CheckMain(param_1,0), (_DAT_1f8001a8 & 8) != 0)) {
+            Collision_GetSurfaceType(param_1,0);
+            Collision_CalcAngle(param_1);
             param_1->draw_angle = _g_CollisionNormalX;
           }
         }

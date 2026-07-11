@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8008a00c(int param_1,char *param_2)
+void CD_CalcSector(int param_1,char *param_2)
 
 {
   int iVar1;

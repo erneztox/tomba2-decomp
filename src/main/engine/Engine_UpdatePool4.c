@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_80025d98(void)
+void Engine_UpdatePool4(void)
 
 {
   u8 bVar1;
@@ -18,7 +18,7 @@ void FUN_80025d98(void)
   if (((DAT_800ed065 != '\0') &&
       (((g_GameState != 5 || (2 < g_LevelId - 1)) && (g_GameState != 3)))) &&
      (((g_GameState != 0x14 && (g_CurrentOverlay != '\x01')) && ((g_EventInput & 4) == 0)))) {
-    FUN_80025744(0x800ed058);
+    Engine_DrawPool4_Type1(0x800ed058);
   }
   bVar1 = DAT_800ed061 & 3;
   if (bVar1 == 1) {
@@ -30,7 +30,7 @@ void FUN_80025d98(void)
   }
   else if ((1 < bVar1) && (bVar1 == 3)) {
 LAB_80025eac:
-    FUN_80025934(0x800ed058,0,0);
+    Engine_DrawPool4_Type2(0x800ed058,0,0);
   }
   if ((DAT_800ed059 == '\0') || (g_GameState == GAMESTATE_3)) goto LAB_80025fbc;
   if (g_GameState < 4) {
@@ -52,7 +52,7 @@ LAB_80025eac:
   }
   if ((((_DAT_800bf880 & 0x600) == 0) && ((_DAT_800bf880 & 0x100) == 0)) && (g_ActionFlag == '\0'))
   {
-    FUN_80025b78(0x800ed058);
+    Engine_DrawPool4_Type3(0x800ed058);
   }
 LAB_80025fbc:
   if ((_g_CurrentEntity->normal_z == 6) && (_g_CurrentEntity->sprite_x != 0)) {

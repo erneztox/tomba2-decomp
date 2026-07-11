@@ -6,7 +6,7 @@
 
 
 
-uint FUN_80085900(int param_1)
+uint Timer_GetCounter(int param_1)
 
 {
   uint uVar1;
@@ -26,9 +26,9 @@ uint FUN_80085900(int param_1)
     if (0 < param_1) {
       iVar2 = param_1 + -1;
     }
-    FUN_80085a78(uVar3,iVar2);
+    Sys_VSyncWait(uVar3,iVar2);
     uVar3 = *DAT_800aaca8;
-    FUN_80085a78(DAT_800abde0 + 1,1);
+    Sys_VSyncWait(DAT_800abde0 + 1,1);
     if (((uVar3 & 0x400000) != 0) && (-1 < (int)(uVar3 ^ *DAT_800aaca8))) {
       do {
       } while (((uVar3 ^ *DAT_800aaca8) & 0x80000000) == 0);

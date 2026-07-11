@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_800887bc(int param_1,s32 param_2)
+s32 MDEC_SetupCallback(int param_1,s32 param_2)
 
 {
   int iVar1;

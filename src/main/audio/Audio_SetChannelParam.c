@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800922a0(int param_1,s16 param_2,s16 param_3,s32 param_4)
+void Audio_SetChannelParam(int param_1,s16 param_2,s16 param_3,s32 param_4)
 
 {
   int iVar1;

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800543c0(int param_1)
+void Entity_Behavior_FollowParentY(int param_1)
 
 {
   int iVar1;
@@ -22,7 +22,7 @@ void FUN_800543c0(int param_1)
       sVar2 = (iVar1->bounds_max_y - iVar1->bounds_min_y) -
               (*(s16 *)(param_1 + 0x32) - *(s16 *)(iVar1 + 0x32));
     }
-    FUN_80049250(param_1,0,(int)sVar2);
+    Collision_Check1(param_1,0,(int)sVar2);
   }
   return;
 }

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80021ab0(int param_1,u8 *param_2,int param_3)
+s32 Entity_CalcPath(int param_1,u8 *param_2,int param_3)
 
 {
   s16 sVar1;
@@ -28,7 +28,7 @@ s32 FUN_80021ab0(int param_1,u8 *param_2,int param_3)
            >> 0x10;
   iVar10 = (int)(((uint)param_1->pos_z - (uint)param_2->pos_z) * 0x10000)
            >> 0x10;
-  uVar5 = FUN_80084080(iVar11 * iVar11 + iVar10 * iVar10);
+  uVar5 = Math_SqrtGTE(iVar11 * iVar11 + iVar10 * iVar10);
   bVar3 = false;
   if (((int)(uint)uVar5 <= (int)param_1->bounds_min_x + (int)param_2->bounds_min_x) &&
      (bVar3 = false,
@@ -36,14 +36,14 @@ s32 FUN_80021ab0(int param_1,u8 *param_2,int param_3)
            (uint)param_1->bounds_min_y + (uint)param_2->bounds_min_y & 0xffff) <=
      (int)param_1->bounds_max_y + (int)param_2->bounds_max_y)) {
     _g_GTE_Work8C = (int)(s16)uVar5;
-    _g_AngleTarget = FUN_80085690(-iVar10,iVar11);
+    _g_AngleTarget = Math_Atan2(-iVar10,iVar11);
     bVar3 = true;
   }
   if (!bVar3) {
     return 0;
   }
   if ((*param_2 & 8) != 0) {
-    uVar6 = FUN_8001e860(param_1,param_2,0,0);
+    uVar6 = Entity_InitFull(param_1,param_2,0,0);
     goto LAB_80021dbc;
   }
   if (((*param_2 == 1) && (param_1->kind == '\x02')) &&
@@ -72,10 +72,10 @@ LAB_80021d3c:
     }
     else if (bVar4 < 3) {
 LAB_80021cc8:
-      iVar10 = FUN_80083f50(param_1->target_angle + 0x800);
+      iVar10 = Math_CosGTE(param_1->target_angle + 0x800);
       sVar8 = param_1->bounds_min_x;
       sVar1 = param_2->bounds_min_x;
-      iVar11 = FUN_80083e80(param_1->target_angle + 0x800);
+      iVar11 = Math_Cos(param_1->target_angle + 0x800);
       sVar2 = param_2->bounds_min_x;
       param_1->pos_y =
            param_2->pos_y + (s16)(iVar10 * ((int)sVar8 + (int)sVar1) >> 0xc);
@@ -92,7 +92,7 @@ LAB_80021cc8:
   else {
     uVar9 = 0;
   }
-  uVar6 = FUN_8001dc9c(param_1,param_2,0,uVar9);
+  uVar6 = System_Main(param_1,param_2,0,uVar9);
 LAB_80021dbc:
   if ((uVar6 & 0x80) == 0) {
     g_State182 = 0;

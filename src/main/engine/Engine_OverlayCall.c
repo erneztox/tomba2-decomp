@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_8007be18(u8 param_1)
+void Engine_OverlayCall(u8 param_1)
 
 {
   u8 uVar1;
@@ -23,21 +23,21 @@ void FUN_8007be18(u8 param_1)
     Overlay_8018fbcc();
     break;
   case 2:
-    FUN_80074590(0x14,0xfffffff7,0);
+    Audio_PlaySoundEffect(0x14,0xfffffff7,0);
     *(u8 *)(_g_CurrentEntity + 0x6b) = 1;
     DAT_800bf808 = 1;
     DAT_1f800136 = 1;
     _g_CurrentEntity->angle_offset = 0;
     break;
   case 3:
-    FUN_80074590(0x11,0,0);
+    Audio_PlaySoundEffect(0x11,0,0);
     uVar1 = 2;
     goto LAB_8007bf00;
   case 4:
     uVar1 = 7;
     goto LAB_8007bf00;
   case 5:
-    FUN_80074590(0x11,0,0);
+    Audio_PlaySoundEffect(0x11,0,0);
     uVar1 = 9;
 LAB_8007bf00:
     *(u8 *)(_g_CurrentEntity + 0x6b) = uVar1;

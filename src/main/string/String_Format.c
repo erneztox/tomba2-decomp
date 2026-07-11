@@ -6,7 +6,7 @@
 
 
 
-uint FUN_80079634(int param_1,char *param_2)
+uint String_Format(int param_1,char *param_2)
 
 {
   s8 cVar1;

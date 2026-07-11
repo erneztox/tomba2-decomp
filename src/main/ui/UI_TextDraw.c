@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8004ee88(int param_1)
+void UI_TextDraw(int param_1)
 
 {
   s32 *puVar1;
@@ -54,6 +54,6 @@ void FUN_8004ee88(int param_1)
       iVar7 = iVar7 + 0x8c;
     } while (iVar6 < *(s16 *)(param_1 + 8));
   }
-  FUN_8004ee50(param_1 + iVar6 * 0x8c + 0xc);
+  UI_ClearElement(param_1 + iVar6 * 0x8c + 0xc);
   return;
 }

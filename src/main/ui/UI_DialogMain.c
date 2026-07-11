@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8004df94(int param_1)
+void UI_DialogMain(int param_1)
 
 {
   u8 bVar1;
@@ -40,33 +40,33 @@ void FUN_8004df94(int param_1)
     if (bVar1 != 3) {
       return;
     }
-    FUN_8007a624(param_1);
+    Entity_Dealloc(param_1);
     return;
   }
   switch((int)((param_1->draw_x - 0x66) * 0x10000) >> 0x10) {
   case 0:
     cVar3 = param_1->behavior_state;
     if (cVar3 == '\0') {
-      iVar2 = FUN_8004daec(param_1);
+      iVar2 = Entity_WorldToScreen(param_1);
       if (iVar2 != 0) {
         param_1->timer2 = 0x10;
         param_1->behavior_state = param_1->behavior_state + '\x01';
         if ((_DAT_800bf880 & 0x800) != 0) {
-          FUN_80058304(&g_CollisionEntity,2);
+          Entity_ActionDispatch(&g_CollisionEntity,2);
         }
       }
     }
     else {
 LAB_8004e1fc:
       if (cVar3 == '\x01') {
-        FUN_8004dd90(param_1);
+        UI_UpdateElement_2(param_1);
       }
     }
     goto LAB_8004e240;
   case 1:
     cVar3 = param_1->behavior_state;
     if (cVar3 != '\0') goto LAB_8004e1fc;
-    iVar2 = FUN_8004daec(param_1);
+    iVar2 = Entity_WorldToScreen(param_1);
     if (iVar2 != 0) {
       param_1->timer2 = 0x10;
       param_1->behavior_state = param_1->behavior_state + '\x01';
@@ -75,23 +75,23 @@ LAB_8004e1fc:
   case 2:
     cVar3 = param_1->behavior_state;
     if (cVar3 != '\0') goto LAB_8004e1fc;
-    iVar2 = FUN_8004daec(param_1);
+    iVar2 = Entity_WorldToScreen(param_1);
     if (iVar2 != 0) {
       param_1->timer2 = 0x10;
       param_1->behavior_state = param_1->behavior_state + '\x01';
       if (((_DAT_800bf880 & 0x200) != 0) || ((_DAT_800bf880 & 0x100) != 0)) {
-        FUN_80058304(&g_CollisionEntity,10);
+        Entity_ActionDispatch(&g_CollisionEntity,10);
       }
     }
 LAB_8004e240:
     DAT_800ed061 = DAT_800ed061 | 2;
     goto switchD_8004e040_caseD_6;
   case 3:
-    iVar2 = FUN_8004daec(param_1);
+    iVar2 = Entity_WorldToScreen(param_1);
     uVar4 = 2;
     goto joined_r0x8004e160;
   case 4:
-    iVar2 = FUN_8004daec(param_1);
+    iVar2 = Entity_WorldToScreen(param_1);
     if (iVar2 == 0) goto switchD_8004e040_caseD_6;
     if ((_DAT_800bf880 & 0x100) == 0) {
       uVar4 = 8;
@@ -101,7 +101,7 @@ LAB_8004e240:
     }
     break;
   case 5:
-    iVar2 = FUN_8004daec(param_1);
+    iVar2 = Entity_WorldToScreen(param_1);
     uVar4 = 10;
 joined_r0x8004e160:
     if (iVar2 == 0) goto switchD_8004e040_caseD_6;
@@ -109,7 +109,7 @@ joined_r0x8004e160:
   default:
     goto switchD_8004e040_caseD_6;
   case 7:
-    iVar2 = FUN_8004daec(param_1);
+    iVar2 = Entity_WorldToScreen(param_1);
     if (iVar2 == 0) goto switchD_8004e040_caseD_6;
     if ((_DAT_800bf880 & 0x400) == 0) {
       uVar4 = 6;
@@ -119,7 +119,7 @@ joined_r0x8004e160:
     }
     break;
   case 8:
-    iVar2 = FUN_8004daec(param_1);
+    iVar2 = Entity_WorldToScreen(param_1);
     if (iVar2 == 0) goto switchD_8004e040_caseD_6;
     if ((_DAT_800bf880 & 0x3000) == 0) {
       uVar4 = 4;
@@ -128,7 +128,7 @@ joined_r0x8004e160:
       uVar4 = 5;
     }
   }
-  FUN_80058304(&g_CollisionEntity,uVar4);
+  Entity_ActionDispatch(&g_CollisionEntity,uVar4);
   param_1->state = STATE_FINISH;
 switchD_8004e040_caseD_6:
   param_1->flags = 1;

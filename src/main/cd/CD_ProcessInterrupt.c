@@ -6,7 +6,7 @@
 
 
 
-void FUN_8008639c(void)
+void CD_ProcessInterrupt(void)
 
 {
   int iVar1;
@@ -32,11 +32,11 @@ void FUN_8008639c(void)
     } while (uVar3 != 0);
   }
   if (((*DAT_800abdf0 & 0xff000000) == 0x80000000) || ((*DAT_800abdf0 & 0x8000) != 0)) {
-    FUN_8009a730(s_DMA_bus_error__code__08x_8001c0a0,*DAT_800abdf0);
+    Debug_Printf(s_DMA_bus_error__code__08x_8001c0a0,*DAT_800abdf0);
     iVar1 = 0;
     do {
       iVar2 = iVar1 + 1;
-      FUN_8009a730(s_MADR__d___08x_8001c0bc,iVar1,*(s32 *)(iVar1 * 0x10 + DAT_800abe14));
+      Debug_Printf(s_MADR__d___08x_8001c0bc,iVar1,*(s32 *)(iVar1 * 0x10 + DAT_800abe14));
       iVar1 = iVar2;
     } while (iVar2 < 7);
   }

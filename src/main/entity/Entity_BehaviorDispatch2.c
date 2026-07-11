@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80053670(int param_1,int param_2,int param_3)
+void Entity_BehaviorDispatch2(int param_1,int param_2,int param_3)
 
 {
   int iVar1;
@@ -15,7 +15,7 @@ void FUN_80053670(int param_1,int param_2,int param_3)
   if (param_3 != 8) {
     param_1->behavior_type = param_1->sprite_cmd;
   }
-  iVar1 = FUN_800535d4(param_1);
+  iVar1 = Entity_GetState176(param_1);
   switch(param_1->behavior_type) {
   case 0:
   case 1:
@@ -24,7 +24,7 @@ void FUN_80053670(int param_1,int param_2,int param_3)
   case 7:
   case 8:
     if (param_3 != 8) {
-      FUN_800534b0(param_1,param_2,param_3,iVar1);
+      Entity_SpawnBackground(param_1,param_2,param_3,iVar1);
     }
     if (param_2 == 0) {
       param_1->sub_state2 = 1;
@@ -38,13 +38,13 @@ void FUN_80053670(int param_1,int param_2,int param_3)
   case 5:
     param_1->sub_state2 = 0;
     if (param_3 != 8) {
-      FUN_800534b0(param_1,param_2,param_3,iVar1);
+      Entity_SpawnBackground(param_1,param_2,param_3,iVar1);
     }
     break;
   case 9:
     param_1->sub_state2 = 0;
     if (param_3 != 8) {
-      FUN_800534b0(param_1,param_2,param_3,iVar1 + 1);
+      Entity_SpawnBackground(param_1,param_2,param_3,iVar1 + 1);
     }
   }
   return;

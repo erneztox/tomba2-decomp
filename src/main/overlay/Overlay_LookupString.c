@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800263e8(void)
+void Overlay_LookupString(void)
 
 {
   s8 cVar1;
@@ -17,7 +17,7 @@ void FUN_800263e8(void)
   pcVar3 = (&PTR_DAT_8009d414)[g_GameState];
   cVar1 = *pcVar3;
   while (cVar1 != -1) {
-    puVar2 = (u8 *)FUN_8007ad98();
+    puVar2 = (u8 *)Entity_AllocSlot();
     *puVar2 = 1;
     cVar1 = *pcVar3;
     pcVar3 = pcVar3 + 1;

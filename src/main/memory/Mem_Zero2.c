@@ -6,7 +6,7 @@
 
 
 
-void FUN_80086320(s32 *param_1,int param_2)
+void Mem_Zero2(s32 *param_1,int param_2)
 
 {
   int iVar1;

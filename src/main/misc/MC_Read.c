@@ -6,7 +6,7 @@
 
 
 
-void FUN_800974fc(int param_1,uint param_2,int param_3)
+void MC_Read(int param_1,uint param_2,int param_3)
 
 {
   if (param_3 == 0) {

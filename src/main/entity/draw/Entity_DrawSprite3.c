@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8002c138(int param_1)
+void Entity_DrawSprite3(int param_1)
 
 {
   int iVar1;
@@ -44,11 +44,11 @@ void FUN_8002c138(int param_1)
   setCopControlWord(2,0xb000,0);
   setCopControlWord(2,0xb800,0);
   _DAT_1f800090 = 0;
-  FUN_80085480(&local_30,0x1f800000);
+  GTE_LoadRotMatrixFromSVec(&local_30,0x1f800000);
   local_20 = (uint)(u8)(&DAT_800a203c)[iVar1] << 2;
   local_1c = (uint)(u8)(&DAT_800a203d)[iVar1] << 2;
   local_18 = (uint)(u8)(&DAT_800a203e)[iVar1] << 2;
-  FUN_80084520(0x1f800000,&local_20);
+  GTE_TransformVec(0x1f800000,&local_20);
   setCopControlWord(2,0,_g_GTE_WorkF8);
   setCopControlWord(2,0x800,_DAT_1f8000fc);
   setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -97,6 +97,6 @@ void FUN_8002c138(int param_1)
   setCopControlWord(2,0x2800,_g_GTE_Data14);
   setCopControlWord(2,0x3000,_g_GTE_Data18);
   setCopControlWord(2,0x3800,_g_GTE_Data1C);
-  FUN_80027768(&DAT_8009f05c,(&DAT_800a203f)[iVar1],0xfffffff6,(&DAT_800a2040)[iVar1]);
+  Entity_SubmitQuadToOT(&DAT_8009f05c,(&DAT_800a203f)[iVar1],0xfffffff6,(&DAT_800a2040)[iVar1]);
   return;
 }

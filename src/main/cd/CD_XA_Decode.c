@@ -6,7 +6,7 @@
 
 
 
-uint FUN_80099f70(int param_1,int param_2,int param_3,int param_4)
+uint CD_XA_Decode(int param_1,int param_2,int param_3,int param_4)
 
 {
   s16 sVar1;

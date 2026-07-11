@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8007dc38(int param_1)
+void Entity_SpriteLifecycle(int param_1)
 
 {
   u8 bVar1;
@@ -18,10 +18,10 @@ void FUN_8007dc38(int param_1)
     if ((param_1->sub_type == '\0') && ((g_EventInput & 0xfb) != 0)) {
       param_1->state = STATE_FINISH;
     }
-    FUN_8007c940(param_1);
-    FUN_8007cc00(param_1);
+    GPU_SpriteBuild(param_1);
+    GPU_SpriteProcess(param_1);
     if (param_1->sub_type != '\x01') {
-      FUN_8005019c(param_1 + 0x54,*(u8 *)(param_1 + 0x18),1,2);
+      UI_DrawPanel(param_1 + 0x54,*(u8 *)(param_1 + 0x18),1,2);
     }
   }
   else if (bVar1 < 2) {
@@ -30,7 +30,7 @@ void FUN_8007dc38(int param_1)
               (uint)*(u16 *)(*(s16 *)(param_1 + 0x5e) * 4 + *(int *)(param_1 + 0x4c));
       param_1->parent = iVar2;
       param_1->script_ptr = iVar2;
-      FUN_8007c0d0(param_1,0);
+      Entity_ScriptRun_2(param_1,0);
       bVar1 = param_1->sub_type;
       param_1->anim_id = 1;
       param_1->state = param_1->state + '\x01';
@@ -55,7 +55,7 @@ void FUN_8007dc38(int param_1)
     if (param_1->sub_type == '\0') {
       g_EventInput = g_EventInput & 0xfb;
     }
-    FUN_8007a624(param_1);
+    Entity_Dealloc(param_1);
   }
   return;
 }

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_8005b5e4(int param_1)
+s32 Entity_LookupType(int param_1)
 
 {
   switch(param_1->kind) {

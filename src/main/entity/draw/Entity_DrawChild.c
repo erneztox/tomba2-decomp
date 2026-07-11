@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80068610(int param_1,int param_2)
+void Entity_DrawChild(int param_1,int param_2)
 
 {
   int iVar1;

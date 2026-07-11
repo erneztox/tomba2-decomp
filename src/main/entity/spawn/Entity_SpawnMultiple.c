@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-int FUN_8006ff10(s32 param_1,s16 param_2)
+int Entity_SpawnMultiple(s32 param_1,s16 param_2)
 
 {
   u8 *puVar1;
@@ -18,10 +18,10 @@ int FUN_8006ff10(s32 param_1,s16 param_2)
   puVar1 = &DAT_800a4bb8;
   iVar3 = 0;
   do {
-    iVar2 = FUN_80072ddc(param_1,*puVar1,3,4);
+    iVar2 = Entity_SpawnChild(param_1,*puVar1,3,4);
     iVar4 = iVar3 + 1;
     if (iVar2 != 0) {
-      iVar2->callback = FUN_80070018;
+      iVar2->callback = Entity_ChildUpdate2;
       iVar2->parent = param_1;
       iVar2->target_angle = param_2;
       iVar2->alloc_flags = iVar2->alloc_flags | 0x80;

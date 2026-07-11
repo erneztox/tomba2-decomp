@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-int FUN_80024548(int param_1,int param_2)
+int Entity_Behavior_Hit(int param_1,int param_2)
 
 {
   s8 cVar1;
@@ -42,9 +42,9 @@ int FUN_80024548(int param_1,int param_2)
         _DAT_1f800088 = 0x28;
         sVar5 = *(s16 *)(param_1 + 0x66) + -0x1e;
       }
-      iVar3 = FUN_80083f50((int)param_1->rot_y);
+      iVar3 = Math_CosGTE((int)param_1->rot_y);
       param_1->draw_pos_x = param_1->pos_y + (s16)(iVar3 * sVar5 >> 0xc);
-      iVar3 = FUN_80083e80((int)param_1->rot_y);
+      iVar3 = Math_Cos((int)param_1->rot_y);
       param_1->draw_pos_y = *(s16 *)(param_1 + 0x32) - param_1->target_angle;
       param_1->draw_pos_z = param_1->pos_z - (s16)(iVar3 * sVar5 >> 0xc);
       if (g_GameState == GAMESTATE_TITLE) {
@@ -67,7 +67,7 @@ int FUN_80024548(int param_1,int param_2)
         }
       }
       iVar3 = (**(code **)(&DAT_8009d22c + (uint)g_GameState * 4))(param_1);
-      if ((iVar3 == 0) && (iVar3 = FUN_80024448(param_1), iVar3 == 0)) {
+      if ((iVar3 == 0) && (iVar3 = Entity_BehaviorSet(param_1), iVar3 == 0)) {
         iVar3 = 0;
       }
     }

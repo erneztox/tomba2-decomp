@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006e464(int param_1)
+void Camera_Main(int param_1)
 
 {
   u8 bVar1;
@@ -30,7 +30,7 @@ void FUN_8006e464(int param_1)
   bVar1 = *(u8 *)(param_1 + 0x72);
   sVar2 = -_DAT_1f8000ee;
   if ((bVar1 & 0x40) != 0) {
-    iVar4 = FUN_80083f50((int)*(s16 *)(param_1 + 0x8c));
+    iVar4 = Math_CosGTE((int)*(s16 *)(param_1 + 0x8c));
     iVar8 = (int)sVar2;
     iVar4 = iVar4 * iVar8;
     uVar7 = (uint)*(s16 *)(param_1 + 0x8c);
@@ -82,7 +82,7 @@ LAB_8006e634:
 LAB_8006e640:
     iVar4 = uVar7 + (uint)_g_CameraAngle + (uint)param_1->sprite_y;
     *(s16 *)(param_1 + 0x8c) = (s16)iVar4;
-    iVar4 = FUN_80083f50(iVar4 * 0x10000 >> 0x10);
+    iVar4 = Math_CosGTE(iVar4 * 0x10000 >> 0x10);
     iVar8 = (int)sVar2;
     iVar4 = iVar4 * iVar8;
     uVar7 = (uint)*(s16 *)(param_1 + 0x8c);
@@ -105,7 +105,7 @@ LAB_8006e640:
       }
     }
     else {
-      iVar4 = FUN_80077768((int)(s16)_g_EntityAngle,(int)(s16)_g_CameraAngle,0);
+      iVar4 = Math_CompareAngle((int)(s16)_g_EntityAngle,(int)(s16)_g_CameraAngle,0);
       if (iVar4 == 0) goto switchD_8006e6a0_caseD_5;
       uVar7 = _g_CameraAngle + 0x600;
     }
@@ -131,21 +131,21 @@ switchD_8006e6a0_caseD_5:
   }
   uVar7 = uVar7 & 0xfff;
 LAB_8006e7c4:
-  iVar4 = FUN_80083f50(uVar7);
+  iVar4 = Math_CosGTE(uVar7);
   iVar8 = (int)sVar2;
   iVar4 = iVar4 * iVar8;
 LAB_8006e7e4:
   uVar6 = (uint)_g_PlayerPosX;
-  iVar5 = FUN_80083e80(uVar7);
+  iVar5 = Math_Cos(uVar7);
   iVar8 = (int)((((uint)_g_PlayerPosZ - (iVar5 * iVar8 >> 0xc)) - (_DAT_1f8000d8 >> 0x10)) * 0x10000
                ) >> 0x10;
   iVar4 = (int)(((uVar6 + (iVar4 >> 0xc)) - (_DAT_1f8000d0 >> 0x10)) * 0x10000) >> 0x10;
-  sVar2 = FUN_80085690(-iVar8,iVar4);
-  sVar3 = FUN_80084080(iVar4 * iVar4 + iVar8 * iVar8);
-  iVar4 = FUN_80083f50((int)sVar2);
+  sVar2 = Math_Atan2(-iVar8,iVar4);
+  sVar3 = Math_SqrtGTE(iVar4 * iVar4 + iVar8 * iVar8);
+  iVar4 = Math_CosGTE((int)sVar2);
   iVar8 = (int)sVar3;
   _DAT_1f8000d0 = _DAT_1f8000d0 + (iVar4 * iVar8 >> 1);
-  iVar4 = FUN_80083e80((int)sVar2);
+  iVar4 = Math_Cos((int)sVar2);
   _DAT_1f8000d8 = _DAT_1f8000d8 - (iVar4 * iVar8 >> 1);
   if (iVar8 < 0x191) {
     param_1->camera_flags = param_1->camera_flags | 1;

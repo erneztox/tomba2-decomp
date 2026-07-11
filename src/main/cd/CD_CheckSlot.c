@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_800962b0(u16 param_1,s16 param_2)
+s32 CD_CheckSlot(u16 param_1,s16 param_2)
 
 {
   int iVar1;

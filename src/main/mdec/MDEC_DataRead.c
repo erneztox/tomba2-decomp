@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-uint FUN_800870b4(int param_1,u8 param_2)
+uint MDEC_DataRead(int param_1,u8 param_2)
 
 {
   u8 bVar1;
@@ -25,7 +25,7 @@ uint FUN_800870b4(int param_1,u8 param_2)
   }
   do {
   } while ((*(u16 *)(DAT_800abe9c + 4) & 2) == 0);
-  FUN_80089620(400);
+  MDEC_SetParam(400);
   bVar1 = *DAT_800abe9c;
   uVar3 = (uint)bVar1;
   if ((param_1->state == '\0') && ((int)uVar3 >> 4 == 8)) {
@@ -40,9 +40,9 @@ uint FUN_800870b4(int param_1,u8 param_2)
   while( true ) {
     if ((uVar4 & 0x80) != 0) {
       if ((param_1->state != '\b') && (DAT_800abe7c == 2)) {
-        FUN_80089620(0x3c);
+        MDEC_SetParam(0x3c);
         do {
-          iVar5 = FUN_80089640();
+          iVar5 = MDEC_WaitVSync();
         } while (iVar5 == 0);
       }
       *DAT_800abe9c = param_2;

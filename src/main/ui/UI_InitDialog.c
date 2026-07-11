@@ -1,5 +1,5 @@
 /**
- * @brief UI dialog init: calls FUN_80077d64, sets up dialog struct at entity+0x1B0
+ * @brief UI dialog init: calls Game_SetFlag842, sets up dialog struct at entity+0x1B0
  * @note Original: func_8004F378 at 0x8004F378
  */
 // UI_InitDialog
@@ -7,16 +7,16 @@
 
 
 #include "tomba.h"
-void FUN_8004f378(int param_1)
+void UI_InitDialog(int param_1)
 
 {
   u16 uVar1;
   int iVar2;
   s32 *puVar3;
   
-  FUN_80077d64();
+  Game_SetFlag842();
   puVar3 = (s32 *)(param_1 + 0x1b0);
-  FUN_8004f184(param_1,puVar3);
+  UI_DialogText(param_1,puVar3);
   uVar1 = *(s16 *)(param_1 + 10) - 1;
   *(u16 *)(param_1 + 10) = uVar1;
   iVar2 = 0;
@@ -34,6 +34,6 @@ void FUN_8004f378(int param_1)
       puVar3 = puVar3 + 8;
     } while (iVar2 < *(s16 *)(param_1 + 10));
   }
-  FUN_8004ee2c(puVar3);
+  UI_ClearList(puVar3);
   return;
 }

@@ -6,7 +6,7 @@
 
 
 
-int FUN_8004ea4c(u8 *param_1,char *param_2,s32 param_3,u8 *param_4)
+int UI_RenderChar(u8 *param_1,char *param_2,s32 param_3,u8 *param_4)
 
 {
   u8 bVar1;

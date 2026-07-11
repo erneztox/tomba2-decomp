@@ -6,7 +6,7 @@
 
 
 
-s16 FUN_80085c9c(s16 param_1)
+s16 CD_SetTimeout(s16 param_1)
 
 {
   s16 uVar1;

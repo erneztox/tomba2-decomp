@@ -8,12 +8,12 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80092a70(s16 param_1,s16 param_2)
+void Audio_SetParam(s16 param_1,s16 param_2)
 
 {
   _DAT_80105bf8 = 6;
   _DAT_80105c00 = (s16)((param_1 * 0x7fff) / 0x7f);
   _DAT_80105c02 = (s16)((param_2 * 0x7fff) / 0x7f);
-  FUN_80098330();
+  CD_Main();
   return;
 }

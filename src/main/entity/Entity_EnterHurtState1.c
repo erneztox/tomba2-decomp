@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-void FUN_800732c0(int param_1)
+void Entity_EnterHurtState1(int param_1)
 
 {
-  FUN_80073260();
+  Entity_EnterHurtState();
   g_HurtState = 1;
   g_HurtParam = param_1->sub_type;
   return;

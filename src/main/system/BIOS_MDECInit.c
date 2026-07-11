@@ -6,11 +6,11 @@
 
 
 
-s32 FUN_8009bdfc(void)
+s32 BIOS_MDECInit(void)
 
 {
-  FUN_80080890();
-  FUN_80087400(1,&DAT_80105f18);
-  FUN_800808a0();
+  BIOS_Syscall0();
+  BIOS_Syscall_C0_80087400(1,&DAT_80105f18);
+  BIOS_Syscall0_2();
   return 1;
 }

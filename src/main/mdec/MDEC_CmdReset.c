@@ -6,7 +6,7 @@
 
 
 
-void FUN_80088a74(int param_1)
+void MDEC_CmdReset(int param_1)
 
 {
   param_1->state = 0x45;

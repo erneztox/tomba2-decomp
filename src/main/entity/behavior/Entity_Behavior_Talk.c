@@ -1,5 +1,5 @@
 /**
- * @brief Entity talk behavior: entity->behavior_state=0->1, inits dialog via FUN_80041194
+ * @brief Entity talk behavior: entity->behavior_state=0->1, inits dialog via Entity_MoveToward
  * @note Original: func_8004B208 at 0x8004B208
  */
 // Entity_Behavior_Talk
@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8004b208(u8 *param_1,int param_2)
+void Entity_Behavior_Talk(u8 *param_1,int param_2)
 
 {
   u8 bVar1;
@@ -17,7 +17,7 @@ void FUN_8004b208(u8 *param_1,int param_2)
   if (param_1->behavior_state == '\0') {
     param_1->behavior_state = 1;
     *param_1 = 1;
-    FUN_80041194(param_1,(int)param_1->bounds_max_y - (int)param_1->bounds_min_y,0,0);
+    Entity_MoveToward(param_1,(int)param_1->bounds_max_y - (int)param_1->bounds_min_y,0,0);
     if (param_2 == 0) {
       param_1[0x18] = 0;
     }

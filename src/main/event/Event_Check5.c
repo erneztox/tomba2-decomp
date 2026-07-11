@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_80035218(s32 param_1,int param_2,int param_3)
+s32 Event_Check5(s32 param_1,int param_2,int param_3)
 
 {
   int iVar1;
@@ -40,7 +40,7 @@ LAB_800352ac:
       DAT_800bf80a = 3;
       DAT_800bf80b = (u8)param_2;
       DAT_800bf809 = 1;
-      FUN_8004dc84(param_2,3);
+      UI_DialogSpawn(param_2,3);
     }
     return 0;
   }

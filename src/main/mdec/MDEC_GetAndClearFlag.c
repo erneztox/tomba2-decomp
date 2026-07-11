@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_8008695c(void)
+s32 MDEC_GetAndClearFlag(void)
 
 {
   s32 uVar1;

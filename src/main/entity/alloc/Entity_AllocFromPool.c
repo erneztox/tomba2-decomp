@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_800519e0(int param_1,uint param_2,int *param_3,s16 *param_4)
+s32 Entity_AllocFromPool(int param_1,uint param_2,int *param_3,s16 *param_4)
 
 {
   s16 uVar1;
@@ -37,7 +37,7 @@ s32 FUN_800519e0(int param_1,uint param_2,int *param_3,s16 *param_4)
     if ((param_2 & 0xff) != 0) {
       do {
         iVar5 = iVar5 + 1;
-        puVar4 = (s16 *)FUN_8007aae8();
+        puVar4 = (s16 *)Entity_AllocFromFreeList();
         *(s16 **)(iVar6 + 0xc0) = puVar4;
         puVar4->sub_type = *param_4;
         *puVar4 = param_4->flags;

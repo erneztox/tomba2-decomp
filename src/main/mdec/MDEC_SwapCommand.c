@@ -6,7 +6,7 @@
 
 
 
-void FUN_80088dbc(int param_1)
+void MDEC_SwapCommand(int param_1)
 
 {
   u8 uVar1;

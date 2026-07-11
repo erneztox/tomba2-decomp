@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80090b98(uint param_1)
+s32 Audio_ClearSlot(uint param_1)
 
 {
   param_1 = param_1 & 0xffff;

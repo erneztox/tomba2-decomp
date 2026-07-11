@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8004c01c(u8 *param_1)
+void Entity_Behavior_Pickup(u8 *param_1)
 
 {
   s8 cVar1;
@@ -23,15 +23,15 @@ void FUN_8004c01c(u8 *param_1)
     else if (param_1->behavior_state != '\x01') {
       return;
     }
-    FUN_80051614(param_1,param_1 + 0x88,0,0);
+    GTE_LoadMatrix(param_1,param_1 + 0x88,0,0);
     cVar1 = DAT_800e7e81;
     param_1->flags = DAT_800e7e81;
     if (cVar1 != '\0') {
-      FUN_80077efc(param_1);
+      Sprite_Alloc3(param_1);
     }
   }
   else if (param_1->flag_5E == '\x01') {
-    FUN_8004b788(param_1);
+    Entity_Behavior_Talk2(param_1);
   }
   return;
 }

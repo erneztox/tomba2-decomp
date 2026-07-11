@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80058f24(u8 *param_1)
+void Entity_StateTransition(u8 *param_1)
 
 {
   if (g_CurrentOverlay == '\0') {

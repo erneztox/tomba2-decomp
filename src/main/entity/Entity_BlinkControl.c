@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8004b374(int param_1,int param_2)
+void Entity_BlinkControl(int param_1,int param_2)
 
 {
   if (param_2 != 0) {

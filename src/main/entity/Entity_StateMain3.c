@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80057fd4(int param_1)
+s32 Entity_StateMain3(int param_1)
 
 {
   s32 *puVar1;
@@ -106,7 +106,7 @@ s32 FUN_80057fd4(int param_1)
           puVar3 = *(s16 **)(iVar4 + 0xc0);
         }
         else {
-          puVar3 = (s16 *)FUN_8007aae8();
+          puVar3 = (s16 *)Entity_AllocFromFreeList();
           *(s16 **)(iVar4 + 0xc0) = puVar3;
           if (uVar11 == 2) {
             uVar11 = 0;

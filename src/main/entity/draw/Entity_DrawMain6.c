@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8002e680(int param_1,int param_2,uint param_3,uint param_4)
+void Entity_DrawMain6(int param_1,int param_2,uint param_3,uint param_4)
 
 {
   s16 sVar1;
@@ -68,13 +68,13 @@ void FUN_8002e680(int param_1,int param_2,uint param_3,uint param_4)
   uVar27 = param_3 & 0xffffff | 0x3a000000;
   iVar20 = param_2 * _DAT_1f800088 >> 0x10;
   uVar26 = param_4 & 0xffffff | 0x3a000000;
-  iVar10 = FUN_80083e80(0x66);
+  iVar10 = Math_Cos(0x66);
   local_8c = iVar22 * iVar10 >> 0xc;
-  iVar10 = FUN_80083e80(0x66);
+  iVar10 = Math_Cos(0x66);
   iVar29 = iVar20 * iVar10 >> 0xc;
-  iVar10 = FUN_80083f50(0x66);
+  iVar10 = Math_CosGTE(0x66);
   iVar28 = iVar21 * iVar10 >> 0xc;
-  iVar11 = FUN_80083f50(0x66);
+  iVar11 = Math_CosGTE(0x66);
   puVar9 = _g_OT_Buffer;
   iVar17 = 0;
   iVar19 = 0;
@@ -85,8 +85,8 @@ void FUN_8002e680(int param_1,int param_2,uint param_3,uint param_4)
   iVar11 = iVar13 * iVar11 >> 0xc;
   puVar23 = _g_OT_Buffer;
   do {
-    iVar12 = FUN_80083e80(iVar25);
-    iVar25 = FUN_80083f50(iVar25);
+    iVar12 = Math_Cos(iVar25);
+    iVar25 = Math_CosGTE(iVar25);
     if (iVar16 != 0) {
       iVar10 = local_8c;
       iVar17 = iVar29;
@@ -241,7 +241,7 @@ void FUN_8002e680(int param_1,int param_2,uint param_3,uint param_4)
     puVar23 = puVar24;
   } while (iVar16 < 5);
   puVar24[-9] = puVar24[-9] & 0xff000000 | *puVar14;
-  FUN_80083de0(puVar24,0,1,0x35,0);
+  GPU_SetupDrawMode2(puVar24,0,1,0x35,0);
   *puVar24 = (uint)puVar9 | 0x2000000;
   *puVar14 = (uint)puVar24;
   _g_OT_Buffer = puVar24 + 0x6c;

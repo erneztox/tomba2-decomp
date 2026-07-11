@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_80063f9c(int param_1)
+void Entity_PhysicsMain(int param_1)
 
 {
   u8 bVar1;
@@ -20,11 +20,11 @@ void FUN_80063f9c(int param_1)
   int iVar5;
   
   iVar5 = param_1->state_ptr;
-  FUN_80055e28(param_1,0);
+  Entity_PhysicsUpdate(param_1,0);
   iVar5->collision_state = 1;
-  FUN_800635d4(param_1,0);
-  FUN_80076d68(param_1);
-  FUN_80063b94(param_1,0);
+  Entity_Update(param_1,0);
+  Entity_AnimFrame(param_1);
+  Entity_StateMain4(param_1,0);
   if (*(u8 *)(param_1 + 0x168) < 3) {
     g_SFXState = 0x47;
   }
@@ -53,7 +53,7 @@ void FUN_80063f9c(int param_1)
     }
     else if ((param_1->input_state == '\0') || ((param_1->rot_z & 0xfff) < 0xb01)
             ) break;
-    FUN_80064358(param_1,cVar3,iVar5);
+    Entity_AnimSet(param_1,cVar3,iVar5);
     param_1->rot_z = 0;
     break;
   case 2:
@@ -83,7 +83,7 @@ switchD_80064210_caseD_2:
 LAB_8006426c:
     if ((uVar2 & 0xfff) < 0x141) {
 LAB_80064280:
-      FUN_80064358(param_1,uVar4,iVar5);
+      Entity_AnimSet(param_1,uVar4,iVar5);
     }
     break;
   case 3:
@@ -126,7 +126,7 @@ switchD_8006409c_default:
       if (bVar1 != 0x11) {
         return;
       }
-      FUN_80063ecc(param_1,iVar5);
+      Entity_CalcOrbitPos(param_1,iVar5);
       return;
     }
   }

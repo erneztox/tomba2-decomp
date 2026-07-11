@@ -6,11 +6,11 @@
 
 
 
-void FUN_8004d604(int param_1,s8 param_2)
+void Inventory_RemoveItem(int param_1,s8 param_2)
 
 {
   (&DAT_800bfab4)[param_1] = (&DAT_800bfab4)[param_1] - param_2;
-  FUN_8004ed0c(param_1,1);
-  FUN_8004d514(param_1);
+  UI_DrawItemIcon(param_1,1);
+  UI_InventorySlot(param_1);
   return;
 }

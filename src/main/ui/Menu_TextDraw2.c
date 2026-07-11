@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_80078988(s16 param_1,s16 param_2,int param_3,char *param_4,int param_5)
+int Menu_TextDraw2(s16 param_1,s16 param_2,int param_3,char *param_4,int param_5)
 
 {
   u8 uVar1;
@@ -42,7 +42,7 @@ int FUN_80078988(s16 param_1,s16 param_2,int param_3,char *param_4,int param_5)
         ppuVar10 = &PTR_DAT_800a55e0;
         puVar4 = PTR_DAT_800a55e0;
         while (puVar4 != (void*)0x0) {
-          iVar6 = FUN_8009a640(*ppuVar10,param_4,2);
+          iVar6 = String_CompareICase(*ppuVar10,param_4,2);
           if (iVar6 == 0) {
             uVar9 = (uint)*(u16 *)(ppuVar10 + 1);
             goto LAB_80078ac8;
@@ -95,7 +95,7 @@ LAB_80078bfc:
     } while (*param_4 != '\0');
   }
   puVar7 = _g_OT_Buffer;
-  FUN_80083de0(_g_OT_Buffer,0,0,0x1f,0);
+  GPU_SetupDrawMode2(_g_OT_Buffer,0,0,0x1f,0);
   puVar8 = (uint *)(_g_EntityBuffer + param_5 * 4);
   *puVar7 = *puVar8 | 0x2000000;
   *puVar8 = (uint)puVar7;

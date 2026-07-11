@@ -6,7 +6,7 @@
 
 
 
-int FUN_800875dc(int param_1)
+int MDEC_ProcessData(int param_1)
 
 {
   u8 uVar1;
@@ -21,7 +21,7 @@ int FUN_800875dc(int param_1)
     (*DAT_800abe44)(param_1);
   }
   uVar1 = (*DAT_800abe40)(param_1,DAT_800abebc);
-  iVar2 = FUN_800870b4(param_1,uVar1);
+  iVar2 = MDEC_DataRead(param_1,uVar1);
   iVar3 = iVar2;
   if (((iVar2 != 0x5a) && (iVar2 != 0)) && (iVar3 = -4, iVar2 < 0)) {
     iVar3 = iVar2;

@@ -9,7 +9,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_800329e0(s32 param_1)
+void GTE_SetProjectionDist(s32 param_1)
 
 {
   setCopControlWord(2,0,_g_GTE_WorkF8);

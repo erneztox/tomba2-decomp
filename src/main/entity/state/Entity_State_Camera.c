@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006c328(int param_1)
+void Entity_State_Camera(int param_1)
 
 {
   s16 sVar1;
@@ -33,11 +33,11 @@ void FUN_8006c328(int param_1)
     else {
       uVar3 = 3;
     }
-    FUN_80074590(6,uVar3,0);
+    Audio_PlaySoundEffect(6,uVar3,0);
   }
   if ((DAT_800e7f3e != '\0') && (param_1->flag_5E == '\0')) {
     param_1->flag_5E = 1;
-    FUN_8006a8c8(param_1);
+    Entity_SpawnChild27(param_1);
   }
   if ((DAT_800e7fc4 == '\x02') || (DAT_800e7fc6 == '\0')) {
     param_1->behavior_state = 0;
@@ -51,7 +51,7 @@ void FUN_8006c328(int param_1)
     uVar2 = DAT_800e7eaa;
     param_1->behavior_state = 1;
     param_1->collision_dir = uVar2;
-    FUN_8006bdf0(param_1);
+    Entity_InitAttackTrail(param_1);
     param_1->action_state = 1;
   }
   return;

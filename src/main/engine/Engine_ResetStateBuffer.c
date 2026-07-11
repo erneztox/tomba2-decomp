@@ -9,7 +9,7 @@
 void Engine_ResetStateBuffer(void)
 
 {
-  FUN_8009a420(&g_GameState,0,0x5f4);
+  Mem_Set(&g_GameState,0,0x5f4);
   g_ItemType = 8;
   g_ItemCount = 4;
   g_SpriteParam1 = 0;

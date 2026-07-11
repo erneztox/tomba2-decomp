@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8008f2bc(u16 *param_1,u16 *param_2,u16 *param_3)
+void Audio_SetVoiceFlags(u16 *param_1,u16 *param_2,u16 *param_3)
 
 {
   u16 uVar1;

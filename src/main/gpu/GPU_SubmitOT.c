@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8007fcc8(s16 param_1,s16 param_2,s16 param_3,s16 param_4,
+void GPU_SubmitOT(s16 param_1,s16 param_2,s16 param_3,s16 param_4,
                  uint param_5)
 
 {

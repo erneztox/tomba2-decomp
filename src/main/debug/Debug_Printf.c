@@ -6,7 +6,7 @@
 
 
 
-void FUN_8009a730(s32 param_1,s32 param_2,s32 param_3,s32 param_4)
+void Debug_Printf(s32 param_1,s32 param_2,s32 param_3,s32 param_4)
 
 {
   s32 local_res4;
@@ -16,6 +16,6 @@ void FUN_8009a730(s32 param_1,s32 param_2,s32 param_3,s32 param_4)
   local_res4 = param_2;
   local_res8 = param_3;
   local_resc = param_4;
-  FUN_8009a770(1,param_1,&local_res4);
+  Debug_PrintfMain(1,param_1,&local_res4);
   return;
 }

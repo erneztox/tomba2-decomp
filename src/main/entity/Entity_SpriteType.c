@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80038f7c(uint param_1)
+s32 Entity_SpriteType(uint param_1)
 
 {
   s32 bVar1;

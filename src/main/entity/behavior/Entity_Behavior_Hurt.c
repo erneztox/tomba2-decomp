@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8006bb6c(u8 *param_1)
+void Entity_Behavior_Hurt(u8 *param_1)
 
 {
   u8 bVar1;
@@ -26,14 +26,14 @@ void FUN_8006bb6c(u8 *param_1)
       if (*(s16 *)(param_1 + 0x6e) == 0) {
         DAT_1f800231 = DAT_1f800231 + -1;
       }
-      FUN_8007ab44(param_1);
+      Entity_ListInsert(param_1);
       return;
     }
     if (bVar1 != 0) {
       return;
     }
     param_1->input_flags = 0x40;
-    FUN_8006acac(param_1);
+    Entity_InitConfig(param_1);
     param_1->parent = 0;
     param_1->state = param_1->state + '\x01';
     param_1->target_angle = param_1->rot_y;
@@ -46,27 +46,27 @@ void FUN_8006bb6c(u8 *param_1)
     param_1->move_mode = 0;
     if (param_1->sub_type == '\0') {
       param_1->behavior_state = 1;
-      FUN_80069688(param_1);
+      Entity_DispatchBehavior(param_1);
     }
     else {
-      FUN_80031558(param_1,(u8)param_1->kind - 1);
+      Entity_SpawnTrail(param_1,(u8)param_1->kind - 1);
     }
   }
   param_1->flags = 1;
   if (param_1->behavior_state == '\0') {
-    FUN_8006b9dc(param_1);
+    Entity_State_Damage(param_1);
   }
   else if (param_1->behavior_state == '\x01') {
-    FUN_8006b494(param_1);
+    Entity_Behavior_Attack(param_1);
     if (*(s16 *)(param_1 + 0x66) == 0) {
       if (param_1->kind == '\x06') {
-        FUN_80051844(param_1);
+        GTE_LoadScaleCompose(param_1);
       }
       else {
-        FUN_800517f8(param_1);
+        Entity_UpdateMatrix(param_1);
       }
     }
-    FUN_8006afc4(param_1);
+    Entity_SyncToParent(param_1);
   }
   return;
 }

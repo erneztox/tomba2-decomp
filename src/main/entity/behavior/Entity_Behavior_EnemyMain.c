@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006a384(u8 *param_1)
+void Entity_Behavior_EnemyMain(u8 *param_1)
 
 {
   s8 cVar1;
@@ -22,24 +22,24 @@ void FUN_8006a384(u8 *param_1)
   
   switchparam_1->action_state {
   case 0:
-    FUN_80069bec(param_1,0);
+    Entity_Behavior_Enemy2(param_1,0);
     cVar1 = param_1->action_state;
     goto LAB_8006a52c;
   case 1:
-    FUN_80069ae4(param_1);
+    Entity_CopyParentPos(param_1);
     sVar7 = param_1->timer1;
     param_1->timer1 = sVar7 + -1;
     if (sVar7 != 1) break;
-    FUN_80074590(0xb,0,0);
+    Audio_PlaySoundEffect(0xb,0,0);
     *param_1 = 1;
     param_1->action_state = param_1->action_state + '\x01';
 LAB_8006a47c:
-    iVar3 = FUN_80069948(param_1);
+    iVar3 = Entity_InitType(param_1);
     if (iVar3 != 1) break;
     goto LAB_8006a490;
   case 2:
     if (param_1->collision_state != '\0') goto LAB_8006a4b8;
-    FUN_80069ae4(param_1);
+    Entity_CopyParentPos(param_1);
     param_1->sub_action = 0;
     param_1->action_state = param_1->action_state + '\x01';
     if (param_1->move_mode == '\0') goto LAB_8006a47c;
@@ -48,7 +48,7 @@ LAB_8006a490:
     param_1->anim_counter = 0;
     break;
   case 3:
-    FUN_8006a240(param_1);
+    Entity_State_Collide(param_1);
     if (param_1->collision_state == '\0') break;
 LAB_8006a4b8:
     param_1->behavior_state = 2;
@@ -73,10 +73,10 @@ LAB_8006a52c:
   case 6:
     param_1->event_id = 1;
     DAT_1f800252 = 1;
-    uVar2 = FUN_800782b0(param_1 + 0x2c,(int)_DAT_800e7f5c->pos_x,
+    uVar2 = Math_CalcAngle2D(param_1 + 0x2c,(int)_DAT_800e7f5c->pos_x,
                          (int)*(s16 *)(_DAT_800e7f5c + 0x34));
     param_1->event_param = uVar2;
-    uVar2 = FUN_80069a2c(param_1,(int)_DAT_800e7f5c->pos_x,
+    uVar2 = Entity_CalcAngleToTarget_2(param_1,(int)_DAT_800e7f5c->pos_x,
                          (int)*(s16 *)(_DAT_800e7f5c + 0x30),(int)*(s16 *)(_DAT_800e7f5c + 0x34)
                         );
     param_1->type_flags = uVar2;
@@ -85,7 +85,7 @@ LAB_8006a52c:
     if (0x1a4 < (s16)(sVar7 + 0x32)) {
       param_1->anim_counter = 0x1a4;
     }
-    iVar3 = FUN_80069b6c(param_1);
+    iVar3 = Entity_CheckProximity(param_1);
     if (iVar3 != 0) goto switchD_8006a3dc_caseD_7;
     break;
   case 7:
@@ -128,13 +128,13 @@ switchD_8006a3dc_caseD_7:
       iVar5 = 0;
       if (0 < iVar3 >> 6) {
         do {
-          iVar4 = FUN_80083e80((int)sVar7);
+          iVar4 = Math_Cos((int)sVar7);
           param_1->pos_y_fixed = param_1->pos_y_fixed + iVar4 * 0x400;
-          iVar4 = FUN_80083f50((int)sVar7);
+          iVar4 = Math_CosGTE((int)sVar7);
           iVar4 = iVar4 * 0x40 >> 4;
           *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + param_1->normal_x * iVar4;
           param_1->scale_y = param_1->scale_y + param_1->normal_z * iVar4;
-          iVar4 = FUN_80069948(param_1);
+          iVar4 = Entity_InitType(param_1);
           iVar5 = iVar5 + 1;
           if (iVar4 != 0) {
             return;
@@ -143,27 +143,27 @@ switchD_8006a3dc_caseD_7:
       }
       uVar6 = param_1->anim_counter & 0x3f;
       if ((param_1->anim_counter & 0x3f) != 0) {
-        iVar3 = FUN_80083e80((int)sVar7);
+        iVar3 = Math_Cos((int)sVar7);
         param_1->pos_y_fixed = param_1->pos_y_fixed + iVar3 * uVar6 * 0x10;
-        iVar3 = FUN_80083f50((int)sVar7);
+        iVar3 = Math_CosGTE((int)sVar7);
         iVar3 = (int)(iVar3 * uVar6) >> 4;
         *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + param_1->normal_x * iVar3;
         param_1->scale_y = param_1->scale_y + param_1->normal_z * iVar3;
-        FUN_80069948();
+        Entity_InitType();
       }
     }
     else {
-      iVar3 = FUN_80083e80((int)sVar7);
+      iVar3 = Math_Cos((int)sVar7);
       param_1->pos_y_fixed =
            param_1->pos_y_fixed + iVar3 * param_1->anim_counter * 0x10;
-      iVar3 = FUN_80083f50((int)sVar7);
+      iVar3 = Math_CosGTE((int)sVar7);
       iVar3 = iVar3 * param_1->anim_counter >> 4;
       if (iVar3 < 0) {
         iVar3 = -iVar3;
       }
-      iVar5 = FUN_80083f50((int)param_1->event_param);
+      iVar5 = Math_CosGTE((int)param_1->event_param);
       *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + (iVar5 * iVar3 >> 4);
-      iVar5 = FUN_80083e80((int)param_1->event_param);
+      iVar5 = Math_Cos((int)param_1->event_param);
       param_1->scale_y = param_1->scale_y - (iVar5 * iVar3 >> 4);
     }
   }

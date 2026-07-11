@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8005a714(int param_1)
+void Entity_State_Attack3(int param_1)
 
 {
   u8 bVar1;
@@ -19,7 +19,7 @@ void FUN_8005a714(int param_1)
   switch(iVar3 >> 0x18 & 0xf) {
   case 1:
   case 2:
-    FUN_80074590(2,0,0);
+    Audio_PlaySoundEffect(2,0,0);
     uVar2 = 9;
     if (param_1->anim_id == '\x10') {
       uVar2 = 0xb;
@@ -28,7 +28,7 @@ void FUN_8005a714(int param_1)
   case 5:
   case 6:
     if ((iVar3 >> 0x1c & 7U) == 0) {
-      FUN_80074590(0x8a,1,0xffffffc4);
+      Audio_PlaySoundEffect(0x8a,1,0xffffffc4);
       uVar2 = 9;
       if (param_1->anim_id == '\x10') {
         uVar2 = 0xb;
@@ -37,7 +37,7 @@ void FUN_8005a714(int param_1)
     }
     break;
   case 10:
-    FUN_80074590(0x90,1,0xffffffc4);
+    Audio_PlaySoundEffect(0x90,1,0xffffffc4);
     uVar2 = 9;
     if (param_1->anim_id == '\x10') {
       uVar2 = 0xb;
@@ -56,9 +56,9 @@ void FUN_8005a714(int param_1)
         }
         else {
           if (bVar1 == 0x10) {
-            FUN_80074590(1,0,0);
+            Audio_PlaySoundEffect(1,0,0);
             param_1->timer1 = 0xb;
-            FUN_800538e0(param_1,param_1 + 0x2c,0);
+            Entity_Behavior_SpawnAtOffset(param_1,param_1 + 0x2c,0);
             return;
           }
           if (bVar1 != 0xe0) {
@@ -67,7 +67,7 @@ void FUN_8005a714(int param_1)
           }
         }
       }
-      FUN_80074590(1,0,0);
+      Audio_PlaySoundEffect(1,0,0);
       uVar2 = 9;
 LAB_8005a8fc:
       param_1->timer1 = uVar2;
@@ -92,7 +92,7 @@ LAB_8005a8fc:
   else {
     uVar4 = 5;
   }
-  FUN_80074590(0,uVar4,0);
+  Audio_PlaySoundEffect(0,uVar4,0);
   param_1->timer1 = 9;
   param_1->timer2 = ~param_1->timer2 & 1;
   return;

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8001d364(uint param_1,uint param_2)
+void Sys_LoadBinary(uint param_1,uint param_2)
 
 {
   int iVar1;
@@ -30,7 +30,7 @@ void FUN_8001d364(uint param_1,uint param_2)
   local_10 = PTR_DAT_80010074;
   local_c = PTR_DAT_80010078;
   iVar1 = _g_OverlayBase + (uint)*(u16 *)(local_28[uVar2] + (param_1 & 7) * 4) * 8;
-  FUN_8001d2a8(uVar2,iVar1,
+  Sys_LoadOverlay(uVar2,iVar1,
                iVar1 + (*(u16 *)((int)(local_28[uVar2] + (param_1 & 7) * 4) + 2) - 2) * 8,
                param_2 & 1 | 2);
   return;

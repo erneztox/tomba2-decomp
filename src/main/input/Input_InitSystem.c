@@ -1,17 +1,17 @@
 /**
- * @brief Initializes input/pad system: resets flag, calls FUN_8001cf2c, FUN_80074b44, FUN_80074e48
+ * @brief Initializes input/pad system: resets flag, calls Pad_InitReset, Audio_InitSPU, Audio_ReleaseChannel
  * @note Original: func_80074BC4 at 0x80074BC4
  */
 // Input_InitSystem
 
 
 
-void FUN_80074bc4(void)
+void Input_InitSystem(void)
 
 {
   g_PadFlag = 0;
-  FUN_8001cf2c();
-  FUN_80074b44();
-  FUN_80074e48();
+  Pad_InitReset();
+  Audio_InitSPU();
+  Audio_ReleaseChannel();
   return;
 }

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s16 FUN_80079554(u8 *param_1)
+s16 String_ParseHex(u8 *param_1)
 
 {
   s16 sVar1;
@@ -30,7 +30,7 @@ s16 FUN_80079554(u8 *param_1)
         if (puVar3 == (void*)0x0) {
           return -0xfe;
         }
-        iVar2 = FUN_8009a640(*ppuVar4,param_1,2);
+        iVar2 = String_CompareICase(*ppuVar4,param_1,2);
         if (iVar2 == 0) break;
         ppuVar4 = ppuVar4 + 2;
         puVar3 = *ppuVar4;

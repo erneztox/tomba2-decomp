@@ -7,12 +7,12 @@
 
 
 #include "tomba.h"
-void FUN_80023764(s32 param_1,int param_2)
+void Entity_SetAnimFlag(s32 param_1,int param_2)
 
 {
   int iVar1;
   
-  iVar1 = FUN_8001f830();
+  iVar1 = Entity_CalcAngle16();
   if (iVar1 != 0) {
     param_2->collision_state = 1;
   }

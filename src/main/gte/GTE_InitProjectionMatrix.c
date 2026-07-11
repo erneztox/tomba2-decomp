@@ -8,11 +8,11 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80050a80(void)
+void GTE_InitProjectionMatrix(void)
 
 {
-  FUN_80051794(&g_GTE_WorkF8);
-  FUN_80051794(0x1f800118);
+  GTE_LoadIdentityMatrix(&g_GTE_WorkF8);
+  GTE_LoadIdentityMatrix(0x1f800118);
   _g_CameraX = 0;
   _g_CameraY = 0;
   _DAT_1f8000e4 = 0;

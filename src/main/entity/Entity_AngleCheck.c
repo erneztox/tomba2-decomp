@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80055c9c(s32 param_1,int param_2)
+void Entity_AngleCheck(s32 param_1,int param_2)
 
 {
   s32 bVar1;

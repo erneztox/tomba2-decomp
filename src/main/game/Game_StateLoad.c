@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80036a14(int param_1,uint param_2)
+void Game_StateLoad(int param_1,uint param_2)
 
 {
   u8 *pbVar1;

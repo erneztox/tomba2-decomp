@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8005fb54(u8 *param_1)
+void Entity_StateMain6(u8 *param_1)
 
 {
   u8 bVar1;
@@ -26,10 +26,10 @@ void FUN_8005fb54(u8 *param_1)
   case 0:
     g_ActionTrigger = 0;
     if (DAT_800bfa47 != -0x80) {
-      FUN_8004ed0c(DAT_800bf80b,1);
+      UI_DrawItemIcon(DAT_800bf80b,1);
     }
-    FUN_80053d90(param_1);
-    FUN_80054198(param_1);
+    Entity_StateSwitch(param_1);
+    Entity_ResetState_2(param_1);
     param_1->sprite_flags = param_1->sprite_flags & 0x7f;
     if (DAT_800bf80a == '\x02') {
       *param_1 = *param_1 | 6;
@@ -38,24 +38,24 @@ void FUN_8005fb54(u8 *param_1)
     else if (DAT_800bf80a == '\x03') {
       *param_1 = 6;
       DAT_800bf809 = 1;
-      FUN_8005fa84();
+      Entity_SetupBehavior();
       return;
     }
-    FUN_80054d14(param_1,0x72,4);
+    Entity_LoadAnimIfChanged(param_1,0x72,4);
     param_1->action_state = param_1->action_state + 1;
   case 1:
-    iVar5 = FUN_80076d68(param_1);
+    iVar5 = Entity_AnimFrame(param_1);
     if (iVar5 == 1) {
       uVar6 = 0x73;
       bVar1 = param_1->action_state;
       uVar7 = 2;
 LAB_8005fe08:
       param_1->action_state = bVar1 + 1;
-      FUN_80054d14(param_1,uVar6,uVar7);
+      Entity_LoadAnimIfChanged(param_1,uVar6,uVar7);
     }
     break;
   case 2:
-    iVar5 = FUN_80076d68(param_1);
+    iVar5 = Entity_AnimFrame(param_1);
     if (iVar5 == 1) {
       if (DAT_800bf80a == '\x02') {
         DAT_800bf809 = 0;
@@ -66,7 +66,7 @@ LAB_8005fe08:
         param_1->behavior_state = 0;
         param_1->action_state = 0;
         param_1->sub_action = 0;
-        FUN_80054d14(param_1,2,5);
+        Entity_LoadAnimIfChanged(param_1,2,5);
       }
       else {
         *param_1 = *param_1 & 3;
@@ -78,9 +78,9 @@ LAB_8005fe08:
     break;
   case 4:
     param_1->flag_17A = 1;
-    FUN_80076d68(param_1);
+    Entity_AnimFrame(param_1);
     if (param_1->kind == 0) {
-      sVar2 = FUN_800776f8((int)((param_1->draw_angle + 0x400) * 0x10000) >> 0x10,
+      sVar2 = Math_ApproachAngle_2((int)((param_1->draw_angle + 0x400) * 0x10000) >> 0x10,
                            (int)param_1->rot_y,0x100);
       param_1->rot_y = sVar2;
       if ((int)sVar2 != ((int)param_1->draw_angle + 0x400U & 0xfff)) {
@@ -88,14 +88,14 @@ LAB_8005fe08:
       }
     }
     else {
-      uVar3 = FUN_800782b0(param_1 + 0x2c,(int)_DAT_1f8000d2,(int)_DAT_1f8000da);
-      uVar4 = FUN_800776f8((int)(s16)uVar3,(int)param_1->rot_y,0x100);
+      uVar3 = Math_CalcAngle2D(param_1 + 0x2c,(int)_DAT_1f8000d2,(int)_DAT_1f8000da);
+      uVar4 = Math_ApproachAngle_2((int)(s16)uVar3,(int)param_1->rot_y,0x100);
       param_1->rot_y = uVar4;
       if (uVar4 != (uVar3 & 0xfff)) {
         return;
       }
     }
-    iVar5 = FUN_80042728();
+    iVar5 = Game_CheckIdle();
     if (iVar5 == 0) {
       return;
     }
@@ -112,7 +112,7 @@ LAB_8005fe08:
     goto LAB_8005fe08;
   case 5:
     param_1->flag_17A = 1;
-    FUN_80076d68(param_1);
+    Entity_AnimFrame(param_1);
     sVar2 = param_1->timer1;
     param_1->timer1 = sVar2 + -1;
     if (sVar2 != 1) {
@@ -124,12 +124,12 @@ LAB_8005fe08:
     param_1[0x7d] = 0;
     param_1[0x7e] = 0;
     param_1[0x7f] = 0;
-    FUN_8006804c(param_1);
+    Entity_SpawnCollectible_2(param_1);
     bVar1 = param_1->action_state;
     goto LAB_8005ff58;
   case 6:
     param_1->flag_17A = 1;
-    FUN_80076d68(param_1);
+    Entity_AnimFrame(param_1);
     if (*(s16 *)(param_1 + 0x7e) != 0) {
       param_1->action_state = param_1->action_state + 1;
       DAT_800bf80f = 4;
@@ -142,9 +142,9 @@ LAB_8005fe08:
     break;
   case 7:
     param_1->flag_17A = 1;
-    FUN_80076d68(param_1);
+    Entity_AnimFrame(param_1);
     if ((_g_FrameCounter2 & 7) == 0) {
-      FUN_80074590(0x38,(int)(char)param_1[0x42],0);
+      Audio_PlaySoundEffect(0x38,(int)(char)param_1[0x42],0);
       sVar2 = param_1->timer2;
       param_1->timer2 = sVar2 + 2;
       if (0x1a < (s16)(sVar2 + 2)) {
@@ -180,7 +180,7 @@ LAB_8005ff58:
 switchD_8005fba0_caseD_9:
 LAB_8005ffb4:
     if ((_g_FrameCounter2 & 7) == 0) {
-      FUN_80074590(0x38,(int)(char)param_1[0x42],0);
+      Audio_PlaySoundEffect(0x38,(int)(char)param_1[0x42],0);
       sVar2 = param_1->timer2;
       param_1->timer2 = sVar2 + 2;
       if (0x1a < (s16)(sVar2 + 2)) {
@@ -189,13 +189,13 @@ LAB_8005ffb4:
       }
     }
     param_1->flag_17A = 1;
-    FUN_80076d68(param_1);
+    Entity_AnimFrame(param_1);
     *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + -10;
     break;
   case 10:
     param_1->flag_17A = 1;
-    FUN_80076d68(param_1);
-    iVar5 = FUN_80042728();
+    Entity_AnimFrame(param_1);
+    iVar5 = Game_CheckIdle();
     if (iVar5 != 0) {
       param_1->action_state = 5;
       param_1[0x40] = 1;

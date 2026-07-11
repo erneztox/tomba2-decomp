@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80025588(void)
+void Engine_PoolUpdate(void)
 
 {
   s32 bVar1;
@@ -27,13 +27,13 @@ void FUN_80025588(void)
     DAT_800ed061 = 0;
     DAT_800bfa5c = 0;
     _DAT_800ed094 = _g_OT_Data;
-    FUN_80024e00(0x800ed058);
+    Entity_SpriteConfig(0x800ed058);
   }
   if ((DAT_800ed06c == '\0') && (DAT_800ed06d != 0)) {
-    FUN_80040aa4(DAT_800ed06e,DAT_800ed074);
+    Entity_SpawnSubEntity(DAT_800ed06e,DAT_800ed074);
     uVar3 = 2;
     if ((DAT_800ed074 == '\0') || (uVar3 = 3, DAT_800ed074 == '\x01')) {
-      FUN_80074bf8(uVar3);
+      Audio_SetBank(uVar3);
     }
     if (0 < (int)(DAT_800ed06d - 1)) {
       iVar2 = 0;
@@ -49,7 +49,7 @@ void FUN_80025588(void)
     DAT_800ed06d = DAT_800ed06d - 1;
     DAT_800ed06c = DAT_800ed06c + '\x01';
   }
-  FUN_80024f18(0x800ed058);
+  Entity_BehaviorType5(0x800ed058);
   if (g_GameState == GAMESTATE_3) goto LAB_80025728;
   if (g_GameState < 4) {
     if (g_GameState == GAMESTATE_2) {
@@ -64,8 +64,8 @@ LAB_800256e8:
     if (g_GameState == GAMESTATE_7) goto LAB_800256e8;
     if (g_GameState == GAMESTATE_TITLEx14) goto LAB_80025728;
   }
-  FUN_800251f0(0x800ed058);
+  Entity_DrawMain(0x800ed058);
 LAB_80025728:
-  FUN_80077b5c(0x800ed058);
+  Entity_AdvanceAnim3(0x800ed058);
   return;
 }

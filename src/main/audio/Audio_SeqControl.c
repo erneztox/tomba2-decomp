@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_80092660(u16 param_1,s16 param_2,u16 param_3,s8 param_4,s16 param_5,
+int Audio_SeqControl(u16 param_1,s16 param_2,u16 param_3,s8 param_4,s16 param_5,
                 s16 param_6,s16 param_7,s16 param_8)
 
 {
@@ -21,7 +21,7 @@ int FUN_80092660(u16 param_1,s16 param_2,u16 param_3,s8 param_4,s16 param_5,
   
   if (_DAT_80104c24 != 1) {
     _DAT_80104c24 = 1;
-    if ((param_1 < 0x18) && (iVar3 = FUN_800962b0((int)param_2,(int)(s16)param_3), iVar3 == 0)) {
+    if ((param_1 < 0x18) && (iVar3 = CD_CheckSlot((int)param_2,(int)(s16)param_3), iVar3 == 0)) {
       _DAT_80105d0c = 0x21;
       iVar3 = (int)param_7;
       iVar5 = (int)param_8;
@@ -79,13 +79,13 @@ int FUN_80092660(u16 param_1,s16 param_2,u16 param_3,s8 param_4,s16 param_5,
         *(s16 *)(iVar3 + -0x7fefab36) = 0;
         *(s16 *)(iVar3 + -0x7fefab22) = (s16)cVar1;
         *(s16 *)(iVar3 + -0x7fefab02) = (s16)DAT_80105cfc;
-        FUN_80092fd0();
+        Audio_VoiceUpdate();
         if (_DAT_80105d0e == 0xff) {
-          FUN_800945a0(param_1 & 0xff);
+          Audio_SeqTimer2(param_1 & 0xff);
         }
         else {
-          uVar2 = FUN_8009440c(param_5,param_6);
-          FUN_80094c10(1,uVar2);
+          uVar2 = Audio_CalcValue(param_5,param_6);
+          Audio_SeqTime(1,uVar2);
         }
         _DAT_80104c24 = 0;
         return (int)(s16)param_1;

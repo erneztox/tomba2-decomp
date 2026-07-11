@@ -9,7 +9,7 @@
 /* WARNING: Removing unreachable block (ram,0x80090868) */
 /* WARNING: Removing unreachable block (ram,0x800908b4) */
 
-void FUN_80090750(int param_1)
+void Audio_InitSeq(int param_1)
 
 {
   s32 bVar1;
@@ -78,27 +78,27 @@ void FUN_80090750(int param_1)
   }
 LAB_800908c0:
   if (cRam800ac434 == '\0') {
-    FUN_80080890();
-    FUN_80090b98(uVar5);
-    FUN_80090a60(uVar5,uVar4 & 0xffff,0x1000);
+    BIOS_Syscall0();
+    Audio_ClearSlot(uVar5);
+    Audio_ChannelConfig(uVar5,uVar4 & 0xffff,0x1000);
     iVar2 = (int)cRam800ac436;
     if (iVar2 == 0) {
-      DAT_800ac430 = FUN_80085b50(0,0);
+      DAT_800ac430 = CD_Dispatch08(0,0);
       iVar2 = (int)cRam800ac436;
-      pcVar3 = FUN_800909c0;
+      pcVar3 = Audio_CallCallbacks;
     }
     else {
-      pcVar3 = FUN_80090a0c;
+      pcVar3 = Audio_Toggle;
       if (cRam800ac435 == '\0') {
         pcVar3 = (code *)PTR_FUN_800ac42c;
       }
     }
-    FUN_80085b50(iVar2,pcVar3);
+    CD_Dispatch08(iVar2,pcVar3);
   }
   else {
-    FUN_80080890();
-    FUN_80085bb0(PTR_FUN_800ac42c);
+    BIOS_Syscall0();
+    CD_Dispatch14(PTR_FUN_800ac42c);
   }
-  FUN_800808a0();
+  BIOS_Syscall0_2();
   return;
 }

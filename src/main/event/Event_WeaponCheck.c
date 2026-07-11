@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_8003511c(s32 param_1,int param_2,int param_3)
+s32 Event_WeaponCheck(s32 param_1,int param_2,int param_3)
 
 {
   if (param_2 == 0x59) {
@@ -21,7 +21,7 @@ s32 FUN_8003511c(s32 param_1,int param_2,int param_3)
     if (param_3 == 1) {
       return false;
     }
-    FUN_8004d650(0x59,1);
+    Inventory_RemoveItem3(0x59,1);
     param_2 = 0x59;
   }
   else {
@@ -40,8 +40,8 @@ s32 FUN_8003511c(s32 param_1,int param_2,int param_3)
     if (param_3 == 1) {
       return false;
     }
-    FUN_8004d650(param_2,1);
+    Inventory_RemoveItem3(param_2,1);
   }
-  FUN_8004dc84(param_2,0);
+  UI_DialogSpawn(param_2,0);
   return false;
 }

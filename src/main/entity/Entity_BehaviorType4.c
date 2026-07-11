@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800683b8(int param_1)
+void Entity_BehaviorType4(int param_1)
 
 {
   u8 bVar1;
@@ -23,7 +23,7 @@ void FUN_800683b8(int param_1)
       if (3 < bVar1) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar1 != 0) {

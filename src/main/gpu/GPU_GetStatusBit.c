@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-uint FUN_80081cc8(void)
+uint GPU_GetStatusBit(void)
 
 {
   uint uVar1;

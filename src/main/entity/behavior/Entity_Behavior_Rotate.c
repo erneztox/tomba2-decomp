@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800663a8(int param_1,int param_2)
+void Entity_Behavior_Rotate(int param_1,int param_2)
 
 {
   s8 cVar1;
@@ -15,7 +15,7 @@ void FUN_800663a8(int param_1,int param_2)
   int iVar3;
   s32 uVar4;
   
-  iVar3 = FUN_80077768((int)param_1->draw_angle,(uint)param_1->move_mode << 4,0);
+  iVar3 = Math_CompareAngle((int)param_1->draw_angle,(uint)param_1->move_mode << 4,0);
   if (iVar3 == 0) {
     param_1->rot_z = 0xfd00;
     param_1->direction = 1;
@@ -36,13 +36,13 @@ void FUN_800663a8(int param_1,int param_2)
   else {
     uVar4 = 0x56;
   }
-  FUN_80054d14(param_1,uVar4,0);
+  Entity_LoadAnimIfChanged(param_1,uVar4,0);
   param_1->velocity_y = 0xd800;
   param_1->sub_action = 0;
   param_1->timer1 = 0;
   param_1->state_flag145 = 1;
   param_1->collision_state = 0;
   param_1->action_state = param_1->action_state + '\x01';
-  FUN_800551c4();
+  Entity_State_Physics();
   return;
 }

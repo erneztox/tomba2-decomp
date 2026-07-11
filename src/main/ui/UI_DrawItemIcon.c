@@ -6,7 +6,7 @@
 
 
 
-void FUN_8004ed0c(s16 param_1,u16 param_2)
+void UI_DrawItemIcon(s16 param_1,u16 param_2)
 
 {
   s32 uVar1;
@@ -35,6 +35,6 @@ void FUN_8004ed0c(s16 param_1,u16 param_2)
   uVar1 = 0x40;
 LAB_8004ed7c:
   local_10 = param_1;
-  FUN_8004fa38(&local_10,1,uVar1);
+  UI_DrawPanel2(&local_10,1,uVar1);
   return;
 }

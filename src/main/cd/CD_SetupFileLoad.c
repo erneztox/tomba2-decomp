@@ -8,11 +8,11 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8008ceb0(uint param_1,s32 param_2,s32 param_3,s32 param_4,
+void CD_SetupFileLoad(uint param_1,s32 param_2,s32 param_3,s32 param_4,
                  s32 param_5)
 
 {
-  FUN_8008d0f0(1);
+  CD_SetParams(1);
   _DAT_80102718 = 0;
   _DAT_80104b78 = param_4;
   _DAT_801026f0 = param_1 & 1;

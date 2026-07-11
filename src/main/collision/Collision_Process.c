@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-int FUN_80049800(void)
+int Collision_Process(void)
 
 {
   u16 uVar1;
@@ -16,13 +16,13 @@ int FUN_80049800(void)
   int iVar3;
   int iVar4;
   
-  sVar2 = FUN_80048360();
+  sVar2 = Collision_CheckResult();
   iVar4 = 0;
   uVar1 = *(u16 *)(_g_CollisionResult + 4);
   _g_CollisionData = (u16 *)(_DAT_1f8001d8 + (uint)*(u16 *)(_g_CollisionResult + 2) * 8);
   if (uVar1 != 0) {
     do {
-      if (((*_g_CollisionData & 2) != 0) && (iVar3 = FUN_800459d0((int)sVar2), iVar3 != -1)) {
+      if (((*_g_CollisionData & 2) != 0) && (iVar3 = Collision_Move2((int)sVar2), iVar3 != -1)) {
         return iVar3;
       }
       iVar4 = iVar4 + 1;

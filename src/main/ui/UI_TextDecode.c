@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-char * FUN_8004ead0(char *param_1,u8 *param_2)
+char * UI_TextDecode(char *param_1,u8 *param_2)
 
 {
   u8 bVar1;

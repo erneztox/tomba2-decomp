@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-char * FUN_8009a490(char *param_1,char *param_2)
+char * String_FindChar2(char *param_1,char *param_2)
 
 {
   s8 cVar1;
@@ -19,8 +19,8 @@ char * FUN_8009a490(char *param_1,char *param_2)
     if (param_2 == (s8*)0x0) {
       return (s8*)0x0;
     }
-    iVar2 = FUN_8009a600(param_1);
-    iVar3 = FUN_8009a600(param_2);
+    iVar2 = String_Compare(param_1);
+    iVar3 = String_Compare(param_2);
     if (param_1 + iVar2 != param_2 + iVar3) {
       cVar1 = *param_1;
       pcVar4 = param_1;

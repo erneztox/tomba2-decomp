@@ -6,7 +6,7 @@
 
 
 
-int FUN_8009a6c0(u8 param_1)
+int CD_GetCmdTimeout(u8 param_1)
 
 {
   s8 cVar1;
@@ -17,7 +17,7 @@ int FUN_8009a6c0(u8 param_1)
       iVar2 = 9999999;
     }
     else {
-      cVar1 = FUN_8009a3a4((int)(char)param_1);
+      cVar1 = CD_AdjustCmdByte((int)(char)param_1);
       iVar2 = cVar1 + -0x57;
     }
   }

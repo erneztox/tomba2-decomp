@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8006e1c0(u8 param_1)
+void Entity_CopyStateData(u8 param_1)
 
 {
   DAT_800e806f = g_CameraEntity;

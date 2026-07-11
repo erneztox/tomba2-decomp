@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80092e3c(u16 param_1,s16 param_2,s16 param_3)
+s32 Audio_WriteDevice(u16 param_1,s16 param_2,s16 param_3)
 
 {
   u8 bVar1;

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80091810(int param_1,s16 param_2)
+void Audio_AllocChannel2(int param_1,s16 param_2)
 
 {
   int *piVar1;

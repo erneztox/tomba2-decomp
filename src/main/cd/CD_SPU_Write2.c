@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80098f90(int param_1,uint param_2)
+void CD_SPU_Write2(int param_1,uint param_2)
 
 {
   int iVar1;

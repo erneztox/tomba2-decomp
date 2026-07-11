@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_8001ec3c(u8 *param_1,int param_2)
+s32 Entity_MoveMain(u8 *param_1,int param_2)
 
 {
   s16 sVar1;
@@ -28,7 +28,7 @@ s32 FUN_8001ec3c(u8 *param_1,int param_2)
   iVar7 = iVar11 * 0x10000 >> 0x10;
   iVar9 = (uint)param_1->pos_z - (uint)param_2->pos_z;
   iVar8 = iVar9 * 0x10000 >> 0x10;
-  uVar4 = FUN_80084080(iVar7 * iVar7 + iVar8 * iVar8);
+  uVar4 = Math_SqrtGTE(iVar7 * iVar7 + iVar8 * iVar8);
   if ((int)param_1->bounds_min_x + (int)param_2->bounds_min_x < (int)(uint)uVar4) {
     return 0xffffffff;
   }
@@ -49,7 +49,7 @@ s32 FUN_8001ec3c(u8 *param_1,int param_2)
             (param_1->bounds_max_y - param_1->bounds_min_y);
     sVar6 = sVar5;
   }
-  _g_AngleTarget = FUN_80085690(-(int)(s16)iVar9,(int)(s16)iVar11);
+  _g_AngleTarget = Math_Atan2(-(int)(s16)iVar9,(int)(s16)iVar11);
   if ((sVar5 < 0) && ((int)sVar6 - (int)sVar10 < 0x1a)) {
     if ((param_1->state_flag145 & 1) != 0) {
       return 0xffffffff;
@@ -83,10 +83,10 @@ s32 FUN_8001ec3c(u8 *param_1,int param_2)
     if (((int)param_1->bounds_min_x + (int)param_2->bounds_min_x) - (int)(s16)uVar4 <
         (int)sVar6 - (int)sVar10) {
       if ((*param_1 & 4) == 0) {
-        iVar7 = FUN_80083f50(_g_AngleTarget);
+        iVar7 = Math_CosGTE(_g_AngleTarget);
         sVar5 = param_1->bounds_min_x;
         sVar1 = param_2->bounds_min_x;
-        iVar8 = FUN_80083e80(_g_AngleTarget);
+        iVar8 = Math_Cos(_g_AngleTarget);
         sVar2 = param_2->bounds_min_x;
         param_1->pos_y =
              param_2->pos_y + (s16)(iVar7 * ((int)sVar5 + (int)sVar1) >> 0xc);
@@ -97,7 +97,7 @@ s32 FUN_8001ec3c(u8 *param_1,int param_2)
       if (0x91 < (int)sVar6 - (int)sVar10) {
         param_1[0x60] = 1;
       }
-      cVar3 = FUN_80077768((int)_g_AngleTarget,(int)param_1->draw_angle,1);
+      cVar3 = Math_CompareAngle((int)_g_AngleTarget,(int)param_1->draw_angle,1);
       param_1->input_flags = cVar3 + 2;
       return 1;
     }

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80091460(s16 param_1,s16 param_2)
+s32 Audio_SeqVoice(s16 param_1,s16 param_2)
 
 {
   u8 bVar1;
@@ -26,7 +26,7 @@ s32 FUN_80091460(s16 param_1,s16 param_2)
   *piVar6 = (int)pbVar5;
   if (((*(uint *)(iVar2 + *(int *)(&g_AudioChannels + param_1 * 4) + 0x98) & 0x401) == 0x401) &&
      (pbVar5 == (u8 *)(piVar6->flags + 1))) {
-    FUN_8009121c((int)param_1,(int)param_2,*(u8 *)(piVar6->flags + 1));
+    Audio_ChannelUpdate((int)param_1,(int)param_2,*(u8 *)(piVar6->flags + 1));
     return 0xffffffff;
   }
   if ((bVar4 & 0x80) == 0) {
@@ -37,7 +37,7 @@ s32 FUN_80091460(s16 param_1,s16 param_2)
       if (bVar1 == 0x90) {
         bVar1 = *(u8 *)*piVar6;
         *piVar6 = (int)((u8 *)*piVar6 + 1);
-        iVar2 = FUN_80090160((int)param_1,(int)param_2);
+        iVar2 = Audio_AllocVoice((int)param_1,(int)param_2);
         piVar6[0x24] = iVar2;
         goto LAB_80091718;
       }
@@ -71,7 +71,7 @@ s32 FUN_80091460(s16 param_1,s16 param_2)
         *piVar6 = (int)(pbVar5 + 1);
         bVar1 = pbVar5->flags;
         *piVar6 = (int)(pbVar5 + 2);
-        iVar2 = FUN_80090160((int)param_1,(int)param_2);
+        iVar2 = Audio_AllocVoice((int)param_1,(int)param_2);
         piVar6[0x24] = iVar2;
 LAB_80091718:
         (*_DAT_80104b90)((int)param_1,(int)param_2,bVar4,bVar1);
@@ -103,7 +103,7 @@ LAB_80091774:
   }
   _DAT_80104b9c = pcVar3;
   if (bVar4 == 0x2f) {
-    FUN_8009121c((int)param_1,(int)param_2,0x2f);
+    Audio_ChannelUpdate((int)param_1,(int)param_2,0x2f);
     return 1;
   }
 LAB_800917dc:

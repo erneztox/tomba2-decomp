@@ -8,13 +8,13 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80091d70(uint param_1)
+void Audio_SystemConfig(uint param_1)
 
 {
   s32 bVar1;
   int iVar2;
   
-  iVar2 = FUN_80086604();
+  iVar2 = CD_GetCallback();
   bVar1 = (param_1 & 0x1000) != 0;
   DAT_800ac424 = param_1;
   if (bVar1) {

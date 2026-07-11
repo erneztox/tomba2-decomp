@@ -1,5 +1,5 @@
 /**
- * @brief Entity ground checker: calls FUN_800495dc, validates ground
+ * @brief Entity ground checker: calls Entity_CollisionWrap5, validates ground
  * @note Original: func_800696C4 at 0x800696C4
  */
 // Entity_CheckGround
@@ -10,13 +10,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_800696c4(int param_1,int param_2)
+s32 Entity_CheckGround(int param_1,int param_2)
 
 {
   u8 bVar1;
   uint uVar2;
   
-  uVar2 = FUN_800495dc(param_1,0,0);
+  uVar2 = Entity_CollisionWrap5(param_1,0,0);
   if ((int)uVar2 < 1) {
     return 0;
   }
@@ -28,7 +28,7 @@ s32 FUN_800696c4(int param_1,int param_2)
     if ((uVar2 & 0xe) == 0) {
       return 1;
     }
-    FUN_800495ac(param_1,0,0);
+    Entity_CollisionWrap4(param_1,0,0);
     if ((uVar2 & 2) == 0) {
       uVar2 = uVar2 & 0xc;
       goto joined_r0x800697c8;
@@ -39,7 +39,7 @@ s32 FUN_800696c4(int param_1,int param_2)
       if ((uVar2 & 1) != 0) {
         return 1;
       }
-      uVar2 = FUN_8004954c(param_1,0,0);
+      uVar2 = Entity_CollisionWrap2(param_1,0,0);
 joined_r0x800697c8:
       if (uVar2 == 0) {
         return 1;
@@ -56,7 +56,7 @@ joined_r0x800697c8:
     if ((uVar2 & 2) == 0) {
       return 1;
     }
-    FUN_800495ac(param_1,0,0);
+    Entity_CollisionWrap4(param_1,0,0);
   }
   if ((_DAT_1f8001a6 & 0x30) != 0) {
     if ((_DAT_1f8001a6 & 0x20) == 0) {

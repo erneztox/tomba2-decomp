@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8006923c(int param_1)
+void Entity_InitAttackState(int param_1)
 
 {
   s16 uVar1;
@@ -30,8 +30,8 @@ LAB_800692b0:
   param_1->timer1 = 1;
   param_1->anim_counter = 0x6e;
   param_1->anim_id = param_1->anim_id & 7;
-  FUN_80074590(0x22,0,0);
-  FUN_8006b020(param_1,2);
+  Audio_PlaySoundEffect(0x22,0,0);
+  Entity_InitTrail(param_1,2);
   param_1->rot_y = param_1->target_angle;
   return;
 }

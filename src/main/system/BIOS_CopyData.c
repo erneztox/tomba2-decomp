@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8009c18c(void)
+void BIOS_CopyData(void)
 
 {
   int iVar1;
@@ -16,7 +16,7 @@ void FUN_8009c18c(void)
   s32 unaff_retaddr;
   
   _DAT_80105f48 = unaff_retaddr;
-  FUN_80080890();
+  BIOS_Syscall0();
   iVar1 = (*(code *)&SUB_000000b0)();
   iVar1 = *(int *)(iVar1 + 0x16c);
   pcVar2 = (code *)&DAT_8009c0e4;
@@ -24,7 +24,7 @@ void FUN_8009c18c(void)
     *(s32 *)(iVar1 + 0x9c8) = *(s32 *)pcVar2;
     pcVar2 = pcVar2 + 4;
     iVar1 = iVar1 + 4;
-  } while (pcVar2 != FUN_8009c0f8);
-  FUN_800858f0();
+  } while (pcVar2 != BIOS_SetupEvent);
+  BIOS_CallA0_2();
   return;
 }

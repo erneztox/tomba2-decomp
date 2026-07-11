@@ -6,7 +6,7 @@
 
 
 
-void FUN_80036bac(void)
+void Event_LoadData(void)
 
 {
   int iVar1;
@@ -25,12 +25,12 @@ void FUN_80036bac(void)
   do {
     if ((puVar7[0x244] != '\0') && (cVar4 = '\0', *pcVar5 == '\0')) {
       iVar2 = 0;
-      FUN_80036b28(*(s32 *)(pcVar5 + 4),auStack_a8);
+      String_CopyFilterNL(*(s32 *)(pcVar5 + 4),auStack_a8);
       pcVar3 = &DAT_800a2be8;
       do {
         if (((&DAT_800bfab4)[iVar2] != '\0') && (*pcVar3 == '\0')) {
-          FUN_80036b28(*(s32 *)(pcVar3 + 4),auStack_68);
-          iVar1 = FUN_8009a540(auStack_a8,auStack_68);
+          String_CopyFilterNL(*(s32 *)(pcVar3 + 4),auStack_68);
+          iVar1 = String_Compare2(auStack_a8,auStack_68);
           if (0 < iVar1) {
             cVar4 = cVar4 + '\x01';
           }
@@ -50,12 +50,12 @@ void FUN_80036bac(void)
   do {
     if ((puVar7[0x244] != '\0') && (cVar4 = '\0', *pcVar5 != '\0')) {
       iVar2 = 0;
-      FUN_80036b28(*(s32 *)(pcVar5 + 4),auStack_a8);
+      String_CopyFilterNL(*(s32 *)(pcVar5 + 4),auStack_a8);
       pcVar3 = &DAT_800a2be8;
       do {
         if (((&DAT_800bfab4)[iVar2] != '\0') && (*pcVar3 != '\0')) {
-          FUN_80036b28(*(s32 *)(pcVar3 + 4),auStack_68);
-          iVar1 = FUN_8009a540(auStack_a8,auStack_68);
+          String_CopyFilterNL(*(s32 *)(pcVar3 + 4),auStack_68);
+          iVar1 = String_Compare2(auStack_a8,auStack_68);
           if (0 < iVar1) {
             cVar4 = cVar4 + '\x01';
           }

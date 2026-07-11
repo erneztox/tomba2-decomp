@@ -8,21 +8,21 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_80071a3c(int param_1)
+void Entity_PlayAnimation(int param_1)
 
 {
   u8 bVar1;
   
   bVar1 = param_1->state;
   if (bVar1 == 1) {
-    FUN_80071768(param_1);
+    Entity_AnimPlayer(param_1);
     if (param_1->flags != '\0') {
-      FUN_800518fc(param_1);
+      GTE_ComposeAndProject(param_1);
     }
   }
   else if (bVar1 < 2) {
     if (bVar1 == 0) {
-      FUN_800716b4(param_1);
+      Entity_InitPlayer(param_1);
       if ((DAT_800bfae1 == '\0') || (g_GameState != '\x04')) {
         if ((DAT_800bfae6 != '\0') && (g_GameState == '\a')) {
           Overlay_801178e4(param_1);
@@ -34,7 +34,7 @@ void FUN_80071a3c(int param_1)
     }
   }
   else if ((bVar1 != 2) && (bVar1 == 3)) {
-    FUN_8007a624(param_1);
+    Entity_Dealloc(param_1);
   }
   return;
 }

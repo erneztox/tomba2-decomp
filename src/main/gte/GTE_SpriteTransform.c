@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_8007712c(int param_1,s16 param_2,s16 param_3,s16 param_4)
+s32 GTE_SpriteTransform(int param_1,s16 param_2,s16 param_3,s16 param_4)
 
 {
   int *piVar1;
@@ -20,7 +20,7 @@ s32 FUN_8007712c(int param_1,s16 param_2,s16 param_3,s16 param_4)
   int iVar6;
   int iVar7;
   
-  uVar4 = FUN_80077fb0((int)param_2 * (int)param_2 + (int)param_3 * (int)param_3 +
+  uVar4 = Math_Sqrt((int)param_2 * (int)param_2 + (int)param_3 * (int)param_3 +
                        (int)param_4 * (int)param_4);
   uVar4 = uVar4 & 0xffff;
   iVar5 = (int)_DAT_1f8000e8;

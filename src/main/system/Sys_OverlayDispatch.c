@@ -1,12 +1,12 @@
 /**
- * @brief Overlay dispatcher: 0xFF=pad test, 0xFE=init, else loads overlay via FUN_8001d364
+ * @brief Overlay dispatcher: 0xFF=pad test, 0xFE=init, else loads overlay via Sys_LoadBinary
  * @note Original: func_800750D8 at 0x800750D8
  */
 // Sys_OverlayDispatch
 
 
 
-uint FUN_800750d8(int param_1)
+uint Sys_OverlayDispatch(int param_1)
 
 {
   uint uVar1;
@@ -15,10 +15,10 @@ uint FUN_800750d8(int param_1)
     uVar1 = DAT_800be0e4 & 4;
   }
   else if (param_1 == 0xfe) {
-    uVar1 = FUN_8001cf2c();
+    uVar1 = Pad_InitReset();
   }
   else {
-    FUN_8001d364();
+    Sys_LoadBinary();
     uVar1 = 0;
   }
   return uVar1;

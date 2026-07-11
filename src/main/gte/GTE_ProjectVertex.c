@@ -8,7 +8,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-int FUN_8003f7a0(s32 *param_1,s32 *param_2)
+int GTE_ProjectVertex(s32 *param_1,s32 *param_2)
 
 {
   s32 uVar1;

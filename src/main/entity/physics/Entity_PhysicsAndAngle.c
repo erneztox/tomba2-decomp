@@ -9,13 +9,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80041ac0(int param_1)
+s32 Entity_PhysicsAndAngle(int param_1)
 
 {
   s32 uVar1;
   
-  uVar1 = FUN_8004766c();
-  FUN_80049760(param_1);
+  uVar1 = Entity_PhysicsStep();
+  Collision_CalcAngle(param_1);
   param_1->draw_x = _g_CollisionNormalX;
   return uVar1;
 }

@@ -1,12 +1,12 @@
 /**
- * @brief CD poll sync: spins on DAT_800ac280 flag, waits for FUN_8008a190 completion
+ * @brief CD poll sync: spins on DAT_800ac280 flag, waits for CD_ReadMain completion
  * @note Original: func_8008B818 at 0x8008B818
  */
 // CD_PollSync
 
 
 
-void FUN_8008b818(void)
+void CD_PollSync(void)
 
 {
   u8 bVar1;
@@ -14,7 +14,7 @@ void FUN_8008b818(void)
   
   bVar1 = *DAT_800ac280;
   while( true ) {
-    uVar2 = FUN_8008a190();
+    uVar2 = CD_ReadMain();
     if (uVar2 == 0) break;
     if (((uVar2 & 4) != 0) && (DAT_800abfc0 != (code *)0x0)) {
       (*DAT_800abfc0)(DAT_800ac299,&DAT_80102738);

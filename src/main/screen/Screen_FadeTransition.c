@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8002655c(int param_1)
+void Screen_FadeTransition(int param_1)
 
 {
   s16 sVar1;
@@ -17,8 +17,8 @@ void FUN_8002655c(int param_1)
   switch(param_1->state) {
   case 0:
     param_1->state = param_1->state + '\x01';
-    FUN_80075cec(0xffffffff);
-    FUN_80075cec(0x47ff);
+    Audio_ClampVolume(0xffffffff);
+    Audio_ClampVolume(0x47ff);
     switch(g_GameMode) {
     case 1:
     case 2:
@@ -45,12 +45,12 @@ LAB_80026630:
       *(s16 *)(param_1 + 10) = 8;
       param_1->sub_type = 0;
     }
-    FUN_8007e9c8(0xffffff,param_1->sub_type,4);
-    FUN_80050970();
+    GPU_SpriteOT(0xffffff,param_1->sub_type,4);
+    UI_DrawScreenOverlay();
     break;
   case 1:
     uVar3 = (int)*(s16 *)(param_1 + 10) * (int)*(s16 *)(param_1 + 8) & 0xff;
-    FUN_8007e9c8(uVar3 << 0x10 | uVar3 << 8 | uVar3,param_1->sub_type,4);
+    GPU_SpriteOT(uVar3 << 0x10 | uVar3 << 8 | uVar3,param_1->sub_type,4);
     sVar1 = *(s16 *)(param_1 + 8);
     *(s16 *)(param_1 + 8) = sVar1 + -1;
     if (sVar1 == 1) {
@@ -61,14 +61,14 @@ LAB_80026630:
   case 2:
     if ((DAT_800bf849 == '\0') && (DAT_800ed06d == '\0')) {
       if (DAT_800bf80f == 2) {
-        FUN_80026470();
+        Audio_Mute();
         *(s16 *)(param_1 + 8) = 0x1f;
         *(s16 *)(param_1 + 10) = 8;
         param_1->sub_type = 0;
         param_1->state = param_1->state + '\x01';
       }
       else if (DAT_800bf80f == 4) {
-        FUN_80026470();
+        Audio_Mute();
         *(s16 *)(param_1 + 8) = 0x1f;
         *(s16 *)(param_1 + 10) = 8;
         param_1->sub_type = 1;
@@ -78,18 +78,18 @@ LAB_80026630:
     break;
   case 3:
     uVar3 = *(s16 *)(param_1 + 8) * -8 & 0xff;
-    FUN_8007e9c8(uVar3 << 0x10 | uVar3 << 8 | uVar3,param_1->sub_type,4);
+    GPU_SpriteOT(uVar3 << 0x10 | uVar3 << 8 | uVar3,param_1->sub_type,4);
     if ((DAT_800bf80f & 0x80) == 0) {
       *(s16 *)(param_1 + 8) = *(s16 *)(param_1 + 8) + -1;
     }
     if (*(s16 *)(param_1 + 8) == 0) {
       param_1->state = param_1->state + '\x01';
       DAT_800bf80f = 0;
-      FUN_80026510();
+      Audio_ClearChannel();
     }
     break;
   case 4:
-    FUN_8007e9c8(0xffffff,param_1->sub_type,4);
+    GPU_SpriteOT(0xffffff,param_1->sub_type,4);
     if (DAT_800bf80f != 0) {
       if (DAT_800bf80f == 1) {
         param_1->sub_type = 0;
@@ -97,7 +97,7 @@ LAB_80026630:
       else if (DAT_800bf80f == 3) {
         param_1->sub_type = 1;
       }
-      FUN_800264bc();
+      Audio_ResetChannel();
       param_1->state = 1;
       *(s16 *)(param_1 + 8) = 0x1f;
       *(s16 *)(param_1 + 10) = 8;

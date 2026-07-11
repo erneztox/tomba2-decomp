@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80073328(u8 *param_1)
+s32 Entity_Behavior_Push(u8 *param_1)
 
 {
   int iVar1;
@@ -22,17 +22,17 @@ s32 FUN_80073328(u8 *param_1)
         return 0;
       }
       param_1->action_state = param_1->action_state + '\x01';
-      FUN_800732c0();
+      Entity_EnterHurtState1();
       return 0;
     }
     param_1->action_state = param_1->action_state + '\x01';
-    FUN_800732c0();
+    Entity_EnterHurtState1();
     goto LAB_800734fc;
   case 1:
-    iVar1 = FUN_80072e60(param_1);
+    iVar1 = Entity_AdvanceAnim2(param_1);
     if ((iVar1 != 0) && (g_ActionFlag != '\0')) {
       param_1->action_state = param_1->action_state + '\x01';
-      FUN_80072efc();
+      Entity_CalcAngleDelta();
       return 0;
     }
     break;
@@ -58,14 +58,14 @@ s32 FUN_80073328(u8 *param_1)
         return 0;
       }
       param_1->action_state = param_1->action_state + '\x01';
-      FUN_80073300();
+      Entity_EnterHurtState3();
       return 0;
     }
     if (DAT_800bf80f != '\0') {
       return 0;
     }
     param_1->action_state = param_1->action_state + '\x01';
-    FUN_80073300();
+    Entity_EnterHurtState3();
 LAB_800734fc:
     if (g_CurrentOverlay != '\0') {
       return 0;
@@ -83,7 +83,7 @@ LAB_800734fc:
     g_HurtState = '\0';
     break;
   case 5:
-    iVar1 = FUN_80072f14(param_1);
+    iVar1 = Entity_RotateLimb(param_1);
     if (iVar1 != 0) {
       *param_1 = 1;
       param_1->action_state = 0;

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80072520(int param_1)
+void Entity_Behavior_TimedLife(int param_1)
 
 {
   u8 bVar1;
@@ -15,10 +15,10 @@ void FUN_80072520(int param_1)
   bVar1 = param_1->state;
   if (bVar1 == 1) {
     if (param_1->sub_type < 2) {
-      FUN_80071dfc();
+      Entity_SpawnAnim();
     }
     else if (param_1->sub_type == 2) {
-      FUN_80072308();
+      Entity_SpawnEffect_2();
     }
   }
   else if (bVar1 < 2) {
@@ -28,7 +28,7 @@ void FUN_80072520(int param_1)
     }
   }
   else if ((bVar1 != 2) && (bVar1 == 3)) {
-    FUN_8007a624();
+    Entity_Dealloc();
   }
   return;
 }

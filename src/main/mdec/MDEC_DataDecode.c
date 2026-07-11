@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8008da58(uint param_1,s32 param_2,int param_3,uint param_4,s32 param_5,
+void MDEC_DataDecode(uint param_1,s32 param_2,int param_3,uint param_4,s32 param_5,
                  s8 param_6)
 
 {
@@ -41,7 +41,7 @@ LAB_8008dad4:
       return;
     }
     if (iVar3 == 0x10000) {
-      FUN_8009a730(s_DMA_STATUS_ERROR__x_8001c5c0,*(s32 *)(&DAT_1f801088 + iVar4));
+      Debug_Printf(s_DMA_STATUS_ERROR__x_8001c5c0,*(s32 *)(&DAT_1f801088 + iVar4));
       goto LAB_8008dad4;
     }
     uVar2 = *(uint *)(&DAT_1f801088 + iVar4);

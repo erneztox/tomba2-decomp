@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80044308(int param_1)
+s32 Entity_CheckPlayer(int param_1)
 
 {
   u8 bVar1;
@@ -40,7 +40,7 @@ s32 FUN_80044308(int param_1)
     if ((uVar3 & 0x7fff) == 2) {
       return 1;
     }
-    FUN_800442a0(param_1);
+    Entity_ResetAnimAndState(param_1);
     if ((uVar3 & 0x7fff) != 0) {
       return 1;
     }
@@ -60,13 +60,13 @@ s32 FUN_80044308(int param_1)
     }
     if (g_CameraMode2 == '\0') {
       _g_AngleInput =
-           FUN_80085690((int)_g_PlayerPosZ - (int)iVar4->pos_z,
+           Math_Atan2((int)_g_PlayerPosZ - (int)iVar4->pos_z,
                         (int)iVar4->pos_y - (int)_g_PlayerPosX);
       _g_AngleInput = _g_AngleInput & 0xfff;
       g_CollisionType = 0x1e;
       DAT_800e7e86 = 0;
     }
-    uVar3 = FUN_80085690((int)iVar4->pos_z - (int)_g_PlayerPosZ,
+    uVar3 = Math_Atan2((int)iVar4->pos_z - (int)_g_PlayerPosZ,
                          (int)_g_PlayerPosX - (int)iVar4->pos_y);
     uVar3 = uVar3 & 0xfff;
     *(u16 *)(param_1 + 100) = uVar3;

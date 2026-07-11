@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80041c54(int param_1)
+s32 Entity_StateWait2(int param_1)
 
 {
   u8 bVar1;
@@ -37,7 +37,7 @@ s32 FUN_80041c54(int param_1)
     }
     param_1->sub_state = param_1->sub_state + '\x01';
   }
-  iVar2 = FUN_8007def8((int)param_1->event_id,param_1->state_7A,
+  iVar2 = Entity_SpawnSprite((int)param_1->event_id,param_1->state_7A,
                        (int)*(s16 *)(param_1 + 0x76));
   param_1->parent = iVar2;
   if (iVar2 == 0) {

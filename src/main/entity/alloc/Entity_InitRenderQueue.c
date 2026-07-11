@@ -7,14 +7,14 @@
 
 
 #include "tomba.h"
-void FUN_8007ad40(void)
+void Entity_InitRenderQueue(void)
 
 {
   int iVar1;
   u8 *puVar2;
   
   puVar2 = &g_SpriteQueue;
-  FUN_8009a420(&g_SpriteQueue,0,0xa00);
+  Mem_Set(&g_SpriteQueue,0,0xa00);
   iVar1 = 0;
   do {
     puVar2->sub_action = (u8)iVar1 & 7;

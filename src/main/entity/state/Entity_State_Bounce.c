@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006a080(u8 *param_1)
+void Entity_State_Bounce(u8 *param_1)
 
 {
   char *pcVar1;
@@ -45,10 +45,10 @@ void FUN_8006a080(u8 *param_1)
         }
       }
       else {
-        FUN_80069cd8(param_1);
+        Entity_SpawnControl(param_1);
       }
     }
-    FUN_80069858(param_1,0,1);
+    Entity_PhysicsInit(param_1,0,1);
   }
   _DAT_1f800200 = param_1->pos_y;
   _DAT_1f800202 = *(s16 *)(param_1 + 0x32);

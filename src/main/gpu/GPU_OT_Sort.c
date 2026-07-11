@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8003e448(u16 *param_1,s32 param_2)
+void GPU_OT_Sort(u16 *param_1,s32 param_2)
 
 {
   u16 uVar1;
@@ -41,8 +41,8 @@ void FUN_8003e448(u16 *param_1,s32 param_2)
   
   puVar11 = _g_OT_Buffer;
   iVar18 = (uint)(DAT_1f800135 == '\0') * 0x100;
-  FUN_80083ca0(_g_OT_Buffer);
-  FUN_80083c70(puVar11,1);
+  GPU_SetTexPrimHeader(_g_OT_Buffer);
+  Entity_SetFlagBit1(puVar11,1);
   local_44 = _DAT_1f80008e;
   local_48 = _g_GTE_Work8C;
   uVar1 = *param_1;
@@ -57,8 +57,8 @@ void FUN_8003e448(u16 *param_1,s32 param_2)
   uVar9 = param_1->flags;
   uVar10 = param_1->sub_type;
   iVar17 = (int)_DAT_1f80008e;
-  iVar13 = FUN_80083f50(param_2);
-  iVar14 = FUN_80083e80(param_2);
+  iVar13 = Math_CosGTE(param_2);
+  iVar14 = Math_Cos(param_2);
   local_3c = _DAT_1f80008e;
   local_40 = _g_GTE_Work8C;
   iVar15 = ((s16)uVar1 - iVar16) + ((s16)uVar1 - iVar16 >> 7);
@@ -67,8 +67,8 @@ void FUN_8003e448(u16 *param_1,s32 param_2)
   iVar17 = (int)_g_GTE_Work8C;
   local_44 = (s16)(iVar16 * iVar13 - iVar15 * iVar14 >> 0xc) + local_44;
   iVar16 = (int)_DAT_1f80008e;
-  iVar13 = FUN_80083f50(param_2);
-  iVar14 = FUN_80083e80(param_2);
+  iVar13 = Math_CosGTE(param_2);
+  iVar14 = Math_Cos(param_2);
   local_34 = _DAT_1f80008e;
   local_38 = _g_GTE_Work8C;
   iVar17 = ((int)(s16)uVar3 + (int)(s16)uVar4) - iVar17;
@@ -79,8 +79,8 @@ void FUN_8003e448(u16 *param_1,s32 param_2)
   iVar15 = (int)_g_GTE_Work8C;
   local_3c = (s16)(iVar16 * iVar13 - iVar17 * iVar14 >> 0xc) + local_3c;
   iVar16 = (int)_DAT_1f80008e;
-  iVar13 = FUN_80083f50(param_2);
-  iVar14 = FUN_80083e80(param_2);
+  iVar13 = Math_CosGTE(param_2);
+  iVar14 = Math_Cos(param_2);
   local_2c = _DAT_1f80008e;
   local_30 = _g_GTE_Work8C;
   iVar15 = (s16)uVar3 - iVar15;
@@ -91,8 +91,8 @@ void FUN_8003e448(u16 *param_1,s32 param_2)
   iVar17 = (int)_g_GTE_Work8C;
   local_34 = (s16)(iVar16 * iVar13 - iVar15 * iVar14 >> 0xc) + local_34;
   iVar16 = (int)_DAT_1f80008e;
-  iVar13 = FUN_80083f50(param_2);
-  iVar14 = FUN_80083e80(param_2);
+  iVar13 = Math_CosGTE(param_2);
+  iVar14 = Math_Cos(param_2);
   iVar17 = ((int)(s16)uVar7 + (int)(s16)uVar8) - iVar17;
   iVar17 = iVar17 + (iVar17 >> 7);
   iVar16 = ((int)(s16)uVar9 + (int)(s16)uVar10) - iVar16;

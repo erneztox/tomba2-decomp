@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80036560(int param_1,s32 *param_2)
+s32 Event_TypeDispatch(int param_1,s32 *param_2)
 
 {
   s32 uVar1;

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80071260(int param_1)
+s32 Entity_AnimLoad4(int param_1)
 
 {
   u16 uVar1;
@@ -20,7 +20,7 @@ s32 FUN_80071260(int param_1)
   int iVar6;
   
   if (param_1->action_state == '\0') {
-    FUN_80077cfc(param_1,&PTR_DAT_8001b860,0,8);
+    Entity_LoadAnimDataEx(param_1,&PTR_DAT_8001b860,0,8);
     *(s16 *)(param_1 + 100) = 0x400;
     sVar2 = param_1->pos_y - _g_PlayerPosX;
     param_1->angle_offset = *(s16 *)(param_1 + 0x32) - _g_PlayerPosY;
@@ -37,7 +37,7 @@ s32 FUN_80071260(int param_1)
       if ((int)((uint)uVar1 << 0x10) < 0) {
         *(s16 *)(param_1 + 100) = 0;
       }
-      sVar2 = FUN_80083e80((int)*(s16 *)(param_1 + 100));
+      sVar2 = Math_Cos((int)*(s16 *)(param_1 + 100));
       iVar5 = (int)sVar2;
       iVar4 = iVar5 * param_1->sprite_x;
       if (iVar4 < 0) {

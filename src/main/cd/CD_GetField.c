@@ -6,7 +6,7 @@
 
 
 
-void FUN_8009a1d0(int param_1,s16 *param_2)
+void CD_GetField(int param_1,s16 *param_2)
 
 {
   *param_2 = *(s16 *)(param_1 * 0x10 + g_SPU_Regs + 0xc);

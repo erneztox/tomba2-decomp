@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8002c3ec(int param_1)
+void Entity_Behavior_AnimState1(int param_1)
 
 {
   u8 bVar1;
@@ -19,13 +19,13 @@ void FUN_8002c3ec(int param_1)
       if (3 < bVar1) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar1 != 0) {
       return;
     }
-    sVar2 = FUN_8009a450();
+    sVar2 = Math_Random();
     *(s32 *)(param_1 + 4) = 1;
     *(s32 *)(param_1 + 0x50) = 0x101010;
     *(s32 *)(param_1 + 0x58) = 0;
@@ -55,7 +55,7 @@ void FUN_8002c3ec(int param_1)
     default:
       *(s32 *)(param_1 + 0x54) = 0;
     }
-    FUN_8002b278(param_1);
+    Entity_CheckVisibility(param_1);
     param_1->sub_action = param_1->sub_action + '\x01';
   }
   else {

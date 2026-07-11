@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-u16 FUN_80046a44(int param_1,u16 param_2,s16 param_3,s16 param_4)
+u16 Collision_CheckFull2(int param_1,u16 param_2,s16 param_3,s16 param_4)
 
 {
   s32 bVar1;
@@ -27,9 +27,9 @@ u16 FUN_80046a44(int param_1,u16 param_2,s16 param_3,s16 param_4)
   uint uVar12;
   uint uVar13;
   
-  iVar6 = FUN_80083e80((int)param_1->rot_y);
+  iVar6 = Math_Cos((int)param_1->rot_y);
   uVar13 = (uint)(-iVar6 * (int)(s16)param_2) >> 0xc;
-  iVar7 = FUN_80083f50((int)param_1->rot_y);
+  iVar7 = Math_CosGTE((int)param_1->rot_y);
   cVar11 = '\0';
   iVar6 = 10;
   iVar10 = (int)param_4;
@@ -39,11 +39,11 @@ u16 FUN_80046a44(int param_1,u16 param_2,s16 param_3,s16 param_4)
     _DAT_1f8001bc = param_1->pos_y + (s16)uVar12;
     _DAT_1f8001be = *(s16 *)(param_1 + 0x32) + param_3;
     _DAT_1f8001c0 = param_1->pos_z + (s16)uVar13;
-    iVar7 = FUN_800498c8(param_1);
+    iVar7 = Collision_FindGround(param_1);
     if (iVar7 == 0) {
       return 0;
     }
-    sVar4 = FUN_80085690((uint)_DAT_1f8001b8 - (uint)_DAT_1f8001b4,
+    sVar4 = Math_Atan2((uint)_DAT_1f8001b8 - (uint)_DAT_1f8001b4,
                          (uint)_DAT_1f8001b6 - (uint)_DAT_1f8001b2);
     sVar4 = -sVar4;
     if (cVar11 == '\0') {
@@ -56,7 +56,7 @@ u16 FUN_80046a44(int param_1,u16 param_2,s16 param_3,s16 param_4)
         unaff_s4 = 8;
       }
     }
-    sVar5 = FUN_8004602c((int)unaff_s4,1,cVar11);
+    sVar5 = Collision_Push3((int)unaff_s4,1,cVar11);
     sVar3 = _g_CollisionFlag2;
     if ((int)sVar5 == 0) {
       return 0;
@@ -71,37 +71,37 @@ u16 FUN_80046a44(int param_1,u16 param_2,s16 param_3,s16 param_4)
     if (bVar1) {
       iVar6 = iVar6 + -1;
       if (unaff_s4 == 8) {
-        iVar7 = FUN_80083f50((int)sVar4);
+        iVar7 = Math_CosGTE((int)sVar4);
         param_1->pos_y = param_1->pos_y + (s16)(iVar7 * iVar10 >> 0xc);
-        iVar7 = FUN_80083e80((int)sVar4);
+        iVar7 = Math_Cos((int)sVar4);
         sVar4 = param_1->pos_z + (s16)(-iVar7 * iVar10 >> 0xc);
 LAB_80046cc8:
         param_1->pos_z = sVar4;
       }
       else if (unaff_s4 == 4) {
-        iVar7 = FUN_80083f50((int)sVar4);
+        iVar7 = Math_CosGTE((int)sVar4);
         param_1->pos_y = param_1->pos_y - (s16)(iVar7 * iVar10 >> 0xc);
-        iVar7 = FUN_80083e80((int)sVar4);
+        iVar7 = Math_Cos((int)sVar4);
         sVar4 = param_1->pos_z - (s16)(-iVar7 * iVar10 >> 0xc);
         goto LAB_80046cc8;
       }
-      iVar7 = FUN_80083f50((int)param_1->rot_y);
+      iVar7 = Math_CosGTE((int)param_1->rot_y);
       uVar12 = (uint)(iVar7 * iVar9) >> 0xc;
-      iVar7 = FUN_80083e80((int)param_1->rot_y);
+      iVar7 = Math_Cos((int)param_1->rot_y);
       uVar13 = (uint)(-iVar7 * iVar9) >> 0xc;
     }
     else {
       if (unaff_s4 == 8) {
-        iVar7 = FUN_80083f50((int)sVar4);
+        iVar7 = Math_CosGTE((int)sVar4);
         param_1->pos_y = param_1->pos_y + (s16)(iVar7 * iVar9 >> 0xc);
-        iVar7 = FUN_80083e80((int)sVar4);
+        iVar7 = Math_Cos((int)sVar4);
         sVar4 = param_1->pos_z + (s16)(-iVar7 * iVar9 >> 0xc);
       }
       else {
         if (unaff_s4 != 4) goto LAB_80046db0;
-        iVar7 = FUN_80083f50((int)sVar4);
+        iVar7 = Math_CosGTE((int)sVar4);
         param_1->pos_y = param_1->pos_y - (s16)(iVar7 * iVar9 >> 0xc);
-        iVar7 = FUN_80083e80((int)sVar4);
+        iVar7 = Math_Cos((int)sVar4);
         sVar4 = param_1->pos_z - (s16)(-iVar7 * iVar9 >> 0xc);
       }
       param_1->pos_z = sVar4;

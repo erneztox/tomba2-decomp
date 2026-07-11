@@ -7,18 +7,18 @@
 
 
 #include "tomba.h"
-s32 FUN_80080750(int param_1,int param_2,u8 param_3)
+s32 Entity_SpawnListener(int param_1,int param_2,u8 param_3)
 
 {
   int iVar1;
   s32 uVar2;
   
-  iVar1 = FUN_80072ddc(param_1,0,5,7);
+  iVar1 = Entity_SpawnChild(param_1,0,5,7);
   if (iVar1 == 0) {
     uVar2 = 0;
   }
   else {
-    iVar1->callback = FUN_80080424;
+    iVar1->callback = Entity_BehaviorType6;
     if (param_2 == 0) {
       iVar1->pos_y = param_1->pos_y;
       *(s16 *)(iVar1 + 0x32) = *(s16 *)(param_1 + 0x32);
@@ -31,7 +31,7 @@ s32 FUN_80080750(int param_1,int param_2,u8 param_3)
     }
     iVar1->sub_type = param_3;
     iVar1->collision_dir = param_1->collision_dir;
-    FUN_8003116c(0x2e,iVar1 + 0x2c,0xfffffff6);
+    Entity_SpawnWithPos(0x2e,iVar1 + 0x2c,0xfffffff6);
     uVar2 = 1;
   }
   return uVar2;

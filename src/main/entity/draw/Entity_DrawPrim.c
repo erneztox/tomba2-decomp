@@ -6,7 +6,7 @@
 
 
 
-void FUN_80037894(int param_1,s16 param_2,u8 param_3)
+void Entity_DrawPrim(int param_1,s16 param_2,u8 param_3)
 
 {
   void *puVar1;
@@ -30,7 +30,7 @@ void FUN_80037894(int param_1,s16 param_2,u8 param_3)
   do {
     sVar2 = local_20 + 8;
     iVar3 = iVar3 + 1;
-    FUN_8007e6dc(&local_20,puVar1,*(s32 *)(param_1 + 4),&local_28);
+    GPU_SpriteRender(&local_20,puVar1,*(s32 *)(param_1 + 4),&local_28);
     local_20 = sVar2;
   } while (iVar3 < 0x22);
   return;

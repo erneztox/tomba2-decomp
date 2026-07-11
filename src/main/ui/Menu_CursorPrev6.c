@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80038794(int param_1)
+s32 Menu_CursorPrev6(int param_1)
 
 {
   int iVar1;

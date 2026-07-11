@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80080adc(int *param_1,s32 param_2,s32 param_3)
+void GPU_DispatchTask(int *param_1,s32 param_2,s32 param_3)
 
 {
   code *pcVar1;
@@ -30,7 +30,7 @@ LAB_80080ba0:
       (*_DAT_80100ab0)(param_1,param_2,param_3);
       return;
     }
-    if ((*piVar4 != 0) && (iVar2 = FUN_8009a540(*piVar4,&DAT_80100ab8), iVar2 == 0)) {
+    if ((*piVar4 != 0) && (iVar2 = String_Compare2(*piVar4,&DAT_80100ab8), iVar2 == 0)) {
       piVar4->sprite_flags = (int)pcVar1;
       goto LAB_80080ba0;
     }

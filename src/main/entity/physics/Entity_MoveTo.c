@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_8001ff7c(u8 *param_1,u8 *param_2,int param_3,int param_4)
+s32 Entity_MoveTo(u8 *param_1,u8 *param_2,int param_3,int param_4)
 
 {
   u8 bVar1;
@@ -25,7 +25,7 @@ s32 FUN_8001ff7c(u8 *param_1,u8 *param_2,int param_3,int param_4)
     bVar1 = *param_2;
     if (((bVar1 & 0x18) == 0) && (param_3 < 2)) {
       if ((param_1[0x61] & 1) == 0) {
-        FUN_8001fdb4(param_2,1,3,0x1e);
+        Entity_CalcAngle21(param_2,1,3,0x1e);
         return 1;
       }
       if ((bVar1 != 1) && (bVar1 != 3)) {
@@ -51,10 +51,10 @@ s32 FUN_8001ff7c(u8 *param_1,u8 *param_2,int param_3,int param_4)
       if (param_4 != 1) {
         return 2;
       }
-      iVar7 = FUN_80083f50(_g_AngleTarget);
+      iVar7 = Math_CosGTE(_g_AngleTarget);
       sVar2 = param_1->bounds_min_x;
       sVar3 = param_2->bounds_min_x;
-      iVar6 = FUN_80083e80(_g_AngleTarget);
+      iVar6 = Math_Cos(_g_AngleTarget);
       sVar4 = param_1->bounds_min_x;
       param_2->pos_y =
            param_1->pos_y - (s16)(iVar7 * ((int)sVar2 + (int)sVar3) >> 0xc);
@@ -70,10 +70,10 @@ s32 FUN_8001ff7c(u8 *param_1,u8 *param_2,int param_3,int param_4)
   if (param_4 != 2) {
     if (param_4 < 3) {
       if (param_4 == 1) {
-        iVar7 = FUN_80083f50(_g_AngleTarget);
+        iVar7 = Math_CosGTE(_g_AngleTarget);
         sVar2 = param_1->bounds_min_x;
         sVar3 = param_2->bounds_min_x;
-        iVar6 = FUN_80083e80(_g_AngleTarget);
+        iVar6 = Math_Cos(_g_AngleTarget);
         sVar4 = param_1->bounds_min_x;
         param_2->pos_y =
              param_1->pos_y - (s16)(iVar7 * ((int)sVar2 + (int)sVar3) >> 0xc);
@@ -87,10 +87,10 @@ s32 FUN_8001ff7c(u8 *param_1,u8 *param_2,int param_3,int param_4)
     _g_AngleTarget = (int)param_1->draw_angle;
   }
   if ((*param_1 & 4) == 0) {
-    iVar7 = FUN_80083f50(_g_AngleTarget);
+    iVar7 = Math_CosGTE(_g_AngleTarget);
     sVar2 = param_1->bounds_min_x;
     sVar3 = param_2->bounds_min_x;
-    iVar6 = FUN_80083e80(_g_AngleTarget);
+    iVar6 = Math_Cos(_g_AngleTarget);
     sVar4 = param_2->bounds_min_x;
     param_1->pos_y =
          param_2->pos_y + (s16)(iVar7 * ((int)sVar2 + (int)sVar3) >> 0xc);

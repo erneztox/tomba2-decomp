@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80040a58(int param_1,int param_2)
+s32 Entity_GetTypeData(int param_1,int param_2)
 
 {
   uint uVar1;

@@ -8,13 +8,13 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-uint FUN_800953b0(s16 param_1,s16 param_2,u8 param_3)
+uint CD_ReadByteAt1(s16 param_1,s16 param_2,u8 param_3)
 
 {
   int iVar1;
   uint uVar2;
   
-  iVar1 = FUN_800962b0((int)param_1,(int)param_2);
+  iVar1 = CD_CheckSlot((int)param_1,(int)param_2);
   uVar2 = 0xffffffff;
   if (iVar1 == 0) {
     iVar1 = param_2 * 0x10;

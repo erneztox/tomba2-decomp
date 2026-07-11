@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006cbd0(int param_1,s16 *param_2)
+void Camera_SetTarget(int param_1,s16 *param_2)
 
 {
   _DAT_1f8000d2 = *param_2;

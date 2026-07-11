@@ -6,7 +6,7 @@
 
 
 
-void FUN_80088e88(int param_1)
+void MDEC_DecodeFrame(int param_1)
 
 {
   s32 bVar1;
@@ -20,7 +20,7 @@ void FUN_80088e88(int param_1)
   uint uVar9;
   int iVar10;
   
-  FUN_8009a340(param_1 + 0x57,6);
+  Mem_Compare(param_1 + 0x57,6);
   if ((*(s16 *)(param_1 + 0xe6) == 0) || (*(int *)(param_1 + 0x28) == 0)) {
     if (((param_1->state - 4 < 2) || (param_1->state == 7)) &&
        ((*(s16 *)(param_1 + 0xe6) == 0 && (1 < *(u8 *)(param_1 + 0x34))))) {

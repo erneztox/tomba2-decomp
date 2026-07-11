@@ -1,5 +1,5 @@
 /**
- * @brief Texture VRAM upload: DMA transfer from 0x80157000 to VRAM, calls FUN_80044f58
+ * @brief Texture VRAM upload: DMA transfer from 0x80157000 to VRAM, calls Texture_Process
  * @note Original: func_8004514C at 0x8004514C
  */
 // Texture_UploadVRAM
@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8004514c(void)
+void Texture_UploadVRAM(void)
 
 {
   int iVar1;
@@ -16,10 +16,10 @@ void FUN_8004514c(void)
   uint *puVar3;
   int iVar4;
   
-  FUN_8001dc40(0x80157000,DAT_800be110,DAT_800be114);
-  FUN_80044f58();
+  CD_LoadSectors(0x80157000,DAT_800be110,DAT_800be114);
+  Texture_Process();
   iVar4 = _DAT_800ef484 - _DAT_800ef480;
-  FUN_8001dc40(0x80158000,DAT_800be100 + (_DAT_800ef480 >> 0xb),iVar4);
+  CD_LoadSectors(0x80158000,DAT_800be100 + (_DAT_800ef480 >> 0xb),iVar4);
   iVar1 = _DAT_800ef488;
   puVar3 = (uint *)&DAT_800ef48c;
   iVar2 = 0;
@@ -32,8 +32,8 @@ void FUN_8004514c(void)
       puVar3 = puVar3 + 1;
     } while (iVar2 < iVar1);
   }
-  _DAT_1f80022c = FUN_800754f4(0x80182000);
+  _DAT_1f80022c = CD_LoadLevelData(0x80182000);
   g_DMAFlag = 1;
-  FUN_80051fb4();
+  GPU_WaitVSync();
   return;
 }

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800798f8(void)
+void Engine_InitEntity(void)
 
 {
   int iVar1;
@@ -29,7 +29,7 @@ void FUN_800798f8(void)
   do {
     iVar4 = iVar3;
     iVar5 = iVar5 + 0x88;
-    FUN_8009a420(iVar1,0,0x88);
+    Mem_Set(iVar1,0,0x88);
     iVar1->next = iVar5;
     iVar1->alloc_flags = 0;
     *(u8 *)(iVar1 + 0xc) = 0;
@@ -45,7 +45,7 @@ void FUN_800798f8(void)
   do {
     iVar3 = iVar5;
     puVar6 = puVar6 + 0xc4;
-    FUN_8009a420(puVar2,0,0xc4);
+    Mem_Set(puVar2,0,0xc4);
     *(u8 **)(puVar2 + 0x24) = puVar6;
     puVar2->alloc_flags = 1;
     puVar2[0xc] = 0;
@@ -61,7 +61,7 @@ void FUN_800798f8(void)
   do {
     iVar4 = iVar3;
     iVar5 = iVar5 + 0xd0;
-    FUN_8009a420(iVar1,0,0xd0);
+    Mem_Set(iVar1,0,0xd0);
     iVar1->next = iVar5;
     iVar1->alloc_flags = 2;
     *(u8 *)(iVar1 + 0xc) = 0;
@@ -77,7 +77,7 @@ void FUN_800798f8(void)
   do {
     iVar4 = iVar3;
     iVar5 = iVar5 + 0x108;
-    FUN_8009a420(iVar1,0,0x108);
+    Mem_Set(iVar1,0,0x108);
     iVar1->next = iVar5;
     iVar1->alloc_flags = 3;
     *(u8 *)(iVar1 + 0xc) = 0;
@@ -93,7 +93,7 @@ void FUN_800798f8(void)
   do {
     iVar4 = iVar3;
     iVar5 = iVar5 + 0x140;
-    FUN_8009a420(iVar1,0,0x140);
+    Mem_Set(iVar1,0,0x140);
     iVar1->next = iVar5;
     iVar1->alloc_flags = 4;
     *(u8 *)(iVar1 + 0xc) = 0;

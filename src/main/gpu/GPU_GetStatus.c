@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_8008240c(void)
+s32 GPU_GetStatus(void)
 
 {
   return *DAT_800a5aa8;

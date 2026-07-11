@@ -6,7 +6,7 @@
 
 
 
-void FUN_8004d714(int param_1,s8 param_2)
+void Inventory_SetFlag(int param_1,s8 param_2)
 
 {
   int iVar1;

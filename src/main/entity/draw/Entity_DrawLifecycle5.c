@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80032918(int param_1)
+void Entity_DrawLifecycle5(int param_1)
 
 {
   u8 bVar1;
@@ -19,7 +19,7 @@ void FUN_80032918(int param_1)
       if (3 < bVar1) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar1 != 0) {
@@ -37,9 +37,9 @@ void FUN_80032918(int param_1)
     param_1->state = STATE_FINISH;
   }
   else {
-    iVar2 = FUN_8002b278(param_1);
+    iVar2 = Entity_CheckVisibility(param_1);
     if (iVar2 == 0) {
-      FUN_80031780(param_1);
+      Entity_AdvanceAnimScript(param_1);
     }
   }
   return;

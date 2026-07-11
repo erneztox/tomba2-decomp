@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8003a9a0(int param_1)
+void Menu_SaveLoad(int param_1)
 
 {
   s16 sVar1;
@@ -22,7 +22,7 @@ void FUN_8003a9a0(int param_1)
     iVar2 = param_1;
     if (param_1->counter1 != '\0') {
       do {
-        FUN_8003a290(param_1,iVar2->sprite_ptr1);
+        Menu_CursorDraw(param_1,iVar2->sprite_ptr1);
         iVar3 = iVar3 + 1;
         iVar2 = iVar2 + 4;
       } while (iVar3 < (int)(uint)param_1->counter1);
@@ -60,7 +60,7 @@ void FUN_8003a9a0(int param_1)
           iVar2 = iVar2 + 4;
         } while (iVar3 < (int)(uint)param_1->counter1);
       }
-      FUN_80040aa4((int)param_1->draw_x,2);
+      Entity_SpawnSubEntity((int)param_1->draw_x,2);
       DAT_800ed06c = DAT_800ed06c + '\x01';
       param_1->behavior_state = param_1->behavior_state + '\x01';
     }
@@ -69,7 +69,7 @@ void FUN_8003a9a0(int param_1)
       iVar2 = param_1;
       if (param_1->counter1 != '\0') {
         do {
-          FUN_8003a3e8(param_1,iVar2->sprite_ptr1);
+          Menu_AnimIcon(param_1,iVar2->sprite_ptr1);
           iVar3 = iVar3 + 1;
           iVar2 = iVar2 + 4;
         } while (iVar3 < (int)(uint)param_1->counter1);
@@ -85,7 +85,7 @@ void FUN_8003a9a0(int param_1)
     iVar2 = param_1;
     if (param_1->counter1 != '\0') {
       do {
-        FUN_8003a470(param_1,iVar2->sprite_ptr1);
+        Menu_CursorMove(param_1,iVar2->sprite_ptr1);
         iVar3 = iVar3 + 1;
         iVar2 = iVar2 + 4;
       } while (iVar3 < (int)(uint)param_1->counter1);

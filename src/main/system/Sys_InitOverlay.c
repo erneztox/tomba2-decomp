@@ -7,10 +7,10 @@
 
 
 
-void FUN_8001cb00(void)
+void Sys_InitOverlay(void)
 
 {
   Overlay_8011534c();
-  FUN_8001cb98();
+  Sys_NoOp();
   return;
 }

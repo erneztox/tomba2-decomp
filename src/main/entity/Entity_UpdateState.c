@@ -40,7 +40,7 @@ void Entity_UpdateState(int param_1)
     *puVar4 = *(uint *)(_g_EntityBuffer + 0x28) | 0x3000000;
     *(uint **)(iVar5 + 0x28) = puVar4;
     puVar4 = _g_OT_Buffer;
-    FUN_80083de0(_g_OT_Buffer,0,0,0,0);
+    GPU_SetupDrawMode2(_g_OT_Buffer,0,0,0,0);
     iVar5 = _g_EntityBuffer;
     *puVar4 = *(uint *)(_g_EntityBuffer + 0x28) | 0x2000000;
     *(uint **)(iVar5 + 0x28) = puVar4;

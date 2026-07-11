@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80070724(u8 param_1,u8 param_2,u8 param_3)
+void Entity_SetCombatFlags(u8 param_1,u8 param_2,u8 param_3)
 
 {
   _g_PlayerEntity->combat_flag = param_1;

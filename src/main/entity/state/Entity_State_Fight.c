@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80066fa8(u8 *param_1)
+void Entity_State_Fight(u8 *param_1)
 
 {
   u8 bVar1;
@@ -28,11 +28,11 @@ LAB_80067148:
       local_1e = param_1->pos_y;
       local_1a = *(s16 *)(param_1 + 0x32) + 0x50;
       local_16 = param_1->pos_z;
-      FUN_800312d4(8,auStack_20,0xffffffb0);
+      Entity_SpawnWithFlag(8,auStack_20,0xffffffb0);
     }
     param_1->rot_z = param_1->rot_z + 0x200U & 0xfff;
-    FUN_80056b48(param_1,1);
-    FUN_80055d5c(param_1);
+    Entity_ApplyVelocity(param_1,1);
+    Entity_PhysicsStep2(param_1);
     if (param_1->collision_dir == 0x1d) {
       if (0x4203 < param_1->pos_y) {
         return;
@@ -70,7 +70,7 @@ LAB_80067148:
     if (DAT_800bfad7 != '\0') {
       return;
     }
-    FUN_80022c0c(param_1,1);
+    Entity_DecrementTimer(param_1,1);
     return;
   }
   if (1 < bVar1) {
@@ -82,7 +82,7 @@ LAB_80067148:
         param_1->pos_z = param_1->pos_z + param_1->sprite_y;
         *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + param_1->angle_offset;
       }
-      FUN_80055d5c(param_1);
+      Entity_PhysicsStep2(param_1);
       sVar2 = param_1->velocity_y;
       param_1->velocity_y = sVar2 + 0x300;
       if (0x3e00 < (s16)(sVar2 + 0x300)) {
@@ -91,7 +91,7 @@ LAB_80067148:
       }
       param_1->pos_y_fixed = param_1->pos_y_fixed + param_1->velocity_y * 0x100;
       if (0x2000 < param_1->velocity_y) {
-        FUN_8005444c(param_1);
+        Entity_CollisionGround(param_1);
       }
       if (param_1->collision_state == 0) {
         return;
@@ -99,7 +99,7 @@ LAB_80067148:
       g_State253 = 0;
       param_1[0x4a] = 0;
       param_1[0x4b] = 0;
-      FUN_80074590(3,0,0);
+      Audio_PlaySoundEffect(3,0,0);
       param_1[0x58] = 0;
       param_1[0x59] = 0;
       if (DAT_800bfad7 == '\0') {
@@ -110,8 +110,8 @@ LAB_80067148:
       }
       param_1[0x172] = 0x1e;
       param_1[0x173] = 0;
-      FUN_80054198(param_1);
-      FUN_80054d14(param_1,2,0);
+      Entity_ResetState_2(param_1);
+      Entity_LoadAnimIfChanged(param_1,2,0);
       param_1->state = 1;
     }
     else {
@@ -125,7 +125,7 @@ LAB_80067148:
         *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + param_1->angle_offset;
         param_1->pos_z = param_1->pos_z + param_1->sprite_y;
       }
-      FUN_80055d5c(param_1);
+      Entity_PhysicsStep2(param_1);
       sVar2 = param_1->velocity_y;
       param_1->velocity_y = sVar2 + 0x200;
       if (0x3e00 < (s16)(sVar2 + 0x200)) {
@@ -134,7 +134,7 @@ LAB_80067148:
       }
       param_1->pos_y_fixed = param_1->pos_y_fixed + param_1->velocity_y * 0x100;
       if (0x2000 < param_1->velocity_y) {
-        FUN_8005444c(param_1);
+        Entity_CollisionGround(param_1);
       }
       if (param_1->collision_state == 0) {
         return;
@@ -142,14 +142,14 @@ LAB_80067148:
       g_State253 = 0;
       param_1[0x4a] = 0;
       param_1[0x4b] = 0;
-      FUN_80074590(3,0,0);
+      Audio_PlaySoundEffect(3,0,0);
       param_1[0x58] = 0;
       param_1[0x59] = 0;
       *param_1 = 3;
       param_1[0x172] = 0x1e;
       param_1[0x173] = 0;
-      FUN_80054198(param_1);
-      FUN_80054d14(param_1,2,0);
+      Entity_ResetState_2(param_1);
+      Entity_LoadAnimIfChanged(param_1,2,0);
       param_1->state = 1;
     }
     param_1->behavior_state = 0;
@@ -160,15 +160,15 @@ LAB_80067148:
   if (bVar1 != 0) {
     return;
   }
-  FUN_80074590(0x23,0,0);
-  FUN_80053d90(param_1);
+  Audio_PlaySoundEffect(0x23,0,0);
+  Entity_StateSwitch(param_1);
   param_1->state_flag145 = 0;
   param_1->state_flag146 = 0;
   param_1[0x61] = 0;
   param_1->sub_action = 0;
-  FUN_80054198(param_1);
-  FUN_80054d14(param_1,0x5a,0);
-  FUN_800551c4(param_1);
+  Entity_ResetState_2(param_1);
+  Entity_LoadAnimIfChanged(param_1,0x5a,0);
+  Entity_State_Physics(param_1);
   param_1[0x58] = 0;
   param_1[0x59] = 0;
   if (g_GameState != '\x06') {
@@ -184,7 +184,7 @@ LAB_80067148:
     if (DAT_800bfad6 != '\0') goto LAB_80067098;
   }
   if ((*param_1 & 2) == 0) {
-    FUN_80022c0c(param_1,1);
+    Entity_DecrementTimer(param_1,1);
   }
 LAB_80067098:
   param_1->collision_state = 0;

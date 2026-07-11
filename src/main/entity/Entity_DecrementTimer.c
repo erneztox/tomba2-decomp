@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80022c0c(u8 *param_1,int param_2)
+s32 Entity_DecrementTimer(u8 *param_1,int param_2)
 
 {
   u16 uVar1;

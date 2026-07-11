@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80095b90(s16 param_1)
+void Audio_ScanChannel(s16 param_1)
 
 {
   uint uVar1;
@@ -21,7 +21,7 @@ void FUN_80095b90(s16 param_1)
       if (((DAT_800ac3f4 & 1 << (uVar1 & 0x1f)) == 0) &&
          (*(s16 *)(uVar1 * 0x38 + -0x7fefab28) == param_1)) {
         _DAT_80105d10 = (u16)uVar2 & 0xff;
-        FUN_80094b50(0);
+        Audio_SPU_Key(0);
       }
       uVar2 = uVar2 + 1;
       uVar1 = uVar2 & 0xff;

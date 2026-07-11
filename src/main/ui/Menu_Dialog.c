@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8003abe4(int param_1)
+void Menu_Dialog(int param_1)
 
 {
   u8 bVar1;
@@ -25,7 +25,7 @@ void FUN_8003abe4(int param_1)
       iVar3 = param_1;
       if (param_1->counter1 != '\0') {
         do {
-          FUN_8003a470(param_1,iVar3->sprite_ptr1);
+          Menu_CursorMove(param_1,iVar3->sprite_ptr1);
           iVar4 = iVar4 + 1;
           iVar3 = iVar3 + 4;
         } while (iVar4 < (int)(uint)param_1->counter1);
@@ -59,7 +59,7 @@ void FUN_8003abe4(int param_1)
     iVar3 = param_1;
     if (param_1->counter1 != '\0') {
       do {
-        FUN_8003a3e8(param_1,iVar3->sprite_ptr1);
+        Menu_AnimIcon(param_1,iVar3->sprite_ptr1);
         iVar4 = iVar4 + 1;
         iVar3 = iVar3 + 4;
       } while (iVar4 < (int)(uint)param_1->counter1);

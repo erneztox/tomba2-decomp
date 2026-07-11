@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8004fd30(void)
+void UI_DrawOverlay(void)
 
 {
   uint *puVar1;
@@ -27,7 +27,7 @@ void FUN_8004fd30(void)
       local_18 = 0;
       _g_OT_Buffer = _g_OT_Buffer + 3;
       local_16 = (u16)DAT_1f800135 << 8;
-      FUN_80081cf8(puVar1,&local_18);
+      OT_DrawRectSprite(puVar1,&local_18);
       iVar2 = _g_EntityBuffer;
       *puVar1 = *(uint *)(_g_EntityBuffer + 0xc) | 0x2000000;
       *(uint **)(iVar2 + 0xc) = puVar1;
@@ -36,7 +36,7 @@ void FUN_8004fd30(void)
     if (0 < _DAT_800bf550) {
       iVar3 = 0xc;
       do {
-        FUN_8004fb4c(&DAT_800bf548 + iVar3);
+        Render_ProcessQueueItem(&DAT_800bf548 + iVar3);
         iVar2 = iVar2 + 1;
         iVar3 = iVar3 + 0x8c;
       } while (iVar2 < _DAT_800bf550);
@@ -48,7 +48,7 @@ void FUN_8004fd30(void)
       local_12 = 0x36;
       _g_OT_Buffer = _g_OT_Buffer + 3;
       local_16 = (u16)DAT_1f800135 * 0x100 + 0x99;
-      FUN_80081cf8(puVar1,&local_18);
+      OT_DrawRectSprite(puVar1,&local_18);
       iVar2 = _g_EntityBuffer;
       *puVar1 = *(uint *)(_g_EntityBuffer + 0xc) | 0x2000000;
       *(uint **)(iVar2 + 0xc) = puVar1;

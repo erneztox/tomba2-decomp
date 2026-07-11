@@ -10,7 +10,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80090210(u16 param_1,u8 param_2,char *param_3)
+s32 Audio_SeqMain(u16 param_1,u8 param_2,char *param_3)
 
 {
   s8 cVar1;
@@ -65,14 +65,14 @@ s32 FUN_80090210(u16 param_1,u8 param_2,char *param_3)
   *(s16 *)((int)puVar14 + 0x52) = 1;
   *puVar14 = param_3;
   if ((*param_3 != 'S') && (*param_3 != 'p')) {
-    FUN_8009a730(s_This_is_an_old_SEQ_Data_Format__8001c628);
+    Debug_Printf(s_This_is_an_old_SEQ_Data_Format__8001c628);
     return 0;
   }
   *puVar14 = param_3 + 7;
   cVar1 = param_3->flags;
   *puVar14 = param_3 + 8;
   if (cVar1 != '\x01') {
-    FUN_8009a730(s_This_is_not_SEQ_Data__8001c610);
+    Debug_Printf(s_This_is_not_SEQ_Data__8001c610);
     return 0xffffffff;
   }
   cVar1 = param_3->flags;
@@ -105,7 +105,7 @@ s32 FUN_80090210(u16 param_1,u8 param_2,char *param_3)
   uVar5 = puVar8->flags;
   *puVar14 = puVar8 + 2;
   *(u8 *)((int)puVar14 + 0x25) = uVar5;
-  uVar9 = FUN_80090160((int)(s16)param_1,0);
+  uVar9 = Audio_AllocVoice((int)(s16)param_1,0);
   uVar7 = (int)*(s16 *)(puVar14 + 0x14) * puVar14[0x23];
   puVar14->flags = *puVar14;
   iVar10 = _DAT_80104c2c;

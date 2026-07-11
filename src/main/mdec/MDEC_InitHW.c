@@ -6,9 +6,9 @@
 
 
 
-void FUN_80087a60(void)
+void MDEC_InitHW(void)
 
 {
-  FUN_80086970();
+  MDEC_InitHWImpl();
   return;
 }

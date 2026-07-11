@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8002f514(s32 param_1,int param_2)
+void Entity_Behavior_Spawn(s32 param_1,int param_2)
 
 {
   s16 uVar1;
@@ -24,7 +24,7 @@ void FUN_8002f514(s32 param_1,int param_2)
   case 1:
     iVar4 = 0;
     if (DAT_800e7e7c < 7) goto LAB_8002f70c;
-    iVar4 = FUN_8007a980(0,6,1);
+    iVar4 = Entity_AllocByPoolId(0,6,1);
     if (iVar4 != 0) {
       *(s16 *)(iVar4 + 0x32) = 0xff38;
       uVar5 = 0x2a;
@@ -33,12 +33,12 @@ void FUN_8002f514(s32 param_1,int param_2)
     break;
   case 2:
     iVar4 = 0;
-    FUN_80023528(param_2);
+    Entity_InitSpriteType3(param_2);
     goto LAB_8002f70c;
   case 3:
     iVar4 = 0;
     if (DAT_800e7e7c < 7) goto LAB_8002f70c;
-    iVar4 = FUN_8007a980(0,6,1);
+    iVar4 = Entity_AllocByPoolId(0,6,1);
     if (iVar4 != 0) {
       *(s16 *)(iVar4 + 0x32) = 0xff38;
       uVar5 = 0x32;
@@ -48,7 +48,7 @@ void FUN_8002f514(s32 param_1,int param_2)
   case 4:
     iVar4 = 0;
     if (DAT_800e7e7c < 7) goto LAB_8002f70c;
-    iVar4 = FUN_8007a980(0,6,1);
+    iVar4 = Entity_AllocByPoolId(0,6,1);
     if (iVar4 != 0) {
       *(s16 *)(iVar4 + 0x32) = 0xff38;
       uVar5 = 0x33;
@@ -58,7 +58,7 @@ void FUN_8002f514(s32 param_1,int param_2)
   case 5:
     iVar4 = 0;
     if (DAT_800e7e7c < 7) goto LAB_8002f70c;
-    iVar4 = FUN_8007a980(0,6,1);
+    iVar4 = Entity_AllocByPoolId(0,6,1);
     if (iVar4 != 0) {
       *(s16 *)(iVar4 + 0x32) = 0xff38;
       uVar5 = 0x31;
@@ -67,14 +67,14 @@ void FUN_8002f514(s32 param_1,int param_2)
     break;
   default:
     sVar3 = _g_PlayerPosY + -200;
-    if ((6 < DAT_800e7e7c) && (iVar4 = FUN_8007a980(0,6,1), iVar4 != 0)) {
+    if ((6 < DAT_800e7e7c) && (iVar4 = Entity_AllocByPoolId(0,6,1), iVar4 != 0)) {
       uVar5 = 0x36;
       iVar4->pos_x = uVar1;
       iVar4->pos_y = sVar3;
       *(s16 *)(iVar4 + 0x32) = 0xff38;
       *(s16 *)(iVar4 + 0x30) = uVar2;
 LAB_8002f704:
-      FUN_80028e10(iVar4,uVar5);
+      Entity_InitBehavior(iVar4,uVar5);
       goto LAB_8002f70c;
     }
   }

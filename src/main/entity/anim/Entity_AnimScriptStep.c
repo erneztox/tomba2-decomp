@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80041468(int param_1)
+s32 Entity_AnimScriptStep(int param_1)
 
 {
   s16 sVar1;
@@ -27,12 +27,12 @@ s32 FUN_80041468(int param_1)
     if (param_1->sub_state != '\x01') {
       return 0;
     }
-    uVar4 = FUN_80041438(iVar6,(int)*(s16 *)(param_1 + 0x76),(int)param_1->event_param);
+    uVar4 = Entity_ApproachAngle(iVar6,(int)*(s16 *)(param_1 + 0x76),(int)param_1->event_param);
     return uVar4;
   }
   uVar3 = param_1->event_id & 0x7fff;
   if (uVar3 == 2) {
-    sVar2 = FUN_80085690((int)iVar6->pos_z - (int)_g_PlayerPosZ,
+    sVar2 = Math_Atan2((int)iVar6->pos_z - (int)_g_PlayerPosZ,
                          (int)_g_PlayerPosX - (int)iVar6->pos_y);
     uVar3 = sVar2 - 0x800;
   }
@@ -46,7 +46,7 @@ s32 FUN_80041468(int param_1)
     else {
       if (uVar3 != 3) {
         if (uVar3 == 10) {
-          uVar3 = FUN_80085690((int)iVar6->pos_z - (int)*(s16 *)(param_1 + 0x76),
+          uVar3 = Math_Atan2((int)iVar6->pos_z - (int)*(s16 *)(param_1 + 0x76),
                                (int)param_1->event_param - (int)iVar6->pos_y);
           *(u16 *)(param_1 + 0x76) = uVar3 & 0xfff;
           param_1->event_param = 0x100;
@@ -57,7 +57,7 @@ s32 FUN_80041468(int param_1)
       sVar2 = iVar6->pos_y;
       iVar5 = (int)iVar6->pos_z - (int)param_1->pos_z;
     }
-    uVar3 = FUN_80085690(iVar5,(int)sVar1 - (int)sVar2);
+    uVar3 = Math_Atan2(iVar5,(int)sVar1 - (int)sVar2);
   }
   *(u16 *)(param_1 + 0x76) = *(s16 *)(param_1 + 0x76) + (uVar3 & 0xfff);
 LAB_800415ac:

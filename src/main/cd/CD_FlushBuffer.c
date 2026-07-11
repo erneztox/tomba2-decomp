@@ -6,7 +6,7 @@
 
 
 
-void FUN_80097d90(uint param_1)
+void CD_FlushBuffer(uint param_1)
 
 {
   uint *puVar1;
@@ -25,6 +25,6 @@ void FUN_80097d90(uint param_1)
       puVar1 = puVar1 + 2;
     } while (iVar2 < DAT_800ac664);
   }
-  FUN_80097a90();
+  CD_DMAProcess();
   return;
 }

@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80074bf8(uint param_1)
+void Audio_SetBank(uint param_1)
 
 {
   u8 bVar1;
@@ -39,9 +39,9 @@ void FUN_80074bf8(uint param_1)
         return;
       }
     }
-    FUN_80074e48();
+    Audio_ReleaseChannel();
     _DAT_800bed80 = (u16)uVar5;
-    FUN_800963a0((&DAT_800be36c)[uVar5 * 8]);
+    CD_SetValidatedParam((&DAT_800be36c)[uVar5 * 8]);
     bVar1 = DAT_800fb164;
     if ((uVar5 < 4) || ((uVar5 < 0xd && (10 < uVar5)))) {
       bVar1 = DAT_800fb165;
@@ -50,8 +50,8 @@ void FUN_80074bf8(uint param_1)
       bVar1 = DAT_800fb164;
     }
     iVar4 = (int)((((uint)bVar1 * 0x7f) / 9) * 0x10000) >> 0x10;
-    FUN_80091f50((int)*(s16 *)(&DAT_800be368 + (s16)_DAT_800bed80 * 8),iVar4,iVar4);
-    FUN_80090560((int)*(s16 *)(&DAT_800be368 + (s16)_DAT_800bed80 * 8),1,(param_1 & 0x80) == 0);
+    Audio_SetChannelPos2((int)*(s16 *)(&DAT_800be368 + (s16)_DAT_800bed80 * 8),iVar4,iVar4);
+    SPU_SetVolume((int)*(s16 *)(&DAT_800be368 + (s16)_DAT_800bed80 * 8),1,(param_1 & 0x80) == 0);
     iVar3 = 0;
     iVar4 = (int)*(s16 *)(&DAT_800be36c + (s16)_DAT_800bed80 * 8);
     _DAT_800bed78 = iVar4;

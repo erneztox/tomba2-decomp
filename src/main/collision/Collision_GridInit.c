@@ -9,13 +9,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8004798c(int param_1)
+void Collision_GridInit(int param_1)
 
 {
   s32 bVar1;
   
   if (param_1->collision_dir != g_CollisionZone) {
-    FUN_80048ecc(param_1->collision_dir);
+    Collision_GridLookup(param_1->collision_dir);
   }
   if (_DAT_1f8001ae < _DAT_1f8001b0) {
     bVar1 = _DAT_1f8001b0 < (u16)(_DAT_1f8001c0 - _DAT_1f8001ac);
@@ -24,7 +24,7 @@ void FUN_8004798c(int param_1)
     bVar1 = _DAT_1f8001ae < (u16)(_DAT_1f8001bc - _DAT_1f8001aa);
   }
   if (bVar1) {
-    FUN_80048fc4(param_1,1);
+    Collision_Slope2(param_1,1);
   }
   if (_DAT_1f8001ae < _DAT_1f8001b0) {
     if ((int)_DAT_1f8001c0 < (int)_DAT_1f8001ac) {

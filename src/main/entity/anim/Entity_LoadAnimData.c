@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80077b38(int param_1,int param_2,int param_3)
+void Entity_LoadAnimData(int param_1,int param_2,int param_3)
 
 {
   u16 uVar1;

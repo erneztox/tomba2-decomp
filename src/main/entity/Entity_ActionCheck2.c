@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80055704(int param_1,int param_2)
+s32 Entity_ActionCheck2(int param_1,int param_2)
 
 {
   u8 bVar1;
@@ -25,7 +25,7 @@ s32 FUN_80055704(int param_1,int param_2)
     return 0;
   }
   if (param_2 == 0) {
-    if (((_g_InputState & _DAT_1f800174) == 0) || (iVar2 = FUN_800535e0(param_1,1), iVar2 == 0)) {
+    if (((_g_InputState & _DAT_1f800174) == 0) || (iVar2 = Entity_CheckState(param_1,1), iVar2 == 0)) {
 LAB_800557d4:
       param_1->combat_flag = 0;
       return 0;

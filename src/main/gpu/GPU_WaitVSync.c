@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80051fb4(void)
+void GPU_WaitVSync(void)
 
 {
   s16 *puVar1;
@@ -19,9 +19,9 @@ void FUN_80051fb4(void)
   puVar2 = _g_CurrentEntity;
   *puVar1 = 0;
   *(u8 *)((int)puVar2 + 0x6f) = 0;
-  FUN_80080890();
-  FUN_80080870(*(s32 *)(_g_CurrentEntity + 2));
-  FUN_800808a0();
-  FUN_80080880(0xff000000);
+  BIOS_Syscall0();
+  BIOS_Syscall_B0_80080870(*(s32 *)(_g_CurrentEntity + 2));
+  BIOS_Syscall0_2();
+  BIOS_Syscall_B0_80080880(0xff000000);
   return;
 }

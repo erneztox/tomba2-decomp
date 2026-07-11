@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_80055634(int param_1,int param_2)
+int Entity_CheckCollisionFlags(int param_1,int param_2)
 
 {
   int iVar1;
@@ -23,13 +23,13 @@ int FUN_80055634(int param_1,int param_2)
     }
     if ((_g_PadState & _DAT_1f800174) != 0) {
       param_1->flag_175 = 0;
-      iVar1 = FUN_800535e0(param_1,0);
+      iVar1 = Entity_CheckState(param_1,0);
       return (uint)(iVar1 != 0) << 1;
     }
     if (param_2 != 0) {
       return 0;
     }
-    if (((_g_InputState & _DAT_1f800174) != 0) && (iVar1 = FUN_800535e0(param_1,1), iVar1 != 0)) {
+    if (((_g_InputState & _DAT_1f800174) != 0) && (iVar1 = Entity_CheckState(param_1,1), iVar1 != 0)) {
       param_1->flag_175 = 1;
       return 2;
     }

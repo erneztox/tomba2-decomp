@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8005a39c(int param_1,int param_2)
+void Entity_State_Attack6(int param_1,int param_2)
 
 {
   s16 sVar1;
@@ -41,7 +41,7 @@ void FUN_8005a39c(int param_1,int param_2)
         uVar3 = (uint)(param_1->direction != '\0');
       }
       iVar6 = uVar4 + uVar3 * 2;
-      sVar1 = FUN_800776f8(iVar6 * 0x4000000 >> 0x10,(int)param_1->draw_pos_y,0x80);
+      sVar1 = Math_ApproachAngle_2(iVar6 * 0x4000000 >> 0x10,(int)param_1->draw_pos_y,0x80);
       param_1->draw_pos_y = sVar1;
       if ((int)sVar1 == iVar6 * 0x400) {
         param_1->draw_pos_z = (u16)(u8)(&DAT_800a4612)[param_1->timer1 * 4]
@@ -68,7 +68,7 @@ void FUN_8005a39c(int param_1,int param_2)
   case 8:
     if (param_2 == 1) {
       param_1->sub_action = 0;
-      FUN_80054d14(param_1,2,6);
+      Entity_LoadAnimIfChanged(param_1,2,6);
     }
     goto switchD_8005a3fc_caseD_4;
   }
@@ -92,7 +92,7 @@ switchD_8005a3fc_caseD_1:
       cVar5 = (&DAT_800a4610)[param_1->timer1 * 4];
     }
 LAB_8005a4ec:
-    FUN_80054d14(param_1,cVar5,4);
+    Entity_LoadAnimIfChanged(param_1,cVar5,4);
   }
   else {
     cVar5 = (&DAT_800a4610)[param_1->timer1 * 4];

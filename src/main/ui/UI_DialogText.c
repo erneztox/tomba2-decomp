@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8004f184(int param_1,int *param_2)
+void UI_DialogText(int param_1,int *param_2)
 
 {
   s8 cVar1;
@@ -22,25 +22,25 @@ void FUN_8004f184(int param_1,int *param_2)
   u16 local_20->state;
   
   psVar7 = (s16 *)(param_1 + *(s16 *)(param_1 + 8) * 0x8c + 0xc);
-  FUN_8004ee50(psVar7);
+  UI_ClearElement(psVar7);
   puVar3 = (u8 *)*param_2;
   local_20->type = 0;
   if (puVar3 == (u8 *)0x0) {
     puVar3 = auStack_50;
     piVar8 = param_2 + 1;
     *(u8 *)((int)psVar7 + 9) = 0;
-    local_20->type = FUN_8004f058(puVar3,piVar8,2);
+    local_20->type = UI_TextParser(puVar3,piVar8,2);
     if (local_20->type != 0) {
       *(s8*)((int)psVar7 + 9) = *(s8*)((int)psVar7 + 9) + '\x01';
     }
-    uVar2 = FUN_8004f058(puVar3,piVar8,1);
+    uVar2 = UI_TextParser(puVar3,piVar8,1);
     if ((s16)local_20->type < (s16)uVar2) {
       local_20->type = uVar2;
     }
     if (uVar2 != 0) {
       *(s8*)((int)psVar7 + 9) = *(s8*)((int)psVar7 + 9) + '\x01';
     }
-    uVar2 = FUN_8004f058(puVar3,piVar8,0);
+    uVar2 = UI_TextParser(puVar3,piVar8,0);
     if ((s16)local_20->type < (s16)uVar2) {
       local_20->type = uVar2;
     }
@@ -48,11 +48,11 @@ void FUN_8004f184(int param_1,int *param_2)
     cVar1 = *(s8*)((int)psVar7 + 9) + '\x01';
   }
   else {
-    cVar1 = FUN_8004efc0(puVar3,local_20);
+    cVar1 = UI_DrawTextLine(puVar3,local_20);
   }
   *(s8*)((int)psVar7 + 9) = cVar1;
 LAB_8004f2b8:
-  FUN_8004ef54(psVar7 + 8,puVar3);
+  String_CopyUntil(psVar7 + 8,puVar3);
   iVar4 = param_2->flags;
   iVar5 = param_2->kind;
   iVar6 = param_2->sub_type;

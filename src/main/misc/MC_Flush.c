@@ -6,9 +6,9 @@
 
 
 
-void FUN_80097730(s32 param_1)
+void MC_Flush(s32 param_1)
 
 {
-  FUN_80085b80(4,param_1);
+  CD_Dispatch04(4,param_1);
   return;
 }

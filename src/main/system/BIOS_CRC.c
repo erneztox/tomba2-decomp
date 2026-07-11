@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_8009c3f4(s32 param_1)
+s32 BIOS_CRC(s32 param_1)
 
 {
   int iVar1;
@@ -17,9 +17,9 @@ s32 FUN_8009c3f4(s32 param_1)
   
   iVar3 = 0;
   do {
-    FUN_8009a340(&DAT_80106198,0x80);
+    Mem_Compare(&DAT_80106198,0x80);
     iVar1 = iVar3 * 0x20;
-    FUN_8009a340((s32 *)(iVar1 + -0x7fefa098),0x20);
+    Mem_Compare((s32 *)(iVar1 + -0x7fefa098),0x20);
     *(s32 *)(iVar1 + -0x7fefa098) = 0xa0;
     *(s32 *)(iVar1 + -0x7fefa094) = 0;
     *(s16 *)(iVar1 + -0x7fefa090) = 0xffff;
@@ -32,7 +32,7 @@ s32 FUN_8009c3f4(s32 param_1)
     _DAT_801061b0 = *(s32 *)(iVar1 + -0x7fefa080);
     _DAT_801061b4 = *(s32 *)(iVar1 + -0x7fefa07c);
     iVar3 = iVar3 + 1;
-    iVar1 = FUN_8009c2b0(param_1,iVar3,&DAT_80106198);
+    iVar1 = BIOS_MemTest(param_1,iVar3,&DAT_80106198);
     if (iVar1 != 1) {
       return false;
     }
@@ -41,17 +41,17 @@ s32 FUN_8009c3f4(s32 param_1)
   puVar2 = (s32 *)&DAT_80106148;
   do {
     *puVar2 = 0xffffffff;
-    FUN_8009a340(&DAT_80106198,0x80);
+    Mem_Compare(&DAT_80106198,0x80);
     _DAT_80106198 = *puVar2;
-    iVar1 = FUN_8009c2b0(param_1,iVar3 + 0x10,&DAT_80106198);
+    iVar1 = BIOS_MemTest(param_1,iVar3 + 0x10,&DAT_80106198);
     iVar3 = iVar3 + 1;
     if (iVar1 != 1) {
       return false;
     }
     puVar2 = puVar2 + 1;
   } while (iVar3 < 0x14);
-  FUN_8009a340(&DAT_80106198,0x80);
+  Mem_Compare(&DAT_80106198,0x80);
   _DAT_80106198 = CONCAT22(DAT_80106198_2,0x434d);
-  iVar3 = FUN_8009c2b0(param_1,0);
+  iVar3 = BIOS_MemTest(param_1,0);
   return iVar3 == 1;
 }

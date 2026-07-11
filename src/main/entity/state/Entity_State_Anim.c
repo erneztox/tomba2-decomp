@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80042894(int param_1)
+s32 Entity_State_Anim(int param_1)
 
 {
   int iVar1;
@@ -24,7 +24,7 @@ s32 FUN_80042894(int param_1)
   
   if (param_1->sub_state == '\0') {
     if ((param_1->event_id & 1) == 0) {
-      FUN_8006e1c0(7);
+      Entity_CopyStateData(7);
     }
     else {
       g_CameraEntity = 7;
@@ -48,11 +48,11 @@ s32 FUN_80042894(int param_1)
       local_1e = param_1->pos_z;
     }
     if ((*(s16 *)(param_1 + 0x66) == 0) || ((param_1->event_id & 3) < 2)) {
-      FUN_8006cbd0(0x800e8008,puVar3);
+      Camera_SetTarget(0x800e8008,puVar3);
       return 1;
     }
-    FUN_8006cba8(&g_CameraX);
-    FUN_8006cc1c(0x800e8008,puVar3,(int)*(s16 *)(param_1 + 0x66));
+    Camera_SetPosition(&g_CameraX);
+    Camera_Smooth(0x800e8008,puVar3,(int)*(s16 *)(param_1 + 0x66));
     if (((int)param_1->event_id & 0x8000U) != 0) {
       _DAT_800e8084 = 0;
       _DAT_800e8082 = 0;
@@ -72,7 +72,7 @@ s32 FUN_80042894(int param_1)
     if (param_1->sub_state != '\x01') {
       return 0;
     }
-    iVar1 = FUN_8006cdcc(0x800e8008);
+    iVar1 = Entity_DecrementTimer2(0x800e8008);
     if (iVar1 == 1) {
       return 1;
     }

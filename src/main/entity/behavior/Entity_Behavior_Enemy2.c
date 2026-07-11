@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80069bec(int param_1,int param_2)
+void Entity_Behavior_Enemy2(int param_1,int param_2)
 
 {
   s16 uVar1;
@@ -35,11 +35,11 @@ void FUN_80069bec(int param_1,int param_2)
 LAB_80069c7c:
   param_1->anim_id = param_1->anim_id & 7;
   param_1->rot_z = param_1->type_flags;
-  FUN_80074590(0x22,0,0);
-  FUN_80069634(param_1);
-  FUN_80069ae4(param_1);
+  Audio_PlaySoundEffect(0x22,0,0);
+  Entity_SetAnimSpeed(param_1);
+  Entity_CopyParentPos(param_1);
   if (param_2 == 0) {
-    FUN_80031558(param_1,param_1->kind - 1);
+    Entity_SpawnTrail(param_1,param_1->kind - 1);
   }
   return;
 }

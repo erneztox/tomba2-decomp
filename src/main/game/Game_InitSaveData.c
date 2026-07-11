@@ -6,7 +6,7 @@
 
 
 
-void FUN_8005082c(u8 param_1,u8 param_2,u8 param_3)
+void Game_InitSaveData(u8 param_1,u8 param_2,u8 param_3)
 
 {
   s8 cVar1;

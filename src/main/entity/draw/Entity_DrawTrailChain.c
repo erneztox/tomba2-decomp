@@ -77,11 +77,11 @@ LAB_800297f0:
       _DAT_1f800088 = getCopReg(2,0x18);
     }
     if (local_30 != 0) {
-      iVar10 = FUN_80085690((int)_DAT_1f800092 - (int)_DAT_1f80008e,
+      iVar10 = Math_Atan2((int)_DAT_1f800092 - (int)_DAT_1f80008e,
                             (int)_DAT_1f800090 - (int)_g_GTE_Work8C);
-      iVar8 = FUN_80083f50(iVar10 + 0x400);
+      iVar8 = Math_CosGTE(iVar10 + 0x400);
       iVar8 = (int)((uint)*local_resc * iVar8 + 0x800) >> 0xc;
-      iVar10 = FUN_80083e80(iVar10 + 0x400);
+      iVar10 = Math_Cos(iVar10 + 0x400);
       iVar10 = (int)((uint)*local_resc * iVar10 + 0x800) >> 0xc;
       if (local_30 == 1) {
         sVar7 = (s16)((uint)(iVar8 * _g_GTE_Work84) >> 0x10);
@@ -126,7 +126,7 @@ LAB_800297f0:
       puVar5->counter2 = *puVar3 | 0x8000000;
       *puVar3 = (uint)(puVar5 + 9);
       puVar4 = puVar5 + 0x12;
-      FUN_80083de0(puVar4,0,1,0x35,0);
+      GPU_SetupDrawMode2(puVar4,0,1,0x35,0);
       puVar3 = (uint *)(_g_EntityBuffer + _g_GTE_Result[0] * 4);
       *puVar4 = *puVar3 | 0x2000000;
       *puVar3 = (uint)puVar4;

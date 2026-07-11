@@ -6,7 +6,7 @@
 
 
 
-int FUN_8009a3a4(u8 param_1)
+int CD_AdjustCmdByte(u8 param_1)
 
 {
   if (((&DAT_800ace75)[param_1] & 1) != 0) {

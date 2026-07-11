@@ -6,7 +6,7 @@
 
 
 
-s16 FUN_800943c0(void)
+s16 Audio_ClampParam(void)
 
 {
   s16 uVar1;
@@ -16,6 +16,6 @@ s16 FUN_800943c0(void)
   if (0x7f < DAT_80105d09) {
     bVar2 = 0x7f;
   }
-  uVar1 = FUN_80094474((int)DAT_80105cfa,0,DAT_80105d08,bVar2);
+  uVar1 = Audio_ADSRCalc((int)DAT_80105cfa,0,DAT_80105d08,bVar2);
   return uVar1;
 }

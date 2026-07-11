@@ -1,5 +1,5 @@
 /**
- * @brief Executes script command via FUN_800521f4 with entity[0x72-0x76] params
+ * @brief Executes script command via Sys_CallWithParams with entity[0x72-0x76] params
  * @note Original: func_800439E4 at 0x800439E4
  */
 // Entity_ExecScriptCmd3
@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-s32 FUN_800439e4(int param_1)
+s32 Entity_ExecScriptCmd3(int param_1)
 
 {
-  FUN_800521f4(0,*(u8 *)(param_1 + 0x74),param_1->camera_mode,
+  Sys_CallWithParams(0,*(u8 *)(param_1 + 0x74),param_1->camera_mode,
                *(u8 *)(param_1 + 0x72));
   return 1;
 }

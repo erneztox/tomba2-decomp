@@ -6,7 +6,7 @@
 
 
 
-int FUN_80083ebc(int param_1)
+int Math_Sin(int param_1)
 
 {
   int iVar1;

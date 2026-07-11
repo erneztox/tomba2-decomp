@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80042f70(int param_1)
+s32 Entity_Sound(int param_1)
 
 {
   s16 sVar1;
@@ -51,16 +51,16 @@ s32 FUN_80042f70(int param_1)
       *(s16 *)((int)piVar3 + 2) = *(s16 *)(param_1 + 0x76);
     }
   }
-  FUN_80041ac0(param_1);
-  cVar2 = FUN_80049250(param_1,0,(int)param_1->event_param);
+  Entity_PhysicsAndAngle(param_1);
+  cVar2 = Collision_Check1(param_1,0,(int)param_1->event_param);
   param_1->collision_state = cVar2;
   if (cVar2 == '\x01') {
-    FUN_80049674(param_1);
+    Collision_CalcSlope(param_1);
     param_1->angle_delta = _g_CollisionNormalY;
   }
   if (*(s16 *)(param_1 + 0x76) == *(s16 *)((int)piVar3 + 2)) {
     return 1;
   }
-  FUN_80042ea4(param_1,param_1 + 0x68,(int)param_1->type_flags);
+  Entity_PlayTimedSFX(param_1,param_1 + 0x68,(int)param_1->type_flags);
   return 0;
 }

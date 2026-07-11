@@ -6,7 +6,7 @@
 
 
 
-void FUN_800808a0(void)
+void BIOS_Syscall0_2(void)
 
 {
   syscall(0);

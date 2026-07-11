@@ -6,10 +6,10 @@
 
 
 
-void FUN_80075240(void)
+void Audio_InitCD(void)
 
 {
-  FUN_80075d58();
+  Video_InitDecoder();
   DAT_800be222 = 0x7fff;
   DAT_800be224 = 0x7fff;
   DAT_800be226 = 0x1fff;
@@ -17,8 +17,8 @@ void FUN_80075240(void)
   DAT_800be1f8 = 0x300;
   DAT_800be210 = 0;
   DAT_800be20c = 0;
-  FUN_80075824(&DAT_800be1f8);
-  FUN_80099490(&DAT_800be1f8);
+  Audio_SeqPlay(&DAT_800be1f8);
+  CD_SPU_Main(&DAT_800be1f8);
   DAT_800be1f8 = 0;
   DAT_800be22a = 0;
   DAT_800be22b = 0;

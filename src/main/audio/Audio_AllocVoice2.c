@@ -6,7 +6,7 @@
 
 
 
-void FUN_800752b4(int param_1)
+void Audio_AllocVoice2(int param_1)
 
 {
   int iVar1;

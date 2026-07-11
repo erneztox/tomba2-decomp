@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800251f0(int param_1)
+void Entity_DrawMain(int param_1)
 
 {
   u8 bVar1;
@@ -142,6 +142,6 @@ LAB_800254f4:
     param_1->behavior_state = 2;
   }
 LAB_800254dc:
-  FUN_80074590(0x15,5,0);
+  Audio_PlaySoundEffect(0x15,5,0);
   return;
 }

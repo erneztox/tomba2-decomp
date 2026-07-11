@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s8 FUN_800572ec(int param_1,uint param_2)
+s8 Entity_State_Jump2(int param_1,uint param_2)
 
 {
   u8 bVar1;
@@ -16,9 +16,9 @@ s8 FUN_800572ec(int param_1,uint param_2)
   u16 uVar4;
   uint uVar5;
   
-  FUN_800541f4(param_1,0);
+  Entity_SubState(param_1,0);
   if (param_1->collision_state == '\0') {
-    uVar3 = FUN_80057150(param_1,param_2);
+    uVar3 = Entity_State_Dash2(param_1,param_2);
     if ((param_1->entity_flags & 0x40) == 0) {
       if ((param_1->behavior_flags & 8) != 0) {
         *(s8*)(param_1 + 0x178) = *(s8*)(param_1 + 0x178) + '\x01';
@@ -27,7 +27,7 @@ s8 FUN_800572ec(int param_1,uint param_2)
     else {
       uVar5 = (uint)param_1->anim_id;
       if (((uVar5 - 0x14 < 2) || (uVar5 == 0x62)) || (uVar5 == 0x12)) {
-        FUN_80054d14(param_1,0xca,6);
+        Entity_LoadAnimIfChanged(param_1,0xca,6);
         *(u8 *)(param_1 + 0x178) = 0;
       }
     }
@@ -46,7 +46,7 @@ s8 FUN_800572ec(int param_1,uint param_2)
     }
     param_1->pos_y_fixed = param_1->pos_y_fixed + param_1->velocity_y * 0x100;
     if (param_2 == 2) {
-      cVar2 = FUN_80049280(param_1,0,((int)param_1->angle_delta << 0x11) >> 0x10);
+      cVar2 = Collision_Check2(param_1,0,((int)param_1->angle_delta << 0x11) >> 0x10);
       param_1->collision_state = cVar2;
       if (cVar2 != '\0') {
         return cVar2;
@@ -56,7 +56,7 @@ s8 FUN_800572ec(int param_1,uint param_2)
             (param_1->state_flag144 == '\0')) {
       param_1->state_flag144 = 1;
     }
-    FUN_8005444c(param_1);
+    Entity_CollisionGround(param_1);
   }
   return '\0';
 }

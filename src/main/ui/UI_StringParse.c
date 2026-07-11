@@ -6,7 +6,7 @@
 
 
 
-int FUN_80073750(char *param_1)
+int UI_StringParse(char *param_1)
 
 {
   s8 cVar1;

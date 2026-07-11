@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006e918(int param_1)
+void Camera_CalcOrbitPos(int param_1)
 
 {
   s16 sVar1;
@@ -24,9 +24,9 @@ void FUN_8006e918(int param_1)
   else {
     sVar1 = -param_1->rot_y;
   }
-  iVar2 = FUN_80083f50((int)_g_CameraAngle + (int)param_1->sprite_y + (int)sVar1);
+  iVar2 = Math_CosGTE((int)_g_CameraAngle + (int)param_1->sprite_y + (int)sVar1);
   sVar3 = _g_CameraTargetX + (s16)(iVar2 * sVar4 >> 0xc);
-  iVar2 = FUN_80083e80((int)_g_CameraAngle + (int)param_1->sprite_y + (int)sVar1);
+  iVar2 = Math_Cos((int)_g_CameraAngle + (int)param_1->sprite_y + (int)sVar1);
   _DAT_1f8000d2 = sVar3;
   _DAT_1f8000da = _g_CameraTargetZ - (s16)(iVar2 * sVar4 >> 0xc);
   return;

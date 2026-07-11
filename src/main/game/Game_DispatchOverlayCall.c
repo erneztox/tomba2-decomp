@@ -7,7 +7,7 @@
 
 
 
-void FUN_80065374(void)
+void Game_DispatchOverlayCall(void)
 
 {
   if (g_GameState == GAMESTATE_LEVEL) {

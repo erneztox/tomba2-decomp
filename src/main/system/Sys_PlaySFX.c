@@ -9,12 +9,12 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8002369c(int param_1,int param_2)
+void Sys_PlaySFX(int param_1,int param_2)
 
 {
   int iVar1;
   
-  iVar1 = FUN_80020c34();
+  iVar1 = Entity_CalcAngle17();
   if (-1 < iVar1) {
     param_1->move_mode = 2;
     param_2->move_mode = 2;
@@ -26,8 +26,8 @@ void FUN_8002369c(int param_1,int param_2)
       param_2->pos_z = param_1->pos_z;
     }
     param_2->anim_id = param_1->anim_id & 1;
-    FUN_80074590(0x2f,0,0);
-    FUN_80031470(2,param_1 + 0x2c,param_1->flag_5E,param_1 + 0x68);
+    Audio_PlaySoundEffect(0x2f,0,0);
+    Entity_SpawnSpecial(2,param_1 + 0x2c,param_1->flag_5E,param_1 + 0x68);
     g_State182 = 0;
   }
   return;

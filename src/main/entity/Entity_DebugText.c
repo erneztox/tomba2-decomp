@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-int FUN_8003a1e4(int param_1,int param_2)
+int Entity_DebugText(int param_1,int param_2)
 
 {
   uint uVar1;

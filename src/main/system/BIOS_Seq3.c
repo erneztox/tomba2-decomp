@@ -6,12 +6,12 @@
 
 
 
-void FUN_8009bb7c(void)
+void BIOS_Seq3(void)
 
 {
-  FUN_80080890();
-  FUN_8009c040();
-  FUN_80080920(0);
-  FUN_800808a0();
+  BIOS_Syscall0();
+  BIOS_Syscall_B0_8009C040();
+  BIOS_Syscall_B0_80080920(0);
+  BIOS_Syscall0_2();
   return;
 }

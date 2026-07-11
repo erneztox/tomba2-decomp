@@ -6,7 +6,7 @@
 
 
 
-void FUN_800858f0(void)
+void BIOS_CallA0_2(void)
 
 {
   (*(code *)&LAB_000000a0)();

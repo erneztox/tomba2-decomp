@@ -6,9 +6,9 @@
 
 
 
-void FUN_8006ac7c(s32 param_1,int param_2)
+void Entity_InitFromTable(s32 param_1,int param_2)
 
 {
-  FUN_80051b70(param_1,1,(&DAT_800a4a94)[param_2]);
+  Entity_InitSubEntity(param_1,1,(&DAT_800a4a94)[param_2]);
   return;
 }

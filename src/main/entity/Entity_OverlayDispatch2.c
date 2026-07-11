@@ -8,7 +8,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-s32 FUN_800633b0(int param_1)
+s32 Entity_OverlayDispatch2(int param_1)
 
 {
   int iVar1;

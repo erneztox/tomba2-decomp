@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-uint FUN_8001e860(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
+uint Entity_InitFull(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
 
 {
   u16 uVar1;
@@ -31,20 +31,20 @@ uint FUN_8001e860(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
   case 0:
   case 10:
   case 0xb:
-    FUN_80074590(0xe,0,0);
+    Audio_PlaySoundEffect(0xe,0,0);
     uVar5 = 2;
     uVar6 = 0;
     break;
   case 1:
     uVar8 = 0x20;
-    FUN_80074590(0xe,0,0);
+    Audio_PlaySoundEffect(0xe,0,0);
     uVar5 = 2;
     uVar6 = param_1->flag_5E;
     break;
   case 3:
     uVar8 = 0x20;
   case 2:
-    FUN_80074590(0xe,0,0);
+    Audio_PlaySoundEffect(0xe,0,0);
     uVar8 = uVar8 | 0x10;
     if ((param_4 & 0x400) == 0) {
       if (((((param_4 & 0x300) != 0) && (param_1->collision_state == '\0')) && (_g_FrameCounter != 0)) &&
@@ -73,7 +73,7 @@ uint FUN_8001e860(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
         _DAT_1f800202 = *(s16 *)(param_1 + 0x32);
         _DAT_1f800204 = param_1->pos_z;
         DAT_1f80023a = (param_4 & 0x1000) == 0;
-        FUN_80074590(0xc,0,0);
+        Audio_PlaySoundEffect(0xc,0,0);
       }
       uVar5 = 2;
       uVar6 = param_1->flag_5E;
@@ -91,34 +91,34 @@ uint FUN_8001e860(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
     break;
   case 4:
     uVar8 = 0x40;
-    FUN_80074590(0x2f,0,0);
+    Audio_PlaySoundEffect(0x2f,0,0);
     uVar5 = 2;
     uVar6 = param_1->flag_5E;
     break;
   case 5:
     uVar8 = 0x40;
     *param_1 = 2;
-    FUN_80074590(0x2c,0,0);
-    FUN_80074590(0x2d,0,0);
-    FUN_80074590(0x2f,0,0);
+    Audio_PlaySoundEffect(0x2c,0,0);
+    Audio_PlaySoundEffect(0x2d,0,0);
+    Audio_PlaySoundEffect(0x2f,0,0);
     puVar7 = param_1 + 0x2c;
-    FUN_80031470(2,puVar7,param_1->flag_5E,param_1 + 0x68);
-    FUN_8003116c(0x18,puVar7,0xffffffb0);
-    FUN_80027144(*(s32 *)(param_1->sprite_ptr1 + 0x40),puVar7,0x400,0x15);
+    Entity_SpawnSpecial(2,puVar7,param_1->flag_5E,param_1 + 0x68);
+    Entity_SpawnWithPos(0x18,puVar7,0xffffffb0);
+    Entity_SpawnChildSequence(*(s32 *)(param_1->sprite_ptr1 + 0x40),puVar7,0x400,0x15);
     uVar5 = 0xc;
     goto LAB_8001ebe0;
   case 6:
-    FUN_80074590(0x2c,0,0);
-    FUN_80074590(0x2f,0,0);
-    FUN_80031470(2,param_1 + 0x2c,param_1->flag_5E,param_1 + 0x68);
+    Audio_PlaySoundEffect(0x2c,0,0);
+    Audio_PlaySoundEffect(0x2f,0,0);
+    Entity_SpawnSpecial(2,param_1 + 0x2c,param_1->flag_5E,param_1 + 0x68);
     uVar8 = 0x40;
     if (param_1->flag_5E != '\0') {
       param_1->move_mode = 1;
       return 0x40;
     }
     *param_1 = 2;
-    FUN_80074590(0x2d,0,0);
-    FUN_80027144(*(s32 *)(param_1->sprite_ptr1 + 0x40),param_1 + 0x2c,0x400,0x15);
+    Audio_PlaySoundEffect(0x2d,0,0);
+    Entity_SpawnChildSequence(*(s32 *)(param_1->sprite_ptr1 + 0x40),param_1 + 0x2c,0x400,0x15);
     uVar5 = 0xc;
     goto LAB_8001ebe0;
   case 7:
@@ -129,14 +129,14 @@ uint FUN_8001e860(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
     uVar8 = 0x80;
     local_22 = *(s16 *)(param_1 + 0x32) + 0x5a;
     local_1e = param_1->pos_z;
-    FUN_80031470(2,auStack_28,param_1->flag_5E,param_1 + 0x68);
+    Entity_SpawnSpecial(2,auStack_28,param_1->flag_5E,param_1 + 0x68);
     uVar5 = 0x32;
 LAB_8001ebe0:
-    FUN_80074590(uVar5,0,0);
+    Audio_PlaySoundEffect(uVar5,0,0);
   default:
     goto switchD_8001e8bc_default;
   }
-  FUN_80031470(uVar5,param_1 + 0x2c,uVar6,param_1 + 0x68);
+  Entity_SpawnSpecial(uVar5,param_1 + 0x2c,uVar6,param_1 + 0x68);
 switchD_8001e8bc_default:
   return uVar8;
 }

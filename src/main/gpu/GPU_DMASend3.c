@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80082970(s32 *param_1,s32 *param_2)
+s32 GPU_DMASend3(s32 *param_1,s32 *param_2)
 
 {
   s32 uVar1;
@@ -18,7 +18,7 @@ s32 FUN_80082970(s32 *param_1,s32 *param_2)
   s16 sVar6;
   int iVar7;
   
-  FUN_800834a0();
+  GPU_CheckDMA();
   if (*(s16 *)(param_1 + 1) < 0) {
     sVar5 = 0;
   }
@@ -49,7 +49,7 @@ LAB_80082a10:
     iVar4 = iVar4 / 2 + iVar7 * -0x10;
     uVar2 = *DAT_800a5aa8;
     while ((uVar2 & 0x4000000) == 0) {
-      iVar3 = FUN_800834d4();
+      iVar3 = GPU_CheckTimeout();
       if (iVar3 != 0) {
         return 0xffffffff;
       }
@@ -62,7 +62,7 @@ LAB_80082a10:
     *DAT_800a5aa4 = param_1->flags;
     uVar2 = *DAT_800a5aa8;
     while ((uVar2 & 0x8000000) == 0) {
-      iVar3 = FUN_800834d4();
+      iVar3 = GPU_CheckTimeout();
       if (iVar3 != 0) {
         return 0xffffffff;
       }

@@ -1,5 +1,5 @@
 /**
- * @brief Draws Pool 4 entity using FUN_8007e1b8
+ * @brief Draws Pool 4 entity using GPU_SpriteDrawMain
  * @note Original: func_80025744 at 0x80025744
  */
 // Engine_DrawPool4_Type1
@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80025744(int param_1)
+void Engine_DrawPool4_Type1(int param_1)
 
 {
   s32 bVar1;
@@ -28,15 +28,15 @@ void FUN_80025744(int param_1)
   local_20->kind = 0;
   local_20->sub_type = 0;
   local_20->flags = 200;
-  FUN_8007e1b8(local_20,param_1->anim_data,param_1->sprite_data,&local_28);
+  GPU_SpriteDrawMain(local_20,param_1->anim_data,param_1->sprite_data,&local_28);
   local_26 = 0;
   local_20->kind = g_ItemFlag - 0x18;
   local_20->type = local_20->type + 0x18;
-  FUN_8007e1b8(local_20,PTR_DAT_800173d8,param_1->sprite_data,&local_28);
+  GPU_SpriteDrawMain(local_20,PTR_DAT_800173d8,param_1->sprite_data,&local_28);
   sVar2 = local_20->kind;
   local_20->kind = 0;
   local_20->type = local_20->type + sVar2;
-  FUN_8007e1b8(local_20,PTR_DAT_800173dc,param_1->sprite_data,&local_28);
+  GPU_SpriteDrawMain(local_20,PTR_DAT_800173dc,param_1->sprite_data,&local_28);
   if (g_ItemMax == 0) {
     return;
   }
@@ -71,6 +71,6 @@ switchD_80025868_default:
   if ((bVar1) && ((_g_FrameCounter2 & 3) != 0)) {
     puVar4 = PTR_DAT_800173c0;
   }
-  FUN_8007e1b8(local_20,puVar4,param_1->sprite_data,&local_28);
+  GPU_SpriteDrawMain(local_20,puVar4,param_1->sprite_data,&local_28);
   return;
 }

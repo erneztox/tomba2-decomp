@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800292b8(int param_1)
+void Entity_Behavior_AnimPlayer1(int param_1)
 
 {
   u8 bVar1;
@@ -20,7 +20,7 @@ void FUN_800292b8(int param_1)
       if (3 < bVar1) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar1 != 0) {
@@ -42,8 +42,8 @@ void FUN_800292b8(int param_1)
   }
   param_1->scale_y = param_1->anim_data;
   if (param_1->anim_data == 0) {
-    if (param_1->script_data != FUN_80027e5c) {
-      param_1->script_data = FUN_800288ac;
+    if (param_1->script_data != Entity_ProcessProjCmd) {
+      param_1->script_data = Entity_ProcessSpriteCmd;
       goto LAB_8002937c;
     }
 LAB_800293a0:
@@ -53,13 +53,13 @@ LAB_800293a0:
 LAB_8002937c:
     param_1->sprite_data = *(int *)(param_1 + 0x40);
     if (*(int *)(param_1 + 0x40) == 0) {
-      if (param_1->script_data == FUN_800288ac) goto LAB_800293a0;
-      param_1->script_data = FUN_80027e5c;
+      if (param_1->script_data == Entity_ProcessSpriteCmd) goto LAB_800293a0;
+      param_1->script_data = Entity_ProcessProjCmd;
     }
-    iVar3 = FUN_8002b278(param_1);
+    iVar3 = Entity_CheckVisibility(param_1);
     if (iVar3 == 0) {
-      FUN_80031780(param_1);
-      FUN_80031708(param_1);
+      Entity_AdvanceAnimScript(param_1);
+      Entity_AdvanceAnimWord(param_1);
     }
   }
   return;

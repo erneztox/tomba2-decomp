@@ -6,10 +6,10 @@
 
 
 
-void FUN_8003fa1c(void)
+void Engine_UpdateEntities(void)
 
 {
-  FUN_8003b588();
-  FUN_8003c048();
+  EntityLoop_Player();
+  EntityLoop_Active();
   return;
 }

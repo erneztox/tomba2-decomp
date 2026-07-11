@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80044e84(int *param_1,int param_2)
+void Texture_LoadPack(int *param_1,int param_2)
 
 {
   int iVar1;
@@ -27,9 +27,9 @@ void FUN_80044e84(int *param_1,int param_2)
       param_1 = param_1 + 3;
       iVar1 = *param_1;
       iVar2 = param_2 + (int)psVar4->behavior_state * (int)psVar4->action_state * -2;
-      FUN_80044d8c(piVar3,iVar2,piVar6);
-      FUN_80081218(piVar3,iVar2);
-      FUN_80080f6c(0);
+      Texture_Decompress(piVar3,iVar2,piVar6);
+      GPU_LoadImage(piVar3,iVar2);
+      GPU_DrawSync(0);
       psVar4 = psVar4 + 6;
       piVar6 = (int *)((int)piVar6 + iVar1);
     } while (0 < iVar5);

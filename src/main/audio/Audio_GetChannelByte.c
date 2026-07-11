@@ -6,7 +6,7 @@
 
 
 
-u8 FUN_8008e0c0(int param_1,s16 param_2)
+u8 Audio_GetChannelByte(int param_1,s16 param_2)
 
 {
   return *(u8 *)

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80080f6c(s32 param_1)
+void GPU_DrawSync(s32 param_1)
 
 {
   if (1 < DAT_800a59a2) {

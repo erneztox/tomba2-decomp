@@ -7,13 +7,13 @@
 
 
 
-uint FUN_80083ff8(void)
+uint GTE_Init(void)
 
 {
   s32 unaff_retaddr;
   
   DAT_800a6300 = unaff_retaddr;
-  FUN_80085810();
+  IRQ_Disable();
   setCopReg(0,Status,Status | 0x40000000);
   setCopControlWord(2,0xe800,0x155);
   setCopControlWord(2,0xf000,0x100);

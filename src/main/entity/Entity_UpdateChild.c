@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80026a1c(int param_1)
+void Entity_UpdateChild(int param_1)
 
 {
   int iVar1;

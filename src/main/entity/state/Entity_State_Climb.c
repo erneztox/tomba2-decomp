@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800660ac(int param_1)
+void Entity_State_Climb(int param_1)
 
 {
   u8 bVar1;
@@ -15,15 +15,15 @@ void FUN_800660ac(int param_1)
   s8 cVar3;
   int iVar4;
   
-  iVar4 = FUN_80076d68();
+  iVar4 = Entity_AnimFrame();
   bVar1 = param_1->action_state;
   if (bVar1 == 1) {
     if (param_1->timer1 == 0xc) {
-      FUN_80074590(0x26,0,0);
+      Audio_PlaySoundEffect(0x26,0,0);
     }
     param_1->timer1 = param_1->timer1 + 1;
     if (iVar4 != 1) goto LAB_800661c0;
-    FUN_80054d14(param_1,2,6);
+    Entity_LoadAnimIfChanged(param_1,2,6);
     cVar3 = param_1->action_state;
     param_1->timer1 = 7;
   }
@@ -42,12 +42,12 @@ void FUN_800660ac(int param_1)
     }
     if (bVar1 != 0) goto LAB_800661c0;
     g_ActionTrigger = '\0';
-    FUN_80054d14(param_1,199,3);
+    Entity_LoadAnimIfChanged(param_1,199,3);
     cVar3 = param_1->action_state;
     param_1->timer1 = 0;
   }
   param_1->action_state = cVar3 + '\x01';
 LAB_800661c0:
-  FUN_80065478(param_1,1);
+  Entity_SetActionFlag(param_1,1);
   return;
 }

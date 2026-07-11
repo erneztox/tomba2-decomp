@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80030a3c(int param_1)
+void Entity_Behavior_Scripted(int param_1)
 
 {
   u8 bVar1;
@@ -32,7 +32,7 @@ void FUN_80030a3c(int param_1)
       if (3 < bVar1) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     psVar8 = (s16 *)(param_1 + 0x6c);
@@ -45,14 +45,14 @@ void FUN_80030a3c(int param_1)
     sVar3 = *(s16 *)(param_1 + 0x30);
     param_1->sprite_x = 3;
     do {
-      uVar6 = FUN_8009a450();
+      uVar6 = Math_Random();
       uVar10 = (uVar6 & 0x3f) - 0x20;
-      uVar6 = FUN_8009a450();
+      uVar6 = Math_Random();
       uVar9 = (uVar6 & 0x3f) - 0x20;
-      uVar6 = FUN_8009a450();
+      uVar6 = Math_Random();
       uVar6 = (uVar6 & 0x3f) - 0x20;
       if (param_1->sub_type == ',') {
-        uVar4 = FUN_8009a450();
+        uVar4 = Math_Random();
         uVar10 = (int)(uVar10 * 0x10000) >> 0x11;
         uVar9 = (int)(uVar9 * 0x10000) >> 0x11;
         psVar8[-0xb] = (uVar4 & 0x3f) + 0x100;
@@ -64,7 +64,7 @@ void FUN_80030a3c(int param_1)
         }
       }
       else {
-        uVar4 = FUN_8009a450();
+        uVar4 = Math_Random();
         psVar8[-0xb] = (uVar4 & 0xff) + 0x80;
       }
       local_48 = local_48 + 1;
@@ -83,8 +83,8 @@ void FUN_80030a3c(int param_1)
     param_1->scale_y = param_1->anim_data;
   }
   psVar11 = param_1->angle_offset;
-  sVar5 = FUN_8002b278(param_1);
-  iVar7 = FUN_8009a450();
+  sVar5 = Entity_CheckVisibility(param_1);
+  iVar7 = Math_Random();
   iVar7 = (uint)param_1->sub_action + (iVar7 >> 0xb) + 0x20;
   param_1->sub_action = (char)iVar7;
   if (iVar7 * 0x1000000 < 0) {
@@ -94,7 +94,7 @@ void FUN_80030a3c(int param_1)
       return;
     }
     if (sVar5 == 0) {
-      FUN_80031780(param_1);
+      Entity_AdvanceAnimScript(param_1);
     }
     else {
       param_1->sub_action = param_1->sub_action + -0x80;

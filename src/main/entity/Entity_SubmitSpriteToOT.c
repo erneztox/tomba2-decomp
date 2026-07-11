@@ -45,7 +45,7 @@ void Entity_SubmitSpriteToOT(s32 param_1,s32 param_2,uint param_3)
   }
   else {
 switchD_8003f6e0_caseD_3:
-    FUN_800803dc();
+    GPU_DispatchDraw2();
   }
   return;
 }

@@ -6,7 +6,7 @@
 
 
 
-char * FUN_8004ef8c(char *param_1,int param_2)
+char * String_FindChar(char *param_1,int param_2)
 
 {
   if (param_2 == 0) {

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800645cc(int param_1)
+void Entity_SetStateTo9(int param_1)
 
 {
   param_1->behavior_state = 9;

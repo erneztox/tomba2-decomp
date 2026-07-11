@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8002ecd8(int param_1)
+void Entity_DrawSprite2(int param_1)
 
 {
   s32 bVar1;
@@ -81,9 +81,9 @@ void FUN_8002ecd8(int param_1)
     _DAT_1f800088 = _g_GTE_Work84;
   }
   _g_GTE_Work84 = _DAT_1f800088;
-  iVar2 = FUN_80083e80((uint)param_1->behavior_state << 6);
+  iVar2 = Math_Cos((uint)param_1->behavior_state << 6);
   iVar6 = ((iVar2 << 5) >> 0xc) + 0x30;
-  iVar2 = FUN_80083f50((uint)param_1->behavior_state << 6);
+  iVar2 = Math_CosGTE((uint)param_1->behavior_state << 6);
   iVar4 = iVar6 - (iVar6 * 0x10000 >> 0x11);
   sVar3 = (s16)iVar4;
   iVar6 = iVar6 - ((iVar2 << 5) >> 0xc);
@@ -93,7 +93,7 @@ void FUN_8002ecd8(int param_1)
     sVar5 = (s16)(iVar6 * 0x10000 >> 0x11);
     sVar3 = (s16)(iVar4 * 0x10000 >> 0x11);
   }
-  FUN_8002e680((int)sVar5,(int)sVar3,*(int *)(param_1 + 100) >> 1 & 0x7f7f7f,*(int *)(param_1 + 100)
+  Entity_DrawMain6((int)sVar5,(int)sVar3,*(int *)(param_1 + 100) >> 1 & 0x7f7f7f,*(int *)(param_1 + 100)
                ,uVar7,uVar8);
   return;
 }

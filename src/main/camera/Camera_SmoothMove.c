@@ -9,13 +9,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006def0(int param_1)
+void Camera_SmoothMove(int param_1)
 
 {
   int iVar1;
   int iVar2;
   
-  iVar1 = FUN_80083e80((int)*(s16 *)(param_1 + 0x6e));
+  iVar1 = Math_Cos((int)*(s16 *)(param_1 + 0x6e));
   iVar2 = iVar1 * *(s16 *)(param_1 + 0x6c) >> 0xc;
   iVar1 = ((_DAT_1f8000d4 >> 0x10) + iVar2) - (uint)_g_CameraZ;
   if ((iVar1 + 10U & 0xffff) < 0x15) {

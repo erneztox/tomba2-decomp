@@ -6,9 +6,9 @@
 
 
 
-void FUN_8007ab20(void)
+void Entity_AllocBackground03(void)
 
 {
-  FUN_8007a464(0,3);
+  Entity_AllocBackground(0,3);
   return;
 }

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-u8 FUN_80055e28(int param_1,int param_2)
+u8 Entity_PhysicsUpdate(int param_1,int param_2)
 
 {
   u8 bVar1;
@@ -47,7 +47,7 @@ u8 FUN_80055e28(int param_1,int param_2)
 LAB_80055f0c:
   if ((param_2 != 0) && ((param_1->behavior_flags & 2) == 0)) {
     param_1->direction = param_1->behavior_flags & 1;
-    FUN_80055284(param_1);
+    Entity_UpdateAngle(param_1);
   }
   return param_1->behavior_flags;
 }

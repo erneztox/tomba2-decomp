@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8005490c(int param_1,int param_2,int param_3)
+void Entity_AnimLoadDispatch(int param_1,int param_2,int param_3)
 
 {
   u8 bVar1;
@@ -17,7 +17,7 @@ void FUN_8005490c(int param_1,int param_2,int param_3)
   s32 uVar5;
   uint uVar6;
   
-  iVar3 = FUN_800535d4();
+  iVar3 = Entity_GetState176();
   if (iVar3 - 7U < 3) {
     if ((param_3 == 0) || (param_2 == 0)) {
       if (param_2 == 0) {
@@ -28,7 +28,7 @@ void FUN_8005490c(int param_1,int param_2,int param_3)
         puVar4 = &DAT_800a44ec;
         uVar5 = 5;
       }
-      FUN_80054d14(param_1,puVar4[param_1->gte_flags],uVar5);
+      Entity_LoadAnimIfChanged(param_1,puVar4[param_1->gte_flags],uVar5);
       return;
     }
     if ((param_1->state_flag145 == '\0') && (param_3 != 2)) {
@@ -42,7 +42,7 @@ void FUN_8005490c(int param_1,int param_2,int param_3)
       return;
     }
     *(void*)(param_1 + 0x46) = puVar4[param_1->gte_flags];
-    FUN_80054790(param_1,uVar6);
+    Entity_AnimLoad3(param_1,uVar6);
   }
   else {
     if ((param_3 == 0) || (param_2 == 0)) {
@@ -54,7 +54,7 @@ void FUN_8005490c(int param_1,int param_2,int param_3)
         puVar4 = (void*)0x800a44d8;
         uVar5 = 5;
       }
-      FUN_80054d14(param_1,puVar4[(uint)param_1->gte_flags + (param_1->behavior_flags & 6)
+      Entity_LoadAnimIfChanged(param_1,puVar4[(uint)param_1->gte_flags + (param_1->behavior_flags & 6)
                                  ],uVar5);
       return;
     }
@@ -70,18 +70,18 @@ void FUN_8005490c(int param_1,int param_2,int param_3)
       return;
     }
     param_1->anim_id = bVar1;
-    FUN_80054790(param_1,uVar6);
+    Entity_AnimLoad3(param_1,uVar6);
   }
   if (param_3 < 1) {
-    FUN_80077cfc(param_1,&PTR_DAT_80017fe8,uVar6,5);
+    Entity_LoadAnimDataEx(param_1,&PTR_DAT_80017fe8,uVar6,5);
   }
   else {
     sVar2 = *(s16 *)(param_1->anim_data + 2);
     puVar4 = (&PTR_DAT_80017fe8)[uVar6];
     *(void **)(param_1 + 0x38) = puVar4 + sVar2 * 8;
     param_1->anim_timer = 5;
-    FUN_80075ff8(param_1,puVar4 + sVar2 * 8);
-    FUN_80075f0c(param_1);
+    Audio_SeqMain2(param_1,puVar4 + sVar2 * 8);
+    Entity_RotateMove(param_1);
   }
   return;
 }

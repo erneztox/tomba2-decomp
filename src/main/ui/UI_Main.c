@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8004e414(int param_1)
+void UI_Main(int param_1)
 
 {
   u8 bVar1;
@@ -33,13 +33,13 @@ void FUN_8004e414(int param_1)
     if (bVar1 == 2) {
       param_1->state = STATE_DEAD;
       g_CurrentOverlay = 0;
-      FUN_80074f24(g_GameState);
+      Engine_DispatchOverlay(g_GameState);
       return;
     }
     if (bVar1 != 3) {
       return;
     }
-    FUN_8007a624(param_1);
+    Entity_Dealloc(param_1);
     return;
   }
   bVar1 = param_1->behavior_state;
@@ -106,7 +106,7 @@ switchD_8004e558_default:
 switchD_8004e51c_caseD_1:
     sVar3 = param_1->angle_delta;
 LAB_8004e778:
-    iVar4 = FUN_8007def8(0,(int)sVar3,0);
+    iVar4 = Entity_SpawnSprite(0,(int)sVar3,0);
     param_1->parent = iVar4;
     if (iVar4 == 0) {
       return;
@@ -121,7 +121,7 @@ LAB_8004e778:
     *(u8 *)(param_1->parent + 4) = 3;
     break;
   case 3:
-    iVar4 = FUN_8004e29c(param_1);
+    iVar4 = UI_ItemSelect(param_1);
     if (iVar4 != 1) {
       if (iVar4 == 2) {
         if (*(s16 *)(param_1 + 100) != -1) {
@@ -141,10 +141,10 @@ LAB_8004e778:
       }
       goto LAB_8004e728;
     }
-    FUN_8004ed94(0x58,0x41);
+    UI_DrawElement(0x58,0x41);
     break;
   case 4:
-    iVar4 = FUN_80042728();
+    iVar4 = Game_CheckIdle();
     if (iVar4 == 0) {
       return;
     }
@@ -171,7 +171,7 @@ LAB_8004e778:
     param_1->state = STATE_FINISH;
     uVar5 = 0x66;
 LAB_8004e728:
-    FUN_8004ed94(uVar5,0x41);
+    UI_DrawElement(uVar5,0x41);
     return;
   case 7:
     sVar3 = param_1->timer1 + -1;
@@ -179,7 +179,7 @@ LAB_8004e728:
     if (sVar3 != -1) {
       return;
     }
-    FUN_8004ed94(0x65,0x41);
+    UI_DrawElement(0x65,0x41);
     param_1->state = STATE_DEAD;
     return;
   case 9:
@@ -188,7 +188,7 @@ LAB_8004e728:
     }
     *(u8 *)(param_1->parent + 4) = 3;
     param_1->state = STATE_FINISH;
-    FUN_8004ed94(0x54,0x41);
+    UI_DrawElement(0x54,0x41);
     return;
   default:
     goto switchD_8004e51c_default;

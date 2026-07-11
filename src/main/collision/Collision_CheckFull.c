@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80048b30(void)
+s32 Collision_CheckFull(void)
 
 {
   u16 uVar1;
@@ -21,7 +21,7 @@ s32 FUN_80048b30(void)
   s16 unaff_s1;
   
   bVar3 = true;
-  uVar4 = FUN_80048360();
+  uVar4 = Collision_CheckResult();
   iVar5 = 0;
   _g_CollisionData = (u16 *)(_DAT_1f8001d8 + (uint)_g_CollisionResult->flags * 8);
   if (_g_CollisionResult->kind != 0) {

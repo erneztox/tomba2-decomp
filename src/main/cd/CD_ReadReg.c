@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8009a170(int param_1,u16 *param_2,u16 *param_3)
+void CD_ReadReg(int param_1,u16 *param_2,u16 *param_3)
 
 {
   u16 uVar1;

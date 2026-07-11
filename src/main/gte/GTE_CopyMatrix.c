@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80051b34(s32 *param_1,s32 *param_2)
+void GTE_CopyMatrix(s32 *param_1,s32 *param_2)
 
 {
   *param_2 = *param_1;

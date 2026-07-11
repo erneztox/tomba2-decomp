@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8007e8dc(s16 param_1,s16 param_2,u8 param_3,int param_4)
+void GPU_RenderSprite(s16 param_1,s16 param_2,u8 param_3,int param_4)
 
 {
   u8 local_18;
@@ -24,7 +24,7 @@ void FUN_8007e8dc(s16 param_1,s16 param_2,u8 param_3,int param_4)
   local_17 = param_3;
   local_10 = param_1;
   local_e = param_2;
-  FUN_8007e1b8(&local_10,*(s32 *)((int)&PTR_DAT_80017334 + ((param_4 << 0x10) >> 0xe)),
+  GPU_SpriteDrawMain(&local_10,*(s32 *)((int)&PTR_DAT_80017334 + ((param_4 << 0x10) >> 0xe)),
                _g_OT_Data,&local_18);
   return;
 }

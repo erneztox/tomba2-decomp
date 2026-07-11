@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80085be4(void)
+void CD_Dispatch14_NoParam(void)
 
 {
   (*PTR_PTR_800abda0->script_ptr)();

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80077b5c(int param_1)
+s32 Entity_AdvanceAnim3(int param_1)
 
 {
   s16 sVar1;

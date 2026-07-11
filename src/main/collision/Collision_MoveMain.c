@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80045cac(int param_1,u16 param_2,s16 param_3,s16 param_4)
+s32 Collision_MoveMain(int param_1,u16 param_2,s16 param_3,s16 param_4)
 
 {
   s32 bVar1;
@@ -29,11 +29,11 @@ s32 FUN_80045cac(int param_1,u16 param_2,s16 param_3,s16 param_4)
   int local_30;
   
   iVar10 = (int)param_4;
-  iVar6 = FUN_80083e80(iVar10);
+  iVar6 = Math_Cos(iVar10);
   local_38 = 0;
   local_30 = 10;
   uVar11 = -iVar6 * (int)(s16)param_2 >> 0xc;
-  iVar6 = FUN_80083f50(iVar10);
+  iVar6 = Math_CosGTE(iVar10);
   uVar5 = 0;
   iVar12 = 0;
   sVar2 = (s16)uVar11;
@@ -44,11 +44,11 @@ s32 FUN_80045cac(int param_1,u16 param_2,s16 param_3,s16 param_4)
     do {
       _DAT_1f8001bc = param_1->pos_y + (s16)iVar7;
       _DAT_1f8001c0 = param_1->pos_z + (s16)uVar11;
-      iVar8 = FUN_800498c8(param_1);
+      iVar8 = Collision_FindGround(param_1);
       if (iVar8 == 0) {
         return false;
       }
-      sVar4 = FUN_80085690((uint)_DAT_1f8001b8 - (uint)_DAT_1f8001b4,
+      sVar4 = Math_Atan2((uint)_DAT_1f8001b8 - (uint)_DAT_1f8001b4,
                            (uint)_DAT_1f8001b6 - (uint)_DAT_1f8001b2);
       if (uVar5 == 0) {
         if (iVar12 == 0) {
@@ -70,7 +70,7 @@ s32 FUN_80045cac(int param_1,u16 param_2,s16 param_3,s16 param_4)
           }
         }
       }
-      uVar5 = FUN_8004602c((int)unaff_s6,0,(int)(s16)uVar5);
+      uVar5 = Collision_Push3((int)unaff_s6,0,(int)(s16)uVar5);
       sVar4 = _g_CollisionFlag2;
       if ((int)(s16)uVar5 == 0) {
         uVar11 = (uint)(u16)-sVar2;
@@ -108,9 +108,9 @@ s32 FUN_80045cac(int param_1,u16 param_2,s16 param_3,s16 param_4)
         else {
           param_1->pos_y = param_1->pos_y - (s16)iVar7;
           param_1->pos_z = param_1->pos_z - (s16)uVar11;
-          iVar7 = FUN_80083f50(iVar10);
+          iVar7 = Math_CosGTE(iVar10);
           iVar7 = iVar7 * (s16)param_2 >> 0xc;
-          iVar8 = FUN_80083e80(iVar10);
+          iVar8 = Math_Cos(iVar10);
           uVar11 = (uint)(-iVar8 * (int)(s16)param_2) >> 0xc;
           if (iVar7 << 0x10 < 1) {
             iVar7 = iVar7 + 1;

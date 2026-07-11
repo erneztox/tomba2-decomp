@@ -6,9 +6,9 @@
 
 
 
-void FUN_80043e9c(s32 param_1)
+void Entity_ExecWithFlag1(s32 param_1)
 
 {
-  FUN_80043d8c(param_1,1);
+  Entity_StateTrigger(param_1,1);
   return;
 }

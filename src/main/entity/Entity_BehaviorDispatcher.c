@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80055fbc(int param_1,u8 param_2)
+void Entity_BehaviorDispatcher(int param_1,u8 param_2)
 
 {
   u16 uVar1;

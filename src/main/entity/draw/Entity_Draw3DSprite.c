@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8003c2d4(int param_1)
+void Entity_Draw3DSprite(int param_1)
 
 {
   u8 bVar1;
@@ -18,11 +18,11 @@ void FUN_8003c2d4(int param_1)
   s32 extraout_at;
   
   if (param_1->anim_data != 0) {
-    FUN_80051794(0x1f800000);
-    FUN_80051794(&DAT_1f800020);
-    FUN_80085050((int)param_1->target_rot_y,&DAT_1f800020);
+    GTE_LoadIdentityMatrix(0x1f800000);
+    GTE_LoadIdentityMatrix(&DAT_1f800020);
+    GTE_RotateVectorY((int)param_1->target_rot_y,&DAT_1f800020);
     bVar1 = param_1->sub_anim_id;
-    FUN_80084110(&DAT_1f800020,0x1f800000,&DAT_1f800040);
+    GTE_ComposeMatrix(&DAT_1f800020,0x1f800000,&DAT_1f800040);
     _g_GTE_WorkC0 = CONCAT22(*(s16 *)(param_1 + 0x32),param_1->pos_y);
     _g_GTE_WorkC4 = CONCAT22(g_GTE_WorkC4_2,param_1->pos_z);
     setCopControlWord(2,0,_g_GTE_WorkF8);
@@ -47,7 +47,7 @@ void FUN_8003c2d4(int param_1)
     setCopControlWord(2,0x2800,_DAT_1f800054);
     setCopControlWord(2,0x3000,_DAT_1f800058);
     setCopControlWord(2,0x3800,_DAT_1f80005c);
-    FUN_8003c8f4(param_1,bVar1 & 1);
+    Entity_SubmitGTEVertices(param_1,bVar1 & 1);
   }
   return;
 }

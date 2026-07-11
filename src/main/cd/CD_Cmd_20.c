@@ -6,9 +6,9 @@
 
 
 
-void FUN_8008996c(void)
+void CD_Cmd_20(void)
 
 {
-  FUN_800899f0(0xf0000003,0x20);
+  BIOS_Syscall_B0_800899F0(0xf0000003,0x20);
   return;
 }

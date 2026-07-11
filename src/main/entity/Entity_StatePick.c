@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80043edc(int param_1)
+s32 Entity_StatePick(int param_1)
 
 {
   s16 sVar1;
@@ -23,10 +23,10 @@ s32 FUN_80043edc(int param_1)
     }
     if (g_ActionTrigger != '\0') {
       if ((((int)param_1->event_id & 0x8000U) != 0) &&
-         (uVar4 = (uint)DAT_800e7fc7, uVar3 = FUN_80077768((int)_g_EntityAngle,(int)_g_CameraAngle,0),
+         (uVar4 = (uint)DAT_800e7fc7, uVar3 = Math_CompareAngle((int)_g_EntityAngle,(int)_g_CameraAngle,0),
          uVar4 != uVar3)) {
         DAT_800e7fc7 = '\x01' - DAT_800e7fc7;
-        FUN_80054198();
+        Entity_ResetState_2();
         return 1;
       }
       return 1;
@@ -44,7 +44,7 @@ s32 FUN_80043edc(int param_1)
   uVar2 = param_1->event_id & 0xf;
   param_1->sub_state = param_1->sub_state + '\x01';
   if (uVar2 == 1) {
-    uVar2 = FUN_80085690((int)_g_PlayerPosZ - (int)param_1->pos_z,
+    uVar2 = Math_Atan2((int)_g_PlayerPosZ - (int)param_1->pos_z,
                          (int)param_1->pos_y - (int)_g_PlayerPosX);
   }
   else {
@@ -58,7 +58,7 @@ s32 FUN_80043edc(int param_1)
     if (uVar2 != 2) {
       return 0;
     }
-    sVar1 = FUN_80085690((int)_g_PlayerPosZ - (int)param_1->pos_z,
+    sVar1 = Math_Atan2((int)_g_PlayerPosZ - (int)param_1->pos_z,
                          (int)param_1->pos_y - (int)_g_PlayerPosX);
     uVar2 = sVar1 - 0x800;
   }

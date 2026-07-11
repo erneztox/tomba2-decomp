@@ -6,7 +6,7 @@
 
 
 
-s16 * FUN_800860a4(void)
+s16 * CD_ResetController(void)
 
 {
   s16 *puVar1;
@@ -14,7 +14,7 @@ s16 * FUN_800860a4(void)
   
   puVar2 = (s16 *)0x0;
   if (DAT_800aad18 != 0) {
-    FUN_80080890();
+    BIOS_Syscall0();
     puVar1 = DAT_800abda8;
     puVar2 = DAT_800abda4;
     DAT_800aad4a = *DAT_800abda8;
@@ -22,7 +22,7 @@ s16 * FUN_800860a4(void)
     *DAT_800abda8 = 0;
     *puVar2 = *puVar1;
     *DAT_800abdac = *DAT_800abdac & 0x77777777;
-    FUN_80086210();
+    BIOS_Syscall_B0_80086210();
     DAT_800aad18 = 0;
     puVar2 = &DAT_800aad18;
   }

@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_800645e0(int param_1)
+void Entity_State_Float(int param_1)
 
 {
   u8 bVar1;
@@ -21,12 +21,12 @@ void FUN_800645e0(int param_1)
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (bVar1 == 2) {
-        FUN_80076d68(param_1);
-        FUN_80055e28(param_1,1);
-        FUN_80055fbc(param_1,param_1->behavior_flags);
-        FUN_80056b48(param_1,1);
-        FUN_80055d5c(param_1);
-        FUN_800574e0(param_1,0);
+        Entity_AnimFrame(param_1);
+        Entity_PhysicsUpdate(param_1,1);
+        Entity_BehaviorDispatcher(param_1,param_1->behavior_flags);
+        Entity_ApplyVelocity(param_1,1);
+        Entity_PhysicsStep2(param_1);
+        Entity_State_Combo(param_1,0);
         sVar2 = param_1->timer1;
         param_1->timer1 = sVar2 + -1;
         if (sVar2 == 1) {
@@ -34,19 +34,19 @@ void FUN_800645e0(int param_1)
           param_1->action_state = 1;
         }
         else {
-          iVar3 = FUN_80055634(param_1,0);
+          iVar3 = Entity_CheckCollisionFlags(param_1,0);
           if (iVar3 == 0) {
             if (param_1->collision_state != '\0') {
               param_1->sub_action = 0;
               if ((*(u8 *)(param_1 + 0x149) & 2) == 0) {
                 param_1->behavior_state = 1;
                 param_1->action_state = 0;
-                FUN_80054e80(param_1,1);
+                Entity_StateMain(param_1,1);
               }
               else {
                 param_1->behavior_state = 2;
                 param_1->action_state = 2;
-                FUN_80054d14(param_1,0x17,1);
+                Entity_LoadAnimIfChanged(param_1,0x17,1);
               }
             }
           }
@@ -62,7 +62,7 @@ void FUN_800645e0(int param_1)
             }
           }
         }
-        FUN_800551c4(param_1);
+        Entity_State_Physics(param_1);
         return;
       }
       if (bVar1 != 3) {
@@ -83,16 +83,16 @@ void FUN_800645e0(int param_1)
     param_1->behavior_flags = param_1->direction + '\x02';
     *(s8*)(param_1 + 0x149) = param_1->direction + '\x02';
   }
-  iVar3 = FUN_800633b0(param_1,0);
+  iVar3 = Entity_OverlayDispatch2(param_1,0);
   if ((iVar3 == 0) && (1 < param_1->sub_action)) {
     if ((_g_PadState & _g_InputMask) == 0) {
       if (((*(s8*)(param_1->state_ptr + 0xc) != '\x05') &&
-          (iVar3 = FUN_80055634(param_1,0), iVar3 != 0)) && (param_1->behavior_state == '\x04')) {
-        FUN_800645cc(param_1);
+          (iVar3 = Entity_CheckCollisionFlags(param_1,0), iVar3 != 0)) && (param_1->behavior_state == '\x04')) {
+        Entity_SetStateTo9(param_1);
       }
     }
     else {
-      FUN_80064524(param_1);
+      Entity_State_Jump(param_1);
     }
   }
   return;

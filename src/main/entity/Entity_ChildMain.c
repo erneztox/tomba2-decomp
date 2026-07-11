@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006f2d0(int param_1)
+void Entity_ChildMain(int param_1)
 
 {
   s16 *psVar1;
@@ -35,7 +35,7 @@ void FUN_8006f2d0(int param_1)
         g_SFXState = 0;
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       g_SFXState = 0;
       return;
     }
@@ -65,7 +65,7 @@ void FUN_8006f2d0(int param_1)
       iVar8 = param_1;
       do {
         iVar10 = iVar10 + 1;
-        iVar4 = FUN_8007aae8();
+        iVar4 = Entity_AllocFromFreeList();
         iVar8->sprite_ptr1 = iVar4;
         *(s16 *)(iVar4 + 6) = 0xffff;
         **(s16 **)(iVar8 + 0xc0) = *puVar9;
@@ -101,7 +101,7 @@ void FUN_8006f2d0(int param_1)
       }
       param_1->parent = 0;
     }
-    FUN_8006f04c();
+    Entity_SFXState();
     g_SFXState = 0;
     return;
   }
@@ -123,16 +123,16 @@ void FUN_8006f2d0(int param_1)
   param_1->collision_dir = DAT_800e7eaa;
   if ((_DAT_1f80018e & 0x1030) == 0) {
     if (((int)_DAT_800e7fec & 0xc000U) == 0xc000) {
-      FUN_8004766c(param_1);
+      Entity_PhysicsStep(param_1);
       if ((_DAT_1f8001a8 & 2) == 0) {
-        if (((_DAT_1f8001a8 & 4) == 0) || (iVar5 = FUN_80047b5c(param_1,0), iVar5 == 0))
+        if (((_DAT_1f8001a8 & 4) == 0) || (iVar5 = Collision_CheckMain(param_1,0), iVar5 == 0))
         goto LAB_8006f6c8;
         *(s16 *)(param_1->sprite_ptr2 + 10) = _g_CollisionNormalY;
         *(s16 *)(param_1->sprite_ptr2 + 0xc) = 0xe00;
         param_1->flags = 1;
       }
       else {
-        iVar5 = FUN_80047b5c(param_1,1);
+        iVar5 = Collision_CheckMain(param_1,1);
         if (iVar5 == 0) {
 LAB_8006f6c8:
           param_1->flags = 0;
@@ -193,13 +193,13 @@ LAB_8006f6c8:
       *(s16 *)(param_1->sprite_ptr1 + 2) = DAT_800a4bb2;
       *(s16 *)(param_1->sprite_ptr2 + 2) = DAT_800a4baa;
     }
-    FUN_8006f138(param_1);
-    iVar5 = FUN_8006eff4(param_1->flags - 1);
+    GTE_ProjectEntity(param_1);
+    iVar5 = Game_CheckBit(param_1->flags - 1);
     if (iVar5 == 0) {
       if (param_1->script_ptr == 0) {
-        uVar6 = FUN_8007e038(param_1->flags - 1,0);
+        uVar6 = Entity_ActivatePool3(param_1->flags - 1,0);
         param_1->script_ptr = uVar6;
-        FUN_8006f02c(param_1->flags - 1);
+        Game_SetFlag2(param_1->flags - 1);
         goto LAB_8006f87c;
       }
       if (*(u8 *)(param_1->script_ptr + 4) < 2) goto LAB_8006f87c;
@@ -214,19 +214,19 @@ LAB_8006f6c8:
   }
   param_1->script_ptr = 0;
 LAB_8006f87c:
-  FUN_8006f04c();
+  Entity_SFXState();
   bVar2 = true;
   if ((DAT_800e7ea9 == '\0') && (bVar2 = false, g_SFXState == 0x47)) {
     bVar2 = true;
   }
   if (((((param_1->flags == '\0') && (bVar2)) && (DAT_800e7fea == '\0')) &&
       ((bVar7 = g_SFXState & 0xf, (g_SFXState & 0x40) != 0 &&
-       (iVar5 = FUN_8006eff4(bVar7), iVar5 == 0)))) && ((DAT_800e7ee1 & 1) == 0)) {
+       (iVar5 = Game_CheckBit(bVar7), iVar5 == 0)))) && ((DAT_800e7ee1 & 1) == 0)) {
     iVar5 = param_1->parent;
     if (iVar5 == 0) {
-      uVar6 = FUN_8007e038(bVar7,0);
+      uVar6 = Entity_ActivatePool3(bVar7,0);
       param_1->parent = uVar6;
-      FUN_8006f02c(bVar7);
+      Game_SetFlag2(bVar7);
       param_1->anim_id = bVar7;
       g_SFXState = 0;
       return;

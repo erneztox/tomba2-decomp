@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_800557ec(int param_1)
+s32 Entity_CheckInputActive(int param_1)
 
 {
   s32 uVar1;

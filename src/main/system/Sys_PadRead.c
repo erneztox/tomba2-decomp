@@ -6,9 +6,9 @@
 
 
 
-void FUN_8001ce90(u8 param_1)
+void Sys_PadRead(u8 param_1)
 
 {
-  FUN_8001ce04(param_1);
+  CD_ReadRequest(param_1);
   return;
 }

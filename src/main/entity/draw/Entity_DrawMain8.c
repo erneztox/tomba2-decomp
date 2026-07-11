@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8002cd18(int param_1,s32 param_2,s32 param_3,s32 param_4)
+void Entity_DrawMain8(int param_1,s32 param_2,s32 param_3,s32 param_4)
 
 {
   uint uVar1;
@@ -43,16 +43,16 @@ void FUN_8002cd18(int param_1,s32 param_2,s32 param_3,s32 param_4)
   uVar3 = DAT_800102a4;
   uVar4 = DAT_800102a8;
   uVar12 = DAT_800102ac;
-  FUN_8009a420(auStack_48,0,8,param_4,DAT_800102a4,DAT_800102a8,DAT_800102ac);
+  Mem_Set(auStack_48,0,8,param_4,DAT_800102a4,DAT_800102a8,DAT_800102ac);
   _DAT_1f800090 = 0;
   setCopControlWord(2,0xa800,0);
   setCopControlWord(2,0xb000,0);
   setCopControlWord(2,0xb800,0);
-  FUN_80085480(&DAT_800a1ccc,0x1f800000);
+  GTE_LoadRotMatrixFromSVec(&DAT_800a1ccc,0x1f800000);
   local_40 = (uVar12 & 0xff) << 2;
   local_38 = (uVar12 >> 0x10 & 0xff) << 2;
   local_3c = (uVar12 >> 8 & 0xff) << 2;
-  FUN_80084520(0x1f800000,&local_40);
+  GTE_TransformVec(0x1f800000,&local_40);
   setCopControlWord(2,0,_g_GTE_WorkF8);
   setCopControlWord(2,0x800,_DAT_1f8000fc);
   setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -101,12 +101,12 @@ void FUN_8002cd18(int param_1,s32 param_2,s32 param_3,s32 param_4)
   setCopControlWord(2,0x2800,_g_GTE_Data14);
   setCopControlWord(2,0x3000,_g_GTE_Data18);
   setCopControlWord(2,0x3800,_g_GTE_Data1C);
-  FUN_80027768(&DAT_800a0ebc,0,300,0);
-  FUN_80085480(&DAT_800a1ccc,0x1f800000);
+  Entity_SubmitQuadToOT(&DAT_800a0ebc,0,300,0);
+  GTE_LoadRotMatrixFromSVec(&DAT_800a1ccc,0x1f800000);
   local_40 = (uVar1 & 0xff) << 2;
   local_38 = (uVar1 >> 0x10 & 0xff) << 2;
   local_3c = (uVar1 >> 8 & 0xff) << 2;
-  FUN_80084520(0x1f800000,&local_40);
+  GTE_TransformVec(0x1f800000,&local_40);
   setCopControlWord(2,0,_g_GTE_WorkF8);
   setCopControlWord(2,0x800,_DAT_1f8000fc);
   setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -156,14 +156,14 @@ void FUN_8002cd18(int param_1,s32 param_2,s32 param_3,s32 param_4)
   setCopControlWord(2,0x3000,_g_GTE_Data18);
   setCopControlWord(2,0x3800,_g_GTE_Data1C);
   if (g_GameMode == '\x01') {
-    FUN_80027768(&DAT_800a0fb8,0,300,(int)param_1->angle_offset);
+    Entity_SubmitQuadToOT(&DAT_800a0fb8,0,300,(int)param_1->angle_offset);
     if (_DAT_800e7ffe < 0) {
       local_40 = DAT_800102b0;
-      FUN_80085480(param_1 + 0x48,0x1f800000);
+      GTE_LoadRotMatrixFromSVec(param_1 + 0x48,0x1f800000);
       local_30 = (local_40 & 0xff) << 2;
       local_28 = (local_40 >> 0x10 & 0xff) << 2;
       local_2c = (local_40 >> 8 & 0xff) << 2;
-      FUN_80084520(0x1f800000,&local_30);
+      GTE_TransformVec(0x1f800000,&local_30);
       setCopControlWord(2,0,_g_GTE_WorkF8);
       setCopControlWord(2,0x800,_DAT_1f8000fc);
       setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -214,11 +214,11 @@ void FUN_8002cd18(int param_1,s32 param_2,s32 param_3,s32 param_4)
       setCopControlWord(2,0x3800,_g_GTE_Data1C);
     }
     else {
-      FUN_80085480(param_1 + 0x48,0x1f800000);
+      GTE_LoadRotMatrixFromSVec(param_1 + 0x48,0x1f800000);
       local_38 = (uint)DAT_800a1cd4 << 2;
       local_34 = (uint)DAT_800a1cd5 << 2;
       local_30 = (uint)DAT_800a1cd6 << 2;
-      FUN_80084520(0x1f800000,&local_38);
+      GTE_TransformVec(0x1f800000,&local_38);
       setCopControlWord(2,0,_g_GTE_WorkF8);
       setCopControlWord(2,0x800,_DAT_1f8000fc);
       setCopControlWord(2,0x1000,_DAT_1f800100);
@@ -282,6 +282,6 @@ void FUN_8002cd18(int param_1,s32 param_2,s32 param_3,s32 param_4)
     iVar5 = (int)param_1->angle_offset;
     uVar4 = 300;
   }
-  FUN_80027768(puVar2,uVar3,uVar4,iVar5);
+  Entity_SubmitQuadToOT(puVar2,uVar3,uVar4,iVar5);
   return;
 }

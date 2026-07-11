@@ -7,19 +7,19 @@
 
 
 #include "tomba.h"
-int FUN_800331d8(int param_1,s32 param_2,s32 param_3,s16 param_4)
+int Entity_SpawnChildAttached(int param_1,s32 param_2,s32 param_3,s16 param_4)
 
 {
   int iVar1;
   
-  if (((*(u8 *)(param_1 + 0x1b) & 0x40) == 0) && (iVar1 = FUN_8007a980(0,6,1), iVar1 != 0)) {
+  if (((*(u8 *)(param_1 + 0x1b) & 0x40) == 0) && (iVar1 = Entity_AllocByPoolId(0,6,1), iVar1 != 0)) {
     iVar1->render_flags = 0x20;
-    iVar1->callback = FUN_8002b7b0;
+    iVar1->callback = Entity_Behavior_Parent;
     iVar1->parent = param_2;
     iVar1->script_ptr = param_1;
     *(s32 *)(iVar1 + 0x50) = param_3;
     *(s16 *)(iVar1 + 0x32) = param_4;
-    iVar1->script_data = FUN_8002b3a4;
+    iVar1->script_data = Entity_DrawSprite6;
   }
   else {
     iVar1 = 0;

@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_8004139c(s16 *param_1,s16 param_2,s16 param_3)
+s32 Math_ApproachAngle(s16 *param_1,s16 param_2,s16 param_3)
 
 {
   s16 sVar1;

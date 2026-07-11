@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800945a0(uint param_1)
+void Audio_SeqTimer2(uint param_1)
 
 {
   u8 bVar1;
@@ -59,7 +59,7 @@ void FUN_800945a0(uint param_1)
     uVar7 = (uVar7 * uVar7) / 0x3fff;
     uVar5 = (uVar5 * uVar5) / 0x3fff;
   }
-  FUN_80098100((int)DAT_80105cfa - (int)DAT_80105d08 & 0x3f);
+  GPU_SetRegClamped((int)DAT_80105cfa - (int)DAT_80105d08 & 0x3f);
   uVar6 = param_1 & 0xff;
   *(s16 *)(&DAT_80105a2a + uVar6 * 0x10) = (s16)uVar5;
   bVar1 = (&DAT_80105a08)[uVar6];

@@ -7,14 +7,14 @@
 
 
 #include "tomba.h"
-void FUN_80083b30(s16 *param_1,s16 param_2,s16 param_3,s16 param_4,
+void GPU_InitDisplay(s16 *param_1,s16 param_2,s16 param_3,s16 param_4,
                  int param_5)
 
 {
   s32 bVar1;
   int iVar2;
   
-  iVar2 = FUN_80086604();
+  iVar2 = CD_GetCallback();
   *param_1 = param_2;
   param_1->flags = param_3;
   param_1->kind = param_4;

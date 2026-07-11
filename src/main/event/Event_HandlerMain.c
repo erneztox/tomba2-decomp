@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80036240(int param_1)
+void Event_HandlerMain(int param_1)
 
 {
   int iVar1;
@@ -33,13 +33,13 @@ void FUN_80036240(int param_1)
   _DAT_800bf540 = -0x7ff32198;
   _DAT_800e7e78 = -0x7ff30198;
   do {
-    iVar1 = FUN_80036560(iVar8,local_30);
+    iVar1 = Event_TypeDispatch(iVar8,local_30);
     iVar4 = 0;
     iVar6 = 0;
     iVar5 = iVar10;
     if (0 < iVar1) {
       do {
-        iVar2 = FUN_80078894(local_30->type + iVar4);
+        iVar2 = Game_CheckBit50(local_30->type + iVar4);
         if (iVar2 != 0) {
           *(s16 *)(iVar5 + -0x7ff2e192) = (s16)iVar4;
           iVar5 = iVar5 + 2;

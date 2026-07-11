@@ -6,7 +6,7 @@
 
 
 
-void FUN_80085d8c(void)
+void CD_InterruptHandler(void)
 
 {
   s32 bVar1;
@@ -16,8 +16,8 @@ void FUN_80085d8c(void)
   s32 *puVar5;
   
   if (DAT_800aad18 == 0) {
-    FUN_8009a730(s_unexpected_interrupt__04x__8001c064,*DAT_800abda4);
-    FUN_80086200();
+    Debug_Printf(s_unexpected_interrupt__04x__8001c064,*DAT_800abda4);
+    BIOS_Syscall_B0_80086200();
   }
   DAT_800aad1a = 1;
   uVar2 = (uint)(*DAT_800abda8 & DAT_800aad48 & *DAT_800abda4);
@@ -45,12 +45,12 @@ void FUN_80085d8c(void)
     bVar1 = 0x800 < DAT_800abdb0;
     DAT_800abdb0 = iVar3;
     if (bVar1) {
-      FUN_8009a730(s_intr_timeout__04x__04x__8001c080,*DAT_800abda4,*DAT_800abda8);
+      Debug_Printf(s_intr_timeout__04x__04x__8001c080,*DAT_800abda4,*DAT_800abda8);
       DAT_800abdb0 = 0;
       *DAT_800abda4 = 0;
     }
   }
   DAT_800aad1a = 0;
-  FUN_80086200();
+  BIOS_Syscall_B0_80086200();
   return;
 }

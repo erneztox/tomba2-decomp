@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80051b70(int param_1,int param_2,int param_3)
+s32 Entity_InitSubEntity(int param_1,int param_2,int param_3)
 
 {
   s32 bVar1;
@@ -26,7 +26,7 @@ s32 FUN_80051b70(int param_1,int param_2,int param_3)
     param_1->scale_z = 0x1000;
     param_1->scale_y = 0x1000;
     param_1->scale_x = 0x1000;
-    iVar2 = FUN_8007aae8();
+    iVar2 = Entity_AllocFromFreeList();
     param_1->sprite_ptr1 = iVar2;
     *(s16 *)(iVar2 + 6) = 0xffff;
     **(s16 **)(param_1 + 0xc0) = 0;

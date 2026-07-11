@@ -6,7 +6,7 @@
 
 
 
-int FUN_80079528(char *param_1)
+int String_Length(char *param_1)
 
 {
   s8 cVar1;

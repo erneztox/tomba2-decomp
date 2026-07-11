@@ -6,7 +6,7 @@
 
 
 
-void FUN_8004d514(int param_1)
+void UI_InventorySlot(int param_1)
 
 {
   u8 bVar1;

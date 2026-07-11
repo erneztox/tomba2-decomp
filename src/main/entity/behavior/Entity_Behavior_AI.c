@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-u8 FUN_80020364(u8 *param_1,u8 *param_2,uint param_3)
+u8 Entity_Behavior_AI(u8 *param_1,u8 *param_2,uint param_3)
 
 {
   s16 sVar1;
@@ -20,23 +20,23 @@ u8 FUN_80020364(u8 *param_1,u8 *param_2,uint param_3)
   u8 bVar6;
   
   if (((param_1->entity_flags & 0x200) == 0) &&
-     (iVar4 = FUN_8001f40c(param_1,param_2,1), -1 < iVar4)) {
+     (iVar4 = Entity_CalcPos(param_1,param_2,1), -1 < iVar4)) {
     if ((param_1->state_flag144 == 1) && (iVar4 < 2)) {
       if (((int)param_1->entity_flags & 0x8000U) == 0) {
-        FUN_8001fdb4(param_2,1,0x10,0x20);
+        Entity_CalcAngle21(param_2,1,0x10,0x20);
       }
       else if ((param_3 & 3) != 0) {
-        FUN_8001f054(param_1,param_2);
+        Entity_Behavior_Boss(param_1,param_2);
         return 1;
       }
       bVar3 = 1;
     }
     else {
       if ((param_3 & 0x3f) != 0) {
-        iVar4 = FUN_80083f50(_g_AngleTarget);
+        iVar4 = Math_CosGTE(_g_AngleTarget);
         sVar1 = param_1->bounds_min_x;
         sVar2 = param_2->bounds_min_x;
-        iVar5 = FUN_80083e80(_g_AngleTarget);
+        iVar5 = Math_Cos(_g_AngleTarget);
         sVar1 = (s16)(iVar4 * ((int)sVar1 + (int)sVar2) >> 0xc);
         sVar2 = (s16)(iVar5 * ((int)param_1->bounds_min_x + (int)param_2->bounds_min_x)
                        >> 0xc);

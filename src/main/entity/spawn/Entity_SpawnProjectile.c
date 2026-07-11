@@ -7,17 +7,17 @@
 
 
 #include "tomba.h"
-void FUN_80068214(int param_1)
+void Entity_SpawnProjectile(int param_1)
 
 {
   s16 uVar1;
   int iVar2;
   
   if (g_GameMode == '\x06') {
-    FUN_800525d0(param_1,1);
+    Entity_SpawnWithBehavior(param_1,1);
   }
   else {
-    iVar2 = FUN_800310f4(0x1b,0xffffffa0);
+    iVar2 = Entity_SpawnNoPos(0x1b,0xffffffa0);
     if (iVar2 != 0) {
       iVar2->alloc_flags = iVar2->alloc_flags | 0x80;
       iVar2->pos_x = param_1->pos_y;

@@ -9,19 +9,19 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_800355b4(s32 param_1,s32 param_2,int param_3)
+int Event_TriggerTypeB(s32 param_1,s32 param_2,int param_3)
 
 {
   s32 uVar1;
   int iVar2;
   int iVar3;
   
-  iVar2 = FUN_80035640(0x1a);
+  iVar2 = Event_CheckTrigger2(0x1a);
   if (((iVar2 != 0) && (param_3 != 1)) &&
-     (iVar3 = FUN_8004bd04(param_1,0,1), uVar1 = _g_GTE_Result[0], iVar3 != 0)) {
+     (iVar3 = Entity_SpawnCollectible(param_1,0,1), uVar1 = _g_GTE_Result[0], iVar3 != 0)) {
     iVar3->callback = 0x801189c4;
     iVar3->script_ptr = uVar1;
-    FUN_8004d4f4(0x61,1);
+    Menu_UpdateItemCount(0x61,1);
   }
   return iVar2;
 }

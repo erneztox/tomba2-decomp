@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8007b0f0(void)
+void Entity_InitFreeList(void)
 
 {
   int *piVar1;
@@ -18,7 +18,7 @@ void FUN_8007b0f0(void)
   iVar2 = 0;
   iVar3 = -0x7ff0d8c0;
   do {
-    FUN_8009a420(iVar3,0,0x44);
+    Mem_Set(iVar3,0,0x44);
     iVar2 = iVar2 + 1;
     iVar3 = iVar3 + 0x44;
   } while (iVar2 < 0x208);

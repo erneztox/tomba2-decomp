@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8002f36c(int param_1)
+void Entity_BehaviorType(int param_1)
 
 {
   s32 in_zero;
@@ -38,7 +38,7 @@ void FUN_8002f36c(int param_1)
     if (iVar3 == 0) {
       iVar2 = _DAT_800e7f84;
     }
-    FUN_80084110(&g_GTE_WorkF8,iVar2 + 0x18,0x1f800000);
+    GTE_ComposeMatrix(&g_GTE_WorkF8,iVar2 + 0x18,0x1f800000);
     setCopReg(2,in_zero,*(s32 *)(param_1 + 0x2c));
     setCopReg(2,extraout_at,param_1->pos_y_fixed);
     copFunction(2,0x486012);
@@ -48,16 +48,16 @@ void FUN_8002f36c(int param_1)
     _g_GTE_Data14 = _g_GTE_Data14 + _g_GTE_Work10C;
     _g_GTE_Data18 = _g_GTE_Data18 + _g_GTE_Work110;
     _g_GTE_Data1C = _g_GTE_Data1C + _g_GTE_Work114;
-    FUN_80084520(0x1f800000,&local_30);
-    FUN_80084660(0x1f800000);
-    FUN_80084690(0x1f800000);
+    GTE_TransformVec(0x1f800000,&local_30);
+    GTE_LoadMatrix5(0x1f800000);
+    GTE_LoadTranslation(0x1f800000);
     if (iVar3 == 0) {
       puVar1 = &DAT_8009f788;
     }
     else {
       puVar1 = &DAT_8009f6f8;
     }
-    FUN_80027768(puVar1,0,0xffffff9c,param_1->collision_state);
+    Entity_SubmitQuadToOT(puVar1,0,0xffffff9c,param_1->collision_state);
     iVar3 = iVar3 + 1;
   } while (iVar3 < 2);
   return;

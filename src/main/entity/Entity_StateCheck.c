@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80053d0c(int param_1)
+void Entity_StateCheck(int param_1)
 
 {
   u8 bVar1;

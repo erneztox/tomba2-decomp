@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s16 * FUN_800851f0(s16 *param_1,s16 *param_2)
+s16 * Math_Sin2(s16 *param_1,s16 *param_2)
 
 {
   int iVar1;

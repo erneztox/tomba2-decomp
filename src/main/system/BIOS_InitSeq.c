@@ -6,11 +6,11 @@
 
 
 
-s32 FUN_8009bd1c(void)
+s32 BIOS_InitSeq(void)
 
 {
-  FUN_8009bef0();
-  FUN_80080920(0);
-  FUN_8009bf20();
+  BIOS_Syscall_B0_8009BEF0();
+  BIOS_Syscall_B0_80080920(0);
+  BIOS_CallIndirect();
   return 1;
 }

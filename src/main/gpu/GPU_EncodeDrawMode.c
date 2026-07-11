@@ -6,7 +6,7 @@
 
 
 
-uint FUN_80082220(int param_1,int param_2,uint param_3)
+uint GPU_EncodeDrawMode(int param_1,int param_2,uint param_3)
 
 {
   uint uVar1;

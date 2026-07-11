@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80057150(int param_1,int param_2)
+s32 Entity_State_Dash2(int param_1,int param_2)
 
 {
   s16 sVar1;
@@ -26,7 +26,7 @@ LAB_80057208:
   else {
     if (param_1->anim_id == -0x35) {
       if ((*(u16 *)(param_1->anim_data + 6) & 0x8000) != 0) {
-        FUN_80054d14(param_1,0xca,4);
+        Entity_LoadAnimIfChanged(param_1,0xca,4);
         iVar3 = 2;
         goto LAB_80057210;
       }
@@ -34,8 +34,8 @@ LAB_80057208:
     else {
       if (param_1->anim_id != -0x36) goto LAB_80057210;
       if ((_g_PadState & _g_InputMask) == 0) goto LAB_80057208;
-      FUN_80054d14(param_1,0xcb,4);
-      FUN_80074590(0x35,0,0);
+      Entity_LoadAnimIfChanged(param_1,0xcb,4);
+      Audio_PlaySoundEffect(0x35,0,0);
     }
     iVar3 = 1;
   }
@@ -61,7 +61,7 @@ LAB_80057210:
   else {
     if ((param_1->behavior_flags & 8) != 0) {
       if (param_2 != 8) {
-        uVar2 = FUN_800776f8(0xf00,(int)param_1->rot_z,0x20);
+        uVar2 = Math_ApproachAngle_2(0xf00,(int)param_1->rot_z,0x20);
         param_1->rot_z = uVar2;
       }
       return 0x1a00;
@@ -73,7 +73,7 @@ LAB_80057210:
     sVar1 = param_1->rot_z;
     uVar5 = 0x40;
   }
-  uVar2 = FUN_800776f8(uVar4,(int)sVar1,uVar5);
+  uVar2 = Math_ApproachAngle_2(uVar4,(int)sVar1,uVar5);
   param_1->rot_z = uVar2;
   return 0xe00;
 }

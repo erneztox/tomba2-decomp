@@ -6,12 +6,12 @@
 
 
 
-void FUN_800264bc(void)
+void Audio_ResetChannel(void)
 
 {
   if (('\x01' < g_TimerFlag) || (DAT_800bf839 != '\0')) {
-    FUN_80075cec(0xffffffff);
-    FUN_80075cec(0x47ff);
+    Audio_ClampVolume(0xffffffff);
+    Audio_ClampVolume(0x47ff);
   }
   return;
 }

@@ -7,14 +7,14 @@
 
 
 #include "tomba.h"
-void FUN_8006acac(int param_1)
+void Entity_InitConfig(int param_1)
 
 {
   s16 uVar1;
   
   switch(param_1->kind) {
   case 1:
-    FUN_8006abf4(param_1);
+    Entity_InitSpriteConfig(param_1);
     param_1->bounds_size = 100;
     param_1->bounds_max_y = 100;
     param_1->bounds_min_x = 0x32;
@@ -23,19 +23,19 @@ void FUN_8006acac(int param_1)
     goto switchD_8006acf0_caseD_a;
   case 2:
   case 3:
-    FUN_8006ac7c(param_1,param_1->kind);
+    Entity_InitFromTable(param_1,param_1->kind);
     param_1->render_flags = 1;
     break;
   case 4:
   case 5:
   case 6:
-    FUN_8006ac7c(param_1,param_1->kind);
+    Entity_InitFromTable(param_1,param_1->kind);
     param_1->render_flags = 0;
     break;
   case 7:
   case 8:
   case 9:
-    FUN_8006ac7c(param_1,param_1->kind);
+    Entity_InitFromTable(param_1,param_1->kind);
     param_1->bounds_min_x = 100;
     param_1->bounds_size = 200;
     param_1->bounds_min_y = 0x5a;
@@ -45,7 +45,7 @@ void FUN_8006acac(int param_1)
   default:
     goto switchD_8006acf0_caseD_a;
   case 0xb:
-    FUN_8006ac38(param_1);
+    Entity_InitSpriteConfig2(param_1);
   }
   uVar1 = 100;
   param_1->bounds_min_x = 0x32;
@@ -72,7 +72,7 @@ switchD_8006acf0_caseD_a:
   param_1->anim_counter = 0;
   param_1->flag_5E = 0;
   if (DAT_800e7e82 == '\0') {
-    FUN_80069858(param_1,0,1);
+    Entity_PhysicsInit(param_1,0,1);
   }
   return;
 }

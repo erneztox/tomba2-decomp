@@ -9,14 +9,14 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800783dc(void)
+void Game_InitLevel(void)
 
 {
   u16 uVar1;
   u16 uVar2;
   s16 *psVar3;
   
-  FUN_80048d3c();
+  Collision_GridSelect();
   g_CollisionEntity = 3;
   _DAT_800e7ff2 = 0x3c;
   if (DAT_800bf880 == '\0') {
@@ -32,7 +32,7 @@ void FUN_800783dc(void)
   DAT_800e7ff4 = g_EntityFlags;
   _g_FrameCounter = _DAT_800e7ff0;
   if (g_GameState == GAMESTATE_3) {
-    _DAT_800e7e90 = FUN_80072ddc(0,3,4,0x1b);
+    _DAT_800e7e90 = Entity_SpawnChild(0,3,4,0x1b);
     _DAT_800e7e90->callback = 0x8010b37c;
   }
   else if (DAT_1f800134 == '\0') {

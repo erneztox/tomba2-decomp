@@ -1,5 +1,5 @@
 /**
- * @brief Entity type initializer: calls FUN_80069858, sets entity->type/[0x2B] state
+ * @brief Entity type initializer: calls Entity_PhysicsInit, sets entity->type/[0x2B] state
  * @note Original: func_80069948 at 0x80069948
  */
 // Entity_InitType
@@ -9,13 +9,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80069948(u8 *param_1)
+s32 Entity_InitType(u8 *param_1)
 
 {
   int iVar1;
   s32 uVar2;
   
-  iVar1 = FUN_80069858(param_1,0,0);
+  iVar1 = Entity_PhysicsInit(param_1,0,0);
   if (iVar1 == 0) {
     uVar2 = 0;
   }
@@ -31,13 +31,13 @@ s32 FUN_80069948(u8 *param_1)
       param_1->behavior_state = 2;
       param_1->action_state = 0;
       param_1->sub_action = 0;
-      FUN_80074590(0xc,0,0);
-      FUN_80031470(1,param_1 + 0x2c,param_1->flag_5E,param_1 + 0x68);
+      Audio_PlaySoundEffect(0xc,0,0);
+      Entity_SpawnSpecial(1,param_1 + 0x2c,param_1->flag_5E,param_1 + 0x68);
       uVar2 = 2;
     }
     else {
-      FUN_80074590(0xe,0,0);
-      FUN_80031470(2,param_1 + 0x2c,param_1->flag_5E,param_1 + 0x68);
+      Audio_PlaySoundEffect(0xe,0,0);
+      Entity_SpawnSpecial(2,param_1 + 0x2c,param_1->flag_5E,param_1 + 0x68);
       uVar2 = 1;
     }
   }

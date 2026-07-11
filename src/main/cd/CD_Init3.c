@@ -6,23 +6,23 @@
 
 
 
-s32 FUN_8008b2d8(void)
+s32 CD_Init3(void)
 
 {
   u8 bVar1;
   int iVar2;
   s32 uVar3;
   
-  FUN_8009b9b0(s_CD_init__8001c350);
-  FUN_8009a730(s_addr__08x_8001c35c,&PTR_DAT_800ac29c);
+  Debug_PrintString(s_CD_init__8001c350);
+  Debug_Printf(s_addr__08x_8001c35c,&PTR_DAT_800ac29c);
   DAT_800abfd9 = 0;
   DAT_800abfd8 = 0;
   DAT_800abfc0 = 0;
   DAT_800abfbc = 0;
   DAT_800abfcc = 0;
   DAT_800abfc8 = 0;
-  FUN_80085b20();
-  FUN_80085b50(2,FUN_8008b818);
+  CD_Dispatch0C();
+  CD_Dispatch08(2,CD_PollSync);
   *DAT_800ac280 = 1;
   bVar1 = *DAT_800ac28c;
   while ((bVar1 & 7) != 0) {
@@ -37,16 +37,16 @@ s32 FUN_8008b2d8(void)
   *DAT_800ac280 = 0;
   *DAT_800ac28c = 0;
   *DAT_800ac290 = 0x1325;
-  FUN_8008ac34(1,0,0,0);
+  CD_Control(1,0,0,0);
   if ((DAT_800abfc8 & 0x10) != 0) {
-    FUN_8008ac34(1,0,0,0);
+    CD_Control(1,0,0,0);
   }
-  iVar2 = FUN_8008ac34(10,0,0,0);
+  iVar2 = CD_Control(10,0,0,0);
   uVar3 = 0xffffffff;
   if (iVar2 == 0) {
-    iVar2 = FUN_8008ac34(0xc,0,0,0);
+    iVar2 = CD_Control(0xc,0,0,0);
     if (iVar2 == 0) {
-      iVar2 = FUN_8008a6ec(0,0);
+      iVar2 = CD_Sync(0,0);
       uVar3 = 0xffffffff;
       if (iVar2 == 2) {
         uVar3 = 0;

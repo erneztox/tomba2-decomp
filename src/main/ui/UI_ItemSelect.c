@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_8004e29c(int param_1)
+s32 UI_ItemSelect(int param_1)
 
 {
   s32 uVar1;
@@ -66,6 +66,6 @@ s32 FUN_8004e29c(int param_1)
   default:
     return 0;
   }
-  FUN_80040b48(uVar1);
+  Event_TriggerCollectible(uVar1);
   return 1;
 }

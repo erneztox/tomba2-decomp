@@ -6,7 +6,7 @@
 
 
 
-void FUN_80099370(int param_1)
+void CD_SetMode(int param_1)
 
 {
   if (param_1 == 0) {

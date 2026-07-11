@@ -6,7 +6,7 @@
 
 
 
-void FUN_80056f3c(int param_1)
+void Entity_AttackInit(int param_1)
 
 {
   s16 uVar1;

@@ -7,16 +7,16 @@
 
 
 #include "tomba.h"
-s32 FUN_80041718(int param_1,s32 param_2,s16 param_3)
+s32 Entity_SetAnimMode(int param_1,s32 param_2,s16 param_3)
 
 {
   param_1->anim_id = (char)param_2;
   param_1->sub_state2 = 0;
   if (param_3 == 0) {
-    FUN_80077c40(param_1,*(s32 *)(param_1 + 0x7c),param_2);
+    Entity_LoadAnimData3(param_1,*(s32 *)(param_1 + 0x7c),param_2);
   }
   else {
-    FUN_80077cfc(param_1,*(s32 *)(param_1 + 0x7c),param_2);
+    Entity_LoadAnimDataEx(param_1,*(s32 *)(param_1 + 0x7c),param_2);
   }
   return 1;
 }

@@ -6,7 +6,7 @@
 
 
 
-s16 FUN_80085c74(void)
+s16 CD_GetStatus(void)
 
 {
   return DAT_800aad1a;

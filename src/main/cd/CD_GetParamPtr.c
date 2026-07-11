@@ -6,7 +6,7 @@
 
 
 
-u8 * FUN_80089a30(void)
+u8 * CD_GetParamPtr(void)
 
 {
   return &DAT_800abfd4;

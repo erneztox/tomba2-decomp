@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8002b7b0(int param_1)
+void Entity_Behavior_Parent(int param_1)
 
 {
   u8 bVar1;
@@ -23,7 +23,7 @@ void FUN_8002b7b0(int param_1)
       if (3 < bVar1) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar1 != 0) {
@@ -56,7 +56,7 @@ void FUN_8002b7b0(int param_1)
       uVar3 = *(s16 *)(iVar5 + 0x34);
       param_1->velocity_y = param_1->velocity_y + 0x88U & 0xfff;
       *(s16 *)(param_1 + 0x30) = uVar3;
-      iVar5 = FUN_80083e80((uint)param_1->sub_action << 4);
+      iVar5 = Math_Cos((uint)param_1->sub_action << 4);
       param_1->normal_x = (s16)(iVar5 >> 4);
       param_1->sub_action = param_1->sub_action + '\x02';
     }

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80044f58(void)
+void Texture_Process(void)
 
 {
   s32 *puVar1;
@@ -29,10 +29,10 @@ void FUN_80044f58(void)
     uVar2 = (uint)_g_CurrentEntity->sprite_param2;
     iVar4 = DAT_800be0f0;
   }
-  FUN_8001dc40(&DAT_800ef478,iVar4 + uVar2,0x800);
+  CD_LoadSectors(&DAT_800ef478,iVar4 + uVar2,0x800);
   puVar5 = &DAT_800ef478;
-  FUN_8001dc40(0x8018a000,DAT_800be0f8 + (_DAT_800ef478 >> 0xb),_DAT_800ef47c - _DAT_800ef478);
-  FUN_80044e84(0x8018a000,0x1fd000);
+  CD_LoadSectors(0x8018a000,DAT_800be0f8 + (_DAT_800ef478 >> 0xb),_DAT_800ef47c - _DAT_800ef478);
+  Texture_LoadPack(0x8018a000,0x1fd000);
   iVar4 = 0;
   puVar3 = (s32 *)&DAT_800fb170;
   do {
@@ -44,7 +44,7 @@ void FUN_80044f58(void)
   } while (iVar4 < 0x2a);
   if (_g_CurrentEntity->sprite_param1 == '\0') {
     g_DMAFlag = 1;
-    FUN_80051fb4();
+    GPU_WaitVSync();
   }
   return;
 }

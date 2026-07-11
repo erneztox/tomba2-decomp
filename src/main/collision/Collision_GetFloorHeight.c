@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80047cbc(void)
+s32 Collision_GetFloorHeight(void)
 
 {
   u16 *puVar1;

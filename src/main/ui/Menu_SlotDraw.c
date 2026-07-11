@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8003a5e4(int param_1,s16 *param_2)
+void Menu_SlotDraw(int param_1,s16 *param_2)
 
 {
   s8 cVar1;

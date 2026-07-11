@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80072a78(void)
+void Entity_Behavior_Cutscene2(void)
 
 {
   s32 bVar1;
@@ -95,7 +95,7 @@ void FUN_80072a78(void)
           bVar6 = 3;
           bVar2 = *pbVar4;
         }
-        iVar5 = FUN_8007a980(bVar2 & 0x7f,bVar6,!bVar1);
+        iVar5 = Entity_AllocByPoolId(bVar2 & 0x7f,bVar6,!bVar1);
         if (iVar5 != 0) {
           iVar5->alloc_flags = *pbVar4;
           iVar5->callback = *(s32 *)(pbVar7 + 4);

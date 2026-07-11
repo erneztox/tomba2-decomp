@@ -7,14 +7,14 @@
 
 
 #include "tomba.h"
-void FUN_800423fc(int param_1)
+void Entity_ScriptBranch(int param_1)
 
 {
   if (param_1->event_id == 0) {
-    FUN_80042310();
+    Game_ReturnToTitle();
   }
   else {
-    FUN_80042354(*(u8 *)(param_1 + 0x72),*(u8 *)(param_1 + 0x74));
+    Entity_PlaySFX_FadeOut(*(u8 *)(param_1 + 0x72),*(u8 *)(param_1 + 0x74));
   }
   return;
 }

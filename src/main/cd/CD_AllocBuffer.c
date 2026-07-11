@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8008cdc0(void)
+void CD_AllocBuffer(void)
 
 {
   s16 *puVar1;

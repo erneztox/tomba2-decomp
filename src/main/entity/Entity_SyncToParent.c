@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8006afc4(int param_1)
+void Entity_SyncToParent(int param_1)
 
 {
   char *pcVar1;

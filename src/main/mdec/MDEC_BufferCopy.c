@@ -6,7 +6,7 @@
 
 
 
-s32 * FUN_8009c6e0(s32 *param_1)
+s32 * MDEC_BufferCopy(s32 *param_1)
 
 {
   s32 uVar1;
@@ -34,7 +34,7 @@ s32 * FUN_8009c6e0(s32 *param_1)
     *puVar4 = uVar1;
     puVar4 = puVar4 + 1;
   } while (iVar2 != -1);
-  FUN_8009c9d0(&DAT_800acf54,0x20);
-  FUN_8009c9d0(&DAT_800acfd8,0x20);
+  MDEC_SetupTransfer(&DAT_800acf54,0x20);
+  MDEC_SetupTransfer(&DAT_800acfd8,0x20);
   return param_1;
 }

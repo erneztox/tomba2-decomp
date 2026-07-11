@@ -6,7 +6,7 @@
 
 
 
-void FUN_80067da8(void)
+void Texture_LoadUI(void)
 
 {
   void *puVar1;
@@ -50,14 +50,14 @@ void FUN_80067da8(void)
   local_1a = 1;
   local_20 = 0x1f0;
   local_1e = 0x1e2;
-  FUN_80081218(&local_20,puVar1);
+  GPU_LoadImage(&local_20,puVar1);
   local_1e = 0x1e5;
-  FUN_80081218(&local_20,puVar3);
+  GPU_LoadImage(&local_20,puVar3);
   local_1e = 0x1c9;
-  FUN_80081218(&local_20,puVar2);
+  GPU_LoadImage(&local_20,puVar2);
   local_1e = 0x1d0;
-  FUN_80081218(&local_20,puVar5);
+  GPU_LoadImage(&local_20,puVar5);
   local_1e = 0x1b3;
-  FUN_80081218(&local_20,puVar4);
+  GPU_LoadImage(&local_20,puVar4);
   return;
 }

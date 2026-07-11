@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8003f898(int param_1)
+void Engine_Loop(int param_1)
 
 {
   u8 auStack_58->sub_action;
@@ -26,7 +26,7 @@ void FUN_8003f898(int param_1)
   s16 local_14;
   
   if (*(s16 **)(param_1 + 0x38) != (s16 *)0x0) {
-    FUN_8003b054(auStack_58,
+    Entity_LoadVertexData(auStack_58,
                  param_1->sprite_data +
                  (int)*(s16 *)(param_1->sprite_data + **(s16 **)(param_1 + 0x38) * 4 + 2),0)
     ;
@@ -43,9 +43,9 @@ void FUN_8003f898(int param_1)
     local_18 = param_1->event_id;
     local_16 = param_1->event_param;
     local_14 = *(s16 *)(param_1 + 0x76);
-    FUN_80084660(&g_GTE_WorkF8);
-    FUN_80084690(&g_GTE_WorkF8);
-    FUN_8003b320(auStack_58,&local_30,0x10);
+    GTE_LoadMatrix5(&g_GTE_WorkF8);
+    GTE_LoadTranslation(&g_GTE_WorkF8);
+    Entity_SubmitVerticesToOT(auStack_58,&local_30,0x10);
   }
   return;
 }

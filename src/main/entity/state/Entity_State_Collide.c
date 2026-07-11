@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8006a240(u8 *param_1)
+void Entity_State_Collide(u8 *param_1)
 
 {
   u8 bVar1;

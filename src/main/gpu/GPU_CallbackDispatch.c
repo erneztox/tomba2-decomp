@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80080940(char *param_1,s32 param_2)
+s32 GPU_CallbackDispatch(char *param_1,s32 param_2)
 
 {
   s8 cVar1;
@@ -36,7 +36,7 @@ s32 FUN_80080940(char *param_1,s32 param_2)
   piVar8 = *(int **)(in_zero + 0x150);
   piVar6 = piVar8 + (*(uint *)(in_zero + 0x154) / 0x50) * 0x14;
   for (; piVar8 < piVar6; piVar8 = piVar8 + 0x14) {
-    if ((*piVar8 != 0) && (iVar3 = FUN_8009a540(*piVar8,&DAT_80100ab8), iVar3 == 0)) {
+    if ((*piVar8 != 0) && (iVar3 = String_Compare2(*piVar8,&DAT_80100ab8), iVar3 == 0)) {
       _DAT_80100ab0 = piVar8->sprite_flags;
       bVar2 = true;
       goto LAB_80080a10;
@@ -49,12 +49,12 @@ LAB_80080a10:
     piVar8 = *(int **)(in_zero + 0x150);
     piVar6 = piVar8 + (*(uint *)(in_zero + 0x154) / 0x50) * 0x14;
     for (; piVar8 < piVar6; piVar8 = piVar8 + 0x14) {
-      if ((*piVar8 != 0) && (iVar3 = FUN_8009a540(*piVar8,&DAT_80100ab8), iVar3 == 0)) {
-        piVar8->sprite_flags = (int)FUN_80080adc;
+      if ((*piVar8 != 0) && (iVar3 = String_Compare2(*piVar8,&DAT_80100ab8), iVar3 == 0)) {
+        piVar8->sprite_flags = (int)GPU_DispatchTask;
         break;
       }
     }
-    uVar4 = FUN_80080be0(param_1,param_2);
+    uVar4 = BIOS_Syscall_B0_80080BE0(param_1,param_2);
   }
   return uVar4;
 }

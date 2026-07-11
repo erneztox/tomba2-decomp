@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80026ad0(int param_1)
+s32 Entity_StateDispatch2(int param_1)
 
 {
   int iVar1;
@@ -20,12 +20,12 @@ s32 FUN_80026ad0(int param_1)
       return 0;
     }
     param_1->sub_type = g_HurtParam + '\x01';
-    FUN_800269bc(param_1);
+    Game_SetPause(param_1);
     break;
   case 1:
     if (DAT_800bf80f == '\0') {
-      FUN_800269ec(param_1);
-      FUN_8001cf2c();
+      Game_SetUnpause(param_1);
+      Pad_InitReset();
       iVar1 = _g_CurrentEntity;
       _g_CurrentEntity->normal_z = 3;
       iVar1->sprite_x = 0;
@@ -38,20 +38,20 @@ s32 FUN_80026ad0(int param_1)
     if (DAT_800bf80f != '\0') {
       return 0;
     }
-    FUN_800269fc(param_1);
+    Game_ClearPause(param_1);
     break;
   case 3:
     if (g_HurtState != '\x03') {
       return 0;
     }
-    FUN_800269bc(param_1);
+    Game_SetPause(param_1);
     break;
   case 4:
     if (DAT_800bf80f != '\0') {
       return 0;
     }
-    FUN_80026a1c(param_1);
-    FUN_800269ec(param_1);
+    Entity_UpdateChild(param_1);
+    Game_SetUnpause(param_1);
     iVar1 = _g_CurrentEntity;
     _g_CurrentEntity->normal_z = 2;
     iVar1->sprite_x = 4;
@@ -60,7 +60,7 @@ s32 FUN_80026ad0(int param_1)
   case 5:
     if (DAT_800bf80f == '\0') {
       param_1->behavior_state = 0;
-      FUN_800269fc(param_1);
+      Game_ClearPause(param_1);
       return 0;
     }
     return 0;

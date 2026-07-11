@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800275d4(int param_1)
+void Entity_Behavior_TrailPt(int param_1)
 
 {
   u8 bVar1;
@@ -36,7 +36,7 @@ void FUN_800275d4(int param_1)
       return;
     }
     param_1->sprite_x = 5;
-    uVar3 = FUN_8009a450();
+    uVar3 = Math_Random();
     iVar5 = 0;
     param_1->normal_x = uVar3;
     param_1->velocity_y = 0xffe2;
@@ -59,10 +59,10 @@ void FUN_800275d4(int param_1)
     psVar7 = param_1->sprite_y;
     uVar10 = uVar4 & 0xffff;
     do {
-      FUN_80083f50(uVar10);
+      Math_CosGTE(uVar10);
       iVar5 = iVar5 + 1;
       *psVar9 = *psVar9 + extraout_var;
-      FUN_80083e80(uVar10);
+      Math_Cos(uVar10);
       psVar9 = psVar9 + 4;
       sVar2 = (s16)(uVar4 >> 0x10);
       psVar7->flags = psVar7->flags + -10 + extraout_var_00;
@@ -71,14 +71,14 @@ void FUN_800275d4(int param_1)
       uVar10 = uVar10 + 0x333;
     } while (iVar5 < 5);
     param_1->velocity_y = sVar2 + 4;
-    iVar5 = FUN_8002b278(param_1);
+    iVar5 = Entity_CheckVisibility(param_1);
     if (iVar5 != 0) {
       return;
     }
-    FUN_80031780(param_1);
+    Entity_AdvanceAnimScript(param_1);
     return;
   }
 LAB_8002773c:
-  FUN_8007a624(param_1);
+  Entity_Dealloc(param_1);
   return;
 }

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80075824(uint *param_1)
+void Audio_SeqPlay(uint *param_1)
 
 {
   s32 bVar1;
@@ -60,8 +60,8 @@ LAB_80075934:
     iVar3 = 0x7fff;
   }
   if (((iVar3 < 0x11) && (*(s8*)((int)param_1 + 0x33) != '\0')) && (g_ActionMode == '\0')) {
-    FUN_80075cec(0x47ff);
-    FUN_800750d8(DAT_1f80023b,1);
+    Audio_ClampVolume(0x47ff);
+    Sys_OverlayDispatch(DAT_1f80023b,1);
     *(u8 *)((int)param_1 + 0x33) = 0;
   }
   iVar4 = (uint)(u16)param_1[0xc] +

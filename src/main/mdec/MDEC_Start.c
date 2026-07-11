@@ -6,9 +6,9 @@
 
 
 
-void FUN_80087a80(void)
+void MDEC_Start(void)
 
 {
-  FUN_80086a3c();
+  MDEC_StartDMA();
   return;
 }

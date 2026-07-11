@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8006c608(u8 *param_1)
+void Entity_Behavior_Cam2(u8 *param_1)
 
 {
   u8 bVar1;
@@ -26,13 +26,13 @@ void FUN_8006c608(u8 *param_1)
       else if (bVar1 != 3) {
         return;
       }
-      FUN_8007ab44(param_1);
+      Entity_ListInsert(param_1);
       return;
     }
     if (bVar1 != 0) {
       return;
     }
-    FUN_8006c59c(param_1);
+    Entity_InitBehaviorConfig(param_1);
   }
   param_1->flags = 1;
   if (param_1->move_mode == '\0') {
@@ -51,9 +51,9 @@ void FUN_8006c608(u8 *param_1)
     *param_1 = 2;
     param_1->state = STATE_FINISH;
   }
-  iVar3 = FUN_80083f50((int)param_1->rot_y);
+  iVar3 = Math_CosGTE((int)param_1->rot_y);
   *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + (iVar3 * param_1->anim_counter >> 4);
-  iVar3 = FUN_80083e80((int)param_1->rot_y);
+  iVar3 = Math_Cos((int)param_1->rot_y);
   param_1->scale_y = param_1->scale_y - (iVar3 * param_1->anim_counter >> 4);
   if (param_1->draw_x < 4) {
     param_1->draw_x = param_1->draw_x + 2;

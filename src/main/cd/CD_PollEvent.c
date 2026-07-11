@@ -6,7 +6,7 @@
 
 
 
-int FUN_8008beac(int param_1,s32 param_2)
+int CD_PollEvent(int param_1,s32 param_2)
 
 {
   int iVar1;
@@ -22,7 +22,7 @@ int FUN_8008beac(int param_1,s32 param_2)
       return -1;
     }
     if ((*(int *)(iVar3 + -0x7fefd294) == param_1) &&
-       (iVar1 = FUN_8009a540(param_2,iVar4), iVar1 == 0)) break;
+       (iVar1 = String_Compare2(param_2,iVar4), iVar1 == 0)) break;
     iVar4 = iVar4 + 0x2c;
     iVar2 = iVar2 + 1;
     iVar3 = iVar3 + 0x2c;

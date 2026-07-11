@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80069b6c(int param_1)
+s32 Entity_CheckProximity(int param_1)
 
 {
   if (0x1cc < (u16)((*(s16 *)(_DAT_800e7f5c + 0x34) - param_1->pos_z) + 0xe6U)) {

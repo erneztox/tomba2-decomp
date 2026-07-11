@@ -6,16 +6,16 @@
 
 
 
-uint FUN_8009c820(int param_1)
+uint MDEC_SyncDispatch(int param_1)
 
 {
   uint uVar1;
   
   if (param_1 == 0) {
-    uVar1 = FUN_8009caec();
+    uVar1 = MDEC_SyncIn();
   }
   else {
-    uVar1 = FUN_8009cc14();
+    uVar1 = CD_GetReg();
     uVar1 = uVar1 >> 0x1d & 1;
   }
   return uVar1;

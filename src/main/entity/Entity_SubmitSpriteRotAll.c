@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_800321d8(s32 *param_1,u8 *param_2,s32 param_3)
+void Entity_SubmitSpriteRotAll(s32 *param_1,u8 *param_2,s32 param_3)
 
 {
   int iVar1;
@@ -28,11 +28,11 @@ void FUN_800321d8(s32 *param_1,u8 *param_2,s32 param_3)
   int local_1c;
   int local_18;
   
-  FUN_80084a80(param_3,0x1f800000);
+  Math_Atan(param_3,0x1f800000);
   local_20 = (uint)*param_2 << 2;
   local_1c = (uint)param_2->flags << 2;
   local_18 = (uint)param_2->kind << 2;
-  FUN_80084520(0x1f800000,&local_20);
+  GTE_TransformVec(0x1f800000,&local_20);
   setCopControlWord(2,0,_g_GTE_WorkF8);
   setCopControlWord(2,0x800,_DAT_1f8000fc);
   setCopControlWord(2,0x1000,_DAT_1f800100);

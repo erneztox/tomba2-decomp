@@ -9,7 +9,7 @@
 /* WARNING: Removing unreachable block (ram,0x80043264) */
 
 #include "tomba.h"
-s32 FUN_80043108(int param_1)
+s32 Entity_State_Spawn(int param_1)
 
 {
   u8 bVar1;
@@ -44,7 +44,7 @@ s32 FUN_80043108(int param_1)
     param_1->normal_x = param_1->event_id - param_1->pos_y;
     param_1->normal_z = (s16)iVar7;
     param_1->velocity_y = param_1->event_param - *(s16 *)(param_1 + 0x32);
-    sVar3 = FUN_80084080(iVar6 * iVar6 +
+    sVar3 = Math_SqrtGTE(iVar6 * iVar6 +
                          (int)param_1->normal_x * (int)param_1->normal_x);
     iVar5 = (int)(s16)iVar5;
     uVar9 = (int)sVar3 / iVar5;
@@ -64,18 +64,18 @@ s32 FUN_80043108(int param_1)
     param_1->anim_counter = 0x1000;
     *(s16 *)(param_1 + 100) = (s16)(0x1000 / (int)*(s16 *)(param_1 + 100));
     if (sVar2 == -1) {
-      uVar4 = FUN_80085690(-(int)param_1->normal_z,(int)param_1->normal_x);
+      uVar4 = Math_Atan2(-(int)param_1->normal_z,(int)param_1->normal_x);
       param_1->rot_y = uVar4 & 0xfff;
     }
     else if (sVar2 == 0) {
       param_1->sub_state = 2;
       return 0;
     }
-    uVar4 = FUN_80085690(-(int)param_1->normal_z,(int)param_1->normal_x);
+    uVar4 = Math_Atan2(-(int)param_1->normal_z,(int)param_1->normal_x);
     *(u16 *)(param_1 + 0x66) = uVar4 & 0xfff;
     param_1->sub_state = param_1->sub_state + '\x01';
   }
-  iVar5 = FUN_80041438(param_1,(int)*(s16 *)(param_1 + 0x66),0x100);
+  iVar5 = Entity_ApproachAngle(param_1,(int)*(s16 *)(param_1 + 0x66),0x100);
   if (iVar5 != 0) {
     param_1->sub_state = param_1->sub_state + '\x01';
   }
@@ -104,7 +104,7 @@ LAB_80043310:
   }
   param_1->pos_z = *(s16 *)(iVar8 + 6) - (s16)(iVar5 >> 0xc);
   if (param_1->anim_counter != 0) {
-    FUN_80042ea4(param_1,param_1 + 0x68,(int)param_1->type_flags);
+    Entity_PlayTimedSFX(param_1,param_1 + 0x68,(int)param_1->type_flags);
     return 0;
   }
   return 1;

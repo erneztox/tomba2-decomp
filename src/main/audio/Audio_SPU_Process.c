@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_800950e0(s16 param_1,s16 param_2,s16 param_3,s16 param_4,int param_5)
+s32 Audio_SPU_Process(s16 param_1,s16 param_2,s16 param_3,s16 param_4,int param_5)
 
 {
   s16 uVar1;
@@ -48,7 +48,7 @@ s32 FUN_800950e0(s16 param_1,s16 param_2,s16 param_3,s16 param_4,int param_5)
     iVar5 = (int)param_1;
     DAT_80105d04 = *(u8 *)(iVar5 * 0x38 + -0x7fefab22);
     _DAT_80105d10 = param_1;
-    uVar1 = FUN_8009440c(uVar6 & 0xffff,uVar4 & 0xffff);
+    uVar1 = Audio_CalcValue(uVar6 & 0xffff,uVar4 & 0xffff);
     *(s16 *)(&DAT_80105a2c + iVar5 * 0x10) = uVar1;
     (&DAT_80105a08)[iVar5] = (&DAT_80105a08)[iVar5] | 4;
     uVar2 = 1;

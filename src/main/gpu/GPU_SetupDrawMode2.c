@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80083de0(int param_1,int param_2,int param_3,uint param_4,u8 *param_5)
+void GPU_SetupDrawMode2(int param_1,int param_2,int param_3,uint param_4,u8 *param_5)
 
 {
   uint uVar1;

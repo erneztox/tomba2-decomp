@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_80059ed8(int param_1)
+void Entity_StateMain5(int param_1)
 
 {
   u8 bVar1;
@@ -28,7 +28,7 @@ void FUN_80059ed8(int param_1)
       if (3 < bVar1) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar1 != 0) {
@@ -68,7 +68,7 @@ void FUN_80059ed8(int param_1)
       iVar5 = -iVar5;
     }
     if ((0xc00 < iVar5) && ((_g_FrameCounter2 & 7) == 0)) {
-      FUN_800312d4(0x2c,pcVar7 + 0x2c,0xffffffec);
+      Entity_SpawnWithFlag(0x2c,pcVar7 + 0x2c,0xffffffec);
     }
   }
   if (pcVar7->entity_flags < 0) {
@@ -95,7 +95,7 @@ void FUN_80059ed8(int param_1)
       param_1->velocity_y = uVar3;
       goto LAB_8005a1ac;
     }
-    iVar5 = FUN_800489e4(param_1,(int)*(s16 *)(param_1 + 0x32));
+    iVar5 = Collision_Check3_2(param_1,(int)*(s16 *)(param_1 + 0x32));
     uVar3 = _g_CollisionNormalY;
     uVar4 = _g_CollisionNormalX;
     if (iVar5 != 0) {

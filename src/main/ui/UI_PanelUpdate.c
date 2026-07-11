@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8004f8dc(int param_1)
+void UI_PanelUpdate(int param_1)
 
 {
   s32 uVar1;
@@ -19,12 +19,12 @@ void FUN_8004f8dc(int param_1)
   int iVar7;
   
   if (*(s8*)(param_1 + 0x16) == '\x02') {
-    FUN_8004ee88();
+    UI_TextDraw();
   }
   if (2 < *(s16 *)(param_1 + 8)) {
-    FUN_8004ee88(param_1);
+    UI_TextDraw(param_1);
   }
-  FUN_8004f378(param_1);
+  UI_InitDialog(param_1);
   iVar7 = param_1 + 0xc;
   iVar5 = 0;
   uVar2 = *(u16 *)(param_1 + 8) - 1;
@@ -42,11 +42,11 @@ void FUN_8004f8dc(int param_1)
       *(u8 *)(iVar4 + -5) = 0;
       *(u8 *)(iVar4 + 0x2d) = 0xff;
       if (*(int *)(iVar4 + 0x5c) == 0) {
-        FUN_8004f058(iVar4,iVar7 + 0x70,(int)sVar3);
+        UI_TextParser(iVar4,iVar7 + 0x70,(int)sVar3);
       }
       else {
-        uVar1 = FUN_8004ef8c(*(int *)(iVar4 + 0x5c),(int)sVar3);
-        FUN_8004ef54(iVar4,uVar1);
+        uVar1 = String_FindChar(*(int *)(iVar4 + 0x5c),(int)sVar3);
+        String_CopyUntil(iVar4,uVar1);
       }
       iVar5 = iVar5 + 1;
       iVar4 = iVar4 + 0x8c;

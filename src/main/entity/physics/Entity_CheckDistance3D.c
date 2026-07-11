@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80023794(int param_1,int param_2,int param_3)
+s32 Entity_CheckDistance3D(int param_1,int param_2,int param_3)
 
 {
   s32 bVar1;
@@ -19,7 +19,7 @@ s32 FUN_80023794(int param_1,int param_2,int param_3)
           0x10;
   iVar3 = (int)(((uint)param_1->pos_z - (uint)*(u16 *)(param_2 + 8)) * 0x10000) >>
           0x10;
-  uVar4 = FUN_80084080(iVar2 * iVar2 + iVar3 * iVar3);
+  uVar4 = Math_SqrtGTE(iVar2 * iVar2 + iVar3 * iVar3);
   if ((int)((int)param_1->bounds_min_x + (uint)param_3->state) < (int)(uVar4 & 0xffff))
   {
     bVar1 = false;

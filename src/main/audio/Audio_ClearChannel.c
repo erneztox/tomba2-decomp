@@ -6,11 +6,11 @@
 
 
 
-void FUN_80026510(void)
+void Audio_ClearChannel(void)
 
 {
   if (('\x01' < g_TimerFlag) || (DAT_800bf839 != '\0')) {
-    FUN_80075cec(0xffffffff);
+    Audio_ClampVolume(0xffffffff);
   }
   return;
 }

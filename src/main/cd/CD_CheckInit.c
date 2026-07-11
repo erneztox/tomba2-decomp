@@ -6,11 +6,11 @@
 
 
 
-s32 FUN_80089f88(void)
+s32 CD_CheckInit(void)
 
 {
   int iVar1;
   
-  iVar1 = FUN_8008b620();
+  iVar1 = CD_InitParams();
   return iVar1 == 0;
 }

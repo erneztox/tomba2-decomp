@@ -1,14 +1,14 @@
 /**
- * @brief Audio init wrapper: calls FUN_80090750(0)
+ * @brief Audio init wrapper: calls Audio_InitSeq(0)
  * @note Original: func_800909A0 at 0x800909A0
  */
 // Audio_Init
 
 
 
-void FUN_800909a0(void)
+void Audio_Init(void)
 
 {
-  FUN_80090750(0);
+  Audio_InitSeq(0);
   return;
 }

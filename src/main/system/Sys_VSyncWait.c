@@ -6,7 +6,7 @@
 
 
 
-void FUN_80085a78(int param_1,int param_2)
+void Sys_VSyncWait(int param_1,int param_2)
 
 {
   param_2 = param_2 << 0xf;
@@ -16,8 +16,8 @@ void FUN_80085a78(int param_1,int param_2)
     }
     param_2 = param_2 + -1;
   } while (param_2 != -1);
-  FUN_8009b9b0(s_VSync__timeout_8001c020);
-  FUN_80080920(0);
-  FUN_80085b10(3,0);
+  Debug_PrintString(s_VSync__timeout_8001c020);
+  BIOS_Syscall_B0_80080920(0);
+  BIOS_CallC0(3,0);
   return;
 }

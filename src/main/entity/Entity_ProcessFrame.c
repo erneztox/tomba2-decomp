@@ -6,7 +6,7 @@
 
 
 
-void FUN_80051e00(void)
+void Entity_ProcessFrame(void)
 
 {
   int in_zero;

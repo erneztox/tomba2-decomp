@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80066538(int param_1)
+void Entity_ApplyVelocityMax(int param_1)
 
 {
   u16 uVar1;
@@ -19,10 +19,10 @@ void FUN_80066538(int param_1)
     param_1->state_flag144 = 1;
     param_1->rot_z = 0;
   }
-  FUN_80076d68(param_1);
-  FUN_80056b48(param_1,1);
-  FUN_80055d5c(param_1);
-  FUN_800541f4(param_1,3);
+  Entity_AnimFrame(param_1);
+  Entity_ApplyVelocity(param_1,1);
+  Entity_PhysicsStep2(param_1);
+  Entity_SubState(param_1,3);
   sVar2 = param_1->velocity_y + 0x400;
   param_1->velocity_y = sVar2;
   if (0x2800 < sVar2) {
@@ -30,6 +30,6 @@ void FUN_80066538(int param_1)
   }
   param_1->timer1 = param_1->timer1 + 1;
   param_1->pos_y_fixed = param_1->pos_y_fixed + param_1->velocity_y * 0x100;
-  FUN_8005444c();
+  Entity_CollisionGround();
   return;
 }

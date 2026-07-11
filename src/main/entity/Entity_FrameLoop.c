@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80051e60(void)
+void Entity_FrameLoop(void)
 
 {
   s16 *psVar1;
@@ -20,14 +20,14 @@ void FUN_80051e60(void)
 LAB_80051ed0:
       psVar1 = _g_CurrentEntity + 2;
       *_g_CurrentEntity = 4;
-      FUN_80080880(*(s32 *)psVar1);
+      BIOS_Syscall_B0_80080880(*(s32 *)psVar1);
     }
     else if (*_g_CurrentEntity == 3) {
-      FUN_80080890();
-      uVar2 = FUN_80080860(*(s32 *)(_g_CurrentEntity + 6),*(s32 *)(_g_CurrentEntity + 4),
+      BIOS_Syscall0();
+      uVar2 = BIOS_Syscall_B0_80080860(*(s32 *)(_g_CurrentEntity + 6),*(s32 *)(_g_CurrentEntity + 4),
                            *(s32 *)(_g_CurrentEntity + 8));
       *(s32 *)(_g_CurrentEntity + 2) = uVar2;
-      FUN_800808a0();
+      BIOS_Syscall0_2();
       goto LAB_80051ed0;
     }
     _g_CurrentEntity = _g_CurrentEntity + 0x38;

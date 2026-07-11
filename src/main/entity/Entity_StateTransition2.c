@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800588bc(u8 *param_1)
+void Entity_StateTransition2(u8 *param_1)
 
 {
   if ((g_CurrentOverlay != '\0') && (param_1->action_flag != '\0')) {

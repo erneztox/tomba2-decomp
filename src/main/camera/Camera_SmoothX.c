@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_8006d960(s32 param_1,int *param_2)
+s32 Camera_SmoothX(s32 param_1,int *param_2)
 
 {
   s32 bVar1;
@@ -22,7 +22,7 @@ s32 FUN_8006d960(s32 param_1,int *param_2)
     _g_CameraX = *param_2;
   }
   else {
-    iVar3 = FUN_8006ce74(iVar3 * 0x10000 >> 0x10,0x1800);
+    iVar3 = Math_Clamp(iVar3 * 0x10000 >> 0x10,0x1800);
     _g_CameraX = _g_CameraX + ((iVar3 << 0x10) >> 3);
   }
   iVar3 = (uint)*(u16 *)((int)param_2 + 10) - (_DAT_1f8000e4 >> 0x10);
@@ -31,7 +31,7 @@ s32 FUN_8006d960(s32 param_1,int *param_2)
     _DAT_1f8000e4 = param_2->kind;
   }
   else {
-    iVar3 = FUN_8006ce74(iVar3 * 0x10000 >> 0x10,0x1800);
+    iVar3 = Math_Clamp(iVar3 * 0x10000 >> 0x10,0x1800);
     _DAT_1f8000e4 = _DAT_1f8000e4 + ((iVar3 << 0x10) >> 3);
   }
   return bVar2 && bVar1;

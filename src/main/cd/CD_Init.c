@@ -6,9 +6,9 @@
 
 
 
-s32 FUN_80089f68(void)
+s32 CD_Init(void)
 
 {
-  FUN_8008b040();
+  CD_InitDrive();
   return 1;
 }

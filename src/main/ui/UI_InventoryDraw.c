@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8004e808(int param_1)
+void UI_InventoryDraw(int param_1)
 
 {
   u8 bVar1;
@@ -23,7 +23,7 @@ void FUN_8004e808(int param_1)
       }
     }
     else if (param_1->behavior_state == '\x01') {
-      FUN_8004bd64(param_1,0,_DAT_800e7f5c,_DAT_800e7f50,0);
+      Entity_SetPosition(param_1,0,_DAT_800e7f5c,_DAT_800e7f50,0);
       if ((DAT_800e7ff4 & 4) == 0) {
         sVar2 = *(s16 *)(param_1 + 0x32) + -100;
       }
@@ -45,7 +45,7 @@ void FUN_8004e808(int param_1)
     }
   }
   else if ((bVar1 != 2) && (bVar1 == 3)) {
-    FUN_8007a624(param_1);
+    Entity_Dealloc(param_1);
   }
   return;
 }

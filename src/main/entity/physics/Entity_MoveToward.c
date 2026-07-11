@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_80041194(int param_1,s16 param_2,u8 param_3,int param_4)
+s32 Entity_MoveToward(int param_1,s16 param_2,u8 param_3,int param_4)
 
 {
   s16 sVar1;
@@ -18,12 +18,12 @@ s32 FUN_80041194(int param_1,s16 param_2,u8 param_3,int param_4)
   int iVar4;
   int iVar5;
   
-  iVar4 = FUN_8004766c();
+  iVar4 = Entity_PhysicsStep();
   if (iVar4 == 0) {
     return 0;
   }
   if (param_4 == 0) {
-    FUN_80048894(param_1);
+    Collision_Check2_2(param_1);
     if (_DAT_1f8001a4 == 0) {
       return 0;
     }
@@ -39,7 +39,7 @@ s32 FUN_80041194(int param_1,s16 param_2,u8 param_3,int param_4)
   else {
     iVar4 = 0;
     do {
-      iVar5 = FUN_80049250(param_1,0,(int)param_2);
+      iVar5 = Collision_Check1(param_1,0,(int)param_2);
       if (iVar5 != 0) break;
       iVar4 = iVar4 + 1;
       *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 0x20;
@@ -48,7 +48,7 @@ s32 FUN_80041194(int param_1,s16 param_2,u8 param_3,int param_4)
       return 0;
     }
   }
-  FUN_80049674(param_1);
+  Collision_CalcSlope(param_1);
   uVar2 = _g_CollisionNormalY;
   sVar1 = _g_CollisionNormalX;
   param_1->gte_flags = param_3 & 1;

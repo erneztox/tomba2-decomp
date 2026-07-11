@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80075a80(void)
+void Audio_SeqPlay2(void)
 
 {
   s8 cVar1;
@@ -26,7 +26,7 @@ void FUN_80075a80(void)
   int iVar12;
   s8 acStack_38 [24];
   
-  FUN_800998e4(acStack_38);
+  CD_SPU_Poll(acStack_38);
   pcVar10 = &DAT_800be238 + _DAT_800bed78 * 0xc;
   puVar9 = &DAT_800be239 + _DAT_800bed78 * 0xc;
   if ((int)_DAT_800bed78 < 0x18) {
@@ -73,7 +73,7 @@ LAB_80075bf8:
           bVar8 = puVar9->flags & 0xf;
           sVar7 = DAT_800a4f7e;
         }
-        FUN_80092660(iVar12 >> 0x10,(int)sVar7,uVar3,bVar8,uVar2,uVar4,uVar5,uVar6);
+        Audio_SeqControl(iVar12 >> 0x10,(int)sVar7,uVar3,bVar8,uVar2,uVar4,uVar5,uVar6);
         DAT_800be358 = DAT_800be358 & ~(1 << (uVar11 & 0x1f));
         *pcVar10 = *pcVar10 + -1;
       }
@@ -84,20 +84,20 @@ LAB_80075bf8:
     } while ((int)uVar11 < 0x18);
   }
   if (DAT_800be358 != 0) {
-    FUN_80098f90(0);
+    CD_SPU_Write2(0);
     DAT_800be358 = 0;
   }
-  FUN_80075824(&DAT_800be1f8);
-  FUN_80099490(&DAT_800be1f8);
+  Audio_SeqPlay(&DAT_800be1f8);
+  CD_SPU_Main(&DAT_800be1f8);
   DAT_800be1f8 = 0;
   if ((_DAT_800bed80 != -1) &&
-     (sVar7 = FUN_8008e0c0((int)*(s16 *)(&DAT_800be368 + _DAT_800bed80 * 8),0), sVar7 == 0)) {
+     (sVar7 = Audio_GetChannelByte((int)*(s16 *)(&DAT_800be368 + _DAT_800bed80 * 8),0), sVar7 == 0)) {
     if (DAT_800be22a == '\0') {
-      FUN_80074e48(0);
+      Audio_ReleaseChannel(0);
     }
     else {
       _DAT_800bed80 = 0;
-      FUN_80074bf8();
+      Audio_SetBank();
       DAT_800be22a = '\0';
     }
   }

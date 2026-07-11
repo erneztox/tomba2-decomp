@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_800286cc(int param_1)
+void Entity_AdvanceSpritePtr(int param_1)
 
 {
   s32 bVar1;
@@ -68,7 +68,7 @@ void FUN_800286cc(int param_1)
       _DAT_1f800090 = 0;
       _DAT_1f800088 = _g_GTE_Work84 * (param_1->scale_y >> 0x10) >> 8;
       _g_GTE_Work84 = _g_GTE_Work84 * (param_1->scale_y & 0xffff) >> 8;
-      FUN_8002847c(*(s32 *)(uVar3 * 4 + *(int *)(param_1 + 0x50)),0,0);
+      GTE_ProjectEntity2(*(s32 *)(uVar3 * 4 + *(int *)(param_1 + 0x50)),0,0);
     }
   }
   return;

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8001cf00(s32 param_1)
+void Sys_Call(s32 param_1)
 
 {
   s32 local_30->action_state;
@@ -15,6 +15,6 @@ void FUN_8001cf00(s32 param_1)
   
   local_30->type = 0x200;
   local_18 = param_1;
-  FUN_80099490(local_30);
+  CD_SPU_Main(local_30);
   return;
 }

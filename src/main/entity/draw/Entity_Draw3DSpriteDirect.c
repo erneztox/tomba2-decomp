@@ -5,13 +5,13 @@
 // Entity_Draw3DSpriteDirect
 
 
-// FUN_8003C788
+// Entity_Draw3DSpriteDirect
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8003c788(int param_1)
+void Entity_Draw3DSpriteDirect(int param_1)
 
 {
   u8 bVar1;
@@ -19,9 +19,9 @@ void FUN_8003c788(int param_1)
   s32 extraout_at;
   
   if (param_1->anim_data != 0) {
-    FUN_80051794(0x1f800000);
+    GTE_LoadIdentityMatrix(0x1f800000);
     bVar1 = param_1->sub_anim_id;
-    FUN_80084110(param_1 + 0x98,0x1f800000,&DAT_1f800020);
+    GTE_ComposeMatrix(param_1 + 0x98,0x1f800000,&DAT_1f800020);
     _g_GTE_WorkC0 = CONCAT22(*(s16 *)(param_1 + 0x32),param_1->pos_y);
     _g_GTE_WorkC4 = CONCAT22(g_GTE_WorkC4_2,param_1->pos_z);
     setCopControlWord(2,0,_g_GTE_WorkF8);
@@ -46,7 +46,7 @@ void FUN_8003c788(int param_1)
     setCopControlWord(2,0x2800,_DAT_1f800034);
     setCopControlWord(2,0x3000,_DAT_1f800038);
     setCopControlWord(2,0x3800,_DAT_1f80003c);
-    FUN_8003c8f4(param_1,bVar1 & 1);
+    Entity_SubmitGTEVertices(param_1,bVar1 & 1);
   }
   return;
 }

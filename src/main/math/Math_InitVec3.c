@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8007b2ac(s32 *param_1)
+void Math_InitVec3(s32 *param_1)
 
 {
   *param_1 = 0;

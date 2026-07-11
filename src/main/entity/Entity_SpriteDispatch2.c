@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-s32 FUN_800444ec(int param_1)
+s32 Entity_SpriteDispatch2(int param_1)
 
 {
   s16 sVar1;
@@ -35,7 +35,7 @@ s32 FUN_800444ec(int param_1)
         sVar1 = *(s16 *)(param_1 + 0x76);
         sVar2 = param_1->event_param;
       }
-      _g_AngleInput = FUN_80085690((int)_g_PlayerPosZ - (int)sVar1,(int)sVar2 - (int)_g_PlayerPosX);
+      _g_AngleInput = Math_Atan2((int)_g_PlayerPosZ - (int)sVar1,(int)sVar2 - (int)_g_PlayerPosX);
       _g_AngleInput = _g_AngleInput & 0xfff;
       g_CollisionType = 0x1e;
       DAT_800e7e86 = 0;
@@ -51,7 +51,7 @@ s32 FUN_800444ec(int param_1)
       sVar2 = *(s16 *)(param_1 + 0x76);
       sVar3 = param_1->event_param;
     }
-    uVar4 = FUN_80085690((int)sVar1 - (int)sVar2,(int)sVar3 - (int)iVar5->pos_y);
+    uVar4 = Math_Atan2((int)sVar1 - (int)sVar2,(int)sVar3 - (int)iVar5->pos_y);
     *(u16 *)(param_1 + 100) = uVar4 & 0xfff;
     param_1->sub_state = param_1->sub_state + '\x01';
   }

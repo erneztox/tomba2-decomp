@@ -6,7 +6,7 @@
 
 
 
-void FUN_8008b0c8(void)
+void CD_Reset(void)
 
 {
   u8 bVar1;

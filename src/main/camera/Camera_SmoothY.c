@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_8006da54(s32 param_1,int param_2)
+s32 Camera_SmoothY(s32 param_1,int param_2)
 
 {
   s32 bVar1;
@@ -20,7 +20,7 @@ s32 FUN_8006da54(s32 param_1,int param_2)
     _g_CameraY = *(int *)(param_2 + 4);
   }
   else {
-    iVar2 = FUN_8006ce74(iVar2 * 0x10000 >> 0x10,0x1600);
+    iVar2 = Math_Clamp(iVar2 * 0x10000 >> 0x10,0x1600);
     _g_CameraY = _g_CameraY + ((iVar2 << 0x10) >> 3);
   }
   return bVar1;

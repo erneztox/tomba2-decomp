@@ -6,7 +6,7 @@
 
 
 
-void FUN_80075cec(int param_1)
+void Audio_ClampVolume(int param_1)
 
 {
   if (param_1 < 0) {

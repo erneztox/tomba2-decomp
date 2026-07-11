@@ -6,7 +6,7 @@
 
 
 
-int FUN_80083f50(uint param_1)
+int Math_CosGTE(uint param_1)
 
 {
   int iVar1;

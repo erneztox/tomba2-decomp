@@ -9,14 +9,14 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8001d41c(s16 param_1,s16 param_2)
+void Engine_OverlayLoad(s16 param_1,s16 param_2)
 
 {
   if (param_1 == -1) {
-    FUN_8001cf2c();
+    Pad_InitReset();
   }
   else if (param_1 == -2) {
-    FUN_8001d2a8(0,_g_OverlayAddr2,_g_OverlayAddr2 + 1,0);
+    Sys_LoadOverlay(0,_g_OverlayAddr2,_g_OverlayAddr2 + 1,0);
   }
   else if (DAT_800bfe4e == '\x01') {
     DAT_800be0e4 = 2;

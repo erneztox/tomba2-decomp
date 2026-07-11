@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-s32 FUN_80054650(int param_1,int param_2)
+s32 Entity_Behavior_Init2(int param_1,int param_2)
 
 {
   int iVar1;
@@ -31,8 +31,8 @@ s32 FUN_80054650(int param_1,int param_2)
               ((int)*(s16 *)(param_1 + 0x32) - (int)*(s16 *)(iVar1 + 0x32));
     }
     sVar3 = (s16)(iVar1 / 2);
-    iVar1 = FUN_8004954c(param_1,uVar4,(int)sVar3);
-    if ((iVar1 != 0) || (iVar1 = FUN_8004954c(param_1,uVar4,(int)-sVar3), iVar1 != 0)) {
+    iVar1 = Entity_CollisionWrap2(param_1,uVar4,(int)sVar3);
+    if ((iVar1 != 0) || (iVar1 = Entity_CollisionWrap2(param_1,uVar4,(int)-sVar3), iVar1 != 0)) {
       bVar2 = *(u8 *)(param_1 + 0x149) & 1;
       if ((*(u8 *)(param_1 + 0x149) & 4) == 0) {
         bVar2 = param_1->direction;

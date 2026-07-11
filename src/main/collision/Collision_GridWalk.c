@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800490e4(int param_1)
+void Collision_GridWalk(int param_1)
 
 {
   u16 *puVar1;
@@ -49,7 +49,7 @@ void FUN_800490e4(int param_1)
         if ((int)((uint)_DAT_1f8001c0 - (iVar3 + -0x80) & 0xffff) <=
             ((iVar2 + 0x80) - (iVar3 + -0x80)) * 0x10000 >> 0x10) {
           param_1->collision_dir = (char)uVar6;
-          FUN_80048ecc(uVar6 & 0xff);
+          Collision_GridLookup(uVar6 & 0xff);
           return;
         }
       }
@@ -58,7 +58,7 @@ void FUN_800490e4(int param_1)
     } while (uVar6 <= *_g_CollisionGrid);
   }
   param_1->collision_dir = 1;
-  FUN_80048ecc();
+  Collision_GridLookup();
   _DAT_1f8001c0 = _DAT_1f8001b4;
   _DAT_1f8001bc = _DAT_1f8001b2;
   return;

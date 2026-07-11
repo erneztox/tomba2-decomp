@@ -6,9 +6,9 @@
 
 
 
-void FUN_8007ac6c(void)
+void Entity_ClearPool2(void)
 
 {
-  FUN_8009a420(&DAT_80100660,0,0x30);
+  Mem_Set(&DAT_80100660,0,0x30);
   return;
 }

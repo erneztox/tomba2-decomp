@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_80055844(void)
+s32 Game_CheckFlagSys(void)
 
 {
   return (_g_InputState & _g_InputMask) != 0;

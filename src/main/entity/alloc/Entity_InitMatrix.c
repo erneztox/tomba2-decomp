@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80051c8c(int param_1)
+void Entity_InitMatrix(int param_1)
 
 {
   int iVar1;
@@ -21,12 +21,12 @@ void FUN_80051c8c(int param_1)
   param_1->projected_x = 0;
   param_1->projected_y = 0;
   param_1->projected_z = 0;
-  FUN_80084d10((int)param_1->rot_x,iVar1);
-  FUN_80084eb0((int)param_1->rot_y,iVar1);
-  FUN_80085050((int)param_1->rot_z,iVar1);
+  Math_Atan2_3((int)param_1->rot_x,iVar1);
+  Math_Atan2_2((int)param_1->rot_y,iVar1);
+  GTE_RotateVectorY((int)param_1->rot_z,iVar1);
   param_1->projected_x = (int)param_1->pos_y;
   param_1->projected_y = (int)*(s16 *)(param_1 + 0x32);
   param_1->projected_z = (int)param_1->pos_z;
-  FUN_80051464();
+  Entity_DrawCheck2();
   return;
 }

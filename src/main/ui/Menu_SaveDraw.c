@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8003ad48(int param_1)
+void Menu_SaveDraw(int param_1)
 
 {
   s16 sVar1;
@@ -32,7 +32,7 @@ void FUN_8003ad48(int param_1)
       if (bVar2 != 3) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar2 != 0) {
@@ -40,16 +40,16 @@ void FUN_8003ad48(int param_1)
     }
     if (param_1->sub_type == '\x02') {
       uVar7 = 0x16;
-      cVar3 = FUN_80073750(PTR_s_Clear_800a3a8c);
+      cVar3 = UI_StringParse(PTR_s_Clear_800a3a8c);
       param_1->counter1 = cVar3 + '\x01';
     }
     else {
       uVar7 = 0xf;
-      bVar2 = FUN_80073750((&PTR_DAT_800a33cc)[param_1->draw_x * 3]);
+      bVar2 = UI_StringParse((&PTR_DAT_800a33cc)[param_1->draw_x * 3]);
       param_1->counter1 = bVar2;
       if (0x20 < bVar2) {
-        FUN_8009a730(s_cube_moji_over_flow_80014a54);
-        FUN_8009a730(&DAT_80014a6c,(&PTR_DAT_800a33cc)[param_1->draw_x * 3]);
+        Debug_Printf(s_cube_moji_over_flow_80014a54);
+        Debug_Printf(&DAT_80014a6c,(&PTR_DAT_800a33cc)[param_1->draw_x * 3]);
         param_1->state = STATE_FINISH;
         return;
       }
@@ -67,7 +67,7 @@ void FUN_8003ad48(int param_1)
     iVar5 = param_1;
     if (param_1->counter1 != '\0') {
       do {
-        iVar4 = FUN_8007aae8();
+        iVar4 = Entity_AllocFromFreeList();
         iVar5->sprite_ptr1 = iVar4;
         *(s16 *)(iVar4 + 6) = 0xffff;
         **(s16 **)(iVar5 + 0xc0) = 0;
@@ -76,7 +76,7 @@ void FUN_8003ad48(int param_1)
         *(s16 *)(iVar5->sprite_ptr1 + 8) = 0;
         *(s16 *)(iVar5->sprite_ptr1 + 10) = 0;
         *(s16 *)(iVar5->sprite_ptr1 + 0xc) = 0;
-        FUN_80051b04(iVar5->sprite_ptr1,1,uVar7);
+        Entity_SetSubEntityData(iVar5->sprite_ptr1,1,uVar7);
         *(u8 *)(iVar5->sprite_ptr1 + 0x3e) = 0;
         *(s8*)(iVar5->sprite_ptr1 + 0x3f) = (char)iVar6;
         iVar6 = iVar6 + 1;
@@ -100,24 +100,24 @@ void FUN_8003ad48(int param_1)
   }
   bVar2 = param_1->sub_type;
   if (bVar2 == 1) {
-    FUN_8003a9a0(param_1);
+    Menu_SaveLoad(param_1);
   }
   else if (bVar2 < 2) {
     if (bVar2 != 0) {
       param_1->flags = 1;
       goto LAB_8003aff0;
     }
-    FUN_8003a790(param_1);
+    Menu_SaveExec(param_1);
   }
   else {
     if (bVar2 != 2) {
       param_1->flags = 1;
       goto LAB_8003aff0;
     }
-    FUN_8003abe4(param_1);
+    Menu_Dialog(param_1);
   }
   param_1->flags = 1;
 LAB_8003aff0:
-  FUN_800517f8(param_1);
+  Entity_UpdateMatrix(param_1);
   return;
 }

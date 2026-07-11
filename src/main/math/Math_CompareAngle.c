@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80077768(int param_1,int param_2,int param_3)
+s32 Math_CompareAngle(int param_1,int param_2,int param_3)
 
 {
   uint uVar1;

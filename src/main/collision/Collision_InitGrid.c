@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80049968(uint param_1)
+void Collision_InitGrid(uint param_1)
 
 {
   int iVar1;

@@ -1,14 +1,14 @@
 /**
- * @brief MDEC command 2: calls FUN_8008dc00 with param (same as Cmd1)
+ * @brief MDEC command 2: calls Audio_ChannelInit2 with param (same as Cmd1)
  * @note Original: func_8008DD7C at 0x8008DD7C
  */
 // MDEC_Cmd2
 
 
 
-void FUN_8008dd7c(s16 param_1)
+void MDEC_Cmd2(s16 param_1)
 
 {
-  FUN_8008dc00((int)param_1);
+  Audio_ChannelInit2((int)param_1);
   return;
 }

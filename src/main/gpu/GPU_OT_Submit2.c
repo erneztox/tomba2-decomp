@@ -10,7 +10,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-uint * FUN_8008007c(uint *param_1,int param_2,int param_3)
+uint * GPU_OT_Submit2(uint *param_1,int param_2,int param_3)
 
 {
   s32 bVar1;

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80073cd8(u8 *param_1)
+void Entity_BehaviorMain2(u8 *param_1)
 
 {
   u8 bVar1;
@@ -27,13 +27,13 @@ void FUN_80073cd8(u8 *param_1)
       if (bVar1 != 3) {
         return;
       }
-      FUN_8007a624(param_1);
+      Entity_Dealloc(param_1);
       return;
     }
     if (bVar1 != 0) {
       return;
     }
-    iVar5 = FUN_80051b70(param_1,0xc,(int)*(s16 *)(&DAT_800a4c94 + (uint)g_GameState * 2));
+    iVar5 = Entity_InitSubEntity(param_1,0xc,(int)*(s16 *)(&DAT_800a4c94 + (uint)g_GameState * 2));
     if (iVar5 != 0) {
       return;
     }
@@ -101,7 +101,7 @@ void FUN_80073cd8(u8 *param_1)
       return;
     }
   }
-  FUN_8007778c(param_1);
+  GTE_ProjectSprite2(param_1);
   cVar2 = param_1->behavior_state;
   switch(cVar2) {
   case '\x01':
@@ -110,7 +110,7 @@ void FUN_80073cd8(u8 *param_1)
        ((sVar4 = 0x16, DAT_800bf907 != -1 && (sVar4 = 0x15, DAT_800bf8c3 == '\0')))) {
       sVar4 = *(s16 *)(&DAT_800a4ca8 + (uint)(u8)param_1->sub_type * 2);
     }
-    iVar5 = FUN_8007e110((int)sVar4,0);
+    iVar5 = Entity_InitSprite((int)sVar4,0);
     param_1->script_ptr = iVar5;
     if (iVar5 != 0) {
       cVar2 = param_1->behavior_state + '\x01';
@@ -141,23 +141,23 @@ LAB_8007409c:
       bVar1 = param_1->sub_type;
       param_1->behavior_state = param_1->behavior_state + '\x01';
       if (bVar1 == 0xd) {
-        iVar5 = FUN_80040b48(0x50);
+        iVar5 = Event_TriggerCollectible(0x50);
         if (iVar5 != 0) {
           param_1->behavior_state = 5;
         }
       }
       else if (bVar1 < 0xe) {
-        if ((bVar1 == 0xc) && (iVar5 = FUN_80040b48(0x4e), iVar5 != 0)) {
+        if ((bVar1 == 0xc) && (iVar5 = Event_TriggerCollectible(0x4e), iVar5 != 0)) {
           param_1->behavior_state = 5;
         }
       }
-      else if ((bVar1 == 0xe) && (iVar5 = FUN_80040b48(0x4f), iVar5 != 0)) {
+      else if ((bVar1 == 0xe) && (iVar5 = Event_TriggerCollectible(0x4f), iVar5 != 0)) {
         param_1->behavior_state = 5;
       }
     }
     break;
   case '\x06':
-    iVar5 = FUN_80042728();
+    iVar5 = Game_CheckIdle();
     if (iVar5 != 0) {
       param_1->behavior_state = 2;
     }
@@ -176,7 +176,7 @@ switchD_80073ef8_default:
     param_1->behavior_state = 0;
   }
   param_1->move_mode = 0;
-  FUN_800517f8(param_1);
+  Entity_UpdateMatrix(param_1);
   return;
 switchD_80073e20_caseD_11:
   if ((_DAT_800bfe56 & 0x10) == 0) {

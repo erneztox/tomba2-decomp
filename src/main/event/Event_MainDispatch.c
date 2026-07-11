@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-s32 FUN_80034ce0(s32 param_1,int param_2,int param_3)
+s32 Event_MainDispatch(s32 param_1,int param_2,int param_3)
 
 {
   u8 bVar1;
@@ -22,7 +22,7 @@ s32 FUN_80034ce0(s32 param_1,int param_2,int param_3)
     if (((g_EntityFlags & 8) == 0) && ((s16)(u16)g_ItemCount <= (s16)_g_FrameCounter))
     goto LAB_80034fe8;
     if (param_3 != 1) {
-      FUN_8004dc84(param_2,1);
+      UI_DialogSpawn(param_2,1);
       uVar3 = 0x66;
       goto LAB_80035054;
     }
@@ -32,17 +32,17 @@ s32 FUN_80034ce0(s32 param_1,int param_2,int param_3)
     goto LAB_80034fe8;
     if (param_3 != 1) {
       if ((_DAT_800bf89e & 0x200) == 0) {
-        FUN_8004dc84(param_2,1);
-        FUN_8004d650(param_2,1);
+        UI_DialogSpawn(param_2,1);
+        Inventory_RemoveItem3(param_2,1);
         return false;
       }
       DAT_800bf81d = 0x82;
-      FUN_8004d604(param_2,1);
+      Inventory_RemoveItem(param_2,1);
       _g_FrameCounter = (u16)g_ItemCount;
       _DAT_800e7ff0 = _g_FrameCounter;
-      FUN_80072114(0,0x10);
+      Entity_SpawnDropItem(0,0x10);
 LAB_80034d68:
-      FUN_8004ed94(0x44,0x41);
+      UI_DrawElement(0x44,0x41);
     }
     break;
   case 0x68:
@@ -54,10 +54,10 @@ LAB_80034d68:
       return true;
     }
     if (param_3 != 1) {
-      FUN_8004dc84(param_2,1);
+      UI_DialogSpawn(param_2,1);
       uVar3 = 0x68;
 LAB_80035054:
-      FUN_8004d650(uVar3,1);
+      Inventory_RemoveItem3(uVar3,1);
       return false;
     }
     break;
@@ -76,7 +76,7 @@ LAB_80034fe8:
 LAB_80034fcc:
     if (param_3 != 1) {
 LAB_80034fd4:
-      FUN_8004dc84(param_2,1);
+      UI_DialogSpawn(param_2,1);
       return false;
     }
     break;
@@ -90,7 +90,7 @@ LAB_80034fd4:
     if ((_DAT_800bf89e & 0x200) == 0) goto LAB_80034fe8;
     if (param_3 != 1) {
       DAT_800bf81d = 0x82;
-      FUN_8004ed0c(param_2,1);
+      UI_DrawItemIcon(param_2,1);
       goto LAB_80034d68;
     }
     break;
@@ -114,7 +114,7 @@ LAB_80034fd4:
       }
       if (DAT_800bfe55 != '\0') {
         DAT_800bfe55 = '\0';
-        FUN_8004d6f4(0x58);
+        Menu_ActionMode3(0x58);
       }
       goto LAB_80034fd4;
     }

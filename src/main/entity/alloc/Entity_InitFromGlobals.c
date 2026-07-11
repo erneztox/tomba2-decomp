@@ -8,7 +8,7 @@
 
 #include "tomba.h"
 #include "overlay.h"
-void FUN_800682c4(int param_1,int param_2)
+void Entity_InitFromGlobals(int param_1,int param_2)
 
 {
   u8 bVar1;
@@ -28,9 +28,9 @@ void FUN_800682c4(int param_1,int param_2)
   }
   *(s32 *)(param_1 + 0x70) = 0;
   *(s32 *)(param_1 + 0x74) = 0;
-  FUN_80067da8(param_1);
-  FUN_80067ef4(param_1);
-  if ((param_2 == 0) && (FUN_80067fe4(param_1), DAT_800bf9e5 == '\x06')) {
+  Texture_LoadUI(param_1);
+  Entity_SpriteMode2(param_1);
+  if ((param_2 == 0) && (Entity_SpawnCollectibleIf(param_1), DAT_800bf9e5 == '\x06')) {
     Overlay_8011740c(param_1,2);
   }
   return;

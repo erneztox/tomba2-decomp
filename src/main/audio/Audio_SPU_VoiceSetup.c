@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8007486c(uint param_1,s32 param_2,s8 param_3)
+void Audio_SPU_VoiceSetup(uint param_1,s32 param_2,s8 param_3)
 
 {
   int iVar1;
@@ -30,7 +30,7 @@ void FUN_8007486c(uint param_1,s32 param_2,s8 param_3)
   DAT_800be32d = 0;
   DAT_800be329 = 0xff;
   DAT_800be32f = DAT_800be32e;
-  FUN_80092660(0x14,(int)_DAT_800bed84,DAT_800be32a,DAT_800be32b,DAT_800be32c,0,uVar2 & 0xff,
+  Audio_SeqControl(0x14,(int)_DAT_800bed84,DAT_800be32a,DAT_800be32b,DAT_800be32c,0,uVar2 & 0xff,
                uVar2 & 0xff);
   DAT_800be358 = DAT_800be358 & 0xffefffff;
   return;

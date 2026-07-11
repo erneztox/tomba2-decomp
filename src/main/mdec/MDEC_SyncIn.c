@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_8009caec(void)
+s32 MDEC_SyncIn(void)
 
 {
   uint uVar1;
@@ -22,6 +22,6 @@ s32 FUN_8009caec(void)
     if (local_10 == -1) break;
     uVar1 = *g_CD_Status;
   }
-  FUN_8009cc2c(s_MDEC_in_sync_8001ca8c);
+  Sys_TimeoutError(s_MDEC_in_sync_8001ca8c);
   return 0xffffffff;
 }

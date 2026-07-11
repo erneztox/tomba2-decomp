@@ -6,7 +6,7 @@
 
 
 
-s32 FUN_80097194(int param_1,uint param_2,uint param_3)
+s32 CD_SPU_Cmd2(int param_1,uint param_2,uint param_3)
 
 {
   u16 uVar1;
@@ -63,10 +63,10 @@ s32 FUN_80097194(int param_1,uint param_2,uint param_3)
       uVar1 = *(u16 *)(g_SPU_Regs + 0x1aa);
     }
     if (DAT_800ac654 == 1) {
-      FUN_800976a0();
+      MC_Start();
     }
     else {
-      FUN_80097678();
+      MC_Init();
     }
     DAT_800ac65c = (param_3 >> 6) + (uint)((param_3 & 0x3f) != 0);
     DAT_800ac658 = param_2;

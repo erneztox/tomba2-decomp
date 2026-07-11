@@ -105,8 +105,8 @@ typedef struct Entity {
     /* 0x90 */ s16  move_speed;     // Movement speed parameter
     /* 0x92 */ s16  gte_offset_y;   // GTE input Y offset (added to 0x8A each frame)
     /* 0x94 */ s16  gte_offset_z;   // GTE input Z offset (added to 0x8C each frame)
-    /* 0x96 */ s16  _unk96;         // (7 accesses, set to 1 or computed value)
-    /* 0x98 */ s32  gte_result[4];   // GTE transform result matrix (3x3 rotation + translation)
+    /* 0x96 */ s16  anim_frame;      // Animation frame index (passed to anim loader)
+    /* 0x98 */ s32  gte_result[4];   // GTE transform result matrix
     /* 0xA8 */ u8   _padA8[4];
     /* 0xAC */ s32  projected_x;     // Projected screen X (after GTE transform + pos)
     /* 0xB0 */ s32  projected_y;     // Projected screen Y
@@ -118,7 +118,7 @@ typedef struct Entity {
     /* 0xBF */ u8   combat_flag;     // Combat flag (checked for SFX)
     /* 0xC0 */ s32  sprite_ptr1;     // Sprite data pointer (array for trails/effects)
     /* 0xC4 */ s32  sprite_ptr2;     // Sprite data pointer 2
-    /* 0xC8 */ s32  _unkC8;          // (between sprite ptrs and data ptr)
+    /* 0xC8 */ u8   _padC8[4];       // Dead padding (no accesses found)
     /* 0xCC */ s32  anim_ptr;        // Animation data pointer (3 accesses)
     /* 0xD0 */ s32  target_ptr;      // Target entity/reference pointer (+0x2C/+0x30 accessed)
     /* 0xD4 */ u8   _padD4[8];
@@ -141,7 +141,7 @@ typedef struct Entity {
     /* 0x156 */ s16 speed2;         // Secondary speed (54 accesses)
     /* 0x158 */ void* state_ptr;    // State-specific data pointer
     /* 0x15C */ s8   anim_param;     // Animation parameter (set from int)
-    /* 0x15D */ u8   _unk15D;        // (6 accesses)
+    /* 0x15D */ u8   physics_type;    // Physics/collision type (index into tables 0x800A47A4/B4)
     /* 0x15E */ s16  angle_limit;    // Angle limit/rotation speed (compared for wrapping)
     /* 0x160 */ u8   anim_select;    // Animation selection parameter (passed to FUN_80054b34)
     /* 0x164 */ u8  action_flag;    // Action trigger flag
@@ -342,7 +342,7 @@ typedef struct MDECContext {
     /* 0x3C */ u8*  bitstream;      // Bitstream data pointer
     /* 0x40 */ u8   _pad40[4];
     /* 0x44 */ u8   block_count;     // Number of decode blocks (copies to status)
-    /* 0x45 */ u8   _unk45;          // (still unclear, accessed in DMAProcess)
+    /* 0x45 */ u8   dma_count;       // DMA transfer counter (set to 1, incremented)
     /* 0x46 */ u8   state;          // State (0=idle, 1=running, 2=reset, 3=setIQ, 4=setSize)
     /* 0x47 */ u8   sub_cmd;        // Sub-command
     /* 0x48 */ u8   _pad48;

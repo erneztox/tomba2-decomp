@@ -21,9 +21,9 @@ void FUN_8006e0f0(int param_1)
     FUN_8006dcf4(param_1);
   }
   FUN_8006d02c(param_1);
-  if (*(char *)(param_1 + 0x77) == '\0') {
+  if (*(s8*)(param_1 + 0x77) == '\0') {
     FUN_8006e010(param_1);
   }
-  _DAT_1f800114 = _DAT_1f800114 - (*(int *)(param_1 + 0x28) + param_1->scale_y);
+  _g_GTE_Work114 = _g_GTE_Work114 - (*(int *)(param_1 + 0x28) + param_1->scale_y);
   return;
 }

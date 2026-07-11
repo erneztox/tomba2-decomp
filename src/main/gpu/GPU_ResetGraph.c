@@ -23,8 +23,8 @@ LAB_80080c58:
     FUN_80083b20((uint)PTR_PTR_800a5998 & 0xffffff);
     DAT_800a59a0 = FUN_80083214(param_1);
     DAT_800a59a1 = 1;
-    DAT_800a59a4 = *(undefined2 *)(&DAT_800a5a20 + (uint)DAT_800a59a0 * 4);
-    DAT_800a59a6 = *(undefined2 *)(&DAT_800a5a2c + (uint)DAT_800a59a0 * 4);
+    DAT_800a59a4 = *(s16 *)(&DAT_800a5a20 + (uint)DAT_800a59a0 * 4);
+    DAT_800a59a6 = *(s16 *)(&DAT_800a5a2c + (uint)DAT_800a59a0 * 4);
     FUN_80083af8(&DAT_800a59b0,0xffffffff,0x5c);
     FUN_80083af8(&DAT_800a5a0c,0xffffffff,0x14);
     uVar1 = (uint)DAT_800a59a0;

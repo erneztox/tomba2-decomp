@@ -7,14 +7,14 @@
 
 
 #include "tomba.h"
-void FUN_80081d78(int param_1,short *param_2)
+void FUN_80081d78(int param_1,s16 *param_2)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   
   param_1->sub_type = 2;
   uVar1 = FUN_80082370((int)*param_2,(int)param_2->flags);
-  *(undefined4 *)(param_1 + 4) = uVar1;
-  *(undefined4 *)(param_1 + 8) = 0;
+  *(s32 *)(param_1 + 4) = uVar1;
+  *(s32 *)(param_1 + 8) = 0;
   return;
 }

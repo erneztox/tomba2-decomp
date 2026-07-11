@@ -1,5 +1,5 @@
 /**
- * @brief UI dialog text handler: parses 48-byte buffer, draws text
+ * @brief UI dialog text handler: parses 48-u8 buffer, draws text
  * @note Original: func_8004F184 at 0x8004F184
  */
 // UI_DialogText
@@ -10,47 +10,47 @@
 void FUN_8004f184(int param_1,int *param_2)
 
 {
-  char cVar1;
-  ushort uVar2;
-  undefined1 *puVar3;
+  s8 cVar1;
+  u16 uVar2;
+  u8 *puVar3;
   int iVar4;
   int iVar5;
   int iVar6;
-  short *psVar7;
+  s16 *psVar7;
   int *piVar8;
-  undefined1 auStack_50 [48];
-  ushort local_20->state;
+  u8 auStack_50 [48];
+  u16 local_20->state;
   
-  psVar7 = (short *)(param_1 + *(short *)(param_1 + 8) * 0x8c + 0xc);
+  psVar7 = (s16 *)(param_1 + *(s16 *)(param_1 + 8) * 0x8c + 0xc);
   FUN_8004ee50(psVar7);
-  puVar3 = (undefined1 *)*param_2;
+  puVar3 = (u8 *)*param_2;
   local_20->type = 0;
-  if (puVar3 == (undefined1 *)0x0) {
+  if (puVar3 == (u8 *)0x0) {
     puVar3 = auStack_50;
     piVar8 = param_2 + 1;
-    *(undefined1 *)((int)psVar7 + 9) = 0;
+    *(u8 *)((int)psVar7 + 9) = 0;
     local_20->type = FUN_8004f058(puVar3,piVar8,2);
     if (local_20->type != 0) {
-      *(char *)((int)psVar7 + 9) = *(char *)((int)psVar7 + 9) + '\x01';
+      *(s8*)((int)psVar7 + 9) = *(s8*)((int)psVar7 + 9) + '\x01';
     }
     uVar2 = FUN_8004f058(puVar3,piVar8,1);
-    if ((short)local_20->type < (short)uVar2) {
+    if ((s16)local_20->type < (s16)uVar2) {
       local_20->type = uVar2;
     }
     if (uVar2 != 0) {
-      *(char *)((int)psVar7 + 9) = *(char *)((int)psVar7 + 9) + '\x01';
+      *(s8*)((int)psVar7 + 9) = *(s8*)((int)psVar7 + 9) + '\x01';
     }
     uVar2 = FUN_8004f058(puVar3,piVar8,0);
-    if ((short)local_20->type < (short)uVar2) {
+    if ((s16)local_20->type < (s16)uVar2) {
       local_20->type = uVar2;
     }
     if (uVar2 == 0) goto LAB_8004f2b8;
-    cVar1 = *(char *)((int)psVar7 + 9) + '\x01';
+    cVar1 = *(s8*)((int)psVar7 + 9) + '\x01';
   }
   else {
     cVar1 = FUN_8004efc0(puVar3,local_20);
   }
-  *(char *)((int)psVar7 + 9) = cVar1;
+  *(s8*)((int)psVar7 + 9) = cVar1;
 LAB_8004f2b8:
   FUN_8004ef54(psVar7 + 8,puVar3);
   iVar4 = param_2->flags;
@@ -70,13 +70,13 @@ LAB_8004f2b8:
   iVar4 = (uint)local_20->type << 0x10;
   if ((local_20->type & 1) != 0) {
     iVar4 = local_20->type + 1;
-    local_20->type = (ushort)iVar4;
+    local_20->type = (u16)iVar4;
     iVar4 = iVar4 * 0x10000;
   }
-  *psVar7 = 0xa0 - (short)((iVar4 >> 0x10) - (iVar4 >> 0x1f) >> 1);
+  *psVar7 = 0xa0 - (s16)((iVar4 >> 0x10) - (iVar4 >> 0x1f) >> 1);
   psVar7->flags = 0x8c;
   psVar7->kind = local_20->type;
   psVar7->sub_type = 8;
-  *(short *)(param_1 + 8) = *(short *)(param_1 + 8) + 1;
+  *(s16 *)(param_1 + 8) = *(s16 *)(param_1 + 8) + 1;
   return;
 }

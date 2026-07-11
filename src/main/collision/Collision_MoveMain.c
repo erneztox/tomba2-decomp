@@ -9,41 +9,41 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-bool FUN_80045cac(int param_1,ushort param_2,short param_3,short param_4)
+s32 FUN_80045cac(int param_1,u16 param_2,s16 param_3,s16 param_4)
 
 {
-  bool bVar1;
-  short sVar2;
-  short sVar3;
-  short sVar4;
-  ushort uVar5;
+  s32 bVar1;
+  s16 sVar2;
+  s16 sVar3;
+  s16 sVar4;
+  u16 uVar5;
   int iVar6;
   int iVar7;
   int iVar8;
-  ushort uVar9;
+  u16 uVar9;
   int iVar10;
   uint uVar11;
   int iVar12;
-  short unaff_s6;
-  ushort local_38;
+  s16 unaff_s6;
+  u16 local_38;
   int local_30;
   
   iVar10 = (int)param_4;
   iVar6 = FUN_80083e80(iVar10);
   local_38 = 0;
   local_30 = 10;
-  uVar11 = -iVar6 * (int)(short)param_2 >> 0xc;
+  uVar11 = -iVar6 * (int)(s16)param_2 >> 0xc;
   iVar6 = FUN_80083f50(iVar10);
   uVar5 = 0;
   iVar12 = 0;
-  sVar2 = (short)uVar11;
-  _DAT_1f8001be = *(short *)(param_1 + 0x32) + param_3;
-  iVar7 = iVar6 * (short)param_2 >> 0xc;
+  sVar2 = (s16)uVar11;
+  _DAT_1f8001be = *(s16 *)(param_1 + 0x32) + param_3;
+  iVar7 = iVar6 * (s16)param_2 >> 0xc;
   iVar6 = -iVar7;
   while( true ) {
     do {
-      _DAT_1f8001bc = param_1->pos_y + (short)iVar7;
-      _DAT_1f8001c0 = param_1->pos_z + (short)uVar11;
+      _DAT_1f8001bc = param_1->pos_y + (s16)iVar7;
+      _DAT_1f8001c0 = param_1->pos_z + (s16)uVar11;
       iVar8 = FUN_800498c8(param_1);
       if (iVar8 == 0) {
         return false;
@@ -70,25 +70,25 @@ bool FUN_80045cac(int param_1,ushort param_2,short param_3,short param_4)
           }
         }
       }
-      uVar5 = FUN_8004602c((int)unaff_s6,0,(int)(short)uVar5);
-      sVar4 = _DAT_1f8001c6;
-      if ((int)(short)uVar5 == 0) {
-        uVar11 = (uint)(ushort)-sVar2;
+      uVar5 = FUN_8004602c((int)unaff_s6,0,(int)(s16)uVar5);
+      sVar4 = _g_CollisionFlag2;
+      if ((int)(s16)uVar5 == 0) {
+        uVar11 = (uint)(u16)-sVar2;
         iVar7 = iVar6;
       }
       else {
         local_38 = uVar5 & 0x7fff;
         uVar9 = _DAT_1f8001bc & 0xffc0;
         param_1->pos_z = _DAT_1f8001c0 & 0xffc0;
-        sVar3 = _DAT_1f8001c2;
+        sVar3 = _g_CollisionFlag;
         param_1->pos_y = uVar9;
         param_1->pos_y = uVar9 + sVar3;
-        bVar1 = ((int)(short)uVar5 & 0x8000U) != 0;
+        bVar1 = ((int)(s16)uVar5 & 0x8000U) != 0;
         param_1->pos_z = param_1->pos_z + sVar4;
         if (bVar1) {
           local_30 = local_30 + -1;
         }
-        uVar5 = (ushort)bVar1;
+        uVar5 = (u16)bVar1;
         if (uVar5 == 0) {
           if (iVar7 << 0x10 < 1) {
             iVar7 = iVar7 + 1;
@@ -102,16 +102,16 @@ bool FUN_80045cac(int param_1,ushort param_2,short param_3,short param_4)
           else {
             uVar11 = uVar11 - 1;
           }
-          param_1->pos_y = param_1->pos_y - (short)iVar7;
-          param_1->pos_z = param_1->pos_z - (short)uVar11;
+          param_1->pos_y = param_1->pos_y - (s16)iVar7;
+          param_1->pos_z = param_1->pos_z - (s16)uVar11;
         }
         else {
-          param_1->pos_y = param_1->pos_y - (short)iVar7;
-          param_1->pos_z = param_1->pos_z - (short)uVar11;
+          param_1->pos_y = param_1->pos_y - (s16)iVar7;
+          param_1->pos_z = param_1->pos_z - (s16)uVar11;
           iVar7 = FUN_80083f50(iVar10);
-          iVar7 = iVar7 * (short)param_2 >> 0xc;
+          iVar7 = iVar7 * (s16)param_2 >> 0xc;
           iVar8 = FUN_80083e80(iVar10);
-          uVar11 = (uint)(-iVar8 * (int)(short)param_2) >> 0xc;
+          uVar11 = (uint)(-iVar8 * (int)(s16)param_2) >> 0xc;
           if (iVar7 << 0x10 < 1) {
             iVar7 = iVar7 + 1;
           }

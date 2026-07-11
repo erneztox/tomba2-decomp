@@ -7,13 +7,13 @@
 
 
 #include "tomba.h"
-undefined4 FUN_80054650(int param_1,int param_2)
+s32 FUN_80054650(int param_1,int param_2)
 
 {
   int iVar1;
-  byte bVar2;
-  short sVar3;
-  undefined4 uVar4;
+  u8 bVar2;
+  s16 sVar3;
+  s32 uVar4;
   
   DAT_1f800258 = '\0';
   param_1->input_flags = param_1->input_flags & 0xfb;
@@ -28,16 +28,16 @@ undefined4 FUN_80054650(int param_1,int param_2)
     else {
       iVar1 = param_1->parent;
       iVar1 = ((int)iVar1->bounds_max_y - (int)iVar1->bounds_min_y) -
-              ((int)*(short *)(param_1 + 0x32) - (int)*(short *)(iVar1 + 0x32));
+              ((int)*(s16 *)(param_1 + 0x32) - (int)*(s16 *)(iVar1 + 0x32));
     }
-    sVar3 = (short)(iVar1 / 2);
+    sVar3 = (s16)(iVar1 / 2);
     iVar1 = FUN_8004954c(param_1,uVar4,(int)sVar3);
     if ((iVar1 != 0) || (iVar1 = FUN_8004954c(param_1,uVar4,(int)-sVar3), iVar1 != 0)) {
-      bVar2 = *(byte *)(param_1 + 0x149) & 1;
-      if ((*(byte *)(param_1 + 0x149) & 4) == 0) {
+      bVar2 = *(u8 *)(param_1 + 0x149) & 1;
+      if ((*(u8 *)(param_1 + 0x149) & 4) == 0) {
         bVar2 = param_1->direction;
       }
-      *(undefined1 *)(param_1 + 0x60) = 1;
+      *(u8 *)(param_1 + 0x60) = 1;
       param_1->input_flags = bVar2 + 4;
       return 1;
     }

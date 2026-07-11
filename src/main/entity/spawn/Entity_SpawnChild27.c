@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8006a8c8(undefined4 param_1)
+void FUN_8006a8c8(s32 param_1)
 
 {
   int iVar1;

@@ -10,10 +10,10 @@
 void FUN_80099490(uint *param_1)
 
 {
-  bool bVar1;
-  ushort uVar2;
-  ushort uVar3;
-  ushort uVar4;
+  s32 bVar1;
+  u16 uVar2;
+  u16 uVar3;
+  u16 uVar4;
   uint uVar5;
   
   uVar3 = 0;
@@ -22,10 +22,10 @@ void FUN_80099490(uint *param_1)
   uVar4 = 0;
   if (bVar1) {
 LAB_800994bc:
-    switch((short)param_1->kind) {
+    switch((s16)param_1->kind) {
     default:
 switchD_800994e0_caseD_0:
-      uVar3 = (ushort)param_1->flags;
+      uVar3 = (u16)param_1->flags;
       uVar2 = 0;
       break;
     case 1:
@@ -51,11 +51,11 @@ switchD_800994e0_caseD_0:
     }
     if (uVar2 != 0) {
       uVar3 = 0x7f;
-      if (((short)param_1->flags < 0x80) && (uVar3 = 0, -1 < (short)param_1->flags)) {
-        uVar3 = (ushort)param_1->flags;
+      if (((s16)param_1->flags < 0x80) && (uVar3 = 0, -1 < (s16)param_1->flags)) {
+        uVar3 = (u16)param_1->flags;
       }
     }
-    *(ushort *)(DAT_800ac604 + 0x180) = uVar3 & 0x7fff | uVar2;
+    *(u16 *)(g_SPU_Regs + 0x180) = uVar3 & 0x7fff | uVar2;
   }
   else if ((uVar5 & 1) != 0) {
     if ((uVar5 & 4) != 0) goto LAB_800994bc;
@@ -63,7 +63,7 @@ switchD_800994e0_caseD_0:
   }
   if (bVar1) {
 LAB_8009957c:
-    switch(*(undefined2 *)((int)param_1 + 10)) {
+    switch(*(s16 *)((int)param_1 + 10)) {
     default:
       goto switchD_800995a0_caseD_0;
     case 1:
@@ -92,64 +92,64 @@ LAB_8009957c:
     if ((uVar5 & 2) == 0) goto LAB_80099624;
     if ((uVar5 & 8) != 0) goto LAB_8009957c;
 switchD_800995a0_caseD_0:
-    uVar4 = *(ushort *)((int)param_1 + 6);
+    uVar4 = *(u16 *)((int)param_1 + 6);
     uVar3 = 0;
   }
   if (uVar3 != 0) {
     uVar4 = 0x7f;
-    if ((*(short *)((int)param_1 + 6) < 0x80) && (uVar4 = 0, -1 < *(short *)((int)param_1 + 6))) {
-      uVar4 = *(ushort *)((int)param_1 + 6);
+    if ((*(s16 *)((int)param_1 + 6) < 0x80) && (uVar4 = 0, -1 < *(s16 *)((int)param_1 + 6))) {
+      uVar4 = *(u16 *)((int)param_1 + 6);
     }
   }
-  *(ushort *)(DAT_800ac604 + 0x182) = uVar4 & 0x7fff | uVar3;
+  *(u16 *)(g_SPU_Regs + 0x182) = uVar4 & 0x7fff | uVar3;
 LAB_80099624:
   if ((bVar1) || ((uVar5 & 0x40) != 0)) {
-    *(short *)(DAT_800ac604 + 0x1b0) = (short)param_1->state;
+    *(s16 *)(g_SPU_Regs + 0x1b0) = (s16)param_1->state;
   }
   if ((bVar1) || ((uVar5 & 0x80) != 0)) {
-    *(undefined2 *)(DAT_800ac604 + 0x1b2) = *(undefined2 *)((int)param_1 + 0x12);
+    *(s16 *)(g_SPU_Regs + 0x1b2) = *(s16 *)((int)param_1 + 0x12);
   }
   if ((bVar1) || ((uVar5 & 0x400) != 0)) {
-    *(short *)(DAT_800ac604 + 0x1b4) = (short)param_1->sub_action;
+    *(s16 *)(g_SPU_Regs + 0x1b4) = (s16)param_1->sub_action;
   }
   if ((bVar1) || ((uVar5 & 0x800) != 0)) {
-    *(undefined2 *)(DAT_800ac604 + 0x1b6) = *(undefined2 *)((int)param_1 + 0x1e);
+    *(s16 *)(g_SPU_Regs + 0x1b6) = *(s16 *)((int)param_1 + 0x1e);
   }
   if ((bVar1) || ((uVar5 & 0x100) != 0)) {
     if (param_1->behavior_state == 0) {
-      uVar3 = *(ushort *)(DAT_800ac604 + 0x1aa) & 0xfffb;
+      uVar3 = *(u16 *)(g_SPU_Regs + 0x1aa) & 0xfffb;
     }
     else {
-      uVar3 = *(ushort *)(DAT_800ac604 + 0x1aa) | 4;
+      uVar3 = *(u16 *)(g_SPU_Regs + 0x1aa) | 4;
     }
-    *(ushort *)(DAT_800ac604 + 0x1aa) = uVar3;
+    *(u16 *)(g_SPU_Regs + 0x1aa) = uVar3;
   }
   if ((bVar1) || ((uVar5 & 0x200) != 0)) {
     if (param_1->action_state == 0) {
-      uVar3 = *(ushort *)(DAT_800ac604 + 0x1aa) & 0xfffe;
+      uVar3 = *(u16 *)(g_SPU_Regs + 0x1aa) & 0xfffe;
     }
     else {
-      uVar3 = *(ushort *)(DAT_800ac604 + 0x1aa) | 1;
+      uVar3 = *(u16 *)(g_SPU_Regs + 0x1aa) | 1;
     }
-    *(ushort *)(DAT_800ac604 + 0x1aa) = uVar3;
+    *(u16 *)(g_SPU_Regs + 0x1aa) = uVar3;
   }
   if ((bVar1) || ((uVar5 & 0x1000) != 0)) {
     if (param_1->counter1 == 0) {
-      uVar3 = *(ushort *)(DAT_800ac604 + 0x1aa) & 0xfff7;
+      uVar3 = *(u16 *)(g_SPU_Regs + 0x1aa) & 0xfff7;
     }
     else {
-      uVar3 = *(ushort *)(DAT_800ac604 + 0x1aa) | 8;
+      uVar3 = *(u16 *)(g_SPU_Regs + 0x1aa) | 8;
     }
-    *(ushort *)(DAT_800ac604 + 0x1aa) = uVar3;
+    *(u16 *)(g_SPU_Regs + 0x1aa) = uVar3;
   }
   if ((bVar1) || ((uVar5 & 0x2000) != 0)) {
     if (param_1->counter2 == 0) {
-      uVar3 = *(ushort *)(DAT_800ac604 + 0x1aa) & 0xfffd;
+      uVar3 = *(u16 *)(g_SPU_Regs + 0x1aa) & 0xfffd;
     }
     else {
-      uVar3 = *(ushort *)(DAT_800ac604 + 0x1aa) | 2;
+      uVar3 = *(u16 *)(g_SPU_Regs + 0x1aa) | 2;
     }
-    *(ushort *)(DAT_800ac604 + 0x1aa) = uVar3;
+    *(u16 *)(g_SPU_Regs + 0x1aa) = uVar3;
   }
   return;
 }

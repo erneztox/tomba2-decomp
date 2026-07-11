@@ -10,7 +10,7 @@
 void FUN_80052694(int param_1)
 
 {
-  short sVar1;
+  s16 sVar1;
   
   sVar1 = param_1->anim_counter + -0x40;
   param_1->anim_counter = sVar1;
@@ -23,8 +23,8 @@ void FUN_80052694(int param_1)
     param_1->velocity_y = 0x1000;
   }
   param_1->pos_y_fixed = param_1->pos_y_fixed + param_1->velocity_y * 0x100;
-  if (*(short *)(param_1 + 0x66) < *(short *)(param_1 + 0x32)) {
-    *(undefined2 *)(param_1 + 0x32) = *(undefined2 *)(param_1 + 0x66);
+  if (*(s16 *)(param_1 + 0x66) < *(s16 *)(param_1 + 0x32)) {
+    *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x66);
   }
   return;
 }

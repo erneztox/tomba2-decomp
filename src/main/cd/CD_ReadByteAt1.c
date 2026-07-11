@@ -1,5 +1,5 @@
 /**
- * @brief CD byte read at offset+1: same as CD_ReadByte but writes to +1 instead of +4
+ * @brief CD u8 read at offset+1: same as CD_ReadByte but writes to +1 instead of +4
  * @note Original: func_800953B0 at 0x800953B0
  */
 // CD_ReadByteAt1
@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-uint FUN_800953b0(short param_1,short param_2,undefined1 param_3)
+uint FUN_800953b0(s16 param_1,s16 param_2,u8 param_3)
 
 {
   int iVar1;
@@ -18,8 +18,8 @@ uint FUN_800953b0(short param_1,short param_2,undefined1 param_3)
   uVar2 = 0xffffffff;
   if (iVar1 == 0) {
     iVar1 = param_2 * 0x10;
-    *(undefined1 *)(iVar1 + _DAT_80105cdc + 1) = param_3;
-    uVar2 = (uint)*(byte *)(iVar1 + _DAT_80105cdc + 1);
+    *(u8 *)(iVar1 + _DAT_80105cdc + 1) = param_3;
+    uVar2 = (uint)*(u8 *)(iVar1 + _DAT_80105cdc + 1);
   }
   return uVar2;
 }

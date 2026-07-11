@@ -7,19 +7,19 @@
 
 
 #include "tomba.h"
-undefined1 FUN_80087cb0(undefined4 param_1,int param_2,undefined4 param_3)
+u8 FUN_80087cb0(s32 param_1,int param_2,s32 param_3)
 
 {
-  undefined1 uVar1;
+  u8 uVar1;
   int iVar2;
-  undefined1 *puVar3;
+  u8 *puVar3;
   
   iVar2 = (*DAT_800abe4c)();
   if (param_2 < 0) {
-    return *(undefined1 *)(iVar2 + 0xe9);
+    return *(u8 *)(iVar2 + 0xe9);
   }
-  if (param_2 < (int)(uint)*(byte *)(iVar2 + 0xe9)) {
-    puVar3 = (undefined1 *)(*(int *)(iVar2 + 4) + param_2 * 5);
+  if (param_2 < (int)(uint)*(u8 *)(iVar2 + 0xe9)) {
+    puVar3 = (u8 *)(*(int *)(iVar2 + 4) + param_2 * 5);
     switch(param_3) {
     case 1:
       uVar1 = *puVar3;

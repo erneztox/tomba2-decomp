@@ -4,11 +4,11 @@
  */
 // Entity_SubmitSpriteToOT
 
-void Entity_SubmitSpriteToOT(undefined4 param_1,undefined4 param_2,uint param_3)
+void Entity_SubmitSpriteToOT(s32 param_1,s32 param_2,uint param_3)
 
 {
   if ((DAT_1f800234 == '\0') && ((param_3 & 1) == 0)) {
-    switch(DAT_800bf870) {
+    switch(g_GameState) {
     case 0:
       func_0x80146478();
       break;

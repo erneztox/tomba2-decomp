@@ -7,36 +7,36 @@
 
 
 #include "tomba.h"
-undefined4 FUN_80098330(uint *param_1)
+s32 FUN_80098330(uint *param_1)
 
 {
-  bool bVar1;
-  undefined1 uVar2;
-  bool bVar3;
-  bool bVar4;
-  ushort uVar5;
-  bool bVar6;
+  s32 bVar1;
+  u8 uVar2;
+  s32 bVar3;
+  s32 bVar4;
+  u16 uVar5;
+  s32 bVar6;
   int iVar7;
-  undefined4 uVar8;
-  undefined *puVar9;
+  s32 uVar8;
+  void *puVar9;
   uint *puVar10;
   uint uVar11;
   uint uVar12;
-  ushort uVar13;
+  u16 uVar13;
   uint local_78;
-  short local_74;
-  short local_72;
-  undefined2 local_66;
-  short local_60;
-  short local_5e;
-  short local_5c;
-  short local_5a;
-  short local_54;
-  short local_52;
-  short local_40;
-  short local_3e;
-  short local_3c;
-  short local_3a;
+  s16 local_74;
+  s16 local_72;
+  s16 local_66;
+  s16 local_60;
+  s16 local_5e;
+  s16 local_5c;
+  s16 local_5a;
+  s16 local_54;
+  s16 local_52;
+  s16 local_40;
+  s16 local_3e;
+  s16 local_3c;
+  s16 local_3a;
   uint local_30;
   
   uVar13 = 0;
@@ -66,7 +66,7 @@ undefined4 FUN_80098330(uint *param_1)
           uVar2 = *puVar9;
           puVar9 = puVar9 + 1;
           iVar7 = iVar7 + -1;
-          *(undefined1 *)puVar10 = uVar2;
+          *(u8 *)puVar10 = uVar2;
           puVar10 = (uint *)((int)puVar10 + 1);
         } while (iVar7 != -1);
         DAT_800ac5a8 = uVar11;
@@ -99,14 +99,14 @@ LAB_80098498:
           uVar2 = *puVar9;
           puVar9 = puVar9 + 1;
           iVar7 = iVar7 + -1;
-          *(undefined1 *)puVar10 = uVar2;
+          *(u8 *)puVar10 = uVar2;
           puVar10 = (uint *)((int)puVar10 + 1);
         } while (iVar7 != -1);
         local_78 = 0xc011c00;
       }
       DAT_800ac5b0 = param_1->sub_type;
-      local_60 = (short)((int)(DAT_800ac5b0 * 0x2000) / 0x7f) - local_74;
-      local_40 = (short)((int)(DAT_800ac5b0 * 0x1000) / 0x7f);
+      local_60 = (s16)((int)(DAT_800ac5b0 * 0x2000) / 0x7f) - local_74;
+      local_40 = (s16)((int)(DAT_800ac5b0 * 0x1000) / 0x7f);
       local_5e = local_40 - local_72;
       local_54 = local_52 + local_40;
       local_5c = local_5a + local_40;
@@ -128,35 +128,35 @@ LAB_80098498:
             uVar2 = *puVar9;
             puVar9 = puVar9 + 1;
             iVar7 = iVar7 + -1;
-            *(undefined1 *)puVar10 = uVar2;
+            *(u8 *)puVar10 = uVar2;
             puVar10 = (uint *)((int)puVar10 + 1);
           } while (iVar7 != -1);
           local_78 = 0x80;
         }
       }
       DAT_800ac5b4 = param_1->state;
-      local_66 = (undefined2)((int)(DAT_800ac5b4 * 0x8100) / 0x7f);
+      local_66 = (s16)((int)(DAT_800ac5b4 * 0x8100) / 0x7f);
     }
     if (bVar1) {
-      uVar5 = *(ushort *)(DAT_800ac604 + 0x1aa) >> 7;
+      uVar5 = *(u16 *)(g_SPU_Regs + 0x1aa) >> 7;
       uVar13 = uVar5 & 1;
       if ((uVar5 & 1) != 0) {
-        *(ushort *)(DAT_800ac604 + 0x1aa) = *(ushort *)(DAT_800ac604 + 0x1aa) & 0xff7f;
+        *(u16 *)(g_SPU_Regs + 0x1aa) = *(u16 *)(g_SPU_Regs + 0x1aa) & 0xff7f;
       }
-      iVar7 = DAT_800ac604;
-      *(undefined2 *)(DAT_800ac604 + 0x184) = 0;
-      *(undefined2 *)(iVar7 + 0x186) = 0;
+      iVar7 = g_SPU_Regs;
+      *(s16 *)(g_SPU_Regs + 0x184) = 0;
+      *(s16 *)(iVar7 + 0x186) = 0;
       DAT_800ac5ac = 0;
       DAT_800ac5ae = 0;
     }
     else {
       if ((bVar3) || ((uVar12 & 2) != 0)) {
-        *(short *)(DAT_800ac604 + 0x184) = (short)param_1->kind;
-        DAT_800ac5ac = (undefined2)param_1->kind;
+        *(s16 *)(g_SPU_Regs + 0x184) = (s16)param_1->kind;
+        DAT_800ac5ac = (s16)param_1->kind;
       }
       if ((bVar3) || ((uVar12 & 4) != 0)) {
-        *(undefined2 *)(DAT_800ac604 + 0x186) = *(undefined2 *)((int)param_1 + 10);
-        DAT_800ac5ae = *(undefined2 *)((int)param_1 + 10);
+        *(s16 *)(g_SPU_Regs + 0x186) = *(s16 *)((int)param_1 + 10);
+        DAT_800ac5ae = *(s16 *)((int)param_1 + 10);
       }
     }
     if (((bVar1) || (bVar4)) || (bVar6)) {
@@ -170,7 +170,7 @@ LAB_80098498:
       if (uVar13 == 0) {
         return 0;
       }
-      *(ushort *)(DAT_800ac604 + 0x1aa) = *(ushort *)(DAT_800ac604 + 0x1aa) | 0x80;
+      *(u16 *)(g_SPU_Regs + 0x1aa) = *(u16 *)(g_SPU_Regs + 0x1aa) | 0x80;
     }
     uVar8 = 0;
   }

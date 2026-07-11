@@ -9,8 +9,8 @@
 int FUN_800991b0(uint param_1)
 
 {
-  bool bVar1;
-  bool bVar2;
+  s32 bVar1;
+  s32 bVar2;
   int iVar3;
   uint uVar4;
   int iVar5;

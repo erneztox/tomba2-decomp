@@ -1,12 +1,12 @@
 /**
- * @brief CD command queue: appends byte to buffer at DAT_800acf08, flushes on full, special cmds 9/10
+ * @brief CD command queue: appends u8 to buffer at DAT_800acf08, flushes on full, special cmds 9/10
  * @note Original: func_8009AE60 at 0x8009AE60
  */
 // CD_QueueCmd
 
 
 
-void FUN_8009ae60(byte param_1)
+void FUN_8009ae60(u8 param_1)
 
 {
   if (param_1 == 9) {
@@ -26,7 +26,7 @@ void FUN_8009ae60(byte param_1)
       FUN_800808e0(1,0x80105ef8);
       DAT_800acf08 = 0;
     }
-    *(byte *)(DAT_800acf08 + -0x7fefa108) = param_1;
+    *(u8 *)(DAT_800acf08 + -0x7fefa108) = param_1;
     DAT_800acf08 = DAT_800acf08 + 1;
   }
   return;

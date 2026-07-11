@@ -10,7 +10,7 @@
 void Entity_CleanupSprite(int param_1)
 
 {
-  undefined4 *puVar1;
+  s32 *puVar1;
   uint uVar2;
   int iVar3;
   
@@ -19,10 +19,10 @@ void Entity_CleanupSprite(int param_1)
     iVar3 = uVar2 * 4 + param_1;
     do {
       uVar2 = uVar2 - 1;
-      _DAT_800ed098 = _DAT_800ed098 + 1;
-      puVar1 = (undefined4 *)(_DAT_800e7e74 + -4);
+      _g_EntityPoolCount = _g_EntityPoolCount + 1;
+      puVar1 = (s32 *)(_DAT_800e7e74 + -4);
       _DAT_800e7e74 = _DAT_800e7e74 + -4;
-      *puVar1 = *(undefined4 *)(iVar3 + 0xbc);
+      *puVar1 = *(s32 *)(iVar3 + 0xbc);
       iVar3 = iVar3 + -4;
     } while (uVar2 != 0);
   }

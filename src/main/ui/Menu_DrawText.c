@@ -14,11 +14,11 @@ void FUN_8007f73c(void)
 {
   int iVar1;
   int iVar2;
-  ushort *puVar3;
+  u16 *puVar3;
   int iVar4;
-  undefined local_38->state;
-  ushort local_28->state;
-  undefined1 auStack_20->counter1;
+  void local_38->state;
+  u16 local_28->state;
+  u8 auStack_20->counter1;
   
   FUN_80079374(0x30,0x30,0,PTR_s_Screen_adjust_800a2890,0);
   iVar4 = 0;
@@ -30,11 +30,11 @@ void FUN_8007f73c(void)
   local_38->flags = PTR_s_Horizontal_800a28d0;
   iVar1 = 0;
   do {
-    iVar2 = FUN_80079528(*(undefined4 *)((int)local_38 + iVar1));
+    iVar2 = FUN_80079528(*(s32 *)((int)local_38 + iVar1));
     puVar3 = local_28 + iVar4;
     iVar4 = iVar4 + 1;
-    FUN_80079374((iVar2 * -8 + 0x98) * 0x10000 >> 0x10,(int)(short)*puVar3,0,
-                 *(undefined4 *)((int)local_38 + iVar1),0);
+    FUN_80079374((iVar2 * -8 + 0x98) * 0x10000 >> 0x10,(int)(s16)*puVar3,0,
+                 *(s32 *)((int)local_38 + iVar1),0);
     FUN_8007fcc8((iVar2 * -8 + 0x90) * 0x10000 >> 0x10,(int)((*puVar3 - 4) * 0x10000) >> 0x10,
                  (iVar2 * 8 + 0x30) * 0x10000 >> 0x10,0x18,0);
     iVar1 = iVar4 * 4;

@@ -10,11 +10,11 @@
 void FUN_80052720(int param_1)
 
 {
-  short sVar1;
+  s16 sVar1;
   int iVar2;
   int iVar3;
   
-  sVar1 = FUN_800782b0(param_1 + 0x2c,(int)*(short *)(param_1 + 100),(int)param_1->target_angle
+  sVar1 = FUN_800782b0(param_1 + 0x2c,(int)*(s16 *)(param_1 + 100),(int)param_1->target_angle
                       );
   sVar1 = FUN_800776f8((int)sVar1,(int)param_1->rot_y,0x18);
   param_1->rot_y = sVar1;

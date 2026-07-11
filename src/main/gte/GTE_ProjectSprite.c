@@ -13,43 +13,43 @@
 void FUN_800281ec(int param_1)
 
 {
-  bool bVar1;
-  undefined4 in_zero;
-  undefined4 extraout_at;
-  undefined4 extraout_at_00;
-  undefined4 uVar2;
-  undefined4 *puVar3;
+  s32 bVar1;
+  s32 in_zero;
+  s32 extraout_at;
+  s32 extraout_at_00;
+  s32 uVar2;
+  s32 *puVar3;
   int iVar4;
-  undefined4 uVar5;
+  s32 uVar5;
   
   if (param_1->scale_y != 0) {
     if (param_1->sub_type == '!') {
-      setCopControlWord(2,0,_DAT_1f8000f8);
+      setCopControlWord(2,0,_g_GTE_WorkF8);
       setCopControlWord(2,0x800,_DAT_1f8000fc);
       setCopControlWord(2,0x1000,_DAT_1f800100);
       setCopControlWord(2,0x1800,_DAT_1f800104);
       setCopControlWord(2,0x2000,_DAT_1f800108);
-      setCopControlWord(2,0x2800,_DAT_1f80010c);
-      setCopControlWord(2,0x3000,_DAT_1f800110);
-      setCopControlWord(2,0x3800,_DAT_1f800114);
+      setCopControlWord(2,0x2800,_g_GTE_Work10C);
+      setCopControlWord(2,0x3000,_g_GTE_Work110);
+      setCopControlWord(2,0x3800,_g_GTE_Work114);
       uVar2 = 4;
       setCopControlWord(2,0xd800,4);
     }
     else {
-      setCopControlWord(2,0,_DAT_1f8000f8);
+      setCopControlWord(2,0,_g_GTE_WorkF8);
       setCopControlWord(2,0x800,_DAT_1f8000fc);
       setCopControlWord(2,0x1000,_DAT_1f800100);
       setCopControlWord(2,0x1800,_DAT_1f800104);
       setCopControlWord(2,0x2000,_DAT_1f800108);
-      setCopControlWord(2,0x2800,_DAT_1f80010c);
-      setCopControlWord(2,0x3000,_DAT_1f800110);
-      setCopControlWord(2,0x3800,_DAT_1f800114);
+      setCopControlWord(2,0x2800,_g_GTE_Work10C);
+      setCopControlWord(2,0x3000,_g_GTE_Work110);
+      setCopControlWord(2,0x3800,_g_GTE_Work114);
       uVar2 = 6;
       setCopControlWord(2,0xd800,6);
     }
     setCopControlWord(2,0xe000,0);
     iVar4 = 0;
-    puVar3 = (undefined4 *)(param_1 + 0x50);
+    puVar3 = (s32 *)(param_1 + 0x50);
     _DAT_1f800090 = 0;
     uVar5 = param_1->scale_y;
     FUN_80031780(param_1,&DAT_1f800090,uVar2);
@@ -58,32 +58,32 @@ void FUN_800281ec(int param_1)
       setCopReg(2,in_zero,*puVar3);
       setCopReg(2,uVar2,puVar3->flags);
       copFunction(2,0x180001);
-      _DAT_1f800080 = getCopControlWord(2,0xf800);
+      _g_GTE_Result[0] = getCopControlWord(2,0xf800);
       bVar1 = true;
-      if (-1 < _DAT_1f800080) {
-        _DAT_1f800080 = getCopReg(2,0x13);
-        if (0 < _DAT_1f800080) {
-          _DAT_1f800080 = (_DAT_1f800080 >> 2) + (int)*(short *)(param_1 + 0x32);
-          if (_DAT_1f800080 < 4) {
-            _DAT_1f800080 = 4;
+      if (-1 < _g_GTE_Result[0]) {
+        _g_GTE_Result[0] = getCopReg(2,0x13);
+        if (0 < _g_GTE_Result[0]) {
+          _g_GTE_Result[0] = (_g_GTE_Result[0] >> 2) + (int)*(s16 *)(param_1 + 0x32);
+          if (_g_GTE_Result[0] < 4) {
+            _g_GTE_Result[0] = 4;
           }
-          _DAT_1f800080 =
-               (_DAT_1f800080 >> (_DAT_1f800080 >> 10 & 0x1fU)) + (_DAT_1f800080 >> 10) * 0x200;
-          if (0x7fb < _DAT_1f800080 - 4U) {
-            _DAT_1f800080 = -1;
+          _g_GTE_Result[0] =
+               (_g_GTE_Result[0] >> (_g_GTE_Result[0] >> 10 & 0x1fU)) + (_g_GTE_Result[0] >> 10) * 0x200;
+          if (0x7fb < _g_GTE_Result[0] - 4U) {
+            _g_GTE_Result[0] = -1;
           }
           bVar1 = true;
-          if (-1 < _DAT_1f800080) {
-            _DAT_1f80008c = getCopReg(2,0xe);
-            _DAT_1f800084 = getCopReg(2,0x18);
+          if (-1 < _g_GTE_Result[0]) {
+            _g_GTE_Work8C = getCopReg(2,0xe);
+            _g_GTE_Work84 = getCopReg(2,0x18);
             bVar1 = false;
           }
         }
       }
       if (!bVar1) {
-        _DAT_1f800084 = _DAT_1f800084 * *(short *)((int)puVar3 + 6) >> 8;
-        _DAT_1f800088 = _DAT_1f800084;
-        FUN_80027a4c(uVar5,*(undefined4 *)(param_1 + 0x44));
+        _g_GTE_Work84 = _g_GTE_Work84 * *(s16 *)((int)puVar3 + 6) >> 8;
+        _DAT_1f800088 = _g_GTE_Work84;
+        FUN_80027a4c(uVar5,*(s32 *)(param_1 + 0x44));
         uVar2 = extraout_at_00;
       }
       iVar4 = iVar4 + 1;

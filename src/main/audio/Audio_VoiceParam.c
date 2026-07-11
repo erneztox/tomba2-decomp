@@ -1,5 +1,5 @@
 /**
- * @brief Audio voice param: stores byte params in voice struct
+ * @brief Audio voice param: stores u8 params in voice struct
  * @note Original: func_8008F7A0 at 0x8008F7A0
  */
 // Audio_VoiceParam
@@ -7,21 +7,21 @@
 
 
 #include "tomba.h"
-void FUN_8008f7a0(short param_1,short param_2,short param_3,undefined4 param_4)
+void FUN_8008f7a0(s16 param_1,s16 param_2,s16 param_3,s32 param_4)
 
 {
-  byte bVar1;
-  undefined4 local_resc;
-  byte in_stack_00000030;
-  undefined1 auStack_30->counter1;
-  ushort local_28;
-  undefined2 local_22;
+  u8 bVar1;
+  s32 local_resc;
+  u8 in_stack_00000030;
+  u8 auStack_30->counter1;
+  u16 local_28;
+  s16 local_22;
   
   bVar1 = in_stack_00000030;
   local_resc = param_4;
   FUN_80092420((int)param_1,(int)param_2,(int)param_3,&local_resc);
   local_22 = 1;
-  local_28 = (ushort)bVar1;
+  local_28 = (u16)bVar1;
   FUN_8008f2bc(auStack_30,&stack0x0000001c,&stack0x0000001e);
   FUN_80092c30((int)param_1,(int)param_2,(int)param_3,&local_resc);
   return;

@@ -9,27 +9,27 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80047778(int param_1)
+s32 FUN_80047778(int param_1)
 
 {
-  bool bVar1;
-  ushort uVar2;
-  undefined4 uVar3;
+  s32 bVar1;
+  u16 uVar2;
+  s32 uVar3;
   
-  uVar2 = (ushort)param_1->collision_dir;
+  uVar2 = (u16)param_1->collision_dir;
   uVar3 = 1;
-  if ((uVar2 == 0) || ((*_DAT_1f8001c8 & 0xff) < uVar2)) {
+  if ((uVar2 == 0) || ((*_g_CollisionGrid & 0xff) < uVar2)) {
     FUN_800490e4(param_1);
   }
   else {
-    if (uVar2 != DAT_1f8001fe) {
+    if (uVar2 != g_CollisionZone) {
       FUN_80048ecc(param_1->collision_dir);
     }
     if (_DAT_1f8001ae < _DAT_1f8001b0) {
-      bVar1 = _DAT_1f8001b0 < (ushort)(_DAT_1f8001c0 - _DAT_1f8001ac);
+      bVar1 = _DAT_1f8001b0 < (u16)(_DAT_1f8001c0 - _DAT_1f8001ac);
     }
     else {
-      bVar1 = _DAT_1f8001ae < (ushort)(_DAT_1f8001bc - _DAT_1f8001aa);
+      bVar1 = _DAT_1f8001ae < (u16)(_DAT_1f8001bc - _DAT_1f8001aa);
     }
     if (bVar1) {
       uVar3 = FUN_80048fc4(param_1,0);
@@ -44,7 +44,7 @@ undefined4 FUN_80047778(int param_1)
     }
     _DAT_1f8001bc =
          _DAT_1f8001b2 +
-         (short)((int)(((int)_DAT_1f8001c0 - (uint)_DAT_1f8001b4) * (int)_DAT_1f8001ba) >> 0xe);
+         (s16)((int)(((int)_DAT_1f8001c0 - (uint)_DAT_1f8001b4) * (int)_DAT_1f8001ba) >> 0xe);
   }
   else {
     if ((int)_DAT_1f8001bc < (int)_DAT_1f8001aa) {
@@ -55,7 +55,7 @@ undefined4 FUN_80047778(int param_1)
     }
     _DAT_1f8001c0 =
          _DAT_1f8001b4 +
-         (short)((int)(((int)_DAT_1f8001bc - (uint)_DAT_1f8001b2) * (int)_DAT_1f8001ba) >> 0xe);
+         (s16)((int)(((int)_DAT_1f8001bc - (uint)_DAT_1f8001b2) * (int)_DAT_1f8001ba) >> 0xe);
   }
   return uVar3;
 }

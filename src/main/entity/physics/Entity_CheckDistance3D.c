@@ -7,17 +7,17 @@
 
 
 #include "tomba.h"
-bool FUN_80023794(int param_1,int param_2,int param_3)
+s32 FUN_80023794(int param_1,int param_2,int param_3)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
   int iVar3;
   uint uVar4;
   
-  iVar2 = (int)(((uint)param_1->pos_y - (uint)*(ushort *)(param_2 + 4)) * 0x10000) >>
+  iVar2 = (int)(((uint)param_1->pos_y - (uint)*(u16 *)(param_2 + 4)) * 0x10000) >>
           0x10;
-  iVar3 = (int)(((uint)param_1->pos_z - (uint)*(ushort *)(param_2 + 8)) * 0x10000) >>
+  iVar3 = (int)(((uint)param_1->pos_z - (uint)*(u16 *)(param_2 + 8)) * 0x10000) >>
           0x10;
   uVar4 = FUN_80084080(iVar2 * iVar2 + iVar3 * iVar3);
   if ((int)((int)param_1->bounds_min_x + (uint)param_3->state) < (int)(uVar4 & 0xffff))
@@ -25,7 +25,7 @@ bool FUN_80023794(int param_1,int param_2,int param_3)
     bVar1 = false;
   }
   else {
-    bVar1 = (int)(((uint)*(ushort *)(param_1 + 0x32) - (uint)*(ushort *)(param_2 + 6)) +
+    bVar1 = (int)(((uint)*(u16 *)(param_1 + 0x32) - (uint)*(u16 *)(param_2 + 6)) +
                   (uint)param_1->bounds_min_y + (uint)param_3->behavior_state & 0xffff) <=
             (int)((int)param_1->bounds_max_y + (uint)param_3->behavior_state * 2);
   }

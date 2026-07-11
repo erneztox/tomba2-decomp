@@ -9,7 +9,7 @@
 void FUN_80075d58(void)
 
 {
-  DAT_800be220 = (undefined2)(((uint)DAT_800fb164 * 0x7fff) / 9);
+  DAT_800be220 = (s16)(((uint)DAT_800fb164 * 0x7fff) / 9);
   if (DAT_800fb163 == '\0') {
     DAT_800bed7c = 0x80;
     DAT_800bed7d = 0;

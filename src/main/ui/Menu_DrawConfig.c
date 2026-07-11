@@ -10,12 +10,12 @@
 void FUN_8007f104(void)
 
 {
-  short sVar1;
+  s16 sVar1;
   uint uVar2;
   int iVar3;
-  undefined local_48->state;
-  short local_38->counter1;
-  ushort local_28->counter1;
+  void local_48->state;
+  s16 local_38->counter1;
+  u16 local_28->counter1;
   
   FUN_80078988(0x26,200,0,&DAT_800172ac,0);
   uVar2 = 0;
@@ -30,7 +30,7 @@ void FUN_8007f104(void)
   do {
     *(int *)(local_28 + uVar2 * 2) = iVar3;
     iVar3 = iVar3 + 0x18;
-    FUN_80079374((int)local_38[uVar2 * 2],(int)(short)local_28[uVar2 * 2],
+    FUN_80079374((int)local_38[uVar2 * 2],(int)(s16)local_28[uVar2 * 2],
                  (uint)(DAT_800bf808 == uVar2) << 3,local_48[uVar2],0);
     uVar2 = uVar2 + 1;
   } while ((int)uVar2 < 4);

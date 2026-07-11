@@ -8,12 +8,12 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-uint FUN_80035fac(undefined4 param_1,int param_2,int param_3)
+uint FUN_80035fac(s32 param_1,int param_2,int param_3)
 
 {
   uint uVar1;
   int iVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   
   if ((&DAT_800a2be8)[param_2 * 0xc] == '\0') {
     uVar1 = FUN_800349a4();
@@ -50,9 +50,9 @@ LAB_800361d0:
   case 0x5d:
   case 0x5e:
     if (param_3 == 1) {
-      return DAT_800bf87e < DAT_800bf87f ^ 1;
+      return g_ItemMax < g_ItemFlag ^ 1;
     }
-    if (DAT_800bf87f <= DAT_800bf87e) {
+    if (g_ItemFlag <= g_ItemMax) {
       return 4;
     }
     FUN_8004d650(param_2,1);
@@ -104,7 +104,7 @@ switchD_80036030_caseD_69:
   case 0x72:
   case 0x73:
   case 0x74:
-    if ((((DAT_800bf881 & 4) != 0) || ((_DAT_800bf89e & 0x200) != 0)) || (DAT_800bf873 != '\0')) {
+    if ((((g_EntityFlags & 4) != 0) || ((_DAT_800bf89e & 0x200) != 0)) || (g_SubState != '\0')) {
       if (param_3 == 1) {
         return 1;
       }

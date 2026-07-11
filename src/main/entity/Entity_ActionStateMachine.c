@@ -32,7 +32,7 @@ LAB_80067d10:
     FUN_800678e8(param_1);
     break;
   case 6:
-    if (DAT_800bf870 == '\x05') {
+    if (g_GameState == '\x05') {
       func_0x801105fc(param_1);
     }
     else {

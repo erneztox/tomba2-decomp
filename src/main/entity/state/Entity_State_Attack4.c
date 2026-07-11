@@ -12,8 +12,8 @@
 void FUN_8006762c(int param_1)
 
 {
-  char cVar1;
-  short sVar2;
+  s8 cVar1;
+  s16 sVar2;
   
   switch(param_1->action_state) {
   case 0:
@@ -24,33 +24,33 @@ void FUN_8006762c(int param_1)
     FUN_80058304(param_1,2);
     FUN_80053d90(param_1);
     FUN_80074590(0x24,0,0);
-    DAT_800bf80d = 1;
+    g_TimerFlag = 1;
     param_1->action_state = 6;
     goto switchD_80067664_default;
   case 1:
   case 6:
     _DAT_1f8001a4 = _DAT_1f80019e;
-    if (DAT_800bf870 == '\0') {
+    if (g_GameState == '\0') {
       func_0x8010caec(param_1);
     }
-    else if (DAT_800bf870 == '\x06') {
+    else if (g_GameState == '\x06') {
       if ((_DAT_800bfe56 & 0x40) == 0) {
         FUN_80074590(0x8b,0,0);
       }
       func_0x801147cc(param_1);
     }
-    else if (DAT_800bf870 == '\b') {
+    else if (g_GameState == '\b') {
       func_0x8011370c(param_1);
     }
-    else if (DAT_800bf870 == '\r') {
+    else if (g_GameState == '\r') {
       func_0x8010acc0(param_1);
     }
-    else if (DAT_800bf870 == '\x0e') {
+    else if (g_GameState == '\x0e') {
       func_0x8010b4f4(param_1);
     }
     param_1->state_flag145 = 0;
     param_1->state_flag146 = 0;
-    *(undefined1 *)(param_1 + 0x61) = 0;
+    *(u8 *)(param_1 + 0x61) = 0;
     FUN_80054198(param_1);
     FUN_80054d14(param_1,0x71,0);
     FUN_800551c4(param_1);
@@ -65,10 +65,10 @@ void FUN_8006762c(int param_1)
     sVar2 = param_1->timer1 + -1;
     param_1->timer1 = sVar2;
     if (sVar2 == -1) {
-      DAT_800e806c = 8;
-      _DAT_800e8042 = _DAT_1f800160;
-      _DAT_800e8046 = _DAT_1f800162;
-      _DAT_800e804a = _DAT_1f800164;
+      g_CameraEntity = 8;
+      _DAT_800e8042 = _g_PlayerPosX;
+      _DAT_800e8046 = _g_PlayerPosY;
+      _DAT_800e804a = _g_PlayerPosZ;
       cVar1 = param_1->action_state;
       param_1->timer1 = 0x14;
 code_r0x800678c0:
@@ -81,7 +81,7 @@ code_r0x800678c0:
     param_1->timer1 = sVar2 + -1;
     if (sVar2 == 1) {
       FUN_800662d8(param_1,param_1->action_state == '\b');
-      DAT_800bf80d = 2;
+      g_TimerFlag = 2;
       DAT_800bf80f = '\x02';
       param_1->action_state = param_1->action_state + '\x01';
       FUN_8005245c();
@@ -90,7 +90,7 @@ code_r0x800678c0:
   case 4:
   case 9:
     if (DAT_800bf80f == '\0') {
-      DAT_800bf80d = 3;
+      g_TimerFlag = 3;
       cVar1 = param_1->action_state;
       goto code_r0x800678c0;
     }

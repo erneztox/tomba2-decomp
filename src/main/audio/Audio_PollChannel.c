@@ -9,13 +9,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-byte FUN_80095c40(int param_1,int param_2)
+u8 FUN_80095c40(int param_1,int param_2)
 
 {
   int iVar1;
-  byte bVar2;
-  byte bVar3;
-  byte bVar4;
+  u8 bVar2;
+  u8 bVar3;
+  u8 bVar4;
   
   bVar4 = 0;
   bVar2 = 0;
@@ -28,8 +28,8 @@ byte FUN_80095c40(int param_1,int param_2)
       if (((int)(uint)iVar1->action_state <= (int)DAT_80105cfa) &&
          ((int)DAT_80105cfa <= (int)(uint)iVar1->sub_action)) {
         bVar4 = bVar3 + 1;
-        *(undefined1 *)(param_2 + (uint)bVar3) = *(undefined1 *)(iVar1 + 0x16);
-        *(byte *)(param_1 + (uint)bVar3) = bVar2;
+        *(u8 *)(param_2 + (uint)bVar3) = *(u8 *)(iVar1 + 0x16);
+        *(u8 *)(param_1 + (uint)bVar3) = bVar2;
       }
       bVar2 = bVar2 + 1;
       iVar1 = (uint)bVar2 << 0x18;

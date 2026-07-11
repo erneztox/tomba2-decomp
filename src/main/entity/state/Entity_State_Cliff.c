@@ -10,8 +10,8 @@
 void FUN_80062a30(int param_1,int param_2,uint param_3)
 
 {
-  undefined2 uVar1;
-  short sVar2;
+  s16 uVar1;
+  s16 sVar2;
   uint uVar3;
   int iVar4;
   int iVar5;
@@ -23,7 +23,7 @@ void FUN_80062a30(int param_1,int param_2,uint param_3)
     }
     param_1->velocity_y = 0;
     param_1->angle_offset = 0;
-    *(undefined1 *)(param_1 + 0x148) = 0;
+    *(u8 *)(param_1 + 0x148) = 0;
     param_2->collision_state = 0;
     param_1->action_flag = 0;
     param_1->state_ptr = 0;
@@ -52,7 +52,7 @@ LAB_80062d68:
   }
   if ((param_3 & 1) != 0) {
     iVar4 = param_1->speed2 + uVar3;
-    param_1->speed2 = (short)iVar4;
+    param_1->speed2 = (s16)iVar4;
     if (((param_3 & 0x80) == 0) &&
        ((param_2->kind != '\x17' || (param_2->sub_anim_id == '\x02')))) {
       if ((int)param_2->bounds_max_y - (int)param_2->bounds_min_y <
@@ -69,7 +69,7 @@ LAB_80062d68:
           (int)param_1->target_angle < iVar4 * 0x10000 >> 0x10) {
         param_1->velocity_y = 0;
         param_1->angle_offset = 0;
-        *(undefined1 *)(param_1 + 0x148) = 0;
+        *(u8 *)(param_1 + 0x148) = 0;
         param_2->collision_state = 0;
         param_1->action_flag = 0;
         param_1->state_ptr = 0;
@@ -85,7 +85,7 @@ LAB_80062d68:
         if ((param_1->entity_flags & 0x60) == 0) {
           return;
         }
-        param_1->speed2 = sVar2 + (short)((param_2->velocity_y & 0x1f00) >> 5);
+        param_1->speed2 = sVar2 + (s16)((param_2->velocity_y & 0x1f00) >> 5);
         return;
       }
     }
@@ -109,7 +109,7 @@ LAB_80062d68:
     }
     param_1->velocity_y = 0;
     param_1->angle_offset = 0;
-    *(undefined1 *)(param_1 + 0x148) = 0;
+    *(u8 *)(param_1 + 0x148) = 0;
     param_1->behavior_state = 0;
     goto LAB_80062d68;
   }
@@ -119,14 +119,14 @@ LAB_80062d68:
     if ((param_3 & 2) != 0) {
       param_1->speed2 =
            (param_1->speed2 + -0x30) -
-           (short)(char)((ushort)param_2->velocity_y >> 8);
+           (s16)(char)((u16)param_2->velocity_y >> 8);
       goto LAB_80062b98;
     }
     sVar2 = param_1->speed2 +
-            ((short)uVar3 - (short)(char)((ushort)param_2->velocity_y >> 8));
+            ((s16)uVar3 - (s16)(char)((u16)param_2->velocity_y >> 8));
   }
   else {
-    sVar2 = param_1->speed2 + (short)uVar3;
+    sVar2 = param_1->speed2 + (s16)uVar3;
   }
   param_1->speed2 = sVar2;
 LAB_80062b98:

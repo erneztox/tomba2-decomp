@@ -12,9 +12,9 @@
 void FUN_80032f98(int param_1)
 
 {
-  byte bVar1;
-  undefined2 uVar2;
-  undefined *puVar3;
+  u8 bVar1;
+  s16 uVar2;
+  void *puVar3;
   
   bVar1 = param_1->state;
   if (bVar1 != 1) {
@@ -33,19 +33,19 @@ void FUN_80032f98(int param_1)
     else {
       puVar3 = &DAT_8009e730;
     }
-    *(undefined **)(param_1 + 0x38) = puVar3;
-    *(undefined **)(param_1 + 0x34) = puVar3;
+    *(void **)(param_1 + 0x38) = puVar3;
+    *(void **)(param_1 + 0x34) = puVar3;
     param_1->state = 1;
     param_1->action_state = 0x10;
-    *(undefined2 *)(param_1 + 0x32) = 0xff6a;
+    *(s16 *)(param_1 + 0x32) = 0xff6a;
   }
   param_1->scale_y = param_1->anim_data;
   if (param_1->anim_data != 0) {
-    param_1->pos_x = _DAT_800e7eae;
-    param_1->pos_y = _DAT_800e7eb2;
-    uVar2 = _DAT_800e7eb6;
+    param_1->pos_x = _g_CameraTargetX;
+    param_1->pos_y = _g_CameraTargetY;
+    uVar2 = _g_CameraTargetZ;
     param_1->flags = 1;
-    *(undefined2 *)(param_1 + 0x30) = uVar2;
+    *(s16 *)(param_1 + 0x30) = uVar2;
     return;
   }
   param_1->state = 2;

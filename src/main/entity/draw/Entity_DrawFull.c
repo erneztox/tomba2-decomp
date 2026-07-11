@@ -9,42 +9,42 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8003791c(int param_1,undefined1 param_2)
+void FUN_8003791c(int param_1,u8 param_2)
 
 {
-  short *psVar1;
-  short sVar2;
+  s16 *psVar1;
+  s16 sVar2;
   uint uVar3;
   int iVar4;
-  undefined4 uVar5;
-  undefined *puVar6;
-  undefined2 *puVar7;
-  undefined **ppuVar8;
+  s32 uVar5;
+  void *puVar6;
+  s16 *puVar7;
+  void **ppuVar8;
   int iVar9;
   int iVar10;
-  undefined1 *puVar11;
-  undefined1 local_38;
-  undefined1 local_37;
-  undefined2 local_36;
-  undefined2 local_30;
-  short local_2e;
-  undefined4 local_2c;
+  u8 *puVar11;
+  u8 local_38;
+  u8 local_37;
+  s16 local_36;
+  s16 local_30;
+  s16 local_2e;
+  s32 local_2c;
   
   local_38 = 0;
   local_36 = 0;
   local_30 = 0x58;
   local_2c = 0;
-  local_2e = (ushort)*(byte *)(param_1 + 0x2d) * 0x14 + 0x49;
+  local_2e = (u16)*(u8 *)(param_1 + 0x2d) * 0x14 + 0x49;
   puVar11 = &DAT_800d1e68;
   local_37 = param_2;
-  FUN_8007e1b8(&local_30,PTR_DAT_800174c8,*(undefined4 *)(param_1 + 4),&local_38);
+  FUN_8007e1b8(&local_30,PTR_DAT_800174c8,*(s32 *)(param_1 + 4),&local_38);
   puVar7 = &DAT_800a2698;
   do {
     if (puVar7->behavior_state == 0) {
       local_30 = *puVar7;
       local_2e = puVar7->flags;
 LAB_80037a00:
-      local_2c = *(undefined4 *)(puVar7 + 2);
+      local_2c = *(s32 *)(puVar7 + 2);
     }
     else {
       if (puVar7->behavior_state == 1) {
@@ -58,13 +58,13 @@ LAB_80037a00:
     }
     psVar1 = puVar7 + 4;
     puVar7 = puVar7 + 6;
-    FUN_8007e1b8(&local_30,(&PTR_DAT_80017334)[*psVar1],*(undefined4 *)(param_1 + 4),&local_38);
+    FUN_8007e1b8(&local_30,(&PTR_DAT_80017334)[*psVar1],*(s32 *)(param_1 + 4),&local_38);
     if (-0x7ff5d8fd < (int)puVar7) {
       iVar10 = 0;
       if (0 < _DAT_800d1e68) {
         iVar9 = 0;
         do {
-          sVar2 = *(short *)(puVar11 + 2);
+          sVar2 = *(s16 *)(puVar11 + 2);
           ppuVar8 = &PTR_s_The_Starting_Beach_800a2b64 + sVar2;
           uVar3 = FUN_80073750(*ppuVar8);
           iVar4 = FUN_80036d90((int)sVar2);

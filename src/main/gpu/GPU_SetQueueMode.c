@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-byte FUN_80080dc0(uint param_1)
+u8 FUN_80080dc0(uint param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   bVar1 = DAT_800a59a1;
   if (1 < DAT_800a59a2) {
@@ -18,7 +18,7 @@ byte FUN_80080dc0(uint param_1)
   }
   if (param_1 != DAT_800a59a1) {
     (*PTR_PTR_800a5998->scale_y)(1);
-    DAT_800a59a1 = (byte)param_1;
+    DAT_800a59a1 = (u8)param_1;
     FUN_80085b80(2,0);
   }
   return bVar1;

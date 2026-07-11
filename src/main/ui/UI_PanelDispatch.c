@@ -27,10 +27,10 @@ void FUN_8004fe84(void)
       FUN_8004f6d0(&DAT_800bf548);
     }
     if ((DAT_800bf549 == 0) && (_DAT_800bf552 == 0)) {
-      DAT_800bf822 = DAT_800bf822 & 0xfe;
+      g_EventInput = g_EventInput & 0xfe;
     }
     else {
-      DAT_800bf822 = DAT_800bf822 | 1;
+      g_EventInput = g_EventInput | 1;
     }
   }
   else if ((DAT_800bf548 < 2) && (DAT_800bf548 == 0)) {

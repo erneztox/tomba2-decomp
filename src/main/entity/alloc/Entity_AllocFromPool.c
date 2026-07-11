@@ -9,17 +9,17 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_800519e0(int param_1,uint param_2,int *param_3,undefined2 *param_4)
+s32 FUN_800519e0(int param_1,uint param_2,int *param_3,s16 *param_4)
 
 {
-  undefined2 uVar1;
+  s16 uVar1;
   int *piVar2;
-  undefined4 uVar3;
-  undefined2 *puVar4;
+  s32 uVar3;
+  s16 *puVar4;
   int iVar5;
   int iVar6;
   
-  if ((int)_DAT_800ed098 < (int)param_2) {
+  if ((int)_g_EntityPoolCount < (int)param_2) {
     uVar3 = 1;
     param_1->counter2 = 0;
     param_1->state = 3;
@@ -37,8 +37,8 @@ undefined4 FUN_800519e0(int param_1,uint param_2,int *param_3,undefined2 *param_
     if ((param_2 & 0xff) != 0) {
       do {
         iVar5 = iVar5 + 1;
-        puVar4 = (undefined2 *)FUN_8007aae8();
-        *(undefined2 **)(iVar6 + 0xc0) = puVar4;
+        puVar4 = (s16 *)FUN_8007aae8();
+        *(s16 **)(iVar6 + 0xc0) = puVar4;
         puVar4->sub_type = *param_4;
         *puVar4 = param_4->flags;
         puVar4->flags = param_4->kind;

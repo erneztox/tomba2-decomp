@@ -1,21 +1,21 @@
 /**
- * @brief BIOS memory test: fills 128-byte buffer, validates pattern
+ * @brief BIOS memory test: fills 128-u8 buffer, validates pattern
  * @note Original: func_8009C2B0 at 0x8009C2B0
  */
 // BIOS_MemTest
 
 
 
-undefined4 FUN_8009c2b0(int param_1,undefined4 param_2,byte *param_3)
+s32 FUN_8009c2b0(int param_1,s32 param_2,u8 *param_3)
 
 {
-  byte bVar1;
-  byte bVar2;
+  u8 bVar1;
+  u8 bVar2;
   uint uVar3;
-  byte *pbVar4;
+  u8 *pbVar4;
   int iVar5;
   int iVar6;
-  byte local_a0 [128];
+  u8 local_a0 [128];
   
   iVar6 = 0;
   bVar2 = 0;

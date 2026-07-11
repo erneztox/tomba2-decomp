@@ -10,7 +10,7 @@
 void FUN_80060064(int param_1)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
   
   if (param_1->action_state == '\0') {

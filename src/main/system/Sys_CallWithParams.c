@@ -1,5 +1,5 @@
 /**
- * @brief Calls system function at 0x800521F4 with 4 byte parameters
+ * @brief Calls system function at 0x800521F4 with 4 u8 parameters
  * @note Original: func_800521F4 at 0x800521F4
  */
 // Sys_CallWithParams
@@ -8,10 +8,10 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_800521f4(undefined1 param_1,undefined1 param_2,undefined1 param_3,undefined1 param_4)
+void FUN_800521f4(u8 param_1,u8 param_2,u8 param_3,u8 param_4)
 
 {
-  if ((((DAT_1f80019a != '\x01') && (DAT_800fb167 == '\0')) && (_DAT_800ecf4a != 0)) &&
+  if ((((g_EngineState != '\x01') && (DAT_800fb167 == '\0')) && (_g_RenderFlag != 0)) &&
      ((DAT_800ecf4e == '\0' && (_DAT_800ecf4c == 0)))) {
     _DAT_800ecf4c = CONCAT11(param_3,param_2);
     FUN_80087eac(param_1,&DAT_800ecf4c,2);

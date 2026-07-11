@@ -6,7 +6,7 @@
 
 
 
-void FUN_80082c68(undefined4 param_1)
+void FUN_80082c68(s32 param_1)
 
 {
   *DAT_800a5aa8 = 0x4000002;

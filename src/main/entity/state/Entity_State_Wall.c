@@ -10,10 +10,10 @@
 void FUN_8006483c(int param_1,int param_2)
 
 {
-  byte bVar1;
-  undefined2 uVar2;
-  ushort uVar3;
-  short sVar4;
+  u8 bVar1;
+  s16 uVar2;
+  u16 uVar3;
+  s16 sVar4;
   int iVar5;
   
   bVar1 = param_1->sub_action;
@@ -62,39 +62,39 @@ void FUN_8006483c(int param_1,int param_2)
     param_1->sub_action = param_1->sub_action + '\x01';
     if (param_1->anim_id == '\x1a') {
       if (param_1->entity_flags < 0) {
-        *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + -0x20;
+        *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + -0x20;
         iVar5 = FUN_80083f50((int)param_1->rot_y);
-        param_1->pos_y = param_1->pos_y + (short)(iVar5 * -0x23 >> 0xc);
+        param_1->pos_y = param_1->pos_y + (s16)(iVar5 * -0x23 >> 0xc);
         iVar5 = FUN_80083e80((int)param_1->rot_y);
-        param_1->pos_z = param_1->pos_z - (short)(iVar5 * -0x23 >> 0xc);
+        param_1->pos_z = param_1->pos_z - (s16)(iVar5 * -0x23 >> 0xc);
       }
       else {
-        *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + -0x40;
+        *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + -0x40;
         iVar5 = FUN_80083f50((int)param_1->rot_y);
-        param_1->pos_y = param_1->pos_y + (short)(iVar5 * -0x46 >> 0xc);
+        param_1->pos_y = param_1->pos_y + (s16)(iVar5 * -0x46 >> 0xc);
         iVar5 = FUN_80083e80((int)param_1->rot_y);
-        param_1->pos_z = param_1->pos_z - (short)(iVar5 * -0x46 >> 0xc);
+        param_1->pos_z = param_1->pos_z - (s16)(iVar5 * -0x46 >> 0xc);
       }
     }
     FUN_80054d14(param_1,0x19,0);
   }
   if (param_1->entity_flags < 0) {
-    *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + -0x20;
+    *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + -0x20;
     iVar5 = FUN_80083f50((int)param_1->rot_y);
-    param_1->pos_y = param_1->pos_y + (short)(iVar5 * 5 >> 0xc);
+    param_1->pos_y = param_1->pos_y + (s16)(iVar5 * 5 >> 0xc);
     iVar5 = FUN_80083e80((int)param_1->rot_y);
     iVar5 = iVar5 * 5;
   }
   else {
-    *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + -0x40;
+    *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + -0x40;
     iVar5 = FUN_80083f50((int)param_1->rot_y);
-    param_1->pos_y = param_1->pos_y + (short)(iVar5 * 10 >> 0xc);
+    param_1->pos_y = param_1->pos_y + (s16)(iVar5 * 10 >> 0xc);
     iVar5 = FUN_80083e80((int)param_1->rot_y);
     iVar5 = iVar5 * 10;
   }
-  param_1->pos_z = param_1->pos_z - (short)(iVar5 >> 0xc);
+  param_1->pos_z = param_1->pos_z - (s16)(iVar5 >> 0xc);
   FUN_80076d68(param_1);
-  if (1 < *(ushort *)(param_1->anim_data + 2)) {
+  if (1 < *(u16 *)(param_1->anim_data + 2)) {
     param_1->sub_action = param_1->sub_action + '\x01';
     if (param_1->direction == '\0') {
       uVar2 = 0xc00;

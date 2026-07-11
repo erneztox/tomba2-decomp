@@ -9,10 +9,10 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_800714c0(int param_1,undefined2 param_2)
+s32 FUN_800714c0(int param_1,s16 param_2)
 
 {
-  short sVar1;
+  s16 sVar1;
   
   if (param_1->action_state == '\0') {
     param_1->velocity_y = param_2;
@@ -25,8 +25,8 @@ undefined4 FUN_800714c0(int param_1,undefined2 param_2)
       param_1->velocity_y = 0x3000;
     }
     param_1->pos_y_fixed = param_1->pos_y_fixed + param_1->velocity_y * 0x100;
-    if (_DAT_800bf82a < *(short *)(param_1 + 0x32)) {
-      *(short *)(param_1 + 0x32) = _DAT_800bf82a;
+    if (_DAT_800bf82a < *(s16 *)(param_1 + 0x32)) {
+      *(s16 *)(param_1 + 0x32) = _DAT_800bf82a;
       return 1;
     }
   }

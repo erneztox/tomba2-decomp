@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-bool FUN_8008c1ec(undefined4 param_1,undefined4 param_2,undefined4 param_3)
+s32 FUN_8008c1ec(s32 param_1,s32 param_2,s32 param_3)
 
 {
   int iVar1;
-  undefined1 auStack_18->counter1;
+  u8 auStack_18->counter1;
   
   FUN_8008a00c(param_2,auStack_18);
   FUN_80089bac(2,auStack_18,0);

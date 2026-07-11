@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-void FUN_80071cf4(int param_1,short param_2,int param_3,int param_4)
+void FUN_80071cf4(int param_1,s16 param_2,int param_3,int param_4)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   int iVar2;
   int iVar3;
   
@@ -21,13 +21,13 @@ void FUN_80071cf4(int param_1,short param_2,int param_3,int param_4)
        iVar2->draw_x = uVar1, uVar1 == 0)) {
       iVar3->draw_x = iVar3->draw_x + 1;
     }
-    param_1->pos_y = param_2 + param_1->bounds_size * (short)param_4;
-    iVar3 = FUN_80083e80((int)*(short *)(param_1 + param_4 * 2 + 0x60));
+    param_1->pos_y = param_2 + param_1->bounds_size * (s16)param_4;
+    iVar3 = FUN_80083e80((int)*(s16 *)(param_1 + param_4 * 2 + 0x60));
     param_1->pos_y_fixed = param_3 * 0x10000 + iVar3 * param_1->bounds_size * 0x10;
   }
   else if (iVar3->draw_x == 1) {
-    *(short *)(param_1 + 0x32) = (short)param_3;
-    param_1->pos_y = param_2 + param_1->bounds_size * (short)param_4;
+    *(s16 *)(param_1 + 0x32) = (s16)param_3;
+    param_1->pos_y = param_2 + param_1->bounds_size * (s16)param_4;
   }
   return;
 }

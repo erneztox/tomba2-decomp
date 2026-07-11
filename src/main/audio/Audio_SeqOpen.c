@@ -8,10 +8,10 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-uint FUN_8008e100(undefined4 param_1,short param_2)
+uint FUN_8008e100(s32 param_1,s16 param_2)
 
 {
-  short sVar1;
+  s16 sVar1;
   uint uVar2;
   uint uVar3;
   
@@ -27,7 +27,7 @@ uint FUN_8008e100(undefined4 param_1,short param_2)
       uVar2 = uVar2 + 1;
       uVar3 = 0;
     } while ((int)uVar2 < 0x20);
-    uVar3 = (uint)(short)uVar3;
+    uVar3 = (uint)(s16)uVar3;
     _DAT_80104c28 = _DAT_80104c28 | 1 << (uVar3 & 0x1f);
     sVar1 = FUN_80090210(uVar3,(int)param_2,param_1);
     _DAT_80104b90 = FUN_80090010;

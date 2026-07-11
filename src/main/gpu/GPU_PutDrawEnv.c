@@ -10,7 +10,7 @@
 int FUN_800815d0(int param_1)
 
 {
-  undefined *puVar1;
+  void *puVar1;
   
   if (1 < DAT_800a59a2) {
     (*(code *)PTR_FUN_800a599c)(s_PutDrawEnv__08x_____8001bf94,param_1);

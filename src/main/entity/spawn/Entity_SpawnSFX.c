@@ -10,7 +10,7 @@
 int FUN_8007413c(int param_1)
 
 {
-  char cVar1;
+  s8 cVar1;
   int iVar2;
   int iVar3;
   
@@ -19,8 +19,8 @@ int FUN_8007413c(int param_1)
     iVar2->callback = FUN_8004c930;
     iVar2->pos_y = param_1->pos_y;
     iVar3 = (uint)param_1->bounds_min_y << 0x10;
-    *(short *)(iVar2 + 0x32) =
-         *(short *)(param_1 + 0x32) - (short)((iVar3 >> 0x10) - (iVar3 >> 0x1f) >> 1);
+    *(s16 *)(iVar2 + 0x32) =
+         *(s16 *)(param_1 + 0x32) - (s16)((iVar3 >> 0x10) - (iVar3 >> 0x1f) >> 1);
     iVar2->pos_z = param_1->pos_z;
     cVar1 = param_1->sub_type;
     iVar2->alloc_flags = iVar2->alloc_flags | 0x80;

@@ -8,14 +8,14 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-undefined2 * FUN_800844c0(undefined4 *param_1,undefined4 *param_2,undefined2 *param_3)
+s16 * FUN_800844c0(s32 *param_1,s32 *param_2,s16 *param_3)
 
 {
-  undefined4 in_zero;
-  undefined4 in_at;
-  undefined4 uVar1;
-  undefined4 uVar2;
-  undefined4 uVar3;
+  s32 in_zero;
+  s32 in_at;
+  s32 uVar1;
+  s32 uVar2;
+  s32 uVar3;
   
   setCopControlWord(2,0,*param_1);
   setCopControlWord(2,0x800,param_1->flags);
@@ -28,8 +28,8 @@ undefined2 * FUN_800844c0(undefined4 *param_1,undefined4 *param_2,undefined2 *pa
   uVar1 = getCopReg(2,0x4800);
   uVar2 = getCopReg(2,0x5000);
   uVar3 = getCopReg(2,0x5800);
-  *param_3 = (short)uVar1;
-  param_3->flags = (short)uVar2;
-  param_3->kind = (short)uVar3;
+  *param_3 = (s16)uVar1;
+  param_3->flags = (s16)uVar2;
+  param_3->kind = (s16)uVar3;
   return param_3;
 }

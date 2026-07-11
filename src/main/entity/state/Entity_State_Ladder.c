@@ -9,25 +9,25 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800624b4(undefined1 *param_1)
+void FUN_800624b4(u8 *param_1)
 
 {
-  undefined4 uVar1;
-  char cVar2;
+  s32 uVar1;
+  s8 cVar2;
   int iVar3;
   
   param_1->flag_17B = 1;
-  DAT_1f80027a = 2;
+  g_ActionMode = 2;
   switchparam_1->action_state {
   case 0:
-    DAT_800bf80e = 0;
+    g_ActionTrigger = 0;
     *param_1 = 6;
     DAT_800bf809 = 1;
     if (param_1->kind == '\0') {
       FUN_80053d90(param_1);
       FUN_800551c4(param_1);
     }
-    DAT_800bf88f = param_1->sprite_param3;
+    g_SpriteParam4 = param_1->sprite_param3;
     FUN_80067ef4(param_1);
     FUN_8001cf2c();
     if (param_1->kind == '\0') {
@@ -71,7 +71,7 @@ code_r0x8006266c:
     param_1->action_state = cVar2 + '\x01';
     break;
   case 4:
-    if (DAT_1f80019b != '\0') {
+    if (g_DMAFlag != '\0') {
       iVar3 = param_1->parent;
       if (iVar3 != 0) {
         iVar3->state = 2;
@@ -79,15 +79,15 @@ code_r0x8006266c:
       }
       FUN_80057fd4(param_1);
       param_1->flags = 1;
-      if (DAT_1f800137 != '\x01') {
-        FUN_80074f24(DAT_800bf870);
+      if (g_CurrentOverlay != '\x01') {
+        FUN_80074f24(g_GameState);
       }
       *param_1 = 3;
       uVar1 = _DAT_1f80023c;
       param_1->timer_172 = 0x1e;
-      *(undefined4 *)(param_1 + 4) = uVar1;
-      if (DAT_1f800137 == '\x02') {
-        DAT_1f800137 = '\0';
+      *(s32 *)(param_1 + 4) = uVar1;
+      if (g_CurrentOverlay == '\x02') {
+        g_CurrentOverlay = '\0';
       }
       DAT_800bf809 = 0;
     }

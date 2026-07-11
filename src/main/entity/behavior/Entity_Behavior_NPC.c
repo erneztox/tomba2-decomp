@@ -12,13 +12,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8004c930(undefined1 *param_1)
+void FUN_8004c930(u8 *param_1)
 
 {
-  byte bVar1;
-  short sVar2;
-  short sVar3;
-  bool bVar4;
+  u8 bVar1;
+  s16 sVar2;
+  s16 sVar3;
+  s32 bVar4;
   int iVar5;
   int iVar6;
   int iVar7;
@@ -33,12 +33,12 @@ void FUN_8004c930(undefined1 *param_1)
       }
       FUN_8004a828(param_1);
       param_1->state = param_1->state + '\x01';
-      iVar9 = (int)_DAT_800e7eae;
-      iVar8 = (int)_DAT_800e7eb2;
-      iVar7 = (int)_DAT_800e7eb6;
+      iVar9 = (int)_g_CameraTargetX;
+      iVar8 = (int)_g_CameraTargetY;
+      iVar7 = (int)_g_CameraTargetZ;
       param_1->timer1 = 0x1e;
       iVar5 = (int)param_1->timer1;
-      iVar8 = (iVar8 - (*(short *)(param_1 + 0x32) + 200)) * 0x10;
+      iVar8 = (iVar8 - (*(s16 *)(param_1 + 0x32) + 200)) * 0x10;
       if (iVar5 == 0) {
         trap(0x1c00);
       }
@@ -55,9 +55,9 @@ void FUN_8004c930(undefined1 *param_1)
       }
       param_1->angle_offset = 0xd800;
       param_1->sprite_y = 0x280;
-      param_1->normal_x = (short)(((iVar9 - param_1->pos_y) * 0x10) / 0x1e);
-      param_1->velocity_y = (short)(iVar8 / iVar5);
-      param_1->normal_z = (short)(iVar7 / iVar6);
+      param_1->normal_x = (s16)(((iVar9 - param_1->pos_y) * 0x10) / 0x1e);
+      param_1->velocity_y = (s16)(iVar8 / iVar5);
+      param_1->normal_z = (s16)(iVar7 / iVar6);
       return;
     }
     if (bVar1 == 2) {
@@ -94,7 +94,7 @@ void FUN_8004c930(undefined1 *param_1)
       goto LAB_8004cb94;
     }
     param_1->pos_y_fixed = param_1->pos_y_fixed + param_1->angle_offset * 0x100;
-    bVar4 = _DAT_1f800162 < *(short *)(param_1 + 0x32);
+    bVar4 = _g_PlayerPosY < *(s16 *)(param_1 + 0x32);
     param_1->angle_offset = param_1->angle_offset + param_1->sprite_y;
     if (bVar4) {
       param_1->state = 2;

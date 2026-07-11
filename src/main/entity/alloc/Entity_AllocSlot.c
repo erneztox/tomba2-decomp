@@ -21,5 +21,5 @@ char * FUN_8007ad98(void)
     }
     pcVar1 = pcVar1 + 0x4c;
   } while (iVar2 < 8);
-  return (char *)0x0;
+  return (s8*)0x0;
 }

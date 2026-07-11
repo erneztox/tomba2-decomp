@@ -12,8 +12,8 @@
 void FUN_8003fd10(int param_1)
 
 {
-  short sVar1;
-  ushort uVar2;
+  s16 sVar1;
+  u16 uVar2;
   
   if (param_1->action_state == '\0') {
     if (param_1->move_mode != '\0') {
@@ -32,9 +32,9 @@ void FUN_8003fd10(int param_1)
     if (sVar1 == -1) {
       param_1->action_state = param_1->action_state + -1;
     }
-    *(ushort *)(param_1->sprite_ptr1 + 2) = (_DAT_1f80017c & 1) * 6;
+    *(u16 *)(param_1->sprite_ptr1 + 2) = (_g_FrameCounter2 & 1) * 6;
     uVar2 = FUN_8009a450();
-    **(short **)(param_1 + 0xc0) = ((uVar2 & 3) - 2) * 6;
+    **(s16 **)(param_1 + 0xc0) = ((uVar2 & 3) - 2) * 6;
   }
   return;
 }

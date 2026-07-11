@@ -6,7 +6,7 @@
 
 
 
-void FUN_800750a4(undefined1 param_1)
+void FUN_800750a4(u8 param_1)
 
 {
   FUN_800750d8(param_1,1);

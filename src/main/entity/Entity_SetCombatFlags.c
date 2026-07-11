@@ -9,12 +9,12 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80070724(undefined1 param_1,undefined1 param_2,undefined1 param_3)
+void FUN_80070724(u8 param_1,u8 param_2,u8 param_3)
 
 {
-  _DAT_1f800214->combat_flag = param_1;
+  _g_PlayerEntity->combat_flag = param_1;
   DAT_800bf830 = param_2;
   DAT_800bf831 = param_3;
-  DAT_800bf843 = 0;
+  g_EventFlag = 0;
   return;
 }

@@ -6,11 +6,11 @@
 
 
 
-bool FUN_80089e1c(byte param_1,int param_2,undefined4 param_3)
+s32 FUN_80089e1c(u8 param_1,int param_2,s32 param_3)
 
 {
-  undefined4 uVar1;
-  bool bVar2;
+  s32 uVar1;
+  s32 bVar2;
   int iVar3;
   int iVar4;
   int iVar5;
@@ -19,7 +19,7 @@ bool FUN_80089e1c(byte param_1,int param_2,undefined4 param_3)
   iVar5 = 3;
   do {
     DAT_800abfbc = 0;
-    if ((param_1 != 1) && (((byte)DAT_800abfc8 & 0x10) != 0)) {
+    if ((param_1 != 1) && (((u8)DAT_800abfc8 & 0x10) != 0)) {
       FUN_8008ac34(1,0,0,0);
     }
     if (((param_2 == 0) || (*(int *)(&DAT_800abf34 + (uint)param_1 * 4) == 0)) ||

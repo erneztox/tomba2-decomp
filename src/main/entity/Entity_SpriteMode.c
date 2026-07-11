@@ -9,11 +9,11 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80042a8c(int param_1)
+s32 FUN_80042a8c(int param_1)
 
 {
-  short sVar1;
-  short sVar2;
+  s16 sVar1;
+  s16 sVar2;
   
   DAT_800e806e = 0;
   sVar1 = param_1->event_id;
@@ -27,20 +27,20 @@ undefined4 FUN_80042a8c(int param_1)
     }
   }
   else if (sVar1 == 1) {
-    DAT_800e806c = *(undefined1 *)(param_1 + 0x74);
+    g_CameraEntity = *(u8 *)(param_1 + 0x74);
   }
-  if (*(short *)(param_1 + 0x76) == 0) {
-    sVar1 = *(short *)(param_1 + 100);
-    _DAT_800e8044 = (int)*(short *)(param_1 + 0x66) << 0x10;
+  if (*(s16 *)(param_1 + 0x76) == 0) {
+    sVar1 = *(s16 *)(param_1 + 100);
+    _DAT_800e8044 = (int)*(s16 *)(param_1 + 0x66) << 0x10;
     sVar2 = param_1->target_angle;
   }
   else {
-    if (*(short *)(param_1 + 0x76) != 1) {
+    if (*(s16 *)(param_1 + 0x76) != 1) {
       return 1;
     }
-    _DAT_800e8044 = (_DAT_1f800162 + -0x8c) * 0x10000;
-    sVar2 = _DAT_1f800164;
-    sVar1 = _DAT_1f800160;
+    _DAT_800e8044 = (_g_PlayerPosY + -0x8c) * 0x10000;
+    sVar2 = _g_PlayerPosZ;
+    sVar1 = _g_PlayerPosX;
   }
   _DAT_800e8040 = (int)sVar1 << 0x10;
   _DAT_800e8048 = (int)sVar2 << 0x10;

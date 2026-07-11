@@ -14,8 +14,8 @@ void FUN_80070798(void)
 {
   int iVar1;
   
-  iVar1 = _DAT_1f800214;
-  _DAT_1f800214->action_state = 0;
+  iVar1 = _g_PlayerEntity;
+  _g_PlayerEntity->action_state = 0;
   iVar1->behavior_state = 3;
   return;
 }

@@ -6,7 +6,7 @@
 
 
 
-undefined4 FUN_8004dbc0(undefined4 param_1)
+s32 FUN_8004dbc0(s32 param_1)
 
 {
   switch(param_1) {

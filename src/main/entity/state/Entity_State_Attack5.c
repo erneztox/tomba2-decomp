@@ -12,20 +12,20 @@
 void FUN_8006506c(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   
   bVar1 = param_1->action_state;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (bVar1 == 2) {
         FUN_80076d68(param_1);
-        if (((_DAT_800e7e68 & 0x10) == 0) && (iVar2 = FUN_80055824(), iVar2 == 0)) {
-          if ((_DAT_800ecf54 & 0x40) == 0) {
+        if (((_g_PadState & 0x10) == 0) && (iVar2 = FUN_80055824(), iVar2 == 0)) {
+          if ((_g_InputState & 0x40) == 0) {
             return;
           }
-          *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 0x10;
+          *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 0x10;
           FUN_80062d8c(param_1,1);
           param_1->action_state = 1;
           return;
@@ -40,7 +40,7 @@ void FUN_8006506c(int param_1)
       }
       FUN_80076d68(param_1);
       FUN_80062d8c(param_1,0x81);
-      if ((_DAT_1f80017c & 3) != 0) {
+      if ((_g_FrameCounter2 & 3) != 0) {
         return;
       }
       FUN_80074590(5,0xfffffffe,0xffffffc4);
@@ -58,7 +58,7 @@ void FUN_8006506c(int param_1)
       if ((param_1->anim_param & 2) == 0) {
         return;
       }
-      *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 0x20;
+      *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 0x20;
       FUN_80062d8c(param_1,0x81);
       return;
     }
@@ -73,20 +73,20 @@ void FUN_8006506c(int param_1)
     param_1->action_state = param_1->action_state + '\x01';
   }
   FUN_80076d68(param_1);
-  if ((_DAT_800ecf54 & 0x10) == 0) {
-    if ((_DAT_800ecf54 & 0x40) == 0) {
+  if ((_g_InputState & 0x10) == 0) {
+    if ((_g_InputState & 0x40) == 0) {
       FUN_80054d14(param_1,0x40,4);
       FUN_80062d8c(param_1,2);
       goto LAB_80065238;
     }
     FUN_80062d8c(param_1,1);
-    if ((_DAT_1f80017c & 3) != 0) goto LAB_80065238;
+    if ((_g_FrameCounter2 & 3) != 0) goto LAB_80065238;
     uVar3 = 0xfffffffe;
   }
   else {
     FUN_80054d14(param_1,0x41,0);
     FUN_80062d8c(param_1,0);
-    if ((_DAT_1f80017c & 3) != 0) goto LAB_80065238;
+    if ((_g_FrameCounter2 & 3) != 0) goto LAB_80065238;
     uVar3 = 3;
   }
   FUN_80074590(5,uVar3,0xffffffc4);
@@ -102,7 +102,7 @@ LAB_80065238:
     param_1->timer1 = 8;
     FUN_80074590(0x1d,0,0);
     FUN_80055e28(param_1,0);
-    *(byte *)(param_1 + 0x149) = (param_1->behavior_flags & 1) + 2;
+    *(u8 *)(param_1 + 0x149) = (param_1->behavior_flags & 1) + 2;
     FUN_80054d14(param_1,0x14,0);
   }
   return;

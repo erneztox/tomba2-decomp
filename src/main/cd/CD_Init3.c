@@ -6,12 +6,12 @@
 
 
 
-undefined4 FUN_8008b2d8(void)
+s32 FUN_8008b2d8(void)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   
   FUN_8009b9b0(s_CD_init__8001c350);
   FUN_8009a730(s_addr__08x_8001c35c,&PTR_DAT_800ac29c);

@@ -25,8 +25,8 @@ uint FUN_80082fb4(void)
           uVar1 = *DAT_800a5aa8;
         }
         (**(code **)(DAT_800a5acc * 0x60 + -0x7feff3d0))
-                  (*(undefined4 *)(DAT_800a5acc * 0x60 + -0x7feff3cc),
-                   *(undefined4 *)(DAT_800a5acc * 0x60 + -0x7feff3c8));
+                  (*(s32 *)(DAT_800a5acc * 0x60 + -0x7feff3cc),
+                   *(s32 *)(DAT_800a5acc * 0x60 + -0x7feff3c8));
         DAT_800a5acc = DAT_800a5acc + 1 & 0x3f;
         if (DAT_800a5ac8 == DAT_800a5acc) break;
         uVar1 = *DAT_800a5ab4;

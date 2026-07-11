@@ -17,7 +17,7 @@ void FUN_80085810(void)
   int *piVar3;
   int *piVar4;
   int iVar5;
-  undefined4 unaff_retaddr;
+  s32 unaff_retaddr;
   
   _DAT_80102430 = unaff_retaddr;
   FUN_80080890();

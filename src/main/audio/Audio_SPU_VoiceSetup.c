@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8007486c(uint param_1,undefined4 param_2,char param_3)
+void FUN_8007486c(uint param_1,s32 param_2,s8 param_3)
 
 {
   int iVar1;
@@ -25,7 +25,7 @@ void FUN_8007486c(uint param_1,undefined4 param_2,char param_3)
   DAT_800be32a = (&DAT_800a4d1a)[iVar1];
   DAT_800be32b = (&DAT_800a4d1b)[iVar1];
   DAT_800be32c = (&DAT_800a4d1c)[iVar1];
-  DAT_800be32e = (undefined1)uVar2;
+  DAT_800be32e = (u8)uVar2;
   DAT_800be328 = 0xfe;
   DAT_800be32d = 0;
   DAT_800be329 = 0xff;

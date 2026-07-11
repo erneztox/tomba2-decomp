@@ -12,24 +12,24 @@
 void FUN_80072898(int param_1)
 
 {
-  byte bVar1;
-  char cVar2;
+  u8 bVar1;
+  s8 cVar2;
   int iVar3;
   int iVar4;
   uint uVar5;
-  short sVar6;
-  undefined1 *puVar7;
-  undefined1 local_30;
-  undefined1 local_2f;
-  undefined2 local_2e;
-  short local_28->state;
-  undefined1 local_20;
-  undefined1 local_1f;
+  s16 sVar6;
+  u8 *puVar7;
+  u8 local_30;
+  u8 local_2f;
+  s16 local_2e;
+  s16 local_28->state;
+  u8 local_20;
+  u8 local_1f;
   
   bVar1 = param_1->state;
   if (bVar1 == 1) {
-    puVar7 = (undefined1 *)(param_1 + 0x44);
-    if (*(char *)(param_1->parent + 0x5e) == '\x02') {
+    puVar7 = (u8 *)(param_1 + 0x44);
+    if (*(s8*)(param_1->parent + 0x5e) == '\x02') {
       param_1->state = 3;
     }
     else {
@@ -51,7 +51,7 @@ void FUN_80072898(int param_1)
           sVar6 = sVar6 + 9;
           local_1f = 0;
           iVar4 = FUN_8009a1f0(&local_20);
-          FUN_8007e1b8(local_28,*(undefined4 *)
+          FUN_8007e1b8(local_28,*(s32 *)
                                  ((int)&PTR_DAT_80017334 + ((iVar4 + 0x69) * 0x10000 >> 0xe)),
                        param_1->sprite_data,&local_30);
           puVar7 = puVar7 + 1;
@@ -60,7 +60,7 @@ void FUN_80072898(int param_1)
     }
   }
   else if (bVar1 < 2) {
-    if ((bVar1 == 0) && (*(char *)(param_1->parent + 0x5e) == '\x01')) {
+    if ((bVar1 == 0) && (*(s8*)(param_1->parent + 0x5e) == '\x01')) {
       param_1->state = 1;
       iVar3 = (uint)param_1->anim_timer << 0x10;
       uVar5 = (iVar3 >> 0x10) - (iVar3 >> 0x1f) >> 1;
@@ -72,7 +72,7 @@ void FUN_80072898(int param_1)
         cVar2 = (char)((uVar5 & 0xff) << 3);
       }
       param_1->input_flags = cVar2;
-      param_1->sprite_data = _DAT_800ecf58;
+      param_1->sprite_data = _g_OT_Data;
     }
   }
   else if ((bVar1 != 2) && (bVar1 == 3)) {

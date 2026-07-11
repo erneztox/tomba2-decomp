@@ -10,7 +10,7 @@
 void FUN_8005262c(int param_1)
 
 {
-  short sVar1;
+  s16 sVar1;
   
   sVar1 = param_1->anim_counter + 0x200;
   param_1->anim_counter = sVar1;

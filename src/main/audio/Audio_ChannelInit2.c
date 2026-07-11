@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8008dc00(short param_1)
+void FUN_8008dc00(s16 param_1)
 
 {
   int iVar1;
@@ -25,23 +25,23 @@ void FUN_8008dc00(short param_1)
   _DAT_80104c28 = _DAT_80104c28 & ~(1 << (uVar6 & 0x1f));
   iVar5 = 0;
   if (0 < _DAT_801054b2) {
-    piVar4 = (int *)(&DAT_80104c30 + uVar6 * 4);
+    piVar4 = (int *)(&g_AudioChannels + uVar6 * 4);
     iVar3 = 0;
     do {
-      *(undefined4 *)(iVar3 + *piVar4 + 0x98) = 0;
-      *(undefined1 *)(iVar3 + *piVar4 + 0x22) = 0xff;
-      *(undefined1 *)(iVar3 + *piVar4 + 0x23) = 0;
-      *(undefined2 *)(iVar3 + *piVar4 + 0x48) = 0;
-      *(undefined2 *)(iVar3 + *piVar4 + 0x4a) = 0;
-      *(undefined4 *)(iVar3 + *piVar4 + 0x9c) = 0;
-      *(undefined4 *)(iVar3 + *piVar4 + 0xa0) = 0;
-      *(undefined2 *)(iVar3 + *piVar4 + 0x4c) = 0;
-      *(undefined4 *)(iVar3 + *piVar4 + 0xac) = 0;
-      *(undefined4 *)(iVar3 + *piVar4 + 0xa8) = 0;
-      *(undefined4 *)(iVar3 + *piVar4 + 0xa4) = 0;
-      *(undefined2 *)(iVar3 + *piVar4 + 0x4e) = 0;
+      *(s32 *)(iVar3 + *piVar4 + 0x98) = 0;
+      *(u8 *)(iVar3 + *piVar4 + 0x22) = 0xff;
+      *(u8 *)(iVar3 + *piVar4 + 0x23) = 0;
+      *(s16 *)(iVar3 + *piVar4 + 0x48) = 0;
+      *(s16 *)(iVar3 + *piVar4 + 0x4a) = 0;
+      *(s32 *)(iVar3 + *piVar4 + 0x9c) = 0;
+      *(s32 *)(iVar3 + *piVar4 + 0xa0) = 0;
+      *(s16 *)(iVar3 + *piVar4 + 0x4c) = 0;
+      *(s32 *)(iVar3 + *piVar4 + 0xac) = 0;
+      *(s32 *)(iVar3 + *piVar4 + 0xa8) = 0;
+      *(s32 *)(iVar3 + *piVar4 + 0xa4) = 0;
+      *(s16 *)(iVar3 + *piVar4 + 0x4e) = 0;
       iVar5 = iVar5 + 1;
-      *(undefined2 *)(iVar3 + *piVar4 + 0x58) = 0x7f;
+      *(s16 *)(iVar3 + *piVar4 + 0x58) = 0x7f;
       iVar1 = (int)_DAT_801054b2;
       iVar2 = iVar3 + *piVar4;
       iVar3 = iVar3 + 0xb0;

@@ -25,7 +25,7 @@ uint FUN_80097540(int param_1,uint param_2)
       param_2 = uVar1 & 0xffff;
     }
     else {
-      *(short *)(param_1 * 2 + DAT_800ac604) = (short)uVar1;
+      *(s16 *)(param_1 * 2 + g_SPU_Regs) = (s16)uVar1;
     }
   }
   return param_2;

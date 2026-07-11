@@ -6,10 +6,10 @@
 
 
 
-undefined4 FUN_800865f0(undefined4 param_1)
+s32 FUN_800865f0(s32 param_1)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   
   uVar1 = DAT_800abe20;
   DAT_800abe20 = param_1;

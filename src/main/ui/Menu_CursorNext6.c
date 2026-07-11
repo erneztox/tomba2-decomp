@@ -6,19 +6,19 @@
 
 
 
-bool FUN_80038708(int param_1)
+s32 FUN_80038708(int param_1)
 
 {
   int iVar1;
   
   iVar1 = 0;
   do {
-    if ((int)(*(byte *)(param_1 + 0x21) - 1) <= (int)(uint)*(byte *)(param_1 + 0x1f)) {
+    if ((int)(*(u8 *)(param_1 + 0x21) - 1) <= (int)(uint)*(u8 *)(param_1 + 0x1f)) {
       return iVar1 != 0;
     }
     iVar1 = iVar1 + 1;
-    *(byte *)(param_1 + 0x1f) = *(byte *)(param_1 + 0x1f) + 1;
-    *(char *)(param_1 + 0x1e) = *(char *)(param_1 + 0x1e) + '\x01';
+    *(u8 *)(param_1 + 0x1f) = *(u8 *)(param_1 + 0x1f) + 1;
+    *(s8*)(param_1 + 0x1e) = *(s8*)(param_1 + 0x1e) + '\x01';
   } while (iVar1 < 6);
   return true;
 }

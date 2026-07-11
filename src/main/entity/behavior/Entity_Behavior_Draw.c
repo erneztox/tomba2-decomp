@@ -10,12 +10,12 @@
 void FUN_8002fc40(int param_1)
 
 {
-  byte bVar1;
-  undefined2 uVar2;
-  ushort uVar3;
-  short sVar4;
+  u8 bVar1;
+  s16 uVar2;
+  u16 uVar3;
+  s16 sVar4;
   int iVar5;
-  ushort *puVar6;
+  u16 *puVar6;
   int iVar7;
   
   bVar1 = param_1->state;
@@ -25,14 +25,14 @@ void FUN_8002fc40(int param_1)
 LAB_8002fce0:
     uVar3 = *puVar6;
     *puVar6 = uVar3 - 6;
-    if ((int)((uint)(ushort)(uVar3 - 6) << 0x10) < 1) {
+    if ((int)((uint)(u16)(uVar3 - 6) << 0x10) < 1) {
       if ((6 < DAT_800e7e7c) && (iVar5 = FUN_8007a980(0,6,1), iVar5 != 0)) {
         if (param_1 != -0x2c) {
           iVar5->pos_x = param_1->pos_x;
           iVar5->pos_y = param_1->pos_y;
-          *(undefined2 *)(iVar5 + 0x30) = *(undefined2 *)(param_1 + 0x30);
+          *(s16 *)(iVar5 + 0x30) = *(s16 *)(param_1 + 0x30);
         }
-        *(undefined2 *)(iVar5 + 0x32) = 0xffe2;
+        *(s16 *)(iVar5 + 0x32) = 0xffe2;
         FUN_80028e10(iVar5,8);
       }
       FUN_8002343c(iVar7);
@@ -52,12 +52,12 @@ LAB_8002fd80:
       }
       param_1->state = 1;
       param_1->pos_x = iVar7->pos_y;
-      param_1->pos_y = *(undefined2 *)(iVar7 + 0x32);
+      param_1->pos_y = *(s16 *)(iVar7 + 0x32);
       uVar2 = iVar7->pos_z;
-      *(undefined4 *)(param_1 + 0x48) = 0;
+      *(s32 *)(param_1 + 0x48) = 0;
       param_1->normal_z = 0;
       param_1->angle_offset = 0x3c;
-      *(undefined2 *)(param_1 + 0x30) = uVar2;
+      *(s16 *)(param_1 + 0x30) = uVar2;
       param_1->sprite_y = 0;
       goto LAB_8002fce0;
     }

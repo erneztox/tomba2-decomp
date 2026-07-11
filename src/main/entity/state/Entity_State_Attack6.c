@@ -10,11 +10,11 @@
 void FUN_8005a39c(int param_1,int param_2)
 
 {
-  short sVar1;
-  ushort uVar2;
+  s16 sVar1;
+  u16 uVar2;
   uint uVar3;
   uint uVar4;
-  char cVar5;
+  s8 cVar5;
   int iVar6;
   
   if (param_1->kind == '\0') {
@@ -34,7 +34,7 @@ void FUN_8005a39c(int param_1,int param_2)
       param_1->sub_action = 1;
       param_1->timer1 = param_1->timer1 + 1;
     }
-    uVar4 = (uint)(byte)(&DAT_800a4612)[param_1->timer1 * 4];
+    uVar4 = (uint)(u8)(&DAT_800a4612)[param_1->timer1 * 4];
     if ((int)param_1->draw_pos_z != uVar4) {
       uVar3 = 0;
       if (uVar4 == 1) {
@@ -44,18 +44,18 @@ void FUN_8005a39c(int param_1,int param_2)
       sVar1 = FUN_800776f8(iVar6 * 0x4000000 >> 0x10,(int)param_1->draw_pos_y,0x80);
       param_1->draw_pos_y = sVar1;
       if ((int)sVar1 == iVar6 * 0x400) {
-        param_1->draw_pos_z = (ushort)(byte)(&DAT_800a4612)[param_1->timer1 * 4]
+        param_1->draw_pos_z = (u16)(u8)(&DAT_800a4612)[param_1->timer1 * 4]
         ;
       }
     }
     if (((&DAT_800a4613)[param_1->timer1 * 4] & 4) == 0) {
       return;
     }
-    if (*(short *)(param_1->anim_data + 2) == 0xe) {
+    if (*(s16 *)(param_1->anim_data + 2) == 0xe) {
       DAT_800e807e = ((&DAT_800a4613)[param_1->timer1 * 4] & 2) + 6;
       param_1->sub_action = 2;
     }
-    if (*(short *)(param_1->anim_data + 2) != 0x11) {
+    if (*(s16 *)(param_1->anim_data + 2) != 0x11) {
       return;
     }
     goto LAB_8005a6bc;
@@ -100,7 +100,7 @@ LAB_8005a4ec:
   }
 LAB_8005a4f4:
   iVar6 = param_1->timer1 * 4;
-  param_1->draw_pos_x = (ushort)(byte)(&DAT_800a4611)[param_1->timer1 * 4];
+  param_1->draw_pos_x = (u16)(u8)(&DAT_800a4611)[param_1->timer1 * 4];
   if ((&DAT_800a4611)[iVar6] == -1) {
     param_1->sub_action = 6;
   }

@@ -10,8 +10,8 @@
 void FUN_80066478(int param_1)
 
 {
-  short sVar1;
-  ushort uVar2;
+  s16 sVar1;
+  u16 uVar2;
   
   if ((-0x2400 < param_1->velocity_y) &&
      (sVar1 = param_1->rot_z + 0x40, param_1->rot_z = sVar1, -0x200 < sVar1)

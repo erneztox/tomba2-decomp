@@ -14,8 +14,8 @@ void FUN_800384ec(int param_1)
 {
   char *pcVar1;
   int iVar2;
-  byte bVar3;
-  byte bVar4;
+  u8 bVar3;
+  u8 bVar4;
   
   bVar4 = 0;
   iVar2 = 1;
@@ -24,12 +24,12 @@ void FUN_800384ec(int param_1)
   _DAT_800bf53c = -0x7ff22198;
   do {
     if (*pcVar1 == '\0') {
-      *(char *)(param_1 + 10) = *(char *)(param_1 + 10) + '\x01';
-      *(char *)((uint)(byte)pcVar1->kind * 3 + _DAT_800e7e6c + 1) = (char)iVar2;
-      *(undefined1 *)((uint)(byte)pcVar1->kind * 3 + _DAT_800e7e6c + 2) =
-           *(undefined1 *)(iVar2 + -0x7ff4074c);
-      *(char *)((uint)(byte)pcVar1->kind * 3 + _DAT_800e7e6c) = pcVar1->kind;
-      if ((*(char *)(iVar2 + -0x7ff4074c) != '\0') && (bVar4 < (byte)pcVar1->kind)) {
+      *(s8*)(param_1 + 10) = *(s8*)(param_1 + 10) + '\x01';
+      *(s8*)((uint)(u8)pcVar1->kind * 3 + _DAT_800e7e6c + 1) = (char)iVar2;
+      *(u8 *)((uint)(u8)pcVar1->kind * 3 + _DAT_800e7e6c + 2) =
+           *(u8 *)(iVar2 + -0x7ff4074c);
+      *(s8*)((uint)(u8)pcVar1->kind * 3 + _DAT_800e7e6c) = pcVar1->kind;
+      if ((*(s8*)(iVar2 + -0x7ff4074c) != '\0') && (bVar4 < (u8)pcVar1->kind)) {
         bVar4 = pcVar1->kind;
       }
     }
@@ -42,11 +42,11 @@ void FUN_800384ec(int param_1)
   do {
     if (*pcVar1 != '\0') {
       param_1->render_flags = param_1->render_flags + '\x01';
-      *(char *)((uint)(byte)pcVar1->kind * 3 + _DAT_800bf53c + 1) = (char)iVar2;
-      *(undefined1 *)((uint)(byte)pcVar1->kind * 3 + _DAT_800bf53c + 2) =
-           *(undefined1 *)(iVar2 + -0x7ff4074c);
-      *(char *)((uint)(byte)pcVar1->kind * 3 + _DAT_800bf53c) = pcVar1->kind;
-      if ((*(char *)(iVar2 + -0x7ff4074c) != '\0') && (bVar3 < (byte)pcVar1->kind)) {
+      *(s8*)((uint)(u8)pcVar1->kind * 3 + _DAT_800bf53c + 1) = (char)iVar2;
+      *(u8 *)((uint)(u8)pcVar1->kind * 3 + _DAT_800bf53c + 2) =
+           *(u8 *)(iVar2 + -0x7ff4074c);
+      *(s8*)((uint)(u8)pcVar1->kind * 3 + _DAT_800bf53c) = pcVar1->kind;
+      if ((*(s8*)(iVar2 + -0x7ff4074c) != '\0') && (bVar3 < (u8)pcVar1->kind)) {
         bVar3 = pcVar1->kind;
       }
     }
@@ -56,6 +56,6 @@ void FUN_800384ec(int param_1)
   if (bVar3 < bVar4) {
     bVar3 = bVar4;
   }
-  *(byte *)(param_1 + 0x21) = bVar3 + 1;
+  *(u8 *)(param_1 + 0x21) = bVar3 + 1;
   return;
 }

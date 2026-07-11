@@ -7,12 +7,12 @@
 
 
 #include "tomba.h"
-undefined4 FUN_80077b5c(int param_1)
+s32 FUN_80077b5c(int param_1)
 
 {
-  short sVar1;
-  ushort uVar2;
-  ushort uVar3;
+  s16 sVar1;
+  u16 uVar2;
+  u16 uVar3;
   int iVar4;
   
   sVar1 = param_1->anim_timer;
@@ -21,7 +21,7 @@ undefined4 FUN_80077b5c(int param_1)
     return 0;
   }
   iVar4 = param_1->anim_data;
-  uVar2 = *(ushort *)(iVar4 + 2);
+  uVar2 = *(u16 *)(iVar4 + 2);
   uVar3 = uVar2 & 0xc000;
   if (uVar3 == 0x4000) {
     param_1->anim_data = iVar4 + 4;
@@ -39,7 +39,7 @@ undefined4 FUN_80077b5c(int param_1)
       param_1->anim_data = iVar4 + 4;
       iVar4 = *(int *)(iVar4 + 4);
       param_1->anim_data = iVar4;
-      param_1->anim_timer = *(ushort *)(iVar4 + 2) & 0x3fff;
+      param_1->anim_timer = *(u16 *)(iVar4 + 2) & 0x3fff;
       return 1;
     }
     if ((uVar2 & 0xc000) != 0) {
@@ -48,6 +48,6 @@ undefined4 FUN_80077b5c(int param_1)
     iVar4 = iVar4 + 4;
   }
   param_1->anim_data = iVar4;
-  param_1->anim_timer = *(ushort *)(iVar4 + 2) & 0x3fff;
+  param_1->anim_timer = *(u16 *)(iVar4 + 2) & 0x3fff;
   return 0;
 }

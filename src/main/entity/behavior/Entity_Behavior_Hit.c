@@ -12,20 +12,20 @@
 int FUN_80024548(int param_1,int param_2)
 
 {
-  char cVar1;
-  ushort uVar2;
+  s8 cVar1;
+  u16 uVar2;
   int iVar3;
-  byte *pbVar4;
-  short sVar5;
-  undefined4 *puVar6;
+  u8 *pbVar4;
+  s16 sVar5;
+  s32 *puVar6;
   
   iVar3 = 0;
-  if ((param_1->physics_flag == '\0') && (iVar3 = 0, DAT_1f800137 == '\0')) {
+  if ((param_1->physics_flag == '\0') && (iVar3 = 0, g_CurrentOverlay == '\0')) {
     if ((param_2 == 0) && (1 < param_1->state_flag144)) {
       iVar3 = 0;
     }
     else {
-      _DAT_1f800080 = 0;
+      _g_GTE_Result[0] = 0;
       if (param_1->direction == '\0') {
         uVar2 = param_1->draw_angle;
       }
@@ -35,37 +35,37 @@ int FUN_80024548(int param_1,int param_2)
       param_1->rot_y = uVar2;
       if (param_1->entity_flags < 0) {
         _DAT_1f800088 = 0x14;
-        sVar5 = *(short *)(param_1 + 0x66) + -10;
+        sVar5 = *(s16 *)(param_1 + 0x66) + -10;
       }
       else {
         _DAT_1f800088 = 0x28;
-        sVar5 = *(short *)(param_1 + 0x66) + -0x1e;
+        sVar5 = *(s16 *)(param_1 + 0x66) + -0x1e;
       }
       iVar3 = FUN_80083f50((int)param_1->rot_y);
-      param_1->draw_pos_x = param_1->pos_y + (short)(iVar3 * sVar5 >> 0xc);
+      param_1->draw_pos_x = param_1->pos_y + (s16)(iVar3 * sVar5 >> 0xc);
       iVar3 = FUN_80083e80((int)param_1->rot_y);
-      param_1->draw_pos_y = *(short *)(param_1 + 0x32) - param_1->target_angle;
-      param_1->draw_pos_z = param_1->pos_z - (short)(iVar3 * sVar5 >> 0xc);
-      if (DAT_800bf870 == 0) {
+      param_1->draw_pos_y = *(s16 *)(param_1 + 0x32) - param_1->target_angle;
+      param_1->draw_pos_z = param_1->pos_z - (s16)(iVar3 * sVar5 >> 0xc);
+      if (g_GameState == 0) {
         puVar6 = _DAT_1f800158;
         cVar1 = DAT_1f80015e;
         if ((param_1->entity_flags & 0x200) == 0) {
-          while (DAT_1f800182 = cVar1, DAT_1f800182 != '\0') {
-            pbVar4 = (byte *)*puVar6;
-            DAT_1f800182 = DAT_1f800182 + -1;
+          while (g_State182 = cVar1, g_State182 != '\0') {
+            pbVar4 = (u8 *)*puVar6;
+            g_State182 = g_State182 + -1;
             puVar6 = puVar6 + 1;
-            cVar1 = DAT_1f800182;
+            cVar1 = g_State182;
             if (((*pbVar4 & 4) != 0) && (pbVar4->kind == 2)) {
               func_0x80114320(param_1);
-              cVar1 = DAT_1f800182;
+              cVar1 = g_State182;
             }
           }
         }
-        if (_DAT_1f800080 != 0) {
-          return _DAT_1f800080;
+        if (_g_GTE_Result[0] != 0) {
+          return _g_GTE_Result[0];
         }
       }
-      iVar3 = (**(code **)(&DAT_8009d22c + (uint)DAT_800bf870 * 4))(param_1);
+      iVar3 = (**(code **)(&DAT_8009d22c + (uint)g_GameState * 4))(param_1);
       if ((iVar3 == 0) && (iVar3 = FUN_80024448(param_1), iVar3 == 0)) {
         iVar3 = 0;
       }

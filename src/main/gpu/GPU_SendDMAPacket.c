@@ -10,7 +10,7 @@ undefined8 FUN_80083618(uint param_1)
 
 {
   uint *puVar1;
-  undefined4 uVar2;
+  s32 uVar2;
   uint *puVar3;
   
   *DAT_800a5aa8 = 0x10000007;

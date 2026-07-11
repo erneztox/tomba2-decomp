@@ -7,8 +7,8 @@
 
 
 #include "tomba.h"
-void FUN_80083bf0(undefined2 *param_1,undefined2 param_2,undefined2 param_3,undefined2 param_4,
-                 undefined2 param_5)
+void FUN_80083bf0(s16 *param_1,s16 param_2,s16 param_3,s16 param_4,
+                 s16 param_5)
 
 {
   *param_1 = param_2;
@@ -18,9 +18,9 @@ void FUN_80083bf0(undefined2 *param_1,undefined2 param_2,undefined2 param_3,unde
   param_1->behavior_state = 0;
   param_1->action_state = 0;
   param_1->sub_action = 0;
-  *(undefined1 *)((int)param_1 + 0x11) = 0;
+  *(u8 *)((int)param_1 + 0x11) = 0;
   param_1->counter1 = 0;
-  *(undefined1 *)((int)param_1 + 0x13) = 0;
+  *(u8 *)((int)param_1 + 0x13) = 0;
   param_1->counter2 = 0;
   param_1->sub_type = param_5;
   return;

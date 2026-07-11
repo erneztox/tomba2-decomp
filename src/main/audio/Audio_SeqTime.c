@@ -9,22 +9,22 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80094c10(undefined4 param_1,undefined2 param_2)
+void FUN_80094c10(s32 param_1,s16 param_2)
 
 {
   int iVar1;
   uint uVar2;
-  ushort uVar3;
-  ushort uVar4;
+  u16 uVar3;
+  u16 uVar4;
   uint uVar5;
   uint uVar6;
   
-  uVar5 = (uint)(((int)((int)DAT_80105cfc * (uint)*(byte *)(_DAT_80105ce4 + 0x18) * 0x3fff) / 0x3f01
+  uVar5 = (uint)(((int)((int)DAT_80105cfc * (uint)*(u8 *)(_DAT_80105ce4 + 0x18) * 0x3fff) / 0x3f01
                  ) * (int)DAT_80105d02 * (int)DAT_80105d05) / 0x3f01;
-  iVar1 = *(int *)(&DAT_80104c30 + (_DAT_80105d0c & 0xff) * 4) +
-          ((int)((int)(short)_DAT_80105d0c & 0xff00U) >> 8) * 0xb0;
+  iVar1 = *(int *)(&g_AudioChannels + (_DAT_80105d0c & 0xff) * 4) +
+          ((int)((int)(s16)_DAT_80105d0c & 0xff00U) >> 8) * 0xb0;
   uVar6 = uVar5;
-  if ((int)(short)_DAT_80105d0c != 0x21) {
+  if ((int)(s16)_DAT_80105d0c != 0x21) {
     uVar6 = (uVar5 * iVar1->rot_z) / 0x7f;
     uVar5 = (uVar5 * iVar1->target_rot_y) / 0x7f;
   }
@@ -59,19 +59,19 @@ void FUN_80094c10(undefined4 param_1,undefined2 param_2)
     uVar2 = (uVar2 * uVar2) / 0x3fff;
   }
   iVar1 = ((int)_DAT_80105d10 & 0x1fffU) * 0x10;
-  *(undefined2 *)(&DAT_80105a2c + iVar1) = param_2;
-  *(short *)(&DAT_80105a28 + iVar1) = (short)uVar6;
-  *(short *)(&DAT_80105a2a + iVar1) = (short)uVar2;
+  *(s16 *)(&DAT_80105a2c + iVar1) = param_2;
+  *(s16 *)(&DAT_80105a28 + iVar1) = (s16)uVar6;
+  *(s16 *)(&DAT_80105a2a + iVar1) = (s16)uVar2;
   (&DAT_80105a08)[_DAT_80105d10] = (&DAT_80105a08)[_DAT_80105d10] | 7;
-  *(undefined2 *)(_DAT_80105d10 * 0x38 + -0x7fefab34) = param_2;
+  *(s16 *)(_DAT_80105d10 * 0x38 + -0x7fefab34) = param_2;
   uVar6 = (uint)_DAT_80105d10;
   if ((int)uVar6 < 0x10) {
-    uVar4 = (ushort)(1 << (uVar6 & 0x1f));
+    uVar4 = (u16)(1 << (uVar6 & 0x1f));
     uVar3 = 0;
   }
   else {
     uVar4 = 0;
-    uVar3 = (ushort)(1 << (uVar6 - 0x10 & 0x1f));
+    uVar3 = (u16)(1 << (uVar6 - 0x10 & 0x1f));
   }
   if ((DAT_80105d0a & 4) == 0) {
     _DAT_801054bc = _DAT_801054bc & ~uVar4;

@@ -7,13 +7,13 @@
 
 
 #include "tomba.h"
-undefined4 FUN_80053e50(byte *param_1)
+s32 FUN_80053e50(u8 *param_1)
 
 {
   if (0 < param_1->timer_main) {
     return 0;
   }
-  DAT_800bf81e = 0;
+  g_ActionState = 0;
   FUN_80058304(param_1,0xb);
   if (param_1->action_flag == 1) {
     if ((*param_1 & 4) == 0) {
@@ -33,7 +33,7 @@ LAB_80053fac:
       param_1->state = 2;
       param_1->behavior_state = 1;
       param_1->action_state = 0;
-      DAT_800bf80d = 1;
+      g_TimerFlag = 1;
       FUN_800312d4(6,param_1 + 0x2c,0xffffffb0);
       return 1;
     }
@@ -43,7 +43,7 @@ LAB_80053fac:
     FUN_800521f4(0,0x81,0x81,0xf);
     param_1->sprite_flags = param_1->sprite_flags | 0x82;
   }
-  else if (DAT_800bf80d < '\x01') {
+  else if (g_TimerFlag < '\x01') {
     FUN_800521f4(0,0x81,0x81,0xf);
     param_1->sprite_flags = 0;
     param_1[0x61] = 0;

@@ -6,7 +6,7 @@
 
 
 
-undefined4 FUN_80086604(void)
+s32 FUN_80086604(void)
 
 {
   return DAT_800abe20;

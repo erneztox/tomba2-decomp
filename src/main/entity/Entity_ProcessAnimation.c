@@ -8,7 +8,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void Entity_ProcessAnimation(int param_1,undefined4 param_2)
+void Entity_ProcessAnimation(int param_1,s32 param_2)
 
 {
   int iVar1;
@@ -26,11 +26,11 @@ void Entity_ProcessAnimation(int param_1,undefined4 param_2)
       setCopControlWord(2,0x800,iVar1->callback);
       setCopControlWord(2,0x1000,iVar1->prev);
       setCopControlWord(2,0x1800,iVar1->next);
-      setCopControlWord(2,0x2000,*(undefined4 *)(iVar1 + 0x28));
-      setCopControlWord(2,0x2800,*(undefined4 *)(iVar1 + 0x2c));
+      setCopControlWord(2,0x2000,*(s32 *)(iVar1 + 0x28));
+      setCopControlWord(2,0x2800,*(s32 *)(iVar1 + 0x2c));
       setCopControlWord(2,0x3000,iVar1->pos_y_fixed);
       setCopControlWord(2,0x3800,iVar1->scale_y);
-      FUN_8003f698(*(undefined4 *)(iVar1 + 0x40),_DAT_800ed8c8,param_2);
+      FUN_8003f698(*(s32 *)(iVar1 + 0x40),_g_EntityBuffer,param_2);
       iVar2 = iVar2 + 1;
       iVar3 = iVar3 + 4;
     } while (iVar2 < (int)(uint)param_1->counter2);

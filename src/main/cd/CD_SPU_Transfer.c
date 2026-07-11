@@ -6,11 +6,11 @@
 
 
 
-undefined4 FUN_80098de0(uint param_1)
+s32 FUN_80098de0(uint param_1)
 
 {
-  bool bVar1;
-  bool bVar2;
+  s32 bVar1;
+  s32 bVar2;
   int iVar3;
   int iVar4;
   uint uVar5;

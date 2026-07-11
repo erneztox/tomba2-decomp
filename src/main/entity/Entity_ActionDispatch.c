@@ -12,10 +12,10 @@
 void FUN_80058304(int param_1,int param_2)
 
 {
-  byte bVar1;
-  undefined1 uVar2;
-  byte bVar3;
-  undefined4 uVar4;
+  u8 bVar1;
+  u8 uVar2;
+  u8 bVar3;
+  s32 uVar4;
   
   switch(param_2) {
   case 0:
@@ -79,7 +79,7 @@ LAB_80058494:
   case 0xd:
     bVar1 = param_1->game_flags;
     if ((bVar1 & 1) != 0) {
-      DAT_800bf881 = bVar1;
+      g_EntityFlags = bVar1;
       return;
     }
     param_1->game_flags = bVar1 & 0xfd | 1;
@@ -97,7 +97,7 @@ LAB_80058538:
   case 0xe:
     bVar1 = param_1->game_flags;
     if ((bVar1 & 2) != 0) {
-      DAT_800bf881 = bVar1;
+      g_EntityFlags = bVar1;
       return;
     }
     param_1->game_flags = bVar1 & 0xfe | 2;
@@ -111,7 +111,7 @@ LAB_80058524:
   case 10:
     param_1->game_flags = param_1->game_flags & 0xfc;
     uVar4 = 0x46;
-    if (((DAT_800bf881 & 1) != 0) || (uVar4 = 0x48, (DAT_800bf881 & 2) != 0)) {
+    if (((g_EntityFlags & 1) != 0) || (uVar4 = 0x48, (g_EntityFlags & 2) != 0)) {
       FUN_8004ed94(uVar4,0x41);
     }
     break;
@@ -134,11 +134,11 @@ LAB_80058524:
     }
     if ((param_1->entity_flags & 0x200) != 0) {
       param_1->sprite_param3 = 0;
-      DAT_800bf88f = 0;
+      g_SpriteParam4 = 0;
       param_1->entity_flags = 0x10;
       _DAT_800bf89e = 0x10;
     }
   }
-  DAT_800bf881 = param_1->game_flags;
+  g_EntityFlags = param_1->game_flags;
   return;
 }

@@ -6,7 +6,7 @@
 
 
 
-int FUN_800793c4(undefined4 *param_1,int param_2,int *param_3)
+int FUN_800793c4(s32 *param_1,int param_2,int *param_3)
 
 {
   uint uVar1;

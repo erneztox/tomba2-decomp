@@ -10,12 +10,12 @@
 void FUN_80053d0c(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
   
   iVar2 = param_1->state_ptr;
   if ((iVar2 != 0) && (iVar2 != 1)) {
-    bVar1 = *(byte *)(iVar2 + 0xc);
+    bVar1 = *(u8 *)(iVar2 + 0xc);
     if (bVar1 == 4) {
       if (1 < iVar2->kind - 0x2f) {
         iVar2->collision_state = 0;

@@ -7,20 +7,20 @@
 
 
 #include "tomba.h"
-void FUN_8009121c(ushort param_1,int param_2)
+void FUN_8009121c(u16 param_1,int param_2)
 
 {
-  char cVar1;
-  undefined4 uVar2;
+  s8 cVar1;
+  s32 uVar2;
   int iVar3;
   int *piVar4;
-  undefined4 *puVar5;
+  s32 *puVar5;
   
-  piVar4 = (int *)(&DAT_80104c30 + ((int)((uint)param_1 << 0x10) >> 0xe));
-  iVar3 = (short)param_2 * 0xb0;
-  puVar5 = (undefined4 *)(*piVar4 + iVar3);
-  cVar1 = *(char *)((int)puVar5 + 0x21) + '\x01';
-  *(char *)((int)puVar5 + 0x21) = cVar1;
+  piVar4 = (int *)(&g_AudioChannels + ((int)((uint)param_1 << 0x10) >> 0xe));
+  iVar3 = (s16)param_2 * 0xb0;
+  puVar5 = (s32 *)(*piVar4 + iVar3);
+  cVar1 = *(s8*)((int)puVar5 + 0x21) + '\x01';
+  *(s8*)((int)puVar5 + 0x21) = cVar1;
   if (puVar5->counter1 == '\0') {
     puVar5[0x22] = 0;
     puVar5->sub_action = 0;
@@ -59,13 +59,13 @@ void FUN_8009121c(ushort param_1,int param_2)
     else {
       puVar5->kind = puVar5->sub_type;
     }
-    if (*(char *)((int)puVar5 + 0x22) != -1) {
+    if (*(s8*)((int)puVar5 + 0x22) != -1) {
       puVar5->behavior_state = 0;
-      FUN_80091810((int)*(char *)((int)puVar5 + 0x22),(int)*(char *)((int)puVar5 + 0x23));
-      FUN_80095b90((int)(short)(param_1 | (ushort)(param_2 << 8)));
+      FUN_80091810((int)*(s8*)((int)puVar5 + 0x22),(int)*(s8*)((int)puVar5 + 0x23));
+      FUN_80095b90((int)(s16)(param_1 | (u16)(param_2 << 8)));
     }
-    FUN_80095b90((int)(short)(param_1 | (ushort)(param_2 << 8)));
-    puVar5[0x24] = (int)*(short *)(puVar5 + 0x15);
+    FUN_80095b90((int)(s16)(param_1 | (u16)(param_2 << 8)));
+    puVar5[0x24] = (int)*(s16 *)(puVar5 + 0x15);
   }
   return;
 }

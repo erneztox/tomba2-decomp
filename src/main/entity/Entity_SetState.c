@@ -9,13 +9,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_800708b4(undefined1 param_1)
+void FUN_800708b4(u8 param_1)
 
 {
   int iVar1;
   
-  iVar1 = _DAT_1f800214;
-  _DAT_1f800214->action_state = 0;
+  iVar1 = _g_PlayerEntity;
+  _g_PlayerEntity->action_state = 0;
   iVar1->sub_type = param_1;
   return;
 }

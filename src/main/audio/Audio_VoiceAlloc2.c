@@ -8,21 +8,21 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8008fc10(short param_1,short param_2,byte param_3)
+void FUN_8008fc10(s16 param_1,s16 param_2,u8 param_3)
 
 {
-  undefined1 uVar1;
+  u8 uVar1;
   code *pcVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   int iVar4;
   int iVar5;
-  undefined4 *puVar6;
+  s32 *puVar6;
   
   iVar5 = (int)param_1;
   iVar4 = (int)param_2;
-  puVar6 = (undefined4 *)(*(int *)(&DAT_80104c30 + iVar5 * 4) + iVar4 * 0xb0);
-  uVar1 = *(undefined1 *)*puVar6;
-  *puVar6 = (undefined1 *)*puVar6 + 1;
+  puVar6 = (s32 *)(*(int *)(&g_AudioChannels + iVar5 * 4) + iVar4 * 0xb0);
+  uVar1 = *(u8 *)*puVar6;
+  *puVar6 = (u8 *)*puVar6 + 1;
   pcVar2 = _DAT_80104bb8;
   if (param_3 != 0x40) {
     if (param_3 < 0x41) {
@@ -30,7 +30,7 @@ void FUN_8008fc10(short param_1,short param_2,byte param_3)
       if (param_3 != 7) {
         if (param_3 < 8) {
           if (param_3 == 0) {
-            *(undefined1 *)((int)puVar6 + 0x26) = uVar1;
+            *(u8 *)((int)puVar6 + 0x26) = uVar1;
           }
           else {
             pcVar2 = _DAT_80104ba8;

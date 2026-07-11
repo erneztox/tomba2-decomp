@@ -7,15 +7,15 @@
 
 
 #include "tomba.h"
-void FUN_8004bd64(int param_1,byte param_2,int param_3,int param_4,short *param_5)
+void FUN_8004bd64(int param_1,u8 param_2,int param_3,int param_4,s16 *param_5)
 
 {
-  short sVar1;
+  s16 sVar1;
   
   if (param_2 == 1) {
     param_1->pos_y = param_3->pos_x + *param_5;
-    *(short *)(param_1 + 0x32) = *(short *)(param_3 + 0x30) + param_5->flags;
-    sVar1 = *(short *)(param_3 + 0x34);
+    *(s16 *)(param_1 + 0x32) = *(s16 *)(param_3 + 0x30) + param_5->flags;
+    sVar1 = *(s16 *)(param_3 + 0x34);
 LAB_8004be6c:
     sVar1 = sVar1 + param_5->kind;
   }
@@ -23,14 +23,14 @@ LAB_8004be6c:
     if (1 < param_2) {
       if (param_2 != 2) goto LAB_8004be7c;
       param_1->pos_y = param_4->pos_x + *param_5;
-      *(short *)(param_1 + 0x32) = *(short *)(param_4 + 0x30) + param_5->flags;
-      sVar1 = *(short *)(param_4 + 0x34);
+      *(s16 *)(param_1 + 0x32) = *(s16 *)(param_4 + 0x30) + param_5->flags;
+      sVar1 = *(s16 *)(param_4 + 0x34);
       goto LAB_8004be6c;
     }
     if (param_2 != 0) goto LAB_8004be7c;
-    param_1->pos_y = (short)((*(int *)(param_3 + 0x2c) + *(int *)(param_4 + 0x2c)) / 2);
-    *(short *)(param_1 + 0x32) = (short)((param_3->pos_y_fixed + param_4->pos_y_fixed) / 2);
-    sVar1 = (short)((param_3->scale_y + param_4->scale_y) / 2);
+    param_1->pos_y = (s16)((*(int *)(param_3 + 0x2c) + *(int *)(param_4 + 0x2c)) / 2);
+    *(s16 *)(param_1 + 0x32) = (s16)((param_3->pos_y_fixed + param_4->pos_y_fixed) / 2);
+    sVar1 = (s16)((param_3->scale_y + param_4->scale_y) / 2);
   }
   param_1->pos_z = sVar1;
 LAB_8004be7c:

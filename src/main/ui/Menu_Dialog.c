@@ -10,8 +10,8 @@
 void FUN_8003abe4(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
+  u8 bVar1;
+  s16 sVar2;
   int iVar3;
   int iVar4;
   
@@ -46,7 +46,7 @@ void FUN_8003abe4(int param_1)
     iVar3 = param_1;
     if (param_1->counter1 != '\0') {
       do {
-        *(undefined1 *)(iVar3->sprite_ptr1 + 0x3e) = 0;
+        *(u8 *)(iVar3->sprite_ptr1 + 0x3e) = 0;
         iVar4 = iVar4 + 1;
         iVar3 = iVar3 + 4;
       } while (iVar4 < (int)(uint)param_1->counter1);

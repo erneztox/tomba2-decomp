@@ -9,14 +9,14 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_8004a3d4(int param_1)
+s32 FUN_8004a3d4(int param_1)
 
 {
-  short sVar1;
+  s16 sVar1;
   int iVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   
-  if (_DAT_800e7fee == 0) {
+  if (_g_FrameCounter == 0) {
     return 0;
   }
   switch((int)((param_1->target_angle - 1) * 0x10000) >> 0x10) {
@@ -35,27 +35,27 @@ undefined4 FUN_8004a3d4(int param_1)
   case 8:
     sVar1 = param_1->target_angle;
     FUN_8004d4c4((int)sVar1,1);
-    DAT_800bf88c = (undefined1)sVar1;
-    DAT_800e7eec = DAT_800bf88c;
+    g_SpriteParam1 = (u8)sVar1;
+    DAT_800e7eec = g_SpriteParam1;
     break;
   case 5:
     iVar2 = (int)param_1->target_angle;
     FUN_8004d4c4(iVar2,1);
     uVar3 = 0xf;
 LAB_8004a490:
-    DAT_800bf88c = (undefined1)iVar2;
-    DAT_800e7eec = DAT_800bf88c;
+    g_SpriteParam1 = (u8)iVar2;
+    DAT_800e7eec = g_SpriteParam1;
     FUN_80040c00(uVar3);
     break;
   case 10:
     FUN_8004d4c4(0xb,1);
-    DAT_800bf88d = 1;
+    g_SpriteParam2 = 1;
     goto LAB_8004a4e0;
   case 0xb:
     FUN_8004d4c4(0xc,1);
-    DAT_800bf88d = 2;
+    g_SpriteParam2 = 2;
 LAB_8004a4e0:
-    DAT_800e7eed = DAT_800bf88d;
+    DAT_800e7eed = g_SpriteParam2;
     FUN_80067da8();
     DAT_800bf9cf = DAT_800bf9cf + '\x01';
     break;
@@ -129,12 +129,12 @@ LAB_8004a6cc:
     FUN_80040b48(0x50);
     break;
   case 0x90:
-    if (DAT_800bf87d == 8) {
-      DAT_800bf87d = DAT_800bf87c;
+    if (g_ItemCount == 8) {
+      g_ItemCount = g_ItemType;
     }
-    DAT_800bf87c = 0x10;
-    _DAT_800e7fee = (ushort)DAT_800bf87d;
-    _DAT_800e7ff0 = _DAT_800e7fee;
+    g_ItemType = 0x10;
+    _g_FrameCounter = (u16)g_ItemCount;
+    _DAT_800e7ff0 = _g_FrameCounter;
     FUN_8004ed94(0xf,0x41);
     iVar2 = FUN_800310f4(0x711,0);
     if (iVar2 != 0) {
@@ -164,8 +164,8 @@ LAB_8004a6cc:
   if (iVar2 != 0) {
     iVar2->alloc_flags = iVar2->alloc_flags | 0x80;
     iVar2->pos_x = param_1->pos_y;
-    iVar2->pos_y = *(undefined2 *)(param_1 + 0x32);
-    *(undefined2 *)(iVar2 + 0x30) = param_1->pos_z;
+    iVar2->pos_y = *(s16 *)(param_1 + 0x32);
+    *(s16 *)(iVar2 + 0x30) = param_1->pos_z;
   }
   FUN_80074590(0x28,0,0);
   return 1;

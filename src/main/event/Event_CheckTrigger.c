@@ -1,5 +1,5 @@
 /**
- * @brief Event trigger check: tests DAT_800bf881 flags, checks input conditions
+ * @brief Event trigger check: tests g_EntityFlags flags, checks input conditions
  * @note Original: func_80035088 at 0x80035088
  */
 // Event_CheckTrigger
@@ -8,12 +8,12 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-undefined4 FUN_80035088(undefined4 param_1,undefined4 param_2,int param_3)
+s32 FUN_80035088(s32 param_1,s32 param_2,int param_3)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   
-  if (((DAT_800bf881 & 4) == 0) && ((_DAT_800bf89e & 0x200) == 0)) {
+  if (((g_EntityFlags & 4) == 0) && ((_DAT_800bf89e & 0x200) == 0)) {
     uVar1 = 0;
     if (param_3 != 1) {
       if (DAT_800bfe55 == '\0') {

@@ -5,7 +5,7 @@
  */
 // Engine_DispatchStateUpdate
 
-extern unsigned char D_800BF870;
+extern unsigned s8 D_800BF870;
 
 extern void func_801401B8(void*);
 extern void func_80132358(void*);

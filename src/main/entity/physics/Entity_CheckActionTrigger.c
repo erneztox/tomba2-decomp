@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-undefined4 FUN_80055c30(int param_1)
+s32 FUN_80055c30(int param_1)
 
 {
-  if ((param_1->timer_main == 0) || (DAT_1f800137 != '\0')) {
+  if ((param_1->timer_main == 0) || (g_CurrentOverlay != '\0')) {
     return 0;
   }
   if (((param_1->collision_state & 0x80) != 0) && ((param_1->type_flags & 0x10) != 0)) {

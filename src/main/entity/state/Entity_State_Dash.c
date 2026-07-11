@@ -10,7 +10,7 @@
 void FUN_8005706c(int param_1,uint param_2)
 
 {
-  short sVar1;
+  s16 sVar1;
   uint uVar2;
   
   sVar1 = param_1->velocity_y + 0x360;
@@ -20,14 +20,14 @@ void FUN_8005706c(int param_1,uint param_2)
   }
   else {
     if ((param_1->entity_flags & 0x40) == 0) {
-      *(undefined1 *)(param_1 + 0x178) = 0;
+      *(u8 *)(param_1 + 0x178) = 0;
       FUN_80056ec8(param_1);
     }
     else {
       uVar2 = (uint)param_1->anim_id;
       if (((uVar2 - 0x14 < 2) || (uVar2 == 0x62)) || (uVar2 == 0x12)) {
         FUN_80054d14(param_1,0xca,6);
-        *(undefined1 *)(param_1 + 0x178) = 0;
+        *(u8 *)(param_1 + 0x178) = 0;
       }
     }
     param_1->state_flag145 = 2;

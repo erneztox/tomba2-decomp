@@ -9,23 +9,23 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8007ab44(undefined4 *param_1)
+void FUN_8007ab44(s32 *param_1)
 
 {
-  undefined4 *puVar1;
+  s32 *puVar1;
   
   if (param_1->counter1 == 0) {
-    _DAT_800f2738 = param_1->counter2;
-    if (_DAT_800f2738 != 0) {
-      _DAT_800f2738->prev = 0;
+    _g_BackgroundEntitiesList = param_1->counter2;
+    if (_g_BackgroundEntitiesList != 0) {
+      _g_BackgroundEntitiesList->prev = 0;
       goto LAB_8007ab8c;
     }
   }
   else {
-    *(undefined4 *)(param_1->counter1 + 0x24) = param_1->counter2;
+    *(s32 *)(param_1->counter1 + 0x24) = param_1->counter2;
 LAB_8007ab8c:
     if (param_1->counter2 != 0) {
-      *(undefined4 *)(param_1->counter2 + 0x20) = param_1->counter1;
+      *(s32 *)(param_1->counter2 + 0x20) = param_1->counter1;
       goto LAB_8007abc0;
     }
   }

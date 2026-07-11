@@ -11,10 +11,10 @@ void FUN_800499e8(void)
 
 {
   int iVar1;
-  undefined1 auStack_20->state;
-  undefined4 local_1c;
+  u8 auStack_20->state;
+  s32 local_1c;
   
-  DAT_1f80019a = 0;
+  g_EngineState = 0;
   iVar1 = FUN_8008b8f0(auStack_20,s__BIN_START_BIN_1_80015458);
   if (iVar1 == 0) {
     FUN_8009a730(s_Not_found_file_name__s_8001546c,s__BIN_START_BIN_1_80015458);

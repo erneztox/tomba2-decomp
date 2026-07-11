@@ -9,7 +9,7 @@
 void FUN_80050970(void)
 
 {
-  if (DAT_800bf816 == '\0') {
+  if (g_ActionFlag == '\0') {
     FUN_800508a8();
   }
   else {

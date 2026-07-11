@@ -8,8 +8,8 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-bool FUN_80055824(void)
+s32 FUN_80055824(void)
 
 {
-  return (_DAT_800e7e68 & _DAT_1f800172) != 0;
+  return (_g_PadState & _g_InputMask) != 0;
 }

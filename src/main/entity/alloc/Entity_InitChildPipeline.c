@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-void FUN_80027058(undefined4 param_1,ushort *param_2,int param_3)
+void FUN_80027058(s32 param_1,u16 *param_2,int param_3)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   int iVar2;
   int iVar3;
   

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80085bb0(undefined4 param_1)
+void FUN_80085bb0(s32 param_1)
 
 {
   (*PTR_PTR_800abda0->script_ptr)(4,param_1);

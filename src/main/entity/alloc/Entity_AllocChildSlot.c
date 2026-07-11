@@ -13,7 +13,7 @@ char * FUN_8007b26c(void)
   int iVar2;
   
   iVar2 = 0;
-  pcVar1 = &DAT_800ec188;
+  pcVar1 = &g_SpriteQueue;
   do {
     iVar2 = iVar2 + 1;
     if (*pcVar1 == '\0') {
@@ -22,5 +22,5 @@ char * FUN_8007b26c(void)
     }
     pcVar1 = pcVar1 + 0x40;
   } while (iVar2 < 0x28);
-  return (char *)0x0;
+  return (s8*)0x0;
 }

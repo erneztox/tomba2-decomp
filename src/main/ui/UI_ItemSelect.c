@@ -9,21 +9,21 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_8004e29c(int param_1)
+s32 FUN_8004e29c(int param_1)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   
   switch((int)((param_1->draw_x - 0x6f) * 0x10000) >> 0x10) {
   case 0:
   case 1:
-    if (DAT_800bf870 != '\x01') {
+    if (g_GameState != '\x01') {
       return 0;
     }
     if (DAT_1f800207 != '\v') {
       return 0;
     }
-    if (0x1494 < _DAT_1f800164) {
+    if (0x1494 < _g_PlayerPosZ) {
       return 0;
     }
     if (DAT_800bf916 != '\0') {
@@ -33,13 +33,13 @@ undefined4 FUN_8004e29c(int param_1)
     break;
   case 2:
   case 3:
-    if (DAT_800bf870 != '\x04') {
+    if (g_GameState != '\x04') {
       return 0;
     }
     if (DAT_1f800207 != '\x0f') {
       return 0;
     }
-    if (0x16d1 < _DAT_1f800164) {
+    if (0x16d1 < _g_PlayerPosZ) {
       return 0;
     }
     if (DAT_800bf917 != '\0') {
@@ -49,13 +49,13 @@ undefined4 FUN_8004e29c(int param_1)
     break;
   case 4:
   case 5:
-    if (DAT_800bf870 != '\x06') {
+    if (g_GameState != '\x06') {
       return 0;
     }
     if (DAT_1f800207 != '\x0e') {
       return 0;
     }
-    if (_DAT_1f800164 < 0x5fe0) {
+    if (_g_PlayerPosZ < 0x5fe0) {
       return 0;
     }
     if (DAT_800bf918 != '\0') {

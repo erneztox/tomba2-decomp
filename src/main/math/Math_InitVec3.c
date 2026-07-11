@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-void FUN_8007b2ac(undefined4 *param_1)
+void FUN_8007b2ac(s32 *param_1)
 
 {
   *param_1 = 0;
   param_1->flags = 0;
-  *(undefined2 *)(param_1 + 3) = 0x1000;
+  *(s16 *)(param_1 + 3) = 0x1000;
   return;
 }

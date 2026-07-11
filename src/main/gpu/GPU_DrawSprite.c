@@ -7,19 +7,19 @@
 
 
 #include "tomba.h"
-void FUN_80033a0c(int param_1,int param_2,undefined1 param_3)
+void FUN_80033a0c(int param_1,int param_2,u8 param_3)
 
 {
-  short *psVar1;
-  undefined2 *puVar2;
+  s16 *psVar1;
+  s16 *puVar2;
   int iVar3;
-  undefined1 local_30;
-  undefined1 local_2f;
-  undefined2 local_2e;
-  undefined2 local_28;
-  undefined2 local_26;
-  undefined2 local_24;
-  undefined2 local_22;
+  u8 local_30;
+  u8 local_2f;
+  s16 local_2e;
+  s16 local_28;
+  s16 local_26;
+  s16 local_24;
+  s16 local_22;
   
   iVar3 = 2;
   param_2 = param_2 + 4;
@@ -36,9 +36,9 @@ void FUN_80033a0c(int param_1,int param_2,undefined1 param_3)
     local_24 = puVar2->kind;
     local_22 = puVar2->sub_type;
     puVar2 = puVar2 + 4;
-    psVar1 = (short *)(param_2 + -4);
+    psVar1 = (s16 *)(param_2 + -4);
     param_2 = param_2 + 2;
-    FUN_8007e1b8(&local_28,(&PTR_DAT_80017334)[*psVar1],*(undefined4 *)(param_1 + 4),&local_30);
+    FUN_8007e1b8(&local_28,(&PTR_DAT_80017334)[*psVar1],*(s32 *)(param_1 + 4),&local_30);
   } while (iVar3 < 0xe);
   return;
 }

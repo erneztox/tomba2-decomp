@@ -6,7 +6,7 @@
 
 
 
-undefined1 * FUN_80086230(void)
+u8 * FUN_80086230(void)
 
 {
   *DAT_800abde4 = 0x100;

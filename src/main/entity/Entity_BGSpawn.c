@@ -7,12 +7,12 @@
 
 
 #include "tomba.h"
-int FUN_800537b8(int param_1,int param_2,undefined1 param_3)
+int FUN_800537b8(int param_1,int param_2,u8 param_3)
 
 {
-  undefined4 *puVar1;
-  undefined1 uVar2;
-  undefined2 uVar3;
+  s32 *puVar1;
+  u8 uVar2;
+  s16 uVar3;
   int iVar4;
   int iVar5;
   int iVar6;
@@ -41,9 +41,9 @@ int FUN_800537b8(int param_1,int param_2,undefined1 param_3)
     param_2->counter2 = 0;
     iVar4->draw_y = param_2->draw_y;
     iVar4->sprite_flags = param_2->sprite_flags;
-    *(undefined1 *)(iVar4 + 0x18) = *(undefined1 *)(param_2 + 0x18);
-    *(undefined1 *)(iVar4 + 0x19) = *(undefined1 *)(param_2 + 0x19);
-    *(undefined1 *)(iVar4 + 0x1a) = *(undefined1 *)(param_2 + 0x1a);
+    *(u8 *)(iVar4 + 0x18) = *(u8 *)(param_2 + 0x18);
+    *(u8 *)(iVar4 + 0x19) = *(u8 *)(param_2 + 0x19);
+    *(u8 *)(iVar4 + 0x1a) = *(u8 *)(param_2 + 0x1a);
     iVar4->sprite_data = param_2->sprite_data;
     iVar5 = iVar4;
     if (iVar4->counter2 != '\0') {

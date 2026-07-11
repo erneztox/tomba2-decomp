@@ -11,20 +11,20 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void FUN_8003cdd8(int param_1,undefined4 param_2)
+void FUN_8003cdd8(int param_1,s32 param_2)
 
 {
-  undefined4 in_zero;
-  undefined4 in_at;
-  undefined4 extraout_at;
+  s32 in_zero;
+  s32 in_at;
+  s32 extraout_at;
   int iVar1;
   int iVar2;
-  undefined4 uVar3;
-  undefined4 uVar4;
-  undefined4 uVar5;
-  undefined4 uVar6;
-  undefined4 uVar7;
-  undefined4 uVar8;
+  s32 uVar3;
+  s32 uVar4;
+  s32 uVar5;
+  s32 uVar6;
+  s32 uVar7;
+  s32 uVar8;
   int iVar9;
   
   if ((param_1->counter1 != '\0') && (iVar9 = 0, param_1->counter2 != '\0')) {
@@ -34,61 +34,61 @@ void FUN_8003cdd8(int param_1,undefined4 param_2)
       }
       iVar2 = *(int *)(param_1 + iVar9 * 4 + 0xc0);
       if (*(int *)(iVar2 + 0x40) != 0) {
-        _DAT_1f8000c0 = CONCAT22(*(undefined2 *)(iVar2 + 0x30),iVar2->pos_x);
-        _DAT_1f8000c4 = CONCAT22(DAT_1f8000c4_2,*(undefined2 *)(iVar2 + 0x34));
-        setCopControlWord(2,0,_DAT_1f8000f8);
+        _g_GTE_WorkC0 = CONCAT22(*(s16 *)(iVar2 + 0x30),iVar2->pos_x);
+        _g_GTE_WorkC4 = CONCAT22(g_GTE_WorkC4_2,*(s16 *)(iVar2 + 0x34));
+        setCopControlWord(2,0,_g_GTE_WorkF8);
         setCopControlWord(2,0x800,_DAT_1f8000fc);
         setCopControlWord(2,0x1000,_DAT_1f800100);
         setCopControlWord(2,0x1800,_DAT_1f800104);
         setCopControlWord(2,0x2000,_DAT_1f800108);
-        setCopReg(2,0x4800,(uint)*(ushort *)(iVar2 + 0x18));
-        setCopReg(2,0x5000,(uint)*(ushort *)(iVar2 + 0x1e));
-        setCopReg(2,0x5800,(uint)*(ushort *)(iVar2 + 0x24));
+        setCopReg(2,0x4800,(uint)*(u16 *)(iVar2 + 0x18));
+        setCopReg(2,0x5000,(uint)*(u16 *)(iVar2 + 0x1e));
+        setCopReg(2,0x5800,(uint)*(u16 *)(iVar2 + 0x24));
         copFunction(2,0x49e012);
         uVar3 = getCopReg(2,0x4800);
         uVar5 = getCopReg(2,0x5000);
         uVar7 = getCopReg(2,0x5800);
-        setCopReg(2,0x4800,(uint)*(ushort *)(iVar2 + 0x1a));
-        setCopReg(2,0x5000,(uint)*(ushort *)(iVar2 + 0x20));
-        setCopReg(2,0x5800,(uint)*(ushort *)(iVar2 + 0x26));
+        setCopReg(2,0x4800,(uint)*(u16 *)(iVar2 + 0x1a));
+        setCopReg(2,0x5000,(uint)*(u16 *)(iVar2 + 0x20));
+        setCopReg(2,0x5800,(uint)*(u16 *)(iVar2 + 0x26));
         copFunction(2,0x49e012);
         uVar4 = getCopReg(2,0x4800);
         uVar6 = getCopReg(2,0x5000);
         uVar8 = getCopReg(2,0x5800);
-        _DAT_1f800000 = CONCAT22((short)uVar4,(short)uVar3);
-        _DAT_1f80000c = CONCAT22((short)uVar8,(short)uVar7);
-        setCopReg(2,0x4800,(uint)*(ushort *)(iVar2 + 0x1c));
-        setCopReg(2,0x5000,(uint)*(ushort *)(iVar2 + 0x22));
-        setCopReg(2,0x5800,(uint)*(ushort *)(iVar2 + 0x28));
+        _g_GTE_Matrix[0] = CONCAT22((s16)uVar4,(s16)uVar3);
+        _g_GTE_DataC = CONCAT22((s16)uVar8,(s16)uVar7);
+        setCopReg(2,0x4800,(uint)*(u16 *)(iVar2 + 0x1c));
+        setCopReg(2,0x5000,(uint)*(u16 *)(iVar2 + 0x22));
+        setCopReg(2,0x5800,(uint)*(u16 *)(iVar2 + 0x28));
         copFunction(2,0x49e012);
         uVar3 = getCopReg(2,0x4800);
         uVar4 = getCopReg(2,0x5000);
         uVar7 = getCopReg(2,0x5800);
-        _DAT_1f800004 = CONCAT22((short)uVar5,(short)uVar3);
-        _DAT_1f800008 = CONCAT22((short)uVar4,(short)uVar6);
-        _DAT_1f800010 = CONCAT22(_DAT_1f800012,(short)uVar7);
-        setCopReg(2,in_zero,_DAT_1f8000c0);
-        setCopReg(2,in_at,_DAT_1f8000c4);
+        _g_GTE_Data4 = CONCAT22((s16)uVar5,(s16)uVar3);
+        _g_GTE_Data8 = CONCAT22((s16)uVar4,(s16)uVar6);
+        _g_GTE_Data10 = CONCAT22(_DAT_1f800012,(s16)uVar7);
+        setCopReg(2,in_zero,_g_GTE_WorkC0);
+        setCopReg(2,in_at,_g_GTE_WorkC4);
         copFunction(2,0x486012);
-        _DAT_1f800014 = getCopReg(2,0x19);
-        _DAT_1f800018 = getCopReg(2,0x1a);
-        _DAT_1f80001c = getCopReg(2,0x1b);
-        _DAT_1f800014 = _DAT_1f800014 + _DAT_1f80010c;
-        _DAT_1f800018 = _DAT_1f800018 + _DAT_1f800110;
-        _DAT_1f80001c = _DAT_1f80001c + _DAT_1f800114;
-        setCopControlWord(2,0,_DAT_1f800000);
-        setCopControlWord(2,0x800,_DAT_1f800004);
-        setCopControlWord(2,0x1000,_DAT_1f800008);
-        setCopControlWord(2,0x1800,_DAT_1f80000c);
-        setCopControlWord(2,0x2000,_DAT_1f800010);
-        setCopControlWord(2,0x2800,_DAT_1f800014);
-        setCopControlWord(2,0x3000,_DAT_1f800018);
-        setCopControlWord(2,0x3800,_DAT_1f80001c);
-        iVar1 = _DAT_800ed8c8;
+        _g_GTE_Data14 = getCopReg(2,0x19);
+        _g_GTE_Data18 = getCopReg(2,0x1a);
+        _g_GTE_Data1C = getCopReg(2,0x1b);
+        _g_GTE_Data14 = _g_GTE_Data14 + _g_GTE_Work10C;
+        _g_GTE_Data18 = _g_GTE_Data18 + _g_GTE_Work110;
+        _g_GTE_Data1C = _g_GTE_Data1C + _g_GTE_Work114;
+        setCopControlWord(2,0,_g_GTE_Matrix[0]);
+        setCopControlWord(2,0x800,_g_GTE_Data4);
+        setCopControlWord(2,0x1000,_g_GTE_Data8);
+        setCopControlWord(2,0x1800,_g_GTE_DataC);
+        setCopControlWord(2,0x2000,_g_GTE_Data10);
+        setCopControlWord(2,0x2800,_g_GTE_Data14);
+        setCopControlWord(2,0x3000,_g_GTE_Data18);
+        setCopControlWord(2,0x3800,_g_GTE_Data1C);
+        iVar1 = _g_EntityBuffer;
         if ((param_1->sprite_flags & 0xf) == 4) {
-          iVar1 = _DAT_800ed8c8 + *(char *)(iVar2 + 0x3f) * 4;
+          iVar1 = _g_EntityBuffer + *(s8*)(iVar2 + 0x3f) * 4;
         }
-        FUN_8003f698(*(undefined4 *)(iVar2 + 0x40),iVar1,param_2);
+        FUN_8003f698(*(s32 *)(iVar2 + 0x40),iVar1,param_2);
         in_at = extraout_at;
       }
       iVar9 = iVar9 + 1;

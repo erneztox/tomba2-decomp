@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-undefined4 FUN_8008b040(undefined1 *param_1)
+s32 FUN_8008b040(u8 *param_1)
 
 {
   *DAT_800ac280 = 2;

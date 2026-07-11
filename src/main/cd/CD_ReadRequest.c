@@ -6,7 +6,7 @@
 
 
 
-undefined4 FUN_8001ce04(undefined1 param_1,undefined4 param_2,undefined4 param_3)
+s32 FUN_8001ce04(u8 param_1,s32 param_2,s32 param_3)
 
 {
   int iVar1;

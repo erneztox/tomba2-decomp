@@ -9,12 +9,12 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8005ec70(byte *param_1)
+void FUN_8005ec70(u8 *param_1)
 
 {
-  byte bVar1;
-  undefined2 uVar2;
-  short sVar3;
+  u8 bVar1;
+  s16 uVar2;
+  s16 sVar3;
   int iVar4;
   uint uVar5;
   
@@ -36,8 +36,8 @@ void FUN_8005ec70(byte *param_1)
         }
         iVar4 = FUN_80055824();
         if (iVar4 == 0) {
-          if (((((_DAT_800ecf54 & 0x50) != 0) || (iVar4 = FUN_80076d68(param_1), iVar4 == 1)) ||
-              (FUN_80055e28(param_1,0), (_DAT_800ecf54 & 0x50) != 0)) || ((param_1->behavior_flags & 2) == 0)
+          if (((((_g_InputState & 0x50) != 0) || (iVar4 = FUN_80076d68(param_1), iVar4 == 1)) ||
+              (FUN_80055e28(param_1,0), (_g_InputState & 0x50) != 0)) || ((param_1->behavior_flags & 2) == 0)
              ) {
             param_1[0x61] = 0;
             param_1->behavior_state = 0;
@@ -55,7 +55,7 @@ void FUN_8005ec70(byte *param_1)
           *param_1 = *param_1 & 3;
         }
       }
-      *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 8;
+      *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
       FUN_8005444c(param_1);
       FUN_80056c00(param_1,1);
       return;
@@ -63,7 +63,7 @@ void FUN_8005ec70(byte *param_1)
     if (bVar1 != 0) {
       return;
     }
-    DAT_800bf840 = 0x86;
+    g_SFXState = 0x86;
     param_1[0x61] = 0x41;
     param_1->collision_dir = 0;
     DAT_1f800207 = 0;

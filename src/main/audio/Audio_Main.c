@@ -12,38 +12,38 @@ void FUN_800931c0(void)
 
 {
   uint uVar1;
-  undefined2 *puVar2;
+  s16 *puVar2;
   uint *puVar3;
   uint uVar4;
   uint uVar5;
   uint uVar6;
   int iVar7;
   char *pcVar8;
-  byte *pbVar9;
+  u8 *pbVar9;
   int iVar10;
-  undefined2 *puVar11;
-  undefined2 *puVar12;
-  ushort *puVar13;
-  undefined2 *puVar14;
-  undefined2 *puVar15;
+  s16 *puVar11;
+  s16 *puVar12;
+  u16 *puVar13;
+  s16 *puVar14;
+  s16 *puVar15;
   int local_68;
   uint local_64;
-  undefined2 local_60;
-  undefined2 local_5e;
-  undefined2 local_54;
+  s16 local_60;
+  s16 local_5e;
+  s16 local_54;
   int local_4c;
-  undefined2 local_2e;
-  undefined2 local_2c;
+  s16 local_2e;
+  s16 local_2c;
   
   _DAT_80105bac = _DAT_80105bac + 1 & 0xf;
-  *(undefined4 *)(&DAT_80105bb0 + _DAT_80105bac * 4) = 0;
+  *(s32 *)(&DAT_80105bb0 + _DAT_80105bac * 4) = 0;
   uVar5 = 0;
   if ('\0' < DAT_80105cec) {
     iVar10 = -0x7fefab32;
     iVar7 = 0;
     do {
       FUN_8009a1d0(uVar5,iVar10);
-      if (*(short *)(iVar7 + -0x7fefab32) == 0) {
+      if (*(s16 *)(iVar7 + -0x7fefab32) == 0) {
         *(uint *)(&DAT_80105bb0 + _DAT_80105bac * 4) =
              *(uint *)(&DAT_80105bb0 + _DAT_80105bac * 4) | 1 << (uVar5 & 0x1f);
       }
@@ -73,7 +73,7 @@ void FUN_800931c0(void)
               uVar4 = 0;
               uVar1 = 1 << (uVar6 - 0x10 & 0x1f);
             }
-            FUN_80097e10(0,(uVar1 & 0xff) << 0x10 | (int)(short)uVar4);
+            FUN_80097e10(0,(uVar1 & 0xff) << 0x10 | (int)(s16)uVar4);
           }
           *pcVar8 = '\0';
         }
@@ -87,10 +87,10 @@ void FUN_800931c0(void)
   iVar10 = 0;
   _DAT_801054ba = _DAT_801054ba & ~_DAT_80105bf2;
   do {
-    if (*(short *)(iVar10 + -0x7fefab1a) != 0) {
+    if (*(s16 *)(iVar10 + -0x7fefab1a) != 0) {
       (*_DAT_80105ba8)(iVar7);
     }
-    if (*(short *)(iVar10 + -0x7fefab0e) != 0) {
+    if (*(s16 *)(iVar10 + -0x7fefab0e) != 0) {
       (*_DAT_80105a20)(iVar7);
     }
     iVar7 = iVar7 + 1;
@@ -98,12 +98,12 @@ void FUN_800931c0(void)
   } while (iVar7 < 0x18);
   uVar5 = 0;
   pbVar9 = &DAT_80105a08;
-  puVar2 = (undefined2 *)&DAT_80105a28;
-  puVar15 = (undefined2 *)&DAT_80105a32;
-  puVar14 = (undefined2 *)&DAT_80105a30;
-  puVar13 = (ushort *)&DAT_80105a2e;
-  puVar12 = (undefined2 *)&DAT_80105a2c;
-  puVar11 = (undefined2 *)&DAT_80105a2a;
+  puVar2 = (s16 *)&DAT_80105a28;
+  puVar15 = (s16 *)&DAT_80105a32;
+  puVar14 = (s16 *)&DAT_80105a30;
+  puVar13 = (u16 *)&DAT_80105a2e;
+  puVar12 = (s16 *)&DAT_80105a2c;
+  puVar11 = (s16 *)&DAT_80105a2a;
   do {
     local_68 = 1 << (uVar5 & 0x1f);
     local_64 = 0;

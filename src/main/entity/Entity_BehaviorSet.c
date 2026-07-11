@@ -9,35 +9,35 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80024448(int param_1)
+s32 FUN_80024448(int param_1)
 
 {
-  short sVar1;
+  s16 sVar1;
   int iVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   
   uVar3 = 0x25;
   if (-1 < param_1->entity_flags) {
     uVar3 = 0x4a;
   }
-  *(undefined1 *)(param_1 + 0x17d) = 0;
-  iVar2 = FUN_80046a44(param_1,(int)*(short *)(param_1 + 0x66),(int)-param_1->target_angle,
+  *(u8 *)(param_1 + 0x17d) = 0;
+  iVar2 = FUN_80046a44(param_1,(int)*(s16 *)(param_1 + 0x66),(int)-param_1->target_angle,
                        uVar3);
   if (iVar2 == 0) {
     uVar3 = 0;
   }
   else {
-    *(byte *)(param_1 + 0x17d) = (byte)((ushort)_DAT_1f8001a6 >> 0xb) & 3;
+    *(u8 *)(param_1 + 0x17d) = (u8)((u16)_DAT_1f8001a6 >> 0xb) & 3;
     FUN_80048654(param_1);
-    sVar1 = _DAT_1f8001a0;
-    param_1->draw_angle = _DAT_1f8001a0;
+    sVar1 = _g_CollisionNormalX;
+    param_1->draw_angle = _g_CollisionNormalX;
     if (param_1->direction == '\0') {
       param_1->rot_y = sVar1;
     }
     else {
       param_1->rot_y = sVar1 - 0x800U & 0xfff;
     }
-    if ((iVar2 == 2) && ((*(byte *)(param_1 + 0x17d) & 1) != 0)) {
+    if ((iVar2 == 2) && ((*(u8 *)(param_1 + 0x17d) & 1) != 0)) {
       param_1->action_flag = 7;
       FUN_80024af0(param_1);
     }
@@ -46,7 +46,7 @@ undefined4 FUN_80024448(int param_1)
     }
     uVar3 = 1;
     param_1->anim_param = (char)iVar2;
-    _DAT_1f800084 = 0;
+    _g_GTE_Work84 = 0;
   }
   return uVar3;
 }

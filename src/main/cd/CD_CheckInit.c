@@ -6,7 +6,7 @@
 
 
 
-bool FUN_80089f88(void)
+s32 FUN_80089f88(void)
 
 {
   int iVar1;

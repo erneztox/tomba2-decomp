@@ -9,12 +9,12 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_8004b528(int param_1,int param_2)
+s32 FUN_8004b528(int param_1,int param_2)
 
 {
-  byte bVar1;
-  short sVar2;
-  undefined4 uVar3;
+  u8 bVar1;
+  s16 sVar2;
+  s32 uVar3;
   int iVar4;
   
   bVar1 = param_1->action_state;
@@ -27,16 +27,16 @@ undefined4 FUN_8004b528(int param_1,int param_2)
       iVar4 = FUN_800310f4(0x20,0);
       if (iVar4 != 0) {
         iVar4->angle_offset = _DAT_800e7f50->pos_x;
-        iVar4->sprite_y = *(undefined2 *)(_DAT_800e7f50 + 0x30);
-        iVar4->rot_x = *(undefined2 *)(_DAT_800e7f50 + 0x34);
+        iVar4->sprite_y = *(s16 *)(_DAT_800e7f50 + 0x30);
+        iVar4->rot_x = *(s16 *)(_DAT_800e7f50 + 0x34);
         if (param_2 == 0) {
           iVar4->rot_z = param_1->draw_x;
           iVar4->target_rot_y = param_1->angle_delta;
-          iVar4->draw_y = *(undefined2 *)(param_1 + 100);
+          iVar4->draw_y = *(s16 *)(param_1 + 100);
         }
         else {
           iVar4->rot_z = param_2->pos_y;
-          iVar4->target_rot_y = *(undefined2 *)(param_2 + 0x32);
+          iVar4->target_rot_y = *(s16 *)(param_2 + 0x32);
           iVar4->draw_y = param_2->pos_z;
         }
         iVar4->alloc_flags = iVar4->alloc_flags | 0x80;
@@ -60,9 +60,9 @@ undefined4 FUN_8004b528(int param_1,int param_2)
     if (bVar1 == 0) {
       if (DAT_800bf80a == '\0') {
         DAT_800e7e84 = 4;
-        DAT_800e7e85 = 0x21;
+        g_CollisionType = 0x21;
         DAT_800e7e86 = 0;
-        FUN_80054d14(&DAT_800e7e80,0xcc,0);
+        FUN_80054d14(&g_CollisionEntity,0xcc,0);
         param_1->timer1 = 0x14;
         param_1->action_state = param_1->action_state + '\x01';
       }
@@ -81,7 +81,7 @@ undefined4 FUN_8004b528(int param_1,int param_2)
       param_1->timer1 = sVar2;
       uVar3 = 0;
       if (sVar2 == -1) {
-        FUN_80054d14(&DAT_800e7e80,2,0);
+        FUN_80054d14(&g_CollisionEntity,2,0);
         uVar3 = 2;
       }
     }

@@ -10,10 +10,10 @@
 void FUN_80064e48(int param_1)
 
 {
-  byte bVar1;
-  undefined1 uVar2;
-  ushort uVar3;
-  short sVar4;
+  u8 bVar1;
+  u8 uVar2;
+  u16 uVar3;
+  s16 sVar4;
   int iVar5;
   
   bVar1 = param_1->action_state;
@@ -89,8 +89,8 @@ void FUN_80064e48(int param_1)
     {
       uVar2 = 0x20;
     }
-    *(undefined1 *)(param_1 + 0x169) = uVar2;
-    *(byte *)(param_1 + 0x168) = *(byte *)(param_1 + 0x169) >> 4;
+    *(u8 *)(param_1 + 0x169) = uVar2;
+    *(u8 *)(param_1 + 0x168) = *(u8 *)(param_1 + 0x169) >> 4;
   }
   FUN_80063f9c(param_1);
 LAB_80065050:

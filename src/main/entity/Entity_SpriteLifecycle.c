@@ -10,24 +10,24 @@
 void FUN_8007dc38(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
   
   bVar1 = param_1->state;
   if (bVar1 == 1) {
-    if ((param_1->sub_type == '\0') && ((DAT_800bf822 & 0xfb) != 0)) {
+    if ((param_1->sub_type == '\0') && ((g_EventInput & 0xfb) != 0)) {
       param_1->state = 2;
     }
     FUN_8007c940(param_1);
     FUN_8007cc00(param_1);
     if (param_1->sub_type != '\x01') {
-      FUN_8005019c(param_1 + 0x54,*(undefined1 *)(param_1 + 0x18),1,2);
+      FUN_8005019c(param_1 + 0x54,*(u8 *)(param_1 + 0x18),1,2);
     }
   }
   else if (bVar1 < 2) {
     if (bVar1 == 0) {
       iVar2 = *(int *)(param_1 + 0x50) +
-              (uint)*(ushort *)(*(short *)(param_1 + 0x5e) * 4 + *(int *)(param_1 + 0x4c));
+              (uint)*(u16 *)(*(s16 *)(param_1 + 0x5e) * 4 + *(int *)(param_1 + 0x4c));
       param_1->parent = iVar2;
       param_1->script_ptr = iVar2;
       FUN_8007c0d0(param_1,0);
@@ -35,16 +35,16 @@ void FUN_8007dc38(int param_1)
       param_1->anim_id = 1;
       param_1->state = param_1->state + '\x01';
       if (bVar1 == 2) {
-        *(undefined1 *)(param_1 + 0x18) = 5;
+        *(u8 *)(param_1 + 0x18) = 5;
       }
       else if (bVar1 < 3) {
         if (bVar1 == 0) {
-          *(undefined1 *)(param_1 + 0x18) = 4;
-          DAT_800bf822 = DAT_800bf822 | 4;
+          *(u8 *)(param_1 + 0x18) = 4;
+          g_EventInput = g_EventInput | 4;
         }
       }
       else if (bVar1 == 3) {
-        *(undefined1 *)(param_1 + 0x18) = 1;
+        *(u8 *)(param_1 + 0x18) = 1;
       }
     }
   }
@@ -53,7 +53,7 @@ void FUN_8007dc38(int param_1)
   }
   else if (bVar1 == 3) {
     if (param_1->sub_type == '\0') {
-      DAT_800bf822 = DAT_800bf822 & 0xfb;
+      g_EventInput = g_EventInput & 0xfb;
     }
     FUN_8007a624(param_1);
   }

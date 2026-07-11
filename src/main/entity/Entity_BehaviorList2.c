@@ -1,5 +1,5 @@
 /**
- * @brief Entity behavior list variant 2: checks timer + DAT_800bf80d flag
+ * @brief Entity behavior list variant 2: checks timer + g_TimerFlag flag
  * @note Original: func_80022760 at 0x80022760
  */
 // Entity_BehaviorList2
@@ -12,24 +12,24 @@
 void FUN_80022760(int param_1)
 
 {
-  char cVar1;
-  undefined1 uVar2;
+  s8 cVar1;
+  u8 uVar2;
   char *pcVar3;
-  undefined4 *puVar4;
+  s32 *puVar4;
   
-  if (((param_1->timer_main == 0) || (DAT_800bf80d != '\0')) ||
+  if (((param_1->timer_main == 0) || (g_TimerFlag != '\0')) ||
      (uVar2 = 0, puVar4 = _DAT_1f800154, cVar1 = DAT_1f80015c,
      (param_1->entity_flags & 0x200) != 0)) {
     return;
   }
 joined_r0x800227c8:
-  DAT_800bf80d = uVar2;
+  g_TimerFlag = uVar2;
   if (cVar1 == '\0') {
-    DAT_1f800182 = cVar1;
+    g_State182 = cVar1;
     return;
   }
-  pcVar3 = (char *)*puVar4;
-  DAT_1f800182 = cVar1 + -1;
+  pcVar3 = (s8*)*puVar4;
+  g_State182 = cVar1 + -1;
   puVar4 = puVar4 + 1;
   if (*pcVar3 != '\x01') goto switchD_8002281c_caseD_5;
   switchpcVar3->kind {
@@ -42,14 +42,14 @@ joined_r0x800227c8:
   case '\x04':
     if (pcVar3->flag_5E == '\x02') {
       func_0x80114e74(param_1);
-      uVar2 = DAT_800bf80d;
-      cVar1 = DAT_1f800182;
+      uVar2 = g_TimerFlag;
+      cVar1 = g_State182;
       goto joined_r0x800227c8;
     }
 switchD_8002281c_caseD_0:
     FUN_80022060(param_1);
-    uVar2 = DAT_800bf80d;
-    cVar1 = DAT_1f800182;
+    uVar2 = g_TimerFlag;
+    cVar1 = g_State182;
     goto joined_r0x800227c8;
   default:
     break;
@@ -57,7 +57,7 @@ switchD_8002281c_caseD_0:
     FUN_80022190(param_1);
   }
 switchD_8002281c_caseD_5:
-  uVar2 = DAT_800bf80d;
-  cVar1 = DAT_1f800182;
+  uVar2 = g_TimerFlag;
+  cVar1 = g_State182;
   goto joined_r0x800227c8;
 }

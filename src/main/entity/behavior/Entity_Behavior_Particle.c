@@ -10,26 +10,26 @@
 void FUN_80027254(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
-  ushort uVar3;
-  short sVar4;
-  undefined *puVar5;
+  u8 bVar1;
+  s16 sVar2;
+  u16 uVar3;
+  s16 sVar4;
+  void *puVar5;
   
   bVar1 = param_1->state;
   if (bVar1 == 1) {
-    *(ushort *)(param_1 + 0xc) = *(ushort *)(param_1 + 0xc) - (*(ushort *)(param_1 + 0xc) >> 7);
-    *(short *)(param_1 + 0x1e) = *(short *)(param_1 + 0x1e) + *(short *)(param_1 + 0x10);
-    *(short *)(param_1 + 0x26) = *(short *)(param_1 + 0x26) + *(short *)(param_1 + 0x14);
-    *(short *)(param_1 + 0x28) = *(short *)(param_1 + 0x28) + *(short *)(param_1 + 0x16);
-    *(short *)(param_1 + 0x2a) = *(short *)(param_1 + 0x2a) + *(short *)(param_1 + 10);
-    sVar2 = *(short *)(param_1 + 0x12);
-    param_1->pos_x = param_1->pos_x + *(short *)(param_1 + 0x1a);
-    sVar4 = *(short *)(param_1 + 0x12) + *(short *)(param_1 + 0x18);
-    *(short *)(param_1 + 0x12) = sVar4;
+    *(u16 *)(param_1 + 0xc) = *(u16 *)(param_1 + 0xc) - (*(u16 *)(param_1 + 0xc) >> 7);
+    *(s16 *)(param_1 + 0x1e) = *(s16 *)(param_1 + 0x1e) + *(s16 *)(param_1 + 0x10);
+    *(s16 *)(param_1 + 0x26) = *(s16 *)(param_1 + 0x26) + *(s16 *)(param_1 + 0x14);
+    *(s16 *)(param_1 + 0x28) = *(s16 *)(param_1 + 0x28) + *(s16 *)(param_1 + 0x16);
+    *(s16 *)(param_1 + 0x2a) = *(s16 *)(param_1 + 0x2a) + *(s16 *)(param_1 + 10);
+    sVar2 = *(s16 *)(param_1 + 0x12);
+    param_1->pos_x = param_1->pos_x + *(s16 *)(param_1 + 0x1a);
+    sVar4 = *(s16 *)(param_1 + 0x12) + *(s16 *)(param_1 + 0x18);
+    *(s16 *)(param_1 + 0x12) = sVar4;
     param_1->prev = param_1->prev + sVar2 * 0x100;
     if ((param_1->pos_y + 0x800 < (int)sVar4) ||
-       (sVar2 = *(short *)(param_1 + 8), *(short *)(param_1 + 8) = sVar2 + -1, sVar2 == 1)) {
+       (sVar2 = *(s16 *)(param_1 + 8), *(s16 *)(param_1 + 8) = sVar2 + -1, sVar2 == 1)) {
       param_1->state = 3;
     }
   }
@@ -37,60 +37,60 @@ void FUN_80027254(int param_1)
     if (bVar1 == 0) {
       param_1->state = 1;
       sVar2 = (param_1->kind & 1) + 2;
-      *(undefined1 *)(param_1 + 0xe) = *(undefined1 *)(param_1 + 0x33);
-      *(short *)(param_1 + 0x14) = sVar2;
-      *(short *)(param_1 + 0x10) = sVar2;
+      *(u8 *)(param_1 + 0xe) = *(u8 *)(param_1 + 0x33);
+      *(s16 *)(param_1 + 0x14) = sVar2;
+      *(s16 *)(param_1 + 0x10) = sVar2;
       uVar3 = FUN_8009a450();
-      *(ushort *)(param_1 + 0x10) = *(short *)(param_1 + 0x10) + (uVar3 & 3);
+      *(u16 *)(param_1 + 0x10) = *(s16 *)(param_1 + 0x10) + (uVar3 & 3);
       uVar3 = FUN_8009a450();
-      *(ushort *)(param_1 + 0x14) = *(short *)(param_1 + 0x14) + (uVar3 & 3);
+      *(u16 *)(param_1 + 0x14) = *(s16 *)(param_1 + 0x14) + (uVar3 & 3);
       if ((param_1->flags & 1) == 0) {
-        *(undefined2 *)(param_1 + 8) = 0x30;
+        *(s16 *)(param_1 + 8) = 0x30;
         if ((param_1->flags & 2) == 0) {
           puVar5 = &DAT_8009d53c;
         }
         else {
           puVar5 = &DAT_8009d54c;
         }
-        *(short *)(param_1 + 0x10) =
-             *(short *)(param_1 + 0x10) * 4 * *(short *)(puVar5 + (param_1->kind & 7) * 2);
-        *(short *)(param_1 + 0x14) =
-             *(short *)(param_1 + 0x14) * 4 *
-             *(short *)(puVar5 + (param_1->kind + 6 & 7) * 2);
+        *(s16 *)(param_1 + 0x10) =
+             *(s16 *)(param_1 + 0x10) * 4 * *(s16 *)(puVar5 + (param_1->kind & 7) * 2);
+        *(s16 *)(param_1 + 0x14) =
+             *(s16 *)(param_1 + 0x14) * 4 *
+             *(s16 *)(puVar5 + (param_1->kind + 6 & 7) * 2);
         uVar3 = FUN_8009a450();
-        *(ushort *)(param_1 + 0x12) = (((uVar3 & 3) + 1) * -8 + -0x20) * 0x100;
-        *(undefined2 *)(param_1 + 0x18) = 0x300;
+        *(u16 *)(param_1 + 0x12) = (((uVar3 & 3) + 1) * -8 + -0x20) * 0x100;
+        *(s16 *)(param_1 + 0x18) = 0x300;
       }
       else {
-        *(undefined2 *)(param_1 + 8) = 0x18;
-        *(undefined2 *)(param_1 + 0x12) = 0xe000;
-        *(undefined2 *)(param_1 + 0x18) = 0x400;
+        *(s16 *)(param_1 + 8) = 0x18;
+        *(s16 *)(param_1 + 0x12) = 0xe000;
+        *(s16 *)(param_1 + 0x18) = 0x400;
         if ((param_1->flags & 2) == 0) {
           puVar5 = &DAT_8009d53c;
         }
         else {
           puVar5 = &DAT_8009d54c;
         }
-        *(short *)(param_1 + 0x10) =
-             *(short *)(param_1 + 0x10) * 2 * *(short *)(puVar5 + (param_1->kind & 7) * 2);
-        *(short *)(param_1 + 0x14) =
-             *(short *)(param_1 + 0x14) * 2 *
-             *(short *)(puVar5 + (param_1->kind + 6 & 7) * 2);
+        *(s16 *)(param_1 + 0x10) =
+             *(s16 *)(param_1 + 0x10) * 2 * *(s16 *)(puVar5 + (param_1->kind & 7) * 2);
+        *(s16 *)(param_1 + 0x14) =
+             *(s16 *)(param_1 + 0x14) * 2 *
+             *(s16 *)(puVar5 + (param_1->kind + 6 & 7) * 2);
       }
-      sVar2 = (*(ushort *)(param_1 + 0x10) | *(ushort *)(param_1 + 0x14)) * 0x14;
-      *(short *)(param_1 + 0x1a) = sVar2;
-      *(short *)(param_1 + 10) = sVar2;
-      *(short *)(param_1 + 0x16) = sVar2;
-      *(short *)(param_1 + 0x16) =
-           sVar2 * *(short *)(&DAT_8009d55c + (uint)param_1->kind * 2);
-      *(short *)(param_1 + 10) =
-           *(short *)(param_1 + 10) * *(short *)(&DAT_8009d56c + (uint)param_1->kind * 2);
-      sVar2 = *(short *)(&DAT_8009d57c + (uint)param_1->kind * 2);
-      *(undefined2 *)(param_1 + 0x28) = 0;
-      *(undefined2 *)(param_1 + 0x2a) = 0;
+      sVar2 = (*(u16 *)(param_1 + 0x10) | *(u16 *)(param_1 + 0x14)) * 0x14;
+      *(s16 *)(param_1 + 0x1a) = sVar2;
+      *(s16 *)(param_1 + 10) = sVar2;
+      *(s16 *)(param_1 + 0x16) = sVar2;
+      *(s16 *)(param_1 + 0x16) =
+           sVar2 * *(s16 *)(&DAT_8009d55c + (uint)param_1->kind * 2);
+      *(s16 *)(param_1 + 10) =
+           *(s16 *)(param_1 + 10) * *(s16 *)(&DAT_8009d56c + (uint)param_1->kind * 2);
+      sVar2 = *(s16 *)(&DAT_8009d57c + (uint)param_1->kind * 2);
+      *(s16 *)(param_1 + 0x28) = 0;
+      *(s16 *)(param_1 + 0x2a) = 0;
       param_1->pos_x = 0;
-      param_1->pos_y = -*(short *)(param_1 + 0x12);
-      *(short *)(param_1 + 0x1a) = *(short *)(param_1 + 0x1a) * sVar2;
+      param_1->pos_y = -*(s16 *)(param_1 + 0x12);
+      *(s16 *)(param_1 + 0x1a) = *(s16 *)(param_1 + 0x1a) * sVar2;
     }
   }
   else if ((bVar1 != 2) && (bVar1 == 3)) {

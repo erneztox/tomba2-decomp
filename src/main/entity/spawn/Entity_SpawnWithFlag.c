@@ -1,5 +1,5 @@
 /**
- * @brief Spawns an entity with position and sets flag 0x80 on the entity's flags byte.
+ * @brief Spawns an entity with position and sets flag 0x80 on the entity's flags u8.
  * @note Original: func_800312D4 at 0x800312D4
  */
 #include "tomba.h"

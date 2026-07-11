@@ -12,7 +12,7 @@
 void FUN_80067ef4(int param_1)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   
   switch(param_1->sprite_param3) {
   case 0:

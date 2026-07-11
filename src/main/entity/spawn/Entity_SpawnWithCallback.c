@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-int FUN_800725d4(undefined2 *param_1)
+int FUN_800725d4(s16 *param_1)
 
 {
   int iVar1;
@@ -19,7 +19,7 @@ int FUN_800725d4(undefined2 *param_1)
   else {
     iVar1->kind = 0x17;
     iVar1->callback = FUN_8007263c;
-    *(undefined2 **)(iVar1 + 0x10) = param_1;
+    *(s16 **)(iVar1 + 0x10) = param_1;
     iVar1->alloc_flags = iVar1->alloc_flags | 0x80;
     *param_1 = 0xffff;
   }

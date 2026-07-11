@@ -10,8 +10,8 @@
 void FUN_8006b1fc(int param_1)
 
 {
-  short sVar1;
-  byte bVar2;
+  s16 sVar1;
+  u8 bVar2;
   
   bVar2 = param_1->sub_action;
   if (bVar2 != 1) {
@@ -20,7 +20,7 @@ void FUN_8006b1fc(int param_1)
         if (bVar2 != 3) {
           return;
         }
-        param_1->anim_counter = param_1->anim_counter - *(short *)(param_1 + 0x76);
+        param_1->anim_counter = param_1->anim_counter - *(s16 *)(param_1 + 0x76);
         param_1->type_flags = param_1->type_flags + -0x80;
         if ((param_1->move_mode == '\x01') &&
            (sVar1 = param_1->timer2, param_1->timer2 = sVar1 + -1, sVar1 == 1)

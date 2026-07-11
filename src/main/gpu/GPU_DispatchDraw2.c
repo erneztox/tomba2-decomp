@@ -6,10 +6,10 @@
 
 
 
-void FUN_800803dc(uint *param_1,undefined4 param_2)
+void FUN_800803dc(uint *param_1,s32 param_2)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   uint uVar2;
   
   uVar2 = *param_1;

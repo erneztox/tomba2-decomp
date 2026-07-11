@@ -18,7 +18,7 @@ void FUN_80023618(int param_1,int param_2)
     if (param_1->kind - 1 < 9) {
       param_2->move_mode = 1;
     }
-    DAT_1f800182 = 0;
+    g_State182 = 0;
   }
   return;
 }

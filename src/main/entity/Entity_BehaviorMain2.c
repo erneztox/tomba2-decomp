@@ -9,13 +9,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80073cd8(undefined1 *param_1)
+void FUN_80073cd8(u8 *param_1)
 
 {
-  byte bVar1;
-  char cVar2;
-  undefined2 uVar3;
-  short sVar4;
+  u8 bVar1;
+  s8 cVar2;
+  s16 uVar3;
+  s16 sVar4;
   int iVar5;
   
   bVar1 = param_1->state;
@@ -33,7 +33,7 @@ void FUN_80073cd8(undefined1 *param_1)
     if (bVar1 != 0) {
       return;
     }
-    iVar5 = FUN_80051b70(param_1,0xc,(int)*(short *)(&DAT_800a4c94 + (uint)DAT_800bf870 * 2));
+    iVar5 = FUN_80051b70(param_1,0xc,(int)*(s16 *)(&DAT_800a4c94 + (uint)g_GameState * 2));
     if (iVar5 != 0) {
       return;
     }
@@ -42,14 +42,14 @@ void FUN_80073cd8(undefined1 *param_1)
     param_1->rot_x = 0;
     param_1->rot_z = 0;
     param_1->state = param_1->state + '\x01';
-    if (((DAT_800bf870 == 2) || (DAT_800bf870 == 7)) || (DAT_800bf870 == 0x14)) {
+    if (((g_GameState == 2) || (g_GameState == 7)) || (g_GameState == 0x14)) {
       *param_1 = 1;
       param_1->bounds_min_x = 0xa0;
       param_1->bounds_size = 0x140;
       uVar3 = 0xed;
     }
     else {
-      if (DAT_800bf873 == '\0') {
+      if (g_SubState == '\0') {
         *param_1 = 1;
       }
       param_1->bounds_min_x = 300;
@@ -108,7 +108,7 @@ void FUN_80073cd8(undefined1 *param_1)
   case '\x05':
     if ((param_1->sub_type != '\x02') ||
        ((sVar4 = 0x16, DAT_800bf907 != -1 && (sVar4 = 0x15, DAT_800bf8c3 == '\0')))) {
-      sVar4 = *(short *)(&DAT_800a4ca8 + (uint)(byte)param_1->sub_type * 2);
+      sVar4 = *(s16 *)(&DAT_800a4ca8 + (uint)(u8)param_1->sub_type * 2);
     }
     iVar5 = FUN_8007e110((int)sVar4,0);
     param_1->script_ptr = iVar5;
@@ -118,14 +118,14 @@ void FUN_80073cd8(undefined1 *param_1)
     }
     break;
   case '\x02':
-    if ((_DAT_800e7e68 & _DAT_1f800174) != 0) {
+    if ((_g_PadState & _DAT_1f800174) != 0) {
       cVar2 = param_1->behavior_state + '\x01';
       goto LAB_8007409c;
     }
     break;
   case '\x03':
-    if (*(byte *)(param_1->script_ptr + 4) < 2) {
-      *(undefined1 *)(param_1->script_ptr + 4) = 2;
+    if (*(u8 *)(param_1->script_ptr + 4) < 2) {
+      *(u8 *)(param_1->script_ptr + 4) = 2;
       param_1->script_ptr = 0;
     }
     *param_1 = 2;
@@ -168,9 +168,9 @@ LAB_8007409c:
   cVar2 = param_1->behavior_state;
 switchD_80073ef8_default:
   if ((cVar2 != '\x04') &&
-     ((((DAT_800bf870 == 2 || (DAT_800bf870 == 7)) || (DAT_800bf870 == 0x14)) &&
-      ((param_1->script_ptr != 0 && (DAT_800e7e85 != '\x1f')))))) {
-    *(undefined1 *)(param_1->script_ptr + 4) = 2;
+     ((((g_GameState == 2 || (g_GameState == 7)) || (g_GameState == 0x14)) &&
+      ((param_1->script_ptr != 0 && (g_CollisionType != '\x1f')))))) {
+    *(u8 *)(param_1->script_ptr + 4) = 2;
     param_1->script_ptr = 0;
     *param_1 = 1;
     param_1->behavior_state = 0;
@@ -182,6 +182,6 @@ switchD_80073e20_caseD_11:
   if ((_DAT_800bfe56 & 0x10) == 0) {
     return;
   }
-  *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 100;
+  *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 100;
   return;
 }

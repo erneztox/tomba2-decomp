@@ -9,12 +9,12 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_800867cc(void)
+s32 FUN_800867cc(void)
 
 {
   int iVar1;
   
-  if ((*(ushort *)(DAT_800abe9c + 10) & 2) == 0) {
+  if ((*(u16 *)(DAT_800abe9c + 10) & 2) == 0) {
     DAT_800abea0 = 1;
     if ((DAT_800abe88 != 0) && (_DAT_80102450 < 0x96)) {
       _DAT_80102450 = _DAT_80102450 + 1;
@@ -39,7 +39,7 @@ undefined4 FUN_800867cc(void)
     }
   }
   else {
-    *(undefined2 *)(DAT_800abe9c + 10) = 0;
+    *(s16 *)(DAT_800abe9c + 10) = 0;
   }
   return 0;
 }

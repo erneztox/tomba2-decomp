@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-void FUN_800721dc(int param_1,undefined2 param_2,int param_3)
+void FUN_800721dc(int param_1,s16 param_2,int param_3)
 
 {
-  byte bVar1;
-  ushort uVar2;
+  u8 bVar1;
+  u16 uVar2;
   int iVar3;
   
   bVar1 = param_1->action_state;
@@ -31,7 +31,7 @@ void FUN_800721dc(int param_1,undefined2 param_2,int param_3)
         return;
       }
       param_1->pos_y = param_2;
-      *(short *)(param_1 + 0x32) = (short)param_3;
+      *(s16 *)(param_1 + 0x32) = (s16)param_3;
       return;
     }
     if (bVar1 != 0) {

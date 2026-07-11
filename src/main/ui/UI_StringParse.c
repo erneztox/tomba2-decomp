@@ -9,8 +9,8 @@
 int FUN_80073750(char *param_1)
 
 {
-  char cVar1;
-  bool bVar2;
+  s8 cVar1;
+  s32 bVar2;
   int local_8;
   int local_4;
   

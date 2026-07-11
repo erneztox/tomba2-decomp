@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-void FUN_80058f24(undefined1 *param_1)
+void FUN_80058f24(u8 *param_1)
 
 {
-  if (DAT_1f800137 == '\0') {
-    DAT_800bf80e = 0;
+  if (g_CurrentOverlay == '\0') {
+    g_ActionTrigger = 0;
     *param_1 = 3;
     param_1->timer_172 = 0x3c;
     param_1->state = 1;

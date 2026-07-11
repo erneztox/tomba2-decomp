@@ -7,22 +7,22 @@
 
 
 #include "tomba.h"
-int FUN_8009b0c0(int param_1,char *param_2,uint param_3,undefined4 param_4)
+int FUN_8009b0c0(int param_1,char *param_2,uint param_3,s32 param_4)
 
 {
-  char cVar1;
+  s8 cVar1;
   char *pcVar2;
   uint uVar3;
   int iVar4;
   uint uVar5;
-  byte *pbVar6;
+  u8 *pbVar6;
   int *piVar7;
   int iVar8;
   char *local_res4;
   uint local_res8;
-  undefined4 local_resc;
-  byte local_39;
-  undefined4 local_38;
+  s32 local_resc;
+  u8 local_39;
+  s32 local_38;
   uint local_34;
   uint local_30;
   uint *local_28;
@@ -56,7 +56,7 @@ joined_r0x8009b108:
               local_res4 = pcVar2;
             }
             if (iVar4 != 0x20) break;
-            local_38._0_2_ = CONCAT11(local_res4->flags,(byte)local_38);
+            local_38._0_2_ = CONCAT11(local_res4->flags,(u8)local_38);
             local_res4 = pcVar2;
           }
           if (iVar4 != 0x23) break;
@@ -104,7 +104,7 @@ joined_r0x8009b108:
           local_38 = local_38 | 0x10;
         }
       }
-      pbVar6 = (byte *)&local_38;
+      pbVar6 = (u8 *)&local_38;
       if ((local_38 & 1) != 0) {
         local_38 = local_38 & 0xfffffff7;
       }
@@ -118,21 +118,21 @@ joined_r0x8009b108:
         case 99:
           pbVar6 = &local_39;
           uVar5 = 1;
-          local_39 = (byte)*local_28;
+          local_39 = (u8)*local_28;
           local_28 = local_28 + 1;
           goto LAB_8009b860;
         case 100:
         case 0x69:
           uVar3 = *local_28;
           if ((local_38 >> 5 & 1) != 0) {
-            uVar3 = (uint)(short)uVar3;
+            uVar3 = (uint)(s16)uVar3;
           }
           if ((int)uVar3 < 0) {
             uVar3 = -uVar3;
-            local_38._0_2_ = CONCAT11(0x2d,(byte)local_38);
+            local_38._0_2_ = CONCAT11(0x2d,(u8)local_38);
           }
           else if ((local_38 >> 1 & 1) != 0) {
-            local_38._0_2_ = CONCAT11(0x2b,(byte)local_38);
+            local_38._0_2_ = CONCAT11(0x2b,(u8)local_38);
           }
           goto LAB_8009b450;
         case 0x68:
@@ -148,7 +148,7 @@ joined_r0x8009b108:
             *piVar7 = iVar8;
           }
           else {
-            *(short *)piVar7 = (short)iVar8;
+            *(s16 *)piVar7 = (s16)iVar8;
           }
           goto LAB_8009b8ec;
         case 0x6f:
@@ -168,7 +168,7 @@ joined_r0x8009b108:
           uVar5 = 0;
           for (; uVar3 != 0; uVar3 = uVar3 >> 3) {
             pbVar6 = pbVar6 + -1;
-            *pbVar6 = ((byte)uVar3 & 7) + 0x30;
+            *pbVar6 = ((u8)uVar3 & 7) + 0x30;
             uVar5 = uVar5 + 1;
           }
           if ((((local_38 >> 2 & 1) != 0) && (uVar5 != 0)) && (*pbVar6 != 0x30)) {
@@ -188,7 +188,7 @@ joined_r0x8009b108:
           pcVar2 = s_0123456789ABCDEF_8001c960;
           goto LAB_8009b664;
         case 0x73:
-          pbVar6 = (byte *)*local_28;
+          pbVar6 = (u8 *)*local_28;
           local_28 = local_28 + 1;
           if ((local_38 >> 2 & 1) == 0) {
             if ((local_38 >> 4 & 1) == 0) {
@@ -215,7 +215,7 @@ joined_r0x8009b108:
           if ((local_38 >> 5 & 1) != 0) {
             uVar3 = uVar3 & 0xffff;
           }
-          local_38._0_2_ = (ushort)(byte)local_38;
+          local_38._0_2_ = (u16)(u8)local_38;
 LAB_8009b450:
           local_28 = local_28 + 1;
           if ((local_38 >> 4 & 1) == 0) {
@@ -270,7 +270,7 @@ LAB_8009b664:
             *pbVar6 = 0x30;
           }
           if ((local_38 >> 2 & 1) != 0) {
-            pbVar6[-1] = (byte)iVar4;
+            pbVar6[-1] = (u8)iVar4;
             pbVar6 = pbVar6 + -2;
             *pbVar6 = 0x30;
             uVar5 = uVar5 + 2;
@@ -279,7 +279,7 @@ LAB_8009b860:
           iVar4 = param_1 + iVar8;
           if (((int)uVar5 < (int)local_34) && ((local_38 & 1) == 0)) {
             do {
-              *(undefined1 *)(param_1 + iVar8) = 0x20;
+              *(u8 *)(param_1 + iVar8) = 0x20;
               local_34 = local_34 - 1;
               iVar8 = iVar8 + 1;
             } while ((int)uVar5 < (int)local_34);
@@ -288,7 +288,7 @@ LAB_8009b860:
           FUN_8009b940(iVar4,pbVar6,uVar5);
           iVar8 = iVar8 + uVar5;
           for (; (int)uVar5 < (int)local_34; uVar5 = uVar5 + 1) {
-            *(undefined1 *)(param_1 + iVar8) = 0x20;
+            *(u8 *)(param_1 + iVar8) = 0x20;
             iVar8 = iVar8 + 1;
           }
           goto LAB_8009b8ec;
@@ -300,12 +300,12 @@ LAB_8009b860:
     goto LAB_8009b854;
   }
 LAB_8009b90c:
-  *(undefined1 *)(param_1 + iVar8) = 0;
+  *(u8 *)(param_1 + iVar8) = 0;
   return iVar8;
 switchD_8009b378_caseD_4d:
   if (iVar4 != 0x25) goto LAB_8009b90c;
 LAB_8009b854:
-  *(char *)(param_1 + iVar8) = (char)iVar4;
+  *(s8*)(param_1 + iVar8) = (char)iVar4;
   iVar8 = iVar8 + 1;
 LAB_8009b8ec:
   cVar1 = local_res4->flags;

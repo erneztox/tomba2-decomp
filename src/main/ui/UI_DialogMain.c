@@ -12,10 +12,10 @@
 void FUN_8004df94(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
-  char cVar3;
-  undefined4 uVar4;
+  s8 cVar3;
+  s32 uVar4;
   
   bVar1 = param_1->state;
   if (bVar1 != 1) {
@@ -33,7 +33,7 @@ void FUN_8004df94(int param_1)
     }
     if (bVar1 == 2) {
       param_1->state = 3;
-      DAT_1f800137 = 0;
+      g_CurrentOverlay = 0;
       DAT_800ed061 = DAT_800ed061 & 0xfd;
       return;
     }
@@ -52,7 +52,7 @@ void FUN_8004df94(int param_1)
         param_1->timer2 = 0x10;
         param_1->behavior_state = param_1->behavior_state + '\x01';
         if ((_DAT_800bf880 & 0x800) != 0) {
-          FUN_80058304(&DAT_800e7e80,2);
+          FUN_80058304(&g_CollisionEntity,2);
         }
       }
     }
@@ -80,7 +80,7 @@ LAB_8004e1fc:
       param_1->timer2 = 0x10;
       param_1->behavior_state = param_1->behavior_state + '\x01';
       if (((_DAT_800bf880 & 0x200) != 0) || ((_DAT_800bf880 & 0x100) != 0)) {
-        FUN_80058304(&DAT_800e7e80,10);
+        FUN_80058304(&g_CollisionEntity,10);
       }
     }
 LAB_8004e240:
@@ -128,7 +128,7 @@ joined_r0x8004e160:
       uVar4 = 5;
     }
   }
-  FUN_80058304(&DAT_800e7e80,uVar4);
+  FUN_80058304(&g_CollisionEntity,uVar4);
   param_1->state = 2;
 switchD_8004e040_caseD_6:
   param_1->flags = 1;

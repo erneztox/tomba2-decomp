@@ -9,19 +9,19 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80023a04(int param_1,int param_2,uint param_3)
+s32 FUN_80023a04(int param_1,int param_2,uint param_3)
 
 {
-  short sVar1;
-  short sVar2;
-  ushort uVar3;
-  ushort uVar4;
-  char cVar5;
+  s16 sVar1;
+  s16 sVar2;
+  u16 uVar3;
+  u16 uVar4;
+  s8 cVar5;
   int iVar6;
   int iVar7;
   uint uVar8;
-  undefined4 uVar9;
-  short sVar10;
+  s32 uVar9;
+  s16 sVar10;
   int iVar11;
   int iVar12;
   int iVar13;
@@ -36,10 +36,10 @@ undefined4 FUN_80023a04(int param_1,int param_2,uint param_3)
   if ((int)param_1->bounds_min_x + (int)param_2->bounds_min_x < (int)(uVar8 & 0xffff)) {
     return 0xffffffff;
   }
-  iVar6 = (uint)*(ushort *)(param_1 + 0x32) - (uint)*(ushort *)(param_2 + 0x32);
+  iVar6 = (uint)*(u16 *)(param_1 + 0x32) - (uint)*(u16 *)(param_2 + 0x32);
   iVar7 = ((uint)param_2->bounds_min_y + (uint)param_1->bounds_max_y) -
           (uint)param_1->bounds_min_y;
-  if ((int)(short)param_1->bounds_max_y + (int)param_2->bounds_max_y <
+  if ((int)(s16)param_1->bounds_max_y + (int)param_2->bounds_max_y <
       (int)(iVar6 + iVar7 & 0xffffU)) {
     return 0xffffffff;
   }
@@ -52,37 +52,37 @@ undefined4 FUN_80023a04(int param_1,int param_2,uint param_3)
             ((uint)param_2->bounds_max_y - (uint)param_2->bounds_min_y);
     iVar13 = iVar7;
   }
-  _DAT_1f80009c = FUN_80085690(-(int)(short)iVar11,(int)(short)iVar12);
-  _DAT_1f80008c = (int)(short)uVar8;
+  _g_AngleTarget = FUN_80085690(-(int)(s16)iVar11,(int)(s16)iVar12);
+  _g_GTE_Work8C = (int)(s16)uVar8;
   if ((int)((((uint)uVar3 + (uint)uVar4) - uVar8) * 0x10000) < (iVar7 - iVar6) * 0x10000) {
     iVar6 = FUN_80083f50();
     sVar10 = param_1->bounds_min_x;
     sVar1 = param_2->bounds_min_x;
-    iVar7 = FUN_80083e80(_DAT_1f80009c);
+    iVar7 = FUN_80083e80(_g_AngleTarget);
     sVar2 = param_2->bounds_min_x;
     param_1->pos_y =
-         param_2->pos_y + (short)(iVar6 * ((int)sVar10 + (int)sVar1) >> 0xc);
+         param_2->pos_y + (s16)(iVar6 * ((int)sVar10 + (int)sVar1) >> 0xc);
     param_1->pos_z =
          param_2->pos_z -
-         (short)(iVar7 * ((int)param_1->bounds_min_x + (int)sVar2) >> 0xc);
-    if (*(char *)(param_1 + 0xc) == '\x02') {
-      cVar5 = FUN_80077768((int)_DAT_1f80009c,(int)param_1->draw_x,1);
+         (s16)(iVar7 * ((int)param_1->bounds_min_x + (int)sVar2) >> 0xc);
+    if (*(s8*)(param_1 + 0xc) == '\x02') {
+      cVar5 = FUN_80077768((int)_g_AngleTarget,(int)param_1->draw_x,1);
       param_1->input_flags = cVar5 + '\x02';
     }
     return 0;
   }
   uVar9 = 0;
-  sVar10 = (short)iVar13;
+  sVar10 = (s16)iVar13;
   switch(param_3 & 0xf) {
   case 0:
     uVar9 = 2;
     if (iVar13 << 0x10 < 1) {
-      sVar10 = *(short *)(param_2 + 0x32) + sVar10;
+      sVar10 = *(s16 *)(param_2 + 0x32) + sVar10;
     }
     else {
 LAB_80023ccc:
       uVar9 = 3;
-      sVar10 = *(short *)(param_2 + 0x32) + sVar10;
+      sVar10 = *(s16 *)(param_2 + 0x32) + sVar10;
     }
     break;
   case 1:
@@ -90,8 +90,8 @@ LAB_80023ccc:
       return 0xffffffff;
     }
   case 3:
-    *(short *)(param_1 + 0x32) =
-         *(short *)(param_2 + 0x32) -
+    *(s16 *)(param_1 + 0x32) =
+         *(s16 *)(param_2 + 0x32) -
          ((param_2->bounds_min_y + param_1->bounds_max_y) - param_1->bounds_min_y);
     return 2;
   case 2:
@@ -105,20 +105,20 @@ LAB_80023ccc:
     if (param_1->velocity_y < 0) {
       return 0xffffffff;
     }
-    sVar10 = *(short *)(param_2 + 0x32) + sVar10;
+    sVar10 = *(s16 *)(param_2 + 0x32) + sVar10;
     break;
   case 4:
     uVar9 = 0xffffffff;
     if ((param_1->combat_flag & 1) == 0) {
       uVar9 = 2;
-      *(short *)(param_1 + 0x32) =
-           *(short *)(param_2 + 0x32) -
+      *(s16 *)(param_1 + 0x32) =
+           *(s16 *)(param_2 + 0x32) -
            ((param_2->bounds_min_y + param_1->bounds_max_y) - param_1->bounds_min_y);
     }
   default:
     goto switchD_80023c3c_default;
   }
-  *(short *)(param_1 + 0x32) = sVar10;
+  *(s16 *)(param_1 + 0x32) = sVar10;
 switchD_80023c3c_default:
   return uVar9;
 }

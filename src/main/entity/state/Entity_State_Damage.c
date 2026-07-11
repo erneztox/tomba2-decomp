@@ -12,9 +12,9 @@
 void FUN_8006b9dc(int param_1)
 
 {
-  undefined1 uVar1;
-  undefined2 uVar2;
-  short sVar3;
+  u8 uVar1;
+  s16 uVar2;
+  s16 sVar3;
   
   if (param_1->action_state == '\0') {
     param_1->action_state = 1;
@@ -46,9 +46,9 @@ void FUN_8006b9dc(int param_1)
   }
   else if (DAT_800e7fc6 == '\x03') {
     param_1->anim_id = DAT_800e7fca;
-    sVar3 = _DAT_800e7ed6;
-    if (DAT_800e7e85 == '\t') {
-      sVar3 = _DAT_800e7ed6 + -0x800;
+    sVar3 = _g_EntityAngle;
+    if (g_CollisionType == '\t') {
+      sVar3 = _g_EntityAngle + -0x800;
     }
     param_1->target_angle = sVar3;
     uVar1 = DAT_800e7eaa;

@@ -1,5 +1,5 @@
 /**
- * @brief Collision grid walker: walks grid from _DAT_1f8001c8 ptr
+ * @brief Collision grid walker: walks grid from _g_CollisionGrid ptr
  * @note Original: func_800490E4 at 0x800490E4
  */
 // Collision_GridWalk
@@ -12,20 +12,20 @@
 void FUN_800490e4(int param_1)
 
 {
-  ushort *puVar1;
+  u16 *puVar1;
   int iVar2;
   int iVar3;
   int iVar4;
-  ushort *puVar5;
-  ushort uVar6;
+  u16 *puVar5;
+  u16 uVar6;
   
   uVar6 = 1;
-  puVar1 = _DAT_1f8001c8;
-  if (*_DAT_1f8001c8 != 0) {
+  puVar1 = _g_CollisionGrid;
+  if (*_g_CollisionGrid != 0) {
     do {
-      puVar5 = _DAT_1f8001c8 + puVar1->flags;
-      iVar4 = (int)(short)*puVar5;
-      iVar2 = (int)(short)puVar5->flags;
+      puVar5 = _g_CollisionGrid + puVar1->flags;
+      iVar4 = (int)(s16)*puVar5;
+      iVar2 = (int)(s16)puVar5->flags;
       iVar3 = iVar4;
       if (iVar4 == iVar2) {
         iVar2 = iVar2 + 0x40;
@@ -36,8 +36,8 @@ void FUN_800490e4(int param_1)
       }
       if ((int)((uint)_DAT_1f8001bc - (iVar3 + -0x80) & 0xffff) <=
           ((iVar2 + 0x80) - (iVar3 + -0x80)) * 0x10000 >> 0x10) {
-        iVar4 = (int)(short)puVar5->kind;
-        iVar2 = (int)(short)puVar5->sub_type;
+        iVar4 = (int)(s16)puVar5->kind;
+        iVar2 = (int)(s16)puVar5->sub_type;
         iVar3 = iVar4;
         if (iVar4 == iVar2) {
           iVar2 = iVar2 + 0x40;
@@ -55,7 +55,7 @@ void FUN_800490e4(int param_1)
       }
       uVar6 = uVar6 + 1;
       puVar1 = puVar1 + 1;
-    } while (uVar6 <= *_DAT_1f8001c8);
+    } while (uVar6 <= *_g_CollisionGrid);
   }
   param_1->collision_dir = 1;
   FUN_80048ecc();

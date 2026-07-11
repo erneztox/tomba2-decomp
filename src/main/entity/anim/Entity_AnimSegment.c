@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-void FUN_80071c48(int param_1,undefined2 param_2,int param_3)
+void FUN_80071c48(int param_1,s16 param_2,int param_3)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   int iVar2;
   
   if (param_1->action_state == '\0') {
@@ -25,7 +25,7 @@ void FUN_80071c48(int param_1,undefined2 param_2,int param_3)
   }
   else if (param_1->action_state == '\x01') {
     param_1->pos_y = param_2;
-    *(short *)(param_1 + 0x32) = (short)param_3;
+    *(s16 *)(param_1 + 0x32) = (s16)param_3;
   }
   return;
 }

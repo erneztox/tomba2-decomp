@@ -11,9 +11,9 @@ void FUN_8005314c(int param_1)
 
 {
   int iVar1;
-  undefined4 uVar2;
-  undefined4 uVar3;
-  undefined4 uVar4;
+  s32 uVar2;
+  s32 uVar3;
+  s32 uVar4;
   
   iVar1 = (uint)param_1->type_flags << 0x10;
   switch(iVar1 >> 0x18 & 0xf) {

@@ -9,12 +9,12 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_8007712c(int param_1,short param_2,short param_3,short param_4)
+s32 FUN_8007712c(int param_1,s16 param_2,s16 param_3,s16 param_4)
 
 {
   int *piVar1;
-  byte bVar2;
-  bool bVar3;
+  u8 bVar2;
+  s32 bVar3;
   uint uVar4;
   int iVar5;
   int iVar6;
@@ -27,12 +27,12 @@ undefined4 FUN_8007712c(int param_1,short param_2,short param_3,short param_4)
   iVar6 = (int)_DAT_1f8000ea;
   iVar7 = (int)_DAT_1f8000ec;
   param_1->flags = 0;
-  if (DAT_800bf870 == '\x04') {
-    _DAT_1f800084 = 2;
+  if (g_GameState == '\x04') {
+    _g_GTE_Work84 = 2;
   }
-  switch(_DAT_1f800084) {
+  switch(_g_GTE_Work84) {
   case 0:
-    bVar2 = *(byte *)(param_1 + 0xc);
+    bVar2 = *(u8 *)(param_1 + 0xc);
     if (bVar2 != 4) {
       if (bVar2 < 5) {
         if (bVar2 == 2) {
@@ -164,10 +164,10 @@ LAB_80077550:
   }
 switchD_800771f8_default:
   param_1->flags = 1;
-  if (_DAT_1f800080 != 0) {
+  if (_g_GTE_Result[0] != 0) {
     return 1;
   }
-  bVar2 = *(byte *)(param_1 + 0xc);
+  bVar2 = *(u8 *)(param_1 + 0xc);
   if (bVar2 == 4) {
     if (_DAT_1f800150 < 0x28) {
       _DAT_1f800150 = _DAT_1f800150 + 1;

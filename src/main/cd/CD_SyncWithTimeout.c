@@ -8,12 +8,12 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-undefined4 FUN_8008b4b8(int param_1)
+s32 FUN_8008b4b8(int param_1)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   
   _DAT_80102748 = FUN_80085900(0xffffffff);
   _DAT_80102748 = _DAT_80102748 + 0x3c0;

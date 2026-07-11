@@ -13,16 +13,16 @@ void FUN_800798f8(void)
 
 {
   int iVar1;
-  undefined1 *puVar2;
+  u8 *puVar2;
   int iVar3;
   int iVar4;
   int iVar5;
-  undefined1 *puVar6;
+  u8 *puVar6;
   
   iVar1 = -0x7ff12728;
-  _DAT_800fb168 = 0;
+  _g_InactiveEntitiesList = 0;
   _DAT_800f23a8 = 0;
-  _DAT_800f2624 = 0;
+  _g_ActiveEntitiesList = 0;
   _DAT_800f239c = 0;
   iVar3 = 0;
   iVar5 = iVar1;
@@ -32,12 +32,12 @@ void FUN_800798f8(void)
     FUN_8009a420(iVar1,0,0x88);
     iVar1->next = iVar5;
     iVar1->alloc_flags = 0;
-    *(undefined1 *)(iVar1 + 0xc) = 0;
+    *(u8 *)(iVar1 + 0xc) = 0;
     iVar3 = iVar4 + 1;
     iVar1 = iVar1 + 0x88;
   } while (iVar3 < 0x34);
   puVar2 = &DAT_800ef478;
-  *(undefined4 *)(&DAT_800ed8fc + iVar4 * 0x88) = 0;
+  *(s32 *)(&DAT_800ed8fc + iVar4 * 0x88) = 0;
   _DAT_800e8098 = 0x800ed8d8;
   DAT_800e7e7c = 0x34;
   iVar5 = 0;
@@ -46,14 +46,14 @@ void FUN_800798f8(void)
     iVar3 = iVar5;
     puVar6 = puVar6 + 0xc4;
     FUN_8009a420(puVar2,0,0xc4);
-    *(undefined1 **)(puVar2 + 0x24) = puVar6;
+    *(u8 **)(puVar2 + 0x24) = puVar6;
     puVar2->alloc_flags = 1;
     puVar2[0xc] = 0;
     iVar5 = iVar3 + 1;
     puVar2 = puVar2 + 0xc4;
   } while (iVar5 < 0x3a);
   iVar1 = -0x7ff01e68;
-  *(undefined4 *)(&DAT_800ef49c + iVar3 * 0xc4) = 0;
+  *(s32 *)(&DAT_800ef49c + iVar3 * 0xc4) = 0;
   _DAT_800e80a0 = &DAT_800ef478;
   DAT_800e7e7d = 0x3a;
   iVar3 = 0;
@@ -64,12 +64,12 @@ void FUN_800798f8(void)
     FUN_8009a420(iVar1,0,0xd0);
     iVar1->next = iVar5;
     iVar1->alloc_flags = 2;
-    *(undefined1 *)(iVar1 + 0xc) = 0;
+    *(u8 *)(iVar1 + 0xc) = 0;
     iVar3 = iVar4 + 1;
     iVar1 = iVar1 + 0xd0;
   } while (iVar3 < 0x2a);
   iVar1 = -0x7ff047a8;
-  *(undefined4 *)(&DAT_800fe1bc + iVar4 * 0xd0) = 0;
+  *(s32 *)(&DAT_800fe1bc + iVar4 * 0xd0) = 0;
   _DAT_800f2398 = 0x800fe198;
   DAT_800ed8cc = 0x2a;
   iVar3 = 0;
@@ -80,12 +80,12 @@ void FUN_800798f8(void)
     FUN_8009a420(iVar1,0,0x108);
     iVar1->next = iVar5;
     iVar1->alloc_flags = 3;
-    *(undefined1 *)(iVar1 + 0xc) = 0;
+    *(u8 *)(iVar1 + 0xc) = 0;
     iVar3 = iVar4 + 1;
     iVar1 = iVar1 + 0x108;
   } while (iVar3 < 0x28);
   iVar1 = -0x7ff04de8;
-  *(undefined4 *)(&DAT_800fb87c + iVar4 * 0x108) = 0;
+  *(s32 *)(&DAT_800fb87c + iVar4 * 0x108) = 0;
   _DAT_800ed8d4 = 0x800fb858;
   DAT_800ed8c5 = 0x28;
   iVar3 = 0;
@@ -96,11 +96,11 @@ void FUN_800798f8(void)
     FUN_8009a420(iVar1,0,0x140);
     iVar1->next = iVar5;
     iVar1->alloc_flags = 4;
-    *(undefined1 *)(iVar1 + 0xc) = 0;
+    *(u8 *)(iVar1 + 0xc) = 0;
     iVar3 = iVar4 + 1;
     iVar1 = iVar1 + 0x140;
   } while (iVar3 < 5);
-  *(undefined4 *)(&DAT_800fb23c + iVar4 * 0x140) = 0;
+  *(s32 *)(&DAT_800fb23c + iVar4 * 0x140) = 0;
   _DAT_800ed8d0 = 0x800fb218;
   DAT_800ed8c4 = 5;
   _DAT_1f80013c = &DAT_800f2410;
@@ -111,8 +111,8 @@ void FUN_800798f8(void)
   _DAT_1f80014c = 0x800f26c8;
   _DAT_1f800152 = 0;
   _DAT_1f800150 = 0;
-  _DAT_1f800154 = &DAT_800f2738;
-  _DAT_1f800158 = &DAT_800f2738;
+  _DAT_1f800154 = &g_BackgroundEntitiesList;
+  _DAT_1f800158 = &g_BackgroundEntitiesList;
   _DAT_1f80015e = 0;
   _DAT_1f80015c = 0;
   return;

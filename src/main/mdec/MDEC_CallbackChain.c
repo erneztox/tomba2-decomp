@@ -9,7 +9,7 @@
 void FUN_80086db4(int param_1)
 
 {
-  undefined **ppuVar1;
+  void **ppuVar1;
   int iVar2;
   
   ppuVar1 = &PTR_LAB_800abec0 + DAT_800abe7c;

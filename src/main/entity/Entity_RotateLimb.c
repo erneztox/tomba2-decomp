@@ -10,7 +10,7 @@
 int FUN_80072f14(int param_1)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   int iVar2;
   
   iVar2 = 0;

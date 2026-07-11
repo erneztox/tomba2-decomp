@@ -7,18 +7,18 @@
 
 
 #include "tomba.h"
-undefined4 FUN_8008a190(void)
+s32 FUN_8008a190(void)
 
 {
-  byte bVar1;
-  undefined4 uVar2;
-  byte *pbVar3;
-  byte *pbVar4;
+  u8 bVar1;
+  s32 uVar2;
+  u8 *pbVar3;
+  u8 *pbVar4;
   int iVar5;
   int iVar6;
   uint uVar7;
-  byte local_20;
-  byte local_18->counter1;
+  u8 local_20;
+  u8 local_18->counter1;
   
   *DAT_800ac280 = 1;
   local_20 = *DAT_800ac28c & 7;

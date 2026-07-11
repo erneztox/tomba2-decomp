@@ -19,7 +19,7 @@ void FUN_8008cff0(int param_1,uint param_2)
     do {
       iVar1 = uVar2 + param_1;
       uVar2 = uVar2 + 1;
-      *(undefined4 *)(_DAT_80102728 + iVar1 * 0x20) = 0;
+      *(s32 *)(_DAT_80102728 + iVar1 * 0x20) = 0;
     } while (uVar2 < param_2);
   }
   return;

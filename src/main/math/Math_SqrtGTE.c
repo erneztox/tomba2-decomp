@@ -25,7 +25,7 @@ uint FUN_80084080(int param_1)
     else {
       param_1 = param_1 << (uVar1 - 0x18 & 0x1f);
     }
-    return (uint)((int)*(short *)(&DAT_800a6310 + (param_1 + -0x40) * 2) <<
+    return (uint)((int)*(s16 *)(&DAT_800a6310 + (param_1 + -0x40) * 2) <<
                  ((int)(0x1f - uVar1) >> 1 & 0x1fU)) >> 0xc;
   }
   return 0;

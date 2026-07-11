@@ -10,7 +10,7 @@
 void FUN_80063098(int param_1)
 
 {
-  short sVar1;
+  s16 sVar1;
   
   sVar1 = param_1->speed + 0x20;
   param_1->speed = sVar1;
@@ -27,7 +27,7 @@ void FUN_80063098(int param_1)
   param_1->rot_y = sVar1;
   if (0x400 < param_1->timer2) {
     FUN_80074590(0x1b,0,0);
-    DAT_800bf840 = 0x88;
+    g_SFXState = 0x88;
     param_1->sub_action = param_1->sub_action + '\x01';
   }
   return;

@@ -9,12 +9,12 @@
 uint FUN_80079634(int param_1,char *param_2)
 
 {
-  char cVar1;
+  s8 cVar1;
   int iVar2;
   int iVar3;
   char *pcVar4;
   char *pcVar5;
-  char local_10 [16];
+  s8 local_10 [16];
   
   iVar3 = param_1;
   pcVar4 = local_10;

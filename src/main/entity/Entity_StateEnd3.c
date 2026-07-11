@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-void FUN_80053fdc(byte *param_1,int param_2)
+void FUN_80053fdc(u8 *param_1,int param_2)
 
 {
-  short sVar1;
+  s16 sVar1;
   int iVar2;
   
   iVar2 = FUN_80053e50();
@@ -41,7 +41,7 @@ void FUN_80053fdc(byte *param_1,int param_2)
   }
   FUN_800521f4(0,0x81,0x81,0xf);
   FUN_80058304(param_1,0xb);
-  DAT_800bf81e = 0;
+  g_ActionState = 0;
   if ((*param_1 & 4) == 0) {
     FUN_80053d90(param_1);
     param_1[0x61] = 0;

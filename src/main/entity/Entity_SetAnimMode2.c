@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80054dac(int param_1,undefined4 param_2,short param_3)
+void FUN_80054dac(int param_1,s32 param_2,s16 param_3)
 
 {
   param_1->anim_id = (char)param_2;

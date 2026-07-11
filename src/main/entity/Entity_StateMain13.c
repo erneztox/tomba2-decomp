@@ -9,15 +9,15 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8005d530(byte *param_1)
+void FUN_8005d530(u8 *param_1)
 
 {
-  byte bVar1;
-  short sVar2;
-  undefined2 uVar3;
+  u8 bVar1;
+  s16 sVar2;
+  s16 uVar3;
   int iVar4;
   uint uVar5;
-  undefined4 uVar6;
+  s32 uVar6;
   
   switchparam_1->action_state {
   case 0:
@@ -64,13 +64,13 @@ LAB_8005d630:
       FUN_8004960c(param_1,(_DAT_1f80018e & 0x100) != 0);
       if (uVar5 == 1) {
         param_1[0x61] = 0x11;
-        DAT_800bf840 = 0x80;
+        g_SFXState = 0x80;
         uVar5 = (uint)(param_1[0x16c] >> 4);
       }
       else {
         param_1[0x61] = 0x21;
-        DAT_800bf840 = 0x81;
-        uVar5 = (*(ushort *)(param_1 + 0x16c) & 0xf00) >> 8;
+        g_SFXState = 0x81;
+        uVar5 = (*(u16 *)(param_1 + 0x16c) & 0xf00) >> 8;
       }
       if ((uVar5 & 8) == 0) {
         uVar3 = 0xc800;
@@ -87,7 +87,7 @@ LAB_8005d630:
       }
       param_1->draw_angle = _DAT_1f800196;
     }
-    else if ((_DAT_800e7e68 & _DAT_1f800174) != 0) {
+    else if ((_g_PadState & _DAT_1f800174) != 0) {
       if ((_DAT_1f80018e & 0x8000) == 0) {
         if ((_DAT_1f80018e & 0x300) == 0) {
           iVar4 = FUN_80024794(param_1);
@@ -102,7 +102,7 @@ LAB_8005d630:
           iVar4 = FUN_80053968(param_1,0);
           if (iVar4 != 0) {
             *param_1 = 7;
-            DAT_800bf80e = 1;
+            g_ActionTrigger = 1;
             param_1->state = 4;
             param_1->behavior_state = 0x25;
             param_1->action_state = 0;
@@ -112,12 +112,12 @@ LAB_8005d630:
         }
       }
       else {
-        DAT_1f800137 = 2;
+        g_CurrentOverlay = 2;
         *param_1 = 7;
         param_1->state = 4;
         param_1->behavior_state = 0x29;
         param_1->action_state = 0;
-        DAT_800bf840 = 0x8a;
+        g_SFXState = 0x8a;
       }
     }
     goto LAB_8005d5dc;
@@ -170,14 +170,14 @@ LAB_8005d5dc:
       uVar6 = FUN_80024548(param_1,0);
       param_1->state_ptr = uVar6;
     }
-    uVar6 = _DAT_1f800084;
+    uVar6 = _g_GTE_Work84;
     if (param_1->state_ptr != 0) {
       param_1->state_flag145 = 0;
       param_1->state_flag144 = 0;
       param_1->parent = uVar6;
       param_1->behavior_flags = param_1->direction | 2;
       FUN_80074590(5,0,0);
-      if (((DAT_800bf870 == '\x01') && ((_DAT_800bfe56 & 2) != 0)) && (param_1->action_flag == 1)) {
+      if (((g_GameState == '\x01') && ((_DAT_800bfe56 & 2) != 0)) && (param_1->action_flag == 1)) {
         param_1->action_state = 0;
         param_1->sub_action = 0;
         param_1[0x44] = 0;
@@ -231,14 +231,14 @@ LAB_8005dd48:
     FUN_80076d68(param_1);
     FUN_80056b48(param_1,0);
     FUN_80055d5c(param_1);
-    *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 8;
+    *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
     FUN_8005444c(param_1);
-    uVar5 = (uint)_DAT_1f80017c;
+    uVar5 = (uint)_g_FrameCounter2;
     if ((uVar5 + (uVar5 / 7 + (uVar5 - uVar5 / 7 >> 1) >> 2) * -7 & 0xffff) == 0) {
       FUN_80074590(0,5,0);
     }
     if (param_1->timer1 == 0) {
-      if (((int)*(short *)(param_1 + 0x16c) & 0xc000U) == 0xc000) {
+      if (((int)*(s16 *)(param_1 + 0x16c) & 0xc000U) == 0xc000) {
         param_1[0x61] = 0x21;
         param_1->behavior_state = 0xb;
         param_1->action_state = 1;
@@ -272,9 +272,9 @@ LAB_8005dd48:
     param_1->scale_y = param_1->scale_y + param_1->normal_z * 0x1000;
     param_1->pos_y_fixed = param_1->pos_y_fixed + param_1->velocity_y * 0x1000;
     iVar4 = FUN_80083f50((int)param_1->rot_y);
-    param_1->pos_y = param_1->pos_y + (short)((iVar4 << 1) >> 0xc);
+    param_1->pos_y = param_1->pos_y + (s16)((iVar4 << 1) >> 0xc);
     iVar4 = FUN_80083e80((int)param_1->rot_y);
-    param_1->pos_z = param_1->pos_z - (short)((iVar4 << 1) >> 0xc);
+    param_1->pos_z = param_1->pos_z - (s16)((iVar4 << 1) >> 0xc);
     FUN_80076d68(param_1);
     uVar6 = 0x25;
     if (-1 < param_1->entity_flags) {
@@ -285,11 +285,11 @@ LAB_8005dd48:
       return;
     }
     FUN_80048654(param_1);
-    uVar3 = _DAT_1f8001a0;
-    param_1->rot_z = _DAT_1f8001a2 + 0x400;
+    uVar3 = _g_CollisionNormalX;
+    param_1->rot_z = _g_CollisionNormalY + 0x400;
     param_1->draw_angle = uVar3;
     if (1 < iVar4 - 2U) {
-      if ((_DAT_1f80017c & 3) != 0) {
+      if ((_g_FrameCounter2 & 3) != 0) {
         return;
       }
       FUN_80074590(5,3,0xffffffc4);
@@ -322,7 +322,7 @@ LAB_8005dd48:
     return;
   case 0xe:
     bVar1 = 9;
-    if ((_DAT_800ecf54 & 0xa0) == 0) {
+    if ((_g_InputState & 0xa0) == 0) {
       iVar4 = FUN_80076d68(param_1);
       bVar1 = 9;
       if (iVar4 == 2) break;
@@ -335,7 +335,7 @@ LAB_8005de0c:
   default:
     goto switchD_8005d56c_default;
   }
-  *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 8;
+  *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
   FUN_8005444c(param_1);
 LAB_8005de28:
   FUN_80056c00(param_1,1);

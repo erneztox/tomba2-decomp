@@ -6,7 +6,7 @@
 
 
 
-bool FUN_80099478(void)
+s32 FUN_80099478(void)
 
 {
   return DAT_800ac638 != 1;

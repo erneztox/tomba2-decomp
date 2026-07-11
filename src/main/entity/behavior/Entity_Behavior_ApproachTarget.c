@@ -9,10 +9,10 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80044b38(int param_1)
+s32 FUN_80044b38(int param_1)
 
 {
-  undefined2 uVar1;
+  s16 uVar1;
   int iVar2;
   
   if (param_1->sub_state == '\0') {
@@ -26,7 +26,7 @@ undefined4 FUN_80044b38(int param_1)
     if (param_1->sub_state != '\x01') {
       return 0;
     }
-    iVar2 = FUN_80041438(&DAT_800e7e80,(int)param_1->event_param,
+    iVar2 = FUN_80041438(&g_CollisionEntity,(int)param_1->event_param,
                          (int)param_1->event_id);
     if (iVar2 != 0) {
       return 1;

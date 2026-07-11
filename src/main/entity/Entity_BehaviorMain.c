@@ -10,12 +10,12 @@
 void FUN_8005d16c(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
   
   FUN_80055e28(param_1,0);
   if ((param_1->sprite_cmd - 1 < 2) && (param_1->action_state != '\x02')) {
-    if ((param_1->physics_flag == '\0') && (*(char *)(param_1 + 0x61) == '\0')) {
+    if ((param_1->physics_flag == '\0') && (*(s8*)(param_1 + 0x61) == '\0')) {
       FUN_80054650(param_1,0);
     }
     else {
@@ -33,7 +33,7 @@ void FUN_8005d16c(int param_1)
       if (bVar1 != 0) {
         return;
       }
-      *(undefined1 *)(param_1 + 0x181) = 0;
+      *(u8 *)(param_1 + 0x181) = 0;
       DAT_1f800252 = 0;
       param_1->rot_z = 0;
       param_1->combat_flag = 0;
@@ -61,7 +61,7 @@ void FUN_8005d16c(int param_1)
     if (bVar1 != 2) {
       return;
     }
-    *(undefined1 *)(param_1 + 0x181) = 0;
+    *(u8 *)(param_1 + 0x181) = 0;
     FUN_80076d68(param_1);
     FUN_800574e0(param_1,0);
     param_1->direction = param_1->behavior_flags & 1;
@@ -89,7 +89,7 @@ void FUN_8005d16c(int param_1)
     if (iVar2 == 0) {
       param_1->behavior_state = 5;
       param_1->sub_action = 0;
-      *(byte *)(param_1 + 0x149) = *(byte *)(param_1 + 0x149) & 1 | 2;
+      *(u8 *)(param_1 + 0x149) = *(u8 *)(param_1 + 0x149) & 1 | 2;
       return;
     }
     goto LAB_8005d488;
@@ -101,7 +101,7 @@ void FUN_8005d16c(int param_1)
   if (param_1->sprite_cmd - 1 < 2) {
     if (DAT_1f800252 != '\0') {
       if ((param_1->entity_flags & 0x40) != 0) {
-        *(undefined1 *)(param_1 + 0x178) = 0xc;
+        *(u8 *)(param_1 + 0x178) = 0xc;
       }
       goto LAB_8005d368;
     }
@@ -135,7 +135,7 @@ LAB_8005d510:
   iVar2 = FUN_800532a0(param_1);
   if (iVar2 == 0) {
     param_1->behavior_state = 5;
-    *(byte *)(param_1 + 0x149) = *(byte *)(param_1 + 0x149) & 1 | 2;
+    *(u8 *)(param_1 + 0x149) = *(u8 *)(param_1 + 0x149) & 1 | 2;
     param_1->sub_action = 0;
     bVar1 = param_1->behavior_flags & 0xe;
     param_1->behavior_flags = bVar1;

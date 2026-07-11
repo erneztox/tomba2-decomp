@@ -10,9 +10,9 @@
 int FUN_800876a0(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
-  undefined1 uVar3;
+  u8 uVar3;
   int iVar4;
   int iVar5;
   int iVar6;
@@ -92,9 +92,9 @@ LAB_800878b8:
     DAT_800abeb0 = DAT_800abeb0 + -1;
     if (DAT_800abeb0 < 1) {
       FUN_800873bc();
-      bVar1 = *(byte *)(param_1 + 0x44);
-      *(byte *)(param_1 + 0x44) = bVar1 + 1;
-      *(undefined1 *)((uint)bVar1 + param_1->sprite_data) = *DAT_800abeb4;
+      bVar1 = *(u8 *)(param_1 + 0x44);
+      *(u8 *)(param_1 + 0x44) = bVar1 + 1;
+      *(u8 *)((uint)bVar1 + param_1->sprite_data) = *DAT_800abeb4;
       (*DAT_800abe38)(0);
       return 0;
     }

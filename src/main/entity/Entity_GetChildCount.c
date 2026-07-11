@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-int FUN_800270f8(ushort *param_1)
+int FUN_800270f8(u16 *param_1)
 
 {
   return (int)(((uint)*param_1 + (uint)param_1->flags + (uint)param_1->kind + (uint)param_1->sub_type +

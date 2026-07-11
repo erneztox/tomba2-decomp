@@ -38,14 +38,14 @@ void Entity_SubmitGTEVertices(Entity* entity, s32 flag) {
     
     if (entity_reg->unknown_38 != 0) {
         s16 local_50[24]; // Stack buffer to size stack to 0x60
-        volatile s32* local_30_ptr = (volatile s32*)((char*)local_50 + 0x20); // sp + 0x30
+        volatile s32* local_30_ptr = (volatile s32*)((s8*)local_50 + 0x20); // sp + 0x30
         
         p38 = (s16*)entity_reg->unknown_38;
-        p16 = (s16*)(*(int*)((char*)entity_reg + 0x3C) + (*p38) * 4);
+        p16 = (s16*)(*(int*)((s8*)entity_reg + 0x3C) + (*p38) * 4);
         count = (s32)*p16;
         {
             register s32 temp_vertex_offset asm("a0") = p16->flags;
-            vertex_ptr = *(int*)((char*)entity_reg + 0x3C) + temp_vertex_offset;
+            vertex_ptr = *(int*)((s8*)entity_reg + 0x3C) + temp_vertex_offset;
         }
         sp_ptr = (u32*)0x1F800000;
         neg_1 = -1;
@@ -85,7 +85,7 @@ void Entity_SubmitGTEVertices(Entity* entity, s32 flag) {
                 );
                 
                 // Load Vertex 3 into GTE V0 and do RTPS
-                GTE_LoadV01((u32*)((char*)local_50 + 24));
+                GTE_LoadV01((u32*)((s8*)local_50 + 24));
                 __asm__ volatile ("nop\n\tnop\n\trtps");
                 
                 {

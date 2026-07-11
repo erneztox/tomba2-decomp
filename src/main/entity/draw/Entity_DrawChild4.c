@@ -12,32 +12,32 @@
 void FUN_80022330(int param_1,int param_2)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
   int iVar3;
   uint uVar4;
   int iVar5;
-  ushort *puVar6;
+  u16 *puVar6;
   uint uVar7;
   int iVar8;
   
   iVar8 = *(int *)(param_2 + 0x6c);
   uVar7 = 0;
   if (0 < param_2->type_flags) {
-    puVar6 = (ushort *)(iVar8 + 6);
+    puVar6 = (u16 *)(iVar8 + 6);
     do {
-      iVar5 = (uint)*(byte *)((int)puVar6 + -3) * 8;
+      iVar5 = (uint)*(u8 *)((int)puVar6 + -3) * 8;
       if ((*(uint *)(param_2 + 0x70) & 1 << (uVar7 & 0x1f)) != 0) {
         iVar2 = (int)(((uint)param_1->pos_y - (uint)puVar6[-1]) * 0x10000) >> 0x10;
         iVar3 = (int)(((uint)param_1->pos_z - (uint)puVar6->flags) * 0x10000) >> 0x10;
         uVar4 = FUN_80084080(iVar2 * iVar2 + iVar3 * iVar3);
         bVar1 = false;
         if ((int)(uVar4 & 0xffff) <=
-            (int)((int)param_1->bounds_min_x + (uint)(byte)(&DAT_800a29d0)[iVar5])) {
-          bVar1 = (int)(((uint)*(ushort *)(param_1 + 0x32) - (uint)*puVar6) +
-                        (uint)param_1->bounds_min_y + (uint)(byte)(&DAT_800a29d1)[iVar5] &
+            (int)((int)param_1->bounds_min_x + (uint)(u8)(&DAT_800a29d0)[iVar5])) {
+          bVar1 = (int)(((uint)*(u16 *)(param_1 + 0x32) - (uint)*puVar6) +
+                        (uint)param_1->bounds_min_y + (uint)(u8)(&DAT_800a29d1)[iVar5] &
                        0xffff) <=
-                  (int)((int)param_1->bounds_max_y + (uint)(byte)(&DAT_800a29d1)[iVar5] * 2);
+                  (int)((int)param_1->bounds_max_y + (uint)(u8)(&DAT_800a29d1)[iVar5] * 2);
         }
         if (bVar1) {
           uVar7 = 1 << (uVar7 & 0x1f);
@@ -48,7 +48,7 @@ void FUN_80022330(int param_1,int param_2)
             param_1->parent = iVar8;
             param_1->move_mode = 2;
             iVar8->pos_y = param_1->pos_y;
-            *(undefined2 *)(iVar8 + 0x32) = *(undefined2 *)(param_1 + 0x32);
+            *(s16 *)(iVar8 + 0x32) = *(s16 *)(param_1 + 0x32);
             iVar8->pos_z = param_1->pos_z;
           }
           param_1->move_mode = 2;

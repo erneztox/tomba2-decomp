@@ -17,8 +17,8 @@ void FUN_80055d5c(int param_1)
   if (param_1->physics_flag == '\0') {
     FUN_8004766c(param_1);
     FUN_80049760(param_1);
-    param_1->draw_angle = _DAT_1f8001a0;
-    if (DAT_1f800137 != '\x01') {
+    param_1->draw_angle = _g_CollisionNormalX;
+    if (g_CurrentOverlay != '\x01') {
       DAT_1f800207 = param_1->collision_dir;
     }
   }
@@ -30,9 +30,9 @@ void FUN_80055d5c(int param_1)
       param_1->draw_angle = _DAT_1f80018c;
     }
     iVar1 = FUN_80083f50((int)param_1->draw_angle);
-    param_1->normal_x = (short)(iVar1 >> 4);
+    param_1->normal_x = (s16)(iVar1 >> 4);
     iVar1 = FUN_80083e80((int)param_1->draw_angle);
-    param_1->normal_z = -(short)(iVar1 >> 4);
+    param_1->normal_z = -(s16)(iVar1 >> 4);
     if (param_1->collision_state != '\0') {
       param_1->velocity_y = 0;
     }

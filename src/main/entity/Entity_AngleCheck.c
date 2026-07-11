@@ -8,13 +8,13 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80055c9c(undefined4 param_1,int param_2)
+void FUN_80055c9c(s32 param_1,int param_2)
 
 {
-  bool bVar1;
+  s32 bVar1;
   uint uVar2;
   
-  if (DAT_800e806c == '\x05') {
+  if (g_CameraEntity == '\x05') {
     bVar1 = ((0xc00 - (uint)_DAT_1f8000f2) - param_2 & 0xfff) < 0x800;
   }
   else {

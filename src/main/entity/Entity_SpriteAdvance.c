@@ -7,25 +7,25 @@
 
 
 #include "tomba.h"
-char FUN_80040e54(int param_1,int param_2)
+s8 FUN_80040e54(int param_1,int param_2)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   uint uVar2;
-  ushort *puVar3;
-  undefined4 uVar4;
-  char cVar5;
+  u16 *puVar3;
+  s32 uVar4;
+  s8 cVar5;
   
-  puVar3 = *(ushort **)(param_1 + 0x6c);
+  puVar3 = *(u16 **)(param_1 + 0x6c);
   uVar1 = *puVar3;
   cVar5 = ((uVar1 & 0x1000) != 0) * '\x04';
-  uVar2 = (int)(short)uVar1 & 0xe000;
+  uVar2 = (int)(s16)uVar1 & 0xe000;
   if (uVar2 == 0x6000) {
     if (param_2 != 0) {
       FUN_80040de0(param_1,puVar3 + 0xc);
       goto LAB_80040f7c;
     }
-    uVar4 = *(undefined4 *)(puVar3 + 10);
+    uVar4 = *(s32 *)(puVar3 + 10);
 LAB_80040f54:
     cVar5 = cVar5 + '\x01';
     FUN_80040de0(param_1,uVar4);
@@ -59,14 +59,14 @@ LAB_80040f54:
       }
       if (uVar2 != 0x4000) goto LAB_80040f7c;
       if (param_2 == 0) {
-        uVar4 = *(undefined4 *)(puVar3 + 6);
+        uVar4 = *(s32 *)(puVar3 + 6);
         goto LAB_80040f54;
       }
     }
     FUN_80040de0(param_1,puVar3 + 8);
   }
 LAB_80040f7c:
-  if (((int)(short)uVar1 & 0x800U) != 0) {
+  if (((int)(s16)uVar1 & 0x800U) != 0) {
     cVar5 = '\x06';
   }
   return cVar5;

@@ -33,7 +33,7 @@ void FUN_8007156c(int param_1)
     }
     goto switchD_800715a4_caseD_1;
   case 4:
-    DAT_800bf843 = 3;
+    g_EventFlag = 3;
     if (param_1->action_state == '\0') {
       FUN_80070f00(param_1,0,0);
       param_1->action_state = param_1->action_state + '\x01';
@@ -45,7 +45,7 @@ void FUN_8007156c(int param_1)
   case 5:
     iVar1 = FUN_8007101c(param_1,0);
     if (iVar1 == 0) {
-      DAT_800bf843 = 3;
+      g_EventFlag = 3;
     }
     else {
       param_1->sub_type = 0;

@@ -8,12 +8,12 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-int FUN_8004f058(undefined4 param_1,ushort *param_2,short param_3)
+int FUN_8004f058(s32 param_1,u16 *param_2,s16 param_3)
 
 {
-  ushort uVar1;
-  short sVar2;
-  undefined4 uVar3;
+  u16 uVar1;
+  s16 sVar2;
+  s32 uVar3;
   
   while( true ) {
     if (param_3 == 0) {
@@ -25,7 +25,7 @@ int FUN_8004f058(undefined4 param_1,ushort *param_2,short param_3)
         }
         else {
           uVar3 = FUN_8004ef54(uVar3,_DAT_800bf800 +
-                                     (uint)*(ushort *)((uVar1 & 0xfff) * 2 + _DAT_800bf7fc));
+                                     (uint)*(u16 *)((uVar1 & 0xfff) * 2 + _DAT_800bf7fc));
         }
         param_2 = param_2 + 1;
         uVar1 = *param_2;

@@ -12,9 +12,9 @@
 void FUN_80064ba0(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
-  ushort local_18;
+  u16 local_18;
   
   bVar1 = param_1->action_state;
   if (bVar1 != 1) {
@@ -55,14 +55,14 @@ void FUN_80064ba0(int param_1)
     }
     param_1->type_flags = 0;
     FUN_80054d14(param_1,0x1a,0);
-    *(undefined1 *)(param_1 + 0x169) = 0x18;
+    *(u8 *)(param_1 + 0x169) = 0x18;
     param_1->sub_action = 0;
-    *(undefined1 *)(param_1 + 0x168) = 1;
+    *(u8 *)(param_1 + 0x168) = 1;
     param_1->action_state = param_1->action_state + '\x01';
     if ((*(uint *)(param_1 + 0x17c) & 0x4400200) == 0x200) {
       param_1->action_flag = 0;
       param_1->state_ptr = 0;
-      *(short *)(param_1 + 0x32) = param_1->draw_pos_y + *(short *)(param_1 + 100);
+      *(s16 *)(param_1 + 0x32) = param_1->draw_pos_y + *(s16 *)(param_1 + 100);
       FUN_80056d44(param_1,0);
       return;
     }
@@ -72,7 +72,7 @@ void FUN_80064ba0(int param_1)
     local_18 = FUN_800634a8(param_1);
   }
   else {
-    switch(DAT_800bf870) {
+    switch(g_GameState) {
     case 0:
       local_18 = func_0x8010b600(param_1);
       break;
@@ -96,7 +96,7 @@ void FUN_80064ba0(int param_1)
     }
   }
   if ((local_18 & 0x40) == 0) {
-    if ((local_18 & (_DAT_1f800172 | 0x10)) != 0) {
+    if ((local_18 & (_g_InputMask | 0x10)) != 0) {
       if (iVar2 != 1) {
         iVar2->collision_state = 0;
       }

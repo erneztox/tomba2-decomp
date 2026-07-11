@@ -6,17 +6,17 @@
 
 
 
-undefined1 * FUN_8009a340(undefined1 *param_1,int param_2)
+u8 * FUN_8009a340(u8 *param_1,int param_2)
 
 {
-  undefined1 *puVar1;
-  undefined1 *puVar2;
+  u8 *puVar1;
+  u8 *puVar2;
   
-  puVar1 = (undefined1 *)0x0;
-  if (param_1 != (undefined1 *)0x0) {
+  puVar1 = (u8 *)0x0;
+  if (param_1 != (u8 *)0x0) {
     puVar2 = param_1;
     if (param_2 < 1) {
-      puVar1 = (undefined1 *)0x0;
+      puVar1 = (u8 *)0x0;
     }
     else {
       do {

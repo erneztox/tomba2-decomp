@@ -6,7 +6,7 @@
 
 
 
-void FUN_8004d688(int param_1,char param_2)
+void FUN_8004d688(int param_1,s8 param_2)
 
 {
   (&DAT_800bfab4)[param_1] = (&DAT_800bfab4)[param_1] - param_2;

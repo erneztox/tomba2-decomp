@@ -6,10 +6,10 @@
 
 
 
-undefined4 FUN_80036560(int param_1,undefined4 *param_2)
+s32 FUN_80036560(int param_1,s32 *param_2)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   
   if (param_1 == 0) {
     uVar1 = 2;

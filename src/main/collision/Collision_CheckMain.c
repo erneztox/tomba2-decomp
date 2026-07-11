@@ -9,38 +9,38 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80047b5c(int param_1,int param_2)
+s32 FUN_80047b5c(int param_1,int param_2)
 
 {
-  short sVar1;
-  undefined4 uVar2;
-  short *psVar3;
-  byte *pbVar4;
+  s16 sVar1;
+  s32 uVar2;
+  s16 *psVar3;
+  u8 *pbVar4;
   uint uVar5;
-  ushort uVar6;
+  u16 uVar6;
   
   if (param_2 == 0) {
     uVar6 = 0xfff3;
-    uVar5 = (uint)(byte)_DAT_1f8001e4->sub_type;
+    uVar5 = (uint)(u8)_DAT_1f8001e4->sub_type;
   }
   else {
     uVar6 = 0xfffd;
     uVar5 = (uint)(_DAT_1f8001e4->sub_type >> 8);
   }
-  pbVar4 = (byte *)(_DAT_1f8001d4 + (uint)_DAT_1f8001e4->flags * 8 + ((int)(uVar5 << 0x10) >> 0xd));
+  pbVar4 = (u8 *)(_DAT_1f8001d4 + (uint)_DAT_1f8001e4->flags * 8 + ((int)(uVar5 << 0x10) >> 0xd));
   if (((*_DAT_1f8001e4 & 1) == 0) ||
      (uVar2 = 0,
-     (ushort)(*(short *)(pbVar4 + 4) - (*(short *)(param_1 + 0x32) + -0x80)) <=
-     *(ushort *)(pbVar4 + 6))) {
-    psVar3 = (short *)(_DAT_1f8001c8 + (uint)*(ushort *)((uint)*pbVar4 * 2 + _DAT_1f8001c8) * 2);
+     (u16)(*(s16 *)(pbVar4 + 4) - (*(s16 *)(param_1 + 0x32) + -0x80)) <=
+     *(u16 *)(pbVar4 + 6))) {
+    psVar3 = (s16 *)(_g_CollisionGrid + (uint)*(u16 *)((uint)*pbVar4 * 2 + _g_CollisionGrid) * 2);
     sVar1 = FUN_80085690((int)psVar3->sub_type - (int)psVar3->kind,(int)psVar3->flags - (int)*psVar3);
-    _DAT_1f8001a0 = -sVar1;
-    _DAT_1f8001a2 = _DAT_1f8001a0;
+    _g_CollisionNormalX = -sVar1;
+    _g_CollisionNormalY = _g_CollisionNormalX;
     if ((*_DAT_1f8001e4 & 0x10) == 0) {
-      _DAT_1f8001a2 = _DAT_1f8001a0 + 0x800 & 0xfff;
+      _g_CollisionNormalY = _g_CollisionNormalX + 0x800 & 0xfff;
     }
     if (param_2 != 0) {
-      _DAT_1f8001a2 = _DAT_1f8001a2 + 0x800 & 0xfff;
+      _g_CollisionNormalY = _g_CollisionNormalY + 0x800 & 0xfff;
     }
     uVar2 = 1;
   }

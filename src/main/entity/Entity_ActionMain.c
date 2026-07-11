@@ -10,7 +10,7 @@
 void FUN_80058f5c(int param_1)
 
 {
-  char cVar1;
+  s8 cVar1;
   
   switch(param_1->behavior_state) {
   case 0:
@@ -75,7 +75,7 @@ void FUN_80058f5c(int param_1)
       return;
     }
     param_1->flag_17B = 1;
-    cVar1 = DAT_1f800137;
+    cVar1 = g_CurrentOverlay;
 code_r0x800590f8:
     if (cVar1 != '\0') {
       FUN_80053d90(param_1);
@@ -115,13 +115,13 @@ LAB_8005919c:
     FUN_80060064(param_1);
     break;
   case 0x18:
-    if (DAT_800bf870 == '\x04') {
+    if (g_GameState == '\x04') {
       func_0x801139f4(param_1);
     }
-    else if (DAT_800bf870 == '\x06') {
+    else if (g_GameState == '\x06') {
       func_0x801144f4(param_1);
     }
-    else if (DAT_800bf870 == '\x0e') {
+    else if (g_GameState == '\x0e') {
       func_0x8010af4c(param_1);
     }
     break;
@@ -132,7 +132,7 @@ LAB_80059220:
     FUN_80058f24(param_1);
     break;
   case 0x1a:
-    if (DAT_800bf870 == '\x05') {
+    if (g_GameState == '\x05') {
       func_0x80110380(param_1);
     }
     else {
@@ -146,23 +146,23 @@ LAB_80059220:
     FUN_80061c64(param_1);
     break;
   case 0x1d:
-    if (DAT_800bf870 == '\0') {
+    if (g_GameState == '\0') {
       func_0x8010c87c(param_1);
       return;
     }
-    if (DAT_800bf870 == '\x06') {
+    if (g_GameState == '\x06') {
       func_0x801145ec(param_1);
       return;
     }
-    if (DAT_800bf870 != '\b') {
-      if (DAT_800bf870 != '\x0e') {
+    if (g_GameState != '\b') {
+      if (g_GameState != '\x0e') {
         return;
       }
       func_0x8010b3e8(param_1);
       return;
     }
     func_0x801135c8(param_1);
-    if (DAT_1f800137 != '\0') {
+    if (g_CurrentOverlay != '\0') {
       return;
     }
     param_1->behavior_state = 0x2d;
@@ -198,7 +198,7 @@ LAB_80059220:
   case 0x28:
     FUN_800661e0(param_1);
 LAB_800594a0:
-    if (DAT_1f800137 == '\0') {
+    if (g_CurrentOverlay == '\0') {
       param_1->behavior_state = 0x20;
 LAB_800594b4:
       param_1->action_state = 0;
@@ -221,10 +221,10 @@ LAB_800594b4:
     func_0x80112418(param_1);
     break;
   case 0x33:
-    if (DAT_800bf870 == '\x05') {
+    if (g_GameState == '\x05') {
       func_0x8010f948(param_1);
     }
-    else if (DAT_800bf870 == '\x12') {
+    else if (g_GameState == '\x12') {
       func_0x80109f7c(param_1);
     }
     break;
@@ -235,7 +235,7 @@ LAB_800594b4:
     func_0x801144fc(param_1);
     break;
   case 0x36:
-    if (DAT_800bf870 == '\x06') {
+    if (g_GameState == '\x06') {
       func_0x80112e24(param_1);
     }
     else {

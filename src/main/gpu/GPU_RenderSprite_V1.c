@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80079374(short param_1,int param_2,short param_3,undefined4 param_4,undefined4 param_5)
+void FUN_80079374(s16 param_1,int param_2,s16 param_3,s32 param_4,s32 param_5)
 
 {
   _DAT_1f800180 = 0x20;

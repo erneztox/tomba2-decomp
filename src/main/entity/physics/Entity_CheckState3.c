@@ -1,5 +1,5 @@
 /**
- * @brief Entity state check variant 3: checks DAT_1f800253/237
+ * @brief Entity state check variant 3: checks g_State253/237
  * @note Original: func_8006042C at 0x8006042C
  */
 // Entity_CheckState3
@@ -7,15 +7,15 @@
 
 
 #include "tomba.h"
-undefined4 FUN_8006042c(int param_1)
+s32 FUN_8006042c(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
-  if (1 < DAT_1f800253) {
+  if (1 < g_State253) {
     return 2;
   }
-  if (DAT_1f800237 == '\0') {
+  if (g_State237 == '\0') {
     bVar1 = param_1->input_state;
     if (bVar1 == 1) {
 LAB_800604bc:

@@ -10,10 +10,10 @@
 void FUN_800663a8(int param_1,int param_2)
 
 {
-  char cVar1;
-  undefined2 uVar2;
+  s8 cVar1;
+  s16 uVar2;
   int iVar3;
-  undefined4 uVar4;
+  s32 uVar4;
   
   iVar3 = FUN_80077768((int)param_1->draw_angle,(uint)param_1->move_mode << 4,0);
   if (iVar3 == 0) {
@@ -29,7 +29,7 @@ void FUN_800663a8(int param_1,int param_2)
   param_1->anim_counter = uVar2;
   cVar1 = param_1->direction + '\x02';
   param_1->behavior_flags = cVar1;
-  *(char *)(param_1 + 0x149) = cVar1;
+  *(s8*)(param_1 + 0x149) = cVar1;
   if (param_2 == 0) {
     uVar4 = 0x57;
   }

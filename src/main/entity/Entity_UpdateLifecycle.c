@@ -10,11 +10,11 @@
 void FUN_8007263c(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   bVar1 = param_1->state;
   if (bVar1 == 1) {
-    if (**(short **)(param_1 + 0x10) == -2) {
+    if (**(s16 **)(param_1 + 0x10) == -2) {
       param_1->state = 3;
     }
     else {

@@ -12,10 +12,10 @@
 void FUN_80059ed8(int param_1)
 
 {
-  byte bVar1;
-  char cVar2;
-  undefined2 uVar3;
-  undefined2 uVar4;
+  u8 bVar1;
+  s8 cVar2;
+  s16 uVar3;
+  s16 uVar4;
   int iVar5;
   uint uVar6;
   char *pcVar7;
@@ -66,7 +66,7 @@ void FUN_80059ed8(int param_1)
     if (iVar5 < 0) {
       iVar5 = -iVar5;
     }
-    if ((0xc00 < iVar5) && ((_DAT_1f80017c & 7) == 0)) {
+    if ((0xc00 < iVar5) && ((_g_FrameCounter2 & 7) == 0)) {
       FUN_800312d4(0x2c,pcVar7 + 0x2c,0xffffffec);
     }
   }
@@ -79,7 +79,7 @@ void FUN_80059ed8(int param_1)
     uVar4 = 0x6e;
   }
   param_1->timer2 = uVar4;
-  *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(pcVar7 + 0x2c);
+  *(s32 *)(param_1 + 0x2c) = *(s32 *)(pcVar7 + 0x2c);
   param_1->pos_y_fixed = pcVar7->pos_y_fixed;
   param_1->scale_y = pcVar7->scale_y;
   param_1->collision_dir = pcVar7->collision_dir;
@@ -94,14 +94,14 @@ void FUN_80059ed8(int param_1)
       param_1->velocity_y = uVar3;
       goto LAB_8005a1ac;
     }
-    iVar5 = FUN_800489e4(param_1,(int)*(short *)(param_1 + 0x32));
-    uVar3 = _DAT_1f8001a2;
-    uVar4 = _DAT_1f8001a0;
+    iVar5 = FUN_800489e4(param_1,(int)*(s16 *)(param_1 + 0x32));
+    uVar3 = _g_CollisionNormalY;
+    uVar4 = _g_CollisionNormalX;
     if (iVar5 != 0) {
       uVar6 = (int)((uint)_DAT_1f8001a6 << 0x10) >> 0x18 & 0xf;
       if ((((uVar6 != 2) && (uVar6 != 7)) &&
           (((int)((uint)_DAT_1f8001a6 << 0x10) >> 0x10 & 0x8000U) == 0)) &&
-         (*(short *)(param_1 + 0x32) <= _DAT_1f8001a4)) {
+         (*(s16 *)(param_1 + 0x32) <= _DAT_1f8001a4)) {
         param_1->velocity_y = _DAT_1f8001a4;
         param_1->normal_x = param_1->pos_y;
         param_1->normal_z = param_1->pos_z;
@@ -113,7 +113,7 @@ void FUN_80059ed8(int param_1)
   }
   else if ((pcVar7->type_flags >> 8 & 0xf) != 2) {
     param_1->normal_x = pcVar7->pos_y;
-    param_1->velocity_y = *(short *)(pcVar7 + 0x32) + pcVar7->bounds_min_y;
+    param_1->velocity_y = *(s16 *)(pcVar7 + 0x32) + pcVar7->bounds_min_y;
     param_1->normal_z = pcVar7->pos_z;
     param_1->rot_y = pcVar7->draw_angle;
     param_1->rot_z = pcVar7->draw_scale;
@@ -122,9 +122,9 @@ void FUN_80059ed8(int param_1)
   param_1->flags = 0;
 LAB_8005a1ac:
   if (param_1->flags != '\0') {
-    iVar5 = 0x80 - (((int)param_1->velocity_y - (int)*(short *)(pcVar7 + 0x32)) + -0x78 >> 2)
+    iVar5 = 0x80 - (((int)param_1->velocity_y - (int)*(s16 *)(pcVar7 + 0x32)) + -0x78 >> 2)
     ;
-    param_1->sprite_x = (short)iVar5;
+    param_1->sprite_x = (s16)iVar5;
     iVar5 = iVar5 * 0x10000 >> 0x10;
     if (iVar5 < 0) {
       param_1->sprite_x = 0;
@@ -133,9 +133,9 @@ LAB_8005a1ac:
     else if (0x80 < iVar5) {
       param_1->sprite_x = 0x80;
     }
-    iVar5 = 0x100 - (((int)param_1->velocity_y - (int)*(short *)(pcVar7 + 0x32)) + -0x78 >> 2
+    iVar5 = 0x100 - (((int)param_1->velocity_y - (int)*(s16 *)(pcVar7 + 0x32)) + -0x78 >> 2
                     );
-    param_1->angle_offset = (short)iVar5;
+    param_1->angle_offset = (s16)iVar5;
     iVar5 = iVar5 * 0x10000 >> 0x10;
     if (iVar5 < 0) {
       param_1->angle_offset = 0;
@@ -145,20 +145,20 @@ LAB_8005a1ac:
       param_1->angle_offset = 0x100;
     }
   }
-  if (((DAT_800bf873 == '\0') && (DAT_800bf80d == '\0')) && (pcVar7->state_ptr == 0)) {
-    switch(DAT_800bf870) {
+  if (((g_SubState == '\0') && (g_TimerFlag == '\0')) && (pcVar7->state_ptr == 0)) {
+    switch(g_GameState) {
     case 0:
-      if (DAT_800bf816 == '\0') {
+      if (g_ActionFlag == '\0') {
         func_0x8010c5a8(param_1,pcVar7);
       }
       break;
     case 4:
-      if (DAT_800bf816 == '\0') {
+      if (g_ActionFlag == '\0') {
         func_0x80115afc(param_1,pcVar7);
       }
       break;
     case 6:
-      if (DAT_800bf816 == '\0') {
+      if (g_ActionFlag == '\0') {
         func_0x80114294(param_1,pcVar7);
       }
       break;

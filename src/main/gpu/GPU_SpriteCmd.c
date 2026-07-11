@@ -10,11 +10,11 @@
 void FUN_8007d208(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
-  ushort uVar3;
-  ushort local_10;
-  ushort local_e->sub_type;
+  u8 bVar1;
+  s16 sVar2;
+  u16 uVar3;
+  u16 local_10;
+  u16 local_e->sub_type;
   
   bVar1 = param_1->anim_id;
   if ((bVar1 & 1) == 0) {
@@ -36,7 +36,7 @@ void FUN_8007d208(int param_1)
   FUN_8007ceec(param_1,&local_10,local_e);
   bVar1 = param_1->sub_anim_id;
   param_1->rot_x =
-       0xa0 - (short)(((int)((uint)local_10 << 0x10) >> 0x10) -
+       0xa0 - (s16)(((int)((uint)local_10 << 0x10) >> 0x10) -
                       ((int)((uint)local_10 << 0x10) >> 0x1f) >> 1);
   if (bVar1 == 1) {
     bVar1 = param_1->sub_type;
@@ -52,7 +52,7 @@ void FUN_8007d208(int param_1)
           if (bVar1 != 3) goto LAB_8007d574;
           goto LAB_8007d570;
         }
-        uVar3 = (ushort)(((int)((uint)local_e->type << 0x10) >> 0x10) -
+        uVar3 = (u16)(((int)((uint)local_e->type << 0x10) >> 0x10) -
                          ((int)((uint)local_e->type << 0x10) >> 0x1f) >> 1);
         sVar2 = 0x40;
       }
@@ -68,34 +68,34 @@ void FUN_8007d208(int param_1)
       if (bVar1 == 4) {
         param_1->rot_x = 0x10;
         sVar2 = 0x40;
-        uVar3 = (ushort)(((int)((uint)local_e->type << 0x10) >> 0x10) -
+        uVar3 = (u16)(((int)((uint)local_e->type << 0x10) >> 0x10) -
                          ((int)((uint)local_e->type << 0x10) >> 0x1f) >> 1);
       }
       else if (bVar1 < 5) {
         sVar2 = param_1->anim_timer;
         if (sVar2 == 0) {
           sVar2 = 0x40;
-          uVar3 = (ushort)(((int)((uint)local_e->type << 0x10) >> 0x10) -
+          uVar3 = (u16)(((int)((uint)local_e->type << 0x10) >> 0x10) -
                            ((int)((uint)local_e->type << 0x10) >> 0x1f) >> 1);
         }
         else if (sVar2 < 1) {
           if (sVar2 != -1) goto LAB_8007d574;
-          if (((*(char *)(param_1 + 0x18) == '\0') || (*(char *)(param_1 + 0x18) == '\x05')) ||
+          if (((*(s8*)(param_1 + 0x18) == '\0') || (*(s8*)(param_1 + 0x18) == '\x05')) ||
              (param_1->draw_y == -1)) {
             sVar2 = 0xb0;
-            uVar3 = (ushort)(((int)((uint)local_e->type << 0x10) >> 0x10) -
+            uVar3 = (u16)(((int)((uint)local_e->type << 0x10) >> 0x10) -
                              ((int)((uint)local_e->type << 0x10) >> 0x1f) >> 1);
           }
           else {
             sVar2 = 0x40;
-            uVar3 = (ushort)(((int)((uint)local_e->type << 0x10) >> 0x10) -
+            uVar3 = (u16)(((int)((uint)local_e->type << 0x10) >> 0x10) -
                              ((int)((uint)local_e->type << 0x10) >> 0x1f) >> 1);
           }
         }
         else {
           if (sVar2 != 1) goto LAB_8007d574;
           sVar2 = 0xb0;
-          uVar3 = (ushort)(((int)((uint)local_e->type << 0x10) >> 0x10) -
+          uVar3 = (u16)(((int)((uint)local_e->type << 0x10) >> 0x10) -
                            ((int)((uint)local_e->type << 0x10) >> 0x1f) >> 1);
         }
       }
@@ -103,7 +103,7 @@ void FUN_8007d208(int param_1)
         if (bVar1 != 5) goto LAB_8007d574;
         param_1->rot_x = 0x130 - local_10;
         sVar2 = 0x40;
-        uVar3 = (ushort)(((int)((uint)local_e->type << 0x10) >> 0x10) -
+        uVar3 = (u16)(((int)((uint)local_e->type << 0x10) >> 0x10) -
                          ((int)((uint)local_e->type << 0x10) >> 0x1f) >> 1);
       }
     }
@@ -111,12 +111,12 @@ void FUN_8007d208(int param_1)
       if (bVar1 != 2) goto LAB_8007d574;
       if (param_1->sub_type == '\0') {
         sVar2 = 0x70;
-        uVar3 = (ushort)(((int)((uint)local_e->type << 0x10) >> 0x10) -
+        uVar3 = (u16)(((int)((uint)local_e->type << 0x10) >> 0x10) -
                          ((int)((uint)local_e->type << 0x10) >> 0x1f) >> 1);
       }
       else {
         sVar2 = 0x18;
-        uVar3 = (ushort)(((int)((uint)local_e->type << 0x10) >> 0x10) -
+        uVar3 = (u16)(((int)((uint)local_e->type << 0x10) >> 0x10) -
                          ((int)((uint)local_e->type << 0x10) >> 0x1f) >> 1);
       }
     }

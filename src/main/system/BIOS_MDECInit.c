@@ -6,7 +6,7 @@
 
 
 
-undefined4 FUN_8009bdfc(void)
+s32 FUN_8009bdfc(void)
 
 {
   FUN_80080890();

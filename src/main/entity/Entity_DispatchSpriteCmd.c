@@ -9,10 +9,10 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80043634(int param_1)
+s32 FUN_80043634(int param_1)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   int iVar2;
   
   uVar1 = param_1->event_id;
@@ -24,8 +24,8 @@ undefined4 FUN_80043634(int param_1)
   }
   _DAT_800bf844 = iVar2;
   if (iVar2 != 0) {
-    iVar2->flag_5E = *(undefined1 *)(param_1 + 0x74);
-    iVar2->draw_x = *(undefined2 *)(param_1 + 0x76);
+    iVar2->flag_5E = *(u8 *)(param_1 + 0x74);
+    iVar2->draw_x = *(s16 *)(param_1 + 0x76);
   }
   return 1;
 }

@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-undefined4 FUN_8004190c(int param_1)
+s32 FUN_8004190c(int param_1)
 
 {
-  undefined1 uVar1;
+  u8 uVar1;
   
   uVar1 = FUN_80076d68();
   param_1->sub_state2 = uVar1;

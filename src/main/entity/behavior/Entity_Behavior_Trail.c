@@ -10,19 +10,19 @@
 void Entity_Behavior_Trail(int param_1)
 
 {
-  byte bVar1;
-  char cVar2;
-  undefined2 uVar3;
-  bool bVar4;
+  u8 bVar1;
+  s8 cVar2;
+  s16 uVar3;
+  s32 bVar4;
   int iVar5;
-  undefined4 *puVar6;
+  s32 *puVar6;
   int iVar7;
   char *pcVar8;
   char *pcVar9;
-  undefined2 *puVar10;
+  s16 *puVar10;
 
-  pcVar9 = (char *)(param_1 + 0x2c);
-  puVar10 = (undefined2 *)(param_1 + 0x38);
+  pcVar9 = (s8*)(param_1 + 0x2c);
+  puVar10 = (s16 *)(param_1 + 0x38);
   pcVar8 = *(char **)(param_1 + 0x10);  // Parent entity pointer
   bVar1 = param_1->state;
   if (bVar1 != 1) {
@@ -32,25 +32,25 @@ void Entity_Behavior_Trail(int param_1)
         return;
       }
       // Initialize state
-      *(undefined1 *)(param_1 + 0x2c) = 4;
+      *(u8 *)(param_1 + 0x2c) = 4;
       param_1->state = 1;
       param_1->behavior_state = 0;
       param_1->action_state = 0;
       param_1->sub_action = 0;
       param_1->flags = 0;
-      *(undefined1 *)(param_1 + 0x2e) = 0xa0;
+      *(u8 *)(param_1 + 0x2e) = 0xa0;
       do {
         iVar5 = iVar7 << 0x10;
         iVar7 = iVar7 + 1;
-        puVar6 = (undefined4 *)((iVar5 >> 0xd) + (int)puVar10);
+        puVar6 = (s32 *)((iVar5 >> 0xd) + (int)puVar10);
         *puVar6 = 0;
         puVar6->flags = 0;
       } while (iVar7 * 0x10000 >> 0x10 < 5);
-      *(undefined2 *)(param_1 + 0x30) = pcVar8->pos_y;
-      *(undefined2 *)(param_1 + 0x32) = *(undefined2 *)(pcVar8 + 0x32);
+      *(s16 *)(param_1 + 0x30) = pcVar8->pos_y;
+      *(s16 *)(param_1 + 0x32) = *(s16 *)(pcVar8 + 0x32);
       uVar3 = pcVar8->pos_z;
       param_1->pos_z = 0;
-      *(undefined2 *)(param_1 + 0x34) = uVar3;
+      *(s16 *)(param_1 + 0x34) = uVar3;
       return;
     }
     if (bVar1 != 2) {
@@ -63,14 +63,14 @@ void Entity_Behavior_Trail(int param_1)
     // Shift history buffer
     iVar7 = 5;
     do {
-      puVar6 = (undefined4 *)(((iVar7 << 0x10) >> 0xd) + (int)puVar10);
+      puVar6 = (s32 *)(((iVar7 << 0x10) >> 0xd) + (int)puVar10);
       iVar7 = iVar7 + -1;
       *puVar6 = puVar6[-2];
       puVar6->flags = puVar6[-1];
     } while (0 < iVar7 * 0x10000);
     *puVar10 = 0;
-    *(undefined2 *)(param_1 + 0x3a) = 0;
-    *(undefined2 *)(param_1 + 0x3c) = 0;
+    *(s16 *)(param_1 + 0x3a) = 0;
+    *(s16 *)(param_1 + 0x3c) = 0;
     param_1->flags = 1;
     if (1 < param_1->behavior_state) {
       cVar2 = *pcVar9;
@@ -82,7 +82,7 @@ void Entity_Behavior_Trail(int param_1)
       if ((param_1->pos_z & 7) < 3) {
         param_1->pos_z = param_1->pos_z + 1;
       }
-      if (*pcVar9 != *(char *)(param_1 + 0x2d)) {
+      if (*pcVar9 != *(s8*)(param_1 + 0x2d)) {
         return;
       }
       param_1->state = 3;
@@ -100,9 +100,9 @@ LAB_80029c70:
     if ((*pcVar8 == '\x01') && (pcVar8->flag_5E == '\x01')) {
       param_1->behavior_state = param_1->behavior_state + '\x01';
 LAB_80029ca0:
-      *(undefined2 *)(param_1 + 0x30) = pcVar8->pos_y;
-      *(undefined2 *)(param_1 + 0x32) = *(undefined2 *)(pcVar8 + 0x32);
-      *(undefined2 *)(param_1 + 0x34) = pcVar8->pos_z;
+      *(s16 *)(param_1 + 0x30) = pcVar8->pos_y;
+      *(s16 *)(param_1 + 0x32) = *(s16 *)(pcVar8 + 0x32);
+      *(s16 *)(param_1 + 0x34) = pcVar8->pos_z;
       param_1->pos_z = pcVar8->type_flags & 0xff0;
       bVar1 = param_1->sub_type;
       if (bVar1 == 0) {
@@ -160,19 +160,19 @@ LAB_80029da8:
 LAB_80029ddc:
   param_1->flags = 1;
 LAB_80029de0:
-  if (((1 < (byte)pcVar8->state) || ((DAT_800e7fc6 & 4) != 0)) || (iVar7 = 5, DAT_800e7fc6 == 0)) {
-    *(char *)(param_1 + 0x2d) = *pcVar9;
+  if (((1 < (u8)pcVar8->state) || ((DAT_800e7fc6 & 4) != 0)) || (iVar7 = 5, DAT_800e7fc6 == 0)) {
+    *(s8*)(param_1 + 0x2d) = *pcVar9;
     param_1->state = 2;
     iVar7 = 5;
   }
   do {
-    puVar6 = (undefined4 *)(((iVar7 << 0x10) >> 0xd) + (int)puVar10);
+    puVar6 = (s32 *)(((iVar7 << 0x10) >> 0xd) + (int)puVar10);
     iVar7 = iVar7 + -1;
     *puVar6 = puVar6[-2];
     puVar6->flags = puVar6[-1];
   } while (0 < iVar7 * 0x10000);
   *puVar10 = pcVar8->pos_y;
-  *(undefined2 *)(param_1 + 0x3a) = *(undefined2 *)(pcVar8 + 0x32);
-  *(undefined2 *)(param_1 + 0x3c) = pcVar8->pos_z;
+  *(s16 *)(param_1 + 0x3a) = *(s16 *)(pcVar8 + 0x32);
+  *(s16 *)(param_1 + 0x3c) = pcVar8->pos_z;
   return;
 }

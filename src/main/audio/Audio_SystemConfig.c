@@ -11,7 +11,7 @@
 void FUN_80091d70(uint param_1)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
   
   iVar2 = FUN_80086604();

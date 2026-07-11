@@ -6,7 +6,7 @@
 
 
 
-undefined4 FUN_80097414(undefined4 param_1,undefined4 param_2)
+s32 FUN_80097414(s32 param_1,s32 param_2)
 
 {
   if (DAT_800ac620 == 0) {

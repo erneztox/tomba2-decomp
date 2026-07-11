@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-void FUN_80027144(undefined4 param_1,int param_2,undefined2 param_3,uint param_4)
+void FUN_80027144(s32 param_1,int param_2,s16 param_3,uint param_4)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
   int iVar3;
   int iVar4;
@@ -26,12 +26,12 @@ void FUN_80027144(undefined4 param_1,int param_2,undefined2 param_3,uint param_4
       }
       iVar3 = FUN_8007b26c();
       if (iVar3 != 0) {
-        iVar3->flags = (byte)((int)(param_4 << 0x10) >> 0x14) & 0xf;
-        *(undefined2 *)(iVar3 + 0xc) = param_3;
+        iVar3->flags = (u8)((int)(param_4 << 0x10) >> 0x14) & 0xf;
+        *(s16 *)(iVar3 + 0xc) = param_3;
         iVar3->kind = (char)iVar5;
-        *(undefined2 *)(iVar3 + 0x1e) = *(undefined2 *)(param_2 + 2);
-        *(undefined2 *)(iVar3 + 0x22) = *(undefined2 *)(param_2 + 6);
-        *(undefined2 *)(iVar3 + 0x26) = *(undefined2 *)(param_2 + 10);
+        *(s16 *)(iVar3 + 0x1e) = *(s16 *)(param_2 + 2);
+        *(s16 *)(iVar3 + 0x22) = *(s16 *)(param_2 + 6);
+        *(s16 *)(iVar3 + 0x26) = *(s16 *)(param_2 + 10);
         iVar4 = iVar5;
         if (((int)(param_4 << 0x10) >> 0x10 & 0x8000U) != 0) {
           iVar4 = (iVar2 - iVar5) + -1;

@@ -12,7 +12,7 @@
 void FUN_80051464(int param_1)
 
 {
-  short sVar1;
+  s16 sVar1;
   int iVar2;
   int iVar3;
   int iVar4;
@@ -24,18 +24,18 @@ void FUN_80051464(int param_1)
         return;
       }
       iVar3 = *(int *)(param_1 + iVar4 * 4 + 0xc0);
-      _DAT_1f800000 = 0x1000;
-      _DAT_1f800004 = 0;
-      _DAT_1f800008 = 0x1000;
-      _DAT_1f80000c = 0;
-      _DAT_1f800010 = 0x1000;
-      _DAT_1f800014 = 0;
-      _DAT_1f800018 = 0;
-      _DAT_1f80001c = 0;
-      sVar1 = *(short *)(iVar3 + 6);
-      FUN_80084d10((int)*(short *)(iVar3 + 8),0x1f800000);
-      FUN_80084eb0((int)*(short *)(iVar3 + 10),0x1f800000);
-      FUN_80085050((int)*(short *)(iVar3 + 0xc),0x1f800000);
+      _g_GTE_Matrix[0] = 0x1000;
+      _g_GTE_Data4 = 0;
+      _g_GTE_Data8 = 0x1000;
+      _g_GTE_DataC = 0;
+      _g_GTE_Data10 = 0x1000;
+      _g_GTE_Data14 = 0;
+      _g_GTE_Data18 = 0;
+      _g_GTE_Data1C = 0;
+      sVar1 = *(s16 *)(iVar3 + 6);
+      FUN_80084d10((int)*(s16 *)(iVar3 + 8),0x1f800000);
+      FUN_80084eb0((int)*(s16 *)(iVar3 + 10),0x1f800000);
+      FUN_80085050((int)*(s16 *)(iVar3 + 0xc),0x1f800000);
       if (sVar1 == -1) {
         FUN_80084110(param_1 + 0x98,0x1f800000,iVar3 + 0x18);
         FUN_80084220(iVar3,iVar3 + 0x2c);

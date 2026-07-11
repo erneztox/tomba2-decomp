@@ -6,7 +6,7 @@
 
 
 
-void FUN_80091b18(short param_1,short param_2)
+void FUN_80091b18(s16 param_1,s16 param_2)
 
 {
   FUN_80091970((int)param_1,(int)param_2);

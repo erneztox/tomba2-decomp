@@ -6,13 +6,13 @@
 
 
 
-void FUN_8004ed0c(undefined2 param_1,ushort param_2)
+void FUN_8004ed0c(s16 param_1,u16 param_2)
 
 {
-  undefined4 uVar1;
-  undefined2 local_10;
-  ushort local_e;
-  undefined2 local_c;
+  s32 uVar1;
+  s16 local_10;
+  u16 local_e;
+  s16 local_c;
   
   local_e = param_2 | 0x8000;
   local_c = 0xfffe;
@@ -20,7 +20,7 @@ void FUN_8004ed0c(undefined2 param_1,ushort param_2)
     uVar1 = 0x41;
     goto LAB_8004ed7c;
   }
-  if ((short)param_2 < 2) {
+  if ((s16)param_2 < 2) {
     uVar1 = 0x41;
     if (param_2 != 0) goto LAB_8004ed7c;
   }

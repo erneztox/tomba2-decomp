@@ -9,45 +9,45 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80044144(int param_1)
+s32 FUN_80044144(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
-  ushort uVar3;
+  u8 bVar1;
+  s16 sVar2;
+  u16 uVar3;
   uint uVar4;
   
   bVar1 = param_1->sub_state;
   if (bVar1 == 1) {
-    uVar3 = *(ushort *)(param_1 + 0x66);
-    if (((int)*(short *)(param_1 + 0x66) & 0x8000U) == 0) {
-      if ((uVar3 & 0xff) != (ushort)_DAT_800e7eb8->state) goto LAB_8004427c;
-      FUN_80074810(*(undefined1 *)(param_1 + 0x68),0);
-      uVar3 = *(ushort *)(param_1 + 0x66) | 0x8000;
+    uVar3 = *(u16 *)(param_1 + 0x66);
+    if (((int)*(s16 *)(param_1 + 0x66) & 0x8000U) == 0) {
+      if ((uVar3 & 0xff) != (u16)_DAT_800e7eb8->state) goto LAB_8004427c;
+      FUN_80074810(*(u8 *)(param_1 + 0x68),0);
+      uVar3 = *(u16 *)(param_1 + 0x66) | 0x8000;
     }
     else {
-      if ((uVar3 & 0xff) == (ushort)_DAT_800e7eb8->state) goto LAB_8004427c;
+      if ((uVar3 & 0xff) == (u16)_DAT_800e7eb8->state) goto LAB_8004427c;
       uVar3 = uVar3 & 0x7fff;
     }
-    *(ushort *)(param_1 + 0x66) = uVar3;
+    *(u16 *)(param_1 + 0x66) = uVar3;
   }
   else {
     if (bVar1 < 2) {
       if (bVar1 != 0) {
         return 0;
       }
-      if (DAT_800e7fe4 == '\0') {
+      if (g_CameraMode2 == '\0') {
         if (param_1->event_id == 2) {
-          sVar2 = *(short *)(param_1 + 0x76);
+          sVar2 = *(s16 *)(param_1 + 0x76);
           uVar4 = (int)param_1->event_param | 0x8000;
         }
         else {
           uVar4 = (uint)param_1->event_param;
-          sVar2 = *(short *)(param_1 + 0x76);
+          sVar2 = *(s16 *)(param_1 + 0x76);
         }
-        FUN_800440e4(&DAT_800e7e80,uVar4,(int)sVar2);
+        FUN_800440e4(&g_CollisionEntity,uVar4,(int)sVar2);
         if (param_1->event_id == 0) {
-          if ((**(ushort **)(param_1 + 0x6c) & 0x2000) == 0) {
+          if ((**(u16 **)(param_1 + 0x6c) & 0x2000) == 0) {
             param_1->sub_state = 2;
             return 0;
           }
@@ -63,7 +63,7 @@ undefined4 FUN_80044144(int param_1)
     }
   }
 LAB_8004427c:
-  if (DAT_800bf80e == '\0') {
+  if (g_ActionTrigger == '\0') {
     return 0;
   }
   return 1;

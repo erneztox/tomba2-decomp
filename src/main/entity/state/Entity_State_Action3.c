@@ -9,11 +9,11 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8005e580(byte *param_1)
+void FUN_8005e580(u8 *param_1)
 
 {
-  undefined2 uVar1;
-  short sVar2;
+  s16 uVar1;
+  s16 sVar2;
   int iVar3;
   uint uVar4;
   
@@ -40,7 +40,7 @@ void FUN_8005e580(byte *param_1)
     FUN_80055e28(param_1,0);
     iVar3 = FUN_800558b4(param_1);
     if (iVar3 == 1) {
-      DAT_800bf840 = 0x80;
+      g_SFXState = 0x80;
       param_1[0x61] = 0x31;
       param_1->action_state = 5;
       param_1->direction = 1;
@@ -103,8 +103,8 @@ LAB_8005e664:
   case 7:
     iVar3 = FUN_80055824();
     if (iVar3 == 0) {
-      if (((((_DAT_800ecf54 & 0x10) != 0) || (iVar3 = FUN_80076d68(param_1), iVar3 == 1)) ||
-          (FUN_80055e28(param_1,0), (_DAT_800ecf54 & 0x10) != 0)) || ((param_1->behavior_flags & 2) == 0)) {
+      if (((((_g_InputState & 0x10) != 0) || (iVar3 = FUN_80076d68(param_1), iVar3 == 1)) ||
+          (FUN_80055e28(param_1,0), (_g_InputState & 0x10) != 0)) || ((param_1->behavior_flags & 2) == 0)) {
         param_1[0x61] = 0;
         param_1->behavior_state = 0;
         param_1->action_state = 0;
@@ -124,7 +124,7 @@ LAB_8005e664:
   default:
     goto switchD_8005e5bc_default;
   }
-  *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 8;
+  *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
   FUN_80056c00(param_1,1);
 switchD_8005e5bc_default:
   return;

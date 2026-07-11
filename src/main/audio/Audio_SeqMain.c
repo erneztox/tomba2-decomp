@@ -10,59 +10,59 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80090210(ushort param_1,undefined1 param_2,char *param_3)
+s32 FUN_80090210(u16 param_1,u8 param_2,char *param_3)
 
 {
-  char cVar1;
-  char cVar2;
-  byte bVar3;
-  byte bVar4;
-  undefined1 uVar5;
-  short sVar6;
+  s8 cVar1;
+  s8 cVar2;
+  u8 bVar3;
+  u8 bVar4;
+  u8 uVar5;
+  s16 sVar6;
   uint uVar7;
-  undefined1 *puVar8;
-  undefined4 uVar9;
+  u8 *puVar8;
+  s32 uVar9;
   int iVar10;
-  byte *pbVar11;
-  undefined4 *puVar12;
+  u8 *pbVar11;
+  s32 *puVar12;
   uint uVar13;
-  undefined4 *puVar14;
+  s32 *puVar14;
   
   iVar10 = 0;
-  puVar14 = *(undefined4 **)(&DAT_80104c30 + ((int)((uint)param_1 << 0x10) >> 0xe));
-  *(undefined1 *)((int)puVar14 + 0x26) = param_2;
-  *(undefined2 *)(puVar14 + 0x14) = 0;
+  puVar14 = *(s32 **)(&g_AudioChannels + ((int)((uint)param_1 << 0x10) >> 0xe));
+  *(u8 *)((int)puVar14 + 0x26) = param_2;
+  *(s16 *)(puVar14 + 0x14) = 0;
   puVar14->action_state = 0;
-  *(undefined1 *)((int)puVar14 + 0x19) = 0;
-  *(undefined1 *)((int)puVar14 + 0x1e) = 0;
-  *(undefined1 *)((int)puVar14 + 0x1a) = 0;
-  *(undefined1 *)((int)puVar14 + 0x1b) = 0;
-  *(undefined1 *)((int)puVar14 + 0x1f) = 0;
-  *(undefined1 *)((int)puVar14 + 0x17) = 0;
+  *(u8 *)((int)puVar14 + 0x19) = 0;
+  *(u8 *)((int)puVar14 + 0x1e) = 0;
+  *(u8 *)((int)puVar14 + 0x1a) = 0;
+  *(u8 *)((int)puVar14 + 0x1b) = 0;
+  *(u8 *)((int)puVar14 + 0x1f) = 0;
+  *(u8 *)((int)puVar14 + 0x17) = 0;
   puVar14[0x21] = 0;
   puVar14[0x22] = 0;
   puVar14[0x23] = 0;
-  *(undefined2 *)((int)puVar14 + 0x56) = 0;
-  *(undefined1 *)((int)puVar14 + 0x21) = 0;
+  *(s16 *)((int)puVar14 + 0x56) = 0;
+  *(u8 *)((int)puVar14 + 0x21) = 0;
   puVar14->counter1 = 1;
   puVar14->behavior_state = 0;
   puVar14[0x24] = 0;
   puVar14->sub_action = 0;
-  *(undefined1 *)((int)puVar14 + 0x1d) = 0;
-  *(undefined1 *)((int)puVar14 + 0x15) = 0;
-  *(undefined1 *)((int)puVar14 + 0x16) = 0;
-  *(undefined2 *)(puVar14 + 0x20) = 0;
+  *(u8 *)((int)puVar14 + 0x1d) = 0;
+  *(u8 *)((int)puVar14 + 0x15) = 0;
+  *(u8 *)((int)puVar14 + 0x16) = 0;
+  *(s16 *)(puVar14 + 0x20) = 0;
   puVar14->counter2 = 0;
-  *(undefined1 *)((int)puVar14 + 0x25) = 0;
+  *(u8 *)((int)puVar14 + 0x25) = 0;
   puVar12 = puVar14;
   do {
-    *(char *)((int)puVar14 + iVar10 + 0x37) = (char)iVar10;
-    *(undefined1 *)((int)puVar14 + iVar10 + 0x27) = 0x40;
-    *(undefined2 *)(puVar12 + 0x18) = 0x7f;
+    *(s8*)((int)puVar14 + iVar10 + 0x37) = (char)iVar10;
+    *(u8 *)((int)puVar14 + iVar10 + 0x27) = 0x40;
+    *(s16 *)(puVar12 + 0x18) = 0x7f;
     iVar10 = iVar10 + 1;
-    puVar12 = (undefined4 *)((int)puVar12 + 2);
+    puVar12 = (s32 *)((int)puVar12 + 2);
   } while (iVar10 < 0x10);
-  *(undefined2 *)((int)puVar14 + 0x52) = 1;
+  *(s16 *)((int)puVar14 + 0x52) = 1;
   *puVar14 = param_3;
   if ((*param_3 != 'S') && (*param_3 != 'p')) {
     FUN_8009a730(s_This_is_an_old_SEQ_Data_Format__8001c628);
@@ -79,8 +79,8 @@ undefined4 FUN_80090210(ushort param_1,undefined1 param_2,char *param_3)
   *puVar14 = param_3 + 9;
   cVar2 = param_3->counter2;
   *puVar14 = param_3 + 10;
-  pbVar11 = (byte *)*puVar14;
-  *(ushort *)(puVar14 + 0x14) = CONCAT11(cVar1,cVar2);
+  pbVar11 = (u8 *)*puVar14;
+  *(u16 *)(puVar14 + 0x14) = CONCAT11(cVar1,cVar2);
   bVar3 = *pbVar11;
   *puVar14 = pbVar11 + 1;
   bVar4 = pbVar11->flags;
@@ -97,16 +97,16 @@ undefined4 FUN_80090210(ushort param_1,undefined1 param_2,char *param_3)
   else {
     puVar14[0x23] = 60000000 / uVar7;
   }
-  puVar8 = (undefined1 *)*puVar14;
+  puVar8 = (u8 *)*puVar14;
   puVar14[0x25] = puVar14[0x23];
   uVar5 = *puVar8;
   *puVar14 = puVar8 + 1;
   puVar14->counter2 = uVar5;
   uVar5 = puVar8->flags;
   *puVar14 = puVar8 + 2;
-  *(undefined1 *)((int)puVar14 + 0x25) = uVar5;
-  uVar9 = FUN_80090160((int)(short)param_1,0);
-  uVar7 = (int)*(short *)(puVar14 + 0x14) * puVar14[0x23];
+  *(u8 *)((int)puVar14 + 0x25) = uVar5;
+  uVar9 = FUN_80090160((int)(s16)param_1,0);
+  uVar7 = (int)*(s16 *)(puVar14 + 0x14) * puVar14[0x23];
   puVar14->kind = *puVar14;
   iVar10 = _DAT_80104c2c;
   puVar14[0x21] = uVar9;
@@ -119,8 +119,8 @@ undefined4 FUN_80090210(ushort param_1,undefined1 param_2,char *param_3)
     if (uVar7 == 0) {
       trap(0x1c00);
     }
-    sVar6 = (short)((uint)(iVar10 * 600) / uVar7);
-    *(short *)((int)puVar14 + 0x52) = sVar6;
+    sVar6 = (s16)((uint)(iVar10 * 600) / uVar7);
+    *(s16 *)((int)puVar14 + 0x52) = sVar6;
   }
   else {
     if (uVar13 == 0) {
@@ -129,15 +129,15 @@ undefined4 FUN_80090210(ushort param_1,undefined1 param_2,char *param_3)
     if (uVar13 == 0) {
       trap(0x1c00);
     }
-    *(undefined2 *)((int)puVar14 + 0x52) = 0xffff;
-    sVar6 = (short)((uint)((int)*(short *)(puVar14 + 0x14) * puVar14[0x23] * 10) / uVar13);
-    *(short *)(puVar14 + 0x15) = sVar6;
-    if ((uint)((int)*(short *)(puVar14 + 0x14) * puVar14[0x23] * 10) % uVar13 <=
+    *(s16 *)((int)puVar14 + 0x52) = 0xffff;
+    sVar6 = (s16)((uint)((int)*(s16 *)(puVar14 + 0x14) * puVar14[0x23] * 10) / uVar13);
+    *(s16 *)(puVar14 + 0x15) = sVar6;
+    if ((uint)((int)*(s16 *)(puVar14 + 0x14) * puVar14[0x23] * 10) % uVar13 <=
         (uint)(iVar10 * 0x1e)) goto LAB_80090538;
     sVar6 = sVar6 + 1;
   }
-  *(short *)(puVar14 + 0x15) = sVar6;
+  *(s16 *)(puVar14 + 0x15) = sVar6;
 LAB_80090538:
-  *(undefined2 *)((int)puVar14 + 0x56) = *(undefined2 *)(puVar14 + 0x15);
+  *(s16 *)((int)puVar14 + 0x56) = *(s16 *)(puVar14 + 0x15);
   return 0;
 }

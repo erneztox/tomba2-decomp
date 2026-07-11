@@ -9,9 +9,9 @@
 void FUN_8009b9b0(char *param_1)
 
 {
-  char cVar1;
+  s8 cVar1;
   
-  if (param_1 == (char *)0x0) {
+  if (param_1 == (s8*)0x0) {
     param_1 = &DAT_8001ca40;
   }
   while( true ) {

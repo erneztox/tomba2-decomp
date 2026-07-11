@@ -9,21 +9,21 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-char FUN_8005444c(int param_1)
+s8 FUN_8005444c(int param_1)
 
 {
-  byte bVar1;
-  bool bVar2;
-  ushort uVar3;
-  char cVar4;
-  byte bVar5;
+  u8 bVar1;
+  s32 bVar2;
+  u16 uVar3;
+  s8 cVar4;
+  u8 bVar5;
   int iVar6;
-  ushort uVar7;
-  short sVar8;
-  short sVar9;
+  u16 uVar7;
+  s16 sVar8;
+  s16 sVar9;
   
   bVar2 = false;
-  *(undefined2 *)(param_1 + 0x16c) = 0;
+  *(s16 *)(param_1 + 0x16c) = 0;
   param_1->type_flags = 0;
   if (param_1->physics_flag != '\0') goto LAB_80054630;
   if (param_1->collision_state != '\0') {
@@ -31,7 +31,7 @@ char FUN_8005444c(int param_1)
   }
   if (param_1->entity_flags < 0) {
     iVar6 = (uint)param_1->bounds_min_x << 0x10;
-    sVar9 = (short)((uint)((iVar6 >> 0x10) - (iVar6 >> 0x1f)) >> 1);
+    sVar9 = (s16)((uint)((iVar6 >> 0x10) - (iVar6 >> 0x1f)) >> 1);
   }
   else {
     sVar9 = param_1->bounds_min_x;
@@ -42,9 +42,9 @@ char FUN_8005444c(int param_1)
   else {
     iVar6 = param_1->parent;
     sVar8 = (iVar6->bounds_max_y - iVar6->bounds_min_y) -
-            (*(short *)(param_1 + 0x32) - *(short *)(iVar6 + 0x32));
+            (*(s16 *)(param_1 + 0x32) - *(s16 *)(iVar6 + 0x32));
   }
-  if (*(char *)(param_1 + 0x61) == '\0') {
+  if (*(s8*)(param_1 + 0x61) == '\0') {
     cVar4 = FUN_80049250(param_1,0,(int)sVar8);
     param_1->collision_state = cVar4;
     if (cVar4 == '\0') {
@@ -78,13 +78,13 @@ LAB_80054518:
     param_1->angle_offset = 0;
     param_1->collision_state = bVar5 | 0x80;
     if (bVar2) {
-      *(undefined2 *)(param_1 + 0x16c) = 0;
+      *(s16 *)(param_1 + 0x16c) = 0;
     }
     else {
-      *(undefined2 *)(param_1 + 0x16c) = _DAT_1f8001a8;
+      *(s16 *)(param_1 + 0x16c) = _DAT_1f8001a8;
     }
     FUN_80049674(param_1);
-    param_1->draw_scale = _DAT_1f8001a2;
+    param_1->draw_scale = _g_CollisionNormalY;
   }
 LAB_80054630:
   return param_1->collision_state;

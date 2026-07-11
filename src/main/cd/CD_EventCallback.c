@@ -9,14 +9,14 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_8008bbe8(void)
+s32 FUN_8008bbe8(void)
 
 {
-  byte bVar1;
-  undefined4 uVar2;
+  u8 bVar1;
+  s32 uVar2;
   int iVar3;
-  undefined4 uVar4;
-  byte *pbVar5;
+  s32 uVar4;
+  u8 *pbVar5;
   int iVar6;
   int iVar7;
   
@@ -35,24 +35,24 @@ undefined4 FUN_8008bbe8(void)
         do {
           if (*pbVar5 == 0) break;
           iVar6 = iVar3 * 0x2c;
-          *(undefined4 *)(iVar6 + -0x7fefd290) = *(undefined4 *)(pbVar5 + 2);
+          *(s32 *)(iVar6 + -0x7fefd290) = *(s32 *)(pbVar5 + 2);
           iVar7 = iVar6 + -0x7fefd28c;
           bVar1 = pbVar5->action_state;
           iVar3 = iVar3 + 1;
           *(int *)(iVar6 + -0x7fefd298) = iVar3;
           *(uint *)(iVar6 + -0x7fefd294) = (uint)bVar1;
           FUN_8009a3e0(iVar7,pbVar5 + 8,*pbVar5);
-          *(undefined1 *)(iVar7 + (uint)*pbVar5) = 0;
+          *(u8 *)(iVar7 + (uint)*pbVar5) = 0;
           pbVar5 = pbVar5 + (uint)*pbVar5 + (*pbVar5 & 1) + 8;
           if (1 < DAT_800abfc4) {
-            FUN_8009a730(s__08x__04x__04x__s_8001c4b4,*(undefined4 *)(iVar6 + -0x7fefd290),
-                         *(undefined4 *)(iVar6 + -0x7fefd298),*(undefined4 *)(iVar6 + -0x7fefd294),
+            FUN_8009a730(s__08x__04x__04x__s_8001c4b4,*(s32 *)(iVar6 + -0x7fefd290),
+                         *(s32 *)(iVar6 + -0x7fefd298),*(s32 *)(iVar6 + -0x7fefd294),
                          iVar7);
           }
           if (0x7f < iVar3) goto LAB_8008be54;
         } while (pbVar5 < &DAT_80104b68);
         if (iVar3 < 0x80) {
-          *(undefined4 *)(iVar3 * 0x2c + -0x7fefd294) = 0;
+          *(s32 *)(iVar3 * 0x2c + -0x7fefd294) = 0;
         }
 LAB_8008be54:
         DAT_800ac2d4 = 0;

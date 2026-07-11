@@ -12,9 +12,9 @@
 void FUN_8005c26c(int param_1)
 
 {
-  undefined2 uVar1;
-  char cVar2;
-  short sVar3;
+  s16 uVar1;
+  s8 cVar2;
+  s16 sVar3;
   int iVar4;
   int iVar5;
   
@@ -91,7 +91,7 @@ LAB_8005c7a0:
         }
       }
       else {
-        *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 8;
+        *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
         FUN_8005444c(param_1);
         FUN_8005b370(param_1,1);
         FUN_800551c4(param_1);
@@ -151,7 +151,7 @@ LAB_8005c79c:
         param_1->state_flag145 = 1;
         param_1->collision_state = 0;
         param_1->state_flag144 = 0;
-        *(undefined1 *)(param_1 + 0x148) = 0;
+        *(u8 *)(param_1 + 0x148) = 0;
         param_1->velocity_y = 0;
         param_1->rot_z = 0x20;
       }
@@ -174,7 +174,7 @@ LAB_8005c7dc:
     FUN_80054d14(param_1,0x24,0);
     param_1->timer1 = 0;
     param_1->timer2 = 0;
-    uVar1 = *(undefined2 *)(&DAT_800a4694 + param_1->timer1 * 2);
+    uVar1 = *(s16 *)(&DAT_800a4694 + param_1->timer1 * 2);
     param_1->action_state = param_1->action_state + '\x01';
     param_1->rot_z = uVar1;
     FUN_8005b20c();
@@ -186,9 +186,9 @@ LAB_8005c7dc:
       param_1->timer1 = 10;
     }
     param_1->rot_z =
-         *(undefined2 *)(&DAT_800a4694 + param_1->timer1 * 2);
+         *(s16 *)(&DAT_800a4694 + param_1->timer1 * 2);
     if ((param_1->timer2 == 0) &&
-       (FUN_8005b20c(param_1,1), *(short *)(param_1->anim_data + 2) == 6)) {
+       (FUN_8005b20c(param_1,1), *(s16 *)(param_1->anim_data + 2) == 6)) {
       FUN_80074590(0x21,0,0);
       iVar5->behavior_state = 3;
       iVar5->action_state = 0;
@@ -201,7 +201,7 @@ LAB_8005c7dc:
     param_1->state_flag145 = 1;
     param_1->collision_state = 0;
     param_1->state_flag144 = 0;
-    *(undefined1 *)(param_1 + 0x148) = 0;
+    *(u8 *)(param_1 + 0x148) = 0;
     param_1->velocity_y = 0;
     param_1->sub_action = 1;
     cVar2 = param_1->action_state + '\x01';
@@ -209,7 +209,7 @@ LAB_8005c7dc:
   case 8:
     FUN_80055d5c(param_1);
     FUN_80076d68(param_1);
-    if (1 < *(ushort *)(param_1->anim_data + 2)) goto LAB_8005c7dc;
+    if (1 < *(u16 *)(param_1->anim_data + 2)) goto LAB_8005c7dc;
 LAB_8005c828:
     FUN_800574e0(param_1,8);
     FUN_80057c08(param_1,0);

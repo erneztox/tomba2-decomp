@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-undefined4 FUN_800421cc(int param_1)
+s32 FUN_800421cc(int param_1)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   int iVar2;
   
   if (param_1->event_id == 0) {

@@ -7,14 +7,14 @@
 
 
 #include "tomba.h"
-void FUN_80091120(int param_1,short param_2)
+void FUN_80091120(int param_1,s16 param_2)
 
 {
   int iVar1;
   int iVar2;
   int iVar3;
   
-  iVar3 = *(int *)(&DAT_80104c30 + ((param_1 << 0x10) >> 0xe)) + param_2 * 0xb0;
+  iVar3 = *(int *)(&g_AudioChannels + ((param_1 << 0x10) >> 0xe)) + param_2 * 0xb0;
   iVar1 = *(int *)(iVar3 + 0x90);
   iVar2 = iVar1 - iVar3->rot_x;
   if (iVar2 < 1) {

@@ -15,16 +15,16 @@ void FUN_80026a1c(int param_1)
   
   iVar2 = 0;
   iVar1 = param_1;
-  if (0 < *(short *)(param_1 + 8)) {
+  if (0 < *(s16 *)(param_1 + 8)) {
     do {
       if (*(int *)(iVar1 + 0xc) != 0) {
-        *(undefined1 *)(*(int *)(iVar1 + 0xc) + 4) = 3;
-        *(undefined4 *)(iVar1 + 0xc) = 0;
+        *(u8 *)(*(int *)(iVar1 + 0xc) + 4) = 3;
+        *(s32 *)(iVar1 + 0xc) = 0;
       }
       iVar2 = iVar2 + 1;
       iVar1 = iVar1 + 4;
-    } while (iVar2 < *(short *)(param_1 + 8));
+    } while (iVar2 < *(s16 *)(param_1 + 8));
   }
-  *(undefined2 *)(param_1 + 8) = 0;
+  *(s16 *)(param_1 + 8) = 0;
   return;
 }

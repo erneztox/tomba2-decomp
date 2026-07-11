@@ -9,26 +9,26 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80024d34(int param_1)
+s32 FUN_80024d34(int param_1)
 
 {
-  char cVar1;
-  byte *pbVar2;
-  undefined4 *puVar3;
+  s8 cVar1;
+  u8 *pbVar2;
+  s32 *puVar3;
   
   puVar3 = _DAT_1f800158;
   cVar1 = DAT_1f80015e;
   if ((param_1->entity_flags & 0x200) == 0) {
-    while (DAT_1f800182 = cVar1, DAT_1f800182 != '\0') {
-      pbVar2 = (byte *)*puVar3;
-      DAT_1f800182 = DAT_1f800182 + -1;
+    while (g_State182 = cVar1, g_State182 != '\0') {
+      pbVar2 = (u8 *)*puVar3;
+      g_State182 = g_State182 + -1;
       puVar3 = puVar3 + 1;
-      cVar1 = DAT_1f800182;
+      cVar1 = g_State182;
       if (((*pbVar2 & 4) != 0) && (pbVar2->kind == 2)) {
         func_0x80114320(param_1);
-        cVar1 = DAT_1f800182;
+        cVar1 = g_State182;
       }
     }
   }
-  return _DAT_1f800080;
+  return _g_GTE_Result[0];
 }

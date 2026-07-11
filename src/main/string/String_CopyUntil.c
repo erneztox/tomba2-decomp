@@ -1,5 +1,5 @@
 /**
- * @brief Copies string until terminator byte 0xFA or 0xFF, appends 0xFF
+ * @brief Copies string until terminator u8 0xFA or 0xFF, appends 0xFF
  * @note Original: func_8004EF54 at 0x8004EF54
  */
 // String_CopyUntil
@@ -9,7 +9,7 @@
 char * FUN_8004ef54(char *param_1,char *param_2)
 
 {
-  char cVar1;
+  s8 cVar1;
   
   do {
     cVar1 = *param_2;

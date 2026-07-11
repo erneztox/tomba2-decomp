@@ -9,12 +9,12 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_8002192c(int param_1,byte *param_2,int param_3)
+s32 FUN_8002192c(int param_1,u8 *param_2,int param_3)
 
 {
-  bool bVar1;
-  ushort uVar2;
-  undefined4 uVar3;
+  s32 bVar1;
+  u16 uVar2;
+  s32 uVar3;
   uint uVar4;
   int iVar5;
   int iVar6;
@@ -27,11 +27,11 @@ undefined4 FUN_8002192c(int param_1,byte *param_2,int param_3)
   bVar1 = false;
   if (((int)(uint)uVar2 <= (int)param_1->bounds_min_x + (int)param_2->bounds_min_x) &&
      (bVar1 = false,
-     (int)(((uint)*(ushort *)(param_1 + 0x32) - (uint)*(ushort *)(param_2 + 0x32)) +
+     (int)(((uint)*(u16 *)(param_1 + 0x32) - (uint)*(u16 *)(param_2 + 0x32)) +
            (uint)param_1->bounds_min_y + (uint)param_2->bounds_min_y & 0xffff) <=
      (int)param_1->bounds_max_y + (int)param_2->bounds_max_y)) {
-    _DAT_1f80008c = (int)(short)uVar2;
-    _DAT_1f80009c = FUN_80085690(-iVar5,iVar6);
+    _g_GTE_Work8C = (int)(s16)uVar2;
+    _g_AngleTarget = FUN_80085690(-iVar5,iVar6);
     bVar1 = true;
   }
   uVar3 = 0;
@@ -50,7 +50,7 @@ undefined4 FUN_8002192c(int param_1,byte *param_2,int param_3)
     }
     uVar3 = 1;
     if ((uVar4 & 0x80) == 0) {
-      DAT_1f800182 = 0;
+      g_State182 = 0;
       uVar3 = 1;
     }
   }

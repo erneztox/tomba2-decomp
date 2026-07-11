@@ -12,7 +12,7 @@
 void FUN_80086970(void)
 
 {
-  undefined4 *puVar1;
+  s32 *puVar1;
   
   DAT_800abe70 = 0;
   FUN_80080890();

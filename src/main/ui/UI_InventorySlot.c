@@ -9,7 +9,7 @@
 void FUN_8004d514(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   char *pcVar2;
   int iVar3;
   
@@ -21,7 +21,7 @@ void FUN_8004d514(int param_1)
     if ((&DAT_800a2be8)[param_1 * 0xc] != '\0') {
       DAT_800bf8a1 = DAT_800bf8a1 + -1;
       do {
-        if ((*pcVar2 != '\0') && (bVar1 < (byte)(&DAT_800bfbb4)[iVar3])) {
+        if ((*pcVar2 != '\0') && (bVar1 < (u8)(&DAT_800bfbb4)[iVar3])) {
           (&DAT_800bfbb4)[iVar3] = (&DAT_800bfbb4)[iVar3] - 1;
         }
         iVar3 = iVar3 + 1;
@@ -31,7 +31,7 @@ void FUN_8004d514(int param_1)
     }
     DAT_800bf8a2 = DAT_800bf8a2 + -1;
     do {
-      if ((*pcVar2 == '\0') && (bVar1 < (byte)(&DAT_800bfbb4)[iVar3])) {
+      if ((*pcVar2 == '\0') && (bVar1 < (u8)(&DAT_800bfbb4)[iVar3])) {
         (&DAT_800bfbb4)[iVar3] = (&DAT_800bfbb4)[iVar3] - 1;
       }
       iVar3 = iVar3 + 1;

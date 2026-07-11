@@ -13,7 +13,7 @@ void FUN_80050b08(void)
 
 {
   uint uVar1;
-  undefined1 local_28->counter1;
+  u8 local_28->counter1;
   
   FUN_80089788();
   FUN_80085b20();
@@ -41,40 +41,40 @@ void FUN_80050b08(void)
   FUN_80051f14(0,FUN_800499e8);
   FUN_80085bb0(&LAB_800506b4);
   uVar1 = (uint)DAT_1f800135;
-  _DAT_800bf544 = (1 - uVar1) * 0x14000 + 0x800bfe68;
+  _g_OT_Buffer = (1 - uVar1) * 0x14000 + 0x800bfe68;
 LAB_80050c6c:
-  _DAT_800ed8c8 = uVar1 * 0x2070 + -0x7ff17f58;
+  _g_EntityBuffer = uVar1 * 0x2070 + -0x7ff17f58;
   do {
-    FUN_80081458(_DAT_800ed8c8,0x800);
+    FUN_80081458(_g_EntityBuffer,0x800);
     do {
       while( true ) {
         while( true ) {
           do {
             _DAT_800e809c = 0;
-            _DAT_800bf4f4 = _DAT_800bf544;
-            _DAT_800bf544 = (uint)DAT_1f800135 * 0x14000 + 0x800bfe68 & 0xffffff;
+            _DAT_800bf4f4 = _g_OT_Buffer;
+            _g_OT_Buffer = (uint)DAT_1f800135 * 0x14000 + 0x800bfe68 & 0xffffff;
             FUN_800788ac();
             FUN_80051e60();
             FUN_80080f6c(0);
             do {
-            } while (_DAT_800e809c < DAT_1f800235);
+            } while (_DAT_800e809c < g_State235);
             FUN_800506d0();
           } while (DAT_1f80019c == 1);
           if (1 < DAT_1f80019c) break;
           if (DAT_1f80019c == 0) {
-            FUN_8008179c(_DAT_800ed8c8 + 0x2000);
-            FUN_800815d0(_DAT_800ed8c8 + 0x2014);
-            FUN_80081560(_DAT_800ed8c8 + 0x1ffc);
+            FUN_8008179c(_g_EntityBuffer + 0x2000);
+            FUN_800815d0(_g_EntityBuffer + 0x2014);
+            FUN_80081560(_g_EntityBuffer + 0x1ffc);
             DAT_1f800135 = 1 - DAT_1f800135;
             uVar1 = (uint)DAT_1f800135;
             goto LAB_80050c6c;
           }
         }
         if (DAT_1f80019c != 2) break;
-        FUN_8008179c(_DAT_800ed8c8 + 0x2000);
+        FUN_8008179c(_g_EntityBuffer + 0x2000);
         DAT_1f80019c = 1;
         DAT_1f800135 = 1 - DAT_1f800135;
-        _DAT_800ed8c8 = (uint)DAT_1f800135 * 0x2070 + -0x7ff17f58;
+        _g_EntityBuffer = (uint)DAT_1f800135 * 0x2070 + -0x7ff17f58;
       }
     } while (DAT_1f80019c != 3);
   } while( true );

@@ -13,7 +13,7 @@ void FUN_8009c18c(void)
 {
   int iVar1;
   code *pcVar2;
-  undefined4 unaff_retaddr;
+  s32 unaff_retaddr;
   
   _DAT_80105f48 = unaff_retaddr;
   FUN_80080890();
@@ -21,7 +21,7 @@ void FUN_8009c18c(void)
   iVar1 = *(int *)(iVar1 + 0x16c);
   pcVar2 = (code *)&DAT_8009c0e4;
   do {
-    *(undefined4 *)(iVar1 + 0x9c8) = *(undefined4 *)pcVar2;
+    *(s32 *)(iVar1 + 0x9c8) = *(s32 *)pcVar2;
     pcVar2 = pcVar2 + 4;
     iVar1 = iVar1 + 4;
   } while (pcVar2 != FUN_8009c0f8);

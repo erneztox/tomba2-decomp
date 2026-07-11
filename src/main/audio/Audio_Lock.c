@@ -8,10 +8,10 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-undefined4 FUN_800929bc(ushort param_1)
+s32 FUN_800929bc(u16 param_1)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   
   if (_DAT_80104c24 == 1) {
     uVar1 = 0xffffffff;

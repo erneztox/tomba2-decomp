@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-void FUN_8006c608(undefined1 *param_1)
+void FUN_8006c608(u8 *param_1)
 
 {
-  byte bVar1;
-  short sVar2;
+  u8 bVar1;
+  s16 sVar2;
   int iVar3;
   
   bVar1 = param_1->state;

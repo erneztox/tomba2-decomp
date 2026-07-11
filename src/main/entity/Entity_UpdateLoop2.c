@@ -1,5 +1,5 @@
 /**
- * @brief Entity update loop variant 2: iterates inactive list from DAT_800fb168
+ * @brief Entity update loop variant 2: iterates inactive list from g_InactiveEntitiesList
  * @note Original: func_8007B04C at 0x8007B04C
  */
 // Entity_UpdateLoop2
@@ -15,8 +15,8 @@ void FUN_8007b04c(void)
   int iVar1;
   int iVar2;
   
-  iVar2 = _DAT_800fb168;
-  while (iVar1 = iVar2, iVar2 = _DAT_800f2624, iVar1 != 0) {
+  iVar2 = _g_InactiveEntitiesList;
+  while (iVar1 = iVar2, iVar2 = _g_ActiveEntitiesList, iVar1 != 0) {
     iVar2 = iVar1->next;
     iVar1->flags = 0;
     if ((iVar1->alloc_flags & 0x80) != 0) {

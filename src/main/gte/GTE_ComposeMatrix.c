@@ -5,7 +5,7 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-uint * GTE_ComposeMatrix(undefined4 *param_1,ushort *param_2,uint *param_3)
+uint * GTE_ComposeMatrix(s32 *param_1,u16 *param_2,uint *param_3)
 
 {
   uint uVar1;
@@ -21,19 +21,19 @@ uint * GTE_ComposeMatrix(undefined4 *param_1,ushort *param_2,uint *param_3)
   setCopControlWord(2,0x1800,param_1->sub_type);
   setCopControlWord(2,0x2000,param_1->state);
   setCopReg(2,0,(uint)*param_2 | *(uint *)(param_2 + 2) & 0xffff0000);
-  setCopReg(2,0x800,*(undefined4 *)(param_2 + 6));
+  setCopReg(2,0x800,*(s32 *)(param_2 + 6));
   copFunction(2,0x486012);
   uVar1 = getCopReg(2,0x4800);
   iVar2 = getCopReg(2,0x5000);
   uVar3 = getCopReg(2,0x5800);
   setCopReg(2,0,(uint)param_2->flags | *(int *)(param_2 + 4) << 0x10);
-  setCopReg(2,0x800,(int)(short)param_2->sub_action);
+  setCopReg(2,0x800,(int)(s16)param_2->sub_action);
   copFunction(2,0x486012);
   iVar4 = getCopReg(2,0x4800);
   uVar5 = getCopReg(2,0x5000);
   iVar6 = getCopReg(2,0x5800);
   setCopReg(2,0,(uint)param_2->kind | *(uint *)(param_2 + 4) & 0xffff0000);
-  setCopReg(2,0x800,*(undefined4 *)(param_2 + 8));
+  setCopReg(2,0x800,*(s32 *)(param_2 + 8));
   copFunction(2,0x486012);
   *param_3 = iVar4 << 0x10 | uVar1 & 0xffff;
   param_3->sub_type = iVar6 << 0x10 | uVar3 & 0xffff;

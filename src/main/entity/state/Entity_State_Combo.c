@@ -12,14 +12,14 @@
 void FUN_800574e0(int param_1,uint param_2)
 
 {
-  byte bVar1;
-  char cVar2;
-  ushort uVar3;
-  undefined2 uVar4;
+  u8 bVar1;
+  s8 cVar2;
+  u16 uVar3;
+  s16 uVar4;
   int iVar5;
-  short sVar6;
+  s16 sVar6;
   int local_20;
-  undefined4 local_1c;
+  s32 local_1c;
   int local_18;
   
   bVar1 = param_1->sub_action;
@@ -32,8 +32,8 @@ void FUN_800574e0(int param_1,uint param_2)
       if ((uVar3 & 0x20) != 0) {
         FUN_80056f3c(param_1);
       }
-      if (((((param_2 & 0x10) == 0) && (DAT_800bf848 == 0)) && (*(char *)(param_1 + 0x61) == '\0'))
-         && (((uVar3 & 0x40) != 0 || (*(char *)(param_1 + 0x179) == '\x01')))) {
+      if (((((param_2 & 0x10) == 0) && (DAT_800bf848 == 0)) && (*(s8*)(param_1 + 0x61) == '\0'))
+         && (((uVar3 & 0x40) != 0 || (*(s8*)(param_1 + 0x179) == '\x01')))) {
         iVar5 = FUN_800572ec(param_1,param_2);
         if (iVar5 != 0) {
           return;
@@ -49,12 +49,12 @@ void FUN_800574e0(int param_1,uint param_2)
           }
           if ((uVar3 & 0x20) != 0) {
             if ((param_1->behavior_flags & 8) != 0) {
-              *(char *)(param_1 + 0x178) = *(char *)(param_1 + 0x178) + '\x01';
+              *(s8*)(param_1 + 0x178) = *(s8*)(param_1 + 0x178) + '\x01';
             }
-            cVar2 = *(char *)(param_1 + 0x178) + '\x01';
-            *(char *)(param_1 + 0x178) = cVar2;
+            cVar2 = *(s8*)(param_1 + 0x178) + '\x01';
+            *(s8*)(param_1 + 0x178) = cVar2;
             if (cVar2 == -1) {
-              *(undefined1 *)(param_1 + 0x178) = 0xff;
+              *(u8 *)(param_1 + 0x178) = 0xff;
             }
           }
         }
@@ -69,7 +69,7 @@ void FUN_800574e0(int param_1,uint param_2)
         }
         param_1->pos_y_fixed = param_1->pos_y_fixed + param_1->velocity_y * 0x100;
         if (param_2 == 2) {
-          if ((DAT_800bf848 != 0) && ((_DAT_800e7e68 & _DAT_1f800172) != 0)) {
+          if ((DAT_800bf848 != 0) && ((_g_PadState & _g_InputMask) != 0)) {
             param_1->sub_action = 0;
             param_1->state_flag145 = 1;
             FUN_80074590(0x1d,0,0);
@@ -91,7 +91,7 @@ void FUN_800574e0(int param_1,uint param_2)
           if (param_1->state_flag144 == '\x01') {
             param_1->state_flag144 = 0;
           }
-          if (((int)param_2 < 2) && ((_DAT_800e7e68 & _DAT_1f800172) != 0)) goto LAB_80057908;
+          if (((int)param_2 < 2) && ((_g_PadState & _g_InputMask) != 0)) goto LAB_80057908;
         }
         FUN_8005444c(param_1);
       }
@@ -99,7 +99,7 @@ void FUN_800574e0(int param_1,uint param_2)
         return;
       }
 LAB_8005797c:
-      *(undefined1 *)(param_1 + 0x148) = 0;
+      *(u8 *)(param_1 + 0x148) = 0;
       param_1->angle_offset = 0;
       if (param_1->state_flag144 < 2) {
         param_1->state_flag144 = 0;
@@ -136,7 +136,7 @@ LAB_8005797c:
   }
   FUN_800541f4(param_1,0);
   FUN_800543c0(param_1);
-  if (((((param_2 & 0x10) == 0) && (DAT_800bf848 == 0)) && (*(char *)(param_1 + 0x61) == '\0')) &&
+  if (((((param_2 & 0x10) == 0) && (DAT_800bf848 == 0)) && (*(s8*)(param_1 + 0x61) == '\0')) &&
      ((uVar3 & 0x60) != 0)) {
     FUN_8005706c(param_1,param_2);
   }
@@ -165,7 +165,7 @@ LAB_8005797c:
   if (param_1->state_flag144 == '\x01') {
     param_1->state_flag144 = 0;
   }
-  if ((1 < (int)param_2) || ((_DAT_800e7e68 & _DAT_1f800172) == 0)) {
+  if ((1 < (int)param_2) || ((_g_PadState & _g_InputMask) == 0)) {
     param_1->sub_action = 2;
     param_1->state_flag145 = 2;
     return;

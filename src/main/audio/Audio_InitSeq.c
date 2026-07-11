@@ -12,11 +12,11 @@
 void FUN_80090750(int param_1)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
   code *pcVar3;
   uint uVar4;
-  undefined4 uVar5;
+  s32 uVar5;
   
   iVar2 = 0x3e6;
   do {

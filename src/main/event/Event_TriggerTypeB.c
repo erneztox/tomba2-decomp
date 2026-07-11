@@ -9,16 +9,16 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_800355b4(undefined4 param_1,undefined4 param_2,int param_3)
+int FUN_800355b4(s32 param_1,s32 param_2,int param_3)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   int iVar2;
   int iVar3;
   
   iVar2 = FUN_80035640(0x1a);
   if (((iVar2 != 0) && (param_3 != 1)) &&
-     (iVar3 = FUN_8004bd04(param_1,0,1), uVar1 = _DAT_1f800080, iVar3 != 0)) {
+     (iVar3 = FUN_8004bd04(param_1,0,1), uVar1 = _g_GTE_Result[0], iVar3 != 0)) {
     iVar3->callback = 0x801189c4;
     iVar3->script_ptr = uVar1;
     FUN_8004d4f4(0x61,1);

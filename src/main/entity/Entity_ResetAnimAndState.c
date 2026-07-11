@@ -9,16 +9,16 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_800442a0(int param_1)
+s32 FUN_800442a0(int param_1)
 
 {
   int iVar1;
   
   iVar1 = param_1;
   if (((int)param_1->event_id & 0x8000U) != 0) {
-    iVar1 = _DAT_1f800214;
+    iVar1 = _g_PlayerEntity;
   }
   FUN_80041718(iVar1,(int)param_1->event_param,4);
-  FUN_800440e4(&DAT_800e7e80,(int)*(short *)(param_1 + 0x76),4);
+  FUN_800440e4(&g_CollisionEntity,(int)*(s16 *)(param_1 + 0x76),4);
   return 1;
 }

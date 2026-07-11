@@ -12,33 +12,33 @@
 void FUN_80048034(void)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
   int iVar3;
   
   bVar1 = true;
-  _DAT_1f8001ec = (ushort *)(_DAT_1f8001d8 + (uint)*(ushort *)(_DAT_1f8001e0 + 2) * 8);
+  _g_CollisionData = (u16 *)(_DAT_1f8001d8 + (uint)*(u16 *)(_g_CollisionResult + 2) * 8);
   iVar3 = 0;
-  if (*(ushort *)(_DAT_1f8001e0 + 4) != 0) {
+  if (*(u16 *)(_g_CollisionResult + 4) != 0) {
     do {
-      if ((*_DAT_1f8001ec & 1) != 0) {
-        iVar2 = (uint)_DAT_1f8001ec->flags << 0x10;
-        if (0 < (short)_DAT_1f8001ec->kind) {
-          iVar2 = ((uint)_DAT_1f8001ec->flags + (uint)_DAT_1f8001ec->kind) * 0x10000;
+      if ((*_g_CollisionData & 1) != 0) {
+        iVar2 = (uint)_g_CollisionData->flags << 0x10;
+        if (0 < (s16)_g_CollisionData->kind) {
+          iVar2 = ((uint)_g_CollisionData->flags + (uint)_g_CollisionData->kind) * 0x10000;
         }
         if ((iVar2 >> 0x10) + 0x80 < (int)_DAT_1f8001be) {
           if (!bVar1) {
             return;
           }
-          _DAT_1f8001e8 = _DAT_1f8001dc + (uint)_DAT_1f8001ec->sub_type * 3;
+          _DAT_1f8001e8 = _DAT_1f8001dc + (uint)_g_CollisionData->sub_type * 3;
           return;
         }
         bVar1 = false;
-        _DAT_1f8001e8 = _DAT_1f8001dc + (uint)_DAT_1f8001ec->sub_type * 3;
+        _DAT_1f8001e8 = _DAT_1f8001dc + (uint)_g_CollisionData->sub_type * 3;
       }
       iVar3 = iVar3 + 1;
-      _DAT_1f8001ec = _DAT_1f8001ec + 4;
-    } while (iVar3 < (int)(uint)*(ushort *)(_DAT_1f8001e0 + 4));
+      _g_CollisionData = _g_CollisionData + 4;
+    } while (iVar3 < (int)(uint)*(u16 *)(_g_CollisionResult + 4));
   }
   return;
 }

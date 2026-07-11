@@ -4,17 +4,17 @@
  */
 // Mem_Set
 
-undefined1 * Mem_Set(undefined1 *param_1,undefined1 param_2,int param_3)
+u8 * Mem_Set(u8 *param_1,u8 param_2,int param_3)
 
 {
-  undefined1 *puVar1;
-  undefined1 *puVar2;
+  u8 *puVar1;
+  u8 *puVar2;
   
-  puVar1 = (undefined1 *)0x0;
-  if (param_1 != (undefined1 *)0x0) {
+  puVar1 = (u8 *)0x0;
+  if (param_1 != (u8 *)0x0) {
     puVar2 = param_1;
     if (param_3 < 1) {
-      puVar1 = (undefined1 *)0x0;
+      puVar1 = (u8 *)0x0;
     }
     else {
       do {

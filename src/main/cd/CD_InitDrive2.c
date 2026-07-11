@@ -6,20 +6,20 @@
 
 
 
-undefined4 FUN_8008b19c(void)
+s32 FUN_8008b19c(void)
 
 {
   int iVar1;
   
   iVar1 = DAT_800ac294;
-  if ((*(short *)(DAT_800ac294 + 0x1b8) == 0) && (*(short *)(DAT_800ac294 + 0x1ba) == 0)) {
-    *(undefined2 *)(DAT_800ac294 + 0x180) = 0x3fff;
-    *(undefined2 *)(iVar1 + 0x182) = 0x3fff;
+  if ((*(s16 *)(DAT_800ac294 + 0x1b8) == 0) && (*(s16 *)(DAT_800ac294 + 0x1ba) == 0)) {
+    *(s16 *)(DAT_800ac294 + 0x180) = 0x3fff;
+    *(s16 *)(iVar1 + 0x182) = 0x3fff;
   }
   iVar1 = DAT_800ac294;
-  *(undefined2 *)(DAT_800ac294 + 0x1b0) = 0x3fff;
-  *(undefined2 *)(iVar1 + 0x1b2) = 0x3fff;
-  *(undefined2 *)(iVar1 + 0x1aa) = 0xc001;
+  *(s16 *)(DAT_800ac294 + 0x1b0) = 0x3fff;
+  *(s16 *)(iVar1 + 0x1b2) = 0x3fff;
+  *(s16 *)(iVar1 + 0x1aa) = 0xc001;
   *DAT_800ac280 = 2;
   *DAT_800ac288 = 0x80;
   *DAT_800ac28c = 0;

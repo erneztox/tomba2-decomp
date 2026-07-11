@@ -7,17 +7,17 @@
 
 
 #include "tomba.h"
-undefined4 FUN_80042690(int param_1)
+s32 FUN_80042690(int param_1)
 
 {
-  undefined1 auStack_18->kind;
-  undefined2 local_16;
-  undefined2 local_12;
-  undefined2 local_e;
+  u8 auStack_18->kind;
+  s16 local_16;
+  s16 local_12;
+  s16 local_e;
   
   local_16 = param_1->event_id;
   local_12 = param_1->event_param;
-  local_e = *(undefined2 *)(param_1 + 0x76);
+  local_e = *(s16 *)(param_1 + 0x76);
   FUN_80070f00(param_1,1,auStack_18);
   FUN_800708b4(3);
   return 1;

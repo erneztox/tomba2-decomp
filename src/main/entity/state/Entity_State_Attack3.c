@@ -10,10 +10,10 @@
 void FUN_8005a714(int param_1)
 
 {
-  byte bVar1;
-  undefined2 uVar2;
+  u8 bVar1;
+  s16 uVar2;
   int iVar3;
-  undefined4 uVar4;
+  s32 uVar4;
   
   iVar3 = (uint)param_1->type_flags << 0x10;
   switch(iVar3 >> 0x18 & 0xf) {

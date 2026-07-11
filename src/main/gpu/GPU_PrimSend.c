@@ -7,25 +7,25 @@
 
 
 #include "tomba.h"
-void FUN_80081db8(int param_1,ushort *param_2)
+void FUN_80081db8(int param_1,u16 *param_2)
 
 {
-  ushort uVar1;
-  ushort uVar2;
-  ushort uVar3;
-  undefined4 uVar4;
-  char cVar5;
-  undefined4 local_18;
-  undefined4 local_14;
+  u16 uVar1;
+  u16 uVar2;
+  u16 uVar3;
+  s32 uVar4;
+  s8 cVar5;
+  s32 local_18;
+  s32 local_14;
   
-  uVar4 = FUN_80082240((int)(short)*param_2,(int)(short)param_2->flags);
-  *(undefined4 *)(param_1 + 4) = uVar4;
+  uVar4 = FUN_80082240((int)(s16)*param_2,(int)(s16)param_2->flags);
+  *(s32 *)(param_1 + 4) = uVar4;
   uVar4 = FUN_800822d8((int)(((uint)param_2->kind + (uint)*param_2 + -1) * 0x10000) >> 0x10,
                        (int)(((uint)param_2->flags + (uint)param_2->sub_type + -1) * 0x10000) >> 0x10);
-  *(undefined4 *)(param_1 + 8) = uVar4;
-  uVar4 = FUN_80082370((int)(short)param_2->state,(int)(short)param_2->behavior_state);
-  *(undefined4 *)(param_1 + 0xc) = uVar4;
-  uVar4 = FUN_80082220(*(undefined1 *)((int)param_2 + 0x17),(char)param_2->render_flags,param_2[10]);
+  *(s32 *)(param_1 + 8) = uVar4;
+  uVar4 = FUN_80082370((int)(s16)param_2->state,(int)(s16)param_2->behavior_state);
+  *(s32 *)(param_1 + 0xc) = uVar4;
+  uVar4 = FUN_80082220(*(u8 *)((int)param_2 + 0x17),(char)param_2->render_flags,param_2[10]);
   param_1->parent = uVar4;
   uVar4 = FUN_8008238c(param_2 + 6);
   param_1->script_ptr = uVar4;
@@ -35,15 +35,15 @@ void FUN_80081db8(int param_1,ushort *param_2)
     uVar3 = param_2->kind;
     uVar1 = param_2->sub_type;
     uVar2 = 0;
-    if ((-1 < (short)uVar3) && (uVar2 = DAT_800a59a4 - 1, (int)(short)uVar3 <= DAT_800a59a4 + -1)) {
+    if ((-1 < (s16)uVar3) && (uVar2 = DAT_800a59a4 - 1, (int)(s16)uVar3 <= DAT_800a59a4 + -1)) {
       uVar2 = uVar3;
     }
-    if ((short)uVar1 < 0) {
+    if ((s16)uVar1 < 0) {
       uVar3 = 0;
     }
     else {
       uVar3 = DAT_800a59a6 - 1;
-      if ((int)(short)uVar1 <= DAT_800a59a6 + -1) {
+      if ((int)(s16)uVar1 <= DAT_800a59a6 + -1) {
         uVar3 = uVar1;
       }
     }
@@ -51,8 +51,8 @@ void FUN_80081db8(int param_1,ushort *param_2)
     local_14 = CONCAT22(uVar3,uVar2);
     local_18 = CONCAT22(param_2->flags - param_2->behavior_state,*param_2 - param_2->state);
     param_1->callback =
-         (uint)*(byte *)((int)param_2 + 0x1b) << 0x10 | (uint)(byte)param_2->sprite_flags << 8 | 0x60000000 |
-         (uint)*(byte *)((int)param_2 + 0x19);
+         (uint)*(u8 *)((int)param_2 + 0x1b) << 0x10 | (uint)(u8)param_2->sprite_flags << 8 | 0x60000000 |
+         (uint)*(u8 *)((int)param_2 + 0x19);
     param_1->prev = local_18;
     param_1->next = local_14;
   }

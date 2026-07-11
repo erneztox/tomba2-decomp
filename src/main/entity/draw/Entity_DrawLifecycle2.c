@@ -10,7 +10,7 @@
 void FUN_80033630(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   bVar1 = param_1->state;
   if (bVar1 != 1) {
@@ -24,7 +24,7 @@ void FUN_80033630(int param_1)
     if (bVar1 != 0) {
       return;
     }
-    *(undefined4 *)(param_1 + 0x48) = 0;
+    *(s32 *)(param_1 + 0x48) = 0;
     param_1->normal_z = 0;
     param_1->state = 1;
     param_1->behavior_state = 0xff;

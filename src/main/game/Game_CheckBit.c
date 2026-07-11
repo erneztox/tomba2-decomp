@@ -11,5 +11,5 @@
 uint FUN_8006eff4(uint param_1)
 
 {
-  return _DAT_800bfe48 >> (param_1 & 0x1f) & 1;
+  return _g_EventFlags >> (param_1 & 0x1f) & 1;
 }

@@ -7,29 +7,29 @@
 
 
 #include "tomba.h"
-void FUN_80065a54(undefined1 *param_1)
+void FUN_80065a54(u8 *param_1)
 
 {
-  byte bVar1;
-  short sVar2;
-  char cVar3;
-  undefined2 uVar4;
+  u8 bVar1;
+  s16 sVar2;
+  s8 cVar3;
+  s16 uVar4;
   
   switchparam_1->action_state {
   case 0:
     FUN_80053d90(param_1);
-    if (DAT_1f800137 == '\x01') {
-      DAT_800bf80e = '\0';
+    if (g_CurrentOverlay == '\x01') {
+      g_ActionTrigger = '\0';
       uVar4 = 0xe;
 LAB_80065b04:
       param_1->timer1 = uVar4;
     }
     else {
-      if (DAT_800bf870 == '\x01') {
+      if (g_GameState == '\x01') {
         uVar4 = 0x26;
         goto LAB_80065b04;
       }
-      if (DAT_800bf870 == '\x06') {
+      if (g_GameState == '\x06') {
         uVar4 = 0x1c;
         if (param_1->collision_dir != '\t') goto LAB_80065b04;
         param_1->timer1 = 6;
@@ -59,7 +59,7 @@ LAB_80065b04:
     else {
       FUN_80056b48(param_1,1);
       FUN_80055d5c(param_1);
-      *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 8;
+      *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
       FUN_8005444c(param_1);
       FUN_80056c00(param_1,1);
     }
@@ -76,8 +76,8 @@ LAB_80065b04:
     param_1->sub_action = 0;
     FUN_80054198(param_1);
     FUN_80054d14(param_1,2,3);
-    if (DAT_1f800137 == '\x01') {
-      DAT_800bf80e = DAT_1f800137;
+    if (g_CurrentOverlay == '\x01') {
+      g_ActionTrigger = g_CurrentOverlay;
     }
     goto LAB_80066090;
   case 3:
@@ -115,7 +115,7 @@ LAB_80065b04:
       FUN_80076d68(param_1);
       FUN_80056b48(param_1,0);
       FUN_80055d5c(param_1);
-      *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 8;
+      *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
       FUN_8005444c(param_1);
       FUN_80056c00(param_1,1);
       sVar2 = param_1->timer1;
@@ -150,14 +150,14 @@ LAB_80065b04:
     param_1->sub_action = 0;
     FUN_80054198(param_1);
     FUN_80054d14(param_1,2,3);
-    if (DAT_1f800137 == '\x02') {
-      DAT_1f800137 = '\0';
+    if (g_CurrentOverlay == '\x02') {
+      g_CurrentOverlay = '\0';
     }
     goto LAB_80066090;
   case 5:
     FUN_80053d90(param_1);
-    if (DAT_1f800137 == '\x01') {
-      DAT_800bf80e = '\0';
+    if (g_CurrentOverlay == '\x01') {
+      g_ActionTrigger = '\0';
     }
     param_1->timer1 = 0x26;
     param_1->state_flag146 = 0;
@@ -175,8 +175,8 @@ LAB_80065b04:
     return;
   case 6:
     FUN_80053d90(param_1);
-    if (DAT_1f800137 == '\x01') {
-      DAT_800bf80e = '\0';
+    if (g_CurrentOverlay == '\x01') {
+      g_ActionTrigger = '\0';
     }
     param_1->timer1 = 0x25;
     param_1->state_flag146 = 0;
@@ -194,7 +194,7 @@ LAB_80065b04:
     FUN_80076d68(param_1);
     FUN_80056b48(param_1,0);
     FUN_80055d5c(param_1);
-    *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 8;
+    *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
     FUN_8005444c(param_1);
     sVar2 = param_1->timer1;
     param_1->timer1 = sVar2 + -1;

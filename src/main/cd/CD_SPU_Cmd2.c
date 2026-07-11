@@ -6,17 +6,17 @@
 
 
 
-undefined4 FUN_80097194(int param_1,uint param_2,uint param_3)
+s32 FUN_80097194(int param_1,uint param_2,uint param_3)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   uint uVar2;
-  ushort uVar3;
-  undefined4 uVar4;
+  u16 uVar3;
+  s32 uVar4;
   
   if (param_1 == 1) {
     DAT_800ac654 = 0;
-    if (*(short *)(DAT_800ac604 + 0x1a6) != DAT_800ac61c) {
+    if (*(s16 *)(g_SPU_Regs + 0x1a6) != DAT_800ac61c) {
       uVar2 = 1;
       do {
         if (0xf00 < uVar2) {
@@ -24,14 +24,14 @@ undefined4 FUN_80097194(int param_1,uint param_2,uint param_3)
           return 0xfffffffe;
         }
         uVar2 = uVar2 + 1;
-      } while (*(short *)(DAT_800ac604 + 0x1a6) != DAT_800ac61c);
+      } while (*(s16 *)(g_SPU_Regs + 0x1a6) != DAT_800ac61c);
     }
-    *(ushort *)(DAT_800ac604 + 0x1aa) = *(ushort *)(DAT_800ac604 + 0x1aa) & 0xffcf | 0x20;
+    *(u16 *)(g_SPU_Regs + 0x1aa) = *(u16 *)(g_SPU_Regs + 0x1aa) & 0xffcf | 0x20;
   }
   else if (param_1 < 2) {
     if (param_1 == 0) {
       DAT_800ac654 = 1;
-      if (*(short *)(DAT_800ac604 + 0x1a6) != DAT_800ac61c) {
+      if (*(s16 *)(g_SPU_Regs + 0x1a6) != DAT_800ac61c) {
         uVar2 = 1;
         do {
           if (0xf00 < uVar2) {
@@ -39,14 +39,14 @@ undefined4 FUN_80097194(int param_1,uint param_2,uint param_3)
             return 0xfffffffe;
           }
           uVar2 = uVar2 + 1;
-        } while (*(short *)(DAT_800ac604 + 0x1a6) != DAT_800ac61c);
+        } while (*(s16 *)(g_SPU_Regs + 0x1a6) != DAT_800ac61c);
       }
-      *(ushort *)(DAT_800ac604 + 0x1aa) = *(ushort *)(DAT_800ac604 + 0x1aa) | 0x30;
+      *(u16 *)(g_SPU_Regs + 0x1aa) = *(u16 *)(g_SPU_Regs + 0x1aa) | 0x30;
     }
   }
   else if (param_1 == 2) {
-    DAT_800ac61c = (short)(param_2 >> (DAT_800ac62c & 0x1f));
-    *(short *)(DAT_800ac604 + 0x1a6) = DAT_800ac61c;
+    DAT_800ac61c = (s16)(param_2 >> (DAT_800ac62c & 0x1f));
+    *(s16 *)(g_SPU_Regs + 0x1a6) = DAT_800ac61c;
   }
   else if (param_1 == 3) {
     uVar3 = 0x20;
@@ -54,13 +54,13 @@ undefined4 FUN_80097194(int param_1,uint param_2,uint param_3)
       uVar3 = 0x30;
     }
     uVar2 = 1;
-    uVar1 = *(ushort *)(DAT_800ac604 + 0x1aa);
+    uVar1 = *(u16 *)(g_SPU_Regs + 0x1aa);
     while ((uVar1 & 0x30) != uVar3) {
       if (0xf00 < uVar2) {
         return 0xfffffffe;
       }
       uVar2 = uVar2 + 1;
-      uVar1 = *(ushort *)(DAT_800ac604 + 0x1aa);
+      uVar1 = *(u16 *)(g_SPU_Regs + 0x1aa);
     }
     if (DAT_800ac654 == 1) {
       FUN_800976a0();

@@ -12,9 +12,9 @@
 void FUN_80060544(int param_1,int param_2)
 
 {
-  byte bVar1;
-  short sVar2;
-  ushort uVar3;
+  u8 bVar1;
+  s16 sVar2;
+  u16 uVar3;
   int iVar4;
   
   switch(param_1->sub_action) {
@@ -36,14 +36,14 @@ void FUN_80060544(int param_1,int param_2)
       param_1->anim_counter = 0x80;
     }
     iVar4 = (uint)param_1->sprite_x - (uint)param_1->anim_counter;
-    param_1->sprite_x = (short)iVar4;
+    param_1->sprite_x = (s16)iVar4;
     if (iVar4 * 0x10000 < 1) {
       sVar2 = FUN_8006032c(param_1,param_2);
       if (sVar2 == 0) {
 LAB_800608b8:
         param_1->input_state = 4;
 LAB_800608c0:
-        *(undefined1 *)(param_1 + 0x168) = 0;
+        *(u8 *)(param_1 + 0x168) = 0;
         param_1->sub_action = 5;
       }
       else {
@@ -64,7 +64,7 @@ LAB_800606b0:
         param_1->anim_counter = 0x80;
       }
       iVar4 = (uint)param_1->sprite_x - (uint)param_1->anim_counter;
-      param_1->sprite_x = (short)iVar4;
+      param_1->sprite_x = (s16)iVar4;
       if (0 < iVar4 * 0x10000) break;
       sVar2 = FUN_8006032c(param_1,param_2);
       goto joined_r0x800608ac;
@@ -77,10 +77,10 @@ LAB_800606b0:
       iVar4 = -iVar4;
     }
     if (0x9f < iVar4) {
-      bVar1 = *(char *)(param_1 + 0x168) - 4;
-      *(byte *)(param_1 + 0x168) = bVar1;
+      bVar1 = *(s8*)(param_1 + 0x168) - 4;
+      *(u8 *)(param_1 + 0x168) = bVar1;
       if ((int)((uint)bVar1 << 0x18) < 0) {
-        *(undefined1 *)(param_1 + 0x168) = 1;
+        *(u8 *)(param_1 + 0x168) = 1;
       }
       goto LAB_800606b0;
     }
@@ -91,9 +91,9 @@ LAB_800606b0:
     param_1->input_state = 2;
     if (param_2 == 2) {
       iVar4 = (uint)param_1->sprite_x - (uint)param_1->anim_counter;
-      param_1->sprite_x = (short)iVar4;
+      param_1->sprite_x = (s16)iVar4;
       if (iVar4 * 0x10000 >> 0x10 < -0x600) {
-        *(undefined1 *)(param_1 + 0x169) = 1;
+        *(u8 *)(param_1 + 0x169) = 1;
       }
       break;
     }
@@ -112,10 +112,10 @@ LAB_800607a0:
     iVar4 = FUN_8006042c(param_1);
     if (iVar4 == 0) goto LAB_800607a0;
     param_1->anim_counter = 0x20;
-    bVar1 = *(char *)(param_1 + 0x168) - 4;
-    *(byte *)(param_1 + 0x168) = bVar1;
+    bVar1 = *(s8*)(param_1 + 0x168) - 4;
+    *(u8 *)(param_1 + 0x168) = bVar1;
     if ((int)((uint)bVar1 << 0x18) < 0) {
-      *(undefined1 *)(param_1 + 0x168) = 1;
+      *(u8 *)(param_1 + 0x168) = 1;
     }
 LAB_800608cc:
     param_1->sub_action = param_1->sub_action + '\x01';
@@ -135,10 +135,10 @@ LAB_800608cc:
           param_1->anim_counter = 0;
           goto LAB_800608c0;
         }
-        bVar1 = *(char *)(param_1 + 0x168) - 4;
-        *(byte *)(param_1 + 0x168) = bVar1;
+        bVar1 = *(s8*)(param_1 + 0x168) - 4;
+        *(u8 *)(param_1 + 0x168) = bVar1;
         if ((int)((uint)bVar1 << 0x18) < 0) {
-          *(undefined1 *)(param_1 + 0x168) = 1;
+          *(u8 *)(param_1 + 0x168) = 1;
         }
       }
     }
@@ -161,10 +161,10 @@ joined_r0x800608ac:
       iVar4 = FUN_8006042c(param_1);
       if (iVar4 != 0) {
         param_1->anim_counter = 0x20;
-        bVar1 = *(char *)(param_1 + 0x168) - 4;
-        *(byte *)(param_1 + 0x168) = bVar1;
+        bVar1 = *(s8*)(param_1 + 0x168) - 4;
+        *(u8 *)(param_1 + 0x168) = bVar1;
         if ((int)((uint)bVar1 << 0x18) < 0) {
-          *(undefined1 *)(param_1 + 0x168) = 1;
+          *(u8 *)(param_1 + 0x168) = 1;
         }
         param_1->sub_action = 1;
         break;
@@ -176,7 +176,7 @@ joined_r0x800608ac:
       param_1->anim_counter = 0;
       param_1->sub_action = 1;
       if ((param_2 != 0) && (0x300 < param_1->sprite_x)) {
-        *(byte *)(param_1 + 0x169) = *(byte *)(param_1 + 0x169) | 1;
+        *(u8 *)(param_1 + 0x169) = *(u8 *)(param_1 + 0x169) | 1;
       }
     }
     param_1->sprite_x = param_1->sprite_x + param_1->anim_counter;
@@ -187,8 +187,8 @@ joined_r0x800608ac:
     if (param_2 == 0) {
       iVar4 = FUN_80060268(param_1);
       if (iVar4 == 1) {
-        *(undefined1 *)(param_1 + 0x168) = 3;
-        if (DAT_1f800237 == param_1->direction) {
+        *(u8 *)(param_1 + 0x168) = 3;
+        if (g_State237 == param_1->direction) {
           param_1->sub_action = 2;
         }
         else {
@@ -196,18 +196,18 @@ joined_r0x800608ac:
         }
       }
       else {
-        *(undefined1 *)(param_1 + 0x169) = 0;
+        *(u8 *)(param_1 + 0x169) = 0;
       }
     }
     else if (param_2 == 2) {
-      *(undefined1 *)(param_1 + 0x169) = 0;
-      *(undefined1 *)(param_1 + 0x168) = 0xf;
+      *(u8 *)(param_1 + 0x169) = 0;
+      *(u8 *)(param_1 + 0x168) = 0xf;
       param_1->sub_action = 2;
     }
     _DAT_1f800238 = 0;
-    param_1->anim_counter = (ushort)(byte)(&DAT_800a46f0)[*(byte *)(param_1 + 0x168)];
+    param_1->anim_counter = (u16)(u8)(&DAT_800a46f0)[*(u8 *)(param_1 + 0x168)];
   }
-  if (DAT_1f800237 == param_1->direction) {
+  if (g_State237 == param_1->direction) {
     param_1->rot_z = param_1->sprite_x;
   }
   else {

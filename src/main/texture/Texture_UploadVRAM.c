@@ -28,12 +28,12 @@ void FUN_8004514c(void)
   if (0 < _DAT_800ef488) {
     do {
       iVar2 = iVar2 + 1;
-      *(uint *)(&DAT_800ecf58 + (*puVar3 >> 0x18) * 4) = (*puVar3 & 0xffffff) + 0x80158000;
+      *(uint *)(&g_OT_Data + (*puVar3 >> 0x18) * 4) = (*puVar3 & 0xffffff) + 0x80158000;
       puVar3 = puVar3 + 1;
     } while (iVar2 < iVar1);
   }
   _DAT_1f80022c = FUN_800754f4(0x80182000);
-  DAT_1f80019b = 1;
+  g_DMAFlag = 1;
   FUN_80051fb4();
   return;
 }

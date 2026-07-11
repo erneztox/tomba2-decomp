@@ -9,16 +9,16 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006a384(undefined1 *param_1)
+void FUN_8006a384(u8 *param_1)
 
 {
-  char cVar1;
-  undefined2 uVar2;
+  s8 cVar1;
+  s16 uVar2;
   int iVar3;
   int iVar4;
   int iVar5;
   uint uVar6;
-  short sVar7;
+  s16 sVar7;
   
   switchparam_1->action_state {
   case 0:
@@ -59,11 +59,11 @@ LAB_8006a4b8:
     param_1->action_state = param_1->action_state + '\x01';
     param_1->type_flags = param_1->type_flags + -0x500;
   case 5:
-    *(undefined2 *)(param_1 + 0x66) = 2;
+    *(s16 *)(param_1 + 0x66) = 2;
     param_1->type_flags = param_1->type_flags + -0x40;
     sVar7 = param_1->anim_counter;
     param_1->anim_counter = sVar7 + 0x28;
-    if (0x3c < (short)(sVar7 + 0x28)) {
+    if (0x3c < (s16)(sVar7 + 0x28)) {
       cVar1 = param_1->action_state;
       param_1->timer1 = 0;
 LAB_8006a52c:
@@ -74,15 +74,15 @@ LAB_8006a52c:
     param_1->event_id = 1;
     DAT_1f800252 = 1;
     uVar2 = FUN_800782b0(param_1 + 0x2c,(int)_DAT_800e7f5c->pos_x,
-                         (int)*(short *)(_DAT_800e7f5c + 0x34));
+                         (int)*(s16 *)(_DAT_800e7f5c + 0x34));
     param_1->event_param = uVar2;
     uVar2 = FUN_80069a2c(param_1,(int)_DAT_800e7f5c->pos_x,
-                         (int)*(short *)(_DAT_800e7f5c + 0x30),(int)*(short *)(_DAT_800e7f5c + 0x34)
+                         (int)*(s16 *)(_DAT_800e7f5c + 0x30),(int)*(s16 *)(_DAT_800e7f5c + 0x34)
                         );
     param_1->type_flags = uVar2;
     sVar7 = param_1->anim_counter;
     param_1->anim_counter = sVar7 + 0x32;
-    if (0x1a4 < (short)(sVar7 + 0x32)) {
+    if (0x1a4 < (s16)(sVar7 + 0x32)) {
       param_1->anim_counter = 0x1a4;
     }
     iVar3 = FUN_80069b6c(param_1);
@@ -96,8 +96,8 @@ switchD_8006a3dc_caseD_7:
       DAT_800e7ef9 = 0;
     }
     param_1->pos_y = _DAT_800e7f5c->pos_x;
-    *(undefined2 *)(param_1 + 0x32) = *(undefined2 *)(_DAT_800e7f5c + 0x30);
-    param_1->pos_z = *(undefined2 *)(_DAT_800e7f5c + 0x34);
+    *(s16 *)(param_1 + 0x32) = *(s16 *)(_DAT_800e7f5c + 0x30);
+    param_1->pos_z = *(s16 *)(_DAT_800e7f5c + 0x34);
     return;
   case 8:
     DAT_1f800252 = 1;
@@ -113,7 +113,7 @@ switchD_8006a3dc_caseD_7:
     *param_1 = 2;
     param_1->state = 3;
   }
-  else if (2 < (byte)param_1->action_state) {
+  else if (2 < (u8)param_1->action_state) {
     if ((param_1->anim_id & 1) == 0) {
       sVar7 = param_1->type_flags;
     }

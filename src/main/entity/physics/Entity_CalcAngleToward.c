@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-undefined4 FUN_8004130c(int param_1,int param_2)
+s32 FUN_8004130c(int param_1,int param_2)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   
   if (param_1->gte_flags == '\0') {
     param_1->rot_y = param_1->draw_x;

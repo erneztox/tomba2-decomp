@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-undefined4 FUN_80080750(int param_1,int param_2,undefined1 param_3)
+s32 FUN_80080750(int param_1,int param_2,u8 param_3)
 
 {
   int iVar1;
-  undefined4 uVar2;
+  s32 uVar2;
   
   iVar1 = FUN_80072ddc(param_1,0,5,7);
   if (iVar1 == 0) {
@@ -21,13 +21,13 @@ undefined4 FUN_80080750(int param_1,int param_2,undefined1 param_3)
     iVar1->callback = FUN_80080424;
     if (param_2 == 0) {
       iVar1->pos_y = param_1->pos_y;
-      *(undefined2 *)(iVar1 + 0x32) = *(undefined2 *)(param_1 + 0x32);
+      *(s16 *)(iVar1 + 0x32) = *(s16 *)(param_1 + 0x32);
       iVar1->pos_z = param_1->pos_z;
     }
     else {
       iVar1->pos_y = param_2->pos_x;
-      *(undefined2 *)(iVar1 + 0x32) = *(undefined2 *)(param_2 + 0x30);
-      iVar1->pos_z = *(undefined2 *)(param_2 + 0x34);
+      *(s16 *)(iVar1 + 0x32) = *(s16 *)(param_2 + 0x30);
+      iVar1->pos_z = *(s16 *)(param_2 + 0x34);
     }
     iVar1->sub_type = param_3;
     iVar1->collision_dir = param_1->collision_dir;

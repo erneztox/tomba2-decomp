@@ -6,14 +6,14 @@
 
 
 
-void FUN_8008f850(short param_1,short param_2,short param_3,undefined4 param_4)
+void FUN_8008f850(s16 param_1,s16 param_2,s16 param_3,s32 param_4)
 
 {
   int iVar1;
-  undefined4 local_resc;
+  s32 local_resc;
   int in_stack_00000030;
-  undefined1 auStack_30 [16];
-  undefined2 local_20;
+  u8 auStack_30 [16];
+  s16 local_20;
   
   iVar1 = in_stack_00000030;
   local_resc = param_4;

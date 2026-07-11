@@ -6,8 +6,8 @@
  */
 // EntityLoop_Active
 
-extern u8 DAT_800bf870;
-extern int DAT_1f8000f8;
+extern u8 g_GameState;
+extern int g_GTE_WorkF8;
 
 // External functions
 extern void func_8003CCA4(Entity*);
@@ -82,12 +82,12 @@ void EntityLoop_Active(void) {
                     func_8003C788(entity);
                     break;
                 case 0x14:
-                    if (DAT_800bf870 == 4) {
+                    if (g_GameState == 4) {
                         func_8011BE5C(entity);
                     } else {
                         s16** p38 = (s16**)entity->unknown_38;
                         if (p38 != 0) {
-                            int p3c = *(int*)((char*)entity + 0x3C);
+                            int p3c = *(int*)((s8*)entity + 0x3C);
                             s16 val = *(s16*)(p3c + (**p38) * 4 + 2);
                             
                             // auStack_60 is at sp + 0x10, local_38 is at sp + 0x38
@@ -96,24 +96,24 @@ void EntityLoop_Active(void) {
                             
                             func_8003B054(auStack_60, p3c + val, 0);
                             
-                            local_38->type.x = *(s16*)((char*)entity + 0x60);
-                            local_38->type.y = *(s16*)((char*)entity + 0x62);
-                            local_38->type.z = *(s16*)((char*)entity + 0x64);
+                            local_38->type.x = *(s16*)((s8*)entity + 0x60);
+                            local_38->type.y = *(s16*)((s8*)entity + 0x62);
+                            local_38->type.z = *(s16*)((s8*)entity + 0x64);
                             
-                            local_38->flags.x = *(s16*)((char*)entity + 0x66);
-                            local_38->flags.y = *(s16*)((char*)entity + 0x68);
-                            local_38->flags.z = *(s16*)((char*)entity + 0x6A);
+                            local_38->flags.x = *(s16*)((s8*)entity + 0x66);
+                            local_38->flags.y = *(s16*)((s8*)entity + 0x68);
+                            local_38->flags.z = *(s16*)((s8*)entity + 0x6A);
                             
-                            local_38->kind.x = *(s16*)((char*)entity + 0x6C);
-                            local_38->kind.y = *(s16*)((char*)entity + 0x6E);
-                            local_38->kind.z = *(s16*)((char*)entity + 0x70);
+                            local_38->kind.x = *(s16*)((s8*)entity + 0x6C);
+                            local_38->kind.y = *(s16*)((s8*)entity + 0x6E);
+                            local_38->kind.z = *(s16*)((s8*)entity + 0x70);
                             
-                            local_38->sub_type.x = *(s16*)((char*)entity + 0x72);
-                            local_38->sub_type.y = *(s16*)((char*)entity + 0x74);
-                            local_38->sub_type.z = *(s16*)((char*)entity + 0x76);
+                            local_38->sub_type.x = *(s16*)((s8*)entity + 0x72);
+                            local_38->sub_type.y = *(s16*)((s8*)entity + 0x74);
+                            local_38->sub_type.z = *(s16*)((s8*)entity + 0x76);
                             
-                            func_80084660(&DAT_1f8000f8);
-                            func_80084690(&DAT_1f8000f8);
+                            func_80084660(&g_GTE_WorkF8);
+                            func_80084690(&g_GTE_WorkF8);
                             func_8003B320(auStack_60, local_38, 0x10);
                         }
                     }

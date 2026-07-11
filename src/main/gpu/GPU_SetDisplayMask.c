@@ -10,7 +10,7 @@
 void FUN_80080ed4(int param_1)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   
   if (1 < DAT_800a59a2) {
     (*(code *)PTR_FUN_800a599c)(s_SetDispMask__d_____8001bec8,param_1);

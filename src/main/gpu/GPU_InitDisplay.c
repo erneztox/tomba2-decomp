@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-void FUN_80083b30(undefined2 *param_1,undefined2 param_2,undefined2 param_3,undefined2 param_4,
+void FUN_80083b30(s16 *param_1,s16 param_2,s16 param_3,s16 param_4,
                  int param_5)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
   
   iVar2 = FUN_80086604();
@@ -22,21 +22,21 @@ void FUN_80083b30(undefined2 *param_1,undefined2 param_2,undefined2 param_3,unde
   param_1->sub_action = 0;
   param_1->counter1 = 0;
   param_1->counter2 = 0;
-  *(undefined1 *)((int)param_1 + 0x19) = 0;
+  *(u8 *)((int)param_1 + 0x19) = 0;
   param_1->sprite_flags = 0;
-  *(undefined1 *)((int)param_1 + 0x1b) = 0;
+  *(u8 *)((int)param_1 + 0x1b) = 0;
   param_1->render_flags = 1;
-  param_1->sub_type = (short)param_5;
+  param_1->sub_type = (s16)param_5;
   if (iVar2 == 0) {
     bVar1 = param_5 < 0x101;
   }
   else {
     bVar1 = param_5 < 0x121;
   }
-  *(bool *)((int)param_1 + 0x17) = bVar1;
+  *(s32 *)((int)param_1 + 0x17) = bVar1;
   param_1->state = param_2;
   param_1->behavior_state = param_3;
   param_1[10] = 10;
-  *(undefined1 *)(param_1 + 0xc) = 0;
+  *(u8 *)(param_1 + 0xc) = 0;
   return;
 }

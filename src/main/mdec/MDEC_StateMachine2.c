@@ -10,7 +10,7 @@
 void FUN_8008831c(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   bVar1 = param_1->anim_id;
   if (bVar1 == 3) {
@@ -22,7 +22,7 @@ void FUN_8008831c(int param_1)
     }
   }
   else if (bVar1 == 4) {
-    if (*(char *)(param_1 + 0x48) == '\0') {
+    if (*(s8*)(param_1 + 0x48) == '\0') {
       FUN_80088ac8(param_1,param_1->sub_anim_id);
     }
     else {

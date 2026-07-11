@@ -6,8 +6,8 @@
 
 
 
-void FUN_8009401c(short param_1,short param_2,undefined2 param_3,undefined4 param_4,ushort param_5,
-                 ushort param_6)
+void FUN_8009401c(s16 param_1,s16 param_2,s16 param_3,s32 param_4,u16 param_5,
+                 u16 param_6)
 
 {
   uint uVar1;

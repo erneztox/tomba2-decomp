@@ -8,20 +8,20 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8001d41c(short param_1,short param_2)
+void FUN_8001d41c(s16 param_1,s16 param_2)
 
 {
   if (param_1 == -1) {
     FUN_8001cf2c();
   }
   else if (param_1 == -2) {
-    FUN_8001d2a8(0,_DAT_1f80021c,_DAT_1f80021c + 1,0);
+    FUN_8001d2a8(0,_g_OverlayAddr2,_g_OverlayAddr2 + 1,0);
   }
   else if (DAT_800bfe4e == '\x01') {
     DAT_800be0e4 = 2;
   }
   else {
-    switch(DAT_800bf870) {
+    switch(g_GameState) {
     case 0:
       func_0x801464c0((int)param_1,(int)param_2);
       break;

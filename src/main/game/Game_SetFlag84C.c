@@ -6,7 +6,7 @@
 
 
 
-undefined4 FUN_80043b88(undefined4 param_1,char param_2)
+s32 FUN_80043b88(s32 param_1,s8 param_2)
 
 {
   DAT_800bf84c = param_2 != '\0';

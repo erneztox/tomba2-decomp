@@ -6,11 +6,11 @@
 
 
 
-undefined2 FUN_800943c0(void)
+s16 FUN_800943c0(void)
 
 {
-  undefined2 uVar1;
-  byte bVar2;
+  s16 uVar1;
+  u8 bVar2;
   
   bVar2 = DAT_80105d09;
   if (0x7f < DAT_80105d09) {

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80051614(int param_1,undefined4 param_2,int param_3,int param_4)
+void FUN_80051614(int param_1,s32 param_2,int param_3,int param_4)
 
 {
   int iVar1;
@@ -35,9 +35,9 @@ void FUN_80051614(int param_1,undefined4 param_2,int param_3,int param_4)
   param_1->projected_x = param_1->projected_x + *(int *)(iVar1 + 0x2c);
   param_1->projected_y = param_1->projected_y + iVar1->pos_y_fixed;
   param_1->projected_z = param_1->projected_z + iVar1->scale_y;
-  param_1->pos_y = *(undefined2 *)(param_1 + 0xac);
-  *(undefined2 *)(param_1 + 0x32) = *(undefined2 *)(param_1 + 0xb0);
-  param_1->pos_z = *(undefined2 *)(param_1 + 0xb4);
+  param_1->pos_y = *(s16 *)(param_1 + 0xac);
+  *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0xb0);
+  param_1->pos_z = *(s16 *)(param_1 + 0xb4);
   if (param_4 == 0) {
     FUN_80051300(param_1);
   }

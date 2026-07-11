@@ -10,9 +10,9 @@
 void FUN_8002b8f4(int param_1)
 
 {
-  byte bVar1;
-  char cVar2;
-  short sVar3;
+  u8 bVar1;
+  s8 cVar2;
+  s16 sVar3;
   int iVar4;
   int iVar5;
   
@@ -28,15 +28,15 @@ void FUN_8002b8f4(int param_1)
     if (bVar1 != 0) {
       return;
     }
-    *(undefined **)(param_1 + 0x40) = &DAT_800a2030;
-    *(undefined ***)(param_1 + 0x50) = &PTR_DAT_800a2018;
-    *(undefined4 *)(param_1 + 0x48) = 0;
-    *(undefined4 *)(param_1 + 0x4c) = 0;
+    *(void **)(param_1 + 0x40) = &DAT_800a2030;
+    *(void ***)(param_1 + 0x50) = &PTR_DAT_800a2018;
+    *(s32 *)(param_1 + 0x48) = 0;
+    *(s32 *)(param_1 + 0x4c) = 0;
     param_1->state = 1;
     param_1->sub_action = 0;
     param_1->rot_z = param_1->pos_x;
     param_1->target_rot_y = param_1->pos_y + -0x78;
-    param_1->draw_y = *(undefined2 *)(param_1 + 0x30);
+    param_1->draw_y = *(s16 *)(param_1 + 0x30);
   }
   param_1->scale_y = param_1->anim_data;
   param_1->sprite_data = *(int *)(param_1 + 0x40);
@@ -56,9 +56,9 @@ void FUN_8002b8f4(int param_1)
           if (param_1 != -0x2c) {
             iVar4->pos_x = param_1->pos_x;
             iVar4->pos_y = param_1->pos_y;
-            *(undefined2 *)(iVar4 + 0x30) = *(undefined2 *)(param_1 + 0x30);
+            *(s16 *)(iVar4 + 0x30) = *(s16 *)(param_1 + 0x30);
           }
-          *(undefined2 *)(iVar4 + 0x32) = 0xffce;
+          *(s16 *)(iVar4 + 0x32) = 0xffce;
           FUN_80028e10(iVar4,3);
           iVar5 = iVar4;
         }

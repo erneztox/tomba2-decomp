@@ -11,7 +11,7 @@ void FUN_8004bef4(int param_1)
 
 {
   int iVar1;
-  undefined4 uVar2;
+  s32 uVar2;
   
   if (param_1->draw_y == 0) {
     uVar2 = 0;

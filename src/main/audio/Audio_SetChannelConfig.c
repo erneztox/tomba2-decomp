@@ -6,7 +6,7 @@
 
 
 
-void FUN_80075070(undefined1 param_1)
+void FUN_80075070(u8 param_1)
 
 {
   DAT_800be22b = 1;

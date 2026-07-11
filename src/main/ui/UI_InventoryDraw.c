@@ -12,8 +12,8 @@
 void FUN_8004e808(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
+  u8 bVar1;
+  s16 sVar2;
   
   bVar1 = param_1->state;
   if (bVar1 == 1) {
@@ -25,12 +25,12 @@ void FUN_8004e808(int param_1)
     else if (param_1->behavior_state == '\x01') {
       FUN_8004bd64(param_1,0,_DAT_800e7f5c,_DAT_800e7f50,0);
       if ((DAT_800e7ff4 & 4) == 0) {
-        sVar2 = *(short *)(param_1 + 0x32) + -100;
+        sVar2 = *(s16 *)(param_1 + 0x32) + -100;
       }
       else {
-        sVar2 = *(short *)(param_1 + 0x32) + -0x46;
+        sVar2 = *(s16 *)(param_1 + 0x32) + -0x46;
       }
-      *(short *)(param_1 + 0x32) = sVar2;
+      *(s16 *)(param_1 + 0x32) = sVar2;
       param_1->flags = 1;
     }
   }

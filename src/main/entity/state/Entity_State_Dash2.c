@@ -9,14 +9,14 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80057150(int param_1,int param_2)
+s32 FUN_80057150(int param_1,int param_2)
 
 {
-  short sVar1;
-  undefined2 uVar2;
+  s16 sVar1;
+  s16 uVar2;
   int iVar3;
-  undefined4 uVar4;
-  undefined4 uVar5;
+  s32 uVar4;
+  s32 uVar5;
   
   iVar3 = 0;
   if ((param_1->entity_flags & 0x40) == 0) {
@@ -25,7 +25,7 @@ LAB_80057208:
   }
   else {
     if (param_1->anim_id == -0x35) {
-      if ((*(ushort *)(param_1->anim_data + 6) & 0x8000) != 0) {
+      if ((*(u16 *)(param_1->anim_data + 6) & 0x8000) != 0) {
         FUN_80054d14(param_1,0xca,4);
         iVar3 = 2;
         goto LAB_80057210;
@@ -33,7 +33,7 @@ LAB_80057208:
     }
     else {
       if (param_1->anim_id != -0x36) goto LAB_80057210;
-      if ((_DAT_800e7e68 & _DAT_1f800172) == 0) goto LAB_80057208;
+      if ((_g_PadState & _g_InputMask) == 0) goto LAB_80057208;
       FUN_80054d14(param_1,0xcb,4);
       FUN_80074590(0x35,0,0);
     }

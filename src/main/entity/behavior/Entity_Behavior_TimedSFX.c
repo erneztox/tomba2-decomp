@@ -10,7 +10,7 @@
 void FUN_8006625c(int param_1)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   
   if (DAT_800bfe55 == '\0') {
     FUN_80022c0c(param_1,1);

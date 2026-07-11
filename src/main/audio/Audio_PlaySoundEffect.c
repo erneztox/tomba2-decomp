@@ -7,14 +7,14 @@
 // Audio_PlaySoundEffect
 
 #include "tomba.h"
-undefined4 Audio_PlaySoundEffect(uint param_1,char param_2,char param_3)
+s32 Audio_PlaySoundEffect(uint param_1,s8 param_2,s8 param_3)
 
 {
-  short sVar1;
+  s16 sVar1;
   int iVar2;
-  undefined4 uVar3;
-  byte bVar4;
-  char cVar5;
+  s32 uVar3;
+  u8 bVar4;
+  s8 cVar5;
   char *pcVar6;
 
   if ((int)(param_1 << 0x18) < 0) {
@@ -22,11 +22,11 @@ undefined4 Audio_PlaySoundEffect(uint param_1,char param_2,char param_3)
       return 0;
     }
     // Level-specific sound table
-    pcVar6 = (char *)(*(int *)(&DAT_800a4ef8 + (uint)DAT_800bf870 * 4) + (param_1 & 0x7f) * 8);
+    pcVar6 = (s8*)(*(int *)(&DAT_800a4ef8 + (uint)g_GameState * 4) + (param_1 & 0x7f) * 8);
     cVar5 = *pcVar6;
     if (cVar5 != '\x04') {
       bVar4 = 0x80;
-      if (DAT_1f800137 == '\0') goto LAB_8007472c;
+      if (g_CurrentOverlay == '\0') goto LAB_8007472c;
       cVar5 = '\x01';
     }
     bVar4 = 0x80;
@@ -57,7 +57,7 @@ undefined4 Audio_PlaySoundEffect(uint param_1,char param_2,char param_3)
     cVar5 = *pcVar6;
     if (cVar5 != '\x04') {
       bVar4 = 0;
-      if (DAT_1f800137 == '\0') goto LAB_8007472c;
+      if (g_CurrentOverlay == '\0') goto LAB_8007472c;
       cVar5 = '\x01';
     }
     bVar4 = 0;
@@ -66,7 +66,7 @@ LAB_8007472c:
   if (DAT_800fb165 != 0) {
     iVar2 = ((int)((((int)pcVar6->action_state + (int)param_3) * 0x10000 >> 0x10) * (uint)DAT_800fb165 *
                   0x10000) >> 0x10) / 9;
-    sVar1 = (short)iVar2;
+    sVar1 = (s16)iVar2;
     iVar2 = iVar2 * 0x10000 >> 0x10;
     if (-1 < iVar2) {
       if (0x7f < iVar2) {

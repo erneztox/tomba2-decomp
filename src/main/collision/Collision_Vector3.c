@@ -9,19 +9,19 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_800455c0(int param_1,short param_2,short param_3,short param_4)
+s32 FUN_800455c0(int param_1,s16 param_2,s16 param_3,s16 param_4)
 
 {
   int iVar1;
   int iVar2;
-  undefined4 uVar3;
-  ushort uVar4;
+  s32 uVar3;
+  u16 uVar4;
   
   iVar1 = FUN_80083e80((int)param_4);
   iVar2 = FUN_80083f50((int)param_4);
-  _DAT_1f8001be = *(short *)(param_1 + 0x32) + param_3;
-  _DAT_1f8001c0 = param_1->pos_z + (short)(-iVar1 * (int)param_2 >> 0xc);
-  _DAT_1f8001bc = param_1->pos_y + (short)(iVar2 * param_2 >> 0xc);
+  _DAT_1f8001be = *(s16 *)(param_1 + 0x32) + param_3;
+  _DAT_1f8001c0 = param_1->pos_z + (s16)(-iVar1 * (int)param_2 >> 0xc);
+  _DAT_1f8001bc = param_1->pos_y + (s16)(iVar2 * param_2 >> 0xc);
   iVar1 = FUN_800498c8(param_1);
   if (iVar1 == 0) {
     return 0;
@@ -38,9 +38,9 @@ LAB_800456e4:
   else {
     if (uVar4 < 0x601) {
       if (uVar4 == 0x100) {
-        if (DAT_800bf873 != '\0') {
+        if (g_SubState != '\0') {
           _DAT_1f8001a6 = _DAT_1f8001a6 & 0xff;
-          *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + _DAT_1f8001c4;
+          *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + _DAT_1f8001c4;
           return 1;
         }
         goto LAB_800456e4;
@@ -48,7 +48,7 @@ LAB_800456e4:
     }
     else if (uVar4 == 0x700) goto LAB_800456e4;
     uVar3 = 1;
-    *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + _DAT_1f8001c4;
+    *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + _DAT_1f8001c4;
   }
   return uVar3;
 }

@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-void FUN_800262d8(int param_1,undefined4 param_2,undefined4 param_3,int param_4)
+void FUN_800262d8(int param_1,s32 param_2,s32 param_3,int param_4)
 
 {
-  FUN_8007e1b8(param_2,*(undefined4 *)((int)&PTR_DAT_80017334 + ((param_4 << 0x10) >> 0xe)),
+  FUN_8007e1b8(param_2,*(s32 *)((int)&PTR_DAT_80017334 + ((param_4 << 0x10) >> 0xe)),
                param_1->sprite_data,param_3);
   return;
 }

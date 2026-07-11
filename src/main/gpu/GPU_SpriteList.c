@@ -12,23 +12,23 @@
 void FUN_8007eae4(void)
 
 {
-  short sVar1;
-  short sVar2;
-  short *psVar3;
+  s16 sVar1;
+  s16 sVar2;
+  s16 *psVar3;
   uint uVar4;
   int iVar5;
-  short sVar6;
-  short sVar7;
-  undefined1 local_68;
-  undefined1 local_67;
-  undefined2 local_66;
-  short local_60;
-  undefined2 local_5e;
-  short local_5c;
-  undefined2 local_5a;
-  undefined local_58->state;
-  short local_48->counter1;
-  ushort local_38->counter1;
+  s16 sVar6;
+  s16 sVar7;
+  u8 local_68;
+  u8 local_67;
+  s16 local_66;
+  s16 local_60;
+  s16 local_5e;
+  s16 local_5c;
+  s16 local_5a;
+  void local_58->state;
+  s16 local_48->counter1;
+  u16 local_38->counter1;
   
   uVar4 = 0;
   iVar5 = 0x58;
@@ -39,7 +39,7 @@ void FUN_8007eae4(void)
   do {
     *(int *)(local_38 + uVar4 * 2) = iVar5;
     iVar5 = iVar5 + 0x10;
-    FUN_80079374((int)local_48[uVar4 * 2],(int)(short)local_38[uVar4 * 2],
+    FUN_80079374((int)local_48[uVar4 * 2],(int)(s16)local_38[uVar4 * 2],
                  (uint)(DAT_800bf808 == uVar4) << 1,local_58[uVar4],0);
     uVar4 = uVar4 + 1;
   } while ((int)uVar4 < 3);
@@ -111,7 +111,7 @@ LAB_8007ec40:
 LAB_8007ece4:
     psVar3 = &DAT_800a58e8 + iVar5;
     iVar5 = iVar5 + 1;
-    FUN_8007e1b8(&local_60,(&PTR_DAT_80017334)[*psVar3],_DAT_800ecf58,&local_68);
+    FUN_8007e1b8(&local_60,(&PTR_DAT_80017334)[*psVar3],_g_OT_Data,&local_68);
     if (8 < iVar5) {
       return;
     }

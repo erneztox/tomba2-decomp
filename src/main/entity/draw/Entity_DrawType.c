@@ -10,11 +10,11 @@
 void FUN_8002f230(int param_1)
 
 {
-  byte bVar1;
-  undefined2 uVar2;
+  u8 bVar1;
+  s16 uVar2;
   int iVar3;
-  short *psVar4;
-  short *psVar5;
+  s16 *psVar4;
+  s16 *psVar5;
   int iVar6;
   
   bVar1 = param_1->state;
@@ -32,7 +32,7 @@ void FUN_8002f230(int param_1)
     uVar2 = FUN_8009a450();
     param_1->normal_x = uVar2;
     param_1->velocity_y = 0xff92;
-    *(undefined2 *)(param_1 + 0x32) = 0xffce;
+    *(s16 *)(param_1 + 0x32) = 0xffce;
     param_1->state = 1;
   }
   psVar5 = param_1->angle_offset;
@@ -43,12 +43,12 @@ void FUN_8002f230(int param_1)
     do {
       iVar6 = iVar6 + 1;
       iVar3 = FUN_8009a450();
-      *psVar5 = *psVar5 + -8 + (short)(iVar3 >> 0xb);
+      *psVar5 = *psVar5 + -8 + (s16)(iVar3 >> 0xb);
       iVar3 = FUN_8009a450();
-      psVar4->flags = psVar4->flags + -8 + (short)(iVar3 >> 0xb);
+      psVar4->flags = psVar4->flags + -8 + (s16)(iVar3 >> 0xb);
       iVar3 = FUN_8009a450();
       psVar5 = psVar5 + 4;
-      *psVar4 = *psVar4 + -4 + (short)(iVar3 >> 0xb);
+      *psVar4 = *psVar4 + -4 + (s16)(iVar3 >> 0xb);
       psVar4 = psVar4 + 4;
     } while (iVar6 < 7);
     iVar6 = FUN_8002b278(param_1);

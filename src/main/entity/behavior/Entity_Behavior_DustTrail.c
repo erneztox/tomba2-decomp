@@ -10,15 +10,15 @@
 void FUN_8002bafc(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
-  short sVar3;
-  short sVar4;
+  u8 bVar1;
+  s16 sVar2;
+  s16 sVar3;
+  s16 sVar4;
   int iVar5;
-  undefined2 *puVar6;
+  s16 *puVar6;
   int iVar7;
-  short *psVar8;
-  short *psVar9;
+  s16 *psVar8;
+  s16 *psVar9;
   
   bVar1 = param_1->state;
   if (bVar1 != 1) {
@@ -36,17 +36,17 @@ void FUN_8002bafc(int param_1)
     puVar6 = param_1->rot_y;
     sVar2 = param_1->pos_x;
     sVar3 = param_1->pos_y;
-    sVar4 = *(short *)(param_1 + 0x30);
+    sVar4 = *(s16 *)(param_1 + 0x30);
     param_1->sprite_x = 7;
     param_1->state = 1;
     do {
       iVar7 = iVar7 + 1;
       iVar5 = FUN_8009a450();
-      *psVar9 = sVar2 + (short)((uint)(iVar5 + -0x4000) >> 8);
+      *psVar9 = sVar2 + (s16)((uint)(iVar5 + -0x4000) >> 8);
       iVar5 = FUN_8009a450();
-      puVar6[-2] = sVar3 + (short)((uint)(iVar5 + -0x4000) >> 8);
+      puVar6[-2] = sVar3 + (s16)((uint)(iVar5 + -0x4000) >> 8);
       iVar5 = FUN_8009a450();
-      puVar6[-1] = sVar4 + (short)((uint)(iVar5 + -0x4000) >> 8);
+      puVar6[-1] = sVar4 + (s16)((uint)(iVar5 + -0x4000) >> 8);
       *puVar6 = 0x100;
       puVar6 = puVar6 + 4;
       psVar9 = psVar9 + 4;
@@ -60,10 +60,10 @@ void FUN_8002bafc(int param_1)
     do {
       iVar7 = iVar7 + 1;
       iVar5 = FUN_8009a450();
-      *psVar8 = *psVar8 + (short)(iVar5 + -0x4000 >> 0xb);
+      *psVar8 = *psVar8 + (s16)(iVar5 + -0x4000 >> 0xb);
       iVar5 = FUN_8009a450();
       psVar8 = psVar8 + 4;
-      psVar9->flags = psVar9->flags + (short)(iVar5 + -0x4000 >> 0xb);
+      psVar9->flags = psVar9->flags + (s16)(iVar5 + -0x4000 >> 0xb);
       *psVar9 = *psVar9 + -0x12;
       psVar9 = psVar9 + 4;
     } while (iVar7 < 7);

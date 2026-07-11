@@ -12,17 +12,17 @@
 void FUN_8005b63c(int param_1)
 
 {
-  undefined2 uVar1;
-  undefined1 uVar2;
-  short sVar3;
+  s16 uVar1;
+  u8 uVar2;
+  s16 sVar3;
   int iVar4;
-  char cVar5;
+  s8 cVar5;
   uint uVar6;
   uint uVar7;
-  undefined4 uVar8;
-  undefined1 *puVar9;
+  s32 uVar8;
+  u8 *puVar9;
   
-  puVar9 = *(undefined1 **)(param_1 + 0x10);
+  puVar9 = *(u8 **)(param_1 + 0x10);
   switch(param_1->action_state) {
   case 0:
     param_1->direction = param_1->behavior_flags & 1;
@@ -34,8 +34,8 @@ void FUN_8005b63c(int param_1)
     param_1->velocity_y = 0;
     iVar4 = FUN_8005b5e4(puVar9);
     if (iVar4 == 0) {
-      if (*(char *)(param_1 + 0x181) != '\0') {
-        *(undefined1 *)(param_1 + 0x181) = 1;
+      if (*(s8*)(param_1 + 0x181) != '\0') {
+        *(u8 *)(param_1 + 0x181) = 1;
         param_1->action_state = 2;
         param_1->state_flag144 = 0;
         return;
@@ -61,7 +61,7 @@ switchD_8005b678_caseD_1:
     FUN_80055fbc(param_1,param_1->behavior_flags);
     FUN_80056b48(param_1,1);
     FUN_80055d5c(param_1);
-    if ((*(char *)(param_1 + 0x181) == '\0') &&
+    if ((*(s8*)(param_1 + 0x181) == '\0') &&
        (FUN_800574e0(param_1,6), (param_1->entity_flags & 0x40) != 0)) {
       param_1->state_flag144 = 0;
     }
@@ -71,7 +71,7 @@ switchD_8005b678_caseD_1:
       iVar4 = FUN_80055824();
       if (iVar4 == 0) {
         if (param_1->collision_state == '\0') {
-          if (*(char *)(param_1 + 0x181) == '\0') goto LAB_8005b868;
+          if (*(s8*)(param_1 + 0x181) == '\0') goto LAB_8005b868;
         }
         else {
           param_1->velocity_y = 0;
@@ -82,7 +82,7 @@ switchD_8005b678_caseD_1:
       else {
         param_1->action_state = 3;
         param_1->state_flag144 = 0;
-        *(undefined1 *)(param_1 + 0x181) = 0;
+        *(u8 *)(param_1 + 0x181) = 0;
         param_1->state_flag145 = 1;
         param_1->velocity_y = 0;
       }
@@ -90,7 +90,7 @@ switchD_8005b678_caseD_1:
     else {
       FUN_80076d68(param_1);
       if (param_1->collision_state == '\0') {
-        if (*(char *)(param_1 + 0x181) == '\0') goto LAB_8005b868;
+        if (*(s8*)(param_1 + 0x181) == '\0') goto LAB_8005b868;
       }
       else {
         param_1->velocity_y = 0;
@@ -103,12 +103,12 @@ LAB_8005b868:
     FUN_8005b20c(param_1,0);
     break;
   case 2:
-    if (*(char *)(param_1 + 0x181) == '\0') {
+    if (*(s8*)(param_1 + 0x181) == '\0') {
       FUN_80055e28(param_1,1);
       FUN_80055fbc(param_1,param_1->behavior_flags | 2);
       FUN_80056b48(param_1,1);
       FUN_80055d5c(param_1);
-      *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 8;
+      *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
       FUN_8005444c(param_1);
       if (param_1->sub_state == '\x06') {
         param_1->direction = 0;
@@ -119,7 +119,7 @@ LAB_8005b868:
       iVar4 = FUN_80055824();
       if (iVar4 != 0) {
         cVar5 = param_1->action_state;
-        *(undefined1 *)(param_1 + 0x181) = 0;
+        *(u8 *)(param_1 + 0x181) = 0;
         param_1->state_flag145 = 1;
         param_1->velocity_y = 0;
         goto LAB_8005ba0c;
@@ -127,14 +127,14 @@ LAB_8005b868:
     }
     else {
       uVar7 = (uint)param_1->anim_counter;
-      *(undefined1 *)(param_1 + 0x181) = 1;
+      *(u8 *)(param_1 + 0x181) = 1;
       uVar6 = uVar7;
       if ((int)uVar7 < 0) {
         uVar6 = -uVar7;
       }
       param_1->state_flag144 = 0;
       if ((uVar6 & 0xffff) != 0) {
-        sVar3 = (short)(uVar6 - 0x120);
+        sVar3 = (s16)(uVar6 - 0x120);
         if ((int)((uVar6 - 0x120) * 0x10000) < 0) {
           sVar3 = 0;
         }
@@ -146,16 +146,16 @@ LAB_8005b868:
         }
       }
       FUN_80055e28(param_1,1);
-      if (DAT_800bf870 == '\0') {
+      if (g_GameState == '\0') {
         func_0x8010c89c(param_1,0);
       }
-      else if (DAT_800bf870 == '\x06') {
+      else if (g_GameState == '\x06') {
         func_0x8011460c(param_1,0);
       }
-      else if (DAT_800bf870 == '\b') {
+      else if (g_GameState == '\b') {
         func_0x801120c4(param_1,0);
       }
-      else if (DAT_800bf870 == '\x0e') {
+      else if (g_GameState == '\x0e') {
         func_0x8010b408(param_1,0);
       }
       FUN_80076d68(param_1);
@@ -163,7 +163,7 @@ LAB_8005b868:
       if (iVar4 != 0) {
         cVar5 = param_1->action_state;
         param_1->state_flag145 = 1;
-        *(undefined1 *)(param_1 + 0x181) = 0;
+        *(u8 *)(param_1 + 0x181) = 0;
 LAB_8005ba0c:
         param_1->action_state = cVar5 + '\x01';
         return;
@@ -204,7 +204,7 @@ LAB_8005ba0c:
           param_1->action_state = 7;
           param_1->collision_state = 0;
           param_1->state_flag144 = 0;
-          *(undefined1 *)(param_1 + 0x148) = 0;
+          *(u8 *)(param_1 + 0x148) = 0;
           param_1->velocity_y = 0;
           param_1->rot_z = 0x20;
         }
@@ -226,7 +226,7 @@ LAB_8005bba0:
     FUN_80054d14(param_1,uVar8,0);
     param_1->timer1 = 0;
     param_1->timer2 = 0;
-    uVar1 = *(undefined2 *)(&DAT_800a4694 + param_1->timer1 * 2);
+    uVar1 = *(s16 *)(&DAT_800a4694 + param_1->timer1 * 2);
     param_1->action_state = param_1->action_state + '\x01';
     param_1->rot_z = uVar1;
     FUN_8005b20c();
@@ -238,14 +238,14 @@ LAB_8005bba0:
       param_1->timer1 = 10;
     }
     param_1->rot_z =
-         *(undefined2 *)(&DAT_800a4694 + param_1->timer1 * 2);
+         *(s16 *)(&DAT_800a4694 + param_1->timer1 * 2);
     if (param_1->timer2 == 0) {
       FUN_8005b20c(param_1,1);
       sVar3 = 5;
       if (((param_1->behavior_flags & 8) != 0) && (param_1->sub_state < 6)) {
         sVar3 = 6;
       }
-      if (*(short *)(param_1->anim_data + 2) == sVar3) {
+      if (*(s16 *)(param_1->anim_data + 2) == sVar3) {
         FUN_80074590(0x21,0,0);
         if (param_1->sub_state < 5) {
           puVar9->behavior_state = 1;
@@ -264,7 +264,7 @@ LAB_8005bba0:
       param_1->state_flag145 = 1;
       param_1->collision_state = 0;
       param_1->state_flag144 = 0;
-      *(undefined1 *)(param_1 + 0x148) = 0;
+      *(u8 *)(param_1 + 0x148) = 0;
       param_1->velocity_y = 0;
       param_1->sub_action = 1;
       param_1->action_state = param_1->action_state + '\x01';
@@ -276,7 +276,7 @@ LAB_8005bba0:
     FUN_80056b48(param_1,1);
     FUN_80055d5c(param_1);
     FUN_80076d68(param_1);
-    if ((1 < *(ushort *)(param_1->anim_data + 2)) &&
+    if ((1 < *(u16 *)(param_1->anim_data + 2)) &&
        (sVar3 = param_1->rot_z + 0x200, param_1->rot_z = sVar3,
        0xfff < sVar3)) {
       param_1->rot_z = 0x1000;

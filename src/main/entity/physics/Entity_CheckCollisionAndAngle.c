@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-bool FUN_800419c4(int param_1,short param_2,short param_3)
+s32 FUN_800419c4(int param_1,s16 param_2,s16 param_3)
 
 {
   int iVar1;
@@ -17,7 +17,7 @@ bool FUN_800419c4(int param_1,short param_2,short param_3)
   iVar1 = FUN_80049250(param_1,(int)param_2,(int)param_3);
   if (iVar1 == 1) {
     FUN_80049674(param_1);
-    param_1->angle_delta = _DAT_1f8001a2;
+    param_1->angle_delta = _g_CollisionNormalY;
   }
   return iVar1 == 1;
 }

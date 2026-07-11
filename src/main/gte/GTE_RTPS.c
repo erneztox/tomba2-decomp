@@ -8,14 +8,14 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-undefined4 FUN_8003f7d8(int param_1,undefined4 *param_2,int *param_3)
+s32 FUN_8003f7d8(int param_1,s32 *param_2,int *param_3)
 
 {
-  undefined4 in_zero;
-  undefined4 in_at;
-  undefined4 in_v0;
-  undefined4 uVar1;
-  undefined4 in_v1;
+  s32 in_zero;
+  s32 in_at;
+  s32 in_v0;
+  s32 uVar1;
+  s32 in_v1;
   int iVar2;
   
   setCopReg(2,in_zero,*param_2);
@@ -30,7 +30,7 @@ undefined4 FUN_8003f7d8(int param_1,undefined4 *param_2,int *param_3)
   uVar1 = 0xffffffff;
   if (-1 < *param_3) {
     uVar1 = getCopReg(2,0xc);
-    *(undefined4 *)(param_1 + 8) = uVar1;
+    *(s32 *)(param_1 + 8) = uVar1;
     uVar1 = getCopReg(2,0xd);
     param_1->parent = uVar1;
     uVar1 = getCopReg(2,0xe);

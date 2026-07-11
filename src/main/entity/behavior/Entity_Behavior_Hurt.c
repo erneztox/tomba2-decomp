@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-void FUN_8006bb6c(undefined1 *param_1)
+void FUN_8006bb6c(u8 *param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   bVar1 = param_1->state;
   if (bVar1 != 1) {
@@ -23,7 +23,7 @@ void FUN_8006bb6c(undefined1 *param_1)
       if (bVar1 != 3) {
         return;
       }
-      if (*(short *)(param_1 + 0x6e) == 0) {
+      if (*(s16 *)(param_1 + 0x6e) == 0) {
         DAT_1f800231 = DAT_1f800231 + -1;
       }
       FUN_8007ab44(param_1);
@@ -39,8 +39,8 @@ void FUN_8006bb6c(undefined1 *param_1)
     param_1->target_angle = param_1->rot_y;
     param_1->rot_y = 0;
     param_1->type_flags = 0;
-    *(undefined2 *)(param_1 + 0x66) = 1;
-    *(undefined2 *)(param_1 + 0x6e) = 0;
+    *(s16 *)(param_1 + 0x66) = 1;
+    *(s16 *)(param_1 + 0x6e) = 0;
     *param_1 = 2;
     param_1->rot_x = 0x400;
     param_1->move_mode = 0;
@@ -49,7 +49,7 @@ void FUN_8006bb6c(undefined1 *param_1)
       FUN_80069688(param_1);
     }
     else {
-      FUN_80031558(param_1,(byte)param_1->kind - 1);
+      FUN_80031558(param_1,(u8)param_1->kind - 1);
     }
   }
   param_1->flags = 1;
@@ -58,7 +58,7 @@ void FUN_8006bb6c(undefined1 *param_1)
   }
   else if (param_1->behavior_state == '\x01') {
     FUN_8006b494(param_1);
-    if (*(short *)(param_1 + 0x66) == 0) {
+    if (*(s16 *)(param_1 + 0x66) == 0) {
       if (param_1->kind == '\x06') {
         FUN_80051844(param_1);
       }

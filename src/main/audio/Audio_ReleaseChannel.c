@@ -12,11 +12,11 @@
 void FUN_80074e48(void)
 
 {
-  undefined1 *puVar1;
+  u8 *puVar1;
   int iVar2;
   
   if (_DAT_800bed80 != -1) {
-    FUN_80091af0((int)*(short *)(&DAT_800be368 + _DAT_800bed80 * 8));
+    FUN_80091af0((int)*(s16 *)(&DAT_800be368 + _DAT_800bed80 * 8));
     iVar2 = 0;
     if (0 < _DAT_800bed78) {
       puVar1 = &DAT_800be238;

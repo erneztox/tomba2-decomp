@@ -8,12 +8,12 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80088b00(undefined4 param_1,undefined4 param_2)
+void FUN_80088b00(s32 param_1,s32 param_2)
 
 {
   int iVar1;
   int *piVar2;
-  undefined1 *puVar3;
+  u8 *puVar3;
   int iVar4;
   int iVar5;
   int iVar6;
@@ -39,12 +39,12 @@ void FUN_80088b00(undefined4 param_1,undefined4 param_2)
   _DAT_80102530 = param_1;
   _DAT_80102620 = param_2;
   do {
-    puVar3 = (undefined1 *)(iVar7 + 0x5d);
+    puVar3 = (u8 *)(iVar7 + 0x5d);
     piVar2[-0xd] = 0;
     piVar2[-0xc] = iVar7;
-    *(undefined1 *)piVar2[-4] = 0xff;
+    *(u8 *)piVar2[-4] = 0xff;
     iVar1 = 5;
-    *(undefined1 *)(piVar2[-4] + 1) = 0;
+    *(u8 *)(piVar2[-4] + 1) = 0;
     piVar2[-1] = iVar4;
     *piVar2 = iVar5;
     do {

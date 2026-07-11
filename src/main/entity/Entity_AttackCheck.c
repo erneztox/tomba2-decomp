@@ -12,11 +12,11 @@
 void FUN_80056e08(int param_1)
 
 {
-  byte bVar1;
-  char cVar2;
-  undefined *puVar3;
+  u8 bVar1;
+  s8 cVar2;
+  void *puVar3;
   
-  if ((_DAT_800ecf54 & _DAT_1f800172) == 0) {
+  if ((_g_InputState & _g_InputMask) == 0) {
     if (param_1->input_state < 0xb) {
       if ((param_1->entity_flags & 0x180) == 0) {
         bVar1 = param_1->input_state;
@@ -26,7 +26,7 @@ void FUN_80056e08(int param_1)
         bVar1 = param_1->input_state;
         puVar3 = &DAT_800a45a0;
       }
-      param_1->velocity_y = param_1->velocity_y + *(short *)(puVar3 + (uint)bVar1 * 2)
+      param_1->velocity_y = param_1->velocity_y + *(s16 *)(puVar3 + (uint)bVar1 * 2)
       ;
       param_1->input_state = 0x10;
       if (0 < param_1->velocity_y) {

@@ -6,7 +6,7 @@
  */
 // Engine_HandleState
 
-extern unsigned char D_800BF870[];
+extern unsigned s8 D_800BF870[];
 extern int D_800ED018;
 
 extern void func_8010BE30(int*);

@@ -10,12 +10,12 @@
 void FUN_80056c00(int param_1,int param_2)
 
 {
-  short sVar1;
-  undefined2 uVar2;
+  s16 sVar1;
+  s16 uVar2;
   int iVar3;
   
   if (param_1->collision_state == '\0' && param_1->state_flag145 == '\0') {
-    if ((DAT_800bf80d == '\0') && (DAT_800bf848 != '\0')) {
+    if ((g_TimerFlag == '\0') && (DAT_800bf848 != '\0')) {
       FUN_80056d44(param_1,0);
     }
     else {
@@ -25,7 +25,7 @@ void FUN_80056c00(int param_1,int param_2)
         param_1->angle_offset = 0x3e00;
       }
       if (((0x1dff < param_1->angle_offset) &&
-          (*(undefined1 *)(param_1 + 0x148) = 1, param_2 == 0)) &&
+          (*(u8 *)(param_1 + 0x148) = 1, param_2 == 0)) &&
          (param_1->state_flag146 != '\x04')) {
         FUN_80056d44(param_1,0);
         if ((param_1->entity_flags & 0x40) == 0) {
@@ -36,7 +36,7 @@ void FUN_80056c00(int param_1,int param_2)
           if (iVar3 < 0) {
             iVar3 = iVar3 + 3;
           }
-          uVar2 = (undefined2)(iVar3 >> 2);
+          uVar2 = (s16)(iVar3 >> 2);
         }
         param_1->velocity_y = uVar2;
         param_1->angle_offset = 0;
@@ -49,7 +49,7 @@ void FUN_80056c00(int param_1,int param_2)
       FUN_8005314c();
     }
     param_1->angle_offset = 0;
-    *(undefined1 *)(param_1 + 0x148) = 0;
+    *(u8 *)(param_1 + 0x148) = 0;
   }
   return;
 }

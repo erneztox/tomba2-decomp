@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-undefined2 FUN_80052144(byte param_1,short param_2)
+s16 FUN_80052144(u8 param_1,s16 param_2)
 
 {
-  undefined2 uVar1;
-  undefined2 uVar2;
+  s16 uVar1;
+  s16 uVar2;
   
   if (param_2 == 0) {
     uVar1 = 0x80;

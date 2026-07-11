@@ -1,5 +1,5 @@
 /**
- * @brief Jump start state: entity->action_state=0->1, calls damage/physics, branches on _DAT_1f800184 action
+ * @brief Jump start state: entity->action_state=0->1, calls damage/physics, branches on _g_ActionInput action
  * @note Original: func_80065990 at 0x80065990
  */
 // Entity_State_JumpStart
@@ -15,7 +15,7 @@ void FUN_80065990(int param_1)
   int iVar1;
   
   if (param_1->action_state == '\0') {
-    DAT_800bf80e = 0;
+    g_ActionTrigger = 0;
     param_1->action_state = param_1->action_state + '\x01';
   }
   else if (param_1->action_state != '\x01') {
@@ -24,10 +24,10 @@ void FUN_80065990(int param_1)
   iVar1 = FUN_80076d68(param_1);
   if (iVar1 == 1) {
     FUN_80054d14(param_1,2,4);
-    DAT_800bf80e = 1;
+    g_ActionTrigger = 1;
   }
-  if (_DAT_1f800184 != 1) {
-    if (_DAT_1f800184 != 2) {
+  if (_g_ActionInput != 1) {
+    if (_g_ActionInput != 2) {
       FUN_80065478(param_1,1);
       return;
     }

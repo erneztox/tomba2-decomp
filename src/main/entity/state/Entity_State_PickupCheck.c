@@ -1,5 +1,5 @@
 /**
- * @brief Pickup state machine: checks idle counter, advances state byte at entity->sub_state
+ * @brief Pickup state machine: checks idle counter, advances state u8 at entity->sub_state
  * @note Original: func_800427F4 at 0x800427F4
  */
 // Entity_State_PickupCheck
@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-undefined4 FUN_800427f4(int param_1)
+s32 FUN_800427f4(int param_1)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   int iVar2;
   
   if (param_1->sub_state == '\0') {

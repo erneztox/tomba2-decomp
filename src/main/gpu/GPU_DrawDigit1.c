@@ -6,7 +6,7 @@
 
 
 
-void FUN_8007c620(undefined4 param_1,undefined4 param_2,undefined1 param_3)
+void FUN_8007c620(s32 param_1,s32 param_2,u8 param_3)
 
 {
   FUN_8007c2a4(param_1,param_2,param_3,DAT_800bfa21 | 0x80,1);

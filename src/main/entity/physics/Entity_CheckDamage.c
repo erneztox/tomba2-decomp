@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-void FUN_8006918c(undefined1 *param_1,int param_2)
+void FUN_8006918c(u8 *param_1,int param_2)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
   
   if (param_2 != 0) {

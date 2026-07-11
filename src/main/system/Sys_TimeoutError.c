@@ -6,13 +6,13 @@
 
 
 
-undefined4 FUN_8009cc2c(undefined4 param_1)
+s32 FUN_8009cc2c(s32 param_1)
 
 {
   FUN_8009a730(s__s_timeout__8001caac,param_1);
-  *DAT_800ad098 = 0x80000000;
-  *DAT_800ad06c = 0;
-  *DAT_800ad078 = 0;
-  *DAT_800ad098 = 0x60000000;
+  *g_CD_Status = 0x80000000;
+  *g_CD_IRQ = 0;
+  *g_CD_Control = 0;
+  *g_CD_Status = 0x60000000;
   return 0;
 }

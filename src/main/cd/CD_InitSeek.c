@@ -6,7 +6,7 @@
 
 
 
-undefined1 * FUN_80086350(void)
+u8 * FUN_80086350(void)
 
 {
   FUN_800865c8(&DAT_800abdf4,8);

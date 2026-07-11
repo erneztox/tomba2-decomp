@@ -1,5 +1,5 @@
 /**
- * @brief UI text line draw: iterates string, draws each char via FUN_8004ea4c
+ * @brief UI text line draw: iterates string, draws each s8 via FUN_8004ea4c
  * @note Original: func_8004EFC0 at 0x8004EFC0
  */
 // UI_DrawTextLine
@@ -7,12 +7,12 @@
 
 
 #include "tomba.h"
-char FUN_8004efc0(char *param_1,short *param_2)
+s8 FUN_8004efc0(char *param_1,s16 *param_2)
 
 {
-  short sVar1;
-  char cVar2;
-  byte local_20->counter1;
+  s16 sVar1;
+  s8 cVar2;
+  u8 local_20->counter1;
   
   cVar2 = '\0';
   *param_2 = 0;

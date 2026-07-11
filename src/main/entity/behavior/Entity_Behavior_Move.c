@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-void FUN_80068a94(undefined1 *param_1)
+void FUN_80068a94(u8 *param_1)
 
 {
-  short sVar1;
-  undefined2 uVar2;
+  s16 sVar1;
+  s16 uVar2;
   int iVar3;
   int iVar4;
   
@@ -30,9 +30,9 @@ void FUN_80068a94(undefined1 *param_1)
     param_1->behavior_state = 0;
   }
   param_1->rot_z = param_1->rot_z + 0x200;
-  iVar3 = FUN_80083e80((int)*(short *)(param_1 + 0xbe));
+  iVar3 = FUN_80083e80((int)*(s16 *)(param_1 + 0xbe));
   param_1->pos_y_fixed = param_1->pos_y_fixed + iVar3 * param_1->anim_counter * 0x10;
-  iVar3 = FUN_80083f50((int)*(short *)(param_1 + 0xbe));
+  iVar3 = FUN_80083f50((int)*(s16 *)(param_1 + 0xbe));
   iVar4 = iVar3 * param_1->anim_counter >> 4;
   iVar3 = param_1->normal_z * iVar4;
   *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + param_1->normal_x * iVar4;

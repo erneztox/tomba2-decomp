@@ -7,21 +7,21 @@
 
 
 #include "tomba.h"
-void FUN_8003a290(int param_1,short *param_2)
+void FUN_8003a290(int param_1,s16 *param_2)
 
 {
-  byte bVar1;
-  ushort uVar2;
-  short sVar3;
+  u8 bVar1;
+  u16 uVar2;
+  s16 sVar3;
   int iVar4;
   
-  bVar1 = *(byte *)(param_2 + 0x1f);
+  bVar1 = *(u8 *)(param_2 + 0x1f);
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (bVar1 != 2) {
         return;
       }
-      if (*(char *)((int)param_2 + 0x3f) != '\0') {
+      if (*(s8*)((int)param_2 + 0x3f) != '\0') {
         return;
       }
       param_1->behavior_state = param_1->behavior_state + '\x01';
@@ -30,10 +30,10 @@ void FUN_8003a290(int param_1,short *param_2)
     if (bVar1 != 0) {
       return;
     }
-    *(undefined1 *)(param_2 + 0x1f) = 1;
+    *(u8 *)(param_2 + 0x1f) = 1;
     iVar4 = FUN_8003a1e4(param_1,param_2);
     param_2->counter1 = 0;
-    param_2->render_flags = (short)((iVar4 << 4) / 0x18);
+    param_2->render_flags = (s16)((iVar4 << 4) / 0x18);
     uVar2 = FUN_8009a450();
     param_2->counter2 = (uVar2 & 0xf) - 0xc0;
     uVar2 = FUN_8009a450();
@@ -48,7 +48,7 @@ void FUN_8003a290(int param_1,short *param_2)
     sVar3 = FUN_8003a1e4(param_1,param_2);
     *param_2 = sVar3;
     param_2->state = 0;
-    *(char *)(param_2 + 0x1f) = (char)param_2[0x1f] + '\x01';
+    *(s8*)(param_2 + 0x1f) = (char)param_2[0x1f] + '\x01';
   }
   return;
 }

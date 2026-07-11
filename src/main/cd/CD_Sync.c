@@ -8,15 +8,15 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-uint FUN_8008a6ec(int param_1,undefined1 *param_2)
+uint FUN_8008a6ec(int param_1,u8 *param_2)
 
 {
-  byte bVar1;
-  undefined1 uVar2;
-  bool bVar3;
+  u8 bVar1;
+  u8 uVar2;
+  s32 bVar3;
   int iVar4;
   uint uVar5;
-  undefined1 *puVar6;
+  u8 *puVar6;
   
   _DAT_80102748 = FUN_80085900(0xffffffff);
   _DAT_80102748 = _DAT_80102748 + 0x3c0;
@@ -64,7 +64,7 @@ uint FUN_8008a6ec(int param_1,undefined1 *param_2)
   DAT_800ac298 = 2;
   puVar6 = &DAT_80102730;
   iVar4 = 7;
-  if (param_2 == (undefined1 *)0x0) {
+  if (param_2 == (u8 *)0x0) {
     DAT_800ac298 = 2;
     return uVar5;
   }

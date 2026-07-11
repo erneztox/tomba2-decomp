@@ -10,7 +10,7 @@
 void FUN_80081690(uint param_1,int param_2)
 
 {
-  undefined *puVar1;
+  void *puVar1;
   
   if (1 < DAT_800a59a2) {
     (*(code *)PTR_FUN_800a599c)(s_DrawOTagEnv__08x__08x_____8001bfac,param_1,param_2);

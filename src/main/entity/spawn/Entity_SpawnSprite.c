@@ -9,12 +9,12 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_8007def8(ushort param_1,ushort param_2,undefined1 param_3)
+int FUN_8007def8(u16 param_1,u16 param_2,u8 param_3)
 
 {
-  undefined2 uVar1;
+  s16 uVar1;
   int iVar2;
-  ushort *puVar3;
+  u16 *puVar3;
   
   iVar2 = FUN_8007a5a8(3);
   if (iVar2 == 0) {
@@ -49,14 +49,14 @@ LAB_8007df7c:
   else {
     iVar2->sprite_flags = 0xff;
   }
-  *(ushort *)(iVar2 + 0x5e) = param_2 & 0x7f;
+  *(u16 *)(iVar2 + 0x5e) = param_2 & 0x7f;
   iVar2->collision_state = 0xff;
   iVar2->move_mode = 0xff;
-  puVar3 = (ushort *)
+  puVar3 = (u16 *)
            (_DAT_800ecf8c +
            *_DAT_800ecf8c * 2 + *(int *)(_DAT_800ecf8c + iVar2->draw_y * 2 + 8) * 2 + 8);
-  *(ushort **)(iVar2 + 0x48) = puVar3;
-  *(ushort **)(iVar2 + 0x4c) = puVar3 + 8;
-  *(ushort **)(iVar2 + 0x50) = puVar3 + 8 + (uint)*puVar3 * 2;
+  *(u16 **)(iVar2 + 0x48) = puVar3;
+  *(u16 **)(iVar2 + 0x4c) = puVar3 + 8;
+  *(u16 **)(iVar2 + 0x50) = puVar3 + 8 + (uint)*puVar3 * 2;
   return iVar2;
 }

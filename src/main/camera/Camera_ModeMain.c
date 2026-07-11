@@ -1,5 +1,5 @@
 /**
- * @brief Camera mode main: switch on DAT_800e7fe4, sets params
+ * @brief Camera mode main: switch on g_CameraMode2, sets params
  * @note Original: func_8006D654 at 0x8006D654
  */
 // Camera_ModeMain
@@ -12,13 +12,13 @@
 void FUN_8006d654(int param_1)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
   int iVar3;
   int iVar4;
   int iVar5;
   
-  switch(DAT_800e7fe4) {
+  switch(g_CameraMode2) {
   case 0:
   case 1:
   case 4:

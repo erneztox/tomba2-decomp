@@ -6,10 +6,10 @@
 
 
 
-undefined4 FUN_80083214(uint param_1)
+s32 FUN_80083214(uint param_1)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   uint uVar2;
   
   DAT_800a5ad8 = FUN_80085c9c(0);

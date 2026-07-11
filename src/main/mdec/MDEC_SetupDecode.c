@@ -7,17 +7,17 @@
 
 
 #include "tomba.h"
-undefined1 FUN_80087aec(void)
+u8 FUN_80087aec(void)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
   
   iVar2 = (*DAT_800abe4c)();
-  if ((((*(char *)(iVar2 + 0x37) != '\0') || (*(char *)(iVar2 + 0x38) != '\0')) ||
-      ((iVar2 != iVar2->parent && (*(char *)(iVar2 + 0x39) != '\0')))) ||
+  if ((((*(s8*)(iVar2 + 0x37) != '\0') || (*(s8*)(iVar2 + 0x38) != '\0')) ||
+      ((iVar2 != iVar2->parent && (*(s8*)(iVar2 + 0x39) != '\0')))) ||
      (**(char **)(iVar2 + 0x30) != '\0')) {
-    bVar1 = *(byte *)(iVar2 + 0x49);
+    bVar1 = *(u8 *)(iVar2 + 0x49);
     if (bVar1 == 3) {
       return 1;
     }
@@ -30,5 +30,5 @@ undefined1 FUN_80087aec(void)
       return 4;
     }
   }
-  return *(undefined1 *)(iVar2 + 0x49);
+  return *(u8 *)(iVar2 + 0x49);
 }

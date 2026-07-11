@@ -10,11 +10,11 @@
 void FUN_8004e414(int param_1)
 
 {
-  byte bVar1;
-  undefined2 uVar2;
-  short sVar3;
+  u8 bVar1;
+  s16 uVar2;
+  s16 sVar3;
   int iVar4;
-  undefined4 uVar5;
+  s32 uVar5;
   
   bVar1 = param_1->state;
   if (bVar1 != 1) {
@@ -32,8 +32,8 @@ void FUN_8004e414(int param_1)
     }
     if (bVar1 == 2) {
       param_1->state = 3;
-      DAT_1f800137 = 0;
-      FUN_80074f24(DAT_800bf870);
+      g_CurrentOverlay = 0;
+      FUN_80074f24(g_GameState);
       return;
     }
     if (bVar1 != 3) {
@@ -44,7 +44,7 @@ void FUN_8004e414(int param_1)
   }
   bVar1 = param_1->behavior_state;
   if (bVar1 == 1) {
-    if ((DAT_800bf822 & 1) != 0) {
+    if ((g_EventInput & 1) != 0) {
       return;
     }
     param_1->behavior_state = 2;
@@ -67,23 +67,23 @@ void FUN_8004e414(int param_1)
   case 0:
     switch((int)((param_1->draw_x - 0x6f) * 0x10000) >> 0x10) {
     case 0:
-      *(undefined2 *)(param_1 + 100) = 1;
+      *(s16 *)(param_1 + 100) = 1;
       uVar2 = 0x62;
       param_1->angle_delta = 0;
       break;
     case 1:
-      *(undefined2 *)(param_1 + 100) = 0xffff;
+      *(s16 *)(param_1 + 100) = 0xffff;
       uVar2 = 0x62;
       param_1->angle_delta = 0;
       break;
     case 2:
       param_1->angle_delta = 2;
-      *(undefined2 *)(param_1 + 100) = 3;
+      *(s16 *)(param_1 + 100) = 3;
       uVar2 = 99;
       break;
     case 3:
       param_1->angle_delta = 2;
-      *(undefined2 *)(param_1 + 100) = 0xffff;
+      *(s16 *)(param_1 + 100) = 0xffff;
       uVar2 = 99;
       break;
     case 4:
@@ -94,13 +94,13 @@ void FUN_8004e414(int param_1)
       param_1->angle_delta = 4;
       uVar2 = 0xffff;
 LAB_8004e5d4:
-      *(undefined2 *)(param_1 + 100) = uVar2;
+      *(s16 *)(param_1 + 100) = uVar2;
       uVar2 = 100;
       break;
     default:
       goto switchD_8004e558_default;
     }
-    *(undefined2 *)(param_1 + 0x66) = uVar2;
+    *(s16 *)(param_1 + 0x66) = uVar2;
 switchD_8004e558_default:
     param_1->action_state = param_1->action_state + '\x01';
 switchD_8004e51c_caseD_1:
@@ -115,16 +115,16 @@ LAB_8004e778:
   case 1:
     goto switchD_8004e51c_caseD_1;
   case 2:
-    if (*(char *)(param_1->parent + 4) != '\x02') {
+    if (*(s8*)(param_1->parent + 4) != '\x02') {
       return;
     }
-    *(undefined1 *)(param_1->parent + 4) = 3;
+    *(u8 *)(param_1->parent + 4) = 3;
     break;
   case 3:
     iVar4 = FUN_8004e29c(param_1);
     if (iVar4 != 1) {
       if (iVar4 == 2) {
-        if (*(short *)(param_1 + 100) != -1) {
+        if (*(s16 *)(param_1 + 100) != -1) {
           param_1->action_state = 5;
           return;
         }
@@ -132,7 +132,7 @@ LAB_8004e778:
         uVar5 = 99;
       }
       else {
-        if (*(short *)(param_1 + 100) != -1) {
+        if (*(s16 *)(param_1 + 100) != -1) {
           param_1->action_state = 8;
           return;
         }
@@ -148,24 +148,24 @@ LAB_8004e778:
     if (iVar4 == 0) {
       return;
     }
-    if (*(short *)(param_1 + 100) == -1) {
+    if (*(s16 *)(param_1 + 100) == -1) {
       param_1->state = 2;
       return;
     }
     break;
   case 5:
   case 8:
-    sVar3 = *(short *)(param_1 + 100);
+    sVar3 = *(s16 *)(param_1 + 100);
     goto LAB_8004e778;
   case 6:
-    if (*(char *)(param_1->parent + 4) != '\x02') {
+    if (*(s8*)(param_1->parent + 4) != '\x02') {
       return;
     }
-    *(undefined1 *)(param_1->parent + 4) = 3;
-    if (*(byte *)(*(short *)(param_1 + 0x66) + -0x7ff4074c) < 3) {
+    *(u8 *)(param_1->parent + 4) = 3;
+    if (*(u8 *)(*(s16 *)(param_1 + 0x66) + -0x7ff4074c) < 3) {
       param_1->timer1 = 0x1e;
       param_1->action_state = param_1->action_state + '\x01';
-      *(undefined1 *)(*(short *)(param_1 + 0x66) + -0x7ff4074c) = 3;
+      *(u8 *)(*(s16 *)(param_1 + 0x66) + -0x7ff4074c) = 3;
       return;
     }
     param_1->state = 2;
@@ -183,10 +183,10 @@ LAB_8004e728:
     param_1->state = 3;
     return;
   case 9:
-    if (*(char *)(param_1->parent + 4) != '\x02') {
+    if (*(s8*)(param_1->parent + 4) != '\x02') {
       return;
     }
-    *(undefined1 *)(param_1->parent + 4) = 3;
+    *(u8 *)(param_1->parent + 4) = 3;
     param_1->state = 2;
     FUN_8004ed94(0x54,0x41);
     return;

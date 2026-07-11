@@ -12,8 +12,8 @@ void FUN_800713f8(int param_1)
 {
   if (param_1->action_state == '\0') {
     FUN_80040cdc(param_1,&PTR_DAT_8001b860,
-                 *(undefined4 *)
-                  ((uint)DAT_800bf830 * 4 + *(int *)(&DAT_800a4bbc + (uint)DAT_800bf870 * 4)));
+                 *(s32 *)
+                  ((uint)DAT_800bf830 * 4 + *(int *)(&DAT_800a4bbc + (uint)g_GameState * 4)));
     param_1->anim_check = 2;
     param_1->action_state = param_1->action_state + '\x01';
   }

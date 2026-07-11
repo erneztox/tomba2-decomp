@@ -9,87 +9,87 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_800462e4(int param_1,ushort param_2,short param_3,short param_4)
+s32 FUN_800462e4(int param_1,u16 param_2,s16 param_3,s16 param_4)
 
 {
-  ushort uVar1;
-  bool bVar2;
+  u16 uVar1;
+  s32 bVar2;
   int iVar3;
   int iVar4;
-  undefined4 uVar5;
-  ushort uVar6;
+  s32 uVar5;
+  u16 uVar6;
   int iVar7;
-  ushort uVar8;
+  u16 uVar8;
   
   bVar2 = false;
-  if ((short)_DAT_1f8001ec->kind < 1) {
-    uVar8 = _DAT_1f8001ec->flags;
-    _DAT_1f8001a4 = uVar8 + _DAT_1f8001ec->kind;
+  if ((s16)_g_CollisionData->kind < 1) {
+    uVar8 = _g_CollisionData->flags;
+    _DAT_1f8001a4 = uVar8 + _g_CollisionData->kind;
   }
   else {
-    _DAT_1f8001a4 = _DAT_1f8001ec->flags;
-    uVar8 = _DAT_1f8001a4 + _DAT_1f8001ec->kind;
+    _DAT_1f8001a4 = _g_CollisionData->flags;
+    uVar8 = _DAT_1f8001a4 + _g_CollisionData->kind;
   }
-  uVar1 = *_DAT_1f8001ec;
-  uVar6 = (ushort)param_1;
+  uVar1 = *_g_CollisionData;
+  uVar6 = (u16)param_1;
   if ((uVar1 & 0x80) == 0) {
-    if ((short)uVar8 < _DAT_1f8001be) {
+    if ((s16)uVar8 < _DAT_1f8001be) {
       return 0;
     }
-    if (_DAT_1f8001be < (short)_DAT_1f8001a4) {
+    if (_DAT_1f8001be < (s16)_DAT_1f8001a4) {
       return 0xffffffff;
     }
     if ((uVar1 & 0x20) == 0) {
       if ((uVar1 & 0x40) == 0) {
-        if ((*_DAT_1f8001e0 & 8) == 0) {
-          _DAT_1f8001c6 = 0;
-          _DAT_1f8001c2 = uVar6;
+        if ((*_g_CollisionResult & 8) == 0) {
+          _g_CollisionFlag2 = 0;
+          _g_CollisionFlag = uVar6;
         }
         else {
-          _DAT_1f8001c2 = 0;
-          _DAT_1f8001c6 = uVar6;
+          _g_CollisionFlag = 0;
+          _g_CollisionFlag2 = uVar6;
         }
       }
       else {
-        _DAT_1f8001c2 = 0x3f;
-        _DAT_1f8001c6 = param_2;
+        _g_CollisionFlag = 0x3f;
+        _g_CollisionFlag2 = param_2;
       }
       uVar5 = 1;
     }
     else {
       if ((uVar1 & 0x40) == 0) {
-        if ((*_DAT_1f8001e0 & 8) == 0) {
-          _DAT_1f8001c2 = uVar6 - 1;
+        if ((*_g_CollisionResult & 8) == 0) {
+          _g_CollisionFlag = uVar6 - 1;
           if (param_2 == 0) {
-            _DAT_1f8001c6 = 0;
+            _g_CollisionFlag2 = 0;
           }
           else {
-            _DAT_1f8001c6 = 0xffff;
+            _g_CollisionFlag2 = 0xffff;
           }
         }
         else {
-          _DAT_1f8001c2 = 0xffff;
-          _DAT_1f8001c6 = uVar6 - 1;
+          _g_CollisionFlag = 0xffff;
+          _g_CollisionFlag2 = uVar6 - 1;
         }
       }
       else {
-        _DAT_1f8001c2 = 0x40;
-        _DAT_1f8001c6 = param_2 + 1;
+        _g_CollisionFlag = 0x40;
+        _g_CollisionFlag2 = param_2 + 1;
       }
       uVar5 = 2;
     }
-    _DAT_1f8001a6 = *_DAT_1f8001ec;
-    uVar8 = _DAT_1f8001ec->sub_type;
+    _DAT_1f8001a6 = *_g_CollisionData;
+    uVar8 = _g_CollisionData->sub_type;
     goto LAB_80046740;
   }
   if ((uVar1 & 0x40) == 0) {
-    if ((short)uVar8 < _DAT_1f8001be) {
+    if ((s16)uVar8 < _DAT_1f8001be) {
       return 0;
     }
-    if ((short)_DAT_1f8001a4 <= _DAT_1f8001be) {
-      if ((*_DAT_1f8001e0 & 8) == 0) {
-        iVar4 = (int)(short)_DAT_1f8001ec->kind * ((int)(short)_DAT_1f8001c2 - (int)(short)uVar6);
-        iVar7 = (int)(short)(uVar6 ^ 0x3f);
+    if ((s16)_DAT_1f8001a4 <= _DAT_1f8001be) {
+      if ((*_g_CollisionResult & 8) == 0) {
+        iVar4 = (int)(s16)_g_CollisionData->kind * ((int)(s16)_g_CollisionFlag - (int)(s16)uVar6);
+        iVar7 = (int)(s16)(uVar6 ^ 0x3f);
         iVar3 = iVar4 / iVar7;
         if (iVar7 == 0) {
           trap(0x1c00);
@@ -97,24 +97,24 @@ undefined4 FUN_800462e4(int param_1,ushort param_2,short param_3,short param_4)
         if ((iVar7 == -1) && (iVar4 == -0x80000000)) {
           trap(0x1800);
         }
-        uVar8 = _DAT_1f8001ec->flags;
+        uVar8 = _g_CollisionData->flags;
       }
       else {
-        uVar8 = _DAT_1f8001ec->flags;
-        iVar3 = (int)(short)_DAT_1f8001ec->kind * (int)(short)_DAT_1f8001c2 >> 6;
+        uVar8 = _g_CollisionData->flags;
+        iVar3 = (int)(s16)_g_CollisionData->kind * (int)(s16)_g_CollisionFlag >> 6;
       }
       if ((int)(((uint)uVar8 + iVar3) * 0x10000) >> 0x10 < (int)_DAT_1f8001be) goto LAB_80046530;
       goto LAB_80046538;
     }
   }
   else {
-    if ((short)uVar8 < _DAT_1f8001be) {
+    if ((s16)uVar8 < _DAT_1f8001be) {
       return 0;
     }
-    if ((short)_DAT_1f8001a4 <= _DAT_1f8001be) {
-      if ((*_DAT_1f8001e0 & 8) == 0) {
-        iVar4 = (int)(short)_DAT_1f8001ec->kind * ((int)(short)_DAT_1f8001c2 - (int)(short)uVar6);
-        iVar7 = (int)(short)(uVar6 ^ 0x3f);
+    if ((s16)_DAT_1f8001a4 <= _DAT_1f8001be) {
+      if ((*_g_CollisionResult & 8) == 0) {
+        iVar4 = (int)(s16)_g_CollisionData->kind * ((int)(s16)_g_CollisionFlag - (int)(s16)uVar6);
+        iVar7 = (int)(s16)(uVar6 ^ 0x3f);
         iVar3 = iVar4 / iVar7;
         if (iVar7 == 0) {
           trap(0x1c00);
@@ -122,11 +122,11 @@ undefined4 FUN_800462e4(int param_1,ushort param_2,short param_3,short param_4)
         if ((iVar7 == -1) && (iVar4 == -0x80000000)) {
           trap(0x1800);
         }
-        uVar8 = _DAT_1f8001ec->flags;
+        uVar8 = _g_CollisionData->flags;
       }
       else {
-        uVar8 = _DAT_1f8001ec->flags;
-        iVar3 = (int)(short)_DAT_1f8001ec->kind * (int)(short)_DAT_1f8001c2 >> 6;
+        uVar8 = _g_CollisionData->flags;
+        iVar3 = (int)(s16)_g_CollisionData->kind * (int)(s16)_g_CollisionFlag >> 6;
       }
       if ((int)_DAT_1f8001be < (int)(((uint)uVar8 + iVar3) * 0x10000) >> 0x10) {
 LAB_80046530:
@@ -142,15 +142,15 @@ LAB_80046538:
     return 0xffffffff;
   }
   if (((param_3 == 0) || ((_DAT_1f8001a6 & 0x400) == 0)) ||
-     ((int)(short)_DAT_1f8001a4 <= _DAT_1f8001be + -0x20)) {
-    _DAT_1f8001c4 = _DAT_1f8001be - _DAT_1f8001ec->flags;
+     ((int)(s16)_DAT_1f8001a4 <= _DAT_1f8001be + -0x20)) {
+    _DAT_1f8001c4 = _DAT_1f8001be - _g_CollisionData->flags;
   }
   else {
-    _DAT_1f8001c4 = _DAT_1f8001a4 - _DAT_1f8001ec->flags;
+    _DAT_1f8001c4 = _DAT_1f8001a4 - _g_CollisionData->flags;
   }
-  if ((*_DAT_1f8001e0 & 8) == 0) {
-    iVar7 = (int)(short)(uVar6 ^ 0x3f);
-    iVar4 = (int)(short)_DAT_1f8001ec->kind;
+  if ((*_g_CollisionResult & 8) == 0) {
+    iVar7 = (int)(s16)(uVar6 ^ 0x3f);
+    iVar4 = (int)(s16)_g_CollisionData->kind;
     if (iVar4 == 0) {
       trap(0x1c00);
     }
@@ -158,32 +158,32 @@ LAB_80046538:
       trap(0x1800);
     }
     param_1 = param_1 + (_DAT_1f8001c4 * iVar7) / iVar4;
-    iVar4 = (int)(short)param_2 * (param_1 * 0x10000 >> 0x10);
+    iVar4 = (int)(s16)param_2 * (param_1 * 0x10000 >> 0x10);
     if (iVar7 == 0) {
       trap(0x1c00);
     }
     if ((iVar7 == -1) && (iVar4 == -0x80000000)) {
       trap(0x1800);
     }
-    _DAT_1f8001c2 = (ushort)param_1;
-    _DAT_1f8001c6 = (ushort)(iVar4 / iVar7);
+    _g_CollisionFlag = (u16)param_1;
+    _g_CollisionFlag2 = (u16)(iVar4 / iVar7);
   }
   else {
-    iVar4 = (int)(short)_DAT_1f8001ec->kind;
+    iVar4 = (int)(s16)_g_CollisionData->kind;
     if (iVar4 == 0) {
       trap(0x1c00);
     }
     if ((iVar4 == -1) && ((int)_DAT_1f8001c4 << 6 == -0x80000000)) {
       trap(0x1800);
     }
-    _DAT_1f8001c2 = (ushort)(((int)_DAT_1f8001c4 << 6) / iVar4);
-    _DAT_1f8001c6 =
-         uVar6 + (short)(((int)(short)param_2 - (int)(short)uVar6) * (int)(short)_DAT_1f8001c2 >> 6)
+    _g_CollisionFlag = (u16)(((int)_DAT_1f8001c4 << 6) / iVar4);
+    _g_CollisionFlag2 =
+         uVar6 + (s16)(((int)(s16)param_2 - (int)(s16)uVar6) * (int)(s16)_g_CollisionFlag >> 6)
     ;
   }
   uVar5 = 1;
-  _DAT_1f8001a6 = *_DAT_1f8001ec;
-  uVar8 = _DAT_1f8001ec->sub_type;
+  _DAT_1f8001a6 = *_g_CollisionData;
+  uVar8 = _g_CollisionData->sub_type;
 LAB_80046740:
   _DAT_1f8001e8 = _DAT_1f8001dc + (uint)uVar8 * 3;
   return uVar5;

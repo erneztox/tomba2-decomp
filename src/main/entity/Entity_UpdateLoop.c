@@ -15,7 +15,7 @@ void FUN_8007b008(void)
   int iVar1;
   int iVar2;
   
-  iVar1 = _DAT_800f2624;
+  iVar1 = _g_ActiveEntitiesList;
   while (iVar1 != 0) {
     iVar2 = iVar1->next;
     iVar1->flags = 0;

@@ -11,8 +11,8 @@
 void FUN_80074bf8(uint param_1)
 
 {
-  byte bVar1;
-  undefined4 *puVar2;
+  u8 bVar1;
+  s32 *puVar2;
   int iVar3;
   int iVar4;
   uint uVar5;
@@ -40,23 +40,23 @@ void FUN_80074bf8(uint param_1)
       }
     }
     FUN_80074e48();
-    _DAT_800bed80 = (ushort)uVar5;
+    _DAT_800bed80 = (u16)uVar5;
     FUN_800963a0((&DAT_800be36c)[uVar5 * 8]);
     bVar1 = DAT_800fb164;
     if ((uVar5 < 4) || ((uVar5 < 0xd && (10 < uVar5)))) {
       bVar1 = DAT_800fb165;
     }
-    if (DAT_800bf870 == '\x15') {
+    if (g_GameState == '\x15') {
       bVar1 = DAT_800fb164;
     }
     iVar4 = (int)((((uint)bVar1 * 0x7f) / 9) * 0x10000) >> 0x10;
-    FUN_80091f50((int)*(short *)(&DAT_800be368 + (short)_DAT_800bed80 * 8),iVar4,iVar4);
-    FUN_80090560((int)*(short *)(&DAT_800be368 + (short)_DAT_800bed80 * 8),1,(param_1 & 0x80) == 0);
+    FUN_80091f50((int)*(s16 *)(&DAT_800be368 + (s16)_DAT_800bed80 * 8),iVar4,iVar4);
+    FUN_80090560((int)*(s16 *)(&DAT_800be368 + (s16)_DAT_800bed80 * 8),1,(param_1 & 0x80) == 0);
     iVar3 = 0;
-    iVar4 = (int)*(short *)(&DAT_800be36c + (short)_DAT_800bed80 * 8);
+    iVar4 = (int)*(s16 *)(&DAT_800be36c + (s16)_DAT_800bed80 * 8);
     _DAT_800bed78 = iVar4;
     if (0 < iVar4) {
-      puVar2 = (undefined4 *)&DAT_800be238;
+      puVar2 = (s32 *)&DAT_800be238;
       do {
         *puVar2 = 0xffffffff;
         iVar3 = iVar3 + 1;

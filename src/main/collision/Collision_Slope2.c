@@ -9,19 +9,19 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80048fc4(int param_1,int param_2)
+s32 FUN_80048fc4(int param_1,int param_2)
 
 {
   int iVar1;
   int iVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   int iVar4;
   int iVar5;
   
-  iVar1 = (uint)_DAT_1f8001b2 - (int)(short)_DAT_1f8001bc;
-  iVar2 = (uint)_DAT_1f8001b4 - (int)(short)_DAT_1f8001c0;
-  iVar5 = (uint)_DAT_1f8001b6 - (int)(short)_DAT_1f8001bc;
-  iVar4 = (uint)_DAT_1f8001b8 - (int)(short)_DAT_1f8001c0;
+  iVar1 = (uint)_DAT_1f8001b2 - (int)(s16)_DAT_1f8001bc;
+  iVar2 = (uint)_DAT_1f8001b4 - (int)(s16)_DAT_1f8001c0;
+  iVar5 = (uint)_DAT_1f8001b6 - (int)(s16)_DAT_1f8001bc;
+  iVar4 = (uint)_DAT_1f8001b8 - (int)(s16)_DAT_1f8001c0;
   if (iVar5 * iVar5 + iVar4 * iVar4 < iVar1 * iVar1 + iVar2 * iVar2) {
     if (DAT_1f8001fd == '\0') {
       uVar3 = 0xffffffff;

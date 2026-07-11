@@ -15,17 +15,17 @@ void FUN_80068e68(int param_1)
   param_1->flags = 1;
   if ((param_1->anim_id & 8) == 0) {
     if ((param_1->anim_id & 1) == 0) {
-      *(undefined2 *)(param_1 + 0xbe) = 0;
+      *(s16 *)(param_1 + 0xbe) = 0;
       param_1->anim_id = 0;
     }
     else {
-      *(undefined2 *)(param_1 + 0xbe) = 0x800;
+      *(s16 *)(param_1 + 0xbe) = 0x800;
       param_1->anim_id = 1;
     }
     param_1->type_flags = 0;
   }
   else {
-    *(undefined2 *)(param_1 + 0xbe) = 0x400;
+    *(s16 *)(param_1 + 0xbe) = 0x400;
     param_1->anim_id = 8;
     param_1->type_flags = 0x400;
   }
@@ -45,7 +45,7 @@ void FUN_80068e68(int param_1)
   param_1->input_flags = 0;
   if ((param_1->sub_type & 0x80) == 0) {
     uVar1 = param_1->sub_type & 0x7f;
-    FUN_80077c40(param_1,*(undefined4 *)(&DAT_800a4a00 + uVar1 * 4),(&DAT_800a4a44)[uVar1]);
+    FUN_80077c40(param_1,*(s32 *)(&DAT_800a4a00 + uVar1 * 4),(&DAT_800a4a44)[uVar1]);
   }
   FUN_80069858(param_1,0,1);
   if ((param_1->sub_type & 0x80) == 0) {

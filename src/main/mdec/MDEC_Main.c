@@ -12,14 +12,14 @@
 void FUN_8008d110(void)
 
 {
-  undefined4 *puVar1;
+  s32 *puVar1;
   int iVar2;
-  undefined4 uVar3;
-  undefined1 *puVar4;
+  s32 uVar3;
+  u8 *puVar4;
   uint uVar5;
-  short *psVar6;
-  undefined4 local_18->kind;
-  byte local_10->counter1;
+  s16 *psVar6;
+  s32 local_18->kind;
+  u8 local_10->counter1;
   
   if (_DAT_80102704 != 1) {
     if ((_DAT_801026f0 == 0) || ((*DAT_800ac3c4 & 0x1000000) == 0)) {
@@ -37,7 +37,7 @@ void FUN_8008d110(void)
             uVar5 = 0;
             if (_DAT_80102760 == 0) {
               do {
-                puVar4 = (undefined1 *)((int)local_18 + uVar5);
+                puVar4 = (u8 *)((int)local_18 + uVar5);
                 uVar5 = uVar5 + 1;
                 *puVar4 = *DAT_800ac3ac;
               } while (uVar5 < 4);
@@ -57,11 +57,11 @@ void FUN_8008d110(void)
             while ((uVar5 & 0x1000000) != 0) {
               uVar5 = *DAT_800ac3d4;
             }
-            *(undefined4 *)(_DAT_80104b80 + 0xe) = local_18->type;
+            *(s32 *)(_DAT_80104b80 + 0xe) = local_18->type;
             *puVar1 = 0x20843;
             *DAT_800ac3b8 = 0x1325;
             if ((_DAT_80102720 == 1) && (_DAT_801026fc != 0)) {
-              if (_DAT_801026fc != (ushort)_DAT_80104b80->state) {
+              if (_DAT_801026fc != (u16)_DAT_80104b80->state) {
                 *_DAT_80104b80 = 0;
                 if (_DAT_80102718 == 0) {
                   return;
@@ -72,11 +72,11 @@ void FUN_8008d110(void)
               _DAT_80102720 = 0;
             }
             if ((*_DAT_80104b80 == 0x160) &&
-               (((ushort)_DAT_80104b80->flags >> 10 & 0x1f) == _DAT_80102700)) {
-              if (((int)_DAT_801026ec == (uint)(ushort)_DAT_80104b80->kind) &&
-                 ((_DAT_801026e8 == 0 || (_DAT_801026e8 == (ushort)_DAT_80104b80->state)))) {
+               (((u16)_DAT_80104b80->flags >> 10 & 0x1f) == _DAT_80102700)) {
+              if (((int)_DAT_801026ec == (uint)(u16)_DAT_80104b80->kind) &&
+                 ((_DAT_801026e8 == 0 || (_DAT_801026e8 == (u16)_DAT_80104b80->state)))) {
                 if (_DAT_80104b80->kind == 0) {
-                  _DAT_801026e8 = (uint)(ushort)_DAT_80104b80->state;
+                  _DAT_801026e8 = (uint)(u16)_DAT_80104b80->state;
                   _DAT_801026ec = 0;
                   if ((_DAT_8010271c != 0) && (_DAT_8010271c <= _DAT_801026e8)) {
                     _DAT_801026e8 = 0;
@@ -94,7 +94,7 @@ void FUN_8008d110(void)
                     DAT_800ac3ec = 7;
                     return;
                   }
-                  if ((_DAT_8010272c - _DAT_8010270c) - 1U < (uint)(ushort)_DAT_80104b80->sub_type) {
+                  if ((_DAT_8010272c - _DAT_8010270c) - 1U < (uint)(u16)_DAT_80104b80->sub_type) {
                     if (_DAT_8010271c == 0) {
                       *_DAT_80104b80 = 1;
                       _DAT_80102720 = 1;
@@ -120,10 +120,10 @@ void FUN_8008d110(void)
                     _DAT_8010270c = 0;
                     psVar6 = _DAT_80102728;
                     do {
-                      uVar3 = *(undefined4 *)_DAT_80104b80;
+                      uVar3 = *(s32 *)_DAT_80104b80;
                       _DAT_80104b80 = _DAT_80104b80 + 2;
                       uVar5 = uVar5 + 1;
-                      *(undefined4 *)psVar6 = uVar3;
+                      *(s32 *)psVar6 = uVar3;
                       psVar6 = psVar6 + 2;
                     } while (uVar5 < 8);
                     _DAT_80104b80 = _DAT_80102728;
@@ -142,7 +142,7 @@ void FUN_8008d110(void)
                   *DAT_800ac3b4 = 0x20943;
                   *DAT_800ac3b8 = 0x1323;
                 }
-                if ((ushort)_DAT_80104b80->sub_type - 1 == (uint)(ushort)_DAT_80104b80->kind) {
+                if ((u16)_DAT_80104b80->sub_type - 1 == (uint)(u16)_DAT_80104b80->kind) {
                   _DAT_80102704 = 1;
                   if (_DAT_80102718 == 0) {
                     FUN_8008da58(3,_DAT_80102724,0,0x1f8,uVar3,1,0);

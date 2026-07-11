@@ -6,10 +6,10 @@
 
 
 
-undefined4 FUN_8004139c(short *param_1,short param_2,short param_3)
+s32 FUN_8004139c(s16 *param_1,s16 param_2,s16 param_3)
 
 {
-  short sVar1;
+  s16 sVar1;
   int iVar2;
   
   iVar2 = (int)param_2 - (int)*param_1;

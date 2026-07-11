@@ -1,5 +1,5 @@
 /**
- * @brief CD buffer alloc: assigns 0x20-byte slot from _DAT_80102728 pool
+ * @brief CD buffer alloc: assigns 0x20-u8 slot from _DAT_80102728 pool
  * @note Original: func_8008CDC0 at 0x8008CDC0
  */
 // CD_AllocBuffer
@@ -11,12 +11,12 @@
 void FUN_8008cdc0(void)
 
 {
-  undefined2 *puVar1;
+  s16 *puVar1;
   
-  puVar1 = (undefined2 *)(_DAT_80102728 + _DAT_80102710 * 0x20);
+  puVar1 = (s16 *)(_DAT_80102728 + _DAT_80102710 * 0x20);
   *puVar1 = 2;
-  _DAT_80104b68 = *(undefined4 *)(puVar1 + 0xe);
-  _DAT_80104b6c = *(undefined4 *)(puVar1 + 4);
+  _DAT_80104b68 = *(s32 *)(puVar1 + 0xe);
+  _DAT_80104b6c = *(s32 *)(puVar1 + 4);
   _DAT_80102710 = _DAT_8010270c;
   if (_DAT_80104b78 != (code *)0x0) {
     (*_DAT_80104b78)();

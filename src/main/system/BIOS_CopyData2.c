@@ -9,10 +9,10 @@
 void FUN_8009c1fc(void)
 
 {
-  undefined4 *puVar1;
-  undefined4 *puVar2;
+  s32 *puVar1;
+  s32 *puVar2;
   
-  puVar1 = (undefined4 *)&DAT_0000df80;
+  puVar1 = (s32 *)&DAT_0000df80;
   puVar2 = &DAT_8009c060;
   do {
     *puVar1 = *puVar2;

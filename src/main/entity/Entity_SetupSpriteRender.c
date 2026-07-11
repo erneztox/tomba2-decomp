@@ -12,16 +12,16 @@
 void FUN_8004a828(int param_1)
 
 {
-  short sVar1;
-  ushort uVar2;
-  undefined2 uVar3;
+  s16 sVar1;
+  u16 uVar2;
+  s16 uVar3;
   int iVar4;
-  undefined **ppuVar5;
+  void **ppuVar5;
   
   param_1->render_flags = 0x11;
-  *(undefined2 *)(param_1 + 0x7a) = 0x1300;
-  *(undefined2 *)(param_1 + 0x7c) = 0x1300;
-  *(undefined2 *)(param_1 + 0x7e) = 0x1300;
+  *(s16 *)(param_1 + 0x7a) = 0x1300;
+  *(s16 *)(param_1 + 0x7c) = 0x1300;
+  *(s16 *)(param_1 + 0x7e) = 0x1300;
   param_1->sub_anim_id = 0;
   param_1->target_rot_y = 0;
   param_1->sprite_flags = 0;
@@ -37,28 +37,28 @@ void FUN_8004a828(int param_1)
     }
   }
   iVar4 = (uint)param_1->sub_type * 8;
-  uVar2 = *(ushort *)(&DAT_800a29ce + iVar4);
-  if (((int)*(short *)(&DAT_800a29ce + iVar4) & 0x8000U) != 0) {
+  uVar2 = *(u16 *)(&DAT_800a29ce + iVar4);
+  if (((int)*(s16 *)(&DAT_800a29ce + iVar4) & 0x8000U) != 0) {
     param_1->sprite_flags = param_1->sprite_flags | 1;
   }
   if ((uVar2 & 0x7fff) == 1) {
     param_1->draw_y = 0;
     param_1->sprite_data = _DAT_800ecf80;
-    sVar1 = *(short *)(&DAT_800a29cc + iVar4);
-    ppuVar5 = *(undefined ***)(&DAT_800a58fc + (uint)DAT_800bf870 * 4);
+    sVar1 = *(s16 *)(&DAT_800a29cc + iVar4);
+    ppuVar5 = *(void ***)(&DAT_800a58fc + (uint)g_GameState * 4);
   }
   else {
     param_1->draw_y = uVar2 & 0x7fff;
-    param_1->sprite_data = _DAT_800ecf58;
-    sVar1 = *(short *)(&DAT_800a29cc + iVar4);
+    param_1->sprite_data = _g_OT_Data;
+    sVar1 = *(s16 *)(&DAT_800a29cc + iVar4);
     ppuVar5 = &PTR_DAT_80017334;
   }
   FUN_80077b38(param_1,ppuVar5,(int)sVar1);
-  param_1->bounds_min_x = (ushort)(byte)(&DAT_800a29d0)[iVar4];
-  param_1->bounds_size = (ushort)(byte)(&DAT_800a29d0)[iVar4] << 1;
-  param_1->bounds_min_y = (ushort)(byte)(&DAT_800a29d1)[iVar4];
-  param_1->bounds_max_y = (ushort)(byte)(&DAT_800a29d1)[iVar4] << 1;
-  uVar3 = *(undefined2 *)(&DAT_800a29d2 + iVar4);
+  param_1->bounds_min_x = (u16)(u8)(&DAT_800a29d0)[iVar4];
+  param_1->bounds_size = (u16)(u8)(&DAT_800a29d0)[iVar4] << 1;
+  param_1->bounds_min_y = (u16)(u8)(&DAT_800a29d1)[iVar4];
+  param_1->bounds_max_y = (u16)(u8)(&DAT_800a29d1)[iVar4] << 1;
+  uVar3 = *(s16 *)(&DAT_800a29d2 + iVar4);
   param_1->move_mode = 0;
   param_1->target_angle = uVar3;
   return;

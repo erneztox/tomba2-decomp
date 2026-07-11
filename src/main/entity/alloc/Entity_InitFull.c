@@ -9,21 +9,21 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-uint FUN_8001e860(undefined1 *param_1,undefined1 *param_2,uint param_3,uint param_4)
+uint FUN_8001e860(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
 
 {
-  ushort uVar1;
-  short sVar2;
-  short sVar3;
-  short sVar4;
-  undefined4 uVar5;
-  undefined1 uVar6;
-  undefined1 *puVar7;
+  u16 uVar1;
+  s16 sVar2;
+  s16 sVar3;
+  s16 sVar4;
+  s32 uVar5;
+  u8 uVar6;
+  u8 *puVar7;
   uint uVar8;
-  undefined1 auStack_28->kind;
-  undefined2 local_26;
-  short local_22;
-  undefined2 local_1e;
+  u8 auStack_28->kind;
+  s16 local_26;
+  s16 local_22;
+  s16 local_1e;
   
   param_1->move_mode = 2;
   uVar8 = 0;
@@ -47,30 +47,30 @@ uint FUN_8001e860(undefined1 *param_1,undefined1 *param_2,uint param_3,uint para
     FUN_80074590(0xe,0,0);
     uVar8 = uVar8 | 0x10;
     if ((param_4 & 0x400) == 0) {
-      if (((((param_4 & 0x300) != 0) && (param_1->collision_state == '\0')) && (_DAT_800e7fee != 0)) &&
-         (DAT_1f800137 == '\0')) {
+      if (((((param_4 & 0x300) != 0) && (param_1->collision_state == '\0')) && (_g_FrameCounter != 0)) &&
+         (g_CurrentOverlay == '\0')) {
         if ((param_4 & 0x100) == 0) {
           sVar2 = param_3->pos_x;
-          sVar3 = *(short *)(param_3 + 0x30);
-          sVar4 = *(short *)(param_3 + 0x34);
-          _DAT_1f800208 = (undefined1 *)(param_3 & 0x7fffffff);
+          sVar3 = *(s16 *)(param_3 + 0x30);
+          sVar4 = *(s16 *)(param_3 + 0x34);
+          _DAT_1f800208 = (u8 *)(param_3 & 0x7fffffff);
           _DAT_1f800280 = param_2;
         }
         else {
           sVar2 = param_2->pos_y;
-          sVar3 = *(short *)(param_2 + 0x32);
+          sVar3 = *(s16 *)(param_2 + 0x32);
           sVar4 = param_2->pos_z;
           _DAT_1f800208 = param_2;
         }
-        *(undefined2 *)(param_1 + 0x78) = param_1->target_angle;
+        *(s16 *)(param_1 + 0x78) = param_1->target_angle;
         DAT_800e7fc6 = 4;
         DAT_1f80027b = 1;
         param_1->collision_state = 1;
         param_1->draw_x = param_1->pos_y - sVar2;
-        param_1->angle_delta = *(short *)(param_1 + 0x32) - sVar3;
-        *(short *)(param_1 + 100) = param_1->pos_z - sVar4;
+        param_1->angle_delta = *(s16 *)(param_1 + 0x32) - sVar3;
+        *(s16 *)(param_1 + 100) = param_1->pos_z - sVar4;
         _DAT_1f800200 = param_1->pos_y;
-        _DAT_1f800202 = *(undefined2 *)(param_1 + 0x32);
+        _DAT_1f800202 = *(s16 *)(param_1 + 0x32);
         _DAT_1f800204 = param_1->pos_z;
         DAT_1f80023a = (param_4 & 0x1000) == 0;
         FUN_80074590(0xc,0,0);
@@ -104,7 +104,7 @@ uint FUN_8001e860(undefined1 *param_1,undefined1 *param_2,uint param_3,uint para
     puVar7 = param_1 + 0x2c;
     FUN_80031470(2,puVar7,param_1->flag_5E,param_1 + 0x68);
     FUN_8003116c(0x18,puVar7,0xffffffb0);
-    FUN_80027144(*(undefined4 *)(param_1->sprite_ptr1 + 0x40),puVar7,0x400,0x15);
+    FUN_80027144(*(s32 *)(param_1->sprite_ptr1 + 0x40),puVar7,0x400,0x15);
     uVar5 = 0xc;
     goto LAB_8001ebe0;
   case 6:
@@ -118,7 +118,7 @@ uint FUN_8001e860(undefined1 *param_1,undefined1 *param_2,uint param_3,uint para
     }
     *param_1 = 2;
     FUN_80074590(0x2d,0,0);
-    FUN_80027144(*(undefined4 *)(param_1->sprite_ptr1 + 0x40),param_1 + 0x2c,0x400,0x15);
+    FUN_80027144(*(s32 *)(param_1->sprite_ptr1 + 0x40),param_1 + 0x2c,0x400,0x15);
     uVar5 = 0xc;
     goto LAB_8001ebe0;
   case 7:
@@ -127,7 +127,7 @@ uint FUN_8001e860(undefined1 *param_1,undefined1 *param_2,uint param_3,uint para
     DAT_800e7ef9 = 2;
     local_26 = param_1->pos_y;
     uVar8 = 0x80;
-    local_22 = *(short *)(param_1 + 0x32) + 0x5a;
+    local_22 = *(s16 *)(param_1 + 0x32) + 0x5a;
     local_1e = param_1->pos_z;
     FUN_80031470(2,auStack_28,param_1->flag_5E,param_1 + 0x68);
     uVar5 = 0x32;

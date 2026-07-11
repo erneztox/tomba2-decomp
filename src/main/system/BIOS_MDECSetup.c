@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-undefined4 FUN_8009bd84(void)
+s32 FUN_8009bd84(void)
 
 {
   FUN_80080890();

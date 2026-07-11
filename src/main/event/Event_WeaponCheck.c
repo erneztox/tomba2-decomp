@@ -8,15 +8,15 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-bool FUN_8003511c(undefined4 param_1,int param_2,int param_3)
+s32 FUN_8003511c(s32 param_1,int param_2,int param_3)
 
 {
   if (param_2 == 0x59) {
-    if (((short)(ushort)DAT_800bf87d <= _DAT_800e7fee) && (DAT_800bf87f <= DAT_800bf87e)) {
+    if (((s16)(u16)g_ItemCount <= _g_FrameCounter) && (g_ItemFlag <= g_ItemMax)) {
       if (param_3 == 1) {
         return true;
       }
-      return (bool)4;
+      return (s32)4;
     }
     if (param_3 == 1) {
       return false;
@@ -31,9 +31,9 @@ bool FUN_8003511c(undefined4 param_1,int param_2,int param_3)
     if (param_2 >= 0x5d) {
       return param_2 < 0x5d;
     }
-    if ((short)(ushort)DAT_800bf87d <= _DAT_800e7fee) {
+    if ((s16)(u16)g_ItemCount <= _g_FrameCounter) {
       if (param_3 != 1) {
-        return (bool)4;
+        return (s32)4;
       }
       return true;
     }

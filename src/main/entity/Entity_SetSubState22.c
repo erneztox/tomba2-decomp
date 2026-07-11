@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-void FUN_800440e4(int param_1,uint param_2,short param_3)
+void FUN_800440e4(int param_1,uint param_2,s16 param_3)
 
 {
-  undefined1 uVar1;
+  u8 uVar1;
   
   if (param_1->action_flag == '\0') {
     FUN_80054dac(param_1,param_2 & 0x7fff,(int)param_3);

@@ -1,6 +1,6 @@
 /**
  * @brief Initializes an entity's behavior based on a type ID.
- *        The upper byte of `id` selects the behavior table, the lower byte is the index.
+ *        The upper u8 of `id` selects the behavior table, the lower u8 is the index.
  *        Sets up the entity's update_func, draw_func, and extra data pointer from the table.
  * @note Original: func_80028E10 at 0x80028E10
  */
@@ -14,7 +14,7 @@ void Entity_InitBehavior(Entity* entity, u32 id)
     BehaviorLink* selected_link;
     u8 type_id = (u8)id;
 
-    // Select behavior table based on high byte of ID
+    // Select behavior table based on high u8 of ID
     switch (id >> 8) {
     case 1:  entity->unknown_03 = type_id | 0x80; link_array = (BehaviorLink*)0x8014bd54; break;
     case 2:  entity->unknown_03 = type_id | 0x80; link_array = (BehaviorLink*)0x8013882c; break;

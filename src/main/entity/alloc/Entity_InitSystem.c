@@ -13,7 +13,7 @@ void FUN_800520e0(void)
 {
   FUN_8007b328();
   _DAT_800bf4fa = 0xffff;
-  _DAT_800ecf4a = 0;
+  _g_RenderFlag = 0;
   DAT_800ecf4c = 0;
   DAT_800ecf4d = 0;
   DAT_800ecf4e = 0;

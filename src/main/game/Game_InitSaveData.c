@@ -6,10 +6,10 @@
 
 
 
-void FUN_8005082c(undefined1 param_1,undefined1 param_2,undefined1 param_3)
+void FUN_8005082c(u8 param_1,u8 param_2,u8 param_3)
 
 {
-  char cVar1;
+  s8 cVar1;
   
   DAT_800bf8a6 = DAT_800ea0d7;
   DAT_800bf8a5 = DAT_800ea0d6;

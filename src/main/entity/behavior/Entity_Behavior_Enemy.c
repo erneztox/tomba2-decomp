@@ -7,12 +7,12 @@
 
 
 #include "tomba.h"
-undefined4 FUN_8006b390(undefined1 *param_1)
+s32 FUN_8006b390(u8 *param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   
   iVar2 = FUN_80069858(param_1,0,0);
   if (iVar2 == 0) {
@@ -28,7 +28,7 @@ undefined4 FUN_8006b390(undefined1 *param_1)
     else if ((3 < bVar1) && (bVar1 < 7)) {
       FUN_80074590(0x2c,0,0);
       FUN_80074590(0x2d,0,0);
-      FUN_80027144(*(undefined4 *)(param_1->sprite_ptr1 + 0x40),param_1 + 0x2c,0x400,0x15);
+      FUN_80027144(*(s32 *)(param_1->sprite_ptr1 + 0x40),param_1 + 0x2c,0x400,0x15);
       FUN_80074590(0xc,0,0);
     }
     if (0 < param_1->anim_counter) {

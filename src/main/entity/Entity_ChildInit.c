@@ -7,23 +7,23 @@
 
 
 #include "tomba.h"
-undefined4 FUN_8006f9d8(undefined4 param_1,int param_2,int param_3,undefined2 param_4)
+s32 FUN_8006f9d8(s32 param_1,int param_2,int param_3,s16 param_4)
 
 {
-  byte bVar1;
-  undefined2 uVar2;
-  ushort uVar3;
+  u8 bVar1;
+  s16 uVar2;
+  u16 uVar3;
   int iVar4;
   uint uVar5;
-  undefined **ppuVar6;
+  void **ppuVar6;
   
   param_2->callback = FUN_80070018;
   param_2->parent = param_1;
   param_2->draw_y = 0;
   param_2->alloc_flags = param_2->alloc_flags | 0x80;
-  uVar2 = *(undefined2 *)(param_3 + 4);
+  uVar2 = *(s16 *)(param_3 + 4);
   bVar1 = param_3->kind;
-  uVar3 = *(ushort *)(param_3 + 2);
+  uVar3 = *(u16 *)(param_3 + 2);
   uVar5 = uVar3 & 0x7f;
   param_2->input_flags = bVar1 & 0x80;
   if ((bVar1 & 0x80) == 0) {
@@ -33,12 +33,12 @@ undefined4 FUN_8006f9d8(undefined4 param_1,int param_2,int param_3,undefined2 pa
     }
   }
   else {
-    param_2->sprite_data = *(undefined4 *)(&DAT_800ecf58 + uVar5 * 4);
+    param_2->sprite_data = *(s32 *)(&g_OT_Data + uVar5 * 4);
     if ((uVar3 & 0x7f) == 0) {
       ppuVar6 = &PTR_DAT_80017334;
     }
     else {
-      ppuVar6 = *(undefined ***)(&DAT_800a58fc + (uint)DAT_800bf870 * 4);
+      ppuVar6 = *(void ***)(&DAT_800a58fc + (uint)g_GameState * 4);
     }
     FUN_80077b38(param_2,ppuVar6,uVar2);
     param_2->render_flags = 0x10;
@@ -53,7 +53,7 @@ undefined4 FUN_8006f9d8(undefined4 param_1,int param_2,int param_3,undefined2 pa
   param_2->rot_x = 0;
   param_2->rot_y = 0;
   param_2->rot_z = 0;
-  if (DAT_800bf816 == '\0') {
+  if (g_ActionFlag == '\0') {
     param_2->gte_flags = 0;
   }
   else {

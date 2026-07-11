@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_8006c59c(undefined1 *param_1)
+void FUN_8006c59c(u8 *param_1)
 
 {
   param_1->anim_counter = 0x1000;

@@ -1,5 +1,5 @@
 /**
- * @brief Audio SPU processor: processes 0x38-byte entry, updates
+ * @brief Audio SPU processor: processes 0x38-u8 entry, updates
  * @note Original: func_800950E0 at 0x800950E0
  */
 // Audio_SPU_Process
@@ -8,11 +8,11 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-undefined4 FUN_800950e0(short param_1,short param_2,short param_3,short param_4,int param_5)
+s32 FUN_800950e0(s16 param_1,s16 param_2,s16 param_3,s16 param_4,int param_5)
 
 {
-  undefined2 uVar1;
-  undefined4 uVar2;
+  s16 uVar1;
+  s32 uVar2;
   int iVar3;
   uint uVar4;
   int iVar5;
@@ -20,15 +20,15 @@ undefined4 FUN_800950e0(short param_1,short param_2,short param_3,short param_4,
   
   iVar5 = param_1 * 0x38;
   uVar2 = 0;
-  if (((*(short *)(iVar5 + -0x7fefab28) == param_2) &&
-      (uVar2 = 0, *(short *)(iVar5 + -0x7fefab20) == param_3)) &&
-     (uVar2 = 0, *(short *)(iVar5 + -0x7fefab24) == param_4)) {
-    uVar6 = (uint)*(ushort *)(iVar5 + -0x7fefab2a);
-    uVar4 = (uint)*(ushort *)(iVar5 + -0x7fefab22) + DAT_80105cff * 0x10;
+  if (((*(s16 *)(iVar5 + -0x7fefab28) == param_2) &&
+      (uVar2 = 0, *(s16 *)(iVar5 + -0x7fefab20) == param_3)) &&
+     (uVar2 = 0, *(s16 *)(iVar5 + -0x7fefab24) == param_4)) {
+    uVar6 = (uint)*(u16 *)(iVar5 + -0x7fefab2a);
+    uVar4 = (uint)*(u16 *)(iVar5 + -0x7fefab22) + DAT_80105cff * 0x10;
     iVar5 = (param_5 + -0x40) * 0x10000 >> 0x10;
     if (iVar5 < 1) {
       if (iVar5 < 0) {
-        iVar5 = iVar5 * (uint)*(byte *)((uVar4 & 0xffff) * 0x20 + _DAT_80105ce8 + 0xc);
+        iVar5 = iVar5 * (uint)*(u8 *)((uVar4 & 0xffff) * 0x20 + _DAT_80105ce8 + 0xc);
         iVar3 = iVar5;
         if (iVar5 < 0) {
           iVar3 = iVar5 + 0x3f;
@@ -41,15 +41,15 @@ undefined4 FUN_800950e0(short param_1,short param_2,short param_3,short param_4,
       }
     }
     else {
-      iVar5 = iVar5 * (uint)*(byte *)((uVar4 & 0xffff) * 0x20 + _DAT_80105ce8 + 0xd);
+      iVar5 = iVar5 * (uint)*(u8 *)((uVar4 & 0xffff) * 0x20 + _DAT_80105ce8 + 0xd);
       uVar6 = uVar6 + iVar5 / 0x3f;
       uVar4 = (iVar5 % 0x3f) * 2;
     }
     iVar5 = (int)param_1;
-    DAT_80105d04 = *(undefined1 *)(iVar5 * 0x38 + -0x7fefab22);
+    DAT_80105d04 = *(u8 *)(iVar5 * 0x38 + -0x7fefab22);
     _DAT_80105d10 = param_1;
     uVar1 = FUN_8009440c(uVar6 & 0xffff,uVar4 & 0xffff);
-    *(undefined2 *)(&DAT_80105a2c + iVar5 * 0x10) = uVar1;
+    *(s16 *)(&DAT_80105a2c + iVar5 * 0x10) = uVar1;
     (&DAT_80105a08)[iVar5] = (&DAT_80105a08)[iVar5] | 4;
     uVar2 = 1;
   }

@@ -7,14 +7,14 @@
 
 
 #include "tomba.h"
-void FUN_80061a7c(undefined1 *param_1)
+void FUN_80061a7c(u8 *param_1)
 
 {
-  byte bVar1;
-  char cVar2;
-  short sVar3;
+  u8 bVar1;
+  s8 cVar2;
+  s16 sVar3;
   int iVar4;
-  undefined2 uVar5;
+  s16 uVar5;
   
   FUN_80076d68();
   bVar1 = param_1->action_state;
@@ -28,7 +28,7 @@ void FUN_80061a7c(undefined1 *param_1)
     FUN_80074590(0x37,0,0);
     param_1->timer1 = 10;
     param_1->action_state = param_1->action_state + '\x01';
-    param_1->timer2 = (ushort)(byte)(&DAT_800a4550)[param_1->entity_flags & 0xf];
+    param_1->timer2 = (u16)(u8)(&DAT_800a4550)[param_1->entity_flags & 0xf];
     return;
   }
   if (bVar1 < 2) {
@@ -64,7 +64,7 @@ LAB_80061b9c:
         return;
       }
       if (((param_1->timer2 & 1) != 0) && (DAT_800bf8eb == '\0')) {
-        DAT_800bf87e = DAT_800bf87e + -1;
+        g_ItemMax = g_ItemMax + -1;
       }
       if (param_1->timer2 != 0) {
         param_1->timer2 = param_1->timer2 + -1;

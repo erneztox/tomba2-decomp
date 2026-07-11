@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_80091b50(int param_1,short param_2,short param_3)
+void FUN_80091b50(int param_1,s16 param_2,s16 param_3)
 
 {
   int iVar1;
@@ -23,7 +23,7 @@ void FUN_80091b50(int param_1,short param_2,short param_3)
   _DAT_801054b0 = param_2;
   _DAT_801054b2 = param_3;
   if (0 < param_2) {
-    piVar5 = (int *)&DAT_80104c30;
+    piVar5 = (int *)&g_AudioChannels;
     iVar2 = 0;
     do {
       *piVar5 = param_1 + iVar2 * 0xb0;
@@ -37,32 +37,32 @@ void FUN_80091b50(int param_1,short param_2,short param_3)
   }
   iVar6 = 0;
   if (0 < _DAT_801054b0) {
-    piVar5 = (int *)&DAT_80104c30;
+    piVar5 = (int *)&g_AudioChannels;
     do {
       iVar2 = 0;
       if (0 < _DAT_801054b2) {
         iVar4 = 0;
         do {
-          *(undefined4 *)(iVar4 + *piVar5 + 0x98) = 0;
-          *(undefined1 *)(iVar4 + *piVar5 + 0x22) = 0xff;
-          *(undefined1 *)(iVar4 + *piVar5 + 0x23) = 0;
-          *(undefined2 *)(iVar4 + *piVar5 + 0x48) = 0;
-          *(undefined2 *)(iVar4 + *piVar5 + 0x4a) = 0;
-          *(undefined4 *)(iVar4 + *piVar5 + 0x9c) = 0;
-          *(undefined4 *)(iVar4 + *piVar5 + 0xa0) = 0;
-          *(undefined2 *)(iVar4 + *piVar5 + 0x4c) = 0;
-          *(undefined4 *)(iVar4 + *piVar5 + 0xac) = 0;
-          *(undefined4 *)(iVar4 + *piVar5 + 0xa8) = 0;
-          *(undefined4 *)(iVar4 + *piVar5 + 0xa4) = 0;
-          *(undefined2 *)(iVar4 + *piVar5 + 0x4e) = 0;
-          *(undefined2 *)(iVar4 + *piVar5 + 0x58) = 0x7f;
-          *(undefined2 *)(iVar4 + *piVar5 + 0x5a) = 0x7f;
+          *(s32 *)(iVar4 + *piVar5 + 0x98) = 0;
+          *(u8 *)(iVar4 + *piVar5 + 0x22) = 0xff;
+          *(u8 *)(iVar4 + *piVar5 + 0x23) = 0;
+          *(s16 *)(iVar4 + *piVar5 + 0x48) = 0;
+          *(s16 *)(iVar4 + *piVar5 + 0x4a) = 0;
+          *(s32 *)(iVar4 + *piVar5 + 0x9c) = 0;
+          *(s32 *)(iVar4 + *piVar5 + 0xa0) = 0;
+          *(s16 *)(iVar4 + *piVar5 + 0x4c) = 0;
+          *(s32 *)(iVar4 + *piVar5 + 0xac) = 0;
+          *(s32 *)(iVar4 + *piVar5 + 0xa8) = 0;
+          *(s32 *)(iVar4 + *piVar5 + 0xa4) = 0;
+          *(s16 *)(iVar4 + *piVar5 + 0x4e) = 0;
+          *(s16 *)(iVar4 + *piVar5 + 0x58) = 0x7f;
+          *(s16 *)(iVar4 + *piVar5 + 0x5a) = 0x7f;
           iVar2 = iVar2 + 1;
-          *(undefined2 *)(iVar4 + *piVar5 + 0x5c) = 0x7f;
+          *(s16 *)(iVar4 + *piVar5 + 0x5c) = 0x7f;
           iVar1 = (int)_DAT_801054b2;
           iVar3 = iVar4 + *piVar5;
           iVar4 = iVar4 + 0xb0;
-          *(undefined2 *)(iVar3 + 0x5e) = 0x7f;
+          *(s16 *)(iVar3 + 0x5e) = 0x7f;
         } while (iVar2 < iVar1);
       }
       iVar6 = iVar6 + 1;

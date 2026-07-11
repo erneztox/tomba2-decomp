@@ -17,14 +17,14 @@ uint * FUN_80084520(uint *param_1,int *param_2)
   iVar1 = *param_2;
   iVar2 = param_2->flags;
   iVar3 = param_2->kind;
-  *param_1 = (short)*param_1 * iVar1 >> 0xc & 0xffffU |
+  *param_1 = (s16)*param_1 * iVar1 >> 0xc & 0xffffU |
              (((int)*param_1 >> 0x10) * iVar2 >> 0xc) << 0x10;
-  param_1->flags = (short)param_1->flags * iVar3 >> 0xc & 0xffffU |
+  param_1->flags = (s16)param_1->flags * iVar3 >> 0xc & 0xffffU |
                (((int)param_1->flags >> 0x10) * iVar1 >> 0xc) << 0x10;
-  param_1->kind = (short)param_1->kind * iVar2 >> 0xc & 0xffffU |
+  param_1->kind = (s16)param_1->kind * iVar2 >> 0xc & 0xffffU |
                (((int)param_1->kind >> 0x10) * iVar3 >> 0xc) << 0x10;
-  param_1->sub_type = (short)param_1->sub_type * iVar1 >> 0xc & 0xffffU |
+  param_1->sub_type = (s16)param_1->sub_type * iVar1 >> 0xc & 0xffffU |
                (((int)param_1->sub_type >> 0x10) * iVar2 >> 0xc) << 0x10;
-  param_1->state = (short)param_1->state * iVar3 >> 0xc;
+  param_1->state = (s16)param_1->state * iVar3 >> 0xc;
   return param_1;
 }

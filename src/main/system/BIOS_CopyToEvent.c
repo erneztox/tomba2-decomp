@@ -13,8 +13,8 @@ void FUN_8009c230(void)
 
 {
   int iVar1;
-  undefined4 *puVar2;
-  undefined4 unaff_retaddr;
+  s32 *puVar2;
+  s32 unaff_retaddr;
   
   _DAT_80105f58 = unaff_retaddr;
   FUN_80080890();
@@ -22,10 +22,10 @@ void FUN_8009c230(void)
   iVar1 = iVar1->script_data;
   puVar2 = &DAT_8009c2a0;
   do {
-    *(undefined4 *)(iVar1 + 0x70) = *puVar2;
+    *(s32 *)(iVar1 + 0x70) = *puVar2;
     puVar2 = puVar2 + 1;
     iVar1 = iVar1 + 4;
-  } while (puVar2 != (undefined4 *)0x8009c2ac);
+  } while (puVar2 != (s32 *)0x8009c2ac);
   FUN_800858f0();
   FUN_800808a0();
   return;

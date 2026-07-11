@@ -17,13 +17,13 @@ void FUN_80070e60(int param_1)
   if (iVar1 < 0) {
     iVar1 = iVar1 + 0xfff;
   }
-  param_1->pos_y = param_1->sprite_x + (short)(iVar1 >> 0xc);
+  param_1->pos_y = param_1->sprite_x + (s16)(iVar1 >> 0xc);
   iVar1 = FUN_80083e80((int)param_1->anim_counter << 1);
   iVar1 = iVar1 * 0x18;
   if (iVar1 < 0) {
     iVar1 = iVar1 + 0xfff;
   }
-  *(short *)(param_1 + 0x32) = param_1->angle_offset + (short)(iVar1 >> 0xc);
+  *(s16 *)(param_1 + 0x32) = param_1->angle_offset + (s16)(iVar1 >> 0xc);
   param_1->pos_z = param_1->sprite_y;
   param_1->anim_counter = param_1->anim_counter + 0x20U & 0xfff;
   return;

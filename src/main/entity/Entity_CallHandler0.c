@@ -6,7 +6,7 @@
 
 
 
-void FUN_800241fc(undefined4 param_1,undefined4 param_2)
+void FUN_800241fc(s32 param_1,s32 param_2)
 
 {
   FUN_80023a04(param_1,param_2,0);

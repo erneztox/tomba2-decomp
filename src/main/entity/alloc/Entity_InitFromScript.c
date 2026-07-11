@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-void FUN_80040cdc(int param_1,undefined4 param_2,ushort *param_3)
+void FUN_80040cdc(int param_1,s32 param_2,u16 *param_3)
 
 {
-  *(undefined4 *)(param_1 + 0x7c) = param_2;
+  *(s32 *)(param_1 + 0x7c) = param_2;
   param_1->anim_id = 0xff;
   param_1->parent = 0;
   param_1->anim_check = 0;

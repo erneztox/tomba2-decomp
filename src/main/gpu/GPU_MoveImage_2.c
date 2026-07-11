@@ -7,15 +7,15 @@
 
 
 #include "tomba.h"
-undefined4 FUN_800812d8(undefined4 *param_1,uint param_2,int param_3)
+s32 FUN_800812d8(s32 *param_1,uint param_2,int param_3)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   
   FUN_80080fd4(s_MoveImage_8001bf44,param_1);
   uVar1 = 0xffffffff;
-  if (*(short *)(param_1 + 1) != 0) {
-    if (*(short *)((int)param_1 + 6) == 0) {
+  if (*(s16 *)(param_1 + 1) != 0) {
+    if (*(s16 *)((int)param_1 + 6) == 0) {
       uVar1 = 0xffffffff;
     }
     else {

@@ -10,7 +10,7 @@
 void FUN_80033450(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
   
   bVar1 = param_1->state;
@@ -25,15 +25,15 @@ void FUN_80033450(int param_1)
     if (bVar1 != 0) {
       return;
     }
-    *(undefined4 *)(param_1 + 0x5c) = 0xc010c;
+    *(s32 *)(param_1 + 0x5c) = 0xc010c;
     param_1->state = 1;
     param_1->behavior_state = 0;
-    *(undefined4 *)(param_1 + 0x58) = 0;
-    *(undefined4 *)(param_1 + 0x60) = 0x1000;
+    *(s32 *)(param_1 + 0x58) = 0;
+    *(s32 *)(param_1 + 0x60) = 0x1000;
   }
   bVar1 = param_1->behavior_state + 1;
   param_1->behavior_state = bVar1;
-  *(undefined4 *)(param_1 + 100) = *(undefined4 *)(&DAT_800a2068 + (uint)bVar1 * 4);
+  *(s32 *)(param_1 + 100) = *(s32 *)(&DAT_800a2068 + (uint)bVar1 * 4);
   if (param_1->behavior_state < 4) {
     *(int *)(param_1 + 0x5c) = *(int *)(param_1 + 0x5c) + *(int *)(param_1 + 0x60);
     *(int *)(param_1 + 0x60) = *(int *)(param_1 + 0x60) + -0x300;

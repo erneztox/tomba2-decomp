@@ -1,5 +1,5 @@
 /**
- * @brief Entity overlay dispatch variant 2: switch on DAT_800bf870
+ * @brief Entity overlay dispatch variant 2: switch on g_GameState
  * @note Original: func_800633B0 at 0x800633B0
  */
 // Entity_OverlayDispatch2
@@ -7,13 +7,13 @@
 
 
 #include "tomba.h"
-undefined4 FUN_800633b0(int param_1)
+s32 FUN_800633b0(int param_1)
 
 {
   int iVar1;
-  undefined4 uVar2;
+  s32 uVar2;
   
-  switch(DAT_800bf870) {
+  switch(g_GameState) {
   case 0:
     func_0x8010c290(param_1);
     break;

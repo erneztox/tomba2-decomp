@@ -12,14 +12,14 @@
 void FUN_8006be88(int param_1)
 
 {
-  undefined2 uVar1;
+  s16 uVar1;
   int iVar2;
   int iVar3;
-  short sVar4;
-  undefined1 auStack_28->kind;
-  undefined2 local_26;
-  short local_22;
-  undefined2 local_1e;
+  s16 sVar4;
+  u8 auStack_28->kind;
+  s16 local_26;
+  s16 local_22;
+  s16 local_1e;
   
   if (param_1->move_mode < 2) {
     iVar2 = FUN_800495dc(param_1,0,0x5a);
@@ -27,19 +27,19 @@ void FUN_8006be88(int param_1)
       if (((iVar2 == -1) || (iVar3 == -1)) &&
          (((_DAT_1f8001a6 & 0xf00) == 0x100 || ((_DAT_1f8001a6 & 0xf00) == 0x200)))) {
         param_1->move_mode = 3;
-        if (DAT_800bf870 == '\0') {
+        if (g_GameState == '\0') {
           func_0x8010caec(param_1);
         }
-        else if (DAT_800bf870 == '\x04') {
+        else if (g_GameState == '\x04') {
           func_0x801162e8(param_1);
         }
-        else if (DAT_800bf870 == '\x06') {
+        else if (g_GameState == '\x06') {
           func_0x801147cc(param_1);
         }
-        else if (DAT_800bf870 == '\b') {
+        else if (g_GameState == '\b') {
           func_0x8011370c(param_1);
         }
-        else if (DAT_800bf870 == '\x0e') {
+        else if (g_GameState == '\x0e') {
           func_0x8010b4f4(param_1);
         }
       }
@@ -48,13 +48,13 @@ void FUN_8006be88(int param_1)
       DAT_800e807e = 4;
       local_26 = param_1->pos_y;
       param_1->move_mode = 3;
-      local_22 = *(short *)(param_1 + 0x32) + 0x5a;
+      local_22 = *(s16 *)(param_1 + 0x32) + 0x5a;
       local_1e = param_1->pos_z;
       FUN_8003116c(param_1->kind + 0xc,auStack_28,0xffffffb0);
       FUN_80031470(2,auStack_28,param_1->flag_5E,param_1 + 0x68);
       FUN_80074590(0x32,0,0);
       iVar2 = 0;
-      sVar4 = _DAT_800e7ed6;
+      sVar4 = _g_EntityAngle;
       if (param_1->flag_5E != '\0') {
         do {
           iVar3 = FUN_8007ab20();
@@ -62,7 +62,7 @@ void FUN_8006be88(int param_1)
             return;
           }
           iVar3->pos_y = param_1->pos_y;
-          *(short *)(iVar3 + 0x32) = *(short *)(param_1 + 0x32) + 0x5a;
+          *(s16 *)(iVar3 + 0x32) = *(s16 *)(param_1 + 0x32) + 0x5a;
           uVar1 = param_1->pos_z;
           iVar3->callback = FUN_8006c608;
           iVar3->kind = 10;

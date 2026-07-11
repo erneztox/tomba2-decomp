@@ -12,8 +12,8 @@
 void FUN_800655dc(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
+  u8 bVar1;
+  s16 sVar2;
   uint uVar3;
   
   bVar1 = param_1->action_state;
@@ -28,18 +28,18 @@ void FUN_800655dc(int param_1)
     }
     if (bVar1 != 0) goto LAB_800656d4;
     param_1->rot_z = 0;
-    DAT_800bf80e = 0;
+    g_ActionTrigger = 0;
     param_1->action_state = param_1->action_state + '\x01';
-    param_1->direction = DAT_1f800192 & 1;
-    if ((DAT_1f800192 & 1) == 0) {
-      _DAT_1f800192 = param_1->draw_angle;
+    param_1->direction = g_AngleInput & 1;
+    if ((g_AngleInput & 1) == 0) {
+      _g_AngleInput = param_1->draw_angle;
     }
     else {
-      _DAT_1f800192 = param_1->draw_angle - 0x800U & 0xfff;
+      _g_AngleInput = param_1->draw_angle - 0x800U & 0xfff;
     }
     FUN_80054d14(param_1,2,0);
   }
-  uVar3 = (uint)_DAT_1f800192;
+  uVar3 = (uint)_g_AngleInput;
   sVar2 = FUN_800776f8(uVar3 & 0xfff,(int)param_1->rot_y,0x100);
   param_1->rot_y = sVar2;
   if ((int)sVar2 == (uVar3 & 0xfff)) {

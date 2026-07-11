@@ -9,7 +9,7 @@
 void FUN_80096a90(int param_1)
 
 {
-  undefined2 *puVar1;
+  s16 *puVar1;
   int iVar2;
   
   FUN_80085b20();

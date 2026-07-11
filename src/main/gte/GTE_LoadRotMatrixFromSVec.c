@@ -19,36 +19,36 @@ void FUN_80085480(int *param_1,uint *param_2)
   int iVar6;
   int iVar7;
   int iVar8;
-  undefined4 uVar9;
+  s32 uVar9;
   uint uVar10;
   int iVar11;
   uint uVar12;
   int iVar13;
   uint uVar14;
-  undefined4 uVar15;
+  s32 uVar15;
   int iVar16;
   int iVar17;
   int iVar18;
   
   iVar16 = *param_1;
-  uVar14 = (int)(short)param_1->flags >> 0x1f;
+  uVar14 = (int)(s16)param_1->flags >> 0x1f;
   uVar12 = iVar16 >> 0x1f;
-  uVar10 = (int)(short)iVar16 >> 0x1f;
-  uVar1 = *(int *)(&DAT_800a6490 + (((int)(short)param_1->flags + uVar14 ^ uVar14) & 0xfff) * 4) *
+  uVar10 = (int)(s16)iVar16 >> 0x1f;
+  uVar1 = *(int *)(&DAT_800a6490 + (((int)(s16)param_1->flags + uVar14 ^ uVar14) & 0xfff) * 4) *
           0x10000 + uVar14 ^ uVar14;
   uVar2 = *(int *)(&DAT_800a6490 + (((iVar16 >> 0x10) + uVar12 ^ uVar12) & 0xfff) * 4) * 0x10000 +
           uVar12 ^ uVar12;
   uVar3 = uVar2 >> 0x10;
-  uVar4 = *(int *)(&DAT_800a6490 + (((int)(short)iVar16 + uVar10 ^ uVar10) & 0xfff) * 4) * 0x10000 +
+  uVar4 = *(int *)(&DAT_800a6490 + (((int)(s16)iVar16 + uVar10 ^ uVar10) & 0xfff) * 4) * 0x10000 +
           uVar10 ^ uVar10;
-  iVar8 = (int)((*(int *)(&DAT_800a6490 + (((int)(short)iVar16 + uVar10 ^ uVar10) & 0xfff) * 4) >>
+  iVar8 = (int)((*(int *)(&DAT_800a6490 + (((int)(s16)iVar16 + uVar10 ^ uVar10) & 0xfff) * 4) >>
                 0x10) << 0x10 | uVar4 >> 0x10) >> 0x10;
   setCopReg(2,0x4000,iVar8);
-  iVar7 = (int)(short)(uVar2 >> 0x10);
+  iVar7 = (int)(s16)(uVar2 >> 0x10);
   setCopReg(2,0x4800,iVar7);
-  iVar6 = (int)(short)(uVar1 >> 0x10);
+  iVar6 = (int)(s16)(uVar1 >> 0x10);
   setCopReg(2,0x5000,iVar6);
-  iVar5 = (int)((*(int *)(&DAT_800a6490 + (((int)(short)param_1->flags + uVar14 ^ uVar14) & 0xfff) * 4)
+  iVar5 = (int)((*(int *)(&DAT_800a6490 + (((int)(s16)param_1->flags + uVar14 ^ uVar14) & 0xfff) * 4)
                 >> 0x10) << 0x10 | uVar1 >> 0x10) >> 0x10;
   setCopReg(2,0x5800,iVar5);
   copFunction(2,0x198003d);
@@ -57,13 +57,13 @@ void FUN_80085480(int *param_1,uint *param_2)
   uVar9 = getCopReg(2,0x4800);
   iVar11 = getCopReg(2,0x5000);
   iVar13 = getCopReg(2,0x5800);
-  iVar18 = (int)(short)(uVar4 >> 0x10);
+  iVar18 = (int)(s16)(uVar4 >> 0x10);
   setCopReg(2,0x4000,iVar18);
   setCopReg(2,0x4800,iVar7);
   setCopReg(2,0x5000,iVar6);
   setCopReg(2,0x5800,iVar5);
   copFunction(2,0x198003d);
-  *(short *)(param_2 + 4) = (short)(iVar16 * iVar8 >> 0xc);
+  *(s16 *)(param_2 + 4) = (s16)(iVar16 * iVar8 >> 0xc);
   uVar15 = getCopReg(2,0x4800);
   iVar8 = getCopReg(2,0x5000);
   iVar17 = getCopReg(2,0x5800);

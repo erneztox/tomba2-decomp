@@ -6,11 +6,11 @@
 
 
 
-undefined4 FUN_80070f90(int param_1,ushort *param_2)
+s32 FUN_80070f90(int param_1,u16 *param_2)
 
 {
   int iVar1;
-  undefined4 uVar2;
+  s32 uVar2;
   int iVar3;
   int iVar4;
   
@@ -22,7 +22,7 @@ undefined4 FUN_80070f90(int param_1,ushort *param_2)
   }
   iVar3 = iVar3 >> 0x15;
   if (iVar1 + 8 < 0x11) {
-    *param_2 = (ushort)param_1;
+    *param_2 = (u16)param_1;
     uVar2 = 1;
   }
   else {
@@ -33,7 +33,7 @@ undefined4 FUN_80070f90(int param_1,ushort *param_2)
     if ((iVar1 < 6) && (iVar3 = -6, 0 < iVar4)) {
       iVar3 = 6;
     }
-    *param_2 = *param_2 + (short)iVar3;
+    *param_2 = *param_2 + (s16)iVar3;
     uVar2 = 0;
   }
   return uVar2;

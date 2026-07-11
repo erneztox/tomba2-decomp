@@ -12,31 +12,31 @@
 void FUN_800783dc(void)
 
 {
-  ushort uVar1;
-  ushort uVar2;
-  short *psVar3;
+  u16 uVar1;
+  u16 uVar2;
+  s16 *psVar3;
   
   FUN_80048d3c();
-  DAT_800e7e80 = 3;
+  g_CollisionEntity = 3;
   _DAT_800e7ff2 = 0x3c;
   if (DAT_800bf880 == '\0') {
-    _DAT_800e7ff0 = (ushort)DAT_800bf87d;
+    _DAT_800e7ff0 = (u16)g_ItemCount;
   }
   else {
     DAT_800bf880 = '\0';
     _DAT_800e7ff0 = _DAT_1f800194;
   }
-  DAT_800e7eec = DAT_800bf88c;
-  DAT_800e7eed = DAT_800bf88d;
+  DAT_800e7eec = g_SpriteParam1;
+  DAT_800e7eed = g_SpriteParam2;
   _DAT_800e7ffe = _DAT_800bf89e;
-  DAT_800e7ff4 = DAT_800bf881;
-  _DAT_800e7fee = _DAT_800e7ff0;
-  if (DAT_800bf870 == 3) {
+  DAT_800e7ff4 = g_EntityFlags;
+  _g_FrameCounter = _DAT_800e7ff0;
+  if (g_GameState == 3) {
     _DAT_800e7e90 = FUN_80072ddc(0,3,4,0x1b);
     _DAT_800e7e90->callback = 0x8010b37c;
   }
   else if (DAT_1f800134 == '\0') {
-    psVar3 = (short *)((&PTR_DAT_800a54a8)[DAT_800bf870] + (uint)DAT_800bf871 * 8);
+    psVar3 = (s16 *)((&PTR_DAT_800a54a8)[g_GameState] + (uint)g_LevelId * 8);
     _DAT_800e7eac = (int)*psVar3 << 0x10;
     if (_DAT_800bf89e < 0) {
       uVar2 = psVar3->flags + 0x46;
@@ -47,15 +47,15 @@ void FUN_800783dc(void)
     _DAT_800e7eb0 = (uint)uVar2 << 0x10;
     _DAT_800e7eb4 = (int)psVar3->kind << 0x10;
     uVar1 = psVar3->sub_type;
-    DAT_800e7eaa = (byte)uVar1 & 0x7f;
-    DAT_800e7fdc = (byte)((int)((uint)uVar1 << 0x10) >> 0x17) & 1;
-    DAT_800e7fc7 = (byte)(uVar1 >> 8) & 1;
+    DAT_800e7eaa = (u8)uVar1 & 0x7f;
+    DAT_800e7fdc = (u8)((int)((uint)uVar1 << 0x10) >> 0x17) & 1;
+    DAT_800e7fc7 = (u8)(uVar1 >> 8) & 1;
     if ((uVar1 & 0x800) != 0) {
-      DAT_800bf816 = 1;
-      DAT_800bf817 = (undefined1)((int)((int)((uint)uVar1 << 0x10) >> 0x10 & 0xf000U) >> 0xc);
+      g_ActionFlag = 1;
+      g_HurtParam = (u8)((int)((int)((uint)uVar1 << 0x10) >> 0x10 & 0xf000U) >> 0xc);
     }
-    if (DAT_1f800236 - 5 < 2) {
-      _DAT_800e7eb0 = (uint)(ushort)(uVar2 - 1000) << 0x10;
+    if (g_GameMode - 5 < 2) {
+      _DAT_800e7eb0 = (uint)(u16)(uVar2 - 1000) << 0x10;
     }
   }
   else {
@@ -67,8 +67,8 @@ void FUN_800783dc(void)
     DAT_800e7eaa = DAT_800bfe38;
   }
   DAT_1f800207 = DAT_800e7eaa;
-  _DAT_1f800160 = _DAT_800e7eae;
-  _DAT_1f800162 = _DAT_800e7eb2;
-  _DAT_1f800164 = _DAT_800e7eb6;
+  _g_PlayerPosX = _g_CameraTargetX;
+  _g_PlayerPosY = _g_CameraTargetY;
+  _g_PlayerPosZ = _g_CameraTargetZ;
   return;
 }

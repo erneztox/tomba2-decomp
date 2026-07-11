@@ -13,13 +13,13 @@ void FUN_80044e84(int *param_1,int param_2)
   int iVar1;
   int iVar2;
   int *piVar3;
-  short *psVar4;
+  s16 *psVar4;
   int iVar5;
   int *piVar6;
   
   iVar5 = *param_1;
   if (0 < iVar5) {
-    psVar4 = (short *)((int)param_1 + -2);
+    psVar4 = (s16 *)((int)param_1 + -2);
     piVar6 = param_1 + 0x200;
     do {
       iVar5 = iVar5 + -1;

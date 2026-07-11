@@ -10,7 +10,7 @@
 void FUN_80033380(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   bVar1 = param_1->state;
   if (bVar1 != 1) {
@@ -28,16 +28,16 @@ void FUN_80033380(int param_1)
     param_1->state = 1;
     param_1->sub_action = 0xff;
   }
-  *(short *)(param_1 + 0x30) = *(short *)(param_1 + 0x30) + -0x42;
+  *(s16 *)(param_1 + 0x30) = *(s16 *)(param_1 + 0x30) + -0x42;
   param_1->sub_action = param_1->sub_action - (param_1->sub_action >> 2);
-  if (*(short *)(param_1 + 0x30) < 500) {
+  if (*(s16 *)(param_1 + 0x30) < 500) {
     param_1->state = 2;
   }
   else {
     param_1->scale_y = param_1->anim_data;
     if (param_1->anim_data == 0) {
-      *(undefined **)(param_1 + 0x38) = &DAT_800a0c5c;
-      *(undefined **)(param_1 + 0x34) = &DAT_800a0c5c;
+      *(void **)(param_1 + 0x38) = &DAT_800a0c5c;
+      *(void **)(param_1 + 0x34) = &DAT_800a0c5c;
     }
     param_1->flags = 1;
   }

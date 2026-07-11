@@ -4,7 +4,7 @@
  */
 
 #include "tomba.h"
-void GTE_LoadIdentityMatrix(undefined4 *param_1)
+void GTE_LoadIdentityMatrix(s32 *param_1)
 
 {
   *param_1 = 0x1000;

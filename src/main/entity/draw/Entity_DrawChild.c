@@ -14,8 +14,8 @@ void FUN_80068610(int param_1,int param_2)
   
   if (param_1->sub_action == '\0') {
     iVar1 = (uint)param_1->normal_z +
-            ((int)((uint)*(ushort *)(param_2 + 0xc) << 0x10) >> 0x12);
-    param_1->normal_z = (short)iVar1;
+            ((int)((uint)*(u16 *)(param_2 + 0xc) << 0x10) >> 0x12);
+    param_1->normal_z = (s16)iVar1;
     if (0x500 < iVar1 * 0x10000 >> 0x10) {
       param_1->sub_action = param_1->sub_action + '\x01';
       return;
@@ -23,8 +23,8 @@ void FUN_80068610(int param_1,int param_2)
   }
   else {
     iVar1 = (uint)param_1->normal_z -
-            ((int)((uint)*(ushort *)(param_2 + 0xc) << 0x10) >> 0x12);
-    param_1->normal_z = (short)iVar1;
+            ((int)((uint)*(u16 *)(param_2 + 0xc) << 0x10) >> 0x12);
+    param_1->normal_z = (s16)iVar1;
     if (iVar1 * 0x10000 >> 0x10 < -0x200) {
       param_1->sub_action = 0;
     }

@@ -1,5 +1,5 @@
 /**
- * @brief Collision grid lookup: indexes grid from _DAT_1f8001c8 table
+ * @brief Collision grid lookup: indexes grid from _g_CollisionGrid table
  * @note Original: func_80048ECC at 0x80048ECC
  */
 // Collision_GridLookup
@@ -9,13 +9,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80048ecc(byte param_1)
+void FUN_80048ecc(u8 param_1)
 
 {
-  ushort *puVar1;
+  u16 *puVar1;
   
-  DAT_1f8001fe = param_1;
-  puVar1 = (ushort *)(_DAT_1f8001c8 + (uint)*(ushort *)((uint)param_1 * 2 + _DAT_1f8001c8) * 2);
+  g_CollisionZone = param_1;
+  puVar1 = (u16 *)(_g_CollisionGrid + (uint)*(u16 *)((uint)param_1 * 2 + _g_CollisionGrid) * 2);
   _DAT_1f8001b2 = *puVar1;
   _DAT_1f8001aa = puVar1->flags;
   _DAT_1f8001b4 = puVar1->kind;

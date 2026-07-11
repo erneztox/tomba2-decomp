@@ -13,10 +13,10 @@ void FUN_8005229c(void)
 {
   int iVar1;
   
-  if (DAT_1f80019a == '\x01') {
+  if (g_EngineState == '\x01') {
     DAT_800ecf4e = 0;
   }
-  if ((DAT_800fb167 == '\0') && (_DAT_800ecf4a != 0)) {
+  if ((DAT_800fb167 == '\0') && (_g_RenderFlag != 0)) {
     if (DAT_800ecf4e == 1) {
       iVar1 = FUN_80087aec(0);
       if (iVar1 != 6) {
@@ -60,7 +60,7 @@ void FUN_8005229c(void)
     if (DAT_800fb167 != '\x01') {
       return;
     }
-    if (_DAT_800ecf4a == 0) {
+    if (_g_RenderFlag == 0) {
       return;
     }
     if (_DAT_800ecf4c != 0) {

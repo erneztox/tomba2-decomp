@@ -24,10 +24,10 @@ void FUN_80090bd0(void)
     uVar6 = 0;
     FUN_800931c0();
     if (0 < _DAT_801054b0) {
-      piVar7 = (int *)&DAT_80104c30;
+      piVar7 = (int *)&g_AudioChannels;
       do {
         if (((_DAT_80104c28 & 1 << (uVar6 & 0x1f)) != 0) && (iVar5 = 0, 0 < _DAT_801054b2)) {
-          iVar4 = (int)(short)uVar6;
+          iVar4 = (int)(s16)uVar6;
           iVar3 = 0;
           iVar1 = 0;
           do {
@@ -55,7 +55,7 @@ void FUN_80090bd0(void)
             }
             if ((*(uint *)(iVar1 + *piVar7 + 0x98) & 4) != 0) {
               FUN_80091970(iVar4,iVar2);
-              *(undefined4 *)(iVar1 + *piVar7 + 0x98) = 0;
+              *(s32 *)(iVar1 + *piVar7 + 0x98) = 0;
             }
             iVar3 = iVar3 + 0x10000;
             iVar5 = iVar5 + 1;

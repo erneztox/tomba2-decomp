@@ -13,7 +13,7 @@ void FUN_8003f024(void)
   int iVar2;
   
   iVar2 = 0;
-  pcVar1 = &DAT_800ec188;
+  pcVar1 = &g_SpriteQueue;
   do {
     if (*pcVar1 != '\0') {
       FUN_8003d23c(pcVar1);

@@ -11,26 +11,26 @@ void FUN_80039f4c(int param_1)
 
 {
   uint *puVar1;
-  undefined2 uVar2;
+  s16 uVar2;
   int iVar3;
   uint *puVar4;
   int iVar5;
   char *pcVar6;
   int iVar7;
-  undefined2 local_68;
-  undefined2 local_66;
-  undefined2 local_64;
-  undefined2 local_60;
-  undefined2 local_5e;
-  undefined2 local_5c;
-  undefined2 local_58;
-  undefined2 local_56;
-  undefined2 local_54;
-  undefined2 local_50;
-  undefined2 local_4e;
-  undefined2 local_4c;
-  char local_48 [32];
-  undefined1 auStack_28->counter1;
+  s16 local_68;
+  s16 local_66;
+  s16 local_64;
+  s16 local_60;
+  s16 local_5e;
+  s16 local_5c;
+  s16 local_58;
+  s16 local_56;
+  s16 local_54;
+  s16 local_50;
+  s16 local_4e;
+  s16 local_4c;
+  s8 local_48 [32];
+  u8 auStack_28->counter1;
   
   FUN_8003f174(param_1,1);
   local_66 = 0xfff9;
@@ -56,27 +56,27 @@ void FUN_80039f4c(int param_1)
   iVar5 = 0;
   if ((param_1->counter2 != '\0') && (iVar7 = param_1, param_1->counter1 != '\0')) {
     while (*pcVar6 != '\0') {
-      iVar3 = FUN_80039e80(pcVar6,_DAT_800bf544);
-      puVar1 = _DAT_800bf544;
+      iVar3 = FUN_80039e80(pcVar6,_g_OT_Buffer);
+      puVar1 = _g_OT_Buffer;
       if (iVar3 != -1) {
-        _DAT_800bf544 = _DAT_800bf544 + 10;
+        _g_OT_Buffer = _g_OT_Buffer + 10;
         FUN_80084660(iVar7->sprite_ptr1 + 0x18);
         FUN_80084690(iVar7->sprite_ptr1 + 0x18);
         iVar3 = FUN_8003f7d8(puVar1,&local_68,auStack_28);
         if (((-1 < iVar3 + -1) &&
-            (((((ushort)puVar1->kind < 0x140 || ((ushort)puVar1->state < 0x140)) ||
-              ((ushort)puVar1->action_state < 0x140)) || ((ushort)puVar1->counter1 < 0x140)))) &&
-           (((*(ushort *)((int)puVar1 + 10) < 0xf0 || (*(ushort *)((int)puVar1 + 0x12) < 0xf0)) ||
-            ((*(ushort *)((int)puVar1 + 0x1a) < 0xf0 || (*(ushort *)((int)puVar1 + 0x22) < 0xf0)))))
+            (((((u16)puVar1->kind < 0x140 || ((u16)puVar1->state < 0x140)) ||
+              ((u16)puVar1->action_state < 0x140)) || ((u16)puVar1->counter1 < 0x140)))) &&
+           (((*(u16 *)((int)puVar1 + 10) < 0xf0 || (*(u16 *)((int)puVar1 + 0x12) < 0xf0)) ||
+            ((*(u16 *)((int)puVar1 + 0x1a) < 0xf0 || (*(u16 *)((int)puVar1 + 0x22) < 0xf0)))))
            ) {
-          *(undefined1 *)((int)puVar1 + 7) = 0x2d;
-          *(undefined2 *)((int)puVar1 + 0x16) = 0x1f;
+          *(u8 *)((int)puVar1 + 7) = 0x2d;
+          *(s16 *)((int)puVar1 + 0x16) = 0x1f;
           uVar2 = 0x7dff;
           if (param_1->sub_type == '\x02') {
             uVar2 = 0x7c7f;
           }
-          *(undefined2 *)((int)puVar1 + 0xe) = uVar2;
-          puVar4 = (uint *)(_DAT_800ed8c8 + (iVar3 + -1) * 4);
+          *(s16 *)((int)puVar1 + 0xe) = uVar2;
+          puVar4 = (uint *)(_g_EntityBuffer + (iVar3 + -1) * 4);
           *puVar1 = *puVar4 | 0x9000000;
           *puVar4 = (uint)puVar1;
         }

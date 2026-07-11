@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80041f34(int param_1)
+s32 FUN_80041f34(int param_1)
 
 {
   if (param_1 == 0) {
@@ -19,7 +19,7 @@ undefined4 FUN_80041f34(int param_1)
     if (param_1->timer2 == -1) {
       param_1->timer2 = 0;
     }
-    if (((_DAT_800e7e68 & _DAT_1f800174) != 0) && ((param_1->anim_id & 1) == 0)) {
+    if (((_g_PadState & _DAT_1f800174) != 0) && ((param_1->anim_id & 1) == 0)) {
       param_1->behavior_state = 10;
       return 1;
     }

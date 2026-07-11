@@ -7,13 +7,13 @@
 
 
 #include "tomba.h"
-undefined4 FUN_8005b134(undefined4 param_1,int param_2)
+s32 FUN_8005b134(s32 param_1,int param_2)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   
   uVar1 = 0xffffffff;
-  if (*(char *)(param_2 + 0xc) == '\x02') {
+  if (*(s8*)(param_2 + 0xc) == '\x02') {
     switch(param_2->kind) {
     case 0:
       return 3;

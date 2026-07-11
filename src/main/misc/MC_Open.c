@@ -6,7 +6,7 @@
 
 
 
-undefined4 FUN_80097498(undefined4 param_1,undefined4 param_2)
+s32 FUN_80097498(s32 param_1,s32 param_2)
 
 {
   FUN_80097194(2,(uint)DAT_800ac61c << (DAT_800ac62c & 0x1f));

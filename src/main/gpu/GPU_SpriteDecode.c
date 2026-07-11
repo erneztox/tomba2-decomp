@@ -7,19 +7,19 @@
 
 
 #include "tomba.h"
-void FUN_8007ceec(int param_1,ushort *param_2,short *param_3)
+void FUN_8007ceec(int param_1,u16 *param_2,s16 *param_3)
 
 {
-  byte bVar1;
+  u8 bVar1;
   uint uVar2;
-  ushort uVar3;
-  ushort uVar4;
+  u16 uVar3;
+  u16 uVar4;
   int iVar5;
-  byte *pbVar6;
+  u8 *pbVar6;
   
   *param_2 = 0;
   *param_3 = 1;
-  pbVar6 = *(byte **)(param_1 + 0x10);
+  pbVar6 = *(u8 **)(param_1 + 0x10);
   bVar1 = *pbVar6;
   uVar4 = 0;
   do {
@@ -29,7 +29,7 @@ LAB_8007d094:
       iVar5 = (uint)uVar4 << 0x10;
 LAB_8007d098:
       uVar4 = uVar4 << 3;
-      if (iVar5 >> 0x10 < (int)(short)*param_2) {
+      if (iVar5 >> 0x10 < (int)(s16)*param_2) {
         uVar4 = *param_2 << 3;
       }
       *param_2 = uVar4;
@@ -89,7 +89,7 @@ switchD_8007cfdc_caseD_cd:
     default:
       goto switchD_8007cfdc_caseD_cd;
     case 0xfa:
-      if ((short)uVar4 < (short)*param_2) {
+      if ((s16)uVar4 < (s16)*param_2) {
         uVar4 = *param_2;
       }
       *param_2 = 0;

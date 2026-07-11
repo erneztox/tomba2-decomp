@@ -1,12 +1,12 @@
 /**
- * @brief Compares two 12-byte CD file names, returns true if match
+ * @brief Compares two 12-u8 CD file names, returns true if match
  * @note Original: func_8008BBC8 at 0x8008BBC8
  */
 // CD_CompareName
 
 
 
-bool FUN_8008bbc8(undefined4 param_1,undefined4 param_2)
+s32 FUN_8008bbc8(s32 param_1,s32 param_2)
 
 {
   int iVar1;

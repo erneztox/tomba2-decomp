@@ -12,12 +12,12 @@
 void FUN_8004b9c8(int param_1)
 
 {
-  byte bVar1;
-  undefined4 uVar2;
+  u8 bVar1;
+  s32 uVar2;
   
   bVar1 = param_1->behavior_state;
   if (bVar1 == 1) {
-    if (_DAT_800e7fee != 0) {
+    if (_g_FrameCounter != 0) {
       FUN_8004d650(DAT_800e7eee,1);
       FUN_8004d4f4(99,1);
       uVar2 = 0x38;
@@ -28,7 +28,7 @@ void FUN_8004b9c8(int param_1)
       FUN_80040c00(3);
       FUN_80040b48(4);
       DAT_800bf81c = 0;
-      DAT_800bf88e = 0;
+      g_SpriteParam3 = 0;
       DAT_800e7eee = '\0';
       _DAT_800e7ef4->state = 3;
       _DAT_800e7ef4 = 0;
@@ -40,7 +40,7 @@ void FUN_8004b9c8(int param_1)
       FUN_8004d4f4(100,1);
       FUN_8004ed94(0x33,0x41);
       DAT_800bf81c = 0;
-      DAT_800bf88e = 0;
+      g_SpriteParam3 = 0;
       DAT_800e7eee = '\0';
       _DAT_800e7ef4->state = 3;
     }
@@ -52,7 +52,7 @@ void FUN_8004b9c8(int param_1)
       FUN_8004d4f4(0x65,1);
       FUN_8004ed94(0x59,0x41);
       DAT_800bf81c = 0;
-      DAT_800bf88e = 0;
+      g_SpriteParam3 = 0;
       DAT_800e7eee = '\0';
       _DAT_800e7ef4->state = 3;
     }

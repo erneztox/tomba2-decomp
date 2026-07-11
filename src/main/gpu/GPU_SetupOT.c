@@ -6,7 +6,7 @@
 
 
 
-void FUN_80081458(undefined4 *param_1,undefined4 param_2)
+void FUN_80081458(s32 *param_1,s32 param_2)
 
 {
   if (1 < DAT_800a59a2) {

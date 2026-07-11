@@ -10,10 +10,10 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_800696c4(int param_1,int param_2)
+s32 FUN_800696c4(int param_1,int param_2)
 
 {
-  byte bVar1;
+  u8 bVar1;
   uint uVar2;
   
   uVar2 = FUN_800495dc(param_1,0,0);
@@ -64,8 +64,8 @@ joined_r0x800697c8:
     }
     else {
       DAT_1f80023a = 1;
-      *(short *)(param_1 + 0x32) =
-           *(short *)(param_1 + 0x32) + (param_1->bounds_max_y - param_1->bounds_min_y);
+      *(s16 *)(param_1 + 0x32) =
+           *(s16 *)(param_1 + 0x32) + (param_1->bounds_max_y - param_1->bounds_min_y);
     }
     return 2;
   }

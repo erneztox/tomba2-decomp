@@ -9,23 +9,23 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8004ffb4(short *param_1,undefined4 param_2,ushort param_3,int param_4)
+void FUN_8004ffb4(s16 *param_1,s32 param_2,u16 param_3,int param_4)
 
 {
-  undefined1 *puVar1;
+  u8 *puVar1;
   uint *puVar2;
-  undefined1 uVar3;
-  ushort uVar4;
-  undefined1 uVar5;
-  undefined1 uVar6;
+  u8 uVar3;
+  u16 uVar4;
+  u8 uVar5;
+  u8 uVar6;
   uint *puVar7;
   
-  puVar2 = _DAT_800bf544;
-  puVar1 = (undefined1 *)((int)_DAT_800bf544 + 7);
-  _DAT_800bf544 = _DAT_800bf544 + 10;
+  puVar2 = _g_OT_Buffer;
+  puVar1 = (u8 *)((int)_g_OT_Buffer + 7);
+  _g_OT_Buffer = _g_OT_Buffer + 10;
   *puVar1 = 0x2c;
   if ((param_3 & 0x80) != 0) {
-    *(undefined1 *)((int)puVar2 + 7) = 0x2e;
+    *(u8 *)((int)puVar2 + 7) = 0x2e;
   }
   if ((param_3 & 0x40) == 0) {
     uVar4 = ((param_3 & 0x1f) + 0x1f0) * 0x40 | 0x3e;
@@ -33,37 +33,37 @@ void FUN_8004ffb4(short *param_1,undefined4 param_2,ushort param_3,int param_4)
   else {
     uVar4 = ((param_3 & 0x1f) + 0x1f0) * 0x40 | 0x3f;
   }
-  *(ushort *)((int)puVar2 + 0xe) = uVar4;
+  *(u16 *)((int)puVar2 + 0xe) = uVar4;
   if ((param_3 & 0x20) == 0) {
-    *(byte *)((int)puVar2 + 7) = *(byte *)((int)puVar2 + 7) | 1;
+    *(u8 *)((int)puVar2 + 7) = *(u8 *)((int)puVar2 + 7) | 1;
   }
   else {
-    *(undefined1 *)((int)puVar2 + 6) = 0x40;
-    *(undefined1 *)((int)puVar2 + 5) = 0x40;
+    *(u8 *)((int)puVar2 + 6) = 0x40;
+    *(u8 *)((int)puVar2 + 5) = 0x40;
     puVar2->flags = 0x40;
   }
-  *(undefined2 *)((int)puVar2 + 0x16) = 0x5f;
-  *(short *)(puVar2 + 2) = *param_1;
-  *(short *)((int)puVar2 + 10) = param_1->flags;
-  *(short *)(puVar2 + 4) = *param_1 + param_1->kind;
-  *(short *)((int)puVar2 + 0x12) = param_1->flags;
-  *(short *)(puVar2 + 6) = *param_1;
-  *(short *)((int)puVar2 + 0x1a) = param_1->flags + param_1->sub_type;
-  *(short *)(puVar2 + 8) = *param_1 + param_1->kind;
-  *(short *)((int)puVar2 + 0x22) = param_1->flags + param_1->sub_type;
+  *(s16 *)((int)puVar2 + 0x16) = 0x5f;
+  *(s16 *)(puVar2 + 2) = *param_1;
+  *(s16 *)((int)puVar2 + 10) = param_1->flags;
+  *(s16 *)(puVar2 + 4) = *param_1 + param_1->kind;
+  *(s16 *)((int)puVar2 + 0x12) = param_1->flags;
+  *(s16 *)(puVar2 + 6) = *param_1;
+  *(s16 *)((int)puVar2 + 0x1a) = param_1->flags + param_1->sub_type;
+  *(s16 *)(puVar2 + 8) = *param_1 + param_1->kind;
+  *(s16 *)((int)puVar2 + 0x22) = param_1->flags + param_1->sub_type;
   switch(param_2) {
   case 0:
     uVar6 = 0xc0;
     uVar5 = 200;
-    *(undefined1 *)((int)puVar2 + 0xd) = 0x88;
-    *(undefined1 *)((int)puVar2 + 0x15) = 0x88;
+    *(u8 *)((int)puVar2 + 0xd) = 0x88;
+    *(u8 *)((int)puVar2 + 0x15) = 0x88;
     uVar3 = 0x90;
     goto LAB_8005015c;
   case 1:
     uVar6 = 0xf0;
     uVar5 = 0xf8;
-    *(undefined1 *)((int)puVar2 + 0xd) = 0x88;
-    *(undefined1 *)((int)puVar2 + 0x15) = 0x88;
+    *(u8 *)((int)puVar2 + 0xd) = 0x88;
+    *(u8 *)((int)puVar2 + 0x15) = 0x88;
     uVar3 = 0x90;
     goto LAB_8005015c;
   case 2:
@@ -84,18 +84,18 @@ void FUN_8004ffb4(short *param_1,undefined4 param_2,ushort param_3,int param_4)
   default:
     goto switchD_800500e4_default;
   }
-  *(undefined1 *)((int)puVar2 + 0xd) = uVar3;
-  *(undefined1 *)((int)puVar2 + 0x15) = uVar3;
+  *(u8 *)((int)puVar2 + 0xd) = uVar3;
+  *(u8 *)((int)puVar2 + 0x15) = uVar3;
   uVar3 = 0x8f;
 LAB_8005015c:
   puVar2->sub_type = uVar6;
   puVar2->behavior_state = uVar5;
   puVar2->sub_action = uVar6;
-  *(undefined1 *)((int)puVar2 + 0x1d) = uVar3;
+  *(u8 *)((int)puVar2 + 0x1d) = uVar3;
   puVar2->counter2 = uVar5;
-  *(undefined1 *)((int)puVar2 + 0x25) = uVar3;
+  *(u8 *)((int)puVar2 + 0x25) = uVar3;
 switchD_800500e4_default:
-  puVar7 = (uint *)(_DAT_800ed8c8 + param_4 * 4);
+  puVar7 = (uint *)(_g_EntityBuffer + param_4 * 4);
   *puVar2 = *puVar7 | 0x9000000;
   *puVar7 = (uint)puVar2;
   return;

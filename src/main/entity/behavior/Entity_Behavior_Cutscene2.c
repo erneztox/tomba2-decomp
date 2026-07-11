@@ -12,59 +12,59 @@
 void FUN_80072a78(void)
 
 {
-  bool bVar1;
-  byte bVar2;
-  undefined2 uVar3;
-  byte *pbVar4;
+  s32 bVar1;
+  u8 bVar2;
+  s16 uVar3;
+  u8 *pbVar4;
   int iVar5;
-  byte bVar6;
-  byte *pbVar7;
+  u8 bVar6;
+  u8 *pbVar7;
   
-  if ((DAT_800bf870 == 5) && (DAT_800bf871 - 1 < 3)) {
+  if ((g_GameState == 5) && (g_LevelId - 1 < 3)) {
     pbVar4 = &DAT_8013c1a4;
   }
-  else if ((DAT_800bf870 == 1) && (0xe < DAT_800bf871)) {
+  else if ((g_GameState == 1) && (0xe < g_LevelId)) {
     pbVar4 = &DAT_80134918;
   }
-  else if (DAT_800bf870 == 6) {
-    if (DAT_800bf871 < 6) {
+  else if (g_GameState == 6) {
+    if (g_LevelId < 6) {
       pbVar4 = &DAT_801437ac;
     }
-    else if (DAT_800bf871 < 9) {
+    else if (g_LevelId < 9) {
       pbVar4 = &DAT_80143acc;
     }
     else {
       pbVar4 = &DAT_80143ae0;
     }
   }
-  else if (DAT_800bf870 == 8) {
-    if (DAT_800bf871 < 9) {
+  else if (g_GameState == 8) {
+    if (g_LevelId < 9) {
       pbVar4 = &DAT_8014304c;
     }
-    else if (DAT_800bf871 < 0x10) {
+    else if (g_LevelId < 0x10) {
       pbVar4 = &DAT_801432b8;
     }
-    else if (DAT_800bf871 < 0x15) {
+    else if (g_LevelId < 0x15) {
       pbVar4 = &DAT_80143470;
     }
     else {
       pbVar4 = &DAT_80143614;
     }
   }
-  else if (DAT_800bf870 == 0x15) {
-    if (DAT_800bf871 == 0) {
+  else if (g_GameState == 0x15) {
+    if (g_LevelId == 0) {
       pbVar4 = &DAT_80115004;
     }
-    else if (DAT_800bf871 == 1) {
+    else if (g_LevelId == 1) {
       pbVar4 = &DAT_80115018;
     }
-    else if (DAT_800bf871 == 2) {
+    else if (g_LevelId == 2) {
       pbVar4 = &DAT_801150f4;
     }
-    else if (DAT_800bf871 == 3) {
+    else if (g_LevelId == 3) {
       pbVar4 = &DAT_80115180;
     }
-    else if (DAT_800bf871 == 4) {
+    else if (g_LevelId == 4) {
       pbVar4 = &DAT_801151f8;
     }
     else {
@@ -72,20 +72,20 @@ void FUN_80072a78(void)
     }
   }
   else {
-    if (_DAT_800bf870 == 0x704) {
+    if (_g_GameState == 0x704) {
       return;
     }
-    pbVar4 = *(byte **)(&DAT_800a4c28 + (uint)DAT_800bf870 * 4);
-    if (pbVar4 == (byte *)0x0) {
+    pbVar4 = *(u8 **)(&DAT_800a4c28 + (uint)g_GameState * 4);
+    if (pbVar4 == (u8 *)0x0) {
       return;
     }
   }
   if (*pbVar4 != 0xff) {
     pbVar7 = pbVar4 + 0xc;
     do {
-      if (((*(short *)(pbVar7 + 2) != 1) ||
-          (((int)(uint)_DAT_800bfe56 >> (DAT_800bf870 & 0x1f) & 1U) == 0)) &&
-         ((*(short *)(pbVar7 + 2) != 2 || (DAT_800bf873 == '\0')))) {
+      if (((*(s16 *)(pbVar7 + 2) != 1) ||
+          (((int)(uint)_DAT_800bfe56 >> (g_GameState & 0x1f) & 1U) == 0)) &&
+         ((*(s16 *)(pbVar7 + 2) != 2 || (g_SubState == '\0')))) {
         bVar6 = pbVar7[-0xb];
         bVar1 = bVar6 != 3;
         if (bVar1) {
@@ -98,20 +98,20 @@ void FUN_80072a78(void)
         iVar5 = FUN_8007a980(bVar2 & 0x7f,bVar6,!bVar1);
         if (iVar5 != 0) {
           iVar5->alloc_flags = *pbVar4;
-          iVar5->callback = *(undefined4 *)(pbVar7 + 4);
+          iVar5->callback = *(s32 *)(pbVar7 + 4);
           iVar5->kind = pbVar7[-4];
           iVar5->sub_type = pbVar7[-3];
-          iVar5->pos_y = *(undefined2 *)(pbVar7 + -10);
-          *(undefined2 *)(iVar5 + 0x32) = *(undefined2 *)(pbVar7 + -8);
-          uVar3 = *(undefined2 *)(pbVar7 + -6);
+          iVar5->pos_y = *(s16 *)(pbVar7 + -10);
+          *(s16 *)(iVar5 + 0x32) = *(s16 *)(pbVar7 + -8);
+          uVar3 = *(s16 *)(pbVar7 + -6);
           iVar5->rot_x = 0;
           iVar5->pos_z = uVar3;
           iVar5->rot_y =
-               (short)((ulonglong)((longlong)(*(short *)(pbVar7 + -2) * 0x1000) * 0xb60b60b7) >>
-                      0x28) - (*(short *)(pbVar7 + -2) >> 0xf) & 0xfff;
+               (s16)((ulonglong)((longlong)(*(s16 *)(pbVar7 + -2) * 0x1000) * 0xb60b60b7) >>
+                      0x28) - (*(s16 *)(pbVar7 + -2) >> 0xf) & 0xfff;
           iVar5->rot_z =
-               (short)((ulonglong)((longlong)(*(short *)pbVar7 * 0x1000) * 0xb60b60b7) >> 0x28) -
-               (*(short *)pbVar7 >> 0xf) & 0xfff;
+               (s16)((ulonglong)((longlong)(*(s16 *)pbVar7 * 0x1000) * 0xb60b60b7) >> 0x28) -
+               (*(s16 *)pbVar7 >> 0xf) & 0xfff;
         }
       }
       pbVar4 = pbVar4 + 0x14;

@@ -12,25 +12,25 @@
 void FUN_8001d940(void)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
-  undefined1 auStack_20->counter1;
-  undefined1 local_18->counter1;
+  u8 auStack_20->counter1;
+  u8 local_18->counter1;
   
   bVar1 = false;
   DAT_800be0e4 = 0;
   FUN_8001cf00(0);
-  FUN_8008a00c(_DAT_1f8001f0,auStack_20);
-  _DAT_1f800284 = _DAT_1f8001f4;
-  _DAT_1f800288 = _DAT_1f8001f8;
+  FUN_8008a00c(_g_DMADest,auStack_20);
+  _DAT_1f800284 = _g_DMASize;
+  _DAT_1f800288 = _g_DMASrc;
 LAB_8001d998:
   do {
     do {
       do {
         FUN_80089b98(0);
-        _DAT_1f8001f4 = _DAT_1f800284;
-        _DAT_1f8001f8 = _DAT_1f800288;
-        DAT_800be0e0 = _DAT_1f8001f0 + -1;
+        _g_DMASize = _DAT_1f800284;
+        _g_DMASrc = _DAT_1f800288;
+        DAT_800be0e0 = _g_DMADest + -1;
         DAT_800be0e6 = 0;
         DAT_800be0e8 = 0;
         DAT_800be0ea = 0;
@@ -50,7 +50,7 @@ LAB_8001d998:
     FUN_80051f80(1);
     iVar2 = FUN_80089b44(1,0);
     if (iVar2 == 2) {
-      if ((_DAT_1f8001f4 == 0) && (iVar2 = FUN_80089fec(1), iVar2 == 0)) {
+      if ((_g_DMASize == 0) && (iVar2 = FUN_80089fec(1), iVar2 == 0)) {
         return;
       }
     }

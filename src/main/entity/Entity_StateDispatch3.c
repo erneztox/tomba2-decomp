@@ -9,12 +9,12 @@
 /* WARNING: Removing unreachable block (ram,0x800532d0) */
 
 #include "tomba.h"
-undefined4 FUN_800532a0(int param_1)
+s32 FUN_800532a0(int param_1)
 
 {
-  ushort uVar1;
-  char cVar2;
-  char cVar3;
+  u16 uVar1;
+  s8 cVar2;
+  s8 cVar3;
   int iVar4;
   uint uVar5;
   int iVar6;
@@ -29,7 +29,7 @@ undefined4 FUN_800532a0(int param_1)
         cVar3 = cVar2 + '\x04';
         if (param_1->direction == '\0') {
           if (0 < (int)((uint)param_1->anim_counter << 0x10)) {
-            param_1->anim_counter = (short)param_1->anim_counter >> 1;
+            param_1->anim_counter = (s16)param_1->anim_counter >> 1;
           }
           goto LAB_800533ec;
         }
@@ -51,14 +51,14 @@ undefined4 FUN_800532a0(int param_1)
       }
     }
     else {
-      if ((uVar1 != 3) || (DAT_800bf870 != '\x04')) goto LAB_800533ec;
+      if ((uVar1 != 3) || (g_GameState != '\x04')) goto LAB_800533ec;
       cVar3 = '\x06';
     }
   }
   else {
     if (uVar5 != 5) goto LAB_800533ec;
     if (uVar1 == 3) {
-      if (DAT_800bf870 != '\x04') goto LAB_800533ec;
+      if (g_GameState != '\x04') goto LAB_800533ec;
       cVar3 = '\x06';
     }
     else if ((uVar1 != 4) || (cVar3 = '\b', (param_1->entity_flags & 0x30) == 0))

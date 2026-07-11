@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80080adc(int *param_1,undefined4 param_2,undefined4 param_3)
+void FUN_80080adc(int *param_1,s32 param_2,s32 param_3)
 
 {
   code *pcVar1;

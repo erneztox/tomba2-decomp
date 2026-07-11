@@ -6,7 +6,7 @@
 
 
 
-undefined4 FUN_800898a0(void)
+s32 FUN_800898a0(void)
 
 {
   int iVar1;

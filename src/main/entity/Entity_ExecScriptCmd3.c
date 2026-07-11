@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-undefined4 FUN_800439e4(int param_1)
+s32 FUN_800439e4(int param_1)
 
 {
-  FUN_800521f4(0,*(undefined1 *)(param_1 + 0x74),param_1->camera_mode,
-               *(undefined1 *)(param_1 + 0x72));
+  FUN_800521f4(0,*(u8 *)(param_1 + 0x74),param_1->camera_mode,
+               *(u8 *)(param_1 + 0x72));
   return 1;
 }

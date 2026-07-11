@@ -10,10 +10,10 @@
 void FUN_80068be8(int param_1)
 
 {
-  short sVar1;
-  undefined2 uVar2;
+  s16 sVar1;
+  s16 uVar2;
   int iVar3;
-  byte bVar4;
+  u8 bVar4;
   int iVar5;
   
   bVar4 = param_1->behavior_state;
@@ -57,7 +57,7 @@ void FUN_80068be8(int param_1)
     param_1->velocity_y = 0x3000;
   }
   param_1->pos_y_fixed = param_1->pos_y_fixed + param_1->velocity_y * 0x100;
-  iVar3 = FUN_80083f50((int)*(short *)(param_1 + 0xbe));
+  iVar3 = FUN_80083f50((int)*(s16 *)(param_1 + 0xbe));
   iVar5 = iVar3 * param_1->anim_counter >> 4;
   iVar3 = param_1->normal_z * iVar5;
   *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + param_1->normal_x * iVar5;

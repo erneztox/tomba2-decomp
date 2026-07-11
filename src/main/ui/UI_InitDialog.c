@@ -10,15 +10,15 @@
 void FUN_8004f378(int param_1)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   int iVar2;
-  undefined4 *puVar3;
+  s32 *puVar3;
   
   FUN_80077d64();
-  puVar3 = (undefined4 *)(param_1 + 0x1b0);
+  puVar3 = (s32 *)(param_1 + 0x1b0);
   FUN_8004f184(param_1,puVar3);
-  uVar1 = *(short *)(param_1 + 10) - 1;
-  *(ushort *)(param_1 + 10) = uVar1;
+  uVar1 = *(s16 *)(param_1 + 10) - 1;
+  *(u16 *)(param_1 + 10) = uVar1;
   iVar2 = 0;
   if (0 < (int)((uint)uVar1 << 0x10)) {
     do {
@@ -32,7 +32,7 @@ void FUN_8004f378(int param_1)
       puVar3->action_state = puVar3[0xe];
       puVar3->sub_action = puVar3[0xf];
       puVar3 = puVar3 + 8;
-    } while (iVar2 < *(short *)(param_1 + 10));
+    } while (iVar2 < *(s16 *)(param_1 + 10));
   }
   FUN_8004ee2c(puVar3);
   return;

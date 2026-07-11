@@ -7,14 +7,14 @@
 
 
 #include "tomba.h"
-undefined4 FUN_80089194(int param_1)
+s32 FUN_80089194(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   if (**(char **)(param_1 + 0x3c) == -0xd) {
-    if ((*(char *)(param_1 + 0xe8) != '\0') && (param_1->anim_id != -1)) {
-      if (*(char *)(param_1 + 0x49) == '\x02') {
+    if ((*(s8*)(param_1 + 0xe8) != '\0') && (param_1->anim_id != -1)) {
+      if (*(s8*)(param_1 + 0x49) == '\x02') {
         (*DAT_800abe3c)(param_1);
       }
       goto LAB_80089200;

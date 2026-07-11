@@ -1,5 +1,5 @@
 /**
- * @brief Waits for flag: entity->sub_state state, polls DAT_800bf843 until zero then returns success
+ * @brief Waits for flag: entity->sub_state state, polls g_EventFlag until zero then returns success
  * @note Original: func_800425FC at 0x800425FC
  */
 // Entity_WaitForFlag
@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-undefined4 FUN_800425fc(int param_1)
+s32 FUN_800425fc(int param_1)
 
 {
   if (param_1->sub_state == '\0') {
@@ -18,7 +18,7 @@ undefined4 FUN_800425fc(int param_1)
     if (param_1->sub_state != '\x01') {
       return 0;
     }
-    if (DAT_800bf843 == '\0') {
+    if (g_EventFlag == '\0') {
       return 1;
     }
   }

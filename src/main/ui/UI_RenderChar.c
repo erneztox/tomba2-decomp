@@ -6,14 +6,14 @@
 
 
 
-int FUN_8004ea4c(byte *param_1,char *param_2,undefined4 param_3,byte *param_4)
+int FUN_8004ea4c(u8 *param_1,char *param_2,s32 param_3,u8 *param_4)
 
 {
-  byte bVar1;
-  short sVar2;
+  u8 bVar1;
+  s16 sVar2;
   
   sVar2 = 0;
-  if (param_2 != (char *)0x0) {
+  if (param_2 != (s8*)0x0) {
     param_4 = param_1;
   }
   do {
@@ -26,7 +26,7 @@ LAB_8004eac4:
       if (bVar1 < 0xfc) {
         if (bVar1 == 0xfa) {
 LAB_8004ea94:
-          if (param_2 != (char *)0x0) {
+          if (param_2 != (s8*)0x0) {
             *param_2 = (char)param_1 - (char)param_4;
           }
           return (int)sVar2;

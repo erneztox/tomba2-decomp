@@ -8,10 +8,10 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-undefined4 * FUN_80084220(undefined4 *param_1,undefined4 *param_2)
+s32 * FUN_80084220(s32 *param_1,s32 *param_2)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   
   setCopReg(2,0,*param_1);
   setCopReg(2,0x800,param_1->flags);

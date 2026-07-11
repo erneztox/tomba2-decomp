@@ -1,5 +1,5 @@
 /**
- * @brief Entity sprite init variant 2: sets DAT_800e806c, inits timers
+ * @brief Entity sprite init variant 2: sets g_CameraEntity, inits timers
  * @note Original: func_80042BDC at 0x80042BDC
  */
 // Entity_SpriteInit2
@@ -9,22 +9,22 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80042bdc(int param_1)
+s32 FUN_80042bdc(int param_1)
 
 {
-  short sVar1;
-  short sVar2;
+  s16 sVar1;
+  s16 sVar2;
   
   if (param_1->event_id == 0) {
     FUN_8006e1c0(1);
   }
   else {
-    DAT_800e806c = 1;
+    g_CameraEntity = 1;
   }
   _DAT_800e8076 = 0x130;
-  _DAT_800e8040 = (int)_DAT_1f800160 << 0x10;
-  _DAT_800e8044 = (_DAT_1f800162 + -0x8c) * 0x10000;
-  _DAT_800e8048 = (int)_DAT_1f800164 << 0x10;
+  _DAT_800e8040 = (int)_g_PlayerPosX << 0x10;
+  _DAT_800e8044 = (_g_PlayerPosY + -0x8c) * 0x10000;
+  _DAT_800e8048 = (int)_g_PlayerPosZ << 0x10;
   sVar1 = param_1->event_param;
   if (sVar1 != 1) {
     if (sVar1 < 2) {
@@ -47,8 +47,8 @@ LAB_80042cac:
   if ((param_1->event_param < 2) && (DAT_800e7fc7 != '\0')) {
     sVar2 = -sVar2;
   }
-  _DAT_800e8078 = sVar2 + _DAT_800e7fc0 + _DAT_800e805a;
-  _DAT_800e8074 = *(short *)(param_1 + 0x76);
+  _g_CameraAngle2 = sVar2 + _g_CameraAngle + _DAT_800e805a;
+  _DAT_800e8074 = *(s16 *)(param_1 + 0x76);
   if (_DAT_800e8074 == 0) {
     _DAT_800e8074 = 0x480;
   }

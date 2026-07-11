@@ -12,8 +12,8 @@
 void FUN_800645e0(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
+  u8 bVar1;
+  s16 sVar2;
   int iVar3;
   
   bVar1 = param_1->action_state;
@@ -37,7 +37,7 @@ void FUN_800645e0(int param_1)
           if (iVar3 == 0) {
             if (param_1->collision_state != '\0') {
               param_1->sub_action = 0;
-              if ((*(byte *)(param_1 + 0x149) & 2) == 0) {
+              if ((*(u8 *)(param_1 + 0x149) & 2) == 0) {
                 param_1->behavior_state = 1;
                 param_1->action_state = 0;
                 FUN_80054e80(param_1,1);
@@ -80,12 +80,12 @@ void FUN_800645e0(int param_1)
     param_1->velocity_y = 0;
     param_1->action_state = param_1->action_state + '\x01';
     param_1->behavior_flags = param_1->direction + '\x02';
-    *(char *)(param_1 + 0x149) = param_1->direction + '\x02';
+    *(s8*)(param_1 + 0x149) = param_1->direction + '\x02';
   }
   iVar3 = FUN_800633b0(param_1,0);
   if ((iVar3 == 0) && (1 < param_1->sub_action)) {
-    if ((_DAT_800e7e68 & _DAT_1f800172) == 0) {
-      if (((*(char *)(param_1->state_ptr + 0xc) != '\x05') &&
+    if ((_g_PadState & _g_InputMask) == 0) {
+      if (((*(s8*)(param_1->state_ptr + 0xc) != '\x05') &&
           (iVar3 = FUN_80055634(param_1,0), iVar3 != 0)) && (param_1->behavior_state == '\x04')) {
         FUN_800645cc(param_1);
       }

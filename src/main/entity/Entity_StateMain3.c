@@ -9,20 +9,20 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80057fd4(int param_1)
+s32 FUN_80057fd4(int param_1)
 
 {
-  undefined4 *puVar1;
-  undefined2 uVar2;
-  undefined2 *puVar3;
+  s32 *puVar1;
+  s16 uVar2;
+  s16 *puVar3;
   int iVar4;
   int iVar5;
-  undefined2 *puVar6;
+  s16 *puVar6;
   int iVar7;
   int iVar8;
-  undefined1 uVar9;
+  u8 uVar9;
   uint uVar10;
-  ushort uVar11;
+  u16 uVar11;
   int *piVar12;
   
   iVar5 = _DAT_800ed014;
@@ -30,20 +30,20 @@ undefined4 FUN_80057fd4(int param_1)
   switch(uVar11) {
   default:
     uVar10 = 0x11;
-    puVar6 = (undefined2 *)&DAT_800a3fa8;
+    puVar6 = (s16 *)&DAT_800a3fa8;
     break;
   case 1:
     uVar10 = 0x11;
-    puVar6 = (undefined2 *)0x800a4030;
+    puVar6 = (s16 *)0x800a4030;
     break;
   case 2:
     uVar10 = 0x13;
-    puVar6 = (undefined2 *)0x800a40c8;
+    puVar6 = (s16 *)0x800a40c8;
     break;
   case 3:
   case 10:
     uVar10 = 0x11;
-    puVar6 = (undefined2 *)0x800a4160;
+    puVar6 = (s16 *)0x800a4160;
     break;
   case 4:
   case 5:
@@ -51,20 +51,20 @@ undefined4 FUN_80057fd4(int param_1)
   case 7:
   case 8:
     uVar10 = 0x11;
-    puVar6 = (undefined2 *)0x800a41e8;
+    puVar6 = (s16 *)0x800a41e8;
     break;
   case 9:
     uVar10 = 0x11;
     puVar6 = &DAT_800a4270;
   }
   piVar12 = (int *)(_DAT_800ed014 + 4);
-  uVar9 = (undefined1)uVar10;
+  uVar9 = (u8)uVar10;
   if ((int)(uVar10 - param_1->counter2) < 1) {
     iVar8 = 0;
     iVar4 = param_1;
     if (uVar10 != 0) {
       do {
-        puVar3 = *(undefined2 **)(iVar4 + 0xc0);
+        puVar3 = *(s16 **)(iVar4 + 0xc0);
         iVar8 = iVar8 + 1;
         puVar3->sub_type = *puVar6;
         *puVar3 = puVar6->flags;
@@ -87,8 +87,8 @@ undefined4 FUN_80057fd4(int param_1)
     if (uVar10 < param_1->counter2) {
       iVar5 = uVar10 * 4 + param_1;
       do {
-        _DAT_800ed098 = _DAT_800ed098 + 1;
-        puVar1 = (undefined4 *)(_DAT_800e7e74 + -4);
+        _g_EntityPoolCount = _g_EntityPoolCount + 1;
+        puVar1 = (s32 *)(_DAT_800e7e74 + -4);
         _DAT_800e7e74 = _DAT_800e7e74 + -4;
         *puVar1 = iVar5->sprite_ptr1;
         uVar10 = uVar10 + 1;
@@ -103,11 +103,11 @@ undefined4 FUN_80057fd4(int param_1)
     if (uVar10 != 0) {
       do {
         if (iVar7 < (int)(uint)param_1->counter2) {
-          puVar3 = *(undefined2 **)(iVar4 + 0xc0);
+          puVar3 = *(s16 **)(iVar4 + 0xc0);
         }
         else {
-          puVar3 = (undefined2 *)FUN_8007aae8();
-          *(undefined2 **)(iVar4 + 0xc0) = puVar3;
+          puVar3 = (s16 *)FUN_8007aae8();
+          *(s16 **)(iVar4 + 0xc0) = puVar3;
           if (uVar11 == 2) {
             uVar11 = 0;
             iVar8 = 0x15;
@@ -137,13 +137,13 @@ undefined4 FUN_80057fd4(int param_1)
   param_1->counter2 = uVar9;
 LAB_80058268:
   if ((param_1->entity_flags & 0x200) != 0) {
-    *(undefined4 *)(param_1->sprite_ptr1 + 0x40) = 0;
-    *(undefined4 *)(*(int *)(param_1 + 200) + 0x40) = 0;
-    *(undefined4 *)(param_1->anim_ptr + 0x40) = 0;
-    *(undefined4 *)(*(int *)(param_1 + 0xd4) + 0x40) = 0;
-    *(undefined4 *)(*(int *)(param_1 + 0xd8) + 0x40) = 0;
-    *(undefined4 *)(*(int *)(param_1 + 0xe8) + 0x40) = 0;
-    *(undefined4 *)(*(int *)(param_1 + 0xf4) + 0x40) = 0;
+    *(s32 *)(param_1->sprite_ptr1 + 0x40) = 0;
+    *(s32 *)(*(int *)(param_1 + 200) + 0x40) = 0;
+    *(s32 *)(param_1->anim_ptr + 0x40) = 0;
+    *(s32 *)(*(int *)(param_1 + 0xd4) + 0x40) = 0;
+    *(s32 *)(*(int *)(param_1 + 0xd8) + 0x40) = 0;
+    *(s32 *)(*(int *)(param_1 + 0xe8) + 0x40) = 0;
+    *(s32 *)(*(int *)(param_1 + 0xf4) + 0x40) = 0;
   }
   return 1;
 }

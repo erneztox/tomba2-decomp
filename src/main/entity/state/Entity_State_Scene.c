@@ -7,18 +7,18 @@
 
 
 #include "tomba.h"
-undefined4 FUN_80043a40(int param_1)
+s32 FUN_80043a40(int param_1)
 
 {
-  byte bVar1;
-  ushort uVar2;
-  short sVar3;
+  u8 bVar1;
+  u16 uVar2;
+  s16 sVar3;
   
   FUN_80074eec();
   bVar1 = param_1->sub_state;
   if (bVar1 == 1) {
-    uVar2 = *(short *)(param_1 + 0x76) - 1;
-    *(ushort *)(param_1 + 0x76) = uVar2;
+    uVar2 = *(s16 *)(param_1 + 0x76) - 1;
+    *(u16 *)(param_1 + 0x76) = uVar2;
     if (0 < (int)((uint)uVar2 << 0x10)) {
       return 0;
     }

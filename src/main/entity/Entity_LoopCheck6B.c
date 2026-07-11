@@ -6,7 +6,7 @@
 
 
 
-bool FUN_8003687c(undefined4 param_1)
+s32 FUN_8003687c(s32 param_1)
 
 {
   int iVar1;

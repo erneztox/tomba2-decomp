@@ -9,12 +9,12 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-int FUN_80035338(undefined4 param_1,int param_2,int param_3,undefined4 param_4)
+int FUN_80035338(s32 param_1,int param_2,int param_3,s32 param_4)
 
 {
   int iVar1;
   int iVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   
   iVar1 = FUN_80035640(param_4);
   if ((iVar1 != 0) && (param_3 != 1)) {
@@ -24,16 +24,16 @@ int FUN_80035338(undefined4 param_1,int param_2,int param_3,undefined4 param_4)
       if (iVar2 == 0) {
         return iVar1;
       }
-      iVar2->script_ptr = _DAT_1f800080;
+      iVar2->script_ptr = _g_GTE_Result[0];
     }
     else {
       iVar2 = FUN_8004bd04(param_1,1,1);
       if (iVar2 == 0) {
         return iVar1;
       }
-      iVar2->script_ptr = _DAT_1f800080;
+      iVar2->script_ptr = _g_GTE_Result[0];
       uVar3 = 0x61;
-      if ((DAT_800bf870 == '\0') && (DAT_800bf8b8 != -1)) {
+      if ((g_GameState == '\0') && (DAT_800bf8b8 != -1)) {
         uVar3 = 0x28;
       }
     }

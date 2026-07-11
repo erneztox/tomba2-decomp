@@ -10,17 +10,17 @@
 void FUN_80077c40(int param_1,int param_2,int param_3)
 
 {
-  short sVar1;
-  ushort uVar2;
-  ushort uVar3;
+  s16 sVar1;
+  u16 uVar2;
+  u16 uVar3;
   int iVar4;
   
   iVar4 = *(int *)(param_3 * 4 + param_2);
-  uVar2 = *(ushort *)(iVar4 + 6);
+  uVar2 = *(u16 *)(iVar4 + 6);
   param_1->anim_data = iVar4;
   param_1->anim_timer = uVar2 & 0xfff;
   FUN_80076904();
-  uVar2 = *(ushort *)(iVar4 + 6);
+  uVar2 = *(u16 *)(iVar4 + 6);
   uVar3 = uVar2 & 0xc000;
   if ((uVar2 & 0x2000) == 0) {
     return;

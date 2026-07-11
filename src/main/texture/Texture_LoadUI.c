@@ -9,25 +9,25 @@
 void FUN_80067da8(void)
 
 {
-  undefined *puVar1;
-  undefined *puVar2;
-  undefined *puVar3;
-  undefined *puVar4;
-  undefined *puVar5;
-  undefined2 local_20;
-  undefined2 local_1e;
-  undefined2 local_1c;
-  undefined2 local_1a;
+  void *puVar1;
+  void *puVar2;
+  void *puVar3;
+  void *puVar4;
+  void *puVar5;
+  s16 local_20;
+  s16 local_1e;
+  s16 local_1c;
+  s16 local_1a;
   
-  if (DAT_800bf88d == 1) {
+  if (g_SpriteParam2 == 1) {
     puVar1 = &DAT_800a4840;
-    puVar3 = (undefined *)0x800a4860;
-    puVar2 = (undefined *)0x800a4900;
-    puVar5 = (undefined *)0x800a4920;
-    puVar4 = (undefined *)0x800a49a0;
+    puVar3 = (void*)0x800a4860;
+    puVar2 = (void*)0x800a4900;
+    puVar5 = (void*)0x800a4920;
+    puVar4 = (void*)0x800a49a0;
   }
-  else if (DAT_800bf88d < 2) {
-    if (DAT_800bf88d != 0) {
+  else if (g_SpriteParam2 < 2) {
+    if (g_SpriteParam2 != 0) {
       return;
     }
     puVar1 = &DAT_800a4800;
@@ -37,14 +37,14 @@ void FUN_80067da8(void)
     puVar4 = &DAT_800a4980;
   }
   else {
-    if (DAT_800bf88d != 2) {
+    if (g_SpriteParam2 != 2) {
       return;
     }
     puVar1 = &DAT_800a4880;
-    puVar3 = (undefined *)0x800a48a0;
-    puVar2 = (undefined *)0x800a4940;
-    puVar5 = (undefined *)0x800a4960;
-    puVar4 = (undefined *)0x800a49c0;
+    puVar3 = (void*)0x800a48a0;
+    puVar2 = (void*)0x800a4940;
+    puVar5 = (void*)0x800a4960;
+    puVar4 = (void*)0x800a49c0;
   }
   local_1c = 0x10;
   local_1a = 1;

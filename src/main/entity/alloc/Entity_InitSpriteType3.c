@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80023528(undefined1 *param_1)
+void FUN_80023528(u8 *param_1)
 
 {
   *param_1 = 3;

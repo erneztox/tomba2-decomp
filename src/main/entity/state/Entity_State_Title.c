@@ -9,13 +9,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80049a60(undefined1 *param_1,int param_2)
+void FUN_80049a60(u8 *param_1,int param_2)
 
 {
-  char cVar1;
-  short sVar2;
-  ushort uVar3;
-  byte bVar4;
+  s8 cVar1;
+  s16 sVar2;
+  u16 uVar3;
+  u8 bVar4;
   int iVar5;
   
   switchparam_1->behavior_state {
@@ -35,7 +35,7 @@ void FUN_80049a60(undefined1 *param_1,int param_2)
   case 1:
     sVar2 = param_1->velocity_y;
     uVar3 = param_1->velocity_y;
-    param_1->velocity_y = (short)((uint)uVar3 + (uint)param_1->angle_offset);
+    param_1->velocity_y = (s16)((uint)uVar3 + (uint)param_1->angle_offset);
     param_1->pos_y_fixed = param_1->pos_y_fixed + sVar2 * 0x100;
     iVar5 = (int)(((uint)uVar3 + (uint)param_1->angle_offset) * 0x10000) >> 0x10;
     if (iVar5 < 0) {
@@ -66,8 +66,8 @@ void FUN_80049a60(undefined1 *param_1,int param_2)
                                    (uint)param_1->bounds_min_y) * 0x10000) >> 0x10);
         if (iVar5 != 1) {
           if (iVar5 != 2) break;
-          if ((((int)_DAT_1f8001a6 & 0x8000U) != 0) && (DAT_800bf870 != '\b')) {
-            if ((DAT_800bf870 != '\x01') || (param_1->kind == '\0')) {
+          if ((((int)_DAT_1f8001a6 & 0x8000U) != 0) && (g_GameState != '\b')) {
+            if ((g_GameState != '\x01') || (param_1->kind == '\0')) {
               param_1->behavior_state = 6;
             }
             break;
@@ -78,11 +78,11 @@ LAB_80049d18:
       }
       else {
         if (DAT_800e7feb == '\b') {
-          if (((DAT_800bf816 != '\x01') || ((ushort)DAT_800bf817 != param_1->type_flags)) ||
-             ((int)*(short *)(param_1 + 0x32) +
+          if (((g_ActionFlag != '\x01') || ((u16)g_HurtParam != param_1->type_flags)) ||
+             ((int)*(s16 *)(param_1 + 0x32) +
               ((int)param_1->bounds_max_y - (int)param_1->bounds_min_y) <
               (int)_DAT_800bf812)) break;
-          *(short *)(param_1 + 0x32) =
+          *(s16 *)(param_1 + 0x32) =
                _DAT_800bf812 - (param_1->bounds_max_y - param_1->bounds_min_y);
           goto LAB_80049d18;
         }
@@ -103,7 +103,7 @@ LAB_80049bc8:
     break;
   case 3:
     if ((((param_1->alloc_flags & 0x80) == 0) ||
-        ((DAT_800bf816 != '\0' && ((ushort)DAT_800bf817 == param_1->type_flags)))) &&
+        ((g_ActionFlag != '\0' && ((u16)g_HurtParam == param_1->type_flags)))) &&
        (param_1->collision_state == '\0')) {
       param_1->velocity_y = 0x2000;
       param_1->behavior_state = param_1->behavior_state + -1;
@@ -114,21 +114,21 @@ LAB_80049bc8:
     if (param_1->velocity_y < 0x3000) {
       param_1->velocity_y = param_1->velocity_y + param_1->angle_offset;
     }
-    iVar5 = FUN_80077acc(param_1,(int)param_1->pos_y,(int)*(short *)(param_1 + 0x32),
+    iVar5 = FUN_80077acc(param_1,(int)param_1->pos_y,(int)*(s16 *)(param_1 + 0x32),
                          (int)param_1->pos_z);
     if (iVar5 == 0) {
       param_1->state = 3;
     }
   }
   if (param_2 == 0) {
-    if ((_DAT_1f80017c & 0x1f) == 0) {
+    if ((_g_FrameCounter2 & 0x1f) == 0) {
       bVar4 = param_1->sprite_flags | 0x20;
     }
     else {
       bVar4 = param_1->sprite_flags & 0xdf;
     }
   }
-  else if ((_DAT_1f80017c & 0x1f) == 0) {
+  else if ((_g_FrameCounter2 & 0x1f) == 0) {
     bVar4 = param_1->sprite_flags | 2;
   }
   else {

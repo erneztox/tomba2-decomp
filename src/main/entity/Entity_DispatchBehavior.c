@@ -10,8 +10,8 @@
 void FUN_80069688(int param_1)
 
 {
-  byte bVar1;
-  undefined *puVar2;
+  u8 bVar1;
+  void *puVar2;
   
   if (param_1->flag_5E == '\0') {
     bVar1 = param_1->kind;
@@ -21,6 +21,6 @@ void FUN_80069688(int param_1)
     bVar1 = param_1->kind;
     puVar2 = &DAT_800a4a8c;
   }
-  *(ushort *)(param_1 + 0x76) = (ushort)(byte)puVar2[bVar1];
+  *(u16 *)(param_1 + 0x76) = (u16)(u8)puVar2[bVar1];
   return;
 }

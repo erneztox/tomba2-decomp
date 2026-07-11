@@ -10,9 +10,9 @@
 void FUN_8005ef48(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
-  undefined2 uVar3;
+  u8 bVar1;
+  s16 sVar2;
+  s16 uVar3;
   int iVar4;
   
   bVar1 = param_1->action_state;
@@ -78,11 +78,11 @@ void FUN_8005ef48(int param_1)
   FUN_80055d5c(param_1);
   FUN_80076d68(param_1);
   if (((param_1->collision_state & 0x80) == 0) || (iVar4 = FUN_80055824(), iVar4 == 0)) {
-    *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 8;
+    *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
     FUN_8005444c(param_1);
     if (param_1->collision_state == '\0') {
       param_1->anim_counter = 0;
-      *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 0x40;
+      *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 0x40;
       FUN_80056d44(param_1,0);
       if (param_1->behavior_state == '\x02') {
         param_1->timer1 = 10;

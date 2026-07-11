@@ -8,10 +8,10 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-int FUN_800952cc(short param_1,short param_2,short param_3,undefined2 param_4)
+int FUN_800952cc(s16 param_1,s16 param_2,s16 param_3,s16 param_4)
 
 {
-  short sVar1;
+  s16 sVar1;
   int iVar2;
   int iVar3;
   int iVar4;

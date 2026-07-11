@@ -9,13 +9,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80057a68(undefined1 *param_1)
+s32 FUN_80057a68(u8 *param_1)
 
 {
-  byte bVar1;
-  undefined1 uVar2;
+  u8 bVar1;
+  u8 uVar2;
   int iVar3;
-  undefined4 uVar4;
+  s32 uVar4;
   
   iVar3 = FUN_80024548(param_1,0);
   param_1->state_ptr = iVar3;
@@ -24,7 +24,7 @@ undefined4 FUN_80057a68(undefined1 *param_1)
   }
   param_1->flag_16A = 0;
   param_1[0x181] = 0;
-  uVar4 = _DAT_1f800084;
+  uVar4 = _g_GTE_Work84;
   param_1->type_flags = 0;
   param_1->rot_z = 0;
   param_1->state_flag145 = 0;

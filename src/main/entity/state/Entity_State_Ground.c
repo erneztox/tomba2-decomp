@@ -10,7 +10,7 @@
 void FUN_80057c08(int param_1,int param_2)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
   
   iVar2 = FUN_80057a68();
@@ -59,7 +59,7 @@ LAB_80057d24:
     bVar1 = param_1->behavior_flags & 0xe;
     param_1->behavior_flags = bVar1;
     param_1->behavior_flags = bVar1 | param_1->direction;
-    if ((*(byte *)(param_1 + 0x149) & 2) == 0) {
+    if ((*(u8 *)(param_1 + 0x149) & 2) == 0) {
       param_1->behavior_state = 1;
       param_1->action_state = 0;
       FUN_80054e80();

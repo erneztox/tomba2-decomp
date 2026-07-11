@@ -7,13 +7,13 @@
 
 
 #include "tomba.h"
-void FUN_8006a240(undefined1 *param_1)
+void FUN_8006a240(u8 *param_1)
 
 {
-  byte bVar1;
-  char cVar2;
-  short sVar3;
-  ushort uVar4;
+  u8 bVar1;
+  s8 cVar2;
+  s16 sVar3;
+  u16 uVar4;
   
   bVar1 = param_1->sub_action;
   if (bVar1 != 1) {
@@ -24,14 +24,14 @@ void FUN_8006a240(undefined1 *param_1)
         }
         if (param_1->kind == '\x01') {
           uVar4 = param_1->anim_counter;
-          param_1->anim_counter = (short)((uint)uVar4 - (uint)*(ushort *)(param_1 + 0x76));
-          if ((int)(((uint)uVar4 - (uint)*(ushort *)(param_1 + 0x76)) * 0x10000) < 0)
+          param_1->anim_counter = (s16)((uint)uVar4 - (uint)*(u16 *)(param_1 + 0x76));
+          if ((int)(((uint)uVar4 - (uint)*(u16 *)(param_1 + 0x76)) * 0x10000) < 0)
           goto LAB_8006a368;
         }
         else {
           uVar4 = param_1->anim_counter;
-          param_1->anim_counter = (short)((uint)uVar4 - (uint)*(ushort *)(param_1 + 0x76));
-          if ((int)(((uint)uVar4 - (uint)*(ushort *)(param_1 + 0x76)) * 0x10000) >> 0x10 < 0x46)
+          param_1->anim_counter = (s16)((uint)uVar4 - (uint)*(u16 *)(param_1 + 0x76));
+          if ((int)(((uint)uVar4 - (uint)*(u16 *)(param_1 + 0x76)) * 0x10000) >> 0x10 < 0x46)
           goto LAB_8006a368;
         }
         if (param_1->move_mode == '\0') {
@@ -58,7 +58,7 @@ LAB_8006a368:
       return;
     }
     param_1->sub_action = 1;
-    *(undefined2 *)(param_1 + 0x66) = 3;
+    *(s16 *)(param_1 + 0x66) = 3;
   }
   if (param_1->move_mode == '\0') {
     cVar2 = param_1->sub_action;

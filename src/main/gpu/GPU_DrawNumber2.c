@@ -8,12 +8,12 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8007c688(undefined4 param_1,short *param_2,undefined1 param_3,short param_4)
+void FUN_8007c688(s32 param_1,s16 *param_2,u8 param_3,s16 param_4)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   uint uVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   
   if (param_4 == 0) {
     uVar3 = 2;

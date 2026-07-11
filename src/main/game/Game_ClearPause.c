@@ -14,6 +14,6 @@ void FUN_800269fc(int param_1)
     param_1->flags = 0;
     return;
   }
-  DAT_1f800137 = 0;
+  g_CurrentOverlay = 0;
   return;
 }

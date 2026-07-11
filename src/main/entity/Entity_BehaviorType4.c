@@ -12,10 +12,10 @@
 void FUN_800683b8(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
-  short sVar3;
-  char cVar4;
+  u8 bVar1;
+  s16 sVar2;
+  s16 sVar3;
+  s8 cVar4;
   
   bVar1 = param_1->state;
   if (bVar1 != 1) {
@@ -33,8 +33,8 @@ void FUN_800683b8(int param_1)
   }
   param_1->scale_y = param_1->anim_data;
   if (param_1->anim_data == 0) {
-    *(undefined **)(param_1 + 0x38) = &DAT_800a0d50;
-    *(undefined **)(param_1 + 0x34) = &DAT_800a0d50;
+    *(void **)(param_1 + 0x38) = &DAT_800a0d50;
+    *(void **)(param_1 + 0x34) = &DAT_800a0d50;
   }
   switch(param_1->behavior_state) {
   case 0:
@@ -74,16 +74,16 @@ LAB_8006853c:
     sVar2 = param_1->target_angle;
     param_1->target_angle = sVar2 + -1;
     if (sVar2 != 1) goto LAB_800685bc;
-    DAT_1f800137 = 0;
-    DAT_1f800236 = 0;
-    DAT_800e806c = 0;
+    g_CurrentOverlay = 0;
+    g_GameMode = 0;
+    g_CameraEntity = 0;
     param_1->state = 3;
   }
 LAB_800685bc:
-  param_1->pos_x = _DAT_1f800160;
+  param_1->pos_x = _g_PlayerPosX;
   sVar3 = _DAT_800e7ee2;
-  *(undefined2 *)(param_1 + 0x30) = _DAT_1f800164;
-  sVar2 = _DAT_1f800162;
+  *(s16 *)(param_1 + 0x30) = _g_PlayerPosZ;
+  sVar2 = _g_PlayerPosY;
   param_1->flags = 1;
   param_1->pos_y = sVar2 + sVar3 * 2;
   return;

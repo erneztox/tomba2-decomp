@@ -10,7 +10,7 @@
 uint FUN_80083ff8(void)
 
 {
-  undefined4 unaff_retaddr;
+  s32 unaff_retaddr;
   
   DAT_800a6300 = unaff_retaddr;
   FUN_80085810();

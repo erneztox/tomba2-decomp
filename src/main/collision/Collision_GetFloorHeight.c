@@ -9,30 +9,30 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80047cbc(void)
+s32 FUN_80047cbc(void)
 
 {
-  ushort *puVar1;
-  ushort uVar2;
-  ushort *puVar3;
+  u16 *puVar1;
+  u16 uVar2;
+  u16 *puVar3;
   int iVar4;
-  ushort uVar5;
+  u16 uVar5;
   int iVar6;
   int iVar7;
-  ushort *puVar8;
-  ushort *puVar9;
+  u16 *puVar8;
+  u16 *puVar9;
   uint uVar10;
   
-  iVar6 = (int)(short)_DAT_1f8001bc - (int)_DAT_1f8001aa >> 6;
-  puVar8 = (ushort *)(_DAT_1f8001cc + iVar6 * 4);
-  iVar7 = (int)(short)_DAT_1f8001c0 - (int)_DAT_1f8001ac >> 6;
+  iVar6 = (int)(s16)_DAT_1f8001bc - (int)_DAT_1f8001aa >> 6;
+  puVar8 = (u16 *)(_DAT_1f8001cc + iVar6 * 4);
+  iVar7 = (int)(s16)_DAT_1f8001c0 - (int)_DAT_1f8001ac >> 6;
   if ((iVar7 < (int)(uint)*puVar8) ||
      ((uVar10 = ((uint)puVar8->flags + iVar7) - (uint)*puVar8, iVar6 < (int)((_DAT_1f8001ae >> 6) - 2)
       && ((uint)puVar8->sub_type <= (uVar10 & 0xffff))))) {
     return 0;
   }
-  _DAT_1f80008c = uVar10 & 0xffff;
-  puVar8 = (ushort *)(_DAT_1f8001d0 + _DAT_1f80008c * 8);
+  _g_GTE_Work8C = uVar10 & 0xffff;
+  puVar8 = (u16 *)(_DAT_1f8001d0 + _g_GTE_Work8C * 8);
   uVar2 = *puVar8;
   _DAT_1f8001e4 = puVar8;
   _DAT_1f8001a8 = uVar2;
@@ -42,30 +42,30 @@ undefined4 FUN_80047cbc(void)
   do {
     while( true ) {
       if ((uVar2 & 0x8000) == 0) {
-        _DAT_1f8001e0 = puVar8;
+        _g_CollisionResult = puVar8;
         return 1;
       }
       if ((uVar2 & 0x4000) == 0) break;
-      _DAT_1f8001e0 = (ushort *)(_DAT_1f8001d4 + (uint)puVar8->flags * 8);
+      _g_CollisionResult = (u16 *)(_DAT_1f8001d4 + (uint)puVar8->flags * 8);
       uVar10 = 1;
       if ((uVar2 & 1) != 0) {
         if (1 < puVar8->kind) {
           do {
-            puVar3 = _DAT_1f8001e0 + 4;
-            puVar9 = _DAT_1f8001e0 + 6;
-            puVar1 = _DAT_1f8001e0 + 7;
-            _DAT_1f8001e0 = puVar3;
-            if ((ushort)(*puVar9 - (_DAT_1f8001be + -0x20)) < *puVar1) break;
+            puVar3 = _g_CollisionResult + 4;
+            puVar9 = _g_CollisionResult + 6;
+            puVar1 = _g_CollisionResult + 7;
+            _g_CollisionResult = puVar3;
+            if ((u16)(*puVar9 - (_DAT_1f8001be + -0x20)) < *puVar1) break;
             uVar10 = uVar10 + 1;
           } while ((int)uVar10 < (int)(uint)puVar8->kind);
         }
         if (((uVar10 == (puVar8->sub_type & 0xff)) || (uVar10 == puVar8->sub_type >> 8)) || (uVar10 == puVar8->kind))
         {
-          _DAT_1f8001e0 = (ushort *)(_DAT_1f8001d4 + (uint)puVar8->flags * 8);
+          _g_CollisionResult = (u16 *)(_DAT_1f8001d4 + (uint)puVar8->flags * 8);
         }
       }
-      uVar2 = *_DAT_1f8001e0;
-      puVar8 = _DAT_1f8001e0;
+      uVar2 = *_g_CollisionResult;
+      puVar8 = _g_CollisionResult;
     }
     uVar5 = uVar2 & 3;
     if ((uVar2 & 4) == 0) {
@@ -109,24 +109,24 @@ LAB_80047f9c:
         iVar4 = iVar6 << 0x10;
       }
     }
-    puVar9 = (ushort *)(_DAT_1f8001cc + (iVar4 >> 0xe));
+    puVar9 = (u16 *)(_DAT_1f8001cc + (iVar4 >> 0xe));
     uVar10 = (uint)*puVar9;
     if (uVar10 == 0xffff) {
-      _DAT_1f8001e0 = puVar8;
+      _g_CollisionResult = puVar8;
       return 0;
     }
-    if ((int)(short)iVar7 < (int)uVar10) {
-      _DAT_1f8001e0 = puVar8;
+    if ((int)(s16)iVar7 < (int)uVar10) {
+      _g_CollisionResult = puVar8;
       return 0;
     }
     uVar10 = ((uint)puVar9->flags + iVar7) - uVar10 & 0xffff;
     if (puVar9->sub_type <= uVar10) {
-      _DAT_1f8001e0 = puVar8;
+      _g_CollisionResult = puVar8;
       return 0;
     }
-    puVar8 = (ushort *)(_DAT_1f8001d0 + uVar10 * 8);
+    puVar8 = (u16 *)(_DAT_1f8001d0 + uVar10 * 8);
     uVar2 = *puVar8;
-    _DAT_1f80008c = uVar10;
+    _g_GTE_Work8C = uVar10;
     _DAT_1f8001e4 = puVar8;
     _DAT_1f8001a8 = uVar2;
   } while( true );

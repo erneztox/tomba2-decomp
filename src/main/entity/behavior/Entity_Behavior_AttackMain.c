@@ -9,12 +9,12 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006c0c4(undefined1 *param_1)
+void FUN_8006c0c4(u8 *param_1)
 
 {
-  char cVar1;
-  short sVar2;
-  undefined2 uVar3;
+  s8 cVar1;
+  s16 sVar2;
+  s16 uVar3;
   int iVar4;
   
   switchparam_1->action_state {
@@ -61,7 +61,7 @@ void FUN_8006c0c4(undefined1 *param_1)
       param_1->move_mode = 0;
     }
     FUN_8006be88(param_1);
-    if ((byte)param_1->move_mode < 2) goto LAB_8006c2a8;
+    if ((u8)param_1->move_mode < 2) goto LAB_8006c2a8;
     if (param_1->move_mode == 2) {
       DAT_800e7ef9 = 2;
     }

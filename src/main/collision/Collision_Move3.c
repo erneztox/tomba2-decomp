@@ -9,13 +9,13 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-bool FUN_800468ac(int param_1,short param_2,short param_3,short param_4)
+s32 FUN_800468ac(int param_1,s16 param_2,s16 param_3,s16 param_4)
 
 {
-  short sVar1;
-  ushort uVar2;
+  s16 sVar1;
+  u16 uVar2;
   int iVar3;
-  undefined4 uVar4;
+  s32 uVar4;
   int iVar5;
   int iVar6;
   uint uVar7;
@@ -26,11 +26,11 @@ bool FUN_800468ac(int param_1,short param_2,short param_3,short param_4)
   uVar8 = (uint)(-iVar3 * iVar5) >> 0xc;
   iVar3 = FUN_80083f50((int)param_4);
   iVar6 = 0;
-  _DAT_1f8001be = *(short *)(param_1 + 0x32) + param_3;
+  _DAT_1f8001be = *(s16 *)(param_1 + 0x32) + param_3;
   uVar7 = (uint)(iVar3 * iVar5) >> 0xc;
   do {
-    _DAT_1f8001bc = param_1->pos_y + (short)uVar7;
-    _DAT_1f8001c0 = param_1->pos_z + (short)uVar8;
+    _DAT_1f8001bc = param_1->pos_y + (s16)uVar7;
+    _DAT_1f8001c0 = param_1->pos_z + (s16)uVar8;
     iVar3 = FUN_800498c8(param_1);
     if (iVar3 == 0) {
       return false;

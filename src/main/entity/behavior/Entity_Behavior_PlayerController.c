@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-void FUN_80040558(undefined1 *param_1)
+void FUN_80040558(u8 *param_1)
 
 {
-  byte bVar1;
-  char cVar2;
+  u8 bVar1;
+  s8 cVar2;
   int iVar3;
   
   bVar1 = param_1->state;
@@ -30,7 +30,7 @@ void FUN_80040558(undefined1 *param_1)
           FUN_80040b48(0x38);
         }
         if (param_1->flag_5E != '\x02') goto LAB_8004099c;
-        *(undefined1 *)(param_1->parent + 0x5e) = 1;
+        *(u8 *)(param_1->parent + 0x5e) = 1;
         break;
       case 2:
         FUN_8003fe00(param_1);
@@ -39,17 +39,17 @@ void FUN_80040558(undefined1 *param_1)
         FUN_8003fed8(param_1);
       }
       if (param_1->flag_5E == '\x02') {
-        param_1->flags = *(undefined1 *)(param_1->parent + 1);
+        param_1->flags = *(u8 *)(param_1->parent + 1);
         func_0x8012866c(param_1);
         FUN_80077e7c(param_1);
         return;
       }
 LAB_8004099c:
-      if ((DAT_800bf816 == '\0') || ((ushort)DAT_800bf817 != param_1->type_flags)) {
+      if ((g_ActionFlag == '\0') || ((u16)g_HurtParam != param_1->type_flags)) {
         if ((param_1->alloc_flags & 0x80) != 0) {
           return;
         }
-        if (DAT_800bf870 == '\b') {
+        if (g_GameState == '\b') {
           iVar3 = func_0x8012e168(param_1);
         }
         else {
@@ -125,12 +125,12 @@ switchD_80040648_caseD_3:
     param_1->collision_state = 0;
     return;
   }
-  if (DAT_800bf870 == '\x12') {
+  if (g_GameState == '\x12') {
     if (DAT_800bfa59 == '\0') {
       return;
     }
   }
-  else if ((DAT_800bf870 == '\x06') && (DAT_800bf871 == '\x13')) {
+  else if ((g_GameState == '\x06') && (g_LevelId == '\x13')) {
     return;
   }
   switchparam_1->behavior_state {
@@ -160,7 +160,7 @@ switchD_80040648_caseD_3:
   case 6:
     goto switchD_800407d0_caseD_0;
   case 2:
-    cVar2 = *(char *)(param_1->parent + 1);
+    cVar2 = *(s8*)(param_1->parent + 1);
     param_1->flags = cVar2;
     if (cVar2 != '\0') {
       func_0x8012866c(param_1);
@@ -175,9 +175,9 @@ switchD_80040648_caseD_3:
   case 7:
     func_0x8012b118(param_1);
 switchD_800407d0_caseD_0:
-    if ((DAT_800bf816 == '\0') || ((ushort)DAT_800bf817 != param_1->type_flags)) {
+    if ((g_ActionFlag == '\0') || ((u16)g_HurtParam != param_1->type_flags)) {
       if ((param_1->alloc_flags & 0x80) == 0) {
-        if (DAT_800bf870 == '\b') {
+        if (g_GameState == '\b') {
           iVar3 = func_0x8012e168(param_1);
         }
         else {

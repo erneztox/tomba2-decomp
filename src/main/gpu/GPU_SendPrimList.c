@@ -6,10 +6,10 @@
 
 
 
-undefined4 FUN_80082c28(undefined4 *param_1,int param_2)
+s32 FUN_80082c28(s32 *param_1,int param_2)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   int iVar2;
   
   iVar2 = param_2 + -1;

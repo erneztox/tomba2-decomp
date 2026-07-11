@@ -9,12 +9,12 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80041194(int param_1,short param_2,byte param_3,int param_4)
+s32 FUN_80041194(int param_1,s16 param_2,u8 param_3,int param_4)
 
 {
-  short sVar1;
-  undefined2 uVar2;
-  ushort uVar3;
+  s16 sVar1;
+  s16 uVar2;
+  u16 uVar3;
   int iVar4;
   int iVar5;
   
@@ -27,14 +27,14 @@ undefined4 FUN_80041194(int param_1,short param_2,byte param_3,int param_4)
     if (_DAT_1f8001a4 == 0) {
       return 0;
     }
-    iVar4 = (int)*(short *)(param_1 + 0x32) - (int)_DAT_1f8001a4;
+    iVar4 = (int)*(s16 *)(param_1 + 0x32) - (int)_DAT_1f8001a4;
     if (iVar4 < 0) {
       iVar4 = -iVar4;
     }
     if (0xc7f < iVar4) {
       return 0;
     }
-    *(short *)(param_1 + 0x32) = _DAT_1f8001a4 - param_2;
+    *(s16 *)(param_1 + 0x32) = _DAT_1f8001a4 - param_2;
   }
   else {
     iVar4 = 0;
@@ -42,15 +42,15 @@ undefined4 FUN_80041194(int param_1,short param_2,byte param_3,int param_4)
       iVar5 = FUN_80049250(param_1,0,(int)param_2);
       if (iVar5 != 0) break;
       iVar4 = iVar4 + 1;
-      *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 0x20;
+      *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 0x20;
     } while (iVar4 < 100);
     if (iVar4 == 100) {
       return 0;
     }
   }
   FUN_80049674(param_1);
-  uVar2 = _DAT_1f8001a2;
-  sVar1 = _DAT_1f8001a0;
+  uVar2 = _g_CollisionNormalY;
+  sVar1 = _g_CollisionNormalX;
   param_1->gte_flags = param_3 & 1;
   param_1->draw_x = sVar1;
   param_1->angle_delta = uVar2;

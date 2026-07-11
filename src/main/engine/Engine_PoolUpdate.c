@@ -11,9 +11,9 @@
 void FUN_80025588(void)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   int iVar4;
   
   if (DAT_800ed05a != 1) {
@@ -26,7 +26,7 @@ void FUN_80025588(void)
     DAT_800ed05a = 1;
     DAT_800ed061 = 0;
     DAT_800bfa5c = 0;
-    _DAT_800ed094 = _DAT_800ecf58;
+    _DAT_800ed094 = _g_OT_Data;
     FUN_80024e00(0x800ed058);
   }
   if ((DAT_800ed06c == '\0') && (DAT_800ed06d != 0)) {
@@ -50,19 +50,19 @@ void FUN_80025588(void)
     DAT_800ed06c = DAT_800ed06c + '\x01';
   }
   FUN_80024f18(0x800ed058);
-  if (DAT_800bf870 == 3) goto LAB_80025728;
-  if (DAT_800bf870 < 4) {
-    if (DAT_800bf870 == 2) {
+  if (g_GameState == 3) goto LAB_80025728;
+  if (g_GameState < 4) {
+    if (g_GameState == 2) {
 LAB_800256e8:
-      if ((DAT_800bf816 == '\0') && ((_DAT_800e7e68 & 0xc00) != 0)) {
+      if ((g_ActionFlag == '\0') && ((_g_PadState & 0xc00) != 0)) {
         DAT_800ed060 = '\x01' - DAT_800ed060;
       }
       goto LAB_80025728;
     }
   }
   else {
-    if (DAT_800bf870 == 7) goto LAB_800256e8;
-    if (DAT_800bf870 == 0x14) goto LAB_80025728;
+    if (g_GameState == 7) goto LAB_800256e8;
+    if (g_GameState == 0x14) goto LAB_80025728;
   }
   FUN_800251f0(0x800ed058);
 LAB_80025728:

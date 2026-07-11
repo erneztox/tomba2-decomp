@@ -9,7 +9,7 @@
 void FUN_80086288(void)
 
 {
-  undefined4 *puVar1;
+  s32 *puVar1;
   int iVar2;
   
   iVar2 = 0;

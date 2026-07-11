@@ -6,11 +6,11 @@
 
 
 
-undefined4 FUN_80038f7c(uint param_1)
+s32 FUN_80038f7c(uint param_1)
 
 {
-  bool bVar1;
-  undefined4 uVar2;
+  s32 bVar1;
+  s32 uVar2;
   
   bVar1 = (param_1 & 0x80) != 0;
   if (bVar1) {

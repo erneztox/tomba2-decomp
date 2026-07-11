@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-int FUN_8006ff10(undefined4 param_1,undefined2 param_2)
+int FUN_8006ff10(s32 param_1,s16 param_2)
 
 {
-  undefined1 *puVar1;
+  u8 *puVar1;
   int iVar2;
   int iVar3;
   int iVar4;
@@ -25,7 +25,7 @@ int FUN_8006ff10(undefined4 param_1,undefined2 param_2)
       iVar2->parent = param_1;
       iVar2->target_angle = param_2;
       iVar2->alloc_flags = iVar2->alloc_flags | 0x80;
-      if (DAT_800bf816 == '\0') {
+      if (g_ActionFlag == '\0') {
         iVar2->gte_flags = 0;
       }
       else {

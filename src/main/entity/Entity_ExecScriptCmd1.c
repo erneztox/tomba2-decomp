@@ -11,7 +11,7 @@ void FUN_80043964(int param_1)
 
 {
   FUN_800438d4((int)param_1->event_id,
-               *(undefined1 *)(param_1->event_param + -0x7ff4064c),
+               *(u8 *)(param_1->event_param + -0x7ff4064c),
                param_1->camera_mode);
   return;
 }

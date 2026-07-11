@@ -12,39 +12,39 @@
 int FUN_8007101c(int param_1,int param_2)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   int iVar2;
   int iVar3;
   int iVar4;
-  short sVar5;
-  short sVar6;
+  s16 sVar5;
+  s16 sVar6;
   
   if (param_2 == 0) {
-    iVar2 = FUN_80070f90((int)(((uint)_DAT_1f800160 - (uint)_DAT_800bf826) * 0x10000) >> 0x10,
+    iVar2 = FUN_80070f90((int)(((uint)_g_PlayerPosX - (uint)_DAT_800bf826) * 0x10000) >> 0x10,
                          param_1 + 0x4e);
-    iVar3 = FUN_80070f90((int)(((uint)_DAT_1f800162 - (uint)_DAT_800bf82a) * 0x10000) >> 0x10,
+    iVar3 = FUN_80070f90((int)(((uint)_g_PlayerPosY - (uint)_DAT_800bf82a) * 0x10000) >> 0x10,
                          param_1 + 0x50);
-    iVar4 = FUN_80070f90((int)(((uint)_DAT_1f800164 - (uint)_DAT_800bf82e) * 0x10000) >> 0x10,
+    iVar4 = FUN_80070f90((int)(((uint)_g_PlayerPosZ - (uint)_DAT_800bf82e) * 0x10000) >> 0x10,
                          param_1 + 0x52);
     iVar2 = (iVar2 + iVar3 + iVar4) / 3;
-    sVar6 = _DAT_1f800164 - param_1->sprite_y;
-    sVar5 = _DAT_1f800160 - param_1->sprite_x;
+    sVar6 = _g_PlayerPosZ - param_1->sprite_y;
+    sVar5 = _g_PlayerPosX - param_1->sprite_x;
     if (iVar2 != 0) goto LAB_800711e8;
-    iVar3 = (int)param_1->pos_z - (int)(short)_DAT_1f800164;
-    iVar4 = (int)(short)_DAT_1f800160 - (int)param_1->pos_y;
+    iVar3 = (int)param_1->pos_z - (int)(s16)_g_PlayerPosZ;
+    iVar4 = (int)(s16)_g_PlayerPosX - (int)param_1->pos_y;
   }
   else {
-    iVar2 = FUN_80070f90((int)(short)_DAT_800bf826,param_1 + 0x2e);
-    iVar3 = FUN_80070f90((int)(short)_DAT_800bf82a,param_1 + 0x32);
-    iVar4 = FUN_80070f90((int)(short)_DAT_800bf82e,param_1 + 0x36);
+    iVar2 = FUN_80070f90((int)(s16)_DAT_800bf826,param_1 + 0x2e);
+    iVar3 = FUN_80070f90((int)(s16)_DAT_800bf82a,param_1 + 0x32);
+    iVar4 = FUN_80070f90((int)(s16)_DAT_800bf82e,param_1 + 0x36);
     iVar2 = (iVar2 + iVar3 + iVar4) / 3;
     iVar4 = (uint)_DAT_800bf826 - (uint)param_1->pos_y;
-    sVar5 = (short)iVar4;
+    sVar5 = (s16)iVar4;
     iVar3 = (uint)_DAT_800bf82e - (uint)param_1->pos_z;
-    sVar6 = (short)iVar3;
+    sVar6 = (s16)iVar3;
     if (iVar2 != 0) {
       param_1->sprite_x = param_1->pos_y;
-      param_1->angle_offset = *(undefined2 *)(param_1 + 0x32);
+      param_1->angle_offset = *(s16 *)(param_1 + 0x32);
       param_1->sprite_y = param_1->pos_z;
       goto LAB_800711e8;
     }

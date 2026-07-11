@@ -8,18 +8,18 @@
 
 #include "tomba.h"
 #include "gte_inline.h"
-void Entity_SubmitVerticesToOT(int param_1,undefined4 *param_2,int param_3)
+void Entity_SubmitVerticesToOT(int param_1,s32 *param_2,int param_3)
 
 {
-  undefined4 uVar1;
-  undefined4 in_zero;
-  undefined4 in_at;
-  undefined4 in_v0;
+  s32 uVar1;
+  s32 in_zero;
+  s32 in_at;
+  s32 in_v0;
   int iVar2;
-  undefined4 in_v1;
+  s32 in_v1;
   uint *puVar3;
   int iVar4;
-  undefined1 local_10->counter1;
+  u8 local_10->counter1;
   int local_8;
   
   setCopReg(2,in_zero,*param_2);
@@ -33,7 +33,7 @@ void Entity_SubmitVerticesToOT(int param_1,undefined4 *param_2,int param_3)
   iVar2 = -1;
   if (-1 < iVar4) {
     uVar1 = getCopReg(2,0xc);
-    *(undefined4 *)(param_1 + 8) = uVar1;
+    *(s32 *)(param_1 + 8) = uVar1;
     uVar1 = getCopReg(2,0xd);
     param_1->parent = uVar1;
     uVar1 = getCopReg(2,0xe);
@@ -61,23 +61,23 @@ void Entity_SubmitVerticesToOT(int param_1,undefined4 *param_2,int param_3)
       local_8 = -1;
     }
     if (((-1 < local_8) &&
-        ((((*(ushort *)(param_1 + 8) < 0x140 || (*(ushort *)(param_1 + 0x10) < 0x140)) ||
-          (*(ushort *)(param_1 + 0x18) < 0x140)) || (*(ushort *)(param_1 + 0x20) < 0x140)))) &&
-       (((*(ushort *)(param_1 + 10) < 0xf0 || (*(ushort *)(param_1 + 0x12) < 0xf0)) ||
-        ((*(ushort *)(param_1 + 0x1a) < 0xf0 || (*(ushort *)(param_1 + 0x22) < 0xf0)))))) {
-      puVar3 = (uint *)(_DAT_800ed8c8 + local_8 * 4);
-      *_DAT_800bf544 = *puVar3 | 0x9000000;
-      *puVar3 = (uint)_DAT_800bf544;
-      _DAT_800bf544->flags = *(uint *)(param_1 + 4);
-      _DAT_800bf544->kind = *(uint *)(param_1 + 8);
-      _DAT_800bf544->sub_type = *(uint *)(param_1 + 0xc);
-      _DAT_800bf544->state = param_1->parent;
-      _DAT_800bf544->behavior_state = param_1->script_ptr;
-      _DAT_800bf544->action_state = param_1->script_data;
-      _DAT_800bf544->sub_action = param_1->callback;
-      _DAT_800bf544->counter1 = param_1->prev;
-      _DAT_800bf544->counter2 = param_1->next;
-      _DAT_800bf544 = _DAT_800bf544 + 10;
+        ((((*(u16 *)(param_1 + 8) < 0x140 || (*(u16 *)(param_1 + 0x10) < 0x140)) ||
+          (*(u16 *)(param_1 + 0x18) < 0x140)) || (*(u16 *)(param_1 + 0x20) < 0x140)))) &&
+       (((*(u16 *)(param_1 + 10) < 0xf0 || (*(u16 *)(param_1 + 0x12) < 0xf0)) ||
+        ((*(u16 *)(param_1 + 0x1a) < 0xf0 || (*(u16 *)(param_1 + 0x22) < 0xf0)))))) {
+      puVar3 = (uint *)(_g_EntityBuffer + local_8 * 4);
+      *_g_OT_Buffer = *puVar3 | 0x9000000;
+      *puVar3 = (uint)_g_OT_Buffer;
+      _g_OT_Buffer->flags = *(uint *)(param_1 + 4);
+      _g_OT_Buffer->kind = *(uint *)(param_1 + 8);
+      _g_OT_Buffer->sub_type = *(uint *)(param_1 + 0xc);
+      _g_OT_Buffer->state = param_1->parent;
+      _g_OT_Buffer->behavior_state = param_1->script_ptr;
+      _g_OT_Buffer->action_state = param_1->script_data;
+      _g_OT_Buffer->sub_action = param_1->callback;
+      _g_OT_Buffer->counter1 = param_1->prev;
+      _g_OT_Buffer->counter2 = param_1->next;
+      _g_OT_Buffer = _g_OT_Buffer + 10;
     }
   }
   return;

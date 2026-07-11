@@ -10,9 +10,9 @@
 void FUN_8005b370(int param_1,int param_2)
 
 {
-  ushort uVar1;
-  undefined2 uVar2;
-  short sVar3;
+  u16 uVar1;
+  s16 uVar2;
+  s16 sVar3;
   int iVar4;
   int iVar5;
   int iVar6;
@@ -21,15 +21,15 @@ void FUN_8005b370(int param_1,int param_2)
   FUN_80055d5c();
   iVar7 = param_1->parent;
   if (param_2 == 1) {
-    *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(iVar7 + 0x2c);
+    *(s32 *)(param_1 + 0x2c) = *(s32 *)(iVar7 + 0x2c);
     param_1->scale_y = iVar7->scale_y;
     if (param_1->entity_flags < 0) {
-      sVar3 = *(short *)(param_1 + 0x32) + iVar7->bounds_min_y + 0x28;
+      sVar3 = *(s16 *)(param_1 + 0x32) + iVar7->bounds_min_y + 0x28;
     }
     else {
-      sVar3 = *(short *)(param_1 + 0x32) + iVar7->bounds_min_y + 0x50;
+      sVar3 = *(s16 *)(param_1 + 0x32) + iVar7->bounds_min_y + 0x50;
     }
-    *(short *)(iVar7 + 0x32) = sVar3;
+    *(s16 *)(iVar7 + 0x32) = sVar3;
     iVar7->rot_z = param_1->rot_z;
   }
   else if (param_2 < 2) {
@@ -39,12 +39,12 @@ void FUN_8005b370(int param_1,int param_2)
       iVar5 = FUN_80083e80(iVar7->rot_z + 0x400);
       iVar6 = (int)(((uint)uVar1 + ((iVar4 >> 0x10) - (iVar4 >> 0x1f) >> 1)) * 0x10000) >> 0x10;
       iVar4 = FUN_80083f50(iVar7->rot_z + 0x400);
-      *(short *)(param_1 + 0x32) = *(short *)(iVar7 + 0x32) - (short)(iVar5 * iVar6 >> 0xc);
+      *(s16 *)(param_1 + 0x32) = *(s16 *)(iVar7 + 0x32) - (s16)(iVar5 * iVar6 >> 0xc);
       iVar5 = FUN_80083f50((int)iVar7->rot_y);
-      iVar6 = (int)(short)(-(iVar4 * iVar6) >> 0xc);
+      iVar6 = (int)(s16)(-(iVar4 * iVar6) >> 0xc);
       iVar4 = FUN_80083e80((int)iVar7->rot_y);
-      param_1->pos_y = iVar7->pos_y + (short)(iVar5 * iVar6 >> 0xc);
-      param_1->pos_z = iVar7->pos_z - (short)(iVar4 * iVar6 >> 0xc);
+      param_1->pos_y = iVar7->pos_y + (s16)(iVar5 * iVar6 >> 0xc);
+      param_1->pos_z = iVar7->pos_z - (s16)(iVar4 * iVar6 >> 0xc);
       uVar2 = iVar7->rot_z;
       param_1->collision_state = 1;
       param_1->draw_scale = uVar2;
@@ -56,12 +56,12 @@ void FUN_8005b370(int param_1,int param_2)
     iVar5 = FUN_80083e80(iVar7->rot_z + 0x400);
     iVar6 = (int)(((uint)uVar1 + ((iVar4 >> 0x10) - (iVar4 >> 0x1f) >> 1)) * 0x10000) >> 0x10;
     iVar4 = FUN_80083f50(iVar7->rot_z + 0x400);
-    *(short *)(param_1 + 0x32) = *(short *)(iVar7 + 0x32) - (short)(iVar5 * iVar6 >> 0xc);
+    *(s16 *)(param_1 + 0x32) = *(s16 *)(iVar7 + 0x32) - (s16)(iVar5 * iVar6 >> 0xc);
     iVar5 = FUN_80083f50((int)iVar7->rot_y);
-    iVar6 = (int)(short)(-(iVar4 * iVar6) >> 0xc);
+    iVar6 = (int)(s16)(-(iVar4 * iVar6) >> 0xc);
     iVar4 = FUN_80083e80((int)iVar7->rot_y);
-    param_1->pos_y = iVar7->pos_y + (short)(iVar5 * iVar6 >> 0xc);
-    param_1->pos_z = iVar7->pos_z - (short)(iVar4 * iVar6 >> 0xc);
+    param_1->pos_y = iVar7->pos_y + (s16)(iVar5 * iVar6 >> 0xc);
+    param_1->pos_z = iVar7->pos_z - (s16)(iVar4 * iVar6 >> 0xc);
     uVar2 = iVar7->rot_z;
     iVar7->rot_y = param_1->rot_y;
     param_1->collision_state = 1;

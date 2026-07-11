@@ -9,10 +9,10 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8004b208(undefined1 *param_1,int param_2)
+void FUN_8004b208(u8 *param_1,int param_2)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   if (param_1->behavior_state == '\0') {
     param_1->behavior_state = 1;
@@ -28,14 +28,14 @@ void FUN_8004b208(undefined1 *param_1,int param_2)
     }
   }
   if (param_2 == 0) {
-    if ((_DAT_1f80017c & 0x1f) == 0) {
+    if ((_g_FrameCounter2 & 0x1f) == 0) {
       bVar1 = param_1->sprite_flags | 0x20;
     }
     else {
       bVar1 = param_1->sprite_flags & 0xdf;
     }
   }
-  else if ((_DAT_1f80017c & 0x1f) == 0) {
+  else if ((_g_FrameCounter2 & 0x1f) == 0) {
     bVar1 = param_1->sprite_flags | 2;
   }
   else {

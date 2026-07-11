@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-void FUN_80075024(char param_1)
+void FUN_80075024(s8 param_1)
 
 {
-  undefined1 uVar1;
+  u8 uVar1;
   
   uVar1 = 0x14;
   if (param_1 == '\x05') {

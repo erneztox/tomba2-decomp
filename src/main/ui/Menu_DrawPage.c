@@ -10,12 +10,12 @@
 void FUN_8007f498(void)
 
 {
-  undefined **ppuVar1;
+  void **ppuVar1;
   int iVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   uint uVar4;
-  undefined local_30->state;
-  ushort local_20->state;
+  void local_30->state;
+  u16 local_20->state;
   
   uVar4 = 0;
   FUN_80079374(0x30,0x30,0,PTR_s_Sound_800a288c,0);
@@ -27,7 +27,7 @@ void FUN_8007f498(void)
   local_30->kind = PTR_DAT_800a28c8;
   iVar2 = 0;
   do {
-    FUN_80079374(0x40,(int)*(short *)((int)local_20 + iVar2),(uint)(DAT_800bf808 == uVar4) << 3,
+    FUN_80079374(0x40,(int)*(s16 *)((int)local_20 + iVar2),(uint)(DAT_800bf808 == uVar4) << 3,
                  local_30[uVar4],0);
     uVar4 = uVar4 + 1;
     iVar2 = uVar4 * 2;

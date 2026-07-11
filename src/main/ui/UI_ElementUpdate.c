@@ -1,5 +1,5 @@
 /**
- * @brief UI element updater: checks _DAT_800e7fee, updates element state
+ * @brief UI element updater: checks _g_FrameCounter, updates element state
  * @note Original: func_80049E54 at 0x80049E54
  */
 // UI_ElementUpdate
@@ -9,33 +9,33 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80049e54(int param_1,int param_2)
+s32 FUN_80049e54(int param_1,int param_2)
 
 {
-  bool bVar1;
-  ushort uVar2;
-  short sVar3;
-  undefined4 uVar4;
+  s32 bVar1;
+  u16 uVar2;
+  s16 sVar3;
+  s32 uVar4;
   uint uVar5;
   
-  uVar2 = _DAT_800e7fee;
+  uVar2 = _g_FrameCounter;
   if (param_1->sub_action == '\0') {
-    if ((short)_DAT_800e7fee < 1) {
+    if ((s16)_g_FrameCounter < 1) {
       uVar4 = 0;
     }
     else {
       param_1->sub_action = 1;
       param_1->timer1 = 0x10;
-      uVar5 = (uint)_DAT_800e7fee;
+      uVar5 = (uint)_g_FrameCounter;
       DAT_800ed061 = DAT_800ed061 | 2;
-      _DAT_800e7fee = (ushort)(uVar5 + param_2);
+      _g_FrameCounter = (u16)(uVar5 + param_2);
       bVar1 = _DAT_800e7ff0 != uVar2;
-      if ((int)(uint)DAT_800bf87d <= (int)((uVar5 + param_2) * 0x10000) >> 0x10) {
-        _DAT_800e7fee = (ushort)DAT_800bf87d;
+      if ((int)(uint)g_ItemCount <= (int)((uVar5 + param_2) * 0x10000) >> 0x10) {
+        _g_FrameCounter = (u16)g_ItemCount;
       }
-      _DAT_800e7ff0 = _DAT_800e7fee;
+      _DAT_800e7ff0 = _g_FrameCounter;
       if (bVar1) {
-        _DAT_800e7ff0 = _DAT_800e7fee - 1;
+        _DAT_800e7ff0 = _g_FrameCounter - 1;
       }
       FUN_80072114(param_1,param_2);
       uVar4 = 0;

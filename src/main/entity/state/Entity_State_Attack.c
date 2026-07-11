@@ -12,11 +12,11 @@
 void FUN_8005acc8(int param_1)
 
 {
-  short sVar1;
+  s16 sVar1;
   int iVar2;
   int iVar3;
-  undefined4 uVar4;
-  undefined4 uVar5;
+  s32 uVar4;
+  s32 uVar5;
   
   if (param_1->action_state == '\0') {
     param_1->timer1 = 7;
@@ -36,13 +36,13 @@ void FUN_8005acc8(int param_1)
   FUN_80054e80(param_1,0);
   FUN_80076d68(param_1);
   FUN_80055d5c(param_1);
-  *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 8;
+  *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
   FUN_8005444c(param_1);
   iVar2 = FUN_800532a0(param_1);
   if (iVar2 == 0) {
     iVar2 = FUN_80055390(param_1);
     if (((iVar2 == 0) && (iVar3 = FUN_800558b4(param_1), iVar3 == 0)) &&
-       ((*(byte *)(param_1 + 0x149) & 2) != 0)) {
+       ((*(u8 *)(param_1 + 0x149) & 2) != 0)) {
       param_1->behavior_state = 0;
       param_1->action_state = 0;
       if (param_1->state_165 == '\0') {
@@ -60,10 +60,10 @@ void FUN_8005acc8(int param_1)
       FUN_800559f4(param_1);
     }
   }
-  if ((*(byte *)(param_1 + 0x149) & 4) == 0) {
+  if ((*(u8 *)(param_1 + 0x149) & 4) == 0) {
     FUN_800551c4(param_1);
   }
-  else if ((_DAT_1f80017c & 3) == 0) {
+  else if ((_g_FrameCounter2 & 3) == 0) {
     FUN_800538e0(param_1,param_1 + 0x2c,0);
   }
   if ((param_1->collision_state != '\0') &&
@@ -72,7 +72,7 @@ void FUN_8005acc8(int param_1)
   }
   FUN_80056c00(param_1,0);
   if ((param_1->behavior_state < 2) && (param_1->collision_state != '\0')) {
-    DAT_800bf81e = 1;
+    g_ActionState = 1;
   }
   return;
 }

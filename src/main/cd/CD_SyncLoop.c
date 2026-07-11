@@ -1,26 +1,26 @@
 /**
- * @brief CD sync loop: polls DAT_800ac308, waits for completion
+ * @brief CD sync loop: polls g_CD_Event, waits for completion
  * @note Original: func_8008C960 at 0x8008C960
  */
 // CD_SyncLoop
 
 
 
-bool FUN_8008c960(undefined4 param_1,undefined4 param_2,uint param_3)
+s32 FUN_8008c960(s32 param_1,s32 param_2,uint param_3)
 
 {
   int iVar1;
   int iVar2;
   uint uVar3;
   
-  if (DAT_800ac308 != 0) {
+  if (g_CD_Event != 0) {
     iVar1 = FUN_80085900(0xffffffff);
     do {
-      if (DAT_800ac308 == 0) goto LAB_8008c9dc;
+      if (g_CD_Event == 0) goto LAB_8008c9dc;
       iVar2 = FUN_80085900(0xffffffff);
     } while ((uint)(iVar2 - iVar1) < 0x79);
-    FUN_80089b84(DAT_800ac30c);
-    DAT_800ac308 = 0;
+    FUN_80089b84(g_CD_Param);
+    g_CD_Event = 0;
   }
 LAB_8008c9dc:
   if ((param_3 & 0x30) == 0) {
@@ -35,12 +35,12 @@ LAB_8008c9dc:
   DAT_800ac2f0 = param_3 | 0x20;
   DAT_800ac2e4 = param_1;
   DAT_800ac2e8 = param_2;
-  DAT_800ac30c = FUN_80089b84(0);
+  g_CD_Param = FUN_80089b84(0);
   DAT_800ac310 = FUN_80089b98(0);
   if ((DAT_800abf28 & 1) != 0) {
     DAT_800ac314 = FUN_80089fc8(0);
   }
-  DAT_800ac300 = FUN_80085900(0xffffffff);
+  g_CD_SeekPos = FUN_80085900(0xffffffff);
   uVar3 = FUN_80089a00();
   if ((uVar3 & 0xe0) != 0) {
     FUN_80089e1c(9,0,0);

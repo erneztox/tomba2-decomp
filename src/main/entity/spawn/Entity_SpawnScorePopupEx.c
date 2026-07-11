@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-undefined4 FUN_8004b428(int param_1)
+s32 FUN_8004b428(int param_1)
 
 {
   int iVar1;
@@ -16,8 +16,8 @@ undefined4 FUN_8004b428(int param_1)
   if (iVar1 != 0) {
     iVar1->alloc_flags = iVar1->alloc_flags | 0x80;
     iVar1->pos_x = param_1->pos_y;
-    iVar1->pos_y = *(undefined2 *)(param_1 + 0x32);
-    *(undefined2 *)(iVar1 + 0x30) = param_1->pos_z;
+    iVar1->pos_y = *(s16 *)(param_1 + 0x32);
+    *(s16 *)(iVar1 + 0x30) = param_1->pos_z;
   }
   FUN_80074590(0x28,0,0);
   DAT_800bf820 = 1;

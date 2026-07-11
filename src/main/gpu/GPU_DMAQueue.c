@@ -6,13 +6,13 @@
 
 
 
-uint FUN_80082d04(code *param_1,undefined4 *param_2,int param_3,undefined4 param_4)
+uint FUN_80082d04(code *param_1,s32 *param_2,int param_3,s32 param_4)
 
 {
   uint uVar1;
   int iVar2;
   int iVar3;
-  undefined4 uVar4;
+  s32 uVar4;
   int iVar5;
   
   FUN_800834a0();
@@ -33,7 +33,7 @@ uint FUN_80082d04(code *param_1,undefined4 *param_2,int param_3,undefined4 param
         FUN_80085b80(2,FUN_80082fb4);
         iVar5 = 0;
         if (param_3 == 0) {
-          *(undefined4 **)(DAT_800a5ac8 * 0x60 + -0x7feff3cc) = param_2;
+          *(s32 **)(DAT_800a5ac8 * 0x60 + -0x7feff3cc) = param_2;
         }
         else {
           while( true ) {
@@ -46,11 +46,11 @@ uint FUN_80082d04(code *param_1,undefined4 *param_2,int param_3,undefined4 param
             uVar4 = *param_2;
             param_2 = param_2 + 1;
             iVar5 = iVar5 + 1;
-            *(undefined4 *)(iVar3 + DAT_800a5ac8 * 0x60 + -0x7feff3c4) = uVar4;
+            *(s32 *)(iVar3 + DAT_800a5ac8 * 0x60 + -0x7feff3c4) = uVar4;
           }
           *(uint *)(DAT_800a5ac8 * 0x60 + -0x7feff3cc) = DAT_800a5ac8 * 0x60 + -0x7feff3c4;
         }
-        *(undefined4 *)(DAT_800a5ac8 * 0x60 + -0x7feff3c8) = param_4;
+        *(s32 *)(DAT_800a5ac8 * 0x60 + -0x7feff3c8) = param_4;
         *(code **)(DAT_800a5ac8 * 0x60 + -0x7feff3d0) = param_1;
         DAT_800a5ac8 = DAT_800a5ac8 + 1 & 0x3f;
         FUN_80085c9c(DAT_800a5ad0);

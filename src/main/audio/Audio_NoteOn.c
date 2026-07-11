@@ -6,16 +6,16 @@
 
 
 
-void FUN_8008eda0(short param_1,short param_2,undefined1 param_3)
+void FUN_8008eda0(s16 param_1,s16 param_2,u8 param_3)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   int iVar2;
   
-  iVar2 = *(int *)(&DAT_80104c30 + param_1 * 4) + param_2 * 0xb0;
-  *(undefined1 *)(iVar2 + 0x18) = param_3;
-  *(char *)(iVar2 + 0x1e) = *(char *)(iVar2 + 0x1e) + '\x01';
+  iVar2 = *(int *)(&g_AudioChannels + param_1 * 4) + param_2 * 0xb0;
+  *(u8 *)(iVar2 + 0x18) = param_3;
+  *(s8*)(iVar2 + 0x1e) = *(s8*)(iVar2 + 0x1e) + '\x01';
   uVar1 = FUN_80090160();
-  *(undefined4 *)(iVar2 + 0x90) = uVar1;
+  *(s32 *)(iVar2 + 0x90) = uVar1;
   return;
 }

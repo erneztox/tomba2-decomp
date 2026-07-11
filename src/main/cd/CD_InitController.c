@@ -6,10 +6,10 @@
 
 
 
-undefined2 * FUN_80086144(void)
+s16 * FUN_80086144(void)
 
 {
-  undefined2 *puVar1;
+  s16 *puVar1;
   
   puVar1 = &DAT_800aad18;
   if (DAT_800aad18 == 0) {
@@ -20,7 +20,7 @@ undefined2 * FUN_80086144(void)
     FUN_800808a0();
   }
   else {
-    puVar1 = (undefined2 *)0x0;
+    puVar1 = (s16 *)0x0;
   }
   return puVar1;
 }

@@ -6,19 +6,19 @@
 
 
 
-undefined4 FUN_80090a60(uint param_1,undefined2 param_2,uint param_3)
+s32 FUN_80090a60(uint param_1,s16 param_2,uint param_3)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   int iVar2;
-  ushort uVar3;
+  u16 uVar3;
   
   param_1 = param_1 & 0xffff;
   uVar3 = 0x48;
   if (param_1 < 3) {
     iVar2 = param_1 * 0x10 + DAT_800ac448;
-    *(undefined2 *)(iVar2 + 4) = 0;
-    *(undefined2 *)(iVar2 + 8) = param_2;
+    *(s16 *)(iVar2 + 4) = 0;
+    *(s16 *)(iVar2 + 8) = param_2;
     if (param_1 < 2) {
       if ((param_3 & 0x10) != 0) {
         uVar3 = 0x49;
@@ -34,7 +34,7 @@ undefined4 FUN_80090a60(uint param_1,undefined2 param_2,uint param_3)
     if ((param_3 & 0x1000) != 0) {
       uVar3 = uVar3 | 0x10;
     }
-    *(ushort *)(param_1 * 0x10 + DAT_800ac448 + 4) = uVar3;
+    *(u16 *)(param_1 * 0x10 + DAT_800ac448 + 4) = uVar3;
   }
   else {
     uVar1 = 0;

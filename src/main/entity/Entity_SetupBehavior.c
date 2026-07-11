@@ -7,12 +7,12 @@
 
 
 #include "tomba.h"
-void FUN_8005fa84(byte *param_1)
+void FUN_8005fa84(u8 *param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
-  DAT_1f800137 = 2;
+  g_CurrentOverlay = 2;
   param_1[0x58] = 0;
   param_1[0x59] = 0;
   param_1[0x40] = 0x1e;

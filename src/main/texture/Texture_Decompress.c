@@ -7,20 +7,20 @@
 
 
 #include "tomba.h"
-int FUN_80044d8c(int param_1,byte *param_2,byte *param_3,int param_4)
+int FUN_80044d8c(int param_1,u8 *param_2,u8 *param_3,int param_4)
 
 {
   int *piVar1;
-  byte bVar2;
-  bool bVar3;
+  u8 bVar2;
+  s32 bVar3;
   int iVar4;
   uint uVar5;
   int *piVar6;
-  byte *pbVar7;
-  byte *pbVar8;
+  u8 *pbVar7;
+  u8 *pbVar8;
   int *piVar9;
   int iVar10;
-  byte *pbVar11;
+  u8 *pbVar11;
   int local_20->counter1;
   
   piVar9 = local_20;
@@ -32,7 +32,7 @@ int FUN_80044d8c(int param_1,byte *param_2,byte *param_3,int param_4)
     iVar10 = iVar10 + 1;
     iVar4 = *piVar6;
     piVar6 = piVar6 + 2;
-    *piVar9 = iVar4 + *piVar1 * (int)*(short *)(param_1 + 4) * 2;
+    *piVar9 = iVar4 + *piVar1 * (int)*(s16 *)(param_1 + 4) * 2;
     piVar9 = piVar9 + 1;
     pbVar8 = param_2;
   } while (iVar10 < 8);

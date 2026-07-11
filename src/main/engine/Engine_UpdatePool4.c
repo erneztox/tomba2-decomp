@@ -12,17 +12,17 @@
 void FUN_80025d98(void)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   if (((DAT_800ed065 != '\0') &&
-      (((DAT_800bf870 != 5 || (2 < DAT_800bf871 - 1)) && (DAT_800bf870 != 3)))) &&
-     (((DAT_800bf870 != 0x14 && (DAT_1f800137 != '\x01')) && ((DAT_800bf822 & 4) == 0)))) {
+      (((g_GameState != 5 || (2 < g_LevelId - 1)) && (g_GameState != 3)))) &&
+     (((g_GameState != 0x14 && (g_CurrentOverlay != '\x01')) && ((g_EventInput & 4) == 0)))) {
     FUN_80025744(0x800ed058);
   }
   bVar1 = DAT_800ed061 & 3;
   if (bVar1 == 1) {
-    if (((DAT_800bf870 != 5) || (2 < DAT_800bf871 - 1)) &&
-       ((DAT_800bf870 != 2 && ((DAT_800bf870 != 7 && (DAT_800bf870 != 0x14)))))) {
+    if (((g_GameState != 5) || (2 < g_LevelId - 1)) &&
+       ((g_GameState != 2 && ((g_GameState != 7 && (g_GameState != 0x14)))))) {
       if (DAT_800ed059 == '\0') goto LAB_80025fbc;
       goto LAB_80025eac;
     }
@@ -31,34 +31,34 @@ void FUN_80025d98(void)
 LAB_80025eac:
     FUN_80025934(0x800ed058,0,0);
   }
-  if ((DAT_800ed059 == '\0') || (DAT_800bf870 == 3)) goto LAB_80025fbc;
-  if (DAT_800bf870 < 4) {
-    if (DAT_800bf870 == 2) {
-      if ((DAT_800bf816 == '\0') && (DAT_800ed060 == '\0')) {
+  if ((DAT_800ed059 == '\0') || (g_GameState == 3)) goto LAB_80025fbc;
+  if (g_GameState < 4) {
+    if (g_GameState == 2) {
+      if ((g_ActionFlag == '\0') && (DAT_800ed060 == '\0')) {
         func_0x80113628(0x800ed058);
       }
       goto LAB_80025fbc;
     }
   }
   else {
-    if (DAT_800bf870 == 7) {
-      if ((DAT_800bf816 == '\0') && (DAT_800ed060 == '\0')) {
+    if (g_GameState == 7) {
+      if ((g_ActionFlag == '\0') && (DAT_800ed060 == '\0')) {
         func_0x801140a0(0x800ed058);
       }
       goto LAB_80025fbc;
     }
-    if (DAT_800bf870 == 0x14) goto LAB_80025fbc;
+    if (g_GameState == 0x14) goto LAB_80025fbc;
   }
-  if ((((_DAT_800bf880 & 0x600) == 0) && ((_DAT_800bf880 & 0x100) == 0)) && (DAT_800bf816 == '\0'))
+  if ((((_DAT_800bf880 & 0x600) == 0) && ((_DAT_800bf880 & 0x100) == 0)) && (g_ActionFlag == '\0'))
   {
     FUN_80025b78(0x800ed058);
   }
 LAB_80025fbc:
-  if ((_DAT_1f800138->normal_z == 6) && (_DAT_1f800138->sprite_x != 0)) {
-    if (DAT_800bf870 == 5) {
+  if ((_g_CurrentEntity->normal_z == 6) && (_g_CurrentEntity->sprite_x != 0)) {
+    if (g_GameState == 5) {
       func_0x801121ac();
     }
-    else if (DAT_800bf870 == 0x14) {
+    else if (g_GameState == 0x14) {
       func_0x8010f8cc();
     }
   }

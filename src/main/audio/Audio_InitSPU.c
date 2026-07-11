@@ -12,7 +12,7 @@
 void FUN_80074b44(void)
 
 {
-  undefined1 *puVar1;
+  u8 *puVar1;
   uint uVar2;
   
   DAT_800be358 = 0;

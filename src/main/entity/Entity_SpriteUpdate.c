@@ -10,8 +10,8 @@
 void FUN_8007da50(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
+  u8 bVar1;
+  s16 sVar2;
   int iVar3;
   
   bVar1 = param_1->state;
@@ -20,14 +20,14 @@ void FUN_8007da50(int param_1)
   }
   else if (bVar1 < 2) {
     if (bVar1 == 0) {
-      *(undefined1 *)(param_1 + 0x18) =
-           *(undefined1 *)(*(short *)(param_1 + 0x5e) * 4 + *(int *)(param_1 + 0x4c) + 3);
+      *(u8 *)(param_1 + 0x18) =
+           *(u8 *)(*(s16 *)(param_1 + 0x5e) * 4 + *(int *)(param_1 + 0x4c) + 3);
       if (param_1->sprite_flags != -1) {
         param_1->sprite_flags =
-             *(undefined1 *)(*(short *)(param_1 + 0x5e) * 4 + *(int *)(param_1 + 0x4c) + 2);
+             *(u8 *)(*(s16 *)(param_1 + 0x5e) * 4 + *(int *)(param_1 + 0x4c) + 2);
       }
       iVar3 = *(int *)(param_1 + 0x50) +
-              (uint)*(ushort *)(*(short *)(param_1 + 0x5e) * 4 + *(int *)(param_1 + 0x4c));
+              (uint)*(u16 *)(*(s16 *)(param_1 + 0x5e) * 4 + *(int *)(param_1 + 0x4c));
       param_1->anim_id = param_1->anim_id | 1;
       param_1->parent = iVar3;
       param_1->script_ptr = iVar3;
@@ -35,8 +35,8 @@ void FUN_8007da50(int param_1)
       param_1->timer2 = 0;
       if ((DAT_800bf84b == '\0') && (param_1->sub_type < 4)) {
         FUN_8007c940(param_1);
-        *(undefined4 *)(param_1 + 0x80) = *(undefined4 *)(param_1 + 0x54);
-        *(undefined4 *)(param_1 + 0x84) = *(undefined4 *)(param_1 + 0x58);
+        *(s32 *)(param_1 + 0x80) = *(s32 *)(param_1 + 0x54);
+        *(s32 *)(param_1 + 0x84) = *(s32 *)(param_1 + 0x58);
         param_1->rot_z = 8;
         param_1->rot_x = 0x9c;
         if (param_1->rot_y < 0x80) {
@@ -55,12 +55,12 @@ void FUN_8007da50(int param_1)
         param_1->script_ptr = param_1->script_ptr + 1;
       }
       DAT_800bf84b = '\x01';
-      DAT_800bf822 = DAT_800bf822 | 2;
+      g_EventInput = g_EventInput | 2;
       param_1->state = param_1->state + '\x01';
     }
   }
   else if ((bVar1 != 2) && (bVar1 == 3)) {
-    DAT_800bf822 = DAT_800bf822 & 0xfd;
+    g_EventInput = g_EventInput & 0xfd;
     FUN_8007a624(param_1);
   }
   return;

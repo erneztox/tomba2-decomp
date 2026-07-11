@@ -9,18 +9,18 @@
 void Engine_ResetStateBuffer(void)
 
 {
-  FUN_8009a420(&DAT_800bf870,0,0x5f4);
-  DAT_800bf87c = 8;
-  DAT_800bf87d = 4;
-  DAT_800bf88c = 0;
-  DAT_800bf88d = 0;
-  DAT_800bf88e = 0;
-  DAT_800bf88f = 0;
+  FUN_8009a420(&g_GameState,0,0x5f4);
+  g_ItemType = 8;
+  g_ItemCount = 4;
+  g_SpriteParam1 = 0;
+  g_SpriteParam2 = 0;
+  g_SpriteParam3 = 0;
+  g_SpriteParam4 = 0;
   DAT_800bf872 = 0xff;
   DAT_800bfe60 = 0xff;
   DAT_1f8001ff = 0xff;
   _DAT_1f800278 = 0;
-  DAT_800bf87f = 0x40;
+  g_ItemFlag = 0x40;
   _DAT_800bf9d0 = 0x15f;
   DAT_800bfab4 = 1;
   DAT_800bfabe = 1;

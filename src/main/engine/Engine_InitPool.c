@@ -25,7 +25,7 @@ void FUN_8007b18c(void)
     iVar3 = iVar3 + 0x44;
   } while (iVar2 < 0x208);
   iVar2 = -0x7ff04ee4;
-  _DAT_800e7e74 = &DAT_800ed8c0;
+  _DAT_800e7e74 = &g_EntityPoolFree;
   iVar3 = 0;
   do {
     iVar3 = iVar3 + 1;
@@ -34,7 +34,7 @@ void FUN_8007b18c(void)
     *piVar1 = iVar2;
     iVar2 = iVar2 + -0x44;
   } while (iVar3 < 0x208);
-  _DAT_800ed098 = 0x208;
+  _g_EntityPoolCount = 0x208;
   FUN_8007acc4();
   FUN_8007a810();
   FUN_8007ac14();

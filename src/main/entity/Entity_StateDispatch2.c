@@ -9,28 +9,28 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80026ad0(int param_1)
+s32 FUN_80026ad0(int param_1)
 
 {
   int iVar1;
   
   switch(param_1->behavior_state) {
   case 0:
-    if (DAT_800bf818 != '\x01') {
+    if (g_HurtState != '\x01') {
       return 0;
     }
-    param_1->sub_type = DAT_800bf817 + '\x01';
+    param_1->sub_type = g_HurtParam + '\x01';
     FUN_800269bc(param_1);
     break;
   case 1:
     if (DAT_800bf80f == '\0') {
       FUN_800269ec(param_1);
       FUN_8001cf2c();
-      iVar1 = _DAT_1f800138;
-      _DAT_1f800138->normal_z = 3;
+      iVar1 = _g_CurrentEntity;
+      _g_CurrentEntity->normal_z = 3;
       iVar1->sprite_x = 0;
       param_1->behavior_state = 6;
-      DAT_800bf818 = 2;
+      g_HurtState = 2;
       return 0;
     }
     return 0;
@@ -41,7 +41,7 @@ undefined4 FUN_80026ad0(int param_1)
     FUN_800269fc(param_1);
     break;
   case 3:
-    if (DAT_800bf818 != '\x03') {
+    if (g_HurtState != '\x03') {
       return 0;
     }
     FUN_800269bc(param_1);
@@ -52,10 +52,10 @@ undefined4 FUN_80026ad0(int param_1)
     }
     FUN_80026a1c(param_1);
     FUN_800269ec(param_1);
-    iVar1 = _DAT_1f800138;
-    _DAT_1f800138->normal_z = 2;
+    iVar1 = _g_CurrentEntity;
+    _g_CurrentEntity->normal_z = 2;
     iVar1->sprite_x = 4;
-    DAT_800bf818 = '\x04';
+    g_HurtState = '\x04';
     break;
   case 5:
     if (DAT_800bf80f == '\0') {

@@ -9,19 +9,19 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80040410(int param_1,uint param_2)
+s32 FUN_80040410(int param_1,uint param_2)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   int iVar2;
-  short *psVar3;
+  s16 *psVar3;
   int iVar4;
-  undefined2 *puVar5;
+  s16 *puVar5;
   int iVar6;
   int iVar7;
   
   param_1->counter1 = 2;
-  if (_DAT_800ed098 < 2) {
+  if (_g_EntityPoolCount < 2) {
     param_1->state = 3;
     uVar1 = 0;
   }
@@ -40,16 +40,16 @@ undefined4 FUN_80040410(int param_1,uint param_2)
       do {
         iVar2 = FUN_8007aae8();
         iVar4->sprite_ptr1 = iVar2;
-        *(short *)(iVar2 + 6) = (short)iVar6 + -1;
-        **(undefined2 **)(iVar4 + 0xc0) = *puVar5;
-        *(undefined2 *)(iVar4->sprite_ptr1 + 2) = puVar5->flags;
+        *(s16 *)(iVar2 + 6) = (s16)iVar6 + -1;
+        **(s16 **)(iVar4 + 0xc0) = *puVar5;
+        *(s16 *)(iVar4->sprite_ptr1 + 2) = puVar5->flags;
         iVar6 = iVar6 + 1;
-        *(undefined2 *)(iVar4->sprite_ptr1 + 4) = puVar5->kind;
-        *(undefined2 *)(iVar4->sprite_ptr1 + 8) = 0;
+        *(s16 *)(iVar4->sprite_ptr1 + 4) = puVar5->kind;
+        *(s16 *)(iVar4->sprite_ptr1 + 8) = 0;
         puVar5 = puVar5 + 3;
-        *(undefined2 *)(iVar4->sprite_ptr1 + 10) = 0;
-        psVar3 = (short *)(&DAT_800a3b28 + iVar7);
-        *(undefined2 *)(iVar4->sprite_ptr1 + 0xc) = 0;
+        *(s16 *)(iVar4->sprite_ptr1 + 10) = 0;
+        psVar3 = (s16 *)(&DAT_800a3b28 + iVar7);
+        *(s16 *)(iVar4->sprite_ptr1 + 0xc) = 0;
         iVar7 = iVar7 + 2;
         FUN_80051b04(iVar4->sprite_ptr1,1,(int)*psVar3);
         iVar4 = iVar4 + 4;

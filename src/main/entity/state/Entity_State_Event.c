@@ -9,14 +9,14 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80043bd4(int param_1)
+s32 FUN_80043bd4(int param_1)
 
 {
-  bool bVar1;
-  short sVar2;
-  undefined2 uVar3;
+  s32 bVar1;
+  s16 sVar2;
+  s16 uVar3;
   int iVar4;
-  short sVar5;
+  s16 sVar5;
   int *piVar6;
   
   if (param_1->event_param == 0) {
@@ -29,24 +29,24 @@ undefined4 FUN_80043bd4(int param_1)
     if (param_1->event_id == 2) {
       sVar2 = 0;
       if (param_1->event_param == 0) {
-        sVar5 = *(short *)(param_1 + 0x76) - _DAT_800e7eae;
+        sVar5 = *(s16 *)(param_1 + 0x76) - _g_CameraTargetX;
       }
       else {
         sVar5 = 0;
-        sVar2 = *(short *)(param_1 + 0x76) - _DAT_800e7eb6;
+        sVar2 = *(s16 *)(param_1 + 0x76) - _g_CameraTargetZ;
       }
       sVar2 = FUN_80085690(-(int)sVar2,(int)sVar5);
-      uVar3 = FUN_80077768((int)sVar2,(int)_DAT_800e7fc0,0);
+      uVar3 = FUN_80077768((int)sVar2,(int)_g_CameraAngle,0);
       param_1->event_id = uVar3;
     }
-    sVar2 = *(short *)(param_1 + 0x76) - *(short *)((int)piVar6 + 2);
-    *(short *)(param_1 + 100) = sVar2;
+    sVar2 = *(s16 *)(param_1 + 0x76) - *(s16 *)((int)piVar6 + 2);
+    *(s16 *)(param_1 + 100) = sVar2;
     if (sVar2 == 0) {
       return 1;
     }
-    _DAT_1f800192 = param_1->event_id;
+    _g_AngleInput = param_1->event_id;
     _DAT_1f800190 = 0;
-    DAT_800e7e85 = 0x1f;
+    g_CollisionType = 0x1f;
     DAT_800e7e86 = 0;
     param_1->sub_state = param_1->sub_state + '\x01';
   }
@@ -54,13 +54,13 @@ undefined4 FUN_80043bd4(int param_1)
     if (param_1->sub_state != '\x01') {
       return 0;
     }
-    if (*(short *)(param_1 + 100) < 1) {
-      iVar4 = (int)*(short *)(param_1 + 0x76);
-      bVar1 = iVar4 < *(short *)((int)piVar6 + 2);
+    if (*(s16 *)(param_1 + 100) < 1) {
+      iVar4 = (int)*(s16 *)(param_1 + 0x76);
+      bVar1 = iVar4 < *(s16 *)((int)piVar6 + 2);
     }
     else {
-      iVar4 = (int)*(short *)(param_1 + 0x76);
-      bVar1 = *(short *)((int)piVar6 + 2) < iVar4;
+      iVar4 = (int)*(s16 *)(param_1 + 0x76);
+      bVar1 = *(s16 *)((int)piVar6 + 2) < iVar4;
     }
     if (!bVar1) {
       *piVar6 = iVar4 << 0x10;

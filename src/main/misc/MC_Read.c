@@ -10,10 +10,10 @@ void FUN_800974fc(int param_1,uint param_2,int param_3)
 
 {
   if (param_3 == 0) {
-    *(short *)(param_1 * 2 + DAT_800ac604) = (short)param_2;
+    *(s16 *)(param_1 * 2 + g_SPU_Regs) = (s16)param_2;
   }
   else {
-    *(short *)(param_1 * 2 + DAT_800ac604) = (short)(param_2 >> (DAT_800ac62c & 0x1f));
+    *(s16 *)(param_1 * 2 + g_SPU_Regs) = (s16)(param_2 >> (DAT_800ac62c & 0x1f));
   }
   return;
 }

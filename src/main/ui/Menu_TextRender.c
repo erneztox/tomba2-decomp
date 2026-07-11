@@ -11,12 +11,12 @@ void FUN_8007f250(void)
 
 {
   int iVar1;
-  undefined4 uVar2;
+  s32 uVar2;
   char *pcVar3;
   uint uVar4;
   char **ppcVar5;
-  char local_30->state;
-  ushort local_20->state;
+  s8 local_30->state;
+  u16 local_20->state;
   
   uVar4 = 0;
   FUN_80079374(0x30,0x30,0,PTR_s_Messages_800a2888,0);
@@ -27,7 +27,7 @@ void FUN_8007f250(void)
   iVar1 = 0;
   do {
     ppcVar5 = local_30;
-    FUN_80079374(0x40,(int)*(short *)((int)local_20 + iVar1),(uint)(DAT_800bf808 == uVar4) << 3,
+    FUN_80079374(0x40,(int)*(s16 *)((int)local_20 + iVar1),(uint)(DAT_800bf808 == uVar4) << 3,
                  ppcVar5[uVar4],0);
     uVar4 = uVar4 + 1;
     iVar1 = uVar4 * 2;

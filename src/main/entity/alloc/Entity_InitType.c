@@ -9,11 +9,11 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80069948(undefined1 *param_1)
+s32 FUN_80069948(u8 *param_1)
 
 {
   int iVar1;
-  undefined4 uVar2;
+  s32 uVar2;
   
   iVar1 = FUN_80069858(param_1,0,0);
   if (iVar1 == 0) {
@@ -25,7 +25,7 @@ undefined4 FUN_80069948(undefined1 *param_1)
     if (iVar1 == 2) {
       _DAT_1f800200 = param_1->pos_y;
       _DAT_1f800208 = 1;
-      _DAT_1f800202 = *(undefined2 *)(param_1 + 0x32);
+      _DAT_1f800202 = *(s16 *)(param_1 + 0x32);
       _DAT_1f800204 = param_1->pos_z;
       param_1->collision_state = 1;
       param_1->behavior_state = 2;

@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-void FUN_80069300(undefined1 *param_1)
+void FUN_80069300(u8 *param_1)
 
 {
-  byte bVar1;
-  short sVar2;
+  u8 bVar1;
+  s16 sVar2;
   int iVar3;
   
   bVar1 = param_1->state;
@@ -26,7 +26,7 @@ void FUN_80069300(undefined1 *param_1)
       if (bVar1 != 3) {
         return;
       }
-      if (*(short *)(param_1 + 0x6e) == 0) {
+      if (*(s16 *)(param_1 + 0x6e) == 0) {
         DAT_1f800251 = DAT_1f800251 + -1;
       }
       FUN_8007ab44(param_1);
@@ -42,7 +42,7 @@ void FUN_80069300(undefined1 *param_1)
     param_1->state = param_1->state + '\x01';
     param_1->target_angle = param_1->rot_y;
     param_1->type_flags = 0;
-    *(undefined2 *)(param_1 + 0x6e) = 0;
+    *(s16 *)(param_1 + 0x6e) = 0;
   }
   bVar1 = param_1->behavior_state;
   if (bVar1 == 1) {
@@ -81,7 +81,7 @@ void FUN_80069300(undefined1 *param_1)
     }
   }
 LAB_80069498:
-  if (2 < (byte)param_1->behavior_state) {
+  if (2 < (u8)param_1->behavior_state) {
     if ((param_1->anim_id & 1) == 0) {
       sVar2 = param_1->type_flags;
     }
@@ -96,7 +96,7 @@ LAB_80069498:
     *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + param_1->normal_x * iVar3;
     param_1->scale_y = param_1->scale_y + param_1->normal_z * iVar3;
     FUN_8006918c(param_1,0);
-    iVar3 = FUN_80077acc(param_1,(int)param_1->pos_y,(int)*(short *)(param_1 + 0x32),
+    iVar3 = FUN_80077acc(param_1,(int)param_1->pos_y,(int)*(s16 *)(param_1 + 0x32),
                          (int)param_1->pos_z);
     if ((iVar3 == 0) &&
        (sVar2 = param_1->timer2, param_1->timer2 = sVar2 + -1, sVar2 == 1)) {

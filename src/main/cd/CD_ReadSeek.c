@@ -6,10 +6,10 @@
 
 
 
-void FUN_800753d4(short *param_1,undefined4 param_2,undefined4 param_3)
+void FUN_800753d4(s16 *param_1,s32 param_2,s32 param_3)
 
 {
-  short sVar1;
+  s16 sVar1;
   
   sVar1 = FUN_80096480(param_2,0xffffffff);
   *param_1 = sVar1;

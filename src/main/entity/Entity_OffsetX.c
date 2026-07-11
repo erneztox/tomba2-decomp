@@ -10,7 +10,7 @@
 void FUN_80070650(int param_1)
 
 {
-  short sVar1;
+  s16 sVar1;
   
   if (param_1->draw_x != 0) {
     sVar1 = param_1->pos_y + 8;

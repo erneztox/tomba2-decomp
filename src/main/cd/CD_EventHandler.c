@@ -7,14 +7,14 @@
 
 
 #include "tomba.h"
-undefined4 FUN_8008c5d8(int param_1)
+s32 FUN_8008c5d8(int param_1)
 
 {
   uint uVar1;
-  undefined4 uVar2;
+  s32 uVar2;
   int iVar3;
   uint uVar4;
-  undefined1 local_18->counter1;
+  u8 local_18->counter1;
   
   FUN_80089b84(0);
   FUN_80089b98(0);
@@ -28,7 +28,7 @@ undefined4 FUN_8008c5d8(int param_1)
       FUN_8009b9b0(s_CdRead__Shell_open____8001c588);
     }
     FUN_80089ce8(1,0);
-    DAT_800ac300 = FUN_80085900(0xffffffff);
+    g_CD_SeekPos = FUN_80085900(0xffffffff);
     DAT_800ac2f8 = 0xffffffff;
     return 0xffffffff;
   }
@@ -43,7 +43,7 @@ undefined4 FUN_8008c5d8(int param_1)
     }
   }
   FUN_80089aa8();
-  local_18->type = (undefined1)DAT_800ac2f0;
+  local_18->type = (u8)DAT_800ac2f0;
   uVar4 = DAT_800ac2f0 & 0xff;
   uVar1 = FUN_80089a10();
   if (((uVar4 != uVar1) || (param_1 != 0)) && (iVar3 = FUN_80089bac(0xe,local_18,0), iVar3 == 0)) {
@@ -51,7 +51,7 @@ undefined4 FUN_8008c5d8(int param_1)
     return 0xffffffff;
   }
   uVar2 = FUN_80089a30();
-  DAT_800ac304 = FUN_8008a110(uVar2);
+  g_CD_Counter = FUN_8008a110(uVar2);
   FUN_80089b98(FUN_8008c294);
   if ((DAT_800abf28 & 1) != 0) {
     FUN_80089fc8(FUN_8008c508);

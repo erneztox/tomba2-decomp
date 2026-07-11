@@ -9,16 +9,16 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-uint FUN_80075e04(uint param_1,uint param_2,byte param_3,byte param_4,byte param_5,byte param_6,
-                 byte param_7,byte param_8)
+uint FUN_80075e04(uint param_1,uint param_2,u8 param_3,u8 param_4,u8 param_5,u8 param_6,
+                 u8 param_7,u8 param_8)
 
 {
   uint *puVar1;
-  byte *pbVar2;
+  u8 *pbVar2;
   uint uVar3;
   uint *puVar4;
   uint uVar5;
-  byte bVar6;
+  u8 bVar6;
   uint local_8;
   
   bVar6 = 0xfe;
@@ -30,9 +30,9 @@ uint FUN_80075e04(uint param_1,uint param_2,byte param_3,byte param_4,byte param
     uVar5 = param_2;
     do {
       if ((param_1 == pbVar2->sub_action) &&
-         (((int)(uint)*pbVar2 < (int)uVar5 || ((*pbVar2 == uVar5 && ((byte)*puVar1 <= bVar6)))))) {
+         (((int)(uint)*pbVar2 < (int)uVar5 || ((*pbVar2 == uVar5 && ((u8)*puVar1 <= bVar6)))))) {
         uVar5 = (uint)*pbVar2;
-        bVar6 = (byte)*puVar1;
+        bVar6 = (u8)*puVar1;
         puVar4 = puVar1;
         local_8 = uVar3;
       }
@@ -45,14 +45,14 @@ uint FUN_80075e04(uint param_1,uint param_2,byte param_3,byte param_4,byte param
     uVar3 = 0;
   }
   else {
-    *(byte *)((int)puVar4 + 2) = param_3;
-    *(byte *)((int)puVar4 + 3) = param_4;
+    *(u8 *)((int)puVar4 + 2) = param_3;
+    *(u8 *)((int)puVar4 + 3) = param_4;
     puVar4->flags = param_5;
-    *(byte *)((int)puVar4 + 5) = param_6;
-    *(byte *)((int)puVar4 + 6) = param_7;
-    *(byte *)((int)puVar4 + 1) = (byte)param_2;
-    *(byte *)((int)puVar4 + 7) = param_8;
-    *(byte *)puVar4 = 0xff;
+    *(u8 *)((int)puVar4 + 5) = param_6;
+    *(u8 *)((int)puVar4 + 6) = param_7;
+    *(u8 *)((int)puVar4 + 1) = (u8)param_2;
+    *(u8 *)((int)puVar4 + 7) = param_8;
+    *(u8 *)puVar4 = 0xff;
     uVar3 = *puVar4 & 0xffffff00 | local_8;
   }
   return uVar3;

@@ -10,13 +10,13 @@
 void FUN_80070018(int param_1,int param_2)
 
 {
-  byte bVar1;
-  char cVar2;
+  u8 bVar1;
+  s8 cVar2;
   int iVar3;
   
   bVar1 = param_1->state;
   if (bVar1 == 1) {
-    if ((param_1->gte_flags != '\0') && (DAT_800bf816 == '\0')) {
+    if ((param_1->gte_flags != '\0') && (g_ActionFlag == '\0')) {
       param_1->state = 2;
       return;
     }
@@ -98,7 +98,7 @@ void FUN_80070018(int param_1,int param_2)
       return;
     }
     param_1->event_param = param_1->event_param + -1;
-    cVar2 = *(char *)(param_1->parent + 1);
+    cVar2 = *(s8*)(param_1->parent + 1);
     param_1->flags = cVar2;
     if (cVar2 == '\0') {
       return;

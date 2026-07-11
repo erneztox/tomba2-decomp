@@ -9,8 +9,8 @@
 int FUN_80085690(uint param_1,uint param_2)
 
 {
-  bool bVar1;
-  bool bVar2;
+  s32 bVar1;
+  s32 bVar2;
   int iVar3;
   int iVar4;
   
@@ -43,7 +43,7 @@ int FUN_80085690(uint param_1,uint param_2)
           trap(0x1800);
         }
       }
-      iVar3 = (int)*(short *)(&DAT_800aa490 + iVar4 * 2);
+      iVar3 = (int)*(s16 *)(&DAT_800aa490 + iVar4 * 2);
     }
     else {
       iVar3 = (int)param_1 >> 10;
@@ -65,7 +65,7 @@ int FUN_80085690(uint param_1,uint param_2)
           trap(0x1800);
         }
       }
-      iVar3 = 0x400 - *(short *)(&DAT_800aa490 + iVar4 * 2);
+      iVar3 = 0x400 - *(s16 *)(&DAT_800aa490 + iVar4 * 2);
     }
     if (bVar1) {
       iVar3 = 0x800 - iVar3;

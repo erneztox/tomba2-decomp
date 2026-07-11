@@ -9,22 +9,22 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80053968(int param_1,int param_2)
+s32 FUN_80053968(int param_1,int param_2)
 
 {
   int iVar1;
-  undefined4 uVar2;
-  byte *pbVar3;
+  s32 uVar2;
+  u8 *pbVar3;
   uint uVar4;
   int iVar5;
-  undefined4 *puVar6;
+  s32 *puVar6;
   
   if (param_1->timer_main == 0) {
 switchD_800539dc_caseD_4:
     uVar2 = 0;
   }
   else {
-    if (*(char *)(param_1 + 0x180) != '\0') {
+    if (*(s8*)(param_1 + 0x180) != '\0') {
       return 0;
     }
     puVar6 = _DAT_1f800140;
@@ -33,13 +33,13 @@ switchD_800539dc_caseD_4:
     case 2:
       uVar4 = (uint)param_1->draw_angle;
       iVar5 = 0;
-      DAT_1f800182 = DAT_1f800146;
+      g_State182 = DAT_1f800146;
       break;
     case 1:
     case 3:
       iVar5 = 0;
       uVar4 = param_1->draw_angle + 0x800;
-      DAT_1f800182 = DAT_1f800146;
+      g_State182 = DAT_1f800146;
       break;
     default:
       goto switchD_800539dc_caseD_4;
@@ -47,21 +47,21 @@ switchD_800539dc_caseD_4:
     case 7:
       iVar5 = 1;
       uVar4 = param_1->draw_angle - 0x400;
-      DAT_1f800182 = DAT_1f800146;
+      g_State182 = DAT_1f800146;
       break;
     case 10:
     case 0xb:
       iVar5 = 2;
       uVar4 = param_1->draw_angle + 0x400;
-      DAT_1f800182 = DAT_1f800146;
+      g_State182 = DAT_1f800146;
     }
     do {
       do {
         while( true ) {
           do {
-            if (DAT_1f800182 == '\0') goto switchD_800539dc_caseD_4;
-            pbVar3 = (byte *)*puVar6;
-            DAT_1f800182 = DAT_1f800182 + -1;
+            if (g_State182 == '\0') goto switchD_800539dc_caseD_4;
+            pbVar3 = (u8 *)*puVar6;
+            g_State182 = g_State182 + -1;
             puVar6 = puVar6 + 1;
           } while (((pbVar3[0xc] != 9) && ((pbVar3[0xc] != 2 || (pbVar3->kind != 0xb)))) ||
                   ((*pbVar3 & 1) == 0));
@@ -98,10 +98,10 @@ switchD_800539dc_caseD_4:
     if (param_2 == 0) {
       pbVar3->move_mode = 3;
       if (iVar5 == 1) {
-        DAT_800bf840 = 0x82;
+        g_SFXState = 0x82;
       }
       else {
-        DAT_800bf840 = 0x83;
+        g_SFXState = 0x83;
       }
 LAB_80053bb0:
       uVar2 = 1;

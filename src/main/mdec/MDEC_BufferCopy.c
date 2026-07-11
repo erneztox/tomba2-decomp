@@ -6,13 +6,13 @@
 
 
 
-undefined4 * FUN_8009c6e0(undefined4 *param_1)
+s32 * FUN_8009c6e0(s32 *param_1)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   int iVar2;
-  undefined4 *puVar3;
-  undefined4 *puVar4;
+  s32 *puVar3;
+  s32 *puVar4;
   
   puVar4 = &DAT_800acf58;
   iVar2 = 0xf;

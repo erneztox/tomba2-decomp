@@ -7,12 +7,12 @@
 
 
 #include "tomba.h"
-undefined4 FUN_80072e60(int param_1)
+s32 FUN_80072e60(int param_1)
 
 {
-  short sVar1;
-  undefined2 uVar2;
-  undefined4 uVar3;
+  s16 sVar1;
+  s16 uVar2;
+  s32 uVar3;
   
   uVar3 = 0;
   if (param_1->anim_id == '\0') {

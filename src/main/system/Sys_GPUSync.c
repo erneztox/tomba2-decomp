@@ -12,9 +12,9 @@
 void FUN_8001db38(void)
 
 {
-  FUN_8001d940(_DAT_1f800138);
-  if (_DAT_1f800138->sprite_cmd != '\0') {
-    DAT_1f80019b = 1;
+  FUN_8001d940(_g_CurrentEntity);
+  if (_g_CurrentEntity->sprite_cmd != '\0') {
+    g_DMAFlag = 1;
   }
   FUN_80051fb4();
   return;

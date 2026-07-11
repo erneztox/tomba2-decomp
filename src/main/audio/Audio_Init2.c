@@ -12,15 +12,15 @@
 void FUN_8008dfa0(void)
 
 {
-  undefined2 uVar1;
-  undefined4 *puVar2;
+  s16 uVar1;
+  s32 *puVar2;
   int iVar3;
   int iVar4;
-  undefined2 *puVar5;
-  undefined2 *puVar6;
+  s16 *puVar5;
+  s16 *puVar6;
   int iVar7;
   
-  puVar6 = (undefined2 *)&DAT_1f801d80;
+  puVar6 = (s16 *)&DAT_1f801d80;
   iVar3 = 0;
   puVar5 = &DAT_800ac400;
   do {

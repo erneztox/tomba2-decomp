@@ -12,19 +12,19 @@
 void FUN_8006dad8(int param_1)
 
 {
-  short sVar1;
-  short sVar2;
+  s16 sVar1;
+  s16 sVar2;
   int iVar3;
   int iVar4;
   int iVar5;
   uint uVar6;
   
-  iVar3 = FUN_80083f50((int)*(short *)(param_1 + 0x6e));
-  sVar1 = *(short *)(param_1 + 0x6c);
-  iVar4 = FUN_80083f50((int)*(short *)(param_1 + 0x70));
-  iVar5 = (int)(short)(iVar3 * sVar1 >> 0xc);
+  iVar3 = FUN_80083f50((int)*(s16 *)(param_1 + 0x6e));
+  sVar1 = *(s16 *)(param_1 + 0x6c);
+  iVar4 = FUN_80083f50((int)*(s16 *)(param_1 + 0x70));
+  iVar5 = (int)(s16)(iVar3 * sVar1 >> 0xc);
   uVar6 = (uint)_DAT_1f8000de;
-  iVar3 = FUN_80083e80((int)*(short *)(param_1 + 0x70));
+  iVar3 = FUN_80083e80((int)*(s16 *)(param_1 + 0x70));
   iVar3 = (int)((((uint)_DAT_1f8000e6 - (iVar3 * iVar5 >> 0xc)) - (_DAT_1f8000d8 >> 0x10)) * 0x10000
                ) >> 0x10;
   iVar4 = (int)(((uVar6 + (iVar4 * iVar5 >> 0xc)) - (_DAT_1f8000d0 >> 0x10)) * 0x10000) >> 0x10;

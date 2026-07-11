@@ -1,5 +1,5 @@
 /**
- * @brief CD byte read: calls FUN_800962b0, writes result to buffer at DAT_80105cdc+offset+4
+ * @brief CD u8 read: calls FUN_800962b0, writes result to buffer at DAT_80105cdc+offset+4
  * @note Original: func_80095470 at 0x80095470
  */
 // CD_ReadByte
@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-uint FUN_80095470(short param_1,short param_2,undefined1 param_3)
+uint FUN_80095470(s16 param_1,s16 param_2,u8 param_3)
 
 {
   int iVar1;
@@ -18,8 +18,8 @@ uint FUN_80095470(short param_1,short param_2,undefined1 param_3)
   uVar2 = 0xffffffff;
   if (iVar1 == 0) {
     iVar1 = param_2 * 0x10;
-    *(undefined1 *)(iVar1 + _DAT_80105cdc + 4) = param_3;
-    uVar2 = (uint)*(byte *)(iVar1 + _DAT_80105cdc + 4);
+    *(u8 *)(iVar1 + _DAT_80105cdc + 4) = param_3;
+    uVar2 = (uint)*(u8 *)(iVar1 + _DAT_80105cdc + 4);
   }
   return uVar2;
 }

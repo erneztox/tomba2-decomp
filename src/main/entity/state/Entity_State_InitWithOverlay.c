@@ -19,7 +19,7 @@ void FUN_800653f4(int param_1)
   else if (param_1->action_state != '\x01') {
     return;
   }
-  if (DAT_800bf870 == '\0') {
+  if (g_GameState == '\0') {
     func_0x8010c780(param_1);
   }
   return;

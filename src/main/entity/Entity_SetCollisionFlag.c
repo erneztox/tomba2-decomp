@@ -1,16 +1,16 @@
 /**
- * @brief Entity collision flag: builds byte from param, stores at param_2
+ * @brief Entity collision flag: builds u8 from param, stores at param_2
  * @note Original: func_80052198 at 0x80052198
  */
 // Entity_SetCollisionFlag
 
 
 
-undefined4 FUN_80052198(byte param_1,byte *param_2)
+s32 FUN_80052198(u8 param_1,u8 *param_2)
 
 {
-  byte bVar1;
-  undefined4 uVar2;
+  u8 bVar1;
+  s32 uVar2;
   
   bVar1 = param_1 + 0x80;
   *param_2 = bVar1;

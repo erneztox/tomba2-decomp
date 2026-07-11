@@ -6,12 +6,12 @@
 
 
 
-void FUN_800970ec(undefined4 param_1,undefined2 param_2,int param_3)
+void FUN_800970ec(s32 param_1,s16 param_2,int param_3)
 
 {
-  *(undefined2 *)(DAT_800ac604 + 0x1a6) = param_2;
+  *(s16 *)(g_SPU_Regs + 0x1a6) = param_2;
   FUN_800976c8();
-  *(ushort *)(DAT_800ac604 + 0x1aa) = *(ushort *)(DAT_800ac604 + 0x1aa) | 0x30;
+  *(u16 *)(g_SPU_Regs + 0x1aa) = *(u16 *)(g_SPU_Regs + 0x1aa) | 0x30;
   FUN_800976c8();
   FUN_800976a0();
   *DAT_800ac608 = param_1;

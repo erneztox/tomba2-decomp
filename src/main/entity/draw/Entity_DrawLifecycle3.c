@@ -10,7 +10,7 @@
 void FUN_80033560(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   bVar1 = param_1->state;
   if (bVar1 == 1) {

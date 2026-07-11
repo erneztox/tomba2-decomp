@@ -12,10 +12,10 @@
 void FUN_80063f9c(int param_1)
 
 {
-  byte bVar1;
-  ushort uVar2;
-  char cVar3;
-  undefined1 uVar4;
+  u8 bVar1;
+  u16 uVar2;
+  s8 cVar3;
+  u8 uVar4;
   int iVar5;
   
   iVar5 = param_1->state_ptr;
@@ -24,14 +24,14 @@ void FUN_80063f9c(int param_1)
   FUN_800635d4(param_1,0);
   FUN_80076d68(param_1);
   FUN_80063b94(param_1,0);
-  if (*(byte *)(param_1 + 0x168) < 3) {
-    DAT_800bf840 = 0x47;
+  if (*(u8 *)(param_1 + 0x168) < 3) {
+    g_SFXState = 0x47;
   }
   else {
-    DAT_800bf840 = 0x87;
+    g_SFXState = 0x87;
   }
   if (param_1->anim_param == '\0') {
-    if ((_DAT_800e7e68 & _DAT_1f800172) != 0) {
+    if ((_g_PadState & _g_InputMask) != 0) {
       bVar1 = param_1->behavior_flags;
       param_1->anim_param = 1;
       param_1->physics_type = bVar1;
@@ -42,7 +42,7 @@ void FUN_80063f9c(int param_1)
     }
     if (param_1->anim_param == '\0') goto switchD_8006409c_default;
   }
-  switch(*(undefined1 *)(param_1 + 0x168)) {
+  switch(*(u8 *)(param_1 + 0x168)) {
   case 0:
   case 1:
     cVar3 = (&DAT_800a47a4)[param_1->physics_type];
@@ -111,7 +111,7 @@ LAB_80064280:
     goto LAB_8006426c;
   }
 switchD_8006409c_default:
-  if (*(char *)(iVar5 + 0xc) != '\x04') {
+  if (*(s8*)(iVar5 + 0xc) != '\x04') {
     return;
   }
   bVar1 = iVar5->kind;
@@ -129,13 +129,13 @@ switchD_8006409c_default:
       return;
     }
   }
-  if (DAT_800bf870 == '\0') {
+  if (g_GameState == '\0') {
     func_0x8010ad68(param_1,iVar5);
   }
-  else if (DAT_800bf870 == '\x06') {
+  else if (g_GameState == '\x06') {
     func_0x80113acc(param_1,iVar5);
   }
-  if (DAT_800bf870 == '\x0f') {
+  if (g_GameState == '\x0f') {
     func_0x8010b194(param_1,iVar5);
   }
   return;

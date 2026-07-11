@@ -10,17 +10,17 @@
 void FUN_8002ef58(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
-  short sVar3;
-  char cVar4;
+  u8 bVar1;
+  s16 sVar2;
+  s16 sVar3;
+  s8 cVar4;
   int iVar5;
   int iVar6;
   int iVar7;
   int iVar8;
   int iVar9;
-  undefined2 *puVar10;
-  short *psVar11;
+  s16 *puVar10;
+  s16 *psVar11;
   
   bVar1 = param_1->state;
   if (bVar1 != 1) {
@@ -51,12 +51,12 @@ void FUN_8002ef58(int param_1)
     iVar6 = FUN_80083e80(0x400 - ((int)((uint)param_1->sprite_x << 0x10) >> 0x11));
     param_1->pos_x =
          param_1->angle_offset +
-         (short)((int)param_1->rot_z * (0x1000 - iVar5) >> 0xc);
-    *(short *)(param_1 + 0x30) =
+         (s16)((int)param_1->rot_z * (0x1000 - iVar5) >> 0xc);
+    *(s16 *)(param_1 + 0x30) =
          param_1->rot_x +
-         (short)((int)param_1->draw_y * (0x1000 - iVar5) >> 0xc);
+         (s16)((int)param_1->draw_y * (0x1000 - iVar5) >> 0xc);
     param_1->pos_y =
-         param_1->target_rot_y + (short)(param_1->sprite_y * iVar6 >> 0xc);
+         param_1->target_rot_y + (s16)(param_1->sprite_y * iVar6 >> 0xc);
     iVar6 = (int)param_1->sprite_x;
     iVar5 = 0;
     if (6 < DAT_800e7e7c) {
@@ -66,9 +66,9 @@ void FUN_8002ef58(int param_1)
         if (param_1 != -0x2c) {
           iVar7->pos_x = param_1->pos_x;
           iVar7->pos_y = param_1->pos_y;
-          *(undefined2 *)(iVar7 + 0x30) = *(undefined2 *)(param_1 + 0x30);
+          *(s16 *)(iVar7 + 0x30) = *(s16 *)(param_1 + 0x30);
         }
-        *(undefined2 *)(iVar7 + 0x32) = 0xffd8;
+        *(s16 *)(iVar7 + 0x32) = 0xffd8;
         FUN_80028e10(iVar7,0x21);
         iVar5 = iVar7;
       }
@@ -81,16 +81,16 @@ void FUN_8002ef58(int param_1)
         iVar8 = FUN_80083f50(iVar6);
         iVar9 = FUN_80083e80(0x400 - (iVar6 >> 1));
         *psVar11 = param_1->angle_offset +
-                   (short)((int)param_1->rot_z * (0x1000 - iVar8) >> 0xd);
+                   (s16)((int)param_1->rot_z * (0x1000 - iVar8) >> 0xd);
         puVar10[-1] = param_1->rot_x +
-                      (short)((int)param_1->draw_y * (0x1000 - iVar8) >> 0xd);
+                      (s16)((int)param_1->draw_y * (0x1000 - iVar8) >> 0xd);
         sVar2 = param_1->sprite_y;
         iVar6 = iVar6 + 0x40;
         iVar7 = iVar7 + 1;
         psVar11 = psVar11 + 4;
         sVar3 = param_1->target_rot_y;
         *puVar10 = 0x100;
-        puVar10[-2] = sVar3 + (short)(sVar2 * iVar9 >> 0xc);
+        puVar10[-2] = sVar3 + (s16)(sVar2 * iVar9 >> 0xc);
         puVar10 = puVar10 + 4;
       } while (iVar7 < 7);
       iVar5->alloc_flags = param_1->alloc_flags;

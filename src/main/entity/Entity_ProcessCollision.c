@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-undefined4 FUN_800235a0(int param_1,undefined4 param_2)
+s32 FUN_800235a0(int param_1,s32 param_2)
 
 {
   int iVar1;
-  undefined4 uVar2;
+  s32 uVar2;
   
   iVar1 = FUN_8001f40c(param_1,param_2,1);
   if (iVar1 < 0) {

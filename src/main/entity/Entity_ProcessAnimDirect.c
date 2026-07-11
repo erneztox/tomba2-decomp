@@ -6,9 +6,9 @@
 
 
 
-void FUN_800328bc(int param_1,undefined4 param_2)
+void FUN_800328bc(int param_1,s32 param_2)
 
 {
-  FUN_80027a4c(param_2,*(undefined4 *)(param_1 + 0x44));
+  FUN_80027a4c(param_2,*(s32 *)(param_1 + 0x44));
   return;
 }

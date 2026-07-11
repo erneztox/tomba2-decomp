@@ -17,9 +17,9 @@ void FUN_8006585c(int param_1)
   }
   else if (param_1->action_state != '\x01') goto LAB_800658a8;
   FUN_80076d68(param_1);
-  DAT_800bf80e = 1;
+  g_ActionTrigger = 1;
 LAB_800658a8:
-  if (_DAT_1f800184 == 2) {
+  if (_g_ActionInput == 2) {
     FUN_80055d5c(param_1);
     param_1->angle_offset = 0;
     param_1->velocity_y = 0;

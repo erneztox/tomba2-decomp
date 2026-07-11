@@ -1,5 +1,5 @@
 /**
- * @brief Camera configurator: switch on DAT_800e7fe4/8, sets mode params
+ * @brief Camera configurator: switch on g_CameraMode2/8, sets mode params
  * @note Original: func_8006E010 at 0x8006E010
  */
 // Camera_Config
@@ -10,13 +10,13 @@
 void FUN_8006e010(int param_1)
 
 {
-  bool bVar1;
-  short sVar2;
+  s32 bVar1;
+  s16 sVar2;
   int iVar3;
   int iVar4;
   
-  if (DAT_800e7fe4 == '\x03') {
-    switch(DAT_800e7fe8) {
+  if (g_CameraMode2 == '\x03') {
+    switch(g_CameraSubMode) {
     case 0:
     case 1:
       sVar2 = 0;

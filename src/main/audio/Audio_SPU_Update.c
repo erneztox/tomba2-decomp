@@ -10,7 +10,7 @@
 int FUN_8007566c(int param_1,int param_2)
 
 {
-  short *psVar1;
+  s16 *psVar1;
   int *piVar2;
   int iVar3;
   
@@ -30,11 +30,11 @@ int FUN_8007566c(int param_1,int param_2)
   } while (iVar3 < 0xe);
   iVar3 = (param_1 << 0x10) >> 0xf;
   piVar2 = (int *)(param_2 +
-                  ((uint)*(ushort *)(iVar3 + -0x7fe7dffe) - (uint)*(ushort *)(iVar3 + -0x7fe7e000))
+                  ((uint)*(u16 *)(iVar3 + -0x7fe7dffe) - (uint)*(u16 *)(iVar3 + -0x7fe7e000))
                   * 0x800 + -0x800);
   FUN_800753ac(param_2);
   FUN_800753d4(&DAT_800a4f7e,param_2 + *piVar2,param_2 + piVar2->flags);
-  switch(DAT_800bf870) {
+  switch(g_GameState) {
   case 5:
     func_0x8013ac40();
     break;

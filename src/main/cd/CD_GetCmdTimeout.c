@@ -6,10 +6,10 @@
 
 
 
-int FUN_8009a6c0(byte param_1)
+int FUN_8009a6c0(u8 param_1)
 
 {
-  char cVar1;
+  s8 cVar1;
   int iVar2;
   
   if (((&DAT_800ace75)[param_1] & 4) == 0) {

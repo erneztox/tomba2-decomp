@@ -12,14 +12,14 @@
 void FUN_80025744(int param_1)
 
 {
-  bool bVar1;
-  short sVar2;
+  s32 bVar1;
+  s16 sVar2;
   uint uVar3;
-  undefined *puVar4;
-  undefined1 local_28;
-  undefined1 local_27;
-  undefined2 local_26;
-  short local_20->state;
+  void *puVar4;
+  u8 local_28;
+  u8 local_27;
+  s16 local_26;
+  s16 local_20->state;
   
   local_27 = 8;
   local_26 = 0x8000;
@@ -30,19 +30,19 @@ void FUN_80025744(int param_1)
   local_20->flags = 200;
   FUN_8007e1b8(local_20,param_1->anim_data,param_1->sprite_data,&local_28);
   local_26 = 0;
-  local_20->kind = DAT_800bf87f - 0x18;
+  local_20->kind = g_ItemFlag - 0x18;
   local_20->type = local_20->type + 0x18;
   FUN_8007e1b8(local_20,PTR_DAT_800173d8,param_1->sprite_data,&local_28);
   sVar2 = local_20->kind;
   local_20->kind = 0;
   local_20->type = local_20->type + sVar2;
   FUN_8007e1b8(local_20,PTR_DAT_800173dc,param_1->sprite_data,&local_28);
-  if (DAT_800bf87e == 0) {
+  if (g_ItemMax == 0) {
     return;
   }
   local_20->type = 0x32;
   local_20->flags = 0xcc;
-  local_20->kind = (short)DAT_800bf87e;
+  local_20->kind = (s16)g_ItemMax;
   bVar1 = false;
   switch(DAT_800e7eef) {
   case 0x12:
@@ -63,12 +63,12 @@ void FUN_80025744(int param_1)
   default:
     goto switchD_80025868_default;
   }
-  if (uVar3 >> 1 <= (uint)DAT_800bf87e) {
+  if (uVar3 >> 1 <= (uint)g_ItemMax) {
     bVar1 = true;
   }
 switchD_80025868_default:
   puVar4 = PTR_DAT_800173bc;
-  if ((bVar1) && ((_DAT_1f80017c & 3) != 0)) {
+  if ((bVar1) && ((_g_FrameCounter2 & 3) != 0)) {
     puVar4 = PTR_DAT_800173c0;
   }
   FUN_8007e1b8(local_20,puVar4,param_1->sprite_data,&local_28);

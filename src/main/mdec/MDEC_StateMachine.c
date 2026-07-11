@@ -10,11 +10,11 @@
 void FUN_80087f1c(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   bVar1 = param_1->anim_id;
   if (bVar1 == 3) {
-    FUN_80088a88(param_1,*(undefined1 *)(param_1 + 0xe4));
+    FUN_80088a88(param_1,*(u8 *)(param_1 + 0xe4));
   }
   else if (bVar1 < 4) {
     if (bVar1 == 2) {

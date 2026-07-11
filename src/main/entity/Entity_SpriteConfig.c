@@ -10,7 +10,7 @@
 void FUN_80024e00(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   switch(DAT_800e7eef) {
   case 0x12:

@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-bool FUN_8005376c(int param_1)
+s32 FUN_8005376c(int param_1)
 
 {
   switch(param_1->behavior_type) {

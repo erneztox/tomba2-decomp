@@ -6,10 +6,10 @@
 
 
 
-undefined4 FUN_80089a3c(int param_1)
+s32 FUN_80089a3c(int param_1)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   int iVar2;
   
   if (param_1 == 2) {

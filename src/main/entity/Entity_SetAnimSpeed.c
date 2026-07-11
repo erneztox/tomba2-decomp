@@ -11,7 +11,7 @@ void FUN_80069634(int param_1)
 
 {
   param_1->anim_counter =
-       *(undefined2 *)
+       *(s16 *)
         (&DAT_800a4a6c + (uint)param_1->flag_5E * 2 + (param_1->kind - 1) * 4);
   if (param_1->flag_5E != '\0') {
     param_1->timer1 = 2;

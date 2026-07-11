@@ -12,22 +12,22 @@
 void FUN_8006e918(int param_1)
 
 {
-  short sVar1;
+  s16 sVar1;
   int iVar2;
-  short sVar3;
-  short sVar4;
+  s16 sVar3;
+  s16 sVar4;
   
   sVar4 = -_DAT_1f8000ee;
-  if (_DAT_800e7fc0 == _DAT_800e7ed6) {
+  if (_g_CameraAngle == _g_EntityAngle) {
     sVar1 = param_1->rot_y;
   }
   else {
     sVar1 = -param_1->rot_y;
   }
-  iVar2 = FUN_80083f50((int)_DAT_800e7fc0 + (int)param_1->sprite_y + (int)sVar1);
-  sVar3 = _DAT_800e7eae + (short)(iVar2 * sVar4 >> 0xc);
-  iVar2 = FUN_80083e80((int)_DAT_800e7fc0 + (int)param_1->sprite_y + (int)sVar1);
+  iVar2 = FUN_80083f50((int)_g_CameraAngle + (int)param_1->sprite_y + (int)sVar1);
+  sVar3 = _g_CameraTargetX + (s16)(iVar2 * sVar4 >> 0xc);
+  iVar2 = FUN_80083e80((int)_g_CameraAngle + (int)param_1->sprite_y + (int)sVar1);
   _DAT_1f8000d2 = sVar3;
-  _DAT_1f8000da = _DAT_800e7eb6 - (short)(iVar2 * sVar4 >> 0xc);
+  _DAT_1f8000da = _g_CameraTargetZ - (s16)(iVar2 * sVar4 >> 0xc);
   return;
 }

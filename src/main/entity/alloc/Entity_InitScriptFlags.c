@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80040d68(int param_1,ushort *param_2)
+void FUN_80040d68(int param_1,u16 *param_2)
 
 {
   param_1->anim_check = 0;

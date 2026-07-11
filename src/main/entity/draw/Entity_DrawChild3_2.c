@@ -6,16 +6,16 @@
 
 
 
-void FUN_800339a4(int param_1,undefined1 param_2)
+void FUN_800339a4(int param_1,u8 param_2)
 
 {
-  undefined1 local_18;
-  undefined1 local_17;
-  undefined2 local_16;
-  undefined2 local_10;
-  undefined2 local_e;
-  undefined2 local_c;
-  undefined2 local_a;
+  u8 local_18;
+  u8 local_17;
+  s16 local_16;
+  s16 local_10;
+  s16 local_e;
+  s16 local_c;
+  s16 local_a;
   
   local_a = DAT_800a23aa;
   local_18 = 0;
@@ -24,6 +24,6 @@ void FUN_800339a4(int param_1,undefined1 param_2)
   local_10 = DAT_800a23a4;
   local_c = DAT_800a23a8;
   local_17 = param_2;
-  FUN_8007e1b8(&local_10,PTR_DAT_800174b0,*(undefined4 *)(param_1 + 4),&local_18);
+  FUN_8007e1b8(&local_10,PTR_DAT_800174b0,*(s32 *)(param_1 + 4),&local_18);
   return;
 }

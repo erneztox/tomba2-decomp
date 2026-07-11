@@ -9,9 +9,9 @@
 int FUN_80085f5c(uint param_1,int param_2)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   int *piVar2;
-  ushort uVar3;
+  u16 uVar3;
   int iVar4;
   
   piVar2 = &DAT_800aad1c + param_1;
@@ -20,14 +20,14 @@ int FUN_80085f5c(uint param_1,int param_2)
     uVar3 = *DAT_800abda8;
     *DAT_800abda8 = 0;
     if (param_2 == 0) {
-      uVar1 = ~(ushort)(1 << (param_1 & 0x1f));
+      uVar1 = ~(u16)(1 << (param_1 & 0x1f));
       *piVar2 = 0;
       uVar3 = uVar3 & uVar1;
       DAT_800aad48 = DAT_800aad48 & uVar1;
     }
     else {
       *piVar2 = param_2;
-      uVar1 = (ushort)(1 << (param_1 & 0x1f));
+      uVar1 = (u16)(1 << (param_1 & 0x1f));
       uVar3 = uVar3 | uVar1;
       DAT_800aad48 = DAT_800aad48 | uVar1;
     }

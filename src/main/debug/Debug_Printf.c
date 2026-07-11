@@ -6,12 +6,12 @@
 
 
 
-void FUN_8009a730(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
+void FUN_8009a730(s32 param_1,s32 param_2,s32 param_3,s32 param_4)
 
 {
-  undefined4 local_res4;
-  undefined4 local_res8;
-  undefined4 local_resc;
+  s32 local_res4;
+  s32 local_res8;
+  s32 local_resc;
   
   local_res4 = param_2;
   local_res8 = param_3;

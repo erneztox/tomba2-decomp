@@ -9,11 +9,11 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80069858(int param_1,int param_2,int param_3)
+s32 FUN_80069858(int param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  undefined4 uVar2;
+  s32 uVar2;
   int iVar3;
   
   if (DAT_800e7feb == '\0') {
@@ -27,9 +27,9 @@ undefined4 FUN_80069858(int param_1,int param_2,int param_3)
   else {
     iVar1 = FUN_80083f50((int)_DAT_1f80018c);
     iVar3 = (int)_DAT_1f80018c;
-    param_1->normal_x = (short)(iVar1 >> 4);
+    param_1->normal_x = (s16)(iVar1 >> 4);
     iVar1 = FUN_80083e80(iVar3);
-    param_1->normal_z = -(short)(iVar1 >> 4);
+    param_1->normal_z = -(s16)(iVar1 >> 4);
   }
   uVar2 = 0;
   if (param_3 == 0) {

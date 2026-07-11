@@ -7,17 +7,17 @@
 
 
 #include "tomba.h"
-short * FUN_8007c780(short *param_1,short *param_2,undefined1 param_3,short param_4)
+s16 * FUN_8007c780(s16 *param_1,s16 *param_2,u8 param_3,s16 param_4)
 
 {
-  byte bVar1;
-  short sVar2;
-  byte *pbVar3;
-  short *psVar4;
+  u8 bVar1;
+  s16 sVar2;
+  u8 *pbVar3;
+  s16 *psVar4;
   
   sVar2 = *param_2;
   param_1->flags = param_3;
-  *(undefined1 *)((int)param_1 + 3) = 0;
+  *(u8 *)((int)param_1 + 3) = 0;
   param_1->kind = 8;
   param_1->sub_type = 0x38;
   *param_1 = sVar2;
@@ -25,7 +25,7 @@ short * FUN_8007c780(short *param_1,short *param_2,undefined1 param_3,short para
   *param_2 = sVar2 + 8;
   param_1->state = sVar2 + 8;
   param_1->behavior_state = param_3;
-  *(undefined1 *)((int)param_1 + 0xb) = 0;
+  *(u8 *)((int)param_1 + 0xb) = 0;
   param_1->action_state = 0x80;
   param_1->sub_action = 0x38;
   *param_2 = *param_2 + 0x10;
@@ -56,12 +56,12 @@ short * FUN_8007c780(short *param_1,short *param_2,undefined1 param_3,short para
     do {
       sVar2 = 0x60;
       if (bVar1 < 10) {
-        sVar2 = (ushort)*pbVar3 * 8 + 0x80;
+        sVar2 = (u16)*pbVar3 * 8 + 0x80;
       }
       pbVar3 = pbVar3 + 1;
       *psVar4 = *param_2;
-      *(undefined1 *)(param_1 + -2) = param_3;
-      *(undefined1 *)((int)param_1 + -3) = 0;
+      *(u8 *)(param_1 + -2) = param_3;
+      *(u8 *)((int)param_1 + -3) = 0;
       param_1[-1] = sVar2;
       *param_1 = 0x28;
       param_1 = param_1 + 4;

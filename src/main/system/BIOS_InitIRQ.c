@@ -6,7 +6,7 @@
 
 
 
-void FUN_8009bb10(undefined4 param_1)
+void FUN_8009bb10(s32 param_1)
 
 {
   int iVar1;

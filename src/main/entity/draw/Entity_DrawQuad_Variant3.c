@@ -8,9 +8,9 @@
 void Entity_DrawQuad_Variant3(int param_1,uint param_2,uint param_3)
 
 {
-  byte bVar1;
-  byte *pbVar2;
-  undefined4 uVar3;
+  u8 bVar1;
+  u8 *pbVar2;
+  s32 uVar3;
   
   uVar3 = param_1->script_data;
   if (param_2 < param_3) {
@@ -23,7 +23,7 @@ void Entity_DrawQuad_Variant3(int param_1,uint param_2,uint param_3)
         break;
       case 0x24:
         param_2 = param_2 + 0x20;
-        *(undefined4 *)(pbVar2 + -3) = uVar3;
+        *(s32 *)(pbVar2 + -3) = uVar3;
         *pbVar2 = *pbVar2 | 2;
         pbVar2 = pbVar2 + 0x20;
         break;
@@ -33,7 +33,7 @@ void Entity_DrawQuad_Variant3(int param_1,uint param_2,uint param_3)
         break;
       case 0x2c:
         bVar1 = *pbVar2;
-        *(undefined4 *)(pbVar2 + -3) = uVar3;
+        *(s32 *)(pbVar2 + -3) = uVar3;
         goto LAB_8003f648;
       case 0x30:
         pbVar2 = pbVar2 + 0x1c;
@@ -41,9 +41,9 @@ void Entity_DrawQuad_Variant3(int param_1,uint param_2,uint param_3)
         break;
       case 0x34:
         bVar1 = *pbVar2;
-        *(undefined4 *)(pbVar2 + -3) = uVar3;
-        *(undefined4 *)(pbVar2 + 9) = uVar3;
-        *(undefined4 *)(pbVar2 + 0x15) = uVar3;
+        *(s32 *)(pbVar2 + -3) = uVar3;
+        *(s32 *)(pbVar2 + 9) = uVar3;
+        *(s32 *)(pbVar2 + 0x15) = uVar3;
 LAB_8003f648:
         param_2 = param_2 + 0x28;
         *pbVar2 = bVar1 | 2;
@@ -55,10 +55,10 @@ LAB_8003f648:
         break;
       case 0x3c:
         param_2 = param_2 + 0x34;
-        *(undefined4 *)(pbVar2 + -3) = uVar3;
-        *(undefined4 *)(pbVar2 + 9) = uVar3;
-        *(undefined4 *)(pbVar2 + 0x15) = uVar3;
-        *(undefined4 *)(pbVar2 + 0x21) = uVar3;
+        *(s32 *)(pbVar2 + -3) = uVar3;
+        *(s32 *)(pbVar2 + 9) = uVar3;
+        *(s32 *)(pbVar2 + 0x15) = uVar3;
+        *(s32 *)(pbVar2 + 0x21) = uVar3;
         *pbVar2 = *pbVar2 | 2;
         pbVar2 = pbVar2 + 0x34;
       }

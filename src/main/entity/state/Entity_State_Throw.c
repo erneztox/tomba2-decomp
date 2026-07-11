@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-void FUN_80066de8(undefined1 *param_1)
+void FUN_80066de8(u8 *param_1)
 
 {
-  undefined2 uVar1;
+  s16 uVar1;
   int iVar2;
   
   if (param_1->action_state == '\0') {
@@ -20,7 +20,7 @@ void FUN_80066de8(undefined1 *param_1)
     FUN_80053d90(param_1);
     param_1->state_flag146 = 0;
     param_1[0x61] = 0;
-    iVar2 = FUN_80077768((int)param_1->draw_angle,(uint)(byte)param_1->move_mode << 4,0);
+    iVar2 = FUN_80077768((int)param_1->draw_angle,(uint)(u8)param_1->move_mode << 4,0);
     uVar1 = 0xf000;
     if (iVar2 == 0) {
       param_1->direction = 1;

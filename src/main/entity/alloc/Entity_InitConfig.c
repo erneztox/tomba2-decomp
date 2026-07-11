@@ -10,7 +10,7 @@
 void FUN_8006acac(int param_1)
 
 {
-  undefined2 uVar1;
+  s16 uVar1;
   
   switch(param_1->kind) {
   case 1:

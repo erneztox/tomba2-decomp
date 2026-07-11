@@ -12,10 +12,10 @@
 void FUN_80069b28(void)
 
 {
-  undefined4 *puVar1;
+  s32 *puVar1;
   int iVar2;
   
-  iVar2 = _DAT_800f2738;
+  iVar2 = _g_BackgroundEntitiesList;
   while (iVar2 != 0) {
     puVar1 = iVar2->callback;
     iVar2 = iVar2->next;

@@ -1,5 +1,5 @@
 /**
- * @brief CD register read: reads ushort from DAT_800ac604 + param*0x10
+ * @brief CD register read: reads u16 from g_SPU_Regs + param*0x10
  * @note Original: func_8009A170 at 0x8009A170
  */
 // CD_ReadReg
@@ -7,14 +7,14 @@
 
 
 #include "tomba.h"
-void FUN_8009a170(int param_1,ushort *param_2,ushort *param_3)
+void FUN_8009a170(int param_1,u16 *param_2,u16 *param_3)
 
 {
-  ushort uVar1;
-  ushort uVar2;
-  ushort *puVar3;
+  u16 uVar1;
+  u16 uVar2;
+  u16 *puVar3;
   
-  puVar3 = (ushort *)(param_1 * 0x10 + DAT_800ac604);
+  puVar3 = (u16 *)(param_1 * 0x10 + g_SPU_Regs);
   uVar1 = *puVar3;
   uVar2 = puVar3->flags;
   if (uVar1 < 0x4000) {

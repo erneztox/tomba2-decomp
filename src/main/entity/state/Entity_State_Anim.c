@@ -9,50 +9,50 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80042894(int param_1)
+s32 FUN_80042894(int param_1)
 
 {
   int iVar1;
-  undefined2 *puVar2;
-  undefined2 *puVar3;
-  undefined2 local_28;
-  undefined2 local_26;
-  undefined2 local_24;
-  undefined2 local_22;
-  undefined2 local_20;
-  undefined2 local_1e;
+  s16 *puVar2;
+  s16 *puVar3;
+  s16 local_28;
+  s16 local_26;
+  s16 local_24;
+  s16 local_22;
+  s16 local_20;
+  s16 local_1e;
   
   if (param_1->sub_state == '\0') {
     if ((param_1->event_id & 1) == 0) {
       FUN_8006e1c0(7);
     }
     else {
-      DAT_800e806c = 7;
+      g_CameraEntity = 7;
     }
-    if ((-1 < *(short *)(param_1 + 100)) &&
-       (DAT_1f800207 = *(undefined1 *)(param_1 + 100), DAT_800e7fe4 == '\0')) {
-      DAT_800e7e85 = 0x21;
+    if ((-1 < *(s16 *)(param_1 + 100)) &&
+       (DAT_1f800207 = *(u8 *)(param_1 + 100), g_CameraMode2 == '\0')) {
+      g_CollisionType = 0x21;
       DAT_800e7e86 = 0;
     }
     puVar3 = &local_28;
     if ((param_1->event_id & 0x2000) == 0) {
-      puVar3 = *(undefined2 **)(param_1 + 0x74);
+      puVar3 = *(s16 **)(param_1 + 0x74);
     }
     else {
-      puVar2 = *(undefined2 **)(param_1 + 0x74);
+      puVar2 = *(s16 **)(param_1 + 0x74);
       local_28 = *puVar2;
       local_26 = puVar2->flags;
       local_24 = puVar2->kind;
       local_22 = param_1->pos_y;
-      local_20 = *(undefined2 *)(param_1 + 0x32);
+      local_20 = *(s16 *)(param_1 + 0x32);
       local_1e = param_1->pos_z;
     }
-    if ((*(short *)(param_1 + 0x66) == 0) || ((param_1->event_id & 3) < 2)) {
+    if ((*(s16 *)(param_1 + 0x66) == 0) || ((param_1->event_id & 3) < 2)) {
       FUN_8006cbd0(0x800e8008,puVar3);
       return 1;
     }
-    FUN_8006cba8(&DAT_1f8000dc);
-    FUN_8006cc1c(0x800e8008,puVar3,(int)*(short *)(param_1 + 0x66));
+    FUN_8006cba8(&g_CameraX);
+    FUN_8006cc1c(0x800e8008,puVar3,(int)*(s16 *)(param_1 + 0x66));
     if (((int)param_1->event_id & 0x8000U) != 0) {
       _DAT_800e8084 = 0;
       _DAT_800e8082 = 0;

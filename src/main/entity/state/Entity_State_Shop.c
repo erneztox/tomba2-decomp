@@ -1,5 +1,5 @@
 /**
- * @brief Entity shop state: entity->sub_action=1, checks DAT_800bf816 flag
+ * @brief Entity shop state: entity->sub_action=1, checks g_ActionFlag flag
  * @note Original: func_800735F4 at 0x800735F4
  */
 // Entity_State_Shop
@@ -7,19 +7,19 @@
 
 
 #include "tomba.h"
-void FUN_800735f4(int param_1,short param_2)
+void FUN_800735f4(int param_1,s16 param_2)
 
 {
-  byte bVar1;
-  char cVar2;
-  short sVar3;
+  u8 bVar1;
+  s8 cVar2;
+  s16 sVar3;
   int iVar4;
   
   bVar1 = param_1->sub_action;
   if (bVar1 == 1) {
-    if ((DAT_800bf816 != '\0') && (DAT_800bf80f == '\0')) {
-      if (*(byte *)(param_1->script_ptr + 4) < 2) {
-        *(undefined1 *)(param_1->script_ptr + 4) = 2;
+    if ((g_ActionFlag != '\0') && (DAT_800bf80f == '\0')) {
+      if (*(u8 *)(param_1->script_ptr + 4) < 2) {
+        *(u8 *)(param_1->script_ptr + 4) = 2;
         param_1->script_ptr = 0;
       }
       goto LAB_8007373c;
@@ -29,8 +29,8 @@ void FUN_800735f4(int param_1,short param_2)
     if (sVar3 != -1) {
       return;
     }
-    if (*(byte *)(param_1->script_ptr + 4) < 2) {
-      *(undefined1 *)(param_1->script_ptr + 4) = 2;
+    if (*(u8 *)(param_1->script_ptr + 4) < 2) {
+      *(u8 *)(param_1->script_ptr + 4) = 2;
       param_1->script_ptr = 0;
     }
     cVar2 = param_1->sub_action;
@@ -50,7 +50,7 @@ LAB_8007373c:
     if (bVar1 != 0) {
       return;
     }
-    if (DAT_800bf816 != '\0') {
+    if (g_ActionFlag != '\0') {
       return;
     }
     if (param_1->collision_state == '\0') {

@@ -9,11 +9,11 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_8002300c(int param_1,int param_2,int param_3)
+s32 FUN_8002300c(int param_1,int param_2,int param_3)
 
 {
-  ushort uVar1;
-  undefined4 uVar2;
+  u16 uVar1;
+  s32 uVar2;
   int iVar3;
   int iVar4;
   
@@ -25,13 +25,13 @@ undefined4 FUN_8002300c(int param_1,int param_2,int param_3)
   uVar2 = 0;
   if ((int)(uint)uVar1 <= param_1->bounds_min_x + param_3) {
     if ((int)param_1->bounds_max_y + (int)param_2->bounds_max_y <
-        (int)(((uint)*(ushort *)(param_1 + 0x32) - (uint)*(ushort *)(param_2 + 0x32)) +
+        (int)(((uint)*(u16 *)(param_1 + 0x32) - (uint)*(u16 *)(param_2 + 0x32)) +
               (uint)param_1->bounds_min_y + (uint)param_2->bounds_min_y & 0xffff)) {
       uVar2 = 0;
     }
     else {
-      _DAT_1f80008c = (int)(short)uVar1;
-      _DAT_1f80009c = FUN_80085690(-iVar3,iVar4);
+      _g_GTE_Work8C = (int)(s16)uVar1;
+      _g_AngleTarget = FUN_80085690(-iVar3,iVar4);
       uVar2 = 1;
     }
   }

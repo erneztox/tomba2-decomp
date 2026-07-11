@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-int FUN_80072ddc(undefined4 param_1,byte param_2,char param_3,undefined1 param_4)
+int FUN_80072ddc(s32 param_1,u8 param_2,s8 param_3,u8 param_4)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
   
   bVar1 = param_3 == '\x03';

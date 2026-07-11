@@ -9,7 +9,7 @@
 void FUN_8007acc4(void)
 
 {
-  undefined1 *puVar1;
+  u8 *puVar1;
   int iVar2;
   
   iVar2 = 0;

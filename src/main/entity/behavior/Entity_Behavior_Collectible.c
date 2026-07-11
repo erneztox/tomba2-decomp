@@ -10,7 +10,7 @@
 void FUN_8004c238(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
   
   bVar1 = param_1->state;
@@ -61,7 +61,7 @@ switchD_8004c2b8_caseD_a:
         return;
       }
       if (param_1->draw_x != 0) {
-        if ((*(ushort *)(param_1 + 100) & 4) == 0) {
+        if ((*(u16 *)(param_1 + 100) & 4) == 0) {
           FUN_8004d714((int)param_1->angle_delta,1);
         }
         else {
@@ -127,7 +127,7 @@ LAB_8004c8ac:
       iVar2 = FUN_8007778c(param_1);
       if (iVar2 == 0) goto LAB_8004c378;
     }
-    else if ((DAT_800bf816 != '\0') && ((ushort)DAT_800bf817 == param_1->type_flags)) {
+    else if ((g_ActionFlag != '\0') && ((u16)g_HurtParam == param_1->type_flags)) {
       param_1->flags = 1;
 LAB_8004c378:
       FUN_80077efc(param_1);
@@ -140,7 +140,7 @@ LAB_8004c378:
       iVar2 = FUN_8007778c(param_1);
       if (iVar2 == 0) goto LAB_8004c3f8;
     }
-    else if ((DAT_800bf816 != '\0') && ((ushort)DAT_800bf817 == param_1->type_flags)) {
+    else if ((g_ActionFlag != '\0') && ((u16)g_HurtParam == param_1->type_flags)) {
       param_1->flags = 1;
 LAB_8004c3f8:
       FUN_80077efc(param_1);
@@ -152,7 +152,7 @@ LAB_8004c3f8:
       iVar2 = FUN_8007778c(param_1);
       if (iVar2 == 0) goto LAB_8004c468;
     }
-    else if ((DAT_800bf816 != '\0') && ((ushort)DAT_800bf817 == param_1->type_flags)) {
+    else if ((g_ActionFlag != '\0') && ((u16)g_HurtParam == param_1->type_flags)) {
       param_1->flags = 1;
 LAB_8004c468:
       FUN_80077efc(param_1);
@@ -168,7 +168,7 @@ LAB_8004c48c:
       iVar2 = FUN_8007778c(param_1);
       if (iVar2 == 0) goto LAB_8004c4f0;
     }
-    else if ((DAT_800bf816 != '\0') && ((ushort)DAT_800bf817 == param_1->type_flags)) {
+    else if ((g_ActionFlag != '\0') && ((u16)g_HurtParam == param_1->type_flags)) {
       param_1->flags = 1;
 LAB_8004c4f0:
       FUN_80077efc(param_1);
@@ -186,7 +186,7 @@ switchD_8004c31c_default:
       iVar2 = FUN_8007778c(param_1);
       if (iVar2 == 0) goto LAB_8004c570;
     }
-    else if ((DAT_800bf816 != '\0') && ((ushort)DAT_800bf817 == param_1->type_flags)) {
+    else if ((g_ActionFlag != '\0') && ((u16)g_HurtParam == param_1->type_flags)) {
       param_1->flags = 1;
 LAB_8004c570:
       FUN_80077efc(param_1);
@@ -201,7 +201,7 @@ LAB_8004c604:
       iVar2 = FUN_8007778c(param_1);
       if (iVar2 == 0) goto LAB_8004c5e0;
     }
-    else if ((DAT_800bf816 != '\0') && ((ushort)DAT_800bf817 == param_1->type_flags)) {
+    else if ((g_ActionFlag != '\0') && ((u16)g_HurtParam == param_1->type_flags)) {
       param_1->flags = 1;
 LAB_8004c5e0:
       FUN_80077efc(param_1);
@@ -212,12 +212,12 @@ LAB_8004c5e0:
     }
     goto switchD_8004c31c_default;
   case 6:
-    if (DAT_800bf870 == '\0') {
+    if (g_GameState == '\0') {
       func_0x80118b10(param_1);
       param_1->collision_state = 0;
       break;
     }
-    if (DAT_800bf870 == '\x06') {
+    if (g_GameState == '\x06') {
       func_0x80116288(param_1);
       param_1->collision_state = 0;
       break;
@@ -232,27 +232,27 @@ LAB_8004c5e0:
     param_1->collision_state = 0;
     break;
   case 9:
-    if (DAT_800bf870 == '\0') {
+    if (g_GameState == '\0') {
       func_0x80118f50(param_1);
       param_1->collision_state = 0;
       break;
     }
-    if (DAT_800bf870 == '\x04') {
+    if (g_GameState == '\x04') {
       func_0x801193d4(param_1);
       param_1->collision_state = 0;
       break;
     }
-    if (DAT_800bf870 == '\x05') {
+    if (g_GameState == '\x05') {
       func_0x80112f88(param_1);
       param_1->collision_state = 0;
       break;
     }
-    if (DAT_800bf870 == '\x06') {
+    if (g_GameState == '\x06') {
       func_0x801160d4(param_1);
       param_1->collision_state = 0;
       break;
     }
-    if (DAT_800bf870 == '\b') {
+    if (g_GameState == '\b') {
       func_0x80116750(param_1);
       param_1->collision_state = 0;
       break;

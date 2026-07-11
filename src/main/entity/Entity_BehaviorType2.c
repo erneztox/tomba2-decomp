@@ -10,9 +10,9 @@
 void FUN_800308c0(int param_1)
 
 {
-  byte bVar1;
-  undefined2 uVar2;
-  char cVar3;
+  u8 bVar1;
+  s16 uVar2;
+  s8 cVar3;
   int iVar4;
   int iVar5;
   
@@ -33,10 +33,10 @@ void FUN_800308c0(int param_1)
     param_1->state = 1;
     param_1->action_state = 0x10;
     param_1->pos_x = iVar5->pos_y;
-    param_1->pos_y = *(undefined2 *)(iVar5 + 0x32);
+    param_1->pos_y = *(s16 *)(iVar5 + 0x32);
     uVar2 = iVar5->pos_z;
     param_1->scale_y = param_1->anim_data;
-    *(undefined2 *)(param_1 + 0x30) = uVar2;
+    *(s16 *)(param_1 + 0x30) = uVar2;
   }
   cVar3 = param_1->behavior_state + -1;
   param_1->behavior_state = cVar3;
@@ -45,9 +45,9 @@ void FUN_800308c0(int param_1)
       if (param_1 != -0x2c) {
         iVar4->pos_x = param_1->pos_x;
         iVar4->pos_y = param_1->pos_y;
-        *(undefined2 *)(iVar4 + 0x30) = *(undefined2 *)(param_1 + 0x30);
+        *(s16 *)(iVar4 + 0x30) = *(s16 *)(param_1 + 0x30);
       }
-      *(undefined2 *)(iVar4 + 0x32) = 0xffe2;
+      *(s16 *)(iVar4 + 0x32) = 0xffe2;
       FUN_80028e10(iVar4,0x34);
     }
     FUN_8002343c(iVar5);

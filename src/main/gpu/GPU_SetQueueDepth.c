@@ -6,10 +6,10 @@
 
 
 
-undefined1 FUN_80080d64(char param_1)
+u8 FUN_80080d64(s8 param_1)
 
 {
-  undefined1 uVar1;
+  u8 uVar1;
   
   uVar1 = DAT_800a59a2;
   DAT_800a59a2 = param_1;

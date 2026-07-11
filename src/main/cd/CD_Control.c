@@ -8,14 +8,14 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-undefined4 FUN_8008ac34(byte param_1,undefined1 *param_2,undefined1 *param_3,int param_4)
+s32 FUN_8008ac34(u8 param_1,u8 *param_2,u8 *param_3,int param_4)
 
 {
-  byte bVar1;
-  undefined1 uVar2;
-  bool bVar3;
-  undefined4 uVar4;
-  undefined1 *puVar5;
+  u8 bVar1;
+  u8 uVar2;
+  s32 bVar3;
+  s32 uVar4;
+  u8 *puVar5;
   uint uVar6;
   int iVar7;
   int iVar8;
@@ -23,7 +23,7 @@ undefined4 FUN_8008ac34(byte param_1,undefined1 *param_2,undefined1 *param_3,int
   if (1 < DAT_800abfc4) {
     FUN_8009a730(s__s____8001c2f8,(&PTR_s_CdlSync_800abfe0)[param_1]);
   }
-  if ((*(int *)(&DAT_800ac200 + (uint)param_1 * 4) == 0) || (param_2 != (undefined1 *)0x0)) {
+  if ((*(int *)(&DAT_800ac200 + (uint)param_1 * 4) == 0) || (param_2 != (u8 *)0x0)) {
     FUN_8008a6ec(0,0);
     if (param_1 == 2) {
       iVar7 = 0;
@@ -97,7 +97,7 @@ undefined4 FUN_8008ac34(byte param_1,undefined1 *param_2,undefined1 *param_3,int
       }
       puVar5 = &DAT_80102730;
       iVar7 = 7;
-      if (param_3 != (undefined1 *)0x0) {
+      if (param_3 != (u8 *)0x0) {
         do {
           uVar2 = *puVar5;
           puVar5 = puVar5 + 1;

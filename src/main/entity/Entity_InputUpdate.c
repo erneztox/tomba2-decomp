@@ -1,5 +1,5 @@
 /**
- * @brief Entity input updater: DAT_800bf819--, clears input flags
+ * @brief Entity input updater: g_InputTimer--, clears input flags
  * @note Original: func_80059D28 at 0x80059D28
  */
 // Entity_InputUpdate
@@ -11,48 +11,48 @@
 void FUN_80059d28(void)
 
 {
-  if (DAT_800bf819 != '\0') {
-    DAT_800bf819 = DAT_800bf819 + -1;
-    _DAT_800ecf54 = _DAT_800ecf54 & 0xfff;
-    _DAT_800e7e68 = _DAT_800e7e68 & 0xfff;
+  if (g_InputTimer != '\0') {
+    g_InputTimer = g_InputTimer + -1;
+    _g_InputState = _g_InputState & 0xfff;
+    _g_PadState = _g_PadState & 0xfff;
   }
   DAT_800e7ff7 = 0;
   DAT_800e7ff9 = 0;
   DAT_800e7ffa = 0;
   DAT_800e7ffb = 0;
-  DAT_1f80027a = 0;
+  g_ActionMode = 0;
   DAT_1f800247 = DAT_1f800247 + '\x01';
   if (DAT_800bf841 != '\0') goto LAB_80059e40;
-  if (DAT_800bf870 == 3) {
-    func_0x80109024(&DAT_800e7e80);
+  if (g_GameState == 3) {
+    func_0x80109024(&g_CollisionEntity);
   }
-  else if (DAT_800bf870 < 4) {
-    if (DAT_800bf870 == 2) {
-      func_0x8010f63c(&DAT_800e7e80);
+  else if (g_GameState < 4) {
+    if (g_GameState == 2) {
+      func_0x8010f63c(&g_CollisionEntity);
     }
     else {
 LAB_80059e30:
-      FUN_8005950c(&DAT_800e7e80);
+      FUN_8005950c(&g_CollisionEntity);
     }
   }
-  else if (DAT_800bf870 == 7) {
-    func_0x80112220(&DAT_800e7e80);
+  else if (g_GameState == 7) {
+    func_0x80112220(&g_CollisionEntity);
   }
   else {
-    if (DAT_800bf870 != 0x14) goto LAB_80059e30;
-    func_0x8010f654(&DAT_800e7e80);
+    if (g_GameState != 0x14) goto LAB_80059e30;
+    func_0x8010f654(&g_CollisionEntity);
   }
-  DAT_1f800230 = 0;
+  g_State230 = 0;
 LAB_80059e40:
-  _DAT_1f800160 = _DAT_800e7eae;
-  _DAT_1f800162 = _DAT_800e7eb2;
-  _DAT_1f800164 = _DAT_800e7eb6;
+  _g_PlayerPosX = _g_CameraTargetX;
+  _g_PlayerPosY = _g_CameraTargetY;
+  _g_PlayerPosZ = _g_CameraTargetZ;
   _DAT_1f80016a = _DAT_800e7ed8;
-  _DAT_1f800168 = _DAT_800e7ed6;
+  _DAT_1f800168 = _g_EntityAngle;
   if ((DAT_800bf9c3 & 0x80) != 0) {
-    DAT_800bf81e = 1;
+    g_ActionState = 1;
   }
-  if ((DAT_1f800137 == '\0') && (DAT_800e8000 != '\0')) {
+  if ((g_CurrentOverlay == '\0') && (DAT_800e8000 != '\0')) {
     DAT_800e8000 = DAT_800e8000 + -1;
   }
   FUN_8009a450();

@@ -12,9 +12,9 @@
 void FUN_8006c328(int param_1)
 
 {
-  short sVar1;
-  undefined1 uVar2;
-  undefined4 uVar3;
+  s16 sVar1;
+  u8 uVar2;
+  s32 uVar3;
   
   if (param_1->action_state == '\0') {
     param_1->action_state = 1;
@@ -44,9 +44,9 @@ void FUN_8006c328(int param_1)
     param_1->state = param_1->state + '\x01';
   }
   else if (DAT_800e7fc6 == '\x03') {
-    param_1->pos_y = _DAT_800e7eae;
-    *(undefined2 *)(param_1 + 0x32) = _DAT_800e7eb2;
-    param_1->pos_z = _DAT_800e7eb6;
+    param_1->pos_y = _g_CameraTargetX;
+    *(s16 *)(param_1 + 0x32) = _g_CameraTargetY;
+    param_1->pos_z = _g_CameraTargetZ;
     param_1->anim_id = DAT_800e7fca;
     uVar2 = DAT_800e7eaa;
     param_1->behavior_state = 1;

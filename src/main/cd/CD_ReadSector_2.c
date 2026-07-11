@@ -6,10 +6,10 @@
 
 
 
-undefined4 FUN_8008b720(undefined4 param_1,uint param_2)
+s32 FUN_8008b720(s32 param_1,uint param_2)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   *DAT_800ac280 = 0;
   *DAT_800ac28c = 0x80;

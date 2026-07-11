@@ -12,14 +12,14 @@
 void FUN_800674f4(int param_1)
 
 {
-  short sVar1;
-  char cVar2;
-  short sVar3;
-  undefined4 uVar4;
-  undefined1 auStack_18->kind;
-  undefined2 local_16;
-  undefined2 local_12;
-  undefined2 local_e;
+  s16 sVar1;
+  s8 cVar2;
+  s16 sVar3;
+  s32 uVar4;
+  u8 auStack_18->kind;
+  s16 local_16;
+  s16 local_12;
+  s16 local_e;
   
   if (param_1->sub_action == '\0') {
     sVar1 = param_1->velocity_y;
@@ -45,19 +45,19 @@ void FUN_800674f4(int param_1)
   local_16 = param_1->pos_y;
   local_12 = _DAT_1f80019e;
   local_e = param_1->pos_z;
-  if (DAT_800bf870 == '\0') {
+  if (g_GameState == '\0') {
     FUN_8003116c(0x10d,auStack_18,0xfffffff6);
   }
   else {
-    if (DAT_800bf870 == '\x06') {
+    if (g_GameState == '\x06') {
       uVar4 = 0x704;
     }
-    else if (DAT_800bf870 == '\b') {
+    else if (g_GameState == '\b') {
       uVar4 = 0x909;
     }
     else {
       uVar4 = 0xf06;
-      if (DAT_800bf870 != '\x0e') goto LAB_8006760c;
+      if (g_GameState != '\x0e') goto LAB_8006760c;
     }
     FUN_800312d4(uVar4,auStack_18,0xfffffff6);
   }

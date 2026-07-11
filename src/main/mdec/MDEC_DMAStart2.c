@@ -7,22 +7,22 @@
 
 
 #include "tomba.h"
-undefined4 FUN_80086a80(int param_1)
+s32 FUN_80086a80(int param_1)
 
 {
   code *pcVar1;
-  undefined1 *puVar2;
+  u8 *puVar2;
   int iVar3;
-  undefined2 uVar4;
-  undefined4 uVar5;
+  s16 uVar4;
+  s32 uVar5;
   
   puVar2 = DAT_800abe9c;
-  *(undefined2 *)(DAT_800abe9c + 10) = 0x40;
-  *(undefined2 *)(puVar2 + 10) = 0;
-  *(undefined2 *)(puVar2 + 8) = 0xd;
+  *(s16 *)(DAT_800abe9c + 10) = 0x40;
+  *(s16 *)(puVar2 + 10) = 0;
+  *(s16 *)(puVar2 + 8) = 0xd;
   puVar2->anim_timer = 0x88;
   uVar5 = 0x91;
-  if (*(char *)(param_1 + 0xe8) == '\b') {
+  if (*(s8*)(param_1 + 0xe8) == '\b') {
     uVar5 = 0x50;
   }
   FUN_80089620(uVar5);
@@ -31,7 +31,7 @@ undefined4 FUN_80086a80(int param_1)
     uVar4 = 0x3003;
   }
   iVar3 = DAT_800abe78 * 4;
-  *(undefined2 *)(DAT_800abe9c + 10) = uVar4;
+  *(s16 *)(DAT_800abe9c + 10) = uVar4;
   iVar3 = *(int *)(&DAT_800abe90 + iVar3);
   pcVar1 = DAT_800abe58;
   if (-1 < iVar3) {
@@ -49,9 +49,9 @@ undefined4 FUN_80086a80(int param_1)
     }
   }
   puVar2 = DAT_800abe9c;
-  if ((*(ushort *)(DAT_800abe9c + 4) & 0x200) != 0) {
-    *(ushort *)(DAT_800abe9c + 10) = *(ushort *)(DAT_800abe9c + 10) | 0x10;
-    if ((*(ushort *)(puVar2 + 4) & 0x200) != 0) {
+  if ((*(u16 *)(DAT_800abe9c + 4) & 0x200) != 0) {
+    *(u16 *)(DAT_800abe9c + 10) = *(u16 *)(DAT_800abe9c + 10) | 0x10;
+    if ((*(u16 *)(puVar2 + 4) & 0x200) != 0) {
       do {
         iVar3 = FUN_80089640();
       } while (iVar3 == 0);
@@ -94,10 +94,10 @@ undefined4 FUN_80086a80(int param_1)
     }
     *DAT_800abe98 = 0xffffff7f;
   }
-  if (*(char *)(param_1 + 0x50) == '\0') {
+  if (*(s8*)(param_1 + 0x50) == '\0') {
     return 1;
   }
-  if (*(char *)(param_1 + 0x37) != '\0') {
+  if (*(s8*)(param_1 + 0x37) != '\0') {
     return 0;
   }
   return 1;

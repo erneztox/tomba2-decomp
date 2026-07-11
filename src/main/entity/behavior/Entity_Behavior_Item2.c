@@ -7,13 +7,13 @@
 
 
 #include "tomba.h"
-void FUN_8004bb38(undefined1 *param_1)
+void FUN_8004bb38(u8 *param_1)
 
 {
-  byte bVar1;
-  char cVar2;
+  u8 bVar1;
+  s8 cVar2;
   int iVar3;
-  undefined4 uVar4;
+  s32 uVar4;
   
   bVar1 = param_1->state;
   if (bVar1 == 1) {
@@ -23,8 +23,8 @@ void FUN_8004bb38(undefined1 *param_1)
           *param_1 = 3;
           param_1->gte_input = 0xffb0;
           param_1->behavior_state = 1;
-          *(undefined2 *)(param_1 + 0x8a) = 0x14;
-          *(undefined2 *)(param_1 + 0x8c) = 0;
+          *(s16 *)(param_1 + 0x8a) = 0x14;
+          *(s16 *)(param_1 + 0x8c) = 0;
         }
         else if (param_1->behavior_state != '\x01') {
           return;

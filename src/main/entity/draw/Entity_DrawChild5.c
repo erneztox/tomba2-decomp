@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-void FUN_80033b94(int param_1,undefined4 param_2,short param_3)
+void FUN_80033b94(int param_1,s32 param_2,s16 param_3)
 
 {
-  byte bVar1;
-  undefined *puVar2;
+  u8 bVar1;
+  void *puVar2;
   int iVar3;
   
   iVar3 = (int)param_3;
@@ -38,14 +38,14 @@ void FUN_80033b94(int param_1,undefined4 param_2,short param_3)
         if (bVar1 != 0) {
           return;
         }
-        bVar1 = *(byte *)(param_1 + 0x20);
+        bVar1 = *(u8 *)(param_1 + 0x20);
         if (bVar1 == 4) {
-          iVar3 = FUN_800368d0(param_1,*(undefined1 *)(param_1 + 0x1f),
-                               *(undefined1 *)(param_1 + 0x1d));
+          iVar3 = FUN_800368d0(param_1,*(u8 *)(param_1 + 0x1f),
+                               *(u8 *)(param_1 + 0x1d));
           bVar1 = (&DAT_800a2be8)[iVar3 * 0xc];
         }
         if (bVar1 == 1) {
-          if (*(char *)(param_1 + 0x27) == '\0') {
+          if (*(s8*)(param_1 + 0x27) == '\0') {
             FUN_80079324(0x1c,0x1c,0x14,PTR_DAT_800a3a54,(int)param_3);
             puVar2 = PTR_s__Menu_800a3a5c;
           }

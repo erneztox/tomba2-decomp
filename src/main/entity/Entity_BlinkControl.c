@@ -13,14 +13,14 @@ void FUN_8004b374(int param_1,int param_2)
 
 {
   if (param_2 != 0) {
-    if ((_DAT_1f80017c & 0x1f) == 0) {
+    if ((_g_FrameCounter2 & 0x1f) == 0) {
       param_1->sprite_flags = param_1->sprite_flags | 2;
       return;
     }
     param_1->sprite_flags = param_1->sprite_flags & 0xfd;
     return;
   }
-  if ((_DAT_1f80017c & 0x1f) == 0) {
+  if ((_g_FrameCounter2 & 0x1f) == 0) {
     param_1->sprite_flags = param_1->sprite_flags | 0x20;
     return;
   }

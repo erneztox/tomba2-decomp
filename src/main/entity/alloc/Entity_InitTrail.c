@@ -12,7 +12,7 @@
 void FUN_8006b020(int param_1,int param_2)
 
 {
-  bool bVar1;
+  s32 bVar1;
   
   bVar1 = false;
   if (param_2 == 1) {

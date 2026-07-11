@@ -9,13 +9,13 @@
 int FUN_8009a640(char *param_1,char *param_2,int param_3)
 
 {
-  char cVar1;
+  s8 cVar1;
   int iVar2;
   char *pcVar3;
   
-  if ((param_1 == (char *)0x0) || (param_2 == (char *)0x0)) {
+  if ((param_1 == (s8*)0x0) || (param_2 == (s8*)0x0)) {
     iVar2 = 0;
-    if ((param_1 != param_2) && (iVar2 = -1, param_1 != (char *)0x0)) {
+    if ((param_1 != param_2) && (iVar2 = -1, param_1 != (s8*)0x0)) {
       iVar2 = 1;
     }
   }

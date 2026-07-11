@@ -10,10 +10,10 @@
 void FUN_80068214(int param_1)
 
 {
-  undefined2 uVar1;
+  s16 uVar1;
   int iVar2;
   
-  if (DAT_1f800236 == '\x06') {
+  if (g_GameMode == '\x06') {
     FUN_800525d0(param_1,1);
   }
   else {
@@ -21,14 +21,14 @@ void FUN_80068214(int param_1)
     if (iVar2 != 0) {
       iVar2->alloc_flags = iVar2->alloc_flags | 0x80;
       iVar2->pos_x = param_1->pos_y;
-      iVar2->pos_y = *(short *)(param_1 + 0x32) + param_1->angle_delta * 2;
+      iVar2->pos_y = *(s16 *)(param_1 + 0x32) + param_1->angle_delta * 2;
       uVar1 = param_1->pos_z;
-      *(undefined4 *)(iVar2 + 0x54) = 0x200;
-      *(undefined4 *)(iVar2 + 0x58) = 0x200;
+      *(s32 *)(iVar2 + 0x54) = 0x200;
+      *(s32 *)(iVar2 + 0x58) = 0x200;
       iVar2->state = 1;
-      *(undefined4 *)(iVar2 + 0x50) = 0;
+      *(s32 *)(iVar2 + 0x50) = 0;
       iVar2->behavior_state = 4;
-      *(undefined2 *)(iVar2 + 0x30) = uVar1;
+      *(s16 *)(iVar2 + 0x30) = uVar1;
     }
   }
   return;

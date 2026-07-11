@@ -6,10 +6,10 @@
 
 
 
-void FUN_800364ac(int param_1,uint param_2,undefined4 *param_3,undefined4 *param_4)
+void FUN_800364ac(int param_1,uint param_2,s32 *param_3,s32 *param_4)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   
   if (param_1 == 0) {
     uVar1 = 0;

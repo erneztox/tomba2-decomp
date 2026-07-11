@@ -1,5 +1,5 @@
 /**
- * @brief Event check variant 5: tests DAT_800bf881 flags + game state
+ * @brief Event check variant 5: tests g_EntityFlags flags + game state
  * @note Original: func_80035218 at 0x80035218
  */
 // Event_Check5
@@ -8,15 +8,15 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-undefined4 FUN_80035218(undefined4 param_1,int param_2,int param_3)
+s32 FUN_80035218(s32 param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  undefined4 uVar2;
+  s32 uVar2;
   
-  if (((DAT_800bf881 & 4) == 0) && ((_DAT_800bf89e & 0x200) == 0)) {
-    if (DAT_800bf870 == '\t') goto LAB_80035294;
-    if (DAT_800bf873 == '\0') goto LAB_800352ac;
+  if (((g_EntityFlags & 4) == 0) && ((_DAT_800bf89e & 0x200) == 0)) {
+    if (g_GameState == '\t') goto LAB_80035294;
+    if (g_SubState == '\0') goto LAB_800352ac;
     if ((param_2 == 0x98) || (iVar1 = 0xa7, param_2 == 0xa6)) goto LAB_80035294;
   }
   else {
@@ -38,7 +38,7 @@ LAB_800352ac:
         _DAT_800bf83a = 0x603;
       }
       DAT_800bf80a = 3;
-      DAT_800bf80b = (undefined1)param_2;
+      DAT_800bf80b = (u8)param_2;
       DAT_800bf809 = 1;
       FUN_8004dc84(param_2,3);
     }

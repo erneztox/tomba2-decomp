@@ -12,19 +12,19 @@
 void FUN_80066878(int param_1)
 
 {
-  short sVar1;
-  ushort uVar2;
-  undefined2 uVar3;
+  s16 sVar1;
+  u16 uVar2;
+  s16 uVar3;
   uint uVar4;
   
   switch(param_1->action_state) {
   case 0:
     FUN_80074590(0x24,0,0);
-    DAT_800bf80d = 1;
+    g_TimerFlag = 1;
     param_1->state_flag145 = 0;
     param_1->state_flag146 = 0;
     FUN_80053d90(param_1);
-    *(undefined1 *)(param_1 + 0x61) = 0;
+    *(u8 *)(param_1 + 0x61) = 0;
     FUN_800663a8(param_1,0);
   case 1:
     FUN_80066478(param_1);
@@ -61,10 +61,10 @@ void FUN_80066878(int param_1)
         param_1->rot_z = 0;
         param_1->action_state = 7;
         FUN_80054d14(param_1,0xd1,4);
-        DAT_800e806c = 8;
-        _DAT_800e8042 = _DAT_1f800160;
-        _DAT_800e8046 = _DAT_1f800162;
-        _DAT_800e804a = _DAT_1f800164;
+        g_CameraEntity = 8;
+        _DAT_800e8042 = _g_PlayerPosX;
+        _DAT_800e8046 = _g_PlayerPosY;
+        _DAT_800e804a = _g_PlayerPosZ;
       }
       else {
         param_1->timer1 = 0x14;
@@ -73,11 +73,11 @@ void FUN_80066878(int param_1)
         FUN_80054d14(param_1,0x5a,0);
         if (param_1->entity_flags < 0) {
           param_1->angle_delta = 0x20;
-          *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 0x26;
+          *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 0x26;
         }
         else {
           param_1->angle_delta = 0x40;
-          *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 0x4c;
+          *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 0x4c;
         }
       }
     }
@@ -95,7 +95,7 @@ void FUN_80066878(int param_1)
     }
     FUN_80056b48(param_1,1);
     FUN_80055d5c(param_1);
-    *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 8;
+    *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
     FUN_8005444c(param_1);
     if (param_1->timer1 == 0) {
       if (param_1->timer2 == 1) {
@@ -114,13 +114,13 @@ void FUN_80066878(int param_1)
         else {
           param_1->timer1 = 0x78;
           FUN_800331d8(param_1,param_1->sprite_ptr2,0xffffff9c,0);
-          *(byte *)(param_1 + 0x1b) = *(byte *)(param_1 + 0x1b) | 0x40;
+          *(u8 *)(param_1 + 0x1b) = *(u8 *)(param_1 + 0x1b) | 0x40;
           FUN_80074590(0x10,0,0);
         }
-        DAT_800e806c = 8;
-        _DAT_800e8042 = _DAT_1f800160;
-        _DAT_800e8046 = _DAT_1f800162;
-        _DAT_800e804a = _DAT_1f800164;
+        g_CameraEntity = 8;
+        _DAT_800e8042 = _g_PlayerPosX;
+        _DAT_800e8046 = _g_PlayerPosY;
+        _DAT_800e804a = _g_PlayerPosZ;
       }
     }
     else {
@@ -145,14 +145,14 @@ void FUN_80066878(int param_1)
     param_1->timer1 = sVar1 + -1;
     if (sVar1 == 1) {
       FUN_800662d8(param_1,0);
-      DAT_800bf80d = 2;
+      g_TimerFlag = 2;
       DAT_800bf80f = '\x02';
       param_1->action_state = param_1->action_state + '\x01';
       FUN_8005245c();
     }
     FUN_80076d68(param_1);
     FUN_8005444c(param_1);
-    if (((DAT_800bf816 == '\0') && (param_1->collision_state != '\0')) && (DAT_800bf870 != '\x04'))
+    if (((g_ActionFlag == '\0') && (param_1->collision_state != '\0')) && (g_GameState != '\x04'))
     {
       _DAT_1f8000d6 = _DAT_1f8000d6 + -8;
     }
@@ -161,7 +161,7 @@ LAB_80066cd8:
     break;
   case 5:
     if (DAT_800bf80f == '\0') {
-      DAT_800bf80d = 3;
+      g_TimerFlag = 3;
       param_1->action_state = param_1->action_state + '\x01';
     }
   case 6:
@@ -186,7 +186,7 @@ LAB_80066cd8:
       param_1->action_state = 4;
       param_1->timer1 = 0x5a;
       FUN_800331d8(param_1,param_1->sprite_ptr2,0xffffff9c,0);
-      *(byte *)(param_1 + 0x1b) = *(byte *)(param_1 + 0x1b) | 0x40;
+      *(u8 *)(param_1 + 0x1b) = *(u8 *)(param_1 + 0x1b) | 0x40;
       FUN_80074590(0x10,0,0);
     }
   }

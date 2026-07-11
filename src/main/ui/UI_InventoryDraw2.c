@@ -10,7 +10,7 @@
 void FUN_8004e928(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
   
   bVar1 = param_1->state;
@@ -29,7 +29,7 @@ void FUN_8004e928(int param_1)
     }
     if (bVar1 == 2) {
       param_1->state = 3;
-      DAT_1f800137 = 0;
+      g_CurrentOverlay = 0;
       return;
     }
     if (bVar1 != 3) {
@@ -49,13 +49,13 @@ void FUN_8004e928(int param_1)
     param_1->flags = 1;
     return;
   }
-  bVar1 = DAT_800bf87f;
+  bVar1 = g_ItemFlag;
   if (param_1->draw_x == 0x5d) {
 LAB_8004ea08:
     FUN_80026100(bVar1);
   }
   else if (param_1->draw_x == 0x5e) {
-    bVar1 = DAT_800bf87f >> 1;
+    bVar1 = g_ItemFlag >> 1;
     goto LAB_8004ea08;
   }
   param_1->state = 2;

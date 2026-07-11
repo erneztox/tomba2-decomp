@@ -9,7 +9,7 @@
 void FUN_8008b818(void)
 
 {
-  byte bVar1;
+  u8 bVar1;
   uint uVar2;
   
   bVar1 = *DAT_800ac280;

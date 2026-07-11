@@ -7,21 +7,21 @@
 
 
 #include "tomba.h"
-undefined4 FUN_80026148(int param_1)
+s32 FUN_80026148(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
+  u8 bVar1;
+  s16 sVar2;
   
   bVar1 = param_1->state;
   if (bVar1 == 1) {
-    DAT_800bf87f = DAT_800bf87f + '\x01';
-    sVar2 = *(short *)(param_1 + 0x10);
-    *(short *)(param_1 + 0x10) = sVar2 + -1;
+    g_ItemFlag = g_ItemFlag + '\x01';
+    sVar2 = *(s16 *)(param_1 + 0x10);
+    *(s16 *)(param_1 + 0x10) = sVar2 + -1;
     if (sVar2 != 1) {
       return 0;
     }
-    *(undefined2 *)(param_1 + 0x10) = 0x3c;
+    *(s16 *)(param_1 + 0x10) = 0x3c;
     param_1->state = param_1->state + '\x01';
   }
   else {
@@ -29,8 +29,8 @@ undefined4 FUN_80026148(int param_1)
       if (bVar1 != 2) {
         return 0;
       }
-      sVar2 = *(short *)(param_1 + 0x10);
-      *(short *)(param_1 + 0x10) = sVar2 + -1;
+      sVar2 = *(s16 *)(param_1 + 0x10);
+      *(s16 *)(param_1 + 0x10) = sVar2 + -1;
       if (sVar2 != 1) {
         return 0;
       }
@@ -42,7 +42,7 @@ undefined4 FUN_80026148(int param_1)
     }
     param_1->state = 1;
     FUN_8004ed94(0xb,0x40);
-    *(undefined2 *)(param_1 + 0x10) = 0x10;
+    *(s16 *)(param_1 + 0x10) = 0x10;
   }
   return 0;
 }

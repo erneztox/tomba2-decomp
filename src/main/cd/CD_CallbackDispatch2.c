@@ -7,18 +7,18 @@
 
 
 #include "tomba.h"
-undefined2 * FUN_80085cb4(void)
+s16 * FUN_80085cb4(void)
 
 {
-  undefined2 *puVar1;
-  undefined2 *puVar2;
-  undefined2 *puVar3;
+  s16 *puVar1;
+  s16 *puVar2;
+  s16 *puVar3;
   int iVar4;
-  undefined4 uVar5;
+  s32 uVar5;
   
   puVar2 = DAT_800abda8;
   puVar1 = DAT_800abda4;
-  puVar3 = (undefined2 *)0x0;
+  puVar3 = (s16 *)0x0;
   if (DAT_800aad18 == 0) {
     *DAT_800abda8 = 0;
     *puVar1 = *puVar2;
@@ -34,7 +34,7 @@ undefined2 * FUN_80085cb4(void)
     uVar5 = FUN_80086230();
     PTR_PTR_800abda0->script_ptr = uVar5;
     uVar5 = FUN_80086350();
-    *(undefined4 *)(PTR_PTR_800abda0 + 4) = uVar5;
+    *(s32 *)(PTR_PTR_800abda0 + 4) = uVar5;
     FUN_800861e8();
     puVar3 = &DAT_800aad18;
     FUN_800808a0();

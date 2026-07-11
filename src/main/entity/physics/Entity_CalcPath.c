@@ -9,18 +9,18 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80021ab0(int param_1,byte *param_2,int param_3)
+s32 FUN_80021ab0(int param_1,u8 *param_2,int param_3)
 
 {
-  short sVar1;
-  short sVar2;
-  bool bVar3;
-  byte bVar4;
-  ushort uVar5;
+  s16 sVar1;
+  s16 sVar2;
+  s32 bVar3;
+  u8 bVar4;
+  u16 uVar5;
   uint uVar6;
   uint uVar7;
-  short sVar8;
-  undefined4 uVar9;
+  s16 sVar8;
+  s32 uVar9;
   int iVar10;
   int iVar11;
   
@@ -32,11 +32,11 @@ undefined4 FUN_80021ab0(int param_1,byte *param_2,int param_3)
   bVar3 = false;
   if (((int)(uint)uVar5 <= (int)param_1->bounds_min_x + (int)param_2->bounds_min_x) &&
      (bVar3 = false,
-     (int)(((uint)*(ushort *)(param_1 + 0x32) - (uint)*(ushort *)(param_2 + 0x32)) +
+     (int)(((uint)*(u16 *)(param_1 + 0x32) - (uint)*(u16 *)(param_2 + 0x32)) +
            (uint)param_1->bounds_min_y + (uint)param_2->bounds_min_y & 0xffff) <=
      (int)param_1->bounds_max_y + (int)param_2->bounds_max_y)) {
-    _DAT_1f80008c = (int)(short)uVar5;
-    _DAT_1f80009c = FUN_80085690(-iVar10,iVar11);
+    _g_GTE_Work8C = (int)(s16)uVar5;
+    _g_AngleTarget = FUN_80085690(-iVar10,iVar11);
     bVar3 = true;
   }
   if (!bVar3) {
@@ -50,8 +50,8 @@ undefined4 FUN_80021ab0(int param_1,byte *param_2,int param_3)
      (param_1->input_flags == '\x10')) {
     bVar4 = param_1->anim_id >> 1;
     if (bVar4 == 2) {
-      iVar10 = (uint)*(ushort *)(param_1 + 0x32) - (uint)*(ushort *)(param_2 + 0x32);
-      sVar8 = (short)iVar10;
+      iVar10 = (uint)*(u16 *)(param_1 + 0x32) - (uint)*(u16 *)(param_2 + 0x32);
+      sVar8 = (s16)iVar10;
       if (iVar10 * 0x10000 < 0) {
         uVar7 = (uint)param_2->bounds_min_y;
         uVar6 = (uint)param_1->bounds_min_y;
@@ -61,14 +61,14 @@ undefined4 FUN_80021ab0(int param_1,byte *param_2,int param_3)
         uVar7 = (uint)param_2->bounds_max_y - (uint)param_2->bounds_min_y;
         uVar6 = (uint)param_1->bounds_max_y - (uint)param_1->bounds_min_y;
       }
-      if (((int)param_1->bounds_min_x + (int)param_2->bounds_min_x) - _DAT_1f80008c <
+      if (((int)param_1->bounds_min_x + (int)param_2->bounds_min_x) - _g_GTE_Work8C <
           ((int)((uVar7 + uVar6) * 0x10000) >> 0x10) - (int)sVar8) goto LAB_80021cc8;
 LAB_80021d3c:
       param_1->pos_y = param_2->pos_y;
       param_1->pos_z = param_2->pos_z;
-      *(short *)(param_1 + 0x32) =
+      *(s16 *)(param_1 + 0x32) =
            param_1->bounds_min_y +
-           *(short *)(param_2 + 0x32) + (param_2->bounds_max_y - param_2->bounds_min_y);
+           *(s16 *)(param_2 + 0x32) + (param_2->bounds_max_y - param_2->bounds_min_y);
     }
     else if (bVar4 < 3) {
 LAB_80021cc8:
@@ -78,10 +78,10 @@ LAB_80021cc8:
       iVar11 = FUN_80083e80(param_1->target_angle + 0x800);
       sVar2 = param_2->bounds_min_x;
       param_1->pos_y =
-           param_2->pos_y + (short)(iVar10 * ((int)sVar8 + (int)sVar1) >> 0xc);
+           param_2->pos_y + (s16)(iVar10 * ((int)sVar8 + (int)sVar1) >> 0xc);
       param_1->pos_z =
            param_2->pos_z -
-           (short)(iVar11 * ((int)param_1->bounds_min_x + (int)sVar2) >> 0xc);
+           (s16)(iVar11 * ((int)param_1->bounds_min_x + (int)sVar2) >> 0xc);
     }
     else if (bVar4 == 3) goto LAB_80021d3c;
     uVar9 = 0x1100;
@@ -95,7 +95,7 @@ LAB_80021cc8:
   uVar6 = FUN_8001dc9c(param_1,param_2,0,uVar9);
 LAB_80021dbc:
   if ((uVar6 & 0x80) == 0) {
-    DAT_1f800182 = 0;
+    g_State182 = 0;
   }
   return 1;
 }

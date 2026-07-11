@@ -14,8 +14,8 @@ int FUN_800368d0(int param_1,int param_2,int param_3)
   uint uVar3;
   char *pcVar4;
   
-  iVar1 = ((int)(*(byte *)(param_1 + 0x24) + 1) >> 1) + -1;
-  if ((*(byte *)(param_1 + 0x24) & 1) == 0) {
+  iVar1 = ((int)(*(u8 *)(param_1 + 0x24) + 1) >> 1) + -1;
+  if ((*(u8 *)(param_1 + 0x24) & 1) == 0) {
     iVar2 = param_2 << 1;
   }
   else {
@@ -44,7 +44,7 @@ LAB_80036924:
   if (iVar1 < param_2) {
     pcVar4 = &DAT_800a2be8;
     while ((((&DAT_800bfab4)[iVar2] == '\0' ||
-            ((uint)(byte)(&DAT_800bfbb4)[iVar2] != uVar3 - DAT_800bf8a2)) || (*pcVar4 == '\0'))) {
+            ((uint)(u8)(&DAT_800bfbb4)[iVar2] != uVar3 - DAT_800bf8a2)) || (*pcVar4 == '\0'))) {
       iVar2 = iVar2 + 1;
       pcVar4 = pcVar4 + 0xc;
       if (0xff < iVar2) {
@@ -54,7 +54,7 @@ LAB_80036924:
   }
   else {
     pcVar4 = &DAT_800a2be8;
-    while ((((&DAT_800bfab4)[iVar2] == '\0' || ((byte)(&DAT_800bfbb4)[iVar2] != uVar3)) ||
+    while ((((&DAT_800bfab4)[iVar2] == '\0' || ((u8)(&DAT_800bfbb4)[iVar2] != uVar3)) ||
            (*pcVar4 != '\0'))) {
       iVar2 = iVar2 + 1;
       pcVar4 = pcVar4 + 0xc;

@@ -10,7 +10,7 @@
 void FUN_80081504(int param_1)
 
 {
-  undefined1 uVar1;
+  u8 uVar1;
   
   uVar1 = param_1->sub_type;
   (*PTR_PTR_800a5998->sprite_data)(0);

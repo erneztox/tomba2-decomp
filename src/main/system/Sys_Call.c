@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-void FUN_8001cf00(undefined4 param_1)
+void FUN_8001cf00(s32 param_1)
 
 {
-  undefined4 local_30->action_state;
-  undefined4 local_18;
+  s32 local_30->action_state;
+  s32 local_18;
   
   local_30->type = 0x200;
   local_18 = param_1;

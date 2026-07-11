@@ -12,12 +12,12 @@
 void FUN_8006bdf0(int param_1,int param_2)
 
 {
-  short sVar1;
+  s16 sVar1;
   
   param_1->anim_id = param_1->anim_id & 1;
-  sVar1 = _DAT_800e7ed6;
-  if (DAT_800e7e85 == '\t') {
-    sVar1 = _DAT_800e7ed6 + -0x800;
+  sVar1 = _g_EntityAngle;
+  if (g_CollisionType == '\t') {
+    sVar1 = _g_EntityAngle + -0x800;
   }
   param_1->target_angle = sVar1;
   param_1->type_flags = 0x400;

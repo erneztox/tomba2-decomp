@@ -7,21 +7,21 @@
 
 
 #include "tomba.h"
-undefined4 FUN_8009ba10(undefined4 *param_1)
+s32 FUN_8009ba10(s32 *param_1)
 
 {
-  undefined4 unaff_s0;
-  undefined4 unaff_s1;
-  undefined4 unaff_s2;
-  undefined4 unaff_s3;
-  undefined4 unaff_s4;
-  undefined4 unaff_s5;
-  undefined4 unaff_s6;
-  undefined4 unaff_s7;
-  undefined4 unaff_gp;
-  undefined4 unaff_s8;
-  undefined4 unaff_retaddr;
-  undefined1 auStackX_0 [16];
+  s32 unaff_s0;
+  s32 unaff_s1;
+  s32 unaff_s2;
+  s32 unaff_s3;
+  s32 unaff_s4;
+  s32 unaff_s5;
+  s32 unaff_s6;
+  s32 unaff_s7;
+  s32 unaff_gp;
+  s32 unaff_s8;
+  s32 unaff_retaddr;
+  u8 auStackX_0 [16];
   
   *param_1 = unaff_retaddr;
   param_1->render_flags = unaff_gp;

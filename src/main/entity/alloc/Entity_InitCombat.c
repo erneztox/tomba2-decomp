@@ -16,7 +16,7 @@ void FUN_800708cc(int param_1)
   _DAT_800bf826 = param_1->pos_y;
   param_1->sub_type = 0;
   param_1->sprite_x = _DAT_800bf826;
-  _DAT_800bf82a = *(undefined2 *)(param_1 + 0x32);
+  _DAT_800bf82a = *(s16 *)(param_1 + 0x32);
   param_1->angle_offset = _DAT_800bf82a;
   _DAT_800bf82e = param_1->pos_z;
   param_1->sprite_y = _DAT_800bf82e;

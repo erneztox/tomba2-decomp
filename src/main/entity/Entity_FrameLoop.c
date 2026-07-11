@@ -1,5 +1,5 @@
 /**
- * @brief Entity frame loop: iterates framebuffer array at 0x801FE000, processes 2-byte headers
+ * @brief Entity frame loop: iterates framebuffer array at 0x801FE000, processes 2-u8 headers
  * @note Original: func_80051E60 at 0x80051E60
  */
 // Entity_FrameLoop
@@ -11,27 +11,27 @@
 void FUN_80051e60(void)
 
 {
-  short *psVar1;
-  undefined4 uVar2;
+  s16 *psVar1;
+  s32 uVar2;
   
-  _DAT_1f800138 = (short *)&DAT_801fe000;
+  _g_CurrentEntity = (s16 *)&DAT_801fe000;
   do {
-    if (*_DAT_1f800138 == 2) {
+    if (*_g_CurrentEntity == 2) {
 LAB_80051ed0:
-      psVar1 = _DAT_1f800138 + 2;
-      *_DAT_1f800138 = 4;
-      FUN_80080880(*(undefined4 *)psVar1);
+      psVar1 = _g_CurrentEntity + 2;
+      *_g_CurrentEntity = 4;
+      FUN_80080880(*(s32 *)psVar1);
     }
-    else if (*_DAT_1f800138 == 3) {
+    else if (*_g_CurrentEntity == 3) {
       FUN_80080890();
-      uVar2 = FUN_80080860(*(undefined4 *)(_DAT_1f800138 + 6),*(undefined4 *)(_DAT_1f800138 + 4),
-                           *(undefined4 *)(_DAT_1f800138 + 8));
-      *(undefined4 *)(_DAT_1f800138 + 2) = uVar2;
+      uVar2 = FUN_80080860(*(s32 *)(_g_CurrentEntity + 6),*(s32 *)(_g_CurrentEntity + 4),
+                           *(s32 *)(_g_CurrentEntity + 8));
+      *(s32 *)(_g_CurrentEntity + 2) = uVar2;
       FUN_800808a0();
       goto LAB_80051ed0;
     }
-    _DAT_1f800138 = _DAT_1f800138 + 0x38;
-    if ((short *)0x801fe14f < _DAT_1f800138) {
+    _g_CurrentEntity = _g_CurrentEntity + 0x38;
+    if ((s16 *)0x801fe14f < _g_CurrentEntity) {
       return;
     }
   } while( true );

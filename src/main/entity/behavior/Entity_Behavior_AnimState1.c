@@ -10,8 +10,8 @@
 void FUN_8002c3ec(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
+  u8 bVar1;
+  s16 sVar2;
   
   bVar1 = param_1->state;
   if (bVar1 != 1) {
@@ -26,34 +26,34 @@ void FUN_8002c3ec(int param_1)
       return;
     }
     sVar2 = FUN_8009a450();
-    *(undefined4 *)(param_1 + 4) = 1;
-    *(undefined4 *)(param_1 + 0x50) = 0x101010;
-    *(undefined4 *)(param_1 + 0x58) = 0;
+    *(s32 *)(param_1 + 4) = 1;
+    *(s32 *)(param_1 + 0x50) = 0x101010;
+    *(s32 *)(param_1 + 0x58) = 0;
     param_1->normal_z = param_1->normal_z + sVar2;
   }
   if (param_1->sub_action < 0x11) {
     param_1->scale_y = param_1->anim_data;
     switch(param_1->sub_action) {
     case 0:
-      *(undefined **)(param_1 + 0x54) = &DAT_800a0700;
+      *(void **)(param_1 + 0x54) = &DAT_800a0700;
       break;
     case 1:
-      *(undefined **)(param_1 + 0x54) = &DAT_800a06dc;
+      *(void **)(param_1 + 0x54) = &DAT_800a06dc;
       break;
     case 2:
-      *(undefined **)(param_1 + 0x54) = &DAT_800a06b8;
+      *(void **)(param_1 + 0x54) = &DAT_800a06b8;
       break;
     case 3:
-      *(undefined **)(param_1 + 0x54) = &DAT_800a0694;
+      *(void **)(param_1 + 0x54) = &DAT_800a0694;
       break;
     case 4:
-      *(undefined4 *)(param_1 + 0x58) = 1;
+      *(s32 *)(param_1 + 0x58) = 1;
       break;
     case 5:
-      *(undefined4 *)(param_1 + 0x58) = 2;
+      *(s32 *)(param_1 + 0x58) = 2;
       break;
     default:
-      *(undefined4 *)(param_1 + 0x54) = 0;
+      *(s32 *)(param_1 + 0x54) = 0;
     }
     FUN_8002b278(param_1);
     param_1->sub_action = param_1->sub_action + '\x01';

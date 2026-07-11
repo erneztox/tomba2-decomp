@@ -12,7 +12,7 @@ void FUN_8008639c(void)
   int iVar1;
   int iVar2;
   uint uVar3;
-  undefined4 *puVar4;
+  s32 *puVar4;
   
   uVar3 = *DAT_800abdf0 >> 0x18 & 0x7f;
   if (uVar3 != 0) {
@@ -36,7 +36,7 @@ void FUN_8008639c(void)
     iVar1 = 0;
     do {
       iVar2 = iVar1 + 1;
-      FUN_8009a730(s_MADR__d___08x_8001c0bc,iVar1,*(undefined4 *)(iVar1 * 0x10 + DAT_800abe14));
+      FUN_8009a730(s_MADR__d___08x_8001c0bc,iVar1,*(s32 *)(iVar1 * 0x10 + DAT_800abe14));
       iVar1 = iVar2;
     } while (iVar2 < 7);
   }

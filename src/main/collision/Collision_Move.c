@@ -11,19 +11,19 @@
 int FUN_80045724(void)
 
 {
-  ushort uVar1;
-  short sVar2;
+  u16 uVar1;
+  s16 sVar2;
   int iVar3;
   int iVar4;
   
   iVar4 = 1;
   sVar2 = FUN_80048360();
   iVar3 = 0;
-  uVar1 = *(ushort *)(_DAT_1f8001e0 + 4);
-  _DAT_1f8001ec = (ushort *)(_DAT_1f8001d8 + (uint)*(ushort *)(_DAT_1f8001e0 + 2) * 8);
+  uVar1 = *(u16 *)(_g_CollisionResult + 4);
+  _g_CollisionData = (u16 *)(_DAT_1f8001d8 + (uint)*(u16 *)(_g_CollisionResult + 2) * 8);
   if (uVar1 != 0) {
     do {
-      if ((*_DAT_1f8001ec & 1) != 0) {
+      if ((*_g_CollisionData & 1) != 0) {
         iVar4 = FUN_80045810((int)sVar2,iVar4);
         if (iVar4 != -1) {
           return iVar4;
@@ -31,7 +31,7 @@ int FUN_80045724(void)
         iVar4 = 0;
       }
       iVar3 = iVar3 + 1;
-      _DAT_1f8001ec = _DAT_1f8001ec + 4;
+      _g_CollisionData = _g_CollisionData + 4;
     } while (iVar3 < (int)(uint)uVar1);
   }
   if (iVar4 != 0) {

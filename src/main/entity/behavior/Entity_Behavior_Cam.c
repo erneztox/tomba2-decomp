@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-void FUN_8006c478(undefined1 *param_1)
+void FUN_8006c478(u8 *param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   bVar1 = param_1->state;
   if (bVar1 != 1) {
@@ -30,7 +30,7 @@ void FUN_8006c478(undefined1 *param_1)
     }
     param_1->input_flags = 0x80;
     FUN_8006acac(param_1);
-    **(undefined2 **)(param_1 + 0xc0) = 0xff6a;
+    **(s16 **)(param_1 + 0xc0) = 0xff6a;
     *param_1 = 2;
     param_1->rot_x = 0;
     param_1->rot_y = 0;
@@ -40,7 +40,7 @@ void FUN_8006c478(undefined1 *param_1)
       param_1->behavior_state = 1;
     }
     else {
-      FUN_80031558(param_1,(byte)param_1->kind - 1);
+      FUN_80031558(param_1,(u8)param_1->kind - 1);
     }
   }
   if (param_1->behavior_state == '\0') {

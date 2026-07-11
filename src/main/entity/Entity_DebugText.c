@@ -15,13 +15,13 @@ int FUN_8003a1e4(int param_1,int param_2)
   
   uVar1 = (uint)(param_1->counter1 >> 1);
   if ((param_1->counter1 & 1) == 0) {
-    uVar2 = (uint)*(byte *)(param_2 + 0x3f);
+    uVar2 = (uint)*(u8 *)(param_2 + 0x3f);
     if (uVar2 < uVar1) {
       return (uVar1 - uVar2) * -0xc + 6;
     }
     return (uVar2 - uVar1) * 0xc + 6;
   }
-  uVar2 = (uint)*(byte *)(param_2 + 0x3f);
+  uVar2 = (uint)*(u8 *)(param_2 + 0x3f);
   if (uVar2 == uVar1) {
     return 0;
   }

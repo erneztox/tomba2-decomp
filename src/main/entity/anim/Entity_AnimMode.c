@@ -10,7 +10,7 @@
 void FUN_8003fe00(int param_1,int param_2)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   bVar1 = param_1->sub_type;
   if (bVar1 == 1) {
@@ -36,7 +36,7 @@ void FUN_8003fe00(int param_1,int param_2)
     param_1->behavior_state = 2;
   }
   if (param_1->flag_5E == '\x02') {
-    *(undefined1 *)(param_1->parent + 0x5e) = 0;
+    *(u8 *)(param_1->parent + 0x5e) = 0;
   }
   return;
 }

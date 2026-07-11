@@ -12,7 +12,7 @@
 void FUN_8003a9a0(int param_1)
 
 {
-  short sVar1;
+  s16 sVar1;
   int iVar2;
   int iVar3;
   
@@ -42,7 +42,7 @@ void FUN_8003a9a0(int param_1)
     iVar2 = param_1;
     if (param_1->counter1 != '\0') {
       do {
-        *(undefined1 *)(iVar2->sprite_ptr1 + 0x3e) = 0;
+        *(u8 *)(iVar2->sprite_ptr1 + 0x3e) = 0;
         iVar3 = iVar3 + 1;
         iVar2 = iVar2 + 4;
       } while (iVar3 < (int)(uint)param_1->counter1);
@@ -55,7 +55,7 @@ void FUN_8003a9a0(int param_1)
       iVar2 = param_1;
       if (param_1->counter1 != '\0') {
         do {
-          *(undefined1 *)(iVar2->sprite_ptr1 + 0x3e) = 0;
+          *(u8 *)(iVar2->sprite_ptr1 + 0x3e) = 0;
           iVar3 = iVar3 + 1;
           iVar2 = iVar2 + 4;
         } while (iVar3 < (int)(uint)param_1->counter1);

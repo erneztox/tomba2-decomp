@@ -9,15 +9,15 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-byte FUN_80020364(byte *param_1,byte *param_2,uint param_3)
+u8 FUN_80020364(u8 *param_1,u8 *param_2,uint param_3)
 
 {
-  short sVar1;
-  short sVar2;
-  byte bVar3;
+  s16 sVar1;
+  s16 sVar2;
+  u8 bVar3;
   int iVar4;
   int iVar5;
-  byte bVar6;
+  u8 bVar6;
   
   if (((param_1->entity_flags & 0x200) == 0) &&
      (iVar4 = FUN_8001f40c(param_1,param_2,1), -1 < iVar4)) {
@@ -33,12 +33,12 @@ byte FUN_80020364(byte *param_1,byte *param_2,uint param_3)
     }
     else {
       if ((param_3 & 0x3f) != 0) {
-        iVar4 = FUN_80083f50(_DAT_1f80009c);
+        iVar4 = FUN_80083f50(_g_AngleTarget);
         sVar1 = param_1->bounds_min_x;
         sVar2 = param_2->bounds_min_x;
-        iVar5 = FUN_80083e80(_DAT_1f80009c);
-        sVar1 = (short)(iVar4 * ((int)sVar1 + (int)sVar2) >> 0xc);
-        sVar2 = (short)(iVar5 * ((int)param_1->bounds_min_x + (int)param_2->bounds_min_x)
+        iVar5 = FUN_80083e80(_g_AngleTarget);
+        sVar1 = (s16)(iVar4 * ((int)sVar1 + (int)sVar2) >> 0xc);
+        sVar2 = (s16)(iVar5 * ((int)param_1->bounds_min_x + (int)param_2->bounds_min_x)
                        >> 0xc);
         if ((param_3 & 0x7f) == 1) {
           param_2->pos_y = param_1->pos_y - sVar1;
@@ -49,10 +49,10 @@ byte FUN_80020364(byte *param_1,byte *param_2,uint param_3)
           param_1->pos_z = param_2->pos_z - sVar2;
         }
       }
-      bVar6 = (byte)(_DAT_1f80009c >> 4);
+      bVar6 = (u8)(_g_AngleTarget >> 4);
       if ((param_3 & 0x40) == 0) {
         if ((param_3 & 0x80) != 0) {
-          if (DAT_1f80027a != '\0') {
+          if (g_ActionMode != '\0') {
             return 2;
           }
           if (param_1->state != 1) {
@@ -69,8 +69,8 @@ byte FUN_80020364(byte *param_1,byte *param_2,uint param_3)
         bVar3 = 2;
       }
       else {
-        bVar3 = DAT_1f800137;
-        if (((DAT_1f800137 == 0) && (bVar3 = *param_1 & 6, (*param_1 & 6) == 0)) &&
+        bVar3 = g_CurrentOverlay;
+        if (((g_CurrentOverlay == 0) && (bVar3 = *param_1 & 6, (*param_1 & 6) == 0)) &&
            (bVar3 = *param_2 & 2, (*param_2 & 2) == 0)) {
           bVar3 = 4;
           param_1->state = 2;

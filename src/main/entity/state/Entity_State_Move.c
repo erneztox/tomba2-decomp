@@ -10,7 +10,7 @@
 void FUN_8005f1b0(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
   
   bVar1 = param_1->action_state;
@@ -33,7 +33,7 @@ void FUN_8005f1b0(int param_1)
         param_1->state_flag145 = 0;
         param_1->state_flag144 = 0;
         param_1->angle_offset = 0;
-        *(undefined1 *)(param_1 + 0x148) = 0;
+        *(u8 *)(param_1 + 0x148) = 0;
         param_1->state = 1;
         param_1->action_state = 0;
         param_1->sub_action = 0;
@@ -53,7 +53,7 @@ void FUN_8005f1b0(int param_1)
     FUN_80074590(0x23,0,0);
     FUN_80053d90(param_1);
     param_1->rot_z = 0;
-    *(undefined1 *)(param_1 + 0x61) = 0;
+    *(u8 *)(param_1 + 0x61) = 0;
     param_1->state_flag146 = 0;
     FUN_800663a8(param_1,1);
   }

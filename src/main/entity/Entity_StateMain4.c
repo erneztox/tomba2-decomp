@@ -10,23 +10,23 @@
 void FUN_80063b94(int param_1,int param_2)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
   uint uVar3;
-  short sVar4;
-  ushort uVar5;
-  undefined1 uVar6;
-  undefined **ppuVar7;
-  undefined *puVar8;
-  undefined4 uVar9;
+  s16 sVar4;
+  u16 uVar5;
+  u8 uVar6;
+  void **ppuVar7;
+  void *puVar8;
+  s32 uVar9;
   
   if (param_2 == 0) {
     ppuVar7 = &PTR_DAT_800a4784;
-    bVar1 = *(byte *)(param_1 + 0x168);
+    bVar1 = *(u8 *)(param_1 + 0x168);
   }
   else {
     ppuVar7 = &PTR_DAT_800a4794;
-    bVar1 = *(byte *)(param_1 + 0x168) >> 1;
+    bVar1 = *(u8 *)(param_1 + 0x168) >> 1;
   }
   switch(bVar1) {
   case 0:
@@ -34,9 +34,9 @@ void FUN_80063b94(int param_1,int param_2)
     uVar9 = 4;
     if (param_2 == 0) {
       uVar3 = param_1->rot_z + 0x100 & 0xfff;
-      uVar5 = (ushort)uVar3;
+      uVar5 = (u16)uVar3;
       if (uVar5 < 0x501) {
-        sVar4 = (short)(uVar3 >> 7);
+        sVar4 = (s16)(uVar3 >> 7);
         if (0x200 < uVar5) {
           sVar4 = 3;
         }
@@ -62,7 +62,7 @@ LAB_80063e74:
     }
     else {
       iVar2 = param_1->rot_z + 0x60;
-      sVar4 = (short)iVar2;
+      sVar4 = (s16)iVar2;
       iVar2 = iVar2 * 0x10000 >> 0x10;
       if (iVar2 < 0) {
         sVar4 = 0;
@@ -83,7 +83,7 @@ LAB_80063e74:
       goto LAB_80063e74;
     }
     iVar2 = param_1->rot_z + 0x140;
-    sVar4 = (short)iVar2;
+    sVar4 = (s16)iVar2;
     iVar2 = iVar2 * 0x10000 >> 0x10;
     if (iVar2 < 0) {
       sVar4 = 0;
@@ -105,7 +105,7 @@ LAB_80063e74:
     if (bVar1 < 5) {
       puVar8 = ppuVar7->kind;
       iVar2 = param_1->rot_z + 0x140;
-      sVar4 = (short)iVar2;
+      sVar4 = (s16)iVar2;
       iVar2 = iVar2 * 0x10000 >> 0x10;
       if (iVar2 < 0) {
         sVar4 = 0;
@@ -119,7 +119,7 @@ LAB_80063e74:
     else {
       puVar8 = ppuVar7->sub_type;
       iVar2 = param_1->rot_z + 0x340;
-      sVar4 = (short)iVar2;
+      sVar4 = (s16)iVar2;
       iVar2 = iVar2 * 0x10000 >> 0x10;
       if (iVar2 < 0) {
         sVar4 = 0;

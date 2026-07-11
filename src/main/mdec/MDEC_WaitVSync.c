@@ -8,7 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-bool FUN_80089640(void)
+s32 FUN_80089640(void)
 
 {
   uint uVar1;

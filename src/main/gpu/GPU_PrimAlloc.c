@@ -9,27 +9,27 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80082504(ushort *param_1,uint param_2)
+s32 FUN_80082504(u16 *param_1,uint param_2)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   
-  if ((short)param_1->kind < 0) {
+  if ((s16)param_1->kind < 0) {
     uVar1 = 0;
   }
   else {
     uVar1 = DAT_800a59a4 - 1;
-    if ((int)(short)param_1->kind <= DAT_800a59a4 + -1) {
+    if ((int)(s16)param_1->kind <= DAT_800a59a4 + -1) {
       uVar1 = param_1->kind;
     }
   }
   param_1->kind = uVar1;
-  if ((short)param_1->sub_type < 0) {
+  if ((s16)param_1->sub_type < 0) {
     uVar1 = 0;
   }
   else {
     uVar1 = DAT_800a59a6 - 1;
-    if ((int)(short)param_1->sub_type <= DAT_800a59a6 + -1) {
+    if ((int)(s16)param_1->sub_type <= DAT_800a59a6 + -1) {
       uVar1 = param_1->sub_type;
     }
   }
@@ -39,7 +39,7 @@ undefined4 FUN_80082504(ushort *param_1,uint param_2)
     _DAT_80100ae4 = 0xe6000000;
     _DAT_80100aec = param_2 & 0xffffff | 0x2000000;
     _DAT_80100ae8 = *DAT_800a5aa8 & 0x7ff | (param_2 >> 0x1f) << 10 | 0xe1000000;
-    _DAT_80100af0 = *(undefined4 *)param_1;
+    _DAT_80100af0 = *(s32 *)param_1;
     _DAT_80100af4 = *(uint *)(param_1 + 2);
   }
   else {
@@ -50,8 +50,8 @@ undefined4 FUN_80082504(ushort *param_1,uint param_2)
     _DAT_80100ae8 = 0xe4ffffff;
     _DAT_80100aec = 0xe5000000;
     _DAT_80100af4 = *DAT_800a5aa8 & 0x7ff | (param_2 >> 0x1f) << 10 | 0xe1000000;
-    _DAT_80100afc = *(undefined4 *)param_1;
-    _DAT_80100b00 = *(undefined4 *)(param_1 + 2);
+    _DAT_80100afc = *(s32 *)param_1;
+    _DAT_80100b00 = *(s32 *)(param_1 + 2);
     _DAT_80100b08 = 0x3ffffff;
     _DAT_80100b0c = FUN_80082cb0(3);
     _DAT_80100b0c = _DAT_80100b0c | 0xe3000000;

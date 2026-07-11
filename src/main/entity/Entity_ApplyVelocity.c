@@ -19,7 +19,7 @@ void FUN_80056b48(int param_1,int param_2)
          param_1->pos_y_fixed +
          (int)param_1->velocity_y * (int)param_1->anim_counter;
   }
-  if ((param_1->physics_flag == '\0') && (*(char *)(param_1 + 0x61) == '\0')) {
+  if ((param_1->physics_flag == '\0') && (*(s8*)(param_1 + 0x61) == '\0')) {
     FUN_80054650(param_1,0);
   }
   else {

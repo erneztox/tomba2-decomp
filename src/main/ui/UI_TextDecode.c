@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-char * FUN_8004ead0(char *param_1,byte *param_2)
+char * FUN_8004ead0(char *param_1,u8 *param_2)
 
 {
-  byte bVar1;
-  char cVar2;
+  u8 bVar1;
+  s8 cVar2;
   char *pcVar3;
   
   bVar1 = *param_2;

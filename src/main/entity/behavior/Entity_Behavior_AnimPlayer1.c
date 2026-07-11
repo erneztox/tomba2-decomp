@@ -10,8 +10,8 @@
 void FUN_800292b8(int param_1)
 
 {
-  byte bVar1;
-  undefined *puVar2;
+  u8 bVar1;
+  void *puVar2;
   int iVar3;
   
   bVar1 = param_1->state;
@@ -35,8 +35,8 @@ void FUN_800292b8(int param_1)
     else {
       puVar2 = &DAT_800a1d78;
     }
-    *(undefined **)(param_1 + 0x40) = puVar2;
-    *(undefined **)(param_1 + 0x50) = &DAT_800a1cd8;
+    *(void **)(param_1 + 0x40) = puVar2;
+    *(void **)(param_1 + 0x50) = &DAT_800a1cd8;
     param_1->state = 1;
     param_1->collision_state = 0;
   }

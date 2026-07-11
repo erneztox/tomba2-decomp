@@ -12,33 +12,33 @@
 void FUN_80067a40(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
-  ushort uVar3;
-  undefined4 uVar4;
-  undefined1 auStack_20->kind;
-  undefined2 local_1e;
-  undefined2 local_1a;
-  undefined2 local_16;
+  u8 bVar1;
+  s16 sVar2;
+  u16 uVar3;
+  s32 uVar4;
+  u8 auStack_20->kind;
+  s16 local_1e;
+  s16 local_1a;
+  s16 local_16;
   
   FUN_80076d68();
   bVar1 = param_1->action_state;
   if (bVar1 == 1) {
     if (DAT_800bf80f == '\0') {
       FUN_8005245c();
-      DAT_800bf80d = 3;
+      g_TimerFlag = 3;
       param_1->action_state = param_1->action_state + '\x01';
     }
   }
   else if ((bVar1 < 2) && (bVar1 == 0)) {
     param_1->action_state = 1;
-    DAT_800bf80d = 2;
+    g_TimerFlag = 2;
     DAT_800bf80f = '\x02';
     FUN_800662d8(param_1,0);
   }
   bVar1 = param_1->sub_action;
   if (bVar1 == 1) {
-    *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + 8;
+    *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 8;
     FUN_8005444c();
   }
   else if (bVar1 < 2) {
@@ -63,18 +63,18 @@ void FUN_80067a40(int param_1)
           param_1->velocity_y = 0x2400;
           param_1->rot_z = 0;
           local_16 = param_1->pos_z;
-          if (DAT_800bf870 == '\0') {
+          if (g_GameState == '\0') {
             FUN_8003116c(0x10d,auStack_20,0xfffffff6);
           }
           else {
-            if (DAT_800bf870 == '\x06') {
+            if (g_GameState == '\x06') {
               uVar4 = 0x704;
             }
-            else if (DAT_800bf870 == '\b') {
+            else if (g_GameState == '\b') {
               uVar4 = 0x909;
             }
             else {
-              if (DAT_800bf870 != '\x0e') {
+              if (g_GameState != '\x0e') {
                 return;
               }
               uVar4 = 0xf06;

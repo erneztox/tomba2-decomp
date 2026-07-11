@@ -1,5 +1,5 @@
 /**
- * @brief Entity script advance: reads byte at entity[0x14], dispatches commands
+ * @brief Entity script advance: reads u8 at entity[0x14], dispatches commands
  * @note Original: func_8007D14C at 0x8007D14C
  */
 // Entity_AdvanceScript
@@ -10,7 +10,7 @@
 void FUN_8007d14c(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
   
   *(char **)(param_1 + 0x10) = *(char **)(param_1 + 0x14);

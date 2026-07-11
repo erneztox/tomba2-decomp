@@ -13,11 +13,11 @@ void FUN_8007f8f8(void)
 
 {
   int iVar1;
-  undefined4 uVar2;
+  s32 uVar2;
   uint uVar3;
   uint uVar4;
-  undefined local_28->state;
-  ushort local_18->state;
+  void local_28->state;
+  u16 local_18->state;
   
   uVar3 = 0;
   FUN_80079374(0x30,0x20,0,PTR_s_Controls_800a2894,0);
@@ -27,7 +27,7 @@ void FUN_8007f8f8(void)
   local_28->flags = PTR_s_Configuration_800a28e0;
   iVar1 = 0;
   do {
-    FUN_80079374(0x40,(int)*(short *)((int)local_18 + iVar1),(uint)(DAT_800bf808 == uVar3) << 3,
+    FUN_80079374(0x40,(int)*(s16 *)((int)local_18 + iVar1),(uint)(DAT_800bf808 == uVar3) << 3,
                  local_28[uVar3],0);
     uVar3 = uVar3 + 1;
     iVar1 = uVar3 * 2;
@@ -80,7 +80,7 @@ void FUN_8007f8f8(void)
   FUN_80079324(0xc0,0xa4,0,local_28->kind,0);
   iVar1 = FUN_80079528local_28->sub_type;
   FUN_80079324((iVar1 * -8 + 0x78) * 0x10000 >> 0x10,0x88,0,local_28->sub_type,0);
-  FUN_8007e938(_DAT_800ecf58,0xa0,0x92,0,0xe1);
+  FUN_8007e938(_g_OT_Data,0xa0,0x92,0,0xe1);
   FUN_8007fc24();
   return;
 }

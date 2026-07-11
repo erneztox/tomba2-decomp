@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80051b34(undefined4 *param_1,undefined4 *param_2)
+void FUN_80051b34(s32 *param_1,s32 *param_2)
 
 {
   *param_2 = *param_1;

@@ -6,12 +6,12 @@
 
 
 
-void FUN_80026100(char param_1)
+void FUN_80026100(s8 param_1)
 
 {
-  DAT_800bf87e = DAT_800bf87e + param_1;
-  if (DAT_800bf87f < DAT_800bf87e) {
-    DAT_800bf87e = DAT_800bf87f;
+  g_ItemMax = g_ItemMax + param_1;
+  if (g_ItemFlag < g_ItemMax) {
+    g_ItemMax = g_ItemFlag;
   }
   DAT_800ed065 = DAT_800ed065 | 1;
   return;

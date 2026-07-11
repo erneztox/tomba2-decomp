@@ -19,10 +19,10 @@ void FUN_80064524(int param_1)
   FUN_80055e28(param_1,0);
   if ((param_1->behavior_flags & 2) == 0) {
     param_1->direction = param_1->behavior_flags & 1;
-    *(byte *)(param_1 + 0x149) = param_1->behavior_flags & 1;
+    *(u8 *)(param_1 + 0x149) = param_1->behavior_flags & 1;
   }
   else {
-    param_1->direction = *(byte *)(param_1 + 0x149) & 1;
+    param_1->direction = *(u8 *)(param_1 + 0x149) & 1;
   }
   FUN_80055284(param_1);
   FUN_80054d14(param_1,0x14,0);

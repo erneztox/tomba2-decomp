@@ -9,7 +9,7 @@
 int FUN_80079528(char *param_1)
 
 {
-  char cVar1;
+  s8 cVar1;
   int iVar2;
   
   iVar2 = 0;

@@ -1,5 +1,5 @@
 /**
- * @brief Entity state main variant 6: DAT_1f80027a=1, state init
+ * @brief Entity state main variant 6: g_ActionMode=1, state init
  * @note Original: func_8005FB54 at 0x8005FB54
  */
 // Entity_StateMain6
@@ -9,22 +9,22 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8005fb54(byte *param_1)
+void FUN_8005fb54(u8 *param_1)
 
 {
-  byte bVar1;
-  short sVar2;
-  ushort uVar3;
-  ushort uVar4;
+  u8 bVar1;
+  s16 sVar2;
+  u16 uVar3;
+  u16 uVar4;
   int iVar5;
-  undefined4 uVar6;
-  undefined4 uVar7;
+  s32 uVar6;
+  s32 uVar7;
   
-  DAT_1f80027a = 1;
+  g_ActionMode = 1;
   param_1->flag_17B = 1;
   switchparam_1->action_state {
   case 0:
-    DAT_800bf80e = 0;
+    g_ActionTrigger = 0;
     if (DAT_800bfa47 != -0x80) {
       FUN_8004ed0c(DAT_800bf80b,1);
     }
@@ -59,7 +59,7 @@ LAB_8005fe08:
     if (iVar5 == 1) {
       if (DAT_800bf80a == '\x02') {
         DAT_800bf809 = 0;
-        DAT_1f800137 = 0;
+        g_CurrentOverlay = 0;
         *param_1 = 3;
         param_1[0x172] = 0x1e;
         param_1[0x173] = 0;
@@ -73,7 +73,7 @@ LAB_8005fe08:
         param_1->action_state = param_1->action_state + 1;
       }
       DAT_800bf80a = '\0';
-      DAT_800bf80e = 1;
+      g_ActionTrigger = 1;
     }
     break;
   case 4:
@@ -89,7 +89,7 @@ LAB_8005fe08:
     }
     else {
       uVar3 = FUN_800782b0(param_1 + 0x2c,(int)_DAT_1f8000d2,(int)_DAT_1f8000da);
-      uVar4 = FUN_800776f8((int)(short)uVar3,(int)param_1->rot_y,0x100);
+      uVar4 = FUN_800776f8((int)(s16)uVar3,(int)param_1->rot_y,0x100);
       param_1->rot_y = uVar4;
       if (uVar4 != (uVar3 & 0xfff)) {
         return;
@@ -130,7 +130,7 @@ LAB_8005fe08:
   case 6:
     param_1->flag_17A = 1;
     FUN_80076d68(param_1);
-    if (*(short *)(param_1 + 0x7e) != 0) {
+    if (*(s16 *)(param_1 + 0x7e) != 0) {
       param_1->action_state = param_1->action_state + 1;
       DAT_800bf80f = 4;
       DAT_800bf839 = 1;
@@ -143,18 +143,18 @@ LAB_8005fe08:
   case 7:
     param_1->flag_17A = 1;
     FUN_80076d68(param_1);
-    if ((_DAT_1f80017c & 7) == 0) {
+    if ((_g_FrameCounter2 & 7) == 0) {
       FUN_80074590(0x38,(int)(char)param_1[0x42],0);
       sVar2 = param_1->timer2;
       param_1->timer2 = sVar2 + 2;
-      if (0x1a < (short)(sVar2 + 2)) {
+      if (0x1a < (s16)(sVar2 + 2)) {
         param_1[0x42] = 0x1a;
         param_1[0x43] = 0;
       }
     }
     sVar2 = param_1->timer1;
     param_1->timer1 = sVar2 + -1;
-    *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + -10;
+    *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + -10;
     if (sVar2 != 1) {
       return;
     }
@@ -170,7 +170,7 @@ LAB_8005ff58:
     param_1->flag_17A = 1;
     param_1->timer1 = sVar2 + -1;
     if (sVar2 == 1) {
-      DAT_1f800236 = 5;
+      g_GameMode = 5;
       DAT_800bf80f = DAT_800bf80f & 0x7f;
       param_1->action_state = param_1->action_state + 1;
       goto switchD_8005fba0_caseD_9;
@@ -179,18 +179,18 @@ LAB_8005ff58:
   case 9:
 switchD_8005fba0_caseD_9:
 LAB_8005ffb4:
-    if ((_DAT_1f80017c & 7) == 0) {
+    if ((_g_FrameCounter2 & 7) == 0) {
       FUN_80074590(0x38,(int)(char)param_1[0x42],0);
       sVar2 = param_1->timer2;
       param_1->timer2 = sVar2 + 2;
-      if (0x1a < (short)(sVar2 + 2)) {
+      if (0x1a < (s16)(sVar2 + 2)) {
         param_1[0x42] = 0x1a;
         param_1[0x43] = 0;
       }
     }
     param_1->flag_17A = 1;
     FUN_80076d68(param_1);
-    *(short *)(param_1 + 0x32) = *(short *)(param_1 + 0x32) + -10;
+    *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + -10;
     break;
   case 10:
     param_1->flag_17A = 1;

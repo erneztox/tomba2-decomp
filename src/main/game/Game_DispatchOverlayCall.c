@@ -9,15 +9,15 @@
 void FUN_80065374(void)
 
 {
-  if (DAT_800bf870 == 5) {
+  if (g_GameState == 5) {
     func_0x80110cb8();
   }
-  else if (DAT_800bf870 < 6) {
-    if (DAT_800bf870 == 0) {
+  else if (g_GameState < 6) {
+    if (g_GameState == 0) {
       func_0x8010aecc();
     }
   }
-  else if (DAT_800bf870 == 6) {
+  else if (g_GameState == 6) {
     func_0x80113e3c();
   }
   return;

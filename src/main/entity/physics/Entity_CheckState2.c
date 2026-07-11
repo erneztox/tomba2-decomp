@@ -10,7 +10,7 @@
 void FUN_80051300(int param_1)
 
 {
-  short sVar1;
+  s16 sVar1;
   int iVar2;
   int iVar3;
   int iVar4;
@@ -22,7 +22,7 @@ void FUN_80051300(int param_1)
         return;
       }
       iVar3 = *(int *)(param_1 + iVar4 * 4 + 0xc0);
-      sVar1 = *(short *)(iVar3 + 6);
+      sVar1 = *(s16 *)(iVar3 + 6);
       FUN_80085480(iVar3 + 8,0x1f800000);
       if (sVar1 == -1) {
         FUN_80084110(param_1 + 0x98,0x1f800000,iVar3 + 0x18);

@@ -6,7 +6,7 @@
 
 
 
-void FUN_8009af98(byte param_1)
+void FUN_8009af98(u8 param_1)
 
 {
   if (param_1 == 9) {
@@ -26,7 +26,7 @@ void FUN_8009af98(byte param_1)
       FUN_800808e0(1,0x80105ef8);
       DAT_800acf08 = 0;
     }
-    *(byte *)(DAT_800acf08 + -0x7fefa108) = param_1;
+    *(u8 *)(DAT_800acf08 + -0x7fefa108) = param_1;
     DAT_800acf08 = DAT_800acf08 + 1;
   }
   if (0 < DAT_800acf08) {

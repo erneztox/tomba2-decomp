@@ -6,10 +6,10 @@
 
 
 
-undefined4 FUN_80089ce8(byte param_1,int param_2)
+s32 FUN_80089ce8(u8 param_1,int param_2)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   int iVar2;
   int iVar3;
   
@@ -17,7 +17,7 @@ undefined4 FUN_80089ce8(byte param_1,int param_2)
   iVar3 = 3;
   while( true ) {
     DAT_800abfbc = 0;
-    if ((param_1 != 1) && (((byte)DAT_800abfc8 & 0x10) != 0)) {
+    if ((param_1 != 1) && (((u8)DAT_800abfc8 & 0x10) != 0)) {
       FUN_8008ac34(1,0,0,0);
     }
     if ((((param_2 == 0) || (*(int *)(&DAT_800abf34 + (uint)param_1 * 4) == 0)) ||

@@ -10,9 +10,9 @@
 void FUN_800660ac(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
-  char cVar3;
+  u8 bVar1;
+  s16 sVar2;
+  s8 cVar3;
   int iVar4;
   
   iVar4 = FUN_80076d68();
@@ -32,8 +32,8 @@ void FUN_800660ac(int param_1)
       if ((bVar1 == 2) &&
          (sVar2 = param_1->timer1, param_1->timer1 = sVar2 + -1, sVar2 == 1))
       {
-        if (DAT_1f800137 == '\x01') {
-          DAT_800bf80e = DAT_1f800137;
+        if (g_CurrentOverlay == '\x01') {
+          g_ActionTrigger = g_CurrentOverlay;
         }
         param_1->behavior_state = 0x22;
         param_1->action_state = 0;
@@ -41,7 +41,7 @@ void FUN_800660ac(int param_1)
       goto LAB_800661c0;
     }
     if (bVar1 != 0) goto LAB_800661c0;
-    DAT_800bf80e = '\0';
+    g_ActionTrigger = '\0';
     FUN_80054d14(param_1,199,3);
     cVar3 = param_1->action_state;
     param_1->timer1 = 0;

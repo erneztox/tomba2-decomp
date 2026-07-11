@@ -6,10 +6,10 @@
 
 
 
-undefined4 FUN_8007496c(uint param_1,int param_2,int param_3)
+s32 FUN_8007496c(uint param_1,int param_2,int param_3)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   int iVar2;
   
   iVar2 = (param_1 & 0xff) * 0xc;

@@ -5,20 +5,20 @@
 // Entity_CopyVertexToSP
 
 #include "tomba.h"
-void Entity_CopyVertexToSP(short *param_1,undefined4 param_2,int param_3)
+void Entity_CopyVertexToSP(s16 *param_1,s32 param_2,int param_3)
 
 {
-  byte bVar1;
-  short sVar2;
+  u8 bVar1;
+  s16 sVar2;
   
-  *(undefined4 *)param_1 = param_2;
-  *param_1 = *param_1 + (short)*(char *)(param_3 + 0xe);
-  sVar2 = param_1->flags + (short)*(char *)(param_3 + 0xf);
+  *(s32 *)param_1 = param_2;
+  *param_1 = *param_1 + (s16)*(s8*)(param_3 + 0xe);
+  sVar2 = param_1->flags + (s16)*(s8*)(param_3 + 0xf);
   param_1->flags = sVar2;
-  bVar1 = *(byte *)(param_3 + 10);
+  bVar1 = *(u8 *)(param_3 + 10);
   param_1->behavior_state = sVar2;
   param_1->counter1 = *param_1;
-  param_1->state = *param_1 + (ushort)bVar1;
+  param_1->state = *param_1 + (u16)bVar1;
   bVar1 = param_3->render_flags;
   param_1[0xe] = 0;
   param_1[10] = 0;
@@ -26,7 +26,7 @@ void Entity_CopyVertexToSP(short *param_1,undefined4 param_2,int param_3)
   param_1->kind = 0;
   *param_1 = *param_1 * 5;
   param_1->counter1 = param_1->counter1 * 5;
-  param_1->counter2 = param_1->flags + (ushort)bVar1;
+  param_1->counter2 = param_1->flags + (u16)bVar1;
   param_1[0xc] = param_1->state;
   param_1->state = param_1->state * 5;
   param_1->sprite_flags = param_1->counter2;

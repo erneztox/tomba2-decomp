@@ -11,6 +11,6 @@ void FUN_8003fc78(int param_1)
 
 {
   param_1->rot_z = 0;
-  param_1->rot_y = (ushort)param_1->collision_dir << 4;
+  param_1->rot_y = (u16)param_1->collision_dir << 4;
   return;
 }

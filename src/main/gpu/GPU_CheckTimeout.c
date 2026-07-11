@@ -6,12 +6,12 @@
 
 
 
-undefined4 FUN_800834d4(void)
+s32 FUN_800834d4(void)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   
   iVar2 = FUN_80085900(0xffffffff);
   if ((DAT_800a5adc < iVar2) ||

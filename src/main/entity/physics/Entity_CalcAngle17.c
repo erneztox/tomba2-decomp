@@ -9,17 +9,17 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80020c34(int param_1,int param_2)
+s32 FUN_80020c34(int param_1,int param_2)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   int iVar2;
   int iVar3;
-  undefined4 uVar4;
+  s32 uVar4;
   int iVar5;
-  short sVar6;
+  s16 sVar6;
   int iVar7;
-  short sVar8;
+  s16 sVar8;
   
   iVar7 = (uint)param_1->pos_y - (uint)param_2->pos_y;
   iVar2 = iVar7 * 0x10000 >> 0x10;
@@ -28,10 +28,10 @@ undefined4 FUN_80020c34(int param_1,int param_2)
   uVar1 = FUN_80084080(iVar2 * iVar2 + iVar3 * iVar3);
   uVar4 = 0xffffffff;
   if ((int)(uint)uVar1 <= (int)param_1->bounds_min_x + (int)param_2->bounds_min_x) {
-    iVar3 = (uint)*(ushort *)(param_1 + 0x32) - (uint)*(ushort *)(param_2 + 0x32);
-    sVar6 = (short)iVar3;
+    iVar3 = (uint)*(u16 *)(param_1 + 0x32) - (uint)*(u16 *)(param_2 + 0x32);
+    sVar6 = (s16)iVar3;
     iVar2 = (uint)param_1->bounds_min_y + (uint)param_2->bounds_min_y;
-    sVar8 = (short)iVar2;
+    sVar8 = (s16)iVar2;
     if ((int)param_1->bounds_max_y + (int)param_2->bounds_max_y <
         (int)(iVar3 + iVar2 & 0xffffU)) {
       uVar4 = 0xffffffff;
@@ -44,9 +44,9 @@ undefined4 FUN_80020c34(int param_1,int param_2)
         sVar8 = (param_2->bounds_max_y - param_2->bounds_min_y) +
                 (param_1->bounds_max_y - param_1->bounds_min_y);
       }
-      if (((int)param_1->bounds_min_x + (int)param_2->bounds_min_x) - (int)(short)uVar1 <
+      if (((int)param_1->bounds_min_x + (int)param_2->bounds_min_x) - (int)(s16)uVar1 <
           (int)sVar8 - (int)sVar6) {
-        _DAT_1f80009c = FUN_80085690(-(int)(short)iVar5,(int)(short)iVar7);
+        _g_AngleTarget = FUN_80085690(-(int)(s16)iVar5,(int)(s16)iVar7);
         uVar4 = 1;
       }
       else {

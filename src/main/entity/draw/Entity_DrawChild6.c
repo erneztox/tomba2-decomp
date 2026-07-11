@@ -7,32 +7,32 @@
 
 
 #include "tomba.h"
-void FUN_80033ff4(int param_1,short param_2)
+void FUN_80033ff4(int param_1,s16 param_2)
 
 {
-  byte bVar1;
-  byte *pbVar2;
-  undefined *puVar3;
+  u8 bVar1;
+  u8 *pbVar2;
+  void *puVar3;
   int iVar4;
-  short sVar5;
-  undefined1 *puVar6;
-  undefined1 local_30;
-  undefined1 local_2f;
-  undefined2 local_2e;
-  short local_28->state;
+  s16 sVar5;
+  u8 *puVar6;
+  u8 local_30;
+  u8 local_2f;
+  s16 local_2e;
+  s16 local_28->state;
   
   iVar4 = 0;
   puVar6 = &DAT_800a241c;
-  local_2f = (undefined1)param_2;
+  local_2f = (u8)param_2;
   local_2e = 0;
   local_28->kind = 0;
   local_28->sub_type = 0;
   local_28->flags = 200;
   do {
-    if ((iVar4 != 0) || (*(short *)(param_1 + 8) != 0x103)) {
+    if ((iVar4 != 0) || (*(s16 *)(param_1 + 8) != 0x103)) {
       local_30 = *puVar6;
-      local_28->type = *(short *)(puVar6 + 2);
-      FUN_8007e1b8(local_28,(&PTR_DAT_80017334)[*(short *)(puVar6 + 4)],*(undefined4 *)(param_1 + 4)
+      local_28->type = *(s16 *)(puVar6 + 2);
+      FUN_8007e1b8(local_28,(&PTR_DAT_80017334)[*(s16 *)(puVar6 + 4)],*(s32 *)(param_1 + 4)
                    ,&local_30);
     }
     iVar4 = iVar4 + 1;
@@ -45,7 +45,7 @@ void FUN_80033ff4(int param_1,short param_2)
     pbVar2 = &DAT_800a2430 + iVar4;
     iVar4 = iVar4 + 1;
     local_28->type = sVar5;
-    FUN_8007e1b8(local_28,(&PTR_DAT_80017334)[*pbVar2],*(undefined4 *)(param_1 + 4),&local_30);
+    FUN_8007e1b8(local_28,(&PTR_DAT_80017334)[*pbVar2],*(s32 *)(param_1 + 4),&local_30);
     sVar5 = sVar5 + 0x10;
   } while (iVar4 < 0x12);
   if (param_1->counter2 == '\0') {
@@ -71,7 +71,7 @@ void FUN_80033ff4(int param_1,short param_2)
     if (bVar1 != 0) {
       return;
     }
-    bVar1 = *(byte *)(param_1 + 0x20);
+    bVar1 = *(u8 *)(param_1 + 0x20);
     puVar3 = PTR_DAT_800a3a70;
     if (bVar1 == 1) goto LAB_800342c0;
     puVar3 = PTR_DAT_800a3a6c;
@@ -81,7 +81,7 @@ void FUN_80033ff4(int param_1,short param_2)
         if (bVar1 != 4) {
           return;
         }
-        iVar4 = FUN_800368d0(param_1,*(undefined1 *)(param_1 + 0x1f),*(undefined1 *)(param_1 + 0x1d)
+        iVar4 = FUN_800368d0(param_1,*(u8 *)(param_1 + 0x1f),*(u8 *)(param_1 + 0x1d)
                             );
         puVar3 = (&PTR_s_A_spiked_iron_ball_on_a_long_rop_800a2bf0)[iVar4 * 3];
       }

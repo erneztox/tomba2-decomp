@@ -12,13 +12,13 @@
 void FUN_8003ad48(int param_1)
 
 {
-  short sVar1;
-  byte bVar2;
-  char cVar3;
+  s16 sVar1;
+  u8 bVar2;
+  s8 cVar3;
   int iVar4;
   int iVar5;
   int iVar6;
-  undefined4 uVar7;
+  s32 uVar7;
   
   bVar2 = param_1->state;
   if (bVar2 != 1) {
@@ -54,7 +54,7 @@ void FUN_8003ad48(int param_1)
         return;
       }
     }
-    if (_DAT_800ed098 < (short)(ushort)param_1->counter1) {
+    if (_g_EntityPoolCount < (s16)(u16)param_1->counter1) {
       param_1->state = 2;
       return;
     }
@@ -63,29 +63,29 @@ void FUN_8003ad48(int param_1)
     param_1->sprite_flags = 0;
     param_1->state = param_1->state + '\x01';
     iVar6 = 0;
-    param_1->sprite_data = _DAT_800ecf58;
+    param_1->sprite_data = _g_OT_Data;
     iVar5 = param_1;
     if (param_1->counter1 != '\0') {
       do {
         iVar4 = FUN_8007aae8();
         iVar5->sprite_ptr1 = iVar4;
-        *(undefined2 *)(iVar4 + 6) = 0xffff;
-        **(undefined2 **)(iVar5 + 0xc0) = 0;
-        *(undefined2 *)(iVar5->sprite_ptr1 + 2) = 0;
-        *(undefined2 *)(iVar5->sprite_ptr1 + 4) = 0;
-        *(undefined2 *)(iVar5->sprite_ptr1 + 8) = 0;
-        *(undefined2 *)(iVar5->sprite_ptr1 + 10) = 0;
-        *(undefined2 *)(iVar5->sprite_ptr1 + 0xc) = 0;
+        *(s16 *)(iVar4 + 6) = 0xffff;
+        **(s16 **)(iVar5 + 0xc0) = 0;
+        *(s16 *)(iVar5->sprite_ptr1 + 2) = 0;
+        *(s16 *)(iVar5->sprite_ptr1 + 4) = 0;
+        *(s16 *)(iVar5->sprite_ptr1 + 8) = 0;
+        *(s16 *)(iVar5->sprite_ptr1 + 10) = 0;
+        *(s16 *)(iVar5->sprite_ptr1 + 0xc) = 0;
         FUN_80051b04(iVar5->sprite_ptr1,1,uVar7);
-        *(undefined1 *)(iVar5->sprite_ptr1 + 0x3e) = 0;
-        *(char *)(iVar5->sprite_ptr1 + 0x3f) = (char)iVar6;
+        *(u8 *)(iVar5->sprite_ptr1 + 0x3e) = 0;
+        *(s8*)(iVar5->sprite_ptr1 + 0x3f) = (char)iVar6;
         iVar6 = iVar6 + 1;
         iVar5 = iVar5 + 4;
       } while (iVar6 < (int)(uint)param_1->counter1);
     }
     sVar1 = _DAT_801003f8;
     param_1->pos_y = 0;
-    *(undefined2 *)(param_1 + 0x32) = 0xffc0;
+    *(s16 *)(param_1 + 0x32) = 0xffc0;
     param_1->rot_x = 0;
     param_1->rot_y = 0;
     param_1->rot_z = 0;

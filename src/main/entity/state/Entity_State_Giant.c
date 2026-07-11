@@ -10,12 +10,12 @@
 void FUN_80061c64(int param_1)
 
 {
-  byte bVar1;
-  ushort uVar2;
-  short sVar3;
+  u8 bVar1;
+  u16 uVar2;
+  s16 sVar3;
   int iVar4;
   int local_20;
-  undefined4 local_1c;
+  s32 local_1c;
   int local_18;
   
   FUN_80076d68();
@@ -34,7 +34,7 @@ void FUN_80061c64(int param_1)
         iVar4 = FUN_800532a0(param_1);
         if (iVar4 == 0) {
           param_1->angle_offset = 0;
-          *(undefined1 *)(param_1 + 0x148) = 0;
+          *(u8 *)(param_1 + 0x148) = 0;
           param_1->collision_state = 0;
           param_1->rot_z = 0;
           param_1->state_flag145 = 1;
@@ -119,7 +119,7 @@ void FUN_80061c64(int param_1)
         else {
           param_1->state_flag145 = 0;
           param_1->velocity_y = 0;
-          *(undefined1 *)(param_1 + 0x148) = 0;
+          *(u8 *)(param_1 + 0x148) = 0;
           param_1->angle_offset = 0;
           if (param_1->state_flag144 < 2) {
             param_1->state_flag144 = 0;
@@ -137,7 +137,7 @@ void FUN_80061c64(int param_1)
           local_18 = param_1->scale_y + local_18;
           FUN_800538e0(param_1,&local_20,0);
           FUN_8005314c(param_1);
-          if ((*(byte *)(param_1 + 0x149) & 2) == 0) {
+          if ((*(u8 *)(param_1 + 0x149) & 2) == 0) {
             param_1->behavior_state = 1;
           }
           else {

@@ -9,18 +9,18 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 Entity_CheckVisibility(int param_1)
+s32 Entity_CheckVisibility(int param_1)
 
 {
   uint uVar1;
-  undefined4 uVar2;
+  s32 uVar2;
   int iVar3;
   int iVar4;
   int iVar5;
 
   iVar5 = (int)param_1->pos_x - (int)_DAT_1f8000d2;
   iVar4 = (int)param_1->pos_y - (int)_DAT_1f8000d6;
-  iVar3 = (int)*(short *)(param_1 + 0x30) - (int)_DAT_1f8000da;
+  iVar3 = (int)*(s16 *)(param_1 + 0x30) - (int)_DAT_1f8000da;
   // Squared distance from camera
   uVar1 = FUN_80077fb0(iVar5 * iVar5 + iVar4 * iVar4 + iVar3 * iVar3);
   uVar1 = uVar1 & 0xffff;

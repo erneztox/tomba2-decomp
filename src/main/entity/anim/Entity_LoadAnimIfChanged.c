@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-undefined4 FUN_80054d14(int param_1,uint param_2,short param_3)
+s32 FUN_80054d14(int param_1,uint param_2,s16 param_3)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   
   if ((uint)param_1->anim_id == (param_2 & 0xff)) {
     uVar1 = 0;

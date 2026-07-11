@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80083de0(int param_1,int param_2,int param_3,uint param_4,byte *param_5)
+void FUN_80083de0(int param_1,int param_2,int param_3,uint param_4,u8 *param_5)
 
 {
   uint uVar1;
@@ -22,14 +22,14 @@ void FUN_80083de0(int param_1,int param_2,int param_3,uint param_4,byte *param_5
     param_4 = param_4 | 0x400;
   }
   *(uint *)(param_1 + 4) = uVar1 | param_4;
-  if (param_5 == (byte *)0x0) {
-    *(undefined4 *)(param_1 + 8) = 0;
+  if (param_5 == (u8 *)0x0) {
+    *(s32 *)(param_1 + 8) = 0;
   }
   else {
     *(uint *)(param_1 + 8) =
          (uint)(param_5->kind >> 3) << 0xf | (uint)(*param_5 >> 3) << 10 | 0xe2000000 |
-         (-(int)*(short *)(param_5 + 6) & 0xf8U) << 2 |
-         (int)(-(int)*(short *)(param_5 + 4) & 0xffU) >> 3;
+         (-(int)*(s16 *)(param_5 + 6) & 0xf8U) << 2 |
+         (int)(-(int)*(s16 *)(param_5 + 4) & 0xffU) >> 3;
   }
   return;
 }

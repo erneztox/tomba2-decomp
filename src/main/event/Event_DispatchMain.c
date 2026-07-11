@@ -8,22 +8,22 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-bool FUN_800346bc(void)
+s32 FUN_800346bc(void)
 
 {
-  bool bVar1;
-  byte bVar2;
-  undefined4 uVar3;
+  s32 bVar1;
+  u8 bVar2;
+  s32 uVar3;
   
   bVar2 = DAT_80100660;
   if (DAT_80100660 != 1) {
     if ((DAT_80100660 < 2) && (DAT_80100660 == 0)) {
       if (DAT_80100661 == 0) {
         FUN_80074bf8(0);
-        DAT_800bf81e = 2;
+        g_ActionState = 2;
         DAT_80100661 = DAT_80100661 + 1;
-        _DAT_80100664 = _DAT_800ecf58;
-        FUN_800782f0(DAT_800bf870,DAT_800bf871);
+        _DAT_80100664 = _g_OT_Data;
+        FUN_800782f0(g_GameState,g_LevelId);
       }
       else if (DAT_80100661 == 1) {
         DAT_80100660 = DAT_80100661;
@@ -44,7 +44,7 @@ bool FUN_800346bc(void)
   FUN_80039bcc(&DAT_80100660);
   if (DAT_80100669 != 0) {
     if (DAT_80100669 == 1) {
-      if ((_DAT_800e7e68 & 0x1000) == 0) {
+      if ((_g_PadState & 0x1000) == 0) {
         if (DAT_80100668 == 1) {
           FUN_800387e0(&DAT_80100660);
         }
@@ -64,16 +64,16 @@ bool FUN_800346bc(void)
     }
     goto LAB_80034968;
   }
-  if ((_DAT_800e7e68 & 0x3000) != 0) {
+  if ((_g_PadState & 0x3000) != 0) {
     DAT_80100660 = 2;
     FUN_80074bf8(1);
     goto LAB_80034968;
   }
-  if ((_DAT_800e7e68 & 0x4040) == 0) {
+  if ((_g_PadState & 0x4040) == 0) {
     uVar3 = 0x14;
-    if ((_DAT_800e7e68 & 0x8000) == 0) {
-      if ((_DAT_800e7e68 & 0x20) == 0) {
-        if ((_DAT_800e7e68 & 0x80) == 0) goto LAB_80034968;
+    if ((_g_PadState & 0x8000) == 0) {
+      if ((_g_PadState & 0x20) == 0) {
+        if ((_g_PadState & 0x80) == 0) goto LAB_80034968;
         if (DAT_80100668 == 0) goto LAB_800348c0;
         DAT_80100668 = DAT_80100668 - 1;
         FUN_800345d8(&DAT_80100660);

@@ -9,10 +9,10 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_8005344c(int param_1)
+s32 FUN_8005344c(int param_1)
 
 {
-  if (((DAT_800bf870 == '\x04') && ((_DAT_800bfe56 & 0x10) == 0)) &&
+  if (((g_GameState == '\x04') && ((_DAT_800bfe56 & 0x10) == 0)) &&
      ((param_1->type_flags & 0xf00) == 0x500)) {
     param_1->flag_16A = 0xc;
     param_1->behavior_state = 0x37;

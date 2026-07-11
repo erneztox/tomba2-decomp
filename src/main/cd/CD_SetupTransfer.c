@@ -6,7 +6,7 @@
 
 
 
-uint FUN_80099150(undefined4 param_1,uint param_2)
+uint FUN_80099150(s32 param_1,uint param_2)
 
 {
   if (0x7eff0 < param_2) {

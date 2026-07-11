@@ -9,8 +9,8 @@
 void FUN_80022a80(void)
 
 {
-  if (DAT_800bf870 != 3) {
-    (**(code **)(&DAT_8009d1d4 + (uint)DAT_800bf870 * 4))();
+  if (g_GameState != 3) {
+    (**(code **)(&DAT_8009d1d4 + (uint)g_GameState * 4))();
   }
   return;
 }

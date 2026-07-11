@@ -7,10 +7,10 @@
 
 
 #include "tomba.h"
-undefined4 FUN_80086764(void)
+s32 FUN_80086764(void)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   
   uVar1 = 0;
   if (((DAT_800abe98->flags & 1) != 0) && (uVar1 = 0, (*DAT_800abe98 & 1) != 0)) {

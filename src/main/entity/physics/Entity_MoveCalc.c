@@ -7,14 +7,14 @@
 
 
 #include "tomba.h"
-undefined4 FUN_8002423c(int param_1,int param_2)
+s32 FUN_8002423c(int param_1,int param_2)
 
 {
   int iVar1;
   int iVar2;
   uint uVar3;
-  undefined4 uVar4;
-  short sVar5;
+  s32 uVar4;
+  s16 sVar5;
   
   if (param_1->velocity_y < 0) {
     uVar4 = 0xffffffff;
@@ -31,10 +31,10 @@ undefined4 FUN_8002423c(int param_1,int param_2)
       sVar5 = (param_2->bounds_min_y + param_1->bounds_max_y) - param_1->bounds_min_y
       ;
       uVar4 = 0xffffffff;
-      if ((int)(uint)(ushort)((*(short *)(param_1 + 0x32) - *(short *)(param_2 + 0x32)) + sVar5) <=
+      if ((int)(uint)(u16)((*(s16 *)(param_1 + 0x32) - *(s16 *)(param_2 + 0x32)) + sVar5) <=
           (int)param_1->bounds_max_y + (int)param_2->bounds_max_y) {
         uVar4 = 2;
-        *(short *)(param_1 + 0x32) = *(short *)(param_2 + 0x32) - sVar5;
+        *(s16 *)(param_1 + 0x32) = *(s16 *)(param_2 + 0x32) - sVar5;
         param_1->collision_state = 1;
       }
     }

@@ -9,7 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8006cc1c(int param_1,short *param_2,short param_3)
+void FUN_8006cc1c(int param_1,s16 *param_2,s16 param_3)
 
 {
   int iVar1;
@@ -39,17 +39,17 @@ void FUN_8006cc1c(int param_1,short *param_2,short param_3)
   if ((iVar2 == -1) && (iVar1 == -0x80000000)) {
     trap(0x1800);
   }
-  *(short *)(param_1 + 0x78) = (short)(iVar4 / iVar2);
-  *(short *)(param_1 + 0x7a) = (short)(iVar3 / iVar2);
-  *(short *)(param_1 + 0x7c) = (short)(iVar1 / iVar2);
-  iVar4 = ((int)param_2->sub_type - (int)*(short *)(param_1 + 0x3a)) * 0x80;
+  *(s16 *)(param_1 + 0x78) = (s16)(iVar4 / iVar2);
+  *(s16 *)(param_1 + 0x7a) = (s16)(iVar3 / iVar2);
+  *(s16 *)(param_1 + 0x7c) = (s16)(iVar1 / iVar2);
+  iVar4 = ((int)param_2->sub_type - (int)*(s16 *)(param_1 + 0x3a)) * 0x80;
   if (iVar2 == 0) {
     trap(0x1c00);
   }
   if ((iVar2 == -1) && (iVar4 == -0x80000000)) {
     trap(0x1800);
   }
-  iVar3 = ((int)param_2->state - (int)*(short *)(param_1 + 0x3e)) * 0x80;
+  iVar3 = ((int)param_2->state - (int)*(s16 *)(param_1 + 0x3e)) * 0x80;
   if (iVar2 == 0) {
     trap(0x1c00);
   }
@@ -64,8 +64,8 @@ void FUN_8006cc1c(int param_1,short *param_2,short param_3)
     trap(0x1800);
   }
   param_1->bounds_min_y = param_3;
-  *(short *)(param_1 + 0x7e) = (short)(iVar4 / iVar2);
-  param_1->bounds_min_x = (short)(iVar3 / iVar2);
-  param_1->bounds_size = (short)(iVar1 / iVar2);
+  *(s16 *)(param_1 + 0x7e) = (s16)(iVar4 / iVar2);
+  param_1->bounds_min_x = (s16)(iVar3 / iVar2);
+  param_1->bounds_size = (s16)(iVar1 / iVar2);
   return;
 }

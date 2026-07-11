@@ -9,11 +9,11 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_8004491c(int param_1)
+s32 FUN_8004491c(int param_1)
 
 {
-  byte bVar1;
-  ushort uVar2;
+  u8 bVar1;
+  u16 uVar2;
   int iVar3;
   
   bVar1 = param_1->sub_state;
@@ -21,7 +21,7 @@ undefined4 FUN_8004491c(int param_1)
     if (param_1->sub_state2 != '\x01') {
       return 0;
     }
-    FUN_800440e4(&DAT_800e7e80,0xcf,2);
+    FUN_800440e4(&g_CollisionEntity,0xcf,2);
   }
   else if (bVar1 < 2) {
     if (bVar1 != 0) {
@@ -41,13 +41,13 @@ undefined4 FUN_8004491c(int param_1)
     }
     _DAT_800bf844 = iVar3;
     if (iVar3 != 0) {
-      if ((**(ushort **)(param_1 + 0x6c) & 0x2000) == 0) {
+      if ((**(u16 **)(param_1 + 0x6c) & 0x2000) == 0) {
         iVar3->flag_5E = 1;
       }
       else {
-        iVar3->draw_x = *(undefined2 *)(param_1 + 0x66);
+        iVar3->draw_x = *(s16 *)(param_1 + 0x66);
         iVar3->angle_delta = param_1->type_flags;
-        iVar3->flag_5E = *(undefined1 *)(param_1 + 0x68);
+        iVar3->flag_5E = *(u8 *)(param_1 + 0x68);
       }
       if ((param_1->event_id & 0x800) == 0) {
         iVar3->input_flags = iVar3->input_flags | 1;
@@ -60,19 +60,19 @@ undefined4 FUN_8004491c(int param_1)
       if (bVar1 != 3) {
         return 0;
       }
-      if ((DAT_800bf822 & 1) != 0) {
+      if ((g_EventInput & 1) != 0) {
         return 0;
       }
       return 1;
     }
-    if (DAT_800bf80e == '\0') {
+    if (g_ActionTrigger == '\0') {
       return 0;
     }
-    FUN_800440e4(&DAT_800e7e80,2,4);
+    FUN_800440e4(&g_CollisionEntity,2,4);
     _DAT_800bf844->state = 2;
     _DAT_800bf844->behavior_state = 0;
     _DAT_800bf844->action_state = 0;
-    FUN_80041718(param_1,(int)*(short *)(param_1 + 0x76),4);
+    FUN_80041718(param_1,(int)*(s16 *)(param_1 + 0x76),4);
     if ((param_1->event_id & 0x800) != 0) {
       return 1;
     }

@@ -7,11 +7,11 @@
 
 
 #include "tomba.h"
-undefined4 FUN_80041098(int param_1)
+s32 FUN_80041098(int param_1)
 
 {
   int iVar1;
-  undefined4 uVar2;
+  s32 uVar2;
   int iVar3;
   
   do {
@@ -19,7 +19,7 @@ undefined4 FUN_80041098(int param_1)
     if (param_1->anim_check < '\x01') {
       return 0;
     }
-    iVar1 = (*(code *)(&PTR_FUN_800a3b78)[**(ushort **)(param_1 + 0x6c) & 0x7ff])(param_1);
+    iVar1 = (*(code *)(&PTR_FUN_800a3b78)[**(u16 **)(param_1 + 0x6c) & 0x7ff])(param_1);
     if (iVar1 == 1) {
 LAB_80041150:
       uVar2 = 0;

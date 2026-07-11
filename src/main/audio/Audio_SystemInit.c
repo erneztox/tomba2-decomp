@@ -13,10 +13,10 @@ void FUN_80075130(void)
 {
   int iVar1;
   int iVar2;
-  undefined4 local_20;
-  undefined4 local_1c;
-  undefined2 local_18;
-  undefined2 local_16;
+  s32 local_20;
+  s32 local_1c;
+  s16 local_18;
+  s16 local_16;
   
   FUN_8008e040();
   FUN_800963a0(0x18);
@@ -33,7 +33,7 @@ void FUN_80075130(void)
   iVar1 = -0x7ff41c30;
   DAT_800be358 = 0;
   do {
-    *(undefined2 *)(iVar1 + 6) = 0;
+    *(s16 *)(iVar1 + 6) = 0;
     iVar2 = iVar2 + -1;
     iVar1 = iVar1 + -8;
   } while (-1 < iVar2);

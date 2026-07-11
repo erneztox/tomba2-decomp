@@ -6,7 +6,7 @@
 
 
 
-void FUN_800865c8(undefined4 *param_1,int param_2)
+void FUN_800865c8(s32 *param_1,int param_2)
 
 {
   int iVar1;

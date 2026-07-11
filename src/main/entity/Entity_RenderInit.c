@@ -8,16 +8,16 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-int FUN_800524b4(short param_1)
+int FUN_800524b4(s16 param_1)
 
 {
-  ushort uVar1;
-  ushort uVar2;
+  u16 uVar1;
+  u16 uVar2;
   int iVar3;
-  ushort uVar4;
+  u16 uVar4;
   
   if (DAT_800bf4f8 == '\0') {
-    _DAT_800ecf4a = FUN_80087bb8(0,2,0);
+    _g_RenderFlag = FUN_80087bb8(0,2,0);
     uVar4 = ~_DAT_800bf4fa;
     _DAT_800ecf48 = DAT_800bf4f9 >> 4 & 7;
     if (_DAT_800ecf48 == 4) {
@@ -38,7 +38,7 @@ int FUN_800524b4(short param_1)
         DAT_800ecf51 = FUN_80052198(DAT_800bf4ff,0x800ecf53);
       }
     }
-    iVar3 = (int)(short)uVar4;
+    iVar3 = (int)(s16)uVar4;
   }
   else {
     iVar3 = 0;

@@ -8,8 +8,8 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void FUN_8008ceb0(uint param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4,
-                 undefined4 param_5)
+void FUN_8008ceb0(uint param_1,s32 param_2,s32 param_3,s32 param_4,
+                 s32 param_5)
 
 {
   FUN_8008d0f0(1);

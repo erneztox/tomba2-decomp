@@ -9,14 +9,14 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-bool FUN_80070830(void)
+s32 FUN_80070830(void)
 
 {
-  bool bVar1;
+  s32 bVar1;
   
-  bVar1 = _DAT_1f800214->anim_check < '\x01';
+  bVar1 = _g_PlayerEntity->anim_check < '\x01';
   if (bVar1) {
-    FUN_80041718(_DAT_1f800214,0,2);
+    FUN_80041718(_g_PlayerEntity,0,2);
   }
   return bVar1;
 }

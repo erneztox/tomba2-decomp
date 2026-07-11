@@ -9,15 +9,15 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_80063158(byte *param_1)
+void FUN_80063158(u8 *param_1)
 
 {
-  byte bVar1;
-  short sVar2;
+  u8 bVar1;
+  s16 sVar2;
   
   sVar2 = param_1->speed;
   param_1->speed = sVar2 + -0x20;
-  if ((short)(sVar2 + -0x20) < 0x20) {
+  if ((s16)(sVar2 + -0x20) < 0x20) {
     param_1[0x154] = 0x20;
     param_1[0x155] = 0;
   }
@@ -30,10 +30,10 @@ void FUN_80063158(byte *param_1)
   }
   param_1->rot_y = sVar2;
   if (0x400 < param_1->timer2) {
-    if ((_DAT_800e7e68 & _DAT_1f800172) != 0) {
+    if ((_g_PadState & _g_InputMask) != 0) {
       param_1->flag_5E = param_1->flag_5E | 1;
     }
-    if (((param_1->game_flags & 7) == 0) && ((_DAT_800e7e68 & _DAT_1f800174) != 0)) {
+    if (((param_1->game_flags & 7) == 0) && ((_g_PadState & _DAT_1f800174) != 0)) {
       param_1->flag_5E = param_1->flag_5E | 2;
     }
   }
@@ -74,8 +74,8 @@ void FUN_80063158(byte *param_1)
     param_1[0x155] = 0;
     param_1[0x42] = 0;
     param_1[0x43] = 0;
-    if ((((_DAT_800ecf54 & _DAT_1f80016c) != 0) && (param_1->direction == 0)) ||
-       (((_DAT_800ecf54 & _DAT_1f80016e) != 0 && (param_1->direction == 1)))) {
+    if ((((_g_InputState & _DAT_1f80016c) != 0) && (param_1->direction == 0)) ||
+       (((_g_InputState & _DAT_1f80016e) != 0 && (param_1->direction == 1)))) {
       param_1->sub_action = 0;
       return;
     }

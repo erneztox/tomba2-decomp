@@ -6,13 +6,13 @@
 
 
 
-undefined4 FUN_80092e00(ushort param_1)
+s32 FUN_80092e00(u16 param_1)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   
   if (param_1 < 0x18) {
-    FUN_8009a170((int)(short)param_1);
+    FUN_8009a170((int)(s16)param_1);
     uVar1 = 0;
   }
   else {

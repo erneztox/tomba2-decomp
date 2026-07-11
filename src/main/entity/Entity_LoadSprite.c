@@ -6,15 +6,15 @@
 
 
 
-int FUN_8006fde8(undefined4 param_1,short param_2)
+int FUN_8006fde8(s32 param_1,s16 param_2)
 
 {
-  short sVar1;
+  s16 sVar1;
   int iVar2;
   int iVar3;
-  short *psVar4;
+  s16 *psVar4;
   
-  psVar4 = *(short **)(&DAT_800a3ea4 + (uint)DAT_800bf870 * 4);
+  psVar4 = *(s16 **)(&DAT_800a3ea4 + (uint)g_GameState * 4);
   sVar1 = *psVar4;
   if (*psVar4 != -1) {
     do {

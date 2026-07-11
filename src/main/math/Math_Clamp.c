@@ -6,7 +6,7 @@
 
 
 
-int FUN_8006ce74(short param_1,short param_2)
+int FUN_8006ce74(s16 param_1,s16 param_2)
 
 {
   int iVar1;

@@ -6,13 +6,13 @@
 
 
 
-undefined2 * FUN_800860a4(void)
+s16 * FUN_800860a4(void)
 
 {
-  undefined2 *puVar1;
-  undefined2 *puVar2;
+  s16 *puVar1;
+  s16 *puVar2;
   
-  puVar2 = (undefined2 *)0x0;
+  puVar2 = (s16 *)0x0;
   if (DAT_800aad18 != 0) {
     FUN_80080890();
     puVar1 = DAT_800abda8;

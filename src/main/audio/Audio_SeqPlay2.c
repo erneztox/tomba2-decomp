@@ -12,19 +12,19 @@
 void FUN_80075a80(void)
 
 {
-  char cVar1;
-  undefined1 uVar2;
-  undefined1 uVar3;
-  undefined1 uVar4;
-  undefined1 uVar5;
-  undefined1 uVar6;
-  short sVar7;
-  byte bVar8;
-  undefined1 *puVar9;
+  s8 cVar1;
+  u8 uVar2;
+  u8 uVar3;
+  u8 uVar4;
+  u8 uVar5;
+  u8 uVar6;
+  s16 sVar7;
+  u8 bVar8;
+  u8 *puVar9;
   char *pcVar10;
   uint uVar11;
   int iVar12;
-  char acStack_38 [24];
+  s8 acStack_38 [24];
   
   FUN_800998e4(acStack_38);
   pcVar10 = &DAT_800be238 + _DAT_800bed78 * 0xc;
@@ -91,7 +91,7 @@ LAB_80075bf8:
   FUN_80099490(&DAT_800be1f8);
   DAT_800be1f8 = 0;
   if ((_DAT_800bed80 != -1) &&
-     (sVar7 = FUN_8008e0c0((int)*(short *)(&DAT_800be368 + _DAT_800bed80 * 8),0), sVar7 == 0)) {
+     (sVar7 = FUN_8008e0c0((int)*(s16 *)(&DAT_800be368 + _DAT_800bed80 * 8),0), sVar7 == 0)) {
     if (DAT_800be22a == '\0') {
       FUN_80074e48(0);
     }

@@ -11,10 +11,10 @@
 void FUN_80050a80(void)
 
 {
-  FUN_80051794(&DAT_1f8000f8);
+  FUN_80051794(&g_GTE_WorkF8);
   FUN_80051794(0x1f800118);
-  _DAT_1f8000dc = 0;
-  _DAT_1f8000e0 = 0;
+  _g_CameraX = 0;
+  _g_CameraY = 0;
   _DAT_1f8000e4 = 0;
   _DAT_1f8000d0 = 0;
   _DAT_1f8000d4 = 0;

@@ -9,11 +9,11 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-void FUN_8003fed8(undefined1 *param_1)
+void FUN_8003fed8(u8 *param_1)
 
 {
-  short sVar1;
-  ushort uVar2;
+  s16 sVar1;
+  u16 uVar2;
   
   if (param_1->action_state == '\0') {
     FUN_80074590(0x19,0,0);
@@ -24,16 +24,16 @@ void FUN_8003fed8(undefined1 *param_1)
   else if (param_1->action_state == '\x01') {
     sVar1 = param_1->timer1;
     param_1->timer1 = sVar1 + -1;
-    if ((short)(sVar1 + -1) == -1) {
+    if ((s16)(sVar1 + -1) == -1) {
       param_1->behavior_state = 0;
       param_1->action_state = 0;
     }
-    *(ushort *)(param_1->sprite_ptr1 + 2) = (_DAT_1f80017c & 1) * 6;
+    *(u16 *)(param_1->sprite_ptr1 + 2) = (_g_FrameCounter2 & 1) * 6;
     uVar2 = FUN_8009a450();
-    **(short **)(param_1 + 0xc0) = ((uVar2 & 3) - 2) * 6;
+    **(s16 **)(param_1 + 0xc0) = ((uVar2 & 3) - 2) * 6;
   }
   if (param_1->flag_5E == '\x02') {
-    *(undefined1 *)(param_1->parent + 0x5e) = 0;
+    *(u8 *)(param_1->parent + 0x5e) = 0;
   }
   return;
 }

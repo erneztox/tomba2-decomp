@@ -12,11 +12,11 @@
 void FUN_800399fc(int param_1)
 
 {
-  byte bVar1;
-  short sVar2;
+  u8 bVar1;
+  s16 sVar2;
   int iVar3;
   uint uVar4;
-  undefined4 uVar5;
+  s32 uVar5;
   
   bVar1 = param_1->flags;
   if (bVar1 != 1) {
@@ -32,36 +32,36 @@ void FUN_800399fc(int param_1)
       FUN_80034634(param_1);
       param_1->flags = 0;
     }
-    sVar2 = FUN_8003990c(*(undefined1 *)(param_1 + 0x1f));
+    sVar2 = FUN_8003990c(*(u8 *)(param_1 + 0x1f));
     iVar3 = FUN_8007e038((int)sVar2,1);
     *(int *)(param_1 + 0x28) = iVar3;
     if (iVar3 != 0) {
       param_1->flags = param_1->flags + '\x01';
     }
   }
-  if ((_DAT_800e7e68 & 0x2000) != 0) {
+  if ((_g_PadState & 0x2000) != 0) {
 LAB_80039b30:
     param_1->counter2 = 0;
     FUN_80034670(param_1);
     return;
   }
-  if ((_DAT_800e7e68 & 0x40) == 0) {
-    if ((_DAT_800ecf54 & 0x40) == 0) {
-      if ((_DAT_800e7e68 & 0x10) != 0) {
-        *(undefined2 *)(param_1 + 0x18) = 0;
+  if ((_g_PadState & 0x40) == 0) {
+    if ((_g_InputState & 0x40) == 0) {
+      if ((_g_PadState & 0x10) != 0) {
+        *(s16 *)(param_1 + 0x18) = 0;
         iVar3 = FUN_800399c0(param_1);
         if (iVar3 == 0) goto LAB_80039b30;
         goto LAB_80039b88;
       }
-      if ((_DAT_800ecf54 & 0x10) == 0) goto LAB_80039ba4;
-      uVar4 = *(ushort *)(param_1 + 0x18) + 1;
-      *(short *)(param_1 + 0x18) = (short)uVar4;
+      if ((_g_InputState & 0x10) == 0) goto LAB_80039ba4;
+      uVar4 = *(u16 *)(param_1 + 0x18) + 1;
+      *(s16 *)(param_1 + 0x18) = (s16)uVar4;
       if (((int)(uVar4 * 0x10000) >> 0x10 < 9) || ((uVar4 & 1) == 0)) goto LAB_80039ba4;
       iVar3 = FUN_800399c0(param_1);
     }
     else {
-      uVar4 = *(ushort *)(param_1 + 0x18) + 1;
-      *(short *)(param_1 + 0x18) = (short)uVar4;
+      uVar4 = *(u16 *)(param_1 + 0x18) + 1;
+      *(s16 *)(param_1 + 0x18) = (s16)uVar4;
       if (((int)(uVar4 * 0x10000) >> 0x10 < 9) || ((uVar4 & 1) == 0)) goto LAB_80039ba4;
       iVar3 = FUN_80039978(param_1);
     }
@@ -71,14 +71,14 @@ LAB_80039b88:
     param_1->flags = param_1->flags + '\x01';
   }
   else {
-    *(undefined2 *)(param_1 + 0x18) = 0;
+    *(s16 *)(param_1 + 0x18) = 0;
     iVar3 = FUN_80039978(param_1);
     if (iVar3 != 0) goto LAB_80039b88;
     uVar5 = 0x12;
   }
   FUN_80074590(uVar5,0,0);
 LAB_80039ba4:
-  *(char *)(param_1 + 0x1c) = *(char *)(param_1 + 0x1f) - *(char *)(param_1 + 0x1e);
-  FUN_8007dc38(*(undefined4 *)(param_1 + 0x28));
+  *(s8*)(param_1 + 0x1c) = *(s8*)(param_1 + 0x1f) - *(s8*)(param_1 + 0x1e);
+  FUN_8007dc38(*(s32 *)(param_1 + 0x28));
   return;
 }

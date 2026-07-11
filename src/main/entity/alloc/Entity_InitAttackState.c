@@ -10,8 +10,8 @@
 void FUN_8006923c(int param_1)
 
 {
-  undefined2 uVar1;
-  byte bVar2;
+  s16 uVar1;
+  u8 bVar2;
   
   bVar2 = param_1->anim_id >> 1 & 3;
   if (bVar2 == 2) {

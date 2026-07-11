@@ -10,7 +10,7 @@
 void FUN_80083c70(int param_1,int param_2)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   if (param_2 == 0) {
     bVar1 = param_1->sub_action & 0xfd;

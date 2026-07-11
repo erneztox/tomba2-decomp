@@ -14,10 +14,10 @@ void FUN_80026c88(void)
   int iVar2;
   
   iVar2 = 0;
-  pcVar1 = &DAT_800ec188;
+  pcVar1 = &g_SpriteQueue;
   do {
     if (*pcVar1 != '\0') {
-      (*(code *)(&PTR_FUN_8009d52c)[(byte)pcVar1->flags])(pcVar1);
+      (*(code *)(&PTR_FUN_8009d52c)[(u8)pcVar1->flags])(pcVar1);
     }
     iVar2 = iVar2 + 1;
     pcVar1 = pcVar1 + 0x40;

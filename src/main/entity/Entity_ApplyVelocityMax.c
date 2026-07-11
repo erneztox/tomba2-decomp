@@ -10,8 +10,8 @@
 void FUN_80066538(int param_1)
 
 {
-  ushort uVar1;
-  short sVar2;
+  u16 uVar1;
+  s16 sVar2;
   
   uVar1 = param_1->rot_z + 0x40;
   param_1->rot_z = uVar1;

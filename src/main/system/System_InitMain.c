@@ -12,26 +12,26 @@
 void FUN_8001cfc8(void)
 
 {
-  bool bVar1;
+  s32 bVar1;
   int iVar2;
   int iVar3;
   int iVar4;
   int iVar5;
   uint uVar6;
-  undefined1 *puVar7;
-  undefined1 local_28;
-  undefined1 local_27;
-  undefined1 auStack_20->counter1;
+  u8 *puVar7;
+  u8 local_28;
+  u8 local_27;
+  u8 auStack_20->counter1;
   
-  iVar2 = _DAT_1f800138;
-  puVar7 = (undefined1 *)(_DAT_1f800138 + 0x48);
-  _DAT_1f800138->sprite_param3 = 2;
+  iVar2 = _g_CurrentEntity;
+  puVar7 = (u8 *)(_g_CurrentEntity + 0x48);
+  _g_CurrentEntity->sprite_param3 = 2;
   FUN_8001cf00(0);
   FUN_8001ce90(0xc,0,puVar7);
   local_28 = 1;
   local_27 = iVar2->camera_flags;
   bVar1 = false;
-  FUN_8008a00c(*(undefined4 *)(iVar2 + 0x54),auStack_20);
+  FUN_8008a00c(*(s32 *)(iVar2 + 0x54),auStack_20);
 LAB_8001d034:
   do {
     if ((DAT_800be0e4 & 0x10) != 0) {
@@ -95,6 +95,6 @@ LAB_8001d1d8:
     FUN_80051f80(1);
     goto LAB_8001d1d8;
   }
-  if (*(char *)(iVar2 + 0x67) != '\x01') goto LAB_8001d260;
+  if (*(s8*)(iVar2 + 0x67) != '\x01') goto LAB_8001d260;
   goto LAB_8001d0bc;
 }

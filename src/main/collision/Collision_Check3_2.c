@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_800493e8(int param_1,short param_2,short param_3)
+void FUN_800493e8(int param_1,s16 param_2,s16 param_3)
 
 {
   FUN_80049418(param_1,(int)param_2,(int)param_3,(int)param_1->rot_y);

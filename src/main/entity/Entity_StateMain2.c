@@ -10,7 +10,7 @@
 void FUN_8005cdf8(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   int iVar2;
   int iVar3;
   
@@ -57,7 +57,7 @@ LAB_8005d150:
       param_1->gte_flags = 0;
       FUN_80054198(param_1);
       FUN_80055e28(param_1,0);
-      *(undefined *)(param_1 + 0x14a) =
+      *(void*)(param_1 + 0x14a) =
            (&DAT_800a46c4)
            [(uint)param_1->direction * 0x10 + (uint)param_1->behavior_flags];
       if (param_1->flag_175 != '\0') {
@@ -91,7 +91,7 @@ LAB_8005d150:
         return;
       }
       FUN_80055e28(param_1,0);
-      *(undefined *)(param_1 + 0x14a) =
+      *(void*)(param_1 + 0x14a) =
            (&DAT_800a46c4)
            [(uint)param_1->direction * 0x10 + (uint)param_1->behavior_flags];
       FUN_80054b34(param_1,1,param_1->anim_select);

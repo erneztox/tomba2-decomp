@@ -10,16 +10,16 @@
 void FUN_8007ed5c(uint param_1)
 
 {
-  undefined **ppuVar1;
+  void **ppuVar1;
   int iVar2;
   int iVar3;
-  short sVar4;
+  s16 sVar4;
   uint uVar5;
   uint uVar6;
   int iVar7;
-  undefined local_38->state;
-  short local_28->state;
-  ushort local_20->state;
+  void local_38->state;
+  s16 local_28->state;
+  u16 local_20->state;
   
   uVar6 = 0;
   iVar7 = 0x68;
@@ -37,7 +37,7 @@ void FUN_8007ed5c(uint param_1)
     iVar7 = iVar7 + 0x18;
     ppuVar1 = local_38 + uVar6;
     uVar6 = uVar6 + 1;
-    FUN_80079374((int)local_28[iVar3],(int)(short)local_20[iVar2],(uint)(uVar5 == 0) << 1,*ppuVar1,0
+    FUN_80079374((int)local_28[iVar3],(int)(s16)local_20[iVar2],(uint)(uVar5 == 0) << 1,*ppuVar1,0
                 );
     uVar5 = param_1 ^ uVar6;
   } while ((int)uVar6 < 2);

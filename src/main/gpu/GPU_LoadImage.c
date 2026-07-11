@@ -7,7 +7,7 @@
 
 
 #include "tomba.h"
-void FUN_80081218(undefined4 param_1,undefined4 param_2)
+void FUN_80081218(s32 param_1,s32 param_2)
 
 {
   FUN_80080fd4(s_LoadImage_8001bf2c,param_1);

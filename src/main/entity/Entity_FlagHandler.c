@@ -9,10 +9,10 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80053bf8(byte *param_1,int param_2)
+s32 FUN_80053bf8(u8 *param_1,int param_2)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   if (param_1[0x61] != 0) {
     if ((param_1[0x61] & 1) != 0) {
@@ -23,11 +23,11 @@ undefined4 FUN_80053bf8(byte *param_1,int param_2)
           param_1->physics_flag = 1;
         }
         else if (bVar1 < 4) {
-          if (((bVar1 == 2) && (((int)*(short *)(param_1 + 0x16c) & 0xc000U) == 0xc000)) &&
+          if (((bVar1 == 2) && (((int)*(s16 *)(param_1 + 0x16c) & 0xc000U) == 0xc000)) &&
              (FUN_80047b5c(param_1,0), (_DAT_1f8001a8 & 8) != 0)) {
             FUN_8004960c(param_1,0);
             FUN_80049760(param_1);
-            param_1->draw_angle = _DAT_1f8001a0;
+            param_1->draw_angle = _g_CollisionNormalX;
           }
         }
         else if (bVar1 == 4) {

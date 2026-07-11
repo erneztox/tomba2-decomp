@@ -9,40 +9,40 @@
 /* WARNING: Removing unreachable block (ram,0x800828a0) */
 
 #include "tomba.h"
-undefined4 FUN_80082734(undefined4 *param_1,undefined4 *param_2)
+s32 FUN_80082734(s32 *param_1,s32 *param_2)
 
 {
-  undefined4 uVar1;
+  s32 uVar1;
   uint uVar2;
   int iVar3;
   int iVar4;
-  short sVar5;
-  short sVar6;
+  s16 sVar5;
+  s16 sVar6;
   int iVar7;
   
   FUN_800834a0();
-  if (*(short *)(param_1 + 1) < 0) {
+  if (*(s16 *)(param_1 + 1) < 0) {
     sVar5 = 0;
   }
   else {
-    sVar5 = *(short *)(param_1 + 1);
-    if (DAT_800a59a4 < *(short *)(param_1 + 1)) {
+    sVar5 = *(s16 *)(param_1 + 1);
+    if (DAT_800a59a4 < *(s16 *)(param_1 + 1)) {
       sVar5 = DAT_800a59a4;
     }
   }
-  sVar6 = *(short *)((int)param_1 + 6);
-  *(short *)(param_1 + 1) = sVar5;
-  if (*(short *)((int)param_1 + 6) < 0) {
+  sVar6 = *(s16 *)((int)param_1 + 6);
+  *(s16 *)(param_1 + 1) = sVar5;
+  if (*(s16 *)((int)param_1 + 6) < 0) {
     sVar5 = 0;
   }
   else {
     sVar5 = DAT_800a59a6;
-    if (*(short *)((int)param_1 + 6) <= DAT_800a59a6) goto LAB_800827dc;
+    if (*(s16 *)((int)param_1 + 6) <= DAT_800a59a6) goto LAB_800827dc;
   }
   sVar6 = sVar5;
 LAB_800827dc:
-  *(short *)((int)param_1 + 6) = sVar6;
-  iVar4 = (int)*(short *)(param_1 + 1) * (int)sVar6 + 1;
+  *(s16 *)((int)param_1 + 6) = sVar6;
+  iVar4 = (int)*(s16 *)(param_1 + 1) * (int)sVar6 + 1;
   iVar7 = iVar4 - (iVar4 >> 0x1f) >> 5;
   if (iVar4 / 2 < 1) {
     uVar1 = 0xffffffff;

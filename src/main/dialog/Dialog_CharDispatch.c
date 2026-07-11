@@ -9,14 +9,14 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined1 FUN_80035738(undefined4 param_1,undefined4 param_2,int param_3)
+u8 FUN_80035738(s32 param_1,s32 param_2,int param_3)
 
 {
-  char cVar1;
-  undefined1 uVar2;
+  s8 cVar1;
+  u8 uVar2;
   int iVar3;
   uint uVar4;
-  undefined4 uVar5;
+  s32 uVar5;
   uint uVar6;
   
   uVar6 = 0;
@@ -45,21 +45,21 @@ LAB_80035f2c:
   case 0x66:
   case 0x67:
   case 0x68:
-    if (DAT_800bf870 == 6) {
+    if (g_GameState == 6) {
       uVar5 = 0x17;
       cVar1 = DAT_800bf912;
     }
-    else if (DAT_800bf870 < 7) {
-      if (DAT_800bf870 != 5) goto LAB_80035f50;
+    else if (g_GameState < 7) {
+      if (g_GameState != 5) goto LAB_80035f50;
       uVar5 = 0x16;
       cVar1 = DAT_800bf911;
     }
-    else if (DAT_800bf870 == 7) {
+    else if (g_GameState == 7) {
       uVar5 = 0x1b;
       cVar1 = DAT_800bf913;
     }
     else {
-      if (DAT_800bf870 != 8) goto LAB_80035f50;
+      if (g_GameState != 8) goto LAB_80035f50;
       uVar5 = 0x1e;
       cVar1 = DAT_800bf914;
     }
@@ -67,12 +67,12 @@ joined_r0x80035aa8:
     if (cVar1 != -1) goto LAB_80035f40;
     break;
   case 0x62:
-    switch(DAT_800bf870) {
+    switch(g_GameState) {
     case 0:
       uVar6 = FUN_80035338(param_1,param_2,param_3,0x10);
       break;
     case 1:
-      if (DAT_800bf816 != '\0') {
+      if (g_ActionFlag != '\0') {
 joined_r0x80035aa8:
         uVar5 = 1;
         cVar1 = DAT_800bf910;
@@ -103,7 +103,7 @@ LAB_80035c68:
     }
     break;
   case 99:
-    switch(DAT_800bf870) {
+    switch(g_GameState) {
     case 0:
       if (DAT_800bf8b8 == -1) {
 LAB_80035814:
@@ -121,7 +121,7 @@ LAB_80035814:
       uVar6 = FUN_80035338(param_1,param_2,param_3,0x10);
       break;
     case 1:
-      if (DAT_800bf816 != '\0') goto joined_r0x80035aa8;
+      if (g_ActionFlag != '\0') goto joined_r0x80035aa8;
       uVar6 = FUN_80035424(param_1,param_2,param_3);
       if (uVar6 != 0) goto LAB_80035f50;
       uVar6 = FUN_80035338(param_1,param_2,param_3,0x11);
@@ -137,12 +137,12 @@ LAB_80035814:
     }
     break;
   case 100:
-    switch(DAT_800bf870) {
+    switch(g_GameState) {
     case 0:
       uVar6 = FUN_80035338(param_1,param_2,param_3,0x10);
       break;
     case 1:
-      if (DAT_800bf816 != '\0') goto joined_r0x80035aa8;
+      if (g_ActionFlag != '\0') goto joined_r0x80035aa8;
       uVar6 = FUN_80035424(param_1,param_2,param_3);
       if (uVar6 != 0) goto LAB_80035f50;
       uVar6 = FUN_80035338(param_1,param_2,param_3,0x11);
@@ -166,12 +166,12 @@ LAB_80035814:
     }
     break;
   case 0x65:
-    switch(DAT_800bf870) {
+    switch(g_GameState) {
     case 0:
       uVar6 = FUN_80035338(param_1,param_2,param_3,0x10);
       break;
     case 1:
-      if (DAT_800bf816 != '\0') goto joined_r0x80035aa8;
+      if (g_ActionFlag != '\0') goto joined_r0x80035aa8;
       uVar6 = FUN_80035424(param_1,param_2,param_3);
       if (uVar6 != 0) goto LAB_80035f50;
       uVar6 = FUN_80035338(param_1,param_2,param_3,0x11);
@@ -193,7 +193,7 @@ LAB_80035814:
     }
     break;
   case 0x77:
-    if (DAT_800bf870 == 0) {
+    if (g_GameState == 0) {
       if (DAT_800bf902 == '\0') break;
       if (((_DAT_800bf854->combat_flag == '\x01') && ((DAT_800bf9ea & 0xf) != 0xf)) &&
          (uVar6 = FUN_80035640(2), uVar6 != 0)) {
@@ -201,7 +201,7 @@ LAB_80035814:
         func_0x801252c0(param_1,3,0);
       }
     }
-    else if (DAT_800bf870 == 2) {
+    else if (g_GameState == 2) {
       uVar5 = 5;
       goto LAB_80035f40;
     }
@@ -218,12 +218,12 @@ LAB_80035814:
     goto LAB_80035ee4;
   case 0x7c:
   case 0x7d:
-    if (DAT_800bf870 == 2) {
+    if (g_GameState == 2) {
       uVar5 = 5;
       goto LAB_80035f40;
     }
     uVar6 = 0;
-    if (DAT_800bf870 != 1) break;
+    if (g_GameState != 1) break;
     uVar6 = func_0x80112784();
     if (param_3 != 1) {
       if (uVar6 == 0) {
@@ -280,7 +280,7 @@ LAB_80035f58:
   }
   else {
     DAT_800bf80a = 1;
-    DAT_800bf80b = (undefined1)param_2;
+    DAT_800bf80b = (u8)param_2;
     FUN_8004d650(param_2,1);
     uVar2 = 0;
   }

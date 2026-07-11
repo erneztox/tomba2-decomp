@@ -9,14 +9,14 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_80080940(char *param_1,undefined4 param_2)
+s32 FUN_80080940(char *param_1,s32 param_2)
 
 {
-  char cVar1;
-  bool bVar2;
+  s8 cVar1;
+  s32 bVar2;
   int in_zero;
   int iVar3;
-  undefined4 uVar4;
+  s32 uVar4;
   char *pcVar5;
   int *piVar6;
   char *pcVar7;

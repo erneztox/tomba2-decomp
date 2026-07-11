@@ -9,11 +9,11 @@
 void FUN_80085d8c(void)
 
 {
-  bool bVar1;
+  s32 bVar1;
   uint uVar2;
   int iVar3;
   uint uVar4;
-  undefined4 *puVar5;
+  s32 *puVar5;
   
   if (DAT_800aad18 == 0) {
     FUN_8009a730(s_unexpected_interrupt__04x__8001c064,*DAT_800abda4);
@@ -26,7 +26,7 @@ void FUN_80085d8c(void)
       puVar5 = &DAT_800aad1c;
       for (uVar4 = 0; (uVar2 != 0 && ((int)uVar4 < 0xb)); uVar4 = uVar4 + 1) {
         if ((uVar2 & 1) != 0) {
-          *DAT_800abda4 = ~(ushort)(1 << (uVar4 & 0x1f));
+          *DAT_800abda4 = ~(u16)(1 << (uVar4 & 0x1f));
           if ((code *)*puVar5 != (code *)0x0) {
             (*(code *)*puVar5)();
           }

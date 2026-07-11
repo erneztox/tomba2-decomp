@@ -9,10 +9,10 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
-undefined4 FUN_800665f4(int param_1)
+s32 FUN_800665f4(int param_1)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   
   uVar1 = param_1->type_flags & 0xf00;
   if (((int)param_1->type_flags & 0x8000U) == 0) {
@@ -26,12 +26,12 @@ undefined4 FUN_800665f4(int param_1)
     param_1->action_state = 0xb;
     return 1;
   }
-  if (DAT_800bf870 == '\0') {
+  if (g_GameState == '\0') {
     func_0x801140d0(param_1);
     param_1->state_flag144 = 0;
   }
   else {
-    if (DAT_800bf870 == '\x06') {
+    if (g_GameState == '\x06') {
       if ((_DAT_800bfe56 & 0x40) != 0) {
         func_0x80110dd0(param_1);
         param_1->state_flag144 = 0;
@@ -41,12 +41,12 @@ undefined4 FUN_800665f4(int param_1)
       param_1->action_state = 0xb;
     }
     else {
-      if (DAT_800bf870 == '\b') {
+      if (g_GameState == '\b') {
         func_0x8010f110(param_1);
         param_1->state_flag144 = 0;
         goto LAB_800666d0;
       }
-      if (DAT_800bf870 == '\x0e') {
+      if (g_GameState == '\x0e') {
         func_0x8010a3dc(param_1);
       }
     }
@@ -56,6 +56,6 @@ LAB_800666d0:
   param_1->rot_z = 0;
   param_1->angle_offset = 0;
   param_1->state_flag145 = 0;
-  *(undefined1 *)(param_1 + 0x148) = 0;
+  *(u8 *)(param_1 + 0x148) = 0;
   return 1;
 }

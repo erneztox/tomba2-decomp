@@ -432,6 +432,18 @@ MAPPINGS = {
     0x80086210: ("BIOS_CallB0_8", "BIOS call stub: jumps to 0xB0"),
     0x80086220: ("BIOS_CallB0_9", "BIOS call stub: jumps to 0xB0"),
 
+    # -- MDEC (video decoder / FMV playback) --
+    0x80087EAC: ("MDEC_InitDecode", "Initializes MDEC decode: gets frame buffer, calls setup"),
+    0x80087F00: ("MDEC_SetFrameBuffer", "Sets MDEC frame buffer pointer and status byte"),
+    0x80088210: ("MDEC_CalcFrameSize", "Calculates MDEC frame size from header fields (e3, e9, ec)"),
+    0x80088A54: ("MDEC_CmdDecode", "Sends MDEC decode command (0x43) with data pointer"),
+    0x80088A74: ("MDEC_CmdReset", "Sends MDEC reset command (0x45), clears pointer"),
+    0x80088A88: ("MDEC_CmdSetIQ", "Sends MDEC set IQ table command (0x4C)"),
+    0x80088AA8: ("MDEC_CmdSetScale", "Sends MDEC set scale command (0x46)"),
+    0x80088AC8: ("MDEC_CmdSetSize", "Sends MDEC set size command (0x47)"),
+    0x80088AE8: ("MDEC_CmdSetBS", "Sends MDEC set bitstream command (0x4B)"),
+    0x80088DBC: ("MDEC_SwapCommand", "Swaps MDEC command bytes: saves 0x37 to 0x38, clears 0x37"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

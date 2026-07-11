@@ -6,6 +6,7 @@
  */
 // Entity_Behavior_Trail
 
+#include "tomba.h"
 void Entity_Behavior_Trail(int param_1)
 
 {

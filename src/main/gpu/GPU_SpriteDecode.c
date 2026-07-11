@@ -6,6 +6,7 @@
 
 
 
+#include "tomba.h"
 void FUN_8007ceec(int param_1,ushort *param_2,short *param_3)
 
 {

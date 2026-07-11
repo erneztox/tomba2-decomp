@@ -8,6 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
+#include "tomba.h"
 undefined4 FUN_80041194(int param_1,short param_2,byte param_3,int param_4)
 
 {

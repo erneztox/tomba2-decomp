@@ -8,6 +8,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
+#include "tomba.h"
 int * Entity_ProcessAnimFrame(int *param_1,undefined4 param_2)
 
 {

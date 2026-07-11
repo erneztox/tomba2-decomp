@@ -3,6 +3,7 @@
  * @note Original address: 0x80085050
  */
 
+#include "tomba.h"
 short * GTE_RotateVectorY(uint param_1,short *param_2)
 
 {

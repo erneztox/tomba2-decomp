@@ -8,6 +8,7 @@
 
 /* WARNING: Type propagation algorithm not settling */
 
+#include "tomba.h"
 undefined4 FUN_80076d68(int param_1)
 
 {

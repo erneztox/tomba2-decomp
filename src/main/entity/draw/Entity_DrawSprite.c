@@ -9,6 +9,7 @@
 /* WARNING: Removing unreachable block (ram,0x8002e280) */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
+#include "tomba.h"
 void FUN_8002e1e8(int param_1)
 
 {

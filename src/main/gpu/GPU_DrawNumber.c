@@ -9,6 +9,7 @@
 /* WARNING: Removing unreachable block (ram,0x8007c314) */
 /* WARNING: Removing unreachable block (ram,0x8007c390) */
 
+#include "tomba.h"
 short * FUN_8007c2a4(short *param_1,short *param_2,undefined1 param_3,uint param_4,
                     undefined1 param_5)
 

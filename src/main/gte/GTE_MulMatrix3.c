@@ -6,6 +6,7 @@
 
 
 
+#include "tomba.h"
 uint * FUN_80084250(uint *param_1,ushort *param_2)
 
 {

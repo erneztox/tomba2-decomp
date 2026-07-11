@@ -7,6 +7,7 @@
  */
 // Entity_AdvanceAnimScript
 
+#include "tomba.h"
 void Entity_AdvanceAnimScript(int param_1)
 
 {

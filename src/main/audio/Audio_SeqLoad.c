@@ -8,6 +8,7 @@
 
 /* WARNING: Removing unreachable block (ram,0x8008e5b0) */
 
+#include "tomba.h"
 void FUN_8008e410(short param_1,short param_2,byte param_3)
 
 {

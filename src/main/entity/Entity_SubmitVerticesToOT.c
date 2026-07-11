@@ -6,6 +6,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
+#include "tomba.h"
 void Entity_SubmitVerticesToOT(int param_1,undefined4 *param_2,int param_3)
 
 {

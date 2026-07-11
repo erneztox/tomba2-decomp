@@ -4,6 +4,7 @@
  */
 // GTE_LoadScaleMatrix
 
+#include "tomba.h"
 void GTE_LoadScaleMatrix(int *param_1,short param_2,short param_3,short param_4)
 
 {

@@ -6,6 +6,7 @@
 
 
 
+#include "tomba.h"
 short * FUN_8007c780(short *param_1,short *param_2,undefined1 param_3,short param_4)
 
 {

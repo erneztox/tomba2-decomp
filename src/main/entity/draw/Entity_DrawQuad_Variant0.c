@@ -4,6 +4,7 @@
  */
 // Entity_DrawQuad_Variant0
 
+#include "tomba.h"
 void Entity_DrawQuad_Variant0(int param_1,uint param_2,uint param_3)
 
 {

@@ -4,6 +4,7 @@
  */
 // GTE_LoadRotationFromSVec
 
+#include "tomba.h"
 undefined2 * GTE_LoadRotationFromSVec(short *param_1,undefined2 *param_2)
 
 {

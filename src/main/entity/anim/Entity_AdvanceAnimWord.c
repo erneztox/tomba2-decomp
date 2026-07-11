@@ -6,6 +6,7 @@
  */
 // Entity_AdvanceAnimWord
 
+#include "tomba.h"
 void Entity_AdvanceAnimWord(int param_1)
 
 {

@@ -1,3 +1,4 @@
+#include "tomba.h"
 )
 /**
  * @brief Byte-matching decompilation

@@ -6,6 +6,7 @@
 
 
 
+#include "tomba.h"
 int FUN_8004d19c(undefined4 param_1,undefined1 *param_2,int param_3)
 
 {

@@ -15,6 +15,7 @@
 /* WARNING: Removing unreachable block (ram,0x80057f94) */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
+#include "tomba.h"
 void FUN_80057dc0(int param_1,int param_2)
 
 {

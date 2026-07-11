@@ -6,6 +6,8 @@
 
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+#include "tomba.h"
 #include "common.h"
 
 uint FUN_8001dd00(char *param_1,char *param_2,int param_3,uint param_4)

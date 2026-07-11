@@ -6,6 +6,7 @@
  */
 // Entity_AdvanceAnimByte
 
+#include "tomba.h"
 void Entity_AdvanceAnimByte(int param_1)
 
 {

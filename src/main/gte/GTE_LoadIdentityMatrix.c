@@ -3,6 +3,7 @@
  * @note Original address: 0x80051794
  */
 
+#include "tomba.h"
 void GTE_LoadIdentityMatrix(undefined4 *param_1)
 
 {

@@ -6,6 +6,7 @@
 
 
 
+#include "tomba.h"
 void FUN_8002b8f4(int param_1)
 
 {

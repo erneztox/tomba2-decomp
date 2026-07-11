@@ -4,6 +4,7 @@
  */
 // Entity_CopyVertexToSP
 
+#include "tomba.h"
 void Entity_CopyVertexToSP(short *param_1,undefined4 param_2,int param_3)
 
 {

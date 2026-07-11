@@ -11,6 +11,7 @@
 /* WARNING: Removing unreachable block (ram,0x8004c9e4) */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
+#include "tomba.h"
 void FUN_8004c930(undefined1 *param_1)
 
 {

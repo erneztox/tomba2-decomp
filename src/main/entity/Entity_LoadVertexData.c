@@ -4,6 +4,7 @@
  */
 // Entity_LoadVertexData
 
+#include "tomba.h"
 void Entity_LoadVertexData(int param_1,undefined4 *param_2,int param_3)
 
 {

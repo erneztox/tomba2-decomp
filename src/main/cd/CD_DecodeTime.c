@@ -6,6 +6,7 @@
 
 
 
+#include "tomba.h"
 int FUN_8008a110(byte *param_1)
 
 {

@@ -6,6 +6,7 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
+#include "tomba.h"
 void Entity_UpdateState(int param_1)
 
 {

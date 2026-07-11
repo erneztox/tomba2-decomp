@@ -6,6 +6,7 @@
  */
 // Audio_PlaySoundEffect
 
+#include "tomba.h"
 undefined4 Audio_PlaySoundEffect(uint param_1,char param_2,char param_3)
 
 {

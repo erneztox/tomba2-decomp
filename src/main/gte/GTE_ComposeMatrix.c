@@ -3,6 +3,7 @@
  * @note Original address: 0x80084110
  */
 
+#include "tomba.h"
 uint * GTE_ComposeMatrix(undefined4 *param_1,ushort *param_2,uint *param_3)
 
 {

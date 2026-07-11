@@ -6,6 +6,7 @@
 
 
 
+#include "tomba.h"
 undefined4 FUN_8003f7d8(int param_1,undefined4 *param_2,int *param_3)
 
 {

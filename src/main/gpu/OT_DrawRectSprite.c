@@ -4,6 +4,7 @@
  */
 // OT_DrawRectSprite
 
+#include "tomba.h"
 void OT_DrawRectSprite(int param_1,ushort *param_2)
 
 {

@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_80063f9c(int param_1)
 
 {
@@ -130,13 +131,13 @@ switchD_8006409c_default:
     }
   }
   if (g_GameState == '\0') {
-    func_0x8010ad68(param_1,iVar5);
+    Overlay_8010ad68(param_1,iVar5);
   }
   else if (g_GameState == '\x06') {
-    func_0x80113acc(param_1,iVar5);
+    Overlay_80113acc(param_1,iVar5);
   }
   if (g_GameState == '\x0f') {
-    func_0x8010b194(param_1,iVar5);
+    Overlay_8010b194(param_1,iVar5);
   }
   return;
 }

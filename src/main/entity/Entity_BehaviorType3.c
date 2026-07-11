@@ -41,7 +41,7 @@ void FUN_8002b8f4(int param_1)
   param_1->scale_y = param_1->anim_data;
   param_1->sprite_data = *(int *)(param_1 + 0x40);
   if ((param_1->anim_data == 0) && (*(int *)(param_1 + 0x40) == 0)) {
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
     return;
   }
   if (param_1->sub_type - 0x14 < 2) {

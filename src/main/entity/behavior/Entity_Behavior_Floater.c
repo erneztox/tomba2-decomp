@@ -37,7 +37,7 @@ void FUN_80029530(int param_1)
   }
   param_1->sprite_data = *(int *)(param_1 + 0x40);
   if (*(int *)(param_1 + 0x40) == 0) {
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
   }
   else {
     iVar2 = (int)_DAT_1f800168;

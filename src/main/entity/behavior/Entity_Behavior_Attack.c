@@ -37,7 +37,7 @@ void FUN_8006b494(u8 *param_1)
       iVar2 = FUN_8006b390(param_1);
       if ((iVar2 != 0) && (param_1->kind == '\x04')) {
         param_1->move_mode = 2;
-        param_1->state = 2;
+        param_1->state = STATE_FINISH;
       }
     }
     break;

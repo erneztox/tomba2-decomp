@@ -31,7 +31,7 @@ void FUN_8004e414(int param_1)
       return;
     }
     if (bVar1 == 2) {
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
       g_CurrentOverlay = 0;
       FUN_80074f24(g_GameState);
       return;
@@ -128,7 +128,7 @@ LAB_8004e778:
           param_1->action_state = 5;
           return;
         }
-        param_1->state = 2;
+        param_1->state = STATE_FINISH;
         uVar5 = 99;
       }
       else {
@@ -136,7 +136,7 @@ LAB_8004e778:
           param_1->action_state = 8;
           return;
         }
-        param_1->state = 2;
+        param_1->state = STATE_FINISH;
         uVar5 = 0x54;
       }
       goto LAB_8004e728;
@@ -149,7 +149,7 @@ LAB_8004e778:
       return;
     }
     if (*(s16 *)(param_1 + 100) == -1) {
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
       return;
     }
     break;
@@ -168,7 +168,7 @@ LAB_8004e778:
       *(u8 *)(*(s16 *)(param_1 + 0x66) + -0x7ff4074c) = 3;
       return;
     }
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
     uVar5 = 0x66;
 LAB_8004e728:
     FUN_8004ed94(uVar5,0x41);
@@ -180,14 +180,14 @@ LAB_8004e728:
       return;
     }
     FUN_8004ed94(0x65,0x41);
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
     return;
   case 9:
     if (*(s8*)(param_1->parent + 4) != '\x02') {
       return;
     }
     *(u8 *)(param_1->parent + 4) = 3;
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
     FUN_8004ed94(0x54,0x41);
     return;
   default:

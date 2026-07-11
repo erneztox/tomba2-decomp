@@ -35,7 +35,7 @@ int FUN_8004d19c(s32 param_1,u8 *param_2,int param_3)
     *(s16 *)(iVar2 + 0x66) = 0;
     FUN_8004aac4(iVar2);
     if (param_3 == 0) {
-      iVar2->state = 2;
+      iVar2->state = STATE_FINISH;
     }
   }
   return iVar2;

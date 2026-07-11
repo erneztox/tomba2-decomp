@@ -15,7 +15,7 @@ void FUN_8007263c(int param_1)
   bVar1 = param_1->state;
   if (bVar1 == 1) {
     if (**(s16 **)(param_1 + 0x10) == -2) {
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
     }
     else {
       param_1->flags = 1;

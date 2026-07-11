@@ -37,7 +37,7 @@ void FUN_80071b44(int param_1,int param_2,s8 param_3)
     FUN_80074590(0x11,0xf,0);
     iVar1 = iVar3;
     if (_DAT_800bf83c != 0) {
-      _DAT_800bf83c->state = 3;
+      _DAT_800bf83c->state = STATE_DEAD;
     }
   }
   _DAT_800bf83c = iVar1;

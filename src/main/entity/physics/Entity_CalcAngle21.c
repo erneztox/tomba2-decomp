@@ -35,7 +35,7 @@ s32 FUN_8001fdb4(u8 *param_1,int param_2,int param_3,s32 param_4)
     FUN_80054d14(&g_CollisionEntity,param_4,uVar2);
     FUN_80053d0c(&g_CollisionEntity);
     *param_1 = 2;
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
     param_1->behavior_state = 1;
     param_1->action_state = 0;
     _DAT_800e7e90 = param_1;
@@ -44,7 +44,7 @@ s32 FUN_8001fdb4(u8 *param_1,int param_2,int param_3,s32 param_4)
   else {
     *param_1 = 2;
     iVar1 = _g_AngleTarget;
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
     param_1->behavior_state = 2;
     param_1->action_state = 0;
     param_1->move_mode = (char)(iVar1 + 0x800 >> 4);

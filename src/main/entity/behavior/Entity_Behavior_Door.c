@@ -38,7 +38,7 @@ void FUN_80026864(int param_1)
     }
     if (bVar1 == 2) {
       if ((g_CurrentOverlay == '\0') || (g_CurrentOverlay == '\x02')) {
-        param_1->state = 3;
+        param_1->state = STATE_DEAD;
       }
       sVar2 = *(s16 *)(param_1 + 8);
       goto LAB_80026984;

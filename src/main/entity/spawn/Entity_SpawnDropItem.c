@@ -22,7 +22,7 @@ void FUN_80072114(s32 param_1,s16 param_2)
     iVar1->draw_y = 0x7c7e;
     FUN_80074590(8,5,0);
     if (_DAT_800bf83c != 0) {
-      _DAT_800bf83c->state = 3;
+      _DAT_800bf83c->state = STATE_DEAD;
     }
     _DAT_800bf83c = iVar1;
     if (_g_FrameCounter < (s16)(u16)g_ItemCount) {

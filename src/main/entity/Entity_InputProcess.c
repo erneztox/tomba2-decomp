@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_8005950c(int param_1)
 
 {
@@ -66,10 +67,10 @@ void FUN_8005950c(int param_1)
     _g_InputState = uVar3;
     break;
   case 5:
-    func_0x8018bd30(param_1);
+    Overlay_8018bd30(param_1);
     goto LAB_800596d0;
   case 6:
-    func_0x8018be40(param_1);
+    Overlay_8018be40(param_1);
 LAB_800596d0:
     FUN_800597ac(param_1);
     break;

@@ -34,7 +34,7 @@ void FUN_80032918(int param_1)
   }
   param_1->scale_y = param_1->anim_data;
   if (param_1->anim_data == 0) {
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
   }
   else {
     iVar2 = FUN_8002b278(param_1);

@@ -75,7 +75,7 @@ void FUN_8008d110(void)
                (((u16)_DAT_80104b80->state >> 10 & 0x1f) == _DAT_80102700)) {
               if (((int)_DAT_801026ec == (uint)(u16)_DAT_80104b80->state) &&
                  ((_DAT_801026e8 == 0 || (_DAT_801026e8 == (u16)_DAT_80104b80->state)))) {
-                if (_DAT_80104b80->state == 0) {
+                if (_DAT_80104b80->state == STATE_INIT) {
                   _DAT_801026e8 = (uint)(u16)_DAT_80104b80->state;
                   _DAT_801026ec = 0;
                   if ((_DAT_8010271c != 0) && (_DAT_8010271c <= _DAT_801026e8)) {

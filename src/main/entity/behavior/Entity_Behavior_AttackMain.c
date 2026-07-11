@@ -83,7 +83,7 @@ LAB_8006c2a8:
     if (sVar2 == 1) {
       DAT_800e807e = 0;
       *param_1 = 2;
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
       if ((DAT_800e7fc6 & 1) != 0) {
         DAT_800e7ef9 = 0;
       }
@@ -93,7 +93,7 @@ LAB_8006c2a8:
     DAT_800e807e = 0;
     *param_1 = 2;
     param_1->move_mode = 2;
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
   }
   return;
 }

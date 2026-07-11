@@ -49,7 +49,7 @@ void FUN_8006c608(u8 *param_1)
   param_1->timer1 = sVar2 + -1;
   if (sVar2 == 1) {
     *param_1 = 2;
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
   }
   iVar3 = FUN_80083f50((int)param_1->rot_y);
   *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + (iVar3 * param_1->anim_counter >> 4);

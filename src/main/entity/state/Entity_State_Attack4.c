@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_8006762c(int param_1)
 
 {
@@ -31,22 +32,22 @@ void FUN_8006762c(int param_1)
   case 6:
     _DAT_1f8001a4 = _DAT_1f80019e;
     if (g_GameState == '\0') {
-      func_0x8010caec(param_1);
+      Overlay_8010caec(param_1);
     }
     else if (g_GameState == '\x06') {
       if ((_DAT_800bfe56 & 0x40) == 0) {
         FUN_80074590(0x8b,0,0);
       }
-      func_0x801147cc(param_1);
+      Overlay_801147cc(param_1);
     }
     else if (g_GameState == '\b') {
-      func_0x8011370c(param_1);
+      Overlay_8011370c(param_1);
     }
     else if (g_GameState == '\r') {
-      func_0x8010acc0(param_1);
+      Overlay_8010acc0(param_1);
     }
     else if (g_GameState == '\x0e') {
-      func_0x8010b4f4(param_1);
+      Overlay_8010b4f4(param_1);
     }
     param_1->state_flag145 = 0;
     param_1->state_flag146 = 0;

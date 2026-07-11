@@ -17,7 +17,7 @@ s32 FUN_80051b70(int param_1,int param_2,int param_3)
   
   bVar1 = _g_EntityPoolCount < 1;
   if (bVar1) {
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
   }
   else {
     param_1->counter1 = 1;

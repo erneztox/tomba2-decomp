@@ -138,7 +138,7 @@ LAB_8005c79c:
       else {
         iVar4 = FUN_8005c138(param_1,iVar5);
         if (iVar4 == 0) {
-          iVar5->state = 3;
+          iVar5->state = STATE_DEAD;
         }
         cVar2 = '\t';
         if (param_1->sub_state != '\b') {

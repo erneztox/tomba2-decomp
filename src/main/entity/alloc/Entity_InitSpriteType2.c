@@ -11,7 +11,7 @@ void FUN_8002343c(u8 *param_1)
 
 {
   *param_1 = 2;
-  param_1->state = 2;
+  param_1->state = STATE_FINISH;
   param_1->behavior_state = 2;
   param_1->action_state = 0;
   return;

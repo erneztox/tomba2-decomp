@@ -33,7 +33,7 @@ int FUN_8006ff10(s32 param_1,s16 param_2)
       }
       iVar2->input_flags = 1;
       iVar2->event_param = 0;
-      iVar2->state = 2;
+      iVar2->state = STATE_FINISH;
       return iVar2;
     }
     puVar1 = &DAT_800a4bb9 + iVar3;

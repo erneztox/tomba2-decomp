@@ -31,7 +31,7 @@ void FUN_800783dc(void)
   _DAT_800e7ffe = _DAT_800bf89e;
   DAT_800e7ff4 = g_EntityFlags;
   _g_FrameCounter = _DAT_800e7ff0;
-  if (g_GameState == 3) {
+  if (g_GameState == GAMESTATE_3) {
     _DAT_800e7e90 = FUN_80072ddc(0,3,4,0x1b);
     _DAT_800e7e90->callback = 0x8010b37c;
   }

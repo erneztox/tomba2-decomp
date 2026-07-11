@@ -33,7 +33,7 @@ void FUN_8007dde0(int param_1)
     }
   }
   else if (bVar1 == 2) {
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
   }
   else if (bVar1 == 3) {
     g_EventInput = g_EventInput & 0xf7;

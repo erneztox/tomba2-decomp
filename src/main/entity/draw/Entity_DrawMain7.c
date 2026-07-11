@@ -135,7 +135,7 @@ LAB_80052f48:
         g_CurrentOverlay = 0;
         g_GameMode = 0;
         g_CameraEntity = 0;
-        param_1->state = 3;
+        param_1->state = STATE_DEAD;
       }
       _g_CameraTargetY = _g_CameraTargetY + 10;
       *(s16 *)(param_1 + 0x32) = *(s16 *)(param_1 + 0x32) + 10;

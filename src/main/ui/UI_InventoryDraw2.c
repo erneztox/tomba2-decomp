@@ -28,7 +28,7 @@ void FUN_8004e928(int param_1)
       return;
     }
     if (bVar1 == 2) {
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
       g_CurrentOverlay = 0;
       return;
     }
@@ -58,7 +58,7 @@ LAB_8004ea08:
     bVar1 = g_ItemFlag >> 1;
     goto LAB_8004ea08;
   }
-  param_1->state = 2;
+  param_1->state = STATE_FINISH;
 LAB_8004ea1c:
   param_1->flags = 1;
   return;

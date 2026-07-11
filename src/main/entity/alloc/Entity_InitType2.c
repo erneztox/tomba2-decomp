@@ -52,7 +52,7 @@ void FUN_80058648(u8 *param_1,int param_2)
   _DAT_1f80018e = 0;
   FUN_80057fd4(param_1);
   if (param_2 != 0) goto LAB_8005889c;
-  if (g_GameState == 3) {
+  if (g_GameState == GAMESTATE_3) {
     param_1->kind = 0;
   }
   else {
@@ -62,7 +62,7 @@ LAB_800587c4:
       param_1->kind = 1;
     }
     else {
-      if ((g_GameState == 7) || (g_GameState == 0x14)) goto LAB_800587c4;
+      if ((g_GameState == GAMESTATE_7) || (g_GameState == GAMESTATE_TITLEx14)) goto LAB_800587c4;
 LAB_800587d4:
       param_1->kind = 0;
     }

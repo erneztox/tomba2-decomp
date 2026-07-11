@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 s32 FUN_8006271c(int param_1,int param_2)
 
 {
@@ -51,7 +52,7 @@ s32 FUN_8006271c(int param_1,int param_2)
   FUN_80024af0(param_1);
   sVar1 = (s16)iVar2;
   if (g_GameState == '\0') {
-    iVar7 = func_0x801148d8(param_1,iVar7);
+    iVar7 = Overlay_801148d8(param_1,iVar7);
     iVar6 = _g_GTE_Work84;
     if (iVar7 == 0) {
 LAB_800629f0:
@@ -78,7 +79,7 @@ LAB_800629f0:
   }
   else {
     if ((g_GameState != '\x06') ||
-       (iVar7 = func_0x80110e60(param_1,iVar7), iVar6 = _g_GTE_Work84, iVar7 == 0))
+       (iVar7 = Overlay_80110e60(param_1,iVar7), iVar6 = _g_GTE_Work84, iVar7 == 0))
     goto LAB_800629f0;
     param_1->parent = _g_GTE_Work84;
     iVar7 = FUN_80083f50((int)sVar1);

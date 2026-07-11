@@ -54,7 +54,7 @@ LAB_800448d4:
       return 0;
     }
     if ((param_1->event_id & 0x4000) == 0) {
-      _DAT_800bf844->state = 2;
+      _DAT_800bf844->state = STATE_FINISH;
     }
     else {
       _DAT_800bf844->draw_x = *(s16 *)(param_1 + 0x66);

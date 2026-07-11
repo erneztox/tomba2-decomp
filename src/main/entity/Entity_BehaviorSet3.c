@@ -66,7 +66,7 @@ void FUN_80068fbc(u8 *param_1)
   iVar3 = FUN_80077a4c(param_1,0,0,0);
   if ((iVar3 == 0) &&
      (sVar2 = param_1->timer2, param_1->timer2 = sVar2 + -1, sVar2 == 1)) {
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
     param_1->move_mode = 2;
     *param_1 = 2;
   }

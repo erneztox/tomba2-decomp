@@ -7,6 +7,7 @@
 
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_80040558(u8 *param_1)
 
 {
@@ -40,7 +41,7 @@ void FUN_80040558(u8 *param_1)
       }
       if (param_1->flag_5E == '\x02') {
         param_1->flags = *(u8 *)(param_1->parent + 1);
-        func_0x8012866c(param_1);
+        Overlay_8012866c(param_1);
         FUN_80077e7c(param_1);
         return;
       }
@@ -50,7 +51,7 @@ LAB_8004099c:
           return;
         }
         if (g_GameState == '\b') {
-          iVar3 = func_0x8012e168(param_1);
+          iVar3 = Overlay_8012e168(param_1);
         }
         else {
           iVar3 = FUN_8007778c(param_1);
@@ -98,7 +99,7 @@ LAB_8004099c:
       FUN_8003fc00(param_1);
       break;
     case 2:
-      func_0x801286f4(param_1);
+      Overlay_801286f4(param_1);
       break;
     default:
       goto switchD_80040648_caseD_3;
@@ -106,13 +107,13 @@ LAB_8004099c:
       FUN_8003fc78(param_1);
       break;
     case 5:
-      func_0x80120188(param_1);
+      Overlay_80120188(param_1);
       break;
     case 6:
       iVar3 = FUN_8003fc8c(param_1);
       goto LAB_800406b8;
     case 7:
-      iVar3 = func_0x801146e8(param_1);
+      iVar3 = Overlay_801146e8(param_1);
 LAB_800406b8:
       if (iVar3 == 0) {
         return;
@@ -150,7 +151,7 @@ switchD_80040648_caseD_3:
     FUN_80040390(param_1);
     break;
   case 5:
-    func_0x80114934(param_1);
+    Overlay_80114934(param_1);
   }
   switchparam_1->flag_5E {
   case 0:
@@ -163,22 +164,22 @@ switchD_80040648_caseD_3:
     cVar2 = *(s8*)(param_1->parent + 1);
     param_1->flags = cVar2;
     if (cVar2 != '\0') {
-      func_0x8012866c(param_1);
+      Overlay_8012866c(param_1);
       FUN_80077e7c(param_1);
       param_1->collision_state = 0;
       goto LAB_800408cc;
     }
     break;
   case 5:
-    func_0x801201e0(param_1);
+    Overlay_801201e0(param_1);
     break;
   case 7:
-    func_0x8012b118(param_1);
+    Overlay_8012b118(param_1);
 switchD_800407d0_caseD_0:
     if ((g_ActionFlag == '\0') || ((u16)g_HurtParam != param_1->type_flags)) {
       if ((param_1->alloc_flags & 0x80) == 0) {
         if (g_GameState == '\b') {
-          iVar3 = func_0x8012e168(param_1);
+          iVar3 = Overlay_8012e168(param_1);
         }
         else {
           iVar3 = FUN_8007778c(param_1);

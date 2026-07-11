@@ -30,7 +30,7 @@ s32 FUN_80053e50(u8 *param_1)
       param_1[0x171] = 0;
       param_1->state_flag146 = 0;
 LAB_80053fac:
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
       param_1->behavior_state = 1;
       param_1->action_state = 0;
       g_TimerFlag = 1;

@@ -22,7 +22,7 @@ s32 FUN_800519e0(int param_1,uint param_2,int *param_3,s16 *param_4)
   if ((int)_g_EntityPoolCount < (int)param_2) {
     uVar3 = 1;
     param_1->counter2 = 0;
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
   }
   else {
     iVar5 = 0;

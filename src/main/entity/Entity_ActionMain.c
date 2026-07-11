@@ -7,6 +7,7 @@
 
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_80058f5c(int param_1)
 
 {
@@ -116,13 +117,13 @@ LAB_8005919c:
     break;
   case 0x18:
     if (g_GameState == '\x04') {
-      func_0x801139f4(param_1);
+      Overlay_801139f4(param_1);
     }
     else if (g_GameState == '\x06') {
-      func_0x801144f4(param_1);
+      Overlay_801144f4(param_1);
     }
     else if (g_GameState == '\x0e') {
-      func_0x8010af4c(param_1);
+      Overlay_8010af4c(param_1);
     }
     break;
   case 0x19:
@@ -133,10 +134,10 @@ LAB_80059220:
     break;
   case 0x1a:
     if (g_GameState == '\x05') {
-      func_0x80110380(param_1);
+      Overlay_80110380(param_1);
     }
     else {
-      func_0x8010b73c(param_1);
+      Overlay_8010b73c(param_1);
     }
     break;
   case 0x1b:
@@ -147,21 +148,21 @@ LAB_80059220:
     break;
   case 0x1d:
     if (g_GameState == '\0') {
-      func_0x8010c87c(param_1);
+      Overlay_8010c87c(param_1);
       return;
     }
     if (g_GameState == '\x06') {
-      func_0x801145ec(param_1);
+      Overlay_801145ec(param_1);
       return;
     }
     if (g_GameState != '\b') {
       if (g_GameState != '\x0e') {
         return;
       }
-      func_0x8010b3e8(param_1);
+      Overlay_8010b3e8(param_1);
       return;
     }
-    func_0x801135c8(param_1);
+    Overlay_801135c8(param_1);
     if (g_CurrentOverlay != '\0') {
       return;
     }
@@ -205,45 +206,45 @@ LAB_800594b4:
     }
     break;
   case 0x29:
-    func_0x8010f304(param_1);
+    Overlay_8010f304(param_1);
     break;
   case 0x2a:
-    func_0x801135e8(param_1);
+    Overlay_801135e8(param_1);
     break;
   case 0x2b:
-    func_0x80113608(param_1);
+    Overlay_80113608(param_1);
     break;
   case 0x2c:
     param_1->flag_17B = 1;
-    func_0x801125e4(param_1);
+    Overlay_801125e4(param_1);
     break;
   case 0x2d:
-    func_0x80112418(param_1);
+    Overlay_80112418(param_1);
     break;
   case 0x33:
     if (g_GameState == '\x05') {
-      func_0x8010f948(param_1);
+      Overlay_8010f948(param_1);
     }
     else if (g_GameState == '\x12') {
-      func_0x80109f7c(param_1);
+      Overlay_80109f7c(param_1);
     }
     break;
   case 0x34:
-    func_0x8011411c(param_1);
+    Overlay_8011411c(param_1);
     break;
   case 0x35:
-    func_0x801144fc(param_1);
+    Overlay_801144fc(param_1);
     break;
   case 0x36:
     if (g_GameState == '\x06') {
-      func_0x80112e24(param_1);
+      Overlay_80112e24(param_1);
     }
     else {
-      func_0x801149b8(param_1);
+      Overlay_801149b8(param_1);
     }
     break;
   case 0x37:
-    func_0x801150c4(param_1);
+    Overlay_801150c4(param_1);
     break;
   case 0x38:
     FUN_800620d0(param_1);
@@ -256,7 +257,7 @@ LAB_800594b4:
     FUN_800624b4(param_1);
     break;
   case 0x3b:
-    func_0x801097c8(param_1);
+    Overlay_801097c8(param_1);
   }
   return;
 }

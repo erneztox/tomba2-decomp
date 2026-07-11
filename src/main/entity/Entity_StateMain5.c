@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_80059ed8(int param_1)
 
 {
@@ -149,29 +150,29 @@ LAB_8005a1ac:
     switch(g_GameState) {
     case 0:
       if (g_ActionFlag == '\0') {
-        func_0x8010c5a8(param_1,pcVar7);
+        Overlay_8010c5a8(param_1,pcVar7);
       }
       break;
     case 4:
       if (g_ActionFlag == '\0') {
-        func_0x80115afc(param_1,pcVar7);
+        Overlay_80115afc(param_1,pcVar7);
       }
       break;
     case 6:
       if (g_ActionFlag == '\0') {
-        func_0x80114294(param_1,pcVar7);
+        Overlay_80114294(param_1,pcVar7);
       }
       break;
     case 8:
       if (pcVar7->physics_flag == '\0') {
-        func_0x8011332c(param_1,pcVar7);
+        Overlay_8011332c(param_1,pcVar7);
       }
       break;
     case 0xb:
-      func_0x8010bc10(param_1,pcVar7);
+      Overlay_8010bc10(param_1,pcVar7);
       break;
     case 0xe:
-      func_0x8010b238(param_1,pcVar7);
+      Overlay_8010b238(param_1,pcVar7);
     }
   }
   return;

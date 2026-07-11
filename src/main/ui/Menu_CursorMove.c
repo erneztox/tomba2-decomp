@@ -38,7 +38,7 @@ void FUN_8003a470(int param_1,s16 *param_2)
       if (*(s8*)((int)param_2 + 0x3f) != '\0') {
         return;
       }
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
       return;
     }
     if (bVar1 != 0) {

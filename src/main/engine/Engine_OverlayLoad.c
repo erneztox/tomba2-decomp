@@ -1,3 +1,4 @@
+#include "overlay.h"
 /**
  * @brief Engine overlay loader: switch on param, loads overlays
  * @note Original: func_8001D41C at 0x8001D41C
@@ -23,67 +24,67 @@ void FUN_8001d41c(s16 param_1,s16 param_2)
   else {
     switch(g_GameState) {
     case 0:
-      func_0x801464c0((int)param_1,(int)param_2);
+      Overlay_801464c0((int)param_1,(int)param_2);
       break;
     case 1:
-      func_0x801342c8((int)param_1,(int)param_2);
+      Overlay_801342c8((int)param_1,(int)param_2);
       break;
     case 2:
-      func_0x8012816c((int)param_1,(int)param_2);
+      Overlay_8012816c((int)param_1,(int)param_2);
       break;
     case 4:
-      func_0x8013e3d4((int)param_1,(int)param_2);
+      Overlay_8013e3d4((int)param_1,(int)param_2);
       break;
     case 5:
-      func_0x8013aa50((int)param_1,(int)param_2);
+      Overlay_8013aa50((int)param_1,(int)param_2);
       break;
     case 6:
-      func_0x801404dc((int)param_1,(int)param_2);
+      Overlay_801404dc((int)param_1,(int)param_2);
       break;
     case 7:
-      func_0x80130fb8((int)param_1,(int)param_2);
+      Overlay_80130fb8((int)param_1,(int)param_2);
       break;
     case 8:
-      func_0x8013d670((int)param_1,(int)param_2);
+      Overlay_8013d670((int)param_1,(int)param_2);
       break;
     case 9:
-      func_0x8010df68((int)param_1,(int)param_2);
+      Overlay_8010df68((int)param_1,(int)param_2);
       break;
     case 10:
-      func_0x80118d40((int)param_1,(int)param_2);
+      Overlay_80118d40((int)param_1,(int)param_2);
       break;
     case 0xb:
-      func_0x801178a0((int)param_1,(int)param_2);
+      Overlay_801178a0((int)param_1,(int)param_2);
       break;
     case 0xc:
-      func_0x80117194((int)param_1,(int)param_2);
+      Overlay_80117194((int)param_1,(int)param_2);
       break;
     case 0xd:
-      func_0x80116ee0((int)param_1,(int)param_2);
+      Overlay_80116ee0((int)param_1,(int)param_2);
       break;
     case 0xe:
-      func_0x801173c4((int)param_1,(int)param_2);
+      Overlay_801173c4((int)param_1,(int)param_2);
       break;
     case 0xf:
-      func_0x8011a35c((int)param_1,(int)param_2);
+      Overlay_8011a35c((int)param_1,(int)param_2);
       break;
     case 0x10:
-      func_0x8010d248((int)param_1,(int)param_2);
+      Overlay_8010d248((int)param_1,(int)param_2);
       break;
     case 0x11:
-      func_0x8010c528((int)param_1,(int)param_2);
+      Overlay_8010c528((int)param_1,(int)param_2);
       break;
     case 0x12:
-      func_0x8010c9ac((int)param_1,(int)param_2);
+      Overlay_8010c9ac((int)param_1,(int)param_2);
       break;
     case 0x13:
-      func_0x8010d154((int)param_1,(int)param_2);
+      Overlay_8010d154((int)param_1,(int)param_2);
       break;
     case 0x14:
-      func_0x801173d4((int)param_1,(int)param_2);
+      Overlay_801173d4((int)param_1,(int)param_2);
       break;
     case 0x15:
-      func_0x801106a8((int)param_1,(int)param_2);
+      Overlay_801106a8((int)param_1,(int)param_2);
     }
   }
   return;

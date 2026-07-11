@@ -26,7 +26,7 @@ LAB_800895a0:
     if (param_1->state == '\x01') {
       bVar1 = param_1->state;
       if (10 < bVar1) {
-        param_1->state = 2;
+        param_1->state = STATE_FINISH;
         param_1->state = 0xff;
         return;
       }

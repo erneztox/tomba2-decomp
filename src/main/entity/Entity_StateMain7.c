@@ -7,6 +7,7 @@
 
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_8005c8a0(int param_1)
 
 {
@@ -196,16 +197,16 @@ LAB_8005cc64:
         }
       }
       if (g_GameState == '\0') {
-        func_0x8010c89c(param_1,0);
+        Overlay_8010c89c(param_1,0);
       }
       else if (g_GameState == '\x06') {
-        func_0x8011460c(param_1,0);
+        Overlay_8011460c(param_1,0);
       }
       else if (g_GameState == '\b') {
-        func_0x801120c4(param_1,0);
+        Overlay_801120c4(param_1,0);
       }
       else if (g_GameState == '\x0e') {
-        func_0x8010b408(param_1,0);
+        Overlay_8010b408(param_1,0);
       }
     }
   }

@@ -10,7 +10,7 @@
 void FUN_800531dc(int param_1)
 
 {
-  if (g_GameState == 5) {
+  if (g_GameState == GAMESTATE_LEVEL) {
     if (2 < g_LevelId - 1) {
       return;
     }
@@ -32,7 +32,7 @@ void FUN_800531dc(int param_1)
       }
       return;
     }
-    if ((g_GameState == 1) && (*(s16 *)(param_1 + 0x32) < -0x295a)) {
+    if ((g_GameState == GAMESTATE_1) && (*(s16 *)(param_1 + 0x32) < -0x295a)) {
       *(s16 *)(param_1 + 0x32) = 0xd6a6;
       return;
     }

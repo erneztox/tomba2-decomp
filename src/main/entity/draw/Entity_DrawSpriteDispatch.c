@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 s32 FUN_80024d34(int param_1)
 
 {
@@ -25,7 +26,7 @@ s32 FUN_80024d34(int param_1)
       puVar3 = puVar3 + 1;
       cVar1 = g_State182;
       if (((*pbVar2 & 4) != 0) && (pbVar2->kind == 2)) {
-        func_0x80114320(param_1);
+        Overlay_80114320(param_1);
         cVar1 = g_State182;
       }
     }

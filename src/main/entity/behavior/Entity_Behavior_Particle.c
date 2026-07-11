@@ -30,7 +30,7 @@ void FUN_80027254(int param_1)
     param_1->prev = param_1->prev + sVar2 * 0x100;
     if ((param_1->pos_y + 0x800 < (int)sVar4) ||
        (sVar2 = *(s16 *)(param_1 + 8), *(s16 *)(param_1 + 8) = sVar2 + -1, sVar2 == 1)) {
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
     }
   }
   else if (bVar1 < 2) {

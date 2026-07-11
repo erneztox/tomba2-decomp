@@ -60,10 +60,10 @@ LAB_800540f8:
     *param_1 = 3;
     param_1->state_flag146 = 0;
     param_1->state_flag145 = 0;
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
   }
   else {
-    if (param_1->state == 2) {
+    if (param_1->state == STATE_FINISH) {
       return;
     }
     param_1[0x172] = 0x5a;
@@ -74,7 +74,7 @@ LAB_800540f8:
     *param_1 = 3;
     param_1->state_flag146 = 0;
     param_1->state_flag145 = 0;
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
   }
   param_1->behavior_state = 0;
   param_1->action_state = 0;

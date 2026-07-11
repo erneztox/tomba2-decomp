@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_8004aac4(u8 *param_1)
 
 {
@@ -100,10 +101,10 @@ LAB_8004ad84:
       goto LAB_8004add8;
     case 6:
       if (g_GameState == '\x02') {
-        func_0x80128034(param_1,0);
+        Overlay_80128034(param_1,0);
       }
       else if (g_GameState == '\a') {
-        func_0x8012ab88(param_1,0);
+        Overlay_8012ab88(param_1,0);
       }
       break;
     default:
@@ -147,7 +148,7 @@ LAB_8004add8:
         FUN_8004d79c((int)param_1->angle_delta,0);
       }
     }
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
     return;
   }
   switchparam_1->sub_type {

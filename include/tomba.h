@@ -392,4 +392,27 @@ extern void Overlay_GameState6(void);            // func_0x80113e3c
 extern void Overlay_SpawnEntity(void*);          // func_0x8011740c
 extern void Overlay_GameState1(void);            // func_0x8010aecc
 
+
+// ============================================================
+// Entity state machine constants
+// ============================================================
+#define STATE_INIT      0   // Initial state (spawning/setup)
+#define STATE_ACTIVE    1   // Active/running state
+#define STATE_FINISH    2   // Finishing/cleanup state
+#define STATE_DEAD      3   // Dead/dealloc state
+
+// Game state IDs
+#define GAMESTATE_TITLE     0
+#define GAMESTATE_LEVEL1    5
+#define GAMESTATE_LEVEL2    6
+#define GAMESTATE_OVERWORLD 0x0F
+#define GAMESTATE_CUTSCENE  0x15
+
+// Entity direction
+#define DIR_RIGHT   0
+#define DIR_LEFT    1
+
+// Entity flags
+#define ENTITY_FLAG_ACTIVE  0x80
+#define ENTITY_FLAG_INVIS   0x02
 #endif // TOMBA_H

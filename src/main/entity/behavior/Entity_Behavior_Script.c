@@ -35,7 +35,7 @@ LAB_80030174:
         FUN_80028e10(iVar4,0x34);
       }
       FUN_8002343c(iVar5);
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
       *puVar6 = 0;
 LAB_80030214:
       uVar3 = *puVar6;

@@ -27,7 +27,7 @@ void FUN_8006f2d0(int param_1)
   if (bVar7 != 1) {
     if (1 < bVar7) {
       if (bVar7 == 2) {
-        param_1->state = 3;
+        param_1->state = STATE_DEAD;
         g_SFXState = 0;
         return;
       }
@@ -47,7 +47,7 @@ void FUN_8006f2d0(int param_1)
     param_1->flags = 0;
     param_1->collision_dir = 0;
     if (_g_EntityPoolCount < 2) {
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
       g_SFXState = 0;
       return;
     }
@@ -90,14 +90,14 @@ void FUN_8006f2d0(int param_1)
     iVar5 = param_1->script_ptr;
     if (iVar5 != 0) {
       if (iVar5->state < 2) {
-        iVar5->state = 3;
+        iVar5->state = STATE_DEAD;
       }
       param_1->script_ptr = 0;
     }
     iVar5 = param_1->parent;
     if (iVar5 != 0) {
       if (iVar5->state < 2) {
-        iVar5->state = 3;
+        iVar5->state = STATE_DEAD;
       }
       param_1->parent = 0;
     }
@@ -109,7 +109,7 @@ void FUN_8006f2d0(int param_1)
     iVar5 = param_1->script_ptr;
     if (iVar5 != 0) {
       if (iVar5->state < 2) {
-        iVar5->state = 3;
+        iVar5->state = STATE_DEAD;
         param_1->script_ptr = 0;
       }
       param_1->script_ptr = 0;
@@ -173,7 +173,7 @@ LAB_8006f6c8:
     iVar5 = param_1->script_ptr;
     if (iVar5 == 0) goto LAB_8006f87c;
     if (iVar5->state < 2) {
-      iVar5->state = 3;
+      iVar5->state = STATE_DEAD;
     }
   }
   else {
@@ -208,7 +208,7 @@ LAB_8006f6c8:
       iVar5 = param_1->script_ptr;
       if (iVar5 == 0) goto LAB_8006f87c;
       if (iVar5->state < 2) {
-        iVar5->state = 3;
+        iVar5->state = STATE_DEAD;
       }
     }
   }
@@ -236,7 +236,7 @@ LAB_8006f87c:
         g_SFXState = 0;
         return;
       }
-      iVar5->state = 3;
+      iVar5->state = STATE_DEAD;
     }
   }
   else {
@@ -246,7 +246,7 @@ LAB_8006f87c:
       return;
     }
     if (iVar5->state < 2) {
-      iVar5->state = 3;
+      iVar5->state = STATE_DEAD;
     }
   }
   param_1->parent = 0;

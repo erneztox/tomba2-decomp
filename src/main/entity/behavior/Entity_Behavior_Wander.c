@@ -47,7 +47,7 @@ void FUN_8002918c(int param_1)
   else {
     param_1->scale_y = param_1->anim_data;
     if (param_1->anim_data == 0) {
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
     }
     else if (sVar2 == 0) {
       FUN_80031780(param_1);

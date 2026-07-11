@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_8005b63c(int param_1)
 
 {
@@ -147,16 +148,16 @@ LAB_8005b868:
       }
       FUN_80055e28(param_1,1);
       if (g_GameState == '\0') {
-        func_0x8010c89c(param_1,0);
+        Overlay_8010c89c(param_1,0);
       }
       else if (g_GameState == '\x06') {
-        func_0x8011460c(param_1,0);
+        Overlay_8011460c(param_1,0);
       }
       else if (g_GameState == '\b') {
-        func_0x801120c4(param_1,0);
+        Overlay_801120c4(param_1,0);
       }
       else if (g_GameState == '\x0e') {
-        func_0x8010b408(param_1,0);
+        Overlay_8010b408(param_1,0);
       }
       FUN_80076d68(param_1);
       iVar4 = FUN_80055824();
@@ -186,7 +187,7 @@ LAB_8005ba0c:
        ((iVar4 = FUN_80055824(), iVar4 != 0 || (param_1->collision_state != '\0')))) {
       param_1->action_state = param_1->action_state + '\x01';
       if (param_1->sub_state == 9) {
-        func_0x80113628(param_1,puVar9);
+        Overlay_80113628(param_1,puVar9);
       }
       else if (param_1->sub_state < 5) {
         param_1->sub_state = 0;
@@ -194,7 +195,7 @@ LAB_8005ba0c:
           puVar9->action_state = puVar9->action_state + '\x01';
         }
         else {
-          puVar9->state = 3;
+          puVar9->state = STATE_DEAD;
         }
         iVar4 = FUN_8005b134(param_1,puVar9);
         if ((iVar4 == -1) || (iVar4 = FUN_800537b8(param_1,puVar9), iVar4 == 0)) {

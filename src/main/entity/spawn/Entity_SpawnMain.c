@@ -38,7 +38,7 @@ void FUN_800741dc(u8 *param_1)
       return;
     }
     if (g_SubState != '\0') {
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
       return;
     }
     iVar3 = FUN_80051b70(param_1,1,0x18);
@@ -97,7 +97,7 @@ LAB_80074328:
       if (1 < *(u8 *)(param_1->script_ptr + 4)) {
         local_1e = param_1->pos_y;
         *param_1 = 2;
-        param_1->state = 3;
+        param_1->state = STATE_DEAD;
         local_1a = *(s16 *)(param_1 + 0x32) -
                    (s16)(((int)((uint)param_1->bounds_min_y << 0x10) >> 0x10) -
                            ((int)((uint)param_1->bounds_min_y << 0x10) >> 0x1f) >> 1);

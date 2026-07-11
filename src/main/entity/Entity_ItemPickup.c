@@ -43,7 +43,7 @@ int FUN_8004c0e4(s32 param_1,u8 param_2,int param_3)
       if ((bVar1 & 0x80) != 0) {
         *(s16 *)(iVar5 + 100) = 6;
       }
-      if ((g_GameState == 0) && ((u8)(param_2 - 1) < 5)) {
+      if ((g_GameState == GAMESTATE_TITLE) && ((u8)(param_2 - 1) < 5)) {
         iVar5->timer1 = param_2 - 1;
       }
     }

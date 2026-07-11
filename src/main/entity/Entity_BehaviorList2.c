@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_80022760(int param_1)
 
 {
@@ -41,7 +42,7 @@ joined_r0x800227c8:
     goto switchD_8002281c_caseD_0;
   case '\x04':
     if (pcVar3->flag_5E == '\x02') {
-      func_0x80114e74(param_1);
+      Overlay_80114e74(param_1);
       uVar2 = g_TimerFlag;
       cVar1 = g_State182;
       goto joined_r0x800227c8;

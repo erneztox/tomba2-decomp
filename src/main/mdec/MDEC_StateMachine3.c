@@ -60,7 +60,7 @@ s32 FUN_80087fa0(int param_1)
     uVar2 = *(u8 *)(param_1->state + 6);
     param_1->state = 0;
     param_1->state = uVar2;
-    if (param_1->state == 0) {
+    if (param_1->state == STATE_INIT) {
       *(u8 *)(param_1 + 0xeb) = 0;
       return 1;
     }
@@ -93,12 +93,12 @@ s32 FUN_80087fa0(int param_1)
         *(u8 *)(param_1 + 0xeb) = 0;
         param_1->state = 0xff;
         FUN_80088248(param_1,param_1 + 99);
-        param_1->state = 2;
+        param_1->state = STATE_FINISH;
       }
       else {
         (*DAT_800abe3c)(param_1);
         param_1->state = 0xfe;
-        param_1->state = 2;
+        param_1->state = STATE_FINISH;
       }
     }
   }

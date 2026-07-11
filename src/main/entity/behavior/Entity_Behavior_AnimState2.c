@@ -60,7 +60,7 @@ void FUN_8002c548(int param_1)
     param_1->sub_action = param_1->sub_action + '\x01';
   }
   else {
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
   }
   return;
 }

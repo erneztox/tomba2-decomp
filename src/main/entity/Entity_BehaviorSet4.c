@@ -77,7 +77,7 @@ void FUN_80069300(u8 *param_1)
     if ((sVar2 == 1) || (param_1->move_mode != '\0')) {
       param_1->anim_counter = 0;
       *param_1 = 2;
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
     }
   }
 LAB_80069498:
@@ -101,7 +101,7 @@ LAB_80069498:
     if ((iVar3 == 0) &&
        (sVar2 = param_1->timer2, param_1->timer2 = sVar2 + -1, sVar2 == 1)) {
       *param_1 = 2;
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
     }
   }
   return;

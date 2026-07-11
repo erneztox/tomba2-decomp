@@ -17,7 +17,7 @@ void FUN_80033560(int param_1)
     param_1->flags = 1;
     param_1->collision_state = param_1->collision_state - 1U & 0x1f;
     if (DAT_800e7ff9 == '\0') {
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
     }
   }
   else if (bVar1 < 2) {
@@ -29,7 +29,7 @@ void FUN_80033560(int param_1)
   }
   else if (bVar1 == 2) {
     if (param_1->sub_action < '\0') {
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
     }
     else {
       param_1->flags = 1;

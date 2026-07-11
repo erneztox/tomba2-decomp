@@ -60,7 +60,7 @@ void FUN_8004b788(int param_1)
         _DAT_800e7ef4 = iVar3;
       }
     }
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
     iVar4->collision_state = 2;
   }
   iVar3 = _DAT_800e7f5c;

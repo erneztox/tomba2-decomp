@@ -39,7 +39,7 @@ void FUN_800739ac(u8 *param_1)
     }
     *param_1 = 1;
     param_1->state = param_1->state + '\x01';
-    if (((g_GameState == 2) || (g_GameState == 7)) || (g_GameState == 0x14)) {
+    if (((g_GameState == GAMESTATE_2) || (g_GameState == GAMESTATE_7)) || (g_GameState == GAMESTATE_TITLEx14)) {
       param_1->bounds_min_x = 0xa0;
       uVar3 = 0x140;
     }
@@ -70,7 +70,7 @@ void FUN_800739ac(u8 *param_1)
   case 0:
     goto switchD_80073b0c_caseD_0;
   case 1:
-    if (((g_GameState == 2) || (g_GameState == 7)) && (cVar2 = '\x04', g_CollisionType != '\x1f'))
+    if (((g_GameState == GAMESTATE_2) || (g_GameState == GAMESTATE_7)) && (cVar2 = '\x04', g_CollisionType != '\x1f'))
     goto LAB_80073ca0;
     FUN_800737f8param_1->sub_type;
     if ((_g_PadState & 0x2000) != 0) goto LAB_80073be0;

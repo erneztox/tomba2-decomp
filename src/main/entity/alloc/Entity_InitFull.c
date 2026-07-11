@@ -82,7 +82,7 @@ uint FUN_8001e860(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
       uVar5 = 1;
       uVar1 = param_1->rot_y;
       *param_2 = 2;
-      param_2->state = 2;
+      param_2->state = STATE_FINISH;
       param_2->behavior_state = 2;
       param_2->action_state = 0;
       param_2->move_mode = (char)(uVar1 >> 4);

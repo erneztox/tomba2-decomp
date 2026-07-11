@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_8007be18(u8 param_1)
 
 {
@@ -16,10 +17,10 @@ void FUN_8007be18(u8 param_1)
   
   switch(_g_CurrentEntity->angle_offset) {
   case 0:
-    func_0x8018fa88(param_1);
+    Overlay_8018fa88(param_1);
     break;
   case 1:
-    func_0x8018fbcc();
+    Overlay_8018fbcc();
     break;
   case 2:
     FUN_80074590(0x14,0xfffffff7,0);

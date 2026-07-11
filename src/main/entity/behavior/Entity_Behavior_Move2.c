@@ -7,6 +7,7 @@
 
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_80068be8(int param_1)
 
 {
@@ -25,10 +26,10 @@ void FUN_80068be8(int param_1)
       if (bVar4 != 3) {
         return;
       }
-      func_0x8012c7cc(param_1);
+      Overlay_8012c7cc(param_1);
       iVar3 = FUN_80077a4c(param_1,0,0,0);
       if (iVar3 == 0) {
-        param_1->state = 3;
+        param_1->state = STATE_DEAD;
         return;
       }
       bVar4 = param_1->sub_type;
@@ -42,7 +43,7 @@ void FUN_80068be8(int param_1)
     if ((bVar4 == 7) || (bVar4 == 0xb)) {
       param_1->behavior_state = 3;
       param_1->action_state = 0;
-      func_0x8012c7cc();
+      Overlay_8012c7cc();
       return;
     }
     param_1->timer1 = 0x3c;
@@ -71,11 +72,11 @@ void FUN_80068be8(int param_1)
      (sVar1 = param_1->timer1, param_1->timer1 = sVar1 + -1, sVar1 == 1)) {
     FUN_80074590(0x1b,0,0);
     FUN_800315d4(param_1 + 0x2c);
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
   }
   iVar3 = FUN_80077a4c(param_1,0,0,0);
   if (iVar3 == 0) {
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
     return;
   }
   bVar4 = param_1->sub_type;

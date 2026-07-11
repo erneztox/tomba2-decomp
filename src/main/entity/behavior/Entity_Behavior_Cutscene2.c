@@ -20,13 +20,13 @@ void FUN_80072a78(void)
   u8 bVar6;
   u8 *pbVar7;
   
-  if ((g_GameState == 5) && (g_LevelId - 1 < 3)) {
+  if ((g_GameState == GAMESTATE_LEVEL) && (g_LevelId - 1 < 3)) {
     pbVar4 = &DAT_8013c1a4;
   }
-  else if ((g_GameState == 1) && (0xe < g_LevelId)) {
+  else if ((g_GameState == GAMESTATE_1) && (0xe < g_LevelId)) {
     pbVar4 = &DAT_80134918;
   }
-  else if (g_GameState == 6) {
+  else if (g_GameState == GAMESTATE_LEVEL2) {
     if (g_LevelId < 6) {
       pbVar4 = &DAT_801437ac;
     }
@@ -37,7 +37,7 @@ void FUN_80072a78(void)
       pbVar4 = &DAT_80143ae0;
     }
   }
-  else if (g_GameState == 8) {
+  else if (g_GameState == GAMESTATE_8) {
     if (g_LevelId < 9) {
       pbVar4 = &DAT_8014304c;
     }
@@ -51,7 +51,7 @@ void FUN_80072a78(void)
       pbVar4 = &DAT_80143614;
     }
   }
-  else if (g_GameState == 0x15) {
+  else if (g_GameState == GAMESTATE_TITLEx15) {
     if (g_LevelId == 0) {
       pbVar4 = &DAT_80115004;
     }
@@ -72,7 +72,7 @@ void FUN_80072a78(void)
     }
   }
   else {
-    if (_g_GameState == 0x704) {
+    if (_g_GameState == GAMESTATE_TITLEx704) {
       return;
     }
     pbVar4 = *(u8 **)(&DAT_800a4c28 + (uint)g_GameState * 4);

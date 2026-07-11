@@ -82,7 +82,7 @@ void EntityLoop_Active(void) {
                     func_8003C788(entity);
                     break;
                 case 0x14:
-                    if (g_GameState == 4) {
+                    if (g_GameState == GAMESTATE_4) {
                         func_8011BE5C(entity);
                     } else {
                         s16** p38 = (s16**)entity->unknown_38;

@@ -60,7 +60,7 @@ LAB_8003443c:
     DAT_800bf81c = '\0';
     g_SpriteParam3 = 0;
     DAT_800e7eee = '\0';
-    _DAT_800e7ef4->state = 3;
+    _DAT_800e7ef4->state = STATE_DEAD;
     _DAT_800e7ef4 = 0;
   }
   if (DAT_800bf80a != '\0') {

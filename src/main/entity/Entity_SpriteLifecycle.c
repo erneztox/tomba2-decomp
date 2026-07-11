@@ -16,7 +16,7 @@ void FUN_8007dc38(int param_1)
   bVar1 = param_1->state;
   if (bVar1 == 1) {
     if ((param_1->sub_type == '\0') && ((g_EventInput & 0xfb) != 0)) {
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
     }
     FUN_8007c940(param_1);
     FUN_8007cc00(param_1);
@@ -49,7 +49,7 @@ void FUN_8007dc38(int param_1)
     }
   }
   else if (bVar1 == 2) {
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
   }
   else if (bVar1 == 3) {
     if (param_1->sub_type == '\0') {

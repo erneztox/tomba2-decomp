@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 int FUN_80024548(int param_1,int param_2)
 
 {
@@ -46,7 +47,7 @@ int FUN_80024548(int param_1,int param_2)
       iVar3 = FUN_80083e80((int)param_1->rot_y);
       param_1->draw_pos_y = *(s16 *)(param_1 + 0x32) - param_1->target_angle;
       param_1->draw_pos_z = param_1->pos_z - (s16)(iVar3 * sVar5 >> 0xc);
-      if (g_GameState == 0) {
+      if (g_GameState == GAMESTATE_TITLE) {
         puVar6 = _DAT_1f800158;
         cVar1 = DAT_1f80015e;
         if ((param_1->entity_flags & 0x200) == 0) {
@@ -56,7 +57,7 @@ int FUN_80024548(int param_1,int param_2)
             puVar6 = puVar6 + 1;
             cVar1 = g_State182;
             if (((*pbVar4 & 4) != 0) && (pbVar4->kind == 2)) {
-              func_0x80114320(param_1);
+              Overlay_80114320(param_1);
               cVar1 = g_State182;
             }
           }

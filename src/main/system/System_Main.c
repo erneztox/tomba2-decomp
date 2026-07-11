@@ -54,14 +54,14 @@ s32 FUN_8001dc9c(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
     param_2->move_mode = (char)(param_1->rot_y >> 4);
     if ((param_4 & 1) == 0) {
       *param_2 = 2;
-      param_2->state = 2;
+      param_2->state = STATE_FINISH;
       param_2->behavior_state = 2;
       param_2->action_state = 0;
       FUN_80071b44(&g_CollisionEntity,200,1);
     }
     else {
       *param_2 = 3;
-      param_2->state = 2;
+      param_2->state = STATE_FINISH;
       param_2->behavior_state = 0;
       param_2->action_state = 0;
     }
@@ -76,12 +76,12 @@ s32 FUN_8001dc9c(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
       param_2->move_mode = (char)(param_1->rot_y >> 4);
       if (((param_4 & 1) == 0) && (param_1->flag_5E != '\0')) {
         *param_2 = 2;
-        param_2->state = 2;
+        param_2->state = STATE_FINISH;
         param_2->behavior_state = 2;
       }
       else {
         *param_2 = 3;
-        param_2->state = 2;
+        param_2->state = STATE_FINISH;
         param_2->behavior_state = 0;
       }
       param_2->action_state = 0;
@@ -110,7 +110,7 @@ s32 FUN_8001dc9c(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
             puVar7 = param_1 + 0x2c;
             uVar4 = param_1->rot_y;
             *param_2 = 3;
-            param_2->state = 2;
+            param_2->state = STATE_FINISH;
             param_2->behavior_state = 0;
             param_2->action_state = 0;
             param_2->move_mode = (char)(uVar4 >> 4);
@@ -157,7 +157,7 @@ s32 FUN_8001dc9c(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
       puVar7 = param_1 + 0x2c;
       uVar4 = param_1->rot_y;
       *param_2 = 2;
-      param_2->state = 2;
+      param_2->state = STATE_FINISH;
       param_2->behavior_state = 2;
       param_2->action_state = 0;
       param_2->move_mode = (char)(uVar4 >> 4);
@@ -173,12 +173,12 @@ s32 FUN_8001dc9c(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
           param_2->move_mode = (char)(param_1->rot_y >> 4);
           if ((param_4 & 1) == 0) {
             *param_2 = 2;
-            param_2->state = 2;
+            param_2->state = STATE_FINISH;
             param_2->behavior_state = 2;
           }
           else {
             *param_2 = 3;
-            param_2->state = 2;
+            param_2->state = STATE_FINISH;
             param_2->behavior_state = 0;
           }
           param_2->action_state = 0;
@@ -226,7 +226,7 @@ s32 FUN_8001dc9c(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
       puVar7 = param_1 + 0x2c;
       uVar4 = param_1->rot_y;
       *param_2 = 2;
-      param_2->state = 2;
+      param_2->state = STATE_FINISH;
       param_2->behavior_state = 2;
       param_2->action_state = 0;
       param_2->move_mode = (char)(uVar4 >> 4);
@@ -239,12 +239,12 @@ s32 FUN_8001dc9c(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
       param_2->move_mode = (char)(param_1->target_angle >> 4);
       if (((param_4 & 1) == 0) && (param_1->flag_5E != '\0')) {
         *param_2 = 2;
-        param_2->state = 2;
+        param_2->state = STATE_FINISH;
         param_2->behavior_state = 2;
       }
       else {
         *param_2 = 3;
-        param_2->state = 2;
+        param_2->state = STATE_FINISH;
         param_2->behavior_state = 0;
       }
       param_2->action_state = 0;
@@ -268,7 +268,7 @@ s32 FUN_8001dc9c(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
         *param_2 = 3;
         uVar5 = 4;
       }
-      param_2->state = 2;
+      param_2->state = STATE_FINISH;
       param_2->behavior_state = uVar5;
       param_2->action_state = 0;
     }
@@ -292,7 +292,7 @@ s32 FUN_8001dc9c(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
           param_1->move_mode = 1;
         }
         *param_2 = 2;
-        param_2->state = 2;
+        param_2->state = STATE_FINISH;
         uVar5 = 7;
       }
       else {
@@ -306,7 +306,7 @@ s32 FUN_8001dc9c(u8 *param_1,u8 *param_2,uint param_3,uint param_4)
           FUN_80074590(0xc,0,0);
         }
         *param_2 = 3;
-        param_2->state = 2;
+        param_2->state = STATE_FINISH;
         uVar5 = 4;
       }
       param_2->behavior_state = uVar5;
@@ -335,11 +335,11 @@ LAB_8001e59c:
       if (((param_4 & 1) == 0) && (param_1->flag_5E != '\0')) {
         uVar5 = 2;
         *param_2 = 2;
-        param_2->state = 2;
+        param_2->state = STATE_FINISH;
       }
       else {
         *param_2 = 3;
-        param_2->state = 2;
+        param_2->state = STATE_FINISH;
         uVar5 = 6;
       }
       param_2->behavior_state = uVar5;
@@ -366,12 +366,12 @@ LAB_8001e59c:
       param_2->move_mode = (char)(param_1->target_angle >> 4);
       if (((param_4 & 1) == 0) && (param_1->flag_5E != '\0')) {
         *param_2 = 2;
-        param_2->state = 2;
+        param_2->state = STATE_FINISH;
         uVar5 = 8;
       }
       else {
         *param_2 = 3;
-        param_2->state = 2;
+        param_2->state = STATE_FINISH;
         uVar5 = 5;
       }
       param_2->behavior_state = uVar5;
@@ -396,12 +396,12 @@ LAB_8001e59c:
       param_2->move_mode = (char)(param_1->target_angle >> 4);
       if ((param_4 & 1) == 0) {
         *param_2 = 2;
-        param_2->state = 2;
+        param_2->state = STATE_FINISH;
         uVar5 = 8;
       }
       else {
         *param_2 = 3;
-        param_2->state = 2;
+        param_2->state = STATE_FINISH;
         uVar5 = 5;
       }
       param_2->behavior_state = uVar5;
@@ -430,12 +430,12 @@ LAB_8001e818:
       param_2->move_mode = (char)(param_1->rot_y >> 4);
       if (((param_4 & 1) == 0) && (param_1->flag_5E != '\0')) {
         *param_2 = 2;
-        param_2->state = 2;
+        param_2->state = STATE_FINISH;
         param_2->behavior_state = 2;
       }
       else {
         *param_2 = 3;
-        param_2->state = 2;
+        param_2->state = STATE_FINISH;
         param_2->behavior_state = 0;
       }
       param_2->action_state = 0;
@@ -454,7 +454,7 @@ LAB_8001e818:
     if ((param_4 & 0x800) != 0) {
       uVar4 = param_1->rot_y;
       *param_2 = 3;
-      param_2->state = 2;
+      param_2->state = STATE_FINISH;
       param_2->behavior_state = 10;
       param_2->action_state = 0;
       param_2->move_mode = (char)(uVar4 >> 4);

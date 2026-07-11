@@ -48,7 +48,7 @@ void FUN_80032f98(int param_1)
     *(s16 *)(param_1 + 0x30) = uVar2;
     return;
   }
-  param_1->state = 2;
+  param_1->state = STATE_FINISH;
 LAB_80033068:
   FUN_8007a624();
   return;

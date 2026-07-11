@@ -65,7 +65,7 @@ void FUN_8004c930(u8 *param_1)
       if (iVar5 == 0) {
         return;
       }
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
       return;
     }
     if (bVar1 != 3) {
@@ -97,7 +97,7 @@ void FUN_8004c930(u8 *param_1)
     bVar4 = _g_PlayerPosY < *(s16 *)(param_1 + 0x32);
     param_1->angle_offset = param_1->angle_offset + param_1->sprite_y;
     if (bVar4) {
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
       param_1->behavior_state = 0;
     }
   }

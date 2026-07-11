@@ -32,7 +32,7 @@ void FUN_8004df94(int param_1)
       return;
     }
     if (bVar1 == 2) {
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
       g_CurrentOverlay = 0;
       DAT_800ed061 = DAT_800ed061 & 0xfd;
       return;
@@ -129,7 +129,7 @@ joined_r0x8004e160:
     }
   }
   FUN_80058304(&g_CollisionEntity,uVar4);
-  param_1->state = 2;
+  param_1->state = STATE_FINISH;
 switchD_8004e040_caseD_6:
   param_1->flags = 1;
   return;

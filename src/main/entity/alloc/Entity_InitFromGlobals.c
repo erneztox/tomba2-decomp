@@ -7,6 +7,7 @@
 
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_800682c4(int param_1,int param_2)
 
 {
@@ -30,7 +31,7 @@ void FUN_800682c4(int param_1,int param_2)
   FUN_80067da8(param_1);
   FUN_80067ef4(param_1);
   if ((param_2 == 0) && (FUN_80067fe4(param_1), DAT_800bf9e5 == '\x06')) {
-    func_0x8011740c(param_1,2);
+    Overlay_8011740c(param_1,2);
   }
   return;
 }

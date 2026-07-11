@@ -21,12 +21,12 @@ void FUN_80068a94(u8 *param_1)
     if (sVar1 == 1) {
       param_1->move_mode = 2;
       *param_1 = 2;
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
     }
   }
   else {
     *param_1 = 2;
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
     param_1->behavior_state = 0;
   }
   param_1->rot_z = param_1->rot_z + 0x200;

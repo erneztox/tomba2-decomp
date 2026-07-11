@@ -40,7 +40,7 @@ void FUN_8002b7b0(int param_1)
     *(s16 *)(param_1 + 0x46) = uVar4;
   }
   if ((*(u8 *)(param_1->script_ptr + 0x1b) & 0x40) == 0) {
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
   }
   else {
     param_1->scale_y = param_1->anim_data;

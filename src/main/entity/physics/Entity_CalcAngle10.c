@@ -35,7 +35,7 @@ void FUN_80022060(int param_1,u8 *param_2)
     }
     if (bVar1) {
       *param_2 = 2;
-      param_2->state = 2;
+      param_2->state = STATE_FINISH;
       param_2->behavior_state = 0;
       param_2->action_state = 0;
       g_ActionState = 0;

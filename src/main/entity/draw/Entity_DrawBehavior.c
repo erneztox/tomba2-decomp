@@ -44,7 +44,7 @@ void FUN_8002ef58(int param_1)
   cVar4 = param_1->sub_action + -1;
   param_1->sub_action = cVar4;
   if (cVar4 == -1) {
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
   }
   else {
     iVar5 = FUN_80083f50((int)param_1->sprite_x);

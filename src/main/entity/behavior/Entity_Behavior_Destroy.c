@@ -18,7 +18,7 @@ void FUN_8006ae28(u8 *param_1)
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (bVar1 == 2) {
-        param_1->state = 3;
+        param_1->state = STATE_DEAD;
         return;
       }
       if (bVar1 == 3) {

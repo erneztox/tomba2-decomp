@@ -42,7 +42,7 @@ void FUN_80073cd8(u8 *param_1)
     param_1->rot_x = 0;
     param_1->rot_z = 0;
     param_1->state = param_1->state + '\x01';
-    if (((g_GameState == 2) || (g_GameState == 7)) || (g_GameState == 0x14)) {
+    if (((g_GameState == GAMESTATE_2) || (g_GameState == GAMESTATE_7)) || (g_GameState == GAMESTATE_TITLEx14)) {
       *param_1 = 1;
       param_1->bounds_min_x = 0xa0;
       param_1->bounds_size = 0x140;
@@ -168,7 +168,7 @@ LAB_8007409c:
   cVar2 = param_1->behavior_state;
 switchD_80073ef8_default:
   if ((cVar2 != '\x04') &&
-     ((((g_GameState == 2 || (g_GameState == 7)) || (g_GameState == 0x14)) &&
+     ((((g_GameState == GAMESTATE_2 || (g_GameState == GAMESTATE_7)) || (g_GameState == GAMESTATE_TITLEx14)) &&
       ((param_1->script_ptr != 0 && (g_CollisionType != '\x1f')))))) {
     *(u8 *)(param_1->script_ptr + 4) = 2;
     param_1->script_ptr = 0;

@@ -32,7 +32,7 @@ void FUN_800330ac(int param_1)
   }
   param_1->sprite_data = *(int *)(param_1 + 0x40);
   if (*(int *)(param_1 + 0x40) == 0) {
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
   }
   else {
     param_1->flags = 1;

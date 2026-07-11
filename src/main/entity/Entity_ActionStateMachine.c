@@ -7,6 +7,7 @@
 
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_80067ca4(int param_1)
 
 {
@@ -33,10 +34,10 @@ LAB_80067d10:
     break;
   case 6:
     if (g_GameState == '\x05') {
-      func_0x801105fc(param_1);
+      Overlay_801105fc(param_1);
     }
     else {
-      func_0x8010b938(param_1);
+      Overlay_8010b938(param_1);
     }
 LAB_80067d80:
     FUN_80053fdc(param_1,1);

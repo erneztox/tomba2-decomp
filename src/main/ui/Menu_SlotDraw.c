@@ -69,7 +69,7 @@ LAB_8003a6cc:
     goto LAB_8003a6cc;
   case '\x04':
     if (*(s8*)((int)param_2 + 0x3f) == '\0') {
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
     }
   }
   return;

@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_80064ba0(int param_1)
 
 {
@@ -74,25 +75,25 @@ void FUN_80064ba0(int param_1)
   else {
     switch(g_GameState) {
     case 0:
-      local_18 = func_0x8010b600(param_1);
+      local_18 = Overlay_8010b600(param_1);
       break;
     case 1:
-      local_18 = func_0x8010ac3c(param_1);
+      local_18 = Overlay_8010ac3c(param_1);
       break;
     case 4:
-      local_18 = func_0x801161ec(param_1);
+      local_18 = Overlay_801161ec(param_1);
       break;
     case 6:
-      local_18 = func_0x80114784(param_1);
+      local_18 = Overlay_80114784(param_1);
       break;
     case 8:
-      local_18 = func_0x801136c4(param_1);
+      local_18 = Overlay_801136c4(param_1);
       break;
     case 10:
-      local_18 = func_0x8010b42c(param_1);
+      local_18 = Overlay_8010b42c(param_1);
       break;
     case 0xc:
-      local_18 = func_0x8010cda4(param_1);
+      local_18 = Overlay_8010cda4(param_1);
     }
   }
   if ((local_18 & 0x40) == 0) {

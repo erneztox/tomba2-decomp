@@ -30,7 +30,7 @@ void FUN_8004b9c8(int param_1)
       DAT_800bf81c = 0;
       g_SpriteParam3 = 0;
       DAT_800e7eee = '\0';
-      _DAT_800e7ef4->state = 3;
+      _DAT_800e7ef4->state = STATE_DEAD;
       _DAT_800e7ef4 = 0;
     }
   }
@@ -42,7 +42,7 @@ void FUN_8004b9c8(int param_1)
       DAT_800bf81c = 0;
       g_SpriteParam3 = 0;
       DAT_800e7eee = '\0';
-      _DAT_800e7ef4->state = 3;
+      _DAT_800e7ef4->state = STATE_DEAD;
     }
     else {
       if (bVar1 != 3) {
@@ -54,7 +54,7 @@ void FUN_8004b9c8(int param_1)
       DAT_800bf81c = 0;
       g_SpriteParam3 = 0;
       DAT_800e7eee = '\0';
-      _DAT_800e7ef4->state = 3;
+      _DAT_800e7ef4->state = STATE_DEAD;
     }
     _DAT_800e7ef4 = 0;
   }

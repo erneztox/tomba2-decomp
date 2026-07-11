@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 u8 FUN_80035738(s32 param_1,s32 param_2,int param_3)
 
 {
@@ -45,7 +46,7 @@ LAB_80035f2c:
   case 0x66:
   case 0x67:
   case 0x68:
-    if (g_GameState == 6) {
+    if (g_GameState == GAMESTATE_LEVEL2) {
       uVar5 = 0x17;
       cVar1 = DAT_800bf912;
     }
@@ -54,7 +55,7 @@ LAB_80035f2c:
       uVar5 = 0x16;
       cVar1 = DAT_800bf911;
     }
-    else if (g_GameState == 7) {
+    else if (g_GameState == GAMESTATE_7) {
       uVar5 = 0x1b;
       cVar1 = DAT_800bf913;
     }
@@ -193,15 +194,15 @@ LAB_80035814:
     }
     break;
   case 0x77:
-    if (g_GameState == 0) {
+    if (g_GameState == GAMESTATE_TITLE) {
       if (DAT_800bf902 == '\0') break;
       if (((_DAT_800bf854->combat_flag == '\x01') && ((DAT_800bf9ea & 0xf) != 0xf)) &&
          (uVar6 = FUN_80035640(2), uVar6 != 0)) {
         if (param_3 == 1) goto LAB_80035f58;
-        func_0x801252c0(param_1,3,0);
+        Overlay_801252c0(param_1,3,0);
       }
     }
-    else if (g_GameState == 2) {
+    else if (g_GameState == GAMESTATE_2) {
       uVar5 = 5;
       goto LAB_80035f40;
     }
@@ -218,18 +219,18 @@ LAB_80035814:
     goto LAB_80035ee4;
   case 0x7c:
   case 0x7d:
-    if (g_GameState == 2) {
+    if (g_GameState == GAMESTATE_2) {
       uVar5 = 5;
       goto LAB_80035f40;
     }
     uVar6 = 0;
     if (g_GameState != 1) break;
-    uVar6 = func_0x80112784();
+    uVar6 = Overlay_80112784();
     if (param_3 != 1) {
       if (uVar6 == 0) {
         return 4;
       }
-      func_0x80112808(param_2);
+      Overlay_80112808(param_2);
       return 0;
     }
     goto LAB_80035f58;

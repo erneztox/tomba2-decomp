@@ -32,11 +32,11 @@ void FUN_8007d594(int param_1)
     case 3:
     case 4:
     case 5:
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
       return;
     case 1:
     case 2:
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
       return;
     default:
       return;

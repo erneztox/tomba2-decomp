@@ -1,5 +1,5 @@
 /**
- * @brief Entity state: init + load anim 0x40, conditionally calls overlay func_0x8010c780
+ * @brief Entity state: init + load anim 0x40, conditionally calls overlay Overlay_8010c780
  * @note Original: func_800653F4 at 0x800653F4
  */
 // Entity_State_InitWithOverlay
@@ -7,6 +7,7 @@
 
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_800653f4(int param_1)
 
 {
@@ -20,7 +21,7 @@ void FUN_800653f4(int param_1)
     return;
   }
   if (g_GameState == '\0') {
-    func_0x8010c780(param_1);
+    Overlay_8010c780(param_1);
   }
   return;
 }

@@ -50,9 +50,9 @@ void FUN_80025588(void)
     DAT_800ed06c = DAT_800ed06c + '\x01';
   }
   FUN_80024f18(0x800ed058);
-  if (g_GameState == 3) goto LAB_80025728;
+  if (g_GameState == GAMESTATE_3) goto LAB_80025728;
   if (g_GameState < 4) {
-    if (g_GameState == 2) {
+    if (g_GameState == GAMESTATE_2) {
 LAB_800256e8:
       if ((g_ActionFlag == '\0') && ((_g_PadState & 0xc00) != 0)) {
         DAT_800ed060 = '\x01' - DAT_800ed060;
@@ -61,8 +61,8 @@ LAB_800256e8:
     }
   }
   else {
-    if (g_GameState == 7) goto LAB_800256e8;
-    if (g_GameState == 0x14) goto LAB_80025728;
+    if (g_GameState == GAMESTATE_7) goto LAB_800256e8;
+    if (g_GameState == GAMESTATE_TITLEx14) goto LAB_80025728;
   }
   FUN_800251f0(0x800ed058);
 LAB_80025728:

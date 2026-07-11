@@ -67,7 +67,7 @@ void FUN_80071dfc(int param_1)
   sVar1 = param_1->timer1;
   param_1->timer1 = sVar1 + -1;
   if (sVar1 == 1) {
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
     _DAT_800bf83c = 0;
   }
   else {

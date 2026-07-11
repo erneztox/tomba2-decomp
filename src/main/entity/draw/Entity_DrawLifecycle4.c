@@ -31,7 +31,7 @@ void FUN_80033380(int param_1)
   *(s16 *)(param_1 + 0x30) = *(s16 *)(param_1 + 0x30) + -0x42;
   param_1->sub_action = param_1->sub_action - (param_1->sub_action >> 2);
   if (*(s16 *)(param_1 + 0x30) < 500) {
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
   }
   else {
     param_1->scale_y = param_1->anim_data;

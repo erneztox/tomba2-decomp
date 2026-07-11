@@ -37,7 +37,7 @@ void FUN_8002f738(int param_1)
       if (iVar4 == 0) {
         return;
       }
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
       return;
     }
     if (bVar2 != 0) {
@@ -63,7 +63,7 @@ void FUN_8002f738(int param_1)
   }
   else if ((param_1->behavior_state == '\x01') &&
           (bVar2 = param_1->sub_action + 0xc, param_1->sub_action = bVar2, 0x9f < bVar2)) {
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
     param_1->behavior_state = 0;
     param_1->sub_action = 0xa0;
   }

@@ -30,7 +30,7 @@ void FUN_80072898(int param_1)
   if (bVar1 == 1) {
     puVar7 = (u8 *)(param_1 + 0x44);
     if (*(s8*)(param_1->parent + 0x5e) == '\x02') {
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
     }
     else {
       iVar3 = (uint)param_1->anim_timer << 0x10;

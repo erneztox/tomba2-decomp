@@ -77,7 +77,7 @@ LAB_8006853c:
     g_CurrentOverlay = 0;
     g_GameMode = 0;
     g_CameraEntity = 0;
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
   }
 LAB_800685bc:
   param_1->pos_x = _g_PlayerPosX;

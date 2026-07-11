@@ -7,6 +7,7 @@
 
 
 #include "tomba.h"
+#include "overlay.h"
 int FUN_8007566c(int param_1,int param_2)
 
 {
@@ -36,31 +37,31 @@ int FUN_8007566c(int param_1,int param_2)
   FUN_800753d4(&DAT_800a4f7e,param_2 + *piVar2,param_2 + piVar2->flags);
   switch(g_GameState) {
   case 5:
-    func_0x8013ac40();
+    Overlay_8013ac40();
     break;
   case 10:
-    func_0x80118e28();
+    Overlay_80118e28();
     break;
   case 0xb:
-    func_0x80117988();
+    Overlay_80117988();
     break;
   case 0xc:
-    func_0x8011727c();
+    Overlay_8011727c();
     break;
   case 0xd:
-    func_0x80116fc8();
+    Overlay_80116fc8();
     break;
   case 0xe:
-    func_0x801174ac();
+    Overlay_801174ac();
     break;
   case 0xf:
-    func_0x8011a428();
+    Overlay_8011a428();
     break;
   case 0x14:
-    func_0x801174b0();
+    Overlay_801174b0();
     break;
   case 0x15:
-    func_0x80110774();
+    Overlay_80110774();
   }
   return param_2 + piVar2->flags;
 }

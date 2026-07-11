@@ -36,7 +36,7 @@ LAB_8002fce0:
         FUN_80028e10(iVar5,8);
       }
       FUN_8002343c(iVar7);
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
       *puVar6 = 0;
 LAB_8002fd80:
       sVar4 = param_1->sprite_y + 0x20;

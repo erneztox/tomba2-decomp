@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_8005d530(u8 *param_1)
 
 {
@@ -331,7 +332,7 @@ LAB_8005de0c:
     param_1->action_state = bVar1;
     break;
   case 0xf:
-    func_0x80113fa4(param_1);
+    Overlay_80113fa4(param_1);
   default:
     goto switchD_8005d56c_default;
   }

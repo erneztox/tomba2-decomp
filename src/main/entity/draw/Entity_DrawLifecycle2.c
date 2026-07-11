@@ -36,7 +36,7 @@ void FUN_80033630(int param_1)
     param_1->flags = 1;
   }
   else {
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
   }
   return;
 }

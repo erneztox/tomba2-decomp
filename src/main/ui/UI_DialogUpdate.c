@@ -60,7 +60,7 @@ void FUN_8004de04(int param_1)
     }
   }
   else if (bVar1 == 2) {
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
     g_CurrentOverlay = 0;
     DAT_800ed061 = DAT_800ed061 & 0xfd;
   }

@@ -85,13 +85,13 @@ void Entity_Behavior_Trail(int param_1)
       if (*pcVar9 != *(s8*)(param_1 + 0x2d)) {
         return;
       }
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
       return;
     }
     if (*(int *)(param_1 + 0x58) != 0) {
       return;
     }
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
     return;
   }
   bVar1 = param_1->behavior_state;
@@ -162,7 +162,7 @@ LAB_80029ddc:
 LAB_80029de0:
   if (((1 < (u8)pcVar8->state) || ((DAT_800e7fc6 & 4) != 0)) || (iVar7 = 5, DAT_800e7fc6 == 0)) {
     *(s8*)(param_1 + 0x2d) = *pcVar9;
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
     iVar7 = 5;
   }
   do {

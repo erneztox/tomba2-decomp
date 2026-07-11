@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_80025d98(void)
 
 {
@@ -31,23 +32,23 @@ void FUN_80025d98(void)
 LAB_80025eac:
     FUN_80025934(0x800ed058,0,0);
   }
-  if ((DAT_800ed059 == '\0') || (g_GameState == 3)) goto LAB_80025fbc;
+  if ((DAT_800ed059 == '\0') || (g_GameState == GAMESTATE_3)) goto LAB_80025fbc;
   if (g_GameState < 4) {
-    if (g_GameState == 2) {
+    if (g_GameState == GAMESTATE_2) {
       if ((g_ActionFlag == '\0') && (DAT_800ed060 == '\0')) {
-        func_0x80113628(0x800ed058);
+        Overlay_80113628(0x800ed058);
       }
       goto LAB_80025fbc;
     }
   }
   else {
-    if (g_GameState == 7) {
+    if (g_GameState == GAMESTATE_7) {
       if ((g_ActionFlag == '\0') && (DAT_800ed060 == '\0')) {
-        func_0x801140a0(0x800ed058);
+        Overlay_801140a0(0x800ed058);
       }
       goto LAB_80025fbc;
     }
-    if (g_GameState == 0x14) goto LAB_80025fbc;
+    if (g_GameState == GAMESTATE_TITLEx14) goto LAB_80025fbc;
   }
   if ((((_DAT_800bf880 & 0x600) == 0) && ((_DAT_800bf880 & 0x100) == 0)) && (g_ActionFlag == '\0'))
   {
@@ -55,11 +56,11 @@ LAB_80025eac:
   }
 LAB_80025fbc:
   if ((_g_CurrentEntity->normal_z == 6) && (_g_CurrentEntity->sprite_x != 0)) {
-    if (g_GameState == 5) {
-      func_0x801121ac();
+    if (g_GameState == GAMESTATE_LEVEL) {
+      Overlay_801121ac();
     }
-    else if (g_GameState == 0x14) {
-      func_0x8010f8cc();
+    else if (g_GameState == GAMESTATE_TITLEx14) {
+      Overlay_8010f8cc();
     }
   }
   return;

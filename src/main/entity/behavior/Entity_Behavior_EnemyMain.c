@@ -111,7 +111,7 @@ switchD_8006a3dc_caseD_7:
   }
   if (DAT_800e7fc6 == 0) {
     *param_1 = 2;
-    param_1->state = 3;
+    param_1->state = STATE_DEAD;
   }
   else if (2 < (u8)param_1->action_state) {
     if ((param_1->anim_id & 1) == 0) {

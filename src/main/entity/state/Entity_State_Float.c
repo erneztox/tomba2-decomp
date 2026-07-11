@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_800645e0(int param_1)
 
 {
@@ -67,7 +68,7 @@ void FUN_800645e0(int param_1)
       if (bVar1 != 3) {
         return;
       }
-      func_0x8010aa20(param_1);
+      Overlay_8010aa20(param_1);
       return;
     }
     if (bVar1 != 0) {

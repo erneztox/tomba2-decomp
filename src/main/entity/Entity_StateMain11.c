@@ -178,7 +178,7 @@ LAB_8005f74c:
     if (g_DMAFlag != '\0') {
       iVar3 = param_1->parent;
       if (iVar3 != 0) {
-        iVar3->state = 2;
+        iVar3->state = STATE_FINISH;
         iVar3->behavior_state = 0;
       }
       FUN_80057fd4(param_1);

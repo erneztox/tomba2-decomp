@@ -25,7 +25,7 @@ void FUN_80053d90(int param_1)
     puVar3 = *(u8 **)(param_1 + 0x10);
     *puVar3 = 2;
     uVar1 = param_1->rot_y;
-    puVar3->state = 2;
+    puVar3->state = STATE_FINISH;
     puVar3->behavior_state = 2;
     puVar3->action_state = 0;
     puVar3->move_mode = (char)(uVar1 >> 4);
@@ -33,13 +33,13 @@ void FUN_80053d90(int param_1)
     goto switchD_80053dc4_default;
   case 2:
     puVar3 = *(u8 **)(param_1 + 0x10);
-    puVar3->state = 2;
+    puVar3->state = STATE_FINISH;
     uVar2 = 3;
     break;
   case 3:
     puVar3 = *(u8 **)(param_1 + 0x10);
     *puVar3 = 2;
-    puVar3->state = 2;
+    puVar3->state = STATE_FINISH;
     uVar2 = 1;
     break;
   default:

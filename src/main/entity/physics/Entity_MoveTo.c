@@ -32,7 +32,7 @@ s32 FUN_8001ff7c(u8 *param_1,u8 *param_2,int param_3,int param_4)
         return 2;
       }
       *param_2 = 3;
-      param_2->state = 2;
+      param_2->state = STATE_FINISH;
       param_2->behavior_state = 0;
       param_2->action_state = 0;
       param_2->move_mode = (u8)(iVar7 + 0x800 >> 4);
@@ -42,7 +42,7 @@ s32 FUN_8001ff7c(u8 *param_1,u8 *param_2,int param_3,int param_4)
   else if (param_1->state_flag144 == 2) {
     if ((*param_2 & 10) == 0) {
       *param_2 = 3;
-      param_2->state = 2;
+      param_2->state = STATE_FINISH;
       param_2->behavior_state = 0;
       param_2->action_state = 0;
       param_2->move_mode = (u8)(iVar7 + 0x800 >> 4);

@@ -1,3 +1,4 @@
+#include "overlay.h"
 /**
  * @brief Entity input updater: g_InputTimer--, clears input flags
  * @note Original: func_80059D28 at 0x80059D28
@@ -23,24 +24,24 @@ void FUN_80059d28(void)
   g_ActionMode = 0;
   DAT_1f800247 = DAT_1f800247 + '\x01';
   if (DAT_800bf841 != '\0') goto LAB_80059e40;
-  if (g_GameState == 3) {
-    func_0x80109024(&g_CollisionEntity);
+  if (g_GameState == GAMESTATE_3) {
+    Overlay_80109024(&g_CollisionEntity);
   }
   else if (g_GameState < 4) {
-    if (g_GameState == 2) {
-      func_0x8010f63c(&g_CollisionEntity);
+    if (g_GameState == GAMESTATE_2) {
+      Overlay_8010f63c(&g_CollisionEntity);
     }
     else {
 LAB_80059e30:
       FUN_8005950c(&g_CollisionEntity);
     }
   }
-  else if (g_GameState == 7) {
-    func_0x80112220(&g_CollisionEntity);
+  else if (g_GameState == GAMESTATE_7) {
+    Overlay_80112220(&g_CollisionEntity);
   }
   else {
     if (g_GameState != 0x14) goto LAB_80059e30;
-    func_0x8010f654(&g_CollisionEntity);
+    Overlay_8010f654(&g_CollisionEntity);
   }
   g_State230 = 0;
 LAB_80059e40:

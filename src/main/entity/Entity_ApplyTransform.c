@@ -136,7 +136,7 @@ void FUN_8002ae0c(s32 *param_1,int param_2,int param_3)
     _DAT_1f800090 = 0x800;
   }
   else {
-    if (g_GameState == 7) {
+    if (g_GameState == GAMESTATE_7) {
       _DAT_1f800090 = 0x400;
       uVar1 = 0xfffffffd;
       goto LAB_8002b244;

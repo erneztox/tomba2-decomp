@@ -23,7 +23,7 @@ s32 FUN_8005c138(s32 param_1,int param_2)
           if (bVar1 != 4) {
             return 0;
           }
-          param_2->state = 2;
+          param_2->state = STATE_FINISH;
           param_2->behavior_state = 0;
           param_2->action_state = 0;
           return 1;
@@ -62,7 +62,7 @@ s32 FUN_8005c138(s32 param_1,int param_2)
       }
     }
   }
-  param_2->state = 2;
+  param_2->state = STATE_FINISH;
   param_2->behavior_state = 3;
   param_2->action_state = 0;
   return 1;

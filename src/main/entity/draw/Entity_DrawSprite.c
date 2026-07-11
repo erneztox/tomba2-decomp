@@ -52,7 +52,7 @@ void FUN_8002e1e8(int param_1)
       uVar3 = *(uint *)(param_1 + 0x6c) - (*(uint *)(param_1 + 0x6c) >> 2);
       *(uint *)(param_1 + 0x6c) = uVar3;
       if (uVar3 < 9) {
-        param_1->state = 3;
+        param_1->state = STATE_DEAD;
       }
     }
     bVar2 = param_1->sub_action + 1;

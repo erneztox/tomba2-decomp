@@ -47,7 +47,7 @@ void FUN_800293f4(int param_1)
       goto LAB_800294b8;
     }
 LAB_800294dc:
-    param_1->state = 2;
+    param_1->state = STATE_FINISH;
   }
   else {
 LAB_800294b8:

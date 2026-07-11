@@ -7,6 +7,7 @@
 
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_8004ce14(u8 *param_1)
 
 {
@@ -35,7 +36,7 @@ void FUN_8004ce14(u8 *param_1)
       return;
     }
     if (g_SubState != '\0') {
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
       return;
     }
     param_1->state = 1;
@@ -88,7 +89,7 @@ LAB_8004cff4:
         }
         if (iVar3 != 0) {
           if ((g_GameState == '\x01') && (0xe < g_LevelId)) {
-            iVar3 = func_0x80111ccc((char)psVar5->kind);
+            iVar3 = Overlay_80111ccc((char)psVar5->kind);
           }
           else {
             iVar3 = FUN_80077acc(param_1,(int)psVar5[-2],(int)psVar5[-1],(int)*psVar5);

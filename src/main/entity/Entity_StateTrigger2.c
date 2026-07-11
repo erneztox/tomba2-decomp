@@ -69,7 +69,7 @@ s32 FUN_8004491c(int param_1)
       return 0;
     }
     FUN_800440e4(&g_CollisionEntity,2,4);
-    _DAT_800bf844->state = 2;
+    _DAT_800bf844->state = STATE_FINISH;
     _DAT_800bf844->behavior_state = 0;
     _DAT_800bf844->action_state = 0;
     FUN_80041718(param_1,(int)*(s16 *)(param_1 + 0x76),4);

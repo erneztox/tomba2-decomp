@@ -7,6 +7,7 @@
 
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_8004c238(int param_1)
 
 {
@@ -68,7 +69,7 @@ switchD_8004c2b8_caseD_a:
           FUN_8004d79c((int)param_1->angle_delta,1);
         }
       }
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
       return;
     }
     switch(param_1->sub_type) {
@@ -213,73 +214,73 @@ LAB_8004c5e0:
     goto switchD_8004c31c_default;
   case 6:
     if (g_GameState == '\0') {
-      func_0x80118b10(param_1);
+      Overlay_80118b10(param_1);
       param_1->collision_state = 0;
       break;
     }
     if (g_GameState == '\x06') {
-      func_0x80116288(param_1);
+      Overlay_80116288(param_1);
       param_1->collision_state = 0;
       break;
     }
     goto switchD_8004c31c_default;
   case 7:
-    func_0x80118db0(param_1);
+    Overlay_80118db0(param_1);
     param_1->collision_state = 0;
     break;
   case 8:
-    func_0x80119350(param_1);
+    Overlay_80119350(param_1);
     param_1->collision_state = 0;
     break;
   case 9:
     if (g_GameState == '\0') {
-      func_0x80118f50(param_1);
+      Overlay_80118f50(param_1);
       param_1->collision_state = 0;
       break;
     }
     if (g_GameState == '\x04') {
-      func_0x801193d4(param_1);
+      Overlay_801193d4(param_1);
       param_1->collision_state = 0;
       break;
     }
     if (g_GameState == '\x05') {
-      func_0x80112f88(param_1);
+      Overlay_80112f88(param_1);
       param_1->collision_state = 0;
       break;
     }
     if (g_GameState == '\x06') {
-      func_0x801160d4(param_1);
+      Overlay_801160d4(param_1);
       param_1->collision_state = 0;
       break;
     }
     if (g_GameState == '\b') {
-      func_0x80116750(param_1);
+      Overlay_80116750(param_1);
       param_1->collision_state = 0;
       break;
     }
     goto switchD_8004c31c_default;
   case 10:
-    func_0x80119454(param_1);
+    Overlay_80119454(param_1);
     param_1->collision_state = 0;
     break;
   case 0xb:
-    func_0x801132b8(param_1);
+    Overlay_801132b8(param_1);
     param_1->collision_state = 0;
     break;
   case 0xc:
-    func_0x801132f0(param_1);
+    Overlay_801132f0(param_1);
     param_1->collision_state = 0;
     break;
   case 0xd:
-    func_0x801133f4(param_1);
+    Overlay_801133f4(param_1);
     param_1->collision_state = 0;
     break;
   case 0xe:
-    func_0x80113490(param_1);
+    Overlay_80113490(param_1);
     param_1->collision_state = 0;
     break;
   case 0xf:
-    func_0x80119170(param_1);
+    Overlay_80119170(param_1);
     goto switchD_8004c31c_default;
   }
   param_1->move_mode = 0;

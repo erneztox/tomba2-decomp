@@ -7,23 +7,24 @@
 
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_800662d8(int param_1,s32 param_2)
 
 {
   if (param_1->timer_main == 0) {
     param_2 = 0;
   }
-  if (g_GameState == 6) {
-    func_0x80110f28(param_1,param_2);
+  if (g_GameState == GAMESTATE_LEVEL2) {
+    Overlay_80110f28(param_1,param_2);
   }
   else {
     if (g_GameState < 7) {
-      if (g_GameState == 0) {
-        func_0x80114c5c();
+      if (g_GameState == GAMESTATE_TITLE) {
+        Overlay_80114c5c();
         return;
       }
     }
-    else if (g_GameState == 8) {
+    else if (g_GameState == GAMESTATE_8) {
       if (g_SubState != '\0') {
         g_LevelId = 0x11;
         return;

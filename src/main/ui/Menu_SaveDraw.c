@@ -24,7 +24,7 @@ void FUN_8003ad48(int param_1)
   if (bVar2 != 1) {
     if (1 < bVar2) {
       if (bVar2 == 2) {
-        param_1->state = 3;
+        param_1->state = STATE_DEAD;
         DAT_800bf849 = DAT_800bf849 + -1;
         DAT_800ed06c = DAT_800ed06c + -1;
         return;
@@ -50,12 +50,12 @@ void FUN_8003ad48(int param_1)
       if (0x20 < bVar2) {
         FUN_8009a730(s_cube_moji_over_flow_80014a54);
         FUN_8009a730(&DAT_80014a6c,(&PTR_DAT_800a33cc)[param_1->draw_x * 3]);
-        param_1->state = 2;
+        param_1->state = STATE_FINISH;
         return;
       }
     }
     if (_g_EntityPoolCount < (s16)(u16)param_1->counter1) {
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
       return;
     }
     param_1->counter2 = param_1->counter1;

@@ -117,7 +117,7 @@ LAB_80049bc8:
     iVar5 = FUN_80077acc(param_1,(int)param_1->pos_y,(int)*(s16 *)(param_1 + 0x32),
                          (int)param_1->pos_z);
     if (iVar5 == 0) {
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
     }
   }
   if (param_2 == 0) {

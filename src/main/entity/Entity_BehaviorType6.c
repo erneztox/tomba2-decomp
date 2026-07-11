@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 void FUN_80080424(u8 *param_1)
 
 {
@@ -41,7 +42,7 @@ void FUN_80080424(u8 *param_1)
       }
     }
     else if ((bVar2 == 2) && (bVar1 = (_g_FrameCounter2 & 1) != 0, iVar5 * 0x10000 < 1)) {
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
       *param_1 = 2;
     }
     if (bVar1) {
@@ -52,7 +53,7 @@ void FUN_80080424(u8 *param_1)
         param_1->collision_state = 0;
         return;
       }
-      func_0x8012d8f4(param_1);
+      Overlay_8012d8f4(param_1);
       param_1->collision_state = 0;
       return;
     }
@@ -69,7 +70,7 @@ void FUN_80080424(u8 *param_1)
       param_1->velocity_y = 0;
     }
     else if (0 < *(s16 *)(param_1 + 0x32)) {
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
       *param_1 = 2;
     }
     if (0x2000 < param_1->velocity_y) {
@@ -84,7 +85,7 @@ void FUN_80080424(u8 *param_1)
           FUN_8004d4c4(0x76,1);
           FUN_8004b0d8(param_1);
         }
-        param_1->state = 3;
+        param_1->state = STATE_DEAD;
         return;
       }
       if (bVar2 != 3) {
@@ -117,7 +118,7 @@ void FUN_80080424(u8 *param_1)
       param_1->angle_offset = 0x100;
     }
     else if (param_1->sub_type == '\x02') {
-      func_0x8012de84(param_1,(int)*(s16 *)(param_1 + 0x32));
+      Overlay_8012de84(param_1,(int)*(s16 *)(param_1 + 0x32));
       sVar3 = _DAT_1f8001a4;
       *(s16 *)(param_1 + 100) = _DAT_1f8001a4;
       if (*(s16 *)(param_1 + 0x32) < sVar3) {

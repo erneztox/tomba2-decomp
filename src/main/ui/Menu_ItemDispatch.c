@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "overlay.h"
 s32 FUN_8004a3d4(int param_1)
 
 {
@@ -154,11 +155,11 @@ LAB_8004a6cc:
   case 0xa0:
   case 0xa1:
   case 0xa2:
-    func_0x80115aec(param_1);
+    Overlay_80115aec(param_1);
     break;
   case 0xa5:
     FUN_8004d4c4((int)param_1->target_angle,1);
-    func_0x80114f24(param_1);
+    Overlay_80114f24(param_1);
   }
   iVar2 = FUN_800310f4(0x1f,0xffffff74);
   if (iVar2 != 0) {

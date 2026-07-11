@@ -17,7 +17,7 @@ void FUN_80070018(int param_1,int param_2)
   bVar1 = param_1->state;
   if (bVar1 == 1) {
     if ((param_1->gte_flags != '\0') && (g_ActionFlag == '\0')) {
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
       return;
     }
     iVar3 = param_1->parent;
@@ -86,7 +86,7 @@ void FUN_80070018(int param_1,int param_2)
           if (param_2 == 0) {
             return;
           }
-          param_1->state = 3;
+          param_1->state = STATE_DEAD;
           return;
         }
         iVar3 = FUN_8004a3d4(param_1);
@@ -94,7 +94,7 @@ void FUN_80070018(int param_1,int param_2)
           return;
         }
       }
-      param_1->state = 3;
+      param_1->state = STATE_DEAD;
       return;
     }
     param_1->event_param = param_1->event_param + -1;

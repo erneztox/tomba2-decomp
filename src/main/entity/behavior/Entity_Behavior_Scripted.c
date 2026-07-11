@@ -90,7 +90,7 @@ void FUN_80030a3c(int param_1)
   if (iVar7 * 0x1000000 < 0) {
     param_1->scale_y = param_1->anim_data;
     if (param_1->anim_data == 0) {
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
       return;
     }
     if (sVar5 == 0) {

@@ -41,7 +41,7 @@ void FUN_80033450(int param_1)
   }
   else {
     if (0xf < param_1->behavior_state) {
-      param_1->state = 2;
+      param_1->state = STATE_FINISH;
       return;
     }
     iVar2 = *(int *)(param_1 + 0x58) + 0x174;

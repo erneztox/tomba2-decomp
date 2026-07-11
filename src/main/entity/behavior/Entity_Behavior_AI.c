@@ -73,7 +73,7 @@ u8 FUN_80020364(u8 *param_1,u8 *param_2,uint param_3)
         if (((g_CurrentOverlay == 0) && (bVar3 = *param_1 & 6, (*param_1 & 6) == 0)) &&
            (bVar3 = *param_2 & 2, (*param_2 & 2) == 0)) {
           bVar3 = 4;
-          param_1->state = 2;
+          param_1->state = STATE_FINISH;
           param_1->behavior_state = 2;
           *param_1 = 3;
           param_1->action_state = 0;

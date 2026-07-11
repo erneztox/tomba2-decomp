@@ -506,6 +506,28 @@ MAPPINGS = {
     0x80097730: ("MC_Flush", "Flushes memory card write buffer"),
     0x80097E10: ("MC_Seek", "Seeks to position in memory card file"),
 
+    # -- Entity script (continued) --
+    0x800423FC: ("Entity_ScriptBranch", "Branches script execution: if entity[0x72]=0 calls title, else calls 0x80042354"),
+
+    # -- CD asset loading --
+    0x80045080: ("CD_LoadChunk", "Loads data chunk from CD: reads sector table at 0x800BE118 by chunk ID"),
+    0x80045258: ("CD_LoadAsset", "Loads game asset from CD by ID: uses 0x800ECF58 + 0x800FB170 tables"),
+
+    # -- UI / texture --
+    0x8004B4E8: ("UI_ChangeTextureSet", "Changes UI texture set: updates globals and reloads via Texture_LoadUI"),
+
+    # -- Inventory (continued) --
+    0x8004D604: ("Inventory_RemoveItem", "Removes item from inventory: decrements count, updates UI"),
+    0x8004D688: ("Inventory_RemoveItem2", "Removes item variant: uses mode 4 instead of mode 1 for UI update"),
+    0x8004D868: ("Inventory_CheckFlag", "Checks inventory bit flag at 0x800BFD94 for item ID"),
+
+    # -- Entity spawn / collectibles --
+    0x8004BD04: ("Entity_SpawnCollectible", "Spawns collectible entity with behavior 0x8004BB38 from pool"),
+
+    # -- UI elements --
+    0x8004F430: ("UI_UpdateElement", "Updates UI element: decrements timer, resets state if timer reaches 0"),
+    0x80050970: ("UI_DrawScreenOverlay", "Draws screen overlay: calls 0x800508A8 or 0x8005082C based on flag"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

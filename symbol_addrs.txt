@@ -552,3 +552,14 @@ MC_Start = 0x800976A0;
 MC_Stop = 0x800976C8;
 MC_Flush = 0x80097730;
 MC_Seek = 0x80097E10;
+
+Entity_ScriptBranch = 0x800423FC;
+CD_LoadChunk = 0x80045080;
+CD_LoadAsset = 0x80045258;
+UI_ChangeTextureSet = 0x8004B4E8;
+Inventory_RemoveItem = 0x8004D604;
+Inventory_RemoveItem2 = 0x8004D688;
+Inventory_CheckFlag = 0x8004D868;
+Entity_SpawnCollectible = 0x8004BD04;
+UI_UpdateElement = 0x8004F430;
+UI_DrawScreenOverlay = 0x80050970;

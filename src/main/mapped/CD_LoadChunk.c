@@ -1,0 +1,18 @@
+/**
+ * @brief Loads data chunk from CD: reads sector table at 0x800BE118 by chunk ID
+ * @note Original: func_80045080 at 0x80045080
+ */
+// CD_LoadChunk
+
+
+
+void FUN_80045080(undefined4 param_1,uint param_2)
+
+{
+  int iVar1;
+  
+  iVar1 = (param_2 & 0xff) * 8;
+  FUN_8001dc40(param_1,*(undefined4 *)(&DAT_800be118 + iVar1),*(undefined4 *)(&DAT_800be11c + iVar1)
+              );
+  return;
+}

@@ -568,6 +568,18 @@ MAPPINGS = {
     0x8004CC64: ("Entity_SetType", "Sets entity type byte at entity[0x3] to given value"),
     0x8004D4F4: ("Menu_UpdateItemCount", "Updates item count display after selection change"),
 
+    # -- GTE matrix operations --
+    0x80051B34: ("GTE_CopyMatrix", "Copies 5-word GTE matrix from source to destination"),
+    0x80051C8C: ("Entity_InitMatrix", "Initializes entity GTE matrix to identity (0x1000 scale) at entity[0x98]"),
+    0x80051D20: ("Entity_TransformPoint", "Transforms a point by entity GTE matrix, adds translation"),
+    0x800517F8: ("Entity_UpdateMatrix", "Updates entity GTE matrix from entity[0x54] rotation and [0x2C-0x36] position"),
+
+    # -- Inventory / menu (continued) --
+    0x8004D650: ("Inventory_RemoveItem3", "Removes item from inventory: decrements count, updates UI display"),
+    0x8004D6D4: ("Menu_ActionMode0", "Menu action with mode 0: calls 0x8004ED0C with mode 0"),
+    0x8004D6F4: ("Menu_ActionMode3", "Menu action with mode 3: calls 0x8004ED0C with mode 3"),
+    0x8004ED94: ("UI_DrawElement", "Draws UI element from queue at 0x800BF800 by index"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

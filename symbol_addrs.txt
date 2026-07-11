@@ -583,3 +583,12 @@ Collision_Check2 = 0x80049280;
 Collision_Check3 = 0x800493E8;
 Entity_SetType = 0x8004CC64;
 Menu_UpdateItemCount = 0x8004D4F4;
+
+GTE_CopyMatrix = 0x80051B34;
+Entity_InitMatrix = 0x80051C8C;
+Entity_TransformPoint = 0x80051D20;
+Entity_UpdateMatrix = 0x800517F8;
+Inventory_RemoveItem3 = 0x8004D650;
+Menu_ActionMode0 = 0x8004D6D4;
+Menu_ActionMode3 = 0x8004D6F4;
+UI_DrawElement = 0x8004ED94;

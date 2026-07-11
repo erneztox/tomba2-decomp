@@ -444,6 +444,18 @@ MAPPINGS = {
     0x80088AE8: ("MDEC_CmdSetBS", "Sends MDEC set bitstream command (0x4B)"),
     0x80088DBC: ("MDEC_SwapCommand", "Swaps MDEC command bytes: saves 0x37 to 0x38, clears 0x37"),
 
+    # -- CD-ROM wrappers (continued) --
+    0x80089A30: ("CD_GetParamPtr", "Returns pointer to CD parameter area at 0x800ABFD4"),
+    0x80089AA8: ("CD_Cancel", "Cancels current CD operation via 0x8008B0C8"),
+    0x80089B44: ("CD_SyncSimple", "Wraps CD_Sync for simple sync calls"),
+    0x80089B64: ("CD_ReadySimple", "Wraps CD_Ready for simple ready check"),
+    0x80089B84: ("CD_SetEventCallback", "Sets CD event callback function at 0x800ABFBC"),
+    0x80089B98: ("CD_SetErrorCallback", "Sets CD error callback function at 0x800ABFC0"),
+    0x80089F68: ("CD_Init", "Initializes CD subsystem via 0x8008B040"),
+    0x80089F88: ("CD_CheckInit", "Checks if CD init is complete via 0x8008B620"),
+    0x80089FA8: ("CD_CheckReady", "Checks if CD is ready via 0x8008B720"),
+    0x80089FC8: ("CD_SetTimerCallback", "Sets CD timer callback via 0x80085B80 with mode 3"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

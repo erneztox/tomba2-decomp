@@ -497,3 +497,14 @@ MDEC_CmdSetScale = 0x80088AA8;
 MDEC_CmdSetSize = 0x80088AC8;
 MDEC_CmdSetBS = 0x80088AE8;
 MDEC_SwapCommand = 0x80088DBC;
+
+CD_GetParamPtr = 0x80089A30;
+CD_Cancel = 0x80089AA8;
+CD_SyncSimple = 0x80089B44;
+CD_ReadySimple = 0x80089B64;
+CD_SetEventCallback = 0x80089B84;
+CD_SetErrorCallback = 0x80089B98;
+CD_Init = 0x80089F68;
+CD_CheckInit = 0x80089F88;
+CD_CheckReady = 0x80089FA8;
+CD_SetTimerCallback = 0x80089FC8;

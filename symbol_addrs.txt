@@ -1963,3 +1963,58 @@ Overlay_08018BD3 = 0x08018BD3;
 Overlay_08018BE4 = 0x08018BE4;
 Overlay_08018FA8 = 0x08018FA8;
 Overlay_08018FBC = 0x08018FBC;
+
+# -- SOP.BIN overlay (title screen / opening sequence, loaded at 0x80100000) --
+
+# Core loop / state management
+SOP_MainUpdate = 0x80100318;
+SOP_StateDispatch = 0x801004B4;
+SOP_ActivateRendering = 0x8010094C;
+
+# CD / Texture loading
+SOP_TextureLoad = 0x801007B4;
+SOP_LoadingStateCheck = 0x80100848;
+SOP_CDLoadStateHandler = 0x80100998;
+
+# GTE 3D rendering
+SOP_GTE_TriangleProcessor = 0x80100A18;
+SOP_GTE_QuadProcessor = 0x80100CE4;
+SOP_MaterialColorProcessor = 0x80101044;
+
+# Screen-space / rasterizer
+SOP_ScreenSpaceTransform = 0x80101144;
+SOP_RasterizerFill = 0x80101410;
+
+# Entity spawners / creators
+SOP_CreateIntroEntities = 0x801008C4;
+SOP_CreateSpriteEntity = 0x80101E94;
+SOP_SpawnEntityByType = 0x801024B0;
+SOP_SpawnEntitySubtype1E = 0x80102E1C;
+
+# Entity state machines
+SOP_EntityStateDispatch = 0x80101964;
+SOP_FadeTransitionEntity = 0x80101B9C;
+SOP_TitleEntitySpawner = 0x80101D60;
+SOP_GameStateTransition = 0x80101F00;
+SOP_TimerStateHandler = 0x80101FC4;
+SOP_FinalStateTransition = 0x801020DC;
+SOP_ColorFadeAnimation = 0x80102180;
+SOP_CutsceneEntitySpawner = 0x80102338;
+SOP_EntitySpawner2 = 0x801027FC;
+SOP_VerticalMovementEntity = 0x80102910;
+SOP_TitleCardEntity = 0x801029F4;
+SOP_ChildEntityTracker = 0x80102B5C;
+SOP_ParentTrackedEntitySpawner = 0x80102CF0;
+SOP_ScrollTextEntity = 0x80102F10;
+SOP_MatrixTransformEntity = 0x80102FB8;
+
+# Entity helpers / dispatchers
+SOP_EntityAnimStateHandler = 0x80102544;
+SOP_EntityDispatcher = 0x801025EC;
+SOP_InitEntityPosition = 0x801024FC;
+SOP_InitEntityFromParent = 0x80102E68;
+
+# Background / tile rendering
+SOP_TileMapRenderer = 0x801032D0;
+SOP_TileAnimationUpdate = 0x80103704;
+SOP_BackgroundRenderMain = 0x80103800;

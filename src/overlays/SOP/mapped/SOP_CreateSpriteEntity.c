@@ -1,0 +1,22 @@
+// SOP_CreateSpriteEntity (SOP_CreateSpriteEntity) - Allocates a sprite entity (pool 0, type 6) with draw function 0x8002AB5C
+
+/* WARNING: Control flow encountered bad instruction data */
+
+undefined4 SOP_CreateSpriteEntity(undefined4 param_1)
+
+{
+  int iVar1;
+  
+  iVar1 = func_0x0007a980(0,6,1);
+  if (iVar1 != 0) {
+    *(undefined4 *)(iVar1 + 0x1c) = 0x8010ab38;
+    *(undefined1 *)(iVar1 + 0xb) = 0x20;
+    *(undefined4 *)(iVar1 + 0x10) = param_1;
+    *(undefined4 *)(iVar1 + 0x18) = 0x8002ab5c;
+    *(byte *)(iVar1 + 0x28) = *(byte *)(iVar1 + 0x28) | 0x80;
+                    /* WARNING: Bad instruction - Truncating control flow here */
+    halt_baddata();
+  }
+  return 0;
+}
+

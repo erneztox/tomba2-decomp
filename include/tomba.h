@@ -206,6 +206,15 @@ extern u32* g_OT_Buffer;            // 0x800BF544 - Current OT buffer pointer
 // SPU / Audio
 extern u16* g_SPU_Regs;             // 0x800AC604 - SPU register base
 
+// CD-ROM / DMA globals
+extern u32  g_CD_Status;            // 0x800AD098 - CD status register
+extern u32  g_CD_Control;           // 0x800AD078 - CD control register
+extern u32  g_CD_IRQ;               // 0x800AD06C - CD IRQ register
+extern u32  g_CD_Counter;           // 0x800AC304 - CD counter
+extern u32  g_CD_Event;             // 0x800AC308 - CD event flag
+extern u32  g_CD_Param;             // 0x800AC30C - CD parameter
+extern u32  g_CD_SeekPos;           // 0x800AC300 - CD seek position
+
 // Audio channel table (0xB0-byte entries)
 extern u32* g_AudioChannels;        // 0x80104C30 - Audio channel struct table
 
@@ -343,6 +352,26 @@ typedef struct MDECContext {
     /* 0xEE */ s16  height;         // Frame height
     /* 0xF0 */ s32  _unkF0;
 } MDECContext;  // ~0xF4 bytes
+
+// ============================================================
+// DMA Descriptor (used for GPU/CD DMA transfers)
+// ============================================================
+typedef struct {
+    u32  addr;           // 0x00: Transfer address
+    u32  length;         // 0x04: Transfer length (words)
+    u32  control;        // 0x08: Control flags
+    u32  next;           // 0x0C: Next descriptor pointer
+} DMADescriptor;  // 0x10 bytes
+
+// ============================================================
+// Event/Callback entry (0x10 bytes, used in IRQ/callback tables)
+// ============================================================
+typedef struct {
+    void (*callback)(void);  // 0x00: Callback function
+    u32  param1;             // 0x04: Parameter 1
+    u32  param2;             // 0x08: Parameter 2
+    u32  flags;              // 0x0C: Flags
+} EventEntry;  // 0x10 bytes
 
 // ============================================================
 // Overlay function stubs - called from MAIN.EXE

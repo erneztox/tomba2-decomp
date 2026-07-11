@@ -2,7 +2,7 @@
 """Dump whatever overlay is currently active in Ghidra."""
 import socket, json, os
 
-SOCK = '/run/user/1000/ghidra-mcp/ghidra-398224.sock'
+SOCK = '/run/user/1000/ghidra-mcp/ghidra-461397.sock'
 
 def req_get(endpoint):
     s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)

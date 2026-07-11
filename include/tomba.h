@@ -101,14 +101,23 @@ typedef struct Entity {
     /* 0x82 */ s16  bounds_size;    // Collision bounds size / sprite scale
     /* 0x84 */ s16  bounds_min_y;   // Collision bounds min Y / timer
     /* 0x86 */ s16  bounds_max_y;   // Collision bounds max Y
-    /* 0x88 */ s16  pos_offset;     // Position offset (18 accesses)
-    /* 0x8A */ u8   _pad8A[6];
-    /* 0x90 */ s16  move_speed;     // Movement speed parameter (9 accesses)
+    /* 0x88 */ s16  gte_input[4];   // GTE input vector (XYZW, source for transform)
+    /* 0x90 */ s16  move_speed;     // Movement speed parameter
     /* 0x92 */ u8   _pad92[6];
-    /* 0x98 */ u32  gte_transform;  // GTE transform flags
-    /* 0x9C */ u32  gte_data;       // GTE-related data
-    /* 0xA0 */ u32  gte_data2;      // GTE-related data 2
-    /* 0xA4 */ u8   _padA4[0x3C];
+    /* 0x98 */ s32  gte_result[4];   // GTE transform result matrix (3x3 rotation + translation)
+    /* 0xA8 */ u8   _padA8[4];
+    /* 0xAC */ s32  projected_x;     // Projected screen X (after GTE transform + pos)
+    /* 0xB0 */ s32  projected_y;     // Projected screen Y
+    /* 0xB4 */ s32  projected_z;     // Projected screen Z (depth)
+    /* 0xB8 */ s16  scale_x;         // GTE scale X (default 0x1000 = 1.0)
+    /* 0xBA */ s16  scale_y;         // GTE scale Y
+    /* 0xBC */ s16  scale_z;         // GTE scale Z
+    /* 0xBE */ u8   gte_flags;       // GTE-related flags (set to 0 or 1)
+    /* 0xBF */ u8   combat_flag;     // Combat flag (checked for SFX)
+    /* 0xC0 */ s32  sprite_ptr1;     // Sprite data pointer (array for trails/effects)
+    /* 0xC4 */ s32  sprite_ptr2;     // Sprite data pointer 2
+    /* 0xC8 */ u8   _padC8[0x14];
+    /* 0xDC */ s32  data_ptr;        // Generic data pointer (offset +0x2C accessed)
     /* 0xE0 */ u8   _padE0[0x60];
     /* 0x140 */ s16 draw_angle;     // Draw rotation angle
     /* 0x142 */ s16 draw_scale;     // Draw scale (18 accesses)
@@ -117,9 +126,12 @@ typedef struct Entity {
     /* 0x146 */ u8  state_flag146;  // State flag
     /* 0x147 */ u8  direction;      // Direction (0=right, 1=left)
     /* 0x148 */ s32 state_data;     // State-specific data (pointer or counter)
-    /* 0x14C */ s16 draw_pos_x;     // Draw position X (screen)
-    /* 0x14E */ s16 draw_pos_y;     // Draw position Y (screen)
+    /* 0x14A */ u8  behavior_flags; // Behavior flags (bit0=direction, bits 1-3=flags, 100+ accesses)
+    /* 0x14B */ u8  sub_behavior;   // Sub-behavior flag (from config)
+    /* 0x14C */ s16 draw_pos_x;     // Draw/screen position X
+    /* 0x14E */ s16 draw_pos_y;     // Draw/screen position Y
     /* 0x150 */ s16 draw_pos_z;     // Draw depth Z
+    /* 0x152 */ u8  _pad152[2];
     /* 0x154 */ s16 speed;          // Movement speed
     /* 0x156 */ s16 speed2;         // Secondary speed (54 accesses)
     /* 0x158 */ void* state_ptr;    // State-specific data pointer

@@ -13,8 +13,8 @@ s32 FUN_80089194(int param_1)
   u8 bVar1;
   
   if (**(char **)(param_1 + 0x3c) == -0xd) {
-    if ((*(s8*)(param_1 + 0xe8) != '\0') && (param_1->anim_id != -1)) {
-      if (*(s8*)(param_1 + 0x49) == '\x02') {
+    if ((param_1->state != '\0') && (param_1->state != -1)) {
+      if (param_1->state == '\x02') {
         (*DAT_800abe3c)(param_1);
       }
       goto LAB_80089200;
@@ -24,7 +24,7 @@ LAB_80089258:
   }
   else {
 LAB_80089200:
-    bVar1 = param_1->anim_id;
+    bVar1 = param_1->state;
     if (bVar1 == 1) {
       FUN_80088a54(param_1,1);
       return 0;
@@ -40,11 +40,11 @@ LAB_80089200:
         return 0;
       }
     }
-    if (param_1->script_ptr == (code *)0x0) {
+    if (param_1->state == (code *)0x0) {
       FUN_80087f1c(param_1);
     }
     else {
-      (*param_1->script_ptr)(param_1);
+      (param_1->state)(param_1);
     }
   }
   return 0;

@@ -25,8 +25,8 @@ s32 FUN_80091460(s16 param_1,s16 param_2)
   pbVar5 = (u8 *)*piVar6 + 1;
   *piVar6 = (int)pbVar5;
   if (((*(uint *)(iVar2 + *(int *)(&g_AudioChannels + param_1 * 4) + 0x98) & 0x401) == 0x401) &&
-     (pbVar5 == (u8 *)(piVar6->state + 1))) {
-    FUN_8009121c((int)param_1,(int)param_2,*(u8 *)(piVar6->state + 1));
+     (pbVar5 == (u8 *)(piVar6->flags + 1))) {
+    FUN_8009121c((int)param_1,(int)param_2,*(u8 *)(piVar6->flags + 1));
     return 0xffffffff;
   }
   if ((bVar4 & 0x80) == 0) {

@@ -13,7 +13,7 @@ void FUN_8008f7a0(s16 param_1,s16 param_2,s16 param_3,s32 param_4)
   u8 bVar1;
   s32 local_resc;
   u8 in_stack_00000030;
-  u8 auStack_30->counter1;
+  u8 auStack_30->flags;
   u16 local_28;
   s16 local_22;
   

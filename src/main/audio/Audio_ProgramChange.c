@@ -1,5 +1,5 @@
 /**
- * @brief Audio program change: reads u8, increments ptr, sets [0x26], stores voice at [0x90]
+ * @brief Audio program change: reads u8, increments ptr, sets->flags, stores voice at [0x90]
  * @note Original: func_8008E390 at 0x8008E390
  */
 // Audio_ProgramChange

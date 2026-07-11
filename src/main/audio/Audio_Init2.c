@@ -35,7 +35,7 @@ void FUN_8008dfa0(void)
   iVar3 = -0x7fefb350;
   do {
     iVar4 = 0xf;
-    puVar2 = iVar3->sprite_data;
+    puVar2 = iVar3->flags;
     do {
       *puVar2 = 0;
       iVar4 = iVar4 + -1;

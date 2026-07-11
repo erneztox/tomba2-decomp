@@ -18,7 +18,7 @@ void FUN_80091970(u16 param_1,s16 param_2)
   piVar2 = (int *)(&g_AudioChannels + ((int)((uint)param_1 << 0x10) >> 0xe));
   iVar1 = param_2 * 0xb0;
   puVar4 = (s32 *)(*piVar2 + iVar1);
-  puVar4[0x26] = puVar4[0x26] & 0xfffffffe;
+  puVar4->flags = puVar4->flags & 0xfffffffe;
   *(uint *)(iVar1 + *piVar2 + 0x98) = *(uint *)(iVar1 + *piVar2 + 0x98) & 0xfffffffd;
   *(uint *)(iVar1 + *piVar2 + 0x98) = *(uint *)(iVar1 + *piVar2 + 0x98) & 0xfffffff7;
   *(uint *)(iVar1 + *piVar2 + 0x98) = *(uint *)(iVar1 + *piVar2 + 0x98) & 0xfffffbff;
@@ -26,10 +26,10 @@ void FUN_80091970(u16 param_1,s16 param_2)
   FUN_80095b90((int)(s16)(param_1 | param_2 << 8));
   FUN_800931a0();
   iVar1 = 0;
-  puVar4->behavior_state = 0;
+  puVar4->flags = 0;
   puVar4[0x22] = 0;
-  puVar4->sub_action = 0;
-  puVar4->action_state = 0;
+  puVar4->flags = 0;
+  puVar4->flags = 0;
   *(u8 *)((int)puVar4 + 0x19) = 0;
   *(u8 *)((int)puVar4 + 0x1e) = 0;
   *(u8 *)((int)puVar4 + 0x1a) = 0;
@@ -37,15 +37,15 @@ void FUN_80091970(u16 param_1,s16 param_2)
   *(u8 *)((int)puVar4 + 0x1f) = 0;
   *(u8 *)((int)puVar4 + 0x17) = 0;
   *(u8 *)((int)puVar4 + 0x21) = 0;
-  puVar4->sub_action = 0;
+  puVar4->flags = 0;
   *(u8 *)((int)puVar4 + 0x1d) = 0;
   *(u8 *)((int)puVar4 + 0x15) = 0;
   *(u8 *)((int)puVar4 + 0x16) = 0;
   puVar4[0x24] = puVar4[0x21];
   puVar4[0x25] = puVar4[0x23];
-  *(s16 *)(puVar4 + 0x15) = *(s16 *)((int)puVar4 + 0x56);
+  puVar4->flags = *(s16 *)((int)puVar4 + 0x56);
   *puVar4 = puVar4->flags;
-  puVar4->kind = puVar4->flags;
+  puVar4->flags = puVar4->flags;
   puVar3 = puVar4;
   do {
     *(s8*)((int)puVar4 + iVar1 + 0x37) = (char)iVar1;

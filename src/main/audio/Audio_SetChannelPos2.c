@@ -13,12 +13,12 @@ void FUN_80091f50(s16 param_1,s16 param_2,s16 param_3)
   int iVar1;
   
   iVar1 = *(int *)(&g_AudioChannels + param_1 * 4);
-  if (iVar1->gte_result == 1) {
+  if (iVar1->flags == 1) {
     FUN_80095530((int)param_1,param_2,param_3,1);
   }
   else {
-    iVar1->rot_z = param_2;
-    iVar1->target_rot_y = param_3;
+    iVar1->flags = param_2;
+    iVar1->flags = param_3;
   }
   return;
 }

@@ -12,13 +12,13 @@ s32 FUN_80092ea0(u16 param_1,s16 *param_2,s16 *param_3)
 {
   s32 uVar1;
   s16 local_18;
-  s16 local_16->sub_type;
+  s16 local_16->flags;
   
   if (param_1 < 0x18) {
     FUN_8009a170((int)(s16)param_1,&local_18,local_16);
     *param_2 = local_18 / 0x81;
     uVar1 = 0;
-    *param_3 = local_16->type / 0x81;
+    *param_3 = local_16->flags / 0x81;
   }
   else {
     uVar1 = 0xffffffff;

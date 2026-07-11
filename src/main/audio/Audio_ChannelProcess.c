@@ -15,32 +15,32 @@ void FUN_80091120(int param_1,s16 param_2)
   int iVar3;
   
   iVar3 = *(int *)(&g_AudioChannels + ((param_1 << 0x10) >> 0xe)) + param_2 * 0xb0;
-  iVar1 = *(int *)(iVar3 + 0x90);
-  iVar2 = iVar1 - iVar3->rot_x;
+  iVar1 = iVar3->flags;
+  iVar2 = iVar1 - iVar3->flags;
   if (iVar2 < 1) {
-    if (iVar3->rot_x < iVar1) {
+    if (iVar3->flags < iVar1) {
       return;
     }
     do {
       do {
         FUN_80091460((param_1 << 0x10) >> 0x10,(int)param_2);
-      } while (*(int *)(iVar3 + 0x90) == 0);
-      iVar1 = iVar1 + *(int *)(iVar3 + 0x90);
-      iVar2 = iVar1 - iVar3->rot_x;
-    } while (iVar1 < iVar3->rot_x);
+      } while (iVar3->flags == 0);
+      iVar1 = iVar1 + iVar3->flags;
+      iVar2 = iVar1 - iVar3->flags;
+    } while (iVar1 < iVar3->flags);
   }
   else {
-    if (0 < iVar3->sprite_y) {
-      iVar3->sprite_y = iVar3->sprite_y + -1;
+    if (0 < iVar3->flags) {
+      iVar3->flags = iVar3->flags + -1;
       return;
     }
-    if (iVar3->sprite_y != 0) {
-      *(int *)(iVar3 + 0x90) = iVar2;
+    if (iVar3->flags != 0) {
+      iVar3->flags = iVar2;
       return;
     }
-    iVar3->sprite_y = iVar3->rot_x;
-    iVar2 = *(int *)(iVar3 + 0x90) + -1;
+    iVar3->flags = iVar3->flags;
+    iVar2 = iVar3->flags + -1;
   }
-  *(int *)(iVar3 + 0x90) = iVar2;
+  iVar3->flags = iVar2;
   return;
 }

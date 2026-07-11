@@ -20,9 +20,9 @@ s32 FUN_80092310(s16 param_1,s16 param_2,u8 *param_3)
     iVar2 = param_2 * 0x10;
     *param_3 = *(u8 *)(iVar2 + _DAT_80105cdc);
     param_3->flags = *(u8 *)(iVar2 + _DAT_80105cdc + 1);
-    param_3->kind = *(u8 *)(iVar2 + _DAT_80105cdc + 2);
-    param_3->sub_type = *(u8 *)(iVar2 + _DAT_80105cdc + 3);
-    param_3->state = *(u8 *)(iVar2 + _DAT_80105cdc + 4);
+    param_3->flags = *(u8 *)(iVar2 + _DAT_80105cdc + 2);
+    param_3->flags = *(u8 *)(iVar2 + _DAT_80105cdc + 3);
+    param_3->flags = *(u8 *)(iVar2 + _DAT_80105cdc + 4);
     uVar1 = 0;
     *(s16 *)(param_3 + 6) = *(s16 *)(iVar2 + _DAT_80105cdc + 6);
   }

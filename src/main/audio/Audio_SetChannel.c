@@ -19,20 +19,20 @@ void FUN_8008eb60(s16 param_1,s16 param_2,u8 param_3)
   iVar4 = (int)param_1;
   iVar5 = (int)param_2;
   iVar6 = *(int *)(&g_AudioChannels + iVar4 * 4) + iVar5 * 0xb0;
-  cVar3 = *(s8*)(iVar6 + 0x1b);
+  cVar3 = iVar6->flags;
   if (cVar3 == '(') {
     pcVar1 = *(code **)(iVar5 * 4 + iVar4 * 0x40 + -0x7fefb350);
     if (pcVar1 != (code *)0x0) {
       (*pcVar1)(iVar4,iVar5,param_3);
     }
-    cVar3 = *(s8*)(iVar6 + 0x1b);
+    cVar3 = iVar6->flags;
   }
   if (((cVar3 != '\x1e') && (cVar3 != '\x14')) && (cVar3 != '(')) {
-    *(u8 *)(iVar6 + 0x1a) = param_3;
-    *(u8 *)(iVar6 + 0x1c) = 0;
-    *(s8*)(iVar6 + 0x1f) = *(s8*)(iVar6 + 0x1f) + '\x01';
+    iVar6->flags = param_3;
+    iVar6->flags = 0;
+    iVar6->flags = iVar6->flags + '\x01';
   }
   uVar2 = FUN_80090160((int)param_1,(int)param_2);
-  *(s32 *)(iVar6 + 0x90) = uVar2;
+  iVar6->flags = uVar2;
   return;
 }

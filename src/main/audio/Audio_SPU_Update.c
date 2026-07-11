@@ -21,9 +21,9 @@ int FUN_8007566c(int param_1,int param_2)
   iVar3 = 10;
   psVar1 = &DAT_800be3b8;
   do {
-    if (psVar1->sub_type != 0) {
+    if (psVar1->flags != 0) {
       FUN_8008dd7c((int)*psVar1);
-      psVar1->sub_type = 0;
+      psVar1->flags = 0;
     }
     iVar3 = iVar3 + 1;
     psVar1 = psVar1 + 4;

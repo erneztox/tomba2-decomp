@@ -15,7 +15,7 @@ int FUN_800875dc(int param_1)
   
   DAT_800abebc = 0;
   if ((DAT_800abe84 != 0) && (**(u8 **)(param_1 + 0x3c) >> 4 == 8)) {
-    DAT_800abebc = (uint)(*(s8*)(param_1 + 0x37) == '\0');
+    DAT_800abebc = (uint)(param_1->state == '\0');
   }
   if (DAT_800abebc == 0) {
     (*DAT_800abe44)(param_1);

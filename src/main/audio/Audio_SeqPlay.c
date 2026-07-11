@@ -35,7 +35,7 @@ void FUN_80075824(uint *param_1)
     *param_1 = *param_1 | 3;
     goto LAB_800759fc;
   }
-  iVar3 = (int)(s16)param_1->render_flags;
+  iVar3 = (int)(s16)param_1->flags;
   iVar4 = (int)*(s16 *)((int)param_1 + 0x2a);
   iVar5 = 0x100;
   if (g_CurrentOverlay == '\x02') {

@@ -52,16 +52,16 @@ int FUN_80092660(u16 param_1,s16 param_2,u16 param_3,s8 param_4,s16 param_5,
       }
       puVar4 = (u8 *)(((int)((uint)param_3 << 0x10) >> 0xc) + _DAT_80105cdc);
       DAT_80105d02 = puVar4->flags;
-      DAT_80105d03 = puVar4->state;
+      DAT_80105d03 = puVar4->flags;
       DAT_80105cf8 = *puVar4;
       puVar4 = (u8 *)
                ((((int)param_4 + DAT_80105cff * 0x10) * 0x10000 >> 0xb) + _DAT_80105ce8);
       DAT_80105d07 = *puVar4;
       _DAT_80105d0e = *(s16 *)(puVar4 + 0x16);
-      DAT_80105d05 = puVar4->kind;
-      DAT_80105d06 = puVar4->sub_type;
-      DAT_80105d08 = puVar4->state;
-      DAT_80105d09 = puVar4->behavior_state;
+      DAT_80105d05 = puVar4->flags;
+      DAT_80105d06 = puVar4->flags;
+      DAT_80105d08 = puVar4->flags;
+      DAT_80105d09 = puVar4->flags;
       DAT_80105d0a = puVar4->flags;
       DAT_80105d04 = param_4;
       if (_DAT_80105d0e != 0) {

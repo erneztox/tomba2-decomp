@@ -32,7 +32,7 @@ s32 FUN_80090210(u16 param_1,u8 param_2,char *param_3)
   puVar14 = *(s32 **)(&g_AudioChannels + ((int)((uint)param_1 << 0x10) >> 0xe));
   *(u8 *)((int)puVar14 + 0x26) = param_2;
   *(s16 *)(puVar14 + 0x14) = 0;
-  puVar14->action_state = 0;
+  puVar14->flags = 0;
   *(u8 *)((int)puVar14 + 0x19) = 0;
   *(u8 *)((int)puVar14 + 0x1e) = 0;
   *(u8 *)((int)puVar14 + 0x1a) = 0;
@@ -44,15 +44,15 @@ s32 FUN_80090210(u16 param_1,u8 param_2,char *param_3)
   puVar14[0x23] = 0;
   *(s16 *)((int)puVar14 + 0x56) = 0;
   *(u8 *)((int)puVar14 + 0x21) = 0;
-  puVar14->counter1 = 1;
-  puVar14->behavior_state = 0;
+  puVar14->flags = 1;
+  puVar14->flags = 0;
   puVar14[0x24] = 0;
-  puVar14->sub_action = 0;
+  puVar14->flags = 0;
   *(u8 *)((int)puVar14 + 0x1d) = 0;
   *(u8 *)((int)puVar14 + 0x15) = 0;
   *(u8 *)((int)puVar14 + 0x16) = 0;
   *(s16 *)(puVar14 + 0x20) = 0;
-  puVar14->counter2 = 0;
+  puVar14->flags = 0;
   *(u8 *)((int)puVar14 + 0x25) = 0;
   puVar12 = puVar14;
   do {
@@ -69,15 +69,15 @@ s32 FUN_80090210(u16 param_1,u8 param_2,char *param_3)
     return 0;
   }
   *puVar14 = param_3 + 7;
-  cVar1 = param_3->sub_action;
+  cVar1 = param_3->flags;
   *puVar14 = param_3 + 8;
   if (cVar1 != '\x01') {
     FUN_8009a730(s_This_is_not_SEQ_Data__8001c610);
     return 0xffffffff;
   }
-  cVar1 = param_3->counter1;
+  cVar1 = param_3->flags;
   *puVar14 = param_3 + 9;
-  cVar2 = param_3->counter2;
+  cVar2 = param_3->flags;
   *puVar14 = param_3 + 10;
   pbVar11 = (u8 *)*puVar14;
   *(u16 *)(puVar14 + 0x14) = CONCAT11(cVar1,cVar2);
@@ -85,7 +85,7 @@ s32 FUN_80090210(u16 param_1,u8 param_2,char *param_3)
   *puVar14 = pbVar11 + 1;
   bVar4 = pbVar11->flags;
   *puVar14 = pbVar11 + 2;
-  uVar7 = (uint)pbVar11->kind | (uint)bVar3 << 0x10 | (uint)bVar4 << 8;
+  uVar7 = (uint)pbVar11->flags | (uint)bVar3 << 0x10 | (uint)bVar4 << 8;
   if (uVar7 == 0) {
     trap(0x1c00);
   }
@@ -101,18 +101,18 @@ s32 FUN_80090210(u16 param_1,u8 param_2,char *param_3)
   puVar14[0x25] = puVar14[0x23];
   uVar5 = *puVar8;
   *puVar14 = puVar8 + 1;
-  puVar14->counter2 = uVar5;
+  puVar14->flags = uVar5;
   uVar5 = puVar8->flags;
   *puVar14 = puVar8 + 2;
   *(u8 *)((int)puVar14 + 0x25) = uVar5;
   uVar9 = FUN_80090160((int)(s16)param_1,0);
   uVar7 = (int)*(s16 *)(puVar14 + 0x14) * puVar14[0x23];
-  puVar14->kind = *puVar14;
+  puVar14->flags = *puVar14;
   iVar10 = _DAT_80104c2c;
   puVar14[0x21] = uVar9;
   puVar14[0x24] = uVar9;
-  puVar14->state = 0;
-  puVar14->sub_type = *puVar14;
+  puVar14->flags = 0;
+  puVar14->flags = *puVar14;
   puVar14->flags = *puVar14;
   uVar13 = iVar10 * 0x3c;
   if (uVar7 * 10 < uVar13) {
@@ -131,13 +131,13 @@ s32 FUN_80090210(u16 param_1,u8 param_2,char *param_3)
     }
     *(s16 *)((int)puVar14 + 0x52) = 0xffff;
     sVar6 = (s16)((uint)((int)*(s16 *)(puVar14 + 0x14) * puVar14[0x23] * 10) / uVar13);
-    *(s16 *)(puVar14 + 0x15) = sVar6;
+    puVar14->flags = sVar6;
     if ((uint)((int)*(s16 *)(puVar14 + 0x14) * puVar14[0x23] * 10) % uVar13 <=
         (uint)(iVar10 * 0x1e)) goto LAB_80090538;
     sVar6 = sVar6 + 1;
   }
-  *(s16 *)(puVar14 + 0x15) = sVar6;
+  puVar14->flags = sVar6;
 LAB_80090538:
-  *(s16 *)((int)puVar14 + 0x56) = *(s16 *)(puVar14 + 0x15);
+  *(s16 *)((int)puVar14 + 0x56) = puVar14->flags;
   return 0;
 }

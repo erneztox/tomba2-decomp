@@ -42,17 +42,17 @@ uint FUN_800939a0(uint param_1,s16 param_2,s16 param_3,s16 param_4,u16 param_5,
     }
     else {
       DAT_80105cfc = (char)((int)((uint)param_5 *
-                                 (int)*(s16 *)((uint)*(u8 *)(iVar10 + 0x17) * 2 + iVar10 + 0x60)
+                                 (int)*(s16 *)((uint)iVar10->flags * 2 + iVar10 + 0x60)
                                  ) / 0x7f);
     }
     DAT_80105cfd = param_6;
     puVar5 = (u8 *)(local_38 * 0x10 + _DAT_80105cdc);
     DAT_80105d02 = puVar5->flags;
-    DAT_80105d03 = puVar5->state;
+    DAT_80105d03 = puVar5->flags;
     DAT_80105cf8 = *puVar5;
     uVar6 = 0xffffffff;
     _DAT_80105d0c = sVar2;
-    if ((int)DAT_80105cff < (int)(uint)*(u16 *)(_DAT_80105ce4 + 0x12)) {
+    if ((int)DAT_80105cff < (int)(uint)_DAT_80105ce4->flags) {
       if (param_5 == 0) {
         uVar6 = FUN_80093ebc((int)sVar2,(int)param_2,(int)local_38,param_4);
       }
@@ -69,10 +69,10 @@ uint FUN_800939a0(uint param_1,s16 param_2,s16 param_3,s16 param_4,u16 param_5,
             pcVar7 = (s8*)(((int)DAT_80105d04 + DAT_80105cff * 0x10 & 0xffffU) * 0x20 +
                              _DAT_80105ce8);
             DAT_80105d07 = *pcVar7;
-            DAT_80105d05 = pcVar7->kind;
-            DAT_80105d06 = pcVar7->sub_type;
-            DAT_80105d08 = pcVar7->state;
-            DAT_80105d09 = pcVar7->behavior_state;
+            DAT_80105d05 = pcVar7->flags;
+            DAT_80105d06 = pcVar7->flags;
+            DAT_80105d08 = pcVar7->flags;
+            DAT_80105d09 = pcVar7->flags;
             DAT_80105d0a = pcVar7->flags;
             uVar8 = FUN_80094150(0);
             uVar8 = uVar8 & 0xff;
@@ -86,7 +86,7 @@ uint FUN_800939a0(uint param_1,s16 param_2,s16 param_3,s16 param_4,u16 param_5,
               *(s16 *)(_DAT_80105d10 * 0x38 + -0x7fefab24) = local_38;
               if (local_30 != 0x21) {
                 *(u16 *)(_DAT_80105d10 * 0x38 + -0x7fefab30) = param_5;
-                *(u16 *)(_DAT_80105d10 * 0x38 + -0x7fefab2c) = (u16)*(u8 *)(iVar10 + 0x17);
+                *(u16 *)(_DAT_80105d10 * 0x38 + -0x7fefab2c) = (u16)iVar10->flags;
               }
               *(u8 *)(_DAT_80105d10 * 0x38 + -0x7fefab2e) = param_6;
               *(s16 *)(_DAT_80105d10 * 0x38 + -0x7fefab02) = (s16)DAT_80105cfc;

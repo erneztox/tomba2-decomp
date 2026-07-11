@@ -38,8 +38,8 @@ void FUN_80092fd0(void)
   (&DAT_80105a08)[(s16)_DAT_80105d10] = (&DAT_80105a08)[(s16)_DAT_80105d10] | 8;
   iVar7 = (int)(uVar3 << 0x13) >> 0xf;
   iVar6 = (DAT_80105cff * 0x10 + (int)DAT_80105d04) * 0x20 + _DAT_80105ce8;
-  *(s16 *)(&DAT_80105a30 + iVar7) = *(s16 *)(iVar6 + 0x10);
-  uVar1 = *(u16 *)(iVar6 + 0x12);
+  *(s16 *)(&DAT_80105a30 + iVar7) = iVar6->flags;
+  uVar1 = iVar6->flags;
   uVar4 = _DAT_80105c90 + (uVar1 & 0x1f);
   if (0x1f < (s16)uVar4) {
     uVar4 = 0x1f;

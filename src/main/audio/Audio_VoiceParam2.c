@@ -47,22 +47,22 @@ int FUN_80095d10(uint param_1,s16 param_2,s16 param_3,u16 param_4,u16 param_5)
            (iVar3 = (iVar3 >> 0x10) * 0x38, (int)*(s16 *)(iVar3 + -0x7fefab28) == (int)sVar1)) &&
           (*(s16 *)(iVar3 + -0x7fefab24) == iVar9)) &&
          ((int)*(s16 *)(iVar3 + -0x7fefab20) == (int)param_2)) {
-        iVar3 = (uint)*(u8 *)(iVar10 + 0x17) * 2 + iVar10;
-        uVar4 = (uint)iVar3->draw_x;
+        iVar3 = (uint)iVar10->flags * 2 + iVar10;
+        uVar4 = (uint)iVar3->flags;
         if ((uVar4 != param_4) && (uVar4 == 0)) {
-          iVar3->draw_x = 1;
+          iVar3->flags = 1;
         }
         sVar2 = (s16)iVar8;
         iVar3 = sVar2 * 0x38;
         iVar7 = (*(s16 *)(iVar3 + -0x7fefab26) * 0x10 + (int)*(s16 *)(iVar3 + -0x7fefab22)) *
                 0x20 + _DAT_80105ce8;
         uVar6 = (((int)(((int)((int)*(s16 *)(iVar3 + -0x7fefab30) * (uint)param_4) / 0x7f) *
-                       (uint)*(u8 *)(_DAT_80105ce4 + 0x18) * 0x3fff) / 0x3f01) *
-                 (uint)*(u8 *)(iVar9 * 0x10 + _DAT_80105cdc + 1) * (uint)iVar7->kind) /
+                       (uint)_DAT_80105ce4->flags * 0x3fff) / 0x3f01) *
+                 (uint)*(u8 *)(iVar9 * 0x10 + _DAT_80105cdc + 1) * (uint)iVar7->flags) /
                 0x3f01;
-        uVar4 = (uVar6 * iVar10->rot_z) / 0x7f;
-        uVar5 = (uint)iVar7->sub_type;
-        uVar6 = (uVar6 * iVar10->target_rot_y) / 0x7f;
+        uVar4 = (uVar6 iVar10->flags) / 0x7f;
+        uVar5 = (uint)iVar7->flags;
+        uVar6 = (uVar6 iVar10->flags) / 0x7f;
         if (uVar5 < 0x40) {
           uVar6 = (uVar6 * uVar5) / 0x3f;
         }

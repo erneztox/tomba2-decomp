@@ -1,5 +1,5 @@
 /**
- * @brief Audio toggle: flips DAT_800ac438, calls callback ptr on 1->0 transition
+ * @brief Audio toggle: flips DAT_800ac438, calls callback ptr on 1->flags transition
  * @note Original: func_80090A0C at 0x80090A0C
  */
 // Audio_Toggle

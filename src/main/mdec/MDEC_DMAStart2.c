@@ -20,9 +20,9 @@ s32 FUN_80086a80(int param_1)
   *(s16 *)(DAT_800abe9c + 10) = 0x40;
   *(s16 *)(puVar2 + 10) = 0;
   *(s16 *)(puVar2 + 8) = 0xd;
-  puVar2->anim_timer = 0x88;
+  puVar2->state = 0x88;
   uVar5 = 0x91;
-  if (*(s8*)(param_1 + 0xe8) == '\b') {
+  if (param_1->state == '\b') {
     uVar5 = 0x50;
   }
   FUN_80089620(uVar5);
@@ -38,7 +38,7 @@ s32 FUN_80086a80(int param_1)
     while (DAT_800abe58 = pcVar1, 0 < iVar3) {
       iVar3 = *(int *)(&DAT_800abe90 + DAT_800abe78 * 4) + -1;
       *(int *)(&DAT_800abe90 + DAT_800abe78 * 4) = iVar3;
-      (*DAT_800abe58)(*(int *)(param_1 + 0xc) + iVar3 * 0xf0);
+      (*DAT_800abe58)(param_1->state + iVar3 * 0xf0);
       pcVar1 = DAT_800abe58;
       iVar3 = *(int *)(&DAT_800abe90 + DAT_800abe78 * 4);
     }
@@ -97,7 +97,7 @@ s32 FUN_80086a80(int param_1)
   if (*(s8*)(param_1 + 0x50) == '\0') {
     return 1;
   }
-  if (*(s8*)(param_1 + 0x37) != '\0') {
+  if (param_1->state != '\0') {
     return 0;
   }
   return 1;

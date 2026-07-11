@@ -13,8 +13,8 @@ void FUN_800900f0(s16 param_1,s16 param_2,u8 param_3)
   int iVar2;
   
   iVar2 = *(int *)(&g_AudioChannels + param_1 * 4) + param_2 * 0xb0;
-  *(u8 *)(iVar2 + (uint)*(u8 *)(iVar2 + 0x17) + 0x37) = param_3;
+  *(u8 *)(iVar2 + (uint)iVar2->flags + 0x37) = param_3;
   uVar1 = FUN_80090160();
-  *(s32 *)(iVar2 + 0x90) = uVar1;
+  iVar2->flags = uVar1;
   return;
 }

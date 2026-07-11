@@ -15,7 +15,7 @@ void FUN_80093650(u8 param_1)
   uint uVar1;
   int iVar2;
   u16 uVar3;
-  int local_60->kind;
+  int local_60->flags;
   s16 local_58;
   s16 local_56;
   s16 local_4c;
@@ -63,7 +63,7 @@ void FUN_80093650(u8 param_1)
   if ('\0' < (char)DAT_80105cec) {
     do {
       iVar2 = (uVar1 & 0xffff) * 0x38;
-      local_60->type = 1 << (uVar1 & 0x1f);
+      local_60->flags = 1 << (uVar1 & 0x1f);
       *(s16 *)(iVar2 + -0x7fefab36) = 0x18;
       *(s16 *)(iVar2 + -0x7fefab38) = 0xff;
       (&DAT_801054e5)[iVar2] = 0;

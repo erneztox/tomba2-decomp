@@ -21,30 +21,30 @@ void FUN_8009121c(u16 param_1,int param_2)
   puVar5 = (s32 *)(*piVar4 + iVar3);
   cVar1 = *(s8*)((int)puVar5 + 0x21) + '\x01';
   *(s8*)((int)puVar5 + 0x21) = cVar1;
-  if (puVar5->counter1 == '\0') {
+  if (puVar5->flags == '\0') {
     puVar5[0x22] = 0;
-    puVar5->sub_action = 0;
+    puVar5->flags = 0;
     puVar5[0x24] = 0;
     if ((*(uint *)(iVar3 + *piVar4 + 0x98) & 0x400) == 0) {
       *puVar5 = puVar5->flags;
     }
     else {
-      *puVar5 = puVar5->sub_type;
+      *puVar5 = puVar5->flags;
     }
   }
-  else if (cVar1 < puVar5->counter1) {
+  else if (cVar1 < puVar5->flags) {
     puVar5[0x22] = 0;
-    puVar5->sub_action = 0;
+    puVar5->flags = 0;
     puVar5[0x24] = 0;
     if ((*(uint *)(iVar3 + *piVar4 + 0x98) & 0x400) == 0) {
       uVar2 = puVar5->flags;
       *puVar5 = puVar5->flags;
     }
     else {
-      uVar2 = puVar5->sub_type;
-      *puVar5 = puVar5->sub_type;
+      uVar2 = puVar5->flags;
+      *puVar5 = puVar5->flags;
     }
-    puVar5->kind = uVar2;
+    puVar5->flags = uVar2;
   }
   else {
     *(uint *)(iVar3 + *piVar4 + 0x98) = *(uint *)(iVar3 + *piVar4 + 0x98) & 0xfffffffe;
@@ -52,20 +52,20 @@ void FUN_8009121c(u16 param_1,int param_2)
     *(uint *)(iVar3 + *piVar4 + 0x98) = *(uint *)(iVar3 + *piVar4 + 0x98) & 0xfffffffd;
     *(uint *)(iVar3 + *piVar4 + 0x98) = *(uint *)(iVar3 + *piVar4 + 0x98) | 0x200;
     *(uint *)(iVar3 + *piVar4 + 0x98) = *(uint *)(iVar3 + *piVar4 + 0x98) | 4;
-    puVar5->behavior_state = 0;
+    puVar5->flags = 0;
     if ((*(uint *)(iVar3 + *piVar4 + 0x98) & 0x400) == 0) {
-      puVar5->kind = puVar5->flags;
+      puVar5->flags = puVar5->flags;
     }
     else {
-      puVar5->kind = puVar5->sub_type;
+      puVar5->flags = puVar5->flags;
     }
     if (*(s8*)((int)puVar5 + 0x22) != -1) {
-      puVar5->behavior_state = 0;
+      puVar5->flags = 0;
       FUN_80091810((int)*(s8*)((int)puVar5 + 0x22),(int)*(s8*)((int)puVar5 + 0x23));
       FUN_80095b90((int)(s16)(param_1 | (u16)(param_2 << 8)));
     }
     FUN_80095b90((int)(s16)(param_1 | (u16)(param_2 << 8)));
-    puVar5[0x24] = (int)*(s16 *)(puVar5 + 0x15);
+    puVar5[0x24] = (int)puVar5->flags;
   }
   return;
 }

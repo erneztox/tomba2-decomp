@@ -42,11 +42,11 @@ LAB_80075bf8:
       }
       else {
         if (cVar1 != -1) {
-          if (puVar9->sub_action == '\x04') {
+          if (puVar9->flags == '\x04') {
             *pcVar10 = cVar1 + -1;
             if (cVar1 == '\x01') {
               DAT_800be358 = DAT_800be358 | 1 << (uVar11 & 0x1f);
-              puVar9->kind = 0;
+              puVar9->flags = 0;
               puVar9->flags = 0;
             }
           }
@@ -55,22 +55,22 @@ LAB_80075bf8:
           }
           goto LAB_80075bf8;
         }
-        if ((puVar9->kind & 0x80) == 0) {
-          uVar2 = puVar9->sub_type;
+        if ((puVar9->flags & 0x80) == 0) {
+          uVar2 = puVar9->flags;
           uVar3 = puVar9->flags;
-          bVar8 = puVar9->kind;
-          uVar4 = puVar9->state;
-          uVar5 = puVar9->behavior_state;
-          uVar6 = puVar9->action_state;
+          bVar8 = puVar9->flags;
+          uVar4 = puVar9->flags;
+          uVar5 = puVar9->flags;
+          uVar6 = puVar9->flags;
           sVar7 = _DAT_800bed84;
         }
         else {
-          uVar2 = puVar9->sub_type;
+          uVar2 = puVar9->flags;
           uVar3 = puVar9->flags;
-          uVar4 = puVar9->state;
-          uVar5 = puVar9->behavior_state;
-          uVar6 = puVar9->action_state;
-          bVar8 = puVar9->kind & 0xf;
+          uVar4 = puVar9->flags;
+          uVar5 = puVar9->flags;
+          uVar6 = puVar9->flags;
+          bVar8 = puVar9->flags & 0xf;
           sVar7 = DAT_800a4f7e;
         }
         FUN_80092660(iVar12 >> 0x10,(int)sVar7,uVar3,bVar8,uVar2,uVar4,uVar5,uVar6);

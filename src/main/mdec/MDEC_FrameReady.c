@@ -35,7 +35,7 @@ s32 FUN_800867cc(void)
           FUN_80086db4(DAT_800abe6c + DAT_800abe78 * 0xf0);
         } while (DAT_800abe78 <= DAT_800abe8c);
       }
-      DAT_800abe9c->anim_timer = 0x88;
+      DAT_800abe9c->state = 0x88;
     }
   }
   else {

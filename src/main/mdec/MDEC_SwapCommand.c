@@ -11,8 +11,8 @@ void FUN_80088dbc(int param_1)
 {
   u8 uVar1;
   
-  uVar1 = *(u8 *)(param_1 + 0x37);
-  *(u8 *)(param_1 + 0x37) = 0;
+  uVar1 = param_1->state;
+  param_1->state = 0;
   *(u8 *)(param_1 + 0x38) = uVar1;
   return;
 }

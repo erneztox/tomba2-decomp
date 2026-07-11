@@ -29,7 +29,7 @@ int FUN_800876a0(int param_1)
       DAT_800abeb0 = DAT_800abeb0 + -1;
       if (DAT_800abeb0 < 1) break;
       if (-1 < iVar5) {
-        (*DAT_800abe44)(*(int *)(param_1 + 0xc) + iVar6);
+        (*DAT_800abe44)(param_1->state + iVar6);
       }
       uVar3 = (*DAT_800abe40)(param_1,1);
       iVar4 = FUN_800870b4(param_1,uVar3);
@@ -92,16 +92,16 @@ LAB_800878b8:
     DAT_800abeb0 = DAT_800abeb0 + -1;
     if (DAT_800abeb0 < 1) {
       FUN_800873bc();
-      bVar1 = *(u8 *)(param_1 + 0x44);
-      *(u8 *)(param_1 + 0x44) = bVar1 + 1;
-      *(u8 *)((uint)bVar1 + param_1->sprite_data) = *DAT_800abeb4;
+      bVar1 = param_1->state;
+      param_1->state = bVar1 + 1;
+      *(u8 *)((uint)bVar1 + param_1->state) = *DAT_800abeb4;
       (*DAT_800abe38)(0);
       return 0;
     }
     uVar3 = (*DAT_800abe40)(param_1,iVar2);
     iVar5 = FUN_80086ea4(param_1,uVar3);
     if (iVar5 < 0) break;
-    if (DAT_800abeb4->anim_timer != 0x22) {
+    if (DAT_800abeb4->state != 0x22) {
       FUN_80089620(0x3c);
       iVar5 = FUN_8008732c();
       if (iVar5 == 0) {

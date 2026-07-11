@@ -17,10 +17,10 @@ void FUN_8008ec60(s16 param_1,s16 param_2,s8 param_3)
   puVar3 = (s32 *)(*(int *)(&g_AudioChannels + param_1 * 4) + param_2 * 0xb0);
   if (param_3 == '\x14') {
     *(u8 *)((int)puVar3 + 0x1b) = 0x14;
-    puVar3->sub_action = 1;
+    puVar3->flags = 1;
     uVar2 = FUN_80090160();
     puVar3[0x24] = uVar2;
-    puVar3->kind = *puVar3;
+    puVar3->flags = *puVar3;
   }
   else {
     if (param_3 == '\x1e') {
@@ -30,14 +30,14 @@ void FUN_8008ec60(s16 param_1,s16 param_2,s8 param_3)
         if (0x7e < bVar1) {
           FUN_80090160();
           puVar3[0x24] = 0;
-          *puVar3 = puVar3->kind;
+          *puVar3 = puVar3->flags;
           return;
         }
         *(u8 *)((int)puVar3 + 0x1d) = bVar1 - 1;
         uVar2 = FUN_80090160();
         puVar3[0x24] = uVar2;
         if (*(s8*)((int)puVar3 + 0x1d) != '\0') {
-          *puVar3 = puVar3->kind;
+          *puVar3 = puVar3->flags;
           return;
         }
         *(u8 *)((int)puVar3 + 0x15) = 0;

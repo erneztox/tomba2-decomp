@@ -13,7 +13,7 @@ s32 FUN_80086764(void)
   s32 uVar1;
   
   uVar1 = 0;
-  if (((DAT_800abe98->flags & 1) != 0) && (uVar1 = 0, (*DAT_800abe98 & 1) != 0)) {
+  if (((DAT_800abe98->state & 1) != 0) && (uVar1 = 0, (*DAT_800abe98 & 1) != 0)) {
     if (DAT_800abe60 != (code *)0x0) {
       (*DAT_800abe60)();
     }

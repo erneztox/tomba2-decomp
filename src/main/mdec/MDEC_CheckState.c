@@ -14,10 +14,10 @@ s32 FUN_800889f4(int param_1)
     (*DAT_800abe3c)();
   }
   else {
-    if (param_1->anim_id == '\x02') {
+    if (param_1->state == '\x02') {
       return 1;
     }
-    param_1->anim_id = 0xfe;
+    param_1->state = 0xfe;
   }
   return 0;
 }

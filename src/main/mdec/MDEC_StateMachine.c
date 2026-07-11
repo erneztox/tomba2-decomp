@@ -1,5 +1,5 @@
 /**
- * @brief MDEC decoder state machine: state 2=reset, 3=set IQ, 4=set size via entity->anim_id
+ * @brief MDEC decoder state machine: state 2=reset, 3=set IQ, 4=set size via entity->state
  * @note Original: func_80087F1C at 0x80087F1C
  */
 // MDEC_StateMachine
@@ -12,9 +12,9 @@ void FUN_80087f1c(int param_1)
 {
   u8 bVar1;
   
-  bVar1 = param_1->anim_id;
+  bVar1 = param_1->state;
   if (bVar1 == 3) {
-    FUN_80088a88(param_1,*(u8 *)(param_1 + 0xe4));
+    FUN_80088a88(param_1,param_1->state);
   }
   else if (bVar1 < 4) {
     if (bVar1 == 2) {
@@ -22,7 +22,7 @@ void FUN_80087f1c(int param_1)
     }
   }
   else if (bVar1 == 4) {
-    FUN_80088ac8(param_1,param_1->sub_anim_id);
+    FUN_80088ac8(param_1,param_1->state);
   }
   return;
 }

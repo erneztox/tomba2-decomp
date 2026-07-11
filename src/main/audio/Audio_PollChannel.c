@@ -25,10 +25,10 @@ u8 FUN_80095c40(int param_1,int param_2)
     do {
       iVar1 = (DAT_80105cff * 0x10 + (iVar1 >> 0x18)) * 0x20 + _DAT_80105ce8;
       bVar4 = bVar3;
-      if (((int)(uint)iVar1->action_state <= (int)DAT_80105cfa) &&
-         ((int)DAT_80105cfa <= (int)(uint)iVar1->sub_action)) {
+      if (((int)(uint)iVar1->flags <= (int)DAT_80105cfa) &&
+         ((int)DAT_80105cfa <= (int)(uint)iVar1->flags)) {
         bVar4 = bVar3 + 1;
-        *(u8 *)(param_2 + (uint)bVar3) = *(u8 *)(iVar1 + 0x16);
+        *(u8 *)(param_2 + (uint)bVar3) = iVar1->flags;
         *(u8 *)(param_1 + (uint)bVar3) = bVar2;
       }
       bVar2 = bVar2 + 1;

@@ -16,7 +16,7 @@ int FUN_80095a9c(uint param_1,s16 *param_2,s16 *param_3)
   
   _DAT_80105d0c = (s16)param_1;
   iVar1 = *(int *)(&g_AudioChannels + (param_1 & 0xff) * 4) + ((int)(param_1 & 0xff00) >> 8) * 0xb0;
-  *param_2 = iVar1->rot_z;
-  *param_3 = iVar1->target_rot_y;
+  *param_2 = iVar1->flags;
+  *param_3 = iVar1->flags;
   return (int)_DAT_80105d0c;
 }

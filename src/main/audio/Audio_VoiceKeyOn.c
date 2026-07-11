@@ -22,13 +22,13 @@ int FUN_80095530(uint param_1,s16 param_2,s16 param_3)
   int iVar8;
   
   iVar7 = *(int *)(&g_AudioChannels + (param_1 & 0xff) * 4) + ((int)(param_1 & 0xff00) >> 8) * 0xb0;
-  iVar7->rot_z = param_2;
-  iVar7->target_rot_y = param_3;
-  if (0x7e < iVar7->rot_z) {
-    iVar7->rot_z = 0x7f;
+  iVar7->flags = param_2;
+  iVar7->flags = param_3;
+  if (0x7e < iVar7->flags) {
+    iVar7->flags = 0x7f;
   }
-  if (0x7e < iVar7->target_rot_y) {
-    iVar7->target_rot_y = 0x7f;
+  if (0x7e < iVar7->flags) {
+    iVar7->flags = 0x7f;
   }
   iVar8 = 0;
   if ('\0' < DAT_80105cec) {
@@ -36,19 +36,19 @@ int FUN_80095530(uint param_1,s16 param_2,s16 param_3)
     do {
       if ((((DAT_800ac3f4 & 1 << (iVar1 >> 0x10 & 0x1fU)) == 0) &&
           (iVar1 = (iVar1 >> 0x10) * 0x38, *(s16 *)(iVar1 + -0x7fefab28) == (s16)param_1)) &&
-         ((int)*(s16 *)(iVar1 + -0x7fefab20) == (int)*(s8*)(iVar7 + 0x26))) {
+         ((int)*(s16 *)(iVar1 + -0x7fefab20) == (int)iVar7->flags)) {
         FUN_800962b0((int)*(s16 *)(iVar1 + -0x7fefab20),(int)*(s16 *)(iVar1 + -0x7fefab26));
         iVar6 = (*(s16 *)(iVar1 + -0x7fefab26) * 0x10 + (int)*(s16 *)(iVar1 + -0x7fefab22)) *
                 0x20 + _DAT_80105ce8;
-        uVar5 = (((int)((uint)*(u8 *)(_DAT_80105ce4 + 0x18) *
+        uVar5 = (((int)((uint)_DAT_80105ce4->flags *
                        (((int)*(s16 *)(iVar1 + -0x7fefab30) *
                         (int)*(s16 *)(*(s16 *)(iVar1 + -0x7fefab2c) * 2 + iVar7 + 0x60)) / 0x7f)
                        * 0x3fff) / 0x3f01) *
                  (uint)*(u8 *)(*(s16 *)(iVar1 + -0x7fefab24) * 0x10 + _DAT_80105cdc + 1) *
-                (uint)iVar6->kind) / 0x3f01;
-        uVar4 = (uVar5 * iVar7->rot_z) / 0x7f;
-        uVar3 = (uint)iVar6->sub_type;
-        uVar5 = (uVar5 * iVar7->target_rot_y) / 0x7f;
+                (uint)iVar6->flags) / 0x3f01;
+        uVar4 = (uVar5 iVar7->flags) / 0x7f;
+        uVar3 = (uint)iVar6->flags;
+        uVar5 = (uVar5 iVar7->flags) / 0x7f;
         if (uVar3 < 0x40) {
           uVar5 = (uVar5 * uVar3) / 0x3f;
         }

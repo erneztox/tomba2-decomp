@@ -22,7 +22,7 @@ void FUN_80088e88(int param_1)
   
   FUN_8009a340(param_1 + 0x57,6);
   if ((*(s16 *)(param_1 + 0xe6) == 0) || (*(int *)(param_1 + 0x28) == 0)) {
-    if (((*(u8 *)(param_1 + 0xe8) - 4 < 2) || (*(u8 *)(param_1 + 0xe8) == 7)) &&
+    if (((param_1->state - 4 < 2) || (param_1->state == 7)) &&
        ((*(s16 *)(param_1 + 0xe6) == 0 && (1 < *(u8 *)(param_1 + 0x34))))) {
       if ((((**(u8 **)(param_1 + 0x28) & 0xc0) == 0x40) &&
           (((*(u8 **)(param_1 + 0x28))[1] & 1) != 0)) && (DAT_800abe80 + 10 < 0x3d)) {
@@ -31,7 +31,7 @@ void FUN_80088e88(int param_1)
         DAT_800abe80 = DAT_800abe80 + 10;
       }
     }
-    else if (*(s8*)(param_1 + 0xe8) == '\x03') {
+    else if (param_1->state == '\x03') {
       *(u8 *)(param_1 + 0x57) = 1;
     }
     else if (*(s16 *)(param_1 + 0xe6) == 0) {
@@ -50,7 +50,7 @@ void FUN_80088e88(int param_1)
       uVar9 = (uint)*(u8 *)(param_1 + 0x34);
     }
     uVar8 = 0;
-    if (*(s8*)(param_1 + 0xe9) != '\0') {
+    if (param_1->state != '\0') {
       iVar10 = 0;
       do {
         bVar1 = false;
@@ -93,7 +93,7 @@ void FUN_80088e88(int param_1)
         }
         uVar8 = uVar8 + 1;
         iVar10 = iVar10 + 5;
-      } while ((int)uVar8 < (int)(uint)*(u8 *)(param_1 + 0xe9));
+      } while ((int)uVar8 < (int)(uint)param_1->state);
     }
   }
   return;

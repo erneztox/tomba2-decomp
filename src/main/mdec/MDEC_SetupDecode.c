@@ -14,10 +14,10 @@ u8 FUN_80087aec(void)
   int iVar2;
   
   iVar2 = (*DAT_800abe4c)();
-  if ((((*(s8*)(iVar2 + 0x37) != '\0') || (*(s8*)(iVar2 + 0x38) != '\0')) ||
-      ((iVar2 != iVar2->parent && (*(s8*)(iVar2 + 0x39) != '\0')))) ||
+  if ((((iVar2->state != '\0') || (*(s8*)(iVar2 + 0x38) != '\0')) ||
+      ((iVar2 != iVar2->state && (*(s8*)(iVar2 + 0x39) != '\0')))) ||
      (**(char **)(iVar2 + 0x30) != '\0')) {
-    bVar1 = *(u8 *)(iVar2 + 0x49);
+    bVar1 = iVar2->state;
     if (bVar1 == 3) {
       return 1;
     }
@@ -30,5 +30,5 @@ u8 FUN_80087aec(void)
       return 4;
     }
   }
-  return *(u8 *)(iVar2 + 0x49);
+  return iVar2->state;
 }

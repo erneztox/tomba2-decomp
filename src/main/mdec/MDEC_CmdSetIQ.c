@@ -9,9 +9,9 @@
 void FUN_80088a88(int param_1,u8 param_2)
 
 {
-  *(u8 *)(param_1 + 0x37) = 0x4c;
-  *(int *)(param_1 + 0x2c) = param_1 + 0x24;
+  param_1->state = 0x4c;
+  param_1->state = param_1 + 0x24;
   *(u8 *)(param_1 + 0x24) = param_2;
-  *(u8 *)(param_1 + 0x36) = 1;
+  param_1->state = 1;
   return;
 }

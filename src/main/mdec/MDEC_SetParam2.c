@@ -1,5 +1,5 @@
 /**
- * @brief MDEC param setter 2: sets entity[0xEA] or entity[0xEB] based on param sign
+ * @brief MDEC param setter 2: sets entity->state or entity[0xEB] based on param sign
  * @note Original: func_80087D84 at 0x80087D84
  */
 // MDEC_SetParam2
@@ -15,9 +15,9 @@ u8 FUN_80087d84(s32 param_1,int param_2,int param_3)
   
   iVar2 = (*DAT_800abe4c)();
   if (param_2 < 0) {
-    bVar1 = *(u8 *)(iVar2 + 0xea);
+    bVar1 = iVar2->state;
   }
-  else if (param_2 < (int)(uint)*(u8 *)(iVar2 + 0xea)) {
+  else if (param_2 < (int)(uint)iVar2->state) {
     pbVar3 = (u8 *)(*(int *)(iVar2 + 8) + param_2 * 8);
     if (param_3 < 0) {
       bVar1 = *pbVar3;

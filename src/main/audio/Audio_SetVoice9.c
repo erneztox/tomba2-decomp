@@ -15,7 +15,7 @@ void FUN_8008f630(s16 param_1,s16 param_2,s16 param_3,s32 param_4)
   s16 uStack0000001c;
   s16 uStack0000001e;
   u8 in_stack_00000030;
-  u8 auStack_30->action_state;
+  u8 auStack_30->flags;
   u16 local_2a;
   s16 local_24;
   

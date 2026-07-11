@@ -29,7 +29,7 @@ uint FUN_80075e04(uint param_1,uint param_2,u8 param_3,u8 param_4,u8 param_5,u8 
     uVar3 = _DAT_800bed78;
     uVar5 = param_2;
     do {
-      if ((param_1 == pbVar2->sub_action) &&
+      if ((param_1 == pbVar2->flags) &&
          (((int)(uint)*pbVar2 < (int)uVar5 || ((*pbVar2 == uVar5 && ((u8)*puVar1 <= bVar6)))))) {
         uVar5 = (uint)*pbVar2;
         bVar6 = (u8)*puVar1;

@@ -45,7 +45,7 @@ void FUN_8008dc00(s16 param_1)
       iVar1 = (int)_DAT_801054b2;
       iVar2 = iVar3 + *piVar4;
       iVar3 = iVar3 + 0xb0;
-      iVar2->target_rot_y = 0x7f;
+      iVar2->flags = 0x7f;
     } while (iVar5 < iVar1);
   }
   return;

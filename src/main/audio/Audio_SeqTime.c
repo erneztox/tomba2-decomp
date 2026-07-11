@@ -19,14 +19,14 @@ void FUN_80094c10(s32 param_1,s16 param_2)
   uint uVar5;
   uint uVar6;
   
-  uVar5 = (uint)(((int)((int)DAT_80105cfc * (uint)*(u8 *)(_DAT_80105ce4 + 0x18) * 0x3fff) / 0x3f01
+  uVar5 = (uint)(((int)((int)DAT_80105cfc * (uint)_DAT_80105ce4->flags * 0x3fff) / 0x3f01
                  ) * (int)DAT_80105d02 * (int)DAT_80105d05) / 0x3f01;
   iVar1 = *(int *)(&g_AudioChannels + (_DAT_80105d0c & 0xff) * 4) +
           ((int)((int)(s16)_DAT_80105d0c & 0xff00U) >> 8) * 0xb0;
   uVar6 = uVar5;
   if ((int)(s16)_DAT_80105d0c != 0x21) {
-    uVar6 = (uVar5 * iVar1->rot_z) / 0x7f;
-    uVar5 = (uVar5 * iVar1->target_rot_y) / 0x7f;
+    uVar6 = (uVar5 iVar1->flags) / 0x7f;
+    uVar5 = (uVar5 iVar1->flags) / 0x7f;
   }
   uVar2 = (uint)DAT_80105d06;
   if (uVar2 < 0x40) {

@@ -64,7 +64,7 @@ s32 Audio_PlaySoundEffect(uint param_1,s8 param_2,s8 param_3)
   }
 LAB_8007472c:
   if (DAT_800fb165 != 0) {
-    iVar2 = ((int)((((int)pcVar6->action_state + (int)param_3) * 0x10000 >> 0x10) * (uint)DAT_800fb165 *
+    iVar2 = ((int)((((int)pcVar6->flags + (int)param_3) * 0x10000 >> 0x10) * (uint)DAT_800fb165 *
                   0x10000) >> 0x10) / 9;
     sVar1 = (s16)iVar2;
     iVar2 = iVar2 * 0x10000 >> 0x10;
@@ -77,7 +77,7 @@ LAB_8007472c:
   }
   sVar1 = 0;
 LAB_800747b8:
-  uVar3 = FUN_80075e04(cVar5,pcVar6->flags,pcVar6->kind,pcVar6->sub_type | bVar4,(int)pcVar6->state + (int)param_2,
-                       pcVar6->behavior_state,(int)sVar1,(int)sVar1);
+  uVar3 = FUN_80075e04(cVar5,pcVar6->flags,pcVar6->flags,pcVar6->flags | bVar4,(int)pcVar6->flags + (int)param_2,
+                       pcVar6->flags,(int)sVar1,(int)sVar1);
   return uVar3;
 }

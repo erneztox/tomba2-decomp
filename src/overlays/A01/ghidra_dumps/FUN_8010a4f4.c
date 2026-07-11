@@ -1,0 +1,110 @@
+// FUN_8010a4f4
+
+/* WARNING: Control flow encountered bad instruction data */
+
+void FUN_8010a4f4(undefined1 *param_1)
+
+{
+  byte bVar1;
+  undefined2 uVar2;
+  short sVar3;
+  
+  if (param_1[5] == '\0') {
+    param_1[5] = 1;
+    *param_1 = 1;
+    *(undefined2 *)(param_1 + 0x4a) = 0;
+  }
+  else if (param_1[5] != '\x01') {
+    bVar1 = param_1[4];
+    if (bVar1 == 1) {
+      func_0x8007778c(param_1);
+      uVar2 = FUN_8011df24(param_1,3);
+      *(undefined2 *)(param_1 + 0x6a) = uVar2;
+      if ((param_1[3] & 0x80) == 0) {
+        if (((param_1[0x5e] & 2) == 0) && (sVar3 = FUN_8011d2c4(param_1), sVar3 != 0)) {
+          param_1[0x5e] = 2;
+          param_1[5] = 2;
+          param_1[6] = 0;
+        }
+        bVar1 = param_1[5];
+        if (bVar1 == 1) {
+          FUN_8011c998(param_1);
+          FUN_8011c5f0();
+          return;
+        }
+        if (bVar1 < 2) {
+          if (bVar1 == 0) {
+            FUN_8011c854(param_1);
+            FUN_8011c5f0();
+            return;
+          }
+          FUN_8011c5f0();
+          return;
+        }
+        if (bVar1 != 2) {
+          FUN_8011c5f0();
+          return;
+        }
+        FUN_8011ccb4(param_1);
+      }
+      if ((param_1[1] != '\0') && (FUN_8011d8c8(param_1), *(short *)(param_1 + 0x72) != 0)) {
+        FUN_8011d754(param_1);
+        FUN_8011c6d4();
+        return;
+      }
+    }
+    else {
+      if (bVar1 < 2) {
+        if (bVar1 == 0) {
+          FUN_8011c6e4(param_1);
+          FUN_8011c6d4();
+          return;
+        }
+        FUN_8011c6d4();
+        return;
+      }
+      if (bVar1 == 2) {
+        func_0x8007778c(param_1);
+                    /* WARNING (jumptable): Sanity check requires truncation of jumptable */
+                    /* WARNING: Could not find normalized switch variable to match jumptable */
+        switch(param_1[5]) {
+        case 0:
+                    /* WARNING: Bad instruction - Truncating control flow here */
+          halt_baddata();
+        case 1:
+                    /* WARNING: Bad instruction - Truncating control flow here */
+          halt_baddata();
+        }
+        if (param_1[1] != '\0') {
+          FUN_8011d8c8(param_1);
+          FUN_8011c6d4();
+          return;
+        }
+      }
+      else {
+        if (bVar1 != 3) {
+          FUN_8011c6d4();
+          return;
+        }
+        func_0x8007a624(param_1);
+      }
+    }
+    return;
+  }
+  sVar3 = *(short *)(param_1 + 0x4a);
+  *(short *)(param_1 + 0x4a) = sVar3 + 0x300;
+  if (0x3000 < (short)(sVar3 + 0x300)) {
+    *(undefined2 *)(param_1 + 0x4a) = 0x3000;
+  }
+  *(int *)(param_1 + 0x30) = *(int *)(param_1 + 0x30) + *(short *)(param_1 + 0x4a) * 0x100;
+  if (param_1[0x29] == '\0') {
+    func_0x8004766c(param_1);
+    func_0x80049250(param_1,0,
+                    (int)(((uint)*(ushort *)(param_1 + 0x86) - (uint)*(ushort *)(param_1 + 0x84)) *
+                         0x10000) >> 0x10);
+  }
+  func_0x8007778c(param_1);
+  param_1[0x29] = 0;
+  return;
+}
+

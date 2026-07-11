@@ -1,0 +1,15 @@
+// FUN_8012b654
+
+/* WARNING: Control flow encountered bad instruction data */
+
+void FUN_8012b654(void)
+
+{
+  undefined1 in_v0;
+  int unaff_s0;
+  
+  *(undefined1 *)(unaff_s0 + 0x78) = in_v0;
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+

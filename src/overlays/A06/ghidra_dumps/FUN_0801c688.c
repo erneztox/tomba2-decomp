@@ -1,0 +1,56 @@
+// FUN_0801c688
+
+/* WARNING: Control flow encountered bad instruction data */
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_0801c688(int param_1,int param_2)
+
+{
+  char cVar1;
+  int iVar2;
+  char *pcVar3;
+  char *pcVar4;
+  
+  if (param_2 == 0) {
+                    /* WARNING: Bad instruction - Truncating control flow here */
+    halt_baddata();
+  }
+  pcVar4 = *(char **)(param_2 * 4 + -0x7febd7f0);
+  *(undefined2 *)(param_1 + 8) = 0;
+  if (*pcVar4 != -1) {
+    pcVar3 = pcVar4 + 0xc;
+    do {
+      if ((((pcVar3[-1] != '\x01') ||
+           (((int)(uint)_DAT_800bfe56 >> (DAT_800bf870 & 0x1f) & 1U) == 0)) &&
+          ((pcVar3[-1] != '\x02' || (DAT_800bf873 == '\0')))) &&
+         ((param_2 == 0 || (*(short *)(param_1 + 8) < 0xf)))) {
+        if ((byte)pcVar3[-2] < 0x10) {
+                    /* WARNING: Could not emulate address calculation at 0x0801c7c0 */
+                    /* WARNING: Treating indirect jump as call */
+          (**(code **)((uint)(byte)pcVar3[-2] * 4 + -0x7fef66ac))();
+          return;
+        }
+        iVar2 = func_0x00072ddc(param_1,*pcVar4,pcVar3[-0xb],pcVar3[-10]);
+        if (iVar2 != 0) {
+          *(int *)(iVar2 + 0x2c) = (int)*(short *)(pcVar3 + -8) << 0x10;
+          *(int *)(iVar2 + 0x30) = (int)*(short *)(pcVar3 + -6) << 0x10;
+          *(int *)(iVar2 + 0x34) = (int)*(short *)(pcVar3 + -4) << 0x10;
+          cVar1 = pcVar3[-9];
+          *(undefined2 *)(iVar2 + 0x54) = 0;
+          *(undefined2 *)(iVar2 + 0x56) = 0;
+          *(undefined2 *)(iVar2 + 0x58) = 0;
+          *(char *)(iVar2 + 3) = cVar1;
+          *(undefined4 *)(iVar2 + 0x1c) = *(undefined4 *)pcVar3;
+          if (param_2 != 0) {
+            *(int *)(param_1 + *(short *)(param_1 + 8) * 4 + 0xc) = iVar2;
+            *(short *)(param_1 + 8) = *(short *)(param_1 + 8) + 1;
+          }
+        }
+      }
+      pcVar4 = pcVar4 + 0x10;
+      pcVar3 = pcVar3 + 0x10;
+    } while (*pcVar4 != -1);
+  }
+  return;
+}
+

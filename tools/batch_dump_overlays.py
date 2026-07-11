@@ -74,13 +74,13 @@ bin_files = sorted([f for f in os.listdir(BIN_DIR) if f.endswith('.BIN')])
 print(f"Found {len(bin_files)} overlay files: {', '.join(bin_files)}")
 print()
 
-# Skip already processed overlays
-SKIP = {'A00', 'A01', 'A02'}
+# Skip already properly dumped overlays
+SKIP = {'A00'}
 
 for bin_file in bin_files:
     name = bin_file[:-4]  # strip .BIN
     if name in SKIP:
-        print(f'  Skipping {name} (already dumped)')
+        print(f'  Skipping {name} (already re-dumped)')
         continue
     filepath = os.path.abspath(os.path.join(BIN_DIR, bin_file))
     out_dir = os.path.join(OUT_BASE, name, 'ghidra_dumps')
@@ -96,6 +96,12 @@ for bin_file in bin_files:
         close_program(current)
         time.sleep(2)
 
+    # Step 2: Import (without base_address - we add 0x80100000 later)
+    # Step 2: Import
+    # Step 3: Set image base (this triggers analysis)
+    # Step 4: Wait for functions
+    # Step 5: Dump
+
     # Step 2: Import
     print(f"  Importing {filepath}...")
     result = request('POST', '/import_file', {
@@ -109,24 +115,38 @@ for bin_file in bin_files:
         print(f"  ERROR: {result['error']}")
         continue
 
-    # Wait for analysis
-    print(f"  Waiting for auto-analysis...")
-    for attempt in range(60):  # up to 2 minutes
+    time.sleep(3)
+
+    # Step 3: Set image base (triggers auto-analysis!)
+    print(f"  Setting image base to 0x80100000...")
+    set_result = request('POST', '/set_image_base', {
+        'program': f'{name}.BIN',
+        'address': '0x80100000',
+    })
+    if isinstance(set_result, dict):
+        print(f"    {set_result.get('message', set_result)}")
+
+    # Step 4: Wait for analysis
+    print(f"  Waiting for analysis...")
+    fn_count = 0
+    for attempt in range(120):
         time.sleep(2)
         info = request('GET', '/get_current_program_info')
         if isinstance(info, dict):
             fn_count = info.get('function_count', 0)
             if fn_count > 0:
-                print(f"  Analysis done: {fn_count} functions found")
+                print(f"  Done: {fn_count} functions")
                 break
-        if attempt % 5 == 0:
-            print(f"    still waiting... ({attempt*2}s)")
+        if attempt % 10 == 0:
+            print(f"    ...{attempt*2}s")
 
-    # Step 3: Set image base to 0x80100000
-    # (Skipping for now - partial analysis is OK)
+    if fn_count == 0:
+        print(f"  FAILED: no functions after analysis")
+        continue
 
-    # Step 4: Dump functions
-    funcs_text = request('GET', f'/list_functions?program={name}&limit=2000')
+    # Step 5: Dump
+    prog_name = f'{name}.BIN'
+    funcs_text = request('GET', f'/list_functions?program={prog_name}&limit=2000')
     if isinstance(funcs_text, dict) and 'error' in funcs_text:
         print(f"  ERROR listing functions: {funcs_text}")
         continue
@@ -145,7 +165,7 @@ for bin_file in bin_files:
     for i in range(0, len(func_names), 20):
         batch = func_names[i:i+20]
         csv = ','.join(batch)
-        result = request('GET', f'/batch_decompile?functions={csv}')
+        result = request('GET', f'/batch_decompile?program={prog_name}&functions={csv}')
 
         if isinstance(result, dict):
             for fn, code in result.items():

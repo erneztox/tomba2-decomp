@@ -420,3 +420,14 @@ Entity_ExecScriptCmd2 = 0x800439A4;
 Entity_ExecScriptCmd3 = 0x800439E4;
 Entity_SetFlag84C = 0x80043BB0;
 Entity_ExecWithFlag1 = 0x80043E9C;
+
+Entity_CollisionWrap1 = 0x8004951C;
+Entity_CollisionWrap2 = 0x8004954C;
+Entity_CollisionWrap3 = 0x8004957C;
+Entity_CollisionWrap4 = 0x800495AC;
+Entity_CollisionWrap5 = 0x800495DC;
+Entity_SpawnScorePopup = 0x8004B0D8;
+Entity_SpawnScorePopupEx = 0x8004B428;
+Game_AddScore = 0x8004B3F4;
+Entity_SetColorOverride = 0x8004B354;
+Entity_SelectWeapon = 0x8004B4B0;

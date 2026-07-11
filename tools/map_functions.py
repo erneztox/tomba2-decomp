@@ -336,6 +336,22 @@ MAPPINGS = {
     0x80043BB0: ("Entity_SetFlag84C", "Sets global flag at 0x800BF84C from entity script data"),
     0x80043E9C: ("Entity_ExecWithFlag1", "Wraps entity script execution with flag=1 parameter"),
 
+    # -- Collision function wrappers --
+    0x8004951C: ("Entity_CollisionWrap1", "Collision wrapper 1: calls FUN_80045b30 with entity[0x56] as angle"),
+    0x8004954C: ("Entity_CollisionWrap2", "Collision wrapper 2: calls FUN_80045cac with entity[0x56] as angle"),
+    0x8004957C: ("Entity_CollisionWrap3", "Collision wrapper 3: calls FUN_800468ac with entity[0x56] as angle"),
+    0x800495AC: ("Entity_CollisionWrap4", "Collision wrapper 4: calls FUN_80046e2c with entity[0x56] as angle"),
+    0x800495DC: ("Entity_CollisionWrap5", "Collision wrapper 5: calls FUN_80047468 with entity[0x56] as angle"),
+
+    # -- Score / collectibles --
+    0x8004B0D8: ("Entity_SpawnScorePopup", "Spawns score popup entity at current position with SFX 0x28"),
+    0x8004B428: ("Entity_SpawnScorePopupEx", "Spawns score popup with SFX + sets global flag at 0x800BF820"),
+    0x8004B3F4: ("Game_AddScore", "Adds score points: increments total + shows score popup on screen"),
+
+    # -- Entity color / state --
+    0x8004B354: ("Entity_SetColorOverride", "Sets entity[0x18-0x1A] RGB to 0 (normal) or 0xFFFFFF (white flash)"),
+    0x8004B4B0: ("Entity_SelectWeapon", "Selects weapon/item by index: calls FUN_8004d4c4 and updates globals"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

@@ -240,31 +240,31 @@ typedef struct AudioChannel {
     /* 0x00 */ u8*  data_ptr;      // Audio data pointer (incremented on play)
     /* 0x04 */ u8   _pad04[0xC];
     /* 0x10 */ s16  pitch;         // Pitch/tone parameter
-    /* 0x12 */ s16  _unk12;
+    /* 0x12 */ s16  note_delta;     // Note/pitch delta (value / param)
     /* 0x14 */ u8   active;        // Channel active flag (set to 1 on enable)
-    /* 0x15 */ u8   _unk15;
-    /* 0x16 */ s16  _unk16;
+    /* 0x15 */ u8   seq_param;      // Sequence parameter (set to 0 or s16)
+    /* 0x16 */ u8   seq_counter;    // Sequence counter (zeroed on init)
     /* 0x17 */ u8   voice_index;   // Current voice index (0-?)
     /* 0x18 */ u8   key_on;        // Note-on value
     /* 0x19 */ u8   key_off;       // Note-off value
-    /* 0x1A */ u8   _unk1A;
+    /* 0x1A */ u8   seq_state_1A;   // Sequence state (zeroed on init)
     /* 0x1B */ u8   cmd_type;      // Command type (0x14 = note, 0x1E = ?)
-    /* 0x1C */ u8   _unk1C;
-    /* 0x1D */ u8   _unk1D;
+    /* 0x1C */ u8   seq_state_1C;   // Sequence state
+    /* 0x1D */ u8   seq_state_1D;   // Sequence state (zeroed on init)
     /* 0x1E */ u8   note_count;    // Note counter (incremented per note)
-    /* 0x1F */ u8   _unk1F;
+    /* 0x1F */ u8   seq_state_1F;   // Sequence state (zeroed on init)
     /* 0x20 */ u8   _pad20[6];
     /* 0x26 */ u8   program;       // Program/instrument number
     /* 0x27 */ u8   voice_vol;     // Voice volume (at voice_index offset)
     /* 0x28 */ u8   _pad28[0x0F];
     /* 0x37 */ u8   voice_param;   // Voice parameter (at voice_index offset)
-    /* 0x38 */ s32  _unk38;
-    /* 0x3C */ s32  _unk3C;
+    /* 0x38 */ s32  seq_flags;      // Sequence flags (bit 31 cleared, bits set from data)
+    /* 0x3C */ s32  seq_data_ptr;   // Sequence data pointer (table lookup)
     /* 0x40 */ u8   _pad40[8];
     /* 0x48 */ s16  tone;          // Tone/pitch param (set by SetChannelParam)
-    /* 0x4A */ s16  _unk4A;        // Zeroed alongside tone
+    /* 0x4A */ s16  tone2;         // Secondary tone (zeroed alongside tone)
     /* 0x4C */ u8   _pad4C[6];
-    /* 0x52 */ s16  _unk52;
+    /* 0x52 */ s16  seq_volume;     // Sequence volume (0 to 0xFFFF)
     /* 0x54 */ s16  voice_timer;   // Voice timer (compared with voice_ptr)
     /* 0x56 */ u8   _pad56[2];
     /* 0x58 */ s16  pan_left;       // Pan left
@@ -273,12 +273,12 @@ typedef struct AudioChannel {
     /* 0x60 */ s16  voice_data[16]; // Voice data array (16 entries, indexed by voice_index)
     /* 0x80 */ s16  voice_mask;    // Voice allocation bitmask
     /* 0x82 */ u8   _pad82[6];
-    /* 0x88 */ s16  _unk88;
-    /* 0x8A */ s16  _unk8A;
-    /* 0x8C */ s16  _unk8C;
+    /* 0x88 */ s16  seq_timer_x;     // Sequence timing X (delta from value)
+    /* 0x8A */ s16  seq_timer_y;     // Sequence timing Y (delta from DAT_1f8000c2)
+    /* 0x8C */ s16  seq_timer_z;     // Sequence timing Z (delta from DAT_1f8000c4)
     /* 0x8E */ u8   _pad8E[2];
     /* 0x90 */ s32  voice_ptr;     // Voice allocation pointer (from AllocVoice)
-    /* 0x94 */ s16  _unk94;
+    /* 0x94 */ s16  seq_rate;       // Sequence rate (computed as division result)
     /* 0x96 */ u8   _pad96[2];
     /* 0x98 */ s32  flags;         // State flags (bit0=active, bit2, bit3, bit4, bit5, bit8)
     /* 0x9C */ s32  voice_cb;      // Voice callback/data pointer
@@ -331,22 +331,23 @@ typedef struct MDECContext {
     /* 0x14 */ u8*  callback1;      // Callback function 1
     /* 0x18 */ u8*  callback2;      // Callback function 2
     /* 0x1C */ u8   _pad1C[0x10];
-    /* 0x2C */ s32  _unk2C;
+    /* 0x28 */ u8   _pad28[4];
+    /* 0x2C */ u8*  cmd_buffer;      // Command buffer pointer (set to 0 or self+0x24)
     /* 0x30 */ u8*  output_ptr;     // Output buffer (decoded pixels?)
     /* 0x34 */ u8   _pad34;
-    /* 0x35 */ u8   status;         // Status byte (0 = idle, set during decode)
-    /* 0x36 */ u8   _unk36;
+    /* 0x35 */ u8   status;         // Status byte (0 = idle, copied from block_count)
+    /* 0x36 */ u8   cmd_status;      // Command status (set to 0 or 1)
     /* 0x37 */ u8   flags;          // Decoder flags
     /* 0x38 */ u8   _pad38[4];
     /* 0x3C */ u8*  bitstream;      // Bitstream data pointer
     /* 0x40 */ u8   _pad40[4];
-    /* 0x44 */ u8   _unk44;
-    /* 0x45 */ u8   _unk45;
+    /* 0x44 */ u8   block_count;     // Number of decode blocks (copies to status)
+    /* 0x45 */ u8   _unk45;          // (still unclear, accessed in DMAProcess)
     /* 0x46 */ u8   state;          // State (0=idle, 1=running, 2=reset, 3=setIQ, 4=setSize)
     /* 0x47 */ u8   sub_cmd;        // Sub-command
     /* 0x48 */ u8   _pad48;
     /* 0x49 */ u8   cmd;            // Command byte (2 = something)
-    /* 0x4A */ u8   _unk4A;
+    /* 0x4A */ u8   decode_substep;  // Decode sub-step counter (incremented each step)
     /* 0x4B */ u8   _pad4B;
     /* 0x4C */ s32  step_counter;   // Step counter (increments each decode step)
     /* 0x50 */ u8   _pad50[0x94];
@@ -355,11 +356,10 @@ typedef struct MDECContext {
     /* 0xE8 */ u8   iq_y;           // IQ table Y (checked for non-zero)
     /* 0xE9 */ u8   iq_cb;          // IQ table Cb
     /* 0xEA */ u8   iq_cr;          // IQ table Cr
-    /* 0xEB */ u8   _unkEB;
+    /* 0xEB */ u8   _padEB;          // Zeroed (alignment padding)
     /* 0xEC */ s16  width;          // Frame width
     /* 0xEE */ s16  height;         // Frame height
-    /* 0xF0 */ s32  _unkF0;
-} MDECContext;  // ~0xF4 bytes
+} MDECContext;  // ~0xF0 bytes (note: 0xF0 is also MDEC buffer stride)
 
 // ============================================================
 // DMA Descriptor (used for GPU/CD DMA transfers)

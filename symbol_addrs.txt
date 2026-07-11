@@ -399,3 +399,14 @@ Entity_CalcAngleDelta = 0x80072EFC;
 Entity_SetSubEntityData = 0x80051B04;
 String_GetChar = 0x80078770;
 String_LookupName = 0x800787F8;
+
+GPU_EncodeTPage = 0x80082370;
+GPU_GetStatus = 0x8008240C;
+GPU_SendCommand = 0x80082BF0;
+GPU_InitDrawEnv = 0x80082C68;
+GPU_SendCommandAndRead = 0x80082CB0;
+OT_LinkPrimitives = 0x80083C30;
+GPU_SetTexPrimHeader = 0x80083CA0;
+GPU_SetTilePrimHeader = 0x80083CC0;
+Game_CheckBit50 = 0x80078894;
+Sys_NoOp2 = 0x80080930;

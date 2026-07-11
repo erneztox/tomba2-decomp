@@ -307,6 +307,22 @@ MAPPINGS = {
     0x80078770: ("String_GetChar", "Gets character from string table at 0x800A4F88 by index and position"),
     0x800787F8: ("String_LookupName", "Looks up name/label string from table at 0x800A2B64 by type index"),
 
+    # -- GPU low-level --
+    0x80082370: ("GPU_EncodeTPage", "Encodes texture page parameters: (y<<11)|(x)|0xE5000000 for GPU TPAGE command"),
+    0x8008240C: ("GPU_GetStatus", "Returns GPU status register value from 0x800A5AA8"),
+    0x80082BF0: ("GPU_SendCommand", "Sends raw 32-bit command to GPU register and stores shadow copy"),
+    0x80082C68: ("GPU_InitDrawEnv", "Initializes drawing environment: sets display area, clear color, enable flags"),
+    0x80082CB0: ("GPU_SendCommandAndRead", "Sends GPU command with bit 28 set, returns GPU read response"),
+    0x80083C30: ("OT_LinkPrimitives", "Links two OT primitives: swaps lower 24 bits of their tag words"),
+    0x80083CA0: ("GPU_SetTexPrimHeader", "Sets up textured primitive header: code=9 (TILE), size=0x2C"),
+    0x80083CC0: ("GPU_SetTilePrimHeader", "Sets up tile primitive header: code=4 (TILE_1), size=100"),
+
+    # -- Game state flags (continued) --
+    0x80078894: ("Game_CheckBit50", "Checks bit in global flag at 0x800BFE50 at given position"),
+
+    # -- System stubs --
+    0x80080930: ("Sys_NoOp2", "Empty stub function - likely unused vtable or placeholder slot"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

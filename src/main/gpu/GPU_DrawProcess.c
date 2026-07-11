@@ -1,3 +1,4 @@
+#include "gte_inline.h"
 /**
  * @brief GPU draw processor: processes draw commands, calls handlers
  * @note Original: func_8003E894 at 0x8003E894

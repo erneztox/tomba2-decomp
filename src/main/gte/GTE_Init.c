@@ -1,3 +1,4 @@
+#include "gte_inline.h"
 /**
  * @brief GTE init: enables coprocessor, sets IR1=0x155, IR2=0x100, SZ0=1000
  * @note Original: func_80083FF8 at 0x80083FF8

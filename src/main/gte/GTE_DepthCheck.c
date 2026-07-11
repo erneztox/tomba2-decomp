@@ -1,3 +1,4 @@
+#include "gte_inline.h"
 /**
  * @brief Standalone GTE depth/Z-sort check: RTPS projection + OT z-index calculation
  * @note Original: func_800317CC at 0x800317CC

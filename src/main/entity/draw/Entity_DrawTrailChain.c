@@ -10,6 +10,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "gte_inline.h"
 void Entity_DrawTrailChain(int *param_1,int param_2,uint *param_3,byte *param_4)
 
 {

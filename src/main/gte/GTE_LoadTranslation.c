@@ -7,6 +7,7 @@
 
 
 #include "tomba.h"
+#include "gte_inline.h"
 void FUN_80084690(int param_1)
 
 {

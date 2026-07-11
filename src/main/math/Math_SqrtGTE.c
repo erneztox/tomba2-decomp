@@ -1,3 +1,4 @@
+#include "gte_inline.h"
 /**
  * @brief Math sqrt via GTE: sets GTE reg, reads result, handles special case 0x20
  * @note Original: func_80084080 at 0x80084080

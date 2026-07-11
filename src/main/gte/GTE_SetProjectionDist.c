@@ -1,3 +1,4 @@
+#include "gte_inline.h"
 /**
  * @brief Sets GTE projection plane distance for perspective transform
  * @note Original: func_800329E0 at 0x800329E0

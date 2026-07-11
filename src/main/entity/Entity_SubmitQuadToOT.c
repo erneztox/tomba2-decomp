@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "gte_inline.h"
 void Entity_SubmitQuadToOT(uint *param_1,int param_2,short param_3,char param_4)
 
 {

@@ -1,3 +1,4 @@
+#include "gte_inline.h"
 /**
  * @brief GTE scale Z setter: sets SZ3=param1<<16, SZ2=param2<<16 via cop control
  * @note Original: func_800846D0 at 0x800846D0

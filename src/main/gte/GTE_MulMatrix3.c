@@ -7,6 +7,7 @@
 
 
 #include "tomba.h"
+#include "gte_inline.h"
 uint * FUN_80084250(uint *param_1,ushort *param_2)
 
 {

@@ -4,6 +4,7 @@
  */
 
 #include "tomba.h"
+#include "gte_inline.h"
 uint * GTE_ComposeMatrix(undefined4 *param_1,ushort *param_2,uint *param_3)
 
 {

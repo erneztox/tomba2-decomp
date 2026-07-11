@@ -9,6 +9,7 @@
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 #include "tomba.h"
+#include "gte_inline.h"
 void FUN_8002df68(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
 
 {

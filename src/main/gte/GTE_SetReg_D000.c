@@ -1,3 +1,4 @@
+#include "gte_inline.h"
 /**
  * @brief GTE register set: writes param_1 to COP2 register 0xD000 (SZ0)
  * @note Original: func_800846F0 at 0x800846F0

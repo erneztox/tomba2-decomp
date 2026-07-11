@@ -326,6 +326,11 @@ MAPPINGS = {
     0x8003A3E8: ("Menu_AnimIcon", "Animates menu icon with sine wave oscillation using GTE trig functions"),
 
     # -- Engine update loops --
+    0x80025D98: ("Engine_UpdatePool4", "Updates and draws entities in Pool 4 (camera/HUD), calls draw variants"),
+    0x80025744: ("Engine_DrawPool4_Type1", "Draws Pool 4 entity using FUN_8007e1b8"),
+    0x80025934: ("Engine_DrawPool4_Type2", "Draws Pool 4 entity using FUN_8007e6dc"),
+    0x80025B78: ("Engine_DrawPool4_Type3", "Draws Pool 4 entity using FUN_8007e938 (special primitive)"),
+    0x8003F024: ("Engine_Render3DSprites", "Iterates array at 0x800ec188 and renders 3D sprites via GPU_Render3DSprite"),
     0x8003FA1C: ("Engine_UpdateEntities", "Calls EntityLoop_Player then EntityLoop_Active for entity updates"),
     0x8003FA44: ("Engine_UpdateAll", "Main update: runs all entity loops (active, bg, player, obj, npc) + FX update"),
 

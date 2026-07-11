@@ -382,3 +382,9 @@ Entity_SetAnimFlag79 = 0x8004190C;
 Entity_ForwardToParent = 0x80041FA8;
 Entity_CheckStateAndSet = 0x80041FCC;
 Entity_ForwardStateToParent = 0x80041FF8;
+
+Engine_UpdatePool4 = 0x80025D98;
+Engine_DrawPool4_Type1 = 0x80025744;
+Engine_DrawPool4_Type2 = 0x80025934;
+Engine_DrawPool4_Type3 = 0x80025B78;
+Engine_Render3DSprites = 0x8003F024;

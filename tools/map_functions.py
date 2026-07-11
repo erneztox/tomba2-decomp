@@ -580,6 +580,22 @@ MAPPINGS = {
     0x8004D6F4: ("Menu_ActionMode3", "Menu action with mode 3: calls 0x8004ED0C with mode 3"),
     0x8004ED94: ("UI_DrawElement", "Draws UI element from queue at 0x800BF800 by index"),
 
+    # -- System / event handling --
+    0x80051F14: ("Sys_SetCallback", "Sets system callback function and event mask from parameters"),
+    0x80052010: ("Sys_SetEvent", "Sets system event: writes event code to hardware register"),
+    0x80052078: ("Sys_ClearEvent", "Clears system event: resets event handler state"),
+    0x800521F4: ("Sys_CallWithParams", "Calls system function at 0x800521F4 with 4 byte parameters"),
+
+    # -- GPU / VSync --
+    0x80051FB4: ("GPU_WaitVSync", "Waits for vertical sync: spin-loops until vblank interrupt"),
+
+    # -- Input / controller --
+    0x8005245C: ("Pad_Init", "Initializes controller: sets up pad buffers and callback"),
+
+    # -- Entity GTE / draw --
+    0x80051D90: ("Entity_TransformPoint2", "Variant point transform: uses pre-computed matrix, no translation add"),
+    0x8005262C: ("Entity_InitDrawEnv", "Initializes entity draw environment: sets up GTE and render state"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

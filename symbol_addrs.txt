@@ -592,3 +592,12 @@ Inventory_RemoveItem3 = 0x8004D650;
 Menu_ActionMode0 = 0x8004D6D4;
 Menu_ActionMode3 = 0x8004D6F4;
 UI_DrawElement = 0x8004ED94;
+
+Sys_SetCallback = 0x80051F14;
+Sys_SetEvent = 0x80052010;
+Sys_ClearEvent = 0x80052078;
+Sys_CallWithParams = 0x800521F4;
+GPU_WaitVSync = 0x80051FB4;
+Pad_Init = 0x8005245C;
+Entity_TransformPoint2 = 0x80051D90;
+Entity_InitDrawEnv = 0x8005262C;

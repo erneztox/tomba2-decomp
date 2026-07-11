@@ -406,6 +406,18 @@ MAPPINGS = {
     # -- String tables (continued) --
     0x80078798: ("String_LookupDialog", "Looks up dialog string from nested tables at 0x800A55B0/0x800A2B84"),
 
+    # -- BIOS / syscall stubs (PsyQ SDK low-level) --
+    0x80080820: ("BIOS_EnterCritical", "BIOS call stub: jumps to 0xA0 (EnterCriticalSection)"),
+    0x80080830: ("BIOS_CallB0_1", "BIOS call stub: jumps to 0xB0 (system call)"),
+    0x80080840: ("BIOS_CallB0_2", "BIOS call stub: jumps to 0xB0"),
+    0x80080850: ("BIOS_CallB0_3", "BIOS call stub: jumps to 0xB0"),
+    0x80080860: ("BIOS_CallB0_4", "BIOS call stub: jumps to 0xB0"),
+    0x80080870: ("BIOS_CallB0_5", "BIOS call stub: jumps to 0xB0"),
+    0x80080880: ("BIOS_ResetCallback", "BIOS call stub: jumps to 0xB0 (ResetCallback/DeliverEvent)"),
+    0x80080890: ("BIOS_Syscall0", "BIOS syscall wrapper: syscall(0)"),
+    0x800808A0: ("BIOS_Syscall0_2", "BIOS syscall wrapper: syscall(0)"),
+    0x800808E0: ("BIOS_CallB0_6", "BIOS call stub: jumps to 0xB0"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

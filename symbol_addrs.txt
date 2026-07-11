@@ -464,3 +464,14 @@ Entity_SetupAnimFrame = 0x80077E3C;
 Math_CalcAngle2D = 0x800782B0;
 Game_SetFlag842 = 0x80077D64;
 String_LookupDialog = 0x80078798;
+
+BIOS_EnterCritical = 0x80080820;
+BIOS_CallB0_1 = 0x80080830;
+BIOS_CallB0_2 = 0x80080840;
+BIOS_CallB0_3 = 0x80080850;
+BIOS_CallB0_4 = 0x80080860;
+BIOS_CallB0_5 = 0x80080870;
+BIOS_ResetCallback = 0x80080880;
+BIOS_Syscall0 = 0x80080890;
+BIOS_Syscall0_2 = 0x800808A0;
+BIOS_CallB0_6 = 0x800808E0;

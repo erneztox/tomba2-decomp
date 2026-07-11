@@ -453,3 +453,14 @@ Engine_DispatchInit2 = 0x8006C7C4;
 Entity_InitFromTable = 0x8006AC7C;
 Entity_SyncToParent = 0x8006AFC4;
 Entity_InitBehaviorConfig = 0x8006C59C;
+
+Audio_ResetSystem = 0x80074EEC;
+Audio_SetChannelConfig = 0x80075070;
+Audio_SetChannelConfig2 = 0x800750A4;
+CD_LoadToRAM = 0x800753AC;
+Entity_LoadAnimData = 0x80077B38;
+Entity_LoadAnimDataEx = 0x80077CFC;
+Entity_SetupAnimFrame = 0x80077E3C;
+Math_CalcAngle2D = 0x800782B0;
+Game_SetFlag842 = 0x80077D64;
+String_LookupDialog = 0x80078798;

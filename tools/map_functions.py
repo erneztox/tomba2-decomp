@@ -384,6 +384,28 @@ MAPPINGS = {
     0x8006AFC4: ("Entity_SyncToParent", "Syncs entity position to parent if parent is in state 1"),
     0x8006C59C: ("Entity_InitBehaviorConfig", "Configures entity behavior: sets sprite bounds, draw func, and state to 1"),
 
+    # -- Audio (continued) --
+    0x80074EEC: ("Audio_ResetSystem", "Resets audio system: clears flag 0x800BE22A, calls reset if channels active"),
+    0x80075070: ("Audio_SetChannelConfig", "Configures audio channel: sets flag 0x800BE22B, stores channel param, calls 0x80075CEC"),
+    0x800750A4: ("Audio_SetChannelConfig2", "Audio channel config variant: calls 0x800750D8 with flag=1"),
+
+    # -- CD-ROM (continued) --
+    0x800753AC: ("CD_LoadToRAM", "Loads CD sector data to RAM address from 0x800BE108 + offset"),
+
+    # -- Entity animation loading --
+    0x80077B38: ("Entity_LoadAnimData", "Loads animation data from table: sets entity[0x38] pointer and entity[0xE] flags"),
+    0x80077CFC: ("Entity_LoadAnimDataEx", "Extended anim load: sets animation pointer, calls setup + frame init"),
+    0x80077E3C: ("Entity_SetupAnimFrame", "Sets up animation frame with offset: calls 0x80075FF8, sets entity[0xE]"),
+
+    # -- Math (continued) --
+    0x800782B0: ("Math_CalcAngle2D", "Calculates angle between two 2D points using Math_Atan2"),
+
+    # -- Game flags --
+    0x80077D64: ("Game_SetFlag842", "Sets game flag bit 7 (0x80) on global at 0x800BF842"),
+
+    # -- String tables (continued) --
+    0x80078798: ("String_LookupDialog", "Looks up dialog string from nested tables at 0x800A55B0/0x800A2B84"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

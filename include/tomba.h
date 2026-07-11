@@ -101,9 +101,11 @@ typedef struct Entity {
     /* 0x82 */ s16  bounds_size;    // Collision bounds size / sprite scale
     /* 0x84 */ s16  bounds_min_y;   // Collision bounds min Y / timer
     /* 0x86 */ s16  bounds_max_y;   // Collision bounds max Y
-    /* 0x88 */ s16  gte_input[4];   // GTE input vector (XYZW, source for transform)
+    /* 0x88 */ s16  gte_input[4];   // GTE input vector (XYZW: 0x88, 0x8A, 0x8C, 0x8E)
     /* 0x90 */ s16  move_speed;     // Movement speed parameter
-    /* 0x92 */ u8   _pad92[6];
+    /* 0x92 */ s16  gte_offset_y;   // GTE input Y offset (added to 0x8A each frame)
+    /* 0x94 */ s16  gte_offset_z;   // GTE input Z offset (added to 0x8C each frame)
+    /* 0x96 */ s16  _unk96;         // (7 accesses, set to 1 or computed value)
     /* 0x98 */ s32  gte_result[4];   // GTE transform result matrix (3x3 rotation + translation)
     /* 0xA8 */ u8   _padA8[4];
     /* 0xAC */ s32  projected_x;     // Projected screen X (after GTE transform + pos)
@@ -116,7 +118,10 @@ typedef struct Entity {
     /* 0xBF */ u8   combat_flag;     // Combat flag (checked for SFX)
     /* 0xC0 */ s32  sprite_ptr1;     // Sprite data pointer (array for trails/effects)
     /* 0xC4 */ s32  sprite_ptr2;     // Sprite data pointer 2
-    /* 0xC8 */ u8   _padC8[0x14];
+    /* 0xC8 */ s32  _unkC8;          // (between sprite ptrs and data ptr)
+    /* 0xCC */ s32  anim_ptr;        // Animation data pointer (3 accesses)
+    /* 0xD0 */ s32  target_ptr;      // Target entity/reference pointer (+0x2C/+0x30 accessed)
+    /* 0xD4 */ u8   _padD4[8];
     /* 0xDC */ s32  data_ptr;        // Generic data pointer (offset +0x2C accessed)
     /* 0xE0 */ u8   _padE0[0x60];
     /* 0x140 */ s16 draw_angle;     // Draw rotation angle
@@ -135,7 +140,10 @@ typedef struct Entity {
     /* 0x154 */ s16 speed;          // Movement speed
     /* 0x156 */ s16 speed2;         // Secondary speed (54 accesses)
     /* 0x158 */ void* state_ptr;    // State-specific data pointer
-    /* 0x15C */ u8  _pad15C[7];
+    /* 0x15C */ s8   anim_param;     // Animation parameter (set from int)
+    /* 0x15D */ u8   _unk15D;        // (6 accesses)
+    /* 0x15E */ s16  angle_limit;    // Angle limit/rotation speed (compared for wrapping)
+    /* 0x160 */ u8   anim_select;    // Animation selection parameter (passed to FUN_80054b34)
     /* 0x164 */ u8  action_flag;    // Action trigger flag
     /* 0x165 */ u8  state_165;      // State byte (set to 0 or 1)
     /* 0x166 */ u8  _pad166;

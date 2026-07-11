@@ -530,3 +530,14 @@ SPU_Dispatch5 = 0x8008FB30;
 SPU_SetVolume = 0x80090560;
 SPU_SetVolumePan = 0x80090598;
 SPU_Start = 0x80090980;
+
+CD_GetMode = 0x80089A00;
+CD_GetStatusByte = 0x80089A10;
+CD_InitSub = 0x80089FEC;
+CD_DecodeTime = 0x8008A110;
+CD_InitDrive = 0x8008B040;
+CD_InitDrive2 = 0x8008B19C;
+CD_ResetCallbacks = 0x8008B28C;
+CD_ReadSector = 0x8008B720;
+CD_CompareName = 0x8008BBC8;
+CD_OpenFile = 0x8008C1EC;

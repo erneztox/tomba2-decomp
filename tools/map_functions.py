@@ -482,6 +482,18 @@ MAPPINGS = {
     0x80090598: ("SPU_SetVolumePan", "Sets SPU voice volume and pan via 0x800905E0"),
     0x80090980: ("SPU_Start", "Starts SPU playback via 0x80090750 with flag 1"),
 
+    # -- CD-ROM core --
+    0x80089A00: ("CD_GetMode", "Returns CD mode byte from 0x800ABFC8"),
+    0x80089A10: ("CD_GetStatusByte", "Returns CD status byte from 0x800ABFD8"),
+    0x80089FEC: ("CD_InitSub", "Initializes CD subsystem via 0x8008B4B8"),
+    0x8008A110: ("CD_DecodeTime", "Decodes BCD time format (mm:ss:ff) to absolute frame count"),
+    0x8008B040: ("CD_InitDrive", "Initializes CD drive hardware: sends config commands"),
+    0x8008B19C: ("CD_InitDrive2", "Second stage CD init: sets volume, filter, playback mode"),
+    0x8008B28C: ("CD_ResetCallbacks", "Resets CD event/error callbacks and re-inits drive"),
+    0x8008B720: ("CD_ReadSector", "Reads CD sector: sets up read command, waits for completion"),
+    0x8008BBC8: ("CD_CompareName", "Compares two 12-byte CD file names, returns true if match"),
+    0x8008C1EC: ("CD_OpenFile", "Opens file on CD: looks up name, seeks to sector, returns success"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

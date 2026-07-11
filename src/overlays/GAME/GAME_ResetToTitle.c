@@ -7,13 +7,13 @@ void GAME_ResetToTitle(void)
 {
   int iVar1;
   
-  iVar1 = _DAT_1f800138;
-  *(undefined2 *)(_DAT_1f800138 + 0x48) = 2;
-  *(undefined2 *)(iVar1 + 0x4a) = 0;
-  *(undefined2 *)(iVar1 + 0x4c) = 0;
-  *(undefined1 *)(iVar1 + 0x69) = 0;
-  func_0x0007a8e0();
-  func_0x0007b38c();
+  iVar1 = g_OverlayEntity;
+  g_OverlayEntity->normal_x = 2;
+  iVar1->velocity_y = 0;
+  iVar1->normal_z = 0;
+  *(u8 *)(iVar1 + 0x69) = 0;
+  Entity_ClearInputFlags();
+  Entity_InitGlobals2();
   return;
 }
 

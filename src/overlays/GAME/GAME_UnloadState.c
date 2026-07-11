@@ -8,19 +8,19 @@ void GAME_UnloadState(void)
 {
   int iVar1;
   
-  if (*(short *)(_DAT_1f800138 + 0x4c) == 0) {
-    func_0x00074bc4();
-    *(short *)(_DAT_1f800138 + 0x4c) = *(short *)(_DAT_1f800138 + 0x4c) + 1;
+  if (g_OverlayEntity->normal_z == 0) {
+    Input_InitSystem();
+    g_OverlayEntity->normal_z = g_OverlayEntity->normal_z + 1;
   }
-  else if (*(short *)(_DAT_1f800138 + 0x4c) == 1) {
-    *(undefined1 *)(_DAT_1f800138 + 0x69) = 0;
-    *(undefined1 *)(_DAT_1f800138 + 0x6a) = 0;
-    *(undefined1 *)(_DAT_1f800138 + 0x6b) = 0;
-    iVar1 = _DAT_1f800138;
-    *(undefined2 *)(_DAT_1f800138 + 0x4a) = 0;
-    *(undefined2 *)(iVar1 + 0x4c) = 0;
-    *(undefined2 *)(iVar1 + 0x4e) = 0;
-    func_0x00052078(1);
+  else if (g_OverlayEntity->normal_z == 1) {
+    *(u8 *)(g_OverlayEntity + 0x69) = 0;
+    *(u8 *)(g_OverlayEntity + 0x6a) = 0;
+    *(u8 *)(g_OverlayEntity + 0x6b) = 0;
+    iVar1 = g_OverlayEntity;
+    g_OverlayEntity->velocity_y = 0;
+    iVar1->normal_z = 0;
+    iVar1->sprite_x = 0;
+    Sys_ClearEvent(1);
     return;
   }
                     /* WARNING: Bad instruction - Truncating control flow here */

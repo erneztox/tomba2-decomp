@@ -3,10 +3,10 @@
 /* WARNING: Control flow encountered bad instruction data */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void CRD_CameraSetup(undefined1 *param_1)
+void CRD_CameraSetup(u8 *param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   
   bVar1 = param_1[0x3e];
   if (bVar1 == 0) {
@@ -15,9 +15,9 @@ void CRD_CameraSetup(undefined1 *param_1)
   if (bVar1 != 2) {
     if (bVar1 < 3) {
       if (bVar1 == 1) {
-        if (param_1[(byte)param_1[0x46] + 0x4e] == -1) {
+        if (param_1[(u8)param_1->anim_id + 0x4e] == -1) {
           if (_DAT_800bf4b0 != 0x30) {
-            func_0x0009a5b0(_DAT_800bf4a4,_DAT_800a2914);
+            String_Copy(_DAT_800bf4a4,_DAT_800a2914);
             _DAT_800bf4b0 = 0x30;
           }
           if (_DAT_800bf4b2 != -1) {
@@ -25,8 +25,8 @@ void CRD_CameraSetup(undefined1 *param_1)
             _DAT_800bf4b2 = -1;
           }
           *param_1 = 3;
-          param_1[2] = 0;
-          param_1[1] = 0;
+          param_1->kind = 0;
+          param_1->flags = 0;
           param_1[0x3f] = 0xc;
         }
         else {
@@ -39,28 +39,28 @@ void CRD_CameraSetup(undefined1 *param_1)
     else if (bVar1 == 4) {
       if ((param_1[0x3c] & 1) != 0) {
         if (_DAT_800bf4b0 != 0x33) {
-          func_0x0009a5b0(_DAT_800bf4a4,_DAT_800a2920);
+          String_Copy(_DAT_800bf4a4,_DAT_800a2920);
           _DAT_800bf4b0 = 0x33;
         }
         if (_DAT_800bf4b2 != 0x32) {
-          func_0x0009a5b0(_DAT_800bf4a8,_DAT_800a291c);
+          String_Copy(_DAT_800bf4a8,_DAT_800a291c);
           _DAT_800bf4b2 = 0x32;
         }
         param_1[0x53] = 1;
         *param_1 = 4;
-        param_1[2] = 0;
-        param_1[1] = 0;
+        param_1->kind = 0;
+        param_1->flags = 0;
         halt_baddata();
       }
       if (_DAT_800bf4b0 != 0x32) {
-        func_0x0009a5b0(_DAT_800bf4a4,_DAT_800a291c);
+        String_Copy(_DAT_800bf4a4,_DAT_800a291c);
         _DAT_800bf4b0 = 0x32;
       }
       if (_DAT_800bf4b2 != -1) {
         *_DAT_800bf4a8 = 0;
         _DAT_800bf4b2 = -1;
       }
-      param_1[3] = 1;
+      param_1->sub_type = 1;
       *param_1 = 0xe;
                     /* WARNING: Bad instruction - Truncating control flow here */
       halt_baddata();
@@ -69,7 +69,7 @@ void CRD_CameraSetup(undefined1 *param_1)
     halt_baddata();
   }
   if (_DAT_800bf4b0 != 0x35) {
-    func_0x0009a5b0(_DAT_800bf4a4,_DAT_800a2928);
+    String_Copy(_DAT_800bf4a4,_DAT_800a2928);
     _DAT_800bf4b0 = 0x35;
   }
   if (_DAT_800bf4b2 != -1) {

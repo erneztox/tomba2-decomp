@@ -8,38 +8,38 @@ void GAME_LevelSetup(void)
 {
   int iVar1;
   
-  if (DAT_1f800236 == 2) {
-    DAT_800e7e80 = 0;
+  if (g_GameMode2 == 2) {
+    g_PlayerEntity = 0;
                     /* WARNING: Bad instruction - Truncating control flow here */
     halt_baddata();
   }
-  DAT_800e7e80 = 3;
-  _DAT_800e7eae = 1000;
-  _DAT_800e7eb2 = -1000;
-  _DAT_800e7eb6 = 3000;
+  g_PlayerEntity = 3;
+  _g_CameraPosX = 1000;
+  _g_CameraPosY = -1000;
+  _g_CameraPosZ = 3000;
   _DAT_800e7ed6 = 0xc00;
-  if (DAT_1f800236 < 3) {
-    func_0x0006cbd0(0x800e8008,0x80108f78);
-    func_0x0006e3b0(0x800e8008,0x800e8040);
-    iVar1 = func_0x000310f4(0x19,0);
-    *(undefined2 *)(iVar1 + 0x2c) = _DAT_800e7eae;
-    *(short *)(iVar1 + 0x2e) = _DAT_800e7eb2 + 0x82;
-    *(short *)(iVar1 + 0x30) = _DAT_800e7eb6 + 0x1194;
+  if (g_GameMode2 < 3) {
+    Camera_SetTarget(0x800e8008,0x80108f78);
+    Camera_SetModeSeq(0x800e8008,0x800e8040);
+    iVar1 = Entity_SpawnNoPos(0x19,0);
+    iVar1->pos_x = _g_CameraPosX;
+    iVar1->pos_y = _g_CameraPosY + 0x82;
+    *(short *)(iVar1 + 0x30) = _g_CameraPosZ + 0x1194;
                     /* WARNING: Bad instruction - Truncating control flow here */
     halt_baddata();
   }
-  if (DAT_1f800236 == 3) {
+  if (g_GameMode2 == 3) {
                     /* WARNING: Bad instruction - Truncating control flow here */
     halt_baddata();
   }
-  func_0x0006cbd0(0x800e8008,0x80108f90);
-  iVar1 = func_0x000310f4(0x23,0);
-  *(undefined2 *)(iVar1 + 0x2c) = _DAT_800e7eae;
-  *(short *)(iVar1 + 0x2e) = _DAT_800e7eb2;
-  *(short *)(iVar1 + 0x30) = _DAT_800e7eb6;
-  _DAT_800e8078 = 0xc00;
-  func_0x0006ef38();
-  func_0x00074bf8(8);
+  Camera_SetTarget(0x800e8008,0x80108f90);
+  iVar1 = Entity_SpawnNoPos(0x23,0);
+  iVar1->pos_x = _g_CameraPosX;
+  iVar1->pos_y = _g_CameraPosY;
+  *(short *)(iVar1 + 0x30) = _g_CameraPosZ;
+  _g_CameraZoom = 0xc00;
+  Camera_UpdateOrbit();
+  Audio_SetBank(8);
   return;
 }
 

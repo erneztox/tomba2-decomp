@@ -7,17 +7,17 @@ void GAME_InitPlayState(void)
 {
   int iVar1;
   
-  iVar1 = _DAT_1f800138;
-  *(undefined2 *)(_DAT_1f800138 + 0x48) = 2;
-  *(undefined2 *)(iVar1 + 0x4a) = 1;
-  *(undefined2 *)(iVar1 + 0x4c) = 0;
-  *(undefined1 *)(iVar1 + 0x69) = 0;
-  DAT_1f8001ff = 0xff;
+  iVar1 = g_OverlayEntity;
+  g_OverlayEntity->normal_x = 2;
+  iVar1->velocity_y = 1;
+  iVar1->normal_z = 0;
+  *(u8 *)(iVar1 + 0x69) = 0;
+  g_ScreenBrightness = 0xff;
   _DAT_1f800278 = 0;
-  func_0x0007b3f4();
-  DAT_1f800206 = 0;
-  DAT_1f800236 = 0;
-  DAT_1f800234 = 0;
+  Entity_SaveGlobals();
+  g_LevelId = 0;
+  g_GameMode2 = 0;
+  g_LoadingFlag = 0;
   return;
 }
 

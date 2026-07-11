@@ -6,32 +6,32 @@
 void GAME_StateTransitionAudio(void)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   int iVar2;
   
-  uVar1 = *(ushort *)(_DAT_1f800138 + 0x4e);
+  uVar1 = g_OverlayEntity->sprite_x;
   if (uVar1 == 1) {
-    func_0x0003e264();
-    *(short *)(_DAT_1f800138 + 0x4e) = *(short *)(_DAT_1f800138 + 0x4e) + 1;
+    GPU_OT_Process();
+    g_OverlayEntity->sprite_x = g_OverlayEntity->sprite_x + 1;
   }
   else if (uVar1 < 2) {
     if (uVar1 == 0) {
-      func_0x00074bf8(9);
-      func_0x0003e264();
-      *(short *)(_DAT_1f800138 + 0x4e) = *(short *)(_DAT_1f800138 + 0x4e) + 1;
-      DAT_1f800234 = 1;
-      func_0x00044bd4(0x800452c0,DAT_800bf870,0,1);
+      Audio_SetBank(9);
+      GPU_OT_Process();
+      g_OverlayEntity->sprite_x = g_OverlayEntity->sprite_x + 1;
+      g_LoadingFlag = 1;
+      func_0x00044bd4(0x800452c0,g_GameState,0,1);
     }
   }
   else if (uVar1 == 2) {
-    func_0x0003e894();
-    if (DAT_1f80019b != '\0') {
-      func_0x00074e48();
-      iVar2 = _DAT_1f800138;
-      *(undefined2 *)(_DAT_1f800138 + 0x48) = 2;
-      *(undefined2 *)(iVar2 + 0x4a) = 1;
-      *(undefined2 *)(iVar2 + 0x4c) = 1;
-      *(undefined2 *)(iVar2 + 0x4e) = 0;
+    GPU_DrawProcess();
+    if (g_LoadComplete != '\0') {
+      Audio_ReleaseChannel();
+      iVar2 = g_OverlayEntity;
+      g_OverlayEntity->normal_x = 2;
+      iVar2->velocity_y = 1;
+      iVar2->normal_z = 1;
+      iVar2->sprite_x = 0;
     }
     return;
   }

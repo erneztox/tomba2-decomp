@@ -5,25 +5,25 @@
 void DEMO_CameraSetup(void)
 
 {
-  _DAT_1f80017c = _DAT_1f80017c + 1;
-  if (DAT_1f800136 == 0) {
-    func_0x00059d28();
-    func_0x00069b28();
-    func_0x00026368();
-    func_0x0007a904();
-    func_0x00025588();
-    func_0x0004fe84();
-    func_0x00026c88();
-    func_0x00022a80();
+  _g_InputPressed = _g_InputPressed + 1;
+  if (g_PauseFlag == 0) {
+    Entity_InputUpdate();
+    Entity_UpdateBGList();
+    Entity_UpdateList8();
+    Entity_UpdateAll();
+    Engine_PoolUpdate();
+    UI_PanelDispatch();
+    Entity_UpdateChildren();
+    Engine_DispatchLevel();
     func_0x0006ec44();
     func_0x00050de4();
     func_0x0001cac0();
   }
-  if (DAT_1f800136 < 2) {
-    func_0x0003f9a8();
+  if (g_PauseFlag < 2) {
+    Engine_ExecuteGameLoop();
   }
-  func_0x00077d8c();
-  func_0x00075a80();
+  Audio_SFXSequence();
+  Audio_SeqPlay2();
   return;
 }
 

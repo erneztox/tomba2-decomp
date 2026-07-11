@@ -2,10 +2,10 @@
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void CRD_FadeTransition(undefined1 param_1)
+void CRD_FadeTransition(u8 param_1)
 
 {
-  undefined1 *puVar1;
+  u8 *puVar1;
   int iVar2;
   int iVar3;
   
@@ -34,7 +34,7 @@ void CRD_FadeTransition(undefined1 param_1)
   _DAT_800bf4ee = 0;
   _DAT_800bf4ec = 0;
   DAT_800bf4d4 = param_1;
-  *(undefined2 *)(_DAT_1f800138 + 0x50) = 1;
+  g_OverlayEntity->angle_offset = 1;
   puVar1 = &DAT_800bf498;
   iVar3 = 0;
   do {
@@ -45,7 +45,7 @@ void CRD_FadeTransition(undefined1 param_1)
     iVar3 = iVar2;
   } while (iVar2 < 2);
   if (_DAT_800bf4b0 != 0x30) {
-    func_0x0009a5b0(_DAT_800bf4a4,_DAT_800a2914);
+    String_Copy(_DAT_800bf4a4,_DAT_800a2914);
     _DAT_800bf4b0 = 0x30;
   }
   if (_DAT_800bf4b2 != -1) {

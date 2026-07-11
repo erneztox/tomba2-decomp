@@ -5,21 +5,21 @@
 void DEMO_EntitySpawn(void)
 
 {
-  _DAT_1f80017c = _DAT_1f80017c + 1;
-  if (DAT_1f800136 == 0) {
-    func_0x00026368();
-    func_0x0007a904();
-    func_0x00059d28();
-    func_0x00025588();
-    func_0x0004fe84();
+  _g_InputPressed = _g_InputPressed + 1;
+  if (g_PauseFlag == 0) {
+    Entity_UpdateList8();
+    Entity_UpdateAll();
+    Entity_InputUpdate();
+    Engine_PoolUpdate();
+    UI_PanelDispatch();
     func_0x0006ec44();
     func_0x00050de4();
   }
-  if (DAT_1f800136 < 2) {
+  if (g_PauseFlag < 2) {
     func_0x0010b328();
   }
-  func_0x00077d8c();
-  func_0x00075a80();
+  Audio_SFXSequence();
+  Audio_SeqPlay2();
   return;
 }
 

@@ -5,10 +5,10 @@
 void GAME_SubStateDispatch(void)
 
 {
-  if (*(ushort *)(_DAT_1f800138 + 0x4e) < 0xc) {
+  if (g_OverlayEntity->sprite_x < 0xc) {
                     /* WARNING: Could not emulate address calculation at 0x000009a4 */
                     /* WARNING: Treating indirect jump as call */
-    (**(code **)((uint)*(ushort *)(_DAT_1f800138 + 0x4e) * 4 + -0x7fef9d94))();
+    (**(code **)((uint)g_OverlayEntity->sprite_x * 4 + -0x7fef9d94))();
     return;
   }
   return;

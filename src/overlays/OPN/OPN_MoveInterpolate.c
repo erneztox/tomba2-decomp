@@ -9,7 +9,7 @@
 void OPN_MoveInterpolate(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   short sVar2;
   short sVar3;
   int iVar4;
@@ -19,17 +19,17 @@ void OPN_MoveInterpolate(int param_1)
   int iVar8;
   int iVar9;
   
-  bVar1 = *(byte *)(param_1 + 5);
-  iVar9 = *(int *)(param_1 + 0x10);
+  bVar1 = param_1->behavior_state;
+  iVar9 = param_1->parent;
   if (bVar1 != 1) {
     if (1 < bVar1) {
       if (bVar1 == 2) {
-        *(undefined1 *)(param_1 + 5) = 3;
-        iVar8 = (int)_DAT_800e7eae;
-        iVar7 = (int)_DAT_800e7eb2;
-        iVar6 = (int)_DAT_800e7eb6;
-        *(undefined2 *)(param_1 + 0x40) = 0x14;
-        iVar4 = (int)*(short *)(param_1 + 0x40);
+        param_1->behavior_state = 3;
+        iVar8 = (int)_g_CameraPosX;
+        iVar7 = (int)_g_CameraPosY;
+        iVar6 = (int)_g_CameraPosZ;
+        param_1->timer1 = 0x14;
+        iVar4 = (int)param_1->timer1;
         iVar7 = (iVar7 - *(short *)(param_1 + 0x32)) * 0x100;
         if (iVar4 == 0) {
           trap(0x1c00);
@@ -37,51 +37,51 @@ void OPN_MoveInterpolate(int param_1)
         if ((iVar4 == -1) && (iVar7 == -0x80000000)) {
           trap(0x1800);
         }
-        iVar5 = (int)*(short *)(param_1 + 0x40);
-        iVar6 = (iVar6 - *(short *)(param_1 + 0x36)) * 0x100;
+        iVar5 = (int)param_1->timer1;
+        iVar6 = (iVar6 - param_1->pos_z) * 0x100;
         if (iVar5 == 0) {
           trap(0x1c00);
         }
         if ((iVar5 == -1) && (iVar6 == -0x80000000)) {
           trap(0x1800);
         }
-        *(undefined2 *)(param_1 + 0x50) = 0xf100;
-        *(undefined2 *)(param_1 + 0x52) = 0x180;
-        *(short *)(param_1 + 0x48) = (short)(((iVar8 - *(short *)(param_1 + 0x2e)) * 0x100) / 0x14);
-        *(short *)(param_1 + 0x4a) = (short)(iVar7 / iVar4);
-        *(short *)(param_1 + 0x4c) = (short)(iVar6 / iVar5);
+        param_1->angle_offset = 0xf100;
+        param_1->sprite_y = 0x180;
+        param_1->normal_x = (short)(((iVar8 - param_1->pos_y) * 0x100) / 0x14);
+        param_1->velocity_y = (short)(iVar7 / iVar4);
+        param_1->normal_z = (short)(iVar6 / iVar5);
       }
       else if (bVar1 != 3) {
         halt_baddata();
       }
-      sVar2 = *(short *)(param_1 + 0x50);
-      *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + *(short *)(param_1 + 0x48) * 0x100;
-      *(int *)(param_1 + 0x30) = *(int *)(param_1 + 0x30) + *(short *)(param_1 + 0x4a) * 0x100;
-      *(int *)(param_1 + 0x34) = *(int *)(param_1 + 0x34) + *(short *)(param_1 + 0x4c) * 0x100;
-      sVar3 = *(short *)(param_1 + 0x40);
-      *(short *)(param_1 + 0x50) = *(short *)(param_1 + 0x50) + *(short *)(param_1 + 0x52);
-      *(short *)(param_1 + 0x40) = sVar3 + -1;
-      *(int *)(param_1 + 0x30) = *(int *)(param_1 + 0x30) + sVar2 * 0x100;
+      sVar2 = param_1->angle_offset;
+      *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + param_1->normal_x * 0x100;
+      param_1->pos_y_fixed = param_1->pos_y_fixed + param_1->velocity_y * 0x100;
+      param_1->scale_y = param_1->scale_y + param_1->normal_z * 0x100;
+      sVar3 = param_1->timer1;
+      param_1->angle_offset = param_1->angle_offset + param_1->sprite_y;
+      param_1->timer1 = sVar3 + -1;
+      param_1->pos_y_fixed = param_1->pos_y_fixed + sVar2 * 0x100;
       if (sVar3 == 1) {
-        *(undefined1 *)(param_1 + 4) = 3;
-        func_0x0004ed94(0x2c,0x42);
-        func_0x0004b0d8(param_1);
+        param_1->state = 3;
+        UI_DrawElement(0x2c,0x42);
+        Entity_SpawnScorePopup(param_1);
       }
-      *(undefined1 *)(param_1 + 1) = *(undefined1 *)(iVar9 + 1);
+      param_1->flags = iVar9->flags;
       return;
     }
     if (bVar1 != 0) {
       halt_baddata();
     }
-    *(undefined1 *)(param_1 + 5) = 1;
-    *(undefined4 *)(param_1 + 0x3c) = _DAT_800ecf80;
-    func_0x00077b38(param_1,0x8014c808,0x10);
-    *(undefined2 *)(param_1 + 0x60) = 0x20;
-    *(undefined2 *)(param_1 + 0x62) = 0xffd0;
-    *(undefined2 *)(param_1 + 100) = 0;
-    *(char *)(param_1 + 8) = *(char *)(param_1 + 8) + -8;
+    param_1->behavior_state = 1;
+    param_1->sprite_data = _g_AnimDataPtr;
+    Entity_LoadAnimData(param_1,0x8014c808,0x10);
+    param_1->draw_x = 0x20;
+    param_1->angle_delta = 0xffd0;
+    *(s16 *)(param_1 + 100) = 0;
+    param_1->counter1 = param_1->counter1 + -8;
   }
-  func_0x0004bd64(param_1,1,*(undefined4 *)(iVar9 + 0xe4),0,param_1 + 0x60);
+  Entity_SetPosition(param_1,1,*(s32 *)(iVar9 + 0xe4),0,param_1 + 0x60);
                     /* WARNING: Bad instruction - Truncating control flow here */
   halt_baddata();
 }

@@ -5,10 +5,10 @@
 void GAME_TopLevelDispatch(void)
 
 {
-  if (*(ushort *)(_DAT_1f800138 + 0x4a) < 6) {
+  if (g_OverlayEntity->velocity_y < 6) {
                     /* WARNING: Could not emulate address calculation at 0x0000258c */
                     /* WARNING: Treating indirect jump as call */
-    (**(code **)((uint)*(ushort *)(_DAT_1f800138 + 0x4a) * 4 + -0x7fef9ce4))();
+    (**(code **)((uint)g_OverlayEntity->velocity_y * 4 + -0x7fef9ce4))();
     return;
   }
   return;

@@ -6,29 +6,29 @@
 void CRD_InputHandler(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   char cVar2;
-  byte bVar3;
+  u8 bVar3;
   int iVar4;
-  undefined4 *puVar5;
-  undefined4 *puVar6;
-  byte *pbVar7;
-  byte *pbVar8;
-  undefined4 *puVar9;
-  undefined4 uVar10;
-  undefined4 uVar11;
-  undefined4 uVar12;
+  s32 *puVar5;
+  s32 *puVar6;
+  u8 *pbVar7;
+  u8 *pbVar8;
+  s32 *puVar9;
+  s32 uVar10;
+  s32 uVar11;
+  s32 uVar12;
   
-  iVar4 = func_0x00080840(_DAT_800bf4b4);
+  iVar4 = BIOS_Syscall_B0_80080840(_DAT_800bf4b4);
   cVar2 = '\x01';
   if (iVar4 != 1) {
-    iVar4 = func_0x00080840(_DAT_800bf4b8);
+    iVar4 = BIOS_Syscall_B0_80080840(_DAT_800bf4b8);
     cVar2 = '\x02';
     if (iVar4 != 1) {
-      iVar4 = func_0x00080840(_DAT_800bf4bc);
+      iVar4 = BIOS_Syscall_B0_80080840(_DAT_800bf4bc);
       cVar2 = '\x03';
       if (iVar4 != 1) {
-        iVar4 = func_0x00080840(_DAT_800bf4c0);
+        iVar4 = BIOS_Syscall_B0_80080840(_DAT_800bf4c0);
         cVar2 = '\0';
         if (iVar4 == 1) {
           cVar2 = '\x04';
@@ -38,9 +38,9 @@ void CRD_InputHandler(int param_1)
   }
   *(char *)(param_1 + 0x3e) = cVar2;
   if (cVar2 != '\0') {
-    func_0x000808f0(*(undefined4 *)(param_1 + 4));
+    func_0x000808f0(*(s32 *)(param_1 + 4));
     if ((*(char *)(param_1 + 0x3e) == '\x01') &&
-       (pbVar7 = *(byte **)(param_1 + 0x14), pbVar7[0x5fe] == 3)) {
+       (pbVar7 = *(u8 **)(param_1 + 0x14), pbVar7[0x5fe] == 3)) {
       bVar3 = 0;
       iVar4 = 0x5fe;
       pbVar8 = pbVar7;
@@ -51,20 +51,20 @@ void CRD_InputHandler(int param_1)
         bVar3 = bVar3 ^ bVar1;
       } while (-1 < iVar4);
       if (pbVar7[0x5ff] == bVar3) {
-        puVar5 = (undefined4 *)&DAT_800bf870;
-        puVar9 = *(undefined4 **)(param_1 + 0x14);
-        DAT_1f8001ff = DAT_800bf870;
+        puVar5 = (s32 *)&g_GameState;
+        puVar9 = param_1->script_ptr;
+        g_ScreenBrightness = g_GameState;
         _DAT_1f800278 = _DAT_800bfe56;
         if (((uint)puVar9 & 3) != 0) {
           puVar6 = puVar9 + 0x17c;
           do {
-            uVar10 = puVar9[1];
-            uVar11 = puVar9[2];
-            uVar12 = puVar9[3];
+            uVar10 = puVar9->flags;
+            uVar11 = puVar9->kind;
+            uVar12 = puVar9->sub_type;
             *puVar5 = *puVar9;
-            puVar5[1] = uVar10;
-            puVar5[2] = uVar11;
-            puVar5[3] = uVar12;
+            puVar5->flags = uVar10;
+            puVar5->kind = uVar11;
+            puVar5->sub_type = uVar12;
             puVar9 = puVar9 + 4;
             puVar5 = puVar5 + 4;
           } while (puVar9 != puVar6);
@@ -73,13 +73,13 @@ void CRD_InputHandler(int param_1)
         }
         puVar6 = puVar9 + 0x17c;
         do {
-          uVar10 = puVar9[1];
-          uVar11 = puVar9[2];
-          uVar12 = puVar9[3];
+          uVar10 = puVar9->flags;
+          uVar11 = puVar9->kind;
+          uVar12 = puVar9->sub_type;
           *puVar5 = *puVar9;
-          puVar5[1] = uVar10;
-          puVar5[2] = uVar11;
-          puVar5[3] = uVar12;
+          puVar5->flags = uVar10;
+          puVar5->kind = uVar11;
+          puVar5->sub_type = uVar12;
           puVar9 = puVar9 + 4;
           puVar5 = puVar5 + 4;
         } while (puVar9 != puVar6);
@@ -89,39 +89,39 @@ void CRD_InputHandler(int param_1)
       }
     }
     cVar2 = -1;
-    if (*(char *)(param_1 + 0x46) != -1) {
-      cVar2 = *(char *)(param_1 + 0x46) << 4;
+    if (param_1->anim_id != -1) {
+      cVar2 = param_1->anim_id << 4;
     }
     if ((*(char *)(param_1 + 0x3e) == '\x04') && (cVar2 != -1)) {
-      func_0x00080840(_DAT_800bf4c4);
-      func_0x00080840(_DAT_800bf4c8);
-      func_0x00080840(_DAT_800bf4cc);
-      func_0x00080840(_DAT_800bf4d0);
+      BIOS_Syscall_B0_80080840(_DAT_800bf4c4);
+      BIOS_Syscall_B0_80080840(_DAT_800bf4c8);
+      BIOS_Syscall_B0_80080840(_DAT_800bf4cc);
+      BIOS_Syscall_B0_80080840(_DAT_800bf4d0);
       func_0x0009bab0(cVar2);
-      iVar4 = func_0x00080840(_DAT_800bf4c4);
-      if ((((iVar4 != 1) && (iVar4 = func_0x00080840(_DAT_800bf4c8), iVar4 != 1)) &&
-          (iVar4 = func_0x00080840(_DAT_800bf4cc), iVar4 != 1)) &&
-         (iVar4 = func_0x00080840(_DAT_800bf4d0), iVar4 != 1)) {
+      iVar4 = BIOS_Syscall_B0_80080840(_DAT_800bf4c4);
+      if ((((iVar4 != 1) && (iVar4 = BIOS_Syscall_B0_80080840(_DAT_800bf4c8), iVar4 != 1)) &&
+          (iVar4 = BIOS_Syscall_B0_80080840(_DAT_800bf4cc), iVar4 != 1)) &&
+         (iVar4 = BIOS_Syscall_B0_80080840(_DAT_800bf4d0), iVar4 != 1)) {
                     /* WARNING: Bad instruction - Truncating control flow here */
         halt_baddata();
       }
     }
     else {
-      *(undefined1 *)(param_1 + 0x5a) = 0x32;
+      *(u8 *)(param_1 + 0x5a) = 0x32;
     }
     bVar3 = *(char *)(param_1 + 0x5a) + 1;
-    *(byte *)(param_1 + 0x5a) = bVar3;
+    *(u8 *)(param_1 + 0x5a) = bVar3;
     if (bVar3 < 0x33) {
-      *(undefined1 *)(param_1 + 0x3e) = 0;
-      *(undefined1 *)(param_1 + 0x51) = 0;
-      *(undefined1 *)(param_1 + 2) = 0;
-      *(undefined1 *)(param_1 + 0x3f) = 2;
+      *(u8 *)(param_1 + 0x3e) = 0;
+      *(u8 *)(param_1 + 0x51) = 0;
+      param_1->kind = 0;
+      *(u8 *)(param_1 + 0x3f) = 2;
                     /* WARNING: Bad instruction - Truncating control flow here */
       halt_baddata();
     }
-    *(undefined1 *)(param_1 + 0x3e) = 2;
-    *(undefined1 *)(param_1 + 0x3f) = 0;
-    *(undefined1 *)(param_1 + 0x40) = 0;
+    *(u8 *)(param_1 + 0x3e) = 2;
+    *(u8 *)(param_1 + 0x3f) = 0;
+    *(u8 *)(param_1 + 0x40) = 0;
   }
   return;
 }

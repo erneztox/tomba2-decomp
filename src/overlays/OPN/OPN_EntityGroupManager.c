@@ -6,77 +6,77 @@
 void OPN_EntityGroupManager(int param_1)
 
 {
-  undefined4 *puVar1;
-  byte bVar2;
+  s32 *puVar1;
+  u8 bVar2;
   short sVar3;
   char cVar4;
-  ushort uVar5;
+  u16 uVar5;
   
-  bVar2 = *(byte *)(param_1 + 6);
+  bVar2 = param_1->action_state;
   if (bVar2 != 1) {
     if (bVar2 < 2) {
       if (bVar2 == 0) {
-        *(undefined2 *)(param_1 + 0x40) = 3;
-        *(undefined2 *)(param_1 + 0x42) = 0;
-        *(undefined1 *)(param_1 + 7) = 0;
-        *(char *)(param_1 + 6) = *(char *)(param_1 + 6) + '\x01';
+        param_1->timer1 = 3;
+        param_1->timer2 = 0;
+        param_1->sub_action = 0;
+        param_1->action_state = param_1->action_state + '\x01';
       }
     }
     else if (bVar2 == 2) {
-      uVar5 = *(short *)(param_1 + 0x42) - 1;
-      *(ushort *)(param_1 + 0x42) = uVar5;
+      uVar5 = param_1->timer2 - 1;
+      param_1->timer2 = uVar5;
       if (-1 < (int)((uint)uVar5 << 0x10)) {
         return;
       }
       func_0x0018ccfc(param_1,4);
-      **(undefined2 **)(param_1 + (*(byte *)(param_1 + 8) - 1) * 4 + 0xc0) = _DAT_8018d470;
-      *(undefined2 *)(*(int *)(param_1 + (*(byte *)(param_1 + 8) - 1) * 4 + 0xc0) + 2) =
+      **(s16 **)(param_1 + (param_1->counter1 - 1) * 4 + 0xc0) = _DAT_8018d470;
+      *(s16 *)(*(int *)(param_1 + (param_1->counter1 - 1) * 4 + 0xc0) + 2) =
            _DAT_8018d472;
-      *(undefined2 *)(*(int *)(param_1 + (*(byte *)(param_1 + 8) - 1) * 4 + 0xc0) + 4) =
+      *(s16 *)(*(int *)(param_1 + (param_1->counter1 - 1) * 4 + 0xc0) + 4) =
            _DAT_8018d474;
-      *(undefined2 *)(*(int *)(param_1 + (*(byte *)(param_1 + 8) - 1) * 4 + 0xc0) + 8) =
+      *(s16 *)(*(int *)(param_1 + (param_1->counter1 - 1) * 4 + 0xc0) + 8) =
            _DAT_8018d476;
-      *(undefined2 *)(*(int *)(param_1 + (*(byte *)(param_1 + 8) - 1) * 4 + 0xc0) + 10) =
+      *(s16 *)(*(int *)(param_1 + (param_1->counter1 - 1) * 4 + 0xc0) + 10) =
            _DAT_8018d478;
-      *(undefined2 *)(*(int *)(param_1 + (*(byte *)(param_1 + 8) - 1) * 4 + 0xc0) + 0xc) =
+      *(s16 *)(*(int *)(param_1 + (param_1->counter1 - 1) * 4 + 0xc0) + 0xc) =
            _DAT_8018d47a;
-      *(undefined2 *)(*(int *)(param_1 + (*(byte *)(param_1 + 8) - 1) * 4 + 0xc0) + 0x38) = 0x1000;
-      *(undefined2 *)(*(int *)(param_1 + (*(byte *)(param_1 + 8) - 1) * 4 + 0xc0) + 0x3a) = 0x1000;
-      *(undefined2 *)(*(int *)(param_1 + (*(byte *)(param_1 + 8) - 1) * 4 + 0xc0) + 0x3c) = 0x1000;
-      *(undefined1 *)(param_1 + 5) = 0;
-      *(undefined1 *)(param_1 + 6) = 1;
-      func_0x00051b04(*(undefined4 *)(param_1 + (*(byte *)(param_1 + 8) - 1) * 4 + 0xc0),0x1c,0x1c);
+      *(s16 *)(*(int *)(param_1 + (param_1->counter1 - 1) * 4 + 0xc0) + 0x38) = 0x1000;
+      *(s16 *)(*(int *)(param_1 + (param_1->counter1 - 1) * 4 + 0xc0) + 0x3a) = 0x1000;
+      *(s16 *)(*(int *)(param_1 + (param_1->counter1 - 1) * 4 + 0xc0) + 0x3c) = 0x1000;
+      param_1->behavior_state = 0;
+      param_1->action_state = 1;
+      Entity_SetSubEntityData(*(s32 *)(param_1 + (param_1->counter1 - 1) * 4 + 0xc0),0x1c,0x1c);
       return;
     }
                     /* WARNING: Bad instruction - Truncating control flow here */
     halt_baddata();
   }
-  uVar5 = *(short *)(param_1 + 0x42) - 1;
-  *(ushort *)(param_1 + 0x42) = uVar5;
+  uVar5 = param_1->timer2 - 1;
+  param_1->timer2 = uVar5;
   if ((int)((uint)uVar5 << 0x10) < 0) {
-    if (*(char *)(param_1 + 7) == '\0') {
+    if (param_1->sub_action == '\0') {
       func_0x0018ccfc(param_1,8);
-      *(char *)(param_1 + 7) = *(char *)(param_1 + 7) + '\x01';
+      param_1->sub_action = param_1->sub_action + '\x01';
                     /* WARNING: Bad instruction - Truncating control flow here */
       halt_baddata();
     }
-    if (*(char *)(param_1 + 7) != '\x01') {
+    if (param_1->sub_action != '\x01') {
                     /* WARNING: Bad instruction - Truncating control flow here */
       halt_baddata();
     }
     func_0x0018ccfc(param_1,4);
-    _DAT_800ed098 = _DAT_800ed098 + 1;
-    puVar1 = (undefined4 *)(_DAT_800e7e74 + -4);
+    _g_CollectibleCount = _g_CollectibleCount + 1;
+    puVar1 = (s32 *)(_DAT_800e7e74 + -4);
     _DAT_800e7e74 = _DAT_800e7e74 + -4;
-    *puVar1 = *(undefined4 *)(param_1 + (*(byte *)(param_1 + 8) - 1) * 4 + 0xc0);
-    *(undefined2 *)(param_1 + 0x42) = 5;
-    sVar3 = *(short *)(param_1 + 0x40);
-    cVar4 = *(char *)(param_1 + 8) + -1;
-    *(short *)(param_1 + 0x40) = sVar3 + -1;
-    *(char *)(param_1 + 8) = cVar4;
-    *(char *)(param_1 + 9) = cVar4;
+    *puVar1 = *(s32 *)(param_1 + (param_1->counter1 - 1) * 4 + 0xc0);
+    param_1->timer2 = 5;
+    sVar3 = param_1->timer1;
+    cVar4 = param_1->counter1 + -1;
+    param_1->timer1 = sVar3 + -1;
+    param_1->counter1 = cVar4;
+    param_1->counter2 = cVar4;
     if (sVar3 == 1) {
-      *(char *)(param_1 + 6) = *(char *)(param_1 + 6) + '\x01';
+      param_1->action_state = param_1->action_state + '\x01';
       halt_baddata();
     }
   }

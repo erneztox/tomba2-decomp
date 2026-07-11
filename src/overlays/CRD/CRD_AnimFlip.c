@@ -8,38 +8,38 @@ void CRD_AnimFlip(int param_1)
 {
   short sVar1;
   int iVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   int iVar4;
-  short local_28 [4];
-  ushort local_20 [4];
+  short local_28->state;
+  u16 local_20->state;
   
-  local_28[0] = 0x2e;
-  local_28[1] = 0x2f;
+  local_28->type = 0x2e;
+  local_28->flags = 0x2f;
   if (*_DAT_800bf4a4 == '\0') {
     iVar4 = 0;
-    local_20[3] = 0x10;
-    local_20[2] = 0;
-    local_20[1] = 100;
+    local_20->sub_type = 0x10;
+    local_20->kind = 0;
+    local_20->flags = 100;
     iVar2 = param_1;
     do {
-      if (*(byte *)(iVar2 + 0x4a) < 3) {
-        uVar3 = *(undefined4 *)(local_28[iVar4] * 4 + -0x7ff5d7ac);
-        sVar1 = func_0x0009a600(uVar3);
-        local_20[0] = sVar1 * -4 + 0x50;
+      if (*(u8 *)(iVar2 + 0x4a) < 3) {
+        uVar3 = *(s32 *)(local_28[iVar4] * 4 + -0x7ff5d7ac);
+        sVar1 = String_Compare(uVar3);
+        local_20->type = sVar1 * -4 + 0x50;
         if (iVar4 != 0) {
-          local_20[0] = sVar1 * -4 + 0xf0;
+          local_20->type = sVar1 * -4 + 0xf0;
         }
-        local_20[1] = 100;
-        local_20[2] = 0;
-        if ((uint)*(byte *)(param_1 + 0x44) == iVar4 + 1U) {
+        local_20->flags = 100;
+        local_20->kind = 0;
+        if ((uint)*(u8 *)(param_1 + 0x44) == iVar4 + 1U) {
                     /* WARNING: Bad instruction - Truncating control flow here */
           halt_baddata();
         }
-        func_0x00079374((int)((uint)local_20[0] * 0x10000) >> 0x10,100,6,uVar3,3);
-        local_20[2] = local_20[2] << 1;
-        sVar1 = func_0x0009a600(uVar3);
-        local_20[2] = local_20[2] + sVar1 * 8;
-        func_0x0005019c(local_20,0x60,0);
+        GPU_RenderSprite_V1((int)((uint)local_20->type * 0x10000) >> 0x10,100,6,uVar3,3);
+        local_20->kind = local_20->kind << 1;
+        sVar1 = String_Compare(uVar3);
+        local_20->kind = local_20->kind + sVar1 * 8;
+        UI_DrawPanel(local_20,0x60,0);
       }
       iVar4 = iVar4 + 1;
       iVar2 = param_1 + iVar4;

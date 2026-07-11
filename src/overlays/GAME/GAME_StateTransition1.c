@@ -1,4 +1,4 @@
-// GAME_StateTransition1 (GAME_StateTransition1) - State transition: loads level data, checks completion flag DAT_1f80019b
+// GAME_StateTransition1 (GAME_StateTransition1) - State transition: loads level data, checks completion flag g_LoadComplete
 
 /* WARNING: Control flow encountered bad instruction data */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
@@ -6,31 +6,31 @@
 void GAME_StateTransition1(void)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   int iVar2;
   
-  iVar2 = _DAT_1f800138;
-  uVar1 = *(ushort *)(_DAT_1f800138 + 0x4e);
+  iVar2 = g_OverlayEntity;
+  uVar1 = g_OverlayEntity->sprite_x;
   if (uVar1 == 1) {
     func_0x0003fb84();
-    *(short *)(_DAT_1f800138 + 0x4e) = *(short *)(_DAT_1f800138 + 0x4e) + 1;
+    g_OverlayEntity->sprite_x = g_OverlayEntity->sprite_x + 1;
   }
   else if (uVar1 < 2) {
     if (uVar1 == 0) {
-      DAT_1f800234 = 1;
-      *(short *)(_DAT_1f800138 + 0x4e) = *(short *)(_DAT_1f800138 + 0x4e) + 1;
-      func_0x00044bd4(0x800452c0,DAT_800bf870,0,1);
+      g_LoadingFlag = 1;
+      g_OverlayEntity->sprite_x = g_OverlayEntity->sprite_x + 1;
+      func_0x00044bd4(0x800452c0,g_GameState,0,1);
     }
   }
   else if (uVar1 == 2) {
-    if (DAT_1f80019b == '\0') {
+    if (g_LoadComplete == '\0') {
       func_0x0003ea88();
       return;
     }
-    *(undefined2 *)(_DAT_1f800138 + 0x48) = 2;
-    *(undefined2 *)(iVar2 + 0x4a) = 1;
-    *(undefined2 *)(iVar2 + 0x4c) = 1;
-    *(undefined2 *)(iVar2 + 0x4e) = 0;
+    g_OverlayEntity->normal_x = 2;
+    iVar2->velocity_y = 1;
+    iVar2->normal_z = 1;
+    iVar2->sprite_x = 0;
   }
                     /* WARNING: Bad instruction - Truncating control flow here */
   halt_baddata();

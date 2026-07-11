@@ -1,4 +1,4 @@
-// OPN_PlayerAnimCheck (OPN_PlayerAnimCheck) - Player animation check: sets completion flag DAT_800bf80e, triggers next state
+// OPN_PlayerAnimCheck (OPN_PlayerAnimCheck) - Player animation check: sets completion flag g_SeqComplete, triggers next state
 
 /* WARNING: Control flow encountered bad instruction data */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
@@ -8,27 +8,27 @@ void OPN_PlayerAnimCheck(int param_1)
 {
   int iVar1;
   
-  if (*(char *)(param_1 + 6) == '\0') {
-    DAT_800bf80e = 0;
-    *(char *)(param_1 + 6) = *(char *)(param_1 + 6) + '\x01';
+  if (param_1->action_state == '\0') {
+    g_SeqComplete = 0;
+    param_1->action_state = param_1->action_state + '\x01';
   }
-  else if (*(char *)(param_1 + 6) != '\x01') {
+  else if (param_1->action_state != '\x01') {
                     /* WARNING: Bad instruction - Truncating control flow here */
     halt_baddata();
   }
-  iVar1 = func_0x00076d68(param_1);
+  iVar1 = Entity_AnimFrame(param_1);
   if (iVar1 == 1) {
-    DAT_800bf80e = 1;
+    g_SeqComplete = 1;
   }
-  if (_DAT_1f800184 == 1) {
-    *(undefined2 *)(param_1 + 0x50) = 0;
-    *(undefined2 *)(param_1 + 0x4a) = 0;
+  if (_g_InputHeld == 1) {
+    param_1->angle_offset = 0;
+    param_1->velocity_y = 0;
                     /* WARNING: Bad instruction - Truncating control flow here */
     halt_baddata();
   }
-  func_0x00065478(param_1,1);
-  if (DAT_800bf89c == '\x03') {
-    DAT_800e7e84 = 7;
+  Entity_SetActionFlag(param_1,1);
+  if (g_PlayerState == '\x03') {
+    g_PlayerAction = 7;
     DAT_800e7e85 = 0;
     DAT_800e7e86 = 0;
     DAT_800e7e87 = 0;

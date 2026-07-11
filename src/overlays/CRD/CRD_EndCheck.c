@@ -3,7 +3,7 @@
 /* WARNING: Control flow encountered bad instruction data */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
-void CRD_EndCheck(undefined1 *param_1)
+void CRD_EndCheck(u8 *param_1)
 
 {
   short sVar1;
@@ -25,11 +25,11 @@ void CRD_EndCheck(undefined1 *param_1)
   iVar12 = 4;
   *psVar13 = 0;
   do {
-    func_0x0009a420((int)psVar13 + iVar12,0,0x3c);
+    Mem_Set((int)psVar13 + iVar12,0,0x3c);
     iVar11 = iVar11 + 1;
     iVar12 = iVar12 + 0x3c;
   } while (iVar11 < 0xf);
-  uVar7 = (uint)(byte)param_1[0x46];
+  uVar7 = (uint)(u8)param_1->anim_id;
   puVar6 = (uint *)(uVar7 * 900 + -0x7ff41270);
   if ((param_1[0x3c] & 1) == 0) {
     iVar11 = 0;
@@ -41,26 +41,26 @@ void CRD_EndCheck(undefined1 *param_1)
           do {
             puVar2 = puVar3;
             puVar5 = puVar8;
-            uVar7 = puVar2[1];
-            uVar9 = puVar2[2];
-            uVar10 = puVar2[3];
+            uVar7 = puVar2->flags;
+            uVar9 = puVar2->kind;
+            uVar10 = puVar2->sub_type;
             *puVar5 = *puVar2;
-            puVar5[1] = uVar7;
-            puVar5[2] = uVar9;
-            puVar5[3] = uVar10;
+            puVar5->flags = uVar7;
+            puVar5->kind = uVar9;
+            puVar5->sub_type = uVar10;
             puVar3 = puVar2 + 4;
             puVar8 = puVar5 + 4;
           } while (puVar3 != puVar6 + 0xc);
-          uVar7 = puVar2[5];
-          uVar9 = puVar2[6];
-          puVar5[4] = *puVar3;
-          puVar5[5] = uVar7;
-          puVar5[6] = uVar9;
+          uVar7 = puVar2->behavior_state;
+          uVar9 = puVar2->action_state;
+          puVar5->state = *puVar3;
+          puVar5->behavior_state = uVar7;
+          puVar5->action_state = uVar9;
           *psVar13 = *psVar13 + 1;
         }
         iVar11 = iVar11 + 1;
         puVar6 = puVar6 + 0xf;
-      } while (iVar11 < (int)(uint)(byte)param_1[(byte)param_1[0x46] + 0x4e]);
+      } while (iVar11 < (int)(uint)(u8)param_1[(u8)param_1->anim_id + 0x4e]);
     }
     if (*psVar13 == 0) {
       if (_DAT_800bf4b0 != 0x3e) {
@@ -72,17 +72,17 @@ LAB_00003a88:
         *_DAT_800bf4a8 = 0;
         _DAT_800bf4b2 = -1;
       }
-      param_1[3] = 1;
+      param_1->sub_type = 1;
       *param_1 = 0xe;
-      param_1[2] = 0;
-      param_1[1] = 0;
-      param_1[0x47] = 0;
+      param_1->kind = 0;
+      param_1->flags = 0;
+      param_1->sub_anim_id = 0;
       sVar1 = *psVar13;
       iVar11 = 0;
       if (0 < sVar1) {
         do {
-          if (param_1[(byte)param_1[0x46] + 0x48] == (char)psVar13[2]) {
-            param_1[0x47] = (char)iVar11;
+          if (param_1[(u8)param_1->anim_id + 0x48] == (char)psVar13->kind) {
+            param_1->sub_anim_id = (char)iVar11;
                     /* WARNING: Bad instruction - Truncating control flow here */
             halt_baddata();
           }
@@ -97,7 +97,7 @@ LAB_00003a88:
       _DAT_800bf4b0 = -1;
     }
     if (_DAT_800bf4b2 != 0x3f) {
-      func_0x0009a5b0(_DAT_800bf4a8,_DAT_800a2950);
+      String_Copy(_DAT_800bf4a8,_DAT_800a2950);
       _DAT_800bf4b2 = 0x3f;
     }
   }
@@ -112,31 +112,31 @@ LAB_00003a88:
           do {
             puVar4 = puVar5;
             puVar2 = puVar3;
-            uVar7 = puVar4[1];
-            uVar9 = puVar4[2];
-            uVar10 = puVar4[3];
+            uVar7 = puVar4->flags;
+            uVar9 = puVar4->kind;
+            uVar10 = puVar4->sub_type;
             *puVar2 = *puVar4;
-            puVar2[1] = uVar7;
-            puVar2[2] = uVar9;
-            puVar2[3] = uVar10;
+            puVar2->flags = uVar7;
+            puVar2->kind = uVar9;
+            puVar2->sub_type = uVar10;
             puVar5 = puVar4 + 4;
             puVar3 = puVar2 + 4;
           } while (puVar5 != puVar8);
-          uVar7 = puVar4[5];
-          uVar9 = puVar4[6];
-          puVar2[4] = *puVar5;
-          puVar2[5] = uVar7;
-          puVar2[6] = uVar9;
+          uVar7 = puVar4->behavior_state;
+          uVar9 = puVar4->action_state;
+          puVar2->state = *puVar5;
+          puVar2->behavior_state = uVar7;
+          puVar2->action_state = uVar9;
           *psVar13 = *psVar13 + 1;
         }
         iVar11 = iVar11 + 1;
         puVar8 = puVar8 + 0xf;
         puVar6 = puVar6 + 0xf;
-      } while (iVar11 < (int)(uint)(byte)param_1[(byte)param_1[0x46] + 0x4e]);
+      } while (iVar11 < (int)(uint)(u8)param_1[(u8)param_1->anim_id + 0x4e]);
     }
     if (*psVar13 == 0) {
       if (_DAT_800bf4b0 != 0x37) {
-        func_0x0009a5b0(_DAT_800bf4a4,_DAT_800a2930);
+        String_Copy(_DAT_800bf4a4,_DAT_800a2930);
         _DAT_800bf4b0 = 0x37;
       }
       goto LAB_00003a88;
@@ -146,7 +146,7 @@ LAB_00003a88:
       _DAT_800bf4b0 = -1;
     }
     if (_DAT_800bf4b2 != 0x38) {
-      func_0x0009a5b0(_DAT_800bf4a8,_DAT_800a2934);
+      String_Copy(_DAT_800bf4a8,_DAT_800a2934);
       _DAT_800bf4b2 = 0x38;
     }
   }

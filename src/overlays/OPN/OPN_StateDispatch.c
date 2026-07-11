@@ -3,10 +3,10 @@
 void OPN_StateDispatch(int param_1)
 
 {
-  if (*(byte *)(param_1 + 3) < 0xc) {
+  if (param_1->sub_type < 0xc) {
                     /* WARNING: Could not emulate address calculation at 0x00000cbc */
                     /* WARNING: Treating indirect jump as call */
-    (**(code **)((uint)*(byte *)(param_1 + 3) * 4 + -0x7fe75fbc))();
+    (**(code **)((uint)param_1->sub_type * 4 + -0x7fe75fbc))();
     return;
   }
   return;

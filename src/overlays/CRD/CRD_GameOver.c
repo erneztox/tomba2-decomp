@@ -1,6 +1,6 @@
 // CRD_GameOver (CRD_GameOver) - Game over handler
 
-void CRD_GameOver(byte *param_1)
+void CRD_GameOver(u8 *param_1)
 
 {
   func_0x0018d418();

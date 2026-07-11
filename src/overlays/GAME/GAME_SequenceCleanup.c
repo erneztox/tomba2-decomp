@@ -5,10 +5,10 @@
 void GAME_SequenceCleanup(void)
 
 {
-  *(undefined1 *)(_DAT_1f800138 + 0x6b) = 0;
-  DAT_1f800136 = 0;
-  DAT_800bf819 = 8;
-  func_0x00050970();
+  *(u8 *)(g_OverlayEntity + 0x6b) = 0;
+  g_PauseFlag = 0;
+  g_NextState = 8;
+  UI_DrawScreenOverlay();
   return;
 }
 

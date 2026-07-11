@@ -6,29 +6,29 @@
 void GAME_EventDispatch(void)
 
 {
-  ushort uVar1;
+  u16 uVar1;
   int iVar2;
   int iVar3;
   
-  uVar1 = *(ushort *)(_DAT_1f800138 + 0x50);
+  uVar1 = g_OverlayEntity->angle_offset;
   if (uVar1 == 2) {
-    *(undefined2 *)(_DAT_1f800138 + 0x50) = 3;
+    g_OverlayEntity->angle_offset = 3;
     func_0x00050894(0);
-    DAT_1f800136 = 2;
-    func_0x0007ac6c();
+    g_PauseFlag = 2;
+    Entity_ClearPool2();
   }
   else if (uVar1 < 3) {
-    *(ushort *)(_DAT_1f800138 + 0x50) = uVar1 + 1;
+    g_OverlayEntity->angle_offset = uVar1 + 1;
   }
   else if (uVar1 == 3) {
-    iVar3 = func_0x000346bc();
-    iVar2 = _DAT_1f800138;
+    iVar3 = Event_DispatchMain();
+    iVar2 = g_OverlayEntity;
     if (iVar3 != 0) {
-      *(undefined2 *)(_DAT_1f800138 + 0x50) = 0;
-      *(undefined1 *)(iVar2 + 0x6b) = 0;
-      DAT_1f800136 = 0;
-      DAT_800bf819 = 8;
-      func_0x00050970();
+      g_OverlayEntity->angle_offset = 0;
+      *(u8 *)(iVar2 + 0x6b) = 0;
+      g_PauseFlag = 0;
+      g_NextState = 8;
+      UI_DrawScreenOverlay();
     }
     return;
   }

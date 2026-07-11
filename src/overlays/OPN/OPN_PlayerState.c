@@ -1,4 +1,4 @@
-// OPN_PlayerState (OPN_PlayerState) - Player state machine: checks input (_DAT_1f80017c), spawns entities, plays SFX
+// OPN_PlayerState (OPN_PlayerState) - Player state machine: checks input (_g_InputPressed), spawns entities, plays SFX
 
 /* WARNING: Control flow encountered bad instruction data */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
@@ -6,44 +6,44 @@
 void OPN_PlayerState(int param_1)
 
 {
-  byte bVar1;
+  u8 bVar1;
   uint uVar2;
-  undefined4 uVar3;
+  s32 uVar3;
   
-  bVar1 = *(byte *)(param_1 + 5);
+  bVar1 = param_1->behavior_state;
   if (bVar1 == 1) {
-    uVar3 = func_0x00076d68(param_1);
+    uVar3 = Entity_AnimFrame(param_1);
     func_0x0018a300(param_1,uVar3);
   }
   else if (bVar1 < 2) {
     if (bVar1 == 0) {
-      if (DAT_800bf9ed != '\0') {
-        *(undefined1 *)(param_1 + 1) = 1;
-        *(undefined1 *)(param_1 + 0x147) = 0;
-        *(undefined2 *)(param_1 + 0x56) = 0;
-        *(undefined2 *)(param_1 + 0x58) = 0;
-        *(char *)(param_1 + 5) = *(char *)(param_1 + 5) + '\x01';
+      if (g_FrameCounter != '\0') {
+        param_1->flags = 1;
+        param_1->direction = 0;
+        param_1->rot_y = 0;
+        param_1->rot_z = 0;
+        param_1->behavior_state = param_1->behavior_state + '\x01';
       }
-      if ((_DAT_1f80017c & 0x1f) != 0) {
-        if ((_DAT_1f80017c & 0xf) != 0) {
+      if ((_g_InputPressed & 0x1f) != 0) {
+        if ((_g_InputPressed & 0xf) != 0) {
           return;
         }
-        uVar2 = func_0x0009a450();
+        uVar2 = Math_Random();
         if ((uVar2 & 1) == 0) {
           return;
         }
       }
-      func_0x00074590(2,0,0);
+      Audio_PlaySoundEffect(2,0,0);
     }
   }
   else if (bVar1 == 2) {
-    *(undefined2 *)(param_1 + 0x50) = 0;
-    *(undefined1 *)(param_1 + 0x145) = 0;
-    func_0x00054198(param_1);
-    *(undefined1 *)(param_1 + 4) = 6;
-    *(undefined1 *)(param_1 + 5) = 0;
-    *(undefined1 *)(param_1 + 6) = 0;
-    *(undefined1 *)(param_1 + 7) = 0;
+    param_1->angle_offset = 0;
+    param_1->state_flag145 = 0;
+    Entity_ResetState_2(param_1);
+    param_1->state = 6;
+    param_1->behavior_state = 0;
+    param_1->action_state = 0;
+    param_1->sub_action = 0;
     return;
   }
                     /* WARNING: Bad instruction - Truncating control flow here */

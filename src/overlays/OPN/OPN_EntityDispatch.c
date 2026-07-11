@@ -3,10 +3,10 @@
 void OPN_EntityDispatch(int param_1)
 
 {
-  if (*(byte *)(param_1 + 6) < 0xf) {
+  if (param_1->action_state < 0xf) {
                     /* WARNING: Could not emulate address calculation at 0x00000338 */
                     /* WARNING: Treating indirect jump as call */
-    (**(code **)((uint)*(byte *)(param_1 + 6) * 4 + -0x7fe75ffc))();
+    (**(code **)((uint)param_1->action_state * 4 + -0x7fe75ffc))();
     return;
   }
   return;

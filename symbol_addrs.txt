@@ -519,3 +519,14 @@ CD_GetCallback = 0x80086604;
 CD_InitCallbacks = 0x80086738;
 BIOS_CallA0_2 = 0x800858F0;
 BIOS_CallC0 = 0x80085B10;
+
+SPU_SetVoiceAttr = 0x8008EE10;
+SPU_SetVoiceAttr2 = 0x800900F0;
+SPU_Dispatch1 = 0x8008FA70;
+SPU_Dispatch2 = 0x8008FAA0;
+SPU_Dispatch3 = 0x8008FAD0;
+SPU_Dispatch4 = 0x8008FB00;
+SPU_Dispatch5 = 0x8008FB30;
+SPU_SetVolume = 0x80090560;
+SPU_SetVolumePan = 0x80090598;
+SPU_Start = 0x80090980;

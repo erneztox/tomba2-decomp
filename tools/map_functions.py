@@ -470,6 +470,18 @@ MAPPINGS = {
     0x800858F0: ("BIOS_CallA0_2", "BIOS call stub: jumps to 0xA0"),
     0x80085B10: ("BIOS_CallC0", "BIOS call stub: jumps to 0xC0"),
 
+    # -- SPU (Sound Processing Unit) --
+    0x8008EE10: ("SPU_SetVoiceAttr", "Sets SPU voice attribute: writes param to voice data at 0x80104C30 table"),
+    0x800900F0: ("SPU_SetVoiceAttr2", "Sets SPU voice attribute variant: different offset calculation"),
+    0x8008FA70: ("SPU_Dispatch1", "SPU dispatch wrapper: calls 0x80092B00"),
+    0x8008FAA0: ("SPU_Dispatch2", "SPU dispatch wrapper: calls 0x80092A70"),
+    0x8008FAD0: ("SPU_Dispatch3", "SPU dispatch wrapper: calls 0x80092BB0"),
+    0x8008FB00: ("SPU_Dispatch4", "SPU dispatch wrapper: calls 0x80092A30"),
+    0x8008FB30: ("SPU_Dispatch5", "SPU dispatch wrapper: calls 0x80092A30"),
+    0x80090560: ("SPU_SetVolume", "Sets SPU voice volume via 0x800905E0"),
+    0x80090598: ("SPU_SetVolumePan", "Sets SPU voice volume and pan via 0x800905E0"),
+    0x80090980: ("SPU_Start", "Starts SPU playback via 0x80090750 with flag 1"),
+
     # -- System / Debug --
     0x8009A420: ("Mem_Set", "memset implementation: fills memory region with byte value"),
     0x8009A730: ("Debug_Printf", "Debug printf: formats and outputs debug string with variable arguments"),

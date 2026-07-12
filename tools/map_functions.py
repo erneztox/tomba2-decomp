@@ -15,7 +15,7 @@ import sys
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-GHIDRA_DUMPS_DIR = os.path.join(PROJECT_ROOT, "src", "main", "ghidra_dumps")
+GHIDRA_DUMPS_DIR = os.path.join(PROJECT_ROOT, "src", "scus", "ghidra_dumps")
 MAPPED_DIR = os.path.join(PROJECT_ROOT, "src", "main", "mapped")
 SYMBOL_FILE = os.path.join(PROJECT_ROOT, "symbol_addrs.txt")
 
@@ -1917,6 +1917,12 @@ MAPPINGS = {
     0x8001DD00: ("Entity_Main2", "Entity main variant 2: complex entity controller (453L)"),
     0x80060C60: ("Entity_StateMain15", "Entity state main variant 15: mega state machine (458L)"),
     0x8001DC9C: ("System_Main", "System main: root initialization + main loop (464L)"),
+    # --- Batch 1: CD/XA Streaming State Machine ---
+    0x8001D4AC: ("CD_Stream_StateMain", "Main CD/XA stream state processor"),
+    0x8001CEE4: ("CD_Stream_Dispatch", "CD/XA stream dispatch / state loop"),
+    0x8001CEA8: ("CD_Stream_SetState4", "CD/XA stream helper: sets state 4"),
+    0x8001CEB8: ("CD_Stream_SetState4Ex", "CD/XA stream helper: sets state 4 with arg"),
+    0x8001C948: ("CD_Stream_SubState", "CD/XA stream helper"),
 }
 
 # ============================================================

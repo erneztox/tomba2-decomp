@@ -6,9 +6,9 @@
 
 
 
-void FUN_8001c948(void)
+void CD_Stream_SubState(void)
 
 {
-  FUN_8001c59c();
+  CD_Stream_SubState();
   return;
 }

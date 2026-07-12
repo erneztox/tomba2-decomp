@@ -1,0 +1,49 @@
+/**
+ * @brief Initializes system callbacks and stack
+ * @note Original: func_80012ECC at 0x80012ECC
+ */
+// Sys_InitSystemCallbacks
+
+
+
+void Sys_InitSystemCallbacks(void)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  int iVar3;
+  undefined1 in_stack_00000030;
+  undefined4 in_stack_000000d0;
+  undefined4 in_stack_000000d4;
+  undefined4 in_stack_000000d8;
+  short in_stack_000000e0;
+  short sStack000000e2;
+  ushort in_stack_000000e4;
+  undefined2 uStack000000e6;
+  
+  Sys_InitSystemCallbacks();
+  in_stack_00000030 = 1;
+  Sys_InitSystemCallbacks(&stack0x00000090,&stack0x00000018);
+  Sys_InitSystemCallbacks(&stack0x00000090);
+  Sys_InitSystemCallbacks();
+  in_stack_000000d0 = 0x2000000;
+  in_stack_000000d4 = 0xe6000002;
+  in_stack_000000d8 = 0;
+  Sys_InitSystemCallbacks(&stack0x000000d0);
+  uVar2 = 0xffff;
+  iVar3 = 0;
+  uStack000000e6 = 1;
+  in_stack_000000e4 = (ushort)(byte)(&DAT_8002545e)[DAT_800384a4 * 0xc];
+  do {
+    iVar1 = DAT_800384a4 * 0xc;
+    in_stack_000000e0 = *(short *)(&DAT_80025460 + iVar1) + (short)iVar3;
+    sStack000000e2 = *(short *)(&DAT_80025462 + iVar1) + (short)iVar3;
+    iVar3 = iVar3 + 1;
+    Sys_InitSystemCallbacks(*(undefined4 *)(&DAT_80025464 + iVar1),&stack0x000000e0,uVar2);
+    uVar2 = 0x8000;
+  } while (iVar3 < 2);
+  Sys_InitSystemCallbacks();
+  Sys_InitSystemCallbacks(1);
+  Sys_InitSystemCallbacks();
+  return;
+}

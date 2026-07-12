@@ -1954,6 +1954,38 @@ MAPPINGS = {
     0x80012d3c: ("Sys_UnregisterCallback", "Unregister a system callback"),
     0x80012d4c: ("Sys_InvokeCallback", "Invoke a registered callback"),
     0x80012e60: ("Sys_SetStatus", "Set system status bit"),
+
+    # --- SCUS Batch 2 ---
+    0x80012e74: ("Sys_SetHardwareRegisterA", "Sets hardware register 1F801DAA and calls init"),
+    0x80012ecc: ("Sys_InitSystemCallbacks", "Initializes system callbacks and stack"),
+    0x80012fdc: ("Mem_CheckBounds", "Memory bounds checking utility"),
+    0x80012fe0: ("Mem_CheckBounds2", "Memory bounds checking utility variant"),
+    0x80013040: ("Event_DispatchJump", "Event dispatch jump table handler"),
+    0x80013140: ("Sys_EmptyStub13140", "Empty stub function"),
+    0x80013154: ("Mem_SetupBuffer", "Memory buffer initialization loop"),
+    0x800131b0: ("Mem_SetupBuffer2", "Memory buffer initialization loop variant"),
+    0x80013248: ("Mem_IterateBuffer", "Iterates over memory buffer based on global size"),
+    0x800132b0: ("Mem_FillArray", "Fills array with sequential pointers"),
+    0x8001339c: ("DMA_InitParams", "Initializes DMA or graphics parameters (0x5000000)"),
+    0x800134f4: ("Sys_EmptyStub134F4", "Empty stub function"),
+    0x8001366c: ("Sys_EmptyStub1366C", "Empty stub function"),
+    0x800136cc: ("Event_CheckSize", "Checks event sizes and masks bits"),
+    0x800137e0: ("Sys_ExecuteCallback", "Executes system callback from table"),
+    0x80013840: ("Sys_SetCallback13840", "Registers a system callback"),
+    0x8001389c: ("Sys_SetCallback1389C", "Registers a system callback conditionally"),
+    0x800138ac: ("Sys_SetCallback138AC", "Registers a system callback conditionally"),
+    0x80013950: ("Sys_SetCallback13950", "Registers a system callback (DAT_80025520)"),
+    0x800139b0: ("Sys_SetCallback139B0", "Registers a system callback and fills memory"),
+    0x80013a78: ("Sys_ExecuteCallback2", "Executes system callback (offset 0x3C)"),
+    0x80013ab0: ("Event_ProcessVars", "Processes complex event variables"),
+    0x80013bcc: ("Util_PackData3", "Packs 3 bytes into a 32-bit integer"),
+    0x80013c5c: ("Util_PackData4", "Packs 3 bytes into a 32-bit integer with 0x80000000 flag"),
+    0x80013cf4: ("Sys_EmptyStub13CF4", "Empty stub function"),
+    0x80013d54: ("Sys_EmptyStub13D54", "Empty stub function"),
+    0x80013db4: ("Sys_RegisterCallbackEx", "Registers callback with extended parameters"),
+    0x80013e30: ("Sys_PrepareCallbackArgs", "Prepares array pointers for callback execution"),
+    0x80013ec0: ("Mem_InitLinkedList", "Initializes memory linked list/pointer chain"),
+    0x80013fe0: ("Sys_ExecuteCallback3", "Executes system callback (offset 0x14)"),
 }
 
 # ============================================================
@@ -2018,7 +2050,7 @@ def generate_mapped_file(addr, name, comment, dump_path):
             if "FUN_" in stripped or old_name.lower() in stripped.lower():
                 # Replace Ghidra name with our name in the declaration
                 new_line = re.sub(
-                    r'\b' + re.escape(old_name) + r'\b',
+                    r'(?i)\b' + re.escape(old_name) + r'\b',
                     name,
                     line,
                     flags=re.IGNORECASE

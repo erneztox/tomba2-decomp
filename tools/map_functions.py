@@ -16,7 +16,7 @@ import sys
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 GHIDRA_DUMPS_DIR = os.path.join(PROJECT_ROOT, "src", "scus", "ghidra_dumps")
-MAPPED_DIR = os.path.join(PROJECT_ROOT, "src", "main", "mapped")
+MAPPED_DIR = os.path.join(PROJECT_ROOT, "src", "scus", "mapped")
 SYMBOL_FILE = os.path.join(PROJECT_ROOT, "symbol_addrs.txt")
 
 # ============================================================

@@ -2411,3 +2411,12 @@ DMA_ExecuteUpdate = 0x8001661C;
 Sys_EmptyStub16680 = 0x80016680;
 DMA_InitBufferList = 0x800166C0;
 Mem_CheckAndClear = 0x80016968;
+
+GPU_Helper74C = 0x8001774C;
+Sys_CopyStruct1 = 0x80017CBC;
+Sys_CopyStruct2 = 0x80017CCC;
+Sys_CopyStruct3 = 0x80017CDC;
+Sys_CopyStruct4 = 0x80017CEC;
+Sys_CopyStruct5 = 0x80017CFC;
+Sys_ComplexCopy = 0x80017D0C;
+Sys_EmptyStub17D1C = 0x80017D1C;

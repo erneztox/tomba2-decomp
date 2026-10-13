@@ -83,6 +83,9 @@ pub struct TombaRail {
     pub move_speed: f32,
     /// Latch de fase ascendente del salto (state_flag144 en PS1).
     pub is_rising: bool,
+    /// Traje de Ardilla Voladora equipado (Sector 8: Equipamiento).
+    /// En inicio es false (ropa estándar de Tomba).
+    pub has_flying_squirrel_suit: bool,
 }
 
 impl Default for TombaRail {
@@ -99,6 +102,7 @@ impl Default for TombaRail {
             current_look_dir: Vec3::Z,
             move_speed: 0.0,
             is_rising: false,
+            has_flying_squirrel_suit: false,
         }
     }
 }
@@ -313,9 +317,13 @@ pub fn tomba_movement_system(
 
         // ── Botones de Control Estilo PlayStation & Teclado PC ───────────────
         // Cruz (X) / Salto: Space, K, Z
+        // Cruz (✕) / Salto: Espacio, K, Z
         let jump_pressed = keyboard.just_pressed(KeyCode::Space)
             || keyboard.just_pressed(KeyCode::KeyK)
             || keyboard.just_pressed(KeyCode::KeyZ);
+        let jump_held = keyboard.pressed(KeyCode::Space)
+            || keyboard.pressed(KeyCode::KeyK)
+            || keyboard.pressed(KeyCode::KeyZ);
 
         // Cuadrado (□) / Correr (tipo Mario - mantener presionado): Shift (Izq/Der), J, X
         let is_run_held = keyboard.pressed(KeyCode::ShiftLeft)
@@ -332,6 +340,15 @@ pub fn tomba_movement_system(
         let bite_pressed = keyboard.just_pressed(KeyCode::KeyI)
             || keyboard.just_pressed(KeyCode::KeyU)
             || keyboard.just_pressed(KeyCode::KeyV);
+
+        // F3: Toggle Traje de Ardilla Voladora (Flying Squirrel Suit - Sector 8)
+        if keyboard.just_pressed(KeyCode::F3) {
+            rail.has_flying_squirrel_suit = !rail.has_flying_squirrel_suit;
+            println!(
+                "[EQUIPMENT] Flying Squirrel Suit: {}",
+                if rail.has_flying_squirrel_suit { "EQUIPPED" } else { "UNEQUIPPED" }
+            );
+        }
 
         // ── Ataque con arma (Botón Círculo / Tecla L, H, C) ───────────────────
         // Ref: Entity_State_Attack.c (0x8005ACC8)
@@ -370,9 +387,10 @@ pub fn tomba_movement_system(
                     TOMBA_WALK_SPEED
                 }
             } else {
-                // En el aire (Salto / Caída):
-                // Si salta corriendo o mantiene presionado el botón de correr, conserva SPEED_DASH (Running Jump)
-                if is_run_held || rail.move_speed >= (SPEED_DASH - 0.1) {
+                // En el aire (Salto / Caída / Planeo):
+                if matches!(rail.action_state, TombaActionState::Glide { .. }) {
+                    SPEED_GLIDE
+                } else if is_run_held || rail.move_speed >= (SPEED_DASH - 0.1) {
                     SPEED_DASH
                 } else {
                     TOMBA_WALK_SPEED
@@ -454,13 +472,27 @@ pub fn tomba_movement_system(
             }
         }
 
+        // Planeo con Traje de Ardilla Voladora (ACT-31: Entity_State_Fly / 0x8006228C)
+        // Solo si tiene el traje equipado (Sector 8) y mantiene presionado Salto en el aire mientras desciende
+        if rail.has_flying_squirrel_suit && !rail.is_grounded && !rail.is_rising && jump_held {
+            if !matches!(rail.action_state, TombaActionState::Glide { .. }) {
+                rail.action_state.entity_state_fly();
+            }
+        } else if matches!(rail.action_state, TombaActionState::Glide { .. }) && (!jump_held || rail.is_grounded) {
+            if !rail.is_grounded {
+                rail.action_state = TombaActionState::Fall;
+            }
+        }
+
         // ── 4. Física vertical continua suave (ecuaciones auténticas de PS1) ──
         // Ref: Entity_State_Jump2.c (0x360 = 30.375 m/s^2) en ascenso,
         //      Entity_ApplyGravity.c (0x400 = 36.0 m/s^2) en descenso,
         //      Entity_ApplyVelocityMax.c (0x2800 = 12.0 m/s cap).
-        // NOTA: Tomba NO flota por defecto; el traje de ardilla voladora pertenece al Sector 8 (Equipamiento).
+        // Traje de ardilla voladora: usa GRAVITY_GLIDE (4.5 m/s^2) al planear.
         if !rail.is_grounded {
-            let grav = if rail.is_rising {
+            let grav = if matches!(rail.action_state, TombaActionState::Glide { .. }) {
+                GRAVITY_GLIDE
+            } else if rail.is_rising {
                 TOMBA_JUMP_GRAVITY
             } else {
                 TOMBA_GRAVITY
@@ -469,7 +501,7 @@ pub fn tomba_movement_system(
 
             if rail.vertical_velocity <= 0.0 {
                 rail.is_rising = false;
-                if !matches!(rail.action_state, TombaActionState::Attack { .. } | TombaActionState::Grab { .. }) {
+                if !matches!(rail.action_state, TombaActionState::Attack { .. } | TombaActionState::Grab { .. } | TombaActionState::Glide { .. }) {
                     rail.action_state = TombaActionState::Fall;
                 }
             }
@@ -701,4 +733,71 @@ mod tests {
         let rail = app.world().get::<TombaRail>(entity).unwrap();
         assert!(matches!(rail.action_state, TombaActionState::Attack { .. }));
     }
+
+    #[test]
+    fn test_flying_squirrel_suit_glide() {
+        let mut app = App::new();
+        app.add_plugins(MinimalPlugins);
+
+        let collision = LevelCollision::load_from_file("assets/levels/area_04_collision.json")
+            .expect("Failed to load collision");
+        app.insert_resource(collision);
+        app.init_resource::<ButtonInput<KeyCode>>();
+        app.add_systems(Update, tomba_movement_system);
+
+        let entity = app
+            .world_mut()
+            .spawn((
+                Transform::from_xyz(39.68, 15.0 + TOMBA_PHYS_OFFSET_Y, 42.0),
+                TombaPlayer,
+                TombaRail {
+                    y: 15.0,
+                    has_flying_squirrel_suit: false,
+                    is_grounded: false,
+                    is_rising: false,
+                    vertical_velocity: -2.0,
+                    action_state: TombaActionState::Fall,
+                    ..Default::default()
+                },
+            ))
+            .id();
+
+        app.update();
+        std::thread::sleep(std::time::Duration::from_millis(10));
+
+        // 1. Sin traje de ardilla voladora: presionar Space mientras cae NO debe planear
+        {
+            let mut input = app.world_mut().resource_mut::<ButtonInput<KeyCode>>();
+            input.press(KeyCode::Space);
+        }
+        app.update();
+        std::thread::sleep(std::time::Duration::from_millis(10));
+
+        let rail = app.world().get::<TombaRail>(entity).unwrap();
+        assert_eq!(rail.action_state, TombaActionState::Fall);
+
+        // 2. Equipar traje mediante F3
+        {
+            let mut input = app.world_mut().resource_mut::<ButtonInput<KeyCode>>();
+            input.clear();
+            input.press(KeyCode::F3);
+        }
+        app.update();
+        std::thread::sleep(std::time::Duration::from_millis(10));
+
+        let rail = app.world().get::<TombaRail>(entity).unwrap();
+        assert!(rail.has_flying_squirrel_suit);
+
+        // 3. Con traje equipado: presionar Space mientras desciende activa ACT-31 Entity_State_Fly (Glide)
+        {
+            let mut input = app.world_mut().resource_mut::<ButtonInput<KeyCode>>();
+            input.clear();
+            input.press(KeyCode::Space);
+        }
+        app.update();
+
+        let rail = app.world().get::<TombaRail>(entity).unwrap();
+        assert!(matches!(rail.action_state, TombaActionState::Glide { .. }));
+    }
 }
+

@@ -17,8 +17,10 @@ from formats.models.smst_parser import parse_smst
 from formats.models import gltf_export
 from formats.geometry.mdat import area_mdat_entries, exportMDAT
 from formats.images import img_codec
+from formats.animation import skeleton_tree
 from psx import vram as psx_vram
 
+EXE_PATH = os.path.join(PROJECT_ROOT, "rom", "extracted", "MAIN.EXE")
 IDX_PATH = os.path.join(PROJECT_ROOT, "rom", "extracted", "CD", "TOMBA2.IDX")
 DAT_PATH = os.path.join(PROJECT_ROOT, "rom", "extracted", "CD", "TOMBA2.DAT")
 IMG_PATH = os.path.join(PROJECT_ROOT, "rom", "extracted", "CD", "TOMBA2.IMG")
@@ -63,8 +65,13 @@ def main():
     vram_bytes = bytes(vram)
     print(f"VRAM buffer ready ({len(vram_bytes)} bytes).")
 
-    # 3. Export Tomba Model
-    print("Exporting Tomba 3D Model...")
+    # 3. Export Tomba Model with Skeleton / Rigging
+    print("Exporting Tomba 3D Model with Skeleton...")
+    with open(EXE_PATH, "rb") as exe:
+        # Tomba's 17-bone tree is at file offset 0x947A8 in MAIN.EXE
+        exe_data = exe.read()
+        bones = skeleton_tree.read_table(exe_data, 0x947A8, 17)
+
     with open(DAT_PATH, "rb") as dat:
         # Tomba SMST begins at 0x82F000
         dat.seek(0x82F000)
@@ -72,8 +79,17 @@ def main():
 
     tomba_model = parse_smst(tomba_raw)
     tomba_out = os.path.join(MODELS_DIR, "tomba.glb")
-    gltf_export.write_glb(tomba_out, tomba_model, vram_bytes, groups=tomba_model["groups"], name="tomba")
-    print(f"-> Tomba model exported to {tomba_out} ({os.path.getsize(tomba_out):,} bytes)")
+    # Groups 17..20 are alternate costume parts (eyes, hands, pig suit); skip them for base model
+    gltf_export.write_glb(
+        tomba_out,
+        tomba_model,
+        vram_bytes,
+        groups=tomba_model["groups"],
+        bones=bones,
+        name="tomba",
+        skip={17, 18, 19, 20},
+    )
+    print(f"-> Rigged Tomba model exported to {tomba_out} ({os.path.getsize(tomba_out):,} bytes)")
 
     # 4. Export Area 04 Level Geometry (MDAT)
     print("Exporting Area 04 (Town of the Fishermen)...")

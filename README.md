@@ -138,8 +138,11 @@ revert-tomba2/
 ## 🛠️ Reglas para Contribuir
 
 1. **Escribe en Rust idiomático:** Utiliza la arquitectura de Bevy (`Component`, `Resource`, `System`, `Query`, `Event`).
-2. **Revisa primero `Tomba2Engine` y `src/`:** Antes de codificar cualquier mecánica, busca la clase, función u offsets correspondientes en `Tomba2Engine/game/` y `src/`.
+2. **Jerarquía Estricta de Fuentes de Verdad:**
+   - **Prioridad 1 (Principal Fuente de Verdad): `Tomba2Engine/`**. Toda la investigación de física, movilidad de Tomba, detección de suelo, colisiones, máquinas de estado, cámaras y matemáticas debe buscarse **primero y obligatoriamente** en `Tomba2Engine/` (`Tomba2Engine/game/`, `Tomba2Engine/game/player/`, etc.).
+   - **Prioridad 2 (Fallback Secundario): `src/` y Dumps de Ghidra**. Los archivos de `src/` contienen descompilaciones preliminares y funciones renombradas manualmente; deben consultarse **únicamente como respaldo secundario** si un detalle u offset específico no se encuentra documentado en `Tomba2Engine/`.
+   - **Prohibido como fuente de lógica: `Tomba2Edit`**. Es estrictamente un extractor/conversor de assets offline. Jamás se debe deducir o inventar una fórmula de juego basándose en la estructura de un asset o en el código de Python de `Tomba2Edit`.
 3. **Cero Lógica Inventada / Cero Vibe-Coding:** Cada constante, ecuación, umbral de detección, física de salto, gravedad, offset de cámara y comprobación de estado debe provenir del código original y estar **comentada con su origen** (`// Referencia: ActorTomba::velocityIntegrate 0x80056B48`).
 4. **Trata los Bugs con Ingeniería Inversa:** Si un comportamiento en Bevy no coincide con el juego original, no apliques parches cosméticos ni números ad-hoc; investiga en el código descompilado cómo gestiona el juego original ese caso específico.
-5. **Los Assets no dictan la Lógica:** No utilices `Tomba2Edit` ni las características de los assets exportados para inventar o inferir mecánicas, offsets de contacto o fórmulas en el juego. `Tomba2Edit` aporta el entendimiento del formato de datos, pero la lógica procede estrictamente del código C/C++ de `Tomba2Engine` y `src/`.
+5. **Los Assets no dictan la Lógica:** No utilices `Tomba2Edit` ni las características de los assets exportados para inventar o inferir mecánicas, offsets de contacto o fórmulas en el juego. `Tomba2Edit` aporta el entendimiento del formato de datos, pero la lógica procede estrictamente de `Tomba2Engine` (y fallback `src/`).
 6. **No ensucies el repositorio con binarios de MIPS:** Los assets deben procesarse y almacenarse en formatos modernos (`.glb`, `.png`, `.wav`, `.json`).

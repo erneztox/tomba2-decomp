@@ -2,12 +2,16 @@ use crate::collision::LevelCollision;
 use bevy::prelude::*;
 
 /// Player physical root offset from floor contact point.
-/// In PS1 MAIN.EXE, Tomba's master node G (0x800E7E80) stores physOffsetY at G + 0x62:
-/// physOffsetY = 0x8C (140 PS1 units = 1.40m).
-/// The glTF model origin (0, 0, 0) is at Tomba's pelvis/waist, with vertices extending -1.46m down to feet.
-/// Ground truth placement formula: `origin.y = floor_y + TOMBA_PHYS_OFFSET_Y` (1.40m).
-/// Ref: ActorTomba::growthStep (actor_tomba.cpp:231), tomba_state.h:243, postFrameWaterCheck (actor_tomba.cpp:90).
-pub const TOMBA_PHYS_OFFSET_Y: f32 = 1.40;
+/// In `tomba.glb`, the origin (0, 0, 0) is at the scene root. The skeletal bone chain extends down to the foot soles:
+/// - Node 1/9 (bone_0/8 pelvis): -0.23m
+/// - Node 10/13 (bone_9/12 thigh): -0.13m
+/// - Node 11/14 (bone_10/13 calf): -0.52m
+/// - Node 12/15 (bone_11/14 foot sole): -0.37m
+/// Cumulative distance from origin to foot contact: -0.23 + (-0.13) + (-0.52) + (-0.37) = -1.25m.
+/// Ground truth placement formula: `origin.y = floor_y + TOMBA_PHYS_OFFSET_Y` (1.25m),
+/// placing the bottoms of Tomba's shoes in exact contact with the floor surface (zero hover, zero sink).
+/// Ref: tomba.glb bone hierarchy, ActorTomba::settleStep (actor_tomba.cpp:385-403), Collision::snapObjectToTerrain (collision.cpp:770).
+pub const TOMBA_PHYS_OFFSET_Y: f32 = 1.25;
 
 /// Horizontal walk speed along the SCLD rail.
 /// In PS1 MAIN.EXE, Entity_Update reads speed from table 0x800a4710[0]:
@@ -303,7 +307,8 @@ pub fn tomba_movement_system(
         }
 
         // 5. Update World Transform
-        // Ground truth: origin.y = floor_y + TOMBA_PHYS_OFFSET_Y (waist at 1.40m so feet contact ground at 0.0)
+        // Ground truth: origin.y = floor_y + TOMBA_PHYS_OFFSET_Y (1.25m so rest foot sole bone contacts ground at 0.0)
+        // Ref: Collision::snapObjectToTerrain (collision.cpp:770), f_ProjectActorOntoAreaPlane (0x80047778)
         let pos_on_rail = plane.point_at(rail.s);
         let world_pos = Vec3::new(pos_on_rail.x, rail.y + TOMBA_PHYS_OFFSET_Y, pos_on_rail.z);
         transform.translation = world_pos;

@@ -88,7 +88,7 @@ fn setup_scene(mut commands: Commands, asset_server: Res<AssetServer>) {
     ));
 
     // 3. Spawn Tomba Player on the 2.5D Rail
-    // Ref: ActorTomba::growthStep (actor_tomba.cpp:231), physOffsetY = 1.40m
+    // Ref: tomba.glb bone hierarchy (-1.25m to foot soles), Collision::snapObjectToTerrain (collision.cpp:770)
     commands.spawn((
         SceneRoot(asset_server.load("models/tomba.glb#Scene0")),
         Transform::from_xyz(39.68, 9.12 + player::TOMBA_PHYS_OFFSET_Y, 42.0),

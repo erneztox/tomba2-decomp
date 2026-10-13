@@ -76,6 +76,37 @@ impl CollisionPlane {
         (dx * self.dir[0] + dz * self.dir[1]).clamp(0.0, self.length)
     }
 
+    /// Authentic PS1 plane projection from `f_ProjectActorOntoAreaPlane` (0x80047778)
+    /// and `grid_step_4798c` (Tomba2Engine/game/player/collision.cpp:678-716).
+    ///
+    /// In PS1 MAIN.EXE, the actor's world coordinates (X, Z) are projected onto the plane segment:
+    /// - If span_x < span_z (Z-dominant axis): clamp Z into [z1, z2], then X = x1 + (Z - z1) * (dx / dz).
+    /// - If span_x >= span_z (X-dominant axis): clamp X into [x1, x2], then Z = z1 + (X - x1) * (dz / dx).
+    /// Returns (projected_x, projected_z, s).
+    #[allow(dead_code)]
+    pub fn project_actor_onto_plane(&self, x: f32, z: f32) -> (f32, f32, f32) {
+        let dx = self.p2[0] - self.p1[0];
+        let dz = self.p2[2] - self.p1[2];
+        let span_x = dx.abs();
+        let span_z = dz.abs();
+
+        if span_x < span_z {
+            // Z-dominant branch: clamp Z, recompute X
+            let (min_z, max_z) = if dz >= 0.0 { (self.p1[2], self.p2[2]) } else { (self.p2[2], self.p1[2]) };
+            let clamped_z = z.clamp(min_z, max_z);
+            let s = if span_z > 1e-4 { (clamped_z - self.p1[2]) / dz * self.length } else { 0.0 };
+            let computed_x = if span_z > 1e-4 { self.p1[0] + (clamped_z - self.p1[2]) * (dx / dz) } else { self.p1[0] };
+            (computed_x, clamped_z, s.clamp(0.0, self.length))
+        } else {
+            // X-dominant branch: clamp X, recompute Z
+            let (min_x, max_x) = if dx >= 0.0 { (self.p1[0], self.p2[0]) } else { (self.p2[0], self.p1[0]) };
+            let clamped_x = x.clamp(min_x, max_x);
+            let s = if span_x > 1e-4 { (clamped_x - self.p1[0]) / dx * self.length } else { 0.0 };
+            let computed_z = if span_x > 1e-4 { self.p1[2] + (clamped_x - self.p1[0]) * (dz / dx) } else { self.p1[2] };
+            (clamped_x, computed_z, s.clamp(0.0, self.length))
+        }
+    }
+
     pub fn sample_floor(&self, s: f32, current_y: f32) -> Option<f32> {
         let mut candidates = Vec::new();
         // Authentic SCLD cell width is 0.64m (64 PS1 units).

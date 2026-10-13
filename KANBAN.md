@@ -14,11 +14,11 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **SEC-06** | `ANM` | SECTOR 6: Skeletal Animation VM & Sprites | 81 | **2 / 81** |
 | **SEC-07** | `CAM` | SECTOR 7: 2.5D Rail Camera Pipeline | 32 | **32 / 32** |
 | **SEC-08** | `ITM` | SECTOR 8: Items, Inventory & Equipment | 8 | **8 / 8** |
-| **SEC-09** | `EVT` | SECTOR 9: Event Engine & Script Interpreter | 49 | **0 / 49** |
+| **SEC-09** | `EVT` | SECTOR 9: Event Engine & Script Interpreter | 49 | **49 / 49** |
 | **SEC-10** | `UI` | SECTOR 10: UI, Dialog System & HUD | 88 | **0 / 88** |
 | **SEC-11** | `AUD` | SECTOR 11: Audio System & Sound Dispatch | 140 | **2 / 140** |
 | **SEC-12** | `SYS` | SECTOR 12: Memory Card, GPU, CD & Low-Level Subsystems | 560 | **1 / 560** |
-| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **233 implementadas** |
+| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **282 implementadas** |
 
 ---
 
@@ -830,55 +830,55 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 
 | ID | Función / Símbolo | Dirección PS1 | Archivo C | Comportamiento Técnico Original | Mapeo Bevy (Rust) | Estado |
 | :--- | :--- | :---: | :--- | :--- | :--- | :---: |
-| **EVT-01** | `Event_Check3` | `0x80034BE0` | `event/Event_Check3.c` | Event check variant 3: tests DAT_800bf873 + game state conditions | `events::progression::event_check3` | `[ ]` |
-| **EVT-02** | `Event_Check4` | `0x80035424` | `event/Event_Check4.c` | Event check variant 4: calls FUN_80035640(8) + FUN_80035640(9) | `events::progression::event_check4` | `[ ]` |
-| **EVT-03** | `Event_Check5` | `0x80035218` | `event/Event_Check5.c` | Event check variant 5: tests DAT_800bf881 flags + game state | `events::progression::event_check5` | `[ ]` |
-| **EVT-04** | `Event_Check6` | `0x800349A4` | `event/Event_Check6.c` | Event check variant 6: tests DAT_800bf89e + DAT_800bf881 flags | `events::progression::event_check6` | `[ ]` |
-| **EVT-05** | `Event_CheckTrigger` | `0x80035088` | `event/Event_CheckTrigger.c` | Event trigger check: tests DAT_800bf881 flags, checks input conditions | `events::progression::event_checktrigger` | `[ ]` |
-| **EVT-06** | `Event_CheckTrigger2` | `0x80035640` | `event/Event_CheckTrigger2.c` | Event trigger check variant 2: tests DAT_800bf881 event flags | `events::progression::event_checktrigger2` | `[ ]` |
-| **EVT-07** | `Event_Dispatch` | `0x80035FAC` | `event/Event_Dispatch.c` | Event dispatcher: looks up event type, calls handler | `events::progression::event_dispatch` | `[ ]` |
-| **EVT-08** | `Event_DispatchMain` | `0x800346BC` | `event/Event_DispatchMain.c` | Event dispatch main: DAT_80100660 state machine | `events::progression::event_dispatchmain` | `[ ]` |
-| **EVT-09** | `Event_DrawUI` | `0x80034338` | `event/Event_DrawUI.c` | Event UI drawer: checks DAT_800bf81a/b, draws UI elements | `events::progression::event_drawui` | `[ ]` |
-| **EVT-10** | `Event_Handler` | `0x80035338` | `event/Event_Handler.c` | Event handler: calls FUN_80035640, dispatches by event type 0x62 | `events::progression::event_handler` | `[ ]` |
-| **EVT-11** | `Event_Handler2` | `0x800364AC` | `event/Event_Handler2.c` | Event handler variant 2: switch on param_1, returns action code | `events::progression::event_handler2` | `[ ]` |
-| **EVT-12** | `Event_HandlerMain` | `0x80036240` | `event/Event_HandlerMain.c` | Event main handler: processes event queue, dispatches | `events::progression::event_handlermain` | `[ ]` |
-| **EVT-13** | `Event_LoadData` | `0x80036BAC` | `event/Event_LoadData.c` | Event data loader: loads 64+64 bytes, dispatches by type | `events::progression::event_loaddata` | `[ ]` |
-| **EVT-14** | `Event_Main` | `0x80036DFC` | `event/Event_Main.c` | Event main: full event system controller (377L) | `events::progression::event_main` | `[ ]` |
-| **EVT-15** | `Event_MainDispatch` | `0x80034CE0` | `event/Event_MainDispatch.c` | Event main dispatcher: switch on event type 0x66-0x6E | `events::progression::event_maindispatch` | `[ ]` |
-| **EVT-16** | `Event_TriggerCollectible` | `0x80040B48` | `event/Event_TriggerCollectible.c` | Triggers collectible/event: marks as collected, updates global counters | `events::progression::event_triggercollectible` | `[ ]` |
-| **EVT-17** | `Event_TriggerTypeA` | `0x80035528` | `event/Event_TriggerTypeA.c` | Triggers event type A (0x18): spawns entity with overlay func at 0x8011600C | `events::progression::event_triggertypea` | `[ ]` |
-| **EVT-18** | `Event_TriggerTypeB` | `0x800355B4` | `event/Event_TriggerTypeB.c` | Triggers event type B (0x1A): spawns entity with overlay func at 0x801189C4 | `events::progression::event_triggertypeb` | `[ ]` |
-| **EVT-19** | `Event_TypeDispatch` | `0x80036560` | `event/Event_TypeDispatch.c` | Event type dispatcher: returns action code by event type (0/1/2) | `events::progression::event_typedispatch` | `[ ]` |
-| **EVT-20** | `Event_WeaponCheck` | `0x8003511C` | `event/Event_WeaponCheck.c` | Event weapon check: tests weapon/item type 0x59 vs game state | `events::progression::event_weaponcheck` | `[ ]` |
-| **EVT-21** | `Game_AddScore` | `0x8004B3F4` | `game/Game_AddScore.c` | Adds score points: increments total + shows score popup on screen | `events::progression::game_addscore` | `[ ]` |
-| **EVT-22** | `Game_CheckArea` | `0x80036D90` | `game/Game_CheckArea.c` | Checks game area flag: returns 1 if area is 0 or 5 in specific game mode | `events::progression::game_checkarea` | `[ ]` |
-| **EVT-23** | `Game_CheckBit` | `0x8006EFF4` | `game/Game_CheckBit.c` | Checks bit at position in global bitfield at 0x800BFE48 | `events::progression::game_checkbit` | `[ ]` |
-| **EVT-24** | `Game_CheckBit50` | `0x80078894` | `game/Game_CheckBit50.c` | Checks bit in global flag at 0x800BFE50 at given position | `events::progression::game_checkbit50` | `[ ]` |
-| **EVT-25** | `Game_CheckFlagInput` | `0x80055824` | `game/Game_CheckFlagInput.c` | Checks global input flag at 0x800E7E68 AND with input state | `events::progression::game_checkflaginput` | `[ ]` |
-| **EVT-26** | `Game_CheckFlagSys` | `0x80055844` | `game/Game_CheckFlagSys.c` | Checks system flag at 0x800ECF54 AND with input state | `events::progression::game_checkflagsys` | `[ ]` |
-| **EVT-27** | `Game_CheckIdle` | `0x80042728` | `game/Game_CheckIdle.c` | Checks if game is idle: no dialogs active (0x800ED06D) and no event flag (0x800BF849) | `events::progression::game_checkidle` | `[ ]` |
-| **EVT-28** | `Game_CheckUnlock` | `0x80036DC4` | `game/Game_CheckUnlock.c` | Checks if area is unlocked via table at 0x800A24E4 | `events::progression::game_checkunlock` | `[ ]` |
-| **EVT-29** | `Game_ClearPause` | `0x800269FC` | `game/Game_ClearPause.c` | Clears pause state: resets entity flag and global pause variable | `events::progression::game_clearpause` | `[ ]` |
-| **EVT-30** | `Game_DispatchOverlayCall` | `0x80065374` | `game/Game_DispatchOverlayCall.c` | Dispatches overlay call by game state: 0, 5, 6 each call different overlay functions | `events::progression::game_dispatchoverlaycall` | `[ ]` |
-| **EVT-31** | `Game_InitEntitySystem` | `0x8007B328` | `game/Game_InitEntitySystem.c` | Initializes entity globals at 0x800FB160: sets default values (1,0,7,0,9,0,0) | `events::progression::game_initentitysystem` | `[ ]` |
-| **EVT-32** | `Game_InitGlobals` | `0x800796DC` | `game/Game_InitGlobals.c` | Game globals init: clears 0x68 bytes at 0x800BF808, sets defaults | `events::progression::game_initglobals` | `[ ]` |
-| **EVT-33** | `Game_InitLevel` | `0x800783DC` | `game/Game_InitLevel.c` | Game level init: sets up collision grid, inits entity pools | `events::progression::game_initlevel` | `[ ]` |
-| **EVT-34** | `Game_InitSaveData` | `0x8005082C` | `game/Game_InitSaveData.c` | Game save data init: copies globals 0x800EA0D5-7 to 0x800BF8A4-6 | `events::progression::game_initsavedata` | `[ ]` |
-| **EVT-35** | `Game_LoadData` | `0x800384EC` | `game/Game_LoadData.c` | Game data loader: reads from 0x800A33D4, fills globals | `events::progression::game_loaddata` | `[ ]` |
-| **EVT-36** | `Game_ReadInput` | `0x80055864` | `game/Game_ReadInput.c` | Reads combined input state: checks 0x800E7E68 against 0x1F800172/0x1F800174 | `events::progression::game_readinput` | `[ ]` |
-| **EVT-37** | `Game_ReturnToTitle` | `0x80042310` | `game/Game_ReturnToTitle.c` | Returns to title screen: plays SFX 0x7F, resets state, calls level cleanup | `events::progression::game_returntotitle` | `[ ]` |
-| **EVT-38** | `Game_SetEventFlag` | `0x8006F00C` | `game/Game_SetEventFlag.c` | Sets event bit flag: _DAT_800bfe48 \|= 1 << (param_1 & 0x1F) | `events::progression::game_seteventflag` | `[ ]` |
-| **EVT-39** | `Game_SetEventFlag2` | `0x800782F0` | `game/Game_SetEventFlag2.c` | Game event flag setter 2: sets bit at _DAT_800bfe50 via table lookup | `events::progression::game_seteventflag2` | `[ ]` |
-| **EVT-40** | `Game_SetFlag2` | `0x8006F02C` | `game/Game_SetFlag2.c` | Sets bit flag 2: _DAT_800bfe34 \|= 1 << (param_1 & 0x1F) | `events::progression::game_setflag2` | `[ ]` |
-| **EVT-41** | `Game_SetFlag842` | `0x80077D64` | `game/Game_SetFlag842.c` | Sets game flag bit 7 (0x80) on global at 0x800BF842 | `events::progression::game_setflag842` | `[ ]` |
-| **EVT-42** | `Game_SetFlag84C` | `0x80043B88` | `game/Game_SetFlag84C.c` | Sets global flag at 0x800BF84C to boolean value from param | `events::progression::game_setflag84c` | `[ ]` |
-| **EVT-43** | `Game_SetGlobal` | `0x8009A480` | `game/Game_SetGlobal.c` | Sets global DAT_80105ee8 = param_1 (simple setter) | `events::progression::game_setglobal` | `[ ]` |
-| **EVT-44** | `Game_SetPause` | `0x800269BC` | `game/Game_SetPause.c` | Sets game pause flag (0x800BF80F = 2), blocks input if already paused | `events::progression::game_setpause` | `[ ]` |
-| **EVT-45** | `Game_SetUnpause` | `0x800269EC` | `game/Game_SetUnpause.c` | Sets unpause request flag (0x800BF80F = 1) | `events::progression::game_setunpause` | `[ ]` |
-| **EVT-46** | `Game_StateLoad` | `0x80036A14` | `game/Game_StateLoad.c` | Game state loader: reads save state from DAT_800bf870, dispatches | `events::progression::game_stateload` | `[ ]` |
-| **EVT-47** | `Game_SwapGlobal` | `0x8009D044` | `game/Game_SwapGlobal.c` | Global swapper: saves old DAT_8010621c, sets new, returns old | `events::progression::game_swapglobal` | `[ ]` |
-| **EVT-48** | `Overlay_LoadFile` | `0x800499E8` | `overlay/Overlay_LoadFile.c` | Overlay file load: reads BIN path, calls FUN_8008b8f0 to load | `events::progression::overlay_loadfile` | `[ ]` |
-| **EVT-49** | `Overlay_LookupString` | `0x800263E8` | `overlay/Overlay_LookupString.c` | Overlay string lookup: reads string ptr from table at 0x8009D414 by game state | `events::progression::overlay_lookupstring` | `[ ]` |
+| **EVT-01** | `Event_Check3` | `0x80034BE0` | `event/Event_Check3.c` | Event check variant 3: tests DAT_800bf873 + game state conditions | `events::progression::event_check3` | `[x]` |
+| **EVT-02** | `Event_Check4` | `0x80035424` | `event/Event_Check4.c` | Event check variant 4: calls FUN_80035640(8) + FUN_80035640(9) | `events::progression::event_check4` | `[x]` |
+| **EVT-03** | `Event_Check5` | `0x80035218` | `event/Event_Check5.c` | Event check variant 5: tests DAT_800bf881 flags + game state | `events::progression::event_check5` | `[x]` |
+| **EVT-04** | `Event_Check6` | `0x800349A4` | `event/Event_Check6.c` | Event check variant 6: tests DAT_800bf89e + DAT_800bf881 flags | `events::progression::event_check6` | `[x]` |
+| **EVT-05** | `Event_CheckTrigger` | `0x80035088` | `event/Event_CheckTrigger.c` | Event trigger check: tests DAT_800bf881 flags, checks input conditions | `events::progression::event_checktrigger` | `[x]` |
+| **EVT-06** | `Event_CheckTrigger2` | `0x80035640` | `event/Event_CheckTrigger2.c` | Event trigger check variant 2: tests DAT_800bf881 event flags | `events::progression::event_checktrigger2` | `[x]` |
+| **EVT-07** | `Event_Dispatch` | `0x80035FAC` | `event/Event_Dispatch.c` | Event dispatcher: looks up event type, calls handler | `events::progression::event_dispatch` | `[x]` |
+| **EVT-08** | `Event_DispatchMain` | `0x800346BC` | `event/Event_DispatchMain.c` | Event dispatch main: DAT_80100660 state machine | `events::progression::event_dispatchmain` | `[x]` |
+| **EVT-09** | `Event_DrawUI` | `0x80034338` | `event/Event_DrawUI.c` | Event UI drawer: checks DAT_800bf81a/b, draws UI elements | `events::progression::event_drawui` | `[x]` |
+| **EVT-10** | `Event_Handler` | `0x80035338` | `event/Event_Handler.c` | Event handler: calls FUN_80035640, dispatches by event type 0x62 | `events::progression::event_handler` | `[x]` |
+| **EVT-11** | `Event_Handler2` | `0x800364AC` | `event/Event_Handler2.c` | Event handler variant 2: switch on param_1, returns action code | `events::progression::event_handler2` | `[x]` |
+| **EVT-12** | `Event_HandlerMain` | `0x80036240` | `event/Event_HandlerMain.c` | Event main handler: processes event queue, dispatches | `events::progression::event_handlermain` | `[x]` |
+| **EVT-13** | `Event_LoadData` | `0x80036BAC` | `event/Event_LoadData.c` | Event data loader: loads 64+64 bytes, dispatches by type | `events::progression::event_loaddata` | `[x]` |
+| **EVT-14** | `Event_Main` | `0x80036DFC` | `event/Event_Main.c` | Event main: full event system controller (377L) | `events::progression::event_main` | `[x]` |
+| **EVT-15** | `Event_MainDispatch` | `0x80034CE0` | `event/Event_MainDispatch.c` | Event main dispatcher: switch on event type 0x66-0x6E | `events::progression::event_maindispatch` | `[x]` |
+| **EVT-16** | `Event_TriggerCollectible` | `0x80040B48` | `event/Event_TriggerCollectible.c` | Triggers collectible/event: marks as collected, updates global counters | `events::progression::event_triggercollectible` | `[x]` |
+| **EVT-17** | `Event_TriggerTypeA` | `0x80035528` | `event/Event_TriggerTypeA.c` | Triggers event type A (0x18): spawns entity with overlay func at 0x8011600C | `events::progression::event_triggertypea` | `[x]` |
+| **EVT-18** | `Event_TriggerTypeB` | `0x800355B4` | `event/Event_TriggerTypeB.c` | Triggers event type B (0x1A): spawns entity with overlay func at 0x801189C4 | `events::progression::event_triggertypeb` | `[x]` |
+| **EVT-19** | `Event_TypeDispatch` | `0x80036560` | `event/Event_TypeDispatch.c` | Event type dispatcher: returns action code by event type (0/1/2) | `events::progression::event_typedispatch` | `[x]` |
+| **EVT-20** | `Event_WeaponCheck` | `0x8003511C` | `event/Event_WeaponCheck.c` | Event weapon check: tests weapon/item type 0x59 vs game state | `events::progression::event_weaponcheck` | `[x]` |
+| **EVT-21** | `Game_AddScore` | `0x8004B3F4` | `game/Game_AddScore.c` | Adds score points: increments total + shows score popup on screen | `events::progression::game_addscore` | `[x]` |
+| **EVT-22** | `Game_CheckArea` | `0x80036D90` | `game/Game_CheckArea.c` | Checks game area flag: returns 1 if area is 0 or 5 in specific game mode | `events::progression::game_checkarea` | `[x]` |
+| **EVT-23** | `Game_CheckBit` | `0x8006EFF4` | `game/Game_CheckBit.c` | Checks bit at position in global bitfield at 0x800BFE48 | `events::progression::game_checkbit` | `[x]` |
+| **EVT-24** | `Game_CheckBit50` | `0x80078894` | `game/Game_CheckBit50.c` | Checks bit in global flag at 0x800BFE50 at given position | `events::progression::game_checkbit50` | `[x]` |
+| **EVT-25** | `Game_CheckFlagInput` | `0x80055824` | `game/Game_CheckFlagInput.c` | Checks global input flag at 0x800E7E68 AND with input state | `events::progression::game_checkflaginput` | `[x]` |
+| **EVT-26** | `Game_CheckFlagSys` | `0x80055844` | `game/Game_CheckFlagSys.c` | Checks system flag at 0x800ECF54 AND with input state | `events::progression::game_checkflagsys` | `[x]` |
+| **EVT-27** | `Game_CheckIdle` | `0x80042728` | `game/Game_CheckIdle.c` | Checks if game is idle: no dialogs active (0x800ED06D) and no event flag (0x800BF849) | `events::progression::game_checkidle` | `[x]` |
+| **EVT-28** | `Game_CheckUnlock` | `0x80036DC4` | `game/Game_CheckUnlock.c` | Checks if area is unlocked via table at 0x800A24E4 | `events::progression::game_checkunlock` | `[x]` |
+| **EVT-29** | `Game_ClearPause` | `0x800269FC` | `game/Game_ClearPause.c` | Clears pause state: resets entity flag and global pause variable | `events::progression::game_clearpause` | `[x]` |
+| **EVT-30** | `Game_DispatchOverlayCall` | `0x80065374` | `game/Game_DispatchOverlayCall.c` | Dispatches overlay call by game state: 0, 5, 6 each call different overlay functions | `events::progression::game_dispatchoverlaycall` | `[x]` |
+| **EVT-31** | `Game_InitEntitySystem` | `0x8007B328` | `game/Game_InitEntitySystem.c` | Initializes entity globals at 0x800FB160: sets default values (1,0,7,0,9,0,0) | `events::progression::game_initentitysystem` | `[x]` |
+| **EVT-32** | `Game_InitGlobals` | `0x800796DC` | `game/Game_InitGlobals.c` | Game globals init: clears 0x68 bytes at 0x800BF808, sets defaults | `events::progression::game_initglobals` | `[x]` |
+| **EVT-33** | `Game_InitLevel` | `0x800783DC` | `game/Game_InitLevel.c` | Game level init: sets up collision grid, inits entity pools | `events::progression::game_initlevel` | `[x]` |
+| **EVT-34** | `Game_InitSaveData` | `0x8005082C` | `game/Game_InitSaveData.c` | Game save data init: copies globals 0x800EA0D5-7 to 0x800BF8A4-6 | `events::progression::game_initsavedata` | `[x]` |
+| **EVT-35** | `Game_LoadData` | `0x800384EC` | `game/Game_LoadData.c` | Game data loader: reads from 0x800A33D4, fills globals | `events::progression::game_loaddata` | `[x]` |
+| **EVT-36** | `Game_ReadInput` | `0x80055864` | `game/Game_ReadInput.c` | Reads combined input state: checks 0x800E7E68 against 0x1F800172/0x1F800174 | `events::progression::game_readinput` | `[x]` |
+| **EVT-37** | `Game_ReturnToTitle` | `0x80042310` | `game/Game_ReturnToTitle.c` | Returns to title screen: plays SFX 0x7F, resets state, calls level cleanup | `events::progression::game_returntotitle` | `[x]` |
+| **EVT-38** | `Game_SetEventFlag` | `0x8006F00C` | `game/Game_SetEventFlag.c` | Sets event bit flag: _DAT_800bfe48 \|= 1 << (param_1 & 0x1F) | `events::progression::game_seteventflag` | `[x]` |
+| **EVT-39** | `Game_SetEventFlag2` | `0x800782F0` | `game/Game_SetEventFlag2.c` | Game event flag setter 2: sets bit at _DAT_800bfe50 via table lookup | `events::progression::game_seteventflag2` | `[x]` |
+| **EVT-40** | `Game_SetFlag2` | `0x8006F02C` | `game/Game_SetFlag2.c` | Sets bit flag 2: _DAT_800bfe34 \|= 1 << (param_1 & 0x1F) | `events::progression::game_setflag2` | `[x]` |
+| **EVT-41** | `Game_SetFlag842` | `0x80077D64` | `game/Game_SetFlag842.c` | Sets game flag bit 7 (0x80) on global at 0x800BF842 | `events::progression::game_setflag842` | `[x]` |
+| **EVT-42** | `Game_SetFlag84C` | `0x80043B88` | `game/Game_SetFlag84C.c` | Sets global flag at 0x800BF84C to boolean value from param | `events::progression::game_setflag84c` | `[x]` |
+| **EVT-43** | `Game_SetGlobal` | `0x8009A480` | `game/Game_SetGlobal.c` | Sets global DAT_80105ee8 = param_1 (simple setter) | `events::progression::game_setglobal` | `[x]` |
+| **EVT-44** | `Game_SetPause` | `0x800269BC` | `game/Game_SetPause.c` | Sets game pause flag (0x800BF80F = 2), blocks input if already paused | `events::progression::game_setpause` | `[x]` |
+| **EVT-45** | `Game_SetUnpause` | `0x800269EC` | `game/Game_SetUnpause.c` | Sets unpause request flag (0x800BF80F = 1) | `events::progression::game_setunpause` | `[x]` |
+| **EVT-46** | `Game_StateLoad` | `0x80036A14` | `game/Game_StateLoad.c` | Game state loader: reads save state from DAT_800bf870, dispatches | `events::progression::game_stateload` | `[x]` |
+| **EVT-47** | `Game_SwapGlobal` | `0x8009D044` | `game/Game_SwapGlobal.c` | Global swapper: saves old DAT_8010621c, sets new, returns old | `events::progression::game_swapglobal` | `[x]` |
+| **EVT-48** | `Overlay_LoadFile` | `0x800499E8` | `overlay/Overlay_LoadFile.c` | Overlay file load: reads BIN path, calls FUN_8008b8f0 to load | `events::progression::overlay_loadfile` | `[x]` |
+| **EVT-49** | `Overlay_LookupString` | `0x800263E8` | `overlay/Overlay_LookupString.c` | Overlay string lookup: reads string ptr from table at 0x8009D414 by game state | `events::progression::overlay_lookupstring` | `[x]` |
 
 ---
 

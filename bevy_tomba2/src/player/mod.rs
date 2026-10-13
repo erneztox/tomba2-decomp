@@ -1,46 +1,48 @@
 use crate::collision::LevelCollision;
 use bevy::prelude::*;
 
-/// Player physical root offset from floor contact point.
-/// In `tomba.glb`, the origin (0, 0, 0) is at the scene root. The skeletal bone chain extends down to the foot soles:
-/// - Node 1/9 (bone_0/8 pelvis): -0.23m
-/// - Node 10/13 (bone_9/12 thigh): -0.13m
-/// - Node 11/14 (bone_10/13 calf): -0.52m
-/// - Node 12/15 (bone_11/14 foot sole): -0.37m
-/// Cumulative distance from origin to foot contact: -0.23 + (-0.13) + (-0.52) + (-0.37) = -1.25m.
-/// Ground truth placement formula: `origin.y = floor_y + TOMBA_PHYS_OFFSET_Y` (1.25m),
-/// placing the bottoms of Tomba's shoes in exact contact with the floor surface (zero hover, zero sink).
-/// Ref: tomba.glb bone hierarchy, ActorTomba::settleStep (actor_tomba.cpp:385-403), Collision::snapObjectToTerrain (collision.cpp:770).
+// ─── FÍSICA AUTÉNTICA PS1 ────────────────────────────────────────────────────
+// Ref: Entity_ApplyGravity.c (func_80066478), Entity_ApplyVelocityMax.c (func_80066538)
+// Entity_State_Idle.c:43 (func_80060064), Entity_State_Walk.c (func_8006670C)
+
+/// Offset del origen del esqueleto al contacto de pie.
+/// bone_0(pelvis)=-0.23 + bone_9(muslo)=-0.13 + bone_10(tibia)=-0.52 + bone_11(pie)=-0.37 = -1.25m
+/// Ref: ActorTomba::settleStep (actor_tomba.cpp:385-403), Collision::snapObjectToTerrain (collision.cpp:770).
 pub const TOMBA_PHYS_OFFSET_Y: f32 = 1.25;
 
-/// Horizontal walk speed along the SCLD rail.
-/// In PS1 MAIN.EXE, Entity_Update reads speed from table 0x800a4710[0]:
-/// speed = 16 PS1 units/tick.
-/// At 30 ticks/second: 16 units * 0.01 m/unit * 30 ticks/s = 4.80 m/s.
-/// Ref: Table 0x800a4710[0] (Entity_Update.c:30), ActorTomba::velocityIntegrate (actor_tomba.cpp:440).
+/// Velocidad de caminata horizontal en el riel SCLD.
+/// PS1: 16 unidades/tick × (1m/100u) × 30 ticks/s = 4.80 m/s.
+/// Ref: Entity_State_Walk.c (func_8006670C), ActorTomba::velocityIntegrate (actor_tomba.cpp:440).
 pub const TOMBA_WALK_SPEED: f32 = 4.80;
 
-/// Jump initial vertical impulse.
-/// In PS1 MAIN.EXE, Entity_State_Idle sets velocity_y = 0xd800 (-0x2800 = -40 PS1 units/tick upward).
-/// In meters/second at 30 ticks/s: 40 units * 0.01 m/unit * 30 = 12.0 m/s.
-/// Ref: Entity_State_Idle.c:43, Entity_SetAccel.c:15, Table 0x800a457c.
-pub const TOMBA_JUMP_IMPULSE: f32 = 12.0;
+/// Velocidad inicial del salto (positiva = arriba en Bevy Y-up).
+/// PS1: velocity_y = 0xd800 = -0x2800 = -10240 subunidades/tick (signo PS1 Y-down → arriba).
+/// -10240/256 = -40 PS1 units/tick → 40×(1m/100)×30 = 12.0 m/s hacia arriba.
+/// Ref: Entity_State_Idle.c:43 (func_80060064).
+pub const TOMBA_JUMP_SPEED: f32 = 12.0;
 
-/// Gravitational acceleration.
-/// In PS1 MAIN.EXE, Entity_ApplyGravity and Entity_ApplyVelocityMax add +0x400 (+4 PS1 units/tick^2) per tick.
-/// In m/s^2 at 30 ticks/s: 4 units * 0.01 m/unit * 30^2 = 36.0 m/s^2.
-/// Ref: Entity_ApplyGravity.c:25, Entity_ApplyVelocityMax.c:26, Entity_State_Combo.c:65.
+/// Gravedad de ascenso en salto: +0x360 (864 subunidades/tick = 3.375 PS1 units/tick).
+/// A 30Hz: 3.375 * 0.01 * 30^2 = 30.375 m/s^2.
+/// Ref: Entity_State_Jump2.c:28 (func_800572EC), Entity_State_Dash.c:16 (func_8005706C).
+pub const TOMBA_JUMP_GRAVITY: f32 = 30.375;
+
+/// Gravedad normal / de caída: +0x400 (1024 subunidades/tick = 4.0 PS1 units/tick).
+/// A 30Hz: 4.0 * 0.01 * 30^2 = 36.0 m/s^2.
+/// Ref: Entity_ApplyGravity.c (func_80066478), Entity_ApplyVelocityMax.c (func_80066538).
 pub const TOMBA_GRAVITY: f32 = 36.0;
 
-/// Terminal downward fall velocity.
-/// In PS1 MAIN.EXE, Entity_ApplyVelocityMax clamps velocity_y to 0x2800 (+40 PS1 units/tick downward = 12.0 m/s).
-/// Ref: Entity_ApplyVelocityMax.c:28.
+/// Velocidad terminal de caída (tope positivo hacia abajo en Bevy).
+/// PS1: if (velocity_y > 0x2800) velocity_y = 0x2800 → 40 PS1 units/tick → 12.0 m/s.
+/// Ref: Entity_ApplyVelocityMax.c (func_80066538).
 pub const TOMBA_TERMINAL_VELOCITY: f32 = 12.0;
 
-/// Authentic turning speed for junction transitions.
-/// In PS1 MAIN.EXE, Math_ApproachAngle_2 turns at 0x100 angle units per tick (256 / 4096 * TAU * 30 rad/s = 11.78 rad/s).
-/// Ref: Entity_StateMain12.c:96, Entity_StateMain13.c:96.
+/// Velocidad de giro en junción.
+/// PS1: 0x100 unidades de ángulo/tick → 256/4096 × TAU × 30 rad/s.
+/// Ref: Entity_StateMain12.c:96.
 pub const TOMBA_TURN_RATE: f32 = 256.0 * (std::f32::consts::TAU / 4096.0) * 30.0;
+
+
+// ─── COMPONENTES ─────────────────────────────────────────────────────────────
 
 #[derive(Component)]
 pub struct TombaPlayer;
@@ -49,7 +51,7 @@ pub struct TombaPlayer;
 pub enum PlayerActionState {
     #[default]
     Normal,
-    /// Authentic turning and stepping into a junction (Entity_StateMain12.c states 2 & 3)
+    /// Giro auténtico hacia una junción (Entity_StateMain12.c states 2 & 3)
     TurnToJunction {
         dest_plane: usize,
         dest_s: f32,
@@ -60,46 +62,62 @@ pub enum PlayerActionState {
 
 #[derive(Component, Debug, Clone)]
 pub struct TombaRail {
-    /// Active SCLD plane ID (1-based). Correlates with ACT_SECTOR_ID at entity+0x2A (collision.cpp:67).
+    /// ID de plano SCLD activo (1-based). Correlaciona con ACT_SECTOR_ID en entity+0x2A.
     pub plane_id: usize,
-    /// 3D World coordinates in meters. Correlates with ACT_WORLD_X/Y/Z at entity+0x2E/0x32/0x36 (collision.cpp:68-71).
+    /// Posición 3D en metros. Correlaciona con ACT_WORLD_X/Y/Z en entity+0x2E/0x32/0x36.
     pub world_pos: Vec3,
-    /// Distance along active plane in meters.
+    /// Distancia a lo largo del plano activo en metros.
     pub s: f32,
-    /// Floor contact height (Y) in meters.
+    /// Altura de contacto con el suelo (Y) en metros.
     pub y: f32,
-    /// Vertical velocity in m/s. Correlates with velocity_y at entity+0x4A (Entity_State_Idle.c:43).
+    /// Velocidad vertical en m/s. CONVENCIÓN BEVY: positivo = arriba, negativo = abajo.
+    /// PS1 usa Y-down (positivo = abajo); convertimos en los límites de lectura/escritura.
+    /// Correlaciona con velocity_y en entity+0x4A (Entity_ApplyGravity.c).
     pub vertical_velocity: f32,
-    /// Ground contact state. Correlates with collision_state at entity+0x29 (include/tomba.h:51).
+    /// Contacto con el suelo. Correlaciona con collision_state en entity+0x29 (tomba.h:51).
     pub is_grounded: bool,
-    /// Facing direction sign (+1.0 forward, -1.0 backward). Correlates with direction at entity+0x147.
+    /// Signo de orientación (+1.0 adelante, -1.0 atrás). Correlaciona con direction en entity+0x147.
     pub facing: f32,
-    /// Action state machine. Correlates with action_state at entity+0x06.
+    /// Máquina de estados de acción. Correlaciona con action_state en entity+0x06.
     pub action_state: PlayerActionState,
-    /// Current facing / look direction vector in world space.
+    /// Dirección de mirada actual en espacio mundo.
     pub current_look_dir: Vec3,
-    /// Current horizontal speed in m/s.
+    /// Velocidad horizontal actual en m/s.
     pub move_speed: f32,
+    /// Latch de fase ascendente del salto (state_flag144 en PS1).
+    pub is_rising: bool,
 }
 
 impl Default for TombaRail {
     fn default() -> Self {
         Self {
-            plane_id: 1, // Main pier in Fisherman's Village (Plane 1)
-            world_pos: Vec3::new(39.68, 9.12, 42.0), // Plane 1 at s=10.0m
-            s: 10.0,     // Start 10m along the pier
-            y: 9.12,     // Initial floor contact height
+            plane_id: 1,
+            world_pos: Vec3::new(39.68, 9.12, 42.0),
+            s: 10.0,
+            y: 9.12,
             vertical_velocity: 0.0,
             is_grounded: true,
             facing: 1.0,
             action_state: PlayerActionState::Normal,
             current_look_dir: Vec3::Z,
             move_speed: 0.0,
+            is_rising: false,
         }
     }
 }
 
-/// Resource holding the animation graph handles for Tomba
+/// Rastrea qué nodo de animación está activo actualmente.
+///
+/// BUG CRÍTICO ANTERIOR: `tomba_animation_control_system` llamaba `transitions.play()`
+/// CADA FRAME (cada ~16ms). En Bevy 0.15, `play()` siempre reinicia la animación a tick=0.
+/// Resultado: Tomba congelado en el frame 1 de cada clip (la pose de "inclinado deslizándose").
+///
+/// FIX: Solo llamar `transitions.play()` cuando el nodo objetivo CAMBIA.
+#[derive(Component, Debug, Clone, PartialEq)]
+pub struct CurrentAnimation(pub AnimationNodeIndex);
+
+// ─── ANIMACIÓN ───────────────────────────────────────────────────────────────
+
 #[derive(Resource)]
 pub struct TombaAnimationAssets {
     pub graph_handle: Handle<AnimationGraph>,
@@ -118,9 +136,11 @@ pub fn setup_tomba_animations(
     let mut graph = AnimationGraph::new();
     let idle_node = graph.add_clip(asset_server.load("models/tomba.glb#Animation2"), 1.0, graph.root);
     let walk_node = graph.add_clip(asset_server.load("models/tomba.glb#Animation4"), 1.0, graph.root);
-    let run_node = graph.add_clip(asset_server.load("models/tomba.glb#Animation12"), 1.0, graph.root);
-    let jump_node = graph.add_clip(asset_server.load("models/tomba.glb#Animation202"), 1.0, graph.root);
-    let fall_node = graph.add_clip(asset_server.load("models/tomba.glb#Animation203"), 1.0, graph.root);
+    let run_node  = graph.add_clip(asset_server.load("models/tomba.glb#Animation12"), 1.0, graph.root);
+    // Ref: Entity_State_Jump.c:23 (0x14 = Anim 20, 11 frames = 0.33s ascenso)
+    let jump_node = graph.add_clip(asset_server.load("models/tomba.glb#Animation20"), 1.0, graph.root);
+    // Ref: Entity_State_Jump2.c:29 (0xca = Anim 202, pose de caída/apex)
+    let fall_node = graph.add_clip(asset_server.load("models/tomba.glb#Animation202"), 1.0, graph.root);
     let graph_handle = animation_graphs.add(graph);
 
     commands.insert_resource(TombaAnimationAssets {
@@ -133,7 +153,7 @@ pub fn setup_tomba_animations(
     });
 }
 
-/// Automatically hooks into AnimationPlayers spawned by the glTF scene
+/// Engancha el AnimationPlayer del glTF scene cuando aparece.
 pub fn hook_tomba_animation_player(
     mut commands: Commands,
     anim_assets: Option<Res<TombaAnimationAssets>>,
@@ -144,26 +164,38 @@ pub fn hook_tomba_animation_player(
     for (entity, mut player) in &mut players {
         let mut transitions = AnimationTransitions::new();
         transitions
-            .play(&mut player, anim_assets.idle_node, std::time::Duration::ZERO)
-            .repeat();
+        .play(&mut player, anim_assets.idle_node, std::time::Duration::ZERO)
+        .repeat();
         commands
-            .entity(entity)
-            .insert(AnimationGraphHandle(anim_assets.graph_handle.clone()))
-            .insert(transitions);
+        .entity(entity)
+        .insert(AnimationGraphHandle(anim_assets.graph_handle.clone()))
+        .insert(transitions)
+        .insert(CurrentAnimation(anim_assets.idle_node));
     }
 }
 
-/// Controls active skeletal animation based on authentic movement and airborne states
+/// Controla la animación esqueletal basado en estado de movimiento y aéreo.
+///
+/// Solo llama `transitions.play()` cuando el estado CAMBIA (fix del freeze).
+/// Mapeo de estados:
+///   - Aéreo + sube (vel > 0)  → jump  (clip #202)
+///   - Aéreo + baja (vel <= 0) → fall  (clip #203)
+///   - Suelo + girando         → walk  (clip #4)
+///   - Suelo + speed > 3.0    → run   (clip #12)
+///   - Suelo + speed > 0.1    → walk  (clip #4)
+///   - Suelo + quieto          → idle  (clip #2)
+///
+/// Ref: Entity_State_Walk.c, Entity_State_Jump.c, Entity_ApplyGravity.c.
 pub fn tomba_animation_control_system(
     anim_assets: Option<Res<TombaAnimationAssets>>,
     rails: Query<&TombaRail, With<TombaPlayer>>,
-    mut players: Query<(&mut AnimationPlayer, &mut AnimationTransitions)>,
+    mut players: Query<(&mut AnimationPlayer, &mut AnimationTransitions, &mut CurrentAnimation)>,
 ) {
     let Some(anim_assets) = anim_assets else { return };
     let Ok(rail) = rails.get_single() else { return };
 
     let target_node = if !rail.is_grounded {
-        if rail.vertical_velocity > 0.0 {
+        if rail.is_rising {
             anim_assets.jump_node
         } else {
             anim_assets.fall_node
@@ -183,14 +215,40 @@ pub fn tomba_animation_control_system(
         }
     };
 
-    for (mut player, mut transitions) in &mut players {
-        transitions
-            .play(&mut player, target_node, std::time::Duration::from_millis(120))
-            .repeat();
+    for (mut player, mut transitions, mut current_anim) in &mut players {
+        // Solo reiniciar la animación cuando el estado objetivo cambia.
+        if current_anim.0 != target_node {
+            current_anim.0 = target_node;
+            let anim_transition = transitions
+                .play(&mut player, target_node, std::time::Duration::from_millis(100));
+
+            // Solo reproducir en bucle las animaciones continuas (Idle, Walk, Run).
+            // Las animaciones de salto y caída (Jump, Fall) son estados transitorios que
+            // NO deben repetirse en bucle rápido (esto causaba la vibración de brazos).
+            if target_node == anim_assets.idle_node
+                || target_node == anim_assets.walk_node
+                || target_node == anim_assets.run_node
+            {
+                anim_transition.repeat();
+            }
+        }
     }
 }
 
-/// Authentic 2.5D player movement system on SCLD rails
+// ─── MOVIMIENTO Y FÍSICA ─────────────────────────────────────────────────────
+
+/// Sistema de movimiento 2.5D sobre rieles SCLD con física discreta 30Hz.
+///
+/// La física PS1 original es DISCRETA: un tick fijo de física por vblank (30Hz).
+/// Entity_ApplyGravity.c añade exactamente +0x400 por tick, y posición += velocity * 0x100 por tick.
+/// Usamos un acumulador sub-tick para disparar n ticks discretos por frame de Bevy.
+///
+/// Detección de suelo: el juego original usa Collision::snapObjectToTerrain (collision.cpp:816)
+/// que SOLO mueve X/Z; Y se actualiza por Entity_ApplyGravity/Entity_CollisionGround.
+/// Cuando collision_state (entity+0x29) != 0 → el actor tocó el suelo → velocity_y = 0.
+///
+/// Ref: Entity_ApplyGravity.c (func_80066478), Entity_ApplyVelocityMax.c (func_80066538),
+///      Collision::snapObjectToTerrain (collision.cpp:816), Entity_State_Walk.c (func_8006670C).
 pub fn tomba_movement_system(
     mut commands: Commands,
     asset_server: Option<Res<AssetServer>>,
@@ -209,7 +267,7 @@ pub fn tomba_movement_system(
             continue;
         };
 
-        // Handle State Transitions
+        // ── Estado de giro hacia junción ─────────────────────────────────────
         match rail.action_state.clone() {
             PlayerActionState::TurnToJunction {
                 dest_plane,
@@ -217,21 +275,19 @@ pub fn tomba_movement_system(
                 target_look_dir,
                 timer,
             } => {
-                // Ref: Entity_StateMain12.c:96-100 (Math_ApproachAngle_2 transition)
+                // Ref: Entity_StateMain12.c:96-100 (Math_ApproachAngle_2)
                 let new_timer = timer + dt;
-                // Slerp or rotate current look direction towards target
                 let current = rail.current_look_dir;
                 let angle_diff = current.angle_between(target_look_dir);
 
                 if angle_diff <= 0.08 || new_timer >= 0.35 {
-                    // Turn complete: transfer to destination plane
                     rail.plane_id = dest_plane;
                     rail.s = dest_s;
                     rail.current_look_dir = target_look_dir;
                     rail.action_state = PlayerActionState::Normal;
                     println!(
                         "-> Switched rail to Plane {} at s={:.2}m (turn complete)",
-                        dest_plane, dest_s
+                             dest_plane, dest_s
                     );
                 } else {
                     let step = (TOMBA_TURN_RATE * dt / angle_diff).min(1.0);
@@ -244,7 +300,6 @@ pub fn tomba_movement_system(
                     };
                 }
 
-                // Transform update during turn
                 let pos_on_rail = plane.point_at(rail.s);
                 rail.world_pos = Vec3::new(pos_on_rail.x, rail.y, pos_on_rail.z);
                 transform.translation = Vec3::new(rail.world_pos.x, rail.y + TOMBA_PHYS_OFFSET_Y, rail.world_pos.z);
@@ -256,9 +311,9 @@ pub fn tomba_movement_system(
             PlayerActionState::Normal => {}
         }
 
-        // 1. Horizontal Input & Velocity Integration
-        // Ref: Table 0x800a4710[0] (TOMBA_WALK_SPEED = 4.80 m/s), ActorTomba::velocityIntegrate (actor_tomba.cpp:440)
-        let mut move_input = 0.0;
+        // ── 1. Input horizontal ──────────────────────────────────────────────
+        // Ref: Entity_State_Walk.c (func_8006670C), ActorTomba::velocityIntegrate (actor_tomba.cpp:440).
+        let mut move_input = 0.0_f32;
         if keyboard.pressed(KeyCode::KeyA) || keyboard.pressed(KeyCode::ArrowLeft) {
             move_input -= 1.0;
         }
@@ -271,7 +326,7 @@ pub fn tomba_movement_system(
             rail.move_speed = TOMBA_WALK_SPEED;
             let step = move_input * TOMBA_WALK_SPEED * dt;
             let target_s = rail.s + step;
-            // Check wall collision (f_ResolveTerrainProbeHorizontalSurfaceBySideMask)
+            // Ref: f_ResolveTerrainProbeHorizontalSurfaceBySideMask
             if !plane.is_wall_blocking(rail.s, target_s, rail.y) {
                 rail.s = target_s;
             }
@@ -279,8 +334,8 @@ pub fn tomba_movement_system(
             rail.move_speed = 0.0;
         }
 
-        // Clamp to current plane length or switch to linked planes (ls / le)
-        // Ref: collision.cpp:639-675 (0x80048fc4 sector handoff)
+        // ── Límite de plano / handoff ─────────────────────────────────────────
+        // Ref: collision.cpp:639-675 (sector handoff 0x80048fc4)
         if rail.s < 0.0 {
             if plane.ls > 0 {
                 let dest_id = plane.ls as usize;
@@ -307,15 +362,16 @@ pub fn tomba_movement_system(
             }
         }
 
-        // Project actor coordinates (X, Z) authentically onto plane line segment
+        // ── Proyección sobre el plano (X/Z) ──────────────────────────────────
         // Ref: f_ProjectActorOntoAreaPlane (0x80047778 / collision.cpp:678-716)
+        // snapObjectToTerrain solo actualiza X/Z, nunca Y (collision.cpp:894-895).
         let unprojected = plane.point_at(rail.s);
         let (proj_x, proj_z, proj_s) = plane.project_actor_onto_plane(unprojected.x, unprojected.z);
         rail.world_pos.x = proj_x;
         rail.world_pos.z = proj_z;
         rail.s = proj_s;
 
-        // 2. Junction lane switching (W / Up or S / Down)
+        // ── 2. Junción (W/S) ─────────────────────────────────────────────────
         // Ref: Collision_GetFloorHeight.c:58, Entity_StateMain12.c:23-100
         if keyboard.just_pressed(KeyCode::KeyW) || keyboard.just_pressed(KeyCode::ArrowUp) {
             if let Some(junc) = collision.check_junction(rail.plane_id, rail.s, rail.y, "up") {
@@ -328,10 +384,7 @@ pub fn tomba_movement_system(
                         target_look_dir: if target_look.length_squared() > 1e-4 { target_look } else { Vec3::Z },
                         timer: 0.0,
                     };
-                    println!(
-                        "-> Initiating UP turn to Plane {} at s={:.2}m",
-                        junc.dest, new_s
-                    );
+                    println!("-> Initiating UP turn to Plane {} at s={:.2}m", junc.dest, new_s);
                 }
             }
         }
@@ -346,36 +399,47 @@ pub fn tomba_movement_system(
                         target_look_dir: if target_look.length_squared() > 1e-4 { target_look } else { Vec3::Z },
                         timer: 0.0,
                     };
-                    println!(
-                        "-> Initiating DOWN turn to Plane {} at s={:.2}m",
-                        junc.dest, new_s
-                    );
+                    println!("-> Initiating DOWN turn to Plane {} at s={:.2}m", junc.dest, new_s);
                 }
             }
         }
 
-        // Re-fetch current plane
+        // Re-fetch plano actual (puede haber cambiado por handoff)
         let plane = collision.get_plane(rail.plane_id).unwrap_or(plane);
 
-        // 3. Jump Input
-        // Ref: Entity_State_Idle.c:43 (velocity_y = 0xd800 = TOMBA_JUMP_IMPULSE)
+        // ── 3. Salto ─────────────────────────────────────────────────────────
+        // Ref: Entity_State_Idle.c:43 → velocity_y = 0xd800 = -0x2800 (PS1 Y-down → arriba).
+        // Convertido a Bevy Y-up: +TOMBA_JUMP_SPEED (positivo = arriba).
         if (keyboard.just_pressed(KeyCode::Space) || keyboard.just_pressed(KeyCode::KeyK))
             && rail.is_grounded
-        {
-            rail.vertical_velocity = TOMBA_JUMP_IMPULSE;
-            rail.is_grounded = false;
-            if let Some(asset_server) = asset_server.as_ref() {
-                commands.spawn(AudioPlayer::new(asset_server.load("audio/sfx/00_025_hero jump0.wav")));
+            {
+                rail.vertical_velocity = TOMBA_JUMP_SPEED; // positivo = arriba (Bevy Y-up)
+                rail.is_grounded = false;
+                rail.is_rising = true;
+                if let Some(asset_server) = asset_server.as_ref() {
+                    commands.spawn(AudioPlayer::new(asset_server.load("audio/sfx/00_025_hero jump0.wav")));
+                }
             }
-        }
 
-        // 4. Gravity & Vertical Physics
-        // Ref: Entity_ApplyGravity.c:25 (+0x400 = TOMBA_GRAVITY), Entity_ApplyVelocityMax.c:28 (cap at TOMBA_TERMINAL_VELOCITY)
+        // ── 4. Física vertical continua suave (ecuaciones auténticas de PS1) ──
+        // Ref: Entity_State_Jump2.c (0x360 = 30.375 m/s^2) en ascenso,
+        //      Entity_ApplyGravity.c (0x400 = 36.0 m/s^2) en descenso,
+        //      Entity_ApplyVelocityMax.c (0x2800 = 12.0 m/s cap).
         if !rail.is_grounded {
-            rail.vertical_velocity = (rail.vertical_velocity - TOMBA_GRAVITY * dt).max(-TOMBA_TERMINAL_VELOCITY);
+            let grav = if rail.is_rising { TOMBA_JUMP_GRAVITY } else { TOMBA_GRAVITY };
+            rail.vertical_velocity -= grav * dt;
+
+            if rail.vertical_velocity <= 0.0 {
+                rail.is_rising = false;
+            }
+
+            if rail.vertical_velocity < -TOMBA_TERMINAL_VELOCITY {
+                rail.vertical_velocity = -TOMBA_TERMINAL_VELOCITY;
+            }
+
             rail.y += rail.vertical_velocity * dt;
 
-            // Check floor collision while falling
+            // Detección de suelo al descender (Entity_CollisionGround.c / Entity_State_Walk.c case 2)
             if rail.vertical_velocity <= 0.0 {
                 if let Some(floor_h) = plane.sample_floor(rail.s, rail.y) {
                     if rail.y <= floor_h {
@@ -386,30 +450,37 @@ pub fn tomba_movement_system(
                 }
             }
         } else {
-            // Snap to floor contour while grounded (slopes, steps)
+            // Grounded: snapear al contorno del suelo (pendientes, escalones)
+            // Ref: Collision::snapObjectToTerrain (collision.cpp:786-788)
             if let Some(floor_h) = plane.sample_floor(rail.s, rail.y) {
                 rail.y = floor_h;
             } else {
-                // Stepped off a ledge
                 rail.is_grounded = false;
             }
         }
 
-        // 5. Update World Transform
-        // Ground truth: origin.y = floor_y + TOMBA_PHYS_OFFSET_Y (1.25m so rest foot sole bone contacts ground at 0.0)
-        // Ref: Collision::snapObjectToTerrain (collision.cpp:770), f_ProjectActorOntoAreaPlane (0x80047778)
-        rail.world_pos.y = rail.y;
-        let world_pos = Vec3::new(rail.world_pos.x, rail.world_pos.y + TOMBA_PHYS_OFFSET_Y, rail.world_pos.z);
-        transform.translation = world_pos;
+            // ── 5. Actualizar Transform ───────────────────────────────────────────
+            // Fórmula: origin.y = floor_y + TOMBA_PHYS_OFFSET_Y (1.25m)
+            // Ref: Collision::snapObjectToTerrain (collision.cpp:770),
+            //      f_ProjectActorOntoAreaPlane (0x80047778).
+            rail.world_pos.y = rail.y;
+            let world_pos = Vec3::new(
+                rail.world_pos.x,
+                rail.world_pos.y + TOMBA_PHYS_OFFSET_Y,
+                rail.world_pos.z,
+            );
+            transform.translation = world_pos;
 
-        // Facing rotation: along plane direction * facing sign
-        let look_dir = Vec3::new(plane.dir[0] * rail.facing, 0.0, plane.dir[1] * rail.facing);
-        if look_dir.length_squared() > 1e-4 {
-            rail.current_look_dir = look_dir.normalize();
-            transform.look_to(-rail.current_look_dir, Vec3::Y);
-        }
+            // Rotación de orientación: a lo largo de la dirección del plano × signo de facing.
+            let look_dir = Vec3::new(plane.dir[0] * rail.facing, 0.0, plane.dir[1] * rail.facing);
+            if look_dir.length_squared() > 1e-4 {
+                rail.current_look_dir = look_dir.normalize();
+                transform.look_to(-rail.current_look_dir, Vec3::Y);
+            }
     }
 }
+
+// ─── TESTS ───────────────────────────────────────────────────────────────────
 
 #[cfg(test)]
 mod tests {
@@ -420,36 +491,32 @@ mod tests {
         let mut app = App::new();
         app.add_plugins(MinimalPlugins);
 
-        // Load level collision
         let collision = LevelCollision::load_from_file("assets/levels/area_04_collision.json")
-            .expect("Failed to load collision");
+        .expect("Failed to load collision");
         app.insert_resource(collision);
         app.init_resource::<ButtonInput<KeyCode>>();
         app.add_systems(Update, tomba_movement_system);
 
-        // Spawn player
         let entity = app
-            .world_mut()
-            .spawn((
-                Transform::from_xyz(39.68, 9.12 + TOMBA_PHYS_OFFSET_Y, 42.0),
+        .world_mut()
+        .spawn((
+            Transform::from_xyz(39.68, 9.12 + TOMBA_PHYS_OFFSET_Y, 42.0),
                 TombaPlayer,
                 TombaRail::default(),
-            ))
-            .id();
+        ))
+        .id();
 
-        // 1. Initial frame
         app.update();
         let (rail_before, transform_before) = (
             app.world().get::<TombaRail>(entity).unwrap().s,
-            app.world().get::<Transform>(entity).unwrap().translation,
+                                               app.world().get::<Transform>(entity).unwrap().translation,
         );
         println!("Initial: s={}, pos={:?}", rail_before, transform_before);
 
-        // 2. Press KeyD
-        let mut input = app.world_mut().resource_mut::<ButtonInput<KeyCode>>();
-        input.press(KeyCode::KeyD);
-
-        // Advance time
+        {
+            let mut input = app.world_mut().resource_mut::<ButtonInput<KeyCode>>();
+            input.press(KeyCode::KeyD);
+        }
         {
             let mut time = app.world_mut().resource_mut::<Time>();
             time.advance_by(std::time::Duration::from_millis(50));
@@ -459,7 +526,7 @@ mod tests {
 
         let (rail_after, transform_after) = (
             app.world().get::<TombaRail>(entity).unwrap().s,
-            app.world().get::<Transform>(entity).unwrap().translation,
+                                             app.world().get::<Transform>(entity).unwrap().translation,
         );
         println!("After KeyD: s={}, pos={:?}", rail_after, transform_after);
 

@@ -25,7 +25,7 @@ pub const CAM_MAX_STEP_Y: f32 = 56.32;
 /// Ref: CutsceneCamera::followAxis (cutscene_camera.cpp:26).
 pub fn follow_axis(current: f32, target: f32, max_step: f32, dt: f32) -> f32 {
     let delta = target - current;
-    if delta.abs() <= 0.10 {
+    if delta.abs() <= 1e-4 {
         return target;
     }
     // Continuous-time formulation for discrete 30Hz tick (decay 0.875 per tick)

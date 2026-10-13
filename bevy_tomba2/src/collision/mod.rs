@@ -119,22 +119,18 @@ impl CollisionPlane {
             return None;
         }
 
-        // Ref: Entity_CollisionGround.c:37-46, ActorTomba::settleStep (actor_tomba.cpp:385-403)
-        // Tomba's vertical collision envelope: boundYUp = 1.40m, boundYDown = 2.70m, step-up limit 0.48m
+        // Ref: Collision::snapObjectToTerrain (collision.cpp:39-41, 784-785):
+        // floorPick selecciona la línea de suelo directamente DEBAJO del probe.
+        // Si no hay suelo debajo, retorna None (actor en el aire / sin contacto).
+        // JAMÁS hacer fallback a un suelo superior, ya que causaba que el actor
+        // colisionara prematuramente con el suelo en pleno salto.
         let below: Vec<f32> = candidates
             .iter()
             .copied()
             .filter(|&h| h <= current_y + 0.48) // max step-up 48 PS1 units (0.48m)
             .collect();
 
-        if let Some(&highest_below) = below.iter().max_by(|a, b| a.total_cmp(b)) {
-            Some(highest_below)
-        } else {
-            // Nearest floor fallback when airborne
-            candidates
-                .into_iter()
-                .min_by(|a, b| (a - current_y).abs().total_cmp(&(b - current_y).abs()))
-        }
+        below.into_iter().max_by(|a, b| a.total_cmp(b))
     }
 
     /// Authentic wall blocking from `f_ResolveTerrainProbeHorizontalSurfaceBySideMask`

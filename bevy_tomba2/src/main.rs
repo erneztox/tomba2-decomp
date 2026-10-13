@@ -3,7 +3,7 @@ mod collision;
 mod player;
 
 use bevy::prelude::*;
-use camera::{camera_controller, CameraMode, GameCamera};
+use camera::{camera_controller, GameCamera};
 use collision::{draw_collision_gizmos, CollisionDebugConfig, LevelCollision};
 use player::{
     hook_tomba_animation_player, setup_tomba_animations, tomba_movement_system, TombaPlayer,
@@ -75,24 +75,25 @@ fn setup_scene(mut commands: Commands, asset_server: Res<AssetServer>) {
     ));
 
     // 3. Spawn Tomba Player on the 2.5D Rail
+    // Ref: ActorTomba::growthStep (actor_tomba.cpp:231), physOffsetY = 1.40m
     commands.spawn((
         SceneRoot(asset_server.load("models/tomba.glb#Scene0")),
-        Transform::from_xyz(39.68, 9.12, 42.0).with_scale(Vec3::splat(1.0)),
+        Transform::from_xyz(39.68, 9.12 + player::TOMBA_PHYS_OFFSET_Y, 42.0),
         TombaPlayer,
         TombaRail::default(),
     ));
 
     // 4. Spawn Game Camera (Starts in Rail Follow mode, looking from the ocean side towards the pier)
+    // Ref: Camera_Init.c:73, CutsceneCamera::followAxis
     commands.spawn((
         Camera3d::default(),
-        Transform::from_xyz(15.0, 15.0, 42.0).looking_at(Vec3::new(39.68, 10.5, 42.0), Vec3::Y),
-        GameCamera {
-            mode: CameraMode::RailFollow,
-            flight_speed: 50.0,
-            sensitivity: 0.003,
-            follow_distance: 24.0,
-            follow_height: 6.0,
-        },
+        Transform::from_xyz(
+            39.68 - camera::CAM_FOLLOW_DISTANCE,
+            9.12 + camera::CAM_FOLLOW_HEIGHT,
+            42.0,
+        )
+        .looking_at(Vec3::new(39.68, 9.12 + player::TOMBA_PHYS_OFFSET_Y, 42.0), Vec3::Y),
+        GameCamera::default(),
     ));
 
     println!("====================================================");

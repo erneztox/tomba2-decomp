@@ -78,8 +78,9 @@ impl CollisionPlane {
 
     pub fn sample_floor(&self, s: f32, current_y: f32) -> Option<f32> {
         let mut candidates = Vec::new();
+        // Authentic SCLD cell width is 0.64m (64 PS1 units).
         for floor in &self.floors {
-            if s >= floor.s_min - 0.1 && s <= floor.s_max + 0.1 {
+            if s >= floor.s_min - 0.05 && s <= floor.s_max + 0.05 {
                 candidates.push(floor.height_at(s));
             }
         }
@@ -87,17 +88,18 @@ impl CollisionPlane {
             return None;
         }
 
-        // Look for floors at or below current Y (with a step up tolerance of 1.0m)
+        // Ref: Entity_CollisionGround.c:37-46, ActorTomba::settleStep (actor_tomba.cpp:385-403)
+        // Tomba's vertical collision envelope: boundYUp = 1.40m, boundYDown = 2.70m, step-up limit 0.48m
         let below: Vec<f32> = candidates
             .iter()
             .copied()
-            .filter(|&h| h <= current_y + 1.0)
+            .filter(|&h| h <= current_y + 0.48) // max step-up 48 PS1 units (0.48m)
             .collect();
 
         if let Some(&highest_below) = below.iter().max_by(|a, b| a.total_cmp(b)) {
             Some(highest_below)
         } else {
-            // Nearest floor fallback
+            // Nearest floor fallback when airborne
             candidates
                 .into_iter()
                 .min_by(|a, b| (a - current_y).abs().total_cmp(&(b - current_y).abs()))
@@ -132,16 +134,26 @@ impl LevelCollision {
         self.planes.get(&id)
     }
 
+    /// Authentic SCLD junction detection:
+    /// In PS1 Tomba 2, a junction occupies an SCLD grid cell (64 PS1 units = 0.64m wide).
+    /// Detection window is half-cell width (0.32m) along the rail, and within vertical gate.
+    /// Ref: Collision_GetFloorHeight.c:58, scld_geometry.py:45-48, 239-246.
     pub fn check_junction(
         &self,
         plane_id: usize,
         s: f32,
+        y: f32,
         direction: &str,
-        tolerance: f32,
     ) -> Option<&CollisionJunction> {
         let plane = self.get_plane(plane_id)?;
+        const HALF_CELL: f32 = 0.32; // 32 PS1 units = half SCLD cell width
+        const HEIGHT_WINDOW: f32 = 0.64; // 64 PS1 units = height gate window
+
         for j in &plane.junctions {
-            if j.direction == direction && (j.s - s).abs() <= tolerance {
+            if j.direction == direction
+                && (j.s - s).abs() <= HALF_CELL
+                && (j.pos[1] - y).abs() <= HEIGHT_WINDOW
+            {
                 return Some(j);
             }
         }

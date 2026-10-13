@@ -7,11 +7,13 @@
 ## ⚠️ AVISO PARA DESARROLLADORES Y AGENTES IA
 
 > [!IMPORTANT]
-> **ESTE PROYECTO YA NO ES UNA DESCOMPILACIÓN BYTE-MATCHING PARA PS1.**
+> **ESTE PROYECTO YA NO ES UNA DESCOMPILACIÓN BYTE-MATCHING PARA PS1, PERO TAMPOCO ES UN "TOMBALIKE" INVENTADO.**
 > - **NO** intentes compilar código C con compiladores antiguos de PS1 (`cc1`, PsyQ, `maspsx`).
 > - **NO** intentes hacer diffs de ensamblador MIPS (`asm-differ`, `splat`).
-> - **SÍ** debes escribir código Rust limpio utilizando la arquitectura ECS de Bevy.
-> - **SÍ** debes usar los repositorios de referencia aquí incluidos para extraer assets y entender la lógica del motor original.
+> - **NO INVENTAR LÓGICA DE JUEGO ("Vibe-coding" / Heurísticas ad-hoc):** Queda estrictamente prohibido inventar constantes mágicas, tolerancias arbitrarias, offsets visuales ("lo veo bajo y le sumo 30px") o físicas genéricas. Esto no es un clon genérico con skins de Tomba, es la **reimplementación fiel del juego original**.
+> - **CORRELACIÓN DIRECTA Y DOCUMENTADA OBLIGATORIA:** Toda la lógica de físicas, movimiento, resolución de colisiones, snapping de suelos, control de cámara, estados y transiciones debe tener **correlación directa 1:1 con el código de `Tomba2Engine` y los dumps de `src/`**, portada a la arquitectura ECS de Bevy y **comentada con su origen exacto** (archivo, función o dirección).
+> - **LIBERTAD TOTAL EN ASSETS:** En la extracción y conversión offline de assets (modelos, texturas, sonidos, animaciones, mallas de nivel y colisiones a glTF 2.0 / JSON / WAV), adapta, moderniza y utiliza las herramientas necesarias.
+> - **RESOLUCIÓN DE BUGS:** Ante cualquier comportamiento anómalo o bug, la solución **NUNCA** es parchar con números a ojo; es ir al código original (`Tomba2Engine/` y `src/`) a investigar la matemática y el diseño original que lo resuelve.
 
 ---
 
@@ -134,6 +136,7 @@ revert-tomba2/
 ## 🛠️ Reglas para Contribuir
 
 1. **Escribe en Rust idiomático:** Utiliza la arquitectura de Bevy (`Component`, `Resource`, `System`, `Query`, `Event`).
-2. **Revisa primero `Tomba2Engine`:** Antes de intentar adivinar cómo funciona una mecánica, busca la clase o archivo correspondiente en `Tomba2Engine/game/`.
-3. **Consulta los dumps de `src/`:** Si una mecánica específica de un nivel o minijuego no está clara en `Tomba2Engine`, busca la función en `src/overlays/` o en `src/main/`.
-4. **No ensucies el repositorio con binarios de MIPS:** Los assets deben procesarse y almacenarse en formatos modernos (`.glb`, `.png`, `.wav`, `.json`).
+2. **Revisa primero `Tomba2Engine` y `src/`:** Antes de codificar cualquier mecánica, busca la clase, función u offsets correspondientes en `Tomba2Engine/game/` y `src/`.
+3. **Cero Lógica Inventada / Cero Vibe-Coding:** Cada constante, ecuación, umbral de detección, física de salto, gravedad, offset de cámara y comprobación de estado debe provenir del código original y estar **comentada con su origen** (`// Referencia: ActorTomba::velocityIntegrate 0x80056B48`).
+4. **Trata los Bugs con Ingeniería Inversa:** Si un comportamiento en Bevy no coincide con el juego original, no apliques parches cosméticos ni números ad-hoc; investiga en el código descompilado cómo gestiona el juego original ese caso específico.
+5. **No ensucies el repositorio con binarios de MIPS:** Los assets deben procesarse y almacenarse en formatos modernos (`.glb`, `.png`, `.wav`, `.json`).

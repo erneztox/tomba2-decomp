@@ -70,52 +70,17 @@ flowchart TD
 
 ---
 
-## 🗺️ Hoja de Ruta Completa (Roadmap)
+---
 
-### Fase 0: Preparación y Workspace en Rust
-- [ ] Inicializar el crate de Rust en el espacio de trabajo: `cargo new --bin bevy_tomba2`.
-- [ ] Configurar dependencias en `Cargo.toml`:
-  - `bevy` (versión más reciente estable con soporte glTF y animación 3D).
-  - Motor de física/colisión 3D (p. ej. `avian3d` o `bevy_rapier3d`).
-  - `serde` y `serde_json` para datos de diálogos y metadatos de nivel.
-- [ ] Limpiar archivos obsoletos del viejo pipeline de matching de PS1 (ver sección de limpieza).
+## 📋 Control de Implementación y Kanban Activo
 
-### Fase 1: Pipeline de Extracción de Assets
-- [ ] Automatizar la exportación del Área 0 / Área 1 (*Fisherman's Village / Seaside Field*) desde `Tomba2Edit` a `.glb`.
-- [ ] Exportar el modelo 3D de Tomba con sus mallas, texturas y clips de animación esquelética (idle, walk, run, jump) a `.glb`.
-- [ ] Exportar los planos de colisión `SCLD` del primer nivel a un formato de malla/coordenadas consumible por Bevy.
+El avance del proyecto no se gestiona mediante listas de fases pasivas o estimaciones abstractas, sino como una **implementación total 1:1 contra el código fuente original (`Tomba2Engine/`)**.
 
-### Fase 2: Prototipo Visual (Vertical Slice - Entorno)
-- [ ] Cargar y renderizar el escenario del Área 1 en Bevy mediante `SceneBundle`.
-- [ ] Ajustar la iluminación (iluminación ambiente, directional light) y materiales PBR o unlit estilizado retro.
-- [ ] Instanciar a Tomba en el punto de spawn inicial del nivel y verificar la reproducción de animaciones.
+Cada función, estado, mecanismo físico, sistema de colisión, cámara y subsistema tiene una entrada individualizada en el inventario maestro:
 
-### Fase 3: Controlador de Tomba y Cámara 2.5D (Core Gameplay)
-- [ ] **Player Controller (Bevy ECS)**:
-  - Crear componentes: `Player`, `PlayerState` (Idle, Walk, Run, Jump, Fall), `Velocity`, `GroundSensor`.
-  - Traducir la lógica de aceleración, gravedad y saltos desde `Tomba2Engine/game/player/actor_tomba.cpp`.
-- [ ] **Cámara en Rieles (2.5D Path Navigation)**:
-  - Implementar el sistema de rieles/caminos tridimensionales de Tomba 2 (`LookAngleBuilder` y `CutsceneCamera` en `Tomba2Engine/game/camera/`).
-  - La cámara debe seguir a Tomba por la curva del nivel, ajustando el ángulo de visión en cruces e intersecciones.
-- [ ] **Colisiones del Escenario**:
-  - Convertir los planos y muros `SCLD` en colliders estáticos en Avian3D/Rapier3D.
-  - Asegurar el "ground snapping" para que Tomba no resbale por la geometría curva.
+👉 **[Kanban e Inventario Técnico de Implementación](docs/kanban_inventory.md)**
 
-### Fase 4: Interacciones, Ítems y Progresión
-- [ ] Sistema de recogida de ítems y cofres (basado en `actor_interaction.cpp`).
-- [ ] Portar el vector de 256 flags de eventos (`scene_flags::kFlagTable`) y la tabla de 256 ítems de inventario.
-- [ ] Sistema de diálogos básico cargando los textos JSON extraídos por `Tomba2Edit`.
-
-### Fase 5: Enemigos e Inteligencia Artificial
-- [ ] Portar los comportamientos básicos de enemigos:
-  - Cerdo común / Koma Pig (`tomba::ai::ActorZonedAttacker` en `Tomba2Engine/game/ai/`).
-  - Mecánica de morder y lanzar cerdos (agarre de Tomba + parábola de lanzamiento).
-- [ ] Portar los overlays de nivel (`A00` - `A0L`) a sistemas modulares de Bevy según se avance por las áreas.
-
-### Fase 6: Audio, Menús y Pulido
-- [ ] Integrar música de fondo (`.wav` / `.ogg` extraídos de XA/SEQ) y efectos de sonido al interactuar/saltar/atacar.
-- [ ] Menú de inventario, libro de eventos (137 misiones del diario) y pantalla de opciones.
-- [ ] Soporte para mandos (gamepad) con rumble y mapeo configurable.
+Cualquier cambio, nueva funcionalidad o corrección en `bevy_tomba2/` debe reflejarse y actualizarse directamente en dicho inventario con su estado (`[x]`, `[-]`, `[ ]`) y su correspondiente referencia técnica al código fuente original (`Tomba2Engine/` y `src/`).
 
 ---
 

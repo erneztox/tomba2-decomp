@@ -86,16 +86,15 @@ def main():
     tomba_model = parse_smst(tomba_raw)
     anmp = anmp_parser.parse_anmp(anmp_raw)
     bank = sequences.tomba_bank([("MAIN.EXE", exe_data)], anmp, resource_id=4)
-    idle_clip = bank.clips[2] if bank and len(bank.clips) > 2 else None
+    frames_by_id = {f.index: f for f in anmp.frames}
 
-    frames = []
-    if idle_clip:
-        frames_by_id = {f.index: f for f in anmp.frames}
-        clip_scales = sequences.scale_states(idle_clip, frames_by_id)
-        for tick in range(idle_clip.duration):
-            row, nxt, amount = idle_clip.sample(tick)
-            first = frames_by_id[idle_clip.steps[row].pose]
-            second = frames_by_id[idle_clip.steps[nxt].pose] if nxt is not None else None
+    def bake_clip(clip):
+        frames = []
+        clip_scales = sequences.scale_states(clip, frames_by_id)
+        for tick in range(clip.duration):
+            row, nxt, amount = clip.sample(tick)
+            first = frames_by_id[clip.steps[row].pose]
+            second = frames_by_id[clip.steps[nxt].pose] if nxt is not None else None
             rotations, root, scales = blend(first, second, amount)
             scales = clip_scales[row]
             frames.append(Frame(
@@ -103,7 +102,17 @@ def main():
                 limbs=[tuple(v / math.tau * 4096 for v in r) for r in rotations],
                 root=tuple(int(round(v)) & 0xFFF for v in root),
                 scales=[tuple(v * 4096 for v in s) for s in scales]))
-        print(f"Baked {len(frames)} frames for Tomba Idle animation.")
+        return frames
+
+    anim_dict = {
+        "Idle": bake_clip(bank.clips[2]),
+        "Walk": bake_clip(bank.clips[4]),
+        "Run": bake_clip(bank.clips[12]),
+        "Sprint": bake_clip(bank.clips[16]),
+        "Jump_Airborne": bake_clip(bank.clips[0xCA]),
+        "Jump_Fall": bake_clip(bank.clips[0xCB]),
+    }
+    print(f"Baked {len(anim_dict)} locomotion animations for Tomba.")
 
     tomba_out = os.path.join(MODELS_DIR, "tomba.glb")
     # Groups 17..20 are alternate costume parts (eyes, hands, pig suit); skip them for base model
@@ -113,7 +122,7 @@ def main():
         vram_bytes,
         groups=tomba_model["groups"],
         bones=bones,
-        frames=frames if frames else None,
+        frames=anim_dict,
         fps=30,
         name="tomba",
         skip={17, 18, 19, 20},

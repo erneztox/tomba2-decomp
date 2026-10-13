@@ -213,8 +213,12 @@ pub fn camera_controller(
                 let xz_len = (d.x * d.x + d.z * d.z).sqrt();
                 if xz_len > 1e-4 {
                     // Ref: CutsceneCamera::lookAt (cutscene_camera.cpp:417-431)
-                    // pitch = ratan2(sinp, cosp), yaw = ratan2(a, b). Sin roll.
-                    let pitch = (-d.y).atan2(xz_len);
+                    // En PS1 (Y-down), dY = target.y - cam.y es positivo al mirar hacia abajo a Tomba,
+                    // produciendo un pitch positivo hacia abajo.
+                    // En Bevy (Y-up), d.y = target.y - cam.y es negativo porque la cámara está por encima de Tomba.
+                    // Para inclinar la vista hacia abajo en Bevy (rotación en eje X local), el pitch debe ser negativo:
+                    // pitch = d.y.atan2(xz_len).
+                    let pitch = d.y.atan2(xz_len);
                     let yaw = (-d.x).atan2(-d.z);
                     cam_transform.rotation = Quat::from_euler(EulerRot::YXZ, yaw, pitch, 0.0);
                 }
@@ -267,3 +271,39 @@ pub fn camera_controller(
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_camera_pitch_aims_downward_at_target() {
+        // La cámara está ubicada a 14.62m de altura, Tomba a 10.37m (4.25m por debajo de la cámara).
+        let cam_pos = Vec3::new(40.0, 14.62, 56.0);
+        let look_target = Vec3::new(40.0, 10.37, 42.0);
+
+        let d = look_target - cam_pos;
+        let xz_len = (d.x * d.x + d.z * d.z).sqrt();
+
+        let pitch = d.y.atan2(xz_len);
+        let yaw = (-d.x).atan2(-d.z);
+        let rot = Quat::from_euler(EulerRot::YXZ, yaw, pitch, 0.0);
+
+        // El vector forward en Bevy (rotación aplicada a -Z)
+        let forward = rot * Vec3::NEG_Z;
+
+        // Comprobar que forward apunta HACIA ABAJO (componente Y negativo), NO HACIA EL TECHO
+        assert!(forward.y < 0.0, "El vector de visión de la cámara debe apuntar hacia abajo: forward.y = {}", forward.y);
+
+        // Comprobar que apunta exactamente en la dirección de d normalizado
+        let expected_dir = d.normalize();
+        assert!((forward - expected_dir).length() < 1e-4, "Forward ({:?}) debe coincidir con expected ({:?})", forward, expected_dir);
+
+        // Comprobar equivalencia con Transform::look_at
+        let mut t = Transform::from_translation(cam_pos);
+        t.look_at(look_target, Vec3::Y);
+        let look_at_forward = t.forward().as_vec3();
+        assert!((forward - look_at_forward).length() < 1e-4, "Forward ({:?}) debe coincidir con Transform::look_at ({:?})", forward, look_at_forward);
+    }
+}
+

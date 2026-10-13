@@ -10,7 +10,7 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **SEC-02** | `PHY` | SECTOR 2: Entity Physics & Kinematics | 82 | **82 / 82** |
 | **SEC-03** | `COL` | SECTOR 3: 2.5D Collision & SCLD Rail Grid | 35 | **35 / 35** |
 | **SEC-04** | `ENT` | SECTOR 4: Entity Allocation, Lifecycle & Loops | 357 | **4 / 357** |
-| **SEC-05** | `BEH` | SECTOR 5: Entity Behaviors, AI & Interactive World | 71 | **1 / 71** |
+| **SEC-05** | `BEH` | SECTOR 5: Entity Behaviors, AI & Interactive World | 71 | **71 / 71** |
 | **SEC-06** | `ANM` | SECTOR 6: Skeletal Animation VM & Sprites | 81 | **81 / 81** |
 | **SEC-07** | `CAM` | SECTOR 7: 2.5D Rail Camera Pipeline | 32 | **32 / 32** |
 | **SEC-08** | `ITM` | SECTOR 8: Items, Inventory & Equipment | 8 | **8 / 8** |
@@ -18,7 +18,7 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **SEC-10** | `UI` | SECTOR 10: UI, Dialog System & HUD | 88 | **88 / 88** |
 | **SEC-11** | `AUD` | SECTOR 11: Audio System & Sound Dispatch | 140 | **2 / 140** |
 | **SEC-12** | `SYS` | SECTOR 12: Memory Card, GPU, CD & Low-Level Subsystems | 560 | **1 / 560** |
-| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **449 implementadas** |
+| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **518 implementadas** |
 
 ---
 
@@ -602,77 +602,77 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 
 | ID | Función / Símbolo | Dirección PS1 | Archivo C | Comportamiento Técnico Original | Mapeo Bevy (Rust) | Estado |
 | :--- | :--- | :---: | :--- | :--- | :--- | :---: |
-| **BEH-01** | `Entity_Behavior_AI` | `0x80020364` | `entity/behavior/Entity_Behavior_AI.c` | Entity AI behavior: checks target, moves toward player | `ai::behavior::entity_behavior_ai` | `[ ]` |
-| **BEH-02** | `Entity_Behavior_AnimPlayer1` | `0x800292B8` | `entity/behavior/Entity_Behavior_AnimPlayer1.c` | Sprite animation player - variant 1 (selects data table by entity type) | `ai::behavior::entity_behavior_animplayer1` | `[ ]` |
-| **BEH-03** | `Entity_Behavior_AnimPlayer2` | `0x800293F4` | `entity/behavior/Entity_Behavior_AnimPlayer2.c` | Sprite animation player - variant 2 (different data tables) | `ai::behavior::entity_behavior_animplayer2` | `[ ]` |
-| **BEH-04** | `Entity_Behavior_AnimState1` | `0x8002C3EC` | `entity/behavior/Entity_Behavior_AnimState1.c` | Animation state machine variant 1: switches on entity[7] with GTE transforms | `ai::behavior::entity_behavior_animstate1` | `[ ]` |
-| **BEH-05** | `Entity_Behavior_AnimState2` | `0x8002C548` | `entity/behavior/Entity_Behavior_AnimState2.c` | Animation state machine variant 2: same structure, different GTE setup | `ai::behavior::entity_behavior_animstate2` | `[ ]` |
-| **BEH-06** | `Entity_Behavior_ApproachTarget` | `0x80044B38` | `entity/behavior/Entity_Behavior_ApproachTarget.c` | Entity approaches target position: state 0 calc angle, state 1 approach | `ai::behavior::entity_behavior_approachtarget` | `[ ]` |
-| **BEH-07** | `Entity_Behavior_Attack` | `0x8006B494` | `entity/behavior/Entity_Behavior_Attack.c` | Entity attack behavior main: entity[6] switch, attack types | `ai::behavior::entity_behavior_attack` | `[ ]` |
-| **BEH-08** | `Entity_Behavior_Attack2` | `0x8006B124` | `entity/behavior/Entity_Behavior_Attack2.c` | Entity attack behavior variant 2: entity[0x46] state, sets speed | `ai::behavior::entity_behavior_attack2` | `[ ]` |
-| **BEH-09** | `Entity_Behavior_AttackMain` | `0x8006C0C4` | `entity/behavior/Entity_Behavior_AttackMain.c` | Entity attack main: entity[6] switch, attack states | `ai::behavior::entity_behavior_attackmain` | `[ ]` |
-| **BEH-10** | `Entity_Behavior_Boss` | `0x8001F054` | `entity/behavior/Entity_Behavior_Boss.c` | Entity boss behavior: complex multi-state AI | `ai::behavior::entity_behavior_boss` | `[ ]` |
-| **BEH-11** | `Entity_Behavior_Cam` | `0x8006C478` | `entity/behavior/Entity_Behavior_Cam.c` | Entity camera behavior: entity[4] state 0->1->2->3 transitions | `ai::behavior::entity_behavior_cam` | `[ ]` |
-| **BEH-12** | `Entity_Behavior_Cam2` | `0x8006C608` | `entity/behavior/Entity_Behavior_Cam2.c` | Entity camera behavior variant 2: entity[4] state machine | `ai::behavior::entity_behavior_cam2` | `[ ]` |
-| **BEH-13** | `Entity_Behavior_Collect` | `0x8004B9C8` | `entity/behavior/Entity_Behavior_Collect.c` | Entity collect behavior: entity[5] state 0->1, handles collection | `ai::behavior::entity_behavior_collect` | `[ ]` |
-| **BEH-14** | `Entity_Behavior_Collectible` | `0x8004C238` | `entity/behavior/Entity_Behavior_Collectible.c` | Collectible/item entity behavior: handles pickup, bounce, score display | `ai::behavior::entity_behavior_collectible` | `[ ]` |
-| **BEH-15** | `Entity_Behavior_Collectible2` | `0x8004BEF4` | `entity/behavior/Entity_Behavior_Collectible2.c` | Entity collectible behavior variant: entity[0x5C] timer state machine | `ai::behavior::entity_behavior_collectible2` | `[ ]` |
-| **BEH-16** | `Entity_Behavior_Cutscene` | `0x80026148` | `entity/behavior/Entity_Behavior_Cutscene.c` | Entity cutscene behavior: entity[4]=1, advances timer, triggers event | `ai::behavior::entity_behavior_cutscene` | `[ ]` |
-| **BEH-17** | `Entity_Behavior_Cutscene2` | `0x80072A78` | `entity/behavior/Entity_Behavior_Cutscene2.c` | Entity cutscene behavior variant 2: entity[4] state | `ai::behavior::entity_behavior_cutscene2` | `[ ]` |
-| **BEH-18** | `Entity_Behavior_Death` | `0x800678E8` | `entity/behavior/Entity_Behavior_Death.c` | Entity death behavior: plays SFX 0x24, sets timer, dealloc | `ai::behavior::entity_behavior_death` | `[ ]` |
-| **BEH-19** | `Entity_Behavior_Destroy` | `0x8006AE28` | `entity/behavior/Entity_Behavior_Destroy.c` | Entity destroy behavior: entity[4] 0->1->2, cleanup | `ai::behavior::entity_behavior_destroy` | `[ ]` |
-| **BEH-20** | `Entity_Behavior_Door` | `0x80026864` | `entity/behavior/Entity_Behavior_Door.c` | Entity door behavior: entity[4]=1, checks game state transition | `ai::behavior::entity_behavior_door` | `[ ]` |
-| **BEH-21** | `Entity_Behavior_Door2` | `0x80068698` | `entity/behavior/Entity_Behavior_Door2.c` | Entity door behavior variant 2: entity[4]=1, transition | `ai::behavior::entity_behavior_door2` | `[ ]` |
-| **BEH-22** | `Entity_Behavior_Draw` | `0x8002FC40` | `entity/behavior/Entity_Behavior_Draw.c` | Entity draw behavior: entity[4]=1, configures sprite+draw | `ai::behavior::entity_behavior_draw` | `[ ]` |
-| **BEH-23** | `Entity_Behavior_DustTrail` | `0x8002BAFC` | `entity/behavior/Entity_Behavior_DustTrail.c` | Dust trail particles: random velocity/position with 5-segment history buffer | `ai::behavior::entity_behavior_dusttrail` | `[ ]` |
-| **BEH-24** | `Entity_Behavior_End` | `0x80053968` | `entity/behavior/Entity_Behavior_End.c` | Entity end behavior: cleanup and transition | `ai::behavior::entity_behavior_end` | `[ ]` |
-| **BEH-25** | `Entity_Behavior_Enemy` | `0x8006B390` | `entity/behavior/Entity_Behavior_Enemy.c` | Entity enemy behavior: calls FUN_80069858, sets type-specific state | `ai::behavior::entity_behavior_enemy` | `[ ]` |
-| **BEH-26** | `Entity_Behavior_Enemy2` | `0x80069BEC` | `entity/behavior/Entity_Behavior_Enemy2.c` | Entity enemy behavior variant 2: entity[0x46] state, sets DAT_1f80027c flag | `ai::behavior::entity_behavior_enemy2` | `[ ]` |
-| **BEH-27** | `Entity_Behavior_EnemyMain` | `0x8006A384` | `entity/behavior/Entity_Behavior_EnemyMain.c` | Entity enemy behavior main: entity[6] switch, AI states | `ai::behavior::entity_behavior_enemymain` | `[ ]` |
-| **BEH-28** | `Entity_Behavior_Explosion` | `0x8004022C` | `entity/behavior/Entity_Behavior_Explosion.c` | Explosion/particle effect: accelerate, spawn children, dealloc | `ai::behavior::entity_behavior_explosion` | `[ ]` |
-| **BEH-29** | `Entity_Behavior_Fade` | `0x80026024` | `entity/behavior/Entity_Behavior_Fade.c` | Entity fade behavior: checks entity[0x14]/[0x15], handles fade transition | `ai::behavior::entity_behavior_fade` | `[ ]` |
-| **BEH-30** | `Entity_Behavior_Fall` | `0x8006B1FC` | `entity/behavior/Entity_Behavior_Fall.c` | Entity fall behavior: entity[7] state 0->1->2->3, gravity | `ai::behavior::entity_behavior_fall` | `[ ]` |
-| **BEH-31** | `Entity_Behavior_Floater` | `0x80029530` | `entity/behavior/Entity_Behavior_Floater.c` | Floating/orbiting behavior using trig functions and GTE timer | `ai::behavior::entity_behavior_floater` | `[ ]` |
-| **BEH-32** | `Entity_Behavior_FollowParentY` | `0x800543C0` | `entity/behavior/Entity_Behavior_FollowParentY.c` | Follows parent entity Y offset: reads parent[0x10], computes delta from entity[0x32] | `ai::behavior::entity_behavior_followparenty` | `[ ]` |
-| **BEH-33** | `Entity_Behavior_Hit` | `0x80024548` | `entity/behavior/Entity_Behavior_Hit.c` | Entity hit behavior: checks entity[0x16B], applies reaction | `ai::behavior::entity_behavior_hit` | `[ ]` |
-| **BEH-34** | `Entity_Behavior_Hurt` | `0x8006BB6C` | `entity/behavior/Entity_Behavior_Hurt.c` | Entity hurt behavior: entity[4] state 0->1->2, knockback | `ai::behavior::entity_behavior_hurt` | `[ ]` |
-| **BEH-35** | `Entity_Behavior_Init2` | `0x80054650` | `entity/behavior/Entity_Behavior_Init2.c` | Entity behavior init variant 2: clears flags, sets timer | player::tomba_movement_system (settleStep) | [x] |
-| **BEH-36** | `Entity_Behavior_InitItem` | `0x8004B150` | `entity/behavior/Entity_Behavior_InitItem.c` | Entity item init behavior: sets entity[0x18] mode based on param | `ai::behavior::entity_behavior_inititem` | `[ ]` |
-| **BEH-37** | `Entity_Behavior_Item` | `0x8004BF84` | `entity/behavior/Entity_Behavior_Item.c` | Entity item behavior: state machine with pickup/drop animation | `ai::behavior::entity_behavior_item` | `[ ]` |
-| **BEH-38** | `Entity_Behavior_Item2` | `0x8004BB38` | `entity/behavior/Entity_Behavior_Item2.c` | Entity item behavior variant 2: entity[4]=1, pickup | `ai::behavior::entity_behavior_item2` | `[ ]` |
-| **BEH-39** | `Entity_Behavior_Jump_2` | `0x800558B4` | `entity/behavior/Entity_Behavior_Jump_2.c` | Entity jump behavior: checks timer, applies velocity | `ai::behavior::entity_behavior_jump_2` | `[ ]` |
-| **BEH-40** | `Entity_Behavior_Move` | `0x80068A94` | `entity/behavior/Entity_Behavior_Move.c` | Entity move behavior: entity[0x2B]=0, uses timer entity[0x40] | `ai::behavior::entity_behavior_move` | `[ ]` |
-| **BEH-41** | `Entity_Behavior_Move2` | `0x80068BE8` | `entity/behavior/Entity_Behavior_Move2.c` | Entity move behavior variant 2: entity[5] state | `ai::behavior::entity_behavior_move2` | `[ ]` |
-| **BEH-42** | `Entity_Behavior_NPC` | `0x8004C930` | `entity/behavior/Entity_Behavior_NPC.c` | Entity NPC behavior: entity[4]=1, dialog/interaction | `ai::behavior::entity_behavior_npc` | `[ ]` |
-| **BEH-43** | `Entity_Behavior_Painter` | `0x80024794` | `entity/behavior/Entity_Behavior_Painter.c` | Entity painter behavior: entity[0x14A] flag, branches on painter mode | `ai::behavior::entity_behavior_painter` | `[ ]` |
-| **BEH-44** | `Entity_Behavior_Painter2` | `0x800248D0` | `entity/behavior/Entity_Behavior_Painter2.c` | Entity painter behavior variant 2: checks DAT_800bf873 flag | `ai::behavior::entity_behavior_painter2` | `[ ]` |
-| **BEH-45** | `Entity_Behavior_Parent` | `0x8002B7B0` | `entity/behavior/Entity_Behavior_Parent.c` | Entity parent behavior: entity[4]=1, reads parent[0x10] | `ai::behavior::entity_behavior_parent` | `[ ]` |
-| **BEH-46** | `Entity_Behavior_Particle` | `0x80027254` | `entity/behavior/Entity_Behavior_Particle.c` | Particle effect entity: random velocity, deceleration, timed life | `ai::behavior::entity_behavior_particle` | `[ ]` |
-| **BEH-47** | `Entity_Behavior_ParticleBurst` | `0x80040390` | `entity/behavior/Entity_Behavior_ParticleBurst.c` | Particle burst: wait for animation flag, spawn children, dealloc | `ai::behavior::entity_behavior_particleburst` | `[ ]` |
-| **BEH-48** | `Entity_Behavior_Pickup` | `0x8004C01C` | `entity/behavior/Entity_Behavior_Pickup.c` | Entity pickup behavior: entity[5]=0/1 state, picks up item animation | `ai::behavior::entity_behavior_pickup` | `[ ]` |
-| **BEH-49** | `Entity_Behavior_Player` | `0x800739AC` | `entity/behavior/Entity_Behavior_Player.c` | Entity player behavior: entity[4]=1, player control | `ai::behavior::entity_behavior_player` | `[ ]` |
-| **BEH-50** | `Entity_Behavior_PlayerController` | `0x80040558` | `entity/behavior/Entity_Behavior_PlayerController.c` | Main player/character state machine with 8 entity-type dispatch + 6 sub-states | `ai::behavior::entity_behavior_playercontroller` | `[ ]` |
-| **BEH-51** | `Entity_Behavior_Projectile` | `0x8002F738` | `entity/behavior/Entity_Behavior_Projectile.c` | Entity projectile behavior: entity[4]=1, reads parent, moves | `ai::behavior::entity_behavior_projectile` | `[ ]` |
-| **BEH-52** | `Entity_Behavior_Push` | `0x80073328` | `entity/behavior/Entity_Behavior_Push.c` | Entity push behavior: entity[6] switch, push reaction | `ai::behavior::entity_behavior_push` | `[ ]` |
-| **BEH-53** | `Entity_Behavior_Rotate` | `0x800663A8` | `entity/behavior/Entity_Behavior_Rotate.c` | Entity rotate behavior: uses angle approach, checks distance, advances state | `ai::behavior::entity_behavior_rotate` | `[ ]` |
-| **BEH-54** | `Entity_Behavior_Script` | `0x800300D8` | `entity/behavior/Entity_Behavior_Script.c` | Entity script behavior: entity[4]=1, runs bytecode | `ai::behavior::entity_behavior_script` | `[ ]` |
-| **BEH-55** | `Entity_Behavior_Scripted` | `0x80030A3C` | `entity/behavior/Entity_Behavior_Scripted.c` | Script-driven entity behavior: reads entity[0x6C] script data, complex state machine | `ai::behavior::entity_behavior_scripted` | `[ ]` |
-| **BEH-56** | `Entity_Behavior_Sequence` | `0x8007091C` | `entity/behavior/Entity_Behavior_Sequence.c` | Entity sequence behavior: runs scripted action seq | `ai::behavior::entity_behavior_sequence` | `[ ]` |
-| **BEH-57** | `Entity_Behavior_Shake` | `0x8003FD10` | `entity/behavior/Entity_Behavior_Shake.c` | Camera shake effect: toggles sub-entity position with random offset every 16 frames | `ai::behavior::entity_behavior_shake` | `[ ]` |
-| **BEH-58** | `Entity_Behavior_ShakeSFX` | `0x8003FED8` | `entity/behavior/Entity_Behavior_ShakeSFX.c` | Shake with sound: same as Shake but plays SFX 0x19 on start, resets parent flag | `ai::behavior::entity_behavior_shakesfx` | `[ ]` |
-| **BEH-59** | `Entity_Behavior_Sparkle` | `0x8002A584` | `entity/behavior/Entity_Behavior_Sparkle.c` | Sparkle/dust particles: random positions, follow parent entity with offset | `ai::behavior::entity_behavior_sparkle` | `[ ]` |
-| **BEH-60** | `Entity_Behavior_Spawn` | `0x8002F514` | `entity/behavior/Entity_Behavior_Spawn.c` | Entity spawn behavior: switch on entity type, spawns | `ai::behavior::entity_behavior_spawn` | `[ ]` |
-| **BEH-61** | `Entity_Behavior_SpawnAtOffset` | `0x800538E0` | `entity/behavior/Entity_Behavior_SpawnAtOffset.c` | Spawns entity 0x35 at offset from entity[0x84] if entity type is 0 or 3 | `ai::behavior::entity_behavior_spawnatoffset` | `[ ]` |
-| **BEH-62** | `Entity_Behavior_Spin` | `0x80063158` | `entity/behavior/Entity_Behavior_Spin.c` | Entity spin behavior: entity[0x154] deceleration | `ai::behavior::entity_behavior_spin` | `[ ]` |
-| **BEH-63** | `Entity_Behavior_SpinAttack` | `0x80063098` | `entity/behavior/Entity_Behavior_SpinAttack.c` | Spin attack: accelerates entity[0x154] speed, rotates, plays SFX 0x1B at threshold | `ai::behavior::entity_behavior_spinattack` | `[ ]` |
-| **BEH-64** | `Entity_Behavior_Swing` | `0x800559F4` | `entity/behavior/Entity_Behavior_Swing.c` | Entity swing behavior: checks timer, applies swing | `ai::behavior::entity_behavior_swing` | `[ ]` |
-| **BEH-65** | `Entity_Behavior_Talk` | `0x8004B208` | `entity/behavior/Entity_Behavior_Talk.c` | Entity talk behavior: entity[5]=0->1, inits dialog via FUN_80041194 | `ai::behavior::entity_behavior_talk` | `[ ]` |
-| **BEH-66** | `Entity_Behavior_Talk2` | `0x8004B788` | `entity/behavior/Entity_Behavior_Talk2.c` | Entity talk behavior variant 2: entity[5]=1, dialog | `ai::behavior::entity_behavior_talk2` | `[ ]` |
-| **BEH-67** | `Entity_Behavior_TimedLife` | `0x80072520` | `entity/behavior/Entity_Behavior_TimedLife.c` | Timed lifecycle: entity[4] state 0->1->2->3, timer 0x3C, dealloc at state 3 | `ai::behavior::entity_behavior_timedlife` | `[ ]` |
-| **BEH-68** | `Entity_Behavior_TimedSFX` | `0x8006625C` | `entity/behavior/Entity_Behavior_TimedSFX.c` | Entity timed SFX: decrements timer, plays SFX based on entity[0x16E] counter | `ai::behavior::entity_behavior_timedsfx` | `[ ]` |
-| **BEH-69** | `Entity_Behavior_Trail` | `0x80029B40` | `entity/behavior/Entity_Behavior_Trail.c` | Subrutina de Entity_Behavior_Trail (entity/behavior/Entity_Behavior_Trail.c) | `ai::behavior::entity_behavior_trail` | `[ ]` |
-| **BEH-70** | `Entity_Behavior_TrailPt` | `0x800275D4` | `entity/behavior/Entity_Behavior_TrailPt.c` | 5-point trail segment: orbital motion with sine/cosine, visibility check | `ai::behavior::entity_behavior_trailpt` | `[ ]` |
-| **BEH-71** | `Entity_Behavior_Wander` | `0x8002918C` | `entity/behavior/Entity_Behavior_Wander.c` | Random wander/patrol with visibility check and timer | `ai::behavior::entity_behavior_wander` | `[ ]` |
+| **BEH-01** | `Entity_Behavior_AI` | `0x80020364` | `entity/behavior/Entity_Behavior_AI.c` | Entity AI behavior: checks target, moves toward player | `ai::behavior::entity_behavior_ai` | `[x]` |
+| **BEH-02** | `Entity_Behavior_AnimPlayer1` | `0x800292B8` | `entity/behavior/Entity_Behavior_AnimPlayer1.c` | Sprite animation player - variant 1 (selects data table by entity type) | `ai::behavior::entity_behavior_animplayer1` | `[x]` |
+| **BEH-03** | `Entity_Behavior_AnimPlayer2` | `0x800293F4` | `entity/behavior/Entity_Behavior_AnimPlayer2.c` | Sprite animation player - variant 2 (different data tables) | `ai::behavior::entity_behavior_animplayer2` | `[x]` |
+| **BEH-04** | `Entity_Behavior_AnimState1` | `0x8002C3EC` | `entity/behavior/Entity_Behavior_AnimState1.c` | Animation state machine variant 1: switches on entity[7] with GTE transforms | `ai::behavior::entity_behavior_animstate1` | `[x]` |
+| **BEH-05** | `Entity_Behavior_AnimState2` | `0x8002C548` | `entity/behavior/Entity_Behavior_AnimState2.c` | Animation state machine variant 2: same structure, different GTE setup | `ai::behavior::entity_behavior_animstate2` | `[x]` |
+| **BEH-06** | `Entity_Behavior_ApproachTarget` | `0x80044B38` | `entity/behavior/Entity_Behavior_ApproachTarget.c` | Entity approaches target position: state 0 calc angle, state 1 approach | `ai::behavior::entity_behavior_approachtarget` | `[x]` |
+| **BEH-07** | `Entity_Behavior_Attack` | `0x8006B494` | `entity/behavior/Entity_Behavior_Attack.c` | Entity attack behavior main: entity[6] switch, attack types | `ai::behavior::entity_behavior_attack` | `[x]` |
+| **BEH-08** | `Entity_Behavior_Attack2` | `0x8006B124` | `entity/behavior/Entity_Behavior_Attack2.c` | Entity attack behavior variant 2: entity[0x46] state, sets speed | `ai::behavior::entity_behavior_attack2` | `[x]` |
+| **BEH-09** | `Entity_Behavior_AttackMain` | `0x8006C0C4` | `entity/behavior/Entity_Behavior_AttackMain.c` | Entity attack main: entity[6] switch, attack states | `ai::behavior::entity_behavior_attackmain` | `[x]` |
+| **BEH-10** | `Entity_Behavior_Boss` | `0x8001F054` | `entity/behavior/Entity_Behavior_Boss.c` | Entity boss behavior: complex multi-state AI | `ai::behavior::entity_behavior_boss` | `[x]` |
+| **BEH-11** | `Entity_Behavior_Cam` | `0x8006C478` | `entity/behavior/Entity_Behavior_Cam.c` | Entity camera behavior: entity[4] state 0->1->2->3 transitions | `ai::behavior::entity_behavior_cam` | `[x]` |
+| **BEH-12** | `Entity_Behavior_Cam2` | `0x8006C608` | `entity/behavior/Entity_Behavior_Cam2.c` | Entity camera behavior variant 2: entity[4] state machine | `ai::behavior::entity_behavior_cam2` | `[x]` |
+| **BEH-13** | `Entity_Behavior_Collect` | `0x8004B9C8` | `entity/behavior/Entity_Behavior_Collect.c` | Entity collect behavior: entity[5] state 0->1, handles collection | `ai::behavior::entity_behavior_collect` | `[x]` |
+| **BEH-14** | `Entity_Behavior_Collectible` | `0x8004C238` | `entity/behavior/Entity_Behavior_Collectible.c` | Collectible/item entity behavior: handles pickup, bounce, score display | `ai::behavior::entity_behavior_collectible` | `[x]` |
+| **BEH-15** | `Entity_Behavior_Collectible2` | `0x8004BEF4` | `entity/behavior/Entity_Behavior_Collectible2.c` | Entity collectible behavior variant: entity[0x5C] timer state machine | `ai::behavior::entity_behavior_collectible2` | `[x]` |
+| **BEH-16** | `Entity_Behavior_Cutscene` | `0x80026148` | `entity/behavior/Entity_Behavior_Cutscene.c` | Entity cutscene behavior: entity[4]=1, advances timer, triggers event | `ai::behavior::entity_behavior_cutscene` | `[x]` |
+| **BEH-17** | `Entity_Behavior_Cutscene2` | `0x80072A78` | `entity/behavior/Entity_Behavior_Cutscene2.c` | Entity cutscene behavior variant 2: entity[4] state | `ai::behavior::entity_behavior_cutscene2` | `[x]` |
+| **BEH-18** | `Entity_Behavior_Death` | `0x800678E8` | `entity/behavior/Entity_Behavior_Death.c` | Entity death behavior: plays SFX 0x24, sets timer, dealloc | `ai::behavior::entity_behavior_death` | `[x]` |
+| **BEH-19** | `Entity_Behavior_Destroy` | `0x8006AE28` | `entity/behavior/Entity_Behavior_Destroy.c` | Entity destroy behavior: entity[4] 0->1->2, cleanup | `ai::behavior::entity_behavior_destroy` | `[x]` |
+| **BEH-20** | `Entity_Behavior_Door` | `0x80026864` | `entity/behavior/Entity_Behavior_Door.c` | Entity door behavior: entity[4]=1, checks game state transition | `ai::behavior::entity_behavior_door` | `[x]` |
+| **BEH-21** | `Entity_Behavior_Door2` | `0x80068698` | `entity/behavior/Entity_Behavior_Door2.c` | Entity door behavior variant 2: entity[4]=1, transition | `ai::behavior::entity_behavior_door2` | `[x]` |
+| **BEH-22** | `Entity_Behavior_Draw` | `0x8002FC40` | `entity/behavior/Entity_Behavior_Draw.c` | Entity draw behavior: entity[4]=1, configures sprite+draw | `ai::behavior::entity_behavior_draw` | `[x]` |
+| **BEH-23** | `Entity_Behavior_DustTrail` | `0x8002BAFC` | `entity/behavior/Entity_Behavior_DustTrail.c` | Dust trail particles: random velocity/position with 5-segment history buffer | `ai::behavior::entity_behavior_dusttrail` | `[x]` |
+| **BEH-24** | `Entity_Behavior_End` | `0x80053968` | `entity/behavior/Entity_Behavior_End.c` | Entity end behavior: cleanup and transition | `ai::behavior::entity_behavior_end` | `[x]` |
+| **BEH-25** | `Entity_Behavior_Enemy` | `0x8006B390` | `entity/behavior/Entity_Behavior_Enemy.c` | Entity enemy behavior: calls FUN_80069858, sets type-specific state | `ai::behavior::entity_behavior_enemy` | `[x]` |
+| **BEH-26** | `Entity_Behavior_Enemy2` | `0x80069BEC` | `entity/behavior/Entity_Behavior_Enemy2.c` | Entity enemy behavior variant 2: entity[0x46] state, sets DAT_1f80027c flag | `ai::behavior::entity_behavior_enemy2` | `[x]` |
+| **BEH-27** | `Entity_Behavior_EnemyMain` | `0x8006A384` | `entity/behavior/Entity_Behavior_EnemyMain.c` | Entity enemy behavior main: entity[6] switch, AI states | `ai::behavior::entity_behavior_enemymain` | `[x]` |
+| **BEH-28** | `Entity_Behavior_Explosion` | `0x8004022C` | `entity/behavior/Entity_Behavior_Explosion.c` | Explosion/particle effect: accelerate, spawn children, dealloc | `ai::behavior::entity_behavior_explosion` | `[x]` |
+| **BEH-29** | `Entity_Behavior_Fade` | `0x80026024` | `entity/behavior/Entity_Behavior_Fade.c` | Entity fade behavior: checks entity[0x14]/[0x15], handles fade transition | `ai::behavior::entity_behavior_fade` | `[x]` |
+| **BEH-30** | `Entity_Behavior_Fall` | `0x8006B1FC` | `entity/behavior/Entity_Behavior_Fall.c` | Entity fall behavior: entity[7] state 0->1->2->3, gravity | `ai::behavior::entity_behavior_fall` | `[x]` |
+| **BEH-31** | `Entity_Behavior_Floater` | `0x80029530` | `entity/behavior/Entity_Behavior_Floater.c` | Floating/orbiting behavior using trig functions and GTE timer | `ai::behavior::entity_behavior_floater` | `[x]` |
+| **BEH-32** | `Entity_Behavior_FollowParentY` | `0x800543C0` | `entity/behavior/Entity_Behavior_FollowParentY.c` | Follows parent entity Y offset: reads parent[0x10], computes delta from entity[0x32] | `ai::behavior::entity_behavior_followparenty` | `[x]` |
+| **BEH-33** | `Entity_Behavior_Hit` | `0x80024548` | `entity/behavior/Entity_Behavior_Hit.c` | Entity hit behavior: checks entity[0x16B], applies reaction | `ai::behavior::entity_behavior_hit` | `[x]` |
+| **BEH-34** | `Entity_Behavior_Hurt` | `0x8006BB6C` | `entity/behavior/Entity_Behavior_Hurt.c` | Entity hurt behavior: entity[4] state 0->1->2, knockback | `ai::behavior::entity_behavior_hurt` | `[x]` |
+| **BEH-35** | `Entity_Behavior_Init2` | `0x80054650` | `entity/behavior/Entity_Behavior_Init2.c` | Entity behavior init variant 2: clears flags, sets timer | player::tomba_movement_system (settleStep) | `[x]` |
+| **BEH-36** | `Entity_Behavior_InitItem` | `0x8004B150` | `entity/behavior/Entity_Behavior_InitItem.c` | Entity item init behavior: sets entity[0x18] mode based on param | `ai::behavior::entity_behavior_inititem` | `[x]` |
+| **BEH-37** | `Entity_Behavior_Item` | `0x8004BF84` | `entity/behavior/Entity_Behavior_Item.c` | Entity item behavior: state machine with pickup/drop animation | `ai::behavior::entity_behavior_item` | `[x]` |
+| **BEH-38** | `Entity_Behavior_Item2` | `0x8004BB38` | `entity/behavior/Entity_Behavior_Item2.c` | Entity item behavior variant 2: entity[4]=1, pickup | `ai::behavior::entity_behavior_item2` | `[x]` |
+| **BEH-39** | `Entity_Behavior_Jump_2` | `0x800558B4` | `entity/behavior/Entity_Behavior_Jump_2.c` | Entity jump behavior: checks timer, applies velocity | `ai::behavior::entity_behavior_jump_2` | `[x]` |
+| **BEH-40** | `Entity_Behavior_Move` | `0x80068A94` | `entity/behavior/Entity_Behavior_Move.c` | Entity move behavior: entity[0x2B]=0, uses timer entity[0x40] | `ai::behavior::entity_behavior_move` | `[x]` |
+| **BEH-41** | `Entity_Behavior_Move2` | `0x80068BE8` | `entity/behavior/Entity_Behavior_Move2.c` | Entity move behavior variant 2: entity[5] state | `ai::behavior::entity_behavior_move2` | `[x]` |
+| **BEH-42** | `Entity_Behavior_NPC` | `0x8004C930` | `entity/behavior/Entity_Behavior_NPC.c` | Entity NPC behavior: entity[4]=1, dialog/interaction | `ai::behavior::entity_behavior_npc` | `[x]` |
+| **BEH-43** | `Entity_Behavior_Painter` | `0x80024794` | `entity/behavior/Entity_Behavior_Painter.c` | Entity painter behavior: entity[0x14A] flag, branches on painter mode | `ai::behavior::entity_behavior_painter` | `[x]` |
+| **BEH-44** | `Entity_Behavior_Painter2` | `0x800248D0` | `entity/behavior/Entity_Behavior_Painter2.c` | Entity painter behavior variant 2: checks DAT_800bf873 flag | `ai::behavior::entity_behavior_painter2` | `[x]` |
+| **BEH-45** | `Entity_Behavior_Parent` | `0x8002B7B0` | `entity/behavior/Entity_Behavior_Parent.c` | Entity parent behavior: entity[4]=1, reads parent[0x10] | `ai::behavior::entity_behavior_parent` | `[x]` |
+| **BEH-46** | `Entity_Behavior_Particle` | `0x80027254` | `entity/behavior/Entity_Behavior_Particle.c` | Particle effect entity: random velocity, deceleration, timed life | `ai::behavior::entity_behavior_particle` | `[x]` |
+| **BEH-47** | `Entity_Behavior_ParticleBurst` | `0x80040390` | `entity/behavior/Entity_Behavior_ParticleBurst.c` | Particle burst: wait for animation flag, spawn children, dealloc | `ai::behavior::entity_behavior_particleburst` | `[x]` |
+| **BEH-48** | `Entity_Behavior_Pickup` | `0x8004C01C` | `entity/behavior/Entity_Behavior_Pickup.c` | Entity pickup behavior: entity[5]=0/1 state, picks up item animation | `ai::behavior::entity_behavior_pickup` | `[x]` |
+| **BEH-49** | `Entity_Behavior_Player` | `0x800739AC` | `entity/behavior/Entity_Behavior_Player.c` | Entity player behavior: entity[4]=1, player control | `ai::behavior::entity_behavior_player` | `[x]` |
+| **BEH-50** | `Entity_Behavior_PlayerController` | `0x80040558` | `entity/behavior/Entity_Behavior_PlayerController.c` | Main player/character state machine with 8 entity-type dispatch + 6 sub-states | `ai::behavior::entity_behavior_playercontroller` | `[x]` |
+| **BEH-51** | `Entity_Behavior_Projectile` | `0x8002F738` | `entity/behavior/Entity_Behavior_Projectile.c` | Entity projectile behavior: entity[4]=1, reads parent, moves | `ai::behavior::entity_behavior_projectile` | `[x]` |
+| **BEH-52** | `Entity_Behavior_Push` | `0x80073328` | `entity/behavior/Entity_Behavior_Push.c` | Entity push behavior: entity[6] switch, push reaction | `ai::behavior::entity_behavior_push` | `[x]` |
+| **BEH-53** | `Entity_Behavior_Rotate` | `0x800663A8` | `entity/behavior/Entity_Behavior_Rotate.c` | Entity rotate behavior: uses angle approach, checks distance, advances state | `ai::behavior::entity_behavior_rotate` | `[x]` |
+| **BEH-54** | `Entity_Behavior_Script` | `0x800300D8` | `entity/behavior/Entity_Behavior_Script.c` | Entity script behavior: entity[4]=1, runs bytecode | `ai::behavior::entity_behavior_script` | `[x]` |
+| **BEH-55** | `Entity_Behavior_Scripted` | `0x80030A3C` | `entity/behavior/Entity_Behavior_Scripted.c` | Script-driven entity behavior: reads entity[0x6C] script data, complex state machine | `ai::behavior::entity_behavior_scripted` | `[x]` |
+| **BEH-56** | `Entity_Behavior_Sequence` | `0x8007091C` | `entity/behavior/Entity_Behavior_Sequence.c` | Entity sequence behavior: runs scripted action seq | `ai::behavior::entity_behavior_sequence` | `[x]` |
+| **BEH-57** | `Entity_Behavior_Shake` | `0x8003FD10` | `entity/behavior/Entity_Behavior_Shake.c` | Camera shake effect: toggles sub-entity position with random offset every 16 frames | `ai::behavior::entity_behavior_shake` | `[x]` |
+| **BEH-58** | `Entity_Behavior_ShakeSFX` | `0x8003FED8` | `entity/behavior/Entity_Behavior_ShakeSFX.c` | Shake with sound: same as Shake but plays SFX 0x19 on start, resets parent flag | `ai::behavior::entity_behavior_shakesfx` | `[x]` |
+| **BEH-59** | `Entity_Behavior_Sparkle` | `0x8002A584` | `entity/behavior/Entity_Behavior_Sparkle.c` | Sparkle/dust particles: random positions, follow parent entity with offset | `ai::behavior::entity_behavior_sparkle` | `[x]` |
+| **BEH-60** | `Entity_Behavior_Spawn` | `0x8002F514` | `entity/behavior/Entity_Behavior_Spawn.c` | Entity spawn behavior: switch on entity type, spawns | `ai::behavior::entity_behavior_spawn` | `[x]` |
+| **BEH-61** | `Entity_Behavior_SpawnAtOffset` | `0x800538E0` | `entity/behavior/Entity_Behavior_SpawnAtOffset.c` | Spawns entity 0x35 at offset from entity[0x84] if entity type is 0 or 3 | `ai::behavior::entity_behavior_spawnatoffset` | `[x]` |
+| **BEH-62** | `Entity_Behavior_Spin` | `0x80063158` | `entity/behavior/Entity_Behavior_Spin.c` | Entity spin behavior: entity[0x154] deceleration | `ai::behavior::entity_behavior_spin` | `[x]` |
+| **BEH-63** | `Entity_Behavior_SpinAttack` | `0x80063098` | `entity/behavior/Entity_Behavior_SpinAttack.c` | Spin attack: accelerates entity[0x154] speed, rotates, plays SFX 0x1B at threshold | `ai::behavior::entity_behavior_spinattack` | `[x]` |
+| **BEH-64** | `Entity_Behavior_Swing` | `0x800559F4` | `entity/behavior/Entity_Behavior_Swing.c` | Entity swing behavior: checks timer, applies swing | `ai::behavior::entity_behavior_swing` | `[x]` |
+| **BEH-65** | `Entity_Behavior_Talk` | `0x8004B208` | `entity/behavior/Entity_Behavior_Talk.c` | Entity talk behavior: entity[5]=0->1, inits dialog via FUN_80041194 | `ai::behavior::entity_behavior_talk` | `[x]` |
+| **BEH-66** | `Entity_Behavior_Talk2` | `0x8004B788` | `entity/behavior/Entity_Behavior_Talk2.c` | Entity talk behavior variant 2: entity[5]=1, dialog | `ai::behavior::entity_behavior_talk2` | `[x]` |
+| **BEH-67** | `Entity_Behavior_TimedLife` | `0x80072520` | `entity/behavior/Entity_Behavior_TimedLife.c` | Timed lifecycle: entity[4] state 0->1->2->3, timer 0x3C, dealloc at state 3 | `ai::behavior::entity_behavior_timedlife` | `[x]` |
+| **BEH-68** | `Entity_Behavior_TimedSFX` | `0x8006625C` | `entity/behavior/Entity_Behavior_TimedSFX.c` | Entity timed SFX: decrements timer, plays SFX based on entity[0x16E] counter | `ai::behavior::entity_behavior_timedsfx` | `[x]` |
+| **BEH-69** | `Entity_Behavior_Trail` | `0x80029B40` | `entity/behavior/Entity_Behavior_Trail.c` | Subrutina de Entity_Behavior_Trail (entity/behavior/Entity_Behavior_Trail.c) | `ai::behavior::entity_behavior_trail` | `[x]` |
+| **BEH-70** | `Entity_Behavior_TrailPt` | `0x800275D4` | `entity/behavior/Entity_Behavior_TrailPt.c` | 5-point trail segment: orbital motion with sine/cosine, visibility check | `ai::behavior::entity_behavior_trailpt` | `[x]` |
+| **BEH-71** | `Entity_Behavior_Wander` | `0x8002918C` | `entity/behavior/Entity_Behavior_Wander.c` | Random wander/patrol with visibility check and timer | `ai::behavior::entity_behavior_wander` | `[x]` |
 
 ---
 

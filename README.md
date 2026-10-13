@@ -78,7 +78,7 @@ El avance del proyecto no se gestiona mediante listas de fases pasivas o estimac
 
 Cada función, estado, mecanismo físico, sistema de colisión, cámara y subsistema tiene una entrada individualizada en el inventario maestro:
 
-👉 **[Kanban e Inventario Técnico de Implementación](docs/kanban_inventory.md)**
+👉 **[Kanban e Inventario Técnico de Implementación](KANBAN.md)**
 
 Cualquier cambio, nueva funcionalidad o corrección en `bevy_tomba2/` debe reflejarse y actualizarse directamente en dicho inventario con su estado (`[x]`, `[-]`, `[ ]`) y su correspondiente referencia técnica al código fuente original (`Tomba2Engine/` y `src/`).
 

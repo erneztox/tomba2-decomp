@@ -76,12 +76,13 @@ Implementa la cámara en rieles de Tomba 2, seguimiento suave por ejes, clamp a 
 | :--- | :--- | :--- | :--- | :--- | :---: |
 | **CAM-01** | `CutsceneCamera::followAxis` | `0x8006D960` | Filtro paso bajo de seguimiento continuo ($\alpha = 1 - 0.875^{\text{ticks}}$), sin saltos abruptos. | `camera::follow_axis` | `[x]` |
 | **CAM-02** | `CutsceneCamera::trackXZ` | `0x8006D960` | Seguimiento en plano horizontal X/Z limitado por `CAM_MAX_STEP_XZ` ($61.44\text{ m/s}$). | `camera::camera_controller` | `[x]` |
-| **CAM-03** | `CutsceneCamera::trackY` | `0x8006DA54` | Seguimiento vertical Y con zona muerta ($1.40\text{ m}$ a $5.80\text{ m}$) para no saltar con Tomba. | `camera::camera_controller` | `[x]` |
-| **CAM-04** | `CutsceneCamera::yFloor` | `0x8006C80C` | Límite inferior absoluto de altura de cámara por área ($5.50\text{ m}$ en Fisherman's Village). | `camera::CAM_FOLLOW_HEIGHT` | `[x]` |
+| **CAM-03** | `CutsceneCamera::pitch` / `trackY` | `0x8006D654` / `0x8006DA54` | Zona muerta vertical ($1.40\text{ m}$ deadzone) anclada a la cota del riel (`smooth_baseline_y`). | `camera::camera_controller` | `[x]` |
+| **CAM-04** | `CutsceneCamera::yFloor` | `0x8006C80C` | Límite inferior absoluto de altura de cámara por área ($5.50\text{ m}$ en Fisherman's Village). | `camera::SEASIDE_Y_FLOOR` | `[x]` |
 | **CAM-05** | `LookAngleBuilder::distSolve` | `0x8006CF10` | Distancia base de cámara según curvatura del sector ($14.0\text{ m}$ base). | `camera::CAM_FOLLOW_DISTANCE` | `[x]` |
-| **CAM-06** | `LookAngleBuilder::headingSolve` | `0x8006DCF4` | Orientación hacia la normal del riel $N = (-dir_z, dir_x)$ con suavizado de cruces. | `camera::camera_controller` (target_normal) | `[x]` |
-| **CAM-07** | `CutsceneCamera::shakeTail` | `0x8006C988` | Máquina de estados de sacudida sísmica de pantalla por terremotos o impactos. | `camera::CameraShake` component/system | `[ ]` |
-| **CAM-08** | `CutsceneCamera::pitchFollow` | `0x8006E360` | Modo de cámara 3: cabeceo vertical dinámico al mirar pendientes o abismos. | `camera::pitch_follow_system` | `[ ]` |
+| **CAM-06** | `CutsceneCamera::angleStep` | `0x8006E010` | Velocidad angular auténtica de $0.368\text{ rad/s}$ ($\pm 8$ unidades angulares PS1 por tick). | `camera::CAM_ANGLE_STEP_RATE` | `[x]` |
+| **CAM-07** | `CutsceneCamera::lookAt` | `0x8006D02C` | Matriz de vista Euler (pitch/yaw hacia el torso de Tomba en el riel, sin roll ni vibración). | `camera::camera_controller` | `[x]` |
+| **CAM-08** | `CutsceneCamera::shakeTail` | `0x8006C988` | Máquina de estados de sacudida sísmica de pantalla por terremotos o impactos. | `camera::CameraShake` component/system | `[ ]` |
+| **CAM-09** | `CutsceneCamera::pitchFollow` | `0x8006E360` | Modo de cámara 3: cabeceo vertical dinámico al mirar pendientes o abismos. | `camera::pitch_follow_system` | `[ ]` |
 
 ---
 

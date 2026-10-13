@@ -311,8 +311,9 @@ pub fn tomba_movement_system(
             PlayerActionState::Normal => {}
         }
 
-        // ── 1. Input horizontal ──────────────────────────────────────────────
-        // Ref: Entity_State_Walk.c (func_8006670C), ActorTomba::velocityIntegrate (actor_tomba.cpp:440).
+        // ── 1. Input horizontal & Desplazamiento por Riel (Sector 3) ──────────
+        // Ref: Entity_State_Walk.c (func_8006670C), ActorTomba::velocityIntegrate (actor_tomba.cpp:440),
+        //      Collision_MoveMain (0x80045CAC), Collision_Push (0x80045810), CELL_SECTOR_LINK (0x80048FC4).
         let mut move_input = 0.0_f32;
         if keyboard.pressed(KeyCode::KeyA) || keyboard.pressed(KeyCode::ArrowLeft) {
             move_input -= 1.0;
@@ -325,42 +326,19 @@ pub fn tomba_movement_system(
             rail.facing = move_input;
             rail.move_speed = TOMBA_WALK_SPEED;
             let step = move_input * TOMBA_WALK_SPEED * dt;
-            let target_s = rail.s + step;
-            // Ref: f_ResolveTerrainProbeHorizontalSurfaceBySideMask
-            if !plane.is_wall_blocking(rail.s, target_s, rail.y) {
-                rail.s = target_s;
-            }
+            let (new_plane_id, new_s, _blocked) = collision.advance_actor_along_rail(
+                rail.plane_id,
+                rail.s,
+                step,
+                rail.y,
+            );
+            rail.plane_id = new_plane_id;
+            rail.s = new_s;
         } else {
             rail.move_speed = 0.0;
         }
 
-        // ── Límite de plano / handoff ─────────────────────────────────────────
-        // Ref: collision.cpp:639-675 (sector handoff 0x80048fc4)
-        if rail.s < 0.0 {
-            if plane.ls > 0 {
-                let dest_id = plane.ls as usize;
-                if let Some(dest) = collision.get_plane(dest_id) {
-                    rail.plane_id = dest_id;
-                    rail.s = dest.length;
-                } else {
-                    rail.s = 0.0;
-                }
-            } else {
-                rail.s = 0.0;
-            }
-        } else if rail.s > plane.length {
-            if plane.le > 0 {
-                let dest_id = plane.le as usize;
-                if collision.get_plane(dest_id).is_some() {
-                    rail.plane_id = dest_id;
-                    rail.s = 0.0;
-                } else {
-                    rail.s = plane.length;
-                }
-            } else {
-                rail.s = plane.length;
-            }
-        }
+        let plane = collision.get_plane(rail.plane_id).unwrap_or(plane);
 
         // ── Proyección sobre el plano (X/Z) ──────────────────────────────────
         // Ref: f_ProjectActorOntoAreaPlane (0x80047778 / collision.cpp:678-716)
@@ -441,9 +419,9 @@ pub fn tomba_movement_system(
 
             // Detección de suelo al descender (Entity_CollisionGround.c / Entity_State_Walk.c case 2)
             if rail.vertical_velocity <= 0.0 {
-                if let Some(floor_h) = plane.sample_floor(rail.s, rail.y) {
-                    if rail.y <= floor_h {
-                        rail.y = floor_h;
+                if let Some(contact) = plane.sample_ground_contact(rail.s, rail.y) {
+                    if rail.y <= contact.height {
+                        rail.y = contact.height;
                         rail.vertical_velocity = 0.0;
                         rail.is_grounded = true;
                     }
@@ -452,8 +430,8 @@ pub fn tomba_movement_system(
         } else {
             // Grounded: snapear al contorno del suelo (pendientes, escalones)
             // Ref: Collision::snapObjectToTerrain (collision.cpp:786-788)
-            if let Some(floor_h) = plane.sample_floor(rail.s, rail.y) {
-                rail.y = floor_h;
+            if let Some(contact) = plane.sample_ground_contact(rail.s, rail.y) {
+                rail.y = contact.height;
             } else {
                 rail.is_grounded = false;
             }

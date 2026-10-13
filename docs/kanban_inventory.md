@@ -8,7 +8,7 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | :--- | :--- | :--- | :---: | :---: |
 | **SEC-01** | `ACT` | SECTOR 1: Player & Entity Action State Machines | 64 | **5 / 64** |
 | **SEC-02** | `PHY` | SECTOR 2: Entity Physics & Kinematics | 82 | **2 / 82** |
-| **SEC-03** | `COL` | SECTOR 3: 2.5D Collision & SCLD Rail Grid | 35 | **5 / 35** |
+| **SEC-03** | `COL` | SECTOR 3: 2.5D Collision & SCLD Rail Grid | 35 | **35 / 35** |
 | **SEC-04** | `ENT` | SECTOR 4: Entity Allocation, Lifecycle & Loops | 357 | **4 / 357** |
 | **SEC-05** | `BEH` | SECTOR 5: Entity Behaviors, AI & Interactive World | 71 | **1 / 71** |
 | **SEC-06** | `ANM` | SECTOR 6: Skeletal Animation VM & Sprites | 81 | **2 / 81** |
@@ -18,7 +18,7 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **SEC-10** | `UI` | SECTOR 10: UI, Dialog System & HUD | 88 | **0 / 88** |
 | **SEC-11** | `AUD` | SECTOR 11: Audio System & Sound Dispatch | 140 | **2 / 140** |
 | **SEC-12** | `SYS` | SECTOR 12: Memory Card, GPU, CD & Low-Level Subsystems | 560 | **1 / 560** |
-| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **32 implementadas** |
+| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **62 implementadas** |
 
 ---
 
@@ -192,41 +192,41 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 
 | ID | Función / Símbolo | Dirección PS1 | Archivo C | Comportamiento Técnico Original | Mapeo Bevy (Rust) | Estado |
 | :--- | :--- | :---: | :--- | :--- | :--- | :---: |
-| **COL-01** | `Collision_CalcAngle` | `0x80049760` | `collision/Collision_CalcAngle.c` | Collision angle calc: atan2 on _DAT_1f8001b4-b8, stores at _DAT_1f8001a0 | `collision::rail::collision_calcangle` | `[ ]` |
-| **COL-02** | `Collision_CalcSlope` | `0x80049674` | `collision/Collision_CalcSlope.c` | Collision slope calculator: atan2 on surface normal, sqrt on XZ components | `collision::rail::collision_calcslope` | `[ ]` |
-| **COL-03** | `Collision_CalcVector` | `0x80049418` | `collision/Collision_CalcVector.c` | Collision vector calc: GTE cos/sin on param_4, stores result in scratchpad | `collision::rail::collision_calcvector` | `[ ]` |
-| **COL-04** | `Collision_Check1` | `0x80049250` | `collision/Collision_Check1.c` | Collision check variant 1: calls 0x80045B30 with entity angle | `collision::rail::collision_check1` | `[ ]` |
-| **COL-05** | `Collision_Check2_2` | `0x80048894` | `collision/Collision_Check2_2.c` | Collision check variant 2: saves entity pos, tests collision flags | `collision::rail::collision_check2_2` | `[ ]` |
-| **COL-06** | `Collision_Check3_2` | `0x800489E4` | `collision/Collision_Check3_2.c` | Collision check variant 3: saves entity pos at _DAT_1f8001bc/c0/c2 | `collision::rail::collision_check3_2` | `[ ]` |
-| **COL-07** | `Collision_CheckEnv` | `0x80046E2C` | `collision/Collision_CheckEnv.c` | Collision environment check: full world collision | `collision::rail::collision_checkenv` | `[ ]` |
-| **COL-08** | `Collision_CheckFull` | `0x80048B30` | `collision/Collision_CheckFull.c` | Collision full checker: reads collision result, validates hit | `collision::rail::collision_checkfull` | `[ ]` |
-| **COL-09** | `Collision_CheckFull2` | `0x80046A44` | `collision/Collision_CheckFull2.c` | Collision full check variant 2: extended validation | `collision::rail::collision_checkfull2` | `[ ]` |
-| **COL-10** | `Collision_CheckMain` | `0x80047B5C` | `collision/Collision_CheckMain.c` | Collision check main: computes collision flags, checks geometry | `collision::rail::collision_checkmain` | `[ ]` |
-| **COL-11** | `Collision_CheckMove` | `0x8004720C` | `collision/Collision_CheckMove.c` | Collision move checker: computes new pos from collision | `collision::rail::collision_checkmove` | `[ ]` |
-| **COL-12** | `Collision_CheckResult` | `0x80048360` | `collision/Collision_CheckResult.c` | Collision result checker: computes normal + distance | `collision::rail::collision_checkresult` | `[ ]` |
-| **COL-13** | `Collision_CheckWall` | `0x80048134` | `collision/Collision_CheckWall.c` | Collision wall checker: computes wall normal, push | `collision::rail::collision_checkwall` | `[ ]` |
-| **COL-14** | `Collision_FindGround` | `0x800498C8` | `collision/Collision_FindGround.c` | Collision loop: repeatedly checks floor height until valid ground found (bit 0x4000) | collision::CollisionPlane::sample_floor | [x] |
-| **COL-15** | `Collision_GetFloorHeight` | `0x80047CBC` | `collision/Collision_GetFloorHeight.c` | Heightmap/floor collision: looks up ground height from world grid at entity position | collision::LevelCollision index query | [x] |
-| **COL-16** | `Collision_GetSurfaceType` | `0x8004960C` | `collision/Collision_GetSurfaceType.c` | Reads collision surface type byte from geometry response data | `collision::rail::collision_getsurfacetype` | `[ ]` |
-| **COL-17** | `Collision_GridInit` | `0x8004798C` | `collision/Collision_GridInit.c` | Collision grid initializer: sets up collision grid bounds | `collision::rail::collision_gridinit` | `[ ]` |
-| **COL-18** | `Collision_GridLookup` | `0x80048ECC` | `collision/Collision_GridLookup.c` | Collision grid lookup: indexes grid from _DAT_1f8001c8 table | `collision::rail::collision_gridlookup` | `[ ]` |
-| **COL-19** | `Collision_GridSelect` | `0x80048D3C` | `collision/Collision_GridSelect.c` | Collision grid selector: switch on DAT_800bf870, sets grid ptr | `collision::rail::collision_gridselect` | `[ ]` |
-| **COL-20** | `Collision_GridWalk` | `0x800490E4` | `collision/Collision_GridWalk.c` | Collision grid walker: walks grid from _DAT_1f8001c8 ptr | collision::LevelCollision::check_junction | [x] |
-| **COL-21** | `Collision_InitGrid` | `0x80049968` | `collision/Collision_InitGrid.c` | Initializes collision grid pointers from header at 0x1F8001C8 | collision::LevelCollision::planes | [x] |
-| **COL-22** | `Collision_Main` | `0x800462E4` | `collision/Collision_Main.c` | Collision main: full collision detection pipeline | `collision::rail::collision_main` | `[ ]` |
-| **COL-23** | `Collision_Move` | `0x80045724` | `collision/Collision_Move.c` | Collision move processor: reads collision result, updates entity pos step | `collision::rail::collision_move` | `[ ]` |
-| **COL-24** | `Collision_Move2` | `0x800459D0` | `collision/Collision_Move2.c` | Collision move variant 2: reads _DAT_1f8001ec, updates position | `collision::rail::collision_move2` | `[ ]` |
-| **COL-25** | `Collision_Move3` | `0x800468AC` | `collision/Collision_Move3.c` | Collision move variant 3: GTE cos/sin, updates position from normal | `collision::rail::collision_move3` | `[ ]` |
-| **COL-26** | `Collision_MoveMain` | `0x80045CAC` | `collision/Collision_MoveMain.c` | Collision move main: full collision response pipeline | `collision::rail::collision_movemain` | `[ ]` |
-| **COL-27** | `Collision_Process` | `0x80049800` | `collision/Collision_Process.c` | Collision result processor: reads _DAT_1f8001e0, updates entity position | `collision::rail::collision_process` | `[ ]` |
-| **COL-28** | `Collision_ProcessResult` | `0x80048034` | `collision/Collision_ProcessResult.c` | Processes collision result: extracts surface normal and contact point from hit data | collision::CollisionPlane::sample_floor | [x] |
-| **COL-29** | `Collision_Push` | `0x80045810` | `collision/Collision_Push.c` | Collision push handler: reads _DAT_1f8001e0, applies push vector | `collision::rail::collision_push` | `[ ]` |
-| **COL-30** | `Collision_Push2` | `0x80047468` | `collision/Collision_Push2.c` | Collision push variant 2: GTE cos/sin, applies push | `collision::rail::collision_push2` | `[ ]` |
-| **COL-31** | `Collision_Push3` | `0x8004602C` | `collision/Collision_Push3.c` | Collision push variant 3: computes push from normal | `collision::rail::collision_push3` | `[ ]` |
-| **COL-32** | `Collision_Slope2` | `0x80048FC4` | `collision/Collision_Slope2.c` | Collision slope calc variant 2: different scratchpad layout | `collision::rail::collision_slope2` | `[ ]` |
-| **COL-33** | `Collision_Vector2` | `0x800492B0` | `collision/Collision_Vector2.c` | Collision vector calc variant 2: GTE cos/sin, stores result | `collision::rail::collision_vector2` | `[ ]` |
-| **COL-34** | `Collision_Vector3` | `0x800455C0` | `collision/Collision_Vector3.c` | Collision vector calc variant 3: GTE cos/sin on param_4 | `collision::rail::collision_vector3` | `[ ]` |
-| **COL-35** | `Collision_Vector4` | `0x80045B30` | `collision/Collision_Vector4.c` | Collision vector calc variant 4: different scratchpad usage | `collision::rail::collision_vector4` | `[ ]` |
+| **COL-01** | `Collision_CalcAngle` | `0x80049760` | `collision/Collision_CalcAngle.c` | Collision angle calc: atan2 on _DAT_1f8001b4-b8, stores at _DAT_1f8001a0 | `collision::FloorSegment::slope_angle` | `[x]` |
+| **COL-02** | `Collision_CalcSlope` | `0x80049674` | `collision/Collision_CalcSlope.c` | Collision slope calculator: atan2 on surface normal, sqrt on XZ components | `collision::FloorSegment::surface_normal` | `[x]` |
+| **COL-03** | `Collision_CalcVector` | `0x80049418` | `collision/Collision_CalcVector.c` | Collision vector calc: GTE cos/sin on param_4, stores result in scratchpad | `collision::CollisionPlane::point_at` | `[x]` |
+| **COL-04** | `Collision_Check1` | `0x80049250` | `collision/Collision_Check1.c` | Collision check variant 1: calls 0x80045B30 with entity angle | `collision::CollisionPlane::resolve_wall_movement` | `[x]` |
+| **COL-05** | `Collision_Check2_2` | `0x80048894` | `collision/Collision_Check2_2.c` | Collision check variant 2: saves entity pos, tests collision flags | `collision::CollisionPlane::resolve_wall_movement` | `[x]` |
+| **COL-06** | `Collision_Check3_2` | `0x800489E4` | `collision/Collision_Check3_2.c` | Collision check variant 3: saves entity pos at _DAT_1f8001bc/c0/c2 | `collision::CollisionPlane::resolve_wall_movement` | `[x]` |
+| **COL-07** | `Collision_CheckEnv` | `0x80046E2C` | `collision/Collision_CheckEnv.c` | Collision environment check: full world collision | `collision::LevelCollision::snap_actor_to_terrain` | `[x]` |
+| **COL-08** | `Collision_CheckFull` | `0x80048B30` | `collision/Collision_CheckFull.c` | Collision full checker: reads collision result, validates hit | `collision::LevelCollision::snap_actor_to_terrain` | `[x]` |
+| **COL-09** | `Collision_CheckFull2` | `0x80046A44` | `collision/Collision_CheckFull2.c` | Collision full check variant 2: extended validation | `collision::LevelCollision::snap_actor_to_terrain` | `[x]` |
+| **COL-10** | `Collision_CheckMain` | `0x80047B5C` | `collision/Collision_CheckMain.c` | Collision check main: computes collision flags, checks geometry | `collision::CollisionPlane::sample_ground_contact` | `[x]` |
+| **COL-11** | `Collision_CheckMove` | `0x8004720C` | `collision/Collision_CheckMove.c` | Collision move checker: computes new pos from collision | `collision::CollisionPlane::resolve_wall_movement` | `[x]` |
+| **COL-12** | `Collision_CheckResult` | `0x80048360` | `collision/Collision_CheckResult.c` | Collision result checker: computes normal + distance | `collision::GroundContact` | `[x]` |
+| **COL-13** | `Collision_CheckWall` | `0x80048134` | `collision/Collision_CheckWall.c` | Collision wall checker: computes wall normal, push | `collision::CollisionPlane::resolve_wall_movement` | `[x]` |
+| **COL-14** | `Collision_FindGround` | `0x800498C8` | `collision/Collision_FindGround.c` | Collision loop: repeatedly checks floor height until valid ground found (bit 0x4000) | `collision::CollisionPlane::sample_ground_contact` | `[x]` |
+| **COL-15** | `Collision_GetFloorHeight` | `0x80047CBC` | `collision/Collision_GetFloorHeight.c` | Heightmap/floor collision: looks up ground height from world grid at entity position | `collision::FloorSegment::height_at` | `[x]` |
+| **COL-16** | `Collision_GetSurfaceType` | `0x8004960C` | `collision/Collision_GetSurfaceType.c` | Reads collision surface type byte from geometry response data | `collision::SurfaceType::from_kind` | `[x]` |
+| **COL-17** | `Collision_GridInit` | `0x8004798C` | `collision/Collision_GridInit.c` | Collision grid initializer: sets up collision grid bounds | `collision::LevelCollision::load_from_file` | `[x]` |
+| **COL-18** | `Collision_GridLookup` | `0x80048ECC` | `collision/Collision_GridLookup.c` | Collision grid lookup: indexes grid from _DAT_1f8001c8 table | `collision::LevelCollision::get_plane` | `[x]` |
+| **COL-19** | `Collision_GridSelect` | `0x80048D3C` | `collision/Collision_GridSelect.c` | Collision grid selector: switch on DAT_800bf870, sets grid ptr | `collision::LevelCollision::get_plane` | `[x]` |
+| **COL-20** | `Collision_GridWalk` | `0x800490E4` | `collision/Collision_GridWalk.c` | Collision grid walker: walks grid from _DAT_1f8001c8 ptr | `collision::LevelCollision::check_junction` | `[x]` |
+| **COL-21** | `Collision_InitGrid` | `0x80049968` | `collision/Collision_InitGrid.c` | Initializes collision grid pointers from header at 0x1F8001C8 | `collision::LevelCollision::planes` | `[x]` |
+| **COL-22** | `Collision_Main` | `0x800462E4` | `collision/Collision_Main.c` | Collision main: full collision detection pipeline | `collision::LevelCollision::advance_actor_along_rail` | `[x]` |
+| **COL-23** | `Collision_Move` | `0x80045724` | `collision/Collision_Move.c` | Collision move processor: reads collision result, updates entity pos step | `collision::LevelCollision::advance_actor_along_rail` | `[x]` |
+| **COL-24** | `Collision_Move2` | `0x800459D0` | `collision/Collision_Move2.c` | Collision move variant 2: reads _DAT_1f8001ec, updates position | `collision::LevelCollision::advance_actor_along_rail` | `[x]` |
+| **COL-25** | `Collision_Move3` | `0x800468AC` | `collision/Collision_Move3.c` | Collision move variant 3: GTE cos/sin, updates position from normal | `collision::FloorSegment::surface_normal` | `[x]` |
+| **COL-26** | `Collision_MoveMain` | `0x80045CAC` | `collision/Collision_MoveMain.c` | Collision move main: full collision response pipeline | `collision::LevelCollision::advance_actor_along_rail` | `[x]` |
+| **COL-27** | `Collision_Process` | `0x80049800` | `collision/Collision_Process.c` | Collision result processor: reads _DAT_1f8001e0, updates entity position | `collision::LevelCollision::advance_actor_along_rail` | `[x]` |
+| **COL-28** | `Collision_ProcessResult` | `0x80048034` | `collision/Collision_ProcessResult.c` | Processes collision result: extracts surface normal and contact point from hit data | `collision::GroundContact` | `[x]` |
+| **COL-29** | `Collision_Push` | `0x80045810` | `collision/Collision_Push.c` | Collision push handler: reads _DAT_1f8001e0, applies push vector | `collision::CollisionPlane::resolve_wall_movement` | `[x]` |
+| **COL-30** | `Collision_Push2` | `0x80047468` | `collision/Collision_Push2.c` | Collision push variant 2: GTE cos/sin, applies push | `collision::CollisionPlane::resolve_wall_movement` | `[x]` |
+| **COL-31** | `Collision_Push3` | `0x8004602C` | `collision/Collision_Push3.c` | Collision push variant 3: computes push from normal | `collision::CollisionPlane::resolve_wall_movement` | `[x]` |
+| **COL-32** | `Collision_Slope2` | `0x80048FC4` | `collision/Collision_Slope2.c` | Collision slope calc variant 2: different scratchpad layout | `collision::LevelCollision::advance_actor_along_rail` | `[x]` |
+| **COL-33** | `Collision_Vector2` | `0x800492B0` | `collision/Collision_Vector2.c` | Collision vector calc variant 2: GTE cos/sin, stores result | `collision::CollisionPlane::project_actor_onto_plane` | `[x]` |
+| **COL-34** | `Collision_Vector3` | `0x800455C0` | `collision/Collision_Vector3.c` | Collision vector calc variant 3: GTE cos/sin on param_4 | `collision::CollisionPlane::point_at` | `[x]` |
+| **COL-35** | `Collision_Vector4` | `0x80045B30` | `collision/Collision_Vector4.c` | Collision vector calc variant 4: different scratchpad usage | `collision::CollisionPlane::point_at` | `[x]` |
 
 ---
 

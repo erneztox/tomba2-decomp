@@ -17,19 +17,32 @@ SLPS_*
 # Extracted Assets
 assets/
 !assets/.keep
+assets_named/
+sprites_extracted/
 
-# Build artifacts
+# Build artifacts and Rust
 build/
 *.o
 *.elf
 *.map
+expected/
+target/
 
 # Python virtual environment and cache
 venv/
 __pycache__/
 *.pyc
 
+# Logs
+*.log
+*.lck
+
 # Ghidra Project files
 ghidra/
 *.gpr
 *.rep/
+tools/ghidra-mcp/
+
+# External reference repositories
+Tomba2Edit/
+Tomba2Engine/

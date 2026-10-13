@@ -1,150 +1,139 @@
-# Tomba! 2 Decompilation Project
+# Tomba! 2: The Evil Swine Return — Modern Bevy (Rust) Port
 
-This is an ongoing matching decompilation project for the PlayStation 1 game **Tomba! 2: The Evil Swine Return** (also known as Tombi! 2).
+> **Objetivo del Proyecto:** Port nativo moderno y reimplementación completa del clásico de PlayStation 1 **Tomba! 2: The Evil Swine Return** en **Rust**, utilizando el motor de videojuegos basado en ECS **[Bevy](https://bevyengine.org/)**.
 
-The goal of this project is to accurately recreate the original C source code. To ensure no bugs are introduced, the resulting code is compiled using the original PsyQ compiler toolchain (`cc1`) combined with modern translation layers (`maspsx`) to produce a byte-for-byte matching executable.
+---
 
-## Legal
+## ⚠️ AVISO PARA DESARROLLADORES Y AGENTES IA
 
-> [!WARNING]
-> This repository does **NOT** contain any original game assets, executables, or copyrighted materials. To build the project, you must legally acquire a copy of the game and extract the necessary files yourself.
+> [!IMPORTANT]
+> **ESTE PROYECTO YA NO ES UNA DESCOMPILACIÓN BYTE-MATCHING PARA PS1.**
+> - **NO** intentes compilar código C con compiladores antiguos de PS1 (`cc1`, PsyQ, `maspsx`).
+> - **NO** intentes hacer diffs de ensamblador MIPS (`asm-differ`, `splat`).
+> - **SÍ** debes escribir código Rust limpio utilizando la arquitectura ECS de Bevy.
+> - **SÍ** debes usar los repositorios de referencia aquí incluidos para extraer assets y entender la lógica del motor original.
 
-## Setup Instructions
+---
 
-We use an automated Python script to extract the ISO, split the main executable into assembly, and set up the project. We also utilize Ghidra for reverse engineering and decompilation.
+## 🏛️ Los Tres Pilares del Proyecto
 
-### 1. Prerequisites
+Para lograr este port sin reinventar la rueda ni depender de ingeniería inversa desde cero, contamos con tres fuentes clave:
 
-- Python 3.8+
-- Arch Linux/Linux packages: `p7zip` and `bchunk`.
-- Arch Linux GNU Binutils for MIPS: `mips-linux-gnu-binutils` (required for assembling Little Endian PS1 objects).
-  - Install via AUR: `yay -S mips-linux-gnu-binutils`
-- Your compressed `.7z` archive or your `.bin`/`.cue` files legally obtained from your Tomba! 2 disc.
-- Ghidra 11.x+ (for decompilation).
+```mermaid
+flowchart TD
+    subgraph A["1. Pipeline de Assets"]
+        T2Edit["Tomba2Edit (Python)"]
+        T2Edit -->|Exporta| GLB["Modelos 3D y Niveles (.glb)"]
+        T2Edit -->|Exporta| PNG["Texturas y Sprites (.png)"]
+        T2Edit -->|Exporta| AUDIO["Audio y SFX (.wav)"]
+        T2Edit -->|Exporta| JSON["Textos y Diálogos (.json)"]
+    end
 
-### 2. Prepare the ROM
+    subgraph B["2. Arquitectura y Lógica"]
+        T2Eng["Tomba2Engine (C++)"]
+        T2Eng -->|Referencia| MOV["Físicas y Movimiento (actor_tomba.cpp)"]
+        T2Eng -->|Referencia| CAM["Cámara en Rieles (cutscene_camera.cpp)"]
+        T2Eng -->|Referencia| COL["Colisión y Contacto (collision_resolve.cpp)"]
+        T2Eng -->|Referencia| EVT["Eventos y Flags (scene_flags)"]
+    end
 
-Place your `.bin` and `.cue` files (or `.7z` archive) inside the `rom/` folder at the root of this project.
+    subgraph C["3. Ground Truth & Dumps"]
+        GHIDRA["src/ (Ghidra Dumps)"]
+        GHIDRA -->|Consulta| OV["Overlays A00-A0L (~15k líneas C)"]
+        GHIDRA -->|Consulta| MAIN["MAIN.EXE Dumps (~56k líneas C)"]
+        GHIDRA -->|Estructuras| INC["include/tomba.h y symbol_addrs.txt"]
+    end
 
-### 3. Run Setup & Extraction
-
-Run the setup script. This script will:
-1. Extract the main executable (e.g., `SCUS_944.54`).
-2. Run `splat` to split the executable into pure assembly files (`asm/`).
-3. Extract the game's proprietary files into the `assets/` directory (unpacking the internal filesystem).
-
-```bash
-python3 scripts/setup.py
+    GLB & PNG & AUDIO & JSON --> BEVY["bevy_tomba2 (Port en Rust / Bevy)"]
+    MOV & CAM & COL & EVT --> BEVY
+    OV & MAIN & INC --> BEVY
 ```
 
-### 4. Ghidra Setup & MCP Bridge
+1. **Extractor de Assets (`Tomba2Edit/`)**:
+   - Repositorio activo en Python/PyQt6 capaz de leer la ISO/BIN del juego.
+   - Extrae modelos 3D (`SMST`), escenarios (`MDAT`) y animaciones (`ANMP`) directamente a **glTF 2.0 / GLB** con texturas y esqueletos compatibles de forma nativa con Bevy.
+   - Extrae sprites (`SPRT`), audio (`WAV`/`MIDI`), diálogos (`JSON`) y planos de colisión (`SCLD`).
 
-To start analyzing and extracting C code, we use Ghidra with a custom MCP bridge.
+2. **Lógica y Arquitectura en C++ (`Tomba2Engine/`)**:
+   - Proyecto de ingeniería inversa avanzada con ~73.000 líneas de C++ estructurado y documentado.
+   - Contiene la traducción limpia del control del jugador ([`actor_tomba.cpp`](Tomba2Engine/game/player/actor_tomba.cpp)), la cámara tridimensional sobre rieles ([`cutscene_camera.cpp`](Tomba2Engine/game/camera/cutscene_camera.cpp)), la resolución de colisiones y las tablas de eventos.
+   - **Es la plantilla directa para diseñar los componentes y sistemas en Bevy.**
 
-1. **Import the Executable**: Open Ghidra, create a project, and import `rom/extracted/SCUS_944.54`. 
-   - Format: `Raw Binary`
-   - Language: `MIPS:LE:32:default`
-2. **CRITICAL: Set Image Base**: The PS1 loads this executable at `0x80010000`. In Ghidra, go to **Window > Memory Map**, click the **Move Image Base** icon (the house with a blue arrow), and change the address from `00000000` to `80010000`.
-3. **Auto Analyze**: Let Ghidra perform its default analysis.
-4. **Start MCP Server**: If you installed the Ghidra-MCP bridge, start it via `Tools > GhidraMCP > Start MCP Server`. This allows external scripts to fetch decompiled code directly from your Ghidra instance.
+3. **Base de Datos de Descompilación y Estructuras (`src/` e `include/`)**:
+   - Contiene los volcados completos de Ghidra en lenguaje C (`src/main/` con ~56k líneas y `src/overlays/` con ~15k líneas correspondientes a las zonas `A00` a `A0L`).
+   - Sirve como oráculo de consulta cuando se necesite implementar minijuegos, jefes específicos de un overlay o verificar offsets de memoria en [`include/tomba.h`](include/tomba.h) y [`symbol_addrs.txt`](symbol_addrs.txt).
 
-## Engine Architecture & CD Structure
+---
 
-Tomba! 2 uses a custom file loading and indexing system, completely bypassing standard ISO9660 `CdSearchFile` lookups for its main assets.
+## 🗺️ Hoja de Ruta Completa (Roadmap)
 
-### Executables
-- **`SCUS_944.54`**: A lightweight bootloader/anti-piracy stub. It initializes the console and hands execution over to `MAIN.EXE`.
-- **`MAIN.EXE`**: The true game engine (~716 KB). Contains the physics, GTE graphics logic, file parsing, and the LZSS decompression routines.
+### Fase 0: Preparación y Workspace en Rust
+- [ ] Inicializar el crate de Rust en el espacio de trabajo: `cargo new --bin bevy_tomba2`.
+- [ ] Configurar dependencias en `Cargo.toml`:
+  - `bevy` (versión más reciente estable con soporte glTF y animación 3D).
+  - Motor de física/colisión 3D (p. ej. `avian3d` o `bevy_rapier3d`).
+  - `serde` y `serde_json` para datos de diálogos y metadatos de nivel.
+- [ ] Limpiar archivos obsoletos del viejo pipeline de matching de PS1 (ver sección de limpieza).
 
-### Master Index & Assets
-- **`START.BIN`**: The master manifest. A small plaintext list linking CD file paths (e.g., `\CD\SWDATA.BIN;1`) to internal numeric IDs.
-- **`TOMBA2.IDX`**: The master pointer database. Sector 0 indexes 3D models/animations in `TOMBA2.DAT`. Sector 1 indexes raw VRAM texture uploads in `TOMBA2.IMG`.
-- **Custom Formats & Compression**: Tomba! 2 strips standard PlayStation headers (`.TMD`, `.TIM`) to save RAM. Both `TOMBA2.DAT` and `TOMBA2.IMG` contain highly compressed chunks (LZSS). We use `tools/extractor/extractor.py` to natively parse `.IDX`, decompress the VRAM images, and extract the 3D meshes to the `assets/` directory.
+### Fase 1: Pipeline de Extracción de Assets
+- [ ] Automatizar la exportación del Área 0 / Área 1 (*Fisherman's Village / Seaside Field*) desde `Tomba2Edit` a `.glb`.
+- [ ] Exportar el modelo 3D de Tomba con sus mallas, texturas y clips de animación esquelética (idle, walk, run, jump) a `.glb`.
+- [ ] Exportar los planos de colisión `SCLD` del primer nivel a un formato de malla/coordenadas consumible por Bevy.
 
-### Level Overlays (.BIN files)
-Files like `A00.BIN` are **compiled executable overlays**, not just asset archives. They are loaded at a fixed RAM address (usually `0x80100000`) and contain a massive virtual table of absolute memory pointers at their header, allowing `MAIN.EXE` to execute level-specific logic and fetch localized models instantly.
+### Fase 2: Prototipo Visual (Vertical Slice - Entorno)
+- [ ] Cargar y renderizar el escenario del Área 1 en Bevy mediante `SceneBundle`.
+- [ ] Ajustar la iluminación (iluminación ambiente, directional light) y materiales PBR o unlit estilizado retro.
+- [ ] Instanciar a Tomba en el punto de spawn inicial del nivel y verificar la reproducción de animaciones.
 
-## Asset Extraction & VRAM Conversion
+### Fase 3: Controlador de Tomba y Cámara 2.5D (Core Gameplay)
+- [ ] **Player Controller (Bevy ECS)**:
+  - Crear componentes: `Player`, `PlayerState` (Idle, Walk, Run, Jump, Fall), `Velocity`, `GroundSensor`.
+  - Traducir la lógica de aceleración, gravedad y saltos desde `Tomba2Engine/game/player/actor_tomba.cpp`.
+- [ ] **Cámara en Rieles (2.5D Path Navigation)**:
+  - Implementar el sistema de rieles/caminos tridimensionales de Tomba 2 (`LookAngleBuilder` y `CutsceneCamera` en `Tomba2Engine/game/camera/`).
+  - La cámara debe seguir a Tomba por la curva del nivel, ajustando el ángulo de visión en cruces e intersecciones.
+- [ ] **Colisiones del Escenario**:
+  - Convertir los planos y muros `SCLD` en colliders estáticos en Avian3D/Rapier3D.
+  - Asegurar el "ground snapping" para que Tomba no resbale por la geometría curva.
 
-To natively extract the LZSS compressed 3D models (`.sdat`) and raw texture dumps (`.vram`) from the game without using an emulator, run the included extractor script:
+### Fase 4: Interacciones, Ítems y Progresión
+- [ ] Sistema de recogida de ítems y cofres (basado en `actor_interaction.cpp`).
+- [ ] Portar el vector de 256 flags de eventos (`scene_flags::kFlagTable`) y la tabla de 256 ítems de inventario.
+- [ ] Sistema de diálogos básico cargando los textos JSON extraídos por `Tomba2Edit`.
 
-```bash
-python3 tools/extractor/extractor.py
+### Fase 5: Enemigos e Inteligencia Artificial
+- [ ] Portar los comportamientos básicos de enemigos:
+  - Cerdo común / Koma Pig (`tomba::ai::ActorZonedAttacker` en `Tomba2Engine/game/ai/`).
+  - Mecánica de morder y lanzar cerdos (agarre de Tomba + parábola de lanzamiento).
+- [ ] Portar los overlays de nivel (`A00` - `A0L`) a sistemas modulares de Bevy según se avance por las áreas.
+
+### Fase 6: Audio, Menús y Pulido
+- [ ] Integrar música de fondo (`.wav` / `.ogg` extraídos de XA/SEQ) y efectos de sonido al interactuar/saltar/atacar.
+- [ ] Menú de inventario, libro de eventos (137 misiones del diario) y pantalla de opciones.
+- [ ] Soporte para mandos (gamepad) con rumble y mapeo configurable.
+
+---
+
+## 📂 Organización de Archivos
+
+```
+revert-tomba2/
+├── Tomba2Edit/           # Toolkit Python: extracción de assets, visor y editor
+├── Tomba2Engine/         # Motor C++: referencia arquitectónica y lógica matemática
+├── src/                  # Dumps descompilados de Ghidra en C (MAIN.EXE y Overlays A00-A0L)
+├── include/              # Encabezados con structs de entidades (tomba.h)
+├── symbol_addrs.txt      # Mapeo maestro de direcciones de memoria a nombres legibles
+├── tools/                # Scripts auxiliares y herramientas de mapeo
+│   └── map_functions.py  # Diccionario maestro de funciones identificadas (>2000 líneas)
+├── bevy_tomba2/          # (Próximo) Proyecto nativo en Rust con Bevy
+└── README.md             # Esta guía y hoja de ruta
 ```
 
-This will populate the `assets/` folder with multiple `chunk_XX` directories containing the raw game data.
+---
 
-### 3D Models and Sprite Sheets (.SDAT to PNG)
+## 🛠️ Reglas para Contribuir
 
-Because Tomba! 2 uses 2D sprites running in a 3D environment, the `.sdat` files contain complex structures grouping bounding boxes, UVs, and CLUTs (Color Lookup Tables) for each character animation frame.
-
-There are two scripts provided for image extraction depending on your needs:
-
-1. **`vram2png.py`**: A low-level tool that dumps the raw 1MB VRAM memory pages (1024x512 pixels at 16-bit color) without applying palettes. Use this only if you need to inspect the raw layout of video memory.
-2. **`sdat2img.py`** (Main Script): This intelligent script reads the engine's 3D geometry (`.sdat`), parses the embedded polygons, locates the correct Color Lookup Tables (CLUTs), and outputs perfectly colored 256x256 `.png` spritesheets matching the game's actual rendering logic.
-
-To mass-extract every accurately colored spritesheet from all geometry files, run:
-
-```bash
-python3 sdat2img.py
-```
-
-This script parses every `.sdat` model across all chunks, composites the VRAM, applies the correct palettes, and dumps clean spritesheets into the `assets/imagenes_perfectas/` directory.
-
-## Compilation Pipeline
-
-We have established a fully automated build pipeline that mirrors the original 1999 environment:
-
-```bash
-make
-```
-
-What `make` does under the hood:
-1. Takes decompiled C code from `src/` (e.g., `src/func_8001DD04.c`).
-2. Compiles it using the original PsyQ compiler (`tools/old-gcc/cc1`).
-3. Processes the legacy assembly through `tools/maspsx` to make it compatible with modern GNU assemblers.
-4. Assembles the final `.o` object file using `mips-linux-gnu-as` (with the `-EL` Little Endian flag).
-
-The resulting object files will reside in `build/src/` as `elf32-tradlittlemips` binaries.
-
-## Audio Extraction
-
-Since PS1 CD-ROM XA audio files use specialized 2352-byte sectors with interleaved channels, extracting them requires a specialized tool (`jpsxdec`). We have automated this process in Python:
-
-```bash
-python3 scripts/extract_music.py
-```
-
-This script will automatically download `jpsxdec`, parse the original `.bin` ROM track, and extract all background music, cinematics audio, and voice clips as pristine `.wav` files into the `extracted_music/` directory.
-
-## Local Matching with asm-differ
-
-To verify that your C code produces the exact same assembly as the original game, we use `asm-differ`.
-
-### 1. Install Dependencies
-If you are on Arch Linux, install the required python packages:
-```bash
-yay -S python-colorama python-watchdog python-levenshtein
-```
-
-### 2. Run the Diff
-We have automated the assembly and diffing process in the `Makefile`. To continuously monitor and diff a function (e.g. `func_8001DD04`):
-
-```bash
-make diff FUNC=func_8001DD04
-```
-
-This command will:
-1. Automatically read `asm/func_8001DD04.s`, inject the required `macro.inc`, and assemble it into the "expected" base object.
-2. Compile your `src/func_8001DD04.c` into the "build" object.
-3. Launch `asm-differ` in watch mode (`-w`), which will instantly recompile and update the visual diff every time you save your C file.
-
-## Contributing
-
-We use local matching and [decomp.me](https://decomp.me/) to crowdsource functions.
-
-1. Pick an assembly function from `asm/`.
-2. Rewrite the MIPS assembly into C code inside `src/`.
-3. To collaborate online, create a Scratch using our official **decomp.me Preset**: [https://decomp.me/preset/244](https://decomp.me/preset/244) (This sets up the PS1 platform, PsyQ 4.0 compiler, and `-O2 -G0` flags automatically).
-4. Use `asm-differ` locally to compare your `build/src/function.o` against the original extracted assembly.
-5. Once it's a 100% byte-perfect match, open a Pull Request!
+1. **Escribe en Rust idiomático:** Utiliza la arquitectura de Bevy (`Component`, `Resource`, `System`, `Query`, `Event`).
+2. **Revisa primero `Tomba2Engine`:** Antes de intentar adivinar cómo funciona una mecánica, busca la clase o archivo correspondiente en `Tomba2Engine/game/`.
+3. **Consulta los dumps de `src/`:** Si una mecánica específica de un nivel o minijuego no está clara en `Tomba2Engine`, busca la función en `src/overlays/` o en `src/main/`.
+4. **No ensucies el repositorio con binarios de MIPS:** Los assets deben procesarse y almacenarse en formatos modernos (`.glb`, `.png`, `.wav`, `.json`).

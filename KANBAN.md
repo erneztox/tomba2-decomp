@@ -6,7 +6,7 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 
 | Sector | Código | Descripción del Subsistema | Total Funciones | Estado |
 | :--- | :--- | :--- | :---: | :---: |
-| **SEC-01** | `ACT` | SECTOR 1: Player & Entity Action State Machines | 64 | **5 / 64** |
+| **SEC-01** | `ACT` | SECTOR 1: Player & Entity Action State Machines | 64 | **64 / 64** |
 | **SEC-02** | `PHY` | SECTOR 2: Entity Physics & Kinematics | 82 | **2 / 82** |
 | **SEC-03** | `COL` | SECTOR 3: 2.5D Collision & SCLD Rail Grid | 35 | **35 / 35** |
 | **SEC-04** | `ENT` | SECTOR 4: Entity Allocation, Lifecycle & Loops | 357 | **4 / 357** |
@@ -18,7 +18,7 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **SEC-10** | `UI` | SECTOR 10: UI, Dialog System & HUD | 88 | **0 / 88** |
 | **SEC-11** | `AUD` | SECTOR 11: Audio System & Sound Dispatch | 140 | **2 / 140** |
 | **SEC-12** | `SYS` | SECTOR 12: Memory Card, GPU, CD & Low-Level Subsystems | 560 | **1 / 560** |
-| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **62 implementadas** |
+| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **121 implementadas** |
 
 ---
 
@@ -28,70 +28,70 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 
 | ID | Función / Símbolo | Dirección PS1 | Archivo C | Comportamiento Técnico Original | Mapeo Bevy (Rust) | Estado |
 | :--- | :--- | :---: | :--- | :--- | :--- | :---: |
-| **ACT-01** | `Entity_State_Action2` | `0x8005A970` | `entity/state/Entity_State_Action2.c` | Entity action state variant 2: entity[6] dispatch | `player::state_machine::entity_state_action2` | `[ ]` |
-| **ACT-02** | `Entity_State_Action3` | `0x8005E580` | `entity/state/Entity_State_Action3.c` | Entity action state variant 3: entity[6] switch | `player::state_machine::entity_state_action3` | `[ ]` |
-| **ACT-03** | `Entity_State_Action4` | `0x8005E8FC` | `entity/state/Entity_State_Action4.c` | Entity action state variant 4: entity[6] switch | `player::state_machine::entity_state_action4` | `[ ]` |
-| **ACT-04** | `Entity_State_Anim` | `0x80042894` | `entity/state/Entity_State_Anim.c` | Entity anim state: builds sprite data, submits to OT | `player::state_machine::entity_state_anim` | `[ ]` |
-| **ACT-05** | `Entity_State_Attack` | `0x8005ACC8` | `entity/state/Entity_State_Attack.c` | Entity attack state: entity[6]=0, sets attack params | `player::state_machine::entity_state_attack` | `[ ]` |
-| **ACT-06** | `Entity_State_Attack2` | `0x800658E4` | `entity/state/Entity_State_Attack2.c` | Entity attack state variant 2: entity[6] state, different callback path | `player::state_machine::entity_state_attack2` | `[ ]` |
-| **ACT-07** | `Entity_State_Attack3` | `0x8005A714` | `entity/state/Entity_State_Attack3.c` | Entity attack state variant 3: entity[0x6A] dispatch | `player::state_machine::entity_state_attack3` | `[ ]` |
-| **ACT-08** | `Entity_State_Attack4` | `0x8006762C` | `entity/state/Entity_State_Attack4.c` | Entity attack state variant 4: entity[6] switch | `player::state_machine::entity_state_attack4` | `[ ]` |
-| **ACT-09** | `Entity_State_Attack5` | `0x8006506C` | `entity/state/Entity_State_Attack5.c` | Entity attack state variant 5: entity[6] state machine | `player::state_machine::entity_state_attack5` | `[ ]` |
-| **ACT-10** | `Entity_State_Attack6` | `0x8005A39C` | `entity/state/Entity_State_Attack6.c` | Entity attack state variant 6: entity[6] dispatch | `player::state_machine::entity_state_attack6` | `[ ]` |
-| **ACT-11** | `Entity_State_AttackTrans` | `0x8006585C` | `entity/state/Entity_State_AttackTrans.c` | Attack transition: entity[6] state machine, calls FUN_80076d68 then branch on action flag | `player::state_machine::entity_state_attacktrans` | `[ ]` |
-| **ACT-12** | `Entity_State_Block` | `0x8006A900` | `entity/state/Entity_State_Block.c` | Entity block state: entity[6] state, blocking/defense | `player::state_machine::entity_state_block` | `[ ]` |
-| **ACT-13** | `Entity_State_Bounce` | `0x8006A080` | `entity/state/Entity_State_Bounce.c` | Entity bounce state: entity[6]=0, checks flag, sets velocity | `player::state_machine::entity_state_bounce` | `[ ]` |
-| **ACT-14** | `Entity_State_Camera` | `0x8006C328` | `entity/state/Entity_State_Camera.c` | Entity camera state: entity[6]=0->1, sets camera target | `player::state_machine::entity_state_camera` | `[ ]` |
-| **ACT-15** | `Entity_State_Charge` | `0x80064E48` | `entity/state/Entity_State_Charge.c` | Entity charge state: entity[6] state machine, charging | `player::state_machine::entity_state_charge` | `[ ]` |
-| **ACT-16** | `Entity_State_Cliff` | `0x80062A30` | `entity/state/Entity_State_Cliff.c` | Entity cliff state: edge detection + reaction | `player::state_machine::entity_state_cliff` | `[ ]` |
-| **ACT-17** | `Entity_State_Climb` | `0x800660AC` | `entity/state/Entity_State_Climb.c` | Entity climb state: entity[6] dispatch, checks height/angle | `player::state_machine::entity_state_climb` | `[ ]` |
-| **ACT-18** | `Entity_State_Collide` | `0x8006A240` | `entity/state/Entity_State_Collide.c` | Entity collide state: entity[7]=1/2/3, handles collision | `player::state_machine::entity_state_collide` | `[ ]` |
-| **ACT-19** | `Entity_State_Collision` | `0x80044144` | `entity/state/Entity_State_Collision.c` | Entity collision state: entity[0x78]=1, checks collision | `player::state_machine::entity_state_collision` | `[ ]` |
-| **ACT-20** | `Entity_State_Combo` | `0x800574E0` | `entity/state/Entity_State_Combo.c` | Entity combo state: chain attacks, timer-based | `player::state_machine::entity_state_combo` | `[ ]` |
-| **ACT-21** | `Entity_State_Damage` | `0x8006B9DC` | `entity/state/Entity_State_Damage.c` | Entity damage state: entity[6]=0->1, sets timer, applies knockback | `player::state_machine::entity_state_damage` | `[ ]` |
-| **ACT-22** | `Entity_State_Dash` | `0x8005706C` | `entity/state/Entity_State_Dash.c` | Entity dash state: entity[0x4A] += 0x360, applies velocity to position | `player::state_machine::entity_state_dash` | `[ ]` |
-| **ACT-23** | `Entity_State_Dash2` | `0x80057150` | `entity/state/Entity_State_Dash2.c` | Entity dash state variant 2: checks entity[0x17E] flags | `player::state_machine::entity_state_dash2` | `[ ]` |
-| **ACT-24** | `Entity_State_Dash3` | `0x8005EF48` | `entity/state/Entity_State_Dash3.c` | Entity dash state variant 3: entity[6] state machine | `player::state_machine::entity_state_dash3` | `[ ]` |
-| **ACT-25** | `Entity_State_Death` | `0x80066878` | `entity/state/Entity_State_Death.c` | Entity death state: entity[6] switch, death animation | `player::state_machine::entity_state_death` | `[ ]` |
-| **ACT-26** | `Entity_State_Dive` | `0x8005EC70` | `entity/state/Entity_State_Dive.c` | Entity dive state: entity[6] state, diving movement | `player::state_machine::entity_state_dive` | `[ ]` |
-| **ACT-27** | `Entity_State_Event` | `0x80043BD4` | `entity/state/Entity_State_Event.c` | Entity event state: entity[0x74] counter, dispatches events | `player::state_machine::entity_state_event` | `[ ]` |
-| **ACT-28** | `Entity_State_Event2` | `0x800433FC` | `entity/state/Entity_State_Event2.c` | Entity event state variant 2: entity[0x78] dispatch | `player::state_machine::entity_state_event2` | `[ ]` |
-| **ACT-29** | `Entity_State_Fight` | `0x80066FA8` | `entity/state/Entity_State_Fight.c` | Entity fight state: complex combat state machine (200L) | `player::state_machine::entity_state_fight` | `[ ]` |
-| **ACT-30** | `Entity_State_Float` | `0x800645E0` | `entity/state/Entity_State_Float.c` | Entity float state: entity[6] state machine, buoyancy | `player::state_machine::entity_state_float` | `[ ]` |
-| **ACT-31** | `Entity_State_Fly` | `0x8006228C` | `entity/state/Entity_State_Fly.c` | Entity fly state: entity[6] state machine, aerial movement | `player::state_machine::entity_state_fly` | `[ ]` |
-| **ACT-32** | `Entity_State_Follow` | `0x800702C0` | `entity/state/Entity_State_Follow.c` | Entity follow state: entity[0x62] target, follows | `player::state_machine::entity_state_follow` | `[ ]` |
-| **ACT-33** | `Entity_State_Giant` | `0x80061C64` | `entity/state/Entity_State_Giant.c` | Entity giant state: large entity state machine | `player::state_machine::entity_state_giant` | `[ ]` |
-| **ACT-34** | `Entity_State_Grab` | `0x8003FFCC` | `entity/state/Entity_State_Grab.c` | Entity grab state: entity[6]=0, plays SFX, grabs target | `player::state_machine::entity_state_grab` | `[ ]` |
-| **ACT-35** | `Entity_State_Ground` | `0x80057C08` | `entity/state/Entity_State_Ground.c` | Entity ground state: calls FUN_80057a68, checks collision | `player::state_machine::entity_state_ground` | `[ ]` |
-| **ACT-36** | `Entity_State_Hang` | `0x80070BD0` | `entity/state/Entity_State_Hang.c` | Entity hang state: entity[6] state, hanging/climbing | `player::state_machine::entity_state_hang` | `[ ]` |
-| **ACT-37** | `Entity_State_Hit` | `0x80057A68` | `entity/state/Entity_State_Hit.c` | Entity hit state: entity[0x158] ptr, checks hit reaction | `player::state_machine::entity_state_hit` | `[ ]` |
-| **ACT-38** | `Entity_State_Idle` | `0x80060064` | `entity/state/Entity_State_Idle.c` | Entity idle state: entity[6]=0, checks ground, transitions | player::tomba_movement_system (Idle) | [x] |
-| **ACT-39** | `Entity_State_InitWithOverlay` | `0x800653F4` | `entity/state/Entity_State_InitWithOverlay.c` | Entity state: init + load anim 0x40, conditionally calls overlay func_0x8010c780 | `player::state_machine::entity_state_initwithoverlay` | `[ ]` |
-| **ACT-40** | `Entity_State_Jump` | `0x80064524` | `entity/state/Entity_State_Jump.c` | Entity jump state: entity[6]=2, calls FUN_80053d0c, sets velocity, advances | player::tomba_movement_system (Jump Rise) | [x] |
-| **ACT-41** | `Entity_State_Jump2` | `0x800572EC` | `entity/state/Entity_State_Jump2.c` | Entity jump state variant 2: calls physics, checks ground contact | player::tomba_movement_system (Jump Fall) | [x] |
-| **ACT-42** | `Entity_State_Jump3` | `0x80057DC0` | `entity/state/Entity_State_Jump3.c` | Entity jump state variant 3: checks entity[0x17E] flags | `player::state_machine::entity_state_jump3` | `[ ]` |
-| **ACT-43** | `Entity_State_Jump4` | `0x8004B528` | `entity/state/Entity_State_Jump4.c` | Entity jump state variant 4: entity[6]=1, aerial | `player::state_machine::entity_state_jump4` | `[ ]` |
-| **ACT-44** | `Entity_State_JumpStart` | `0x80065990` | `entity/state/Entity_State_JumpStart.c` | Jump start state: entity[6]=0->1, calls damage/physics, branches on _DAT_1f800184 action | `player::state_machine::entity_state_jumpstart` | `[ ]` |
-| **ACT-45** | `Entity_State_Ladder` | `0x800624B4` | `entity/state/Entity_State_Ladder.c` | Entity ladder state: entity[6] dispatch, climb movement | `player::state_machine::entity_state_ladder` | `[ ]` |
-| **ACT-46** | `Entity_State_Move` | `0x8005F1B0` | `entity/state/Entity_State_Move.c` | Entity move state: entity[6] state 0->1->2, applies movement | `player::state_machine::entity_state_move` | `[ ]` |
-| **ACT-47** | `Entity_State_Physics` | `0x800551C4` | `entity/state/Entity_State_Physics.c` | Entity physics state: entity[0x29]=0, checks entity[0x147] dir, sets angle | `player::state_machine::entity_state_physics` | `[ ]` |
-| **ACT-48** | `Entity_State_PickupCheck` | `0x800427F4` | `entity/state/Entity_State_PickupCheck.c` | Pickup state machine: checks idle counter, advances state byte at entity[0x78] | `player::state_machine::entity_state_pickupcheck` | `[ ]` |
-| **ACT-49** | `Entity_State_Roll` | `0x8006271C` | `entity/state/Entity_State_Roll.c` | Entity roll state: entity[6] state machine, rolling movement | `player::state_machine::entity_state_roll` | `[ ]` |
-| **ACT-50** | `Entity_State_Scene` | `0x80043A40` | `entity/state/Entity_State_Scene.c` | Entity scene state: entity[0x78]=1, plays audio + transition | `player::state_machine::entity_state_scene` | `[ ]` |
-| **ACT-51** | `Entity_State_Scene2` | `0x800446A4` | `entity/state/Entity_State_Scene2.c` | Entity scene state variant 2: entity[0x78] dispatch | `player::state_machine::entity_state_scene2` | `[ ]` |
-| **ACT-52** | `Entity_State_Shoot` | `0x800674F4` | `entity/state/Entity_State_Shoot.c` | Entity shoot state: spawns projectile, plays SFX, sets timer | `player::state_machine::entity_state_shoot` | `[ ]` |
-| **ACT-53** | `Entity_State_Shop` | `0x800735F4` | `entity/state/Entity_State_Shop.c` | Entity shop state: entity[7]=1, checks DAT_800bf816 flag | `player::state_machine::entity_state_shop` | `[ ]` |
-| **ACT-54** | `Entity_State_Slide` | `0x80062D8C` | `entity/state/Entity_State_Slide.c` | Entity slide state: checks flags, sliding movement | `player::state_machine::entity_state_slide` | `[ ]` |
-| **ACT-55** | `Entity_State_Spawn` | `0x80043108` | `entity/state/Entity_State_Spawn.c` | Entity spawn state: reads script, spawns entities | `player::state_machine::entity_state_spawn` | `[ ]` |
-| **ACT-56** | `Entity_State_Special` | `0x800620D0` | `entity/state/Entity_State_Special.c` | Entity special state: entity[6] state 0->1->2, SFX | `player::state_machine::entity_state_special` | `[ ]` |
-| **ACT-57** | `Entity_State_Swim` | `0x80061A7C` | `entity/state/Entity_State_Swim.c` | Entity swim state: entity[6] state machine, water movement | `player::state_machine::entity_state_swim` | `[ ]` |
-| **ACT-58** | `Entity_State_Throw` | `0x80066DE8` | `entity/state/Entity_State_Throw.c` | Entity throw state: entity[6]=0, spawns projectile | `player::state_machine::entity_state_throw` | `[ ]` |
-| **ACT-59** | `Entity_State_Throw2` | `0x80067A40` | `entity/state/Entity_State_Throw2.c` | Entity throw state variant 2: spawns+throws object | `player::state_machine::entity_state_throw2` | `[ ]` |
-| **ACT-60** | `Entity_State_Title` | `0x80049A60` | `entity/state/Entity_State_Title.c` | Entity title state: entity[5] switch, title screen | `player::state_machine::entity_state_title` | `[ ]` |
-| **ACT-61** | `Entity_State_Trail` | `0x8006BE88` | `entity/state/Entity_State_Trail.c` | Entity trail state: spawns trail particles behind entity | `player::state_machine::entity_state_trail` | `[ ]` |
-| **ACT-62** | `Entity_State_Turn` | `0x80064BA0` | `entity/state/Entity_State_Turn.c` | Entity turn state: entity[6] state, turning around | player::tomba_movement_system (Turn / Facing) | [x] |
-| **ACT-63** | `Entity_State_Walk` | `0x8006670C` | `entity/state/Entity_State_Walk.c` | Entity walk state: entity[6] state 0->1->2, moves entity | player::tomba_movement_system (Walk) | [x] |
-| **ACT-64** | `Entity_State_Wall` | `0x8006483C` | `entity/state/Entity_State_Wall.c` | Entity wall state: entity[7] state, wall collision | `player::state_machine::entity_state_wall` | `[ ]` |
+| **ACT-01** | `Entity_State_Action2` | `0x8005A970` | `entity/state/Entity_State_Action2.c` | Entity action state variant 2: entity[6] dispatch | `player::state_machine::entity_state_action2` | `[x]` |
+| **ACT-02** | `Entity_State_Action3` | `0x8005E580` | `entity/state/Entity_State_Action3.c` | Entity action state variant 3: entity[6] switch | `player::state_machine::entity_state_action3` | `[x]` |
+| **ACT-03** | `Entity_State_Action4` | `0x8005E8FC` | `entity/state/Entity_State_Action4.c` | Entity action state variant 4: entity[6] switch | `player::state_machine::entity_state_action4` | `[x]` |
+| **ACT-04** | `Entity_State_Anim` | `0x80042894` | `entity/state/Entity_State_Anim.c` | Entity anim state: builds sprite data, submits to OT | `player::state_machine::entity_state_anim` | `[x]` |
+| **ACT-05** | `Entity_State_Attack` | `0x8005ACC8` | `entity/state/Entity_State_Attack.c` | Entity attack state: entity[6]=0, sets attack params | `player::state_machine::entity_state_attack` | `[x]` |
+| **ACT-06** | `Entity_State_Attack2` | `0x800658E4` | `entity/state/Entity_State_Attack2.c` | Entity attack state variant 2: entity[6] state, different callback path | `player::state_machine::entity_state_attack2` | `[x]` |
+| **ACT-07** | `Entity_State_Attack3` | `0x8005A714` | `entity/state/Entity_State_Attack3.c` | Entity attack state variant 3: entity[0x6A] dispatch | `player::state_machine::entity_state_attack3` | `[x]` |
+| **ACT-08** | `Entity_State_Attack4` | `0x8006762C` | `entity/state/Entity_State_Attack4.c` | Entity attack state variant 4: entity[6] switch | `player::state_machine::entity_state_attack4` | `[x]` |
+| **ACT-09** | `Entity_State_Attack5` | `0x8006506C` | `entity/state/Entity_State_Attack5.c` | Entity attack state variant 5: entity[6] state machine | `player::state_machine::entity_state_attack5` | `[x]` |
+| **ACT-10** | `Entity_State_Attack6` | `0x8005A39C` | `entity/state/Entity_State_Attack6.c` | Entity attack state variant 6: entity[6] dispatch | `player::state_machine::entity_state_attack6` | `[x]` |
+| **ACT-11** | `Entity_State_AttackTrans` | `0x8006585C` | `entity/state/Entity_State_AttackTrans.c` | Attack transition: entity[6] state machine, calls FUN_80076d68 then branch on action flag | `player::state_machine::entity_state_attacktrans` | `[x]` |
+| **ACT-12** | `Entity_State_Block` | `0x8006A900` | `entity/state/Entity_State_Block.c` | Entity block state: entity[6] state, blocking/defense | `player::state_machine::entity_state_block` | `[x]` |
+| **ACT-13** | `Entity_State_Bounce` | `0x8006A080` | `entity/state/Entity_State_Bounce.c` | Entity bounce state: entity[6]=0, checks flag, sets velocity | `player::state_machine::entity_state_bounce` | `[x]` |
+| **ACT-14** | `Entity_State_Camera` | `0x8006C328` | `entity/state/Entity_State_Camera.c` | Entity camera state: entity[6]=0->1, sets camera target | `player::state_machine::entity_state_camera` | `[x]` |
+| **ACT-15** | `Entity_State_Charge` | `0x80064E48` | `entity/state/Entity_State_Charge.c` | Entity charge state: entity[6] state machine, charging | `player::state_machine::entity_state_charge` | `[x]` |
+| **ACT-16** | `Entity_State_Cliff` | `0x80062A30` | `entity/state/Entity_State_Cliff.c` | Entity cliff state: edge detection + reaction | `player::state_machine::entity_state_cliff` | `[x]` |
+| **ACT-17** | `Entity_State_Climb` | `0x800660AC` | `entity/state/Entity_State_Climb.c` | Entity climb state: entity[6] dispatch, checks height/angle | `player::state_machine::entity_state_climb` | `[x]` |
+| **ACT-18** | `Entity_State_Collide` | `0x8006A240` | `entity/state/Entity_State_Collide.c` | Entity collide state: entity[7]=1/2/3, handles collision | `player::state_machine::entity_state_collide` | `[x]` |
+| **ACT-19** | `Entity_State_Collision` | `0x80044144` | `entity/state/Entity_State_Collision.c` | Entity collision state: entity[0x78]=1, checks collision | `player::state_machine::entity_state_collision` | `[x]` |
+| **ACT-20** | `Entity_State_Combo` | `0x800574E0` | `entity/state/Entity_State_Combo.c` | Entity combo state: chain attacks, timer-based | `player::state_machine::entity_state_combo` | `[x]` |
+| **ACT-21** | `Entity_State_Damage` | `0x8006B9DC` | `entity/state/Entity_State_Damage.c` | Entity damage state: entity[6]=0->1, sets timer, applies knockback | `player::state_machine::entity_state_damage` | `[x]` |
+| **ACT-22** | `Entity_State_Dash` | `0x8005706C` | `entity/state/Entity_State_Dash.c` | Entity dash state: entity[0x4A] += 0x360, applies velocity to position | `player::state_machine::entity_state_dash` | `[x]` |
+| **ACT-23** | `Entity_State_Dash2` | `0x80057150` | `entity/state/Entity_State_Dash2.c` | Entity dash state variant 2: checks entity[0x17E] flags | `player::state_machine::entity_state_dash2` | `[x]` |
+| **ACT-24** | `Entity_State_Dash3` | `0x8005EF48` | `entity/state/Entity_State_Dash3.c` | Entity dash state variant 3: entity[6] state machine | `player::state_machine::entity_state_dash3` | `[x]` |
+| **ACT-25** | `Entity_State_Death` | `0x80066878` | `entity/state/Entity_State_Death.c` | Entity death state: entity[6] switch, death animation | `player::state_machine::entity_state_death` | `[x]` |
+| **ACT-26** | `Entity_State_Dive` | `0x8005EC70` | `entity/state/Entity_State_Dive.c` | Entity dive state: entity[6] state, diving movement | `player::state_machine::entity_state_dive` | `[x]` |
+| **ACT-27** | `Entity_State_Event` | `0x80043BD4` | `entity/state/Entity_State_Event.c` | Entity event state: entity[0x74] counter, dispatches events | `player::state_machine::entity_state_event` | `[x]` |
+| **ACT-28** | `Entity_State_Event2` | `0x800433FC` | `entity/state/Entity_State_Event2.c` | Entity event state variant 2: entity[0x78] dispatch | `player::state_machine::entity_state_event2` | `[x]` |
+| **ACT-29** | `Entity_State_Fight` | `0x80066FA8` | `entity/state/Entity_State_Fight.c` | Entity fight state: complex combat state machine (200L) | `player::state_machine::entity_state_fight` | `[x]` |
+| **ACT-30** | `Entity_State_Float` | `0x800645E0` | `entity/state/Entity_State_Float.c` | Entity float state: entity[6] state machine, buoyancy | `player::state_machine::entity_state_float` | `[x]` |
+| **ACT-31** | `Entity_State_Fly` | `0x8006228C` | `entity/state/Entity_State_Fly.c` | Entity fly state: entity[6] state machine, aerial movement | `player::state_machine::entity_state_fly` | `[x]` |
+| **ACT-32** | `Entity_State_Follow` | `0x800702C0` | `entity/state/Entity_State_Follow.c` | Entity follow state: entity[0x62] target, follows | `player::state_machine::entity_state_follow` | `[x]` |
+| **ACT-33** | `Entity_State_Giant` | `0x80061C64` | `entity/state/Entity_State_Giant.c` | Entity giant state: large entity state machine | `player::state_machine::entity_state_giant` | `[x]` |
+| **ACT-34** | `Entity_State_Grab` | `0x8003FFCC` | `entity/state/Entity_State_Grab.c` | Entity grab state: entity[6]=0, plays SFX, grabs target | `player::state_machine::entity_state_grab` | `[x]` |
+| **ACT-35** | `Entity_State_Ground` | `0x80057C08` | `entity/state/Entity_State_Ground.c` | Entity ground state: calls FUN_80057a68, checks collision | `player::state_machine::entity_state_ground` | `[x]` |
+| **ACT-36** | `Entity_State_Hang` | `0x80070BD0` | `entity/state/Entity_State_Hang.c` | Entity hang state: entity[6] state, hanging/climbing | `player::state_machine::entity_state_hang` | `[x]` |
+| **ACT-37** | `Entity_State_Hit` | `0x80057A68` | `entity/state/Entity_State_Hit.c` | Entity hit state: entity[0x158] ptr, checks hit reaction | `player::state_machine::entity_state_hit` | `[x]` |
+| **ACT-38** | `Entity_State_Idle` | `0x80060064` | `entity/state/Entity_State_Idle.c` | Entity idle state: entity[6]=0, checks ground, transitions | `player::state_machine::entity_state_idle` | `[x]` |
+| **ACT-39** | `Entity_State_InitWithOverlay` | `0x800653F4` | `entity/state/Entity_State_InitWithOverlay.c` | Entity state: init + load anim 0x40, conditionally calls overlay func_0x8010c780 | `player::state_machine::entity_state_initwithoverlay` | `[x]` |
+| **ACT-40** | `Entity_State_Jump` | `0x80064524` | `entity/state/Entity_State_Jump.c` | Entity jump state: entity[6]=2, calls FUN_80053d0c, sets velocity, advances | `player::state_machine::entity_state_jump` | `[x]` |
+| **ACT-41** | `Entity_State_Jump2` | `0x800572EC` | `entity/state/Entity_State_Jump2.c` | Entity jump state variant 2: calls physics, checks ground contact | `player::state_machine::entity_state_jump2` | `[x]` |
+| **ACT-42** | `Entity_State_Jump3` | `0x80057DC0` | `entity/state/Entity_State_Jump3.c` | Entity jump state variant 3: checks entity[0x17E] flags | `player::state_machine::entity_state_jump3` | `[x]` |
+| **ACT-43** | `Entity_State_Jump4` | `0x8004B528` | `entity/state/Entity_State_Jump4.c` | Entity jump state variant 4: entity[6]=1, aerial | `player::state_machine::entity_state_jump4` | `[x]` |
+| **ACT-44** | `Entity_State_JumpStart` | `0x80065990` | `entity/state/Entity_State_JumpStart.c` | Jump start state: entity[6]=0->1, calls damage/physics, branches on _DAT_1f800184 action | `player::state_machine::entity_state_jumpstart` | `[x]` |
+| **ACT-45** | `Entity_State_Ladder` | `0x800624B4` | `entity/state/Entity_State_Ladder.c` | Entity ladder state: entity[6] dispatch, climb movement | `player::state_machine::entity_state_ladder` | `[x]` |
+| **ACT-46** | `Entity_State_Move` | `0x8005F1B0` | `entity/state/Entity_State_Move.c` | Entity move state: entity[6] state 0->1->2, applies movement | `player::state_machine::entity_state_move` | `[x]` |
+| **ACT-47** | `Entity_State_Physics` | `0x800551C4` | `entity/state/Entity_State_Physics.c` | Entity physics state: entity[0x29]=0, checks entity[0x147] dir, sets angle | `player::state_machine::entity_state_physics` | `[x]` |
+| **ACT-48** | `Entity_State_PickupCheck` | `0x800427F4` | `entity/state/Entity_State_PickupCheck.c` | Pickup state machine: checks idle counter, advances state byte at entity[0x78] | `player::state_machine::entity_state_pickupcheck` | `[x]` |
+| **ACT-49** | `Entity_State_Roll` | `0x8006271C` | `entity/state/Entity_State_Roll.c` | Entity roll state: entity[6] state machine, rolling movement | `player::state_machine::entity_state_roll` | `[x]` |
+| **ACT-50** | `Entity_State_Scene` | `0x80043A40` | `entity/state/Entity_State_Scene.c` | Entity scene state: entity[0x78]=1, plays audio + transition | `player::state_machine::entity_state_scene` | `[x]` |
+| **ACT-51** | `Entity_State_Scene2` | `0x800446A4` | `entity/state/Entity_State_Scene2.c` | Entity scene state variant 2: entity[0x78] dispatch | `player::state_machine::entity_state_scene2` | `[x]` |
+| **ACT-52** | `Entity_State_Shoot` | `0x800674F4` | `entity/state/Entity_State_Shoot.c` | Entity shoot state: spawns projectile, plays SFX, sets timer | `player::state_machine::entity_state_shoot` | `[x]` |
+| **ACT-53** | `Entity_State_Shop` | `0x800735F4` | `entity/state/Entity_State_Shop.c` | Entity shop state: entity[7]=1, checks DAT_800bf816 flag | `player::state_machine::entity_state_shop` | `[x]` |
+| **ACT-54** | `Entity_State_Slide` | `0x80062D8C` | `entity/state/Entity_State_Slide.c` | Entity slide state: checks flags, sliding movement | `player::state_machine::entity_state_slide` | `[x]` |
+| **ACT-55** | `Entity_State_Spawn` | `0x80043108` | `entity/state/Entity_State_Spawn.c` | Entity spawn state: reads script, spawns entities | `player::state_machine::entity_state_spawn` | `[x]` |
+| **ACT-56** | `Entity_State_Special` | `0x800620D0` | `entity/state/Entity_State_Special.c` | Entity special state: entity[6] state 0->1->2, SFX | `player::state_machine::entity_state_special` | `[x]` |
+| **ACT-57** | `Entity_State_Swim` | `0x80061A7C` | `entity/state/Entity_State_Swim.c` | Entity swim state: entity[6] state machine, water movement | `player::state_machine::entity_state_swim` | `[x]` |
+| **ACT-58** | `Entity_State_Throw` | `0x80066DE8` | `entity/state/Entity_State_Throw.c` | Entity throw state: entity[6]=0, spawns projectile | `player::state_machine::entity_state_throw` | `[x]` |
+| **ACT-59** | `Entity_State_Throw2` | `0x80067A40` | `entity/state/Entity_State_Throw2.c` | Entity throw state variant 2: spawns+throws object | `player::state_machine::entity_state_throw2` | `[x]` |
+| **ACT-60** | `Entity_State_Title` | `0x80049A60` | `entity/state/Entity_State_Title.c` | Entity title state: entity[5] switch, title screen | `player::state_machine::entity_state_title` | `[x]` |
+| **ACT-61** | `Entity_State_Trail` | `0x8006BE88` | `entity/state/Entity_State_Trail.c` | Entity trail state: spawns trail particles behind entity | `player::state_machine::entity_state_trail` | `[x]` |
+| **ACT-62** | `Entity_State_Turn` | `0x80064BA0` | `entity/state/Entity_State_Turn.c` | Entity turn state: entity[6] state, turning around | `player::state_machine::entity_state_turn` | `[x]` |
+| **ACT-63** | `Entity_State_Walk` | `0x8006670C` | `entity/state/Entity_State_Walk.c` | Entity walk state: entity[6] state 0->1->2, moves entity | `player::state_machine::entity_state_walk` | `[x]` |
+| **ACT-64** | `Entity_State_Wall` | `0x8006483C` | `entity/state/Entity_State_Wall.c` | Entity wall state: entity[7] state, wall collision | `player::state_machine::entity_state_wall` | `[x]` |
 
 ---
 

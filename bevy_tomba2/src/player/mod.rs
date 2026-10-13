@@ -1,5 +1,8 @@
+pub mod state_machine;
+
 use crate::collision::LevelCollision;
 use bevy::prelude::*;
+pub use state_machine::{TombaActionState, WeaponType, SPEED_DASH, SPEED_GLIDE, GRAVITY_GLIDE};
 
 // ─── FÍSICA AUTÉNTICA PS1 ────────────────────────────────────────────────────
 // Ref: Entity_ApplyGravity.c (func_80066478), Entity_ApplyVelocityMax.c (func_80066538)
@@ -47,18 +50,8 @@ pub const TOMBA_TURN_RATE: f32 = 256.0 * (std::f32::consts::TAU / 4096.0) * 30.0
 #[derive(Component)]
 pub struct TombaPlayer;
 
-#[derive(Debug, Clone, PartialEq, Default)]
-pub enum PlayerActionState {
-    #[default]
-    Normal,
-    /// Giro auténtico hacia una junción (Entity_StateMain12.c states 2 & 3)
-    TurnToJunction {
-        dest_plane: usize,
-        dest_s: f32,
-        target_look_dir: Vec3,
-        timer: f32,
-    },
-}
+#[allow(dead_code)]
+pub type PlayerActionState = TombaActionState;
 
 #[derive(Component, Debug, Clone)]
 pub struct TombaRail {
@@ -79,7 +72,7 @@ pub struct TombaRail {
     /// Signo de orientación (+1.0 adelante, -1.0 atrás). Correlaciona con direction en entity+0x147.
     pub facing: f32,
     /// Máquina de estados de acción. Correlaciona con action_state en entity+0x06.
-    pub action_state: PlayerActionState,
+    pub action_state: TombaActionState,
     /// Dirección de mirada actual en espacio mundo.
     pub current_look_dir: Vec3,
     /// Velocidad horizontal actual en m/s.
@@ -98,7 +91,7 @@ impl Default for TombaRail {
             vertical_velocity: 0.0,
             is_grounded: true,
             facing: 1.0,
-            action_state: PlayerActionState::Normal,
+            action_state: TombaActionState::Idle,
             current_look_dir: Vec3::Z,
             move_speed: 0.0,
             is_rising: false,
@@ -194,23 +187,26 @@ pub fn tomba_animation_control_system(
     let Some(anim_assets) = anim_assets else { return };
     let Ok(rail) = rails.get_single() else { return };
 
-    let target_node = if !rail.is_grounded {
-        if rail.is_rising {
-            anim_assets.jump_node
-        } else {
-            anim_assets.fall_node
-        }
-    } else {
-        match rail.action_state {
-            PlayerActionState::TurnToJunction { .. } => anim_assets.walk_node,
-            PlayerActionState::Normal => {
-                if rail.move_speed > 3.0 {
-                    anim_assets.run_node
-                } else if rail.move_speed > 0.1 {
-                    anim_assets.walk_node
+    let target_node = match rail.action_state {
+        TombaActionState::TurnToJunction { .. } => anim_assets.walk_node,
+        TombaActionState::Jump => anim_assets.jump_node,
+        TombaActionState::Fall | TombaActionState::Glide { .. } => anim_assets.fall_node,
+        TombaActionState::Dash { .. } => anim_assets.run_node,
+        TombaActionState::Walk => anim_assets.walk_node,
+        TombaActionState::Idle => anim_assets.idle_node,
+        _ => {
+            if !rail.is_grounded {
+                if rail.is_rising {
+                    anim_assets.jump_node
                 } else {
-                    anim_assets.idle_node
+                    anim_assets.fall_node
                 }
+            } else if rail.move_speed > 3.0 {
+                anim_assets.run_node
+            } else if rail.move_speed > 0.1 {
+                anim_assets.walk_node
+            } else {
+                anim_assets.idle_node
             }
         }
     };
@@ -269,7 +265,7 @@ pub fn tomba_movement_system(
 
         // ── Estado de giro hacia junción ─────────────────────────────────────
         match rail.action_state.clone() {
-            PlayerActionState::TurnToJunction {
+            TombaActionState::TurnToJunction {
                 dest_plane,
                 dest_s,
                 target_look_dir,
@@ -284,15 +280,15 @@ pub fn tomba_movement_system(
                     rail.plane_id = dest_plane;
                     rail.s = dest_s;
                     rail.current_look_dir = target_look_dir;
-                    rail.action_state = PlayerActionState::Normal;
+                    rail.action_state = TombaActionState::Idle;
                     println!(
                         "-> Switched rail to Plane {} at s={:.2}m (turn complete)",
-                             dest_plane, dest_s
+                        dest_plane, dest_s
                     );
                 } else {
                     let step = (TOMBA_TURN_RATE * dt / angle_diff).min(1.0);
                     rail.current_look_dir = current.lerp(target_look_dir, step).normalize();
-                    rail.action_state = PlayerActionState::TurnToJunction {
+                    rail.action_state = TombaActionState::TurnToJunction {
                         dest_plane,
                         dest_s,
                         target_look_dir,
@@ -308,11 +304,21 @@ pub fn tomba_movement_system(
                 }
                 continue;
             }
-            PlayerActionState::Normal => {}
+            _ => {}
         }
 
-        // ── 1. Input horizontal & Desplazamiento por Riel (Sector 3) ──────────
-        // Ref: Entity_State_Walk.c (func_8006670C), ActorTomba::velocityIntegrate (actor_tomba.cpp:440),
+        // ── Ataque con arma (Botón Círculo / Tecla J) ─────────────────────────
+        // Ref: Entity_State_Attack.c (0x8005ACC8)
+        if (keyboard.just_pressed(KeyCode::KeyJ) || keyboard.just_pressed(KeyCode::KeyH))
+            && !matches!(rail.action_state, TombaActionState::Attack { .. })
+        {
+            rail.action_state.entity_state_attack(WeaponType::Blackjack);
+        }
+        let is_grounded = rail.is_grounded;
+        rail.action_state.entity_state_attacktrans(dt, is_grounded);
+
+        // ── 1. Input horizontal & Desplazamiento por Riel (Sectores 1 y 3) ────
+        // Ref: Entity_State_Walk.c (func_8006670C), Entity_State_Dash.c (func_8005706C),
         //      Collision_MoveMain (0x80045CAC), Collision_Push (0x80045810), CELL_SECTOR_LINK (0x80048FC4).
         let mut move_input = 0.0_f32;
         if keyboard.pressed(KeyCode::KeyA) || keyboard.pressed(KeyCode::ArrowLeft) {
@@ -322,10 +328,24 @@ pub fn tomba_movement_system(
             move_input += 1.0;
         }
 
+        let is_running_pressed = keyboard.pressed(KeyCode::ShiftLeft)
+            || keyboard.pressed(KeyCode::ShiftRight);
+
         if move_input != 0.0 {
             rail.facing = move_input;
-            rail.move_speed = TOMBA_WALK_SPEED;
-            let step = move_input * TOMBA_WALK_SPEED * dt;
+            let current_speed = if matches!(rail.action_state, TombaActionState::Glide { .. }) {
+                SPEED_GLIDE
+            } else if is_running_pressed {
+                rail.action_state = TombaActionState::Dash { timer: 0.0 };
+                SPEED_DASH
+            } else {
+                if rail.is_grounded && !matches!(rail.action_state, TombaActionState::Attack { .. }) {
+                    rail.action_state = TombaActionState::Walk;
+                }
+                TOMBA_WALK_SPEED
+            };
+            rail.move_speed = current_speed;
+            let step = move_input * current_speed * dt;
             let (new_plane_id, new_s, _blocked) = collision.advance_actor_along_rail(
                 rail.plane_id,
                 rail.s,
@@ -336,6 +356,9 @@ pub fn tomba_movement_system(
             rail.s = new_s;
         } else {
             rail.move_speed = 0.0;
+            if rail.is_grounded && !matches!(rail.action_state, TombaActionState::Attack { .. } | TombaActionState::Damage { .. }) {
+                rail.action_state = TombaActionState::Idle;
+            }
         }
 
         let plane = collision.get_plane(rail.plane_id).unwrap_or(plane);
@@ -356,7 +379,7 @@ pub fn tomba_movement_system(
                 if let Some(dest_plane) = collision.get_plane(junc.dest) {
                     let new_s = dest_plane.s_of(junc.pos[0], junc.pos[2]);
                     let target_look = Vec3::new(dest_plane.dir[0], 0.0, dest_plane.dir[1]).normalize_or_zero();
-                    rail.action_state = PlayerActionState::TurnToJunction {
+                    rail.action_state = TombaActionState::TurnToJunction {
                         dest_plane: junc.dest,
                         dest_s: new_s,
                         target_look_dir: if target_look.length_squared() > 1e-4 { target_look } else { Vec3::Z },
@@ -371,7 +394,7 @@ pub fn tomba_movement_system(
                 if let Some(dest_plane) = collision.get_plane(junc.dest) {
                     let new_s = dest_plane.s_of(junc.pos[0], junc.pos[2]);
                     let target_look = Vec3::new(dest_plane.dir[0], 0.0, dest_plane.dir[1]).normalize_or_zero();
-                    rail.action_state = PlayerActionState::TurnToJunction {
+                    rail.action_state = TombaActionState::TurnToJunction {
                         dest_plane: junc.dest,
                         dest_s: new_s,
                         target_look_dir: if target_look.length_squared() > 1e-4 { target_look } else { Vec3::Z },
@@ -385,30 +408,45 @@ pub fn tomba_movement_system(
         // Re-fetch plano actual (puede haber cambiado por handoff)
         let plane = collision.get_plane(rail.plane_id).unwrap_or(plane);
 
-        // ── 3. Salto ─────────────────────────────────────────────────────────
-        // Ref: Entity_State_Idle.c:43 → velocity_y = 0xd800 = -0x2800 (PS1 Y-down → arriba).
-        // Convertido a Bevy Y-up: +TOMBA_JUMP_SPEED (positivo = arriba).
+        // ── 3. Salto & Planeo (Sector 1) ──────────────────────────────────────
+        // Ref: Entity_State_Jump.c (0x80064524), Entity_State_Fly.c (0x8006228C).
         if (keyboard.just_pressed(KeyCode::Space) || keyboard.just_pressed(KeyCode::KeyK))
             && rail.is_grounded
-            {
-                rail.vertical_velocity = TOMBA_JUMP_SPEED; // positivo = arriba (Bevy Y-up)
-                rail.is_grounded = false;
-                rail.is_rising = true;
-                if let Some(asset_server) = asset_server.as_ref() {
-                    commands.spawn(AudioPlayer::new(asset_server.load("audio/sfx/00_025_hero jump0.wav")));
-                }
+        {
+            rail.vertical_velocity = TOMBA_JUMP_SPEED; // positivo = arriba (Bevy Y-up)
+            rail.is_grounded = false;
+            rail.is_rising = true;
+            rail.action_state = TombaActionState::Jump;
+            if let Some(asset_server) = asset_server.as_ref() {
+                commands.spawn(AudioPlayer::new(asset_server.load("audio/sfx/00_025_hero jump0.wav")));
             }
+        }
+
+        // Planeo (Traje de Ardilla Voladora): mantener salto en el aire al descender
+        if !rail.is_grounded && !rail.is_rising && keyboard.pressed(KeyCode::Space) {
+            rail.action_state = TombaActionState::Glide { timer: 0.0 };
+        }
 
         // ── 4. Física vertical continua suave (ecuaciones auténticas de PS1) ──
         // Ref: Entity_State_Jump2.c (0x360 = 30.375 m/s^2) en ascenso,
         //      Entity_ApplyGravity.c (0x400 = 36.0 m/s^2) en descenso,
+        //      Entity_State_Fly.c (0x8006228C = 4.5 m/s^2) en planeo,
         //      Entity_ApplyVelocityMax.c (0x2800 = 12.0 m/s cap).
         if !rail.is_grounded {
-            let grav = if rail.is_rising { TOMBA_JUMP_GRAVITY } else { TOMBA_GRAVITY };
+            let grav = if matches!(rail.action_state, TombaActionState::Glide { .. }) {
+                GRAVITY_GLIDE
+            } else if rail.is_rising {
+                TOMBA_JUMP_GRAVITY
+            } else {
+                TOMBA_GRAVITY
+            };
             rail.vertical_velocity -= grav * dt;
 
             if rail.vertical_velocity <= 0.0 {
                 rail.is_rising = false;
+                if !matches!(rail.action_state, TombaActionState::Glide { .. }) {
+                    rail.action_state = TombaActionState::Fall;
+                }
             }
 
             if rail.vertical_velocity < -TOMBA_TERMINAL_VELOCITY {
@@ -424,6 +462,7 @@ pub fn tomba_movement_system(
                         rail.y = contact.height;
                         rail.vertical_velocity = 0.0;
                         rail.is_grounded = true;
+                        rail.action_state.entity_state_ground(contact.is_steep, contact.slope_angle);
                     }
                 }
             }
@@ -432,8 +471,12 @@ pub fn tomba_movement_system(
             // Ref: Collision::snapObjectToTerrain (collision.cpp:786-788)
             if let Some(contact) = plane.sample_ground_contact(rail.s, rail.y) {
                 rail.y = contact.height;
+                if contact.is_steep {
+                    rail.action_state.entity_state_ground(true, contact.slope_angle);
+                }
             } else {
                 rail.is_grounded = false;
+                rail.action_state = TombaActionState::Fall;
             }
         }
 

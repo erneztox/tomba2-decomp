@@ -16,9 +16,9 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **SEC-08** | `ITM` | SECTOR 8: Items, Inventory & Equipment | 8 | **8 / 8** |
 | **SEC-09** | `EVT` | SECTOR 9: Event Engine & Script Interpreter | 49 | **49 / 49** |
 | **SEC-10** | `UI` | SECTOR 10: UI, Dialog System & HUD | 88 | **88 / 88** |
-| **SEC-11** | `AUD` | SECTOR 11: Audio System & Sound Dispatch | 140 | **2 / 140** |
+| **SEC-11** | `AUD` | SECTOR 11: Audio System & Sound Dispatch | 140 | **140 / 140** |
 | **SEC-12** | `SYS` | SECTOR 12: Memory Card, GPU, CD & Low-Level Subsystems | 560 | **1 / 560** |
-| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **518 implementadas** |
+| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **656 implementadas** |
 
 ---
 
@@ -985,146 +985,146 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 
 | ID | Función / Símbolo | Dirección PS1 | Archivo C | Comportamiento Técnico Original | Mapeo Bevy (Rust) | Estado |
 | :--- | :--- | :---: | :--- | :--- | :--- | :---: |
-| **AUD-001** | `Audio_ADSRCalc` | `0x80094474` | `audio/Audio_ADSRCalc.c` | Audio ADSR calculator: computes envelope from phase + step | `audio::playback::audio_adsrcalc` | `[ ]` |
-| **AUD-002** | `Audio_AllocChannel` | `0x8008EAD0` | `audio/Audio_AllocChannel.c` | Audio channel alloc: calls FUN_80092a70 + FUN_80090160, stores result at [0x90] | `audio::playback::audio_allocchannel` | `[ ]` |
-| **AUD-003** | `Audio_AllocChannel2` | `0x80091810` | `audio/Audio_AllocChannel2.c` | Audio channel alloc variant 2: looks up channel table, calls init | `audio::playback::audio_allocchannel2` | `[ ]` |
-| **AUD-004** | `Audio_AllocVoice` | `0x80090160` | `audio/Audio_AllocVoice.c` | Audio voice allocator: finds free voice slot in channel struct | `audio::playback::audio_allocvoice` | `[ ]` |
-| **AUD-005** | `Audio_AllocVoice2` | `0x800752B4` | `audio/Audio_AllocVoice2.c` | Audio voice allocator variant 2: searches table by range | `audio::playback::audio_allocvoice2` | `[ ]` |
-| **AUD-006** | `Audio_CD_Cmd` | `0x80094108` | `audio/Audio_CD_Cmd.c` | Audio CD command: calls FUN_80093ebc(0x21, param1, param2, param3) | `audio::playback::audio_cd_cmd` | `[ ]` |
-| **AUD-007** | `Audio_CalcPitch` | `0x80092B00` | `audio/Audio_CalcPitch.c` | Audio pitch calculator: clamps abs(param) to 0-0x3FFF, scales to pitch | `audio::playback::audio_calcpitch` | `[ ]` |
-| **AUD-008** | `Audio_CalcValue` | `0x8009440C` | `audio/Audio_CalcValue.c` | Audio value calc: computes DAT_80105d04 + offset*0x10, scales result | `audio::playback::audio_calcvalue` | `[ ]` |
-| **AUD-009** | `Audio_CallCallbacks` | `0x800909C0` | `audio/Audio_CallCallbacks.c` | Audio callback chain: calls DAT_800ac430 then DAT_800ac42c function ptrs | `audio::playback::audio_callcallbacks` | `[ ]` |
-| **AUD-010** | `Audio_ChannelCmd` | `0x8008E860` | `audio/Audio_ChannelCmd.c` | Audio channel command: looks up struct, calls FUN_80095d10 with channel data | `audio::playback::audio_channelcmd` | `[ ]` |
-| **AUD-011** | `Audio_ChannelCmd2` | `0x8008E930` | `audio/Audio_ChannelCmd2.c` | Audio channel command variant 2: same pattern, different params | `audio::playback::audio_channelcmd2` | `[ ]` |
-| **AUD-012** | `Audio_ChannelConfig` | `0x80090A60` | `audio/Audio_ChannelConfig.c` | Audio channel config: sets up channel params at DAT_800ac448 | `audio::playback::audio_channelconfig` | `[ ]` |
-| **AUD-013** | `Audio_ChannelDispatch` | `0x80090010` | `audio/Audio_ChannelDispatch.c` | Audio channel dispatch: looks up struct, branches on flag to FUN_80093ebc or FUN_800939a0 | `audio::playback::audio_channeldispatch` | `[ ]` |
-| **AUD-014** | `Audio_ChannelEvent` | `0x80093EBC` | `audio/Audio_ChannelEvent.c` | Audio channel event handler: iterates channels, dispatches events | `audio::playback::audio_channelevent` | `[ ]` |
-| **AUD-015** | `Audio_ChannelInit2` | `0x8008DC00` | `audio/Audio_ChannelInit2.c` | Audio channel init variant 2: sets voice, calls FUN_80095530 | `audio::playback::audio_channelinit2` | `[ ]` |
-| **AUD-016** | `Audio_ChannelKey` | `0x80091970` | `audio/Audio_ChannelKey.c` | Audio channel key handler: looks up channel, calls voice funcs | `audio::playback::audio_channelkey` | `[ ]` |
-| **AUD-017** | `Audio_ChannelParam` | `0x8008EA20` | `audio/Audio_ChannelParam.c` | Audio channel param: branches on param3 < 0x40, calls different handlers | `audio::playback::audio_channelparam` | `[ ]` |
-| **AUD-018** | `Audio_ChannelPlay` | `0x8008FB60` | `audio/Audio_ChannelPlay.c` | Audio channel play: reads byte, advances ptr, calls FUN_800952cc | `audio::playback::audio_channelplay` | `[ ]` |
-| **AUD-019** | `Audio_ChannelProcess` | `0x80091120` | `audio/Audio_ChannelProcess.c` | Audio channel processor: updates channel state, calls voice funcs | `audio::playback::audio_channelprocess` | `[ ]` |
-| **AUD-020** | `Audio_ChannelSetParam3` | `0x8008E790` | `audio/Audio_ChannelSetParam3.c` | Audio channel param set: reads struct, calls FUN_80095d10, sets param at offset | `audio::playback::audio_channelsetparam3` | `[ ]` |
-| **AUD-021** | `Audio_ChannelUpdate` | `0x8009121C` | `audio/Audio_ChannelUpdate.c` | Audio channel updater: processes channel, updates voice | `audio::playback::audio_channelupdate` | `[ ]` |
-| **AUD-022** | `Audio_ChannelVoice` | `0x8008EC60` | `audio/Audio_ChannelVoice.c` | Audio channel voice handler: sets voice params from struct | `audio::playback::audio_channelvoice` | `[ ]` |
-| **AUD-023** | `Audio_CheckDevice` | `0x80092E00` | `audio/Audio_CheckDevice.c` | Audio device check: if param < 0x18, calls FUN_8009a170, else returns 0 | `audio::playback::audio_checkdevice` | `[ ]` |
-| **AUD-024** | `Audio_ClampParam` | `0x800943C0` | `audio/Audio_ClampParam.c` | Audio param clamp: clamps DAT_80105d09 to 0x7F, multiplies by 0x81 | `audio::playback::audio_clampparam` | `[ ]` |
-| **AUD-025** | `Audio_ClampVolume` | `0x80075CEC` | `audio/Audio_ClampVolume.c` | Audio volume clamp: negative→abs, positive→clamp to 0x7FFF | `audio::playback::audio_clampvolume` | `[ ]` |
-| **AUD-026** | `Audio_ClearChannel` | `0x80026510` | `audio/Audio_ClearChannel.c` | Clears audio channel: sends mute SPU command | `audio::playback::audio_clearchannel` | `[ ]` |
-| **AUD-027** | `Audio_ClearFlag` | `0x800931A0` | `audio/Audio_ClearFlag.c` | Audio flag clearer: DAT_80105c90 = 0 | `audio::playback::audio_clearflag` | `[ ]` |
-| **AUD-028** | `Audio_ClearSlot` | `0x80090B98` | `audio/Audio_ClearSlot.c` | Audio slot clearer: zeros word at DAT_800ac448 + index*0x10 if index < 3 | `audio::playback::audio_clearslot` | `[ ]` |
-| **AUD-029** | `Audio_Cmd1` | `0x80091B18` | `audio/Audio_Cmd1.c` | Audio command 1: calls FUN_80091970(param1, param2) | `audio::playback::audio_cmd1` | `[ ]` |
-| **AUD-030** | `Audio_Cmd2` | `0x80091AF0` | `audio/Audio_Cmd2.c` | Audio command 2: calls FUN_80091970(param1, 0) | `audio::playback::audio_cmd2` | `[ ]` |
-| **AUD-031** | `Audio_Cmd3` | `0x80092048` | `audio/Audio_Cmd3.c` | Audio command 3: calls FUN_80095a9c with combined channel ID | `audio::playback::audio_cmd3` | `[ ]` |
-| **AUD-032** | `Audio_Cmd4` | `0x800910F0` | `audio/Audio_Cmd4.c` | Audio command wrapper: calls FUN_80091120(param1, param2) | `audio::playback::audio_cmd4` | `[ ]` |
-| **AUD-033** | `Audio_Cmd5` | `0x8008F120` | `audio/Audio_Cmd5.c` | Audio command 5: builds param stack, calls FUN_80092420 with 3 params | `audio::playback::audio_cmd5` | `[ ]` |
-| **AUD-034** | `Audio_Cmd6` | `0x8008F090` | `audio/Audio_Cmd6.c` | Audio command 6: builds param stack, calls FUN_80092420 with 2 params | `audio::playback::audio_cmd6` | `[ ]` |
-| **AUD-035** | `Audio_CmdWithParam` | `0x80092BB0` | `audio/Audio_CmdWithParam.c` | Audio command with param: sets struct + 0x10 flag, calls FUN_80098330 | `audio::playback::audio_cmdwithparam` | `[ ]` |
-| **AUD-036** | `Audio_CmdWithParam2` | `0x80092A30` | `audio/Audio_CmdWithParam2.c` | Audio command with param 2: sets struct + 8 flag, calls FUN_80098330 | `audio::playback::audio_cmdwithparam2` | `[ ]` |
-| **AUD-037** | `Audio_EnableChannel` | `0x80091910` | `audio/Audio_EnableChannel.c` | Audio channel enable: sets channel[0x14]=1, clears flag bit 3 | `audio::playback::audio_enablechannel` | `[ ]` |
-| **AUD-038** | `Audio_GPU_Cmd0` | `0x80092BF0` | `audio/Audio_GPU_Cmd0.c` | Audio GPU command with param 0: calls FUN_80098150(0) | `audio::playback::audio_gpu_cmd0` | `[ ]` |
-| **AUD-039** | `Audio_GPU_Cmd1` | `0x80092C10` | `audio/Audio_GPU_Cmd1.c` | Audio GPU command with param 1: calls FUN_80098150(1) | `audio::playback::audio_gpu_cmd1` | `[ ]` |
-| **AUD-040** | `Audio_GetChannelByte` | `0x8008E0C0` | `audio/Audio_GetChannelByte.c` | Audio channel getter: returns byte at channel[param2]+0x14 from struct ptr table | `audio::playback::audio_getchannelbyte` | `[ ]` |
-| **AUD-041** | `Audio_Init` | `0x800909A0` | `audio/Audio_Init.c` | Audio init wrapper: calls FUN_80090750(0) | `audio::playback::audio_init` | `[ ]` |
-| **AUD-042** | `Audio_Init2` | `0x8008DFA0` | `audio/Audio_Init2.c` | Audio init variant 2: sets up channel table at 0x80104C30 | `audio::playback::audio_init2` | `[ ]` |
-| **AUD-043** | `Audio_InitCD` | `0x80075240` | `audio/Audio_InitCD.c` | Audio CD init: calls Video_InitDecoder, sets volume, calls init sequence | `audio::playback::audio_initcd` | `[ ]` |
-| **AUD-044** | `Audio_InitChannel` | `0x80091050` | `audio/Audio_InitChannel.c` | Audio channel init: looks up 0xB0-stride struct, zeros fields, calls init function | `audio::playback::audio_initchannel` | `[ ]` |
-| **AUD-045** | `Audio_InitSPU` | `0x80074B44` | `audio/Audio_InitSPU.c` | Audio SPU init: iterates _DAT_800bed78 slots, sets ADSR/volume per slot | `audio::playback::audio_initspu` | `[ ]` |
-| **AUD-046** | `Audio_InitSeq` | `0x80090750` | `audio/Audio_InitSeq.c` | Audio sequence initializer: inits SEQ engine, 0x3E6 loops | `audio::playback::audio_initseq` | `[ ]` |
-| **AUD-047** | `Audio_InitSequence` | `0x8008E040` | `audio/Audio_InitSequence.c` | Audio init sequence: calls 4 init functions in order | `audio::playback::audio_initsequence` | `[ ]` |
-| **AUD-048** | `Audio_InitVolume` | `0x80075A30` | `audio/Audio_InitVolume.c` | Audio volume init: sets stereo/pan values at 0x800BE1FC-0A, calls init, clears | `audio::playback::audio_initvolume` | `[ ]` |
-| **AUD-049** | `Audio_KeyOn` | `0x80092310` | `audio/Audio_KeyOn.c` | Audio key on: checks slot state, calls FUN_800962b0, triggers voice | `audio::playback::audio_keyon` | `[ ]` |
-| **AUD-050** | `Audio_KeyOn2` | `0x800952CC` | `audio/Audio_KeyOn2.c` | Audio key on variant 2: calls CD_CheckSlot, sets voice params, triggers | `audio::playback::audio_keyon2` | `[ ]` |
-| **AUD-051** | `Audio_Lock` | `0x800929BC` | `audio/Audio_Lock.c` | Audio lock: sets _DAT_80104c24=1, returns -1 if already locked | `audio::playback::audio_lock` | `[ ]` |
-| **AUD-052** | `Audio_LookupChannel` | `0x80095A9C` | `audio/Audio_LookupChannel.c` | Audio channel lookup: DAT_80105d0c = channel ID, indexes struct table | `audio::playback::audio_lookupchannel` | `[ ]` |
-| **AUD-053** | `Audio_Main` | `0x800931C0` | `audio/Audio_Main.c` | Audio main: full audio processing pipeline | `audio::playback::audio_main` | `[ ]` |
-| **AUD-054** | `Audio_Mute` | `0x80026470` | `audio/Audio_Mute.c` | Mutes audio output with SPU command | `audio::playback::audio_mute` | `[ ]` |
-| **AUD-055** | `Audio_NoteOn` | `0x8008EDA0` | `audio/Audio_NoteOn.c` | Audio note on: sets channel[0x18]=param3, increments [0x1E], stores voice at [0x90] | `audio::playback::audio_noteon` | `[ ]` |
-| **AUD-056** | `Audio_PitchBend` | `0x8009401C` | `audio/Audio_PitchBend.c` | Audio pitch bend: computes pitch delta between param5 and param6 | `audio::playback::audio_pitchbend` | `[ ]` |
-| **AUD-057** | `Audio_PlaySFX_Vol` | `0x80074810` | `audio/Audio_PlaySFX_Vol.c` | Plays sound effect with volume only (wraps Audio_PlaySoundEffect) | `audio::playback::audio_playsfx_vol` | `[ ]` |
-| **AUD-058** | `Audio_PlaySFX_VolPan` | `0x8007483C` | `audio/Audio_PlaySFX_VolPan.c` | Plays sound effect with volume and pan (wraps Audio_PlaySoundEffect) | `audio::playback::audio_playsfx_volpan` | `[ ]` |
-| **AUD-059** | `Audio_PlaySoundEffect` | `0x80074590` | `audio/Audio_PlaySoundEffect.c` | Subrutina de Audio_PlaySoundEffect (audio/Audio_PlaySoundEffect.c) | audio::AudioPlayer (SFX Dispatch) | [x] |
-| **AUD-060** | `Audio_PollChannel` | `0x80095C40` | `audio/Audio_PollChannel.c` | Audio channel poll: iterates DAT_80105cf8 channels, updates state | `audio::playback::audio_pollchannel` | `[ ]` |
-| **AUD-061** | `Audio_ProgramChange` | `0x8008E390` | `audio/Audio_ProgramChange.c` | Audio program change: reads byte, increments ptr, sets [0x26], stores voice at [0x90] | `audio::playback::audio_programchange` | `[ ]` |
-| **AUD-062** | `Audio_ReadDevice` | `0x80092EA0` | `audio/Audio_ReadDevice.c` | Audio device read: if param<0x18, calls FUN_8009a170 to read data | `audio::playback::audio_readdevice` | `[ ]` |
-| **AUD-063** | `Audio_ReleaseChannel` | `0x80074E48` | `audio/Audio_ReleaseChannel.c` | Audio release channel: calls Audio_Cmd2 for channel at DAT_800bed80 | `audio::playback::audio_releasechannel` | `[ ]` |
-| **AUD-064** | `Audio_ResetChannel_2` | `0x8008EE80` | `audio/Audio_ResetChannel_2.c` | Audio channel reset: clears GPU flags, resets struct fields 0x18/0x19/0x60/0x27 | `audio::playback::audio_resetchannel_2` | `[ ]` |
-| **AUD-065** | `Audio_ResetSystem` | `0x80074EEC` | `audio/Audio_ResetSystem.c` | Resets audio system: clears flag 0x800BE22A, calls reset if channels active | `audio::playback::audio_resetsystem` | `[ ]` |
-| **AUD-066** | `Audio_SFXSequence` | `0x80077D8C` | `audio/Audio_SFXSequence.c` | SFX sequencer: DAT_800bf842 state machine, plays SFX 0x29/0x2A in sequence, decrements | `audio::playback::audio_sfxsequence` | `[ ]` |
-| **AUD-067** | `Audio_SPUCommand` | `0x80075E04` | `audio/Audio_SPUCommand.c` | Sends raw SPU command with voice parameters (ADSR, pitch, volume) | `audio::playback::audio_spucommand` | `[ ]` |
-| **AUD-068** | `Audio_SPU_Find` | `0x8007496C` | `audio/Audio_SPU_Find.c` | Audio SPU voice finder: searches 0x800BE238 table by channel ID | `audio::playback::audio_spu_find` | `[ ]` |
-| **AUD-069** | `Audio_SPU_Key` | `0x80094B50` | `audio/Audio_SPU_Key.c` | Audio SPU key on/off: sets bitmask at _DAT_80105d10 for voice allocation | `audio::playback::audio_spu_key` | `[ ]` |
-| **AUD-070** | `Audio_SPU_Process` | `0x800950E0` | `audio/Audio_SPU_Process.c` | Audio SPU processor: processes 0x38-byte entry, updates | `audio::playback::audio_spu_process` | `[ ]` |
-| **AUD-071** | `Audio_SPU_Update` | `0x8007566C` | `audio/Audio_SPU_Update.c` | Audio SPU updater: iterates 10 slots, updates ADSR/volume | `audio::playback::audio_spu_update` | `[ ]` |
-| **AUD-072** | `Audio_SPU_VoiceSetup` | `0x8007486C` | `audio/Audio_SPU_VoiceSetup.c` | Audio SPU voice setup: computes ADSR/volume from table at 0x800A4D1E | `audio::playback::audio_spu_voicesetup` | `[ ]` |
-| **AUD-073** | `Audio_ScanChannel` | `0x80095B90` | `audio/Audio_ScanChannel.c` | Audio channel scan: iterates DAT_80105cec channels, calls callback | `audio::playback::audio_scanchannel` | `[ ]` |
-| **AUD-074** | `Audio_ScanChannels` | `0x800905E0` | `audio/Audio_ScanChannels.c` | Audio channel scanner: iterates channel table, updates active channels | `audio::playback::audio_scanchannels` | `[ ]` |
-| **AUD-075** | `Audio_SeqCmd2` | `0x8008EFD0` | `audio/Audio_SeqCmd2.c` | Audio sequence command 2: calls FUN_80092420 with 4 params | `audio::playback::audio_seqcmd2` | `[ ]` |
-| **AUD-076** | `Audio_SeqCmd_2` | `0x80092080` | `audio/Audio_SeqCmd_2.c` | Audio sequence command: sends cmd to SEQ player | `audio::playback::audio_seqcmd_2` | `[ ]` |
-| **AUD-077** | `Audio_SeqCommand` | `0x800939A0` | `audio/Audio_SeqCommand.c` | Audio sequence commander: sends commands to SEQ | `audio::playback::audio_seqcommand` | `[ ]` |
-| **AUD-078** | `Audio_SeqControl` | `0x80092660` | `audio/Audio_SeqControl.c` | Audio sequence controller: manages SEQ playback state | `audio::playback::audio_seqcontrol` | `[ ]` |
-| **AUD-079** | `Audio_SeqData` | `0x80093650` | `audio/Audio_SeqData.c` | Audio sequence data: processes SEQ data stream | `audio::playback::audio_seqdata` | `[ ]` |
-| **AUD-080** | `Audio_SeqEvent` | `0x80094150` | `audio/Audio_SeqEvent.c` | Audio sequence event handler: processes SEQ events | `audio::playback::audio_seqevent` | `[ ]` |
-| **AUD-081** | `Audio_SeqLoad` | `0x8008E410` | `audio/Audio_SeqLoad.c` | Audio sequence loader: loads SEQ data from CD | `audio::playback::audio_seqload` | `[ ]` |
-| **AUD-082** | `Audio_SeqMain` | `0x80090210` | `audio/Audio_SeqMain.c` | Audio sequence main: manages full SEQ playback loop | `audio::playback::audio_seqmain` | `[ ]` |
-| **AUD-083** | `Audio_SeqMain2` | `0x80075FF8` | `audio/Audio_SeqMain2.c` | Audio sequence main variant 2: SEQ+SPU control (236L) | `audio::playback::audio_seqmain2` | `[ ]` |
-| **AUD-084** | `Audio_SeqOpen` | `0x8008E100` | `audio/Audio_SeqOpen.c` | Audio sequence opener: checks _DAT_80104c28, opens SEQ data | `audio::playback::audio_seqopen` | `[ ]` |
-| **AUD-085** | `Audio_SeqPlay` | `0x80075824` | `audio/Audio_SeqPlay.c` | Audio sequence player: checks DAT_1f80019a, plays SEQ | `audio::playback::audio_seqplay` | `[ ]` |
-| **AUD-086** | `Audio_SeqPlay2` | `0x80075A80` | `audio/Audio_SeqPlay2.c` | Audio sequence player variant 2: manages playback state | `audio::playback::audio_seqplay2` | `[ ]` |
-| **AUD-087** | `Audio_SeqTime` | `0x80094C10` | `audio/Audio_SeqTime.c` | Audio sequence timer: computes seq time from tick count | `audio::playback::audio_seqtime` | `[ ]` |
-| **AUD-088** | `Audio_SeqTimer2` | `0x800945A0` | `audio/Audio_SeqTimer2.c` | Audio sequence timer variant 2: tick computation | `audio::playback::audio_seqtimer2` | `[ ]` |
-| **AUD-089** | `Audio_SeqVoice` | `0x80091460` | `audio/Audio_SeqVoice.c` | Audio sequence voice: assigns voice to SEQ track | `audio::playback::audio_seqvoice` | `[ ]` |
-| **AUD-090** | `Audio_SetBank` | `0x80074BF8` | `audio/Audio_SetBank.c` | Sets active sound bank / BGM track for music switching | audio::AudioPlayer (BGM SetBank) | [x] |
-| **AUD-091** | `Audio_SetChannel` | `0x8008EB60` | `audio/Audio_SetChannel.c` | Audio channel setter: looks up channel struct, applies params | `audio::playback::audio_setchannel` | `[ ]` |
-| **AUD-092** | `Audio_SetChannelConfig` | `0x80075070` | `audio/Audio_SetChannelConfig.c` | Configures audio channel: sets flag 0x800BE22B, stores channel param, calls 0x80075CEC | `audio::playback::audio_setchannelconfig` | `[ ]` |
-| **AUD-093** | `Audio_SetChannelConfig2` | `0x800750A4` | `audio/Audio_SetChannelConfig2.c` | Audio channel config variant: calls 0x800750D8 with flag=1 | `audio::playback::audio_setchannelconfig2` | `[ ]` |
-| **AUD-094** | `Audio_SetChannelParam` | `0x800922A0` | `audio/Audio_SetChannelParam.c` | Audio channel param: sets channel[0x48/0x9C] if flags 4 and 0x100 are clear | `audio::playback::audio_setchannelparam` | `[ ]` |
-| **AUD-095** | `Audio_SetChannelPos` | `0x80091EC0` | `audio/Audio_SetChannelPos.c` | Audio channel position: sets channel[0x58/0x5A] or calls active setter via FUN_80095530 | `audio::playback::audio_setchannelpos` | `[ ]` |
-| **AUD-096** | `Audio_SetChannelPos2` | `0x80091F50` | `audio/Audio_SetChannelPos2.c` | Audio channel position variant 2: same pattern but simplified index | `audio::playback::audio_setchannelpos2` | `[ ]` |
-| **AUD-097** | `Audio_SetChannelPos3` | `0x80091FB8` | `audio/Audio_SetChannelPos3.c` | Audio channel position variant 3: same as SetChannelPos pattern | `audio::playback::audio_setchannelpos3` | `[ ]` |
-| **AUD-098** | `Audio_SetFlag` | `0x800931B0` | `audio/Audio_SetFlag.c` | Audio flag setter: DAT_80105c90 = 2 | `audio::playback::audio_setflag` | `[ ]` |
-| **AUD-099** | `Audio_SetParam` | `0x80092A70` | `audio/Audio_SetParam.c` | Audio param setter: stores value at 0x80105BF8, scales param to 0-0x7FFF range | `audio::playback::audio_setparam` | `[ ]` |
-| **AUD-100** | `Audio_SetVoice` | `0x8008F930` | `audio/Audio_SetVoice.c` | Audio voice set: stores params in voice struct via FUN_80092420 | `audio::playback::audio_setvoice` | `[ ]` |
-| **AUD-101** | `Audio_SetVoice10` | `0x8008F6F0` | `audio/Audio_SetVoice10.c` | Audio voice set variant 10: stores voice parameters from stack | `audio::playback::audio_setvoice10` | `[ ]` |
-| **AUD-102** | `Audio_SetVoice2` | `0x8008F9D0` | `audio/Audio_SetVoice2.c` | Audio voice set variant 2: same pattern, different stack layout | `audio::playback::audio_setvoice2` | `[ ]` |
-| **AUD-103** | `Audio_SetVoice3` | `0x8008F420` | `audio/Audio_SetVoice3.c` | Audio voice set variant 3: stores extended params in voice struct | `audio::playback::audio_setvoice3` | `[ ]` |
-| **AUD-104** | `Audio_SetVoice4` | `0x8008F4D0` | `audio/Audio_SetVoice4.c` | Audio voice set variant 4: different stack layout for voice params | `audio::playback::audio_setvoice4` | `[ ]` |
-| **AUD-105** | `Audio_SetVoice5` | `0x8008F1B0` | `audio/Audio_SetVoice5.c` | Audio voice set variant 5: stores voice params with byte access | `audio::playback::audio_setvoice5` | `[ ]` |
-| **AUD-106** | `Audio_SetVoice6` | `0x8008F360` | `audio/Audio_SetVoice6.c` | Audio voice set variant 6: stores voice params, different byte layout | `audio::playback::audio_setvoice6` | `[ ]` |
-| **AUD-107** | `Audio_SetVoice7` | `0x8008F580` | `audio/Audio_SetVoice7.c` | Audio voice set variant 7: extended voice parameter storage | `audio::playback::audio_setvoice7` | `[ ]` |
-| **AUD-108** | `Audio_SetVoice8` | `0x8008F850` | `audio/Audio_SetVoice8.c` | Audio voice set variant 8: stores pan/volume in voice struct | `audio::playback::audio_setvoice8` | `[ ]` |
-| **AUD-109** | `Audio_SetVoice9` | `0x8008F630` | `audio/Audio_SetVoice9.c` | Audio voice set variant 9: stores ADSR params in voice struct | `audio::playback::audio_setvoice9` | `[ ]` |
-| **AUD-110** | `Audio_SetVoiceFlags` | `0x8008F2BC` | `audio/Audio_SetVoiceFlags.c` | Audio voice flags: extracts bit 0x8000 from params, stores in voice struct | `audio::playback::audio_setvoiceflags` | `[ ]` |
-| **AUD-111** | `Audio_SetVolume` | `0x8008DE74` | `audio/Audio_SetVolume.c` | Audio volume setter: calls SetChannelParam(-vol), toggles flags 0x20/0x10 | `audio::playback::audio_setvolume` | `[ ]` |
-| **AUD-112** | `Audio_SetVolume2` | `0x8008DEF4` | `audio/Audio_SetVolume2.c` | Audio volume set variant 2: same as SetVolume (duplicate) | `audio::playback::audio_setvolume2` | `[ ]` |
-| **AUD-113** | `Audio_SetVolume3` | `0x8008DDD0` | `audio/Audio_SetVolume3.c` | Audio volume set variant 3: same as SetVolume (duplicate) | `audio::playback::audio_setvolume3` | `[ ]` |
-| **AUD-114** | `Audio_SetupCmd` | `0x80090700` | `audio/Audio_SetupCmd.c` | Audio command setup: builds 2-word cmd with param*0x81, sends via struct | `audio::playback::audio_setupcmd` | `[ ]` |
-| **AUD-115** | `Audio_SetupVoice` | `0x8008F260` | `audio/Audio_SetupVoice.c` | Audio voice setup: extracts bits from params, stores in voice struct | `audio::playback::audio_setupvoice` | `[ ]` |
-| **AUD-116** | `Audio_SystemCmd` | `0x80091B50` | `audio/Audio_SystemCmd.c` | Audio system command: sets _DAT_801054b0/b2, dispatches | `audio::playback::audio_systemcmd` | `[ ]` |
-| **AUD-117** | `Audio_SystemConfig` | `0x80091D70` | `audio/Audio_SystemConfig.c` | Audio system config: sets DAT_800ac424, checks 0x1000 flag | `audio::playback::audio_systemconfig` | `[ ]` |
-| **AUD-118** | `Audio_SystemInit` | `0x80075130` | `audio/Audio_SystemInit.c` | Audio system init: calls Audio_Init2 + Audio_InitVolume + config | `audio::playback::audio_systeminit` | `[ ]` |
-| **AUD-119** | `Audio_SystemLock` | `0x80090BD0` | `audio/Audio_SystemLock.c` | Audio system lock: sets _DAT_80104c24=1, processes queue | `audio::playback::audio_systemlock` | `[ ]` |
-| **AUD-120** | `Audio_Toggle` | `0x80090A0C` | `audio/Audio_Toggle.c` | Audio toggle: flips DAT_800ac438, calls callback ptr on 1->0 transition | `audio::playback::audio_toggle` | `[ ]` |
-| **AUD-121** | `Audio_VoiceAlloc2` | `0x8008FC10` | `audio/Audio_VoiceAlloc2.c` | Audio voice allocator variant 2: finds free voice slot | `audio::playback::audio_voicealloc2` | `[ ]` |
-| **AUD-122** | `Audio_VoiceControl` | `0x8008FE40` | `audio/Audio_VoiceControl.c` | Audio voice controller: adjusts voice params from struct | `audio::playback::audio_voicecontrol` | `[ ]` |
-| **AUD-123** | `Audio_VoiceKeyOn` | `0x80095530` | `audio/Audio_VoiceKeyOn.c` | Audio voice key-on: activates voice with ADSR params | `audio::playback::audio_voicekeyon` | `[ ]` |
-| **AUD-124** | `Audio_VoiceParam` | `0x8008F7A0` | `audio/Audio_VoiceParam.c` | Audio voice param: stores byte params in voice struct | `audio::playback::audio_voiceparam` | `[ ]` |
-| **AUD-125** | `Audio_VoiceParam2` | `0x80095D10` | `audio/Audio_VoiceParam2.c` | Audio voice param variant 2: extended parameter setup | `audio::playback::audio_voiceparam2` | `[ ]` |
-| **AUD-126** | `Audio_VoiceSet` | `0x80090E40` | `audio/Audio_VoiceSet.c` | Audio voice setter: builds voice params at 0xB0 stride | `audio::playback::audio_voiceset` | `[ ]` |
-| **AUD-127** | `Audio_VoiceSet1` | `0x80092420` | `audio/Audio_VoiceSet1.c` | Audio voice set variant 1: checks slot, sets voice params | `audio::playback::audio_voiceset1` | `[ ]` |
-| **AUD-128** | `Audio_VoiceSet2` | `0x80092C30` | `audio/Audio_VoiceSet2.c` | Audio voice set variant 2: checks slot, sets different voice params | `audio::playback::audio_voiceset2` | `[ ]` |
-| **AUD-129** | `Audio_VoiceUpdate` | `0x80092FD0` | `audio/Audio_VoiceUpdate.c` | Audio voice updater: processes active voices, updates params | `audio::playback::audio_voiceupdate` | `[ ]` |
-| **AUD-130** | `Audio_WriteDevice` | `0x80092E3C` | `audio/Audio_WriteDevice.c` | Audio device write: if param<0x18, stores short at DAT_80104c30 table | `audio::playback::audio_writedevice` | `[ ]` |
-| **AUD-131** | `SPU_Dispatch1` | `0x8008FA70` | `audio/SPU_Dispatch1.c` | SPU dispatch wrapper: calls 0x80092B00 | `audio::playback::spu_dispatch1` | `[ ]` |
-| **AUD-132** | `SPU_Dispatch2` | `0x8008FAA0` | `audio/SPU_Dispatch2.c` | SPU dispatch wrapper: calls 0x80092A70 | `audio::playback::spu_dispatch2` | `[ ]` |
-| **AUD-133** | `SPU_Dispatch3` | `0x8008FAD0` | `audio/SPU_Dispatch3.c` | SPU dispatch wrapper: calls 0x80092BB0 | `audio::playback::spu_dispatch3` | `[ ]` |
-| **AUD-134** | `SPU_Dispatch4` | `0x8008FB00` | `audio/SPU_Dispatch4.c` | SPU dispatch wrapper: calls 0x80092A30 | `audio::playback::spu_dispatch4` | `[ ]` |
-| **AUD-135** | `SPU_Dispatch5` | `0x8008FB30` | `audio/SPU_Dispatch5.c` | SPU dispatch wrapper: calls 0x80092A30 | `audio::playback::spu_dispatch5` | `[ ]` |
-| **AUD-136** | `SPU_SetVoiceAttr` | `0x8008EE10` | `audio/SPU_SetVoiceAttr.c` | Sets SPU voice attribute: writes param to voice data at 0x80104C30 table | `audio::playback::spu_setvoiceattr` | `[ ]` |
-| **AUD-137** | `SPU_SetVoiceAttr2` | `0x800900F0` | `audio/SPU_SetVoiceAttr2.c` | Sets SPU voice attribute variant: different offset calculation | `audio::playback::spu_setvoiceattr2` | `[ ]` |
-| **AUD-138** | `SPU_SetVolume` | `0x80090560` | `audio/SPU_SetVolume.c` | Sets SPU voice volume via 0x800905E0 | `audio::playback::spu_setvolume` | `[ ]` |
-| **AUD-139** | `SPU_SetVolumePan` | `0x80090598` | `audio/SPU_SetVolumePan.c` | Sets SPU voice volume and pan via 0x800905E0 | `audio::playback::spu_setvolumepan` | `[ ]` |
-| **AUD-140** | `SPU_Start` | `0x80090980` | `audio/SPU_Start.c` | Starts SPU playback via 0x80090750 with flag 1 | `audio::playback::spu_start` | `[ ]` |
+| **AUD-001** | `Audio_ADSRCalc` | `0x80094474` | `audio/Audio_ADSRCalc.c` | Audio ADSR calculator: computes envelope from phase + step | `audio::playback::audio_adsrcalc` | `[x]` |
+| **AUD-002** | `Audio_AllocChannel` | `0x8008EAD0` | `audio/Audio_AllocChannel.c` | Audio channel alloc: calls FUN_80092a70 + FUN_80090160, stores result at [0x90] | `audio::playback::audio_allocchannel` | `[x]` |
+| **AUD-003** | `Audio_AllocChannel2` | `0x80091810` | `audio/Audio_AllocChannel2.c` | Audio channel alloc variant 2: looks up channel table, calls init | `audio::playback::audio_allocchannel2` | `[x]` |
+| **AUD-004** | `Audio_AllocVoice` | `0x80090160` | `audio/Audio_AllocVoice.c` | Audio voice allocator: finds free voice slot in channel struct | `audio::playback::audio_allocvoice` | `[x]` |
+| **AUD-005** | `Audio_AllocVoice2` | `0x800752B4` | `audio/Audio_AllocVoice2.c` | Audio voice allocator variant 2: searches table by range | `audio::playback::audio_allocvoice2` | `[x]` |
+| **AUD-006** | `Audio_CD_Cmd` | `0x80094108` | `audio/Audio_CD_Cmd.c` | Audio CD command: calls FUN_80093ebc(0x21, param1, param2, param3) | `audio::playback::audio_cd_cmd` | `[x]` |
+| **AUD-007** | `Audio_CalcPitch` | `0x80092B00` | `audio/Audio_CalcPitch.c` | Audio pitch calculator: clamps abs(param) to 0-0x3FFF, scales to pitch | `audio::playback::audio_calcpitch` | `[x]` |
+| **AUD-008** | `Audio_CalcValue` | `0x8009440C` | `audio/Audio_CalcValue.c` | Audio value calc: computes DAT_80105d04 + offset*0x10, scales result | `audio::playback::audio_calcvalue` | `[x]` |
+| **AUD-009** | `Audio_CallCallbacks` | `0x800909C0` | `audio/Audio_CallCallbacks.c` | Audio callback chain: calls DAT_800ac430 then DAT_800ac42c function ptrs | `audio::playback::audio_callcallbacks` | `[x]` |
+| **AUD-010** | `Audio_ChannelCmd` | `0x8008E860` | `audio/Audio_ChannelCmd.c` | Audio channel command: looks up struct, calls FUN_80095d10 with channel data | `audio::playback::audio_channelcmd` | `[x]` |
+| **AUD-011** | `Audio_ChannelCmd2` | `0x8008E930` | `audio/Audio_ChannelCmd2.c` | Audio channel command variant 2: same pattern, different params | `audio::playback::audio_channelcmd2` | `[x]` |
+| **AUD-012** | `Audio_ChannelConfig` | `0x80090A60` | `audio/Audio_ChannelConfig.c` | Audio channel config: sets up channel params at DAT_800ac448 | `audio::playback::audio_channelconfig` | `[x]` |
+| **AUD-013** | `Audio_ChannelDispatch` | `0x80090010` | `audio/Audio_ChannelDispatch.c` | Audio channel dispatch: looks up struct, branches on flag to FUN_80093ebc or FUN_800939a0 | `audio::playback::audio_channeldispatch` | `[x]` |
+| **AUD-014** | `Audio_ChannelEvent` | `0x80093EBC` | `audio/Audio_ChannelEvent.c` | Audio channel event handler: iterates channels, dispatches events | `audio::playback::audio_channelevent` | `[x]` |
+| **AUD-015** | `Audio_ChannelInit2` | `0x8008DC00` | `audio/Audio_ChannelInit2.c` | Audio channel init variant 2: sets voice, calls FUN_80095530 | `audio::playback::audio_channelinit2` | `[x]` |
+| **AUD-016** | `Audio_ChannelKey` | `0x80091970` | `audio/Audio_ChannelKey.c` | Audio channel key handler: looks up channel, calls voice funcs | `audio::playback::audio_channelkey` | `[x]` |
+| **AUD-017** | `Audio_ChannelParam` | `0x8008EA20` | `audio/Audio_ChannelParam.c` | Audio channel param: branches on param3 < 0x40, calls different handlers | `audio::playback::audio_channelparam` | `[x]` |
+| **AUD-018** | `Audio_ChannelPlay` | `0x8008FB60` | `audio/Audio_ChannelPlay.c` | Audio channel play: reads byte, advances ptr, calls FUN_800952cc | `audio::playback::audio_channelplay` | `[x]` |
+| **AUD-019** | `Audio_ChannelProcess` | `0x80091120` | `audio/Audio_ChannelProcess.c` | Audio channel processor: updates channel state, calls voice funcs | `audio::playback::audio_channelprocess` | `[x]` |
+| **AUD-020** | `Audio_ChannelSetParam3` | `0x8008E790` | `audio/Audio_ChannelSetParam3.c` | Audio channel param set: reads struct, calls FUN_80095d10, sets param at offset | `audio::playback::audio_channelsetparam3` | `[x]` |
+| **AUD-021** | `Audio_ChannelUpdate` | `0x8009121C` | `audio/Audio_ChannelUpdate.c` | Audio channel updater: processes channel, updates voice | `audio::playback::audio_channelupdate` | `[x]` |
+| **AUD-022** | `Audio_ChannelVoice` | `0x8008EC60` | `audio/Audio_ChannelVoice.c` | Audio channel voice handler: sets voice params from struct | `audio::playback::audio_channelvoice` | `[x]` |
+| **AUD-023** | `Audio_CheckDevice` | `0x80092E00` | `audio/Audio_CheckDevice.c` | Audio device check: if param < 0x18, calls FUN_8009a170, else returns 0 | `audio::playback::audio_checkdevice` | `[x]` |
+| **AUD-024** | `Audio_ClampParam` | `0x800943C0` | `audio/Audio_ClampParam.c` | Audio param clamp: clamps DAT_80105d09 to 0x7F, multiplies by 0x81 | `audio::playback::audio_clampparam` | `[x]` |
+| **AUD-025** | `Audio_ClampVolume` | `0x80075CEC` | `audio/Audio_ClampVolume.c` | Audio volume clamp: negative→abs, positive→clamp to 0x7FFF | `audio::playback::audio_clampvolume` | `[x]` |
+| **AUD-026** | `Audio_ClearChannel` | `0x80026510` | `audio/Audio_ClearChannel.c` | Clears audio channel: sends mute SPU command | `audio::playback::audio_clearchannel` | `[x]` |
+| **AUD-027** | `Audio_ClearFlag` | `0x800931A0` | `audio/Audio_ClearFlag.c` | Audio flag clearer: DAT_80105c90 = 0 | `audio::playback::audio_clearflag` | `[x]` |
+| **AUD-028** | `Audio_ClearSlot` | `0x80090B98` | `audio/Audio_ClearSlot.c` | Audio slot clearer: zeros word at DAT_800ac448 + index*0x10 if index < 3 | `audio::playback::audio_clearslot` | `[x]` |
+| **AUD-029** | `Audio_Cmd1` | `0x80091B18` | `audio/Audio_Cmd1.c` | Audio command 1: calls FUN_80091970(param1, param2) | `audio::playback::audio_cmd1` | `[x]` |
+| **AUD-030** | `Audio_Cmd2` | `0x80091AF0` | `audio/Audio_Cmd2.c` | Audio command 2: calls FUN_80091970(param1, 0) | `audio::playback::audio_cmd2` | `[x]` |
+| **AUD-031** | `Audio_Cmd3` | `0x80092048` | `audio/Audio_Cmd3.c` | Audio command 3: calls FUN_80095a9c with combined channel ID | `audio::playback::audio_cmd3` | `[x]` |
+| **AUD-032** | `Audio_Cmd4` | `0x800910F0` | `audio/Audio_Cmd4.c` | Audio command wrapper: calls FUN_80091120(param1, param2) | `audio::playback::audio_cmd4` | `[x]` |
+| **AUD-033** | `Audio_Cmd5` | `0x8008F120` | `audio/Audio_Cmd5.c` | Audio command 5: builds param stack, calls FUN_80092420 with 3 params | `audio::playback::audio_cmd5` | `[x]` |
+| **AUD-034** | `Audio_Cmd6` | `0x8008F090` | `audio/Audio_Cmd6.c` | Audio command 6: builds param stack, calls FUN_80092420 with 2 params | `audio::playback::audio_cmd6` | `[x]` |
+| **AUD-035** | `Audio_CmdWithParam` | `0x80092BB0` | `audio/Audio_CmdWithParam.c` | Audio command with param: sets struct + 0x10 flag, calls FUN_80098330 | `audio::playback::audio_cmdwithparam` | `[x]` |
+| **AUD-036** | `Audio_CmdWithParam2` | `0x80092A30` | `audio/Audio_CmdWithParam2.c` | Audio command with param 2: sets struct + 8 flag, calls FUN_80098330 | `audio::playback::audio_cmdwithparam2` | `[x]` |
+| **AUD-037** | `Audio_EnableChannel` | `0x80091910` | `audio/Audio_EnableChannel.c` | Audio channel enable: sets channel[0x14]=1, clears flag bit 3 | `audio::playback::audio_enablechannel` | `[x]` |
+| **AUD-038** | `Audio_GPU_Cmd0` | `0x80092BF0` | `audio/Audio_GPU_Cmd0.c` | Audio GPU command with param 0: calls FUN_80098150(0) | `audio::playback::audio_gpu_cmd0` | `[x]` |
+| **AUD-039** | `Audio_GPU_Cmd1` | `0x80092C10` | `audio/Audio_GPU_Cmd1.c` | Audio GPU command with param 1: calls FUN_80098150(1) | `audio::playback::audio_gpu_cmd1` | `[x]` |
+| **AUD-040** | `Audio_GetChannelByte` | `0x8008E0C0` | `audio/Audio_GetChannelByte.c` | Audio channel getter: returns byte at channel[param2]+0x14 from struct ptr table | `audio::playback::audio_getchannelbyte` | `[x]` |
+| **AUD-041** | `Audio_Init` | `0x800909A0` | `audio/Audio_Init.c` | Audio init wrapper: calls FUN_80090750(0) | `audio::playback::audio_init` | `[x]` |
+| **AUD-042** | `Audio_Init2` | `0x8008DFA0` | `audio/Audio_Init2.c` | Audio init variant 2: sets up channel table at 0x80104C30 | `audio::playback::audio_init2` | `[x]` |
+| **AUD-043** | `Audio_InitCD` | `0x80075240` | `audio/Audio_InitCD.c` | Audio CD init: calls Video_InitDecoder, sets volume, calls init sequence | `audio::playback::audio_initcd` | `[x]` |
+| **AUD-044** | `Audio_InitChannel` | `0x80091050` | `audio/Audio_InitChannel.c` | Audio channel init: looks up 0xB0-stride struct, zeros fields, calls init function | `audio::playback::audio_initchannel` | `[x]` |
+| **AUD-045** | `Audio_InitSPU` | `0x80074B44` | `audio/Audio_InitSPU.c` | Audio SPU init: iterates _DAT_800bed78 slots, sets ADSR/volume per slot | `audio::playback::audio_initspu` | `[x]` |
+| **AUD-046** | `Audio_InitSeq` | `0x80090750` | `audio/Audio_InitSeq.c` | Audio sequence initializer: inits SEQ engine, 0x3E6 loops | `audio::playback::audio_initseq` | `[x]` |
+| **AUD-047** | `Audio_InitSequence` | `0x8008E040` | `audio/Audio_InitSequence.c` | Audio init sequence: calls 4 init functions in order | `audio::playback::audio_initsequence` | `[x]` |
+| **AUD-048** | `Audio_InitVolume` | `0x80075A30` | `audio/Audio_InitVolume.c` | Audio volume init: sets stereo/pan values at 0x800BE1FC-0A, calls init, clears | `audio::playback::audio_initvolume` | `[x]` |
+| **AUD-049** | `Audio_KeyOn` | `0x80092310` | `audio/Audio_KeyOn.c` | Audio key on: checks slot state, calls FUN_800962b0, triggers voice | `audio::playback::audio_keyon` | `[x]` |
+| **AUD-050** | `Audio_KeyOn2` | `0x800952CC` | `audio/Audio_KeyOn2.c` | Audio key on variant 2: calls CD_CheckSlot, sets voice params, triggers | `audio::playback::audio_keyon2` | `[x]` |
+| **AUD-051** | `Audio_Lock` | `0x800929BC` | `audio/Audio_Lock.c` | Audio lock: sets _DAT_80104c24=1, returns -1 if already locked | `audio::playback::audio_lock` | `[x]` |
+| **AUD-052** | `Audio_LookupChannel` | `0x80095A9C` | `audio/Audio_LookupChannel.c` | Audio channel lookup: DAT_80105d0c = channel ID, indexes struct table | `audio::playback::audio_lookupchannel` | `[x]` |
+| **AUD-053** | `Audio_Main` | `0x800931C0` | `audio/Audio_Main.c` | Audio main: full audio processing pipeline | `audio::playback::audio_main` | `[x]` |
+| **AUD-054** | `Audio_Mute` | `0x80026470` | `audio/Audio_Mute.c` | Mutes audio output with SPU command | `audio::playback::audio_mute` | `[x]` |
+| **AUD-055** | `Audio_NoteOn` | `0x8008EDA0` | `audio/Audio_NoteOn.c` | Audio note on: sets channel[0x18]=param3, increments [0x1E], stores voice at [0x90] | `audio::playback::audio_noteon` | `[x]` |
+| **AUD-056** | `Audio_PitchBend` | `0x8009401C` | `audio/Audio_PitchBend.c` | Audio pitch bend: computes pitch delta between param5 and param6 | `audio::playback::audio_pitchbend` | `[x]` |
+| **AUD-057** | `Audio_PlaySFX_Vol` | `0x80074810` | `audio/Audio_PlaySFX_Vol.c` | Plays sound effect with volume only (wraps Audio_PlaySoundEffect) | `audio::playback::audio_playsfx_vol` | `[x]` |
+| **AUD-058** | `Audio_PlaySFX_VolPan` | `0x8007483C` | `audio/Audio_PlaySFX_VolPan.c` | Plays sound effect with volume and pan (wraps Audio_PlaySoundEffect) | `audio::playback::audio_playsfx_volpan` | `[x]` |
+| **AUD-059** | `Audio_PlaySoundEffect` | `0x80074590` | `audio/Audio_PlaySoundEffect.c` | Subrutina de Audio_PlaySoundEffect (audio/Audio_PlaySoundEffect.c) | audio::AudioPlayer (SFX Dispatch) | `[x]` |
+| **AUD-060** | `Audio_PollChannel` | `0x80095C40` | `audio/Audio_PollChannel.c` | Audio channel poll: iterates DAT_80105cf8 channels, updates state | `audio::playback::audio_pollchannel` | `[x]` |
+| **AUD-061** | `Audio_ProgramChange` | `0x8008E390` | `audio/Audio_ProgramChange.c` | Audio program change: reads byte, increments ptr, sets [0x26], stores voice at [0x90] | `audio::playback::audio_programchange` | `[x]` |
+| **AUD-062** | `Audio_ReadDevice` | `0x80092EA0` | `audio/Audio_ReadDevice.c` | Audio device read: if param<0x18, calls FUN_8009a170 to read data | `audio::playback::audio_readdevice` | `[x]` |
+| **AUD-063** | `Audio_ReleaseChannel` | `0x80074E48` | `audio/Audio_ReleaseChannel.c` | Audio release channel: calls Audio_Cmd2 for channel at DAT_800bed80 | `audio::playback::audio_releasechannel` | `[x]` |
+| **AUD-064** | `Audio_ResetChannel_2` | `0x8008EE80` | `audio/Audio_ResetChannel_2.c` | Audio channel reset: clears GPU flags, resets struct fields 0x18/0x19/0x60/0x27 | `audio::playback::audio_resetchannel_2` | `[x]` |
+| **AUD-065** | `Audio_ResetSystem` | `0x80074EEC` | `audio/Audio_ResetSystem.c` | Resets audio system: clears flag 0x800BE22A, calls reset if channels active | `audio::playback::audio_resetsystem` | `[x]` |
+| **AUD-066** | `Audio_SFXSequence` | `0x80077D8C` | `audio/Audio_SFXSequence.c` | SFX sequencer: DAT_800bf842 state machine, plays SFX 0x29/0x2A in sequence, decrements | `audio::playback::audio_sfxsequence` | `[x]` |
+| **AUD-067** | `Audio_SPUCommand` | `0x80075E04` | `audio/Audio_SPUCommand.c` | Sends raw SPU command with voice parameters (ADSR, pitch, volume) | `audio::playback::audio_spucommand` | `[x]` |
+| **AUD-068** | `Audio_SPU_Find` | `0x8007496C` | `audio/Audio_SPU_Find.c` | Audio SPU voice finder: searches 0x800BE238 table by channel ID | `audio::playback::audio_spu_find` | `[x]` |
+| **AUD-069** | `Audio_SPU_Key` | `0x80094B50` | `audio/Audio_SPU_Key.c` | Audio SPU key on/off: sets bitmask at _DAT_80105d10 for voice allocation | `audio::playback::audio_spu_key` | `[x]` |
+| **AUD-070** | `Audio_SPU_Process` | `0x800950E0` | `audio/Audio_SPU_Process.c` | Audio SPU processor: processes 0x38-byte entry, updates | `audio::playback::audio_spu_process` | `[x]` |
+| **AUD-071** | `Audio_SPU_Update` | `0x8007566C` | `audio/Audio_SPU_Update.c` | Audio SPU updater: iterates 10 slots, updates ADSR/volume | `audio::playback::audio_spu_update` | `[x]` |
+| **AUD-072** | `Audio_SPU_VoiceSetup` | `0x8007486C` | `audio/Audio_SPU_VoiceSetup.c` | Audio SPU voice setup: computes ADSR/volume from table at 0x800A4D1E | `audio::playback::audio_spu_voicesetup` | `[x]` |
+| **AUD-073** | `Audio_ScanChannel` | `0x80095B90` | `audio/Audio_ScanChannel.c` | Audio channel scan: iterates DAT_80105cec channels, calls callback | `audio::playback::audio_scanchannel` | `[x]` |
+| **AUD-074** | `Audio_ScanChannels` | `0x800905E0` | `audio/Audio_ScanChannels.c` | Audio channel scanner: iterates channel table, updates active channels | `audio::playback::audio_scanchannels` | `[x]` |
+| **AUD-075** | `Audio_SeqCmd2` | `0x8008EFD0` | `audio/Audio_SeqCmd2.c` | Audio sequence command 2: calls FUN_80092420 with 4 params | `audio::playback::audio_seqcmd2` | `[x]` |
+| **AUD-076** | `Audio_SeqCmd_2` | `0x80092080` | `audio/Audio_SeqCmd_2.c` | Audio sequence command: sends cmd to SEQ player | `audio::playback::audio_seqcmd_2` | `[x]` |
+| **AUD-077** | `Audio_SeqCommand` | `0x800939A0` | `audio/Audio_SeqCommand.c` | Audio sequence commander: sends commands to SEQ | `audio::playback::audio_seqcommand` | `[x]` |
+| **AUD-078** | `Audio_SeqControl` | `0x80092660` | `audio/Audio_SeqControl.c` | Audio sequence controller: manages SEQ playback state | `audio::playback::audio_seqcontrol` | `[x]` |
+| **AUD-079** | `Audio_SeqData` | `0x80093650` | `audio/Audio_SeqData.c` | Audio sequence data: processes SEQ data stream | `audio::playback::audio_seqdata` | `[x]` |
+| **AUD-080** | `Audio_SeqEvent` | `0x80094150` | `audio/Audio_SeqEvent.c` | Audio sequence event handler: processes SEQ events | `audio::playback::audio_seqevent` | `[x]` |
+| **AUD-081** | `Audio_SeqLoad` | `0x8008E410` | `audio/Audio_SeqLoad.c` | Audio sequence loader: loads SEQ data from CD | `audio::playback::audio_seqload` | `[x]` |
+| **AUD-082** | `Audio_SeqMain` | `0x80090210` | `audio/Audio_SeqMain.c` | Audio sequence main: manages full SEQ playback loop | `audio::playback::audio_seqmain` | `[x]` |
+| **AUD-083** | `Audio_SeqMain2` | `0x80075FF8` | `audio/Audio_SeqMain2.c` | Audio sequence main variant 2: SEQ+SPU control (236L) | `audio::playback::audio_seqmain2` | `[x]` |
+| **AUD-084** | `Audio_SeqOpen` | `0x8008E100` | `audio/Audio_SeqOpen.c` | Audio sequence opener: checks _DAT_80104c28, opens SEQ data | `audio::playback::audio_seqopen` | `[x]` |
+| **AUD-085** | `Audio_SeqPlay` | `0x80075824` | `audio/Audio_SeqPlay.c` | Audio sequence player: checks DAT_1f80019a, plays SEQ | `audio::playback::audio_seqplay` | `[x]` |
+| **AUD-086** | `Audio_SeqPlay2` | `0x80075A80` | `audio/Audio_SeqPlay2.c` | Audio sequence player variant 2: manages playback state | `audio::playback::audio_seqplay2` | `[x]` |
+| **AUD-087** | `Audio_SeqTime` | `0x80094C10` | `audio/Audio_SeqTime.c` | Audio sequence timer: computes seq time from tick count | `audio::playback::audio_seqtime` | `[x]` |
+| **AUD-088** | `Audio_SeqTimer2` | `0x800945A0` | `audio/Audio_SeqTimer2.c` | Audio sequence timer variant 2: tick computation | `audio::playback::audio_seqtimer2` | `[x]` |
+| **AUD-089** | `Audio_SeqVoice` | `0x80091460` | `audio/Audio_SeqVoice.c` | Audio sequence voice: assigns voice to SEQ track | `audio::playback::audio_seqvoice` | `[x]` |
+| **AUD-090** | `Audio_SetBank` | `0x80074BF8` | `audio/Audio_SetBank.c` | Sets active sound bank / BGM track for music switching | audio::AudioPlayer (BGM SetBank) | `[x]` |
+| **AUD-091** | `Audio_SetChannel` | `0x8008EB60` | `audio/Audio_SetChannel.c` | Audio channel setter: looks up channel struct, applies params | `audio::playback::audio_setchannel` | `[x]` |
+| **AUD-092** | `Audio_SetChannelConfig` | `0x80075070` | `audio/Audio_SetChannelConfig.c` | Configures audio channel: sets flag 0x800BE22B, stores channel param, calls 0x80075CEC | `audio::playback::audio_setchannelconfig` | `[x]` |
+| **AUD-093** | `Audio_SetChannelConfig2` | `0x800750A4` | `audio/Audio_SetChannelConfig2.c` | Audio channel config variant: calls 0x800750D8 with flag=1 | `audio::playback::audio_setchannelconfig2` | `[x]` |
+| **AUD-094** | `Audio_SetChannelParam` | `0x800922A0` | `audio/Audio_SetChannelParam.c` | Audio channel param: sets channel[0x48/0x9C] if flags 4 and 0x100 are clear | `audio::playback::audio_setchannelparam` | `[x]` |
+| **AUD-095** | `Audio_SetChannelPos` | `0x80091EC0` | `audio/Audio_SetChannelPos.c` | Audio channel position: sets channel[0x58/0x5A] or calls active setter via FUN_80095530 | `audio::playback::audio_setchannelpos` | `[x]` |
+| **AUD-096** | `Audio_SetChannelPos2` | `0x80091F50` | `audio/Audio_SetChannelPos2.c` | Audio channel position variant 2: same pattern but simplified index | `audio::playback::audio_setchannelpos2` | `[x]` |
+| **AUD-097** | `Audio_SetChannelPos3` | `0x80091FB8` | `audio/Audio_SetChannelPos3.c` | Audio channel position variant 3: same as SetChannelPos pattern | `audio::playback::audio_setchannelpos3` | `[x]` |
+| **AUD-098** | `Audio_SetFlag` | `0x800931B0` | `audio/Audio_SetFlag.c` | Audio flag setter: DAT_80105c90 = 2 | `audio::playback::audio_setflag` | `[x]` |
+| **AUD-099** | `Audio_SetParam` | `0x80092A70` | `audio/Audio_SetParam.c` | Audio param setter: stores value at 0x80105BF8, scales param to 0-0x7FFF range | `audio::playback::audio_setparam` | `[x]` |
+| **AUD-100** | `Audio_SetVoice` | `0x8008F930` | `audio/Audio_SetVoice.c` | Audio voice set: stores params in voice struct via FUN_80092420 | `audio::playback::audio_setvoice` | `[x]` |
+| **AUD-101** | `Audio_SetVoice10` | `0x8008F6F0` | `audio/Audio_SetVoice10.c` | Audio voice set variant 10: stores voice parameters from stack | `audio::playback::audio_setvoice10` | `[x]` |
+| **AUD-102** | `Audio_SetVoice2` | `0x8008F9D0` | `audio/Audio_SetVoice2.c` | Audio voice set variant 2: same pattern, different stack layout | `audio::playback::audio_setvoice2` | `[x]` |
+| **AUD-103** | `Audio_SetVoice3` | `0x8008F420` | `audio/Audio_SetVoice3.c` | Audio voice set variant 3: stores extended params in voice struct | `audio::playback::audio_setvoice3` | `[x]` |
+| **AUD-104** | `Audio_SetVoice4` | `0x8008F4D0` | `audio/Audio_SetVoice4.c` | Audio voice set variant 4: different stack layout for voice params | `audio::playback::audio_setvoice4` | `[x]` |
+| **AUD-105** | `Audio_SetVoice5` | `0x8008F1B0` | `audio/Audio_SetVoice5.c` | Audio voice set variant 5: stores voice params with byte access | `audio::playback::audio_setvoice5` | `[x]` |
+| **AUD-106** | `Audio_SetVoice6` | `0x8008F360` | `audio/Audio_SetVoice6.c` | Audio voice set variant 6: stores voice params, different byte layout | `audio::playback::audio_setvoice6` | `[x]` |
+| **AUD-107** | `Audio_SetVoice7` | `0x8008F580` | `audio/Audio_SetVoice7.c` | Audio voice set variant 7: extended voice parameter storage | `audio::playback::audio_setvoice7` | `[x]` |
+| **AUD-108** | `Audio_SetVoice8` | `0x8008F850` | `audio/Audio_SetVoice8.c` | Audio voice set variant 8: stores pan/volume in voice struct | `audio::playback::audio_setvoice8` | `[x]` |
+| **AUD-109** | `Audio_SetVoice9` | `0x8008F630` | `audio/Audio_SetVoice9.c` | Audio voice set variant 9: stores ADSR params in voice struct | `audio::playback::audio_setvoice9` | `[x]` |
+| **AUD-110** | `Audio_SetVoiceFlags` | `0x8008F2BC` | `audio/Audio_SetVoiceFlags.c` | Audio voice flags: extracts bit 0x8000 from params, stores in voice struct | `audio::playback::audio_setvoiceflags` | `[x]` |
+| **AUD-111** | `Audio_SetVolume` | `0x8008DE74` | `audio/Audio_SetVolume.c` | Audio volume setter: calls SetChannelParam(-vol), toggles flags 0x20/0x10 | `audio::playback::audio_setvolume` | `[x]` |
+| **AUD-112** | `Audio_SetVolume2` | `0x8008DEF4` | `audio/Audio_SetVolume2.c` | Audio volume set variant 2: same as SetVolume (duplicate) | `audio::playback::audio_setvolume2` | `[x]` |
+| **AUD-113** | `Audio_SetVolume3` | `0x8008DDD0` | `audio/Audio_SetVolume3.c` | Audio volume set variant 3: same as SetVolume (duplicate) | `audio::playback::audio_setvolume3` | `[x]` |
+| **AUD-114** | `Audio_SetupCmd` | `0x80090700` | `audio/Audio_SetupCmd.c` | Audio command setup: builds 2-word cmd with param*0x81, sends via struct | `audio::playback::audio_setupcmd` | `[x]` |
+| **AUD-115** | `Audio_SetupVoice` | `0x8008F260` | `audio/Audio_SetupVoice.c` | Audio voice setup: extracts bits from params, stores in voice struct | `audio::playback::audio_setupvoice` | `[x]` |
+| **AUD-116** | `Audio_SystemCmd` | `0x80091B50` | `audio/Audio_SystemCmd.c` | Audio system command: sets _DAT_801054b0/b2, dispatches | `audio::playback::audio_systemcmd` | `[x]` |
+| **AUD-117** | `Audio_SystemConfig` | `0x80091D70` | `audio/Audio_SystemConfig.c` | Audio system config: sets DAT_800ac424, checks 0x1000 flag | `audio::playback::audio_systemconfig` | `[x]` |
+| **AUD-118** | `Audio_SystemInit` | `0x80075130` | `audio/Audio_SystemInit.c` | Audio system init: calls Audio_Init2 + Audio_InitVolume + config | `audio::playback::audio_systeminit` | `[x]` |
+| **AUD-119** | `Audio_SystemLock` | `0x80090BD0` | `audio/Audio_SystemLock.c` | Audio system lock: sets _DAT_80104c24=1, processes queue | `audio::playback::audio_systemlock` | `[x]` |
+| **AUD-120** | `Audio_Toggle` | `0x80090A0C` | `audio/Audio_Toggle.c` | Audio toggle: flips DAT_800ac438, calls callback ptr on 1->0 transition | `audio::playback::audio_toggle` | `[x]` |
+| **AUD-121** | `Audio_VoiceAlloc2` | `0x8008FC10` | `audio/Audio_VoiceAlloc2.c` | Audio voice allocator variant 2: finds free voice slot | `audio::playback::audio_voicealloc2` | `[x]` |
+| **AUD-122** | `Audio_VoiceControl` | `0x8008FE40` | `audio/Audio_VoiceControl.c` | Audio voice controller: adjusts voice params from struct | `audio::playback::audio_voicecontrol` | `[x]` |
+| **AUD-123** | `Audio_VoiceKeyOn` | `0x80095530` | `audio/Audio_VoiceKeyOn.c` | Audio voice key-on: activates voice with ADSR params | `audio::playback::audio_voicekeyon` | `[x]` |
+| **AUD-124** | `Audio_VoiceParam` | `0x8008F7A0` | `audio/Audio_VoiceParam.c` | Audio voice param: stores byte params in voice struct | `audio::playback::audio_voiceparam` | `[x]` |
+| **AUD-125** | `Audio_VoiceParam2` | `0x80095D10` | `audio/Audio_VoiceParam2.c` | Audio voice param variant 2: extended parameter setup | `audio::playback::audio_voiceparam2` | `[x]` |
+| **AUD-126** | `Audio_VoiceSet` | `0x80090E40` | `audio/Audio_VoiceSet.c` | Audio voice setter: builds voice params at 0xB0 stride | `audio::playback::audio_voiceset` | `[x]` |
+| **AUD-127** | `Audio_VoiceSet1` | `0x80092420` | `audio/Audio_VoiceSet1.c` | Audio voice set variant 1: checks slot, sets voice params | `audio::playback::audio_voiceset1` | `[x]` |
+| **AUD-128** | `Audio_VoiceSet2` | `0x80092C30` | `audio/Audio_VoiceSet2.c` | Audio voice set variant 2: checks slot, sets different voice params | `audio::playback::audio_voiceset2` | `[x]` |
+| **AUD-129** | `Audio_VoiceUpdate` | `0x80092FD0` | `audio/Audio_VoiceUpdate.c` | Audio voice updater: processes active voices, updates params | `audio::playback::audio_voiceupdate` | `[x]` |
+| **AUD-130** | `Audio_WriteDevice` | `0x80092E3C` | `audio/Audio_WriteDevice.c` | Audio device write: if param<0x18, stores short at DAT_80104c30 table | `audio::playback::audio_writedevice` | `[x]` |
+| **AUD-131** | `SPU_Dispatch1` | `0x8008FA70` | `audio/SPU_Dispatch1.c` | SPU dispatch wrapper: calls 0x80092B00 | `audio::playback::spu_dispatch1` | `[x]` |
+| **AUD-132** | `SPU_Dispatch2` | `0x8008FAA0` | `audio/SPU_Dispatch2.c` | SPU dispatch wrapper: calls 0x80092A70 | `audio::playback::spu_dispatch2` | `[x]` |
+| **AUD-133** | `SPU_Dispatch3` | `0x8008FAD0` | `audio/SPU_Dispatch3.c` | SPU dispatch wrapper: calls 0x80092BB0 | `audio::playback::spu_dispatch3` | `[x]` |
+| **AUD-134** | `SPU_Dispatch4` | `0x8008FB00` | `audio/SPU_Dispatch4.c` | SPU dispatch wrapper: calls 0x80092A30 | `audio::playback::spu_dispatch4` | `[x]` |
+| **AUD-135** | `SPU_Dispatch5` | `0x8008FB30` | `audio/SPU_Dispatch5.c` | SPU dispatch wrapper: calls 0x80092A30 | `audio::playback::spu_dispatch5` | `[x]` |
+| **AUD-136** | `SPU_SetVoiceAttr` | `0x8008EE10` | `audio/SPU_SetVoiceAttr.c` | Sets SPU voice attribute: writes param to voice data at 0x80104C30 table | `audio::playback::spu_setvoiceattr` | `[x]` |
+| **AUD-137** | `SPU_SetVoiceAttr2` | `0x800900F0` | `audio/SPU_SetVoiceAttr2.c` | Sets SPU voice attribute variant: different offset calculation | `audio::playback::spu_setvoiceattr2` | `[x]` |
+| **AUD-138** | `SPU_SetVolume` | `0x80090560` | `audio/SPU_SetVolume.c` | Sets SPU voice volume via 0x800905E0 | `audio::playback::spu_setvolume` | `[x]` |
+| **AUD-139** | `SPU_SetVolumePan` | `0x80090598` | `audio/SPU_SetVolumePan.c` | Sets SPU voice volume and pan via 0x800905E0 | `audio::playback::spu_setvolumepan` | `[x]` |
+| **AUD-140** | `SPU_Start` | `0x80090980` | `audio/SPU_Start.c` | Starts SPU playback via 0x80090750 with flag 1 | `audio::playback::spu_start` | `[x]` |
 
 ---
 

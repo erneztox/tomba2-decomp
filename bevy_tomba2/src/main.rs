@@ -1,5 +1,6 @@
 pub mod ai;
 pub mod animation;
+pub mod audio;
 mod camera;
 mod collision;
 pub mod events;
@@ -9,6 +10,7 @@ pub mod ui;
 
 use ai::TombaAI;
 use animation::TombaAnimVM;
+use audio::TombaAudioSystem;
 use bevy::prelude::*;
 use camera::{camera_controller, GameCamera};
 use collision::{draw_collision_gizmos, CollisionDebugConfig, LevelCollision};
@@ -36,6 +38,7 @@ fn main() {
         .init_resource::<TombaUI>()
         .init_resource::<TombaAnimVM>()
         .init_resource::<TombaAI>()
+        .init_resource::<TombaAudioSystem>()
         .add_systems(Startup, (setup_collision_data, setup_scene, setup_tomba_animations))
         .add_systems(
             Update,
@@ -116,6 +119,7 @@ fn setup_scene(mut commands: Commands, asset_server: Res<AssetServer>) {
         TombaUI::default(),
         TombaAnimVM::default(),
         TombaAI::default(),
+        TombaAudioSystem::default(),
     ));
 
     // 4. Spawn Game Camera (Starts in Rail Follow mode, looking from the ocean side towards the pier)

@@ -90,9 +90,9 @@ El juego completo está catalogado en un censo técnico exhaustivo de **1.567 fu
 | **SEC-08** | `ITM` | **Items, Inventory & Equipment** (Menú 32 casos, Armas, Trajes Ardilla/Pájaro/Cerdo, 99 slots) | 8 | **8 / 8** (100%) |
 | **SEC-09** | `EVT` | **Event Engine & Script Interpreter** (256 flags maestros, 137 misiones, Intérprete de bytecode de escena) | 49 | **49 / 49** (100%) |
 | **SEC-10** | `UI` | **UI, Dialog System & HUD** (Paneles 9-slice, Flujo tipográfico, Métricas de fuente, HUD vitalidad/AP) | 88 | **88 / 88** (100%) |
-| **SEC-11** | `AUD` | **Audio System & Sound Dispatch** (Música CD-XA, Atenuación en diálogo, Sintetizador SPU, SFX) | 140 | **2 / 140** |
+| **SEC-11** | `AUD` | **Audio System & Sound Dispatch** (Música CD-XA, Atenuación en diálogo, Sintetizador SPU, SFX) | 140 | **140 / 140** (100%) |
 | **SEC-12** | `SYS` | **Memory Card, GPU, CD & Low-Level Subsystems** (Guardado MC, Paquetes GPU, GTE, Streaming CD, MDEC) | 560 | **1 / 560** |
-| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1.567** | **518 implementadas** |
+| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1.567** | **656 implementadas** |
 
 👉 **El inventario individualizado fila por fila** con cada una de las 1.567 funciones, direcciones de memoria PS1 (`0x800...`), archivos fuente, comportamientos técnicos y mapeo ECS vive en:
 

@@ -11,14 +11,14 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **SEC-03** | `COL` | SECTOR 3: 2.5D Collision & SCLD Rail Grid | 35 | **35 / 35** |
 | **SEC-04** | `ENT` | SECTOR 4: Entity Allocation, Lifecycle & Loops | 357 | **4 / 357** |
 | **SEC-05** | `BEH` | SECTOR 5: Entity Behaviors, AI & Interactive World | 71 | **1 / 71** |
-| **SEC-06** | `ANM` | SECTOR 6: Skeletal Animation VM & Sprites | 81 | **2 / 81** |
+| **SEC-06** | `ANM` | SECTOR 6: Skeletal Animation VM & Sprites | 81 | **81 / 81** |
 | **SEC-07** | `CAM` | SECTOR 7: 2.5D Rail Camera Pipeline | 32 | **32 / 32** |
 | **SEC-08** | `ITM` | SECTOR 8: Items, Inventory & Equipment | 8 | **8 / 8** |
 | **SEC-09** | `EVT` | SECTOR 9: Event Engine & Script Interpreter | 49 | **49 / 49** |
 | **SEC-10** | `UI` | SECTOR 10: UI, Dialog System & HUD | 88 | **88 / 88** |
 | **SEC-11** | `AUD` | SECTOR 11: Audio System & Sound Dispatch | 140 | **2 / 140** |
 | **SEC-12** | `SYS` | SECTOR 12: Memory Card, GPU, CD & Low-Level Subsystems | 560 | **1 / 560** |
-| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **370 implementadas** |
+| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **449 implementadas** |
 
 ---
 
@@ -682,87 +682,87 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 
 | ID | Función / Símbolo | Dirección PS1 | Archivo C | Comportamiento Técnico Original | Mapeo Bevy (Rust) | Estado |
 | :--- | :--- | :---: | :--- | :--- | :--- | :---: |
-| **ANM-01** | `Entity_AdvanceAnim` | `0x80052694` | `entity/anim/Entity_AdvanceAnim.c` | Entity animation advance: decrements entity[0x44] counter, branches on threshold | `animation::system::entity_advanceanim` | `[ ]` |
-| **ANM-02** | `Entity_AdvanceAnim2` | `0x80072E60` | `entity/anim/Entity_AdvanceAnim2.c` | Entity animation advance 2: entity[0x46]=0 state, animates entity[0x50] delta | `animation::system::entity_advanceanim2` | `[ ]` |
-| **ANM-03** | `Entity_AdvanceAnim3` | `0x80077B5C` | `entity/anim/Entity_AdvanceAnim3.c` | Entity anim advance variant 3: entity[0xE] timer, calls next frame | `animation::system::entity_advanceanim3` | `[ ]` |
-| **ANM-04** | `Entity_AdvanceAnimByte` | `0x80031744` | `entity/anim/Entity_AdvanceAnimByte.c` | Subrutina de Entity_AdvanceAnimByte (entity/anim/Entity_AdvanceAnimByte.c) | `animation::system::entity_advanceanimbyte` | `[ ]` |
-| **ANM-05** | `Entity_AdvanceAnimScript` | `0x80031780` | `entity/anim/Entity_AdvanceAnimScript.c` | Subrutina de Entity_AdvanceAnimScript (entity/anim/Entity_AdvanceAnimScript.c) | `animation::system::entity_advanceanimscript` | `[ ]` |
-| **ANM-06** | `Entity_AdvanceAnimWord` | `0x80031708` | `entity/anim/Entity_AdvanceAnimWord.c` | Subrutina de Entity_AdvanceAnimWord (entity/anim/Entity_AdvanceAnimWord.c) | `animation::system::entity_advanceanimword` | `[ ]` |
-| **ANM-07** | `Entity_AnimChain` | `0x80071CF4` | `entity/anim/Entity_AnimChain.c` | Multi-segment chain animation: per-segment angles at entity[param*2+0x60], radius entity[0x82] | `animation::system::entity_animchain` | `[ ]` |
-| **ANM-08** | `Entity_AnimController` | `0x80072898` | `entity/anim/Entity_AnimController.c` | Entity animation controller: manages anim state machine | `animation::system::entity_animcontroller` | `[ ]` |
-| **ANM-09** | `Entity_AnimController2` | `0x80076904` | `entity/anim/Entity_AnimController2.c` | Entity animation controller variant 2: frame advance | `animation::system::entity_animcontroller2` | `[ ]` |
+| **ANM-01** | `Entity_AdvanceAnim` | `0x80052694` | `entity/anim/Entity_AdvanceAnim.c` | Entity animation advance: decrements entity[0x44] counter, branches on threshold | `animation::system::entity_advanceanim` | `[x]` |
+| **ANM-02** | `Entity_AdvanceAnim2` | `0x80072E60` | `entity/anim/Entity_AdvanceAnim2.c` | Entity animation advance 2: entity[0x46]=0 state, animates entity[0x50] delta | `animation::system::entity_advanceanim2` | `[x]` |
+| **ANM-03** | `Entity_AdvanceAnim3` | `0x80077B5C` | `entity/anim/Entity_AdvanceAnim3.c` | Entity anim advance variant 3: entity[0xE] timer, calls next frame | `animation::system::entity_advanceanim3` | `[x]` |
+| **ANM-04** | `Entity_AdvanceAnimByte` | `0x80031744` | `entity/anim/Entity_AdvanceAnimByte.c` | Subrutina de Entity_AdvanceAnimByte (entity/anim/Entity_AdvanceAnimByte.c) | `animation::system::entity_advanceanimbyte` | `[x]` |
+| **ANM-05** | `Entity_AdvanceAnimScript` | `0x80031780` | `entity/anim/Entity_AdvanceAnimScript.c` | Subrutina de Entity_AdvanceAnimScript (entity/anim/Entity_AdvanceAnimScript.c) | `animation::system::entity_advanceanimscript` | `[x]` |
+| **ANM-06** | `Entity_AdvanceAnimWord` | `0x80031708` | `entity/anim/Entity_AdvanceAnimWord.c` | Subrutina de Entity_AdvanceAnimWord (entity/anim/Entity_AdvanceAnimWord.c) | `animation::system::entity_advanceanimword` | `[x]` |
+| **ANM-07** | `Entity_AnimChain` | `0x80071CF4` | `entity/anim/Entity_AnimChain.c` | Multi-segment chain animation: per-segment angles at entity[param*2+0x60], radius entity[0x82] | `animation::system::entity_animchain` | `[x]` |
+| **ANM-08** | `Entity_AnimController` | `0x80072898` | `entity/anim/Entity_AnimController.c` | Entity animation controller: manages anim state machine | `animation::system::entity_animcontroller` | `[x]` |
+| **ANM-09** | `Entity_AnimController2` | `0x80076904` | `entity/anim/Entity_AnimController2.c` | Entity animation controller variant 2: frame advance | `animation::system::entity_animcontroller2` | `[x]` |
 | **ANM-10** | `Entity_AnimFrame` | `0x80076D68` | `entity/anim/Entity_AnimFrame.c` | Entity animation frame: advances frame, checks wrap | player::tomba_animation_control_system | [x] |
-| **ANM-11** | `Entity_AnimLoad2` | `0x80054C08` | `entity/anim/Entity_AnimLoad2.c` | Entity anim load variant 2: checks entity flags, loads from table | `animation::system::entity_animload2` | `[ ]` |
-| **ANM-12** | `Entity_AnimLoad3` | `0x80054790` | `entity/anim/Entity_AnimLoad3.c` | Entity anim load variant 3: looks up table at 0x800A42F8 | `animation::system::entity_animload3` | `[ ]` |
-| **ANM-13** | `Entity_AnimLoad4` | `0x80071260` | `entity/anim/Entity_AnimLoad4.c` | Entity anim loader variant 4: entity[6]=0, loads anim data | `animation::system::entity_animload4` | `[ ]` |
-| **ANM-14** | `Entity_AnimLoadDispatch` | `0x8005490C` | `entity/anim/Entity_AnimLoadDispatch.c` | Entity anim load dispatcher: switch on entity type | `animation::system::entity_animloaddispatch` | `[ ]` |
-| **ANM-15** | `Entity_AnimMode` | `0x8003FE00` | `entity/anim/Entity_AnimMode.c` | Entity animation mode setter: entity[3] state, sets entity[0x40] timer | `animation::system::entity_animmode` | `[ ]` |
-| **ANM-16** | `Entity_AnimPlay2` | `0x8007156C` | `entity/anim/Entity_AnimPlay2.c` | Entity anim player variant 2: entity[3] switch, 6 animation modes | `animation::system::entity_animplay2` | `[ ]` |
-| **ANM-17** | `Entity_AnimPlayer` | `0x80071768` | `entity/anim/Entity_AnimPlayer.c` | Entity animation player: manages animation playback | `animation::system::entity_animplayer` | `[ ]` |
-| **ANM-18** | `Entity_AnimScriptStep` | `0x80041468` | `entity/anim/Entity_AnimScriptStep.c` | Animation script step: state machine processing entity[0x78] animation events | `animation::system::entity_animscriptstep` | `[ ]` |
-| **ANM-19** | `Entity_AnimSegment` | `0x80071C48` | `entity/anim/Entity_AnimSegment.c` | Single segment animation: entity[6] state machine, angle advance 0x100, radius from entity[0x82] | `animation::system::entity_animsegment` | `[ ]` |
-| **ANM-20** | `Entity_AnimSegment2` | `0x800721DC` | `entity/anim/Entity_AnimSegment2.c` | Entity anim segment variant 2: entity[6]=1 state, advances angle | `animation::system::entity_animsegment2` | `[ ]` |
-| **ANM-21** | `Entity_AnimSet` | `0x80064358` | `entity/anim/Entity_AnimSet.c` | Entity animation setter: sets params, loads animation data | `animation::system::entity_animset` | `[ ]` |
-| **ANM-22** | `Entity_LoadAnimData` | `0x80077B38` | `entity/anim/Entity_LoadAnimData.c` | Loads animation data from table: sets entity[0x38] pointer and entity[0xE] flags | `animation::system::entity_loadanimdata` | `[ ]` |
+| **ANM-11** | `Entity_AnimLoad2` | `0x80054C08` | `entity/anim/Entity_AnimLoad2.c` | Entity anim load variant 2: checks entity flags, loads from table | `animation::system::entity_animload2` | `[x]` |
+| **ANM-12** | `Entity_AnimLoad3` | `0x80054790` | `entity/anim/Entity_AnimLoad3.c` | Entity anim load variant 3: looks up table at 0x800A42F8 | `animation::system::entity_animload3` | `[x]` |
+| **ANM-13** | `Entity_AnimLoad4` | `0x80071260` | `entity/anim/Entity_AnimLoad4.c` | Entity anim loader variant 4: entity[6]=0, loads anim data | `animation::system::entity_animload4` | `[x]` |
+| **ANM-14** | `Entity_AnimLoadDispatch` | `0x8005490C` | `entity/anim/Entity_AnimLoadDispatch.c` | Entity anim load dispatcher: switch on entity type | `animation::system::entity_animloaddispatch` | `[x]` |
+| **ANM-15** | `Entity_AnimMode` | `0x8003FE00` | `entity/anim/Entity_AnimMode.c` | Entity animation mode setter: entity[3] state, sets entity[0x40] timer | `animation::system::entity_animmode` | `[x]` |
+| **ANM-16** | `Entity_AnimPlay2` | `0x8007156C` | `entity/anim/Entity_AnimPlay2.c` | Entity anim player variant 2: entity[3] switch, 6 animation modes | `animation::system::entity_animplay2` | `[x]` |
+| **ANM-17** | `Entity_AnimPlayer` | `0x80071768` | `entity/anim/Entity_AnimPlayer.c` | Entity animation player: manages animation playback | `animation::system::entity_animplayer` | `[x]` |
+| **ANM-18** | `Entity_AnimScriptStep` | `0x80041468` | `entity/anim/Entity_AnimScriptStep.c` | Animation script step: state machine processing entity[0x78] animation events | `animation::system::entity_animscriptstep` | `[x]` |
+| **ANM-19** | `Entity_AnimSegment` | `0x80071C48` | `entity/anim/Entity_AnimSegment.c` | Single segment animation: entity[6] state machine, angle advance 0x100, radius from entity[0x82] | `animation::system::entity_animsegment` | `[x]` |
+| **ANM-20** | `Entity_AnimSegment2` | `0x800721DC` | `entity/anim/Entity_AnimSegment2.c` | Entity anim segment variant 2: entity[6]=1 state, advances angle | `animation::system::entity_animsegment2` | `[x]` |
+| **ANM-21** | `Entity_AnimSet` | `0x80064358` | `entity/anim/Entity_AnimSet.c` | Entity animation setter: sets params, loads animation data | `animation::system::entity_animset` | `[x]` |
+| **ANM-22** | `Entity_LoadAnimData` | `0x80077B38` | `entity/anim/Entity_LoadAnimData.c` | Loads animation data from table: sets entity[0x38] pointer and entity[0xE] flags | `animation::system::entity_loadanimdata` | `[x]` |
 | **ANM-23** | `Entity_LoadAnimData3` | `0x80077C40` | `entity/anim/Entity_LoadAnimData3.c` | Entity anim data loader variant 3: loads from table, stores ptrs | player::hook_tomba_animation_player | [x] |
-| **ANM-24** | `Entity_LoadAnimDataEx` | `0x80077CFC` | `entity/anim/Entity_LoadAnimDataEx.c` | Extended anim load: sets animation pointer, calls setup + frame init | `animation::system::entity_loadanimdataex` | `[ ]` |
-| **ANM-25** | `Entity_LoadAnimDispatch` | `0x80054E24` | `entity/anim/Entity_LoadAnimDispatch.c` | Entity anim load dispatch: branches on param_2 (0,1,2+) for anim loading path | `animation::system::entity_loadanimdispatch` | `[ ]` |
-| **ANM-26** | `Entity_LoadAnimIfChanged` | `0x80054D14` | `entity/anim/Entity_LoadAnimIfChanged.c` | Loads entity animation data only when entity[0x46] animation ID has changed | `animation::system::entity_loadanimifchanged` | `[ ]` |
-| **ANM-27** | `Entity_LoadAnimTable` | `0x80054B34` | `entity/anim/Entity_LoadAnimTable.c` | Entity anim table load: lookup by type table at 0x800A4544 | `animation::system::entity_loadanimtable` | `[ ]` |
-| **ANM-28** | `Entity_Draw` | `0x8003CCA4` | `entity/draw/Entity_Draw.c` | Main entity draw dispatcher: switches on entity[0xD] for draw mode | `animation::system::entity_draw` | `[ ]` |
-| **ANM-29** | `Entity_Draw3DSprite` | `0x8003C2D4` | `entity/draw/Entity_Draw3DSprite.c` | Draws 3D sprite with GTE transform: MVMVA + OT submission | `animation::system::entity_draw3dsprite` | `[ ]` |
-| **ANM-30** | `Entity_Draw3DSpriteDirect` | `0x8003C788` | `entity/draw/Entity_Draw3DSpriteDirect.c` | Draws 3D sprite directly without GTE: uses screen coordinates | `animation::system::entity_draw3dspritedirect` | `[ ]` |
-| **ANM-31** | `Entity_Draw3DSpriteRotated` | `0x8003C5F8` | `entity/draw/Entity_Draw3DSpriteRotated.c` | Draws rotated 3D sprite with GTE rotation matrix + MVMVA | `animation::system::entity_draw3dspriterotated` | `[ ]` |
-| **ANM-32** | `Entity_Draw3DSpriteScaled` | `0x8003C464` | `entity/draw/Entity_Draw3DSpriteScaled.c` | Draws scaled 3D sprite with GTE scale matrix + MVMVA | `animation::system::entity_draw3dspritescaled` | `[ ]` |
-| **ANM-33** | `Entity_DrawBehavior` | `0x8002EF58` | `entity/draw/Entity_DrawBehavior.c` | Entity draw behavior: entity[4]=1, selects draw method | `animation::system::entity_drawbehavior` | `[ ]` |
-| **ANM-34** | `Entity_DrawCheck` | `0x80051128` | `entity/draw/Entity_DrawCheck.c` | Entity draw checker: iterates entity[9] flags, dispatches draw | `animation::system::entity_drawcheck` | `[ ]` |
-| **ANM-35** | `Entity_DrawCheck2` | `0x80051464` | `entity/draw/Entity_DrawCheck2.c` | Entity draw check variant 2: similar iteration, different flag | `animation::system::entity_drawcheck2` | `[ ]` |
-| **ANM-36** | `Entity_DrawChild` | `0x80068610` | `entity/draw/Entity_DrawChild.c` | Entity draw child: updates child entity pos from parent with offset | `animation::system::entity_drawchild` | `[ ]` |
-| **ANM-37** | `Entity_DrawChild1` | `0x8003393C` | `entity/draw/Entity_DrawChild1.c` | Subrutina de Entity_DrawChild1 (entity/draw/Entity_DrawChild1.c) | `animation::system::entity_drawchild1` | `[ ]` |
-| **ANM-38** | `Entity_DrawChild2_2` | `0x800376EC` | `entity/draw/Entity_DrawChild2_2.c` | Entity child drawer variant 2: builds quad from child data at offset | `animation::system::entity_drawchild2_2` | `[ ]` |
-| **ANM-39** | `Entity_DrawChild3_2` | `0x80022190` | `entity/draw/Entity_DrawChild3_2.c` | Entity child drawer variant 3: reads sprite from param2[0x6C] | `animation::system::entity_drawchild3_2` | `[ ]` |
-| **ANM-40** | `Entity_DrawChild4` | `0x80022330` | `entity/draw/Entity_DrawChild4.c` | Entity child drawer variant 4: reads sprite from param2[0x6C] | `animation::system::entity_drawchild4` | `[ ]` |
-| **ANM-41** | `Entity_DrawChild5` | `0x80033B94` | `entity/draw/Entity_DrawChild5.c` | Entity child drawer variant 5: draws with GTE projection | `animation::system::entity_drawchild5` | `[ ]` |
-| **ANM-42** | `Entity_DrawChild6` | `0x80033FF4` | `entity/draw/Entity_DrawChild6.c` | Entity child drawer variant 6: processes child draw | `animation::system::entity_drawchild6` | `[ ]` |
-| **ANM-43** | `Entity_DrawChildren` | `0x8003CDD8` | `entity/draw/Entity_DrawChildren.c` | Draws child entities by iterating linked list from entity[0xC0] | `animation::system::entity_drawchildren` | `[ ]` |
-| **ANM-44** | `Entity_DrawFull` | `0x8003791C` | `entity/draw/Entity_DrawFull.c` | Entity full drawer: processes sprite + GTE projection | `animation::system::entity_drawfull` | `[ ]` |
-| **ANM-45** | `Entity_DrawLifecycle` | `0x800330AC` | `entity/draw/Entity_DrawLifecycle.c` | Entity draw lifecycle: entity[4]=1 state, processes sprite, dealloc at state 4 | `animation::system::entity_drawlifecycle` | `[ ]` |
-| **ANM-46** | `Entity_DrawLifecycle2` | `0x80033630` | `entity/draw/Entity_DrawLifecycle2.c` | Entity draw lifecycle variant 2: different sprite processing path | `animation::system::entity_drawlifecycle2` | `[ ]` |
-| **ANM-47** | `Entity_DrawLifecycle3` | `0x80033560` | `entity/draw/Entity_DrawLifecycle3.c` | Entity draw lifecycle variant 3: entity[4]=1, different sprite path | `animation::system::entity_drawlifecycle3` | `[ ]` |
-| **ANM-48** | `Entity_DrawLifecycle4` | `0x80033380` | `entity/draw/Entity_DrawLifecycle4.c` | Entity draw lifecycle variant 4: entity[4]=1, different draw path | `animation::system::entity_drawlifecycle4` | `[ ]` |
-| **ANM-49** | `Entity_DrawLifecycle5` | `0x80032918` | `entity/draw/Entity_DrawLifecycle5.c` | Entity draw lifecycle variant 5: processes sprite, dealloc at state 4 | `animation::system::entity_drawlifecycle5` | `[ ]` |
-| **ANM-50** | `Entity_DrawLifecycle6` | `0x80032F98` | `entity/draw/Entity_DrawLifecycle6.c` | Entity draw lifecycle variant 6: entity[4]=1, processes draw | `animation::system::entity_drawlifecycle6` | `[ ]` |
-| **ANM-51** | `Entity_DrawLifecycle7` | `0x80033450` | `entity/draw/Entity_DrawLifecycle7.c` | Entity draw lifecycle variant 7: entity[4]=1, different draw path | `animation::system::entity_drawlifecycle7` | `[ ]` |
-| **ANM-52** | `Entity_DrawLifecycle8` | `0x80033278` | `entity/draw/Entity_DrawLifecycle8.c` | Entity draw lifecycle variant 8: entity[4]=1, render path | `animation::system::entity_drawlifecycle8` | `[ ]` |
-| **ANM-53** | `Entity_DrawMain` | `0x800251F0` | `entity/draw/Entity_DrawMain.c` | Entity draw main: full entity rendering pipeline | `animation::system::entity_drawmain` | `[ ]` |
-| **ANM-54** | `Entity_DrawMain2` | `0x8002C920` | `entity/draw/Entity_DrawMain2.c` | Entity draw main variant 2: different render path | `animation::system::entity_drawmain2` | `[ ]` |
-| **ANM-55** | `Entity_DrawMain3` | `0x80037E44` | `entity/draw/Entity_DrawMain3.c` | Entity draw main variant 3: extended draw pipeline | `animation::system::entity_drawmain3` | `[ ]` |
-| **ANM-56** | `Entity_DrawMain4` | `0x8002D65C` | `entity/draw/Entity_DrawMain4.c` | Entity draw main variant 4: final projection path | `animation::system::entity_drawmain4` | `[ ]` |
-| **ANM-57** | `Entity_DrawMain5` | `0x80030264` | `entity/draw/Entity_DrawMain5.c` | Entity draw main variant 5: full draw pipeline (202L) | `animation::system::entity_drawmain5` | `[ ]` |
-| **ANM-58** | `Entity_DrawMain6` | `0x8002E680` | `entity/draw/Entity_DrawMain6.c` | Entity draw main variant 6: GTE projection path (236L) | `animation::system::entity_drawmain6` | `[ ]` |
-| **ANM-59** | `Entity_DrawMain7` | `0x800527C8` | `entity/draw/Entity_DrawMain7.c` | Entity draw main variant 7: rendering pipeline (254L) | `animation::system::entity_drawmain7` | `[ ]` |
-| **ANM-60** | `Entity_DrawMain8` | `0x8002CD18` | `entity/draw/Entity_DrawMain8.c` | Entity draw main variant 8: final draw path (273L) | `animation::system::entity_drawmain8` | `[ ]` |
-| **ANM-61** | `Entity_DrawPrim` | `0x80037894` | `entity/draw/Entity_DrawPrim.c` | Entity draw primitive: builds quad prim from entity data, submits | `animation::system::entity_drawprim` | `[ ]` |
-| **ANM-62** | `Entity_DrawQuad` | `0x800336DC` | `entity/draw/Entity_DrawQuad.c` | Entity quad drawer: builds textured quad from entity data | `animation::system::entity_drawquad` | `[ ]` |
-| **ANM-63** | `Entity_DrawQuad_Variant0` | `0x8003F344` | `entity/draw/Entity_DrawQuad_Variant0.c` | Subrutina de Entity_DrawQuad_Variant0 (entity/draw/Entity_DrawQuad_Variant0.c) | `animation::system::entity_drawquad_variant0` | `[ ]` |
-| **ANM-64** | `Entity_DrawQuad_Variant1` | `0x8003F3F4` | `entity/draw/Entity_DrawQuad_Variant1.c` | Subrutina de Entity_DrawQuad_Variant1 (entity/draw/Entity_DrawQuad_Variant1.c) | `animation::system::entity_drawquad_variant1` | `[ ]` |
-| **ANM-65** | `Entity_DrawQuad_Variant2` | `0x8003F4C4` | `entity/draw/Entity_DrawQuad_Variant2.c` | Subrutina de Entity_DrawQuad_Variant2 (entity/draw/Entity_DrawQuad_Variant2.c) | `animation::system::entity_drawquad_variant2` | `[ ]` |
-| **ANM-66** | `Entity_DrawQuad_Variant3` | `0x8003F594` | `entity/draw/Entity_DrawQuad_Variant3.c` | Subrutina de Entity_DrawQuad_Variant3 (entity/draw/Entity_DrawQuad_Variant3.c) | `animation::system::entity_drawquad_variant3` | `[ ]` |
-| **ANM-67** | `Entity_DrawSprite` | `0x8002E1E8` | `entity/draw/Entity_DrawSprite.c` | Entity sprite drawer: renders sprite with GTE projection | `animation::system::entity_drawsprite` | `[ ]` |
-| **ANM-68** | `Entity_DrawSprite2` | `0x8002ECD8` | `entity/draw/Entity_DrawSprite2.c` | Entity sprite drawer variant 2: different projection | `animation::system::entity_drawsprite2` | `[ ]` |
-| **ANM-69** | `Entity_DrawSprite3` | `0x8002C138` | `entity/draw/Entity_DrawSprite3.c` | Entity sprite drawer variant 3: different matrix source | `animation::system::entity_drawsprite3` | `[ ]` |
-| **ANM-70** | `Entity_DrawSprite4` | `0x8002A834` | `entity/draw/Entity_DrawSprite4.c` | Entity sprite drawer variant 4: different matrix config | `animation::system::entity_drawsprite4` | `[ ]` |
-| **ANM-71** | `Entity_DrawSprite5` | `0x80030D68` | `entity/draw/Entity_DrawSprite5.c` | Entity sprite drawer variant 5: projection + draw | `animation::system::entity_drawsprite5` | `[ ]` |
-| **ANM-72** | `Entity_DrawSprite6` | `0x8002B3A4` | `entity/draw/Entity_DrawSprite6.c` | Entity sprite drawer variant 6: full projection pipeline | `animation::system::entity_drawsprite6` | `[ ]` |
-| **ANM-73** | `Entity_DrawSpriteAndProject` | `0x80033080` | `entity/draw/Entity_DrawSpriteAndProject.c` | Calls ProcessProjCmd then ProcessSpriteCmd for combined projection+sprite draw | `animation::system::entity_drawspriteandproject` | `[ ]` |
-| **ANM-74** | `Entity_DrawSpriteDispatch` | `0x80024D34` | `entity/draw/Entity_DrawSpriteDispatch.c` | Entity sprite draw dispatch: reads sprite type, calls draw handler | `animation::system::entity_drawspritedispatch` | `[ ]` |
-| **ANM-75** | `Entity_DrawSpriteNoColor` | `0x800328EC` | `entity/draw/Entity_DrawSpriteNoColor.c` | Draws sprite without color modulation: sets GTE color to 0, calls submit | `animation::system::entity_drawspritenocolor` | `[ ]` |
-| **ANM-76** | `Entity_DrawSpriteRotated` | `0x80028B70` | `entity/draw/Entity_DrawSpriteRotated.c` | Renders a rotated sprite using GTE matrix multiply from entity[0x48] transform | `animation::system::entity_drawspriterotated` | `[ ]` |
-| **ANM-77** | `Entity_DrawSpriteSwitch` | `0x8007D0D0` | `entity/draw/Entity_DrawSpriteSwitch.c` | Entity sprite draw switch: switch on entity[3] type, sets entity[0x40]=1 | `animation::system::entity_drawspriteswitch` | `[ ]` |
-| **ANM-78** | `Entity_DrawTrailChain` | `0x80029664` | `entity/draw/Entity_DrawTrailChain.c` | Subrutina de Entity_DrawTrailChain (entity/draw/Entity_DrawTrailChain.c) | `animation::system::entity_drawtrailchain` | `[ ]` |
-| **ANM-79** | `Entity_DrawType` | `0x8002F230` | `entity/draw/Entity_DrawType.c` | Entity draw type selector: entity[4]=1 state, picks draw path | `animation::system::entity_drawtype` | `[ ]` |
-| **ANM-80** | `Entity_DrawUI` | `0x800737F8` | `entity/draw/Entity_DrawUI.c` | Entity UI draw: renders UI primitive array at entity pos via FUN_80033afc | `animation::system::entity_drawui` | `[ ]` |
-| **ANM-81** | `Entity_DrawUI2` | `0x80037B6C` | `entity/draw/Entity_DrawUI2.c` | Entity UI drawer variant 2: renders UI sprites | `animation::system::entity_drawui2` | `[ ]` |
+| **ANM-24** | `Entity_LoadAnimDataEx` | `0x80077CFC` | `entity/anim/Entity_LoadAnimDataEx.c` | Extended anim load: sets animation pointer, calls setup + frame init | `animation::system::entity_loadanimdataex` | `[x]` |
+| **ANM-25** | `Entity_LoadAnimDispatch` | `0x80054E24` | `entity/anim/Entity_LoadAnimDispatch.c` | Entity anim load dispatch: branches on param_2 (0,1,2+) for anim loading path | `animation::system::entity_loadanimdispatch` | `[x]` |
+| **ANM-26** | `Entity_LoadAnimIfChanged` | `0x80054D14` | `entity/anim/Entity_LoadAnimIfChanged.c` | Loads entity animation data only when entity[0x46] animation ID has changed | `animation::system::entity_loadanimifchanged` | `[x]` |
+| **ANM-27** | `Entity_LoadAnimTable` | `0x80054B34` | `entity/anim/Entity_LoadAnimTable.c` | Entity anim table load: lookup by type table at 0x800A4544 | `animation::system::entity_loadanimtable` | `[x]` |
+| **ANM-28** | `Entity_Draw` | `0x8003CCA4` | `entity/draw/Entity_Draw.c` | Main entity draw dispatcher: switches on entity[0xD] for draw mode | `animation::system::entity_draw` | `[x]` |
+| **ANM-29** | `Entity_Draw3DSprite` | `0x8003C2D4` | `entity/draw/Entity_Draw3DSprite.c` | Draws 3D sprite with GTE transform: MVMVA + OT submission | `animation::system::entity_draw3dsprite` | `[x]` |
+| **ANM-30** | `Entity_Draw3DSpriteDirect` | `0x8003C788` | `entity/draw/Entity_Draw3DSpriteDirect.c` | Draws 3D sprite directly without GTE: uses screen coordinates | `animation::system::entity_draw3dspritedirect` | `[x]` |
+| **ANM-31** | `Entity_Draw3DSpriteRotated` | `0x8003C5F8` | `entity/draw/Entity_Draw3DSpriteRotated.c` | Draws rotated 3D sprite with GTE rotation matrix + MVMVA | `animation::system::entity_draw3dspriterotated` | `[x]` |
+| **ANM-32** | `Entity_Draw3DSpriteScaled` | `0x8003C464` | `entity/draw/Entity_Draw3DSpriteScaled.c` | Draws scaled 3D sprite with GTE scale matrix + MVMVA | `animation::system::entity_draw3dspritescaled` | `[x]` |
+| **ANM-33** | `Entity_DrawBehavior` | `0x8002EF58` | `entity/draw/Entity_DrawBehavior.c` | Entity draw behavior: entity[4]=1, selects draw method | `animation::system::entity_drawbehavior` | `[x]` |
+| **ANM-34** | `Entity_DrawCheck` | `0x80051128` | `entity/draw/Entity_DrawCheck.c` | Entity draw checker: iterates entity[9] flags, dispatches draw | `animation::system::entity_drawcheck` | `[x]` |
+| **ANM-35** | `Entity_DrawCheck2` | `0x80051464` | `entity/draw/Entity_DrawCheck2.c` | Entity draw check variant 2: similar iteration, different flag | `animation::system::entity_drawcheck2` | `[x]` |
+| **ANM-36** | `Entity_DrawChild` | `0x80068610` | `entity/draw/Entity_DrawChild.c` | Entity draw child: updates child entity pos from parent with offset | `animation::system::entity_drawchild` | `[x]` |
+| **ANM-37** | `Entity_DrawChild1` | `0x8003393C` | `entity/draw/Entity_DrawChild1.c` | Subrutina de Entity_DrawChild1 (entity/draw/Entity_DrawChild1.c) | `animation::system::entity_drawchild1` | `[x]` |
+| **ANM-38** | `Entity_DrawChild2_2` | `0x800376EC` | `entity/draw/Entity_DrawChild2_2.c` | Entity child drawer variant 2: builds quad from child data at offset | `animation::system::entity_drawchild2_2` | `[x]` |
+| **ANM-39** | `Entity_DrawChild3_2` | `0x80022190` | `entity/draw/Entity_DrawChild3_2.c` | Entity child drawer variant 3: reads sprite from param2[0x6C] | `animation::system::entity_drawchild3_2` | `[x]` |
+| **ANM-40** | `Entity_DrawChild4` | `0x80022330` | `entity/draw/Entity_DrawChild4.c` | Entity child drawer variant 4: reads sprite from param2[0x6C] | `animation::system::entity_drawchild4` | `[x]` |
+| **ANM-41** | `Entity_DrawChild5` | `0x80033B94` | `entity/draw/Entity_DrawChild5.c` | Entity child drawer variant 5: draws with GTE projection | `animation::system::entity_drawchild5` | `[x]` |
+| **ANM-42** | `Entity_DrawChild6` | `0x80033FF4` | `entity/draw/Entity_DrawChild6.c` | Entity child drawer variant 6: processes child draw | `animation::system::entity_drawchild6` | `[x]` |
+| **ANM-43** | `Entity_DrawChildren` | `0x8003CDD8` | `entity/draw/Entity_DrawChildren.c` | Draws child entities by iterating linked list from entity[0xC0] | `animation::system::entity_drawchildren` | `[x]` |
+| **ANM-44** | `Entity_DrawFull` | `0x8003791C` | `entity/draw/Entity_DrawFull.c` | Entity full drawer: processes sprite + GTE projection | `animation::system::entity_drawfull` | `[x]` |
+| **ANM-45** | `Entity_DrawLifecycle` | `0x800330AC` | `entity/draw/Entity_DrawLifecycle.c` | Entity draw lifecycle: entity[4]=1 state, processes sprite, dealloc at state 4 | `animation::system::entity_drawlifecycle` | `[x]` |
+| **ANM-46** | `Entity_DrawLifecycle2` | `0x80033630` | `entity/draw/Entity_DrawLifecycle2.c` | Entity draw lifecycle variant 2: different sprite processing path | `animation::system::entity_drawlifecycle2` | `[x]` |
+| **ANM-47** | `Entity_DrawLifecycle3` | `0x80033560` | `entity/draw/Entity_DrawLifecycle3.c` | Entity draw lifecycle variant 3: entity[4]=1, different sprite path | `animation::system::entity_drawlifecycle3` | `[x]` |
+| **ANM-48** | `Entity_DrawLifecycle4` | `0x80033380` | `entity/draw/Entity_DrawLifecycle4.c` | Entity draw lifecycle variant 4: entity[4]=1, different draw path | `animation::system::entity_drawlifecycle4` | `[x]` |
+| **ANM-49** | `Entity_DrawLifecycle5` | `0x80032918` | `entity/draw/Entity_DrawLifecycle5.c` | Entity draw lifecycle variant 5: processes sprite, dealloc at state 4 | `animation::system::entity_drawlifecycle5` | `[x]` |
+| **ANM-50** | `Entity_DrawLifecycle6` | `0x80032F98` | `entity/draw/Entity_DrawLifecycle6.c` | Entity draw lifecycle variant 6: entity[4]=1, processes draw | `animation::system::entity_drawlifecycle6` | `[x]` |
+| **ANM-51** | `Entity_DrawLifecycle7` | `0x80033450` | `entity/draw/Entity_DrawLifecycle7.c` | Entity draw lifecycle variant 7: entity[4]=1, different draw path | `animation::system::entity_drawlifecycle7` | `[x]` |
+| **ANM-52** | `Entity_DrawLifecycle8` | `0x80033278` | `entity/draw/Entity_DrawLifecycle8.c` | Entity draw lifecycle variant 8: entity[4]=1, render path | `animation::system::entity_drawlifecycle8` | `[x]` |
+| **ANM-53** | `Entity_DrawMain` | `0x800251F0` | `entity/draw/Entity_DrawMain.c` | Entity draw main: full entity rendering pipeline | `animation::system::entity_drawmain` | `[x]` |
+| **ANM-54** | `Entity_DrawMain2` | `0x8002C920` | `entity/draw/Entity_DrawMain2.c` | Entity draw main variant 2: different render path | `animation::system::entity_drawmain2` | `[x]` |
+| **ANM-55** | `Entity_DrawMain3` | `0x80037E44` | `entity/draw/Entity_DrawMain3.c` | Entity draw main variant 3: extended draw pipeline | `animation::system::entity_drawmain3` | `[x]` |
+| **ANM-56** | `Entity_DrawMain4` | `0x8002D65C` | `entity/draw/Entity_DrawMain4.c` | Entity draw main variant 4: final projection path | `animation::system::entity_drawmain4` | `[x]` |
+| **ANM-57** | `Entity_DrawMain5` | `0x80030264` | `entity/draw/Entity_DrawMain5.c` | Entity draw main variant 5: full draw pipeline (202L) | `animation::system::entity_drawmain5` | `[x]` |
+| **ANM-58** | `Entity_DrawMain6` | `0x8002E680` | `entity/draw/Entity_DrawMain6.c` | Entity draw main variant 6: GTE projection path (236L) | `animation::system::entity_drawmain6` | `[x]` |
+| **ANM-59** | `Entity_DrawMain7` | `0x800527C8` | `entity/draw/Entity_DrawMain7.c` | Entity draw main variant 7: rendering pipeline (254L) | `animation::system::entity_drawmain7` | `[x]` |
+| **ANM-60** | `Entity_DrawMain8` | `0x8002CD18` | `entity/draw/Entity_DrawMain8.c` | Entity draw main variant 8: final draw path (273L) | `animation::system::entity_drawmain8` | `[x]` |
+| **ANM-61** | `Entity_DrawPrim` | `0x80037894` | `entity/draw/Entity_DrawPrim.c` | Entity draw primitive: builds quad prim from entity data, submits | `animation::system::entity_drawprim` | `[x]` |
+| **ANM-62** | `Entity_DrawQuad` | `0x800336DC` | `entity/draw/Entity_DrawQuad.c` | Entity quad drawer: builds textured quad from entity data | `animation::system::entity_drawquad` | `[x]` |
+| **ANM-63** | `Entity_DrawQuad_Variant0` | `0x8003F344` | `entity/draw/Entity_DrawQuad_Variant0.c` | Subrutina de Entity_DrawQuad_Variant0 (entity/draw/Entity_DrawQuad_Variant0.c) | `animation::system::entity_drawquad_variant0` | `[x]` |
+| **ANM-64** | `Entity_DrawQuad_Variant1` | `0x8003F3F4` | `entity/draw/Entity_DrawQuad_Variant1.c` | Subrutina de Entity_DrawQuad_Variant1 (entity/draw/Entity_DrawQuad_Variant1.c) | `animation::system::entity_drawquad_variant1` | `[x]` |
+| **ANM-65** | `Entity_DrawQuad_Variant2` | `0x8003F4C4` | `entity/draw/Entity_DrawQuad_Variant2.c` | Subrutina de Entity_DrawQuad_Variant2 (entity/draw/Entity_DrawQuad_Variant2.c) | `animation::system::entity_drawquad_variant2` | `[x]` |
+| **ANM-66** | `Entity_DrawQuad_Variant3` | `0x8003F594` | `entity/draw/Entity_DrawQuad_Variant3.c` | Subrutina de Entity_DrawQuad_Variant3 (entity/draw/Entity_DrawQuad_Variant3.c) | `animation::system::entity_drawquad_variant3` | `[x]` |
+| **ANM-67** | `Entity_DrawSprite` | `0x8002E1E8` | `entity/draw/Entity_DrawSprite.c` | Entity sprite drawer: renders sprite with GTE projection | `animation::system::entity_drawsprite` | `[x]` |
+| **ANM-68** | `Entity_DrawSprite2` | `0x8002ECD8` | `entity/draw/Entity_DrawSprite2.c` | Entity sprite drawer variant 2: different projection | `animation::system::entity_drawsprite2` | `[x]` |
+| **ANM-69** | `Entity_DrawSprite3` | `0x8002C138` | `entity/draw/Entity_DrawSprite3.c` | Entity sprite drawer variant 3: different matrix source | `animation::system::entity_drawsprite3` | `[x]` |
+| **ANM-70** | `Entity_DrawSprite4` | `0x8002A834` | `entity/draw/Entity_DrawSprite4.c` | Entity sprite drawer variant 4: different matrix config | `animation::system::entity_drawsprite4` | `[x]` |
+| **ANM-71** | `Entity_DrawSprite5` | `0x80030D68` | `entity/draw/Entity_DrawSprite5.c` | Entity sprite drawer variant 5: projection + draw | `animation::system::entity_drawsprite5` | `[x]` |
+| **ANM-72** | `Entity_DrawSprite6` | `0x8002B3A4` | `entity/draw/Entity_DrawSprite6.c` | Entity sprite drawer variant 6: full projection pipeline | `animation::system::entity_drawsprite6` | `[x]` |
+| **ANM-73** | `Entity_DrawSpriteAndProject` | `0x80033080` | `entity/draw/Entity_DrawSpriteAndProject.c` | Calls ProcessProjCmd then ProcessSpriteCmd for combined projection+sprite draw | `animation::system::entity_drawspriteandproject` | `[x]` |
+| **ANM-74** | `Entity_DrawSpriteDispatch` | `0x80024D34` | `entity/draw/Entity_DrawSpriteDispatch.c` | Entity sprite draw dispatch: reads sprite type, calls draw handler | `animation::system::entity_drawspritedispatch` | `[x]` |
+| **ANM-75** | `Entity_DrawSpriteNoColor` | `0x800328EC` | `entity/draw/Entity_DrawSpriteNoColor.c` | Draws sprite without color modulation: sets GTE color to 0, calls submit | `animation::system::entity_drawspritenocolor` | `[x]` |
+| **ANM-76** | `Entity_DrawSpriteRotated` | `0x80028B70` | `entity/draw/Entity_DrawSpriteRotated.c` | Renders a rotated sprite using GTE matrix multiply from entity[0x48] transform | `animation::system::entity_drawspriterotated` | `[x]` |
+| **ANM-77** | `Entity_DrawSpriteSwitch` | `0x8007D0D0` | `entity/draw/Entity_DrawSpriteSwitch.c` | Entity sprite draw switch: switch on entity[3] type, sets entity[0x40]=1 | `animation::system::entity_drawspriteswitch` | `[x]` |
+| **ANM-78** | `Entity_DrawTrailChain` | `0x80029664` | `entity/draw/Entity_DrawTrailChain.c` | Subrutina de Entity_DrawTrailChain (entity/draw/Entity_DrawTrailChain.c) | `animation::system::entity_drawtrailchain` | `[x]` |
+| **ANM-79** | `Entity_DrawType` | `0x8002F230` | `entity/draw/Entity_DrawType.c` | Entity draw type selector: entity[4]=1 state, picks draw path | `animation::system::entity_drawtype` | `[x]` |
+| **ANM-80** | `Entity_DrawUI` | `0x800737F8` | `entity/draw/Entity_DrawUI.c` | Entity UI draw: renders UI primitive array at entity pos via FUN_80033afc | `animation::system::entity_drawui` | `[x]` |
+| **ANM-81** | `Entity_DrawUI2` | `0x80037B6C` | `entity/draw/Entity_DrawUI2.c` | Entity UI drawer variant 2: renders UI sprites | `animation::system::entity_drawui2` | `[x]` |
 
 ---
 

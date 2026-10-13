@@ -7,7 +7,7 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | Sector | Código | Descripción del Subsistema | Total Funciones | Estado |
 | :--- | :--- | :--- | :---: | :---: |
 | **SEC-01** | `ACT` | SECTOR 1: Player & Entity Action State Machines | 64 | **64 / 64** |
-| **SEC-02** | `PHY` | SECTOR 2: Entity Physics & Kinematics | 82 | **2 / 82** |
+| **SEC-02** | `PHY` | SECTOR 2: Entity Physics & Kinematics | 82 | **82 / 82** |
 | **SEC-03** | `COL` | SECTOR 3: 2.5D Collision & SCLD Rail Grid | 35 | **35 / 35** |
 | **SEC-04** | `ENT` | SECTOR 4: Entity Allocation, Lifecycle & Loops | 357 | **4 / 357** |
 | **SEC-05** | `BEH` | SECTOR 5: Entity Behaviors, AI & Interactive World | 71 | **1 / 71** |
@@ -18,7 +18,7 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **SEC-10** | `UI` | SECTOR 10: UI, Dialog System & HUD | 88 | **0 / 88** |
 | **SEC-11** | `AUD` | SECTOR 11: Audio System & Sound Dispatch | 140 | **2 / 140** |
 | **SEC-12** | `SYS` | SECTOR 12: Memory Card, GPU, CD & Low-Level Subsystems | 560 | **1 / 560** |
-| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **121 implementadas** |
+| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **201 implementadas** |
 
 ---
 
@@ -101,88 +101,88 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 
 | ID | Función / Símbolo | Dirección PS1 | Archivo C | Comportamiento Técnico Original | Mapeo Bevy (Rust) | Estado |
 | :--- | :--- | :---: | :--- | :--- | :--- | :---: |
-| **PHY-01** | `Entity_CalcAimPos` | `0x80024AF0` | `entity/physics/Entity_CalcAimPos.c` | Calculates aim position: GTE cos/sin on entity[0x56], offset from entity[0x2E/0x32/0x36] | `player::physics::entity_calcaimpos` | `[ ]` |
-| **PHY-02** | `Entity_CalcAngle10` | `0x80022060` | `entity/physics/Entity_CalcAngle10.c` | Entity angle calc variant 10: checks DAT_1f80027a flag first | `player::physics::entity_calcangle10` | `[ ]` |
-| **PHY-03** | `Entity_CalcAngle11` | `0x80022AC8` | `entity/physics/Entity_CalcAngle11.c` | Entity angle calc variant 11: different entity offset computation | `player::physics::entity_calcangle11` | `[ ]` |
-| **PHY-04** | `Entity_CalcAngle12` | `0x800216B4` | `entity/physics/Entity_CalcAngle12.c` | Entity angle calc variant 12: atan2 with entity[0x2E]/[0x36] offsets | `player::physics::entity_calcangle12` | `[ ]` |
-| **PHY-05** | `Entity_CalcAngle13` | `0x8001FAE0` | `entity/physics/Entity_CalcAngle13.c` | Entity angle calc variant 13: checks entity[0x145] flag first | `player::physics::entity_calcangle13` | `[ ]` |
-| **PHY-06** | `Entity_CalcAngle14` | `0x80023870` | `entity/physics/Entity_CalcAngle14.c` | Entity angle calc variant 14: different entity offset format | `player::physics::entity_calcangle14` | `[ ]` |
-| **PHY-07** | `Entity_CalcAngle15` | `0x8002192C` | `entity/physics/Entity_CalcAngle15.c` | Entity angle calc variant 15: atan2 with XZ distance check | `player::physics::entity_calcangle15` | `[ ]` |
-| **PHY-08** | `Entity_CalcAngle16` | `0x8001F830` | `entity/physics/Entity_CalcAngle16.c` | Entity angle calc variant 16: atan2 with XZ distance validation | `player::physics::entity_calcangle16` | `[ ]` |
-| **PHY-09** | `Entity_CalcAngle17` | `0x80020C34` | `entity/physics/Entity_CalcAngle17.c` | Entity angle calc variant 17: different entity offset format | `player::physics::entity_calcangle17` | `[ ]` |
-| **PHY-10** | `Entity_CalcAngle18` | `0x80020DB8` | `entity/physics/Entity_CalcAngle18.c` | Entity angle calc variant 18: uses entity[0x2E/0x36] | `player::physics::entity_calcangle18` | `[ ]` |
-| **PHY-11** | `Entity_CalcAngle19` | `0x80020F7C` | `entity/physics/Entity_CalcAngle19.c` | Entity angle calc variant 19: longer computation path | `player::physics::entity_calcangle19` | `[ ]` |
-| **PHY-12** | `Entity_CalcAngle20` | `0x8001F650` | `entity/physics/Entity_CalcAngle20.c` | Entity angle calc variant 20: atan2 with complex offset | `player::physics::entity_calcangle20` | `[ ]` |
-| **PHY-13** | `Entity_CalcAngle21` | `0x8001FDB4` | `entity/physics/Entity_CalcAngle21.c` | Entity angle calc variant 21: atan2 with Y component | `player::physics::entity_calcangle21` | `[ ]` |
-| **PHY-14** | `Entity_CalcAngle22` | `0x80021150` | `entity/physics/Entity_CalcAngle22.c` | Entity angle calc variant 22: complex offset computation | `player::physics::entity_calcangle22` | `[ ]` |
-| **PHY-15** | `Entity_CalcAngle3` | `0x800240FC` | `entity/physics/Entity_CalcAngle3.c` | Entity angle calc variant 3: atan2 from entity pos to target with offset | `player::physics::entity_calcangle3` | `[ ]` |
-| **PHY-16** | `Entity_CalcAngle4` | `0x80022F04` | `entity/physics/Entity_CalcAngle4.c` | Entity angle calc variant 4: different entity offset computation | `player::physics::entity_calcangle4` | `[ ]` |
-| **PHY-17** | `Entity_CalcAngle5` | `0x80021800` | `entity/physics/Entity_CalcAngle5.c` | Entity angle calc variant 5: atan2 with different entity offsets | `player::physics::entity_calcangle5` | `[ ]` |
-| **PHY-18** | `Entity_CalcAngle6` | `0x8001F9DC` | `entity/physics/Entity_CalcAngle6.c` | Entity angle calc variant 6: atan2 from entity to param2 target | `player::physics::entity_calcangle6` | `[ ]` |
-| **PHY-19** | `Entity_CalcAngle7` | `0x8001FC50` | `entity/physics/Entity_CalcAngle7.c` | Entity angle calc variant 7: tests entity[0x17E] flags before atan2 | `player::physics::entity_calcangle7` | `[ ]` |
-| **PHY-20** | `Entity_CalcAngle8` | `0x80020B08` | `entity/physics/Entity_CalcAngle8.c` | Entity angle calc variant 8: checks param2 flags, computes atan2 | `player::physics::entity_calcangle8` | `[ ]` |
-| **PHY-21** | `Entity_CalcAngle9` | `0x80021DF4` | `entity/physics/Entity_CalcAngle9.c` | Entity angle calc variant 9: checks param2 bit 3, atan2 with offset | `player::physics::entity_calcangle9` | `[ ]` |
-| **PHY-22** | `Entity_CalcAngleDelta` | `0x80072EFC` | `entity/physics/Entity_CalcAngleDelta.c` | Calculates angle delta: entity[0x56] = entity[0x5A] - entity[0x50] | `player::physics::entity_calcangledelta` | `[ ]` |
-| **PHY-23** | `Entity_CalcAngleToTarget_2` | `0x80069A2C` | `entity/physics/Entity_CalcAngleToTarget_2.c` | Calculates angle from entity to target point using GTE cos/sin + atan2 | `player::physics::entity_calcangletotarget_2` | `[ ]` |
-| **PHY-24** | `Entity_CalcAngleToward` | `0x8004130C` | `entity/physics/Entity_CalcAngleToward.c` | Calculates rotation angle from entity toward target entity | `player::physics::entity_calcangletoward` | `[ ]` |
-| **PHY-25** | `Entity_CalcCollisionAngle` | `0x80048654` | `entity/physics/Entity_CalcCollisionAngle.c` | Calculates collision angles: atan2 on surface normal, stores slope vectors at entity[0x48-4C] | `player::physics::entity_calccollisionangle` | `[ ]` |
-| **PHY-26** | `Entity_CalcMove` | `0x80023D48` | `entity/physics/Entity_CalcMove.c` | Entity move calculator: computes velocity + position | `player::physics::entity_calcmove` | `[ ]` |
-| **PHY-27** | `Entity_CalcMovePos` | `0x800634A8` | `entity/physics/Entity_CalcMovePos.c` | Calculates move position: GTE sin on entity[0x56/0x58], radius entity[0x64], updates pos | `player::physics::entity_calcmovepos` | `[ ]` |
-| **PHY-28** | `Entity_CalcOrbitPos` | `0x80063ECC` | `entity/physics/Entity_CalcOrbitPos.c` | Orbit position: uses GTE cos/sin on entity[0x58] angle + entity[0x64] radius for offset from parent | `player::physics::entity_calcorbitpos` | `[ ]` |
-| **PHY-29** | `Entity_CalcPath` | `0x80021AB0` | `entity/physics/Entity_CalcPath.c` | Entity path calculator: complex route computation toward target | `player::physics::entity_calcpath` | `[ ]` |
-| **PHY-30** | `Entity_CalcPos` | `0x8001F40C` | `entity/physics/Entity_CalcPos.c` | Entity position calculator: computes new pos from delta + flags | `player::physics::entity_calcpos` | `[ ]` |
-| **PHY-31** | `Entity_CalcRoute` | `0x80021394` | `entity/physics/Entity_CalcRoute.c` | Entity route calculator: computes path toward target | `player::physics::entity_calcroute` | `[ ]` |
-| **PHY-32** | `Entity_CalcTarget` | `0x80021F34` | `entity/physics/Entity_CalcTarget.c` | Entity target calculator: computes position delta to target entity | `player::physics::entity_calctarget` | `[ ]` |
-| **PHY-33** | `Entity_CheckAction` | `0x800552EC` | `entity/physics/Entity_CheckAction.c` | Entity action check: tests DAT_1f800230 + entity[0x181] + input flags | `player::physics::entity_checkaction` | `[ ]` |
-| **PHY-34** | `Entity_CheckAction2` | `0x8005308C` | `entity/physics/Entity_CheckAction2.c` | Entity action check variant 2: tests _DAT_800e7e84/85 + entity flags | `player::physics::entity_checkaction2` | `[ ]` |
-| **PHY-35** | `Entity_CheckActionTrigger` | `0x80055C30` | `entity/physics/Entity_CheckActionTrigger.c` | Checks if action trigger conditions met: sets sub-state to 0xB | `player::physics::entity_checkactiontrigger` | `[ ]` |
-| **PHY-36** | `Entity_CheckAnimEnd` | `0x80070830` | `entity/physics/Entity_CheckAnimEnd.c` | Checks if animation ended: entity[0x70] < 1, calls FUN_80041718(0,2) | `player::physics::entity_checkanimend` | `[ ]` |
-| **PHY-37** | `Entity_CheckClimbEnd` | `0x800661E0` | `entity/physics/Entity_CheckClimbEnd.c` | Checks climb end: entity[6] state, adjusts Y+10, collision check, sets flag 0x800E7EFE | `player::physics::entity_checkclimbend` | `[ ]` |
-| **PHY-38** | `Entity_CheckCollectible` | `0x80040C00` | `entity/physics/Entity_CheckCollectible.c` | Entity collectible check: tests _DAT_800e7fee, reads struct at offset | `player::physics::entity_checkcollectible` | `[ ]` |
+| **PHY-01** | `Entity_CalcAimPos` | `0x80024AF0` | `entity/physics/Entity_CalcAimPos.c` | Calculates aim position: GTE cos/sin on entity[0x56], offset from entity[0x2E/0x32/0x36] | `player::physics::entity_calcaimpos` | `[x]` |
+| **PHY-02** | `Entity_CalcAngle10` | `0x80022060` | `entity/physics/Entity_CalcAngle10.c` | Entity angle calc variant 10: checks DAT_1f80027a flag first | `player::physics::entity_calcangle10` | `[x]` |
+| **PHY-03** | `Entity_CalcAngle11` | `0x80022AC8` | `entity/physics/Entity_CalcAngle11.c` | Entity angle calc variant 11: different entity offset computation | `player::physics::entity_calcangle11` | `[x]` |
+| **PHY-04** | `Entity_CalcAngle12` | `0x800216B4` | `entity/physics/Entity_CalcAngle12.c` | Entity angle calc variant 12: atan2 with entity[0x2E]/[0x36] offsets | `player::physics::entity_calcangle12` | `[x]` |
+| **PHY-05** | `Entity_CalcAngle13` | `0x8001FAE0` | `entity/physics/Entity_CalcAngle13.c` | Entity angle calc variant 13: checks entity[0x145] flag first | `player::physics::entity_calcangle13` | `[x]` |
+| **PHY-06** | `Entity_CalcAngle14` | `0x80023870` | `entity/physics/Entity_CalcAngle14.c` | Entity angle calc variant 14: different entity offset format | `player::physics::entity_calcangle14` | `[x]` |
+| **PHY-07** | `Entity_CalcAngle15` | `0x8002192C` | `entity/physics/Entity_CalcAngle15.c` | Entity angle calc variant 15: atan2 with XZ distance check | `player::physics::entity_calcangle15` | `[x]` |
+| **PHY-08** | `Entity_CalcAngle16` | `0x8001F830` | `entity/physics/Entity_CalcAngle16.c` | Entity angle calc variant 16: atan2 with XZ distance validation | `player::physics::entity_calcangle16` | `[x]` |
+| **PHY-09** | `Entity_CalcAngle17` | `0x80020C34` | `entity/physics/Entity_CalcAngle17.c` | Entity angle calc variant 17: different entity offset format | `player::physics::entity_calcangle17` | `[x]` |
+| **PHY-10** | `Entity_CalcAngle18` | `0x80020DB8` | `entity/physics/Entity_CalcAngle18.c` | Entity angle calc variant 18: uses entity[0x2E/0x36] | `player::physics::entity_calcangle18` | `[x]` |
+| **PHY-11** | `Entity_CalcAngle19` | `0x80020F7C` | `entity/physics/Entity_CalcAngle19.c` | Entity angle calc variant 19: longer computation path | `player::physics::entity_calcangle19` | `[x]` |
+| **PHY-12** | `Entity_CalcAngle20` | `0x8001F650` | `entity/physics/Entity_CalcAngle20.c` | Entity angle calc variant 20: atan2 with complex offset | `player::physics::entity_calcangle20` | `[x]` |
+| **PHY-13** | `Entity_CalcAngle21` | `0x8001FDB4` | `entity/physics/Entity_CalcAngle21.c` | Entity angle calc variant 21: atan2 with Y component | `player::physics::entity_calcangle21` | `[x]` |
+| **PHY-14** | `Entity_CalcAngle22` | `0x80021150` | `entity/physics/Entity_CalcAngle22.c` | Entity angle calc variant 22: complex offset computation | `player::physics::entity_calcangle22` | `[x]` |
+| **PHY-15** | `Entity_CalcAngle3` | `0x800240FC` | `entity/physics/Entity_CalcAngle3.c` | Entity angle calc variant 3: atan2 from entity pos to target with offset | `player::physics::entity_calcangle3` | `[x]` |
+| **PHY-16** | `Entity_CalcAngle4` | `0x80022F04` | `entity/physics/Entity_CalcAngle4.c` | Entity angle calc variant 4: different entity offset computation | `player::physics::entity_calcangle4` | `[x]` |
+| **PHY-17** | `Entity_CalcAngle5` | `0x80021800` | `entity/physics/Entity_CalcAngle5.c` | Entity angle calc variant 5: atan2 with different entity offsets | `player::physics::entity_calcangle5` | `[x]` |
+| **PHY-18** | `Entity_CalcAngle6` | `0x8001F9DC` | `entity/physics/Entity_CalcAngle6.c` | Entity angle calc variant 6: atan2 from entity to param2 target | `player::physics::entity_calcangle6` | `[x]` |
+| **PHY-19** | `Entity_CalcAngle7` | `0x8001FC50` | `entity/physics/Entity_CalcAngle7.c` | Entity angle calc variant 7: tests entity[0x17E] flags before atan2 | `player::physics::entity_calcangle7` | `[x]` |
+| **PHY-20** | `Entity_CalcAngle8` | `0x80020B08` | `entity/physics/Entity_CalcAngle8.c` | Entity angle calc variant 8: checks param2 flags, computes atan2 | `player::physics::entity_calcangle8` | `[x]` |
+| **PHY-21** | `Entity_CalcAngle9` | `0x80021DF4` | `entity/physics/Entity_CalcAngle9.c` | Entity angle calc variant 9: checks param2 bit 3, atan2 with offset | `player::physics::entity_calcangle9` | `[x]` |
+| **PHY-22** | `Entity_CalcAngleDelta` | `0x80072EFC` | `entity/physics/Entity_CalcAngleDelta.c` | Calculates angle delta: entity[0x56] = entity[0x5A] - entity[0x50] | `player::physics::entity_calcangledelta` | `[x]` |
+| **PHY-23** | `Entity_CalcAngleToTarget_2` | `0x80069A2C` | `entity/physics/Entity_CalcAngleToTarget_2.c` | Calculates angle from entity to target point using GTE cos/sin + atan2 | `player::physics::entity_calcangletotarget_2` | `[x]` |
+| **PHY-24** | `Entity_CalcAngleToward` | `0x8004130C` | `entity/physics/Entity_CalcAngleToward.c` | Calculates rotation angle from entity toward target entity | `player::physics::entity_calcangletoward` | `[x]` |
+| **PHY-25** | `Entity_CalcCollisionAngle` | `0x80048654` | `entity/physics/Entity_CalcCollisionAngle.c` | Calculates collision angles: atan2 on surface normal, stores slope vectors at entity[0x48-4C] | `player::physics::entity_calccollisionangle` | `[x]` |
+| **PHY-26** | `Entity_CalcMove` | `0x80023D48` | `entity/physics/Entity_CalcMove.c` | Entity move calculator: computes velocity + position | `player::physics::entity_calcmove` | `[x]` |
+| **PHY-27** | `Entity_CalcMovePos` | `0x800634A8` | `entity/physics/Entity_CalcMovePos.c` | Calculates move position: GTE sin on entity[0x56/0x58], radius entity[0x64], updates pos | `player::physics::entity_calcmovepos` | `[x]` |
+| **PHY-28** | `Entity_CalcOrbitPos` | `0x80063ECC` | `entity/physics/Entity_CalcOrbitPos.c` | Orbit position: uses GTE cos/sin on entity[0x58] angle + entity[0x64] radius for offset from parent | `player::physics::entity_calcorbitpos` | `[x]` |
+| **PHY-29** | `Entity_CalcPath` | `0x80021AB0` | `entity/physics/Entity_CalcPath.c` | Entity path calculator: complex route computation toward target | `player::physics::entity_calcpath` | `[x]` |
+| **PHY-30** | `Entity_CalcPos` | `0x8001F40C` | `entity/physics/Entity_CalcPos.c` | Entity position calculator: computes new pos from delta + flags | `player::physics::entity_calcpos` | `[x]` |
+| **PHY-31** | `Entity_CalcRoute` | `0x80021394` | `entity/physics/Entity_CalcRoute.c` | Entity route calculator: computes path toward target | `player::physics::entity_calcroute` | `[x]` |
+| **PHY-32** | `Entity_CalcTarget` | `0x80021F34` | `entity/physics/Entity_CalcTarget.c` | Entity target calculator: computes position delta to target entity | `player::physics::entity_calctarget` | `[x]` |
+| **PHY-33** | `Entity_CheckAction` | `0x800552EC` | `entity/physics/Entity_CheckAction.c` | Entity action check: tests DAT_1f800230 + entity[0x181] + input flags | `player::physics::entity_checkaction` | `[x]` |
+| **PHY-34** | `Entity_CheckAction2` | `0x8005308C` | `entity/physics/Entity_CheckAction2.c` | Entity action check variant 2: tests _DAT_800e7e84/85 + entity flags | `player::physics::entity_checkaction2` | `[x]` |
+| **PHY-35** | `Entity_CheckActionTrigger` | `0x80055C30` | `entity/physics/Entity_CheckActionTrigger.c` | Checks if action trigger conditions met: sets sub-state to 0xB | `player::physics::entity_checkactiontrigger` | `[x]` |
+| **PHY-36** | `Entity_CheckAnimEnd` | `0x80070830` | `entity/physics/Entity_CheckAnimEnd.c` | Checks if animation ended: entity[0x70] < 1, calls FUN_80041718(0,2) | `player::physics::entity_checkanimend` | `[x]` |
+| **PHY-37** | `Entity_CheckClimbEnd` | `0x800661E0` | `entity/physics/Entity_CheckClimbEnd.c` | Checks climb end: entity[6] state, adjusts Y+10, collision check, sets flag 0x800E7EFE | `player::physics::entity_checkclimbend` | `[x]` |
+| **PHY-38** | `Entity_CheckCollectible` | `0x80040C00` | `entity/physics/Entity_CheckCollectible.c` | Entity collectible check: tests _DAT_800e7fee, reads struct at offset | `player::physics::entity_checkcollectible` | `[x]` |
 | **PHY-39** | `Entity_CheckCollision` | `0x80047778` | `entity/physics/Entity_CheckCollision.c` | Main collision detection: checks entity bounds against world geometry | collision::CollisionPlane::project_actor_onto_plane | [x] |
-| **PHY-40** | `Entity_CheckCollisionAndAngle` | `0x800419C4` | `entity/physics/Entity_CheckCollisionAndAngle.c` | Checks collision at position offset, stores surface angle in entity[0x62] | `player::physics::entity_checkcollisionandangle` | `[ ]` |
-| **PHY-41** | `Entity_CheckCollisionFlags` | `0x80055634` | `entity/physics/Entity_CheckCollisionFlags.c` | Entity collision flag check: tests DAT_800bf816 + entity[0x174] flags | `player::physics::entity_checkcollisionflags` | `[ ]` |
-| **PHY-42** | `Entity_CheckCondition` | `0x8006BD20` | `entity/physics/Entity_CheckCondition.c` | Entity condition check: tests entity[2] and game state for behavior activation | `player::physics::entity_checkcondition` | `[ ]` |
-| **PHY-43** | `Entity_CheckDamage` | `0x8006918C` | `entity/physics/Entity_CheckDamage.c` | Entity damage check: tests entity[0x46] flags + global DAT_800e7edf condition | `player::physics::entity_checkdamage` | `[ ]` |
-| **PHY-44** | `Entity_CheckDistance3D` | `0x80023794` | `entity/physics/Entity_CheckDistance3D.c` | 3D distance check: sqrt(X^2+Z^2) vs entity[0x80] radius, Y bounds vs entity[0x86] | `player::physics::entity_checkdistance3d` | `[ ]` |
-| **PHY-45** | `Entity_CheckEvent` | `0x800421CC` | `entity/physics/Entity_CheckEvent.c` | Entity event check: tests entity[0x72] and global DAT_800e806e for event trigger | `player::physics::entity_checkevent` | `[ ]` |
-| **PHY-46** | `Entity_CheckEventTrigger` | `0x8005344C` | `entity/physics/Entity_CheckEventTrigger.c` | Checks if specific event (level 4, bit 0x10) should trigger for entity | `player::physics::entity_checkeventtrigger` | `[ ]` |
-| **PHY-47** | `Entity_CheckFlag` | `0x800665F4` | `entity/physics/Entity_CheckFlag.c` | Entity flag checker: tests entity[0x6A] bit 0x8000, validates | `player::physics::entity_checkflag` | `[ ]` |
-| **PHY-48** | `Entity_CheckGround` | `0x800696C4` | `entity/physics/Entity_CheckGround.c` | Entity ground checker: calls FUN_800495dc, validates ground | `player::physics::entity_checkground` | `[ ]` |
-| **PHY-49** | `Entity_CheckInputActive` | `0x800557EC` | `entity/physics/Entity_CheckInputActive.c` | Checks if entity[0x148] is set OR input state flag is active | `player::physics::entity_checkinputactive` | `[ ]` |
-| **PHY-50** | `Entity_CheckInteraction` | `0x80023618` | `entity/physics/Entity_CheckInteraction.c` | Checks if two entities can interact: same type, valid spawn check | `player::physics::entity_checkinteraction` | `[ ]` |
-| **PHY-51** | `Entity_CheckLifecycle` | `0x80041F34` | `entity/physics/Entity_CheckLifecycle.c` | Entity lifecycle check: tests entity[5]==3, entity[0x42]==-1 for completion | `player::physics::entity_checklifecycle` | `[ ]` |
-| **PHY-52** | `Entity_CheckLoop` | `0x800368D0` | `entity/physics/Entity_CheckLoop.c` | Entity check loop: entity[0x24] counter, validates state | `player::physics::entity_checkloop` | `[ ]` |
-| **PHY-53** | `Entity_CheckPlayer` | `0x80044308` | `entity/physics/Entity_CheckPlayer.c` | Entity player checker: tests entity[0x72] bit 0x8000 | `player::physics::entity_checkplayer` | `[ ]` |
-| **PHY-54** | `Entity_CheckProximity` | `0x80069B6C` | `entity/physics/Entity_CheckProximity.c` | Checks if entity is within 0x1CC distance of another entity on all axes | `player::physics::entity_checkproximity` | `[ ]` |
-| **PHY-55** | `Entity_CheckState` | `0x800535E0` | `entity/physics/Entity_CheckState.c` | Entity state checker: switch on entity[0x6C] type, returns state | `player::physics::entity_checkstate` | `[ ]` |
-| **PHY-56** | `Entity_CheckState2` | `0x80051300` | `entity/physics/Entity_CheckState2.c` | Entity state check variant 2: iterates entity[9] flags | `player::physics::entity_checkstate2` | `[ ]` |
-| **PHY-57** | `Entity_CheckState3` | `0x8006042C` | `entity/physics/Entity_CheckState3.c` | Entity state check variant 3: checks DAT_1f800253/237 | `player::physics::entity_checkstate3` | `[ ]` |
-| **PHY-58** | `Entity_CheckStateAndSet` | `0x80041FCC` | `entity/physics/Entity_CheckStateAndSet.c` | Checks if entity[5] != 3, if so sets entity[5] = 10 and returns 1 | `player::physics::entity_checkstateandset` | `[ ]` |
-| **PHY-59** | `Entity_CheckStateType` | `0x8005376C` | `entity/physics/Entity_CheckStateType.c` | Entity state type check: switch on entity[0x176] returning entity[0x44] state | `player::physics::entity_checkstatetype` | `[ ]` |
-| **PHY-60** | `Entity_CheckTarget` | `0x800205CC` | `entity/physics/Entity_CheckTarget.c` | Entity target checker: validates target entity ptr | `player::physics::entity_checktarget` | `[ ]` |
-| **PHY-61** | `Entity_CheckVisibility` | `0x8002B278` | `entity/physics/Entity_CheckVisibility.c` | Subrutina de Entity_CheckVisibility (entity/physics/Entity_CheckVisibility.c) | `player::physics::entity_checkvisibility` | `[ ]` |
-| **PHY-62** | `Entity_MoveCalc` | `0x8002423C` | `entity/physics/Entity_MoveCalc.c` | Entity move calculator: computes velocity from entity[0x4A], updates pos | `player::physics::entity_movecalc` | `[ ]` |
-| **PHY-63** | `Entity_MoveInCircle` | `0x80070E60` | `entity/physics/Entity_MoveInCircle.c` | Circular motion: cos/sin on entity[0x44] angle, offset from entity[0x4E/0x50/0x52], advance angle 0x20 | `player::physics::entity_moveincircle` | `[ ]` |
-| **PHY-64** | `Entity_MoveMain` | `0x8001EC3C` | `entity/physics/Entity_MoveMain.c` | Entity move main: trajectory + collision + position | `player::physics::entity_movemain` | `[ ]` |
-| **PHY-65** | `Entity_MoveTarget` | `0x80023A04` | `entity/physics/Entity_MoveTarget.c` | Entity move to target: computes trajectory toward point | `player::physics::entity_movetarget` | `[ ]` |
-| **PHY-66** | `Entity_MoveTo` | `0x8001FF7C` | `entity/physics/Entity_MoveTo.c` | Entity move-to: computes trajectory, updates position | `player::physics::entity_moveto` | `[ ]` |
-| **PHY-67** | `Entity_MoveToTarget` | `0x80041938` | `entity/physics/Entity_MoveToTarget.c` | Entity moves toward target: collision check with entity[0x29] state, sets angle via atan2 | `player::physics::entity_movetotarget` | `[ ]` |
-| **PHY-68** | `Entity_MoveToward` | `0x80041194` | `entity/physics/Entity_MoveToward.c` | Moves entity toward target: physics step with collision, sets angle on success | `player::physics::entity_movetoward` | `[ ]` |
-| **PHY-69** | `Entity_PhysicsAndAngle` | `0x80041AC0` | `entity/physics/Entity_PhysicsAndAngle.c` | Runs physics step + stores resulting angle in entity[0x60] | `player::physics::entity_physicsandangle` | `[ ]` |
-| **PHY-70** | `Entity_PhysicsApply` | `0x8005B370` | `entity/physics/Entity_PhysicsApply.c` | Entity physics applier: calls FUN_80055d5c, updates velocity | `player::physics::entity_physicsapply` | `[ ]` |
-| **PHY-71** | `Entity_PhysicsClimb` | `0x8003FC00` | `entity/physics/Entity_PhysicsClimb.c` | Subrutina de Entity_PhysicsClimb (entity/physics/Entity_PhysicsClimb.c) | `player::physics::entity_physicsclimb` | `[ ]` |
-| **PHY-72** | `Entity_PhysicsFull` | `0x8003FBC4` | `entity/physics/Entity_PhysicsFull.c` | Subrutina de Entity_PhysicsFull (entity/physics/Entity_PhysicsFull.c) | `player::physics::entity_physicsfull` | `[ ]` |
-| **PHY-73** | `Entity_PhysicsIfMatch` | `0x8003FC8C` | `entity/physics/Entity_PhysicsIfMatch.c` | Runs physics step only if global flag at 0x800BF816 matches entity[0x6A] ID | `player::physics::entity_physicsifmatch` | `[ ]` |
-| **PHY-74** | `Entity_PhysicsInit` | `0x80069858` | `entity/physics/Entity_PhysicsInit.c` | Entity physics initializer: calls collision + slope calc, checks result | `player::physics::entity_physicsinit` | `[ ]` |
-| **PHY-75** | `Entity_PhysicsMain` | `0x80063F9C` | `entity/physics/Entity_PhysicsMain.c` | Entity physics main: collision + movement pipeline | `player::physics::entity_physicsmain` | `[ ]` |
-| **PHY-76** | `Entity_PhysicsMove` | `0x80056C00` | `entity/physics/Entity_PhysicsMove.c` | Entity physics move: entity[0x29]=0, checks collision + angle | `player::physics::entity_physicsmove` | `[ ]` |
-| **PHY-77** | `Entity_PhysicsStep` | `0x8004766C` | `entity/physics/Entity_PhysicsStep.c` | Physics/collision step: checks collision, updates entity position from result | `player::physics::entity_physicsstep` | `[ ]` |
-| **PHY-78** | `Entity_PhysicsStep2` | `0x80055D5C` | `entity/physics/Entity_PhysicsStep2.c` | Entity physics step variant 2: collision + slope calc + angle update | `player::physics::entity_physicsstep2` | `[ ]` |
-| **PHY-79** | `Entity_PhysicsStep3` | `0x80060A80` | `entity/physics/Entity_PhysicsStep3.c` | Entity physics step variant 3: different velocity handling | `player::physics::entity_physicsstep3` | `[ ]` |
-| **PHY-80** | `Entity_PhysicsStep4` | `0x8005AEE4` | `entity/physics/Entity_PhysicsStep4.c` | Entity physics step variant 4: different collision path | `player::physics::entity_physicsstep4` | `[ ]` |
+| **PHY-40** | `Entity_CheckCollisionAndAngle` | `0x800419C4` | `entity/physics/Entity_CheckCollisionAndAngle.c` | Checks collision at position offset, stores surface angle in entity[0x62] | `player::physics::entity_checkcollisionandangle` | `[x]` |
+| **PHY-41** | `Entity_CheckCollisionFlags` | `0x80055634` | `entity/physics/Entity_CheckCollisionFlags.c` | Entity collision flag check: tests DAT_800bf816 + entity[0x174] flags | `player::physics::entity_checkcollisionflags` | `[x]` |
+| **PHY-42** | `Entity_CheckCondition` | `0x8006BD20` | `entity/physics/Entity_CheckCondition.c` | Entity condition check: tests entity[2] and game state for behavior activation | `player::physics::entity_checkcondition` | `[x]` |
+| **PHY-43** | `Entity_CheckDamage` | `0x8006918C` | `entity/physics/Entity_CheckDamage.c` | Entity damage check: tests entity[0x46] flags + global DAT_800e7edf condition | `player::physics::entity_checkdamage` | `[x]` |
+| **PHY-44** | `Entity_CheckDistance3D` | `0x80023794` | `entity/physics/Entity_CheckDistance3D.c` | 3D distance check: sqrt(X^2+Z^2) vs entity[0x80] radius, Y bounds vs entity[0x86] | `player::physics::entity_checkdistance3d` | `[x]` |
+| **PHY-45** | `Entity_CheckEvent` | `0x800421CC` | `entity/physics/Entity_CheckEvent.c` | Entity event check: tests entity[0x72] and global DAT_800e806e for event trigger | `player::physics::entity_checkevent` | `[x]` |
+| **PHY-46** | `Entity_CheckEventTrigger` | `0x8005344C` | `entity/physics/Entity_CheckEventTrigger.c` | Checks if specific event (level 4, bit 0x10) should trigger for entity | `player::physics::entity_checkeventtrigger` | `[x]` |
+| **PHY-47** | `Entity_CheckFlag` | `0x800665F4` | `entity/physics/Entity_CheckFlag.c` | Entity flag checker: tests entity[0x6A] bit 0x8000, validates | `player::physics::entity_checkflag` | `[x]` |
+| **PHY-48** | `Entity_CheckGround` | `0x800696C4` | `entity/physics/Entity_CheckGround.c` | Entity ground checker: calls FUN_800495dc, validates ground | `player::physics::entity_checkground` | `[x]` |
+| **PHY-49** | `Entity_CheckInputActive` | `0x800557EC` | `entity/physics/Entity_CheckInputActive.c` | Checks if entity[0x148] is set OR input state flag is active | `player::physics::entity_checkinputactive` | `[x]` |
+| **PHY-50** | `Entity_CheckInteraction` | `0x80023618` | `entity/physics/Entity_CheckInteraction.c` | Checks if two entities can interact: same type, valid spawn check | `player::physics::entity_checkinteraction` | `[x]` |
+| **PHY-51** | `Entity_CheckLifecycle` | `0x80041F34` | `entity/physics/Entity_CheckLifecycle.c` | Entity lifecycle check: tests entity[5]==3, entity[0x42]==-1 for completion | `player::physics::entity_checklifecycle` | `[x]` |
+| **PHY-52** | `Entity_CheckLoop` | `0x800368D0` | `entity/physics/Entity_CheckLoop.c` | Entity check loop: entity[0x24] counter, validates state | `player::physics::entity_checkloop` | `[x]` |
+| **PHY-53** | `Entity_CheckPlayer` | `0x80044308` | `entity/physics/Entity_CheckPlayer.c` | Entity player checker: tests entity[0x72] bit 0x8000 | `player::physics::entity_checkplayer` | `[x]` |
+| **PHY-54** | `Entity_CheckProximity` | `0x80069B6C` | `entity/physics/Entity_CheckProximity.c` | Checks if entity is within 0x1CC distance of another entity on all axes | `player::physics::entity_checkproximity` | `[x]` |
+| **PHY-55** | `Entity_CheckState` | `0x800535E0` | `entity/physics/Entity_CheckState.c` | Entity state checker: switch on entity[0x6C] type, returns state | `player::physics::entity_checkstate` | `[x]` |
+| **PHY-56** | `Entity_CheckState2` | `0x80051300` | `entity/physics/Entity_CheckState2.c` | Entity state check variant 2: iterates entity[9] flags | `player::physics::entity_checkstate2` | `[x]` |
+| **PHY-57** | `Entity_CheckState3` | `0x8006042C` | `entity/physics/Entity_CheckState3.c` | Entity state check variant 3: checks DAT_1f800253/237 | `player::physics::entity_checkstate3` | `[x]` |
+| **PHY-58** | `Entity_CheckStateAndSet` | `0x80041FCC` | `entity/physics/Entity_CheckStateAndSet.c` | Checks if entity[5] != 3, if so sets entity[5] = 10 and returns 1 | `player::physics::entity_checkstateandset` | `[x]` |
+| **PHY-59** | `Entity_CheckStateType` | `0x8005376C` | `entity/physics/Entity_CheckStateType.c` | Entity state type check: switch on entity[0x176] returning entity[0x44] state | `player::physics::entity_checkstatetype` | `[x]` |
+| **PHY-60** | `Entity_CheckTarget` | `0x800205CC` | `entity/physics/Entity_CheckTarget.c` | Entity target checker: validates target entity ptr | `player::physics::entity_checktarget` | `[x]` |
+| **PHY-61** | `Entity_CheckVisibility` | `0x8002B278` | `entity/physics/Entity_CheckVisibility.c` | Subrutina de Entity_CheckVisibility (entity/physics/Entity_CheckVisibility.c) | `player::physics::entity_checkvisibility` | `[x]` |
+| **PHY-62** | `Entity_MoveCalc` | `0x8002423C` | `entity/physics/Entity_MoveCalc.c` | Entity move calculator: computes velocity from entity[0x4A], updates pos | `player::physics::entity_movecalc` | `[x]` |
+| **PHY-63** | `Entity_MoveInCircle` | `0x80070E60` | `entity/physics/Entity_MoveInCircle.c` | Circular motion: cos/sin on entity[0x44] angle, offset from entity[0x4E/0x50/0x52], advance angle 0x20 | `player::physics::entity_moveincircle` | `[x]` |
+| **PHY-64** | `Entity_MoveMain` | `0x8001EC3C` | `entity/physics/Entity_MoveMain.c` | Entity move main: trajectory + collision + position | `player::physics::entity_movemain` | `[x]` |
+| **PHY-65** | `Entity_MoveTarget` | `0x80023A04` | `entity/physics/Entity_MoveTarget.c` | Entity move to target: computes trajectory toward point | `player::physics::entity_movetarget` | `[x]` |
+| **PHY-66** | `Entity_MoveTo` | `0x8001FF7C` | `entity/physics/Entity_MoveTo.c` | Entity move-to: computes trajectory, updates position | `player::physics::entity_moveto` | `[x]` |
+| **PHY-67** | `Entity_MoveToTarget` | `0x80041938` | `entity/physics/Entity_MoveToTarget.c` | Entity moves toward target: collision check with entity[0x29] state, sets angle via atan2 | `player::physics::entity_movetotarget` | `[x]` |
+| **PHY-68** | `Entity_MoveToward` | `0x80041194` | `entity/physics/Entity_MoveToward.c` | Moves entity toward target: physics step with collision, sets angle on success | `player::physics::entity_movetoward` | `[x]` |
+| **PHY-69** | `Entity_PhysicsAndAngle` | `0x80041AC0` | `entity/physics/Entity_PhysicsAndAngle.c` | Runs physics step + stores resulting angle in entity[0x60] | `player::physics::entity_physicsandangle` | `[x]` |
+| **PHY-70** | `Entity_PhysicsApply` | `0x8005B370` | `entity/physics/Entity_PhysicsApply.c` | Entity physics applier: calls FUN_80055d5c, updates velocity | `player::physics::entity_physicsapply` | `[x]` |
+| **PHY-71** | `Entity_PhysicsClimb` | `0x8003FC00` | `entity/physics/Entity_PhysicsClimb.c` | Subrutina de Entity_PhysicsClimb (entity/physics/Entity_PhysicsClimb.c) | `player::physics::entity_physicsclimb` | `[x]` |
+| **PHY-72** | `Entity_PhysicsFull` | `0x8003FBC4` | `entity/physics/Entity_PhysicsFull.c` | Subrutina de Entity_PhysicsFull (entity/physics/Entity_PhysicsFull.c) | `player::physics::entity_physicsfull` | `[x]` |
+| **PHY-73** | `Entity_PhysicsIfMatch` | `0x8003FC8C` | `entity/physics/Entity_PhysicsIfMatch.c` | Runs physics step only if global flag at 0x800BF816 matches entity[0x6A] ID | `player::physics::entity_physicsifmatch` | `[x]` |
+| **PHY-74** | `Entity_PhysicsInit` | `0x80069858` | `entity/physics/Entity_PhysicsInit.c` | Entity physics initializer: calls collision + slope calc, checks result | `player::physics::entity_physicsinit` | `[x]` |
+| **PHY-75** | `Entity_PhysicsMain` | `0x80063F9C` | `entity/physics/Entity_PhysicsMain.c` | Entity physics main: collision + movement pipeline | `player::physics::entity_physicsmain` | `[x]` |
+| **PHY-76** | `Entity_PhysicsMove` | `0x80056C00` | `entity/physics/Entity_PhysicsMove.c` | Entity physics move: entity[0x29]=0, checks collision + angle | `player::physics::entity_physicsmove` | `[x]` |
+| **PHY-77** | `Entity_PhysicsStep` | `0x8004766C` | `entity/physics/Entity_PhysicsStep.c` | Physics/collision step: checks collision, updates entity position from result | `player::physics::entity_physicsstep` | `[x]` |
+| **PHY-78** | `Entity_PhysicsStep2` | `0x80055D5C` | `entity/physics/Entity_PhysicsStep2.c` | Entity physics step variant 2: collision + slope calc + angle update | `player::physics::entity_physicsstep2` | `[x]` |
+| **PHY-79** | `Entity_PhysicsStep3` | `0x80060A80` | `entity/physics/Entity_PhysicsStep3.c` | Entity physics step variant 3: different velocity handling | `player::physics::entity_physicsstep3` | `[x]` |
+| **PHY-80** | `Entity_PhysicsStep4` | `0x8005AEE4` | `entity/physics/Entity_PhysicsStep4.c` | Entity physics step variant 4: different collision path | `player::physics::entity_physicsstep4` | `[x]` |
 | **PHY-81** | `Entity_PhysicsStepRot` | `0x80048750` | `entity/physics/Entity_PhysicsStepRot.c` | Physics step with rotation: computes rotation angles from collision data via atan2 | collision::CollisionPlane::is_wall_blocking | [x] |
-| **PHY-82** | `Entity_PhysicsUpdate` | `0x80055E28` | `entity/physics/Entity_PhysicsUpdate.c` | Entity physics update: entity[0x14A] flags, collision + movement | `player::physics::entity_physicsupdate` | `[ ]` |
+| **PHY-82** | `Entity_PhysicsUpdate` | `0x80055E28` | `entity/physics/Entity_PhysicsUpdate.c` | Entity physics update: entity[0x14A] flags, collision + movement | `player::physics::entity_physicsupdate` | `[x]` |
 
 ---
 

@@ -1,7 +1,10 @@
+pub mod physics;
 pub mod state_machine;
 
 use crate::collision::LevelCollision;
 use bevy::prelude::*;
+#[allow(unused_imports)]
+pub use physics::EntityPhysics;
 pub use state_machine::{TombaActionState, WeaponType, SPEED_DASH, SPEED_GLIDE, GRAVITY_GLIDE};
 
 // ─── FÍSICA AUTÉNTICA PS1 ────────────────────────────────────────────────────

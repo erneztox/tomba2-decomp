@@ -81,7 +81,7 @@ El juego completo está catalogado en un censo técnico exhaustivo de **1.567 fu
 | Sector | Código | Subsistema del Motor | Funciones Reales | Estado en Bevy |
 | :--- | :---: | :--- | :---: | :---: |
 | **SEC-01** | `ACT` | **Player & Entity Action State Machines** (Locomoción, Salto, Dash, Vuelo, Nado, Escalada, Ataque, Lanzamiento, Daño) | 64 | **64 / 64** (100%) |
-| **SEC-02** | `PHY` | **Entity Physics & Kinematics** (Velocidades, Gravedades de subida/bajada, Inercia, Pendientes, Contacto) | 82 | **2 / 82** |
+| **SEC-02** | `PHY` | **Entity Physics & Kinematics** (Velocidades, Gravedades de subida/bajada, Inercia, Pendientes, Contacto) | 82 | **82 / 82** (100%) |
 | **SEC-03** | `COL` | **2.5D Collision & SCLD Rail Grid** (Proyección ortogonal, Sondeo de suelo, Paredes, Bifurcaciones) | 35 | **35 / 35** (100%) |
 | **SEC-04** | `ENT` | **Entity Allocation, Lifecycle & Loops** (Pools 0..5, Listas enlazadas, Bucles de tick, Spawning de hijos) | 357 | **4 / 357** |
 | **SEC-05** | `BEH` | **Entity Behaviors, AI & Interactive World** (Cerdos Koma, Jefes, NPCs, Puertas, Mecanismos, Proyectiles) | 71 | **1 / 71** |
@@ -92,7 +92,7 @@ El juego completo está catalogado en un censo técnico exhaustivo de **1.567 fu
 | **SEC-10** | `UI` | **UI, Dialog System & HUD** (Paneles 9-slice, Flujo tipográfico, Métricas de fuente, HUD vitalidad/AP) | 88 | **0 / 88** |
 | **SEC-11** | `AUD` | **Audio System & Sound Dispatch** (Música CD-XA, Atenuación en diálogo, Sintetizador SPU, SFX) | 140 | **2 / 140** |
 | **SEC-12** | `SYS` | **Memory Card, GPU, CD & Low-Level Subsystems** (Guardado MC, Paquetes GPU, GTE, Streaming CD, MDEC) | 560 | **1 / 560** |
-| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1.567** | **121 implementadas** |
+| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1.567** | **201 implementadas** |
 
 👉 **El inventario individualizado fila por fila** con cada una de las 1.567 funciones, direcciones de memoria PS1 (`0x800...`), archivos fuente, comportamientos técnicos y mapeo ECS vive en:
 

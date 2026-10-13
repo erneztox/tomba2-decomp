@@ -1,44 +1,71 @@
-use bevy::input::mouse::MouseMotion;
+mod camera;
+mod collision;
+mod player;
+
 use bevy::prelude::*;
+use camera::{camera_controller, CameraMode, GameCamera};
+use collision::{draw_collision_gizmos, CollisionDebugConfig, LevelCollision};
+use player::{
+    hook_tomba_animation_player, setup_tomba_animations, tomba_movement_system, TombaPlayer,
+    TombaRail,
+};
 
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins.set(WindowPlugin {
             primary_window: Some(Window {
-                title: "Tomba! 2 — Bevy Reimplementation".into(),
+                title: "Tomba! 2 — Bevy Reimplementation (2.5D Movement & Collision)".into(),
                 resolution: (1280.0_f32, 720.0_f32).into(),
                 ..default()
             }),
             ..default()
         }))
-        .add_systems(Startup, setup_scene)
-        .add_systems(Update, (camera_controller, rotate_tomba))
+        .init_resource::<CollisionDebugConfig>()
+        .add_systems(Startup, (setup_collision_data, setup_scene, setup_tomba_animations))
+        .add_systems(
+            Update,
+            (
+                camera_controller,
+                tomba_movement_system,
+                hook_tomba_animation_player,
+                draw_collision_gizmos,
+            ),
+        )
         .run();
 }
 
-#[derive(Component)]
-struct FreeCamera {
-    speed: f32,
-    sensitivity: f32,
+fn setup_collision_data(mut commands: Commands) {
+    let collision_path = "assets/levels/area_04_collision.json";
+    match LevelCollision::load_from_file(collision_path) {
+        Ok(col) => {
+            println!(
+                "=== Collision Loaded Successfully: {} planes ===",
+                col.planes.len()
+            );
+            commands.insert_resource(col);
+        }
+        Err(e) => {
+            eprintln!("Failed to load collision file at '{}': {}", collision_path, e);
+            // Fallback to empty collision
+            commands.insert_resource(LevelCollision::default());
+        }
+    }
 }
-
-#[derive(Component)]
-struct TombaPlayer;
 
 fn setup_scene(mut commands: Commands, asset_server: Res<AssetServer>) {
     // 1. Ambient & Directional Lighting
     commands.insert_resource(AmbientLight {
         color: Color::WHITE,
-        brightness: 800.0,
+        brightness: 900.0,
     });
 
     commands.spawn((
         DirectionalLight {
-            illuminance: 3500.0,
+            illuminance: 4000.0,
             shadows_enabled: true,
             ..default()
         },
-        Transform::from_xyz(50.0, 100.0, 50.0).looking_at(Vec3::ZERO, Vec3::Y),
+        Transform::from_xyz(50.0, 120.0, 50.0).looking_at(Vec3::ZERO, Vec3::Y),
     ));
 
     // 2. Spawn Level Geometry (Area 04 - Fisherman's Village)
@@ -47,102 +74,35 @@ fn setup_scene(mut commands: Commands, asset_server: Res<AssetServer>) {
         Transform::from_xyz(0.0, 0.0, 0.0),
     ));
 
-    // 3. Spawn Tomba Character Model
+    // 3. Spawn Tomba Player on the 2.5D Rail
     commands.spawn((
         SceneRoot(asset_server.load("models/tomba.glb#Scene0")),
-        Transform::from_xyz(0.0, 5.0, 0.0).with_scale(Vec3::splat(1.0)),
+        Transform::from_xyz(42.0, 9.12, 39.68).with_scale(Vec3::splat(1.0)),
         TombaPlayer,
+        TombaRail::default(),
     ));
 
-    // 4. Spawn 3D Camera overlooking the level
+    // 4. Spawn Game Camera (Starts in Rail Follow mode)
     commands.spawn((
         Camera3d::default(),
-        Transform::from_xyz(0.0, 30.0, 80.0).looking_at(Vec3::new(0.0, 10.0, 0.0), Vec3::Y),
-        FreeCamera {
-            speed: 50.0,
+        Transform::from_xyz(42.0, 19.12, 69.68).looking_at(Vec3::new(42.0, 11.0, 39.68), Vec3::Y),
+        GameCamera {
+            mode: CameraMode::RailFollow,
+            flight_speed: 50.0,
             sensitivity: 0.003,
+            follow_distance: 28.0,
+            follow_height: 8.0,
         },
     ));
 
-    println!("=== Tomba! 2 Scene Loaded ===");
+    println!("====================================================");
+    println!("🎮 Tomba! 2 — Native Bevy 2.5D Engine Running!");
     println!("Controls:");
-    println!("  WASD        : Move camera horizontally");
-    println!("  Q / E       : Move camera Down / Up");
-    println!("  Right Click + Mouse: Look around");
-    println!("  Left/Right Arrows  : Rotate Tomba manually");
-}
-
-/// Flight and mouse-look camera controls for exploring the level
-fn camera_controller(
-    time: Res<Time>,
-    keyboard: Res<ButtonInput<KeyCode>>,
-    mouse_button: Res<ButtonInput<MouseButton>>,
-    mut mouse_motion: EventReader<MouseMotion>,
-    mut query: Query<(&FreeCamera, &mut Transform)>,
-) {
-    for (cam, mut transform) in &mut query {
-        // 1. Mouse rotation (while Right Click is held)
-        if mouse_button.pressed(MouseButton::Right) {
-            for motion in mouse_motion.read() {
-                let yaw = -motion.delta.x * cam.sensitivity;
-                let pitch = -motion.delta.y * cam.sensitivity;
-
-                transform.rotate_y(yaw);
-                transform.rotate_local_x(pitch);
-            }
-        } else {
-            // Drain mouse motion events so they don't accumulate
-            mouse_motion.clear();
-        }
-
-        // 2. Keyboard flight translation
-        let mut direction = Vec3::ZERO;
-        let forward = transform.forward().as_vec3();
-        let right = transform.right().as_vec3();
-        let up = Vec3::Y;
-
-        if keyboard.pressed(KeyCode::KeyW) {
-            direction += forward;
-        }
-        if keyboard.pressed(KeyCode::KeyS) {
-            direction -= forward;
-        }
-        if keyboard.pressed(KeyCode::KeyA) {
-            direction -= right;
-        }
-        if keyboard.pressed(KeyCode::KeyD) {
-            direction += right;
-        }
-        if keyboard.pressed(KeyCode::KeyE) {
-            direction += up;
-        }
-        if keyboard.pressed(KeyCode::KeyQ) {
-            direction -= up;
-        }
-
-        if direction != Vec3::ZERO {
-            transform.translation += direction.normalize() * cam.speed * time.delta_secs();
-        }
-    }
-}
-
-/// Demo rotation for Tomba model
-fn rotate_tomba(
-    time: Res<Time>,
-    keyboard: Res<ButtonInput<KeyCode>>,
-    mut query: Query<&mut Transform, With<TombaPlayer>>,
-) {
-    for mut transform in &mut query {
-        let mut rot = 0.0;
-        if keyboard.pressed(KeyCode::ArrowLeft) {
-            rot += 2.0;
-        }
-        if keyboard.pressed(KeyCode::ArrowRight) {
-            rot -= 2.0;
-        }
-        if rot == 0.0 {
-            rot = 0.5; // slow idle spin
-        }
-        transform.rotate_y(rot * time.delta_secs());
-    }
+    println!("  A / D or Left / Right: Move along 2.5D rail");
+    println!("  Space / K            : Jump (gravity & floor snapping)");
+    println!("  W / Up (at junction) : Switch to connected lane (Up)");
+    println!("  S / Down (at junc.)  : Switch to connected lane (Down)");
+    println!("  F1                   : Toggle 2.5D Camera <-> Free Flight");
+    println!("  F2                   : Toggle Collision Rail Gizmos (Cyan/Yellow)");
+    println!("====================================================");
 }

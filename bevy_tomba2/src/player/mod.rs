@@ -58,15 +58,25 @@ pub enum PlayerActionState {
     },
 }
 
-#[derive(Component)]
+#[derive(Component, Debug, Clone)]
 pub struct TombaRail {
+    /// Active SCLD plane ID (1-based). Correlates with ACT_SECTOR_ID at entity+0x2A (collision.cpp:67).
     pub plane_id: usize,
+    /// 3D World coordinates in meters. Correlates with ACT_WORLD_X/Y/Z at entity+0x2E/0x32/0x36 (collision.cpp:68-71).
+    pub world_pos: Vec3,
+    /// Distance along active plane in meters.
     pub s: f32,
-    pub y: f32, // Floor contact height
+    /// Floor contact height (Y) in meters.
+    pub y: f32,
+    /// Vertical velocity in m/s. Correlates with velocity_y at entity+0x4A (Entity_State_Idle.c:43).
     pub vertical_velocity: f32,
+    /// Ground contact state. Correlates with collision_state at entity+0x29 (include/tomba.h:51).
     pub is_grounded: bool,
-    pub facing: f32, // +1.0 for forward along rail, -1.0 for backward
+    /// Facing direction sign (+1.0 forward, -1.0 backward). Correlates with direction at entity+0x147.
+    pub facing: f32,
+    /// Action state machine. Correlates with action_state at entity+0x06.
     pub action_state: PlayerActionState,
+    /// Current facing / look direction vector in world space.
     pub current_look_dir: Vec3,
 }
 
@@ -74,6 +84,7 @@ impl Default for TombaRail {
     fn default() -> Self {
         Self {
             plane_id: 1, // Main pier in Fisherman's Village (Plane 1)
+            world_pos: Vec3::new(39.68, 9.12, 42.0), // Plane 1 at s=10.0m
             s: 10.0,     // Start 10m along the pier
             y: 9.12,     // Initial floor contact height
             vertical_velocity: 0.0,
@@ -178,7 +189,8 @@ pub fn tomba_movement_system(
 
                 // Transform update during turn
                 let pos_on_rail = plane.point_at(rail.s);
-                transform.translation = Vec3::new(pos_on_rail.x, rail.y + TOMBA_PHYS_OFFSET_Y, pos_on_rail.z);
+                rail.world_pos = Vec3::new(pos_on_rail.x, rail.y, pos_on_rail.z);
+                transform.translation = Vec3::new(rail.world_pos.x, rail.y + TOMBA_PHYS_OFFSET_Y, rail.world_pos.z);
                 if rail.current_look_dir.length_squared() > 1e-4 {
                     transform.look_to(-rail.current_look_dir, Vec3::Y);
                 }
@@ -199,10 +211,16 @@ pub fn tomba_movement_system(
 
         if move_input != 0.0 {
             rail.facing = move_input;
-            rail.s += move_input * TOMBA_WALK_SPEED * dt;
+            let step = move_input * TOMBA_WALK_SPEED * dt;
+            let target_s = rail.s + step;
+            // Check wall collision (f_ResolveTerrainProbeHorizontalSurfaceBySideMask)
+            if !plane.is_wall_blocking(rail.s, target_s, rail.y) {
+                rail.s = target_s;
+            }
         }
 
         // Clamp to current plane length or switch to linked planes (ls / le)
+        // Ref: collision.cpp:639-675 (0x80048fc4 sector handoff)
         if rail.s < 0.0 {
             if plane.ls > 0 {
                 let dest_id = plane.ls as usize;
@@ -228,6 +246,14 @@ pub fn tomba_movement_system(
                 rail.s = plane.length;
             }
         }
+
+        // Project actor coordinates (X, Z) authentically onto plane line segment
+        // Ref: f_ProjectActorOntoAreaPlane (0x80047778 / collision.cpp:678-716)
+        let unprojected = plane.point_at(rail.s);
+        let (proj_x, proj_z, proj_s) = plane.project_actor_onto_plane(unprojected.x, unprojected.z);
+        rail.world_pos.x = proj_x;
+        rail.world_pos.z = proj_z;
+        rail.s = proj_s;
 
         // 2. Junction lane switching (W / Up or S / Down)
         // Ref: Collision_GetFloorHeight.c:58, Entity_StateMain12.c:23-100
@@ -309,8 +335,8 @@ pub fn tomba_movement_system(
         // 5. Update World Transform
         // Ground truth: origin.y = floor_y + TOMBA_PHYS_OFFSET_Y (1.25m so rest foot sole bone contacts ground at 0.0)
         // Ref: Collision::snapObjectToTerrain (collision.cpp:770), f_ProjectActorOntoAreaPlane (0x80047778)
-        let pos_on_rail = plane.point_at(rail.s);
-        let world_pos = Vec3::new(pos_on_rail.x, rail.y + TOMBA_PHYS_OFFSET_Y, pos_on_rail.z);
+        rail.world_pos.y = rail.y;
+        let world_pos = Vec3::new(rail.world_pos.x, rail.world_pos.y + TOMBA_PHYS_OFFSET_Y, rail.world_pos.z);
         transform.translation = world_pos;
 
         // Facing rotation: along plane direction * facing sign

@@ -136,6 +136,32 @@ impl CollisionPlane {
                 .min_by(|a, b| (a - current_y).abs().total_cmp(&(b - current_y).abs()))
         }
     }
+
+    /// Authentic wall blocking from `f_ResolveTerrainProbeHorizontalSurfaceBySideMask`
+    /// (MAIN.EXE / scld_geometry.py:24-28).
+    /// - `kind & 0x04` (WALL_A): blocks movement in forward (+s) direction.
+    /// - `kind & 0x08` (WALL_B): blocks movement in backward (-s) direction.
+    pub fn is_wall_blocking(&self, s_start: f32, s_end: f32, y: f32) -> bool {
+        let (min_s, max_s, moving_forward) = if s_end >= s_start {
+            (s_start, s_end, true)
+        } else {
+            (s_end, s_start, false)
+        };
+
+        for wall in &self.walls {
+            if wall.s >= min_s - 0.05 && wall.s <= max_s + 0.05 {
+                if y >= wall.y_bottom - 0.20 && y <= wall.y_top + 0.20 {
+                    if moving_forward && (wall.kind & 0x04 != 0) {
+                        return true;
+                    }
+                    if !moving_forward && (wall.kind & 0x08 != 0) {
+                        return true;
+                    }
+                }
+            }
+        }
+        false
+    }
 }
 
 #[derive(Debug, Deserialize)]

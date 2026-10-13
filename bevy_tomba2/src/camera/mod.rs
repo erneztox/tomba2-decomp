@@ -72,19 +72,19 @@ pub fn camera_controller(
 
                 let player_pos = player_transform.translation;
 
-                // Perpendicular vector to rail in XZ plane
-                let norm = Vec3::new(plane.dir[1], 0.0, -plane.dir[0]);
+                // Perpendicular vector to rail in XZ plane (looking at rail from camera side)
+                let norm = Vec3::new(-plane.dir[1], 0.0, plane.dir[0]);
                 let target_cam_pos = player_pos + norm * cam.follow_distance + Vec3::Y * cam.follow_height;
-                let look_target = player_pos + Vec3::Y * 2.0;
+                let look_target = player_pos + Vec3::Y * 1.8;
 
                 // Smooth follow interpolation
-                let smooth_speed = 6.0;
+                let smooth_speed = 8.0;
                 cam_transform.translation = cam_transform
                     .translation
                     .lerp(target_cam_pos, (smooth_speed * dt).min(1.0));
 
-                let target_rot = Transform::default()
-                    .looking_at(look_target - cam_transform.translation, Vec3::Y)
+                let target_rot = Transform::from_translation(cam_transform.translation)
+                    .looking_at(look_target, Vec3::Y)
                     .rotation;
                 cam_transform.rotation = cam_transform.rotation.slerp(target_rot, (smooth_speed * dt).min(1.0));
             }

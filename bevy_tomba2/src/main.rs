@@ -77,21 +77,21 @@ fn setup_scene(mut commands: Commands, asset_server: Res<AssetServer>) {
     // 3. Spawn Tomba Player on the 2.5D Rail
     commands.spawn((
         SceneRoot(asset_server.load("models/tomba.glb#Scene0")),
-        Transform::from_xyz(42.0, 9.12, 39.68).with_scale(Vec3::splat(1.0)),
+        Transform::from_xyz(39.68, 9.12, 42.0).with_scale(Vec3::splat(1.0)),
         TombaPlayer,
         TombaRail::default(),
     ));
 
-    // 4. Spawn Game Camera (Starts in Rail Follow mode)
+    // 4. Spawn Game Camera (Starts in Rail Follow mode, looking from the ocean side towards the pier)
     commands.spawn((
         Camera3d::default(),
-        Transform::from_xyz(42.0, 19.12, 69.68).looking_at(Vec3::new(42.0, 11.0, 39.68), Vec3::Y),
+        Transform::from_xyz(15.0, 15.0, 42.0).looking_at(Vec3::new(39.68, 10.5, 42.0), Vec3::Y),
         GameCamera {
             mode: CameraMode::RailFollow,
             flight_speed: 50.0,
             sensitivity: 0.003,
-            follow_distance: 28.0,
-            follow_height: 8.0,
+            follow_distance: 24.0,
+            follow_height: 6.0,
         },
     ));
 

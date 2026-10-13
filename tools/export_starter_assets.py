@@ -145,12 +145,21 @@ def main():
     planes = []
     for entry in scld.entries:
         geom = scld_geometry.geometry(entry)
+        v1 = scld_geometry.view(geom.x1, geom.baseline_y, geom.z1)
+        v2 = scld_geometry.view(geom.x2, geom.baseline_y, geom.z2)
+        p1 = [v1[0] / 100.0, v1[1] / 100.0, v1[2] / 100.0]
+        p2 = [v2[0] / 100.0, v2[1] / 100.0, v2[2] / 100.0]
+        dx = p2[0] - p1[0]
+        dz = p2[2] - p1[2]
+        L = (dx * dx + dz * dz) ** 0.5
+        dir_bevy = [dx / L, dz / L] if L > 1e-6 else [0.0, 1.0]
+
         plane_data = {
             "id": geom.number,
-            "p1": [geom.x1 / 100.0, -geom.baseline_y / 100.0, geom.z1 / 100.0],
-            "p2": [geom.x2 / 100.0, -geom.baseline_y / 100.0, geom.z2 / 100.0],
-            "length": geom.length / 100.0,
-            "dir": list(geom.dir),
+            "p1": p1,
+            "p2": p2,
+            "length": L,
+            "dir": dir_bevy,
             "ls": entry.ls,
             "le": entry.le,
             "floors": [],
@@ -161,12 +170,14 @@ def main():
             if seg.info.role == "floor":
                 s_lo = min(seg.slot.s_in, seg.slot.s_out) / 100.0
                 s_hi = max(seg.slot.s_in, seg.slot.s_out) / 100.0
+                a_v = scld_geometry.view(*seg.a)
+                b_v = scld_geometry.view(*seg.b)
                 if seg.slot.s_in <= seg.slot.s_out:
-                    y_min = -seg.a[1] / 100.0
-                    y_max = -seg.b[1] / 100.0
+                    y_min = a_v[1] / 100.0
+                    y_max = b_v[1] / 100.0
                 else:
-                    y_min = -seg.b[1] / 100.0
-                    y_max = -seg.a[1] / 100.0
+                    y_min = b_v[1] / 100.0
+                    y_max = a_v[1] / 100.0
                 plane_data["floors"].append({
                     "s_min": s_lo,
                     "s_max": s_hi,
@@ -176,17 +187,21 @@ def main():
                 })
         for w in geom.walls:
             s_w = geom.s_of(w.x, w.z) / 100.0
+            w_a = scld_geometry.view(w.x, w.y_bottom, w.z)
+            w_b = scld_geometry.view(w.x, w.y_top, w.z)
             plane_data["walls"].append({
                 "s": s_w,
-                "y_bottom": -w.y_bottom / 100.0,
-                "y_top": -w.y_top / 100.0,
+                "pos": [w_a[0] / 100.0, w_a[1] / 100.0, w_a[2] / 100.0],
+                "y_bottom": w_a[1] / 100.0,
+                "y_top": w_b[1] / 100.0,
                 "kind": w.kind,
             })
         for j in geom.junctions:
             s_j = geom.s_of(j.x, j.z) / 100.0
+            j_v = scld_geometry.view(j.x, j.y, j.z)
             plane_data["junctions"].append({
                 "s": s_j,
-                "pos": [j.x / 100.0, -j.y / 100.0, j.z / 100.0],
+                "pos": [j_v[0] / 100.0, j_v[1] / 100.0, j_v[2] / 100.0],
                 "direction": j.direction,
                 "dest": j.dest,
                 "walk": j.walk,

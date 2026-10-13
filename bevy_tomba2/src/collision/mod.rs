@@ -79,28 +79,25 @@ impl CollisionPlane {
     pub fn sample_floor(&self, s: f32, current_y: f32) -> Option<f32> {
         let mut candidates = Vec::new();
         for floor in &self.floors {
-            // Give a tiny epsilon tolerance on segment boundaries
-            if s >= floor.s_min - 0.05 && s <= floor.s_max + 0.05 {
-                let h = floor.height_at(s);
-                candidates.push(h);
+            if s >= floor.s_min - 0.1 && s <= floor.s_max + 0.1 {
+                candidates.push(floor.height_at(s));
             }
         }
         if candidates.is_empty() {
             return None;
         }
 
-        // Prefer the highest floor below or near the current Y
-        let tolerance = 2.0; // Allow snapping slightly above ground when walking up steps
-        let valid_floors: Vec<f32> = candidates
+        // Look for floors at or below current Y (with a step up tolerance of 1.0m)
+        let below: Vec<f32> = candidates
             .iter()
             .copied()
-            .filter(|&h| h <= current_y + tolerance)
+            .filter(|&h| h <= current_y + 1.0)
             .collect();
 
-        if let Some(&highest) = valid_floors.iter().max_by(|a, b| a.total_cmp(b)) {
-            Some(highest)
+        if let Some(&highest_below) = below.iter().max_by(|a, b| a.total_cmp(b)) {
+            Some(highest_below)
         } else {
-            // Fallback: take closest floor
+            // Nearest floor fallback
             candidates
                 .into_iter()
                 .min_by(|a, b| (a - current_y).abs().total_cmp(&(b - current_y).abs()))
@@ -168,6 +165,7 @@ pub fn draw_collision_gizmos(
     keyboard: Res<ButtonInput<KeyCode>>,
     mut config: ResMut<CollisionDebugConfig>,
     collision: Res<LevelCollision>,
+    player_query: Query<&crate::player::TombaRail>,
 ) {
     if keyboard.just_pressed(KeyCode::F2) {
         config.show_rails = !config.show_rails;
@@ -181,18 +179,26 @@ pub fn draw_collision_gizmos(
         return;
     }
 
+    let active_plane_id = player_query.get_single().map(|r| r.plane_id).ok();
+
     for plane in collision.planes.values() {
         let p1 = Vec3::from(plane.p1);
         let p2 = Vec3::from(plane.p2);
 
-        // Draw plane line
-        gizmos.line(p1, p2, Color::srgb(0.2, 0.8, 1.0));
+        let is_active = Some(plane.id) == active_plane_id;
+        let color = if is_active {
+            Color::srgb(0.1, 1.0, 0.4) // Bright lime green for active rail
+        } else {
+            Color::srgb(0.15, 0.4, 0.8) // Faint blue for other rails
+        };
+
+        gizmos.line(p1, p2, color);
 
         // Draw junctions as spheres with indicators
         for junc in &plane.junctions {
             let j_pos = Vec3::from(junc.pos);
             let color = if junc.direction == "up" {
-                Color::srgb(1.0, 0.8, 0.0) // Yellow for Up
+                Color::srgb(1.0, 0.85, 0.0) // Yellow for Up
             } else {
                 Color::srgb(1.0, 0.2, 0.6) // Pink for Down
             };

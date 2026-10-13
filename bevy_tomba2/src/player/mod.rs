@@ -175,7 +175,7 @@ pub fn tomba_movement_system(
             // Check floor collision while falling
             if rail.vertical_velocity <= 0.0 {
                 if let Some(floor_h) = plane.sample_floor(rail.s, rail.y) {
-                    if rail.y <= floor_h + 0.15 {
+                    if rail.y <= floor_h + 0.3 {
                         rail.y = floor_h;
                         rail.vertical_velocity = 0.0;
                         rail.is_grounded = true;
@@ -198,9 +198,10 @@ pub fn tomba_movement_system(
         transform.translation = world_pos;
 
         // Facing rotation: along plane direction * facing sign
+        // Local +Z in tomba.glb is his face, so we point local -Z to -look_dir
         let look_dir = Vec3::new(plane.dir[0] * rail.facing, 0.0, plane.dir[1] * rail.facing);
         if look_dir.length_squared() > 1e-4 {
-            transform.look_to(look_dir, Vec3::Y);
+            transform.look_to(-look_dir, Vec3::Y);
         }
     }
 }

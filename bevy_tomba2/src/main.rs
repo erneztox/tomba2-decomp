@@ -1,10 +1,12 @@
 mod camera;
 mod collision;
+pub mod items;
 mod player;
 
 use bevy::prelude::*;
 use camera::{camera_controller, GameCamera};
 use collision::{draw_collision_gizmos, CollisionDebugConfig, LevelCollision};
+use items::TombaInventory;
 use player::{
     hook_tomba_animation_player, setup_tomba_animations, tomba_animation_control_system,
     tomba_movement_system, EntityPhysics, TombaPlayer, TombaRail,
@@ -21,6 +23,7 @@ fn main() {
             ..default()
         }))
         .init_resource::<CollisionDebugConfig>()
+        .init_resource::<TombaInventory>()
         .add_systems(Startup, (setup_collision_data, setup_scene, setup_tomba_animations))
         .add_systems(
             Update,
@@ -96,6 +99,7 @@ fn setup_scene(mut commands: Commands, asset_server: Res<AssetServer>) {
         TombaPlayer,
         TombaRail::default(),
         EntityPhysics::default(),
+        TombaInventory::default(),
     ));
 
     // 4. Spawn Game Camera (Starts in Rail Follow mode, looking from the ocean side towards the pier)

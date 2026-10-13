@@ -13,12 +13,12 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **SEC-05** | `BEH` | SECTOR 5: Entity Behaviors, AI & Interactive World | 71 | **1 / 71** |
 | **SEC-06** | `ANM` | SECTOR 6: Skeletal Animation VM & Sprites | 81 | **2 / 81** |
 | **SEC-07** | `CAM` | SECTOR 7: 2.5D Rail Camera Pipeline | 32 | **32 / 32** |
-| **SEC-08** | `ITM` | SECTOR 8: Items, Inventory & Equipment | 8 | **0 / 8** |
+| **SEC-08** | `ITM` | SECTOR 8: Items, Inventory & Equipment | 8 | **8 / 8** |
 | **SEC-09** | `EVT` | SECTOR 9: Event Engine & Script Interpreter | 49 | **0 / 49** |
 | **SEC-10** | `UI` | SECTOR 10: UI, Dialog System & HUD | 88 | **0 / 88** |
 | **SEC-11** | `AUD` | SECTOR 11: Audio System & Sound Dispatch | 140 | **2 / 140** |
 | **SEC-12** | `SYS` | SECTOR 12: Memory Card, GPU, CD & Low-Level Subsystems | 560 | **1 / 560** |
-| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **225 implementadas** |
+| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **233 implementadas** |
 
 ---
 
@@ -813,14 +813,14 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 
 | ID | Función / Símbolo | Dirección PS1 | Archivo C | Comportamiento Técnico Original | Mapeo Bevy (Rust) | Estado |
 | :--- | :--- | :---: | :--- | :--- | :--- | :---: |
-| **ITM-01** | `Inventory_AddItem` | `0x8004D338` | `inventory/Inventory_AddItem.c` | Adds item to inventory: increments count (max 99), tracks in item tables at 0x800BFAB4 | `items::inventory::inventory_additem` | `[ ]` |
-| **ITM-02** | `Inventory_AddItemEx` | `0x8004D4C4` | `inventory/Inventory_AddItemEx.c` | Adds item to inventory via FUN_8004d338 + FUN_8004ed0c(param, 2) | `items::inventory::inventory_additemex` | `[ ]` |
-| **ITM-03** | `Inventory_CheckFlag` | `0x8004D868` | `inventory/Inventory_CheckFlag.c` | Checks inventory bit flag at 0x800BFD94 for item ID | `items::inventory::inventory_checkflag` | `[ ]` |
-| **ITM-04** | `Inventory_RemoveItem` | `0x8004D604` | `inventory/Inventory_RemoveItem.c` | Removes item from inventory: decrements count, updates UI | `items::inventory::inventory_removeitem` | `[ ]` |
-| **ITM-05** | `Inventory_RemoveItem2` | `0x8004D688` | `inventory/Inventory_RemoveItem2.c` | Removes item variant: uses mode 4 instead of mode 1 for UI update | `items::inventory::inventory_removeitem2` | `[ ]` |
-| **ITM-06** | `Inventory_RemoveItem3` | `0x8004D650` | `inventory/Inventory_RemoveItem3.c` | Removes item from inventory: decrements count, updates UI display | `items::inventory::inventory_removeitem3` | `[ ]` |
-| **ITM-07** | `Inventory_SetBit` | `0x8004D79C` | `inventory/Inventory_SetBit.c` | Sets bit flag in inventory bitfield at 0x800BFDAC for item ID | `items::inventory::inventory_setbit` | `[ ]` |
-| **ITM-08** | `Inventory_SetFlag` | `0x8004D714` | `inventory/Inventory_SetFlag.c` | Sets a bit flag in inventory bitfield tables based on item ID and category | `items::inventory::inventory_setflag` | `[ ]` |
+| **ITM-01** | `Inventory_AddItem` | `0x8004D338` | `inventory/Inventory_AddItem.c` | Adds item to inventory: increments count (max 99), tracks in item tables at 0x800BFAB4 | `items::inventory::TombaInventory::inventory_additem` | `[x]` |
+| **ITM-02** | `Inventory_AddItemEx` | `0x8004D4C4` | `inventory/Inventory_AddItemEx.c` | Adds item to inventory via FUN_8004d338 + FUN_8004ed0c(param, 2) | `items::inventory::TombaInventory::inventory_additemex` | `[x]` |
+| **ITM-03** | `Inventory_CheckFlag` | `0x8004D868` | `inventory/Inventory_CheckFlag.c` | Checks inventory bit flag at 0x800BFD94 for item ID | `items::inventory::TombaInventory::inventory_checkflag` | `[x]` |
+| **ITM-04** | `Inventory_RemoveItem` | `0x8004D604` | `inventory/Inventory_RemoveItem.c` | Removes item from inventory: decrements count, updates UI | `items::inventory::TombaInventory::inventory_removeitem` | `[x]` |
+| **ITM-05** | `Inventory_RemoveItem2` | `0x8004D688` | `inventory/Inventory_RemoveItem2.c` | Removes item variant: uses mode 4 instead of mode 1 for UI update | `items::inventory::TombaInventory::inventory_removeitem2` | `[x]` |
+| **ITM-06** | `Inventory_RemoveItem3` | `0x8004D650` | `inventory/Inventory_RemoveItem3.c` | Removes item from inventory: decrements count, updates UI display | `items::inventory::TombaInventory::inventory_removeitem3` | `[x]` |
+| **ITM-07** | `Inventory_SetBit` | `0x8004D79C` | `inventory/Inventory_SetBit.c` | Sets bit flag in inventory bitfield at 0x800BFDAC for item ID | `items::inventory::TombaInventory::inventory_setbit` | `[x]` |
+| **ITM-08** | `Inventory_SetFlag` | `0x8004D714` | `inventory/Inventory_SetFlag.c` | Sets a bit flag in inventory bitfield tables based on item ID and category | `items::inventory::TombaInventory::inventory_setflag` | `[x]` |
 
 ---
 

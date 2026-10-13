@@ -2,6 +2,7 @@ pub mod physics;
 pub mod state_machine;
 
 use crate::collision::LevelCollision;
+use crate::items::{TombaInventory, EquipSuit};
 use bevy::prelude::*;
 #[allow(unused_imports)]
 pub use physics::EntityPhysics;
@@ -259,14 +260,14 @@ pub fn tomba_movement_system(
     time: Res<Time>,
     keyboard: Res<ButtonInput<KeyCode>>,
     collision: Res<LevelCollision>,
-    mut query: Query<(&mut TombaRail, &mut Transform), With<TombaPlayer>>,
+    mut query: Query<(&mut TombaRail, &mut Transform, Option<&mut TombaInventory>), With<TombaPlayer>>,
 ) {
     let dt = time.delta_secs();
     if dt <= 0.0 {
         return;
     }
 
-    for (mut rail, mut transform) in &mut query {
+    for (mut rail, mut transform, mut inventory) in &mut query {
         let Some(plane) = collision.get_plane(rail.plane_id) else {
             continue;
         };
@@ -343,7 +344,16 @@ pub fn tomba_movement_system(
 
         // F3: Toggle Traje de Ardilla Voladora (Flying Squirrel Suit - Sector 8)
         if keyboard.just_pressed(KeyCode::F3) {
-            rail.has_flying_squirrel_suit = !rail.has_flying_squirrel_suit;
+            if let Some(ref mut inv) = inventory {
+                if inv.has_flying_squirrel_suit() {
+                    inv.equip_suit(EquipSuit::Standard);
+                } else {
+                    inv.equip_suit(EquipSuit::FlyingSquirrel);
+                }
+                rail.has_flying_squirrel_suit = inv.has_flying_squirrel_suit();
+            } else {
+                rail.has_flying_squirrel_suit = !rail.has_flying_squirrel_suit;
+            }
             println!(
                 "[EQUIPMENT] Flying Squirrel Suit: {}",
                 if rail.has_flying_squirrel_suit { "EQUIPPED" } else { "UNEQUIPPED" }

@@ -5,6 +5,7 @@ use crate::collision::LevelCollision;
 use bevy::prelude::*;
 #[allow(unused_imports)]
 pub use physics::EntityPhysics;
+#[allow(unused_imports)]
 pub use state_machine::{TombaActionState, WeaponType, SPEED_DASH, SPEED_GLIDE, GRAVITY_GLIDE};
 
 // ─── FÍSICA AUTÉNTICA PS1 ────────────────────────────────────────────────────
@@ -310,15 +311,40 @@ pub fn tomba_movement_system(
             _ => {}
         }
 
-        // ── Ataque con arma (Botón Círculo / Tecla J) ─────────────────────────
+        // ── Botones de Control Estilo PlayStation & Teclado PC ───────────────
+        // Cruz (X) / Salto: Space, K, Z
+        let jump_pressed = keyboard.just_pressed(KeyCode::Space)
+            || keyboard.just_pressed(KeyCode::KeyK)
+            || keyboard.just_pressed(KeyCode::KeyZ);
+
+        // Cuadrado (□) / Correr (tipo Mario - mantener presionado): Shift (Izq/Der), J, X
+        let is_run_held = keyboard.pressed(KeyCode::ShiftLeft)
+            || keyboard.pressed(KeyCode::ShiftRight)
+            || keyboard.pressed(KeyCode::KeyJ)
+            || keyboard.pressed(KeyCode::KeyX);
+
+        // Círculo (○) / Atacar con arma: L, H, C
+        let attack_pressed = keyboard.just_pressed(KeyCode::KeyL)
+            || keyboard.just_pressed(KeyCode::KeyH)
+            || keyboard.just_pressed(KeyCode::KeyC);
+
+        // Triángulo (△) / Morder / Agarrar / Usar: I, U, V
+        let bite_pressed = keyboard.just_pressed(KeyCode::KeyI)
+            || keyboard.just_pressed(KeyCode::KeyU)
+            || keyboard.just_pressed(KeyCode::KeyV);
+
+        // ── Ataque con arma (Botón Círculo / Tecla L, H, C) ───────────────────
         // Ref: Entity_State_Attack.c (0x8005ACC8)
-        if (keyboard.just_pressed(KeyCode::KeyJ) || keyboard.just_pressed(KeyCode::KeyH))
-            && !matches!(rail.action_state, TombaActionState::Attack { .. })
-        {
+        if attack_pressed && !matches!(rail.action_state, TombaActionState::Attack { .. }) {
             rail.action_state.entity_state_attack(WeaponType::Blackjack);
         }
         let is_grounded = rail.is_grounded;
         rail.action_state.entity_state_attacktrans(dt, is_grounded);
+
+        // ── Morder / Agarrar (Botón Triángulo / Tecla I, U, V) ────────────────
+        if bite_pressed && !matches!(rail.action_state, TombaActionState::Grab { .. } | TombaActionState::Throw { .. }) {
+            rail.action_state.entity_state_grab();
+        }
 
         // ── 1. Input horizontal & Desplazamiento por Riel (Sectores 1 y 3) ────
         // Ref: Entity_State_Walk.c (func_8006670C), Entity_State_Dash.c (func_8005706C),
@@ -331,21 +357,26 @@ pub fn tomba_movement_system(
             move_input += 1.0;
         }
 
-        let is_running_pressed = keyboard.pressed(KeyCode::ShiftLeft)
-            || keyboard.pressed(KeyCode::ShiftRight);
-
         if move_input != 0.0 {
             rail.facing = move_input;
-            let current_speed = if matches!(rail.action_state, TombaActionState::Glide { .. }) {
-                SPEED_GLIDE
-            } else if is_running_pressed {
-                rail.action_state = TombaActionState::Dash { timer: 0.0 };
-                SPEED_DASH
-            } else {
-                if rail.is_grounded && !matches!(rail.action_state, TombaActionState::Attack { .. }) {
-                    rail.action_state = TombaActionState::Walk;
+            let current_speed = if rail.is_grounded {
+                if is_run_held {
+                    rail.action_state = TombaActionState::Dash { timer: 0.0 };
+                    SPEED_DASH
+                } else {
+                    if !matches!(rail.action_state, TombaActionState::Attack { .. } | TombaActionState::Grab { .. }) {
+                        rail.action_state = TombaActionState::Walk;
+                    }
+                    TOMBA_WALK_SPEED
                 }
-                TOMBA_WALK_SPEED
+            } else {
+                // En el aire (Salto / Caída):
+                // Si salta corriendo o mantiene presionado el botón de correr, conserva SPEED_DASH (Running Jump)
+                if is_run_held || rail.move_speed >= (SPEED_DASH - 0.1) {
+                    SPEED_DASH
+                } else {
+                    TOMBA_WALK_SPEED
+                }
             };
             rail.move_speed = current_speed;
             let step = move_input * current_speed * dt;
@@ -359,7 +390,7 @@ pub fn tomba_movement_system(
             rail.s = new_s;
         } else {
             rail.move_speed = 0.0;
-            if rail.is_grounded && !matches!(rail.action_state, TombaActionState::Attack { .. } | TombaActionState::Damage { .. }) {
+            if rail.is_grounded && !matches!(rail.action_state, TombaActionState::Attack { .. } | TombaActionState::Grab { .. } | TombaActionState::Damage { .. }) {
                 rail.action_state = TombaActionState::Idle;
             }
         }
@@ -411,12 +442,10 @@ pub fn tomba_movement_system(
         // Re-fetch plano actual (puede haber cambiado por handoff)
         let plane = collision.get_plane(rail.plane_id).unwrap_or(plane);
 
-        // ── 3. Salto & Planeo (Sector 1) ──────────────────────────────────────
-        // Ref: Entity_State_Jump.c (0x80064524), Entity_State_Fly.c (0x8006228C).
-        if (keyboard.just_pressed(KeyCode::Space) || keyboard.just_pressed(KeyCode::KeyK))
-            && rail.is_grounded
-        {
-            rail.vertical_velocity = TOMBA_JUMP_SPEED; // positivo = arriba (Bevy Y-up)
+        // ── 3. Salto (Cruz / X / Espacio) ────────────────────────────────────
+        // Ref: Entity_State_Jump.c (0x80064524).
+        if jump_pressed && rail.is_grounded {
+            rail.vertical_velocity = TOMBA_JUMP_SPEED; // positivo = arriba (12.0 m/s)
             rail.is_grounded = false;
             rail.is_rising = true;
             rail.action_state = TombaActionState::Jump;
@@ -425,20 +454,13 @@ pub fn tomba_movement_system(
             }
         }
 
-        // Planeo (Traje de Ardilla Voladora): mantener salto en el aire al descender
-        if !rail.is_grounded && !rail.is_rising && keyboard.pressed(KeyCode::Space) {
-            rail.action_state = TombaActionState::Glide { timer: 0.0 };
-        }
-
         // ── 4. Física vertical continua suave (ecuaciones auténticas de PS1) ──
         // Ref: Entity_State_Jump2.c (0x360 = 30.375 m/s^2) en ascenso,
         //      Entity_ApplyGravity.c (0x400 = 36.0 m/s^2) en descenso,
-        //      Entity_State_Fly.c (0x8006228C = 4.5 m/s^2) en planeo,
         //      Entity_ApplyVelocityMax.c (0x2800 = 12.0 m/s cap).
+        // NOTA: Tomba NO flota por defecto; el traje de ardilla voladora pertenece al Sector 8 (Equipamiento).
         if !rail.is_grounded {
-            let grav = if matches!(rail.action_state, TombaActionState::Glide { .. }) {
-                GRAVITY_GLIDE
-            } else if rail.is_rising {
+            let grav = if rail.is_rising {
                 TOMBA_JUMP_GRAVITY
             } else {
                 TOMBA_GRAVITY
@@ -447,7 +469,7 @@ pub fn tomba_movement_system(
 
             if rail.vertical_velocity <= 0.0 {
                 rail.is_rising = false;
-                if !matches!(rail.action_state, TombaActionState::Glide { .. }) {
+                if !matches!(rail.action_state, TombaActionState::Attack { .. } | TombaActionState::Grab { .. }) {
                     rail.action_state = TombaActionState::Fall;
                 }
             }
@@ -566,5 +588,117 @@ mod tests {
             transform_before.z,
             transform_after.z
         );
+    }
+
+    #[test]
+    fn test_dash_hold_and_running_jump() {
+        let mut app = App::new();
+        app.add_plugins(MinimalPlugins);
+
+        let collision = LevelCollision::load_from_file("assets/levels/area_04_collision.json")
+            .expect("Failed to load collision");
+        app.insert_resource(collision);
+        app.init_resource::<ButtonInput<KeyCode>>();
+        app.add_systems(Update, tomba_movement_system);
+
+        let entity = app
+            .world_mut()
+            .spawn((
+                Transform::from_xyz(39.68, 9.12 + TOMBA_PHYS_OFFSET_Y, 42.0),
+                TombaPlayer,
+                TombaRail::default(),
+            ))
+            .id();
+
+        // Inicializar reloj
+        app.update();
+
+        // 1. Probar caminar normal (KeyD solo) -> Walk (4.8 m/s)
+        {
+            let mut input = app.world_mut().resource_mut::<ButtonInput<KeyCode>>();
+            input.press(KeyCode::KeyD);
+        }
+        {
+            let mut time = app.world_mut().resource_mut::<Time>();
+            time.advance_by(std::time::Duration::from_millis(50));
+        }
+        app.update();
+
+        let rail = app.world().get::<TombaRail>(entity).unwrap();
+        assert_eq!(rail.action_state, TombaActionState::Walk);
+        assert!((rail.move_speed - TOMBA_WALK_SPEED).abs() < 1e-3);
+
+        // 2. Probar correr tipo Mario (mantener KeyD + KeyJ o ShiftLeft) -> Dash (7.2 m/s)
+        {
+            let mut input = app.world_mut().resource_mut::<ButtonInput<KeyCode>>();
+            input.press(KeyCode::KeyD);
+            input.press(KeyCode::KeyJ); // botón correr □
+        }
+        {
+            let mut time = app.world_mut().resource_mut::<Time>();
+            time.advance_by(std::time::Duration::from_millis(50));
+        }
+        app.update();
+
+        let rail = app.world().get::<TombaRail>(entity).unwrap();
+        assert!(matches!(rail.action_state, TombaActionState::Dash { .. }));
+        assert!((rail.move_speed - SPEED_DASH).abs() < 1e-3);
+
+        // 3. Probar Salto Corriendo (Running Jump): pulsa Space mientras corre
+        {
+            let mut input = app.world_mut().resource_mut::<ButtonInput<KeyCode>>();
+            input.press(KeyCode::KeyD);
+            input.press(KeyCode::KeyJ);
+            input.press(KeyCode::Space);
+        }
+        {
+            let mut time = app.world_mut().resource_mut::<Time>();
+            time.advance_by(std::time::Duration::from_millis(50));
+        }
+        app.update();
+
+        let rail = app.world().get::<TombaRail>(entity).unwrap();
+        assert!(!rail.is_grounded);
+        assert_eq!(rail.action_state, TombaActionState::Jump);
+        // Debe conservar la velocidad rápida de carrera en el aire (Running Jump)
+        assert!((rail.move_speed - SPEED_DASH).abs() < 1e-3);
+    }
+
+    #[test]
+    fn test_attack_and_bite_buttons() {
+        let mut app = App::new();
+        app.add_plugins(MinimalPlugins);
+
+        let collision = LevelCollision::load_from_file("assets/levels/area_04_collision.json")
+            .expect("Failed to load collision");
+        app.insert_resource(collision);
+        app.init_resource::<ButtonInput<KeyCode>>();
+        app.add_systems(Update, tomba_movement_system);
+
+        let entity = app
+            .world_mut()
+            .spawn((
+                Transform::from_xyz(39.68, 9.12 + TOMBA_PHYS_OFFSET_Y, 42.0),
+                TombaPlayer,
+                TombaRail::default(),
+            ))
+            .id();
+
+        // Inicializar reloj
+        app.update();
+
+        // Presionar KeyL (Botón Círculo / Ataque)
+        {
+            let mut input = app.world_mut().resource_mut::<ButtonInput<KeyCode>>();
+            input.press(KeyCode::KeyL);
+        }
+        {
+            let mut time = app.world_mut().resource_mut::<Time>();
+            time.advance_by(std::time::Duration::from_millis(50));
+        }
+        app.update();
+
+        let rail = app.world().get::<TombaRail>(entity).unwrap();
+        assert!(matches!(rail.action_state, TombaActionState::Attack { .. }));
     }
 }

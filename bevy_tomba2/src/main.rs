@@ -35,20 +35,33 @@ fn main() {
 }
 
 fn setup_collision_data(mut commands: Commands) {
-    let collision_path = "assets/levels/area_04_collision.json";
-    match LevelCollision::load_from_file(collision_path) {
-        Ok(col) => {
-            println!(
-                "=== Collision Loaded Successfully: {} planes ===",
-                col.planes.len()
-            );
-            commands.insert_resource(col);
+    let candidate_paths = [
+        "assets/levels/area_04_collision.json",
+        "bevy_tomba2/assets/levels/area_04_collision.json",
+        "levels/area_04_collision.json",
+        "../assets/levels/area_04_collision.json",
+    ];
+
+    let mut loaded = None;
+    for path in candidate_paths {
+        if std::path::Path::new(path).exists() {
+            if let Ok(col) = LevelCollision::load_from_file(path) {
+                println!(
+                    "=== Collision Loaded Successfully: {} planes (from '{}') ===",
+                    col.planes.len(),
+                    path
+                );
+                loaded = Some(col);
+                break;
+            }
         }
-        Err(e) => {
-            eprintln!("Failed to load collision file at '{}': {}", collision_path, e);
-            // Fallback to empty collision
-            commands.insert_resource(LevelCollision::default());
-        }
+    }
+
+    if let Some(col) = loaded {
+        commands.insert_resource(col);
+    } else {
+        eprintln!("Failed to find collision file across known search paths!");
+        commands.insert_resource(LevelCollision::default());
     }
 }
 

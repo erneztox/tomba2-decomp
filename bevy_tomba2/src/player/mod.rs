@@ -316,3 +316,70 @@ pub fn tomba_movement_system(
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_tomba_movement_input() {
+        let mut app = App::new();
+        app.add_plugins(MinimalPlugins);
+
+        // Load level collision
+        let collision = LevelCollision::load_from_file("assets/levels/area_04_collision.json")
+            .expect("Failed to load collision");
+        app.insert_resource(collision);
+        app.init_resource::<ButtonInput<KeyCode>>();
+        app.add_systems(Update, tomba_movement_system);
+
+        // Spawn player
+        let entity = app
+            .world_mut()
+            .spawn((
+                Transform::from_xyz(39.68, 9.12 + TOMBA_PHYS_OFFSET_Y, 42.0),
+                TombaPlayer,
+                TombaRail::default(),
+            ))
+            .id();
+
+        // 1. Initial frame
+        app.update();
+        let (rail_before, transform_before) = (
+            app.world().get::<TombaRail>(entity).unwrap().s,
+            app.world().get::<Transform>(entity).unwrap().translation,
+        );
+        println!("Initial: s={}, pos={:?}", rail_before, transform_before);
+
+        // 2. Press KeyD
+        let mut input = app.world_mut().resource_mut::<ButtonInput<KeyCode>>();
+        input.press(KeyCode::KeyD);
+
+        // Advance time
+        {
+            let mut time = app.world_mut().resource_mut::<Time>();
+            time.advance_by(std::time::Duration::from_millis(50));
+        }
+
+        app.update();
+
+        let (rail_after, transform_after) = (
+            app.world().get::<TombaRail>(entity).unwrap().s,
+            app.world().get::<Transform>(entity).unwrap().translation,
+        );
+        println!("After KeyD: s={}, pos={:?}", rail_after, transform_after);
+
+        assert!(
+            rail_after > rail_before,
+            "Rail position s should increase when KeyD is pressed: before={}, after={}",
+            rail_before,
+            rail_after
+        );
+        assert!(
+            transform_after.z > transform_before.z,
+            "World Z should increase when KeyD is pressed: before={}, after={}",
+            transform_before.z,
+            transform_after.z
+        );
+    }
+}

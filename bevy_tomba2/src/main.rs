@@ -6,8 +6,8 @@ use bevy::prelude::*;
 use camera::{camera_controller, GameCamera};
 use collision::{draw_collision_gizmos, CollisionDebugConfig, LevelCollision};
 use player::{
-    hook_tomba_animation_player, setup_tomba_animations, tomba_movement_system, TombaPlayer,
-    TombaRail,
+    hook_tomba_animation_player, setup_tomba_animations, tomba_animation_control_system,
+    tomba_movement_system, TombaPlayer, TombaRail,
 };
 
 fn main() {
@@ -28,6 +28,7 @@ fn main() {
                 camera_controller,
                 tomba_movement_system,
                 hook_tomba_animation_player,
+                tomba_animation_control_system,
                 draw_collision_gizmos,
             ),
         )
@@ -107,6 +108,12 @@ fn setup_scene(mut commands: Commands, asset_server: Res<AssetServer>) {
         )
         .looking_at(Vec3::new(39.68, 9.12 + player::TOMBA_PHYS_OFFSET_Y, 42.0), Vec3::Y),
         GameCamera::default(),
+    ));
+
+    // 5. Authentic Area BGM (Town of the Fishermen, Track 04_01)
+    commands.spawn((
+        AudioPlayer::new(asset_server.load("audio/bgm/04_01_Town of the Fishermen.wav")),
+        PlaybackSettings::LOOP,
     ));
 
     println!("====================================================");

@@ -78,6 +78,8 @@ pub struct TombaRail {
     pub action_state: PlayerActionState,
     /// Current facing / look direction vector in world space.
     pub current_look_dir: Vec3,
+    /// Current horizontal speed in m/s.
+    pub move_speed: f32,
 }
 
 impl Default for TombaRail {
@@ -92,15 +94,20 @@ impl Default for TombaRail {
             facing: 1.0,
             action_state: PlayerActionState::Normal,
             current_look_dir: Vec3::Z,
+            move_speed: 0.0,
         }
     }
 }
 
-/// Resource holding the animation graph handle for Tomba
+/// Resource holding the animation graph handles for Tomba
 #[derive(Resource)]
 pub struct TombaAnimationAssets {
     pub graph_handle: Handle<AnimationGraph>,
     pub idle_node: AnimationNodeIndex,
+    pub walk_node: AnimationNodeIndex,
+    pub run_node: AnimationNodeIndex,
+    pub jump_node: AnimationNodeIndex,
+    pub fall_node: AnimationNodeIndex,
 }
 
 pub fn setup_tomba_animations(
@@ -108,14 +115,21 @@ pub fn setup_tomba_animations(
     asset_server: Res<AssetServer>,
     mut animation_graphs: ResMut<Assets<AnimationGraph>>,
 ) {
-    // Load Idle animation clip from tomba.glb
-    let idle_clip: Handle<AnimationClip> = asset_server.load("models/tomba.glb#Animation0");
-    let (graph, idle_node) = AnimationGraph::from_clip(idle_clip);
+    let mut graph = AnimationGraph::new();
+    let idle_node = graph.add_clip(asset_server.load("models/tomba.glb#Animation2"), 1.0, graph.root);
+    let walk_node = graph.add_clip(asset_server.load("models/tomba.glb#Animation4"), 1.0, graph.root);
+    let run_node = graph.add_clip(asset_server.load("models/tomba.glb#Animation12"), 1.0, graph.root);
+    let jump_node = graph.add_clip(asset_server.load("models/tomba.glb#Animation202"), 1.0, graph.root);
+    let fall_node = graph.add_clip(asset_server.load("models/tomba.glb#Animation203"), 1.0, graph.root);
     let graph_handle = animation_graphs.add(graph);
 
     commands.insert_resource(TombaAnimationAssets {
         graph_handle,
         idle_node,
+        walk_node,
+        run_node,
+        jump_node,
+        fall_node,
     });
 }
 
@@ -128,15 +142,58 @@ pub fn hook_tomba_animation_player(
     let Some(anim_assets) = anim_assets else { return };
 
     for (entity, mut player) in &mut players {
-        player.play(anim_assets.idle_node).repeat();
+        let mut transitions = AnimationTransitions::new();
+        transitions
+            .play(&mut player, anim_assets.idle_node, std::time::Duration::ZERO)
+            .repeat();
         commands
             .entity(entity)
-            .insert(AnimationGraphHandle(anim_assets.graph_handle.clone()));
+            .insert(AnimationGraphHandle(anim_assets.graph_handle.clone()))
+            .insert(transitions);
+    }
+}
+
+/// Controls active skeletal animation based on authentic movement and airborne states
+pub fn tomba_animation_control_system(
+    anim_assets: Option<Res<TombaAnimationAssets>>,
+    rails: Query<&TombaRail, With<TombaPlayer>>,
+    mut players: Query<(&mut AnimationPlayer, &mut AnimationTransitions)>,
+) {
+    let Some(anim_assets) = anim_assets else { return };
+    let Ok(rail) = rails.get_single() else { return };
+
+    let target_node = if !rail.is_grounded {
+        if rail.vertical_velocity > 0.0 {
+            anim_assets.jump_node
+        } else {
+            anim_assets.fall_node
+        }
+    } else {
+        match rail.action_state {
+            PlayerActionState::TurnToJunction { .. } => anim_assets.walk_node,
+            PlayerActionState::Normal => {
+                if rail.move_speed > 3.0 {
+                    anim_assets.run_node
+                } else if rail.move_speed > 0.1 {
+                    anim_assets.walk_node
+                } else {
+                    anim_assets.idle_node
+                }
+            }
+        }
+    };
+
+    for (mut player, mut transitions) in &mut players {
+        transitions
+            .play(&mut player, target_node, std::time::Duration::from_millis(120))
+            .repeat();
     }
 }
 
 /// Authentic 2.5D player movement system on SCLD rails
 pub fn tomba_movement_system(
+    mut commands: Commands,
+    asset_server: Option<Res<AssetServer>>,
     time: Res<Time>,
     keyboard: Res<ButtonInput<KeyCode>>,
     collision: Res<LevelCollision>,
@@ -211,12 +268,15 @@ pub fn tomba_movement_system(
 
         if move_input != 0.0 {
             rail.facing = move_input;
+            rail.move_speed = TOMBA_WALK_SPEED;
             let step = move_input * TOMBA_WALK_SPEED * dt;
             let target_s = rail.s + step;
             // Check wall collision (f_ResolveTerrainProbeHorizontalSurfaceBySideMask)
             if !plane.is_wall_blocking(rail.s, target_s, rail.y) {
                 rail.s = target_s;
             }
+        } else {
+            rail.move_speed = 0.0;
         }
 
         // Clamp to current plane length or switch to linked planes (ls / le)
@@ -304,6 +364,9 @@ pub fn tomba_movement_system(
         {
             rail.vertical_velocity = TOMBA_JUMP_IMPULSE;
             rail.is_grounded = false;
+            if let Some(asset_server) = asset_server.as_ref() {
+                commands.spawn(AudioPlayer::new(asset_server.load("audio/sfx/00_025_hero jump0.wav")));
+            }
         }
 
         // 4. Gravity & Vertical Physics

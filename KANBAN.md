@@ -15,10 +15,10 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **SEC-07** | `CAM` | SECTOR 7: 2.5D Rail Camera Pipeline | 32 | **32 / 32** |
 | **SEC-08** | `ITM` | SECTOR 8: Items, Inventory & Equipment | 8 | **8 / 8** |
 | **SEC-09** | `EVT` | SECTOR 9: Event Engine & Script Interpreter | 49 | **49 / 49** |
-| **SEC-10** | `UI` | SECTOR 10: UI, Dialog System & HUD | 88 | **0 / 88** |
+| **SEC-10** | `UI` | SECTOR 10: UI, Dialog System & HUD | 88 | **88 / 88** |
 | **SEC-11** | `AUD` | SECTOR 11: Audio System & Sound Dispatch | 140 | **2 / 140** |
 | **SEC-12** | `SYS` | SECTOR 12: Memory Card, GPU, CD & Low-Level Subsystems | 560 | **1 / 560** |
-| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **282 implementadas** |
+| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **370 implementadas** |
 
 ---
 
@@ -888,94 +888,94 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 
 | ID | Función / Símbolo | Dirección PS1 | Archivo C | Comportamiento Técnico Original | Mapeo Bevy (Rust) | Estado |
 | :--- | :--- | :---: | :--- | :--- | :--- | :---: |
-| **UI-01** | `Menu_ActionMode0` | `0x8004D6D4` | `ui/Menu_ActionMode0.c` | Menu action with mode 0: calls 0x8004ED0C with mode 0 | `ui::hud_and_dialog::menu_actionmode0` | `[ ]` |
-| **UI-02** | `Menu_ActionMode3` | `0x8004D6F4` | `ui/Menu_ActionMode3.c` | Menu action with mode 3: calls 0x8004ED0C with mode 3 | `ui::hud_and_dialog::menu_actionmode3` | `[ ]` |
-| **UI-03** | `Menu_AnimIcon` | `0x8003A3E8` | `ui/Menu_AnimIcon.c` | Animates menu icon with sine wave oscillation using GTE trig functions | `ui::hud_and_dialog::menu_animicon` | `[ ]` |
-| **UI-04** | `Menu_ClearItems` | `0x80036AE8` | `ui/Menu_ClearItems.c` | Clears all 3 menu item slots by calling FUN_80036a14 with modes 0,1,2 | `ui::hud_and_dialog::menu_clearitems` | `[ ]` |
-| **UI-05** | `Menu_ClearSlot` | `0x80094B10` | `ui/Menu_ClearSlot.c` | Clears a menu slot: zeros 0x38-byte entry at DAT_801054e5 by index | `ui::hud_and_dialog::menu_clearslot` | `[ ]` |
-| **UI-06** | `Menu_CursorDraw` | `0x8003A290` | `ui/Menu_CursorDraw.c` | Menu cursor drawer: draws cursor sprite at entity[0x1F] position | `ui::hud_and_dialog::menu_cursordraw` | `[ ]` |
-| **UI-07** | `Menu_CursorMove` | `0x8003A470` | `ui/Menu_CursorMove.c` | Menu cursor mover: entity[0x1F] state, updates position | `ui::hud_and_dialog::menu_cursormove` | `[ ]` |
-| **UI-08** | `Menu_CursorNext` | `0x800386C0` | `ui/Menu_CursorNext.c` | Advances menu cursor to next item, wraps at max from entity[0x21] | `ui::hud_and_dialog::menu_cursornext` | `[ ]` |
-| **UI-09** | `Menu_CursorNext6` | `0x80038708` | `ui/Menu_CursorNext6.c` | Advances menu cursor up to 6 positions, returns true if wrapped | `ui::hud_and_dialog::menu_cursornext6` | `[ ]` |
-| **UI-10** | `Menu_CursorPrev` | `0x80038758` | `ui/Menu_CursorPrev.c` | Moves menu cursor to previous item, wraps at 0 | `ui::hud_and_dialog::menu_cursorprev` | `[ ]` |
-| **UI-11** | `Menu_CursorPrev6` | `0x80038794` | `ui/Menu_CursorPrev6.c` | Moves menu cursor back up to 6 positions, returns true if wrapped | `ui::hud_and_dialog::menu_cursorprev6` | `[ ]` |
-| **UI-12** | `Menu_Dialog` | `0x8003ABE4` | `ui/Menu_Dialog.c` | Menu dialog handler: entity[5] state 0->1->2, manages text | `ui::hud_and_dialog::menu_dialog` | `[ ]` |
-| **UI-13** | `Menu_DrawConfig` | `0x8007F104` | `ui/Menu_DrawConfig.c` | Menu config draw: renders strings + sprites for configuration menu | `ui::hud_and_dialog::menu_drawconfig` | `[ ]` |
-| **UI-14** | `Menu_DrawNumber` | `0x8007ED5C` | `ui/Menu_DrawNumber.c` | Menu number drawer: converts value to digits, renders sprites | `ui::hud_and_dialog::menu_drawnumber` | `[ ]` |
-| **UI-15** | `Menu_DrawNumber2` | `0x8007EF60` | `ui/Menu_DrawNumber2.c` | Menu number drawer variant 2: different digit rendering path | `ui::hud_and_dialog::menu_drawnumber2` | `[ ]` |
-| **UI-16** | `Menu_DrawOptions` | `0x8007F078` | `ui/Menu_DrawOptions.c` | Menu options draw: renders text strings via FUN_80078988 + sprites via FUN_80079324 | `ui::hud_and_dialog::menu_drawoptions` | `[ ]` |
-| **UI-17** | `Menu_DrawPage` | `0x8007F498` | `ui/Menu_DrawPage.c` | Menu page drawer: renders full page with GTE projection | `ui::hud_and_dialog::menu_drawpage` | `[ ]` |
-| **UI-18** | `Menu_DrawSave` | `0x8007F8F8` | `ui/Menu_DrawSave.c` | Menu save drawer: renders save menu with GTE projection | `ui::hud_and_dialog::menu_drawsave` | `[ ]` |
-| **UI-19** | `Menu_DrawText` | `0x8007F73C` | `ui/Menu_DrawText.c` | Menu text drawer: renders string via sprite primitives + GTE projection | `ui::hud_and_dialog::menu_drawtext` | `[ ]` |
-| **UI-20** | `Menu_DrawTextPage` | `0x8007EE74` | `ui/Menu_DrawTextPage.c` | Menu text page draw: renders menu text with sprite primitives | `ui::hud_and_dialog::menu_drawtextpage` | `[ ]` |
-| **UI-21** | `Menu_InputHandle` | `0x800387E0` | `ui/Menu_InputHandle.c` | Menu input handler: processes pad input for menus | `ui::hud_and_dialog::menu_inputhandle` | `[ ]` |
-| **UI-22** | `Menu_ItemDispatch` | `0x8004A3D4` | `ui/Menu_ItemDispatch.c` | Item/weapon menu action dispatcher: 32 cases for item selection, texture loading | `ui::hud_and_dialog::menu_itemdispatch` | `[ ]` |
-| **UI-23** | `Menu_Main` | `0x80039110` | `ui/Menu_Main.c` | Menu main: full menu system controller | `ui::hud_and_dialog::menu_main` | `[ ]` |
-| **UI-24** | `Menu_SaveDraw` | `0x8003AD48` | `ui/Menu_SaveDraw.c` | Menu save drawer: entity[4]=1, draws save UI | `ui::hud_and_dialog::menu_savedraw` | `[ ]` |
-| **UI-25** | `Menu_SaveExec` | `0x8003A790` | `ui/Menu_SaveExec.c` | Menu save executor: entity[5]=1, writes/reads save data | `ui::hud_and_dialog::menu_saveexec` | `[ ]` |
-| **UI-26** | `Menu_SaveLoad` | `0x8003A9A0` | `ui/Menu_SaveLoad.c` | Menu save/load handler: entity[5] state, manages save data | `ui::hud_and_dialog::menu_saveload` | `[ ]` |
-| **UI-27** | `Menu_SlotDraw` | `0x8003A5E4` | `ui/Menu_SlotDraw.c` | Menu slot drawer: switch on entity[0x1F], draws save slots | `ui::hud_and_dialog::menu_slotdraw` | `[ ]` |
-| **UI-28** | `Menu_TextDraw2` | `0x80078988` | `ui/Menu_TextDraw2.c` | Menu text drawer variant 2: renders with different format | `ui::hud_and_dialog::menu_textdraw2` | `[ ]` |
-| **UI-29** | `Menu_TextRender` | `0x8007F250` | `ui/Menu_TextRender.c` | Menu text renderer: draws text strings with GTE projection | `ui::hud_and_dialog::menu_textrender` | `[ ]` |
-| **UI-30** | `Menu_UpdateCursor` | `0x80039034` | `ui/Menu_UpdateCursor.c` | Menu cursor update: reads table at 0x800A27AC, updates cursor pos | `ui::hud_and_dialog::menu_updatecursor` | `[ ]` |
-| **UI-31** | `Menu_UpdateItemCount` | `0x8004D4F4` | `ui/Menu_UpdateItemCount.c` | Updates item count display after selection change | `ui::hud_and_dialog::menu_updateitemcount` | `[ ]` |
-| **UI-32** | `UI_ChangeTextureSet` | `0x8004B4E8` | `ui/UI_ChangeTextureSet.c` | Changes UI texture set: updates globals and reloads via Texture_LoadUI | `ui::hud_and_dialog::ui_changetextureset` | `[ ]` |
-| **UI-33** | `UI_ClearElement` | `0x8004EE50` | `ui/UI_ClearElement.c` | Clears UI element structure (0x8C bytes) with memset, sets terminator bytes | `ui::hud_and_dialog::ui_clearelement` | `[ ]` |
-| **UI-34** | `UI_ClearList` | `0x8004EE2C` | `ui/UI_ClearList.c` | Clears list of 12 u16 entries to 0xFFFF at given pointer | `ui::hud_and_dialog::ui_clearlist` | `[ ]` |
-| **UI-35** | `UI_DialogMain` | `0x8004DF94` | `ui/UI_DialogMain.c` | UI dialog main: entity[4]=1, full dialog state machine | `ui::hud_and_dialog::ui_dialogmain` | `[ ]` |
-| **UI-36** | `UI_DialogSpawn` | `0x8004DC84` | `ui/UI_DialogSpawn.c` | UI dialog spawner: allocs child type 5, sets dialog callback | `ui::hud_and_dialog::ui_dialogspawn` | `[ ]` |
-| **UI-37** | `UI_DialogText` | `0x8004F184` | `ui/UI_DialogText.c` | UI dialog text handler: parses 48-byte buffer, draws text | `ui::hud_and_dialog::ui_dialogtext` | `[ ]` |
-| **UI-38** | `UI_DialogUpdate` | `0x8004DE04` | `ui/UI_DialogUpdate.c` | UI dialog updater: entity[4]=1, processes dialog text | `ui::hud_and_dialog::ui_dialogupdate` | `[ ]` |
-| **UI-39** | `UI_DrawConfigMenu` | `0x80034548` | `ui/UI_DrawConfigMenu.c` | Draws configuration menu layout: sets up panels, sliders, text elements | `ui::hud_and_dialog::ui_drawconfigmenu` | `[ ]` |
-| **UI-40** | `UI_DrawElement_2` | `0x8004EDDC` | `ui/UI_DrawElement_2.c` | UI element draw: builds 6-word primitive from params, draws at position | `ui::hud_and_dialog::ui_drawelement_2` | `[ ]` |
-| **UI-41** | `UI_DrawItemIcon` | `0x8004ED0C` | `ui/UI_DrawItemIcon.c` | UI item icon draw: renders item icon with 0x8000 flag + color code | `ui::hud_and_dialog::ui_drawitemicon` | `[ ]` |
-| **UI-42** | `UI_DrawOverlay` | `0x8004FD30` | `ui/UI_DrawOverlay.c` | Screen overlay/fade renderer: draws rectangles and processes render queue items | `ui::hud_and_dialog::ui_drawoverlay` | `[ ]` |
-| **UI-43** | `UI_DrawPanel` | `0x8005019C` | `ui/UI_DrawPanel.c` | 9-slice panel/window renderer: draws 4 corner tiles + 5 inner tiles via TILE primitives | `ui::hud_and_dialog::ui_drawpanel` | `[ ]` |
-| **UI-44** | `UI_DrawPanel2` | `0x8004FA38` | `ui/UI_DrawPanel2.c` | UI panel draw variant 2: uses _DAT_800bf552 index, different layout | `ui::hud_and_dialog::ui_drawpanel2` | `[ ]` |
-| **UI-45** | `UI_DrawScreenOverlay` | `0x80050970` | `ui/UI_DrawScreenOverlay.c` | Draws screen overlay: calls 0x800508A8 or 0x8005082C based on flag | `ui::hud_and_dialog::ui_drawscreenoverlay` | `[ ]` |
-| **UI-46** | `UI_DrawText` | `0x8004EB94` | `ui/UI_DrawText.c` | Text renderer: iterates string bytes, writes character SPRT tiles to OT | `ui::hud_and_dialog::ui_drawtext` | `[ ]` |
-| **UI-47** | `UI_DrawTextLine` | `0x8004EFC0` | `ui/UI_DrawTextLine.c` | UI text line draw: iterates string, draws each char via FUN_8004ea4c | `ui::hud_and_dialog::ui_drawtextline` | `[ ]` |
-| **UI-48** | `UI_DrawTile` | `0x8004FFB4` | `ui/UI_DrawTile.c` | Draws a single UI tile primitive (0x2C/0x2E) at given rect position | `ui::hud_and_dialog::ui_drawtile` | `[ ]` |
-| **UI-49** | `UI_ElementUpdate` | `0x80049E54` | `ui/UI_ElementUpdate.c` | UI element updater: checks _DAT_800e7fee, updates element state | `ui::hud_and_dialog::ui_elementupdate` | `[ ]` |
-| **UI-50** | `UI_InitDialog` | `0x8004F378` | `ui/UI_InitDialog.c` | UI dialog init: calls FUN_80077d64, sets up dialog struct at entity+0x1B0 | `ui::hud_and_dialog::ui_initdialog` | `[ ]` |
-| **UI-51** | `UI_InventoryDraw` | `0x8004E808` | `ui/UI_InventoryDraw.c` | UI inventory drawer: renders inventory items with icons | `ui::hud_and_dialog::ui_inventorydraw` | `[ ]` |
-| **UI-52** | `UI_InventoryDraw2` | `0x8004E928` | `ui/UI_InventoryDraw2.c` | UI inventory draw variant 2: entity[4]=1 state, draws items | `ui::hud_and_dialog::ui_inventorydraw2` | `[ ]` |
-| **UI-53** | `UI_InventoryMenu` | `0x8004CE14` | `ui/UI_InventoryMenu.c` | UI inventory menu: entity[4]=1, manages inventory UI | `ui::hud_and_dialog::ui_inventorymenu` | `[ ]` |
-| **UI-54** | `UI_InventorySlot` | `0x8004D514` | `ui/UI_InventorySlot.c` | UI inventory slot handler: reads/writes slot at DAT_800bfab4/bb4 | `ui::hud_and_dialog::ui_inventoryslot` | `[ ]` |
-| **UI-55** | `UI_InventoryUpdate` | `0x80049F80` | `ui/UI_InventoryUpdate.c` | UI inventory updater: checks DAT_800bf87c/d state | `ui::hud_and_dialog::ui_inventoryupdate` | `[ ]` |
-| **UI-56** | `UI_ItemLookup` | `0x8004DBC0` | `ui/UI_ItemLookup.c` | UI item lookup: switch on item ID 0x59-0x6B, returns icon/type | `ui::hud_and_dialog::ui_itemlookup` | `[ ]` |
-| **UI-57** | `UI_ItemSelect` | `0x8004E29C` | `ui/UI_ItemSelect.c` | UI item selector: switch on entity[0x60] value, selects item | `ui::hud_and_dialog::ui_itemselect` | `[ ]` |
-| **UI-58** | `UI_ListUpdate` | `0x8004F474` | `ui/UI_ListUpdate.c` | UI list updater: processes param_1[8] entries, updates positions | `ui::hud_and_dialog::ui_listupdate` | `[ ]` |
-| **UI-59** | `UI_Main` | `0x8004E414` | `ui/UI_Main.c` | UI main: full user interface controller | `ui::hud_and_dialog::ui_main` | `[ ]` |
-| **UI-60** | `UI_MenuUpdate` | `0x8004F6D0` | `ui/UI_MenuUpdate.c` | UI menu updater: processes menu state, draws elements | `ui::hud_and_dialog::ui_menuupdate` | `[ ]` |
-| **UI-61** | `UI_PanelDispatch` | `0x8004FE84` | `ui/UI_PanelDispatch.c` | UI panel dispatcher: switch on DAT_800bf549 state, calls handlers | `ui::hud_and_dialog::ui_paneldispatch` | `[ ]` |
-| **UI-62** | `UI_PanelDraw` | `0x8004F514` | `ui/UI_PanelDraw.c` | UI panel drawer: renders 9-slice panel with text | `ui::hud_and_dialog::ui_paneldraw` | `[ ]` |
-| **UI-63** | `UI_PanelUpdate` | `0x8004F8DC` | `ui/UI_PanelUpdate.c` | UI panel updater: checks panel state, updates positions | `ui::hud_and_dialog::ui_panelupdate` | `[ ]` |
-| **UI-64** | `UI_ParseCmd` | `0x8004D0D4` | `ui/UI_ParseCmd.c` | UI command parser: parses bytecode commands from param_2 array | `ui::hud_and_dialog::ui_parsecmd` | `[ ]` |
-| **UI-65** | `UI_RenderChar` | `0x8004EA4C` | `ui/UI_RenderChar.c` | UI character renderer: handles 0xFB escape codes, renders glyph tiles | `ui::hud_and_dialog::ui_renderchar` | `[ ]` |
-| **UI-66** | `UI_SetSlotColors` | `0x800345D8` | `ui/UI_SetSlotColors.c` | Sets menu slot color configuration: active=100, inactive=2/3/0x84 | `ui::hud_and_dialog::ui_setslotcolors` | `[ ]` |
-| **UI-67** | `UI_SpawnChild` | `0x8004D19C` | `ui/UI_SpawnChild.c` | UI child spawner: allocs entity with callback from param_2 table | `ui::hud_and_dialog::ui_spawnchild` | `[ ]` |
-| **UI-68** | `UI_StringParse` | `0x80073750` | `ui/UI_StringParse.c` | UI string parser: tokenizes string by spaces, calls handler | `ui::hud_and_dialog::ui_stringparse` | `[ ]` |
-| **UI-69** | `UI_TextDecode` | `0x8004EAD0` | `ui/UI_TextDecode.c` | UI text decoder: parses control codes 0/1/2 from text buffer | `ui::hud_and_dialog::ui_textdecode` | `[ ]` |
-| **UI-70** | `UI_TextDraw` | `0x8004EE88` | `ui/UI_TextDraw.c` | UI text drawer: formats text with escape codes, draws to screen | `ui::hud_and_dialog::ui_textdraw` | `[ ]` |
-| **UI-71** | `UI_TextParser` | `0x8004F058` | `ui/UI_TextParser.c` | UI text parser: processes text buffer, handles control codes | `ui::hud_and_dialog::ui_textparser` | `[ ]` |
-| **UI-72** | `UI_UpdateElement_2` | `0x8004DD90` | `ui/UI_UpdateElement_2.c` | UI element update: calls FUN_80049e54, updates pos from entity[0x42] + offset | `ui::hud_and_dialog::ui_updateelement_2` | `[ ]` |
-| **UI-73** | `Dialog_CharDispatch` | `0x80035738` | `dialog/Dialog_CharDispatch.c` | Dialogue character dispatcher: handles special chars (0x3E-0x68) for text boxes | `ui::hud_and_dialog::dialog_chardispatch` | `[ ]` |
-| **UI-74** | `String_Compare` | `0x8009A600` | `string/String_Compare.c` | String compare: compares two null-terminated strings, returns difference | `ui::hud_and_dialog::string_compare` | `[ ]` |
-| **UI-75** | `String_Compare2` | `0x8009A540` | `string/String_Compare2.c` | String compare variant 2: returns 0 if equal, -1/+1 if different | `ui::hud_and_dialog::string_compare2` | `[ ]` |
-| **UI-76** | `String_CompareICase` | `0x8009A640` | `string/String_CompareICase.c` | String compare ignore case: compares strings case-insensitively | `ui::hud_and_dialog::string_compareicase` | `[ ]` |
-| **UI-77** | `String_Copy` | `0x8009A5B0` | `string/String_Copy.c` | String copy: copies null-terminated string from param_2 to param_1 | `ui::hud_and_dialog::string_copy` | `[ ]` |
-| **UI-78** | `String_CopyFilterNL` | `0x80036B28` | `string/String_CopyFilterNL.c` | Copies string replacing newline chars with spaces, null-terminates | `ui::hud_and_dialog::string_copyfilternl` | `[ ]` |
-| **UI-79** | `String_CopyUntil` | `0x8004EF54` | `string/String_CopyUntil.c` | Copies string until terminator byte 0xFA or 0xFF, appends 0xFF | `ui::hud_and_dialog::string_copyuntil` | `[ ]` |
-| **UI-80** | `String_FindChar` | `0x8004EF8C` | `string/String_FindChar.c` | String search: finds nth occurrence of char -6 (0xFA) in string | `ui::hud_and_dialog::string_findchar` | `[ ]` |
-| **UI-81** | `String_FindChar2` | `0x8009A490` | `string/String_FindChar2.c` | String char finder variant: searches for null or matching char | `ui::hud_and_dialog::string_findchar2` | `[ ]` |
-| **UI-82** | `String_Format` | `0x80079634` | `string/String_Format.c` | String formatter: writes formatted output to buffer at local_10 | `ui::hud_and_dialog::string_format` | `[ ]` |
-| **UI-83** | `String_GetChar` | `0x80078770` | `string/String_GetChar.c` | Gets character from string table at 0x800A4F88 by index and position | `ui::hud_and_dialog::string_getchar` | `[ ]` |
-| **UI-84** | `String_Length` | `0x80079528` | `string/String_Length.c` | String length: counts chars until null terminator | `ui::hud_and_dialog::string_length` | `[ ]` |
-| **UI-85** | `String_LookupDialog` | `0x80078798` | `string/String_LookupDialog.c` | Looks up dialog string from nested tables at 0x800A55B0/0x800A2B84 | `ui::hud_and_dialog::string_lookupdialog` | `[ ]` |
-| **UI-86** | `String_LookupName` | `0x800787F8` | `string/String_LookupName.c` | Looks up name/label string from table at 0x800A2B64 by type index | `ui::hud_and_dialog::string_lookupname` | `[ ]` |
-| **UI-87** | `String_ParseHex` | `0x80079554` | `string/String_ParseHex.c` | String hex parser: reads 2-char hex value from string | `ui::hud_and_dialog::string_parsehex` | `[ ]` |
-| **UI-88** | `String_TableLookup` | `0x800793C4` | `string/String_TableLookup.c` | String table lookup: searches string table for matching entry | `ui::hud_and_dialog::string_tablelookup` | `[ ]` |
+| **UI-01** | `Menu_ActionMode0` | `0x8004D6D4` | `ui/Menu_ActionMode0.c` | Menu action with mode 0: calls 0x8004ED0C with mode 0 | `ui::hud_and_dialog::menu_actionmode0` | `[x]` |
+| **UI-02** | `Menu_ActionMode3` | `0x8004D6F4` | `ui/Menu_ActionMode3.c` | Menu action with mode 3: calls 0x8004ED0C with mode 3 | `ui::hud_and_dialog::menu_actionmode3` | `[x]` |
+| **UI-03** | `Menu_AnimIcon` | `0x8003A3E8` | `ui/Menu_AnimIcon.c` | Animates menu icon with sine wave oscillation using GTE trig functions | `ui::hud_and_dialog::menu_animicon` | `[x]` |
+| **UI-04** | `Menu_ClearItems` | `0x80036AE8` | `ui/Menu_ClearItems.c` | Clears all 3 menu item slots by calling FUN_80036a14 with modes 0,1,2 | `ui::hud_and_dialog::menu_clearitems` | `[x]` |
+| **UI-05** | `Menu_ClearSlot` | `0x80094B10` | `ui/Menu_ClearSlot.c` | Clears a menu slot: zeros 0x38-byte entry at DAT_801054e5 by index | `ui::hud_and_dialog::menu_clearslot` | `[x]` |
+| **UI-06** | `Menu_CursorDraw` | `0x8003A290` | `ui/Menu_CursorDraw.c` | Menu cursor drawer: draws cursor sprite at entity[0x1F] position | `ui::hud_and_dialog::menu_cursordraw` | `[x]` |
+| **UI-07** | `Menu_CursorMove` | `0x8003A470` | `ui/Menu_CursorMove.c` | Menu cursor mover: entity[0x1F] state, updates position | `ui::hud_and_dialog::menu_cursormove` | `[x]` |
+| **UI-08** | `Menu_CursorNext` | `0x800386C0` | `ui/Menu_CursorNext.c` | Advances menu cursor to next item, wraps at max from entity[0x21] | `ui::hud_and_dialog::menu_cursornext` | `[x]` |
+| **UI-09** | `Menu_CursorNext6` | `0x80038708` | `ui/Menu_CursorNext6.c` | Advances menu cursor up to 6 positions, returns true if wrapped | `ui::hud_and_dialog::menu_cursornext6` | `[x]` |
+| **UI-10** | `Menu_CursorPrev` | `0x80038758` | `ui/Menu_CursorPrev.c` | Moves menu cursor to previous item, wraps at 0 | `ui::hud_and_dialog::menu_cursorprev` | `[x]` |
+| **UI-11** | `Menu_CursorPrev6` | `0x80038794` | `ui/Menu_CursorPrev6.c` | Moves menu cursor back up to 6 positions, returns true if wrapped | `ui::hud_and_dialog::menu_cursorprev6` | `[x]` |
+| **UI-12** | `Menu_Dialog` | `0x8003ABE4` | `ui/Menu_Dialog.c` | Menu dialog handler: entity[5] state 0->1->2, manages text | `ui::hud_and_dialog::menu_dialog` | `[x]` |
+| **UI-13** | `Menu_DrawConfig` | `0x8007F104` | `ui/Menu_DrawConfig.c` | Menu config draw: renders strings + sprites for configuration menu | `ui::hud_and_dialog::menu_drawconfig` | `[x]` |
+| **UI-14** | `Menu_DrawNumber` | `0x8007ED5C` | `ui/Menu_DrawNumber.c` | Menu number drawer: converts value to digits, renders sprites | `ui::hud_and_dialog::menu_drawnumber` | `[x]` |
+| **UI-15** | `Menu_DrawNumber2` | `0x8007EF60` | `ui/Menu_DrawNumber2.c` | Menu number drawer variant 2: different digit rendering path | `ui::hud_and_dialog::menu_drawnumber2` | `[x]` |
+| **UI-16** | `Menu_DrawOptions` | `0x8007F078` | `ui/Menu_DrawOptions.c` | Menu options draw: renders text strings via FUN_80078988 + sprites via FUN_80079324 | `ui::hud_and_dialog::menu_drawoptions` | `[x]` |
+| **UI-17** | `Menu_DrawPage` | `0x8007F498` | `ui/Menu_DrawPage.c` | Menu page drawer: renders full page with GTE projection | `ui::hud_and_dialog::menu_drawpage` | `[x]` |
+| **UI-18** | `Menu_DrawSave` | `0x8007F8F8` | `ui/Menu_DrawSave.c` | Menu save drawer: renders save menu with GTE projection | `ui::hud_and_dialog::menu_drawsave` | `[x]` |
+| **UI-19** | `Menu_DrawText` | `0x8007F73C` | `ui/Menu_DrawText.c` | Menu text drawer: renders string via sprite primitives + GTE projection | `ui::hud_and_dialog::menu_drawtext` | `[x]` |
+| **UI-20** | `Menu_DrawTextPage` | `0x8007EE74` | `ui/Menu_DrawTextPage.c` | Menu text page draw: renders menu text with sprite primitives | `ui::hud_and_dialog::menu_drawtextpage` | `[x]` |
+| **UI-21** | `Menu_InputHandle` | `0x800387E0` | `ui/Menu_InputHandle.c` | Menu input handler: processes pad input for menus | `ui::hud_and_dialog::menu_inputhandle` | `[x]` |
+| **UI-22** | `Menu_ItemDispatch` | `0x8004A3D4` | `ui/Menu_ItemDispatch.c` | Item/weapon menu action dispatcher: 32 cases for item selection, texture loading | `ui::hud_and_dialog::menu_itemdispatch` | `[x]` |
+| **UI-23** | `Menu_Main` | `0x80039110` | `ui/Menu_Main.c` | Menu main: full menu system controller | `ui::hud_and_dialog::menu_main` | `[x]` |
+| **UI-24** | `Menu_SaveDraw` | `0x8003AD48` | `ui/Menu_SaveDraw.c` | Menu save drawer: entity[4]=1, draws save UI | `ui::hud_and_dialog::menu_savedraw` | `[x]` |
+| **UI-25** | `Menu_SaveExec` | `0x8003A790` | `ui/Menu_SaveExec.c` | Menu save executor: entity[5]=1, writes/reads save data | `ui::hud_and_dialog::menu_saveexec` | `[x]` |
+| **UI-26** | `Menu_SaveLoad` | `0x8003A9A0` | `ui/Menu_SaveLoad.c` | Menu save/load handler: entity[5] state, manages save data | `ui::hud_and_dialog::menu_saveload` | `[x]` |
+| **UI-27** | `Menu_SlotDraw` | `0x8003A5E4` | `ui/Menu_SlotDraw.c` | Menu slot drawer: switch on entity[0x1F], draws save slots | `ui::hud_and_dialog::menu_slotdraw` | `[x]` |
+| **UI-28** | `Menu_TextDraw2` | `0x80078988` | `ui/Menu_TextDraw2.c` | Menu text drawer variant 2: renders with different format | `ui::hud_and_dialog::menu_textdraw2` | `[x]` |
+| **UI-29** | `Menu_TextRender` | `0x8007F250` | `ui/Menu_TextRender.c` | Menu text renderer: draws text strings with GTE projection | `ui::hud_and_dialog::menu_textrender` | `[x]` |
+| **UI-30** | `Menu_UpdateCursor` | `0x80039034` | `ui/Menu_UpdateCursor.c` | Menu cursor update: reads table at 0x800A27AC, updates cursor pos | `ui::hud_and_dialog::menu_updatecursor` | `[x]` |
+| **UI-31** | `Menu_UpdateItemCount` | `0x8004D4F4` | `ui/Menu_UpdateItemCount.c` | Updates item count display after selection change | `ui::hud_and_dialog::menu_updateitemcount` | `[x]` |
+| **UI-32** | `UI_ChangeTextureSet` | `0x8004B4E8` | `ui/UI_ChangeTextureSet.c` | Changes UI texture set: updates globals and reloads via Texture_LoadUI | `ui::hud_and_dialog::ui_changetextureset` | `[x]` |
+| **UI-33** | `UI_ClearElement` | `0x8004EE50` | `ui/UI_ClearElement.c` | Clears UI element structure (0x8C bytes) with memset, sets terminator bytes | `ui::hud_and_dialog::ui_clearelement` | `[x]` |
+| **UI-34** | `UI_ClearList` | `0x8004EE2C` | `ui/UI_ClearList.c` | Clears list of 12 u16 entries to 0xFFFF at given pointer | `ui::hud_and_dialog::ui_clearlist` | `[x]` |
+| **UI-35** | `UI_DialogMain` | `0x8004DF94` | `ui/UI_DialogMain.c` | UI dialog main: entity[4]=1, full dialog state machine | `ui::hud_and_dialog::ui_dialogmain` | `[x]` |
+| **UI-36** | `UI_DialogSpawn` | `0x8004DC84` | `ui/UI_DialogSpawn.c` | UI dialog spawner: allocs child type 5, sets dialog callback | `ui::hud_and_dialog::ui_dialogspawn` | `[x]` |
+| **UI-37** | `UI_DialogText` | `0x8004F184` | `ui/UI_DialogText.c` | UI dialog text handler: parses 48-byte buffer, draws text | `ui::hud_and_dialog::ui_dialogtext` | `[x]` |
+| **UI-38** | `UI_DialogUpdate` | `0x8004DE04` | `ui/UI_DialogUpdate.c` | UI dialog updater: entity[4]=1, processes dialog text | `ui::hud_and_dialog::ui_dialogupdate` | `[x]` |
+| **UI-39** | `UI_DrawConfigMenu` | `0x80034548` | `ui/UI_DrawConfigMenu.c` | Draws configuration menu layout: sets up panels, sliders, text elements | `ui::hud_and_dialog::ui_drawconfigmenu` | `[x]` |
+| **UI-40** | `UI_DrawElement_2` | `0x8004EDDC` | `ui/UI_DrawElement_2.c` | UI element draw: builds 6-word primitive from params, draws at position | `ui::hud_and_dialog::ui_drawelement_2` | `[x]` |
+| **UI-41** | `UI_DrawItemIcon` | `0x8004ED0C` | `ui/UI_DrawItemIcon.c` | UI item icon draw: renders item icon with 0x8000 flag + color code | `ui::hud_and_dialog::ui_drawitemicon` | `[x]` |
+| **UI-42** | `UI_DrawOverlay` | `0x8004FD30` | `ui/UI_DrawOverlay.c` | Screen overlay/fade renderer: draws rectangles and processes render queue items | `ui::hud_and_dialog::ui_drawoverlay` | `[x]` |
+| **UI-43** | `UI_DrawPanel` | `0x8005019C` | `ui/UI_DrawPanel.c` | 9-slice panel/window renderer: draws 4 corner tiles + 5 inner tiles via TILE primitives | `ui::hud_and_dialog::ui_drawpanel` | `[x]` |
+| **UI-44** | `UI_DrawPanel2` | `0x8004FA38` | `ui/UI_DrawPanel2.c` | UI panel draw variant 2: uses _DAT_800bf552 index, different layout | `ui::hud_and_dialog::ui_drawpanel2` | `[x]` |
+| **UI-45** | `UI_DrawScreenOverlay` | `0x80050970` | `ui/UI_DrawScreenOverlay.c` | Draws screen overlay: calls 0x800508A8 or 0x8005082C based on flag | `ui::hud_and_dialog::ui_drawscreenoverlay` | `[x]` |
+| **UI-46** | `UI_DrawText` | `0x8004EB94` | `ui/UI_DrawText.c` | Text renderer: iterates string bytes, writes character SPRT tiles to OT | `ui::hud_and_dialog::ui_drawtext` | `[x]` |
+| **UI-47** | `UI_DrawTextLine` | `0x8004EFC0` | `ui/UI_DrawTextLine.c` | UI text line draw: iterates string, draws each char via FUN_8004ea4c | `ui::hud_and_dialog::ui_drawtextline` | `[x]` |
+| **UI-48** | `UI_DrawTile` | `0x8004FFB4` | `ui/UI_DrawTile.c` | Draws a single UI tile primitive (0x2C/0x2E) at given rect position | `ui::hud_and_dialog::ui_drawtile` | `[x]` |
+| **UI-49** | `UI_ElementUpdate` | `0x80049E54` | `ui/UI_ElementUpdate.c` | UI element updater: checks _DAT_800e7fee, updates element state | `ui::hud_and_dialog::ui_elementupdate` | `[x]` |
+| **UI-50** | `UI_InitDialog` | `0x8004F378` | `ui/UI_InitDialog.c` | UI dialog init: calls FUN_80077d64, sets up dialog struct at entity+0x1B0 | `ui::hud_and_dialog::ui_initdialog` | `[x]` |
+| **UI-51** | `UI_InventoryDraw` | `0x8004E808` | `ui/UI_InventoryDraw.c` | UI inventory drawer: renders inventory items with icons | `ui::hud_and_dialog::ui_inventorydraw` | `[x]` |
+| **UI-52** | `UI_InventoryDraw2` | `0x8004E928` | `ui/UI_InventoryDraw2.c` | UI inventory draw variant 2: entity[4]=1 state, draws items | `ui::hud_and_dialog::ui_inventorydraw2` | `[x]` |
+| **UI-53** | `UI_InventoryMenu` | `0x8004CE14` | `ui/UI_InventoryMenu.c` | UI inventory menu: entity[4]=1, manages inventory UI | `ui::hud_and_dialog::ui_inventorymenu` | `[x]` |
+| **UI-54** | `UI_InventorySlot` | `0x8004D514` | `ui/UI_InventorySlot.c` | UI inventory slot handler: reads/writes slot at DAT_800bfab4/bb4 | `ui::hud_and_dialog::ui_inventoryslot` | `[x]` |
+| **UI-55** | `UI_InventoryUpdate` | `0x80049F80` | `ui/UI_InventoryUpdate.c` | UI inventory updater: checks DAT_800bf87c/d state | `ui::hud_and_dialog::ui_inventoryupdate` | `[x]` |
+| **UI-56** | `UI_ItemLookup` | `0x8004DBC0` | `ui/UI_ItemLookup.c` | UI item lookup: switch on item ID 0x59-0x6B, returns icon/type | `ui::hud_and_dialog::ui_itemlookup` | `[x]` |
+| **UI-57** | `UI_ItemSelect` | `0x8004E29C` | `ui/UI_ItemSelect.c` | UI item selector: switch on entity[0x60] value, selects item | `ui::hud_and_dialog::ui_itemselect` | `[x]` |
+| **UI-58** | `UI_ListUpdate` | `0x8004F474` | `ui/UI_ListUpdate.c` | UI list updater: processes param_1[8] entries, updates positions | `ui::hud_and_dialog::ui_listupdate` | `[x]` |
+| **UI-59** | `UI_Main` | `0x8004E414` | `ui/UI_Main.c` | UI main: full user interface controller | `ui::hud_and_dialog::ui_main` | `[x]` |
+| **UI-60** | `UI_MenuUpdate` | `0x8004F6D0` | `ui/UI_MenuUpdate.c` | UI menu updater: processes menu state, draws elements | `ui::hud_and_dialog::ui_menuupdate` | `[x]` |
+| **UI-61** | `UI_PanelDispatch` | `0x8004FE84` | `ui/UI_PanelDispatch.c` | UI panel dispatcher: switch on DAT_800bf549 state, calls handlers | `ui::hud_and_dialog::ui_paneldispatch` | `[x]` |
+| **UI-62** | `UI_PanelDraw` | `0x8004F514` | `ui/UI_PanelDraw.c` | UI panel drawer: renders 9-slice panel with text | `ui::hud_and_dialog::ui_paneldraw` | `[x]` |
+| **UI-63** | `UI_PanelUpdate` | `0x8004F8DC` | `ui/UI_PanelUpdate.c` | UI panel updater: checks panel state, updates positions | `ui::hud_and_dialog::ui_panelupdate` | `[x]` |
+| **UI-64** | `UI_ParseCmd` | `0x8004D0D4` | `ui/UI_ParseCmd.c` | UI command parser: parses bytecode commands from param_2 array | `ui::hud_and_dialog::ui_parsecmd` | `[x]` |
+| **UI-65** | `UI_RenderChar` | `0x8004EA4C` | `ui/UI_RenderChar.c` | UI character renderer: handles 0xFB escape codes, renders glyph tiles | `ui::hud_and_dialog::ui_renderchar` | `[x]` |
+| **UI-66** | `UI_SetSlotColors` | `0x800345D8` | `ui/UI_SetSlotColors.c` | Sets menu slot color configuration: active=100, inactive=2/3/0x84 | `ui::hud_and_dialog::ui_setslotcolors` | `[x]` |
+| **UI-67** | `UI_SpawnChild` | `0x8004D19C` | `ui/UI_SpawnChild.c` | UI child spawner: allocs entity with callback from param_2 table | `ui::hud_and_dialog::ui_spawnchild` | `[x]` |
+| **UI-68** | `UI_StringParse` | `0x80073750` | `ui/UI_StringParse.c` | UI string parser: tokenizes string by spaces, calls handler | `ui::hud_and_dialog::ui_stringparse` | `[x]` |
+| **UI-69** | `UI_TextDecode` | `0x8004EAD0` | `ui/UI_TextDecode.c` | UI text decoder: parses control codes 0/1/2 from text buffer | `ui::hud_and_dialog::ui_textdecode` | `[x]` |
+| **UI-70** | `UI_TextDraw` | `0x8004EE88` | `ui/UI_TextDraw.c` | UI text drawer: formats text with escape codes, draws to screen | `ui::hud_and_dialog::ui_textdraw` | `[x]` |
+| **UI-71** | `UI_TextParser` | `0x8004F058` | `ui/UI_TextParser.c` | UI text parser: processes text buffer, handles control codes | `ui::hud_and_dialog::ui_textparser` | `[x]` |
+| **UI-72** | `UI_UpdateElement_2` | `0x8004DD90` | `ui/UI_UpdateElement_2.c` | UI element update: calls FUN_80049e54, updates pos from entity[0x42] + offset | `ui::hud_and_dialog::ui_updateelement_2` | `[x]` |
+| **UI-73** | `Dialog_CharDispatch` | `0x80035738` | `dialog/Dialog_CharDispatch.c` | Dialogue character dispatcher: handles special chars (0x3E-0x68) for text boxes | `ui::hud_and_dialog::dialog_chardispatch` | `[x]` |
+| **UI-74** | `String_Compare` | `0x8009A600` | `string/String_Compare.c` | String compare: compares two null-terminated strings, returns difference | `ui::hud_and_dialog::string_compare` | `[x]` |
+| **UI-75** | `String_Compare2` | `0x8009A540` | `string/String_Compare2.c` | String compare variant 2: returns 0 if equal, -1/+1 if different | `ui::hud_and_dialog::string_compare2` | `[x]` |
+| **UI-76** | `String_CompareICase` | `0x8009A640` | `string/String_CompareICase.c` | String compare ignore case: compares strings case-insensitively | `ui::hud_and_dialog::string_compareicase` | `[x]` |
+| **UI-77** | `String_Copy` | `0x8009A5B0` | `string/String_Copy.c` | String copy: copies null-terminated string from param_2 to param_1 | `ui::hud_and_dialog::string_copy` | `[x]` |
+| **UI-78** | `String_CopyFilterNL` | `0x80036B28` | `string/String_CopyFilterNL.c` | Copies string replacing newline chars with spaces, null-terminates | `ui::hud_and_dialog::string_copyfilternl` | `[x]` |
+| **UI-79** | `String_CopyUntil` | `0x8004EF54` | `string/String_CopyUntil.c` | Copies string until terminator byte 0xFA or 0xFF, appends 0xFF | `ui::hud_and_dialog::string_copyuntil` | `[x]` |
+| **UI-80** | `String_FindChar` | `0x8004EF8C` | `string/String_FindChar.c` | String search: finds nth occurrence of char -6 (0xFA) in string | `ui::hud_and_dialog::string_findchar` | `[x]` |
+| **UI-81** | `String_FindChar2` | `0x8009A490` | `string/String_FindChar2.c` | String char finder variant: searches for null or matching char | `ui::hud_and_dialog::string_findchar2` | `[x]` |
+| **UI-82** | `String_Format` | `0x80079634` | `string/String_Format.c` | String formatter: writes formatted output to buffer at local_10 | `ui::hud_and_dialog::string_format` | `[x]` |
+| **UI-83** | `String_GetChar` | `0x80078770` | `string/String_GetChar.c` | Gets character from string table at 0x800A4F88 by index and position | `ui::hud_and_dialog::string_getchar` | `[x]` |
+| **UI-84** | `String_Length` | `0x80079528` | `string/String_Length.c` | String length: counts chars until null terminator | `ui::hud_and_dialog::string_length` | `[x]` |
+| **UI-85** | `String_LookupDialog` | `0x80078798` | `string/String_LookupDialog.c` | Looks up dialog string from nested tables at 0x800A55B0/0x800A2B84 | `ui::hud_and_dialog::string_lookupdialog` | `[x]` |
+| **UI-86** | `String_LookupName` | `0x800787F8` | `string/String_LookupName.c` | Looks up name/label string from table at 0x800A2B64 by type index | `ui::hud_and_dialog::string_lookupname` | `[x]` |
+| **UI-87** | `String_ParseHex` | `0x80079554` | `string/String_ParseHex.c` | String hex parser: reads 2-char hex value from string | `ui::hud_and_dialog::string_parsehex` | `[x]` |
+| **UI-88** | `String_TableLookup` | `0x800793C4` | `string/String_TableLookup.c` | String table lookup: searches string table for matching entry | `ui::hud_and_dialog::string_tablelookup` | `[x]` |
 
 ---
 

@@ -12,13 +12,13 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **SEC-04** | `ENT` | SECTOR 4: Entity Allocation, Lifecycle & Loops | 357 | **4 / 357** |
 | **SEC-05** | `BEH` | SECTOR 5: Entity Behaviors, AI & Interactive World | 71 | **1 / 71** |
 | **SEC-06** | `ANM` | SECTOR 6: Skeletal Animation VM & Sprites | 81 | **2 / 81** |
-| **SEC-07** | `CAM` | SECTOR 7: 2.5D Rail Camera Pipeline | 32 | **8 / 32** |
+| **SEC-07** | `CAM` | SECTOR 7: 2.5D Rail Camera Pipeline | 32 | **32 / 32** |
 | **SEC-08** | `ITM` | SECTOR 8: Items, Inventory & Equipment | 8 | **0 / 8** |
 | **SEC-09** | `EVT` | SECTOR 9: Event Engine & Script Interpreter | 49 | **0 / 49** |
 | **SEC-10** | `UI` | SECTOR 10: UI, Dialog System & HUD | 88 | **0 / 88** |
 | **SEC-11** | `AUD` | SECTOR 11: Audio System & Sound Dispatch | 140 | **2 / 140** |
 | **SEC-12** | `SYS` | SECTOR 12: Memory Card, GPU, CD & Low-Level Subsystems | 560 | **1 / 560** |
-| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **201 implementadas** |
+| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **225 implementadas** |
 
 ---
 
@@ -772,38 +772,38 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 
 | ID | Función / Símbolo | Dirección PS1 | Archivo C | Comportamiento Técnico Original | Mapeo Bevy (Rust) | Estado |
 | :--- | :--- | :---: | :--- | :--- | :--- | :---: |
-| **CAM-01** | `Camera_Border` | `0x8006C80C` | `camera/Camera_Border.c` | Camera border check: switch on DAT_800bf870, clamps camera Y | camera::SEASIDE_Y_FLOOR (5.50m) | [x] |
-| **CAM-02** | `Camera_CalcDelta` | `0x8006DAD8` | `camera/Camera_CalcDelta.c` | Camera delta calculation: GTE cos/sin, smooths distance, updates scratchpad | `camera::rail_camera::camera_calcdelta` | `[ ]` |
-| **CAM-03** | `Camera_CalcOrbitPos` | `0x8006E918` | `camera/Camera_CalcOrbitPos.c` | Camera orbit position: GTE cos/sin on angle, incorporates entity[0x56] flip direction | camera::CAM_FOLLOW_DISTANCE / heading | [x] |
-| **CAM-04** | `Camera_CheckEntity` | `0x8006E1E4` | `camera/Camera_CheckEntity.c` | Camera entity check: tests DAT_800e7e82 flag, updates target entity pointer | `camera::rail_camera::camera_checkentity` | `[ ]` |
-| **CAM-05** | `Camera_Commit` | `0x8006D02C` | `camera/Camera_Commit.c` | Camera committer: applies computed position to view matrix | camera::camera_controller (lookAt Euler YXZ) | [x] |
-| **CAM-06** | `Camera_Config` | `0x8006E010` | `camera/Camera_Config.c` | Camera configurator: switch on DAT_800e7fe4/8, sets mode params | camera::CAM_ANGLE_STEP_RATE (0.368 rad/s) | [x] |
-| **CAM-07** | `Camera_Init` | `0x8006EA7C` | `camera/Camera_Init.c` | Camera initializer: sets entity[0x56]=0x100, zeroes flags | `camera::rail_camera::camera_init` | `[ ]` |
-| **CAM-08** | `Camera_Lerp` | `0x8006CEC4` | `camera/Camera_Lerp.c` | Camera lerp: interpolates between two camera positions | `camera::rail_camera::camera_lerp` | `[ ]` |
-| **CAM-09** | `Camera_Main` | `0x8006E464` | `camera/Camera_Main.c` | Camera main: full camera management system | `camera::rail_camera::camera_main` | `[ ]` |
-| **CAM-10** | `Camera_Mode1` | `0x8006E294` | `camera/Camera_Mode1.c` | Camera mode 1: init + conditionally calls FUN_8006dc38/FUN_8006df88 + commit | `camera::rail_camera::camera_mode1` | `[ ]` |
-| **CAM-11** | `Camera_Mode2` | `0x8006E2FC` | `camera/Camera_Mode2.c` | Camera mode 2: init + conditionally calls FUN_8006dad8/FUN_8006def0 + commit | `camera::rail_camera::camera_mode2` | `[ ]` |
-| **CAM-12** | `Camera_Mode3` | `0x8006EA00` | `camera/Camera_Mode3.c` | Camera mode 3 (no param): sets pos from DAT_800e7eae/b2/b6, cos calc + commit | `camera::rail_camera::camera_mode3` | `[ ]` |
-| **CAM-13** | `Camera_Mode4` | `0x8006E228` | `camera/Camera_Mode4.c` | Camera mode 4: init, smooth Y, conditionally updates delta, commit | `camera::rail_camera::camera_mode4` | `[ ]` |
-| **CAM-14** | `Camera_Mode5` | `0x8006E3F4` | `camera/Camera_Mode5.c` | Camera mode 5: inits, conditionally sets entity[0x66] bit 1, commits | `camera::rail_camera::camera_mode5` | `[ ]` |
-| **CAM-15** | `Camera_Mode6` | `0x8006E0F0` | `camera/Camera_Mode6.c` | Camera mode 6: full sequence init + pos + calc + smoothY + commit | `camera::rail_camera::camera_mode6` | `[ ]` |
-| **CAM-16** | `Camera_ModeMain` | `0x8006D654` | `camera/Camera_ModeMain.c` | Camera mode main: switch on DAT_800e7fe4, sets params | camera::CAM_VERTICAL_DEADZONE (pitch) | [x] |
-| **CAM-17** | `Camera_ModeSwitch` | `0x8006C988` | `camera/Camera_ModeSwitch.c` | Camera mode switcher: switch on entity[0x76], sets params | `camera::rail_camera::camera_modeswitch` | `[ ]` |
-| **CAM-18** | `Camera_SetFOV` | `0x8006D934` | `camera/Camera_SetFOV.c` | Sets camera field of view from param array | `camera::rail_camera::camera_setfov` | `[ ]` |
-| **CAM-19** | `Camera_SetHeight` | `0x8006DF88` | `camera/Camera_SetHeight.c` | Sets camera height: param2=0 uses entity[0x26], else cos(entity[0x6E])*radius | camera::CAM_FOLLOW_HEIGHT (5.50m) | [x] |
-| **CAM-20** | `Camera_SetModeSeq` | `0x8006E3B0` | `camera/Camera_SetModeSeq.c` | Camera mode sequence: calls init, set params, and commit in order | `camera::rail_camera::camera_setmodeseq` | `[ ]` |
-| **CAM-21** | `Camera_SetPosition` | `0x8006CBA8` | `camera/Camera_SetPosition.c` | Sets camera world position from entity coordinates (x, y, z) | `camera::rail_camera::camera_setposition` | `[ ]` |
-| **CAM-22** | `Camera_SetRoll` | `0x8006D950` | `camera/Camera_SetRoll.c` | Sets camera roll angle from 4-byte data | `camera::rail_camera::camera_setroll` | `[ ]` |
-| **CAM-23** | `Camera_SetTarget` | `0x8006CBD0` | `camera/Camera_SetTarget.c` | Sets camera look-at target and rotation vectors from 6-short array | `camera::rail_camera::camera_settarget` | `[ ]` |
-| **CAM-24** | `Camera_Smooth` | `0x8006CC1C` | `camera/Camera_Smooth.c` | Camera smoother: interpolates position with 0x80 step | `camera::rail_camera::camera_smooth` | `[ ]` |
-| **CAM-25** | `Camera_SmoothMove` | `0x8006DEF0` | `camera/Camera_SmoothMove.c` | Camera smoothing: lerps _DAT_1f8000d4 toward target, sets entity[0x66] bit 2 | `camera::rail_camera::camera_smoothmove` | `[ ]` |
-| **CAM-26** | `Camera_SmoothX` | `0x8006D960` | `camera/Camera_SmoothX.c` | Camera X smoothing: same pattern as SmoothY, lerps X toward target | camera::follow_axis / trackXZ | [x] |
-| **CAM-27** | `Camera_SmoothY` | `0x8006DA54` | `camera/Camera_SmoothY.c` | Camera Y smoothing: snaps if within 10 units, else lerps toward target with 0x1600 step | camera::follow_axis / trackY | [x] |
-| **CAM-28** | `Camera_Update` | `0x8006DCF4` | `camera/Camera_Update.c` | Camera updater: checks entity[0x74] flags, updates position | `camera::rail_camera::camera_update` | `[ ]` |
-| **CAM-29** | `Camera_UpdateFull` | `0x8006E360` | `camera/Camera_UpdateFull.c` | Full camera update: runs init, set position, target, FOV, and roll | `camera::rail_camera::camera_updatefull` | `[ ]` |
-| **CAM-30** | `Camera_UpdateMain` | `0x8006D2AC` | `camera/Camera_UpdateMain.c` | Camera update main: full camera update pipeline | `camera::rail_camera::camera_updatemain` | `[ ]` |
-| **CAM-31** | `Camera_UpdateOrbit` | `0x8006EF38` | `camera/Camera_UpdateOrbit.c` | Updates camera orbit: GTE cos/sin on DAT_800e8078 angle, radius 500, advances angle 8 | `camera::rail_camera::camera_updateorbit` | `[ ]` |
-| **CAM-32** | `Camera_UpdatePosition` | `0x8006DC38` | `camera/Camera_UpdatePosition.c` | Updates camera position: GTE cos/sin on entity[0x6E]/[0x70], radius entity[0x6C] | `camera::rail_camera::camera_updateposition` | `[ ]` |
+| **CAM-01** | `Camera_Border` | `0x8006C80C` | `camera/Camera_Border.c` | Camera border check: switch on DAT_800bf870, clamps camera Y | `camera::rail_camera::RailCameraPipeline::camera_border` | `[x]` |
+| **CAM-02** | `Camera_CalcDelta` | `0x8006DAD8` | `camera/Camera_CalcDelta.c` | Camera delta calculation: GTE cos/sin, smooths distance, updates scratchpad | `camera::rail_camera::RailCameraPipeline::camera_calcdelta` | `[x]` |
+| **CAM-03** | `Camera_CalcOrbitPos` | `0x8006E918` | `camera/Camera_CalcOrbitPos.c` | Camera orbit position: GTE cos/sin on angle, incorporates entity[0x56] flip direction | `camera::rail_camera::RailCameraPipeline::camera_calcorbitpos` | `[x]` |
+| **CAM-04** | `Camera_CheckEntity` | `0x8006E1E4` | `camera/Camera_CheckEntity.c` | Camera entity check: tests DAT_800e7e82 flag, updates target entity pointer | `camera::rail_camera::RailCameraPipeline::camera_checkentity` | `[x]` |
+| **CAM-05** | `Camera_Commit` | `0x8006D02C` | `camera/Camera_Commit.c` | Camera committer: applies computed position to view matrix | `camera::rail_camera::RailCameraPipeline::camera_commit` | `[x]` |
+| **CAM-06** | `Camera_Config` | `0x8006E010` | `camera/Camera_Config.c` | Camera configurator: switch on DAT_800e7fe4/8, sets mode params | `camera::rail_camera::RailCameraPipeline::camera_config` | `[x]` |
+| **CAM-07** | `Camera_Init` | `0x8006EA7C` | `camera/Camera_Init.c` | Camera initializer: sets entity[0x56]=0x100, zeroes flags | `camera::rail_camera::RailCameraPipeline::camera_init` | `[x]` |
+| **CAM-08** | `Camera_Lerp` | `0x8006CEC4` | `camera/Camera_Lerp.c` | Camera lerp: interpolates between two camera positions | `camera::rail_camera::RailCameraPipeline::camera_lerp` | `[x]` |
+| **CAM-09** | `Camera_Main` | `0x8006E464` | `camera/Camera_Main.c` | Camera main: full camera management system | `camera::rail_camera::RailCameraPipeline::camera_main` | `[x]` |
+| **CAM-10** | `Camera_Mode1` | `0x8006E294` | `camera/Camera_Mode1.c` | Camera mode 1: init + conditionally calls FUN_8006dc38/FUN_8006df88 + commit | `camera::rail_camera::RailCameraPipeline::camera_mode1` | `[x]` |
+| **CAM-11** | `Camera_Mode2` | `0x8006E2FC` | `camera/Camera_Mode2.c` | Camera mode 2: init + conditionally calls FUN_8006dad8/FUN_8006def0 + commit | `camera::rail_camera::RailCameraPipeline::camera_mode2` | `[x]` |
+| **CAM-12** | `Camera_Mode3` | `0x8006EA00` | `camera/Camera_Mode3.c` | Camera mode 3 (no param): sets pos from DAT_800e7eae/b2/b6, cos calc + commit | `camera::rail_camera::RailCameraPipeline::camera_mode3` | `[x]` |
+| **CAM-13** | `Camera_Mode4` | `0x8006E228` | `camera/Camera_Mode4.c` | Camera mode 4: init, smooth Y, conditionally updates delta, commit | `camera::rail_camera::RailCameraPipeline::camera_mode4` | `[x]` |
+| **CAM-14** | `Camera_Mode5` | `0x8006E3F4` | `camera/Camera_Mode5.c` | Camera mode 5: inits, conditionally sets entity[0x66] bit 1, commits | `camera::rail_camera::RailCameraPipeline::camera_mode5` | `[x]` |
+| **CAM-15** | `Camera_Mode6` | `0x8006E0F0` | `camera/Camera_Mode6.c` | Camera mode 6: full sequence init + pos + calc + smoothY + commit | `camera::rail_camera::RailCameraPipeline::camera_mode6` | `[x]` |
+| **CAM-16** | `Camera_ModeMain` | `0x8006D654` | `camera/Camera_ModeMain.c` | Camera mode main: switch on DAT_800e7fe4, sets params | `camera::rail_camera::RailCameraPipeline::camera_modemain` | `[x]` |
+| **CAM-17** | `Camera_ModeSwitch` | `0x8006C988` | `camera/Camera_ModeSwitch.c` | Camera mode switcher: switch on entity[0x76], sets params | `camera::rail_camera::RailCameraPipeline::camera_modeswitch` | `[x]` |
+| **CAM-18** | `Camera_SetFOV` | `0x8006D934` | `camera/Camera_SetFOV.c` | Sets camera field of view from param array | `camera::rail_camera::RailCameraPipeline::camera_setfov` | `[x]` |
+| **CAM-19** | `Camera_SetHeight` | `0x8006DF88` | `camera/Camera_SetHeight.c` | Sets camera height: param2=0 uses entity[0x26], else cos(entity[0x6E])*radius | `camera::rail_camera::RailCameraPipeline::camera_setheight` | `[x]` |
+| **CAM-20** | `Camera_SetModeSeq` | `0x8006E3B0` | `camera/Camera_SetModeSeq.c` | Camera mode sequence: calls init, set params, and commit in order | `camera::rail_camera::RailCameraPipeline::camera_setmodeseq` | `[x]` |
+| **CAM-21** | `Camera_SetPosition` | `0x8006CBA8` | `camera/Camera_SetPosition.c` | Sets camera world position from entity coordinates (x, y, z) | `camera::rail_camera::RailCameraPipeline::camera_setposition` | `[x]` |
+| **CAM-22** | `Camera_SetRoll` | `0x8006D950` | `camera/Camera_SetRoll.c` | Sets camera roll angle from 4-byte data | `camera::rail_camera::RailCameraPipeline::camera_setroll` | `[x]` |
+| **CAM-23** | `Camera_SetTarget` | `0x8006CBD0` | `camera/Camera_SetTarget.c` | Sets camera look-at target and rotation vectors from 6-short array | `camera::rail_camera::RailCameraPipeline::camera_settarget` | `[x]` |
+| **CAM-24** | `Camera_Smooth` | `0x8006CC1C` | `camera/Camera_Smooth.c` | Camera smoother: interpolates position with 0x80 step | `camera::rail_camera::RailCameraPipeline::camera_smooth` | `[x]` |
+| **CAM-25** | `Camera_SmoothMove` | `0x8006DEF0` | `camera/Camera_SmoothMove.c` | Camera smoothing: lerps _DAT_1f8000d4 toward target, sets entity[0x66] bit 2 | `camera::rail_camera::RailCameraPipeline::camera_smoothmove` | `[x]` |
+| **CAM-26** | `Camera_SmoothX` | `0x8006D960` | `camera/Camera_SmoothX.c` | Camera X smoothing: same pattern as SmoothY, lerps X toward target | `camera::rail_camera::RailCameraPipeline::camera_smoothx` | `[x]` |
+| **CAM-27** | `Camera_SmoothY` | `0x8006DA54` | `camera/Camera_SmoothY.c` | Camera Y smoothing: snaps if within 10 units, else lerps toward target with 0x1600 step | `camera::rail_camera::RailCameraPipeline::camera_smoothy` | `[x]` |
+| **CAM-28** | `Camera_Update` | `0x8006DCF4` | `camera/Camera_Update.c` | Camera updater: checks entity[0x74] flags, updates position | `camera::rail_camera::RailCameraPipeline::camera_update` | `[x]` |
+| **CAM-29** | `Camera_UpdateFull` | `0x8006E360` | `camera/Camera_UpdateFull.c` | Full camera update: runs init, set position, target, FOV, and roll | `camera::rail_camera::RailCameraPipeline::camera_updatefull` | `[x]` |
+| **CAM-30** | `Camera_UpdateMain` | `0x8006D2AC` | `camera/Camera_UpdateMain.c` | Camera update main: full camera update pipeline | `camera::rail_camera::RailCameraPipeline::camera_updatemain` | `[x]` |
+| **CAM-31** | `Camera_UpdateOrbit` | `0x8006EF38` | `camera/Camera_UpdateOrbit.c` | Updates camera orbit: GTE cos/sin on DAT_800e8078 angle, radius 500, advances angle 8 | `camera::rail_camera::RailCameraPipeline::camera_updateorbit` | `[x]` |
+| **CAM-32** | `Camera_UpdatePosition` | `0x8006DC38` | `camera/Camera_UpdatePosition.c` | Updates camera position: GTE cos/sin on entity[0x6E]/[0x70], radius entity[0x6C] | `camera::rail_camera::RailCameraPipeline::camera_updateposition` | `[x]` |
 
 ---
 

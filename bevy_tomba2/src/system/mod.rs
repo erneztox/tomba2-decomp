@@ -5,6 +5,7 @@ pub mod events;
 pub mod gpu;
 pub mod init;
 pub mod input;
+pub mod interaction;
 pub mod irq;
 pub mod overlay;
 pub mod timer;
@@ -155,4 +156,5 @@ pub struct TombaSystemState {
     pub system_init2_completed: bool,    // SYS-525: System_Init2 (0x80050B08)
     pub active_display_buffer: u8,       // DAT_1f800135 (0 or 1 double buffer)
     pub ot_buffer_addr: u32,             // _g_OT_Buffer (0x800BFE68 base)
+    pub bios_handler_called: bool,       // SYS-458: BIOS_Handler (0x8009BA10)
 }

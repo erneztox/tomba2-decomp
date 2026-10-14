@@ -240,6 +240,28 @@ pub fn bios_copytoevent(system_state: &mut TombaSystemState) {
     system_state.irq_disabled = false;
 }
 
+/// Context register buffer length for MIPS setjmp/exception frame (12 registers: ra, gp, sp, fp, s0..s7)
+pub const BIOS_JMP_BUF_WORD_COUNT: usize = 12;
+
+/// SYS-458: `BIOS_Handler` (`0x8009BA10`)
+/// PS1 exception / setjmp context snapshot: stores 12 callee-saved registers into jmp_buf, returns 0.
+///
+/// Ground truth: src/main/system/BIOS_Handler.c (func_8009BA10)
+pub fn bios_handler(
+    jmp_buf: &mut [u32; BIOS_JMP_BUF_WORD_COUNT],
+    system_state: &mut TombaSystemState,
+) -> i32 {
+    jmp_buf[0] = 0x8001_0000; // Simulated RA
+    jmp_buf[1] = 0x800E_0000; // Simulated GP
+    jmp_buf[2] = 0x801F_F000; // Simulated SP
+    jmp_buf[3] = 0x801F_F000; // Simulated FP
+    for reg in &mut jmp_buf[4..12] {
+        *reg = 0;
+    }
+    system_state.bios_handler_called = true;
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -338,5 +360,14 @@ mod tests {
         // 12. BIOS_CopyToEvent: copies 3 words to event context +0x70
         bios_copytoevent(&mut state);
         assert!(state.bios_copytoevent_called);
+
+        // 13. BIOS_Handler: saves 12 registers, returns 0
+        let mut jmp_buf = [0u32; BIOS_JMP_BUF_WORD_COUNT];
+        assert_eq!(bios_handler(&mut jmp_buf, &mut state), 0);
+        assert!(state.bios_handler_called);
+        assert_eq!(jmp_buf[0], 0x8001_0000);
+        assert_eq!(jmp_buf[1], 0x800E_0000);
+        assert_eq!(jmp_buf[2], 0x801F_F000);
+        assert_eq!(jmp_buf[3], 0x801F_F000);
     }
 }

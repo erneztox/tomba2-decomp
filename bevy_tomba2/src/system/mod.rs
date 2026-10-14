@@ -131,4 +131,5 @@ pub struct TombaSystemState {
     pub system_init_completed: bool,  // System_Init (0x8001CC00) completion flag
     pub system_reset_completed: bool, // System_Reset (0x8001D940) completion flag
     pub init_main_completed: bool,    // System_InitMain (0x8001CFC8) completion flag
+    pub cd_event_callbacks: [Option<u32>; 4], // CD event register callbacks (slots 0, 1, 3)
 }

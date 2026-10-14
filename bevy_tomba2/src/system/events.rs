@@ -80,6 +80,30 @@ pub fn sys_clearevent(
     }
 }
 
+/// SYS-522: `Sys_RegisterEvent0` (`0x8009C898`)
+/// Registers CD event callback for code 0 via CD_Dispatch04(0, callback).
+///
+/// Ground truth: src/main/system/Sys_RegisterEvent0.c (func_8009C898)
+pub fn sys_register_event0(callback: u32, system_state: &mut TombaSystemState) {
+    system_state.cd_event_callbacks[0] = Some(callback);
+}
+
+/// SYS-523: `Sys_RegisterEvent1` (`0x8009C8BC`)
+/// Registers CD event callback for code 1 via CD_Dispatch04(1, callback).
+///
+/// Ground truth: src/main/system/Sys_RegisterEvent1.c (func_8009C8BC)
+pub fn sys_register_event1(callback: u32, system_state: &mut TombaSystemState) {
+    system_state.cd_event_callbacks[1] = Some(callback);
+}
+
+/// SYS-524: `Sys_RegisterEvent3` (`0x8009D06C`)
+/// Registers CD event callback for code 3 via CD_Dispatch04(3, callback).
+///
+/// Ground truth: src/main/system/Sys_RegisterEvent3.c (func_8009D06C)
+pub fn sys_register_event3(callback: u32, system_state: &mut TombaSystemState) {
+    system_state.cd_event_callbacks[3] = Some(callback);
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -109,5 +133,19 @@ mod tests {
         assert_eq!(state.events[2].state, EventState::Handled);
         assert_eq!(state.events[2].handle, 0);
         assert!(state.clear_event_called);
+    }
+
+    #[test]
+    fn test_cd_event_registration() {
+        let mut state = TombaSystemState::default();
+
+        sys_register_event0(0x8009_1234, &mut state);
+        assert_eq!(state.cd_event_callbacks[0], Some(0x8009_1234));
+
+        sys_register_event1(0x8009_5678, &mut state);
+        assert_eq!(state.cd_event_callbacks[1], Some(0x8009_5678));
+
+        sys_register_event3(0x8009_9ABC, &mut state);
+        assert_eq!(state.cd_event_callbacks[3], Some(0x8009_9ABC));
     }
 }

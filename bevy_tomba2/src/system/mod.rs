@@ -8,6 +8,7 @@ pub mod input;
 pub mod interaction;
 pub mod irq;
 pub mod overlay;
+pub mod screen;
 pub mod timer;
 
 use bevy::prelude::*;
@@ -157,4 +158,11 @@ pub struct TombaSystemState {
     pub active_display_buffer: u8,       // DAT_1f800135 (0 or 1 double buffer)
     pub ot_buffer_addr: u32,             // _g_OT_Buffer (0x800BFE68 base)
     pub bios_handler_called: bool,       // SYS-458: BIOS_Handler (0x8009BA10)
+    pub render_queue_cleared: bool,      // SYS-533: Render_ClearQueue (0x8004FB20)
+    pub screen_clear_color: (u8, u8, u8), // DAT_800bf8a4-a6: screen background clear RGB
+    pub screen_display_initialized: bool,// SYS-537: Screen_InitDisplay (0x80050738)
+    pub fade_phase: u8,                  // SYS-536: Screen_FadeTransition phase
+    pub fade_timer: i16,                 // Screen fade step countdown timer
+    pub fade_step: i16,                  // Screen fade step delta
+    pub render_queue_items_processed: u32,// SYS-534: Render_ProcessQueueItem count
 }

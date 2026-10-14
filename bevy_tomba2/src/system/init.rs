@@ -60,6 +60,39 @@ pub fn system_initmain(system_state: &mut TombaSystemState) {
     system_state.init_main_completed = true;
 }
 
+/// Base address of PS1 GPU Ordering Table double-buffers (0x800BFE68)
+pub const OT_BUFFER_BASE_ADDR: u32 = 0x800B_FE68;
+/// Stride between Ordering Table frame buffers (0x14000 = 81920 bytes)
+pub const OT_BUFFER_STRIDE: u32 = 0x14000;
+/// Overlay file loader function address (0x800318EC / Overlay_LoadFile)
+pub const OVERLAY_LOAD_FILE_FN: u32 = 0x8003_18EC;
+
+/// SYS-525: `System_Init2` (`0x80050B08`)
+/// Master boot sequence: resets GPU/CD/Audio, queries hardware root timers (modes 3 and 1),
+/// calls System_Init, registers overlay file loader at event slot 0, and initializes
+/// double-buffered Ordering Table pointer.
+///
+/// Ground truth: src/main/system/System_Init2.c (func_80050B08)
+pub fn system_init2(system_state: &mut TombaSystemState) {
+    // 1. Reset hardware timers
+    crate::system::timer::timer_getcounter(crate::system::timer::TimerMode::SyncTargetFrames(3), system_state);
+
+    // 2. Low-level system initialization
+    system_init(system_state);
+
+    // 3. System tick timer sync
+    crate::system::timer::timer_getcounter(crate::system::timer::TimerMode::DeltaTicksOnly, system_state);
+
+    // 4. Register Overlay Loader at event slot 0
+    crate::system::events::sys_setcallback(0, OVERLAY_LOAD_FILE_FN, system_state);
+
+    // 5. Initialize Ordering Table double buffer (DAT_1f800135 = 0)
+    system_state.active_display_buffer = 0;
+    system_state.ot_buffer_addr = (1 - system_state.active_display_buffer as u32) * OT_BUFFER_STRIDE + OT_BUFFER_BASE_ADDR;
+
+    system_state.system_init2_completed = true;
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -89,5 +122,12 @@ mod tests {
         assert!(state.init_main_completed);
         assert_eq!(state.callback_index, 0);
         assert_eq!(state.last_pad_read_cmd, 9);
+
+        // 4. System_Init2
+        system_init2(&mut state);
+        assert!(state.system_init2_completed);
+        assert_eq!(state.active_display_buffer, 0);
+        assert_eq!(state.ot_buffer_addr, OT_BUFFER_STRIDE + OT_BUFFER_BASE_ADDR);
+        assert_eq!(state.events[0].callback, OVERLAY_LOAD_FILE_FN);
     }
 }

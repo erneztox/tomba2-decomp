@@ -1,4 +1,5 @@
 pub mod bios;
+pub mod card;
 pub mod dispatcher;
 pub mod events;
 pub mod gpu;
@@ -145,4 +146,13 @@ pub struct TombaSystemState {
     pub bios_copydata_called: bool,      // SYS-477: BIOS_CopyData (0x8009C18C)
     pub bios_copydata2_called: bool,     // SYS-478: BIOS_CopyData2 (0x8009C1FC)
     pub bios_copytoevent_called: bool,   // SYS-479: BIOS_CopyToEvent (0x8009C230)
+    pub card_frames_written: u32,        // SYS-482: BIOS_MemTest / Card_WriteFrame
+    pub card_last_written_frame: Option<i32>, // Last frame index written
+    pub card_formatted: bool,            // SYS-483: BIOS_CRC / Card_Format
+    pub item_max: i8,                    // g_ItemMax (0x800BF87E)
+    pub item_flag: i8,                   // g_ItemFlag (upper limit cap, default 0x40)
+    pub ui_dirty_flags: u8,              // DAT_800ed065 (UI dirty / update flag)
+    pub system_init2_completed: bool,    // SYS-525: System_Init2 (0x80050B08)
+    pub active_display_buffer: u8,       // DAT_1f800135 (0 or 1 double buffer)
+    pub ot_buffer_addr: u32,             // _g_OT_Buffer (0x800BFE68 base)
 }

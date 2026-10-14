@@ -57,6 +57,18 @@ pub fn sys_timeouterror(_tag: u32, system_state: &mut TombaSystemState) -> i32 {
     0
 }
 
+/// SYS-519: `Sys_IncCounter` (`0x80026100`)
+/// Increments global counter at 0x800BF87E with upper limit cap (g_ItemFlag) and sets dirty flag.
+///
+/// Ground truth: src/main/system/Sys_IncCounter.c (func_80026100)
+pub fn sys_inccounter(delta: i8, system_state: &mut TombaSystemState) {
+    system_state.item_max = system_state.item_max.saturating_add(delta);
+    if system_state.item_max > system_state.item_flag {
+        system_state.item_max = system_state.item_flag;
+    }
+    system_state.ui_dirty_flags |= 1;
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -85,5 +97,13 @@ mod tests {
         let res = sys_timeouterror(0x8001caac, &mut state);
         assert_eq!(res, 0);
         assert!(!state.cd_status_read);
+
+        // 5. Sys_IncCounter
+        state.item_flag = 0x40;
+        state.item_max = 0x3E;
+        sys_inccounter(5, &mut state);
+        // Capped at item_flag (0x40)
+        assert_eq!(state.item_max, 0x40);
+        assert_eq!(state.ui_dirty_flags & 1, 1);
     }
 }

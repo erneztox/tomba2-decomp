@@ -36,8 +36,7 @@ pub fn sys_gpusync(mut system_state: ResMut<TombaSystemState>) -> bool {
 pub fn sys_checkvsync(gpu_status: u32, system_state: &mut TombaSystemState) -> bool {
     let needs_sync = ((gpu_status & VSYNC_DIRTY_MASK) != 0) || ((gpu_status & VSYNC_ACK_BIT) == 0);
     if needs_sync {
-        system_state.pending_irq = Some(IRQ_VSYNC);
-        system_state.irq_trigger_called = true;
+        crate::system::irq::sys_triggerirq(IRQ_VSYNC, system_state);
     }
     needs_sync
 }

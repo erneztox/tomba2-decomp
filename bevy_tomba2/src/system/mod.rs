@@ -3,6 +3,7 @@ pub mod dispatcher;
 pub mod events;
 pub mod gpu;
 pub mod input;
+pub mod irq;
 pub mod overlay;
 
 use bevy::prelude::*;
@@ -82,4 +83,6 @@ pub struct TombaSystemState {
     pub vsync_timeout_called: bool,   // Logged when Sys_VSyncWait hits timeout loop
     pub pending_irq: Option<i16>,     // SYS-502: Sys_TriggerIRQ (0x80051F80)
     pub irq_trigger_called: bool,     // IRQ trigger status flag
+    pub irq_callbacks: [Option<u32>; 8], // DAT_800abdc0: IRQ callback table (8 slots)
+    pub irq_dispatch_count: u32,      // Total times IRQ_Dispatch executed
 }

@@ -17,7 +17,7 @@
 | **`A05`** | `OV-A05` | **Kujara Ranch Summit** | 495 | `overlays::a05_kujara_summit` | **0 / 495** |
 | **`A06`** | `OV-A06` | **Donglin Forest** | 599 | `overlays::a06_donglin_forest` | **599 / 599 (100%)** |
 | **`A07`** | `OV-A07` | **Circus Village** | 346 | `overlays::a07_circus` | **0 / 346** |
-| **`A08`** | `OV-A08` | **Water Temple** | 542 | `overlays::a08_water_temple` | **0 / 542** |
+| **`A08`** | `OV-A08` | **Water Temple** | 542 | `overlays::a08_water_temple` | **542 / 542 (100%)** |
 | **`A09`** | `OV-A09` | **Question Mark Room** | 45 | `overlays::a09_question_room` | **0 / 45** |
 | **`A0A`** | `OV-A0A` | **Fire Pig Boss** | 2 | `overlays::bosses::fire_pig` | **0 / 2** |
 | **`A0B`** | `OV-A0B` | **Ice Pig Boss** | 182 | `overlays::bosses::ice_pig` | **0 / 182** |
@@ -37,7 +37,7 @@
 | **`OPN`** | `OV-OPN` | **Opening Sequence** | 12 | `overlays::opn_opening` | **0 / 12** |
 | **`SOP`** | `OV-SOP` | **Cinematic Intro** | 37 | `overlays::sop_intro` | **0 / 37** |
 | **`START`** | `OV-STA` | **CD Boot Stub** | 0 | `overlays::start_stub` | **0 / 0** |
-| **TOTAL** | — | **Los 28 Overlays Canónicos de Tomba! 2** | **5411** | `bevy_tomba2::overlays` | **2346 / 5411 (43.4%)** |
+| **TOTAL** | — | **Los 28 Overlays Canónicos de Tomba! 2** | **5411** | `bevy_tomba2::overlays` | **2888 / 5411 (53.4%)** |
 
 ---
 

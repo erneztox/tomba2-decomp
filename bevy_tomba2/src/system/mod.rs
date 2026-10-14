@@ -172,4 +172,7 @@ pub struct TombaSystemState {
     pub mc_last_seek: (i32, i32),        // SYS-549: MC_Seek (0x80097E10)
     pub mc_flush_called: bool,           // SYS-544: MC_Flush (0x80097730)
     pub mc_open_handles: u32,            // SYS-547: MC_Open / MC_Close active handle bitmask
+    pub dma_src: u32,                    // _g_DMASrc
+    pub dma_dest: u32,                   // _g_DMADest
+    pub dma_word_count: u32,             // _g_DMASize
 }

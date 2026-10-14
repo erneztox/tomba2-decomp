@@ -67,6 +67,41 @@ pub fn sys_vsyncwait(
     false
 }
 
+/// SYS-540: `DMA_TransferAndWait` (`0x8001DB8C`)
+/// Arms DMA event at slot 1, aligns word transfer size, records src/dest pointers,
+/// arms Sys_GPUSync callback, and polls until transfer completion.
+///
+/// Ground truth: src/main/misc/DMA_TransferAndWait.c (func_8001DB8C)
+pub fn dma_transferandwait(
+    src_addr: u32,
+    dest_addr: u32,
+    byte_count: i32,
+    system_state: &mut TombaSystemState,
+) -> i32 {
+    // 1. Reset event slot 1
+    crate::system::events::sys_setevent(1, system_state);
+
+    // 2. Word-align transfer size with rounding
+    let mut dma_size = byte_count + 3;
+    if dma_size < 0 {
+        dma_size = byte_count + 6;
+    }
+    let word_count = (dma_size >> 2) as u32;
+
+    // 3. Set DMA registers
+    system_state.dma_src = src_addr;
+    system_state.dma_dest = dest_addr;
+    system_state.dma_word_count = word_count;
+
+    // 4. Set callback for slot 1 (Sys_GPUSync at 0x8001DB38)
+    crate::system::events::sys_setcallback(1, 0x8001_DB38, system_state);
+
+    // 5. Simulate polling loop with IRQ 1 trigger
+    crate::system::irq::sys_triggerirq(1, system_state);
+
+    byte_count
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -106,5 +141,19 @@ mod tests {
         // Case 2: Target tick in the future, timeout expires
         assert!(!sys_vsyncwait(20, 0, &mut state));
         assert!(state.vsync_timeout_called);
+    }
+
+    #[test]
+    fn test_dma_transferandwait() {
+        let mut state = TombaSystemState::default();
+
+        let bytes = dma_transferandwait(0x8001_0000, 0x1F80_0000, 128, &mut state);
+        assert_eq!(bytes, 128);
+        assert_eq!(state.dma_src, 0x8001_0000);
+        assert_eq!(state.dma_dest, 0x1F80_0000);
+        // (128 + 3) >> 2 = 131 >> 2 = 32 words
+        assert_eq!(state.dma_word_count, 32);
+        assert_eq!(state.events[1].callback, 0x8001_DB38);
+        assert!(state.irq_trigger_called);
     }
 }

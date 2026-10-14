@@ -45,6 +45,29 @@ pub struct EventDescriptor {
     pub pending_flag: u8,  // +0x6f: DAT_801fe06f (pending trigger flag)
 }
 
+/// Software render queue buffer (DAT_800bf548: 700 bytes)
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct RenderQueue(pub [u8; 700]);
+
+impl Default for RenderQueue {
+    fn default() -> Self {
+        Self([0u8; 700])
+    }
+}
+
+impl std::ops::Deref for RenderQueue {
+    type Target = [u8; 700];
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl std::ops::DerefMut for RenderQueue {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+
 /// PS1 digital joypad button bitmasks (16-bit)
 pub const PAD_SELECT: u16 = 0x0001;
 pub const PAD_L3: u16 = 0x0002;
@@ -93,7 +116,6 @@ pub struct TombaSystemState {
     pub segment_addr: u32,            // _DAT_801fe134 (PS1 memory address)
     pub segment_size: u32,            // _DAT_801fe138 (PS1 segment size/end address)
     pub callback_target: Option<u32>, // Sys_SetCallback(2, System_InitMain)
-    pub noop_called: bool,            // tracking for SYS-513 verification
     pub init_overlay_called: bool,    // SYS-510: Sys_InitOverlay (0x8001CB00)
     pub bios_init_called: bool,       // SYS-459: BIOS_InitSeq (0x8009BD1C)
     pub bios_seq_step: u8,            // BIOS sequence step counter
@@ -104,7 +126,6 @@ pub struct TombaSystemState {
     pub overlay_dispatch_code: u8,    // SYS-515: Sys_OverlayDispatch (0x800750D8)
     pub pad_test_called: bool,        // Dispatch code 0xFF
     pub load_overlay_path: bool,      // Dispatch code normal overlay load
-    pub bios_seq2_called: bool,       // SYS-466: BIOS_Seq2 (0x8009BBB4)
     pub bios_seq3_called: bool,       // SYS-467: BIOS_Seq3 (0x8009BB7C)
     pub irq_disabled: bool,           // IRQ disable status
     pub bios_b0_param0: bool,         // BIOS syscall B0 with param 0
@@ -127,7 +148,7 @@ pub struct TombaSystemState {
     pub overlay_base_addr: u32,       // _g_OverlayBase / DAT_1f800224
     pub last_loaded_binary_id: Option<u32>, // Last binary ID passed to Sys_LoadBinary
     pub last_sys_call_code: Option<i32>, // SYS-503: Sys_Call (0x8001CF00)
-    pub noop2_called: bool,           // SYS-514: Sys_NoOp2 (0x80080930)
+    pub gp_reg: u32,                  // MIPS $gp register (0x800B0000 default)
     pub root_counter: u32,            // *DAT_800aacac: PS1 hardware root timer 0/1 counter
     pub prev_root_counter: u32,       // DAT_800aacb0: previous root timer snapshot
     pub last_synced_vsync_tick: i32,  // DAT_800aacb4: last synchronized VSync tick
@@ -149,7 +170,6 @@ pub struct TombaSystemState {
     pub bios_initsequence2_called: bool, // SYS-475: BIOS_InitSequence2 (0x8009BD4C)
     pub bios_setupevent_called: bool,    // SYS-476: BIOS_SetupEvent (0x8009C0F8)
     pub bios_copydata_called: bool,      // SYS-477: BIOS_CopyData (0x8009C18C)
-    pub bios_copydata2_called: bool,     // SYS-478: BIOS_CopyData2 (0x8009C1FC)
     pub bios_copytoevent_called: bool,   // SYS-479: BIOS_CopyToEvent (0x8009C230)
     pub card_frames_written: u32,        // SYS-482: BIOS_MemTest / Card_WriteFrame
     pub card_last_written_frame: Option<i32>, // Last frame index written
@@ -161,22 +181,20 @@ pub struct TombaSystemState {
     pub active_display_buffer: u8,       // DAT_1f800135 (0 or 1 double buffer)
     pub ot_buffer_addr: u32,             // _g_OT_Buffer (0x800BFE68 base)
     pub bios_handler_called: bool,       // SYS-458: BIOS_Handler (0x8009BA10)
-    pub render_queue_cleared: bool,      // SYS-533: Render_ClearQueue (0x8004FB20)
+    pub render_queue: RenderQueue,       // DAT_800bf548: 700-byte software render queue buffer
     pub screen_clear_color: (u8, u8, u8), // DAT_800bf8a4-a6: screen background clear RGB
     pub screen_display_initialized: bool,// SYS-537: Screen_InitDisplay (0x80050738)
     pub fade_phase: u8,                  // SYS-536: Screen_FadeTransition phase
     pub fade_timer: i16,                 // Screen fade step countdown timer
     pub fade_step: i16,                  // Screen fade step delta
     pub render_queue_items_processed: u32,// SYS-534: Render_ProcessQueueItem count
-    pub mc_initialized: bool,            // SYS-546: MC_Init (0x80097678)
+    pub mc_ctrl_reg: u32,                // *DAT_800ac618: Memory Card control register
     pub mc_access_active: bool,          // SYS-550: MC_Start / MC_Stop
     pub mc_read_count: u32,              // SYS-548: MC_Read (0x800974FC)
     pub mc_write_count: u32,             // SYS-552: MC_Write (0x800970EC)
     pub mc_last_seek: (i32, i32),        // SYS-549: MC_Seek (0x80097E10)
-    pub mc_flush_called: bool,           // SYS-544: MC_Flush (0x80097730)
     pub mc_open_handles: u32,            // SYS-547: MC_Open / MC_Close active handle bitmask
     pub dma_src: u32,                    // _g_DMASrc
     pub dma_dest: u32,                   // _g_DMADest
     pub dma_word_count: u32,             // _g_DMASize
-    pub func_nop_called: bool,           // Func_Nop (0x800897F8)
 }

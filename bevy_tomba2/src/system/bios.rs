@@ -24,10 +24,10 @@ pub fn bios_initseq(system_state: &mut TombaSystemState) -> i32 {
 }
 
 /// SYS-466: `BIOS_Seq2` (`0x8009BBB4`)
-/// BIOS sequence: calls BIOS_B0 stub then BIOS_CopyToEvent
+/// BIOS sequence: calls BIOS_CopyToEvent
 /// Ground truth: src/main/system/BIOS_Seq2.c (func_8009BBB4)
 pub fn bios_seq2(system_state: &mut TombaSystemState) {
-    system_state.bios_seq2_called = true;
+    bios_copytoevent(system_state);
 }
 
 /// SYS-467: `BIOS_Seq3` (`0x8009BB7C`)
@@ -222,12 +222,18 @@ pub fn bios_copydata(system_state: &mut TombaSystemState) {
     system_state.irq_disabled = false;
 }
 
+/// Words in BIOS event descriptor copy (28 words = 112 bytes = 0x70 stride)
+pub const BIOS_EVENT_COPY_WORD_COUNT: usize = 28;
+
 /// SYS-480: `BIOS_CopyData2` (`0x8009C1FC`)
 /// Copies 28 words (112 bytes) from DAT_8009c060 to scratchpad RAM DAT_0000df80.
 ///
 /// Ground truth: src/main/system/BIOS_CopyData2.c (func_8009C1FC)
-pub fn bios_copydata2(system_state: &mut TombaSystemState) {
-    system_state.bios_copydata2_called = true;
+pub fn bios_copydata2(
+    src: &[u32; BIOS_EVENT_COPY_WORD_COUNT],
+    dest: &mut [u32; BIOS_EVENT_COPY_WORD_COUNT],
+) {
+    dest.copy_from_slice(src);
 }
 
 /// SYS-481: `BIOS_CopyToEvent` (`0x8009C230`)
@@ -275,7 +281,7 @@ mod tests {
         assert_eq!(state.bios_seq_step, 3);
 
         bios_seq2(&mut state);
-        assert!(state.bios_seq2_called);
+        assert!(state.bios_copytoevent_called);
 
         bios_seq3(&mut state);
         assert!(state.bios_seq3_called);
@@ -354,8 +360,11 @@ mod tests {
         assert!(state.bios_copydata_called);
 
         // 11. BIOS_CopyData2: copies 28 words to scratchpad 0xDF80
-        bios_copydata2(&mut state);
-        assert!(state.bios_copydata2_called);
+        let src = [0x55AA_1234u32; BIOS_EVENT_COPY_WORD_COUNT];
+        let mut dest = [0u32; BIOS_EVENT_COPY_WORD_COUNT];
+        bios_copydata2(&src, &mut dest);
+        assert_eq!(dest[0], 0x55AA_1234);
+        assert_eq!(dest[BIOS_EVENT_COPY_WORD_COUNT - 1], 0x55AA_1234);
 
         // 12. BIOS_CopyToEvent: copies 3 words to event context +0x70
         bios_copytoevent(&mut state);

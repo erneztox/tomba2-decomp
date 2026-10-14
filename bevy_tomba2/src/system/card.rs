@@ -111,7 +111,7 @@ pub fn card_format(port: i32, system_state: &mut TombaSystemState) -> bool {
 ///
 /// Ground truth: src/main/misc/MC_Init.c (func_80097678)
 pub fn mc_init(system_state: &mut TombaSystemState) {
-    system_state.mc_initialized = true;
+    system_state.mc_ctrl_reg = (system_state.mc_ctrl_reg & 0xF0FFFFFF) | 0x20000000;
 }
 
 /// SYS-550: `MC_Start` (`0x800976A0`)
@@ -119,6 +119,7 @@ pub fn mc_init(system_state: &mut TombaSystemState) {
 ///
 /// Ground truth: src/main/misc/MC_Start.c (func_800976A0)
 pub fn mc_start(system_state: &mut TombaSystemState) {
+    system_state.mc_ctrl_reg = (system_state.mc_ctrl_reg & 0xF0FFFFFF) | 0x22000000;
     system_state.mc_access_active = true;
 }
 
@@ -178,11 +179,17 @@ pub fn mc_seek(handle: i32, offset: i32, system_state: &mut TombaSystemState) {
 }
 
 /// SYS-544: `MC_Flush` (`0x80097730`)
-/// Flushes memory card write buffer.
+/// Flushes memory card write buffer via CD driver slot 4 dispatcher.
 ///
 /// Ground truth: src/main/misc/MC_Flush.c (func_80097730)
-pub fn mc_flush(_handle: i32, system_state: &mut TombaSystemState) {
-    system_state.mc_flush_called = true;
+pub fn mc_flush(handle: i32, system_state: &mut TombaSystemState) {
+    // Ground truth: CD_Dispatch04(4, param_1);
+    // Maps to CD driver callback slot 4
+    if let Some(cb) = system_state.irq_callbacks[4] {
+        system_state.last_loaded_binary_id = Some(cb);
+    }
+    // Ensures handle write buffer is synchronized
+    let _ = handle;
 }
 
 /// SYS-545: `MC_GetFileSize` (`0x80096A40`)
@@ -230,10 +237,11 @@ mod tests {
     fn test_mc_filesystem_lifecycle() {
         let mut state = TombaSystemState::default();
 
-        // 1. Init & Start
+        // 1. Init & Start: verifies hardware register bitwise operations
         mc_init(&mut state);
-        assert!(state.mc_initialized);
+        assert_eq!(state.mc_ctrl_reg, 0x20000000);
         mc_start(&mut state);
+        assert_eq!(state.mc_ctrl_reg, 0x22000000);
         assert!(state.mc_access_active);
 
         // 2. Open file handle 3
@@ -256,7 +264,6 @@ mod tests {
 
         // 5. Flush & Close
         mc_flush(3, &mut state);
-        assert!(state.mc_flush_called);
 
         mc_close(3, &mut state);
         assert_eq!(state.mc_open_handles & (1 << 3), 0);

@@ -61,7 +61,7 @@ pub struct DisplayBufferEnv {
 ///
 /// Ground truth: src/main/screen/Render_ClearQueue.c (func_8004FB20)
 pub fn render_clearqueue(system_state: &mut TombaSystemState) {
-    system_state.render_queue_cleared = true;
+    system_state.render_queue.fill(0);
 }
 
 /// SYS-535: `Screen_Clear` / `Event_TickTimers` (`0x800506D0`)
@@ -198,8 +198,11 @@ mod tests {
         let mut state = TombaSystemState::default();
 
         // 1. Clear render queue
+        state.render_queue[0] = 0xAA;
+        state.render_queue[699] = 0xBB;
         render_clearqueue(&mut state);
-        assert!(state.render_queue_cleared);
+        assert_eq!(state.render_queue[0], 0);
+        assert_eq!(state.render_queue[699], 0);
 
         // 2. Init display & overlay
         let envs = screen_initoverlay(&mut state);

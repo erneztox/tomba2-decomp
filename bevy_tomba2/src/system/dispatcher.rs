@@ -35,17 +35,23 @@ pub fn sys_callwithparams(
 }
 
 /// SYS-513: `Sys_NoOp` (`0x8001CB98`)
+/// Shared MIPS function return epilogue (`lw $ra, 0x10($sp); jr $ra; addiu $sp, 0x18`).
+///
 /// Ground truth: src/main/system/Sys_NoOp.c (func_8001CB98)
-/// Original is an empty routine / placeholder in PS1 runtime.
-pub fn sys_noop(system_state: &mut TombaSystemState) {
-    system_state.noop_called = true;
+pub fn sys_noop() {
+    // Shared MIPS return epilogue — pure return without side effects
 }
 
-/// SYS-514: `Sys_NoOp2` (`0x80080930`)
+/// SYS-514: `Sys_NoOp2` / `GetGp` (`0x80080930`)
+/// Returns MIPS Global Pointer ($gp) register value (`move $v0, $gp; jr $ra`).
+///
 /// Ground truth: src/main/system/Sys_NoOp2.c (func_80080930)
-/// Original is an empty routine / placeholder in PS1 runtime.
-pub fn sys_noop2(system_state: &mut TombaSystemState) {
-    system_state.noop2_called = true;
+pub fn sys_getgp(system_state: &TombaSystemState) -> u32 {
+    if system_state.gp_reg == 0 {
+        0x800B_0000 // Default PS1 GP base address
+    } else {
+        system_state.gp_reg
+    }
 }
 
 /// SYS-518: `Sys_TimeoutError` (`0x8009CC2C`)
@@ -69,16 +75,31 @@ pub fn sys_inccounter(delta: i8, system_state: &mut TombaSystemState) {
     system_state.ui_dirty_flags |= 1;
 }
 
-/// Func_Nop (`0x800897F8`)
-/// Empty stub function - no operation, immediate return.
+/// Func_Nop / `__do_global_ctors_aux` (`0x800897F8`)
+/// CRT static constructor iterator (`lw $t0, ($s0); jalr $t0; addiu $s1, -1`).
+/// If enabled flag ($t0 != 0) is set and constructor count ($s1) > 0, executes each ctor.
+///
 /// Ground truth: src/main/misc/Func_Nop.c (func_800897F8)
-pub fn func_nop(system_state: &mut TombaSystemState) {
-    system_state.func_nop_called = true;
+pub fn crt_do_global_ctors(
+    enabled: bool,
+    ctors: &[fn(&mut TombaSystemState)],
+    system_state: &mut TombaSystemState,
+) {
+    if !enabled {
+        return;
+    }
+    for &ctor in ctors {
+        ctor(system_state);
+    }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    fn dummy_init_step(state: &mut TombaSystemState) {
+        state.system_init_completed = true;
+    }
 
     #[test]
     fn test_dispatcher_calls() {
@@ -92,12 +113,11 @@ mod tests {
         sys_callwithparams(0x10, 0x20, 0x30, 0x40, &mut state);
         assert_eq!(state.sys_call_params, [0x10, 0x20, 0x30, 0x40]);
 
-        // 3. Sys_NoOp & Sys_NoOp2
-        sys_noop(&mut state);
-        assert!(state.noop_called);
-
-        sys_noop2(&mut state);
-        assert!(state.noop2_called);
+        // 3. Sys_NoOp (shared return epilogue) & Sys_NoOp2 / GetGp (returns $gp)
+        sys_noop();
+        assert_eq!(sys_getgp(&state), 0x800B_0000);
+        state.gp_reg = 0x800E_0000;
+        assert_eq!(sys_getgp(&state), 0x800E_0000);
 
         // 4. Sys_TimeoutError
         state.cd_status_read = true;
@@ -113,8 +133,16 @@ mod tests {
         assert_eq!(state.item_max, 0x40);
         assert_eq!(state.ui_dirty_flags & 1, 1);
 
-        // 6. Func_Nop
-        func_nop(&mut state);
-        assert!(state.func_nop_called);
+        // 6. crt_do_global_ctors: disabled vs enabled execution
+        state.system_init_completed = false;
+        let ctors: [fn(&mut TombaSystemState); 1] = [dummy_init_step];
+
+        // Disabled ($t0 == 0) -> no execution
+        crt_do_global_ctors(false, &ctors, &mut state);
+        assert!(!state.system_init_completed);
+
+        // Enabled ($t0 != 0) -> executes ctor
+        crt_do_global_ctors(true, &ctors, &mut state);
+        assert!(state.system_init_completed);
     }
 }

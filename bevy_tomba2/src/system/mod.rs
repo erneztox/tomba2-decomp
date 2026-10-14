@@ -5,6 +5,7 @@ pub mod gpu;
 pub mod input;
 pub mod irq;
 pub mod overlay;
+pub mod timer;
 
 use bevy::prelude::*;
 
@@ -89,4 +90,8 @@ pub struct TombaSystemState {
     pub last_loaded_binary_id: Option<u32>, // Last binary ID passed to Sys_LoadBinary
     pub last_sys_call_code: Option<i32>, // SYS-503: Sys_Call (0x8001CF00)
     pub noop2_called: bool,           // SYS-514: Sys_NoOp2 (0x80080930)
+    pub root_counter: u32,            // *DAT_800aacac: PS1 hardware root timer 0/1 counter
+    pub prev_root_counter: u32,       // DAT_800aacb0: previous root timer snapshot
+    pub last_synced_vsync_tick: i32,  // DAT_800aacb4: last synchronized VSync tick
+    pub timer_ctrl_status: u32,       // *DAT_800aaca8: timer control status register
 }

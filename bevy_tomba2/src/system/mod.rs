@@ -78,4 +78,8 @@ pub struct TombaSystemState {
     pub bios_zero_completed: bool,    // BIOS zero loop complete
     pub bios_initirq_called: bool,    // SYS-459: BIOS_InitIRQ (0x8009BB10)
     pub cd_status_read: bool,         // CD status read flag
+    pub vsync_counter: i32,           // DAT_800abde0: VSync interrupt frame counter
+    pub vsync_timeout_called: bool,   // Logged when Sys_VSyncWait hits timeout loop
+    pub pending_irq: Option<i16>,     // SYS-502: Sys_TriggerIRQ (0x80051F80)
+    pub irq_trigger_called: bool,     // IRQ trigger status flag
 }

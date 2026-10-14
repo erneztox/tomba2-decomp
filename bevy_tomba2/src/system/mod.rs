@@ -132,4 +132,10 @@ pub struct TombaSystemState {
     pub system_reset_completed: bool, // System_Reset (0x8001D940) completion flag
     pub init_main_completed: bool,    // System_InitMain (0x8001CFC8) completion flag
     pub cd_event_callbacks: [Option<u32>; 4], // CD event register callbacks (slots 0, 1, 3)
+    pub bios_delay_called: bool,      // SYS-469: BIOS_Delay (0x8009BE34)
+    pub mdec_status_reg: i16,         // MDEC status word at DAT_800acf48 + 10
+    pub bios_reset_offset: usize,     // BIOS struct reset offset (0x594)
+    pub bios_reset_iterations: usize, // BIOS reset iterations (11 words)
+    pub mdec_callbacks: (Option<u32>, Option<u32>), // DAT_80105f1c (delay), DAT_80105f20 (handler)
+    pub bios_seq5_called: bool,       // SYS-470: BIOS_Seq5 (0x8009BC8C)
 }

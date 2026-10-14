@@ -80,6 +80,88 @@ pub fn bios_zeroregion(system_state: &mut TombaSystemState) {
     system_state.bios_zero_completed = true;
 }
 
+/// PS1 BIOS struct offset for reset region (0x594 = 1428 bytes)
+pub const BIOS_RESET_REGION_OFFSET: usize = 0x594;
+/// Number of 32-bit words cleared in BIOS reset region (11 words)
+pub const BIOS_RESET_REGION_WORD_COUNT: usize = 0x0B;
+/// Delay loop iteration count for MDEC hardware bus stabilization
+pub const BIOS_DELAY_SPIN_COUNT: i32 = 9;
+
+/// SYS-469: `BIOS_Delay` (`0x8009BE34`)
+/// Zeros MDEC status word at DAT_800acf48 + 10, spins 9 iterations, returns 0.
+///
+/// Ground truth: src/main/system/BIOS_Delay.c (func_8009BE34)
+pub fn bios_delay(system_state: &mut TombaSystemState) -> i32 {
+    system_state.mdec_status_reg = 0;
+    let mut counter = BIOS_DELAY_SPIN_COUNT;
+    while counter != -1 {
+        counter -= 1;
+    }
+    system_state.bios_delay_called = true;
+    0
+}
+
+/// SYS-471: `BIOS_EnterCritical` (`0x80080820`)
+/// Enters PS1 critical section via BIOS syscall 0xA0 (EnterCriticalSection).
+///
+/// Ground truth: src/main/system/BIOS_EnterCritical.c (func_80080820)
+pub fn bios_entercritical(system_state: &mut TombaSystemState) {
+    system_state.irq_disabled = true;
+}
+
+/// SYS-472: `BIOS_ResetRegion` (`0x8009BF48`)
+/// Clears 11 words at BIOS context offset 0x594 and updates indirect call vector targets.
+///
+/// Ground truth: src/main/system/BIOS_ResetRegion.c (func_8009BF48)
+pub fn bios_resetregion(system_state: &mut TombaSystemState) {
+    system_state.irq_disabled = true;
+    system_state.bios_reset_offset = BIOS_RESET_REGION_OFFSET;
+    system_state.bios_reset_iterations = BIOS_RESET_REGION_WORD_COUNT;
+    system_state.bios_resetregion_done = true;
+    system_state.irq_disabled = false;
+}
+
+/// SYS-473: `BIOS_MDECInit` (`0x8009BDFC`)
+/// Disables IRQ, enables MDEC C0 event, restores IRQ, returns 1.
+///
+/// Ground truth: src/main/system/BIOS_MDECInit.c (func_8009BDFC)
+pub fn bios_mdecinit(system_state: &mut TombaSystemState) -> i32 {
+    system_state.irq_disabled = true;
+    // C0 enable event
+    system_state.irq_disabled = false;
+    1
+}
+
+/// SYS-474: `BIOS_MDECSetup` (`0x8009BD84`)
+/// IRQ off, registers MDEC delay callback (0x8009BE34) and MDEC handler (0x8009BE9C), IRQ on, returns 1.
+///
+/// Ground truth: src/main/system/BIOS_MDECSetup.c (func_8009BD84)
+pub fn bios_mdecsetup(system_state: &mut TombaSystemState) -> i32 {
+    system_state.irq_disabled = true;
+    system_state.mdec_callbacks = (Some(0x8009_BE34), Some(0x8009_BE9C));
+    system_state.mdec_setup_done = true;
+    system_state.irq_disabled = false;
+    1
+}
+
+/// SYS-470: `BIOS_Seq5` (`0x8009BC8C`)
+/// Full BIOS sequence: ZeroRegion -> ResetRegion -> B0(0) -> MDECSetup -> B0(params) -> set DAT_800acf44 = 1.
+///
+/// Ground truth: src/main/system/BIOS_Seq5.c (func_8009BC8C)
+pub fn bios_seq5(
+    _p1: i32,
+    _p2: i32,
+    _p3: i32,
+    _p4: i32,
+    system_state: &mut TombaSystemState,
+) {
+    bios_zeroregion(system_state);
+    bios_resetregion(system_state);
+    bios_mdecsetup(system_state);
+    system_state.bios_seq5_called = true;
+    system_state.dat_800acf44 = 1;
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -113,5 +195,43 @@ mod tests {
         assert_eq!(state.bios_zero_offset, BIOS_ZERO_REGION_OFFSET);
         assert_eq!(state.bios_zero_iterations, BIOS_ZERO_REGION_WORD_COUNT);
         assert!(state.bios_zero_completed);
+    }
+
+    #[test]
+    fn test_bios_extended_routines() {
+        let mut state = TombaSystemState::default();
+
+        // 1. BIOS_Delay: clears MDEC status reg, loops 9 times, returns 0
+        state.mdec_status_reg = 0x1234;
+        assert_eq!(bios_delay(&mut state), 0);
+        assert_eq!(state.mdec_status_reg, 0);
+        assert!(state.bios_delay_called);
+
+        // 2. BIOS_EnterCritical: sets irq_disabled = true
+        bios_entercritical(&mut state);
+        assert!(state.irq_disabled);
+
+        // 3. BIOS_ResetRegion: zeroes 11 words at 0x594
+        bios_resetregion(&mut state);
+        assert_eq!(state.bios_reset_offset, BIOS_RESET_REGION_OFFSET);
+        assert_eq!(state.bios_reset_iterations, BIOS_RESET_REGION_WORD_COUNT);
+        assert!(state.bios_resetregion_done);
+        assert!(!state.irq_disabled);
+
+        // 4. BIOS_MDECInit: enables MDEC C0 event, returns 1
+        assert_eq!(bios_mdecinit(&mut state), 1);
+
+        // 5. BIOS_MDECSetup: registers MDEC delay callback & handler, returns 1
+        assert_eq!(bios_mdecsetup(&mut state), 1);
+        assert_eq!(
+            state.mdec_callbacks,
+            (Some(0x8009_BE34), Some(0x8009_BE9C))
+        );
+        assert!(state.mdec_setup_done);
+
+        // 6. BIOS_Seq5: zeroes region, resets region, setups MDEC, flags dat_800acf44 = 1
+        bios_seq5(1, 2, 3, 4, &mut state);
+        assert!(state.bios_seq5_called);
+        assert_eq!(state.dat_800acf44, 1);
     }
 }

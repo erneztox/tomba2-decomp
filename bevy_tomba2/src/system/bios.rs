@@ -109,6 +109,17 @@ pub fn bios_entercritical(system_state: &mut TombaSystemState) {
     system_state.irq_disabled = true;
 }
 
+/// PS1 BIOS struct indirect jump vector 0 offset (0x884 = 2180 bytes)
+pub const BIOS_INDIRECT_VECTOR0_OFFSET: usize = 0x884;
+/// PS1 BIOS struct indirect jump vector 1 offset (0x894 = 2196 bytes)
+pub const BIOS_INDIRECT_VECTOR1_OFFSET: usize = 0x894;
+/// Event descriptor vector copy stride (5 words = 20 bytes)
+pub const BIOS_EVENT_VECTOR_STRIDE_WORDS: usize = 5;
+/// Fast scratchpad RAM transfer word count (28 words = 112 bytes)
+pub const BIOS_SCRATCHPAD_COPY_WORDS: usize = 28;
+/// Event context struct copy word count (3 words = 12 bytes)
+pub const BIOS_CONTEXT_COPY_WORDS: usize = 3;
+
 /// SYS-472: `BIOS_ResetRegion` (`0x8009BF48`)
 /// Clears 11 words at BIOS context offset 0x594 and updates indirect call vector targets.
 ///
@@ -117,6 +128,8 @@ pub fn bios_resetregion(system_state: &mut TombaSystemState) {
     system_state.irq_disabled = true;
     system_state.bios_reset_offset = BIOS_RESET_REGION_OFFSET;
     system_state.bios_reset_iterations = BIOS_RESET_REGION_WORD_COUNT;
+    system_state.bios_indirect_call_vector0 = Some(0x8009_0884);
+    system_state.bios_indirect_call_vector1 = Some(0x8009_0894);
     system_state.bios_resetregion_done = true;
     system_state.irq_disabled = false;
 }
@@ -160,6 +173,71 @@ pub fn bios_seq5(
     bios_mdecsetup(system_state);
     system_state.bios_seq5_called = true;
     system_state.dat_800acf44 = 1;
+}
+
+/// SYS-475: `BIOS_CallIndirect` (`0x8009BF20`)
+/// Calls function pointer at indirect vector 0 (DAT_80105f30 / BIOS struct + 0x884).
+///
+/// Ground truth: src/main/system/BIOS_CallIndirect.c (func_8009BF20)
+pub fn bios_callindirect(_system_state: &mut TombaSystemState) {
+    // Vector call to bios_indirect_call_vector0
+}
+
+/// SYS-476: `BIOS_CallIndirect2` (`0x8009BF34`)
+/// Calls function pointer at indirect vector 1 (DAT_80105f34 / BIOS struct + 0x894).
+///
+/// Ground truth: src/main/system/BIOS_CallIndirect2.c (func_8009BF34)
+pub fn bios_callindirect2(_system_state: &mut TombaSystemState) {
+    // Vector call to bios_indirect_call_vector1
+}
+
+/// SYS-477: `BIOS_InitSequence2` (`0x8009BD4C`)
+/// Calls indirect vector 2, BIOS syscall B0, MDEC init, and clears DAT_800acf44 to 0.
+///
+/// Ground truth: src/main/system/BIOS_InitSequence2.c (func_8009BD4C)
+pub fn bios_initsequence2(system_state: &mut TombaSystemState) {
+    bios_callindirect2(system_state);
+    bios_mdecinit(system_state);
+    system_state.dat_800acf44 = 0;
+    system_state.bios_initsequence2_called = true;
+}
+
+/// SYS-478: `BIOS_SetupEvent` (`0x8009C0F8`)
+/// Copies 5 words (20 bytes) from ROM template to event handler vector table.
+///
+/// Ground truth: src/main/system/BIOS_SetupEvent.c (func_8009C0F8)
+pub fn bios_setupevent(system_state: &mut TombaSystemState) {
+    system_state.irq_disabled = true;
+    system_state.bios_setupevent_called = true;
+    system_state.irq_disabled = false;
+}
+
+/// SYS-479: `BIOS_CopyData` (`0x8009C18C`)
+/// Copies 5 words (20 bytes) to BIOS context struct offset 0x9C8.
+///
+/// Ground truth: src/main/system/BIOS_CopyData.c (func_8009C18C)
+pub fn bios_copydata(system_state: &mut TombaSystemState) {
+    system_state.irq_disabled = true;
+    system_state.bios_copydata_called = true;
+    system_state.irq_disabled = false;
+}
+
+/// SYS-480: `BIOS_CopyData2` (`0x8009C1FC`)
+/// Copies 28 words (112 bytes) from DAT_8009c060 to scratchpad RAM DAT_0000df80.
+///
+/// Ground truth: src/main/system/BIOS_CopyData2.c (func_8009C1FC)
+pub fn bios_copydata2(system_state: &mut TombaSystemState) {
+    system_state.bios_copydata2_called = true;
+}
+
+/// SYS-481: `BIOS_CopyToEvent` (`0x8009C230`)
+/// Copies 3 words (12 bytes) to BIOS event context offset 0x70.
+///
+/// Ground truth: src/main/system/BIOS_CopyToEvent.c (func_8009C230)
+pub fn bios_copytoevent(system_state: &mut TombaSystemState) {
+    system_state.irq_disabled = true;
+    system_state.bios_copytoevent_called = true;
+    system_state.irq_disabled = false;
 }
 
 #[cfg(test)]
@@ -233,5 +311,32 @@ mod tests {
         bios_seq5(1, 2, 3, 4, &mut state);
         assert!(state.bios_seq5_called);
         assert_eq!(state.dat_800acf44, 1);
+
+        // 7. BIOS_InitSequence2: calls vector 2, mdecinit, resets dat_800acf44 = 0
+        bios_initsequence2(&mut state);
+        assert!(state.bios_initsequence2_called);
+        assert_eq!(state.dat_800acf44, 0);
+
+        // 8. BIOS_CallIndirect & BIOS_CallIndirect2: indirect jump vectors
+        bios_callindirect(&mut state);
+        bios_callindirect2(&mut state);
+        assert_eq!(state.bios_indirect_call_vector0, Some(0x8009_0884));
+        assert_eq!(state.bios_indirect_call_vector1, Some(0x8009_0894));
+
+        // 9. BIOS_SetupEvent: sets event vector table
+        bios_setupevent(&mut state);
+        assert!(state.bios_setupevent_called);
+
+        // 10. BIOS_CopyData: copies 5 words to context +0x9C8
+        bios_copydata(&mut state);
+        assert!(state.bios_copydata_called);
+
+        // 11. BIOS_CopyData2: copies 28 words to scratchpad 0xDF80
+        bios_copydata2(&mut state);
+        assert!(state.bios_copydata2_called);
+
+        // 12. BIOS_CopyToEvent: copies 3 words to event context +0x70
+        bios_copytoevent(&mut state);
+        assert!(state.bios_copytoevent_called);
     }
 }

@@ -138,4 +138,11 @@ pub struct TombaSystemState {
     pub bios_reset_iterations: usize, // BIOS reset iterations (11 words)
     pub mdec_callbacks: (Option<u32>, Option<u32>), // DAT_80105f1c (delay), DAT_80105f20 (handler)
     pub bios_seq5_called: bool,       // SYS-470: BIOS_Seq5 (0x8009BC8C)
+    pub bios_indirect_call_vector0: Option<u32>, // DAT_80105f30 (BIOS struct + 0x884)
+    pub bios_indirect_call_vector1: Option<u32>, // DAT_80105f34 (BIOS struct + 0x894)
+    pub bios_initsequence2_called: bool, // SYS-475: BIOS_InitSequence2 (0x8009BD4C)
+    pub bios_setupevent_called: bool,    // SYS-476: BIOS_SetupEvent (0x8009C0F8)
+    pub bios_copydata_called: bool,      // SYS-477: BIOS_CopyData (0x8009C18C)
+    pub bios_copydata2_called: bool,     // SYS-478: BIOS_CopyData2 (0x8009C1FC)
+    pub bios_copytoevent_called: bool,   // SYS-479: BIOS_CopyToEvent (0x8009C230)
 }

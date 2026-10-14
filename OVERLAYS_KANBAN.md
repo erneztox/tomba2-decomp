@@ -9,7 +9,7 @@
 
 | Overlay | Código | Nombre del Nivel / Subsistema | Total Funciones | Mapeo Bevy (Rust) | Estado |
 | :--- | :---: | :--- | :---: | :--- | :---: |
-| **`A00`** | `OV-A00` | **Town of the Fishermen** | 1041 | `overlays::a00_fishermen` | **0 / 1041** |
+| **`A00`** | `OV-A00` | **Town of the Fishermen** | 1041 | `overlays::a00_fishermen` | **1041 / 1041 (100%)** |
 | **`A01`** | `OV-A01` | **Large Mine Underground** | 706 | `overlays::a01_mines` | **0 / 706** |
 | **`A02`** | `OV-A02` | **Coal Mining Town** | 260 | `overlays::a02_coal_town` | **0 / 260** |
 | **`A03`** | `OV-A03` | **Trolley Minigame** | 31 | `overlays::a03_trolley` | **0 / 31** |
@@ -37,7 +37,7 @@
 | **`OPN`** | `OV-OPN` | **Opening Sequence** | 12 | `overlays::opn_opening` | **0 / 12** |
 | **`SOP`** | `OV-SOP` | **Cinematic Intro** | 37 | `overlays::sop_intro` | **0 / 37** |
 | **`START`** | `OV-STA` | **CD Boot Stub** | 0 | `overlays::start_stub` | **0 / 0** |
-| **TOTAL** | — | **Los 28 Overlays Canónicos de Tomba! 2** | **5411** | `bevy_tomba2::overlays` | **0 / 5411 (0.0%)** |
+| **TOTAL** | — | **Los 28 Overlays Canónicos de Tomba! 2** | **5411** | `bevy_tomba2::overlays` | **1041 / 5411 (19.2%)** |
 
 ---
 

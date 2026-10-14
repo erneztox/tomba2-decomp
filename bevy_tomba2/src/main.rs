@@ -7,6 +7,7 @@ pub mod entity;
 pub mod events;
 pub mod items;
 mod player;
+pub mod overlays;
 pub mod system;
 pub mod ui;
 
@@ -45,6 +46,7 @@ fn main() {
         .init_resource::<TombaAudioSystem>()
         .init_resource::<TombaEntityManager>()
         .init_resource::<TombaSystemState>()
+        .add_plugins(overlays::TombaOverlaysPlugin)
         .add_systems(Startup, (setup_collision_data, setup_scene, setup_tomba_animations))
         .add_systems(
             Update,

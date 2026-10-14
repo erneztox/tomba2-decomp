@@ -10,6 +10,7 @@
 
 pub mod a00_fishermen;
 pub mod a01_mines;
+pub mod a04_kujara_ranch;
 pub mod a06_donglin_forest;
 pub mod a08_water_temple;
 
@@ -26,6 +27,9 @@ pub use a00_fishermen::{
 pub use a01_mines::{
     A01OverlayRuntime, A01_OVERLAY_ID, dispatch_a01_handler,
 };
+pub use a04_kujara_ranch::{
+    A04OverlayRuntime, A04_OVERLAY_ID, dispatch_a04_handler,
+};
 pub use a06_donglin_forest::{
     A06OverlayRuntime, A06_OVERLAY_ID, dispatch_a06_handler,
 };
@@ -39,6 +43,7 @@ pub enum ActiveOverlayId {
     #[default]
     A00Fishermen,
     A01CoalMine,
+    A04KujaraRanch,
     A06DonglinForest,
     A08WaterTemple,
     Other(u8),
@@ -53,6 +58,8 @@ pub struct OverlayManager {
     pub a00_runtime: A00OverlayRuntime,
     /// Runtime state for A01 (Large Mine Underground)
     pub a01_runtime: A01OverlayRuntime,
+    /// Runtime state for A04 (Kujara Ranch Area)
+    pub a04_runtime: A04OverlayRuntime,
     /// Runtime state for A06 (Donglin Forest)
     pub a06_runtime: A06OverlayRuntime,
     /// Runtime state for A08 (Water Temple)
@@ -65,6 +72,7 @@ impl Default for OverlayManager {
             active_overlay: ActiveOverlayId::A00Fishermen,
             a00_runtime: A00OverlayRuntime::default(),
             a01_runtime: A01OverlayRuntime::default(),
+            a04_runtime: A04OverlayRuntime::default(),
             a06_runtime: A06OverlayRuntime::default(),
             a08_runtime: A08OverlayRuntime::default(),
         }
@@ -102,6 +110,16 @@ pub fn dispatch_overlay_entity_handler(
             audio,
             events,
             player_pos,
+        ),
+        4 => dispatch_a04_handler(
+            handler_addr,
+            lifecycle,
+            physics,
+            &mut overlay_manager.a04_runtime,
+            audio,
+            events,
+            player_pos,
+            frame_counter,
         ),
         6 => dispatch_a06_handler(
             handler_addr,

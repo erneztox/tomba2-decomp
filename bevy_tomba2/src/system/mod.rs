@@ -38,6 +38,37 @@ pub struct EventDescriptor {
     pub pending_flag: u8,  // +0x6f: DAT_801fe06f (pending trigger flag)
 }
 
+/// PS1 digital joypad button bitmasks (16-bit)
+pub const PAD_SELECT: u16 = 0x0001;
+pub const PAD_L3: u16 = 0x0002;
+pub const PAD_R3: u16 = 0x0004;
+pub const PAD_START: u16 = 0x0008;
+pub const PAD_UP: u16 = 0x0010;
+pub const PAD_RIGHT: u16 = 0x0020;
+pub const PAD_DOWN: u16 = 0x0040;
+pub const PAD_LEFT: u16 = 0x0080;
+pub const PAD_L2: u16 = 0x0100;
+pub const PAD_R2: u16 = 0x0200;
+pub const PAD_L1: u16 = 0x0400;
+pub const PAD_R1: u16 = 0x0800;
+pub const PAD_TRIANGLE: u16 = 0x1000;
+pub const PAD_CIRCLE: u16 = 0x2000;
+pub const PAD_CROSS: u16 = 0x4000;
+pub const PAD_SQUARE: u16 = 0x8000;
+
+/// Controller Pad State for PS1 Gamepad Port (0x800BF498)
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub struct PadState {
+    pub buttons_held: u16,
+    pub buttons_just_pressed: u16,
+    pub buttons_just_released: u16,
+    pub analog_left_x: i8,
+    pub analog_left_y: i8,
+    pub analog_right_x: i8,
+    pub analog_right_y: i8,
+    pub is_connected: bool,
+}
+
 /// Address of System_InitMain in original PS1 memory (0x8001CFC8)
 #[allow(non_upper_case_globals)]
 pub const SystemInitMain: u32 = 0x8001CFC8;
@@ -94,4 +125,6 @@ pub struct TombaSystemState {
     pub prev_root_counter: u32,       // DAT_800aacb0: previous root timer snapshot
     pub last_synced_vsync_tick: i32,  // DAT_800aacb4: last synchronized VSync tick
     pub timer_ctrl_status: u32,       // *DAT_800aaca8: timer control status register
+    pub pads: [PadState; 2],          // Joypad state for Port 1 and Port 2 (0x800BF498)
+    pub last_pad_read_cmd: u8,        // Last command byte passed to Sys_PadRead
 }

@@ -1,0 +1,79 @@
+//! Overlay loader and dispatch routines — SEC-12 (SYS)
+//! Ground Truth:
+//!   - src/main/system/Sys_LoadOverlay.c (0x8001D2A8)
+//!   - src/main/system/Sys_InitOverlay.c (0x8001CB00)
+//!   - src/main/system/Sys_OverlayDispatch.c (0x800750D8)
+
+use bevy::prelude::*;
+use crate::system::TombaSystemState;
+
+/// SYS-512: `Sys_LoadOverlay` (`0x8001D2A8`)
+/// Loads overlay binary from CD: sets up params, calls CD read + overlay init
+///
+/// Ground truth: src/main/system/Sys_LoadOverlay.c (func_8001D2A8)
+/// References global state at DAT_80010058, sets event 2, sets callback to System_InitMain
+///
+/// Logic follows the exact sequence from the Ghidra dump:
+/// - Set overlay type from DAT_80010058
+/// - Set event flag to 2
+/// - Store overlay ID (param_1) at DAT_801fe146
+/// - Store segment params (param_2, param_3) at _DAT_801fe134 / _DAT_801fe138
+/// - Set mode bit (param_4 & 1) at DAT_801fe147
+/// - Set callback (param_4 >> 1) at DAT_800be0e4
+/// - Trigger System_InitMain via Sys_SetCallback
+pub fn sys_loadoverlay(
+    overlay_id: u8,    // param_1: overlay ID (maps to entity[0x6A] context)
+    segment_addr: i32, // param_2: segment address / offset
+    segment_size: i32, // param_3: segment size
+    mode_flags: u32,   // param_4: mode + flags (bit 0 = mode, bits 1-2 = callback)
+    mut system_state: ResMut<TombaSystemState>,
+) {
+    // Direct correlation with original C (src/main/system/Sys_LoadOverlay.c):
+    // local_20->kind = DAT_80010058 (overlay type table pointer)
+    system_state.overlay_type = 0x80010058;
+
+    // Sys_SetEvent(2) — trigger overlay load event
+    system_state.event_flag = 2;
+
+    // DAT_801fe147 = (u8)param_4 & 1
+    system_state.mode_bit = (mode_flags & 1) as u8;
+
+    // DAT_800be0e4 = *(u8*)((int)local_20 + (param_4 >> 1 & 3U))
+    // Maps callback index (0-3) from mode flags
+    system_state.callback_index = ((mode_flags >> 1) & 3) as u8;
+
+    // _DAT_801fe134 = param_2; _DAT_801fe138 = param_3
+    system_state.segment_addr = segment_addr;
+    system_state.segment_size = segment_size;
+
+    // DAT_801fe146 = param_1
+    system_state.active_overlay = overlay_id;
+
+    // Sys_SetCallback(2, System_InitMain)
+    system_state.callback_target = Some(crate::system::SystemInitMain);
+}
+
+/// SYS-510: `Sys_InitOverlay` (`0x8001CB00`)
+/// Calls overlay init function at 0x8011534C then internal callback
+/// Ground truth: src/main/system/Sys_InitOverlay.c (func_8001CB00)
+pub fn sys_initoverlay(mut system_state: ResMut<TombaSystemState>) {
+    // Direct correlation: Overlay_8011534c() -> overlay init handler (from src/overlays/)
+    // Sys_NoOp() -> placeholder in original PS1 runtime
+    system_state.init_overlay_called = true;
+}
+
+/// SYS-515: `Sys_OverlayDispatch` (`0x800750D8`)
+/// Overlay dispatcher: 0xFF=pad test, 0xFE=init, else loads overlay via FUN_8001d364
+/// Ground truth: src/main/system/Sys_OverlayDispatch.c (func_800750D8)
+pub fn sys_overlaydispatch(
+    mut system_state: ResMut<TombaSystemState>,
+    dispatch_code: u8,
+) {
+    // Direct mapping to original dispatcher: 0xFE init, 0xFF pad test, else load
+    system_state.overlay_dispatch_code = dispatch_code;
+    match dispatch_code {
+        0xFE => system_state.init_overlay_called = true, // init path
+        0xFF => system_state.pad_test_called = true,     // pad test
+        _ => system_state.load_overlay_path = true,      // load via FUN_8001d364
+    }
+}

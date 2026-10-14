@@ -1,4 +1,9 @@
+pub mod bios;
 pub mod dispatcher;
+pub mod events;
+pub mod gpu;
+pub mod input;
+pub mod overlay;
 
 use bevy::prelude::*;
 

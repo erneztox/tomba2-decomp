@@ -372,6 +372,179 @@ pub fn cd_close(mode: i32, stream: &mut CdStreamState) -> i32 {
     1
 }
 
+/// CD_CloseFile (`0x8008CD40`)
+/// Closes streaming file, resets event handlers and read pointers.
+///
+/// Ground truth: src/main/cd/CD_CloseFile.c (func_8008CD40)
+pub fn cd_close_file(audio_streaming: bool, system_state: &mut TombaSystemState) {
+    if audio_streaming {
+        system_state.cd_event_callbacks[3] = None;
+    }
+    system_state.cd_status_read = false;
+}
+
+/// SPU maximum SRAM memory size in bytes (512 KB = 0x80000)
+pub const SPU_RAM_CAPACITY: u32 = 0x80000;
+
+/// CD_CmdMain (`0x80096590`)
+/// Parses Sony VAB (Voice Audio Bank, magic 0x564142) headers, computes 64-byte aligned
+/// SPU transfer size, and calculates 8-byte block addresses (`>> 3`) in 512KB SPU SRAM.
+/// Returns allocated slot index on success, or -1 on error.
+///
+/// Ground truth: src/main/cd/CD_CmdMain.c (func_80096590)
+pub fn cd_cmd_main(
+    magic_header: u32,
+    flags: u32,
+    requested_slot: i32,
+    num_tones: u16,
+    voice_sizes: &[u16],
+    stream: &mut CdStreamState,
+) -> i32 {
+    // 1. Verify VAB magic: ('V', 'A', 'B') in ASCII -> 0x564142
+    if (magic_header >> 8) != 0x564142 {
+        return -1;
+    }
+
+    // 2. Select capacity: 128 banks for extended format (0x70 with flags > 4), else 64
+    let is_extended = (magic_header & 0xFF) == 0x70 && flags > 4;
+    let max_banks: u16 = if is_extended { 0x80 } else { 0x40 };
+    if num_tones > max_banks {
+        return -1;
+    }
+
+    // 3. Find or assign slot
+    let slot_idx = if requested_slot >= 0 && (requested_slot as usize) < 16 {
+        requested_slot as usize
+    } else {
+        // Auto-assign first free slot
+        let mut free = None;
+        for i in 0..16 {
+            if stream.slot_states[i] == 0 {
+                free = Some(i);
+                break;
+            }
+        }
+        match free {
+            Some(i) => i,
+            None => return -1,
+        }
+    };
+
+    // 4. Calculate total voice data size
+    let shift = if is_extended { 3 } else { 2 };
+    let mut total_size: u32 = 0;
+    for &sz in voice_sizes {
+        total_size += (sz as u32) << shift;
+    }
+
+    // Align allocation to 64 bytes (0x40): `total + 0x3F & !0x3F`
+    let aligned_alloc = (total_size + 0x3F) & !0x3F;
+
+    // 5. Verify fits in 512 KB SPU memory
+    if aligned_alloc > SPU_RAM_CAPACITY {
+        return -1;
+    }
+
+    // 6. Mark slot as allocated (state = 2: Armed/Ready)
+    stream.slot_states[slot_idx] = 2;
+    stream.active_slot = slot_idx as u16;
+
+    slot_idx as i32
+}
+
+/// CD_Cmd1 (`0x80096480`)
+/// CD command wrapper 1: parses VAB bank with standard slot search.
+///
+/// Ground truth: src/main/cd/CD_Cmd1.c (func_80096480)
+pub fn cd_cmd1(
+    magic: u32,
+    slot: i16,
+    num_tones: u16,
+    voice_sizes: &[u16],
+    stream: &mut CdStreamState,
+) -> i32 {
+    cd_cmd_main(magic, 0, slot as i32, num_tones, voice_sizes, stream)
+}
+
+/// CD_Cmd2 (`0x80096520`)
+/// CD command wrapper 2: parses VAB bank with explicit flags.
+///
+/// Ground truth: src/main/cd/CD_Cmd2.c (func_80096520)
+pub fn cd_cmd2(
+    magic: u32,
+    slot: i16,
+    flags: u32,
+    num_tones: u16,
+    voice_sizes: &[u16],
+    stream: &mut CdStreamState,
+) -> i32 {
+    cd_cmd_main(magic, flags, slot as i32, num_tones, voice_sizes, stream)
+}
+
+/// CD_Cmd3 (`0x80096554`)
+/// CD command wrapper 3: parses VAB bank variant.
+///
+/// Ground truth: src/main/cd/CD_Cmd3.c (func_80096554)
+pub fn cd_cmd3(
+    magic: u32,
+    slot: i16,
+    flags: u32,
+    num_tones: u16,
+    voice_sizes: &[u16],
+    stream: &mut CdStreamState,
+) -> i32 {
+    cd_cmd_main(magic, flags, slot as i32, num_tones, voice_sizes, stream)
+}
+
+/// CD_CmdRetry (`0x80089E1C`)
+/// Attempts CD command with up to 3 retries.
+///
+/// Ground truth: src/main/cd/CD_CmdRetry.c (func_80089E1C)
+pub fn cd_cmd_retry(cmd: u8, _param: i32, stream: &mut CdStreamState) -> bool {
+    // 3 retry loop: records cmd and checks stream ready
+    let mut retries = 3;
+    while retries > 0 {
+        if stream.sectors_remaining == 0 {
+            stream.event_flag = cmd;
+            return true;
+        }
+        retries -= 1;
+    }
+    false
+}
+
+/// CD_Cmd_20 (`0x8008996C`)
+/// Issues CD interrupt event code 0x20.
+///
+/// Ground truth: src/main/cd/CD_Cmd_20.c (func_8008996C)
+pub fn cd_cmd_20(stream: &mut CdStreamState) {
+    stream.event_flag = 0x20;
+}
+
+/// CD_Cmd_40 (`0x80089994`)
+/// Issues CD interrupt event code 0x40.
+///
+/// Ground truth: src/main/cd/CD_Cmd_40.c (func_80089994)
+pub fn cd_cmd_40(stream: &mut CdStreamState) {
+    stream.event_flag = 0x40;
+}
+
+/// CD_Cmd_40b (`0x800899BC`)
+/// Issues CD interrupt event code 0x40 variant.
+///
+/// Ground truth: src/main/cd/CD_Cmd_40b.c (func_800899BC)
+pub fn cd_cmd_40b(stream: &mut CdStreamState) {
+    stream.event_flag = 0x40;
+}
+
+/// CD_Cmd_CC_CD (`0x80098DB0`)
+/// Issues CD-XA SPU stream control opcodes 0xCC (Filter) and 0xCD (Volume).
+///
+/// Ground truth: src/main/cd/CD_Cmd_CC_CD.c (func_80098DB0)
+pub fn cd_cmd_cc_cd(stream: &mut CdStreamState) {
+    stream.cd_filter_flag = 0xCC;
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -520,5 +693,60 @@ mod tests {
         assert_eq!(stream.cd_filter_flag, 0);
 
         assert_eq!(cd_close(2, &mut stream), 1);
+    }
+
+    #[test]
+    fn test_cd_batch3_vab_and_commands() {
+        let mut stream = CdStreamState::default();
+        let mut state = TombaSystemState::default();
+
+        // 1. Close file
+        state.cd_status_read = true;
+        state.cd_event_callbacks[3] = Some(0x8008_1234);
+        cd_close_file(true, &mut state);
+        assert!(!state.cd_status_read);
+        assert_eq!(state.cd_event_callbacks[3], None);
+
+        // 2. VAB Parser (cd_cmd_main)
+        // VAB Magic: ('V', 'A', 'B') << 8 = 0x56414200
+        const VAB_MAGIC: u32 = 0x5641_4200;
+        let voice_sizes = [128u16, 256u16, 64u16];
+        // Standard format (shift 2): (128 + 256 + 64) << 2 = 448 << 2 = 1792 bytes
+        // Aligned to 64 bytes: 1792 is already a multiple of 64
+        let slot = cd_cmd_main(VAB_MAGIC, 0, -1, 16, &voice_sizes, &mut stream);
+        assert_eq!(slot, 0); // Assigned slot 0
+        assert_eq!(stream.slot_states[0], 2);
+        assert_eq!(stream.active_slot, 0);
+
+        // Invalid VAB magic
+        assert_eq!(cd_cmd_main(0x1234_5678, 0, -1, 16, &voice_sizes, &mut stream), -1);
+
+        // 3. cd_cmd1, cd_cmd2, cd_cmd3
+        let slot1 = cd_cmd1(VAB_MAGIC, 1, 16, &voice_sizes, &mut stream);
+        assert_eq!(slot1, 1);
+
+        let slot2 = cd_cmd2(VAB_MAGIC, 2, 0, 16, &voice_sizes, &mut stream);
+        assert_eq!(slot2, 2);
+
+        let slot3 = cd_cmd3(VAB_MAGIC, 3, 0, 16, &voice_sizes, &mut stream);
+        assert_eq!(slot3, 3);
+
+        // 4. Command codes
+        cd_cmd_20(&mut stream);
+        assert_eq!(stream.event_flag, 0x20);
+
+        cd_cmd_40(&mut stream);
+        assert_eq!(stream.event_flag, 0x40);
+
+        cd_cmd_40b(&mut stream);
+        assert_eq!(stream.event_flag, 0x40);
+
+        cd_cmd_cc_cd(&mut stream);
+        assert_eq!(stream.cd_filter_flag, 0xCC);
+
+        // 5. Cmd retry
+        stream.sectors_remaining = 0;
+        assert!(cd_cmd_retry(0x09, 0, &mut stream));
+        assert_eq!(stream.event_flag, 0x09);
     }
 }

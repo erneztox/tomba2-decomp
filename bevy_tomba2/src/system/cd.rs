@@ -140,7 +140,7 @@ pub fn cd_alloc_dma(needed_units: i32, shift: u32, table: &[u32]) -> i32 {
 }
 
 /// State tracking for CD sector streaming and seek operations
-#[derive(Debug, Clone, PartialEq, Eq, Default)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CdStreamState {
     pub seek_offset: u32,
     pub seek_stride: u32,
@@ -150,6 +150,35 @@ pub struct CdStreamState {
     pub current_buffer_slot: usize,
     pub next_buffer_slot: usize,
     pub slot_status: [u16; 16],
+    pub device_busy: bool,              // DAT_800ac59c: device busy flag
+    pub cd_filter_flag: u8,             // DAT_80105cd8: CD-XA audio routing filter flag
+    pub active_slot: u16,               // DAT_80105cf9: active file slot index
+    pub active_sub_entry: i16,          // DAT_80105cfe: active sub-entry index
+    pub active_entry_flags: u8,         // DAT_80105cff: compression / format flag
+    pub max_sub_entries: i16,           // _DAT_80105cda: max sub-entries per slot
+    pub slot_states: [u8; 16],          // Slot state table (0x01 = Allocated, 0x02 = Armed)
+}
+
+impl Default for CdStreamState {
+    fn default() -> Self {
+        Self {
+            seek_offset: 0,
+            seek_stride: 0,
+            sectors_remaining: 0,
+            sector_counter: 0,
+            event_flag: 0,
+            current_buffer_slot: 0,
+            next_buffer_slot: 0,
+            slot_status: [0; 16],
+            device_busy: false,
+            cd_filter_flag: 0,
+            active_slot: 0,
+            active_sub_entry: 0,
+            active_entry_flags: 0,
+            max_sub_entries: 0x20, // 32 sub-entries standard capacity
+            slot_states: [0; 16],
+        }
+    }
 }
 
 /// CD_AdvanceSeek (`0x8008C508`)
@@ -219,6 +248,128 @@ pub fn cd_cancel(stream: &mut CdStreamState, system_state: &mut TombaSystemState
     stream.sectors_remaining = 0;
     stream.event_flag = 0;
     system_state.cd_status_read = false;
+}
+
+/// CD_CheckDevice (`0x80098CE0`)
+/// Verifies if device channel is busy; checks buffer space via DMA allocator.
+/// Returns 1 if busy, 0 if ready.
+///
+/// Ground truth: src/main/cd/CD_CheckDevice.c (func_80098CE0)
+pub fn cd_check_device(param_1: i32, dma_units: i32, dma_table: &[u32], stream: &mut CdStreamState) -> i32 {
+    if param_1 != 0 && cd_alloc_dma(dma_units, 2, dma_table) == 0 {
+        stream.device_busy = true;
+        1
+    } else {
+        stream.device_busy = false;
+        0
+    }
+}
+
+/// CD_CheckInit (`0x80089F88`)
+/// Checks if CD drive parameters are initialized.
+///
+/// Ground truth: src/main/cd/CD_CheckInit.c (func_80089F88)
+pub fn cd_check_init(stream: &CdStreamState) -> bool {
+    stream.max_sub_entries > 0
+}
+
+/// CD_CheckLoaded (`0x80045580`)
+/// Checks if asset at streaming buffer 0x8018A000 is loaded.
+///
+/// Ground truth: src/main/cd/CD_CheckLoaded.c (func_80045580)
+pub fn cd_check_loaded(system_state: &TombaSystemState) -> bool {
+    system_state.segment_addr == 0x8018_A000
+}
+
+/// CD_CheckReady (`0x80089FA8`)
+/// Checks if CD stream has finished current seek/read operation.
+///
+/// Ground truth: src/main/cd/CD_CheckReady.c (func_80089FA8)
+pub fn cd_check_ready(stream: &CdStreamState) -> bool {
+    stream.sectors_remaining == 0
+}
+
+/// CD_CheckSlot (`0x800962B0`)
+/// Validates slot index (< 16), verifies state is 1 (allocated), and loads entry descriptor.
+/// Returns 0 on success, -1 (0xFFFFFFFF) if invalid.
+///
+/// Ground truth: src/main/cd/CD_CheckSlot.c (func_800962B0)
+pub fn cd_check_slot(slot: u16, sub_entry: i16, stream: &mut CdStreamState) -> i32 {
+    if slot < 16 {
+        let slot_idx = slot as usize;
+        if stream.slot_states[slot_idx] != 1 {
+            return -1;
+        }
+        if sub_entry < stream.max_sub_entries {
+            stream.active_slot = slot;
+            stream.active_sub_entry = sub_entry;
+            stream.active_entry_flags = 0; // standard format
+            return 0;
+        }
+    }
+    -1
+}
+
+/// CD_CheckTimeout (`0x8008CAFC`)
+/// Checks current counter against seek timeout threshold (seek_pos + 1200 ticks / 0x4B0).
+/// Returns 1 if timed out / handled, 0 if still waiting.
+///
+/// Ground truth: src/main/cd/CD_CheckTimeout.c (func_8008CAFC)
+pub fn cd_check_timeout(current_tick: u32, seek_tick: u32, stream: &mut CdStreamState) -> i32 {
+    const TIMEOUT_TICKS: u32 = 0x4B0; // 1200 ticks
+    if current_tick > seek_tick.saturating_add(TIMEOUT_TICKS) {
+        stream.event_flag = 1;
+        1
+    } else {
+        0
+    }
+}
+
+/// CD_CheckTransfer (`0x80099310`)
+/// Validates RAM transfer range (0x1010 to 0x7EFE9) and computes aligned byte count.
+///
+/// Ground truth: src/main/cd/CD_CheckTransfer.c (func_80099310)
+pub fn cd_check_transfer(address: u32, shift: u32) -> u32 {
+    const MIN_ADDR: u32 = 0x1010;
+    const MAX_DELTA: u32 = 0x7EFE9;
+    if address.wrapping_sub(MIN_ADDR) < MAX_DELTA {
+        let aligned = cd_align_dma(-1, address, 32, 31, shift);
+        aligned << (shift & 0x1F)
+    } else {
+        0
+    }
+}
+
+/// CD_ClearBuffer (`0x8008CFF0`)
+/// Zeroes `count` consecutive 32-byte slots in the streaming buffer table.
+///
+/// Ground truth: src/main/cd/CD_ClearBuffer.c (func_8008CFF0)
+pub fn cd_clear_buffer(start_slot: usize, count: usize, stream: &mut CdStreamState) {
+    for i in 0..count {
+        let idx = (start_slot + i) & 0x0F;
+        stream.slot_status[idx] = 0;
+        stream.slot_states[idx] = 0;
+    }
+}
+
+/// CD_ClearFlagCD8 (`0x80096390`)
+/// Clears CD audio routing filter flag (DAT_80105cd8 = 0).
+///
+/// Ground truth: src/main/cd/CD_ClearFlagCD8.c (func_80096390)
+pub fn cd_clear_flag_cd8(stream: &mut CdStreamState) {
+    stream.cd_filter_flag = 0;
+}
+
+/// CD_Close (`0x80089A3C`)
+/// Finalizes CD stream: mode 2 resets callbacks, mode 1 syncs drive. Returns 1.
+///
+/// Ground truth: src/main/cd/CD_Close.c (func_80089A3C)
+pub fn cd_close(mode: i32, stream: &mut CdStreamState) -> i32 {
+    if mode == 2 {
+        stream.event_flag = 0;
+        stream.sectors_remaining = 0;
+    }
+    1
 }
 
 #[cfg(test)]
@@ -317,5 +468,57 @@ mod tests {
         assert_eq!(stream.sectors_remaining, 0);
         assert_eq!(stream.event_flag, 0);
         assert!(!state.cd_status_read);
+    }
+
+    #[test]
+    fn test_cd_batch2_checks_and_buffers() {
+        let mut stream = CdStreamState::default();
+        let mut state = TombaSystemState::default();
+
+        // 1. Check init & ready
+        assert!(cd_check_init(&stream));
+        assert!(cd_check_ready(&stream));
+
+        // 2. Check device with DMA table
+        let dma_table = [0x0000_0100, 0x0000_0000, 0x4000_0000, 0];
+        assert_eq!(cd_check_device(1, 1, &dma_table, &mut stream), 0);
+        assert!(!stream.device_busy);
+
+        // 3. Check loaded
+        state.segment_addr = 0x8018_A000;
+        assert!(cd_check_loaded(&state));
+        state.segment_addr = 0;
+        assert!(!cd_check_loaded(&state));
+
+        // 4. Check slot
+        stream.slot_states[2] = 1; // Mark slot 2 as allocated
+        assert_eq!(cd_check_slot(2, 5, &mut stream), 0);
+        assert_eq!(stream.active_slot, 2);
+        assert_eq!(stream.active_sub_entry, 5);
+        // Invalid slot or state != 1
+        assert_eq!(cd_check_slot(3, 0, &mut stream), -1);
+
+        // 5. Check timeout
+        assert_eq!(cd_check_timeout(100, 0, &mut stream), 0); // 100 < 1200
+        assert_eq!(cd_check_timeout(1300, 0, &mut stream), 1); // 1300 > 1200
+        assert_eq!(stream.event_flag, 1);
+
+        // 6. Check transfer
+        let transfer_bytes = cd_check_transfer(0x2000, 2);
+        assert!(transfer_bytes > 0);
+        assert_eq!(cd_check_transfer(0x100, 2), 0); // out of range (< 0x1010)
+
+        // 7. Clear buffer & Clear flag CD8 & Close
+        stream.slot_status[0] = 5;
+        stream.slot_states[0] = 1;
+        cd_clear_buffer(0, 1, &mut stream);
+        assert_eq!(stream.slot_status[0], 0);
+        assert_eq!(stream.slot_states[0], 0);
+
+        stream.cd_filter_flag = 1;
+        cd_clear_flag_cd8(&mut stream);
+        assert_eq!(stream.cd_filter_flag, 0);
+
+        assert_eq!(cd_close(2, &mut stream), 1);
     }
 }

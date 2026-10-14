@@ -51,8 +51,8 @@ pub struct TombaSystemState {
     pub mode_bit: u8,                 // DAT_801fe147
     pub callback_index: u8,           // DAT_800be0e4 (derived from param_4 >> 1)
     pub active_overlay: u8,           // DAT_801fe146
-    pub segment_addr: i32,            // _DAT_801fe134
-    pub segment_size: i32,            // _DAT_801fe138
+    pub segment_addr: u32,            // _DAT_801fe134 (PS1 memory address)
+    pub segment_size: u32,            // _DAT_801fe138 (PS1 segment size/end address)
     pub callback_target: Option<u32>, // Sys_SetCallback(2, System_InitMain)
     pub noop_called: bool,            // tracking for SYS-513 verification
     pub init_overlay_called: bool,    // SYS-510: Sys_InitOverlay (0x8001CB00)
@@ -85,4 +85,6 @@ pub struct TombaSystemState {
     pub irq_trigger_called: bool,     // IRQ trigger status flag
     pub irq_callbacks: [Option<u32>; 8], // DAT_800abdc0: IRQ callback table (8 slots)
     pub irq_dispatch_count: u32,      // Total times IRQ_Dispatch executed
+    pub overlay_base_addr: u32,       // _g_OverlayBase / DAT_1f800224
+    pub last_loaded_binary_id: Option<u32>, // Last binary ID passed to Sys_LoadBinary
 }

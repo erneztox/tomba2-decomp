@@ -2,6 +2,7 @@
 //! Ground Truth:
 //!   - src/main/system/Sys_LoadOverlay.c (0x8001D2A8)
 //!   - src/main/system/Sys_InitOverlay.c (0x8001CB00)
+//!   - src/main/system/Sys_LoadBinary.c (0x8001D364)
 //!   - src/main/system/Sys_OverlayDispatch.c (0x800750D8)
 
 use bevy::prelude::*;
@@ -17,6 +18,16 @@ pub const OVERLAY_MODE_ASYNC_MASK: u32 = 0x01;
 /// Bits 1-2 of mode_flags (param_4): callback index stored in DAT_800be0e4
 pub const OVERLAY_CALLBACK_INDEX_SHIFT: u32 = 1;
 pub const OVERLAY_CALLBACK_INDEX_MASK: u32 = 0x03;
+
+/// Category shift for binary ID (bits 3..5 select one of 8 overlay tables)
+pub const BINARY_CATEGORY_SHIFT: u32 = 3;
+pub const BINARY_CATEGORY_MASK: u32 = 0x07;
+
+/// Sub-index mask for binary ID (bits 0..2 select entry within category table)
+pub const BINARY_SUB_INDEX_MASK: u32 = 0x07;
+
+/// Multiplier in bytes per sector unit for PS1 binary segments (8 bytes)
+pub const BINARY_BLOCK_UNIT_SIZE: u32 = 8;
 
 /// SYS-512: `Sys_LoadOverlay` (`0x8001D2A8`)
 /// Loads overlay binary from CD: sets up params, calls CD read + overlay init
@@ -34,8 +45,8 @@ pub const OVERLAY_CALLBACK_INDEX_MASK: u32 = 0x03;
 /// - Trigger System_InitMain via Sys_SetCallback
 pub fn sys_loadoverlay(
     overlay_id: u8,    // param_1: overlay ID (maps to entity[0x6A] context)
-    segment_addr: i32, // param_2: segment address / offset
-    segment_size: i32, // param_3: segment size
+    segment_addr: u32, // param_2: segment address / offset
+    segment_size: u32, // param_3: segment size
     mode_flags: u32,   // param_4: mode + flags (bit 0 = mode, bits 1-2 = callback)
     mut system_state: ResMut<TombaSystemState>,
 ) {
@@ -72,19 +83,48 @@ pub fn sys_initoverlay(mut system_state: ResMut<TombaSystemState>) {
     system_state.init_overlay_called = true;
 }
 
+/// SYS-511: `Sys_LoadBinary` (`0x8001D364`)
+/// Computes segment address and size from binary descriptor tables, then calls `sys_loadoverlay`.
+///
+/// Ground truth: src/main/system/Sys_LoadBinary.c (func_8001D364)
+/// Mathematical formulas:
+/// - category = (binary_id >> BINARY_CATEGORY_SHIFT) & BINARY_CATEGORY_MASK
+/// - segment_addr = g_overlay_base + (start_block as u32) * 8
+/// - segment_size = segment_addr + ((block_count as u32) - 2) * 8
+/// - mode_flags = (flags & 1) | 2
+pub fn sys_loadbinary(
+    binary_id: u32,
+    flags: u32,
+    start_block: u16,
+    block_count: u16,
+    mut system_state: ResMut<TombaSystemState>,
+) {
+    let category = ((binary_id >> BINARY_CATEGORY_SHIFT) & BINARY_CATEGORY_MASK) as u8;
+    let base = system_state.overlay_base_addr;
+    let segment_addr = base + (start_block as u32) * BINARY_BLOCK_UNIT_SIZE;
+    let segment_size = segment_addr + ((block_count as u32).saturating_sub(2)) * BINARY_BLOCK_UNIT_SIZE;
+    let mode_flags = (flags & OVERLAY_MODE_ASYNC_MASK) | 2;
+
+    system_state.last_loaded_binary_id = Some(binary_id);
+    sys_loadoverlay(category, segment_addr, segment_size, mode_flags, system_state);
+}
+
 /// SYS-515: `Sys_OverlayDispatch` (`0x800750D8`)
-/// Overlay dispatcher: 0xFF=pad test, 0xFE=init, else loads overlay via FUN_8001d364
+/// Overlay dispatcher: 0xFF=pad test, 0xFE=init, else loads overlay via Sys_LoadBinary (0x8001D364)
 /// Ground truth: src/main/system/Sys_OverlayDispatch.c (func_800750D8)
 pub fn sys_overlaydispatch(
     mut system_state: ResMut<TombaSystemState>,
     dispatch_code: u8,
 ) {
-    // Direct mapping to original dispatcher: 0xFE init, 0xFF pad test, else load
     system_state.overlay_dispatch_code = dispatch_code;
     match dispatch_code {
         DISPATCH_INIT => system_state.init_overlay_called = true,
         DISPATCH_PAD_TEST => system_state.pad_test_called = true,
-        _ => system_state.load_overlay_path = true,
+        code => {
+            system_state.load_overlay_path = true;
+            // Sys_LoadBinary(code, 0)
+            sys_loadbinary(code as u32, 0, 0, 2, system_state);
+        }
     }
 }
 
@@ -120,6 +160,7 @@ mod tests {
         let mut app = App::new();
         app.insert_resource(TombaSystemState::default());
 
+        // Test Init branch
         app.add_systems(Update, |state: ResMut<TombaSystemState>| {
             sys_overlaydispatch(state, DISPATCH_INIT);
         });
@@ -127,5 +168,29 @@ mod tests {
 
         let state = app.world().resource::<TombaSystemState>();
         assert!(state.init_overlay_called);
+    }
+
+    #[test]
+    fn test_sys_loadbinary() {
+        let mut app = App::new();
+        let mut init_state = TombaSystemState::default();
+        init_state.overlay_base_addr = 0x80100000;
+        app.insert_resource(init_state);
+
+        app.add_systems(Update, |state: ResMut<TombaSystemState>| {
+            // Binary ID 0x18: (0x18 >> 3) & 7 = 3 (category 3)
+            // start_block: 10 -> segment_addr = 0x80100000 + 10 * 8 = 0x80100050
+            // block_count: 5 -> segment_size = 0x80100050 + (5 - 2) * 8 = 0x80100068
+            sys_loadbinary(0x18, 1, 10, 5, state);
+        });
+        app.update();
+
+        let state = app.world().resource::<TombaSystemState>();
+        assert_eq!(state.active_overlay, 3);
+        assert_eq!(state.segment_addr, 0x80100050);
+        assert_eq!(state.segment_size, 0x80100068);
+        assert_eq!(state.mode_bit, 1);
+        assert_eq!(state.callback_index, 1);
+        assert_eq!(state.last_loaded_binary_id, Some(0x18));
     }
 }

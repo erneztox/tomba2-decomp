@@ -7,6 +7,19 @@ pub mod overlay;
 
 use bevy::prelude::*;
 
+/// PS1 Event Descriptor entry in DAT_801fe000 table (stride: 0x70 bytes).
+/// Mapped directly from src/main/system/Sys_SetCallback.c and Sys_SetEvent.c.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub struct EventDescriptor {
+    pub state: i16,    // +0x00: DAT_801fe000 (0=inactive, 2=armed, 3=handled)
+    pub handle: i32,   // +0x04: DAT_801fe004 (BIOS event handle)
+    pub spec: i32,     // +0x08: DAT_801fe008 (event spec/mode)
+    pub callback: u32, // +0x0c: DAT_801fe00c (callback address)
+    pub mask: i32,     // +0x10: DAT_801fe010 (event mask)
+    pub flag_6c: u8,   // +0x6c: DAT_801fe06c
+    pub flag_6f: u8,   // +0x6f: DAT_801fe06f
+}
+
 /// Address of System_InitMain in original PS1 memory (0x8001CFC8)
 #[allow(non_upper_case_globals)]
 pub const SystemInitMain: u32 = 0x8001CFC8;
@@ -15,6 +28,7 @@ pub const SystemInitMain: u32 = 0x8001CFC8;
 /// Variable names map directly to original memory addresses, registers, and flags.
 #[derive(Resource, Default, Debug, Clone)]
 pub struct TombaSystemState {
+    pub events: [EventDescriptor; 8], // DAT_801fe000 event table (stride 0x70)
     pub overlay_type: u32,            // maps to DAT_80010058 / local_20->kind
     pub event_flag: u8,               // Sys_SetEvent param
     pub mode_bit: u8,                 // DAT_801fe147

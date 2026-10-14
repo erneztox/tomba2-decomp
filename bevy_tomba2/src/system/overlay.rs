@@ -33,7 +33,7 @@ pub fn sys_loadoverlay(
     system_state.overlay_type = 0x80010058;
 
     // Sys_SetEvent(2) — trigger overlay load event
-    system_state.event_flag = 2;
+    crate::system::events::sys_setevent(2, &mut *system_state);
 
     // DAT_801fe147 = (u8)param_4 & 1
     system_state.mode_bit = (mode_flags & 1) as u8;
@@ -50,7 +50,7 @@ pub fn sys_loadoverlay(
     system_state.active_overlay = overlay_id;
 
     // Sys_SetCallback(2, System_InitMain)
-    system_state.callback_target = Some(crate::system::SystemInitMain);
+    crate::system::events::sys_setcallback(2, crate::system::SystemInitMain, &mut *system_state);
 }
 
 /// SYS-510: `Sys_InitOverlay` (`0x8001CB00`)
@@ -75,5 +75,46 @@ pub fn sys_overlaydispatch(
         0xFE => system_state.init_overlay_called = true, // init path
         0xFF => system_state.pad_test_called = true,     // pad test
         _ => system_state.load_overlay_path = true,      // load via FUN_8001d364
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_sys_loadoverlay() {
+        let mut app = App::new();
+        app.insert_resource(TombaSystemState::default());
+
+        app.add_systems(Update, |state: ResMut<TombaSystemState>| {
+            sys_loadoverlay(0x10, 0x1000, 0x2000, 0b011, state);
+        });
+        app.update();
+
+        let state = app.world().resource::<TombaSystemState>();
+        assert_eq!(state.active_overlay, 0x10);
+        assert_eq!(state.segment_addr, 0x1000);
+        assert_eq!(state.segment_size, 0x2000);
+        assert_eq!(state.mode_bit, 1);
+        assert_eq!(state.callback_index, 1);
+        assert_eq!(state.overlay_type, 0x80010058);
+        assert_eq!(state.events[2].state, 2);
+        assert_eq!(state.events[2].callback, crate::system::SystemInitMain);
+        assert_eq!(state.callback_target, Some(crate::system::SystemInitMain));
+    }
+
+    #[test]
+    fn test_sys_overlaydispatch() {
+        let mut app = App::new();
+        app.insert_resource(TombaSystemState::default());
+
+        app.add_systems(Update, |state: ResMut<TombaSystemState>| {
+            sys_overlaydispatch(state, 0xFE);
+        });
+        app.update();
+
+        let state = app.world().resource::<TombaSystemState>();
+        assert!(state.init_overlay_called);
     }
 }

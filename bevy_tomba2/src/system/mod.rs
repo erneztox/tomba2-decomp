@@ -1,5 +1,6 @@
 pub mod bios;
 pub mod card;
+pub mod cd;
 pub mod debug;
 pub mod dispatcher;
 pub mod events;

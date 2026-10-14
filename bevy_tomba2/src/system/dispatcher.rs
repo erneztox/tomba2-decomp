@@ -69,6 +69,13 @@ pub fn sys_inccounter(delta: i8, system_state: &mut TombaSystemState) {
     system_state.ui_dirty_flags |= 1;
 }
 
+/// Func_Nop (`0x800897F8`)
+/// Empty stub function - no operation, immediate return.
+/// Ground truth: src/main/misc/Func_Nop.c (func_800897F8)
+pub fn func_nop(system_state: &mut TombaSystemState) {
+    system_state.func_nop_called = true;
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -105,5 +112,9 @@ mod tests {
         // Capped at item_flag (0x40)
         assert_eq!(state.item_max, 0x40);
         assert_eq!(state.ui_dirty_flags & 1, 1);
+
+        // 6. Func_Nop
+        func_nop(&mut state);
+        assert!(state.func_nop_called);
     }
 }

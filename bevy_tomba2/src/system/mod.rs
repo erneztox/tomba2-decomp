@@ -1,13 +1,16 @@
 pub mod bios;
 pub mod card;
+pub mod debug;
 pub mod dispatcher;
 pub mod events;
+pub mod font;
 pub mod gpu;
 pub mod init;
 pub mod input;
 pub mod interaction;
 pub mod irq;
 pub mod overlay;
+pub mod scratchpad;
 pub mod screen;
 pub mod timer;
 
@@ -175,4 +178,5 @@ pub struct TombaSystemState {
     pub dma_src: u32,                    // _g_DMASrc
     pub dma_dest: u32,                   // _g_DMADest
     pub dma_word_count: u32,             // _g_DMASize
+    pub func_nop_called: bool,           // Func_Nop (0x800897F8)
 }

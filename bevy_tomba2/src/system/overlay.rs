@@ -5,7 +5,18 @@
 //!   - src/main/system/Sys_OverlayDispatch.c (0x800750D8)
 
 use bevy::prelude::*;
-use crate::system::TombaSystemState;
+use crate::system::{OVERLAY_EVENT_SLOT, TombaSystemState};
+
+/// Special dispatch code: initialize overlay subsystem (0xFE)
+pub const DISPATCH_INIT: u8 = 0xFE;
+/// Special dispatch code: test joypad input during boot (0xFF)
+pub const DISPATCH_PAD_TEST: u8 = 0xFF;
+
+/// Bit 0 of mode_flags (param_4): async/mode flag stored in DAT_801fe147
+pub const OVERLAY_MODE_ASYNC_MASK: u32 = 0x01;
+/// Bits 1-2 of mode_flags (param_4): callback index stored in DAT_800be0e4
+pub const OVERLAY_CALLBACK_INDEX_SHIFT: u32 = 1;
+pub const OVERLAY_CALLBACK_INDEX_MASK: u32 = 0x03;
 
 /// SYS-512: `Sys_LoadOverlay` (`0x8001D2A8`)
 /// Loads overlay binary from CD: sets up params, calls CD read + overlay init
@@ -32,15 +43,15 @@ pub fn sys_loadoverlay(
     // local_20->kind = DAT_80010058 (overlay type table pointer)
     system_state.overlay_type = 0x80010058;
 
-    // Sys_SetEvent(2) — trigger overlay load event
-    crate::system::events::sys_setevent(2, &mut *system_state);
+    // Sys_SetEvent(2) — trigger overlay load event (disable/reset event 2)
+    crate::system::events::sys_setevent(OVERLAY_EVENT_SLOT, &mut *system_state);
 
     // DAT_801fe147 = (u8)param_4 & 1
-    system_state.mode_bit = (mode_flags & 1) as u8;
+    system_state.mode_bit = (mode_flags & OVERLAY_MODE_ASYNC_MASK) as u8;
 
     // DAT_800be0e4 = *(u8*)((int)local_20 + (param_4 >> 1 & 3U))
     // Maps callback index (0-3) from mode flags
-    system_state.callback_index = ((mode_flags >> 1) & 3) as u8;
+    system_state.callback_index = ((mode_flags >> OVERLAY_CALLBACK_INDEX_SHIFT) & OVERLAY_CALLBACK_INDEX_MASK) as u8;
 
     // _DAT_801fe134 = param_2; _DAT_801fe138 = param_3
     system_state.segment_addr = segment_addr;
@@ -50,7 +61,7 @@ pub fn sys_loadoverlay(
     system_state.active_overlay = overlay_id;
 
     // Sys_SetCallback(2, System_InitMain)
-    crate::system::events::sys_setcallback(2, crate::system::SystemInitMain, &mut *system_state);
+    crate::system::events::sys_setcallback(OVERLAY_EVENT_SLOT, crate::system::SystemInitMain, &mut *system_state);
 }
 
 /// SYS-510: `Sys_InitOverlay` (`0x8001CB00`)
@@ -58,7 +69,6 @@ pub fn sys_loadoverlay(
 /// Ground truth: src/main/system/Sys_InitOverlay.c (func_8001CB00)
 pub fn sys_initoverlay(mut system_state: ResMut<TombaSystemState>) {
     // Direct correlation: Overlay_8011534c() -> overlay init handler (from src/overlays/)
-    // Sys_NoOp() -> placeholder in original PS1 runtime
     system_state.init_overlay_called = true;
 }
 
@@ -72,15 +82,16 @@ pub fn sys_overlaydispatch(
     // Direct mapping to original dispatcher: 0xFE init, 0xFF pad test, else load
     system_state.overlay_dispatch_code = dispatch_code;
     match dispatch_code {
-        0xFE => system_state.init_overlay_called = true, // init path
-        0xFF => system_state.pad_test_called = true,     // pad test
-        _ => system_state.load_overlay_path = true,      // load via FUN_8001d364
+        DISPATCH_INIT => system_state.init_overlay_called = true,
+        DISPATCH_PAD_TEST => system_state.pad_test_called = true,
+        _ => system_state.load_overlay_path = true,
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::system::EventState;
 
     #[test]
     fn test_sys_loadoverlay() {
@@ -99,8 +110,8 @@ mod tests {
         assert_eq!(state.mode_bit, 1);
         assert_eq!(state.callback_index, 1);
         assert_eq!(state.overlay_type, 0x80010058);
-        assert_eq!(state.events[2].state, 2);
-        assert_eq!(state.events[2].callback, crate::system::SystemInitMain);
+        assert_eq!(state.events[OVERLAY_EVENT_SLOT].state, EventState::Armed);
+        assert_eq!(state.events[OVERLAY_EVENT_SLOT].callback, crate::system::SystemInitMain);
         assert_eq!(state.callback_target, Some(crate::system::SystemInitMain));
     }
 
@@ -110,7 +121,7 @@ mod tests {
         app.insert_resource(TombaSystemState::default());
 
         app.add_systems(Update, |state: ResMut<TombaSystemState>| {
-            sys_overlaydispatch(state, 0xFE);
+            sys_overlaydispatch(state, DISPATCH_INIT);
         });
         app.update();
 

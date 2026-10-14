@@ -10,6 +10,11 @@
 use bevy::prelude::*;
 use crate::system::TombaSystemState;
 
+/// PS1 BIOS struct offset for zero region initialization (0x62C = 1580 bytes)
+pub const BIOS_ZERO_REGION_OFFSET: usize = 0x62C;
+/// Number of 32-bit words cleared in BIOS zero region (9 words)
+pub const BIOS_ZERO_REGION_WORD_COUNT: usize = 9;
+
 /// SYS-459: `BIOS_InitSeq` (`0x8009BD1C`)
 /// BIOS init sequence: calls BIOS_B0, BIOS_B0(0), getter, returns 1
 /// Ground truth: src/main/system/BIOS_InitSeq.c (func_8009BD1C)
@@ -91,7 +96,7 @@ pub fn bios_zeroregion(mut system_state: ResMut<TombaSystemState>) {
     // Zero loop: 9 iterations, zero words at BIOS struct offset + 0x62C
     // BIOS_CallA0_2() -> BIOS call A0 variant 2
     // BIOS_Syscall0_2() -> syscall 0 variant 2
-    system_state.bios_zero_offset = 0x62C;
-    system_state.bios_zero_iterations = 9;
+    system_state.bios_zero_offset = BIOS_ZERO_REGION_OFFSET;
+    system_state.bios_zero_iterations = BIOS_ZERO_REGION_WORD_COUNT;
     system_state.bios_zero_completed = true;
 }

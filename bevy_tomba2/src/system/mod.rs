@@ -7,17 +7,33 @@ pub mod overlay;
 
 use bevy::prelude::*;
 
+/// Stride between event descriptors in PS1 memory (0x70 = 112 bytes)
+pub const EVENT_DESCRIPTOR_STRIDE: usize = 0x70;
+
+/// Event descriptor slot used by overlay loading system (index 2)
+pub const OVERLAY_EVENT_SLOT: usize = 2;
+
+/// PS1 event descriptor lifecycle state (DAT_801fe000 + 0x00)
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+#[repr(i16)]
+pub enum EventState {
+    #[default]
+    Inactive = 0, // Cleared / closed
+    Armed = 2,    // Armed with callback (Sys_SetCallback)
+    Handled = 3,  // Acknowledged / handled (Sys_ClearEvent)
+}
+
 /// PS1 Event Descriptor entry in DAT_801fe000 table (stride: 0x70 bytes).
 /// Mapped directly from src/main/system/Sys_SetCallback.c and Sys_SetEvent.c.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 pub struct EventDescriptor {
-    pub state: i16,    // +0x00: DAT_801fe000 (0=inactive, 2=armed, 3=handled)
-    pub handle: i32,   // +0x04: DAT_801fe004 (BIOS event handle)
-    pub spec: i32,     // +0x08: DAT_801fe008 (event spec/mode)
-    pub callback: u32, // +0x0c: DAT_801fe00c (callback address)
-    pub mask: i32,     // +0x10: DAT_801fe010 (event mask)
-    pub flag_6c: u8,   // +0x6c: DAT_801fe06c
-    pub flag_6f: u8,   // +0x6f: DAT_801fe06f
+    pub state: EventState, // +0x00: DAT_801fe000 (Event lifecycle state)
+    pub handle: i32,       // +0x04: DAT_801fe004 (BIOS event handle)
+    pub spec: i32,         // +0x08: DAT_801fe008 (event spec/mode)
+    pub callback: u32,     // +0x0c: DAT_801fe00c (callback function address)
+    pub mask: i32,         // +0x10: DAT_801fe010 (event mask)
+    pub aux_flag: u8,      // +0x6c: DAT_801fe06c (auxiliary status flag)
+    pub pending_flag: u8,  // +0x6f: DAT_801fe06f (pending trigger flag)
 }
 
 /// Address of System_InitMain in original PS1 memory (0x8001CFC8)

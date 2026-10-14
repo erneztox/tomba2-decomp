@@ -9,6 +9,7 @@
 //! - No mock state structs or fabricated logic are allowed.
 
 pub mod a00_fishermen;
+pub mod a01_mines;
 
 use bevy::prelude::*;
 use crate::entity::EntityLifecycle;
@@ -19,6 +20,9 @@ use crate::audio::TombaAudioSystem;
 pub use a00_fishermen::{
     A00OverlayRuntime, A00TextureEntry, A00_OVERLAY_ID, A00_TEXTURE_METADATA_COUNT,
     a00_texture_process, dispatch_a00_handler,
+};
+pub use a01_mines::{
+    A01OverlayRuntime, A01_OVERLAY_ID, dispatch_a01_handler,
 };
 
 /// Active Overlay identifier enumeration
@@ -37,6 +41,8 @@ pub struct OverlayManager {
     pub active_overlay: ActiveOverlayId,
     /// Runtime state for A00 (Town of the Fishermen)
     pub a00_runtime: A00OverlayRuntime,
+    /// Runtime state for A01 (Large Mine Underground)
+    pub a01_runtime: A01OverlayRuntime,
 }
 
 impl Default for OverlayManager {
@@ -44,6 +50,7 @@ impl Default for OverlayManager {
         Self {
             active_overlay: ActiveOverlayId::A00Fishermen,
             a00_runtime: A00OverlayRuntime::default(),
+            a01_runtime: A01OverlayRuntime::default(),
         }
     }
 }
@@ -70,6 +77,15 @@ pub fn dispatch_overlay_entity_handler(
             events,
             player_pos,
             frame_counter,
+        ),
+        1 => dispatch_a01_handler(
+            handler_addr,
+            lifecycle,
+            physics,
+            &mut overlay_manager.a01_runtime,
+            audio,
+            events,
+            player_pos,
         ),
         _ => false,
     }

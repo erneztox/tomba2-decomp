@@ -87,4 +87,6 @@ pub struct TombaSystemState {
     pub irq_dispatch_count: u32,      // Total times IRQ_Dispatch executed
     pub overlay_base_addr: u32,       // _g_OverlayBase / DAT_1f800224
     pub last_loaded_binary_id: Option<u32>, // Last binary ID passed to Sys_LoadBinary
+    pub last_sys_call_code: Option<i32>, // SYS-503: Sys_Call (0x8001CF00)
+    pub noop2_called: bool,           // SYS-514: Sys_NoOp2 (0x80080930)
 }

@@ -2,6 +2,7 @@ pub mod bios;
 pub mod dispatcher;
 pub mod events;
 pub mod gpu;
+pub mod init;
 pub mod input;
 pub mod irq;
 pub mod overlay;
@@ -127,4 +128,7 @@ pub struct TombaSystemState {
     pub timer_ctrl_status: u32,       // *DAT_800aaca8: timer control status register
     pub pads: [PadState; 2],          // Joypad state for Port 1 and Port 2 (0x800BF498)
     pub last_pad_read_cmd: u8,        // Last command byte passed to Sys_PadRead
+    pub system_init_completed: bool,  // System_Init (0x8001CC00) completion flag
+    pub system_reset_completed: bool, // System_Reset (0x8001D940) completion flag
+    pub init_main_completed: bool,    // System_InitMain (0x8001CFC8) completion flag
 }

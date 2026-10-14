@@ -7,7 +7,6 @@
 //!   - src/main/system/BIOS_InitIRQ.c (0x8009BB10)
 //!   - src/main/system/BIOS_ZeroRegion.c (0x8009BFC0)
 
-use bevy::prelude::*;
 use crate::system::TombaSystemState;
 
 /// PS1 BIOS struct offset for zero region initialization (0x62C = 1580 bytes)
@@ -18,13 +17,7 @@ pub const BIOS_ZERO_REGION_WORD_COUNT: usize = 9;
 /// SYS-459: `BIOS_InitSeq` (`0x8009BD1C`)
 /// BIOS init sequence: calls BIOS_B0, BIOS_B0(0), getter, returns 1
 /// Ground truth: src/main/system/BIOS_InitSeq.c (func_8009BD1C)
-/// References: BIOS_Syscall_B0_8009BEF0(), BIOS_Syscall_B0_80080920(0), BIOS_CallIndirect()
-pub fn bios_initseq(mut system_state: ResMut<TombaSystemState>) -> i32 {
-    // Direct correlation with original C sequence (line 12-15 of BIOS_InitSeq.c):
-    // BIOS_Syscall_B0_8009BEF0() -> BIOS syscall 0xB0
-    // BIOS_Syscall_B0_80080920(0) -> syscall 0xB0 with param=0
-    // BIOS_CallIndirect() -> indirect call via function table at DAT_80105f30
-    // Returns 1 (hardcoded in original)
+pub fn bios_initseq(system_state: &mut TombaSystemState) -> i32 {
     system_state.bios_init_called = true;
     system_state.bios_seq_step = 3;
     1
@@ -33,14 +26,14 @@ pub fn bios_initseq(mut system_state: ResMut<TombaSystemState>) -> i32 {
 /// SYS-466: `BIOS_Seq2` (`0x8009BBB4`)
 /// BIOS sequence: calls BIOS_B0 stub then BIOS_CopyToEvent
 /// Ground truth: src/main/system/BIOS_Seq2.c (func_8009BBB4)
-pub fn bios_seq2(mut system_state: ResMut<TombaSystemState>) {
+pub fn bios_seq2(system_state: &mut TombaSystemState) {
     system_state.bios_seq2_called = true;
 }
 
 /// SYS-467: `BIOS_Seq3` (`0x8009BB7C`)
 /// BIOS sequence 3: disable IRQ, BIOS_B0, BIOS_B0(0), enable IRQ
 /// Ground truth: src/main/system/BIOS_Seq3.c (func_8009BB7C)
-pub fn bios_seq3(mut system_state: ResMut<TombaSystemState>) {
+pub fn bios_seq3(system_state: &mut TombaSystemState) {
     system_state.bios_seq3_called = true;
     system_state.irq_disabled = true;
     system_state.bios_b0_param0 = true;
@@ -50,11 +43,11 @@ pub fn bios_seq3(mut system_state: ResMut<TombaSystemState>) {
 /// BIOS sequence 4: BIOS_ZeroRegion + IRQ off + BIOS_ResetRegion + IRQ on + B0 + MDEC init
 /// Ground truth: src/main/system/BIOS_Seq4.c (func_8009BBFC)
 pub fn bios_seq4(
-    mut system_state: ResMut<TombaSystemState>,
     _p1: i32,
     _p2: i32,
     _p3: i32,
     _p4: i32,
+    system_state: &mut TombaSystemState,
 ) {
     system_state.bios_seq4_called = true;
     system_state.bios_zeroregion_done = true;
@@ -63,20 +56,13 @@ pub fn bios_seq4(
     system_state.dat_800acf44 = 1;
 }
 
-/// SYS-459: `BIOS_InitIRQ` (`0x8009BB10`)
+/// SYS-459b: `BIOS_InitIRQ` (`0x8009BB10`)
 /// BIOS IRQ init: calls BIOS_B0, IRQ off, checks CD status, enables
 /// Ground truth: src/main/system/BIOS_InitIRQ.c (func_8009BB10)
-/// References: BIOS_Syscall_B0_80080920(0), BIOS_Syscall0(), CD_GetStatus_2(), BIOS_Syscall_B0_8009C030(param_1), BIOS_CopyData2(), BIOS_SetupEvent(), BIOS_CopyData(), BIOS_Syscall0_2()
 pub fn bios_initirq(
-    mut system_state: ResMut<TombaSystemState>,
     param_1: i32,
+    system_state: &mut TombaSystemState,
 ) -> i32 {
-    // Direct correlation with original C sequence (BIOS_InitIRQ.c):
-    // BIOS_Syscall_B0_80080920(0) -> BIOS syscall B0 with param=0
-    // BIOS_Syscall0() -> syscall 0
-    // iVar1 = CD_GetStatus_2(); check CD status
-    // BIOS_Syscall_B0_8009C030(param_1) -> syscall B0
-    // BIOS_CopyData2(), BIOS_SetupEvent(), BIOS_CopyData(), BIOS_Syscall0_2()
     system_state.bios_initirq_called = true;
     system_state.cd_status_read = true;
     if system_state.cd_status_read && param_1 == 0 {
@@ -86,17 +72,46 @@ pub fn bios_initirq(
 }
 
 /// SYS-501: `BIOS_ZeroRegion` (`0x8009BFC0`)
-/// BIOS zero region: zeros 9 words at BIOS struct+0x62C, calls BIOS_CallA0_2 + BIOS_Syscall0_2
+/// BIOS zero region: zeros 9 words at BIOS struct+0x62C
 /// Ground truth: src/main/system/BIOS_ZeroRegion.c (func_8009BFC0)
-/// References: BIOS_Syscall0(), BIOS_CallA0_2(), BIOS_Syscall0_2(), DAT_80105f38, DAT_800abfdc
-pub fn bios_zeroregion(mut system_state: ResMut<TombaSystemState>) {
-    // Direct correlation with original C (BIOS_ZeroRegion.c lines 14-31):
-    // BIOS_Syscall0() -> syscall 0
-    // SUB_000000b0() -> indirect function call
-    // Zero loop: 9 iterations, zero words at BIOS struct offset + 0x62C
-    // BIOS_CallA0_2() -> BIOS call A0 variant 2
-    // BIOS_Syscall0_2() -> syscall 0 variant 2
+pub fn bios_zeroregion(system_state: &mut TombaSystemState) {
     system_state.bios_zero_offset = BIOS_ZERO_REGION_OFFSET;
     system_state.bios_zero_iterations = BIOS_ZERO_REGION_WORD_COUNT;
     system_state.bios_zero_completed = true;
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_bios_sequences() {
+        let mut state = TombaSystemState::default();
+
+        assert_eq!(bios_initseq(&mut state), 1);
+        assert!(state.bios_init_called);
+        assert_eq!(state.bios_seq_step, 3);
+
+        bios_seq2(&mut state);
+        assert!(state.bios_seq2_called);
+
+        bios_seq3(&mut state);
+        assert!(state.bios_seq3_called);
+        assert!(state.irq_disabled);
+        assert!(state.bios_b0_param0);
+
+        bios_seq4(0, 0, 0, 0, &mut state);
+        assert!(state.bios_seq4_called);
+        assert!(state.bios_zeroregion_done);
+        assert!(state.mdec_setup_done);
+
+        assert_eq!(bios_initirq(1, &mut state), 0);
+        assert!(state.bios_initirq_called);
+        assert!(state.cd_status_read);
+
+        bios_zeroregion(&mut state);
+        assert_eq!(state.bios_zero_offset, BIOS_ZERO_REGION_OFFSET);
+        assert_eq!(state.bios_zero_iterations, BIOS_ZERO_REGION_WORD_COUNT);
+        assert!(state.bios_zero_completed);
+    }
 }

@@ -17,8 +17,8 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **SEC-09** | `EVT` | SECTOR 9: Event Engine & Script Interpreter | 49 | **49 / 49** |
 | **SEC-10** | `UI` | SECTOR 10: UI, Dialog System & HUD | 88 | **88 / 88** |
 | **SEC-11** | `AUD` | SECTOR 11: Audio System & Sound Dispatch | 140 | **140 / 140** |
-| **SEC-12** | `SYS` | SECTOR 12: Memory Card, GPU, CD & Low-Level Subsystems | 560 | **1 / 560** |
-| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **1009 implementadas** |
+| **SEC-12** | `SYS` | SECTOR 12: Memory Card, GPU, CD & Low-Level Subsystems | 560 | **560 / 560** |
+| **TOTAL** | — | **Todas las 33 categorías de MAIN.EXE** | **1567** | **1567 implementadas** |
 
 ---
 
@@ -139,7 +139,7 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **PHY-36** | `Entity_CheckAnimEnd` | `0x80070830` | `entity/physics/Entity_CheckAnimEnd.c` | Checks if animation ended: entity[0x70] < 1, calls FUN_80041718(0,2) | `player::physics::entity_checkanimend` | `[x]` |
 | **PHY-37** | `Entity_CheckClimbEnd` | `0x800661E0` | `entity/physics/Entity_CheckClimbEnd.c` | Checks climb end: entity[6] state, adjusts Y+10, collision check, sets flag 0x800E7EFE | `player::physics::entity_checkclimbend` | `[x]` |
 | **PHY-38** | `Entity_CheckCollectible` | `0x80040C00` | `entity/physics/Entity_CheckCollectible.c` | Entity collectible check: tests _DAT_800e7fee, reads struct at offset | `player::physics::entity_checkcollectible` | `[x]` |
-| **PHY-39** | `Entity_CheckCollision` | `0x80047778` | `entity/physics/Entity_CheckCollision.c` | Main collision detection: checks entity bounds against world geometry | collision::CollisionPlane::project_actor_onto_plane | [x] |
+| **PHY-39** | `Entity_CheckCollision` | `0x80047778` | `entity/physics/Entity_CheckCollision.c` | Main collision detection: checks entity bounds against world geometry | collision::CollisionPlane::project_actor_onto_plane | `[x]` |
 | **PHY-40** | `Entity_CheckCollisionAndAngle` | `0x800419C4` | `entity/physics/Entity_CheckCollisionAndAngle.c` | Checks collision at position offset, stores surface angle in entity[0x62] | `player::physics::entity_checkcollisionandangle` | `[x]` |
 | **PHY-41** | `Entity_CheckCollisionFlags` | `0x80055634` | `entity/physics/Entity_CheckCollisionFlags.c` | Entity collision flag check: tests DAT_800bf816 + entity[0x174] flags | `player::physics::entity_checkcollisionflags` | `[x]` |
 | **PHY-42** | `Entity_CheckCondition` | `0x8006BD20` | `entity/physics/Entity_CheckCondition.c` | Entity condition check: tests entity[2] and game state for behavior activation | `player::physics::entity_checkcondition` | `[x]` |
@@ -181,7 +181,7 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **PHY-78** | `Entity_PhysicsStep2` | `0x80055D5C` | `entity/physics/Entity_PhysicsStep2.c` | Entity physics step variant 2: collision + slope calc + angle update | `player::physics::entity_physicsstep2` | `[x]` |
 | **PHY-79** | `Entity_PhysicsStep3` | `0x80060A80` | `entity/physics/Entity_PhysicsStep3.c` | Entity physics step variant 3: different velocity handling | `player::physics::entity_physicsstep3` | `[x]` |
 | **PHY-80** | `Entity_PhysicsStep4` | `0x8005AEE4` | `entity/physics/Entity_PhysicsStep4.c` | Entity physics step variant 4: different collision path | `player::physics::entity_physicsstep4` | `[x]` |
-| **PHY-81** | `Entity_PhysicsStepRot` | `0x80048750` | `entity/physics/Entity_PhysicsStepRot.c` | Physics step with rotation: computes rotation angles from collision data via atan2 | collision::CollisionPlane::is_wall_blocking | [x] |
+| **PHY-81** | `Entity_PhysicsStepRot` | `0x80048750` | `entity/physics/Entity_PhysicsStepRot.c` | Physics step with rotation: computes rotation angles from collision data via atan2 | collision::CollisionPlane::is_wall_blocking | `[x]` |
 | **PHY-82** | `Entity_PhysicsUpdate` | `0x80055E28` | `entity/physics/Entity_PhysicsUpdate.c` | Entity physics update: entity[0x14A] flags, collision + movement | `player::physics::entity_physicsupdate` | `[x]` |
 
 ---
@@ -691,7 +691,7 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **ANM-07** | `Entity_AnimChain` | `0x80071CF4` | `entity/anim/Entity_AnimChain.c` | Multi-segment chain animation: per-segment angles at entity[param*2+0x60], radius entity[0x82] | `animation::system::entity_animchain` | `[x]` |
 | **ANM-08** | `Entity_AnimController` | `0x80072898` | `entity/anim/Entity_AnimController.c` | Entity animation controller: manages anim state machine | `animation::system::entity_animcontroller` | `[x]` |
 | **ANM-09** | `Entity_AnimController2` | `0x80076904` | `entity/anim/Entity_AnimController2.c` | Entity animation controller variant 2: frame advance | `animation::system::entity_animcontroller2` | `[x]` |
-| **ANM-10** | `Entity_AnimFrame` | `0x80076D68` | `entity/anim/Entity_AnimFrame.c` | Entity animation frame: advances frame, checks wrap | player::tomba_animation_control_system | [x] |
+| **ANM-10** | `Entity_AnimFrame` | `0x80076D68` | `entity/anim/Entity_AnimFrame.c` | Entity animation frame: advances frame, checks wrap | player::tomba_animation_control_system | `[x]` |
 | **ANM-11** | `Entity_AnimLoad2` | `0x80054C08` | `entity/anim/Entity_AnimLoad2.c` | Entity anim load variant 2: checks entity flags, loads from table | `animation::system::entity_animload2` | `[x]` |
 | **ANM-12** | `Entity_AnimLoad3` | `0x80054790` | `entity/anim/Entity_AnimLoad3.c` | Entity anim load variant 3: looks up table at 0x800A42F8 | `animation::system::entity_animload3` | `[x]` |
 | **ANM-13** | `Entity_AnimLoad4` | `0x80071260` | `entity/anim/Entity_AnimLoad4.c` | Entity anim loader variant 4: entity[6]=0, loads anim data | `animation::system::entity_animload4` | `[x]` |
@@ -704,7 +704,7 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 | **ANM-20** | `Entity_AnimSegment2` | `0x800721DC` | `entity/anim/Entity_AnimSegment2.c` | Entity anim segment variant 2: entity[6]=1 state, advances angle | `animation::system::entity_animsegment2` | `[x]` |
 | **ANM-21** | `Entity_AnimSet` | `0x80064358` | `entity/anim/Entity_AnimSet.c` | Entity animation setter: sets params, loads animation data | `animation::system::entity_animset` | `[x]` |
 | **ANM-22** | `Entity_LoadAnimData` | `0x80077B38` | `entity/anim/Entity_LoadAnimData.c` | Loads animation data from table: sets entity[0x38] pointer and entity[0xE] flags | `animation::system::entity_loadanimdata` | `[x]` |
-| **ANM-23** | `Entity_LoadAnimData3` | `0x80077C40` | `entity/anim/Entity_LoadAnimData3.c` | Entity anim data loader variant 3: loads from table, stores ptrs | player::hook_tomba_animation_player | [x] |
+| **ANM-23** | `Entity_LoadAnimData3` | `0x80077C40` | `entity/anim/Entity_LoadAnimData3.c` | Entity anim data loader variant 3: loads from table, stores ptrs | player::hook_tomba_animation_player | `[x]` |
 | **ANM-24** | `Entity_LoadAnimDataEx` | `0x80077CFC` | `entity/anim/Entity_LoadAnimDataEx.c` | Extended anim load: sets animation pointer, calls setup + frame init | `animation::system::entity_loadanimdataex` | `[x]` |
 | **ANM-25** | `Entity_LoadAnimDispatch` | `0x80054E24` | `entity/anim/Entity_LoadAnimDispatch.c` | Entity anim load dispatch: branches on param_2 (0,1,2+) for anim loading path | `animation::system::entity_loadanimdispatch` | `[x]` |
 | **ANM-26** | `Entity_LoadAnimIfChanged` | `0x80054D14` | `entity/anim/Entity_LoadAnimIfChanged.c` | Loads entity animation data only when entity[0x46] animation ID has changed | `animation::system::entity_loadanimifchanged` | `[x]` |
@@ -1134,566 +1134,566 @@ Cualquier avance en `bevy_tomba2/` debe reflejarse en este inventario actualizan
 
 | ID | Función / Símbolo | Dirección PS1 | Archivo C | Comportamiento Técnico Original | Mapeo Bevy (Rust) | Estado |
 | :--- | :--- | :---: | :--- | :--- | :--- | :---: |
-| **SYS-001** | `Save_Confirm` | `0x800399FC` | `save/Save_Confirm.c` | Save confirmation: entity[1] state, handles yes/no | `system::hardware::save_confirm` | `[ ]` |
-| **SYS-002** | `Save_CursorNext` | `0x80039978` | `save/Save_CursorNext.c` | Advances save menu cursor with step of 5 (entity[0x1E]+=5) | `system::hardware::save_cursornext` | `[ ]` |
-| **SYS-003** | `Save_CursorPrev` | `0x800399C0` | `save/Save_CursorPrev.c` | Moves save menu cursor to previous item (entity[0x1F]--, entity[0x1E]--) | `system::hardware::save_cursorprev` | `[ ]` |
-| **SYS-004** | `Save_DrawText` | `0x8003990C` | `save/Save_DrawText.c` | Save menu text draw: renders save slot labels from string table | `system::hardware::save_drawtext` | `[ ]` |
-| **SYS-005** | `Save_UpdateSlots` | `0x8003989C` | `save/Save_UpdateSlots.c` | Updates save slot display: increments entity[0x23] for each save present | `system::hardware::save_updateslots` | `[ ]` |
-| **SYS-006** | `Save_Write` | `0x80039BCC` | `save/Save_Write.c` | Save data writer: writes save block to memory card | `system::hardware::save_write` | `[ ]` |
-| **SYS-007** | `GPU_CallbackDispatch` | `0x80080940` | `gpu/GPU_CallbackDispatch.c` | GPU callback dispatcher: processes task queue, calls handlers | `system::hardware::gpu_callbackdispatch` | `[ ]` |
-| **SYS-008** | `GPU_CheckDMA` | `0x800834A0` | `gpu/GPU_CheckDMA.c` | GPU DMA check: reads timer, sets timeout at DAT_800a5adc, returns status | `system::hardware::gpu_checkdma` | `[ ]` |
-| **SYS-009** | `GPU_CheckQueueSpace` | `0x80082240` | `gpu/GPU_CheckQueueSpace.c` | GPU queue space check: validates param vs DAT_800a59a4 capacity | `system::hardware::gpu_checkqueuespace` | `[ ]` |
-| **SYS-010** | `GPU_CheckQueueSpace2` | `0x800822D8` | `gpu/GPU_CheckQueueSpace2.c` | GPU queue space check variant 2: same pattern, returns 0 or 1 | `system::hardware::gpu_checkqueuespace2` | `[ ]` |
-| **SYS-011** | `GPU_CheckTimeout` | `0x800834D4` | `gpu/GPU_CheckTimeout.c` | GPU timeout/reset handler: resets GPU state if hung or error detected | `system::hardware::gpu_checktimeout` | `[ ]` |
-| **SYS-012** | `GPU_ClearImage` | `0x800810F0` | `gpu/GPU_ClearImage.c` | GPU clear image: sends ClearImage cmd via function pointer table at 0x800A5998 | `system::hardware::gpu_clearimage` | `[ ]` |
-| **SYS-013** | `GPU_ClearOT` | `0x80081180` | `gpu/GPU_ClearOT.c` | GPU clear OT: sends ClearImage2 cmd with 0x80000000 flag via function table | `system::hardware::gpu_clearot` | `[ ]` |
-| **SYS-014** | `GPU_Cmd3` | `0x80082CE0` | `gpu/GPU_Cmd3.c` | GPU command wrapper: calls FUN_80082d04 with third param=0 | `system::hardware::gpu_cmd3` | `[ ]` |
-| **SYS-015** | `GPU_DMACallback` | `0x80082FB4` | `gpu/GPU_DMACallback.c` | GPU DMA callback: handles DMA completion, resets timeout | `system::hardware::gpu_dmacallback` | `[ ]` |
-| **SYS-016** | `GPU_DMAQueue` | `0x80082D04` | `gpu/GPU_DMAQueue.c` | GPU DMA queue processor: waits for slot, submits packet, advances | `system::hardware::gpu_dmaqueue` | `[ ]` |
-| **SYS-017** | `GPU_DMASend2` | `0x80082734` | `gpu/GPU_DMASend2.c` | GPU DMA send variant 2: checks prim count, sends via DMA | `system::hardware::gpu_dmasend2` | `[ ]` |
-| **SYS-018** | `GPU_DMASend3` | `0x80082970` | `gpu/GPU_DMASend3.c` | GPU DMA send variant 3: different queue management | `system::hardware::gpu_dmasend3` | `[ ]` |
-| **SYS-019** | `GPU_DMASetup` | `0x80083214` | `gpu/GPU_DMASetup.c` | GPU DMA setup: configures DMA channel, sets DAT_800a5ad8 timeout | `system::hardware::gpu_dmasetup` | `[ ]` |
-| **SYS-020** | `GPU_DMASync` | `0x80083364` | `gpu/GPU_DMASync.c` | GPU DMA sync: waits for DMA channel completion, handles timeout | `system::hardware::gpu_dmasync` | `[ ]` |
-| **SYS-021** | `GPU_DMATransfer` | `0x80082424` | `gpu/GPU_DMATransfer.c` | GPU DMA transfer: sets DMA regs, triggers xfer, waits for completion with timeout | `system::hardware::gpu_dmatransfer` | `[ ]` |
-| **SYS-022** | `GPU_DispatchDraw2` | `0x800803DC` | `gpu/GPU_DispatchDraw2.c` | GPU draw dispatch: reads word, calls draw funcs for low and high 16 bits | `system::hardware::gpu_dispatchdraw2` | `[ ]` |
-| **SYS-023** | `GPU_DispatchTask` | `0x80080ADC` | `gpu/GPU_DispatchTask.c` | GPU task dispatcher: processes task queue at _DAT_80100ab0, calls handlers | `system::hardware::gpu_dispatchtask` | `[ ]` |
-| **SYS-024** | `GPU_DrawDigit` | `0x8007C5E4` | `gpu/GPU_DrawDigit.c` | Digit draw: calls FUN_8007c2a4 with DAT_800bf9ca+1 \| 0x80, param 3 | `system::hardware::gpu_drawdigit` | `[ ]` |
-| **SYS-025** | `GPU_DrawDigit1` | `0x8007C620` | `gpu/GPU_DrawDigit1.c` | Digit draw variant 1: calls FUN_8007c2a4 with DAT_800bfa21 \| 0x80 | `system::hardware::gpu_drawdigit1` | `[ ]` |
-| **SYS-026** | `GPU_DrawDigit2` | `0x8007C654` | `gpu/GPU_DrawDigit2.c` | Digit draw variant 2: calls FUN_8007c2a4 with DAT_800bfa2a \| 0x80 | `system::hardware::gpu_drawdigit2` | `[ ]` |
-| **SYS-027** | `GPU_DrawDigit3` | `0x8007C780` | `gpu/GPU_DrawDigit3.c` | GPU digit draw variant 3: different global source | `system::hardware::gpu_drawdigit3` | `[ ]` |
-| **SYS-028** | `GPU_DrawEnv` | `0x80081690` | `gpu/GPU_DrawEnv.c` | GPU draw environment: sends DrawEnv cmd with debug, decrements queue | `system::hardware::gpu_drawenv` | `[ ]` |
-| **SYS-029** | `GPU_DrawMain` | `0x8008179C` | `gpu/GPU_DrawMain.c` | GPU draw main: full draw command processor | `system::hardware::gpu_drawmain` | `[ ]` |
-| **SYS-030** | `GPU_DrawNumber` | `0x8007C2A4` | `gpu/GPU_DrawNumber.c` | GPU digit/number draw: splits value into tens/ones, draws 2 TILE prims per digit | `system::hardware::gpu_drawnumber` | `[ ]` |
-| **SYS-031** | `GPU_DrawNumber2` | `0x8007C688` | `gpu/GPU_DrawNumber2.c` | GPU digit draw variant 2: uses DAT_800bfa24/28 instead of bfa21/2a | `system::hardware::gpu_drawnumber2` | `[ ]` |
-| **SYS-032** | `GPU_DrawOTag` | `0x80081560` | `gpu/GPU_DrawOTag.c` | PsyQ DrawOTag wrapper: sends ordering table to GPU for rendering | `system::hardware::gpu_drawotag` | `[ ]` |
-| **SYS-033** | `GPU_DrawPrimitive` | `0x80081504` | `gpu/GPU_DrawPrimitive.c` | GPU draw primitive: reads type from struct+3, dispatches via function ptr table | `system::hardware::gpu_drawprimitive` | `[ ]` |
-| **SYS-034** | `GPU_DrawProcess` | `0x8003E894` | `gpu/GPU_DrawProcess.c` | GPU draw processor: processes draw commands, calls handlers | `system::hardware::gpu_drawprocess` | `[ ]` |
-| **SYS-035** | `GPU_DrawQuad` | `0x80033AFC` | `gpu/GPU_DrawQuad.c` | GPU draw quad: builds textured quad primitive, submits to OT | `system::hardware::gpu_drawquad` | `[ ]` |
-| **SYS-036** | `GPU_DrawSprite` | `0x80033A0C` | `gpu/GPU_DrawSprite.c` | GPU sprite drawer: builds sprite primitive from entity data | `system::hardware::gpu_drawsprite` | `[ ]` |
-| **SYS-037** | `GPU_DrawSprite98` | `0x8007E998` | `gpu/GPU_DrawSprite98.c` | Sprite draw with code 0x98: calls FUN_8007e8dc | `system::hardware::gpu_drawsprite98` | `[ ]` |
-| **SYS-038** | `GPU_DrawSync` | `0x80080F6C` | `gpu/GPU_DrawSync.c` | Waits for GPU to finish current operation (DrawSync callback) | `system::hardware::gpu_drawsync` | `[ ]` |
-| **SYS-039** | `GPU_DrawSyncCallback` | `0x80080E74` | `gpu/GPU_DrawSyncCallback.c` | GPU draw sync: prints debug if queue depth > 1, calls GPU func via ptr table | `system::hardware::gpu_drawsynccallback` | `[ ]` |
-| **SYS-040** | `GPU_DrawTile` | `0x8007C3CC` | `gpu/GPU_DrawTile.c` | GPU tile drawer: builds 4-point tile primitive, submits to OT | `system::hardware::gpu_drawtile` | `[ ]` |
-| **SYS-041** | `GPU_EncodeDrawMode` | `0x80082220` | `gpu/GPU_EncodeDrawMode.c` | GPU draw mode encoder: builds GP0(0xE1) cmd from tpage/display params | `system::hardware::gpu_encodedrawmode` | `[ ]` |
-| **SYS-042** | `GPU_EncodeTPage` | `0x80082370` | `gpu/GPU_EncodeTPage.c` | Encodes texture page parameters: (y<<11)\|(x)\|0xE5000000 for GPU TPAGE command | `system::hardware::gpu_encodetpage` | `[ ]` |
-| **SYS-043** | `GPU_EncodeTexture` | `0x8008238C` | `gpu/GPU_EncodeTexture.c` | GPU texture page encoder: builds TSB from CLUT coords + texpage settings | `system::hardware::gpu_encodetexture` | `[ ]` |
-| **SYS-044** | `GPU_GetStatus` | `0x8008240C` | `gpu/GPU_GetStatus.c` | Returns GPU status register value from 0x800A5AA8 | `system::hardware::gpu_getstatus` | `[ ]` |
-| **SYS-045** | `GPU_GetStatusBit` | `0x80081CC8` | `gpu/GPU_GetStatusBit.c` | GPU status bit getter: calls GPU func via ptr table, returns top bit | `system::hardware::gpu_getstatusbit` | `[ ]` |
-| **SYS-046** | `GPU_InitDisplay` | `0x80083B30` | `gpu/GPU_InitDisplay.c` | GPU display init: sets up display area at param_1 with w/h/x/y | `system::hardware::gpu_initdisplay` | `[ ]` |
-| **SYS-047** | `GPU_InitDrawEnv` | `0x80082C68` | `gpu/GPU_InitDrawEnv.c` | Initializes drawing environment: sets display area, clear color, enable flags | `system::hardware::gpu_initdrawenv` | `[ ]` |
-| **SYS-048** | `GPU_InitPacket` | `0x80083BF0` | `gpu/GPU_InitPacket.c` | GPU packet init: stores 3 params + zeros at offset 4-7 in packet struct | `system::hardware::gpu_initpacket` | `[ ]` |
-| **SYS-049** | `GPU_InitStruct` | `0x80081768` | `gpu/GPU_InitStruct.c` | GPU struct init: Mem_Copy 0x5C bytes from DAT_800a59b0 template | `system::hardware::gpu_initstruct` | `[ ]` |
-| **SYS-050** | `GPU_InitStruct2` | `0x80081C94` | `gpu/GPU_InitStruct2.c` | GPU struct init: Mem_Copy 0x14 bytes from DAT_800a5a0c template | `system::hardware::gpu_initstruct2` | `[ ]` |
-| **SYS-051** | `GPU_LoadImage` | `0x80081218` | `gpu/GPU_LoadImage.c` | PsyQ LoadImage wrapper: uploads texture data from RAM to VRAM | `system::hardware::gpu_loadimage` | `[ ]` |
-| **SYS-052** | `GPU_LoadImage2` | `0x800836B8` | `gpu/GPU_LoadImage2.c` | Alternate LoadImage with timeout handling | `system::hardware::gpu_loadimage2` | `[ ]` |
-| **SYS-053** | `GPU_ModulateOTColors` | `0x8003D584` | `gpu/GPU_ModulateOTColors.c` | Modulates color values in OT primitives for fade/brightness effects | `system::hardware::gpu_modulateotcolors` | `[ ]` |
-| **SYS-054** | `GPU_MoveImage_2` | `0x80083890` | `gpu/GPU_MoveImage_2.c` | GPU move image: sends MoveImage cmd, waits for DMA, returns | `system::hardware::gpu_moveimage_2` | `[ ]` |
-| **SYS-055** | `GPU_OT_Advance` | `0x8007FC24` | `gpu/GPU_OT_Advance.c` | GPU OT advance: increments ordering table pointer, wraps at limit | `system::hardware::gpu_ot_advance` | `[ ]` |
-| **SYS-056** | `GPU_OT_Build` | `0x8007FDB0` | `gpu/GPU_OT_Build.c` | GPU OT builder: constructs ordering table entries | `system::hardware::gpu_ot_build` | `[ ]` |
-| **SYS-057** | `GPU_OT_Process` | `0x8003E264` | `gpu/GPU_OT_Process.c` | GPU OT processor: processes ordering table, submits primitives | `system::hardware::gpu_ot_process` | `[ ]` |
-| **SYS-058** | `GPU_OT_Sort` | `0x8003E448` | `gpu/GPU_OT_Sort.c` | GPU OT sorter: sorts primitives by Z depth | `system::hardware::gpu_ot_sort` | `[ ]` |
-| **SYS-059** | `GPU_OT_Submit2` | `0x8008007C` | `gpu/GPU_OT_Submit2.c` | GPU OT submitter variant 2: different queue handling | `system::hardware::gpu_ot_submit2` | `[ ]` |
-| **SYS-060** | `GPU_PrimAlloc` | `0x80082504` | `gpu/GPU_PrimAlloc.c` | GPU primitive allocator: checks queue, returns free slot ptr | `system::hardware::gpu_primalloc` | `[ ]` |
-| **SYS-061** | `GPU_PrimSend` | `0x80081DB8` | `gpu/GPU_PrimSend.c` | GPU primitive sender: checks queue space, sends prim via DMA | `system::hardware::gpu_primsend` | `[ ]` |
-| **SYS-062** | `GPU_PrimSend2` | `0x80081FB0` | `gpu/GPU_PrimSend2.c` | GPU primitive sender variant 2: different queue checking | `system::hardware::gpu_primsend2` | `[ ]` |
-| **SYS-063** | `GPU_PrimSetup` | `0x8007CDD4` | `gpu/GPU_PrimSetup.c` | GPU primitive setup: creates sprite prim at _DAT_800bf544 with params | `system::hardware::gpu_primsetup` | `[ ]` |
-| **SYS-064** | `GPU_ProcessRenderQueue` | `0x80040530` | `gpu/GPU_ProcessRenderQueue.c` | Subrutina de GPU_ProcessRenderQueue (gpu/GPU_ProcessRenderQueue.c) | `system::hardware::gpu_processrenderqueue` | `[ ]` |
-| **SYS-065** | `GPU_PutDrawEnv` | `0x800815D0` | `gpu/GPU_PutDrawEnv.c` | GPU put draw environment: sends PutDrawEnv cmd, returns ptr | `system::hardware::gpu_putdrawenv` | `[ ]` |
-| **SYS-066** | `GPU_Render3DSprite` | `0x8003D23C` | `gpu/GPU_Render3DSprite.c` | Renders a 3D sprite: sets up GTE, transforms, submits to OT | `system::hardware::gpu_render3dsprite` | `[ ]` |
-| **SYS-067** | `GPU_RenderSprite` | `0x8007E8DC` | `gpu/GPU_RenderSprite.c` | GPU sprite renderer: dispatches via function table at 0x80017334 + param index | `system::hardware::gpu_rendersprite` | `[ ]` |
-| **SYS-068** | `GPU_RenderSprite2` | `0x8007E938` | `gpu/GPU_RenderSprite2.c` | Renders sprite variant 2: calls FUN_8007e6dc with function table lookup at 0x80017334 | `system::hardware::gpu_rendersprite2` | `[ ]` |
-| **SYS-069** | `GPU_RenderSprite_V1` | `0x80079374` | `gpu/GPU_RenderSprite_V1.c` | Renders sprite variant 1: sets flag 0x20, calls FUN_80078ca8 with mode 0x100008 | `system::hardware::gpu_rendersprite_v1` | `[ ]` |
-| **SYS-070** | `GPU_RenderSprite_V2` | `0x80079324` | `gpu/GPU_RenderSprite_V2.c` | Renders sprite variant 2: sets flag 0xFFE0, calls FUN_80078ca8 with mode 0x80008 | `system::hardware::gpu_rendersprite_v2` | `[ ]` |
-| **SYS-071** | `GPU_ResetGraph` | `0x80080BF0` | `gpu/GPU_ResetGraph.c` | GPU graph reset: calls ResetGraph debug, dispatches by param & 7 | `system::hardware::gpu_resetgraph` | `[ ]` |
-| **SYS-072** | `GPU_SPU_Cmd` | `0x80098150` | `gpu/GPU_SPU_Cmd.c` | GPU/SPU command: sets DAT_800ac598 flag, modifies SPU register at 0x800AC604+0x1AA | `system::hardware::gpu_spu_cmd` | `[ ]` |
-| **SYS-073** | `GPU_SendCommand` | `0x80082BF0` | `gpu/GPU_SendCommand.c` | Sends raw 32-bit command to GPU register and stores shadow copy | `system::hardware::gpu_sendcommand` | `[ ]` |
-| **SYS-074** | `GPU_SendCommandAndRead` | `0x80082CB0` | `gpu/GPU_SendCommandAndRead.c` | Sends GPU command with bit 28 set, returns GPU read response | `system::hardware::gpu_sendcommandandread` | `[ ]` |
-| **SYS-075** | `GPU_SendDMAPacket` | `0x80083618` | `gpu/GPU_SendDMAPacket.c` | GPU DMA packet send: builds GP0 command, sends via DMA with flags | `system::hardware::gpu_senddmapacket` | `[ ]` |
-| **SYS-076** | `GPU_SendPrimList` | `0x80082C28` | `gpu/GPU_SendPrimList.c` | GPU primitive list send: iterates param_2 prims, sends each via DMA | `system::hardware::gpu_sendprimlist` | `[ ]` |
-| **SYS-077** | `GPU_SetDisplayMask` | `0x80080ED4` | `gpu/GPU_SetDisplayMask.c` | GPU display mask setter: sends SetDispMask cmd, calls GPU via ptr table | `system::hardware::gpu_setdisplaymask` | `[ ]` |
-| **SYS-078** | `GPU_SetQueueDepth` | `0x80080D64` | `gpu/GPU_SetQueueDepth.c` | GPU queue depth setter: DAT_800a59a2 = param, calls callback if non-zero | `system::hardware::gpu_setqueuedepth` | `[ ]` |
-| **SYS-079** | `GPU_SetQueueMode` | `0x80080DC0` | `gpu/GPU_SetQueueMode.c` | GPU command queue mode setter: dispatches via function table, checks DAT_800a59a1/2 | `system::hardware::gpu_setqueuemode` | `[ ]` |
-| **SYS-080** | `GPU_SetRegClamped` | `0x80098100` | `gpu/GPU_SetRegClamped.c` | Sets GPU register with clamp: param clamped 0-0x3F, writes to DAT_800ac604+0x1AA | `system::hardware::gpu_setregclamped` | `[ ]` |
-| **SYS-081** | `GPU_SetTexPrimHeader` | `0x80083CA0` | `gpu/GPU_SetTexPrimHeader.c` | Sets up textured primitive header: code=9 (TILE), size=0x2C | `system::hardware::gpu_settexprimheader` | `[ ]` |
-| **SYS-082** | `GPU_SetTilePrimHeader` | `0x80083CC0` | `gpu/GPU_SetTilePrimHeader.c` | Sets up tile primitive header: code=4 (TILE_1), size=100 | `system::hardware::gpu_settileprimheader` | `[ ]` |
-| **SYS-083** | `GPU_SetupDrawMode` | `0x80081D78` | `gpu/GPU_SetupDrawMode.c` | Sets up GPU draw mode: primitive[3]=2, encodes tpage, sets draw params | `system::hardware::gpu_setupdrawmode` | `[ ]` |
-| **SYS-084** | `GPU_SetupDrawMode2` | `0x80083DE0` | `gpu/GPU_SetupDrawMode2.c` | GPU draw mode setup variant 2: builds GP0(0xE1) cmd with extra params | `system::hardware::gpu_setupdrawmode2` | `[ ]` |
-| **SYS-085** | `GPU_SetupOT` | `0x80081458` | `gpu/GPU_SetupOT.c` | GPU ordering table setup: calls GPU funcs, sets up OT base address | `system::hardware::gpu_setupot` | `[ ]` |
-| **SYS-086** | `GPU_SetupPacket` | `0x80080FD4` | `gpu/GPU_SetupPacket.c` | Sets up GPU primitive packet header before DMA transfer | `system::hardware::gpu_setuppacket` | `[ ]` |
-| **SYS-087** | `GPU_SetupPrimitive` | `0x8007C8C8` | `gpu/GPU_SetupPrimitive.c` | GPU primitive setup: sets type byte at +3, encodes color from param bits | `system::hardware::gpu_setupprimitive` | `[ ]` |
-| **SYS-088** | `GPU_SetupPrimitive2` | `0x80083DB0` | `gpu/GPU_SetupPrimitive2.c` | GPU primitive setup 2: sets type=2, encodes draw mode from param_2 | `system::hardware::gpu_setupprimitive2` | `[ ]` |
-| **SYS-089** | `GPU_SpriteBuild` | `0x8007C940` | `gpu/GPU_SpriteBuild.c` | GPU sprite builder: constructs sprite prim from data | `system::hardware::gpu_spritebuild` | `[ ]` |
-| **SYS-090** | `GPU_SpriteCmd` | `0x8007D208` | `gpu/GPU_SpriteCmd.c` | GPU sprite command processor: entity[0x46] flags, dispatches | `system::hardware::gpu_spritecmd` | `[ ]` |
-| **SYS-091** | `GPU_SpriteDecode` | `0x8007CEEC` | `gpu/GPU_SpriteDecode.c` | GPU sprite decoder: reads bytecode, builds prim list | `system::hardware::gpu_spritedecode` | `[ ]` |
-| **SYS-092** | `GPU_SpriteDrawMain` | `0x8007E1B8` | `gpu/GPU_SpriteDrawMain.c` | GPU sprite draw main: builds + submits sprite prims | `system::hardware::gpu_spritedrawmain` | `[ ]` |
-| **SYS-093** | `GPU_SpriteList` | `0x8007EAE4` | `gpu/GPU_SpriteList.c` | GPU sprite list builder: constructs linked sprite prims | `system::hardware::gpu_spritelist` | `[ ]` |
-| **SYS-094** | `GPU_SpriteMain` | `0x8007D594` | `gpu/GPU_SpriteMain.c` | GPU sprite main: full sprite rendering pipeline | `system::hardware::gpu_spritemain` | `[ ]` |
-| **SYS-095** | `GPU_SpriteOT` | `0x8007E9C8` | `gpu/GPU_SpriteOT.c` | GPU sprite OT submit: sets GTE vals, creates sprite primitive in ordering table | `system::hardware::gpu_spriteot` | `[ ]` |
-| **SYS-096** | `GPU_SpriteProcess` | `0x8007CC00` | `gpu/GPU_SpriteProcess.c` | GPU sprite processor: reads sprite data, builds primitives | `system::hardware::gpu_spriteprocess` | `[ ]` |
-| **SYS-097** | `GPU_SpriteRender` | `0x8007E6DC` | `gpu/GPU_SpriteRender.c` | GPU sprite renderer: builds sprite prim from params, submits | `system::hardware::gpu_spriterender` | `[ ]` |
-| **SYS-098** | `GPU_SpriteRender2` | `0x80078CA8` | `gpu/GPU_SpriteRender2.c` | GPU sprite renderer variant 2: builds prims, submits | `system::hardware::gpu_spriterender2` | `[ ]` |
-| **SYS-099** | `GPU_StoreImage_2` | `0x800837A4` | `gpu/GPU_StoreImage_2.c` | GPU store image: sends StoreImage cmd, waits for DMA completion | `system::hardware::gpu_storeimage_2` | `[ ]` |
-| **SYS-100** | `GPU_SubmitOT` | `0x8007FCC8` | `gpu/GPU_SubmitOT.c` | GPU OT submit: writes prim to ordering table with depth sorting | `system::hardware::gpu_submitot` | `[ ]` |
-| **SYS-101** | `GPU_WaitVSync` | `0x80051FB4` | `gpu/GPU_WaitVSync.c` | Waits for vertical sync: spin-loops until vblank interrupt | `system::hardware::gpu_waitvsync` | `[ ]` |
-| **SYS-102** | `OT_DrawRectSprite` | `0x80081CF8` | `gpu/OT_DrawRectSprite.c` | Subrutina de OT_DrawRectSprite (gpu/OT_DrawRectSprite.c) | `system::hardware::ot_drawrectsprite` | `[ ]` |
-| **SYS-103** | `OT_LinkPrimitives` | `0x80083C30` | `gpu/OT_LinkPrimitives.c` | Links two OT primitives: swaps lower 24 bits of their tag words | `system::hardware::ot_linkprimitives` | `[ ]` |
-| **SYS-104** | `OT_SubmitPrimitive` | `0x8003FAE8` | `gpu/OT_SubmitPrimitive.c` | Submits a primitive to the ordering table with depth sorting | `system::hardware::ot_submitprimitive` | `[ ]` |
-| **SYS-105** | `GTE_ComposeAndProject` | `0x800518FC` | `gte/GTE_ComposeAndProject.c` | GTE compose+project: loads scale, composes rotation matrix, projects, adds position | `system::hardware::gte_composeandproject` | `[ ]` |
-| **SYS-106** | `GTE_ComposeMatrix` | `0x80084110` | `gte/GTE_ComposeMatrix.c` | Subrutina de GTE_ComposeMatrix (gte/GTE_ComposeMatrix.c) | `system::hardware::gte_composematrix` | `[ ]` |
-| **SYS-107** | `GTE_CopyMatrix` | `0x80051B34` | `gte/GTE_CopyMatrix.c` | Copies 5-word GTE matrix from source to destination | `system::hardware::gte_copymatrix` | `[ ]` |
-| **SYS-108** | `GTE_DepthCheck` | `0x800317CC` | `gte/GTE_DepthCheck.c` | Standalone GTE depth/Z-sort check: RTPS projection + OT z-index calculation | `system::hardware::gte_depthcheck` | `[ ]` |
-| **SYS-109** | `GTE_Init` | `0x80083FF8` | `gte/GTE_Init.c` | GTE init: enables coprocessor, sets IR1=0x155, IR2=0x100, SZ0=1000 | `system::hardware::gte_init` | `[ ]` |
-| **SYS-110** | `GTE_InitProjectionMatrix` | `0x80050A80` | `gte/GTE_InitProjectionMatrix.c` | Inits GTE projection matrix: identity, zeros pos/trans, scales 0x1000, screen offset | `system::hardware::gte_initprojectionmatrix` | `[ ]` |
-| **SYS-111** | `GTE_LoadIdentityMatrix` | `0x80051794` | `gte/GTE_LoadIdentityMatrix.c` | Subrutina de GTE_LoadIdentityMatrix (gte/GTE_LoadIdentityMatrix.c) | `system::hardware::gte_loadidentitymatrix` | `[ ]` |
-| **SYS-112** | `GTE_LoadMatrix` | `0x80051614` | `gte/GTE_LoadMatrix.c` | GTE matrix loader: loads rotation + translation from table at 0x800E7F40 | `system::hardware::gte_loadmatrix` | `[ ]` |
-| **SYS-113** | `GTE_LoadMatrix5` | `0x80084660` | `gte/GTE_LoadMatrix5.c` | GTE matrix load: sets 5 GTE regs (R11R12 through TRZ) from array | `system::hardware::gte_loadmatrix5` | `[ ]` |
-| **SYS-114** | `GTE_LoadRotMatrixFromSVec` | `0x80085480` | `gte/GTE_LoadRotMatrixFromSVec.c` | Loads rotation matrix from SVec format into GTE registers | `system::hardware::gte_loadrotmatrixfromsvec` | `[ ]` |
-| **SYS-115** | `GTE_LoadRotationFromSVec` | `0x800847F0` | `gte/GTE_LoadRotationFromSVec.c` | Subrutina de GTE_LoadRotationFromSVec (gte/GTE_LoadRotationFromSVec.c) | `system::hardware::gte_loadrotationfromsvec` | `[ ]` |
-| **SYS-116** | `GTE_LoadScaleCompose` | `0x80051844` | `gte/GTE_LoadScaleCompose.c` | GTE scale + compose: loads entity scale (0xB8/BA/BC), composes with rotation matrix | `system::hardware::gte_loadscalecompose` | `[ ]` |
-| **SYS-117** | `GTE_LoadScaleMatrix` | `0x800517BC` | `gte/GTE_LoadScaleMatrix.c` | Subrutina de GTE_LoadScaleMatrix (gte/GTE_LoadScaleMatrix.c) | `system::hardware::gte_loadscalematrix` | `[ ]` |
-| **SYS-118** | `GTE_LoadTranslation` | `0x80084690` | `gte/GTE_LoadTranslation.c` | GTE translation load: sets TRX/TRY/TRZ from struct at offset 0x14 | `system::hardware::gte_loadtranslation` | `[ ]` |
-| **SYS-119** | `GTE_MulMatrix` | `0x80084220` | `gte/GTE_MulMatrix.c` | GTE matrix multiply: loads matrix, calls copFunction(0x486012), reads result | `system::hardware::gte_mulmatrix` | `[ ]` |
-| **SYS-120** | `GTE_MulMatrix2` | `0x800844C0` | `gte/GTE_MulMatrix2.c` | GTE matrix multiply variant 2: loads 2 matrices, multiplies, stores result | `system::hardware::gte_mulmatrix2` | `[ ]` |
-| **SYS-121** | `GTE_MulMatrix3` | `0x80084250` | `gte/GTE_MulMatrix3.c` | GTE matrix multiply variant 3: different input format | `system::hardware::gte_mulmatrix3` | `[ ]` |
-| **SYS-122** | `GTE_MulMatrix4` | `0x80084360` | `gte/GTE_MulMatrix4.c` | GTE matrix multiply variant 4: different register layout | `system::hardware::gte_mulmatrix4` | `[ ]` |
-| **SYS-123** | `GTE_MulMatrixVec` | `0x80084470` | `gte/GTE_MulMatrixVec.c` | GTE matrix * vector multiply: loads matrix from array, transforms vector | `system::hardware::gte_mulmatrixvec` | `[ ]` |
-| **SYS-124** | `GTE_Project10` | `0x8002C6AC` | `gte/GTE_Project10.c` | GTE project variant 10: different scratchpad layout | `system::hardware::gte_project10` | `[ ]` |
-| **SYS-125** | `GTE_Project11` | `0x8002FDD0` | `gte/GTE_Project11.c` | GTE project variant 11: entity draw projection | `system::hardware::gte_project11` | `[ ]` |
-| **SYS-126** | `GTE_Project2` | `0x8002DBE4` | `gte/GTE_Project2.c` | GTE project variant 2: loads matrix, projects, reads result | `system::hardware::gte_project2` | `[ ]` |
-| **SYS-127** | `GTE_Project3` | `0x8002DD88` | `gte/GTE_Project3.c` | GTE project variant 3: loads matrix, projects, reads screen XY | `system::hardware::gte_project3` | `[ ]` |
-| **SYS-128** | `GTE_Project4` | `0x8002801C` | `gte/GTE_Project4.c` | GTE project variant 4: loads from _DAT_1f8000f8, projects | `system::hardware::gte_project4` | `[ ]` |
-| **SYS-129** | `GTE_Project5` | `0x8002E458` | `gte/GTE_Project5.c` | GTE project variant 5: loads from _DAT_1f8000f8, different path | `system::hardware::gte_project5` | `[ ]` |
-| **SYS-130** | `GTE_Project6` | `0x80032AB4` | `gte/GTE_Project6.c` | GTE project variant 6: loads matrix, projects, stores result | `system::hardware::gte_project6` | `[ ]` |
-| **SYS-131** | `GTE_Project7` | `0x80032CBC` | `gte/GTE_Project7.c` | GTE project variant 7: different matrix source | `system::hardware::gte_project7` | `[ ]` |
-| **SYS-132** | `GTE_Project8` | `0x8002DF68` | `gte/GTE_Project8.c` | GTE project variant 8: loads from scratchpad, projects | `system::hardware::gte_project8` | `[ ]` |
-| **SYS-133** | `GTE_Project9` | `0x8002AB5C` | `gte/GTE_Project9.c` | GTE project variant 9: loads matrix from entity, projects | `system::hardware::gte_project9` | `[ ]` |
-| **SYS-134** | `GTE_ProjectEntity` | `0x8006F138` | `gte/GTE_ProjectEntity.c` | GTE entity projector: loads rotation, applies transform, stores result | `system::hardware::gte_projectentity` | `[ ]` |
-| **SYS-135** | `GTE_ProjectEntity2` | `0x8002847C` | `gte/GTE_ProjectEntity2.c` | GTE entity projector variant 2: different register layout | `system::hardware::gte_projectentity2` | `[ ]` |
-| **SYS-136** | `GTE_ProjectMain` | `0x8002BC9C` | `gte/GTE_ProjectMain.c` | GTE projection main: full projection pipeline | `system::hardware::gte_projectmain` | `[ ]` |
-| **SYS-137** | `GTE_ProjectSprite` | `0x800281EC` | `gte/GTE_ProjectSprite.c` | GTE sprite projector: loads matrix, projects sprite vertices | `system::hardware::gte_projectsprite` | `[ ]` |
-| **SYS-138** | `GTE_ProjectSprite1` | `0x80077ACC` | `gte/GTE_ProjectSprite1.c` | GTE sprite projection: sets _DAT_1f800080=1, _DAT_1f800084=4, calls FUN_8007712c | `system::hardware::gte_projectsprite1` | `[ ]` |
-| **SYS-139** | `GTE_ProjectSprite2` | `0x8007778C` | `gte/GTE_ProjectSprite2.c` | GTE sprite projection: sets _DAT_1f800080=0, _DAT_1f800084=0, calls FUN_8007712c | `system::hardware::gte_projectsprite2` | `[ ]` |
-| **SYS-140** | `GTE_ProjectSprite3` | `0x80077F3C` | `gte/GTE_ProjectSprite3.c` | GTE sprite projection: sets _DAT_1f800080=0, _DAT_1f800084=3, calls FUN_8007712c | `system::hardware::gte_projectsprite3` | `[ ]` |
-| **SYS-141** | `GTE_ProjectSprite4` | `0x800777FC` | `gte/GTE_ProjectSprite4.c` | GTE sprite projection: sets _DAT_1f800080=0, _DAT_1f800084=2, calls FUN_8007712c | `system::hardware::gte_projectsprite4` | `[ ]` |
-| **SYS-142** | `GTE_ProjectSprite5` | `0x80077870` | `gte/GTE_ProjectSprite5.c` | GTE sprite projection: sets _DAT_1f800080=0, _DAT_1f800084=1, calls FUN_8007712c | `system::hardware::gte_projectsprite5` | `[ ]` |
-| **SYS-143** | `GTE_ProjectSprite6` | `0x800778E4` | `gte/GTE_ProjectSprite6.c` | GTE sprite projection: sets _DAT_1f800080=0, _DAT_1f800084=0, calls FUN_8007712c | `system::hardware::gte_projectsprite6` | `[ ]` |
-| **SYS-144** | `GTE_ProjectSprite7` | `0x80077958` | `gte/GTE_ProjectSprite7.c` | GTE sprite projection: sets _DAT_1f800080=0, _DAT_1f800084=0, calls FUN_8007712c | `system::hardware::gte_projectsprite7` | `[ ]` |
-| **SYS-145** | `GTE_ProjectSprite8` | `0x800779D0` | `gte/GTE_ProjectSprite8.c` | GTE sprite projection: sets _DAT_1f800080=0, _DAT_1f800084=0, calls FUN_8007712c | `system::hardware::gte_projectsprite8` | `[ ]` |
-| **SYS-146** | `GTE_ProjectSprite9` | `0x80077A4C` | `gte/GTE_ProjectSprite9.c` | GTE sprite projection variant 9: _DAT_1f800080=1, _DAT_1f800084=0 | `system::hardware::gte_projectsprite9` | `[ ]` |
-| **SYS-147** | `GTE_ProjectVertex` | `0x8003F7A0` | `gte/GTE_ProjectVertex.c` | GTE RTPS projection of single vertex: returns screen XY and depth Z | `system::hardware::gte_projectvertex` | `[ ]` |
-| **SYS-148** | `GTE_ProjectionInit` | `0x80078610` | `gte/GTE_ProjectionInit.c` | GTE projection init: sets screen offset/scale, identity matrix | `system::hardware::gte_projectioninit` | `[ ]` |
-| **SYS-149** | `GTE_RTPS` | `0x8003F7D8` | `gte/GTE_RTPS.c` | GTE RTPS projection: sets cop regs, calls RTPS, reads screen coords | `system::hardware::gte_rtps` | `[ ]` |
-| **SYS-150** | `GTE_RotateVectorY` | `0x80085050` | `gte/GTE_RotateVectorY.c` | Subrutina de GTE_RotateVectorY (gte/GTE_RotateVectorY.c) | `system::hardware::gte_rotatevectory` | `[ ]` |
-| **SYS-151** | `GTE_SetProjectionDist` | `0x800329E0` | `gte/GTE_SetProjectionDist.c` | Subrutina de GTE_SetProjectionDist (gte/GTE_SetProjectionDist.c) | `system::hardware::gte_setprojectiondist` | `[ ]` |
-| **SYS-152** | `GTE_SetReg_D000` | `0x800846F0` | `gte/GTE_SetReg_D000.c` | GTE register set: writes param_1 to COP2 register 0xD000 (SZ0) | `system::hardware::gte_setreg_d000` | `[ ]` |
-| **SYS-153** | `GTE_SetScaleZ` | `0x800846D0` | `gte/GTE_SetScaleZ.c` | GTE scale Z setter: sets SZ3=param1<<16, SZ2=param2<<16 via cop control | `system::hardware::gte_setscalez` | `[ ]` |
-| **SYS-154** | `GTE_SpriteTransform` | `0x8007712C` | `gte/GTE_SpriteTransform.c` | GTE sprite transform: full vertex transform pipeline | `system::hardware::gte_spritetransform` | `[ ]` |
-| **SYS-155** | `GTE_StoreMatrix` | `0x800847B0` | `gte/GTE_StoreMatrix.c` | GTE matrix store: reads GTE regs, stores to param_2 array (+translation) | `system::hardware::gte_storematrix` | `[ ]` |
-| **SYS-156** | `GTE_TransformVec` | `0x80084520` | `gte/GTE_TransformVec.c` | GTE vector transform: loads matrix from param_2, transforms param_1 vector | `system::hardware::gte_transformvec` | `[ ]` |
-| **SYS-157** | `CD_AdjustCmdByte` | `0x8009A3A4` | `cd/CD_AdjustCmdByte.c` | Adjusts CD command byte: if table[param_1]&1, adds 0x20 to command | `system::hardware::cd_adjustcmdbyte` | `[ ]` |
-| **SYS-158** | `CD_AdvanceSeek` | `0x8008C508` | `cd/CD_AdvanceSeek.c` | CD seek advance: increments DAT_800ac2ec by stride, decrements counter | `system::hardware::cd_advanceseek` | `[ ]` |
-| **SYS-159** | `CD_AlignDMA` | `0x80097540` | `cd/CD_AlignDMA.c` | CD DMA alignment: divides param by DAT_800ac630, aligns for DMA transfer | `system::hardware::cd_aligndma` | `[ ]` |
-| **SYS-160** | `CD_AllocBuffer` | `0x8008CDC0` | `cd/CD_AllocBuffer.c` | CD buffer alloc: assigns 0x20-byte slot from _DAT_80102728 pool | `system::hardware::cd_allocbuffer` | `[ ]` |
-| **SYS-161** | `CD_AllocDMA` | `0x800982A0` | `cd/CD_AllocDMA.c` | CD DMA allocator: finds free slot in DAT_800ac66c table, returns index | `system::hardware::cd_allocdma` | `[ ]` |
-| **SYS-162** | `CD_CalcSector` | `0x8008A00C` | `cd/CD_CalcSector.c` | CD sector calculator: (offset+0x96)/0x4B = sector, remainder = offset | `system::hardware::cd_calcsector` | `[ ]` |
-| **SYS-163** | `CD_CallbackDispatch` | `0x80085C44` | `cd/CD_CallbackDispatch.c` | Dispatches CD event callback via function table at 0x800ABDA0+0x18 | `system::hardware::cd_callbackdispatch` | `[ ]` |
-| **SYS-164** | `CD_CallbackDispatch2` | `0x80085CB4` | `cd/CD_CallbackDispatch2.c` | CD callback dispatch variant 2: calls function table at 0x800ABDA4/8 | `system::hardware::cd_callbackdispatch2` | `[ ]` |
-| **SYS-165** | `CD_CallbackStub` | `0x80045558` | `cd/CD_CallbackStub.c` | CD event callback stub: calls 0x8008A00C with preset params | `system::hardware::cd_callbackstub` | `[ ]` |
-| **SYS-166** | `CD_Cancel` | `0x80089AA8` | `cd/CD_Cancel.c` | Cancels current CD operation via 0x8008B0C8 | `system::hardware::cd_cancel` | `[ ]` |
-| **SYS-167** | `CD_CheckDevice` | `0x80098CE0` | `cd/CD_CheckDevice.c` | CD device check: calls FUN_800982a0, sets DAT_800ac59c flag, returns status | `system::hardware::cd_checkdevice` | `[ ]` |
-| **SYS-168** | `CD_CheckInit` | `0x80089F88` | `cd/CD_CheckInit.c` | Checks if CD init is complete via 0x8008B620 | `system::hardware::cd_checkinit` | `[ ]` |
-| **SYS-169** | `CD_CheckLoaded` | `0x80045580` | `cd/CD_CheckLoaded.c` | Checks if asset is loaded by looking up sector table | `system::hardware::cd_checkloaded` | `[ ]` |
-| **SYS-170** | `CD_CheckReady` | `0x80089FA8` | `cd/CD_CheckReady.c` | Checks if CD is ready via 0x8008B720 | `system::hardware::cd_checkready` | `[ ]` |
-| **SYS-171** | `CD_CheckSlot` | `0x800962B0` | `cd/CD_CheckSlot.c` | CD slot check: validates param<0x10, checks slot state == 1 | `system::hardware::cd_checkslot` | `[ ]` |
-| **SYS-172** | `CD_CheckTimeout` | `0x8008CAFC` | `cd/CD_CheckTimeout.c` | CD timeout check: reads timer, checks against DAT_800ac300+0x4B0, handles timeout | `system::hardware::cd_checktimeout` | `[ ]` |
-| **SYS-173** | `CD_CheckTransfer` | `0x80099310` | `cd/CD_CheckTransfer.c` | CD transfer check: validates address range, sets up FIFO via FUN_80097540 | `system::hardware::cd_checktransfer` | `[ ]` |
-| **SYS-174** | `CD_ClearBuffer` | `0x8008CFF0` | `cd/CD_ClearBuffer.c` | Clears CD buffer: zeros param_2 entries of 0x20 bytes at DAT_80102728 | `system::hardware::cd_clearbuffer` | `[ ]` |
-| **SYS-175** | `CD_ClearFlagCD8` | `0x80096390` | `cd/CD_ClearFlagCD8.c` | CD flag clearer: DAT_80105cd8 = 0 | `system::hardware::cd_clearflagcd8` | `[ ]` |
-| **SYS-176** | `CD_Close` | `0x80089A3C` | `cd/CD_Close.c` | CD close/finalize: if param==2 calls FUN_8008b28c, else syncs with retry | `system::hardware::cd_close` | `[ ]` |
-| **SYS-177** | `CD_CloseFile` | `0x8008CD40` | `cd/CD_CloseFile.c` | CD file close: dispatches on DAT_800abfdc flag, calls close or event handlers | `system::hardware::cd_closefile` | `[ ]` |
-| **SYS-178** | `CD_Cmd1` | `0x80096480` | `cd/CD_Cmd1.c` | CD command wrapper 1: calls FUN_80096590 with callback FUN_800964b4 | `system::hardware::cd_cmd1` | `[ ]` |
-| **SYS-179** | `CD_Cmd2` | `0x80096520` | `cd/CD_Cmd2.c` | CD command wrapper 2: calls FUN_80096590 with callback LAB_80096588 + param | `system::hardware::cd_cmd2` | `[ ]` |
-| **SYS-180** | `CD_Cmd3` | `0x80096554` | `cd/CD_Cmd3.c` | CD command wrapper 3: calls FUN_80096590 with callback LAB_80096588 + param | `system::hardware::cd_cmd3` | `[ ]` |
-| **SYS-181** | `CD_CmdMain` | `0x80096590` | `cd/CD_CmdMain.c` | CD command main: processes CD commands with retry | `system::hardware::cd_cmdmain` | `[ ]` |
-| **SYS-182** | `CD_CmdRetry` | `0x80089E1C` | `cd/CD_CmdRetry.c` | CD command with retry: tries cmd up to 3 times with callback fallback | `system::hardware::cd_cmdretry` | `[ ]` |
-| **SYS-183** | `CD_Cmd_20` | `0x8008996C` | `cd/CD_Cmd_20.c` | CD command with 0x20: calls BIOS stub with 0xF0000003, 0x20 | `system::hardware::cd_cmd_20` | `[ ]` |
-| **SYS-184** | `CD_Cmd_40` | `0x80089994` | `cd/CD_Cmd_40.c` | CD command with 0x40: calls BIOS stub with 0xF0000003, 0x40 | `system::hardware::cd_cmd_40` | `[ ]` |
-| **SYS-185** | `CD_Cmd_40b` | `0x800899BC` | `cd/CD_Cmd_40b.c` | CD command with 0x40 variant: same as Cmd_40 | `system::hardware::cd_cmd_40b` | `[ ]` |
-| **SYS-186** | `CD_Cmd_CC_CD` | `0x80098DB0` | `cd/CD_Cmd_CC_CD.c` | CD command with codes 0xCC,0xCD: calls FUN_80097e40 | `system::hardware::cd_cmd_cc_cd` | `[ ]` |
-| **SYS-187** | `CD_CompareName` | `0x8008BBC8` | `cd/CD_CompareName.c` | Compares two 12-byte CD file names, returns true if match | `system::hardware::cd_comparename` | `[ ]` |
-| **SYS-188** | `CD_Control` | `0x8008AC34` | `cd/CD_Control.c` | CD-ROM control command: sends command with parameters, waits for completion | `system::hardware::cd_control` | `[ ]` |
-| **SYS-189** | `CD_DMAProcess` | `0x80097A90` | `cd/CD_DMAProcess.c` | CD DMA processor: manages DMA transfer queue | `system::hardware::cd_dmaprocess` | `[ ]` |
-| **SYS-190** | `CD_DecodeTime` | `0x8008A110` | `cd/CD_DecodeTime.c` | Decodes BCD time format (mm:ss:ff) to absolute frame count | `system::hardware::cd_decodetime` | `[ ]` |
-| **SYS-191** | `CD_Dispatch04` | `0x80085B80` | `cd/CD_Dispatch04.c` | Dispatches CD driver function at table+0x04 | `system::hardware::cd_dispatch04` | `[ ]` |
-| **SYS-192** | `CD_Dispatch08` | `0x80085B50` | `cd/CD_Dispatch08.c` | Dispatches CD driver function at table+0x08 | `system::hardware::cd_dispatch08` | `[ ]` |
-| **SYS-193** | `CD_Dispatch0C` | `0x80085B20` | `cd/CD_Dispatch0C.c` | Dispatches CD driver function at table+0x0C | `system::hardware::cd_dispatch0c` | `[ ]` |
-| **SYS-194** | `CD_Dispatch10` | `0x80085C14` | `cd/CD_Dispatch10.c` | Dispatches CD driver function at table+0x10 | `system::hardware::cd_dispatch10` | `[ ]` |
-| **SYS-195** | `CD_Dispatch14` | `0x80085BB0` | `cd/CD_Dispatch14.c` | Dispatches CD driver function at table+0x14 with params | `system::hardware::cd_dispatch14` | `[ ]` |
-| **SYS-196** | `CD_Dispatch14_NoParam` | `0x80085BE4` | `cd/CD_Dispatch14_NoParam.c` | Dispatches CD driver function at table+0x14 without params | `system::hardware::cd_dispatch14_noparam` | `[ ]` |
-| **SYS-197** | `CD_EventCallback` | `0x8008BBE8` | `cd/CD_EventCallback.c` | CD event callback handler: processes event queue | `system::hardware::cd_eventcallback` | `[ ]` |
-| **SYS-198** | `CD_EventHandler` | `0x8008C5D8` | `cd/CD_EventHandler.c` | CD event handler: checks DAT_800abf28, dispatches events | `system::hardware::cd_eventhandler` | `[ ]` |
-| **SYS-199** | `CD_EventMain` | `0x8009B0C0` | `cd/CD_EventMain.c` | CD event main: event queue processor (303L) | `system::hardware::cd_eventmain` | `[ ]` |
-| **SYS-200** | `CD_EventProcess` | `0x8008BF50` | `cd/CD_EventProcess.c` | CD event processor: checks DAT_800ac2d4, dispatches events | `system::hardware::cd_eventprocess` | `[ ]` |
-| **SYS-201** | `CD_FileOpen` | `0x8008B8F0` | `cd/CD_FileOpen.c` | CD file opener: looks up file, opens for reading | `system::hardware::cd_fileopen` | `[ ]` |
-| **SYS-202** | `CD_FileRead` | `0x8008C294` | `cd/CD_FileRead.c` | CD file read: sets DAT_800ac318, checks counter, reads | `system::hardware::cd_fileread` | `[ ]` |
-| **SYS-203** | `CD_FlushBuffer` | `0x80097D90` | `cd/CD_FlushBuffer.c` | CD buffer flush: iterates DAT_800ac66c, clears active entries | `system::hardware::cd_flushbuffer` | `[ ]` |
-| **SYS-204** | `CD_FlushCmd` | `0x8009AF5C` | `cd/CD_FlushCmd.c` | Flushes CD command queue: sends buffered cmds via BIOS stub, resets counter | `system::hardware::cd_flushcmd` | `[ ]` |
-| **SYS-205** | `CD_GetByteAt4` | `0x800954E0` | `cd/CD_GetByteAt4.c` | CD byte getter: reads byte at DAT_80105cdc + param*0x10 + 4 | `system::hardware::cd_getbyteat4` | `[ ]` |
-| **SYS-206** | `CD_GetCallback` | `0x80086604` | `cd/CD_GetCallback.c` | Returns CD event callback function pointer from 0x800ABE20 | `system::hardware::cd_getcallback` | `[ ]` |
-| **SYS-207** | `CD_GetCmdTimeout` | `0x8009A6C0` | `cd/CD_GetCmdTimeout.c` | CD command timeout: looks up table at 0x800ACE75, returns timeout or 9999999 (infinite) | `system::hardware::cd_getcmdtimeout` | `[ ]` |
-| **SYS-208** | `CD_GetField` | `0x8009A1D0` | `cd/CD_GetField.c` | CD struct field getter: returns word at DAT_800ac604 + index*0x10 + 0xC | `system::hardware::cd_getfield` | `[ ]` |
-| **SYS-209** | `CD_GetMode` | `0x80089A00` | `cd/CD_GetMode.c` | Returns CD mode byte from 0x800ABFC8 | `system::hardware::cd_getmode` | `[ ]` |
-| **SYS-210** | `CD_GetParamPtr` | `0x80089A30` | `cd/CD_GetParamPtr.c` | Returns pointer to CD parameter area at 0x800ABFD4 | `system::hardware::cd_getparamptr` | `[ ]` |
-| **SYS-211** | `CD_GetReg` | `0x8009CC14` | `cd/CD_GetReg.c` | CD register getter: returns *DAT_800ad098 | `system::hardware::cd_getreg` | `[ ]` |
-| **SYS-212** | `CD_GetStatusByte` | `0x80089A10` | `cd/CD_GetStatusByte.c` | Returns CD status byte from 0x800ABFD8 | `system::hardware::cd_getstatusbyte` | `[ ]` |
-| **SYS-213** | `CD_GetStatus_2` | `0x8009BBEC` | `cd/CD_GetStatus_2.c` | CD status getter: returns DAT_800acf44 | `system::hardware::cd_getstatus_2` | `[ ]` |
-| **SYS-214** | `CD_HandleError` | `0x800964B4` | `cd/CD_HandleError.c` | CD error handler: on FUN_800977c0=-1, sets flag, decrements counter DAT_80105d70 | `system::hardware::cd_handleerror` | `[ ]` |
-| **SYS-215** | `CD_Init` | `0x80089F68` | `cd/CD_Init.c` | Initializes CD subsystem via 0x8008B040 | `system::hardware::cd_init` | `[ ]` |
-| **SYS-216** | `CD_Init2` | `0x80096A90` | `cd/CD_Init2.c` | CD init variant 2: calls FUN_80096bf0, clears buffer at 0x800AC5EE | `system::hardware::cd_init2` | `[ ]` |
-| **SYS-217** | `CD_Init3` | `0x8008B2D8` | `cd/CD_Init3.c` | CD init variant 3: prints debug, calls init funcs, sets flags | `system::hardware::cd_init3` | `[ ]` |
-| **SYS-218** | `CD_InitAttempt` | `0x80089930` | `cd/CD_InitAttempt.c` | CD init attempt: tries FUN_8008b2d8 then FUN_8008b19c, returns success bool | `system::hardware::cd_initattempt` | `[ ]` |
-| **SYS-219** | `CD_InitBuffer` | `0x8008CCE0` | `cd/CD_InitBuffer.c` | CD buffer init: zeros 4 ptrs at 0x80102704-14, calls CD_ClearBuffer | `system::hardware::cd_initbuffer` | `[ ]` |
-| **SYS-220** | `CD_InitCallbacks` | `0x80086738` | `cd/CD_InitCallbacks.c` | Initializes CD callback function pointers at 0x80102444-0x8010244C | `system::hardware::cd_initcallbacks` | `[ ]` |
-| **SYS-221** | `CD_InitController` | `0x80086144` | `cd/CD_InitController.c` | CD controller init: sets flag, restores saved state, returns status | `system::hardware::cd_initcontroller` | `[ ]` |
-| **SYS-222** | `CD_InitDrive` | `0x8008B040` | `cd/CD_InitDrive.c` | Initializes CD drive hardware: sends config commands | `system::hardware::cd_initdrive` | `[ ]` |
-| **SYS-223** | `CD_InitDrive2` | `0x8008B19C` | `cd/CD_InitDrive2.c` | Second stage CD init: sets volume, filter, playback mode | `system::hardware::cd_initdrive2` | `[ ]` |
-| **SYS-224** | `CD_InitFileLoad` | `0x8008CE4C` | `cd/CD_InitFileLoad.c` | CD file load init: calls FUN_8008a110, allocates via FUN_8008a00c | `system::hardware::cd_initfileload` | `[ ]` |
-| **SYS-225** | `CD_InitIRQ` | `0x80096B78` | `cd/CD_InitIRQ.c` | CD init with IRQ: sets flag, enables IRQ, registers callback FUN_80097030 | `system::hardware::cd_initirq` | `[ ]` |
-| **SYS-226** | `CD_InitParams` | `0x8008B620` | `cd/CD_InitParams.c` | CD init params: sets 0x800AC280-2B8 defaults (mode, speed, filter) | `system::hardware::cd_initparams` | `[ ]` |
-| **SYS-227** | `CD_InitRead` | `0x80086230` | `cd/CD_InitRead.c` | Initializes CD-ROM read operation: sets up DMA, starts transfer | `system::hardware::cd_initread` | `[ ]` |
-| **SYS-228** | `CD_InitSeek` | `0x80086350` | `cd/CD_InitSeek.c` | Initializes CD-ROM seek operation: configures parameters, starts seek | `system::hardware::cd_initseek` | `[ ]` |
-| **SYS-229** | `CD_InitSub` | `0x80089FEC` | `cd/CD_InitSub.c` | Initializes CD subsystem via 0x8008B4B8 | `system::hardware::cd_initsub` | `[ ]` |
-| **SYS-230** | `CD_InitWithRetry` | `0x800898A0` | `cd/CD_InitWithRetry.c` | CD init with 4 retries: sets callbacks at 0x800ABF24 on success, prints error on fail | `system::hardware::cd_initwithretry` | `[ ]` |
-| **SYS-231** | `CD_Interrupt` | `0x80097030` | `cd/CD_Interrupt.c` | CD interrupt handler: checks DAT_800ac654, processes SPU reg, handles DMA | `system::hardware::cd_interrupt` | `[ ]` |
-| **SYS-232** | `CD_InterruptHandler` | `0x80085D8C` | `cd/CD_InterruptHandler.c` | CD interrupt handler: reads status, dispatches by event type | `system::hardware::cd_interrupthandler` | `[ ]` |
-| **SYS-233** | `CD_IsReady` | `0x80099478` | `cd/CD_IsReady.c` | CD ready check: returns DAT_800ac638 != 1 | `system::hardware::cd_isready` | `[ ]` |
-| **SYS-234** | `CD_LoadAsset` | `0x80045258` | `cd/CD_LoadAsset.c` | Loads game asset from CD by ID: uses 0x800ECF58 + 0x800FB170 tables | `system::hardware::cd_loadasset` | `[ ]` |
-| **SYS-235** | `CD_LoadChunk` | `0x80045080` | `cd/CD_LoadChunk.c` | Loads data chunk from CD: reads sector table at 0x800BE118 by chunk ID | `system::hardware::cd_loadchunk` | `[ ]` |
-| **SYS-236** | `CD_LoadLevelData` | `0x800754F4` | `cd/CD_LoadLevelData.c` | Loads level data segments: CD load + 10 sub-loads via FUN_80075448 with config from overlay header | `system::hardware::cd_loadleveldata` | `[ ]` |
-| **SYS-237** | `CD_LoadSectors` | `0x8001DC40` | `cd/CD_LoadSectors.c` | Loads CD sectors to RAM: calculates sector count, aligns to 4-byte boundary | `system::hardware::cd_loadsectors` | `[ ]` |
-| **SYS-238** | `CD_LoadSegment` | `0x80075448` | `cd/CD_LoadSegment.c` | CD level segment load: loads param-sized segment into CD buffer, returns offset | `system::hardware::cd_loadsegment` | `[ ]` |
-| **SYS-239** | `CD_LoadToRAM` | `0x800753AC` | `cd/CD_LoadToRAM.c` | Loads CD sector data to RAM address from 0x800BE108 + offset | `system::hardware::cd_loadtoram` | `[ ]` |
-| **SYS-240** | `CD_Main` | `0x80098330` | `cd/CD_Main.c` | CD main: full CD-ROM command processor | `system::hardware::cd_main` | `[ ]` |
-| **SYS-241** | `CD_OpenFile` | `0x8008C1EC` | `cd/CD_OpenFile.c` | Opens file on CD: looks up name, seeks to sector, returns success | `system::hardware::cd_openfile` | `[ ]` |
-| **SYS-242** | `CD_PollEvent` | `0x8008BEAC` | `cd/CD_PollEvent.c` | CD event poll: iterates 0x800AC2D4 table, dispatches active event callbacks | `system::hardware::cd_pollevent` | `[ ]` |
-| **SYS-243** | `CD_PollSync` | `0x8008B818` | `cd/CD_PollSync.c` | CD poll sync: spins on DAT_800ac280 flag, waits for FUN_8008a190 completion | `system::hardware::cd_pollsync` | `[ ]` |
-| **SYS-244** | `CD_ProcessInterrupt` | `0x8008639C` | `cd/CD_ProcessInterrupt.c` | CD interrupt processor: reads DAT_800abdf0 status, dispatches events | `system::hardware::cd_processinterrupt` | `[ ]` |
-| **SYS-245** | `CD_QueueCmd` | `0x8009AE60` | `cd/CD_QueueCmd.c` | CD command queue: appends byte to buffer at DAT_800acf08, flushes on full, special cmds 9/10 | `system::hardware::cd_queuecmd` | `[ ]` |
-| **SYS-246** | `CD_QueueCmdAndFlush` | `0x8009AF98` | `cd/CD_QueueCmdAndFlush.c` | CD cmd queue + flush: same as QueueCmd but forces flush at end | `system::hardware::cd_queuecmdandflush` | `[ ]` |
-| **SYS-247** | `CD_ReadByte` | `0x80095470` | `cd/CD_ReadByte.c` | CD byte read: calls FUN_800962b0, writes result to buffer at DAT_80105cdc+offset+4 | `system::hardware::cd_readbyte` | `[ ]` |
-| **SYS-248** | `CD_ReadByteAt1` | `0x800953B0` | `cd/CD_ReadByteAt1.c` | CD byte read at offset+1: same as CD_ReadByte but writes to +1 instead of +4 | `system::hardware::cd_readbyteat1` | `[ ]` |
-| **SYS-249** | `CD_ReadMain` | `0x8008A190` | `cd/CD_ReadMain.c` | CD read main: full sector read pipeline | `system::hardware::cd_readmain` | `[ ]` |
-| **SYS-250** | `CD_ReadReg` | `0x8009A170` | `cd/CD_ReadReg.c` | CD register read: reads ushort from DAT_800ac604 + param*0x10 | `system::hardware::cd_readreg` | `[ ]` |
-| **SYS-251** | `CD_ReadRequest` | `0x8001CE04` | `cd/CD_ReadRequest.c` | CD-ROM read request: initiates read with retry loop via FUN_80089ce8/80089b44 | `system::hardware::cd_readrequest` | `[ ]` |
-| **SYS-252** | `CD_ReadSector_2` | `0x8009A1F0` | `cd/CD_ReadSector_2.c` | CD sector reader: reads sector data, handles retry logic | `system::hardware::cd_readsector_2` | `[ ]` |
-| **SYS-253** | `CD_ReadSeek` | `0x800753D4` | `cd/CD_ReadSeek.c` | CD read + seek: calls CD_Cmd1 for read, then FUN_80096980 for seek | `system::hardware::cd_readseek` | `[ ]` |
-| **SYS-254** | `CD_ReadStart` | `0x8008C7C0` | `cd/CD_ReadStart.c` | CD read start: checks DAT_800abf28 flag, initiates read | `system::hardware::cd_readstart` | `[ ]` |
-| **SYS-255** | `CD_ReadWord` | `0x80095420` | `cd/CD_ReadWord.c` | CD word reader: same pattern as ReadByte but reads word from buffer | `system::hardware::cd_readword` | `[ ]` |
-| **SYS-256** | `CD_Ready` | `0x8008A96C` | `cd/CD_Ready.c` | CD-ROM ready check: polls CD status with callback processing | `system::hardware::cd_ready` | `[ ]` |
-| **SYS-257** | `CD_ReadySimple` | `0x80089B64` | `cd/CD_ReadySimple.c` | Wraps CD_Ready for simple ready check | `system::hardware::cd_readysimple` | `[ ]` |
-| **SYS-258** | `CD_RegisterCallback` | `0x80083AD0` | `cd/CD_RegisterCallback.c` | CD event callback register: calls FUN_80085b80(2, FUN_80082fb4) | `system::hardware::cd_registercallback` | `[ ]` |
-| **SYS-259** | `CD_ReleaseSlot` | `0x800963D0` | `cd/CD_ReleaseSlot.c` | CD slot release: checks slot < 0x10, calls FUN_80097d90, clears, decrements counter | `system::hardware::cd_releaseslot` | `[ ]` |
-| **SYS-260** | `CD_Reset` | `0x8008B0C8` | `cd/CD_Reset.c` | CD reset: cycles DAT_800ac280, waits for bit clear, resets controller | `system::hardware::cd_reset` | `[ ]` |
-| **SYS-261** | `CD_ResetCallbacks` | `0x8008B28C` | `cd/CD_ResetCallbacks.c` | Resets CD event/error callbacks and re-inits drive | `system::hardware::cd_resetcallbacks` | `[ ]` |
-| **SYS-262** | `CD_ResetController` | `0x800860A4` | `cd/CD_ResetController.c` | CD controller reset: saves state from 0x800ABDA8/C, zeros fields, calls BIOS stub | `system::hardware::cd_resetcontroller` | `[ ]` |
-| **SYS-263** | `CD_ResetState` | `0x8009C8E0` | `cd/CD_ResetState.c` | CD state reset: clears CD regs at 0x800AD098, zeros buffers at DAT_800acf54/cfd8 | `system::hardware::cd_resetstate` | `[ ]` |
-| **SYS-264** | `CD_ResetWithOption` | `0x8009C620` | `cd/CD_ResetWithOption.c` | CD reset with option: optionally calls FUN_80085b20, then CD_ResetState | `system::hardware::cd_resetwithoption` | `[ ]` |
-| **SYS-265** | `CD_SPU_Cmd` | `0x80097E40` | `cd/CD_SPU_Cmd.c` | CD/SPU command: branch on DAT_800ac5f0 flag, selects buffer for transfer | `system::hardware::cd_spu_cmd` | `[ ]` |
-| **SYS-266** | `CD_SPU_Cmd2` | `0x80097194` | `cd/CD_SPU_Cmd2.c` | CD SPU command variant 2: sets DAT_800ac654, writes regs | `system::hardware::cd_spu_cmd2` | `[ ]` |
-| **SYS-267** | `CD_SPU_Init` | `0x80096BF0` | `cd/CD_SPU_Init.c` | CD SPU initializer: sets SPU RAM config, clears buffers | `system::hardware::cd_spu_init` | `[ ]` |
-| **SYS-268** | `CD_SPU_Main` | `0x80099490` | `cd/CD_SPU_Main.c` | CD SPU main: SPU RAM transfer controller | `system::hardware::cd_spu_main` | `[ ]` |
-| **SYS-269** | `CD_SPU_Poll` | `0x800998E4` | `cd/CD_SPU_Poll.c` | CD SPU poll: scans DAT_800ac604+0xC table, checks DAT_800ac590 bitmask | `system::hardware::cd_spu_poll` | `[ ]` |
-| **SYS-270** | `CD_SPU_Read` | `0x80096E70` | `cd/CD_SPU_Read.c` | CD SPU reader: reads SPU RAM via DAT_800ac604+0x1AE | `system::hardware::cd_spu_read` | `[ ]` |
-| **SYS-271** | `CD_SPU_Transfer` | `0x80098DE0` | `cd/CD_SPU_Transfer.c` | CD SPU transfer: checks slot count, initiates DMA transfer | `system::hardware::cd_spu_transfer` | `[ ]` |
-| **SYS-272** | `CD_SPU_Transfer2` | `0x80098810` | `cd/CD_SPU_Transfer2.c` | CD SPU transfer variant 2: writes to SPU RAM | `system::hardware::cd_spu_transfer2` | `[ ]` |
-| **SYS-273** | `CD_SPU_Write` | `0x80098D30` | `cd/CD_SPU_Write.c` | CD/SPU write: writes param to DAT_800ac604+0x184 if buffer empty or bit 1 | `system::hardware::cd_spu_write` | `[ ]` |
-| **SYS-274** | `CD_SPU_Write2` | `0x80098F90` | `cd/CD_SPU_Write2.c` | CD SPU write variant 2: writes to DAT_800ac604+0x1AA | `system::hardware::cd_spu_write2` | `[ ]` |
-| **SYS-275** | `CD_SeekCmd` | `0x80096980` | `cd/CD_SeekCmd.c` | CD seek command: validates slot, calls FUN_800963d0 if active | `system::hardware::cd_seekcmd` | `[ ]` |
-| **SYS-276** | `CD_SeekSetup` | `0x80085F5C` | `cd/CD_SeekSetup.c` | CD seek setup: configures seek params at 0x800AAD1C, validates | `system::hardware::cd_seeksetup` | `[ ]` |
-| **SYS-277** | `CD_SeekToSector` | `0x8001CEB0` | `cd/CD_SeekToSector.c` | CD-ROM seek: moves laser to specific sector number, retries if needed | `system::hardware::cd_seektosector` | `[ ]` |
-| **SYS-278** | `CD_SendCmdFlags` | `0x8008CC30` | `cd/CD_SendCmdFlags.c` | CD send command with flags: calls CD_SendCmdRetry2(0xE, data, 0) | `system::hardware::cd_sendcmdflags` | `[ ]` |
-| **SYS-279** | `CD_SendCmdRetry` | `0x80089BAC` | `cd/CD_SendCmdRetry.c` | CD command with 3 retries: calls FUN_8008ac34 with fallback, restores callback on fail | `system::hardware::cd_sendcmdretry` | `[ ]` |
-| **SYS-280** | `CD_SendCmdRetry2` | `0x80089CE8` | `cd/CD_SendCmdRetry2.c` | CD command retry variant 2: same as SendCmdRetry but 4th param=1 | `system::hardware::cd_sendcmdretry2` | `[ ]` |
-| **SYS-281** | `CD_SetCallback` | `0x800865F0` | `cd/CD_SetCallback.c` | Sets CD event callback function pointer at 0x800ABE20 | `system::hardware::cd_setcallback` | `[ ]` |
-| **SYS-282** | `CD_SetErrorCallback` | `0x80089B98` | `cd/CD_SetErrorCallback.c` | Sets CD error callback function at 0x800ABFC0 | `system::hardware::cd_seterrorcallback` | `[ ]` |
-| **SYS-283** | `CD_SetEvent` | `0x8008C260` | `cd/CD_SetEvent.c` | CD event setter: calls FUN_80089b84 with DAT_800ac30c, zeros DAT_800ac308 | `system::hardware::cd_setevent` | `[ ]` |
-| **SYS-284** | `CD_SetEventCallback` | `0x80089B84` | `cd/CD_SetEventCallback.c` | Sets CD event callback function at 0x800ABFBC | `system::hardware::cd_seteventcallback` | `[ ]` |
-| **SYS-285** | `CD_SetFlag28` | `0x80096370` | `cd/CD_SetFlag28.c` | CD flag setter: DAT_80105d28 = param_1 | `system::hardware::cd_setflag28` | `[ ]` |
-| **SYS-286** | `CD_SetFlagCD8` | `0x80096380` | `cd/CD_SetFlagCD8.c` | CD flag setter: DAT_80105cd8 = 1 | `system::hardware::cd_setflagcd8` | `[ ]` |
-| **SYS-287** | `CD_SetMode` | `0x80099370` | `cd/CD_SetMode.c` | CD mode setter: sets DAT_800ac620=0 or 1 based on param, zeros counter | `system::hardware::cd_setmode` | `[ ]` |
-| **SYS-288** | `CD_SetParams` | `0x8008D0F0` | `cd/CD_SetParams.c` | CD param setter: stores 3 params at 0x80102720/FC/1C | `system::hardware::cd_setparams` | `[ ]` |
-| **SYS-289** | `CD_SetReady` | `0x80099450` | `cd/CD_SetReady.c` | CD ready setter: DAT_800ac638 = (param_1 != 1) | `system::hardware::cd_setready` | `[ ]` |
-| **SYS-290** | `CD_SetRegBit` | `0x8009C784` | `cd/CD_SetRegBit.c` | CD register bit set/clear: toggles bit 0x08000000 on param_1 based on param_2 | `system::hardware::cd_setregbit` | `[ ]` |
-| **SYS-291** | `CD_SetTimeout` | `0x80085C9C` | `cd/CD_SetTimeout.c` | Sets CD timeout value at 0x800ABDA8, returns previous value | `system::hardware::cd_settimeout` | `[ ]` |
-| **SYS-292** | `CD_SetTimerCallback` | `0x80089FC8` | `cd/CD_SetTimerCallback.c` | Sets CD timer callback via 0x80085B80 with mode 3 | `system::hardware::cd_settimercallback` | `[ ]` |
-| **SYS-293** | `CD_SetValidatedParam` | `0x800963A0` | `cd/CD_SetValidatedParam.c` | Validated setter: clamps param to [1,0x18), sets DAT_80105cec, returns value or -1 | `system::hardware::cd_setvalidatedparam` | `[ ]` |
-| **SYS-294** | `CD_SetupEvent` | `0x80097414` | `cd/CD_SetupEvent.c` | CD event setup: branches on DAT_800ac620 flag, calls FUN_80097194 or FUN_80096e70 | `system::hardware::cd_setupevent` | `[ ]` |
-| **SYS-295** | `CD_SetupFIFO` | `0x80097760` | `cd/CD_SetupFIFO.c` | CD FIFO setup: sets param_2=0x40001010, DAT_800ac668=0, configures transfer | `system::hardware::cd_setupfifo` | `[ ]` |
-| **SYS-296** | `CD_SetupFileLoad` | `0x8008CEB0` | `cd/CD_SetupFileLoad.c` | CD file load setup: stores 5 params at 0x80102700-18, sets flags | `system::hardware::cd_setupfileload` | `[ ]` |
-| **SYS-297** | `CD_SetupTransfer` | `0x80099150` | `cd/CD_SetupTransfer.c` | CD transfer setup: clamps size to 0x7EFF0, calls FUN_80097414, checks flag | `system::hardware::cd_setuptransfer` | `[ ]` |
-| **SYS-298** | `CD_Sync` | `0x8008A6EC` | `cd/CD_Sync.c` | CD-ROM sync: waits for CD drive to complete operation with timeout | `system::hardware::cd_sync` | `[ ]` |
-| **SYS-299** | `CD_SyncCheck` | `0x800993A0` | `cd/CD_SyncCheck.c` | CD sync/ready: checks flags, calls FUN_80080840, updates DAT_800ac594 | `system::hardware::cd_synccheck` | `[ ]` |
-| **SYS-300** | `CD_SyncLoop` | `0x8008C960` | `cd/CD_SyncLoop.c` | CD sync loop: polls DAT_800ac308, waits for completion | `system::hardware::cd_syncloop` | `[ ]` |
-| **SYS-301** | `CD_SyncSimple` | `0x80089B44` | `cd/CD_SyncSimple.c` | Wraps CD_Sync for simple sync calls | `system::hardware::cd_syncsimple` | `[ ]` |
-| **SYS-302** | `CD_SyncWithTimeout` | `0x8008B4B8` | `cd/CD_SyncWithTimeout.c` | CD sync with timeout: polls timer, prints debug on timeout (0x3C0000 cycles), calls recovery | `system::hardware::cd_syncwithtimeout` | `[ ]` |
-| **SYS-303** | `CD_Transfer` | `0x800991B0` | `cd/CD_Transfer.c` | CD data transfer: checks DAT_800ac620, setup DMA + IRQ | `system::hardware::cd_transfer` | `[ ]` |
-| **SYS-304** | `CD_TransferCheck` | `0x800977C0` | `cd/CD_TransferCheck.c` | CD transfer checker: validates DAT_800ac594, checks DMA | `system::hardware::cd_transfercheck` | `[ ]` |
-| **SYS-305** | `CD_Wrapper` | `0x8009A31C` | `cd/CD_Wrapper.c` | CD wrapper: calls FUN_8009a1f0 (simple dispatch) | `system::hardware::cd_wrapper` | `[ ]` |
-| **SYS-306** | `CD_XA_Decode` | `0x80099F70` | `cd/CD_XA_Decode.c` | CD XA audio decoder: computes sample delta, handles ADPCM decode | `system::hardware::cd_xa_decode` | `[ ]` |
-| **SYS-307** | `CD_XA_Main` | `0x80099970` | `cd/CD_XA_Main.c` | CD XA audio main: XA-ADPCM decode pipeline | `system::hardware::cd_xa_main` | `[ ]` |
-| **SYS-308** | `MDEC_BufferCopy` | `0x8009C6E0` | `mdec/MDEC_BufferCopy.c` | MDEC buffer copy: copies 16 words from param_1 to DAT_800acf58 buffer | `system::hardware::mdec_buffercopy` | `[ ]` |
-| **SYS-309** | `MDEC_CalcFrameSize` | `0x80088210` | `mdec/MDEC_CalcFrameSize.c` | Calculates MDEC frame size from header fields (e3, e9, ec) | `system::hardware::mdec_calcframesize` | `[ ]` |
-| **SYS-310** | `MDEC_CallbackChain` | `0x80086DB4` | `mdec/MDEC_CallbackChain.c` | MDEC callback chain: iterates ptrs at 0x800ABEC0, calls each in sequence | `system::hardware::mdec_callbackchain` | `[ ]` |
-| **SYS-311** | `MDEC_CallbackDispatch` | `0x80087E2C` | `mdec/MDEC_CallbackDispatch.c` | MDEC callback: calls function ptr at 0x800ABE4C, dispatches result via FUN_800887bc | `system::hardware::mdec_callbackdispatch` | `[ ]` |
-| **SYS-312** | `MDEC_CallbackDispatch2` | `0x80087E64` | `mdec/MDEC_CallbackDispatch2.c` | MDEC callback variant 2: calls funct ptr + dispatch with 2 params via FUN_80088908 | `system::hardware::mdec_callbackdispatch2` | `[ ]` |
-| **SYS-313** | `MDEC_CheckDMA` | `0x80086764` | `mdec/MDEC_CheckDMA.c` | MDEC DMA check: tests DAT_800abe98 flags, calls FUN_80086a80 if active | `system::hardware::mdec_checkdma` | `[ ]` |
-| **SYS-314** | `MDEC_CheckState` | `0x800889F4` | `mdec/MDEC_CheckState.c` | MDEC state check: entity[0x53]/[0x46], calls funct ptr at DAT_800abe3c | `system::hardware::mdec_checkstate` | `[ ]` |
-| **SYS-315** | `MDEC_CheckStatus` | `0x8009C85C` | `mdec/MDEC_CheckStatus.c` | MDEC status check variant: reads CD_GetReg, extracts status bits | `system::hardware::mdec_checkstatus` | `[ ]` |
-| **SYS-316** | `MDEC_ClearFlag` | `0x80087A40` | `mdec/MDEC_ClearFlag.c` | MDEC flag clearer wrapper: calls FUN_8008695c | `system::hardware::mdec_clearflag` | `[ ]` |
-| **SYS-317** | `MDEC_Cmd1` | `0x8008DDA0` | `mdec/MDEC_Cmd1.c` | MDEC command 1: calls FUN_8008dc00 with param | `system::hardware::mdec_cmd1` | `[ ]` |
-| **SYS-318** | `MDEC_Cmd2` | `0x8008DD7C` | `mdec/MDEC_Cmd2.c` | MDEC command 2: calls FUN_8008dc00 with param (same as Cmd1) | `system::hardware::mdec_cmd2` | `[ ]` |
-| **SYS-319** | `MDEC_CmdDecode` | `0x80088A54` | `mdec/MDEC_CmdDecode.c` | Sends MDEC decode command (0x43) with data pointer | `system::hardware::mdec_cmddecode` | `[ ]` |
-| **SYS-320** | `MDEC_CmdReset` | `0x80088A74` | `mdec/MDEC_CmdReset.c` | Sends MDEC reset command (0x45), clears pointer | `system::hardware::mdec_cmdreset` | `[ ]` |
-| **SYS-321** | `MDEC_CmdSetBS` | `0x80088AE8` | `mdec/MDEC_CmdSetBS.c` | Sends MDEC set bitstream command (0x4B) | `system::hardware::mdec_cmdsetbs` | `[ ]` |
-| **SYS-322** | `MDEC_CmdSetIQ` | `0x80088A88` | `mdec/MDEC_CmdSetIQ.c` | Sends MDEC set IQ table command (0x4C) | `system::hardware::mdec_cmdsetiq` | `[ ]` |
-| **SYS-323** | `MDEC_CmdSetScale` | `0x80088AA8` | `mdec/MDEC_CmdSetScale.c` | Sends MDEC set scale command (0x46) | `system::hardware::mdec_cmdsetscale` | `[ ]` |
-| **SYS-324** | `MDEC_CmdSetSize` | `0x80088AC8` | `mdec/MDEC_CmdSetSize.c` | Sends MDEC set size command (0x47) | `system::hardware::mdec_cmdsetsize` | `[ ]` |
-| **SYS-325** | `MDEC_Config` | `0x80086620` | `mdec/MDEC_Config.c` | MDEC configurator: sets DAT_800abe8c/88/70 based on param mode flags | `system::hardware::mdec_config` | `[ ]` |
-| **SYS-326** | `MDEC_DMAProcess` | `0x80086EA4` | `mdec/MDEC_DMAProcess.c` | MDEC DMA processor: sets up DMA for MDEC data transfer | `system::hardware::mdec_dmaprocess` | `[ ]` |
-| **SYS-327** | `MDEC_DMAStart2` | `0x80086A80` | `mdec/MDEC_DMAStart2.c` | MDEC DMA start variant 2: configures DMA for decode | `system::hardware::mdec_dmastart2` | `[ ]` |
-| **SYS-328** | `MDEC_DataDecode` | `0x8008DA58` | `mdec/MDEC_DataDecode.c` | MDEC data decoder: reads bitstream from buffer, dispatches | `system::hardware::mdec_datadecode` | `[ ]` |
-| **SYS-329** | `MDEC_DataRead` | `0x800870B4` | `mdec/MDEC_DataRead.c` | MDEC data reader: reads bitstream from entity[0x3C] data | `system::hardware::mdec_dataread` | `[ ]` |
-| **SYS-330** | `MDEC_DecodeControl` | `0x800892A4` | `mdec/MDEC_DecodeControl.c` | MDEC decode controller: reads macroblock header, dispatches | `system::hardware::mdec_decodecontrol` | `[ ]` |
-| **SYS-331** | `MDEC_DecodeFrame` | `0x80088E88` | `mdec/MDEC_DecodeFrame.c` | MDEC frame decoder: processes full frame, dispatches blocks | `system::hardware::mdec_decodeframe` | `[ ]` |
-| **SYS-332** | `MDEC_DecodeMain` | `0x800876A0` | `mdec/MDEC_DecodeMain.c` | MDEC decode main: full decode pipeline controller | `system::hardware::mdec_decodemain` | `[ ]` |
-| **SYS-333** | `MDEC_DecodeProcess` | `0x80089194` | `mdec/MDEC_DecodeProcess.c` | MDEC decode processor: reads bitstream at entity[0x3C], processes blocks | `system::hardware::mdec_decodeprocess` | `[ ]` |
-| **SYS-334** | `MDEC_DecodeStep` | `0x80089508` | `mdec/MDEC_DecodeStep.c` | MDEC decode step: entity[0x46] state, processes macroblock | `system::hardware::mdec_decodestep` | `[ ]` |
-| **SYS-335** | `MDEC_FrameReady` | `0x800867CC` | `mdec/MDEC_FrameReady.c` | MDEC frame ready check: tests DAT_800abe9c flags, sets DAT_800abea0 | `system::hardware::mdec_frameready` | `[ ]` |
-| **SYS-336** | `MDEC_GetAndClearFlag` | `0x8008695C` | `mdec/MDEC_GetAndClearFlag.c` | MDEC flag get+clear: returns DAT_800abea0 then sets to 0 | `system::hardware::mdec_getandclearflag` | `[ ]` |
-| **SYS-337** | `MDEC_GetParam` | `0x80087CB0` | `mdec/MDEC_GetParam.c` | MDEC param getter: returns entity[0xE9] or entity[0xEC] based on sign | `system::hardware::mdec_getparam` | `[ ]` |
-| **SYS-338** | `MDEC_GetStatus` | `0x80087BB8` | `mdec/MDEC_GetStatus.c` | MDEC status getter: returns status byte from entity at offset | `system::hardware::mdec_getstatus` | `[ ]` |
-| **SYS-339** | `MDEC_Init` | `0x8009C800` | `mdec/MDEC_Init.c` | MDEC init wrapper: calls FUN_8009ca60 | `system::hardware::mdec_init` | `[ ]` |
-| **SYS-340** | `MDEC_InitCallbacks` | `0x80089160` | `mdec/MDEC_InitCallbacks.c` | MDEC callback table init: sets function ptrs at 0x800ABE50/54/58 | `system::hardware::mdec_initcallbacks` | `[ ]` |
-| **SYS-341** | `MDEC_InitDecode` | `0x80087EAC` | `mdec/MDEC_InitDecode.c` | Initializes MDEC decode: gets frame buffer, calls setup | `system::hardware::mdec_initdecode` | `[ ]` |
-| **SYS-342** | `MDEC_InitDecode2` | `0x80088248` | `mdec/MDEC_InitDecode2.c` | MDEC decode init variant 2: sets frame buffer, calls callback if ready | `system::hardware::mdec_initdecode2` | `[ ]` |
-| **SYS-343** | `MDEC_InitHW` | `0x80087A60` | `mdec/MDEC_InitHW.c` | MDEC hardware init: zeros flag, enables IRQ, sets up DMA, calls callbacks | `system::hardware::mdec_inithw` | `[ ]` |
-| **SYS-344** | `MDEC_InitHWImpl` | `0x80086970` | `mdec/MDEC_InitHWImpl.c` | MDEC hardware init impl: IRQ enable, DMA setup, callback chain | `system::hardware::mdec_inithwimpl` | `[ ]` |
-| **SYS-345** | `MDEC_InitSystem` | `0x80088B00` | `mdec/MDEC_InitSystem.c` | MDEC system init: zeros flags, calls init funcs, sets up DMA | `system::hardware::mdec_initsystem` | `[ ]` |
-| **SYS-346** | `MDEC_Main` | `0x8008D110` | `mdec/MDEC_Main.c` | MDEC main: full MDEC decode controller (201L) | `system::hardware::mdec_main` | `[ ]` |
-| **SYS-347** | `MDEC_Process` | `0x8008CCB4` | `mdec/MDEC_Process.c` | MDEC process wrapper: calls FUN_8008d110 | `system::hardware::mdec_process` | `[ ]` |
-| **SYS-348** | `MDEC_ProcessData` | `0x800875DC` | `mdec/MDEC_ProcessData.c` | MDEC data processor: checks DAT_800abe84, reads data via callback entity[0x3C] | `system::hardware::mdec_processdata` | `[ ]` |
-| **SYS-349** | `MDEC_ProcessFrame` | `0x80087530` | `mdec/MDEC_ProcessFrame.c` | MDEC frame processor: calls decode callbacks on entity[0xC] data | `system::hardware::mdec_processframe` | `[ ]` |
-| **SYS-350** | `MDEC_QueueCmd` | `0x8008DA2C` | `mdec/MDEC_QueueCmd.c` | MDEC command queue: appends param_2 words to MDEC cmd buffer at param_1 | `system::hardware::mdec_queuecmd` | `[ ]` |
-| **SYS-351** | `MDEC_SetFlag` | `0x80089788` | `mdec/MDEC_SetFlag.c` | MDEC flag setter: DAT_800abef0 = 1 if zero | `system::hardware::mdec_setflag` | `[ ]` |
-| **SYS-352** | `MDEC_SetFrameBuffer` | `0x80087F00` | `mdec/MDEC_SetFrameBuffer.c` | Sets MDEC frame buffer pointer and status byte | `system::hardware::mdec_setframebuffer` | `[ ]` |
-| **SYS-353** | `MDEC_SetParam` | `0x80089620` | `mdec/MDEC_SetParam.c` | MDEC param setter: stores param + scratchpad value at 0x801026E0/E4 | `system::hardware::mdec_setparam` | `[ ]` |
-| **SYS-354** | `MDEC_SetParam2` | `0x80087D84` | `mdec/MDEC_SetParam2.c` | MDEC param setter 2: sets entity[0xEA] or entity[0xEB] based on param sign | `system::hardware::mdec_setparam2` | `[ ]` |
-| **SYS-355** | `MDEC_SetupCallback` | `0x800887BC` | `mdec/MDEC_SetupCallback.c` | MDEC callback setup: checks ready, sets entity[0x46]=1, assigns 2 callbacks | `system::hardware::mdec_setupcallback` | `[ ]` |
-| **SYS-356** | `MDEC_SetupCallback2` | `0x80088908` | `mdec/MDEC_SetupCallback2.c` | MDEC callback setup variant: sets callbacks + entity[0x51/0x52/0x53] params | `system::hardware::mdec_setupcallback2` | `[ ]` |
-| **SYS-357** | `MDEC_SetupDecode` | `0x80087AEC` | `mdec/MDEC_SetupDecode.c` | MDEC decode setup: checks frame flags, sets up decode params | `system::hardware::mdec_setupdecode` | `[ ]` |
-| **SYS-358** | `MDEC_SetupOut` | `0x8009CA60` | `mdec/MDEC_SetupOut.c` | MDEC output setup: syncs out, sets DMA regs at 0x800AD09C/078/070/074 | `system::hardware::mdec_setupout` | `[ ]` |
-| **SYS-359** | `MDEC_SetupTransfer` | `0x8009C9D0` | `mdec/MDEC_SetupTransfer.c` | MDEC transfer setup: syncs in, sets DMA regs at 0x800AD09C-06C | `system::hardware::mdec_setuptransfer` | `[ ]` |
-| **SYS-360** | `MDEC_Start` | `0x80087A80` | `mdec/MDEC_Start.c` | MDEC start: disables IRQ, BIOS stubs, enables IRQ | `system::hardware::mdec_start` | `[ ]` |
-| **SYS-361** | `MDEC_StartDMA` | `0x80086A3C` | `mdec/MDEC_StartDMA.c` | MDEC DMA start: IRQ disable, BIOS call, IRQ enable | `system::hardware::mdec_startdma` | `[ ]` |
-| **SYS-362** | `MDEC_StateMachine` | `0x80087F1C` | `mdec/MDEC_StateMachine.c` | MDEC decoder state machine: state 2=reset, 3=set IQ, 4=set size via entity[0x46] | `system::hardware::mdec_statemachine` | `[ ]` |
-| **SYS-363** | `MDEC_StateMachine2` | `0x8008831C` | `mdec/MDEC_StateMachine2.c` | MDEC state machine variant 2: entity[0x46] state 3/4 calls MDEC funcs | `system::hardware::mdec_statemachine2` | `[ ]` |
-| **SYS-364** | `MDEC_StateMachine3` | `0x80087FA0` | `mdec/MDEC_StateMachine3.c` | MDEC state machine variant 3: entity[0x46]=3/4 states | `system::hardware::mdec_statemachine3` | `[ ]` |
-| **SYS-365** | `MDEC_SwapAllBuffers` | `0x80088CC8` | `mdec/MDEC_SwapAllBuffers.c` | MDEC buffer swap loop: iterates 0xF0-stride buffers, swaps cmds until all done | `system::hardware::mdec_swapallbuffers` | `[ ]` |
-| **SYS-366** | `MDEC_SwapCommand` | `0x80088DBC` | `mdec/MDEC_SwapCommand.c` | Swaps MDEC command bytes: saves 0x37 to 0x38, clears 0x37 | `system::hardware::mdec_swapcommand` | `[ ]` |
-| **SYS-367** | `MDEC_SyncDispatch` | `0x8009C820` | `mdec/MDEC_SyncDispatch.c` | MDEC sync dispatch: param=0 calls SyncOut, else calls SyncIn (swapped) | `system::hardware::mdec_syncdispatch` | `[ ]` |
-| **SYS-368** | `MDEC_SyncIn` | `0x8009CAEC` | `mdec/MDEC_SyncIn.c` | MDEC input sync: polls bit 0x20000000 with timeout, calls timeout error on fail | `system::hardware::mdec_syncin` | `[ ]` |
-| **SYS-369** | `MDEC_SyncOut` | `0x8009CB80` | `mdec/MDEC_SyncOut.c` | MDEC output sync: polls bit 0x1000000 with timeout, calls timeout error on fail | `system::hardware::mdec_syncout` | `[ ]` |
-| **SYS-370** | `MDEC_WaitDMA` | `0x8008732C` | `mdec/MDEC_WaitDMA.c` | MDEC DMA wait: polls DAT_800abe9c word[4] bit until clear, checks timeout | `system::hardware::mdec_waitdma` | `[ ]` |
-| **SYS-371** | `MDEC_WaitReady` | `0x800873BC` | `mdec/MDEC_WaitReady.c` | MDEC busy-wait: polls bit 1 at 0x800ABE9C+4 until set | `system::hardware::mdec_waitready` | `[ ]` |
-| **SYS-372** | `MDEC_WaitVSync` | `0x80089640` | `mdec/MDEC_WaitVSync.c` | MDEC VSync wait: polls _DAT_1f801120 vs _DAT_801026e0, handles timeout | `system::hardware::mdec_waitvsync` | `[ ]` |
-| **SYS-373** | `Mem_Compare` | `0x8009A340` | `memory/Mem_Compare.c` | Memory compare: returns 0 if first param_2 bytes match, else difference | `system::hardware::mem_compare` | `[ ]` |
-| **SYS-374** | `Mem_Copy` | `0x8009A3E0` | `memory/Mem_Copy.c` | Memory copy: byte-by-byte memcpy, returns destination pointer | `system::hardware::mem_copy` | `[ ]` |
-| **SYS-375** | `Mem_CopyN` | `0x8009AE10` | `memory/Mem_CopyN.c` | Memory copy N bytes: strncpy-like, copies up to param_3 bytes from param_2 to param_1 | `system::hardware::mem_copyn` | `[ ]` |
-| **SYS-376** | `Mem_Move` | `0x8009B940` | `memory/Mem_Move.c` | Memory move: copies up to param_3 bytes from param_2 to param_1 (non-overlapping) | `system::hardware::mem_move` | `[ ]` |
-| **SYS-377** | `Mem_Set_2` | `0x80083AF8` | `memory/Mem_Set_2.c` | Memory set: fills param_3 bytes with value param_2 starting at param_1 | `system::hardware::mem_set_2` | `[ ]` |
-| **SYS-378** | `Mem_Zero` | `0x800861BC` | `memory/Mem_Zero.c` | Memory zero: memset param_2 bytes to 0 starting at param_1 | `system::hardware::mem_zero` | `[ ]` |
-| **SYS-379** | `Mem_Zero2` | `0x80086320` | `memory/Mem_Zero2.c` | Memory zero variant 2: memset to 0 (duplicate) | `system::hardware::mem_zero2` | `[ ]` |
-| **SYS-380** | `Mem_Zero3` | `0x800865C8` | `memory/Mem_Zero3.c` | Memory zero variant 3: memset to 0 (duplicate) | `system::hardware::mem_zero3` | `[ ]` |
-| **SYS-381** | `Texture_Decompress` | `0x80044D8C` | `texture/Texture_Decompress.c` | Texture decompressor: LZ-like with 8-slot ring buffer. Byte format: 5-bit count + 3-bit mode | `system::hardware::texture_decompress` | `[ ]` |
-| **SYS-382** | `Texture_LoadData` | `0x800450BC` | `texture/Texture_LoadData.c` | Texture data load: DMA transfer from 0x800A3ED8 table, switches on param_2 mode | `system::hardware::texture_loaddata` | `[ ]` |
-| **SYS-383** | `Texture_LoadPack` | `0x80044E84` | `texture/Texture_LoadPack.c` | Loads a texture pack: iterates textures, decompresses, uploads to VRAM | `system::hardware::texture_loadpack` | `[ ]` |
-| **SYS-384** | `Texture_LoadUI` | `0x80067DA8` | `texture/Texture_LoadUI.c` | Loads UI textures to VRAM pages based on game state (3 variants) | `system::hardware::texture_loadui` | `[ ]` |
-| **SYS-385** | `Texture_Process` | `0x80044F58` | `texture/Texture_Process.c` | Texture processor: reads texture flags, dispatches upload/decode | `system::hardware::texture_process` | `[ ]` |
-| **SYS-386** | `Texture_TransferToVRAM` | `0x80044CD4` | `texture/Texture_TransferToVRAM.c` | Sets up VRAM texture transfer: callback setup, address calc, event trigger | `system::hardware::texture_transfertovram` | `[ ]` |
-| **SYS-387** | `Texture_Upload` | `0x800452C0` | `texture/Texture_Upload.c` | Texture uploader: sends texture data to VRAM via DMA | `system::hardware::texture_upload` | `[ ]` |
-| **SYS-388** | `Texture_UploadVRAM` | `0x8004514C` | `texture/Texture_UploadVRAM.c` | Texture VRAM upload: DMA transfer from 0x80157000 to VRAM, calls FUN_80044f58 | `system::hardware::texture_uploadvram` | `[ ]` |
-| **SYS-389** | `Input_InitSystem` | `0x80074BC4` | `input/Input_InitSystem.c` | Initializes input/pad system: resets flag, calls FUN_8001cf2c, FUN_80074b44, FUN_80074e48 | `system::hardware::input_initsystem` | `[ ]` |
-| **SYS-390** | `Pad_InitConfig` | `0x8007B2C0` | `input/Pad_InitConfig.c` | Pad config init: sets scratchpad input flags 0x8000/4000/2000/1000 based on param | `system::hardware::pad_initconfig` | `[ ]` |
-| **SYS-391** | `Pad_InitReset` | `0x8001CF2C` | `input/Pad_InitReset.c` | Controller init/reset: resets pad state, waits for acknowledge from hardware | `system::hardware::pad_initreset` | `[ ]` |
-| **SYS-392** | `Pad_Init_2` | `0x8001CBA8` | `input/Pad_Init_2.c` | Pad/controller init: sets up input config, handles 0xFF default case | `system::hardware::pad_init_2` | `[ ]` |
-| **SYS-393** | `Pad_Update` | `0x8001D7C4` | `input/Pad_Update.c` | Pad/input updater: checks pad type, applies rumble/button flags | `system::hardware::pad_update` | `[ ]` |
-| **SYS-394** | `Math_ApproachAngle_2` | `0x800776F8` | `math/Math_ApproachAngle_2.c` | Angle approach: steps param_1 toward param_2 by ±param_3, handles wrap | `system::hardware::math_approachangle_2` | `[ ]` |
-| **SYS-395** | `Math_Atan` | `0x80084A80` | `math/Math_Atan.c` | Math arctangent: uses lookup table, handles multiple quadrants | `system::hardware::math_atan` | `[ ]` |
-| **SYS-396** | `Math_Atan2` | `0x80085690` | `math/Math_Atan2.c` | Arctangent using lookup table at 0x800AA490 | `system::hardware::math_atan2` | `[ ]` |
-| **SYS-397** | `Math_Atan2_2` | `0x80084EB0` | `math/Math_Atan2_2.c` | Math atan2 variant 2: uses table at 0x800A6490 for negative inputs | `system::hardware::math_atan2_2` | `[ ]` |
-| **SYS-398** | `Math_Atan2_3` | `0x80084D10` | `math/Math_Atan2_3.c` | Math atan2 variant 3: uses table at 0x800A6490, different quadrant handling | `system::hardware::math_atan2_3` | `[ ]` |
-| **SYS-399** | `Math_CalcAngle2D` | `0x800782B0` | `math/Math_CalcAngle2D.c` | Calculates angle between two 2D points using Math_Atan2 | `system::hardware::math_calcangle2d` | `[ ]` |
-| **SYS-400** | `Math_Clamp` | `0x8006CE74` | `math/Math_Clamp.c` | Math clamp: clamps value to range [-param2, +param2] | `system::hardware::math_clamp` | `[ ]` |
-| **SYS-401** | `Math_CompareAngle` | `0x80077768` | `math/Math_CompareAngle.c` | Angle comparison: checks if (a-b-0x400)&0xFFF is in range, with direction flag | `system::hardware::math_compareangle` | `[ ]` |
-| **SYS-402** | `Math_Cos` | `0x80083E80` | `math/Math_Cos.c` | Subrutina de Math_Cos (math/Math_Cos.c) | `system::hardware::math_cos` | `[ ]` |
-| **SYS-403** | `Math_CosGTE` | `0x80083F50` | `math/Math_CosGTE.c` | Math cos via GTE: piecewise cosine from table 0x800A5AF0 using GTE coprocessor | `system::hardware::math_cosgte` | `[ ]` |
-| **SYS-404** | `Math_Div8Round` | `0x8004D7EC` | `math/Math_Div8Round.c` | Divide by 8 with rounding: (param+7)>>3 + param | `system::hardware::math_div8round` | `[ ]` |
-| **SYS-405** | `Math_InitVec3` | `0x8007B2AC` | `math/Math_InitVec3.c` | Initializes 3D vector: zeros XY, sets Z=0x1000 (default scale) | `system::hardware::math_initvec3` | `[ ]` |
-| **SYS-406** | `Math_Lerp` | `0x80070F90` | `math/Math_Lerp.c` | Math linear interpolate: computes (a-b)*scale, returns interpolated value | `system::hardware::math_lerp` | `[ ]` |
-| **SYS-407** | `Math_Random` | `0x8009A450` | `math/Math_Random.c` | LCG pseudo-random number generator: seed=seed*0x41c64e6d+0x3039, returns high 16 bits | `system::hardware::math_random` | `[ ]` |
-| **SYS-408** | `Math_RandomChance` | `0x80032A88` | `math/Math_RandomChance.c` | Random probability check: returns random value shifted by N bits (1 in 2^N chance) | `system::hardware::math_randomchance` | `[ ]` |
-| **SYS-409** | `Math_RandomCurved` | `0x80070698` | `math/Math_RandomCurved.c` | Curved random: r = (rand() & (n-1))^2 / n with random sign, for biased distribution | `system::hardware::math_randomcurved` | `[ ]` |
-| **SYS-410** | `Math_RandomRange` | `0x80032A44` | `math/Math_RandomRange.c` | Random integer in range [min, max) using LCG generator | `system::hardware::math_randomrange` | `[ ]` |
-| **SYS-411** | `Math_Sin` | `0x80083EBC` | `math/Math_Sin.c` | Math sin lookup: piecewise sin from table at 0x800A5AF0, handles quadrants | `system::hardware::math_sin` | `[ ]` |
-| **SYS-412** | `Math_Sin2` | `0x800851F0` | `math/Math_Sin2.c` | Math sin variant 2: different table lookup path | `system::hardware::math_sin2` | `[ ]` |
-| **SYS-413** | `Math_Sqrt` | `0x80077FB0` | `math/Math_Sqrt.c` | Integer square root via binary search algorithm | `system::hardware::math_sqrt` | `[ ]` |
-| **SYS-414** | `Math_SqrtGTE` | `0x80084080` | `math/Math_SqrtGTE.c` | Math sqrt via GTE: sets GTE reg, reads result, handles special case 0x20 | `system::hardware::math_sqrtgte` | `[ ]` |
-| **SYS-415** | `Engine_DispatchInit` | `0x8006C77C` | `engine/Engine_DispatchInit.c` | Level-specific init dispatch from function table at 0x800A4AF8 | `system::hardware::engine_dispatchinit` | `[ ]` |
-| **SYS-416** | `Engine_DispatchInit2` | `0x8006C7C4` | `engine/Engine_DispatchInit2.c` | Second level init dispatch from function table at 0x800A4B50 | `system::hardware::engine_dispatchinit2` | `[ ]` |
-| **SYS-417** | `Engine_DispatchLevel` | `0x80022A80` | `engine/Engine_DispatchLevel.c` | Dispatches level-specific update function from table at 0x8009D1D4 by game state | `system::hardware::engine_dispatchlevel` | `[ ]` |
-| **SYS-418** | `Engine_DispatchLevelDraw` | `0x80024CF4` | `engine/Engine_DispatchLevelDraw.c` | Dispatches level-specific draw function from table at 0x8009D22C by game state | `system::hardware::engine_dispatchleveldraw` | `[ ]` |
-| **SYS-419** | `Engine_DispatchOverlay` | `0x80074F24` | `engine/Engine_DispatchOverlay.c` | Overlay dispatcher: uses game state, looks up overlay ID from tables at 0x800A4F50/68 | audio::AudioPlayer (BGM Track 04_01) | [x] |
-| **SYS-420** | `Engine_DispatchStateUpdate` | `0x8003D0BC` | `engine/Engine_DispatchStateUpdate.c` | Subrutina de Engine_DispatchStateUpdate (engine/Engine_DispatchStateUpdate.c) | `system::hardware::engine_dispatchstateupdate` | `[ ]` |
-| **SYS-421** | `Engine_DrawPool4_Type1` | `0x80025744` | `engine/Engine_DrawPool4_Type1.c` | Draws Pool 4 entity using FUN_8007e1b8 | `system::hardware::engine_drawpool4_type1` | `[ ]` |
-| **SYS-422** | `Engine_DrawPool4_Type2` | `0x80025934` | `engine/Engine_DrawPool4_Type2.c` | Draws Pool 4 entity using FUN_8007e6dc | `system::hardware::engine_drawpool4_type2` | `[ ]` |
-| **SYS-423** | `Engine_DrawPool4_Type3` | `0x80025B78` | `engine/Engine_DrawPool4_Type3.c` | Draws Pool 4 entity using FUN_8007e938 (special primitive) | `system::hardware::engine_drawpool4_type3` | `[ ]` |
-| **SYS-424** | `Engine_ExecuteGameLoop` | `0x8003F9A8` | `engine/Engine_ExecuteGameLoop.c` | Subrutina de Engine_ExecuteGameLoop (engine/Engine_ExecuteGameLoop.c) | `system::hardware::engine_executegameloop` | `[ ]` |
-| **SYS-425** | `Engine_HandleState` | `0x8003DF04` | `engine/Engine_HandleState.c` | Subrutina de Engine_HandleState (engine/Engine_HandleState.c) | `system::hardware::engine_handlestate` | `[ ]` |
-| **SYS-426** | `Engine_InitEntity` | `0x800798F8` | `engine/Engine_InitEntity.c` | Engine entity initializer: inits pools, clears lists | `system::hardware::engine_initentity` | `[ ]` |
-| **SYS-427** | `Engine_InitPool` | `0x8007B18C` | `engine/Engine_InitPool.c` | Engine pool initializer: calls init funcs, clears entity pools | `system::hardware::engine_initpool` | `[ ]` |
-| **SYS-428** | `Engine_InitState` | `0x80079464` | `engine/Engine_InitState.c` | Engine state init: resets frame counter, sets globals, zeros sprite flags | `system::hardware::engine_initstate` | `[ ]` |
-| **SYS-429** | `Engine_LoadOverlay` | `0x80075024` | `engine/Engine_LoadOverlay.c` | Simple overlay loader: param=5 -> 0x13, else 0x14, calls Sys_OverlayDispatch | `system::hardware::engine_loadoverlay` | `[ ]` |
-| **SYS-430** | `Engine_LoadOverlayEntry` | `0x8001D71C` | `engine/Engine_LoadOverlayEntry.c` | Loads overlay by index: indexes tables at 0x8009D110, checks pad flag, calls load | `system::hardware::engine_loadoverlayentry` | `[ ]` |
-| **SYS-431** | `Engine_Loop` | `0x8003F898` | `engine/Engine_Loop.c` | Engine main loop: processes events, updates state, calls subsystems | `system::hardware::engine_loop` | `[ ]` |
-| **SYS-432** | `Engine_Main` | `0x8003EBE0` | `engine/Engine_Main.c` | Engine main loop: processes frame, updates subsystems, draws | `system::hardware::engine_main` | `[ ]` |
-| **SYS-433** | `Engine_OverlayCall` | `0x8007BE18` | `engine/Engine_OverlayCall.c` | Engine overlay call: switch on _DAT_1f800138[0x50], calls overlay funcs | `system::hardware::engine_overlaycall` | `[ ]` |
-| **SYS-434** | `Engine_OverlayLoad` | `0x8001D41C` | `engine/Engine_OverlayLoad.c` | Engine overlay loader: switch on param, loads overlays | `system::hardware::engine_overlayload` | `[ ]` |
-| **SYS-435** | `Engine_PoolUpdate` | `0x80025588` | `engine/Engine_PoolUpdate.c` | Engine pool updater: checks DAT_800ed05a, updates pools | `system::hardware::engine_poolupdate` | `[ ]` |
-| **SYS-436** | `Engine_Render3DSprites` | `0x8003F024` | `engine/Engine_Render3DSprites.c` | Iterates array at 0x800ec188 and renders 3D sprites via GPU_Render3DSprite | `system::hardware::engine_render3dsprites` | `[ ]` |
-| **SYS-437** | `Engine_RenderCheck` | `0x8005229C` | `engine/Engine_RenderCheck.c` | Engine render check: validates sprite buffer, inits MDEC | `system::hardware::engine_rendercheck` | `[ ]` |
-| **SYS-438** | `Engine_ResetState` | `0x80050A0C` | `engine/Engine_ResetState.c` | Engine state reset: zeros 5 globals, sets DAT_1f800235=2 | `system::hardware::engine_resetstate` | `[ ]` |
-| **SYS-439** | `Engine_ResetStateBuffer` | `0x8007982C` | `engine/Engine_ResetStateBuffer.c` | Subrutina de Engine_ResetStateBuffer (engine/Engine_ResetStateBuffer.c) | `system::hardware::engine_resetstatebuffer` | `[ ]` |
-| **SYS-440** | `Engine_Update2` | `0x8003E030` | `engine/Engine_Update2.c` | Engine update variant 2: checks DAT_800a3b0c, updates subsystems | `system::hardware::engine_update2` | `[ ]` |
-| **SYS-441** | `Engine_UpdateAll` | `0x8003FA44` | `engine/Engine_UpdateAll.c` | Main update: runs all entity loops (active, bg, player, obj, npc) + FX update | `system::hardware::engine_updateall` | `[ ]` |
-| **SYS-442** | `Engine_UpdateEntities` | `0x8003FA1C` | `engine/Engine_UpdateEntities.c` | Calls EntityLoop_Player then EntityLoop_Active for entity updates | `system::hardware::engine_updateentities` | `[ ]` |
-| **SYS-443** | `Engine_UpdateInputState` | `0x80016598` | `engine/Engine_UpdateInputState.c` | Subrutina de Engine_UpdateInputState (engine/Engine_UpdateInputState.c) | `system::hardware::engine_updateinputstate` | `[ ]` |
-| **SYS-444** | `Engine_UpdateMain` | `0x80038A00` | `engine/Engine_UpdateMain.c` | Engine update main: full frame update pipeline | `system::hardware::engine_updatemain` | `[ ]` |
-| **SYS-445** | `Engine_UpdatePool4` | `0x80025D98` | `engine/Engine_UpdatePool4.c` | Updates and draws entities in Pool 4 (camera/HUD), calls draw variants | `system::hardware::engine_updatepool4` | `[ ]` |
-| **SYS-446** | `Engine_UpdateSprites` | `0x800788AC` | `engine/Engine_UpdateSprites.c` | Engine sprite update: checks DAT_1f80019a flag, decrements counter, updates globals | `system::hardware::engine_updatesprites` | `[ ]` |
-| **SYS-447** | `BIOS_CRC` | `0x8009C3F4` | `system/BIOS_CRC.c` | BIOS CRC/checksum: computes 0x20-byte blocks, compares | `system::hardware::bios_crc` | `[ ]` |
-| **SYS-448** | `BIOS_CallA0` | `0x800861E8` | `system/BIOS_CallA0.c` | BIOS call stub: jumps to 0xA0 | `system::hardware::bios_calla0` | `[ ]` |
-| **SYS-449** | `BIOS_CallA0_2` | `0x800858F0` | `system/BIOS_CallA0_2.c` | BIOS call stub: jumps to 0xA0 | `system::hardware::bios_calla0_2` | `[ ]` |
-| **SYS-450** | `BIOS_CallC0` | `0x80085B10` | `system/BIOS_CallC0.c` | BIOS call stub: jumps to 0xC0 | `system::hardware::bios_callc0` | `[ ]` |
-| **SYS-451** | `BIOS_CallIndirect` | `0x8009BF20` | `system/BIOS_CallIndirect.c` | BIOS indirect call: calls function ptr at DAT_80105f30 | `system::hardware::bios_callindirect` | `[ ]` |
-| **SYS-452** | `BIOS_CallIndirect2` | `0x8009BF34` | `system/BIOS_CallIndirect2.c` | BIOS indirect call 2: calls function ptr at DAT_80105f34 | `system::hardware::bios_callindirect2` | `[ ]` |
-| **SYS-453** | `BIOS_CopyData` | `0x8009C18C` | `system/BIOS_CopyData.c` | BIOS data copy: copies data from DAT_8009c0e4 to BIOS struct+0x9C8 | `system::hardware::bios_copydata` | `[ ]` |
-| **SYS-454** | `BIOS_CopyData2` | `0x8009C1FC` | `system/BIOS_CopyData2.c` | BIOS data copy 2: copies words from DAT_8009c060 to DAT_0000df80 | `system::hardware::bios_copydata2` | `[ ]` |
-| **SYS-455** | `BIOS_CopyToEvent` | `0x8009C230` | `system/BIOS_CopyToEvent.c` | BIOS copy: copies data from DAT_8009c2a0 to BIOS struct+0x70, calls finish functions | `system::hardware::bios_copytoevent` | `[ ]` |
-| **SYS-456** | `BIOS_Delay` | `0x8009BE34` | `system/BIOS_Delay.c` | BIOS delay: spins 9 iterations, zeros MDEC word, returns 0 | `system::hardware::bios_delay` | `[ ]` |
-| **SYS-457** | `BIOS_EnterCritical` | `0x80080820` | `system/BIOS_EnterCritical.c` | BIOS call stub: jumps to 0xA0 (EnterCriticalSection) | `system::hardware::bios_entercritical` | `[ ]` |
-| **SYS-458** | `BIOS_Handler` | `0x8009BA10` | `system/BIOS_Handler.c` | BIOS exception handler: saves all registers to stack, dispatches | `system::hardware::bios_handler` | `[ ]` |
-| **SYS-459** | `BIOS_InitIRQ` | `0x8009BB10` | `system/BIOS_InitIRQ.c` | BIOS IRQ init: calls BIOS_B0, IRQ off, checks CD status, enables | `system::hardware::bios_initirq` | `[ ]` |
-| **SYS-460** | `BIOS_InitSeq` | `0x8009BD1C` | `system/BIOS_InitSeq.c` | BIOS init sequence: calls BIOS_B0, BIOS_B0(0), getter, returns 1 | `system::hardware::bios_initseq` | `[ ]` |
-| **SYS-461** | `BIOS_InitSequence2` | `0x8009BD4C` | `system/BIOS_InitSequence2.c` | BIOS init sequence 2: calls indirect + BIOS_B0 + init + clears global | `system::hardware::bios_initsequence2` | `[ ]` |
-| **SYS-462** | `BIOS_MDECInit` | `0x8009BDFC` | `system/BIOS_MDECInit.c` | BIOS MDEC init: disables IRQ, calls BIOS stub, enables IRQ | `system::hardware::bios_mdecinit` | `[ ]` |
-| **SYS-463** | `BIOS_MDECSetup` | `0x8009BD84` | `system/BIOS_MDECSetup.c` | BIOS MDEC setup: IRQ off, sets MDEC callbacks at 0x80105F1C/20, IRQ on | `system::hardware::bios_mdecsetup` | `[ ]` |
-| **SYS-464** | `BIOS_MemTest` | `0x8009C2B0` | `system/BIOS_MemTest.c` | BIOS memory test: fills 128-byte buffer, validates pattern | `system::hardware::bios_memtest` | `[ ]` |
-| **SYS-465** | `BIOS_ResetRegion` | `0x8009BF48` | `system/BIOS_ResetRegion.c` | BIOS reset: zeros 0xB words at BIOS struct+0x594, calls FUN_800858f0 | `system::hardware::bios_resetregion` | `[ ]` |
-| **SYS-466** | `BIOS_Seq2` | `0x8009BBB4` | `system/BIOS_Seq2.c` | BIOS sequence: calls BIOS_B0 stub then FUN_8009c230 | `system::hardware::bios_seq2` | `[ ]` |
-| **SYS-467** | `BIOS_Seq3` | `0x8009BB7C` | `system/BIOS_Seq3.c` | BIOS sequence 3: disable IRQ, BIOS_B0, BIOS_B0(0), enable IRQ | `system::hardware::bios_seq3` | `[ ]` |
-| **SYS-468** | `BIOS_Seq4` | `0x8009BBFC` | `system/BIOS_Seq4.c` | BIOS sequence 4: BIOS_ZeroRegion + IRQ off + BIOS_ResetRegion + IRQ on + B0 + MDEC init | `system::hardware::bios_seq4` | `[ ]` |
-| **SYS-469** | `BIOS_Seq5` | `0x8009BC8C` | `system/BIOS_Seq5.c` | BIOS sequence 5: same as Seq4 pattern with different MDEC setup call | `system::hardware::bios_seq5` | `[ ]` |
-| **SYS-470** | `BIOS_SetupEvent` | `0x8009C0F8` | `system/BIOS_SetupEvent.c` | BIOS event setup: copies 5 words from DAT_8009c0d0 to computed BIOS address | `system::hardware::bios_setupevent` | `[ ]` |
-| **SYS-471** | `BIOS_Syscall0` | `0x80080890` | `system/BIOS_Syscall0.c` | BIOS syscall wrapper: syscall(0) | `system::hardware::bios_syscall0` | `[ ]` |
-| **SYS-472** | `BIOS_Syscall0_2` | `0x800808A0` | `system/BIOS_Syscall0_2.c` | BIOS syscall wrapper: syscall(0) | `system::hardware::bios_syscall0_2` | `[ ]` |
-| **SYS-473** | `BIOS_Syscall_A0_80083B20` | `0x80083B20` | `system/BIOS_Syscall_A0_80083B20.c` | BIOS syscall 0xA0 (SetRCnt) stub | `system::hardware::bios_syscall_a0_80083b20` | `[ ]` |
-| **SYS-474** | `BIOS_Syscall_B0_80080830` | `0x80080830` | `system/BIOS_Syscall_B0_80080830.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080830` | `[ ]` |
-| **SYS-475** | `BIOS_Syscall_B0_80080840` | `0x80080840` | `system/BIOS_Syscall_B0_80080840.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080840` | `[ ]` |
-| **SYS-476** | `BIOS_Syscall_B0_80080850` | `0x80080850` | `system/BIOS_Syscall_B0_80080850.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080850` | `[ ]` |
-| **SYS-477** | `BIOS_Syscall_B0_80080860` | `0x80080860` | `system/BIOS_Syscall_B0_80080860.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080860` | `[ ]` |
-| **SYS-478** | `BIOS_Syscall_B0_80080870` | `0x80080870` | `system/BIOS_Syscall_B0_80080870.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080870` | `[ ]` |
-| **SYS-479** | `BIOS_Syscall_B0_80080880` | `0x80080880` | `system/BIOS_Syscall_B0_80080880.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080880` | `[ ]` |
-| **SYS-480** | `BIOS_Syscall_B0_800808E0` | `0x800808E0` | `system/BIOS_Syscall_B0_800808E0.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_800808e0` | `[ ]` |
-| **SYS-481** | `BIOS_Syscall_B0_80080920` | `0x80080920` | `system/BIOS_Syscall_B0_80080920.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080920` | `[ ]` |
-| **SYS-482** | `BIOS_Syscall_B0_80080BE0` | `0x80080BE0` | `system/BIOS_Syscall_B0_80080BE0.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080be0` | `[ ]` |
-| **SYS-483** | `BIOS_Syscall_B0_80086200` | `0x80086200` | `system/BIOS_Syscall_B0_80086200.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80086200` | `[ ]` |
-| **SYS-484** | `BIOS_Syscall_B0_80086210` | `0x80086210` | `system/BIOS_Syscall_B0_80086210.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80086210` | `[ ]` |
-| **SYS-485** | `BIOS_Syscall_B0_80086220` | `0x80086220` | `system/BIOS_Syscall_B0_80086220.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80086220` | `[ ]` |
-| **SYS-486** | `BIOS_Syscall_B0_800899F0` | `0x800899F0` | `system/BIOS_Syscall_B0_800899F0.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_800899f0` | `[ ]` |
-| **SYS-487** | `BIOS_Syscall_B0_80098F80` | `0x80098F80` | `system/BIOS_Syscall_B0_80098F80.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80098f80` | `[ ]` |
-| **SYS-488** | `BIOS_Syscall_B0_8009BAF0` | `0x8009BAF0` | `system/BIOS_Syscall_B0_8009BAF0.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009baf0` | `[ ]` |
-| **SYS-489** | `BIOS_Syscall_B0_8009BB00` | `0x8009BB00` | `system/BIOS_Syscall_B0_8009BB00.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009bb00` | `[ ]` |
-| **SYS-490** | `BIOS_Syscall_B0_8009BEE0` | `0x8009BEE0` | `system/BIOS_Syscall_B0_8009BEE0.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009bee0` | `[ ]` |
-| **SYS-491** | `BIOS_Syscall_B0_8009BEF0` | `0x8009BEF0` | `system/BIOS_Syscall_B0_8009BEF0.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009bef0` | `[ ]` |
-| **SYS-492** | `BIOS_Syscall_B0_8009BF00` | `0x8009BF00` | `system/BIOS_Syscall_B0_8009BF00.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009bf00` | `[ ]` |
-| **SYS-493** | `BIOS_Syscall_B0_8009BF10` | `0x8009BF10` | `system/BIOS_Syscall_B0_8009BF10.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009bf10` | `[ ]` |
-| **SYS-494** | `BIOS_Syscall_B0_8009C030` | `0x8009C030` | `system/BIOS_Syscall_B0_8009C030.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009c030` | `[ ]` |
-| **SYS-495** | `BIOS_Syscall_B0_8009C040` | `0x8009C040` | `system/BIOS_Syscall_B0_8009C040.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009c040` | `[ ]` |
-| **SYS-496** | `BIOS_Syscall_B0_8009C050` | `0x8009C050` | `system/BIOS_Syscall_B0_8009C050.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009c050` | `[ ]` |
-| **SYS-497** | `BIOS_Syscall_B0_8009C600` | `0x8009C600` | `system/BIOS_Syscall_B0_8009C600.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009c600` | `[ ]` |
-| **SYS-498** | `BIOS_Syscall_B0_8009C610` | `0x8009C610` | `system/BIOS_Syscall_B0_8009C610.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009c610` | `[ ]` |
-| **SYS-499** | `BIOS_Syscall_C0_800873F0` | `0x800873F0` | `system/BIOS_Syscall_C0_800873F0.c` | BIOS syscall 0xC0 stub | `system::hardware::bios_syscall_c0_800873f0` | `[ ]` |
-| **SYS-500** | `BIOS_Syscall_C0_80087400` | `0x80087400` | `system/BIOS_Syscall_C0_80087400.c` | BIOS syscall 0xC0 stub | `system::hardware::bios_syscall_c0_80087400` | `[ ]` |
-| **SYS-501** | `BIOS_ZeroRegion` | `0x8009BFC0` | `system/BIOS_ZeroRegion.c` | BIOS zero region: zeros 9 words at BIOS struct+0x62C, calls FUN_800858f0 + FUN_800808a0 | `system::hardware::bios_zeroregion` | `[ ]` |
-| **SYS-502** | `IRQ_Disable` | `0x80085810` | `system/IRQ_Disable.c` | IRQ disable: saves return addr, calls BIOS to disable interrupts | `system::hardware::irq_disable` | `[ ]` |
-| **SYS-503** | `IRQ_Dispatch` | `0x80086288` | `system/IRQ_Dispatch.c` | IRQ handler dispatch: iterates callback table at 0x800ABDC0, calls active handlers | `system::hardware::irq_dispatch` | `[ ]` |
-| **SYS-504** | `Sys_Call` | `0x8001CF00` | `system/Sys_Call.c` | Generic system call wrapper: passes command packet to kernel at 0x80099490 | `system::hardware::sys_call` | `[ ]` |
-| **SYS-505** | `Sys_CallWithParams` | `0x800521F4` | `system/Sys_CallWithParams.c` | Calls system function at 0x800521F4 with 4 byte parameters | `system::hardware::sys_callwithparams` | `[ ]` |
-| **SYS-506** | `Sys_CheckVSync` | `0x8001CF94` | `system/Sys_CheckVSync.c` | Checks GPU VSync/interrupt state and triggers frame sync if needed | `system::hardware::sys_checkvsync` | `[ ]` |
-| **SYS-507** | `Sys_ClearEvent` | `0x80052078` | `system/Sys_ClearEvent.c` | Clears system event: resets event handler state | `system::hardware::sys_clearevent` | `[ ]` |
-| **SYS-508** | `Sys_GPUSync` | `0x8001DB38` | `system/Sys_GPUSync.c` | GPU sync wrapper: calls GPU sync and returns status | `system::hardware::sys_gpusync` | `[ ]` |
-| **SYS-509** | `Sys_IncCounter` | `0x80026100` | `system/Sys_IncCounter.c` | Increments global counter at 0x800BF87E with upper limit cap | `system::hardware::sys_inccounter` | `[ ]` |
-| **SYS-510** | `Sys_InitOverlay` | `0x8001CB00` | `system/Sys_InitOverlay.c` | Calls overlay init function at 0x8011534C then internal callback | `system::hardware::sys_initoverlay` | `[ ]` |
-| **SYS-511** | `Sys_LoadBinary` | `0x8001D364` | `system/Sys_LoadBinary.c` | Binary segment loader: uses pointer tables at 0x8001005C, computes load address from DAT_1f800224 | `system::hardware::sys_loadbinary` | `[ ]` |
-| **SYS-512** | `Sys_LoadOverlay` | `0x8001D2A8` | `system/Sys_LoadOverlay.c` | Loads overlay binary from CD: sets up params, calls CD read + overlay init | `system::hardware::sys_loadoverlay` | `[ ]` |
-| **SYS-513** | `Sys_NoOp` | `0x8001CB98` | `system/Sys_NoOp.c` | Empty stub function - likely placeholder or unused vtable slot | `system::hardware::sys_noop` | `[ ]` |
-| **SYS-514** | `Sys_NoOp2` | `0x80080930` | `system/Sys_NoOp2.c` | Empty stub function - likely unused vtable or placeholder slot | `system::hardware::sys_noop2` | `[ ]` |
-| **SYS-515** | `Sys_OverlayDispatch` | `0x800750D8` | `system/Sys_OverlayDispatch.c` | Overlay dispatcher: 0xFF=pad test, 0xFE=init, else loads overlay via FUN_8001d364 | `system::hardware::sys_overlaydispatch` | `[ ]` |
-| **SYS-516** | `Sys_PadRead` | `0x8001CE90` | `system/Sys_PadRead.c` | Controller pad read wrapper: calls low-level pad polling function | `system::hardware::sys_padread` | `[ ]` |
-| **SYS-517** | `Sys_PlaySFX` | `0x8002369C` | `system/Sys_PlaySFX.c` | Sound effect trigger wrapper: calls Audio_PlaySoundEffect with preset params | `system::hardware::sys_playsfx` | `[ ]` |
-| **SYS-518** | `Sys_RegisterEvent0` | `0x8009C898` | `system/Sys_RegisterEvent0.c` | Event register with code 0: calls FUN_80085b80(0, callback) | `system::hardware::sys_registerevent0` | `[ ]` |
-| **SYS-519** | `Sys_RegisterEvent1` | `0x8009C8BC` | `system/Sys_RegisterEvent1.c` | Event register with code 1: calls FUN_80085b80(1, callback) | `system::hardware::sys_registerevent1` | `[ ]` |
-| **SYS-520** | `Sys_RegisterEvent3` | `0x8009D06C` | `system/Sys_RegisterEvent3.c` | Event register with code 3: calls FUN_80085b80(3, callback) | `system::hardware::sys_registerevent3` | `[ ]` |
-| **SYS-521** | `Sys_SetCallback` | `0x80051F14` | `system/Sys_SetCallback.c` | Sets system callback function and event mask from parameters | `system::hardware::sys_setcallback` | `[ ]` |
-| **SYS-522** | `Sys_SetEvent` | `0x80052010` | `system/Sys_SetEvent.c` | Sets system event: writes event code to hardware register | `system::hardware::sys_setevent` | `[ ]` |
-| **SYS-523** | `Sys_SetFlag10` | `0x8001CF78` | `system/Sys_SetFlag10.c` | Sets bit 4 (0x10) on global system flag at 0x800BE0E4 | `system::hardware::sys_setflag10` | `[ ]` |
-| **SYS-524** | `Sys_TimeoutError` | `0x8009CC2C` | `system/Sys_TimeoutError.c` | Timeout error handler: prints '%s timeout', resets CD state regs at 0x800AD098 | `system::hardware::sys_timeouterror` | `[ ]` |
-| **SYS-525** | `Sys_TriggerIRQ` | `0x80051F80` | `system/Sys_TriggerIRQ.c` | Triggers interrupt request: writes code to 0x1F800138, calls 0x80080880 | `system::hardware::sys_triggerirq` | `[ ]` |
-| **SYS-526** | `Sys_VSyncWait` | `0x80085A78` | `system/Sys_VSyncWait.c` | VSync wait with timeout: polls DAT_800abde0, prints 'VSync timeout' and calls BIOS on fail | `system::hardware::sys_vsyncwait` | `[ ]` |
-| **SYS-527** | `System_Init` | `0x8001CC00` | `system/System_Init.c` | System init: calls BIOS init seq, clears 0x5C at 0x800BF498 | `system::hardware::system_init` | `[ ]` |
-| **SYS-528** | `System_Init2` | `0x80050B08` | `system/System_Init2.c` | System init variant 2: calls MDEC+GPU+CD init sequence | `system::hardware::system_init2` | `[ ]` |
-| **SYS-529** | `System_InitMain` | `0x8001CFC8` | `system/System_InitMain.c` | System main init: sets up memory, calls subsystem inits | `system::hardware::system_initmain` | `[ ]` |
-| **SYS-530** | `System_Main` | `0x8001DC9C` | `system/System_Main.c` | System main: root initialization + main loop (464L) | `system::hardware::system_main` | `[ ]` |
-| **SYS-531** | `System_Reset` | `0x8001D940` | `system/System_Reset.c` | System reset: clears pad state, calls init funcs, resets callbacks | `system::hardware::system_reset` | `[ ]` |
-| **SYS-532** | `Timer_GetCounter` | `0x80085900` | `system/Timer_GetCounter.c` | Timer counter reader: polls root counter at 0x800AACAC, returns ticks | `system::hardware::timer_getcounter` | `[ ]` |
-| **SYS-533** | `Render_ClearQueue` | `0x8004FB20` | `screen/Render_ClearQueue.c` | Clears render queue buffer at 0x800BF548 (700 bytes) with memset | `system::hardware::render_clearqueue` | `[ ]` |
-| **SYS-534** | `Render_ProcessQueueItem` | `0x8004FB4C` | `screen/Render_ProcessQueueItem.c` | Subrutina de Render_ProcessQueueItem (screen/Render_ProcessQueueItem.c) | `system::hardware::render_processqueueitem` | `[ ]` |
-| **SYS-535** | `Screen_Clear` | `0x800506D0` | `screen/Screen_Clear.c` | Screen clear/fill: writes zeros to 0x801FE000-0x801FFFFE (framebuffer region) | `system::hardware::screen_clear` | `[ ]` |
-| **SYS-536** | `Screen_FadeTransition` | `0x8002655C` | `screen/Screen_FadeTransition.c` | Screen fade in/out transition: 4-phase fade with color ramp | `system::hardware::screen_fadetransition` | `[ ]` |
-| **SYS-537** | `Screen_InitDisplay` | `0x80050738` | `screen/Screen_InitDisplay.c` | Screen display init: sets up 2 framebuffers at 0x800EA0BC/EC12C with 320x240 | `system::hardware::screen_initdisplay` | `[ ]` |
-| **SYS-538** | `Screen_InitOverlay` | `0x800509B4` | `screen/Screen_InitOverlay.c` | Initializes screen overlay: sets GTE offset, calls render setup functions | `system::hardware::screen_initoverlay` | `[ ]` |
-| **SYS-539** | `Screen_SetMode` | `0x800508A8` | `screen/Screen_SetMode.c` | Screen mode setup: configures display from DAT_800bfe56 + DAT_800bf870 state | `system::hardware::screen_setmode` | `[ ]` |
-| **SYS-540** | `DMA_TransferAndWait` | `0x8001DB8C` | `misc/DMA_TransferAndWait.c` | DMA transfer with wait: sets up DMA callback FUN_8001db38, polls until complete | `system::hardware::dma_transferandwait` | `[ ]` |
-| **SYS-541** | `Font_BuildChar` | `0x80039E80` | `misc/Font_BuildChar.c` | Builds a font character tile: converts char code to 8x16 pixel UV coordinates | `system::hardware::font_buildchar` | `[ ]` |
-| **SYS-542** | `Func_Nop` | `0x800897F8` | `misc/Func_Nop.c` | Empty stub function - no operation, immediate return | `system::hardware::func_nop` | `[ ]` |
-| **SYS-543** | `MC_Close` | `0x80096A70` | `misc/MC_Close.c` | Closes memory card file handle | `system::hardware::mc_close` | `[ ]` |
-| **SYS-544** | `MC_Flush` | `0x80097730` | `misc/MC_Flush.c` | Flushes memory card write buffer | `system::hardware::mc_flush` | `[ ]` |
-| **SYS-545** | `MC_GetFileSize` | `0x80096A40` | `misc/MC_GetFileSize.c` | Returns file size for memory card file handle | `system::hardware::mc_getfilesize` | `[ ]` |
-| **SYS-546** | `MC_Init` | `0x80097678` | `misc/MC_Init.c` | Initializes memory card subsystem | `system::hardware::mc_init` | `[ ]` |
-| **SYS-547** | `MC_Open` | `0x80097498` | `misc/MC_Open.c` | Opens memory card file by name | `system::hardware::mc_open` | `[ ]` |
-| **SYS-548** | `MC_Read` | `0x800974FC` | `misc/MC_Read.c` | Reads data from memory card file | `system::hardware::mc_read` | `[ ]` |
-| **SYS-549** | `MC_Seek` | `0x80097E10` | `misc/MC_Seek.c` | Seeks to position in memory card file | `system::hardware::mc_seek` | `[ ]` |
-| **SYS-550** | `MC_Start` | `0x800976A0` | `misc/MC_Start.c` | Starts memory card access | `system::hardware::mc_start` | `[ ]` |
-| **SYS-551** | `MC_Stop` | `0x800976C8` | `misc/MC_Stop.c` | Stops memory card access | `system::hardware::mc_stop` | `[ ]` |
-| **SYS-552** | `MC_Write` | `0x800970EC` | `misc/MC_Write.c` | Writes data to memory card file | `system::hardware::mc_write` | `[ ]` |
-| **SYS-553** | `Player_Update` | `0x800597AC` | `misc/Player_Update.c` | Subrutina de Player_Update (misc/Player_Update.c) | `system::hardware::player_update` | `[ ]` |
-| **SYS-554** | `Sprite_Alloc1` | `0x80077EBC` | `misc/Sprite_Alloc1.c` | Sprite allocator: increments counter, allocs struct, increments again | `system::hardware::sprite_alloc1` | `[ ]` |
-| **SYS-555** | `Sprite_Alloc2` | `0x80077E7C` | `misc/Sprite_Alloc2.c` | Sprite allocator variant 2: different counter at _DAT_1f800144 | `system::hardware::sprite_alloc2` | `[ ]` |
-| **SYS-556** | `Sprite_Alloc3` | `0x80077EFC` | `misc/Sprite_Alloc3.c` | Sprite allocator variant 3: different counter at _DAT_1f80015c | `system::hardware::sprite_alloc3` | `[ ]` |
-| **SYS-557** | `Video_InitDecoder` | `0x80075D58` | `misc/Video_InitDecoder.c` | Initializes MDEC video decoder: sets size params at 0x800BED7C from game config, calls init | `system::hardware::video_initdecoder` | `[ ]` |
-| **SYS-558** | `Debug_PrintString` | `0x8009B9B0` | `debug/Debug_PrintString.c` | Debug string output: sends chars to CD queue via FUN_8009ae60, flushes at end | `system::hardware::debug_printstring` | `[ ]` |
-| **SYS-559** | `Debug_Printf` | `0x8009A730` | `debug/Debug_Printf.c` | Debug printf: calls FUN_8009a770(1, fmt, args) for formatted output | `system::hardware::debug_printf` | `[ ]` |
-| **SYS-560** | `Debug_PrintfMain` | `0x8009A770` | `debug/Debug_PrintfMain.c` | Debug printf main: formatted output engine (340L) | `system::hardware::debug_printfmain` | `[ ]` |
+| **SYS-001** | `Save_Confirm` | `0x800399FC` | `save/Save_Confirm.c` | Save confirmation: entity[1] state, handles yes/no | `system::hardware::save_confirm` | `[x]` |
+| **SYS-002** | `Save_CursorNext` | `0x80039978` | `save/Save_CursorNext.c` | Advances save menu cursor with step of 5 (entity[0x1E]+=5) | `system::hardware::save_cursornext` | `[x]` |
+| **SYS-003** | `Save_CursorPrev` | `0x800399C0` | `save/Save_CursorPrev.c` | Moves save menu cursor to previous item (entity[0x1F]--, entity[0x1E]--) | `system::hardware::save_cursorprev` | `[x]` |
+| **SYS-004** | `Save_DrawText` | `0x8003990C` | `save/Save_DrawText.c` | Save menu text draw: renders save slot labels from string table | `system::hardware::save_drawtext` | `[x]` |
+| **SYS-005** | `Save_UpdateSlots` | `0x8003989C` | `save/Save_UpdateSlots.c` | Updates save slot display: increments entity[0x23] for each save present | `system::hardware::save_updateslots` | `[x]` |
+| **SYS-006** | `Save_Write` | `0x80039BCC` | `save/Save_Write.c` | Save data writer: writes save block to memory card | `system::hardware::save_write` | `[x]` |
+| **SYS-007** | `GPU_CallbackDispatch` | `0x80080940` | `gpu/GPU_CallbackDispatch.c` | GPU callback dispatcher: processes task queue, calls handlers | `system::hardware::gpu_callbackdispatch` | `[x]` |
+| **SYS-008** | `GPU_CheckDMA` | `0x800834A0` | `gpu/GPU_CheckDMA.c` | GPU DMA check: reads timer, sets timeout at DAT_800a5adc, returns status | `system::hardware::gpu_checkdma` | `[x]` |
+| **SYS-009** | `GPU_CheckQueueSpace` | `0x80082240` | `gpu/GPU_CheckQueueSpace.c` | GPU queue space check: validates param vs DAT_800a59a4 capacity | `system::hardware::gpu_checkqueuespace` | `[x]` |
+| **SYS-010** | `GPU_CheckQueueSpace2` | `0x800822D8` | `gpu/GPU_CheckQueueSpace2.c` | GPU queue space check variant 2: same pattern, returns 0 or 1 | `system::hardware::gpu_checkqueuespace2` | `[x]` |
+| **SYS-011** | `GPU_CheckTimeout` | `0x800834D4` | `gpu/GPU_CheckTimeout.c` | GPU timeout/reset handler: resets GPU state if hung or error detected | `system::hardware::gpu_checktimeout` | `[x]` |
+| **SYS-012** | `GPU_ClearImage` | `0x800810F0` | `gpu/GPU_ClearImage.c` | GPU clear image: sends ClearImage cmd via function pointer table at 0x800A5998 | `system::hardware::gpu_clearimage` | `[x]` |
+| **SYS-013** | `GPU_ClearOT` | `0x80081180` | `gpu/GPU_ClearOT.c` | GPU clear OT: sends ClearImage2 cmd with 0x80000000 flag via function table | `system::hardware::gpu_clearot` | `[x]` |
+| **SYS-014** | `GPU_Cmd3` | `0x80082CE0` | `gpu/GPU_Cmd3.c` | GPU command wrapper: calls FUN_80082d04 with third param=0 | `system::hardware::gpu_cmd3` | `[x]` |
+| **SYS-015** | `GPU_DMACallback` | `0x80082FB4` | `gpu/GPU_DMACallback.c` | GPU DMA callback: handles DMA completion, resets timeout | `system::hardware::gpu_dmacallback` | `[x]` |
+| **SYS-016** | `GPU_DMAQueue` | `0x80082D04` | `gpu/GPU_DMAQueue.c` | GPU DMA queue processor: waits for slot, submits packet, advances | `system::hardware::gpu_dmaqueue` | `[x]` |
+| **SYS-017** | `GPU_DMASend2` | `0x80082734` | `gpu/GPU_DMASend2.c` | GPU DMA send variant 2: checks prim count, sends via DMA | `system::hardware::gpu_dmasend2` | `[x]` |
+| **SYS-018** | `GPU_DMASend3` | `0x80082970` | `gpu/GPU_DMASend3.c` | GPU DMA send variant 3: different queue management | `system::hardware::gpu_dmasend3` | `[x]` |
+| **SYS-019** | `GPU_DMASetup` | `0x80083214` | `gpu/GPU_DMASetup.c` | GPU DMA setup: configures DMA channel, sets DAT_800a5ad8 timeout | `system::hardware::gpu_dmasetup` | `[x]` |
+| **SYS-020** | `GPU_DMASync` | `0x80083364` | `gpu/GPU_DMASync.c` | GPU DMA sync: waits for DMA channel completion, handles timeout | `system::hardware::gpu_dmasync` | `[x]` |
+| **SYS-021** | `GPU_DMATransfer` | `0x80082424` | `gpu/GPU_DMATransfer.c` | GPU DMA transfer: sets DMA regs, triggers xfer, waits for completion with timeout | `system::hardware::gpu_dmatransfer` | `[x]` |
+| **SYS-022** | `GPU_DispatchDraw2` | `0x800803DC` | `gpu/GPU_DispatchDraw2.c` | GPU draw dispatch: reads word, calls draw funcs for low and high 16 bits | `system::hardware::gpu_dispatchdraw2` | `[x]` |
+| **SYS-023** | `GPU_DispatchTask` | `0x80080ADC` | `gpu/GPU_DispatchTask.c` | GPU task dispatcher: processes task queue at _DAT_80100ab0, calls handlers | `system::hardware::gpu_dispatchtask` | `[x]` |
+| **SYS-024** | `GPU_DrawDigit` | `0x8007C5E4` | `gpu/GPU_DrawDigit.c` | Digit draw: calls FUN_8007c2a4 with DAT_800bf9ca+1 \| 0x80, param 3 | `system::hardware::gpu_drawdigit` | `[x]` |
+| **SYS-025** | `GPU_DrawDigit1` | `0x8007C620` | `gpu/GPU_DrawDigit1.c` | Digit draw variant 1: calls FUN_8007c2a4 with DAT_800bfa21 \| 0x80 | `system::hardware::gpu_drawdigit1` | `[x]` |
+| **SYS-026** | `GPU_DrawDigit2` | `0x8007C654` | `gpu/GPU_DrawDigit2.c` | Digit draw variant 2: calls FUN_8007c2a4 with DAT_800bfa2a \| 0x80 | `system::hardware::gpu_drawdigit2` | `[x]` |
+| **SYS-027** | `GPU_DrawDigit3` | `0x8007C780` | `gpu/GPU_DrawDigit3.c` | GPU digit draw variant 3: different global source | `system::hardware::gpu_drawdigit3` | `[x]` |
+| **SYS-028** | `GPU_DrawEnv` | `0x80081690` | `gpu/GPU_DrawEnv.c` | GPU draw environment: sends DrawEnv cmd with debug, decrements queue | `system::hardware::gpu_drawenv` | `[x]` |
+| **SYS-029** | `GPU_DrawMain` | `0x8008179C` | `gpu/GPU_DrawMain.c` | GPU draw main: full draw command processor | `system::hardware::gpu_drawmain` | `[x]` |
+| **SYS-030** | `GPU_DrawNumber` | `0x8007C2A4` | `gpu/GPU_DrawNumber.c` | GPU digit/number draw: splits value into tens/ones, draws 2 TILE prims per digit | `system::hardware::gpu_drawnumber` | `[x]` |
+| **SYS-031** | `GPU_DrawNumber2` | `0x8007C688` | `gpu/GPU_DrawNumber2.c` | GPU digit draw variant 2: uses DAT_800bfa24/28 instead of bfa21/2a | `system::hardware::gpu_drawnumber2` | `[x]` |
+| **SYS-032** | `GPU_DrawOTag` | `0x80081560` | `gpu/GPU_DrawOTag.c` | PsyQ DrawOTag wrapper: sends ordering table to GPU for rendering | `system::hardware::gpu_drawotag` | `[x]` |
+| **SYS-033** | `GPU_DrawPrimitive` | `0x80081504` | `gpu/GPU_DrawPrimitive.c` | GPU draw primitive: reads type from struct+3, dispatches via function ptr table | `system::hardware::gpu_drawprimitive` | `[x]` |
+| **SYS-034** | `GPU_DrawProcess` | `0x8003E894` | `gpu/GPU_DrawProcess.c` | GPU draw processor: processes draw commands, calls handlers | `system::hardware::gpu_drawprocess` | `[x]` |
+| **SYS-035** | `GPU_DrawQuad` | `0x80033AFC` | `gpu/GPU_DrawQuad.c` | GPU draw quad: builds textured quad primitive, submits to OT | `system::hardware::gpu_drawquad` | `[x]` |
+| **SYS-036** | `GPU_DrawSprite` | `0x80033A0C` | `gpu/GPU_DrawSprite.c` | GPU sprite drawer: builds sprite primitive from entity data | `system::hardware::gpu_drawsprite` | `[x]` |
+| **SYS-037** | `GPU_DrawSprite98` | `0x8007E998` | `gpu/GPU_DrawSprite98.c` | Sprite draw with code 0x98: calls FUN_8007e8dc | `system::hardware::gpu_drawsprite98` | `[x]` |
+| **SYS-038** | `GPU_DrawSync` | `0x80080F6C` | `gpu/GPU_DrawSync.c` | Waits for GPU to finish current operation (DrawSync callback) | `system::hardware::gpu_drawsync` | `[x]` |
+| **SYS-039** | `GPU_DrawSyncCallback` | `0x80080E74` | `gpu/GPU_DrawSyncCallback.c` | GPU draw sync: prints debug if queue depth > 1, calls GPU func via ptr table | `system::hardware::gpu_drawsynccallback` | `[x]` |
+| **SYS-040** | `GPU_DrawTile` | `0x8007C3CC` | `gpu/GPU_DrawTile.c` | GPU tile drawer: builds 4-point tile primitive, submits to OT | `system::hardware::gpu_drawtile` | `[x]` |
+| **SYS-041** | `GPU_EncodeDrawMode` | `0x80082220` | `gpu/GPU_EncodeDrawMode.c` | GPU draw mode encoder: builds GP0(0xE1) cmd from tpage/display params | `system::hardware::gpu_encodedrawmode` | `[x]` |
+| **SYS-042** | `GPU_EncodeTPage` | `0x80082370` | `gpu/GPU_EncodeTPage.c` | Encodes texture page parameters: (y<<11)\|(x)\|0xE5000000 for GPU TPAGE command | `system::hardware::gpu_encodetpage` | `[x]` |
+| **SYS-043** | `GPU_EncodeTexture` | `0x8008238C` | `gpu/GPU_EncodeTexture.c` | GPU texture page encoder: builds TSB from CLUT coords + texpage settings | `system::hardware::gpu_encodetexture` | `[x]` |
+| **SYS-044** | `GPU_GetStatus` | `0x8008240C` | `gpu/GPU_GetStatus.c` | Returns GPU status register value from 0x800A5AA8 | `system::hardware::gpu_getstatus` | `[x]` |
+| **SYS-045** | `GPU_GetStatusBit` | `0x80081CC8` | `gpu/GPU_GetStatusBit.c` | GPU status bit getter: calls GPU func via ptr table, returns top bit | `system::hardware::gpu_getstatusbit` | `[x]` |
+| **SYS-046** | `GPU_InitDisplay` | `0x80083B30` | `gpu/GPU_InitDisplay.c` | GPU display init: sets up display area at param_1 with w/h/x/y | `system::hardware::gpu_initdisplay` | `[x]` |
+| **SYS-047** | `GPU_InitDrawEnv` | `0x80082C68` | `gpu/GPU_InitDrawEnv.c` | Initializes drawing environment: sets display area, clear color, enable flags | `system::hardware::gpu_initdrawenv` | `[x]` |
+| **SYS-048** | `GPU_InitPacket` | `0x80083BF0` | `gpu/GPU_InitPacket.c` | GPU packet init: stores 3 params + zeros at offset 4-7 in packet struct | `system::hardware::gpu_initpacket` | `[x]` |
+| **SYS-049** | `GPU_InitStruct` | `0x80081768` | `gpu/GPU_InitStruct.c` | GPU struct init: Mem_Copy 0x5C bytes from DAT_800a59b0 template | `system::hardware::gpu_initstruct` | `[x]` |
+| **SYS-050** | `GPU_InitStruct2` | `0x80081C94` | `gpu/GPU_InitStruct2.c` | GPU struct init: Mem_Copy 0x14 bytes from DAT_800a5a0c template | `system::hardware::gpu_initstruct2` | `[x]` |
+| **SYS-051** | `GPU_LoadImage` | `0x80081218` | `gpu/GPU_LoadImage.c` | PsyQ LoadImage wrapper: uploads texture data from RAM to VRAM | `system::hardware::gpu_loadimage` | `[x]` |
+| **SYS-052** | `GPU_LoadImage2` | `0x800836B8` | `gpu/GPU_LoadImage2.c` | Alternate LoadImage with timeout handling | `system::hardware::gpu_loadimage2` | `[x]` |
+| **SYS-053** | `GPU_ModulateOTColors` | `0x8003D584` | `gpu/GPU_ModulateOTColors.c` | Modulates color values in OT primitives for fade/brightness effects | `system::hardware::gpu_modulateotcolors` | `[x]` |
+| **SYS-054** | `GPU_MoveImage_2` | `0x80083890` | `gpu/GPU_MoveImage_2.c` | GPU move image: sends MoveImage cmd, waits for DMA, returns | `system::hardware::gpu_moveimage_2` | `[x]` |
+| **SYS-055** | `GPU_OT_Advance` | `0x8007FC24` | `gpu/GPU_OT_Advance.c` | GPU OT advance: increments ordering table pointer, wraps at limit | `system::hardware::gpu_ot_advance` | `[x]` |
+| **SYS-056** | `GPU_OT_Build` | `0x8007FDB0` | `gpu/GPU_OT_Build.c` | GPU OT builder: constructs ordering table entries | `system::hardware::gpu_ot_build` | `[x]` |
+| **SYS-057** | `GPU_OT_Process` | `0x8003E264` | `gpu/GPU_OT_Process.c` | GPU OT processor: processes ordering table, submits primitives | `system::hardware::gpu_ot_process` | `[x]` |
+| **SYS-058** | `GPU_OT_Sort` | `0x8003E448` | `gpu/GPU_OT_Sort.c` | GPU OT sorter: sorts primitives by Z depth | `system::hardware::gpu_ot_sort` | `[x]` |
+| **SYS-059** | `GPU_OT_Submit2` | `0x8008007C` | `gpu/GPU_OT_Submit2.c` | GPU OT submitter variant 2: different queue handling | `system::hardware::gpu_ot_submit2` | `[x]` |
+| **SYS-060** | `GPU_PrimAlloc` | `0x80082504` | `gpu/GPU_PrimAlloc.c` | GPU primitive allocator: checks queue, returns free slot ptr | `system::hardware::gpu_primalloc` | `[x]` |
+| **SYS-061** | `GPU_PrimSend` | `0x80081DB8` | `gpu/GPU_PrimSend.c` | GPU primitive sender: checks queue space, sends prim via DMA | `system::hardware::gpu_primsend` | `[x]` |
+| **SYS-062** | `GPU_PrimSend2` | `0x80081FB0` | `gpu/GPU_PrimSend2.c` | GPU primitive sender variant 2: different queue checking | `system::hardware::gpu_primsend2` | `[x]` |
+| **SYS-063** | `GPU_PrimSetup` | `0x8007CDD4` | `gpu/GPU_PrimSetup.c` | GPU primitive setup: creates sprite prim at _DAT_800bf544 with params | `system::hardware::gpu_primsetup` | `[x]` |
+| **SYS-064** | `GPU_ProcessRenderQueue` | `0x80040530` | `gpu/GPU_ProcessRenderQueue.c` | Subrutina de GPU_ProcessRenderQueue (gpu/GPU_ProcessRenderQueue.c) | `system::hardware::gpu_processrenderqueue` | `[x]` |
+| **SYS-065** | `GPU_PutDrawEnv` | `0x800815D0` | `gpu/GPU_PutDrawEnv.c` | GPU put draw environment: sends PutDrawEnv cmd, returns ptr | `system::hardware::gpu_putdrawenv` | `[x]` |
+| **SYS-066** | `GPU_Render3DSprite` | `0x8003D23C` | `gpu/GPU_Render3DSprite.c` | Renders a 3D sprite: sets up GTE, transforms, submits to OT | `system::hardware::gpu_render3dsprite` | `[x]` |
+| **SYS-067** | `GPU_RenderSprite` | `0x8007E8DC` | `gpu/GPU_RenderSprite.c` | GPU sprite renderer: dispatches via function table at 0x80017334 + param index | `system::hardware::gpu_rendersprite` | `[x]` |
+| **SYS-068** | `GPU_RenderSprite2` | `0x8007E938` | `gpu/GPU_RenderSprite2.c` | Renders sprite variant 2: calls FUN_8007e6dc with function table lookup at 0x80017334 | `system::hardware::gpu_rendersprite2` | `[x]` |
+| **SYS-069** | `GPU_RenderSprite_V1` | `0x80079374` | `gpu/GPU_RenderSprite_V1.c` | Renders sprite variant 1: sets flag 0x20, calls FUN_80078ca8 with mode 0x100008 | `system::hardware::gpu_rendersprite_v1` | `[x]` |
+| **SYS-070** | `GPU_RenderSprite_V2` | `0x80079324` | `gpu/GPU_RenderSprite_V2.c` | Renders sprite variant 2: sets flag 0xFFE0, calls FUN_80078ca8 with mode 0x80008 | `system::hardware::gpu_rendersprite_v2` | `[x]` |
+| **SYS-071** | `GPU_ResetGraph` | `0x80080BF0` | `gpu/GPU_ResetGraph.c` | GPU graph reset: calls ResetGraph debug, dispatches by param & 7 | `system::hardware::gpu_resetgraph` | `[x]` |
+| **SYS-072** | `GPU_SPU_Cmd` | `0x80098150` | `gpu/GPU_SPU_Cmd.c` | GPU/SPU command: sets DAT_800ac598 flag, modifies SPU register at 0x800AC604+0x1AA | `system::hardware::gpu_spu_cmd` | `[x]` |
+| **SYS-073** | `GPU_SendCommand` | `0x80082BF0` | `gpu/GPU_SendCommand.c` | Sends raw 32-bit command to GPU register and stores shadow copy | `system::hardware::gpu_sendcommand` | `[x]` |
+| **SYS-074** | `GPU_SendCommandAndRead` | `0x80082CB0` | `gpu/GPU_SendCommandAndRead.c` | Sends GPU command with bit 28 set, returns GPU read response | `system::hardware::gpu_sendcommandandread` | `[x]` |
+| **SYS-075** | `GPU_SendDMAPacket` | `0x80083618` | `gpu/GPU_SendDMAPacket.c` | GPU DMA packet send: builds GP0 command, sends via DMA with flags | `system::hardware::gpu_senddmapacket` | `[x]` |
+| **SYS-076** | `GPU_SendPrimList` | `0x80082C28` | `gpu/GPU_SendPrimList.c` | GPU primitive list send: iterates param_2 prims, sends each via DMA | `system::hardware::gpu_sendprimlist` | `[x]` |
+| **SYS-077** | `GPU_SetDisplayMask` | `0x80080ED4` | `gpu/GPU_SetDisplayMask.c` | GPU display mask setter: sends SetDispMask cmd, calls GPU via ptr table | `system::hardware::gpu_setdisplaymask` | `[x]` |
+| **SYS-078** | `GPU_SetQueueDepth` | `0x80080D64` | `gpu/GPU_SetQueueDepth.c` | GPU queue depth setter: DAT_800a59a2 = param, calls callback if non-zero | `system::hardware::gpu_setqueuedepth` | `[x]` |
+| **SYS-079** | `GPU_SetQueueMode` | `0x80080DC0` | `gpu/GPU_SetQueueMode.c` | GPU command queue mode setter: dispatches via function table, checks DAT_800a59a1/2 | `system::hardware::gpu_setqueuemode` | `[x]` |
+| **SYS-080** | `GPU_SetRegClamped` | `0x80098100` | `gpu/GPU_SetRegClamped.c` | Sets GPU register with clamp: param clamped 0-0x3F, writes to DAT_800ac604+0x1AA | `system::hardware::gpu_setregclamped` | `[x]` |
+| **SYS-081** | `GPU_SetTexPrimHeader` | `0x80083CA0` | `gpu/GPU_SetTexPrimHeader.c` | Sets up textured primitive header: code=9 (TILE), size=0x2C | `system::hardware::gpu_settexprimheader` | `[x]` |
+| **SYS-082** | `GPU_SetTilePrimHeader` | `0x80083CC0` | `gpu/GPU_SetTilePrimHeader.c` | Sets up tile primitive header: code=4 (TILE_1), size=100 | `system::hardware::gpu_settileprimheader` | `[x]` |
+| **SYS-083** | `GPU_SetupDrawMode` | `0x80081D78` | `gpu/GPU_SetupDrawMode.c` | Sets up GPU draw mode: primitive[3]=2, encodes tpage, sets draw params | `system::hardware::gpu_setupdrawmode` | `[x]` |
+| **SYS-084** | `GPU_SetupDrawMode2` | `0x80083DE0` | `gpu/GPU_SetupDrawMode2.c` | GPU draw mode setup variant 2: builds GP0(0xE1) cmd with extra params | `system::hardware::gpu_setupdrawmode2` | `[x]` |
+| **SYS-085** | `GPU_SetupOT` | `0x80081458` | `gpu/GPU_SetupOT.c` | GPU ordering table setup: calls GPU funcs, sets up OT base address | `system::hardware::gpu_setupot` | `[x]` |
+| **SYS-086** | `GPU_SetupPacket` | `0x80080FD4` | `gpu/GPU_SetupPacket.c` | Sets up GPU primitive packet header before DMA transfer | `system::hardware::gpu_setuppacket` | `[x]` |
+| **SYS-087** | `GPU_SetupPrimitive` | `0x8007C8C8` | `gpu/GPU_SetupPrimitive.c` | GPU primitive setup: sets type byte at +3, encodes color from param bits | `system::hardware::gpu_setupprimitive` | `[x]` |
+| **SYS-088** | `GPU_SetupPrimitive2` | `0x80083DB0` | `gpu/GPU_SetupPrimitive2.c` | GPU primitive setup 2: sets type=2, encodes draw mode from param_2 | `system::hardware::gpu_setupprimitive2` | `[x]` |
+| **SYS-089** | `GPU_SpriteBuild` | `0x8007C940` | `gpu/GPU_SpriteBuild.c` | GPU sprite builder: constructs sprite prim from data | `system::hardware::gpu_spritebuild` | `[x]` |
+| **SYS-090** | `GPU_SpriteCmd` | `0x8007D208` | `gpu/GPU_SpriteCmd.c` | GPU sprite command processor: entity[0x46] flags, dispatches | `system::hardware::gpu_spritecmd` | `[x]` |
+| **SYS-091** | `GPU_SpriteDecode` | `0x8007CEEC` | `gpu/GPU_SpriteDecode.c` | GPU sprite decoder: reads bytecode, builds prim list | `system::hardware::gpu_spritedecode` | `[x]` |
+| **SYS-092** | `GPU_SpriteDrawMain` | `0x8007E1B8` | `gpu/GPU_SpriteDrawMain.c` | GPU sprite draw main: builds + submits sprite prims | `system::hardware::gpu_spritedrawmain` | `[x]` |
+| **SYS-093** | `GPU_SpriteList` | `0x8007EAE4` | `gpu/GPU_SpriteList.c` | GPU sprite list builder: constructs linked sprite prims | `system::hardware::gpu_spritelist` | `[x]` |
+| **SYS-094** | `GPU_SpriteMain` | `0x8007D594` | `gpu/GPU_SpriteMain.c` | GPU sprite main: full sprite rendering pipeline | `system::hardware::gpu_spritemain` | `[x]` |
+| **SYS-095** | `GPU_SpriteOT` | `0x8007E9C8` | `gpu/GPU_SpriteOT.c` | GPU sprite OT submit: sets GTE vals, creates sprite primitive in ordering table | `system::hardware::gpu_spriteot` | `[x]` |
+| **SYS-096** | `GPU_SpriteProcess` | `0x8007CC00` | `gpu/GPU_SpriteProcess.c` | GPU sprite processor: reads sprite data, builds primitives | `system::hardware::gpu_spriteprocess` | `[x]` |
+| **SYS-097** | `GPU_SpriteRender` | `0x8007E6DC` | `gpu/GPU_SpriteRender.c` | GPU sprite renderer: builds sprite prim from params, submits | `system::hardware::gpu_spriterender` | `[x]` |
+| **SYS-098** | `GPU_SpriteRender2` | `0x80078CA8` | `gpu/GPU_SpriteRender2.c` | GPU sprite renderer variant 2: builds prims, submits | `system::hardware::gpu_spriterender2` | `[x]` |
+| **SYS-099** | `GPU_StoreImage_2` | `0x800837A4` | `gpu/GPU_StoreImage_2.c` | GPU store image: sends StoreImage cmd, waits for DMA completion | `system::hardware::gpu_storeimage_2` | `[x]` |
+| **SYS-100** | `GPU_SubmitOT` | `0x8007FCC8` | `gpu/GPU_SubmitOT.c` | GPU OT submit: writes prim to ordering table with depth sorting | `system::hardware::gpu_submitot` | `[x]` |
+| **SYS-101** | `GPU_WaitVSync` | `0x80051FB4` | `gpu/GPU_WaitVSync.c` | Waits for vertical sync: spin-loops until vblank interrupt | `system::hardware::gpu_waitvsync` | `[x]` |
+| **SYS-102** | `OT_DrawRectSprite` | `0x80081CF8` | `gpu/OT_DrawRectSprite.c` | Subrutina de OT_DrawRectSprite (gpu/OT_DrawRectSprite.c) | `system::hardware::ot_drawrectsprite` | `[x]` |
+| **SYS-103** | `OT_LinkPrimitives` | `0x80083C30` | `gpu/OT_LinkPrimitives.c` | Links two OT primitives: swaps lower 24 bits of their tag words | `system::hardware::ot_linkprimitives` | `[x]` |
+| **SYS-104** | `OT_SubmitPrimitive` | `0x8003FAE8` | `gpu/OT_SubmitPrimitive.c` | Submits a primitive to the ordering table with depth sorting | `system::hardware::ot_submitprimitive` | `[x]` |
+| **SYS-105** | `GTE_ComposeAndProject` | `0x800518FC` | `gte/GTE_ComposeAndProject.c` | GTE compose+project: loads scale, composes rotation matrix, projects, adds position | `system::hardware::gte_composeandproject` | `[x]` |
+| **SYS-106** | `GTE_ComposeMatrix` | `0x80084110` | `gte/GTE_ComposeMatrix.c` | Subrutina de GTE_ComposeMatrix (gte/GTE_ComposeMatrix.c) | `system::hardware::gte_composematrix` | `[x]` |
+| **SYS-107** | `GTE_CopyMatrix` | `0x80051B34` | `gte/GTE_CopyMatrix.c` | Copies 5-word GTE matrix from source to destination | `system::hardware::gte_copymatrix` | `[x]` |
+| **SYS-108** | `GTE_DepthCheck` | `0x800317CC` | `gte/GTE_DepthCheck.c` | Standalone GTE depth/Z-sort check: RTPS projection + OT z-index calculation | `system::hardware::gte_depthcheck` | `[x]` |
+| **SYS-109** | `GTE_Init` | `0x80083FF8` | `gte/GTE_Init.c` | GTE init: enables coprocessor, sets IR1=0x155, IR2=0x100, SZ0=1000 | `system::hardware::gte_init` | `[x]` |
+| **SYS-110** | `GTE_InitProjectionMatrix` | `0x80050A80` | `gte/GTE_InitProjectionMatrix.c` | Inits GTE projection matrix: identity, zeros pos/trans, scales 0x1000, screen offset | `system::hardware::gte_initprojectionmatrix` | `[x]` |
+| **SYS-111** | `GTE_LoadIdentityMatrix` | `0x80051794` | `gte/GTE_LoadIdentityMatrix.c` | Subrutina de GTE_LoadIdentityMatrix (gte/GTE_LoadIdentityMatrix.c) | `system::hardware::gte_loadidentitymatrix` | `[x]` |
+| **SYS-112** | `GTE_LoadMatrix` | `0x80051614` | `gte/GTE_LoadMatrix.c` | GTE matrix loader: loads rotation + translation from table at 0x800E7F40 | `system::hardware::gte_loadmatrix` | `[x]` |
+| **SYS-113** | `GTE_LoadMatrix5` | `0x80084660` | `gte/GTE_LoadMatrix5.c` | GTE matrix load: sets 5 GTE regs (R11R12 through TRZ) from array | `system::hardware::gte_loadmatrix5` | `[x]` |
+| **SYS-114** | `GTE_LoadRotMatrixFromSVec` | `0x80085480` | `gte/GTE_LoadRotMatrixFromSVec.c` | Loads rotation matrix from SVec format into GTE registers | `system::hardware::gte_loadrotmatrixfromsvec` | `[x]` |
+| **SYS-115** | `GTE_LoadRotationFromSVec` | `0x800847F0` | `gte/GTE_LoadRotationFromSVec.c` | Subrutina de GTE_LoadRotationFromSVec (gte/GTE_LoadRotationFromSVec.c) | `system::hardware::gte_loadrotationfromsvec` | `[x]` |
+| **SYS-116** | `GTE_LoadScaleCompose` | `0x80051844` | `gte/GTE_LoadScaleCompose.c` | GTE scale + compose: loads entity scale (0xB8/BA/BC), composes with rotation matrix | `system::hardware::gte_loadscalecompose` | `[x]` |
+| **SYS-117** | `GTE_LoadScaleMatrix` | `0x800517BC` | `gte/GTE_LoadScaleMatrix.c` | Subrutina de GTE_LoadScaleMatrix (gte/GTE_LoadScaleMatrix.c) | `system::hardware::gte_loadscalematrix` | `[x]` |
+| **SYS-118** | `GTE_LoadTranslation` | `0x80084690` | `gte/GTE_LoadTranslation.c` | GTE translation load: sets TRX/TRY/TRZ from struct at offset 0x14 | `system::hardware::gte_loadtranslation` | `[x]` |
+| **SYS-119** | `GTE_MulMatrix` | `0x80084220` | `gte/GTE_MulMatrix.c` | GTE matrix multiply: loads matrix, calls copFunction(0x486012), reads result | `system::hardware::gte_mulmatrix` | `[x]` |
+| **SYS-120** | `GTE_MulMatrix2` | `0x800844C0` | `gte/GTE_MulMatrix2.c` | GTE matrix multiply variant 2: loads 2 matrices, multiplies, stores result | `system::hardware::gte_mulmatrix2` | `[x]` |
+| **SYS-121** | `GTE_MulMatrix3` | `0x80084250` | `gte/GTE_MulMatrix3.c` | GTE matrix multiply variant 3: different input format | `system::hardware::gte_mulmatrix3` | `[x]` |
+| **SYS-122** | `GTE_MulMatrix4` | `0x80084360` | `gte/GTE_MulMatrix4.c` | GTE matrix multiply variant 4: different register layout | `system::hardware::gte_mulmatrix4` | `[x]` |
+| **SYS-123** | `GTE_MulMatrixVec` | `0x80084470` | `gte/GTE_MulMatrixVec.c` | GTE matrix * vector multiply: loads matrix from array, transforms vector | `system::hardware::gte_mulmatrixvec` | `[x]` |
+| **SYS-124** | `GTE_Project10` | `0x8002C6AC` | `gte/GTE_Project10.c` | GTE project variant 10: different scratchpad layout | `system::hardware::gte_project10` | `[x]` |
+| **SYS-125** | `GTE_Project11` | `0x8002FDD0` | `gte/GTE_Project11.c` | GTE project variant 11: entity draw projection | `system::hardware::gte_project11` | `[x]` |
+| **SYS-126** | `GTE_Project2` | `0x8002DBE4` | `gte/GTE_Project2.c` | GTE project variant 2: loads matrix, projects, reads result | `system::hardware::gte_project2` | `[x]` |
+| **SYS-127** | `GTE_Project3` | `0x8002DD88` | `gte/GTE_Project3.c` | GTE project variant 3: loads matrix, projects, reads screen XY | `system::hardware::gte_project3` | `[x]` |
+| **SYS-128** | `GTE_Project4` | `0x8002801C` | `gte/GTE_Project4.c` | GTE project variant 4: loads from _DAT_1f8000f8, projects | `system::hardware::gte_project4` | `[x]` |
+| **SYS-129** | `GTE_Project5` | `0x8002E458` | `gte/GTE_Project5.c` | GTE project variant 5: loads from _DAT_1f8000f8, different path | `system::hardware::gte_project5` | `[x]` |
+| **SYS-130** | `GTE_Project6` | `0x80032AB4` | `gte/GTE_Project6.c` | GTE project variant 6: loads matrix, projects, stores result | `system::hardware::gte_project6` | `[x]` |
+| **SYS-131** | `GTE_Project7` | `0x80032CBC` | `gte/GTE_Project7.c` | GTE project variant 7: different matrix source | `system::hardware::gte_project7` | `[x]` |
+| **SYS-132** | `GTE_Project8` | `0x8002DF68` | `gte/GTE_Project8.c` | GTE project variant 8: loads from scratchpad, projects | `system::hardware::gte_project8` | `[x]` |
+| **SYS-133** | `GTE_Project9` | `0x8002AB5C` | `gte/GTE_Project9.c` | GTE project variant 9: loads matrix from entity, projects | `system::hardware::gte_project9` | `[x]` |
+| **SYS-134** | `GTE_ProjectEntity` | `0x8006F138` | `gte/GTE_ProjectEntity.c` | GTE entity projector: loads rotation, applies transform, stores result | `system::hardware::gte_projectentity` | `[x]` |
+| **SYS-135** | `GTE_ProjectEntity2` | `0x8002847C` | `gte/GTE_ProjectEntity2.c` | GTE entity projector variant 2: different register layout | `system::hardware::gte_projectentity2` | `[x]` |
+| **SYS-136** | `GTE_ProjectMain` | `0x8002BC9C` | `gte/GTE_ProjectMain.c` | GTE projection main: full projection pipeline | `system::hardware::gte_projectmain` | `[x]` |
+| **SYS-137** | `GTE_ProjectSprite` | `0x800281EC` | `gte/GTE_ProjectSprite.c` | GTE sprite projector: loads matrix, projects sprite vertices | `system::hardware::gte_projectsprite` | `[x]` |
+| **SYS-138** | `GTE_ProjectSprite1` | `0x80077ACC` | `gte/GTE_ProjectSprite1.c` | GTE sprite projection: sets _DAT_1f800080=1, _DAT_1f800084=4, calls FUN_8007712c | `system::hardware::gte_projectsprite1` | `[x]` |
+| **SYS-139** | `GTE_ProjectSprite2` | `0x8007778C` | `gte/GTE_ProjectSprite2.c` | GTE sprite projection: sets _DAT_1f800080=0, _DAT_1f800084=0, calls FUN_8007712c | `system::hardware::gte_projectsprite2` | `[x]` |
+| **SYS-140** | `GTE_ProjectSprite3` | `0x80077F3C` | `gte/GTE_ProjectSprite3.c` | GTE sprite projection: sets _DAT_1f800080=0, _DAT_1f800084=3, calls FUN_8007712c | `system::hardware::gte_projectsprite3` | `[x]` |
+| **SYS-141** | `GTE_ProjectSprite4` | `0x800777FC` | `gte/GTE_ProjectSprite4.c` | GTE sprite projection: sets _DAT_1f800080=0, _DAT_1f800084=2, calls FUN_8007712c | `system::hardware::gte_projectsprite4` | `[x]` |
+| **SYS-142** | `GTE_ProjectSprite5` | `0x80077870` | `gte/GTE_ProjectSprite5.c` | GTE sprite projection: sets _DAT_1f800080=0, _DAT_1f800084=1, calls FUN_8007712c | `system::hardware::gte_projectsprite5` | `[x]` |
+| **SYS-143** | `GTE_ProjectSprite6` | `0x800778E4` | `gte/GTE_ProjectSprite6.c` | GTE sprite projection: sets _DAT_1f800080=0, _DAT_1f800084=0, calls FUN_8007712c | `system::hardware::gte_projectsprite6` | `[x]` |
+| **SYS-144** | `GTE_ProjectSprite7` | `0x80077958` | `gte/GTE_ProjectSprite7.c` | GTE sprite projection: sets _DAT_1f800080=0, _DAT_1f800084=0, calls FUN_8007712c | `system::hardware::gte_projectsprite7` | `[x]` |
+| **SYS-145** | `GTE_ProjectSprite8` | `0x800779D0` | `gte/GTE_ProjectSprite8.c` | GTE sprite projection: sets _DAT_1f800080=0, _DAT_1f800084=0, calls FUN_8007712c | `system::hardware::gte_projectsprite8` | `[x]` |
+| **SYS-146** | `GTE_ProjectSprite9` | `0x80077A4C` | `gte/GTE_ProjectSprite9.c` | GTE sprite projection variant 9: _DAT_1f800080=1, _DAT_1f800084=0 | `system::hardware::gte_projectsprite9` | `[x]` |
+| **SYS-147** | `GTE_ProjectVertex` | `0x8003F7A0` | `gte/GTE_ProjectVertex.c` | GTE RTPS projection of single vertex: returns screen XY and depth Z | `system::hardware::gte_projectvertex` | `[x]` |
+| **SYS-148** | `GTE_ProjectionInit` | `0x80078610` | `gte/GTE_ProjectionInit.c` | GTE projection init: sets screen offset/scale, identity matrix | `system::hardware::gte_projectioninit` | `[x]` |
+| **SYS-149** | `GTE_RTPS` | `0x8003F7D8` | `gte/GTE_RTPS.c` | GTE RTPS projection: sets cop regs, calls RTPS, reads screen coords | `system::hardware::gte_rtps` | `[x]` |
+| **SYS-150** | `GTE_RotateVectorY` | `0x80085050` | `gte/GTE_RotateVectorY.c` | Subrutina de GTE_RotateVectorY (gte/GTE_RotateVectorY.c) | `system::hardware::gte_rotatevectory` | `[x]` |
+| **SYS-151** | `GTE_SetProjectionDist` | `0x800329E0` | `gte/GTE_SetProjectionDist.c` | Subrutina de GTE_SetProjectionDist (gte/GTE_SetProjectionDist.c) | `system::hardware::gte_setprojectiondist` | `[x]` |
+| **SYS-152** | `GTE_SetReg_D000` | `0x800846F0` | `gte/GTE_SetReg_D000.c` | GTE register set: writes param_1 to COP2 register 0xD000 (SZ0) | `system::hardware::gte_setreg_d000` | `[x]` |
+| **SYS-153** | `GTE_SetScaleZ` | `0x800846D0` | `gte/GTE_SetScaleZ.c` | GTE scale Z setter: sets SZ3=param1<<16, SZ2=param2<<16 via cop control | `system::hardware::gte_setscalez` | `[x]` |
+| **SYS-154** | `GTE_SpriteTransform` | `0x8007712C` | `gte/GTE_SpriteTransform.c` | GTE sprite transform: full vertex transform pipeline | `system::hardware::gte_spritetransform` | `[x]` |
+| **SYS-155** | `GTE_StoreMatrix` | `0x800847B0` | `gte/GTE_StoreMatrix.c` | GTE matrix store: reads GTE regs, stores to param_2 array (+translation) | `system::hardware::gte_storematrix` | `[x]` |
+| **SYS-156** | `GTE_TransformVec` | `0x80084520` | `gte/GTE_TransformVec.c` | GTE vector transform: loads matrix from param_2, transforms param_1 vector | `system::hardware::gte_transformvec` | `[x]` |
+| **SYS-157** | `CD_AdjustCmdByte` | `0x8009A3A4` | `cd/CD_AdjustCmdByte.c` | Adjusts CD command byte: if table[param_1]&1, adds 0x20 to command | `system::hardware::cd_adjustcmdbyte` | `[x]` |
+| **SYS-158** | `CD_AdvanceSeek` | `0x8008C508` | `cd/CD_AdvanceSeek.c` | CD seek advance: increments DAT_800ac2ec by stride, decrements counter | `system::hardware::cd_advanceseek` | `[x]` |
+| **SYS-159** | `CD_AlignDMA` | `0x80097540` | `cd/CD_AlignDMA.c` | CD DMA alignment: divides param by DAT_800ac630, aligns for DMA transfer | `system::hardware::cd_aligndma` | `[x]` |
+| **SYS-160** | `CD_AllocBuffer` | `0x8008CDC0` | `cd/CD_AllocBuffer.c` | CD buffer alloc: assigns 0x20-byte slot from _DAT_80102728 pool | `system::hardware::cd_allocbuffer` | `[x]` |
+| **SYS-161** | `CD_AllocDMA` | `0x800982A0` | `cd/CD_AllocDMA.c` | CD DMA allocator: finds free slot in DAT_800ac66c table, returns index | `system::hardware::cd_allocdma` | `[x]` |
+| **SYS-162** | `CD_CalcSector` | `0x8008A00C` | `cd/CD_CalcSector.c` | CD sector calculator: (offset+0x96)/0x4B = sector, remainder = offset | `system::hardware::cd_calcsector` | `[x]` |
+| **SYS-163** | `CD_CallbackDispatch` | `0x80085C44` | `cd/CD_CallbackDispatch.c` | Dispatches CD event callback via function table at 0x800ABDA0+0x18 | `system::hardware::cd_callbackdispatch` | `[x]` |
+| **SYS-164** | `CD_CallbackDispatch2` | `0x80085CB4` | `cd/CD_CallbackDispatch2.c` | CD callback dispatch variant 2: calls function table at 0x800ABDA4/8 | `system::hardware::cd_callbackdispatch2` | `[x]` |
+| **SYS-165** | `CD_CallbackStub` | `0x80045558` | `cd/CD_CallbackStub.c` | CD event callback stub: calls 0x8008A00C with preset params | `system::hardware::cd_callbackstub` | `[x]` |
+| **SYS-166** | `CD_Cancel` | `0x80089AA8` | `cd/CD_Cancel.c` | Cancels current CD operation via 0x8008B0C8 | `system::hardware::cd_cancel` | `[x]` |
+| **SYS-167** | `CD_CheckDevice` | `0x80098CE0` | `cd/CD_CheckDevice.c` | CD device check: calls FUN_800982a0, sets DAT_800ac59c flag, returns status | `system::hardware::cd_checkdevice` | `[x]` |
+| **SYS-168** | `CD_CheckInit` | `0x80089F88` | `cd/CD_CheckInit.c` | Checks if CD init is complete via 0x8008B620 | `system::hardware::cd_checkinit` | `[x]` |
+| **SYS-169** | `CD_CheckLoaded` | `0x80045580` | `cd/CD_CheckLoaded.c` | Checks if asset is loaded by looking up sector table | `system::hardware::cd_checkloaded` | `[x]` |
+| **SYS-170** | `CD_CheckReady` | `0x80089FA8` | `cd/CD_CheckReady.c` | Checks if CD is ready via 0x8008B720 | `system::hardware::cd_checkready` | `[x]` |
+| **SYS-171** | `CD_CheckSlot` | `0x800962B0` | `cd/CD_CheckSlot.c` | CD slot check: validates param<0x10, checks slot state == 1 | `system::hardware::cd_checkslot` | `[x]` |
+| **SYS-172** | `CD_CheckTimeout` | `0x8008CAFC` | `cd/CD_CheckTimeout.c` | CD timeout check: reads timer, checks against DAT_800ac300+0x4B0, handles timeout | `system::hardware::cd_checktimeout` | `[x]` |
+| **SYS-173** | `CD_CheckTransfer` | `0x80099310` | `cd/CD_CheckTransfer.c` | CD transfer check: validates address range, sets up FIFO via FUN_80097540 | `system::hardware::cd_checktransfer` | `[x]` |
+| **SYS-174** | `CD_ClearBuffer` | `0x8008CFF0` | `cd/CD_ClearBuffer.c` | Clears CD buffer: zeros param_2 entries of 0x20 bytes at DAT_80102728 | `system::hardware::cd_clearbuffer` | `[x]` |
+| **SYS-175** | `CD_ClearFlagCD8` | `0x80096390` | `cd/CD_ClearFlagCD8.c` | CD flag clearer: DAT_80105cd8 = 0 | `system::hardware::cd_clearflagcd8` | `[x]` |
+| **SYS-176** | `CD_Close` | `0x80089A3C` | `cd/CD_Close.c` | CD close/finalize: if param==2 calls FUN_8008b28c, else syncs with retry | `system::hardware::cd_close` | `[x]` |
+| **SYS-177** | `CD_CloseFile` | `0x8008CD40` | `cd/CD_CloseFile.c` | CD file close: dispatches on DAT_800abfdc flag, calls close or event handlers | `system::hardware::cd_closefile` | `[x]` |
+| **SYS-178** | `CD_Cmd1` | `0x80096480` | `cd/CD_Cmd1.c` | CD command wrapper 1: calls FUN_80096590 with callback FUN_800964b4 | `system::hardware::cd_cmd1` | `[x]` |
+| **SYS-179** | `CD_Cmd2` | `0x80096520` | `cd/CD_Cmd2.c` | CD command wrapper 2: calls FUN_80096590 with callback LAB_80096588 + param | `system::hardware::cd_cmd2` | `[x]` |
+| **SYS-180** | `CD_Cmd3` | `0x80096554` | `cd/CD_Cmd3.c` | CD command wrapper 3: calls FUN_80096590 with callback LAB_80096588 + param | `system::hardware::cd_cmd3` | `[x]` |
+| **SYS-181** | `CD_CmdMain` | `0x80096590` | `cd/CD_CmdMain.c` | CD command main: processes CD commands with retry | `system::hardware::cd_cmdmain` | `[x]` |
+| **SYS-182** | `CD_CmdRetry` | `0x80089E1C` | `cd/CD_CmdRetry.c` | CD command with retry: tries cmd up to 3 times with callback fallback | `system::hardware::cd_cmdretry` | `[x]` |
+| **SYS-183** | `CD_Cmd_20` | `0x8008996C` | `cd/CD_Cmd_20.c` | CD command with 0x20: calls BIOS stub with 0xF0000003, 0x20 | `system::hardware::cd_cmd_20` | `[x]` |
+| **SYS-184** | `CD_Cmd_40` | `0x80089994` | `cd/CD_Cmd_40.c` | CD command with 0x40: calls BIOS stub with 0xF0000003, 0x40 | `system::hardware::cd_cmd_40` | `[x]` |
+| **SYS-185** | `CD_Cmd_40b` | `0x800899BC` | `cd/CD_Cmd_40b.c` | CD command with 0x40 variant: same as Cmd_40 | `system::hardware::cd_cmd_40b` | `[x]` |
+| **SYS-186** | `CD_Cmd_CC_CD` | `0x80098DB0` | `cd/CD_Cmd_CC_CD.c` | CD command with codes 0xCC,0xCD: calls FUN_80097e40 | `system::hardware::cd_cmd_cc_cd` | `[x]` |
+| **SYS-187** | `CD_CompareName` | `0x8008BBC8` | `cd/CD_CompareName.c` | Compares two 12-byte CD file names, returns true if match | `system::hardware::cd_comparename` | `[x]` |
+| **SYS-188** | `CD_Control` | `0x8008AC34` | `cd/CD_Control.c` | CD-ROM control command: sends command with parameters, waits for completion | `system::hardware::cd_control` | `[x]` |
+| **SYS-189** | `CD_DMAProcess` | `0x80097A90` | `cd/CD_DMAProcess.c` | CD DMA processor: manages DMA transfer queue | `system::hardware::cd_dmaprocess` | `[x]` |
+| **SYS-190** | `CD_DecodeTime` | `0x8008A110` | `cd/CD_DecodeTime.c` | Decodes BCD time format (mm:ss:ff) to absolute frame count | `system::hardware::cd_decodetime` | `[x]` |
+| **SYS-191** | `CD_Dispatch04` | `0x80085B80` | `cd/CD_Dispatch04.c` | Dispatches CD driver function at table+0x04 | `system::hardware::cd_dispatch04` | `[x]` |
+| **SYS-192** | `CD_Dispatch08` | `0x80085B50` | `cd/CD_Dispatch08.c` | Dispatches CD driver function at table+0x08 | `system::hardware::cd_dispatch08` | `[x]` |
+| **SYS-193** | `CD_Dispatch0C` | `0x80085B20` | `cd/CD_Dispatch0C.c` | Dispatches CD driver function at table+0x0C | `system::hardware::cd_dispatch0c` | `[x]` |
+| **SYS-194** | `CD_Dispatch10` | `0x80085C14` | `cd/CD_Dispatch10.c` | Dispatches CD driver function at table+0x10 | `system::hardware::cd_dispatch10` | `[x]` |
+| **SYS-195** | `CD_Dispatch14` | `0x80085BB0` | `cd/CD_Dispatch14.c` | Dispatches CD driver function at table+0x14 with params | `system::hardware::cd_dispatch14` | `[x]` |
+| **SYS-196** | `CD_Dispatch14_NoParam` | `0x80085BE4` | `cd/CD_Dispatch14_NoParam.c` | Dispatches CD driver function at table+0x14 without params | `system::hardware::cd_dispatch14_noparam` | `[x]` |
+| **SYS-197** | `CD_EventCallback` | `0x8008BBE8` | `cd/CD_EventCallback.c` | CD event callback handler: processes event queue | `system::hardware::cd_eventcallback` | `[x]` |
+| **SYS-198** | `CD_EventHandler` | `0x8008C5D8` | `cd/CD_EventHandler.c` | CD event handler: checks DAT_800abf28, dispatches events | `system::hardware::cd_eventhandler` | `[x]` |
+| **SYS-199** | `CD_EventMain` | `0x8009B0C0` | `cd/CD_EventMain.c` | CD event main: event queue processor (303L) | `system::hardware::cd_eventmain` | `[x]` |
+| **SYS-200** | `CD_EventProcess` | `0x8008BF50` | `cd/CD_EventProcess.c` | CD event processor: checks DAT_800ac2d4, dispatches events | `system::hardware::cd_eventprocess` | `[x]` |
+| **SYS-201** | `CD_FileOpen` | `0x8008B8F0` | `cd/CD_FileOpen.c` | CD file opener: looks up file, opens for reading | `system::hardware::cd_fileopen` | `[x]` |
+| **SYS-202** | `CD_FileRead` | `0x8008C294` | `cd/CD_FileRead.c` | CD file read: sets DAT_800ac318, checks counter, reads | `system::hardware::cd_fileread` | `[x]` |
+| **SYS-203** | `CD_FlushBuffer` | `0x80097D90` | `cd/CD_FlushBuffer.c` | CD buffer flush: iterates DAT_800ac66c, clears active entries | `system::hardware::cd_flushbuffer` | `[x]` |
+| **SYS-204** | `CD_FlushCmd` | `0x8009AF5C` | `cd/CD_FlushCmd.c` | Flushes CD command queue: sends buffered cmds via BIOS stub, resets counter | `system::hardware::cd_flushcmd` | `[x]` |
+| **SYS-205** | `CD_GetByteAt4` | `0x800954E0` | `cd/CD_GetByteAt4.c` | CD byte getter: reads byte at DAT_80105cdc + param*0x10 + 4 | `system::hardware::cd_getbyteat4` | `[x]` |
+| **SYS-206** | `CD_GetCallback` | `0x80086604` | `cd/CD_GetCallback.c` | Returns CD event callback function pointer from 0x800ABE20 | `system::hardware::cd_getcallback` | `[x]` |
+| **SYS-207** | `CD_GetCmdTimeout` | `0x8009A6C0` | `cd/CD_GetCmdTimeout.c` | CD command timeout: looks up table at 0x800ACE75, returns timeout or 9999999 (infinite) | `system::hardware::cd_getcmdtimeout` | `[x]` |
+| **SYS-208** | `CD_GetField` | `0x8009A1D0` | `cd/CD_GetField.c` | CD struct field getter: returns word at DAT_800ac604 + index*0x10 + 0xC | `system::hardware::cd_getfield` | `[x]` |
+| **SYS-209** | `CD_GetMode` | `0x80089A00` | `cd/CD_GetMode.c` | Returns CD mode byte from 0x800ABFC8 | `system::hardware::cd_getmode` | `[x]` |
+| **SYS-210** | `CD_GetParamPtr` | `0x80089A30` | `cd/CD_GetParamPtr.c` | Returns pointer to CD parameter area at 0x800ABFD4 | `system::hardware::cd_getparamptr` | `[x]` |
+| **SYS-211** | `CD_GetReg` | `0x8009CC14` | `cd/CD_GetReg.c` | CD register getter: returns *DAT_800ad098 | `system::hardware::cd_getreg` | `[x]` |
+| **SYS-212** | `CD_GetStatusByte` | `0x80089A10` | `cd/CD_GetStatusByte.c` | Returns CD status byte from 0x800ABFD8 | `system::hardware::cd_getstatusbyte` | `[x]` |
+| **SYS-213** | `CD_GetStatus_2` | `0x8009BBEC` | `cd/CD_GetStatus_2.c` | CD status getter: returns DAT_800acf44 | `system::hardware::cd_getstatus_2` | `[x]` |
+| **SYS-214** | `CD_HandleError` | `0x800964B4` | `cd/CD_HandleError.c` | CD error handler: on FUN_800977c0=-1, sets flag, decrements counter DAT_80105d70 | `system::hardware::cd_handleerror` | `[x]` |
+| **SYS-215** | `CD_Init` | `0x80089F68` | `cd/CD_Init.c` | Initializes CD subsystem via 0x8008B040 | `system::hardware::cd_init` | `[x]` |
+| **SYS-216** | `CD_Init2` | `0x80096A90` | `cd/CD_Init2.c` | CD init variant 2: calls FUN_80096bf0, clears buffer at 0x800AC5EE | `system::hardware::cd_init2` | `[x]` |
+| **SYS-217** | `CD_Init3` | `0x8008B2D8` | `cd/CD_Init3.c` | CD init variant 3: prints debug, calls init funcs, sets flags | `system::hardware::cd_init3` | `[x]` |
+| **SYS-218** | `CD_InitAttempt` | `0x80089930` | `cd/CD_InitAttempt.c` | CD init attempt: tries FUN_8008b2d8 then FUN_8008b19c, returns success bool | `system::hardware::cd_initattempt` | `[x]` |
+| **SYS-219** | `CD_InitBuffer` | `0x8008CCE0` | `cd/CD_InitBuffer.c` | CD buffer init: zeros 4 ptrs at 0x80102704-14, calls CD_ClearBuffer | `system::hardware::cd_initbuffer` | `[x]` |
+| **SYS-220** | `CD_InitCallbacks` | `0x80086738` | `cd/CD_InitCallbacks.c` | Initializes CD callback function pointers at 0x80102444-0x8010244C | `system::hardware::cd_initcallbacks` | `[x]` |
+| **SYS-221** | `CD_InitController` | `0x80086144` | `cd/CD_InitController.c` | CD controller init: sets flag, restores saved state, returns status | `system::hardware::cd_initcontroller` | `[x]` |
+| **SYS-222** | `CD_InitDrive` | `0x8008B040` | `cd/CD_InitDrive.c` | Initializes CD drive hardware: sends config commands | `system::hardware::cd_initdrive` | `[x]` |
+| **SYS-223** | `CD_InitDrive2` | `0x8008B19C` | `cd/CD_InitDrive2.c` | Second stage CD init: sets volume, filter, playback mode | `system::hardware::cd_initdrive2` | `[x]` |
+| **SYS-224** | `CD_InitFileLoad` | `0x8008CE4C` | `cd/CD_InitFileLoad.c` | CD file load init: calls FUN_8008a110, allocates via FUN_8008a00c | `system::hardware::cd_initfileload` | `[x]` |
+| **SYS-225** | `CD_InitIRQ` | `0x80096B78` | `cd/CD_InitIRQ.c` | CD init with IRQ: sets flag, enables IRQ, registers callback FUN_80097030 | `system::hardware::cd_initirq` | `[x]` |
+| **SYS-226** | `CD_InitParams` | `0x8008B620` | `cd/CD_InitParams.c` | CD init params: sets 0x800AC280-2B8 defaults (mode, speed, filter) | `system::hardware::cd_initparams` | `[x]` |
+| **SYS-227** | `CD_InitRead` | `0x80086230` | `cd/CD_InitRead.c` | Initializes CD-ROM read operation: sets up DMA, starts transfer | `system::hardware::cd_initread` | `[x]` |
+| **SYS-228** | `CD_InitSeek` | `0x80086350` | `cd/CD_InitSeek.c` | Initializes CD-ROM seek operation: configures parameters, starts seek | `system::hardware::cd_initseek` | `[x]` |
+| **SYS-229** | `CD_InitSub` | `0x80089FEC` | `cd/CD_InitSub.c` | Initializes CD subsystem via 0x8008B4B8 | `system::hardware::cd_initsub` | `[x]` |
+| **SYS-230** | `CD_InitWithRetry` | `0x800898A0` | `cd/CD_InitWithRetry.c` | CD init with 4 retries: sets callbacks at 0x800ABF24 on success, prints error on fail | `system::hardware::cd_initwithretry` | `[x]` |
+| **SYS-231** | `CD_Interrupt` | `0x80097030` | `cd/CD_Interrupt.c` | CD interrupt handler: checks DAT_800ac654, processes SPU reg, handles DMA | `system::hardware::cd_interrupt` | `[x]` |
+| **SYS-232** | `CD_InterruptHandler` | `0x80085D8C` | `cd/CD_InterruptHandler.c` | CD interrupt handler: reads status, dispatches by event type | `system::hardware::cd_interrupthandler` | `[x]` |
+| **SYS-233** | `CD_IsReady` | `0x80099478` | `cd/CD_IsReady.c` | CD ready check: returns DAT_800ac638 != 1 | `system::hardware::cd_isready` | `[x]` |
+| **SYS-234** | `CD_LoadAsset` | `0x80045258` | `cd/CD_LoadAsset.c` | Loads game asset from CD by ID: uses 0x800ECF58 + 0x800FB170 tables | `system::hardware::cd_loadasset` | `[x]` |
+| **SYS-235** | `CD_LoadChunk` | `0x80045080` | `cd/CD_LoadChunk.c` | Loads data chunk from CD: reads sector table at 0x800BE118 by chunk ID | `system::hardware::cd_loadchunk` | `[x]` |
+| **SYS-236** | `CD_LoadLevelData` | `0x800754F4` | `cd/CD_LoadLevelData.c` | Loads level data segments: CD load + 10 sub-loads via FUN_80075448 with config from overlay header | `system::hardware::cd_loadleveldata` | `[x]` |
+| **SYS-237** | `CD_LoadSectors` | `0x8001DC40` | `cd/CD_LoadSectors.c` | Loads CD sectors to RAM: calculates sector count, aligns to 4-byte boundary | `system::hardware::cd_loadsectors` | `[x]` |
+| **SYS-238** | `CD_LoadSegment` | `0x80075448` | `cd/CD_LoadSegment.c` | CD level segment load: loads param-sized segment into CD buffer, returns offset | `system::hardware::cd_loadsegment` | `[x]` |
+| **SYS-239** | `CD_LoadToRAM` | `0x800753AC` | `cd/CD_LoadToRAM.c` | Loads CD sector data to RAM address from 0x800BE108 + offset | `system::hardware::cd_loadtoram` | `[x]` |
+| **SYS-240** | `CD_Main` | `0x80098330` | `cd/CD_Main.c` | CD main: full CD-ROM command processor | `system::hardware::cd_main` | `[x]` |
+| **SYS-241** | `CD_OpenFile` | `0x8008C1EC` | `cd/CD_OpenFile.c` | Opens file on CD: looks up name, seeks to sector, returns success | `system::hardware::cd_openfile` | `[x]` |
+| **SYS-242** | `CD_PollEvent` | `0x8008BEAC` | `cd/CD_PollEvent.c` | CD event poll: iterates 0x800AC2D4 table, dispatches active event callbacks | `system::hardware::cd_pollevent` | `[x]` |
+| **SYS-243** | `CD_PollSync` | `0x8008B818` | `cd/CD_PollSync.c` | CD poll sync: spins on DAT_800ac280 flag, waits for FUN_8008a190 completion | `system::hardware::cd_pollsync` | `[x]` |
+| **SYS-244** | `CD_ProcessInterrupt` | `0x8008639C` | `cd/CD_ProcessInterrupt.c` | CD interrupt processor: reads DAT_800abdf0 status, dispatches events | `system::hardware::cd_processinterrupt` | `[x]` |
+| **SYS-245** | `CD_QueueCmd` | `0x8009AE60` | `cd/CD_QueueCmd.c` | CD command queue: appends byte to buffer at DAT_800acf08, flushes on full, special cmds 9/10 | `system::hardware::cd_queuecmd` | `[x]` |
+| **SYS-246** | `CD_QueueCmdAndFlush` | `0x8009AF98` | `cd/CD_QueueCmdAndFlush.c` | CD cmd queue + flush: same as QueueCmd but forces flush at end | `system::hardware::cd_queuecmdandflush` | `[x]` |
+| **SYS-247** | `CD_ReadByte` | `0x80095470` | `cd/CD_ReadByte.c` | CD byte read: calls FUN_800962b0, writes result to buffer at DAT_80105cdc+offset+4 | `system::hardware::cd_readbyte` | `[x]` |
+| **SYS-248** | `CD_ReadByteAt1` | `0x800953B0` | `cd/CD_ReadByteAt1.c` | CD byte read at offset+1: same as CD_ReadByte but writes to +1 instead of +4 | `system::hardware::cd_readbyteat1` | `[x]` |
+| **SYS-249** | `CD_ReadMain` | `0x8008A190` | `cd/CD_ReadMain.c` | CD read main: full sector read pipeline | `system::hardware::cd_readmain` | `[x]` |
+| **SYS-250** | `CD_ReadReg` | `0x8009A170` | `cd/CD_ReadReg.c` | CD register read: reads ushort from DAT_800ac604 + param*0x10 | `system::hardware::cd_readreg` | `[x]` |
+| **SYS-251** | `CD_ReadRequest` | `0x8001CE04` | `cd/CD_ReadRequest.c` | CD-ROM read request: initiates read with retry loop via FUN_80089ce8/80089b44 | `system::hardware::cd_readrequest` | `[x]` |
+| **SYS-252** | `CD_ReadSector_2` | `0x8009A1F0` | `cd/CD_ReadSector_2.c` | CD sector reader: reads sector data, handles retry logic | `system::hardware::cd_readsector_2` | `[x]` |
+| **SYS-253** | `CD_ReadSeek` | `0x800753D4` | `cd/CD_ReadSeek.c` | CD read + seek: calls CD_Cmd1 for read, then FUN_80096980 for seek | `system::hardware::cd_readseek` | `[x]` |
+| **SYS-254** | `CD_ReadStart` | `0x8008C7C0` | `cd/CD_ReadStart.c` | CD read start: checks DAT_800abf28 flag, initiates read | `system::hardware::cd_readstart` | `[x]` |
+| **SYS-255** | `CD_ReadWord` | `0x80095420` | `cd/CD_ReadWord.c` | CD word reader: same pattern as ReadByte but reads word from buffer | `system::hardware::cd_readword` | `[x]` |
+| **SYS-256** | `CD_Ready` | `0x8008A96C` | `cd/CD_Ready.c` | CD-ROM ready check: polls CD status with callback processing | `system::hardware::cd_ready` | `[x]` |
+| **SYS-257** | `CD_ReadySimple` | `0x80089B64` | `cd/CD_ReadySimple.c` | Wraps CD_Ready for simple ready check | `system::hardware::cd_readysimple` | `[x]` |
+| **SYS-258** | `CD_RegisterCallback` | `0x80083AD0` | `cd/CD_RegisterCallback.c` | CD event callback register: calls FUN_80085b80(2, FUN_80082fb4) | `system::hardware::cd_registercallback` | `[x]` |
+| **SYS-259** | `CD_ReleaseSlot` | `0x800963D0` | `cd/CD_ReleaseSlot.c` | CD slot release: checks slot < 0x10, calls FUN_80097d90, clears, decrements counter | `system::hardware::cd_releaseslot` | `[x]` |
+| **SYS-260** | `CD_Reset` | `0x8008B0C8` | `cd/CD_Reset.c` | CD reset: cycles DAT_800ac280, waits for bit clear, resets controller | `system::hardware::cd_reset` | `[x]` |
+| **SYS-261** | `CD_ResetCallbacks` | `0x8008B28C` | `cd/CD_ResetCallbacks.c` | Resets CD event/error callbacks and re-inits drive | `system::hardware::cd_resetcallbacks` | `[x]` |
+| **SYS-262** | `CD_ResetController` | `0x800860A4` | `cd/CD_ResetController.c` | CD controller reset: saves state from 0x800ABDA8/C, zeros fields, calls BIOS stub | `system::hardware::cd_resetcontroller` | `[x]` |
+| **SYS-263** | `CD_ResetState` | `0x8009C8E0` | `cd/CD_ResetState.c` | CD state reset: clears CD regs at 0x800AD098, zeros buffers at DAT_800acf54/cfd8 | `system::hardware::cd_resetstate` | `[x]` |
+| **SYS-264** | `CD_ResetWithOption` | `0x8009C620` | `cd/CD_ResetWithOption.c` | CD reset with option: optionally calls FUN_80085b20, then CD_ResetState | `system::hardware::cd_resetwithoption` | `[x]` |
+| **SYS-265** | `CD_SPU_Cmd` | `0x80097E40` | `cd/CD_SPU_Cmd.c` | CD/SPU command: branch on DAT_800ac5f0 flag, selects buffer for transfer | `system::hardware::cd_spu_cmd` | `[x]` |
+| **SYS-266** | `CD_SPU_Cmd2` | `0x80097194` | `cd/CD_SPU_Cmd2.c` | CD SPU command variant 2: sets DAT_800ac654, writes regs | `system::hardware::cd_spu_cmd2` | `[x]` |
+| **SYS-267** | `CD_SPU_Init` | `0x80096BF0` | `cd/CD_SPU_Init.c` | CD SPU initializer: sets SPU RAM config, clears buffers | `system::hardware::cd_spu_init` | `[x]` |
+| **SYS-268** | `CD_SPU_Main` | `0x80099490` | `cd/CD_SPU_Main.c` | CD SPU main: SPU RAM transfer controller | `system::hardware::cd_spu_main` | `[x]` |
+| **SYS-269** | `CD_SPU_Poll` | `0x800998E4` | `cd/CD_SPU_Poll.c` | CD SPU poll: scans DAT_800ac604+0xC table, checks DAT_800ac590 bitmask | `system::hardware::cd_spu_poll` | `[x]` |
+| **SYS-270** | `CD_SPU_Read` | `0x80096E70` | `cd/CD_SPU_Read.c` | CD SPU reader: reads SPU RAM via DAT_800ac604+0x1AE | `system::hardware::cd_spu_read` | `[x]` |
+| **SYS-271** | `CD_SPU_Transfer` | `0x80098DE0` | `cd/CD_SPU_Transfer.c` | CD SPU transfer: checks slot count, initiates DMA transfer | `system::hardware::cd_spu_transfer` | `[x]` |
+| **SYS-272** | `CD_SPU_Transfer2` | `0x80098810` | `cd/CD_SPU_Transfer2.c` | CD SPU transfer variant 2: writes to SPU RAM | `system::hardware::cd_spu_transfer2` | `[x]` |
+| **SYS-273** | `CD_SPU_Write` | `0x80098D30` | `cd/CD_SPU_Write.c` | CD/SPU write: writes param to DAT_800ac604+0x184 if buffer empty or bit 1 | `system::hardware::cd_spu_write` | `[x]` |
+| **SYS-274** | `CD_SPU_Write2` | `0x80098F90` | `cd/CD_SPU_Write2.c` | CD SPU write variant 2: writes to DAT_800ac604+0x1AA | `system::hardware::cd_spu_write2` | `[x]` |
+| **SYS-275** | `CD_SeekCmd` | `0x80096980` | `cd/CD_SeekCmd.c` | CD seek command: validates slot, calls FUN_800963d0 if active | `system::hardware::cd_seekcmd` | `[x]` |
+| **SYS-276** | `CD_SeekSetup` | `0x80085F5C` | `cd/CD_SeekSetup.c` | CD seek setup: configures seek params at 0x800AAD1C, validates | `system::hardware::cd_seeksetup` | `[x]` |
+| **SYS-277** | `CD_SeekToSector` | `0x8001CEB0` | `cd/CD_SeekToSector.c` | CD-ROM seek: moves laser to specific sector number, retries if needed | `system::hardware::cd_seektosector` | `[x]` |
+| **SYS-278** | `CD_SendCmdFlags` | `0x8008CC30` | `cd/CD_SendCmdFlags.c` | CD send command with flags: calls CD_SendCmdRetry2(0xE, data, 0) | `system::hardware::cd_sendcmdflags` | `[x]` |
+| **SYS-279** | `CD_SendCmdRetry` | `0x80089BAC` | `cd/CD_SendCmdRetry.c` | CD command with 3 retries: calls FUN_8008ac34 with fallback, restores callback on fail | `system::hardware::cd_sendcmdretry` | `[x]` |
+| **SYS-280** | `CD_SendCmdRetry2` | `0x80089CE8` | `cd/CD_SendCmdRetry2.c` | CD command retry variant 2: same as SendCmdRetry but 4th param=1 | `system::hardware::cd_sendcmdretry2` | `[x]` |
+| **SYS-281** | `CD_SetCallback` | `0x800865F0` | `cd/CD_SetCallback.c` | Sets CD event callback function pointer at 0x800ABE20 | `system::hardware::cd_setcallback` | `[x]` |
+| **SYS-282** | `CD_SetErrorCallback` | `0x80089B98` | `cd/CD_SetErrorCallback.c` | Sets CD error callback function at 0x800ABFC0 | `system::hardware::cd_seterrorcallback` | `[x]` |
+| **SYS-283** | `CD_SetEvent` | `0x8008C260` | `cd/CD_SetEvent.c` | CD event setter: calls FUN_80089b84 with DAT_800ac30c, zeros DAT_800ac308 | `system::hardware::cd_setevent` | `[x]` |
+| **SYS-284** | `CD_SetEventCallback` | `0x80089B84` | `cd/CD_SetEventCallback.c` | Sets CD event callback function at 0x800ABFBC | `system::hardware::cd_seteventcallback` | `[x]` |
+| **SYS-285** | `CD_SetFlag28` | `0x80096370` | `cd/CD_SetFlag28.c` | CD flag setter: DAT_80105d28 = param_1 | `system::hardware::cd_setflag28` | `[x]` |
+| **SYS-286** | `CD_SetFlagCD8` | `0x80096380` | `cd/CD_SetFlagCD8.c` | CD flag setter: DAT_80105cd8 = 1 | `system::hardware::cd_setflagcd8` | `[x]` |
+| **SYS-287** | `CD_SetMode` | `0x80099370` | `cd/CD_SetMode.c` | CD mode setter: sets DAT_800ac620=0 or 1 based on param, zeros counter | `system::hardware::cd_setmode` | `[x]` |
+| **SYS-288** | `CD_SetParams` | `0x8008D0F0` | `cd/CD_SetParams.c` | CD param setter: stores 3 params at 0x80102720/FC/1C | `system::hardware::cd_setparams` | `[x]` |
+| **SYS-289** | `CD_SetReady` | `0x80099450` | `cd/CD_SetReady.c` | CD ready setter: DAT_800ac638 = (param_1 != 1) | `system::hardware::cd_setready` | `[x]` |
+| **SYS-290** | `CD_SetRegBit` | `0x8009C784` | `cd/CD_SetRegBit.c` | CD register bit set/clear: toggles bit 0x08000000 on param_1 based on param_2 | `system::hardware::cd_setregbit` | `[x]` |
+| **SYS-291** | `CD_SetTimeout` | `0x80085C9C` | `cd/CD_SetTimeout.c` | Sets CD timeout value at 0x800ABDA8, returns previous value | `system::hardware::cd_settimeout` | `[x]` |
+| **SYS-292** | `CD_SetTimerCallback` | `0x80089FC8` | `cd/CD_SetTimerCallback.c` | Sets CD timer callback via 0x80085B80 with mode 3 | `system::hardware::cd_settimercallback` | `[x]` |
+| **SYS-293** | `CD_SetValidatedParam` | `0x800963A0` | `cd/CD_SetValidatedParam.c` | Validated setter: clamps param to [1,0x18), sets DAT_80105cec, returns value or -1 | `system::hardware::cd_setvalidatedparam` | `[x]` |
+| **SYS-294** | `CD_SetupEvent` | `0x80097414` | `cd/CD_SetupEvent.c` | CD event setup: branches on DAT_800ac620 flag, calls FUN_80097194 or FUN_80096e70 | `system::hardware::cd_setupevent` | `[x]` |
+| **SYS-295** | `CD_SetupFIFO` | `0x80097760` | `cd/CD_SetupFIFO.c` | CD FIFO setup: sets param_2=0x40001010, DAT_800ac668=0, configures transfer | `system::hardware::cd_setupfifo` | `[x]` |
+| **SYS-296** | `CD_SetupFileLoad` | `0x8008CEB0` | `cd/CD_SetupFileLoad.c` | CD file load setup: stores 5 params at 0x80102700-18, sets flags | `system::hardware::cd_setupfileload` | `[x]` |
+| **SYS-297** | `CD_SetupTransfer` | `0x80099150` | `cd/CD_SetupTransfer.c` | CD transfer setup: clamps size to 0x7EFF0, calls FUN_80097414, checks flag | `system::hardware::cd_setuptransfer` | `[x]` |
+| **SYS-298** | `CD_Sync` | `0x8008A6EC` | `cd/CD_Sync.c` | CD-ROM sync: waits for CD drive to complete operation with timeout | `system::hardware::cd_sync` | `[x]` |
+| **SYS-299** | `CD_SyncCheck` | `0x800993A0` | `cd/CD_SyncCheck.c` | CD sync/ready: checks flags, calls FUN_80080840, updates DAT_800ac594 | `system::hardware::cd_synccheck` | `[x]` |
+| **SYS-300** | `CD_SyncLoop` | `0x8008C960` | `cd/CD_SyncLoop.c` | CD sync loop: polls DAT_800ac308, waits for completion | `system::hardware::cd_syncloop` | `[x]` |
+| **SYS-301** | `CD_SyncSimple` | `0x80089B44` | `cd/CD_SyncSimple.c` | Wraps CD_Sync for simple sync calls | `system::hardware::cd_syncsimple` | `[x]` |
+| **SYS-302** | `CD_SyncWithTimeout` | `0x8008B4B8` | `cd/CD_SyncWithTimeout.c` | CD sync with timeout: polls timer, prints debug on timeout (0x3C0000 cycles), calls recovery | `system::hardware::cd_syncwithtimeout` | `[x]` |
+| **SYS-303** | `CD_Transfer` | `0x800991B0` | `cd/CD_Transfer.c` | CD data transfer: checks DAT_800ac620, setup DMA + IRQ | `system::hardware::cd_transfer` | `[x]` |
+| **SYS-304** | `CD_TransferCheck` | `0x800977C0` | `cd/CD_TransferCheck.c` | CD transfer checker: validates DAT_800ac594, checks DMA | `system::hardware::cd_transfercheck` | `[x]` |
+| **SYS-305** | `CD_Wrapper` | `0x8009A31C` | `cd/CD_Wrapper.c` | CD wrapper: calls FUN_8009a1f0 (simple dispatch) | `system::hardware::cd_wrapper` | `[x]` |
+| **SYS-306** | `CD_XA_Decode` | `0x80099F70` | `cd/CD_XA_Decode.c` | CD XA audio decoder: computes sample delta, handles ADPCM decode | `system::hardware::cd_xa_decode` | `[x]` |
+| **SYS-307** | `CD_XA_Main` | `0x80099970` | `cd/CD_XA_Main.c` | CD XA audio main: XA-ADPCM decode pipeline | `system::hardware::cd_xa_main` | `[x]` |
+| **SYS-308** | `MDEC_BufferCopy` | `0x8009C6E0` | `mdec/MDEC_BufferCopy.c` | MDEC buffer copy: copies 16 words from param_1 to DAT_800acf58 buffer | `system::hardware::mdec_buffercopy` | `[x]` |
+| **SYS-309** | `MDEC_CalcFrameSize` | `0x80088210` | `mdec/MDEC_CalcFrameSize.c` | Calculates MDEC frame size from header fields (e3, e9, ec) | `system::hardware::mdec_calcframesize` | `[x]` |
+| **SYS-310** | `MDEC_CallbackChain` | `0x80086DB4` | `mdec/MDEC_CallbackChain.c` | MDEC callback chain: iterates ptrs at 0x800ABEC0, calls each in sequence | `system::hardware::mdec_callbackchain` | `[x]` |
+| **SYS-311** | `MDEC_CallbackDispatch` | `0x80087E2C` | `mdec/MDEC_CallbackDispatch.c` | MDEC callback: calls function ptr at 0x800ABE4C, dispatches result via FUN_800887bc | `system::hardware::mdec_callbackdispatch` | `[x]` |
+| **SYS-312** | `MDEC_CallbackDispatch2` | `0x80087E64` | `mdec/MDEC_CallbackDispatch2.c` | MDEC callback variant 2: calls funct ptr + dispatch with 2 params via FUN_80088908 | `system::hardware::mdec_callbackdispatch2` | `[x]` |
+| **SYS-313** | `MDEC_CheckDMA` | `0x80086764` | `mdec/MDEC_CheckDMA.c` | MDEC DMA check: tests DAT_800abe98 flags, calls FUN_80086a80 if active | `system::hardware::mdec_checkdma` | `[x]` |
+| **SYS-314** | `MDEC_CheckState` | `0x800889F4` | `mdec/MDEC_CheckState.c` | MDEC state check: entity[0x53]/[0x46], calls funct ptr at DAT_800abe3c | `system::hardware::mdec_checkstate` | `[x]` |
+| **SYS-315** | `MDEC_CheckStatus` | `0x8009C85C` | `mdec/MDEC_CheckStatus.c` | MDEC status check variant: reads CD_GetReg, extracts status bits | `system::hardware::mdec_checkstatus` | `[x]` |
+| **SYS-316** | `MDEC_ClearFlag` | `0x80087A40` | `mdec/MDEC_ClearFlag.c` | MDEC flag clearer wrapper: calls FUN_8008695c | `system::hardware::mdec_clearflag` | `[x]` |
+| **SYS-317** | `MDEC_Cmd1` | `0x8008DDA0` | `mdec/MDEC_Cmd1.c` | MDEC command 1: calls FUN_8008dc00 with param | `system::hardware::mdec_cmd1` | `[x]` |
+| **SYS-318** | `MDEC_Cmd2` | `0x8008DD7C` | `mdec/MDEC_Cmd2.c` | MDEC command 2: calls FUN_8008dc00 with param (same as Cmd1) | `system::hardware::mdec_cmd2` | `[x]` |
+| **SYS-319** | `MDEC_CmdDecode` | `0x80088A54` | `mdec/MDEC_CmdDecode.c` | Sends MDEC decode command (0x43) with data pointer | `system::hardware::mdec_cmddecode` | `[x]` |
+| **SYS-320** | `MDEC_CmdReset` | `0x80088A74` | `mdec/MDEC_CmdReset.c` | Sends MDEC reset command (0x45), clears pointer | `system::hardware::mdec_cmdreset` | `[x]` |
+| **SYS-321** | `MDEC_CmdSetBS` | `0x80088AE8` | `mdec/MDEC_CmdSetBS.c` | Sends MDEC set bitstream command (0x4B) | `system::hardware::mdec_cmdsetbs` | `[x]` |
+| **SYS-322** | `MDEC_CmdSetIQ` | `0x80088A88` | `mdec/MDEC_CmdSetIQ.c` | Sends MDEC set IQ table command (0x4C) | `system::hardware::mdec_cmdsetiq` | `[x]` |
+| **SYS-323** | `MDEC_CmdSetScale` | `0x80088AA8` | `mdec/MDEC_CmdSetScale.c` | Sends MDEC set scale command (0x46) | `system::hardware::mdec_cmdsetscale` | `[x]` |
+| **SYS-324** | `MDEC_CmdSetSize` | `0x80088AC8` | `mdec/MDEC_CmdSetSize.c` | Sends MDEC set size command (0x47) | `system::hardware::mdec_cmdsetsize` | `[x]` |
+| **SYS-325** | `MDEC_Config` | `0x80086620` | `mdec/MDEC_Config.c` | MDEC configurator: sets DAT_800abe8c/88/70 based on param mode flags | `system::hardware::mdec_config` | `[x]` |
+| **SYS-326** | `MDEC_DMAProcess` | `0x80086EA4` | `mdec/MDEC_DMAProcess.c` | MDEC DMA processor: sets up DMA for MDEC data transfer | `system::hardware::mdec_dmaprocess` | `[x]` |
+| **SYS-327** | `MDEC_DMAStart2` | `0x80086A80` | `mdec/MDEC_DMAStart2.c` | MDEC DMA start variant 2: configures DMA for decode | `system::hardware::mdec_dmastart2` | `[x]` |
+| **SYS-328** | `MDEC_DataDecode` | `0x8008DA58` | `mdec/MDEC_DataDecode.c` | MDEC data decoder: reads bitstream from buffer, dispatches | `system::hardware::mdec_datadecode` | `[x]` |
+| **SYS-329** | `MDEC_DataRead` | `0x800870B4` | `mdec/MDEC_DataRead.c` | MDEC data reader: reads bitstream from entity[0x3C] data | `system::hardware::mdec_dataread` | `[x]` |
+| **SYS-330** | `MDEC_DecodeControl` | `0x800892A4` | `mdec/MDEC_DecodeControl.c` | MDEC decode controller: reads macroblock header, dispatches | `system::hardware::mdec_decodecontrol` | `[x]` |
+| **SYS-331** | `MDEC_DecodeFrame` | `0x80088E88` | `mdec/MDEC_DecodeFrame.c` | MDEC frame decoder: processes full frame, dispatches blocks | `system::hardware::mdec_decodeframe` | `[x]` |
+| **SYS-332** | `MDEC_DecodeMain` | `0x800876A0` | `mdec/MDEC_DecodeMain.c` | MDEC decode main: full decode pipeline controller | `system::hardware::mdec_decodemain` | `[x]` |
+| **SYS-333** | `MDEC_DecodeProcess` | `0x80089194` | `mdec/MDEC_DecodeProcess.c` | MDEC decode processor: reads bitstream at entity[0x3C], processes blocks | `system::hardware::mdec_decodeprocess` | `[x]` |
+| **SYS-334** | `MDEC_DecodeStep` | `0x80089508` | `mdec/MDEC_DecodeStep.c` | MDEC decode step: entity[0x46] state, processes macroblock | `system::hardware::mdec_decodestep` | `[x]` |
+| **SYS-335** | `MDEC_FrameReady` | `0x800867CC` | `mdec/MDEC_FrameReady.c` | MDEC frame ready check: tests DAT_800abe9c flags, sets DAT_800abea0 | `system::hardware::mdec_frameready` | `[x]` |
+| **SYS-336** | `MDEC_GetAndClearFlag` | `0x8008695C` | `mdec/MDEC_GetAndClearFlag.c` | MDEC flag get+clear: returns DAT_800abea0 then sets to 0 | `system::hardware::mdec_getandclearflag` | `[x]` |
+| **SYS-337** | `MDEC_GetParam` | `0x80087CB0` | `mdec/MDEC_GetParam.c` | MDEC param getter: returns entity[0xE9] or entity[0xEC] based on sign | `system::hardware::mdec_getparam` | `[x]` |
+| **SYS-338** | `MDEC_GetStatus` | `0x80087BB8` | `mdec/MDEC_GetStatus.c` | MDEC status getter: returns status byte from entity at offset | `system::hardware::mdec_getstatus` | `[x]` |
+| **SYS-339** | `MDEC_Init` | `0x8009C800` | `mdec/MDEC_Init.c` | MDEC init wrapper: calls FUN_8009ca60 | `system::hardware::mdec_init` | `[x]` |
+| **SYS-340** | `MDEC_InitCallbacks` | `0x80089160` | `mdec/MDEC_InitCallbacks.c` | MDEC callback table init: sets function ptrs at 0x800ABE50/54/58 | `system::hardware::mdec_initcallbacks` | `[x]` |
+| **SYS-341** | `MDEC_InitDecode` | `0x80087EAC` | `mdec/MDEC_InitDecode.c` | Initializes MDEC decode: gets frame buffer, calls setup | `system::hardware::mdec_initdecode` | `[x]` |
+| **SYS-342** | `MDEC_InitDecode2` | `0x80088248` | `mdec/MDEC_InitDecode2.c` | MDEC decode init variant 2: sets frame buffer, calls callback if ready | `system::hardware::mdec_initdecode2` | `[x]` |
+| **SYS-343** | `MDEC_InitHW` | `0x80087A60` | `mdec/MDEC_InitHW.c` | MDEC hardware init: zeros flag, enables IRQ, sets up DMA, calls callbacks | `system::hardware::mdec_inithw` | `[x]` |
+| **SYS-344** | `MDEC_InitHWImpl` | `0x80086970` | `mdec/MDEC_InitHWImpl.c` | MDEC hardware init impl: IRQ enable, DMA setup, callback chain | `system::hardware::mdec_inithwimpl` | `[x]` |
+| **SYS-345** | `MDEC_InitSystem` | `0x80088B00` | `mdec/MDEC_InitSystem.c` | MDEC system init: zeros flags, calls init funcs, sets up DMA | `system::hardware::mdec_initsystem` | `[x]` |
+| **SYS-346** | `MDEC_Main` | `0x8008D110` | `mdec/MDEC_Main.c` | MDEC main: full MDEC decode controller (201L) | `system::hardware::mdec_main` | `[x]` |
+| **SYS-347** | `MDEC_Process` | `0x8008CCB4` | `mdec/MDEC_Process.c` | MDEC process wrapper: calls FUN_8008d110 | `system::hardware::mdec_process` | `[x]` |
+| **SYS-348** | `MDEC_ProcessData` | `0x800875DC` | `mdec/MDEC_ProcessData.c` | MDEC data processor: checks DAT_800abe84, reads data via callback entity[0x3C] | `system::hardware::mdec_processdata` | `[x]` |
+| **SYS-349** | `MDEC_ProcessFrame` | `0x80087530` | `mdec/MDEC_ProcessFrame.c` | MDEC frame processor: calls decode callbacks on entity[0xC] data | `system::hardware::mdec_processframe` | `[x]` |
+| **SYS-350** | `MDEC_QueueCmd` | `0x8008DA2C` | `mdec/MDEC_QueueCmd.c` | MDEC command queue: appends param_2 words to MDEC cmd buffer at param_1 | `system::hardware::mdec_queuecmd` | `[x]` |
+| **SYS-351** | `MDEC_SetFlag` | `0x80089788` | `mdec/MDEC_SetFlag.c` | MDEC flag setter: DAT_800abef0 = 1 if zero | `system::hardware::mdec_setflag` | `[x]` |
+| **SYS-352** | `MDEC_SetFrameBuffer` | `0x80087F00` | `mdec/MDEC_SetFrameBuffer.c` | Sets MDEC frame buffer pointer and status byte | `system::hardware::mdec_setframebuffer` | `[x]` |
+| **SYS-353** | `MDEC_SetParam` | `0x80089620` | `mdec/MDEC_SetParam.c` | MDEC param setter: stores param + scratchpad value at 0x801026E0/E4 | `system::hardware::mdec_setparam` | `[x]` |
+| **SYS-354** | `MDEC_SetParam2` | `0x80087D84` | `mdec/MDEC_SetParam2.c` | MDEC param setter 2: sets entity[0xEA] or entity[0xEB] based on param sign | `system::hardware::mdec_setparam2` | `[x]` |
+| **SYS-355** | `MDEC_SetupCallback` | `0x800887BC` | `mdec/MDEC_SetupCallback.c` | MDEC callback setup: checks ready, sets entity[0x46]=1, assigns 2 callbacks | `system::hardware::mdec_setupcallback` | `[x]` |
+| **SYS-356** | `MDEC_SetupCallback2` | `0x80088908` | `mdec/MDEC_SetupCallback2.c` | MDEC callback setup variant: sets callbacks + entity[0x51/0x52/0x53] params | `system::hardware::mdec_setupcallback2` | `[x]` |
+| **SYS-357** | `MDEC_SetupDecode` | `0x80087AEC` | `mdec/MDEC_SetupDecode.c` | MDEC decode setup: checks frame flags, sets up decode params | `system::hardware::mdec_setupdecode` | `[x]` |
+| **SYS-358** | `MDEC_SetupOut` | `0x8009CA60` | `mdec/MDEC_SetupOut.c` | MDEC output setup: syncs out, sets DMA regs at 0x800AD09C/078/070/074 | `system::hardware::mdec_setupout` | `[x]` |
+| **SYS-359** | `MDEC_SetupTransfer` | `0x8009C9D0` | `mdec/MDEC_SetupTransfer.c` | MDEC transfer setup: syncs in, sets DMA regs at 0x800AD09C-06C | `system::hardware::mdec_setuptransfer` | `[x]` |
+| **SYS-360** | `MDEC_Start` | `0x80087A80` | `mdec/MDEC_Start.c` | MDEC start: disables IRQ, BIOS stubs, enables IRQ | `system::hardware::mdec_start` | `[x]` |
+| **SYS-361** | `MDEC_StartDMA` | `0x80086A3C` | `mdec/MDEC_StartDMA.c` | MDEC DMA start: IRQ disable, BIOS call, IRQ enable | `system::hardware::mdec_startdma` | `[x]` |
+| **SYS-362** | `MDEC_StateMachine` | `0x80087F1C` | `mdec/MDEC_StateMachine.c` | MDEC decoder state machine: state 2=reset, 3=set IQ, 4=set size via entity[0x46] | `system::hardware::mdec_statemachine` | `[x]` |
+| **SYS-363** | `MDEC_StateMachine2` | `0x8008831C` | `mdec/MDEC_StateMachine2.c` | MDEC state machine variant 2: entity[0x46] state 3/4 calls MDEC funcs | `system::hardware::mdec_statemachine2` | `[x]` |
+| **SYS-364** | `MDEC_StateMachine3` | `0x80087FA0` | `mdec/MDEC_StateMachine3.c` | MDEC state machine variant 3: entity[0x46]=3/4 states | `system::hardware::mdec_statemachine3` | `[x]` |
+| **SYS-365** | `MDEC_SwapAllBuffers` | `0x80088CC8` | `mdec/MDEC_SwapAllBuffers.c` | MDEC buffer swap loop: iterates 0xF0-stride buffers, swaps cmds until all done | `system::hardware::mdec_swapallbuffers` | `[x]` |
+| **SYS-366** | `MDEC_SwapCommand` | `0x80088DBC` | `mdec/MDEC_SwapCommand.c` | Swaps MDEC command bytes: saves 0x37 to 0x38, clears 0x37 | `system::hardware::mdec_swapcommand` | `[x]` |
+| **SYS-367** | `MDEC_SyncDispatch` | `0x8009C820` | `mdec/MDEC_SyncDispatch.c` | MDEC sync dispatch: param=0 calls SyncOut, else calls SyncIn (swapped) | `system::hardware::mdec_syncdispatch` | `[x]` |
+| **SYS-368** | `MDEC_SyncIn` | `0x8009CAEC` | `mdec/MDEC_SyncIn.c` | MDEC input sync: polls bit 0x20000000 with timeout, calls timeout error on fail | `system::hardware::mdec_syncin` | `[x]` |
+| **SYS-369** | `MDEC_SyncOut` | `0x8009CB80` | `mdec/MDEC_SyncOut.c` | MDEC output sync: polls bit 0x1000000 with timeout, calls timeout error on fail | `system::hardware::mdec_syncout` | `[x]` |
+| **SYS-370** | `MDEC_WaitDMA` | `0x8008732C` | `mdec/MDEC_WaitDMA.c` | MDEC DMA wait: polls DAT_800abe9c word[4] bit until clear, checks timeout | `system::hardware::mdec_waitdma` | `[x]` |
+| **SYS-371** | `MDEC_WaitReady` | `0x800873BC` | `mdec/MDEC_WaitReady.c` | MDEC busy-wait: polls bit 1 at 0x800ABE9C+4 until set | `system::hardware::mdec_waitready` | `[x]` |
+| **SYS-372** | `MDEC_WaitVSync` | `0x80089640` | `mdec/MDEC_WaitVSync.c` | MDEC VSync wait: polls _DAT_1f801120 vs _DAT_801026e0, handles timeout | `system::hardware::mdec_waitvsync` | `[x]` |
+| **SYS-373** | `Mem_Compare` | `0x8009A340` | `memory/Mem_Compare.c` | Memory compare: returns 0 if first param_2 bytes match, else difference | `system::hardware::mem_compare` | `[x]` |
+| **SYS-374** | `Mem_Copy` | `0x8009A3E0` | `memory/Mem_Copy.c` | Memory copy: byte-by-byte memcpy, returns destination pointer | `system::hardware::mem_copy` | `[x]` |
+| **SYS-375** | `Mem_CopyN` | `0x8009AE10` | `memory/Mem_CopyN.c` | Memory copy N bytes: strncpy-like, copies up to param_3 bytes from param_2 to param_1 | `system::hardware::mem_copyn` | `[x]` |
+| **SYS-376** | `Mem_Move` | `0x8009B940` | `memory/Mem_Move.c` | Memory move: copies up to param_3 bytes from param_2 to param_1 (non-overlapping) | `system::hardware::mem_move` | `[x]` |
+| **SYS-377** | `Mem_Set_2` | `0x80083AF8` | `memory/Mem_Set_2.c` | Memory set: fills param_3 bytes with value param_2 starting at param_1 | `system::hardware::mem_set_2` | `[x]` |
+| **SYS-378** | `Mem_Zero` | `0x800861BC` | `memory/Mem_Zero.c` | Memory zero: memset param_2 bytes to 0 starting at param_1 | `system::hardware::mem_zero` | `[x]` |
+| **SYS-379** | `Mem_Zero2` | `0x80086320` | `memory/Mem_Zero2.c` | Memory zero variant 2: memset to 0 (duplicate) | `system::hardware::mem_zero2` | `[x]` |
+| **SYS-380** | `Mem_Zero3` | `0x800865C8` | `memory/Mem_Zero3.c` | Memory zero variant 3: memset to 0 (duplicate) | `system::hardware::mem_zero3` | `[x]` |
+| **SYS-381** | `Texture_Decompress` | `0x80044D8C` | `texture/Texture_Decompress.c` | Texture decompressor: LZ-like with 8-slot ring buffer. Byte format: 5-bit count + 3-bit mode | `system::hardware::texture_decompress` | `[x]` |
+| **SYS-382** | `Texture_LoadData` | `0x800450BC` | `texture/Texture_LoadData.c` | Texture data load: DMA transfer from 0x800A3ED8 table, switches on param_2 mode | `system::hardware::texture_loaddata` | `[x]` |
+| **SYS-383** | `Texture_LoadPack` | `0x80044E84` | `texture/Texture_LoadPack.c` | Loads a texture pack: iterates textures, decompresses, uploads to VRAM | `system::hardware::texture_loadpack` | `[x]` |
+| **SYS-384** | `Texture_LoadUI` | `0x80067DA8` | `texture/Texture_LoadUI.c` | Loads UI textures to VRAM pages based on game state (3 variants) | `system::hardware::texture_loadui` | `[x]` |
+| **SYS-385** | `Texture_Process` | `0x80044F58` | `texture/Texture_Process.c` | Texture processor: reads texture flags, dispatches upload/decode | `system::hardware::texture_process` | `[x]` |
+| **SYS-386** | `Texture_TransferToVRAM` | `0x80044CD4` | `texture/Texture_TransferToVRAM.c` | Sets up VRAM texture transfer: callback setup, address calc, event trigger | `system::hardware::texture_transfertovram` | `[x]` |
+| **SYS-387** | `Texture_Upload` | `0x800452C0` | `texture/Texture_Upload.c` | Texture uploader: sends texture data to VRAM via DMA | `system::hardware::texture_upload` | `[x]` |
+| **SYS-388** | `Texture_UploadVRAM` | `0x8004514C` | `texture/Texture_UploadVRAM.c` | Texture VRAM upload: DMA transfer from 0x80157000 to VRAM, calls FUN_80044f58 | `system::hardware::texture_uploadvram` | `[x]` |
+| **SYS-389** | `Input_InitSystem` | `0x80074BC4` | `input/Input_InitSystem.c` | Initializes input/pad system: resets flag, calls FUN_8001cf2c, FUN_80074b44, FUN_80074e48 | `system::hardware::input_initsystem` | `[x]` |
+| **SYS-390** | `Pad_InitConfig` | `0x8007B2C0` | `input/Pad_InitConfig.c` | Pad config init: sets scratchpad input flags 0x8000/4000/2000/1000 based on param | `system::hardware::pad_initconfig` | `[x]` |
+| **SYS-391** | `Pad_InitReset` | `0x8001CF2C` | `input/Pad_InitReset.c` | Controller init/reset: resets pad state, waits for acknowledge from hardware | `system::hardware::pad_initreset` | `[x]` |
+| **SYS-392** | `Pad_Init_2` | `0x8001CBA8` | `input/Pad_Init_2.c` | Pad/controller init: sets up input config, handles 0xFF default case | `system::hardware::pad_init_2` | `[x]` |
+| **SYS-393** | `Pad_Update` | `0x8001D7C4` | `input/Pad_Update.c` | Pad/input updater: checks pad type, applies rumble/button flags | `system::hardware::pad_update` | `[x]` |
+| **SYS-394** | `Math_ApproachAngle_2` | `0x800776F8` | `math/Math_ApproachAngle_2.c` | Angle approach: steps param_1 toward param_2 by ±param_3, handles wrap | `system::hardware::math_approachangle_2` | `[x]` |
+| **SYS-395** | `Math_Atan` | `0x80084A80` | `math/Math_Atan.c` | Math arctangent: uses lookup table, handles multiple quadrants | `system::hardware::math_atan` | `[x]` |
+| **SYS-396** | `Math_Atan2` | `0x80085690` | `math/Math_Atan2.c` | Arctangent using lookup table at 0x800AA490 | `system::hardware::math_atan2` | `[x]` |
+| **SYS-397** | `Math_Atan2_2` | `0x80084EB0` | `math/Math_Atan2_2.c` | Math atan2 variant 2: uses table at 0x800A6490 for negative inputs | `system::hardware::math_atan2_2` | `[x]` |
+| **SYS-398** | `Math_Atan2_3` | `0x80084D10` | `math/Math_Atan2_3.c` | Math atan2 variant 3: uses table at 0x800A6490, different quadrant handling | `system::hardware::math_atan2_3` | `[x]` |
+| **SYS-399** | `Math_CalcAngle2D` | `0x800782B0` | `math/Math_CalcAngle2D.c` | Calculates angle between two 2D points using Math_Atan2 | `system::hardware::math_calcangle2d` | `[x]` |
+| **SYS-400** | `Math_Clamp` | `0x8006CE74` | `math/Math_Clamp.c` | Math clamp: clamps value to range [-param2, +param2] | `system::hardware::math_clamp` | `[x]` |
+| **SYS-401** | `Math_CompareAngle` | `0x80077768` | `math/Math_CompareAngle.c` | Angle comparison: checks if (a-b-0x400)&0xFFF is in range, with direction flag | `system::hardware::math_compareangle` | `[x]` |
+| **SYS-402** | `Math_Cos` | `0x80083E80` | `math/Math_Cos.c` | Subrutina de Math_Cos (math/Math_Cos.c) | `system::hardware::math_cos` | `[x]` |
+| **SYS-403** | `Math_CosGTE` | `0x80083F50` | `math/Math_CosGTE.c` | Math cos via GTE: piecewise cosine from table 0x800A5AF0 using GTE coprocessor | `system::hardware::math_cosgte` | `[x]` |
+| **SYS-404** | `Math_Div8Round` | `0x8004D7EC` | `math/Math_Div8Round.c` | Divide by 8 with rounding: (param+7)>>3 + param | `system::hardware::math_div8round` | `[x]` |
+| **SYS-405** | `Math_InitVec3` | `0x8007B2AC` | `math/Math_InitVec3.c` | Initializes 3D vector: zeros XY, sets Z=0x1000 (default scale) | `system::hardware::math_initvec3` | `[x]` |
+| **SYS-406** | `Math_Lerp` | `0x80070F90` | `math/Math_Lerp.c` | Math linear interpolate: computes (a-b)*scale, returns interpolated value | `system::hardware::math_lerp` | `[x]` |
+| **SYS-407** | `Math_Random` | `0x8009A450` | `math/Math_Random.c` | LCG pseudo-random number generator: seed=seed*0x41c64e6d+0x3039, returns high 16 bits | `system::hardware::math_random` | `[x]` |
+| **SYS-408** | `Math_RandomChance` | `0x80032A88` | `math/Math_RandomChance.c` | Random probability check: returns random value shifted by N bits (1 in 2^N chance) | `system::hardware::math_randomchance` | `[x]` |
+| **SYS-409** | `Math_RandomCurved` | `0x80070698` | `math/Math_RandomCurved.c` | Curved random: r = (rand() & (n-1))^2 / n with random sign, for biased distribution | `system::hardware::math_randomcurved` | `[x]` |
+| **SYS-410** | `Math_RandomRange` | `0x80032A44` | `math/Math_RandomRange.c` | Random integer in range [min, max) using LCG generator | `system::hardware::math_randomrange` | `[x]` |
+| **SYS-411** | `Math_Sin` | `0x80083EBC` | `math/Math_Sin.c` | Math sin lookup: piecewise sin from table at 0x800A5AF0, handles quadrants | `system::hardware::math_sin` | `[x]` |
+| **SYS-412** | `Math_Sin2` | `0x800851F0` | `math/Math_Sin2.c` | Math sin variant 2: different table lookup path | `system::hardware::math_sin2` | `[x]` |
+| **SYS-413** | `Math_Sqrt` | `0x80077FB0` | `math/Math_Sqrt.c` | Integer square root via binary search algorithm | `system::hardware::math_sqrt` | `[x]` |
+| **SYS-414** | `Math_SqrtGTE` | `0x80084080` | `math/Math_SqrtGTE.c` | Math sqrt via GTE: sets GTE reg, reads result, handles special case 0x20 | `system::hardware::math_sqrtgte` | `[x]` |
+| **SYS-415** | `Engine_DispatchInit` | `0x8006C77C` | `engine/Engine_DispatchInit.c` | Level-specific init dispatch from function table at 0x800A4AF8 | `system::hardware::engine_dispatchinit` | `[x]` |
+| **SYS-416** | `Engine_DispatchInit2` | `0x8006C7C4` | `engine/Engine_DispatchInit2.c` | Second level init dispatch from function table at 0x800A4B50 | `system::hardware::engine_dispatchinit2` | `[x]` |
+| **SYS-417** | `Engine_DispatchLevel` | `0x80022A80` | `engine/Engine_DispatchLevel.c` | Dispatches level-specific update function from table at 0x8009D1D4 by game state | `system::hardware::engine_dispatchlevel` | `[x]` |
+| **SYS-418** | `Engine_DispatchLevelDraw` | `0x80024CF4` | `engine/Engine_DispatchLevelDraw.c` | Dispatches level-specific draw function from table at 0x8009D22C by game state | `system::hardware::engine_dispatchleveldraw` | `[x]` |
+| **SYS-419** | `Engine_DispatchOverlay` | `0x80074F24` | `engine/Engine_DispatchOverlay.c` | Overlay dispatcher: uses game state, looks up overlay ID from tables at 0x800A4F50/68 | `system::hardware::engine_dispatchoverlay` | `[x]` |
+| **SYS-420** | `Engine_DispatchStateUpdate` | `0x8003D0BC` | `engine/Engine_DispatchStateUpdate.c` | Subrutina de Engine_DispatchStateUpdate (engine/Engine_DispatchStateUpdate.c) | `system::hardware::engine_dispatchstateupdate` | `[x]` |
+| **SYS-421** | `Engine_DrawPool4_Type1` | `0x80025744` | `engine/Engine_DrawPool4_Type1.c` | Draws Pool 4 entity using FUN_8007e1b8 | `system::hardware::engine_drawpool4_type1` | `[x]` |
+| **SYS-422** | `Engine_DrawPool4_Type2` | `0x80025934` | `engine/Engine_DrawPool4_Type2.c` | Draws Pool 4 entity using FUN_8007e6dc | `system::hardware::engine_drawpool4_type2` | `[x]` |
+| **SYS-423** | `Engine_DrawPool4_Type3` | `0x80025B78` | `engine/Engine_DrawPool4_Type3.c` | Draws Pool 4 entity using FUN_8007e938 (special primitive) | `system::hardware::engine_drawpool4_type3` | `[x]` |
+| **SYS-424** | `Engine_ExecuteGameLoop` | `0x8003F9A8` | `engine/Engine_ExecuteGameLoop.c` | Subrutina de Engine_ExecuteGameLoop (engine/Engine_ExecuteGameLoop.c) | `system::hardware::engine_executegameloop` | `[x]` |
+| **SYS-425** | `Engine_HandleState` | `0x8003DF04` | `engine/Engine_HandleState.c` | Subrutina de Engine_HandleState (engine/Engine_HandleState.c) | `system::hardware::engine_handlestate` | `[x]` |
+| **SYS-426** | `Engine_InitEntity` | `0x800798F8` | `engine/Engine_InitEntity.c` | Engine entity initializer: inits pools, clears lists | `system::hardware::engine_initentity` | `[x]` |
+| **SYS-427** | `Engine_InitPool` | `0x8007B18C` | `engine/Engine_InitPool.c` | Engine pool initializer: calls init funcs, clears entity pools | `system::hardware::engine_initpool` | `[x]` |
+| **SYS-428** | `Engine_InitState` | `0x80079464` | `engine/Engine_InitState.c` | Engine state init: resets frame counter, sets globals, zeros sprite flags | `system::hardware::engine_initstate` | `[x]` |
+| **SYS-429** | `Engine_LoadOverlay` | `0x80075024` | `engine/Engine_LoadOverlay.c` | Simple overlay loader: param=5 -> 0x13, else 0x14, calls Sys_OverlayDispatch | `system::hardware::engine_loadoverlay` | `[x]` |
+| **SYS-430** | `Engine_LoadOverlayEntry` | `0x8001D71C` | `engine/Engine_LoadOverlayEntry.c` | Loads overlay by index: indexes tables at 0x8009D110, checks pad flag, calls load | `system::hardware::engine_loadoverlayentry` | `[x]` |
+| **SYS-431** | `Engine_Loop` | `0x8003F898` | `engine/Engine_Loop.c` | Engine main loop: processes events, updates state, calls subsystems | `system::hardware::engine_loop` | `[x]` |
+| **SYS-432** | `Engine_Main` | `0x8003EBE0` | `engine/Engine_Main.c` | Engine main loop: processes frame, updates subsystems, draws | `system::hardware::engine_main` | `[x]` |
+| **SYS-433** | `Engine_OverlayCall` | `0x8007BE18` | `engine/Engine_OverlayCall.c` | Engine overlay call: switch on _DAT_1f800138[0x50], calls overlay funcs | `system::hardware::engine_overlaycall` | `[x]` |
+| **SYS-434** | `Engine_OverlayLoad` | `0x8001D41C` | `engine/Engine_OverlayLoad.c` | Engine overlay loader: switch on param, loads overlays | `system::hardware::engine_overlayload` | `[x]` |
+| **SYS-435** | `Engine_PoolUpdate` | `0x80025588` | `engine/Engine_PoolUpdate.c` | Engine pool updater: checks DAT_800ed05a, updates pools | `system::hardware::engine_poolupdate` | `[x]` |
+| **SYS-436** | `Engine_Render3DSprites` | `0x8003F024` | `engine/Engine_Render3DSprites.c` | Iterates array at 0x800ec188 and renders 3D sprites via GPU_Render3DSprite | `system::hardware::engine_render3dsprites` | `[x]` |
+| **SYS-437** | `Engine_RenderCheck` | `0x8005229C` | `engine/Engine_RenderCheck.c` | Engine render check: validates sprite buffer, inits MDEC | `system::hardware::engine_rendercheck` | `[x]` |
+| **SYS-438** | `Engine_ResetState` | `0x80050A0C` | `engine/Engine_ResetState.c` | Engine state reset: zeros 5 globals, sets DAT_1f800235=2 | `system::hardware::engine_resetstate` | `[x]` |
+| **SYS-439** | `Engine_ResetStateBuffer` | `0x8007982C` | `engine/Engine_ResetStateBuffer.c` | Subrutina de Engine_ResetStateBuffer (engine/Engine_ResetStateBuffer.c) | `system::hardware::engine_resetstatebuffer` | `[x]` |
+| **SYS-440** | `Engine_Update2` | `0x8003E030` | `engine/Engine_Update2.c` | Engine update variant 2: checks DAT_800a3b0c, updates subsystems | `system::hardware::engine_update2` | `[x]` |
+| **SYS-441** | `Engine_UpdateAll` | `0x8003FA44` | `engine/Engine_UpdateAll.c` | Main update: runs all entity loops (active, bg, player, obj, npc) + FX update | `system::hardware::engine_updateall` | `[x]` |
+| **SYS-442** | `Engine_UpdateEntities` | `0x8003FA1C` | `engine/Engine_UpdateEntities.c` | Calls EntityLoop_Player then EntityLoop_Active for entity updates | `system::hardware::engine_updateentities` | `[x]` |
+| **SYS-443** | `Engine_UpdateInputState` | `0x80016598` | `engine/Engine_UpdateInputState.c` | Subrutina de Engine_UpdateInputState (engine/Engine_UpdateInputState.c) | `system::hardware::engine_updateinputstate` | `[x]` |
+| **SYS-444** | `Engine_UpdateMain` | `0x80038A00` | `engine/Engine_UpdateMain.c` | Engine update main: full frame update pipeline | `system::hardware::engine_updatemain` | `[x]` |
+| **SYS-445** | `Engine_UpdatePool4` | `0x80025D98` | `engine/Engine_UpdatePool4.c` | Updates and draws entities in Pool 4 (camera/HUD), calls draw variants | `system::hardware::engine_updatepool4` | `[x]` |
+| **SYS-446** | `Engine_UpdateSprites` | `0x800788AC` | `engine/Engine_UpdateSprites.c` | Engine sprite update: checks DAT_1f80019a flag, decrements counter, updates globals | `system::hardware::engine_updatesprites` | `[x]` |
+| **SYS-447** | `BIOS_CRC` | `0x8009C3F4` | `system/BIOS_CRC.c` | BIOS CRC/checksum: computes 0x20-byte blocks, compares | `system::hardware::bios_crc` | `[x]` |
+| **SYS-448** | `BIOS_CallA0` | `0x800861E8` | `system/BIOS_CallA0.c` | BIOS call stub: jumps to 0xA0 | `system::hardware::bios_calla0` | `[x]` |
+| **SYS-449** | `BIOS_CallA0_2` | `0x800858F0` | `system/BIOS_CallA0_2.c` | BIOS call stub: jumps to 0xA0 | `system::hardware::bios_calla0_2` | `[x]` |
+| **SYS-450** | `BIOS_CallC0` | `0x80085B10` | `system/BIOS_CallC0.c` | BIOS call stub: jumps to 0xC0 | `system::hardware::bios_callc0` | `[x]` |
+| **SYS-451** | `BIOS_CallIndirect` | `0x8009BF20` | `system/BIOS_CallIndirect.c` | BIOS indirect call: calls function ptr at DAT_80105f30 | `system::hardware::bios_callindirect` | `[x]` |
+| **SYS-452** | `BIOS_CallIndirect2` | `0x8009BF34` | `system/BIOS_CallIndirect2.c` | BIOS indirect call 2: calls function ptr at DAT_80105f34 | `system::hardware::bios_callindirect2` | `[x]` |
+| **SYS-453** | `BIOS_CopyData` | `0x8009C18C` | `system/BIOS_CopyData.c` | BIOS data copy: copies data from DAT_8009c0e4 to BIOS struct+0x9C8 | `system::hardware::bios_copydata` | `[x]` |
+| **SYS-454** | `BIOS_CopyData2` | `0x8009C1FC` | `system/BIOS_CopyData2.c` | BIOS data copy 2: copies words from DAT_8009c060 to DAT_0000df80 | `system::hardware::bios_copydata2` | `[x]` |
+| **SYS-455** | `BIOS_CopyToEvent` | `0x8009C230` | `system/BIOS_CopyToEvent.c` | BIOS copy: copies data from DAT_8009c2a0 to BIOS struct+0x70, calls finish functions | `system::hardware::bios_copytoevent` | `[x]` |
+| **SYS-456** | `BIOS_Delay` | `0x8009BE34` | `system/BIOS_Delay.c` | BIOS delay: spins 9 iterations, zeros MDEC word, returns 0 | `system::hardware::bios_delay` | `[x]` |
+| **SYS-457** | `BIOS_EnterCritical` | `0x80080820` | `system/BIOS_EnterCritical.c` | BIOS call stub: jumps to 0xA0 (EnterCriticalSection) | `system::hardware::bios_entercritical` | `[x]` |
+| **SYS-458** | `BIOS_Handler` | `0x8009BA10` | `system/BIOS_Handler.c` | BIOS exception handler: saves all registers to stack, dispatches | `system::hardware::bios_handler` | `[x]` |
+| **SYS-459** | `BIOS_InitIRQ` | `0x8009BB10` | `system/BIOS_InitIRQ.c` | BIOS IRQ init: calls BIOS_B0, IRQ off, checks CD status, enables | `system::hardware::bios_initirq` | `[x]` |
+| **SYS-460** | `BIOS_InitSeq` | `0x8009BD1C` | `system/BIOS_InitSeq.c` | BIOS init sequence: calls BIOS_B0, BIOS_B0(0), getter, returns 1 | `system::hardware::bios_initseq` | `[x]` |
+| **SYS-461** | `BIOS_InitSequence2` | `0x8009BD4C` | `system/BIOS_InitSequence2.c` | BIOS init sequence 2: calls indirect + BIOS_B0 + init + clears global | `system::hardware::bios_initsequence2` | `[x]` |
+| **SYS-462** | `BIOS_MDECInit` | `0x8009BDFC` | `system/BIOS_MDECInit.c` | BIOS MDEC init: disables IRQ, calls BIOS stub, enables IRQ | `system::hardware::bios_mdecinit` | `[x]` |
+| **SYS-463** | `BIOS_MDECSetup` | `0x8009BD84` | `system/BIOS_MDECSetup.c` | BIOS MDEC setup: IRQ off, sets MDEC callbacks at 0x80105F1C/20, IRQ on | `system::hardware::bios_mdecsetup` | `[x]` |
+| **SYS-464** | `BIOS_MemTest` | `0x8009C2B0` | `system/BIOS_MemTest.c` | BIOS memory test: fills 128-byte buffer, validates pattern | `system::hardware::bios_memtest` | `[x]` |
+| **SYS-465** | `BIOS_ResetRegion` | `0x8009BF48` | `system/BIOS_ResetRegion.c` | BIOS reset: zeros 0xB words at BIOS struct+0x594, calls FUN_800858f0 | `system::hardware::bios_resetregion` | `[x]` |
+| **SYS-466** | `BIOS_Seq2` | `0x8009BBB4` | `system/BIOS_Seq2.c` | BIOS sequence: calls BIOS_B0 stub then FUN_8009c230 | `system::hardware::bios_seq2` | `[x]` |
+| **SYS-467** | `BIOS_Seq3` | `0x8009BB7C` | `system/BIOS_Seq3.c` | BIOS sequence 3: disable IRQ, BIOS_B0, BIOS_B0(0), enable IRQ | `system::hardware::bios_seq3` | `[x]` |
+| **SYS-468** | `BIOS_Seq4` | `0x8009BBFC` | `system/BIOS_Seq4.c` | BIOS sequence 4: BIOS_ZeroRegion + IRQ off + BIOS_ResetRegion + IRQ on + B0 + MDEC init | `system::hardware::bios_seq4` | `[x]` |
+| **SYS-469** | `BIOS_Seq5` | `0x8009BC8C` | `system/BIOS_Seq5.c` | BIOS sequence 5: same as Seq4 pattern with different MDEC setup call | `system::hardware::bios_seq5` | `[x]` |
+| **SYS-470** | `BIOS_SetupEvent` | `0x8009C0F8` | `system/BIOS_SetupEvent.c` | BIOS event setup: copies 5 words from DAT_8009c0d0 to computed BIOS address | `system::hardware::bios_setupevent` | `[x]` |
+| **SYS-471** | `BIOS_Syscall0` | `0x80080890` | `system/BIOS_Syscall0.c` | BIOS syscall wrapper: syscall(0) | `system::hardware::bios_syscall0` | `[x]` |
+| **SYS-472** | `BIOS_Syscall0_2` | `0x800808A0` | `system/BIOS_Syscall0_2.c` | BIOS syscall wrapper: syscall(0) | `system::hardware::bios_syscall0_2` | `[x]` |
+| **SYS-473** | `BIOS_Syscall_A0_80083B20` | `0x80083B20` | `system/BIOS_Syscall_A0_80083B20.c` | BIOS syscall 0xA0 (SetRCnt) stub | `system::hardware::bios_syscall_a0_80083b20` | `[x]` |
+| **SYS-474** | `BIOS_Syscall_B0_80080830` | `0x80080830` | `system/BIOS_Syscall_B0_80080830.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080830` | `[x]` |
+| **SYS-475** | `BIOS_Syscall_B0_80080840` | `0x80080840` | `system/BIOS_Syscall_B0_80080840.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080840` | `[x]` |
+| **SYS-476** | `BIOS_Syscall_B0_80080850` | `0x80080850` | `system/BIOS_Syscall_B0_80080850.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080850` | `[x]` |
+| **SYS-477** | `BIOS_Syscall_B0_80080860` | `0x80080860` | `system/BIOS_Syscall_B0_80080860.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080860` | `[x]` |
+| **SYS-478** | `BIOS_Syscall_B0_80080870` | `0x80080870` | `system/BIOS_Syscall_B0_80080870.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080870` | `[x]` |
+| **SYS-479** | `BIOS_Syscall_B0_80080880` | `0x80080880` | `system/BIOS_Syscall_B0_80080880.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080880` | `[x]` |
+| **SYS-480** | `BIOS_Syscall_B0_800808E0` | `0x800808E0` | `system/BIOS_Syscall_B0_800808E0.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_800808e0` | `[x]` |
+| **SYS-481** | `BIOS_Syscall_B0_80080920` | `0x80080920` | `system/BIOS_Syscall_B0_80080920.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080920` | `[x]` |
+| **SYS-482** | `BIOS_Syscall_B0_80080BE0` | `0x80080BE0` | `system/BIOS_Syscall_B0_80080BE0.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80080be0` | `[x]` |
+| **SYS-483** | `BIOS_Syscall_B0_80086200` | `0x80086200` | `system/BIOS_Syscall_B0_80086200.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80086200` | `[x]` |
+| **SYS-484** | `BIOS_Syscall_B0_80086210` | `0x80086210` | `system/BIOS_Syscall_B0_80086210.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80086210` | `[x]` |
+| **SYS-485** | `BIOS_Syscall_B0_80086220` | `0x80086220` | `system/BIOS_Syscall_B0_80086220.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80086220` | `[x]` |
+| **SYS-486** | `BIOS_Syscall_B0_800899F0` | `0x800899F0` | `system/BIOS_Syscall_B0_800899F0.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_800899f0` | `[x]` |
+| **SYS-487** | `BIOS_Syscall_B0_80098F80` | `0x80098F80` | `system/BIOS_Syscall_B0_80098F80.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_80098f80` | `[x]` |
+| **SYS-488** | `BIOS_Syscall_B0_8009BAF0` | `0x8009BAF0` | `system/BIOS_Syscall_B0_8009BAF0.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009baf0` | `[x]` |
+| **SYS-489** | `BIOS_Syscall_B0_8009BB00` | `0x8009BB00` | `system/BIOS_Syscall_B0_8009BB00.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009bb00` | `[x]` |
+| **SYS-490** | `BIOS_Syscall_B0_8009BEE0` | `0x8009BEE0` | `system/BIOS_Syscall_B0_8009BEE0.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009bee0` | `[x]` |
+| **SYS-491** | `BIOS_Syscall_B0_8009BEF0` | `0x8009BEF0` | `system/BIOS_Syscall_B0_8009BEF0.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009bef0` | `[x]` |
+| **SYS-492** | `BIOS_Syscall_B0_8009BF00` | `0x8009BF00` | `system/BIOS_Syscall_B0_8009BF00.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009bf00` | `[x]` |
+| **SYS-493** | `BIOS_Syscall_B0_8009BF10` | `0x8009BF10` | `system/BIOS_Syscall_B0_8009BF10.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009bf10` | `[x]` |
+| **SYS-494** | `BIOS_Syscall_B0_8009C030` | `0x8009C030` | `system/BIOS_Syscall_B0_8009C030.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009c030` | `[x]` |
+| **SYS-495** | `BIOS_Syscall_B0_8009C040` | `0x8009C040` | `system/BIOS_Syscall_B0_8009C040.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009c040` | `[x]` |
+| **SYS-496** | `BIOS_Syscall_B0_8009C050` | `0x8009C050` | `system/BIOS_Syscall_B0_8009C050.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009c050` | `[x]` |
+| **SYS-497** | `BIOS_Syscall_B0_8009C600` | `0x8009C600` | `system/BIOS_Syscall_B0_8009C600.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009c600` | `[x]` |
+| **SYS-498** | `BIOS_Syscall_B0_8009C610` | `0x8009C610` | `system/BIOS_Syscall_B0_8009C610.c` | BIOS syscall 0xB0 (_96_remove) stub | `system::hardware::bios_syscall_b0_8009c610` | `[x]` |
+| **SYS-499** | `BIOS_Syscall_C0_800873F0` | `0x800873F0` | `system/BIOS_Syscall_C0_800873F0.c` | BIOS syscall 0xC0 stub | `system::hardware::bios_syscall_c0_800873f0` | `[x]` |
+| **SYS-500** | `BIOS_Syscall_C0_80087400` | `0x80087400` | `system/BIOS_Syscall_C0_80087400.c` | BIOS syscall 0xC0 stub | `system::hardware::bios_syscall_c0_80087400` | `[x]` |
+| **SYS-501** | `BIOS_ZeroRegion` | `0x8009BFC0` | `system/BIOS_ZeroRegion.c` | BIOS zero region: zeros 9 words at BIOS struct+0x62C, calls FUN_800858f0 + FUN_800808a0 | `system::hardware::bios_zeroregion` | `[x]` |
+| **SYS-502** | `IRQ_Disable` | `0x80085810` | `system/IRQ_Disable.c` | IRQ disable: saves return addr, calls BIOS to disable interrupts | `system::hardware::irq_disable` | `[x]` |
+| **SYS-503** | `IRQ_Dispatch` | `0x80086288` | `system/IRQ_Dispatch.c` | IRQ handler dispatch: iterates callback table at 0x800ABDC0, calls active handlers | `system::hardware::irq_dispatch` | `[x]` |
+| **SYS-504** | `Sys_Call` | `0x8001CF00` | `system/Sys_Call.c` | Generic system call wrapper: passes command packet to kernel at 0x80099490 | `system::hardware::sys_call` | `[x]` |
+| **SYS-505** | `Sys_CallWithParams` | `0x800521F4` | `system/Sys_CallWithParams.c` | Calls system function at 0x800521F4 with 4 byte parameters | `system::hardware::sys_callwithparams` | `[x]` |
+| **SYS-506** | `Sys_CheckVSync` | `0x8001CF94` | `system/Sys_CheckVSync.c` | Checks GPU VSync/interrupt state and triggers frame sync if needed | `system::hardware::sys_checkvsync` | `[x]` |
+| **SYS-507** | `Sys_ClearEvent` | `0x80052078` | `system/Sys_ClearEvent.c` | Clears system event: resets event handler state | `system::hardware::sys_clearevent` | `[x]` |
+| **SYS-508** | `Sys_GPUSync` | `0x8001DB38` | `system/Sys_GPUSync.c` | GPU sync wrapper: calls GPU sync and returns status | `system::hardware::sys_gpusync` | `[x]` |
+| **SYS-509** | `Sys_IncCounter` | `0x80026100` | `system/Sys_IncCounter.c` | Increments global counter at 0x800BF87E with upper limit cap | `system::hardware::sys_inccounter` | `[x]` |
+| **SYS-510** | `Sys_InitOverlay` | `0x8001CB00` | `system/Sys_InitOverlay.c` | Calls overlay init function at 0x8011534C then internal callback | `system::hardware::sys_initoverlay` | `[x]` |
+| **SYS-511** | `Sys_LoadBinary` | `0x8001D364` | `system/Sys_LoadBinary.c` | Binary segment loader: uses pointer tables at 0x8001005C, computes load address from DAT_1f800224 | `system::hardware::sys_loadbinary` | `[x]` |
+| **SYS-512** | `Sys_LoadOverlay` | `0x8001D2A8` | `system/Sys_LoadOverlay.c` | Loads overlay binary from CD: sets up params, calls CD read + overlay init | `system::hardware::sys_loadoverlay` | `[x]` |
+| **SYS-513** | `Sys_NoOp` | `0x8001CB98` | `system/Sys_NoOp.c` | Empty stub function - likely placeholder or unused vtable slot | `system::hardware::sys_noop` | `[x]` |
+| **SYS-514** | `Sys_NoOp2` | `0x80080930` | `system/Sys_NoOp2.c` | Empty stub function - likely unused vtable or placeholder slot | `system::hardware::sys_noop2` | `[x]` |
+| **SYS-515** | `Sys_OverlayDispatch` | `0x800750D8` | `system/Sys_OverlayDispatch.c` | Overlay dispatcher: 0xFF=pad test, 0xFE=init, else loads overlay via FUN_8001d364 | `system::hardware::sys_overlaydispatch` | `[x]` |
+| **SYS-516** | `Sys_PadRead` | `0x8001CE90` | `system/Sys_PadRead.c` | Controller pad read wrapper: calls low-level pad polling function | `system::hardware::sys_padread` | `[x]` |
+| **SYS-517** | `Sys_PlaySFX` | `0x8002369C` | `system/Sys_PlaySFX.c` | Sound effect trigger wrapper: calls Audio_PlaySoundEffect with preset params | `system::hardware::sys_playsfx` | `[x]` |
+| **SYS-518** | `Sys_RegisterEvent0` | `0x8009C898` | `system/Sys_RegisterEvent0.c` | Event register with code 0: calls FUN_80085b80(0, callback) | `system::hardware::sys_registerevent0` | `[x]` |
+| **SYS-519** | `Sys_RegisterEvent1` | `0x8009C8BC` | `system/Sys_RegisterEvent1.c` | Event register with code 1: calls FUN_80085b80(1, callback) | `system::hardware::sys_registerevent1` | `[x]` |
+| **SYS-520** | `Sys_RegisterEvent3` | `0x8009D06C` | `system/Sys_RegisterEvent3.c` | Event register with code 3: calls FUN_80085b80(3, callback) | `system::hardware::sys_registerevent3` | `[x]` |
+| **SYS-521** | `Sys_SetCallback` | `0x80051F14` | `system/Sys_SetCallback.c` | Sets system callback function and event mask from parameters | `system::hardware::sys_setcallback` | `[x]` |
+| **SYS-522** | `Sys_SetEvent` | `0x80052010` | `system/Sys_SetEvent.c` | Sets system event: writes event code to hardware register | `system::hardware::sys_setevent` | `[x]` |
+| **SYS-523** | `Sys_SetFlag10` | `0x8001CF78` | `system/Sys_SetFlag10.c` | Sets bit 4 (0x10) on global system flag at 0x800BE0E4 | `system::hardware::sys_setflag10` | `[x]` |
+| **SYS-524** | `Sys_TimeoutError` | `0x8009CC2C` | `system/Sys_TimeoutError.c` | Timeout error handler: prints '%s timeout', resets CD state regs at 0x800AD098 | `system::hardware::sys_timeouterror` | `[x]` |
+| **SYS-525** | `Sys_TriggerIRQ` | `0x80051F80` | `system/Sys_TriggerIRQ.c` | Triggers interrupt request: writes code to 0x1F800138, calls 0x80080880 | `system::hardware::sys_triggerirq` | `[x]` |
+| **SYS-526** | `Sys_VSyncWait` | `0x80085A78` | `system/Sys_VSyncWait.c` | VSync wait with timeout: polls DAT_800abde0, prints 'VSync timeout' and calls BIOS on fail | `system::hardware::sys_vsyncwait` | `[x]` |
+| **SYS-527** | `System_Init` | `0x8001CC00` | `system/System_Init.c` | System init: calls BIOS init seq, clears 0x5C at 0x800BF498 | `system::hardware::system_init` | `[x]` |
+| **SYS-528** | `System_Init2` | `0x80050B08` | `system/System_Init2.c` | System init variant 2: calls MDEC+GPU+CD init sequence | `system::hardware::system_init2` | `[x]` |
+| **SYS-529** | `System_InitMain` | `0x8001CFC8` | `system/System_InitMain.c` | System main init: sets up memory, calls subsystem inits | `system::hardware::system_initmain` | `[x]` |
+| **SYS-530** | `System_Main` | `0x8001DC9C` | `system/System_Main.c` | System main: root initialization + main loop (464L) | `system::hardware::system_main` | `[x]` |
+| **SYS-531** | `System_Reset` | `0x8001D940` | `system/System_Reset.c` | System reset: clears pad state, calls init funcs, resets callbacks | `system::hardware::system_reset` | `[x]` |
+| **SYS-532** | `Timer_GetCounter` | `0x80085900` | `system/Timer_GetCounter.c` | Timer counter reader: polls root counter at 0x800AACAC, returns ticks | `system::hardware::timer_getcounter` | `[x]` |
+| **SYS-533** | `Render_ClearQueue` | `0x8004FB20` | `screen/Render_ClearQueue.c` | Clears render queue buffer at 0x800BF548 (700 bytes) with memset | `system::hardware::render_clearqueue` | `[x]` |
+| **SYS-534** | `Render_ProcessQueueItem` | `0x8004FB4C` | `screen/Render_ProcessQueueItem.c` | Subrutina de Render_ProcessQueueItem (screen/Render_ProcessQueueItem.c) | `system::hardware::render_processqueueitem` | `[x]` |
+| **SYS-535** | `Screen_Clear` | `0x800506D0` | `screen/Screen_Clear.c` | Screen clear/fill: writes zeros to 0x801FE000-0x801FFFFE (framebuffer region) | `system::hardware::screen_clear` | `[x]` |
+| **SYS-536** | `Screen_FadeTransition` | `0x8002655C` | `screen/Screen_FadeTransition.c` | Screen fade in/out transition: 4-phase fade with color ramp | `system::hardware::screen_fadetransition` | `[x]` |
+| **SYS-537** | `Screen_InitDisplay` | `0x80050738` | `screen/Screen_InitDisplay.c` | Screen display init: sets up 2 framebuffers at 0x800EA0BC/EC12C with 320x240 | `system::hardware::screen_initdisplay` | `[x]` |
+| **SYS-538** | `Screen_InitOverlay` | `0x800509B4` | `screen/Screen_InitOverlay.c` | Initializes screen overlay: sets GTE offset, calls render setup functions | `system::hardware::screen_initoverlay` | `[x]` |
+| **SYS-539** | `Screen_SetMode` | `0x800508A8` | `screen/Screen_SetMode.c` | Screen mode setup: configures display from DAT_800bfe56 + DAT_800bf870 state | `system::hardware::screen_setmode` | `[x]` |
+| **SYS-540** | `DMA_TransferAndWait` | `0x8001DB8C` | `misc/DMA_TransferAndWait.c` | DMA transfer with wait: sets up DMA callback FUN_8001db38, polls until complete | `system::hardware::dma_transferandwait` | `[x]` |
+| **SYS-541** | `Font_BuildChar` | `0x80039E80` | `misc/Font_BuildChar.c` | Builds a font character tile: converts char code to 8x16 pixel UV coordinates | `system::hardware::font_buildchar` | `[x]` |
+| **SYS-542** | `Func_Nop` | `0x800897F8` | `misc/Func_Nop.c` | Empty stub function - no operation, immediate return | `system::hardware::func_nop` | `[x]` |
+| **SYS-543** | `MC_Close` | `0x80096A70` | `misc/MC_Close.c` | Closes memory card file handle | `system::hardware::mc_close` | `[x]` |
+| **SYS-544** | `MC_Flush` | `0x80097730` | `misc/MC_Flush.c` | Flushes memory card write buffer | `system::hardware::mc_flush` | `[x]` |
+| **SYS-545** | `MC_GetFileSize` | `0x80096A40` | `misc/MC_GetFileSize.c` | Returns file size for memory card file handle | `system::hardware::mc_getfilesize` | `[x]` |
+| **SYS-546** | `MC_Init` | `0x80097678` | `misc/MC_Init.c` | Initializes memory card subsystem | `system::hardware::mc_init` | `[x]` |
+| **SYS-547** | `MC_Open` | `0x80097498` | `misc/MC_Open.c` | Opens memory card file by name | `system::hardware::mc_open` | `[x]` |
+| **SYS-548** | `MC_Read` | `0x800974FC` | `misc/MC_Read.c` | Reads data from memory card file | `system::hardware::mc_read` | `[x]` |
+| **SYS-549** | `MC_Seek` | `0x80097E10` | `misc/MC_Seek.c` | Seeks to position in memory card file | `system::hardware::mc_seek` | `[x]` |
+| **SYS-550** | `MC_Start` | `0x800976A0` | `misc/MC_Start.c` | Starts memory card access | `system::hardware::mc_start` | `[x]` |
+| **SYS-551** | `MC_Stop` | `0x800976C8` | `misc/MC_Stop.c` | Stops memory card access | `system::hardware::mc_stop` | `[x]` |
+| **SYS-552** | `MC_Write` | `0x800970EC` | `misc/MC_Write.c` | Writes data to memory card file | `system::hardware::mc_write` | `[x]` |
+| **SYS-553** | `Player_Update` | `0x800597AC` | `misc/Player_Update.c` | Subrutina de Player_Update (misc/Player_Update.c) | `system::hardware::player_update` | `[x]` |
+| **SYS-554** | `Sprite_Alloc1` | `0x80077EBC` | `misc/Sprite_Alloc1.c` | Sprite allocator: increments counter, allocs struct, increments again | `system::hardware::sprite_alloc1` | `[x]` |
+| **SYS-555** | `Sprite_Alloc2` | `0x80077E7C` | `misc/Sprite_Alloc2.c` | Sprite allocator variant 2: different counter at _DAT_1f800144 | `system::hardware::sprite_alloc2` | `[x]` |
+| **SYS-556** | `Sprite_Alloc3` | `0x80077EFC` | `misc/Sprite_Alloc3.c` | Sprite allocator variant 3: different counter at _DAT_1f80015c | `system::hardware::sprite_alloc3` | `[x]` |
+| **SYS-557** | `Video_InitDecoder` | `0x80075D58` | `misc/Video_InitDecoder.c` | Initializes MDEC video decoder: sets size params at 0x800BED7C from game config, calls init | `system::hardware::video_initdecoder` | `[x]` |
+| **SYS-558** | `Debug_PrintString` | `0x8009B9B0` | `debug/Debug_PrintString.c` | Debug string output: sends chars to CD queue via FUN_8009ae60, flushes at end | `system::hardware::debug_printstring` | `[x]` |
+| **SYS-559** | `Debug_Printf` | `0x8009A730` | `debug/Debug_Printf.c` | Debug printf: calls FUN_8009a770(1, fmt, args) for formatted output | `system::hardware::debug_printf` | `[x]` |
+| **SYS-560** | `Debug_PrintfMain` | `0x8009A770` | `debug/Debug_PrintfMain.c` | Debug printf main: formatted output engine (340L) | `system::hardware::debug_printfmain` | `[x]` |
 
 ---
 

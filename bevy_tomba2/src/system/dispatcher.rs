@@ -48,6 +48,15 @@ pub fn sys_noop2(system_state: &mut TombaSystemState) {
     system_state.noop2_called = true;
 }
 
+/// SYS-518: `Sys_TimeoutError` (`0x8009CC2C`)
+/// Handles subsystem/CD timeout error: resets CD controller status registers and returns 0.
+///
+/// Ground truth: src/main/system/Sys_TimeoutError.c (func_8009CC2C)
+pub fn sys_timeouterror(_tag: u32, system_state: &mut TombaSystemState) -> i32 {
+    system_state.cd_status_read = false;
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -70,5 +79,11 @@ mod tests {
 
         sys_noop2(&mut state);
         assert!(state.noop2_called);
+
+        // 4. Sys_TimeoutError
+        state.cd_status_read = true;
+        let res = sys_timeouterror(0x8001caac, &mut state);
+        assert_eq!(res, 0);
+        assert!(!state.cd_status_read);
     }
 }

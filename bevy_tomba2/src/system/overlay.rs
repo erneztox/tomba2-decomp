@@ -128,6 +128,17 @@ pub fn sys_overlaydispatch(
     }
 }
 
+/// Flag bit 4 (0x10): Overlay load completion / abort signal in DAT_800be0e4
+pub const OVERLAY_SIGNAL_COMPLETE: u8 = 0x10;
+
+/// SYS-508b: `Sys_SetFlag10` (`0x8001CF78`)
+/// Sets bit 4 (0x10) on system callback flag at DAT_800be0e4 to signal completion.
+///
+/// Ground truth: src/main/system/Sys_SetFlag10.c (func_8001CF78)
+pub fn sys_setflag10(system_state: &mut TombaSystemState) {
+    system_state.callback_index |= OVERLAY_SIGNAL_COMPLETE;
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -192,5 +203,13 @@ mod tests {
         assert_eq!(state.mode_bit, 1);
         assert_eq!(state.callback_index, 1);
         assert_eq!(state.last_loaded_binary_id, Some(0x18));
+    }
+
+    #[test]
+    fn test_sys_setflag10() {
+        let mut state = TombaSystemState::default();
+        state.callback_index = 0x01;
+        sys_setflag10(&mut state);
+        assert_eq!(state.callback_index, 0x11);
     }
 }

@@ -165,4 +165,11 @@ pub struct TombaSystemState {
     pub fade_timer: i16,                 // Screen fade step countdown timer
     pub fade_step: i16,                  // Screen fade step delta
     pub render_queue_items_processed: u32,// SYS-534: Render_ProcessQueueItem count
+    pub mc_initialized: bool,            // SYS-546: MC_Init (0x80097678)
+    pub mc_access_active: bool,          // SYS-550: MC_Start / MC_Stop
+    pub mc_read_count: u32,              // SYS-548: MC_Read (0x800974FC)
+    pub mc_write_count: u32,             // SYS-552: MC_Write (0x800970EC)
+    pub mc_last_seek: (i32, i32),        // SYS-549: MC_Seek (0x80097E10)
+    pub mc_flush_called: bool,           // SYS-544: MC_Flush (0x80097730)
+    pub mc_open_handles: u32,            // SYS-547: MC_Open / MC_Close active handle bitmask
 }

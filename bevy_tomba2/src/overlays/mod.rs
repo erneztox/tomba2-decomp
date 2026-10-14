@@ -10,6 +10,7 @@
 
 pub mod a00_fishermen;
 pub mod a01_mines;
+pub mod a06_donglin_forest;
 
 use bevy::prelude::*;
 use crate::entity::EntityLifecycle;
@@ -24,6 +25,9 @@ pub use a00_fishermen::{
 pub use a01_mines::{
     A01OverlayRuntime, A01_OVERLAY_ID, dispatch_a01_handler,
 };
+pub use a06_donglin_forest::{
+    A06OverlayRuntime, A06_OVERLAY_ID, dispatch_a06_handler,
+};
 
 /// Active Overlay identifier enumeration
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
@@ -31,6 +35,7 @@ pub enum ActiveOverlayId {
     #[default]
     A00Fishermen,
     A01CoalMine,
+    A06DonglinForest,
     Other(u8),
 }
 
@@ -43,6 +48,8 @@ pub struct OverlayManager {
     pub a00_runtime: A00OverlayRuntime,
     /// Runtime state for A01 (Large Mine Underground)
     pub a01_runtime: A01OverlayRuntime,
+    /// Runtime state for A06 (Donglin Forest)
+    pub a06_runtime: A06OverlayRuntime,
 }
 
 impl Default for OverlayManager {
@@ -51,6 +58,7 @@ impl Default for OverlayManager {
             active_overlay: ActiveOverlayId::A00Fishermen,
             a00_runtime: A00OverlayRuntime::default(),
             a01_runtime: A01OverlayRuntime::default(),
+            a06_runtime: A06OverlayRuntime::default(),
         }
     }
 }
@@ -83,6 +91,15 @@ pub fn dispatch_overlay_entity_handler(
             lifecycle,
             physics,
             &mut overlay_manager.a01_runtime,
+            audio,
+            events,
+            player_pos,
+        ),
+        6 => dispatch_a06_handler(
+            handler_addr,
+            lifecycle,
+            physics,
+            &mut overlay_manager.a06_runtime,
             audio,
             events,
             player_pos,
